@@ -402,7 +402,13 @@ th {
   padding: 0;
 }
 
-/*! dkwds @version */
+.header .portal-header .logo {
+  background-image: url("../img/logo_virk_indberet.svg");
+  width: 200px;
+  height: 58px;
+}
+
+/*! dkfds @version */
 .tippy-touch {
   cursor: pointer !important;
 }
@@ -6578,7 +6584,7 @@ input[type=text]:disabled, input[type=textarea]:disabled {
 }
 
 [type=range]::-moz-range-track {
-  background: #747474;
+  background: #067293;
   border: 1px solid #747474;
   cursor: pointer;
   height: 1.2rem;
@@ -8708,22 +8714,22 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
   }
 }
 
 @media screen and (min-width: 992px) {
   .nav-primary .current span {
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
   }
 }
@@ -8736,18 +8742,18 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
   }
 }
 
 .nav-primary a.current {
   font-weight: 600;
-  color: #747474;
+  color: #067293;
 }
 
 .nav-primary button.current {
@@ -8836,7 +8842,7 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #067293;
     padding-bottom: 12px;
   }
 }
@@ -8972,7 +8978,7 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner .current {
   font-weight: 600;
-  color: #747474;
+  color: #067293;
 }
 
 @media screen and (min-width: 992px) {
@@ -10276,7 +10282,7 @@ input[type=search] {
 }
 
 .tabnav li a:hover {
-  color: #747474;
+  color: #067293;
   box-shadow: inset 0px -7px 0px 0px #747474;
 }
 
@@ -10285,7 +10291,7 @@ input[type=search] {
 }
 
 .tabnav li a.active {
-  color: #747474;
+  color: #067293;
   box-shadow: inset 0px -7px 0px 0px #747474;
   font-weight: 600;
 }

@@ -13,7 +13,7 @@ var runSequence = require('run-sequence');
 var del = require('del');
 var task = 'sass';
 
-var entryFileFilter = filter('dkwds.scss', { restore: true });
+var entryFileFilter = filter('dkfds.scss', { restore: true });
 var normalizeCssFilter = filter('normalize.css', { restore: true });
 
 gulp.task('stylelint',
@@ -57,11 +57,11 @@ gulp.task(task, ['copy-dist-sass' ], function () {  //['copy-vendor-sass', 'copy
 
   dutil.logMessage(task, 'Compiling Sass');
 
-  var stream = gulp.src(['src/stylesheets/dkwds.scss','src/stylesheets/dkwds-virkdk.scss','src/stylesheets/dkwds-borgerdk.scss'])
+  var stream = gulp.src(['src/stylesheets/dkfds.scss','src/stylesheets/dkfds-virkdk.scss','src/stylesheets/dkfds-borgerdk.scss'])
     // 1. do the version replacement
     .pipe(replace(
-      /\bdkwds @version\b/g,
-      'dkwds v' + pkg.version
+      /\bdkfds @version\b/g,
+      'dkfds v' + pkg.version
     ))
     // 2. convert SCSS to CSS
     .pipe(
@@ -75,7 +75,7 @@ gulp.task(task, ['copy-dist-sass' ], function () {  //['copy-vendor-sass', 'copy
         cascade: false,
       })
     )
-    // 4. write dist/css/dkwds.css
+    // 4. write dist/css/dkfds.css
     .pipe(gulp.dest('dist/css'));
 
   // we can reuse this stream for minification!
@@ -88,13 +88,13 @@ gulp.task(task, ['copy-dist-sass' ], function () {  //['copy-vendor-sass', 'copy
       // XXX see https://github.com/ben-eb/cssnano/issues/340
       mergeRules: false,
     }))
-    // 3. rename to dkwds.min.css
+    // 3. rename to dkfds.min.css
     .pipe(rename({
       suffix: '.min',
     }))
-    // 4. write dist/css/dkwds.min.css.map
+    // 4. write dist/css/dkfds.min.css.map
     .pipe(sourcemaps.write('.'))
-    // 5. write dist/css/dkwds.min.css
+    // 5. write dist/css/dkfds.min.css
     .pipe(gulp.dest('dist/css'));
 
   return stream;

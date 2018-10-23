@@ -1,6 +1,6 @@
 label: Select
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 
 context:
   select_example:

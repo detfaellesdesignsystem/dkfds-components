@@ -37,7 +37,7 @@ Technically, release of the Web Design Standards core code "lives" in two
 different places:
 
 1. On GitHub as a [tag][git tag] and corresponding [release][releases]
-1. On [npm][what is npm] as a release of the [`dkwds` package][dkwds on npm] with the same version number as the GitHub release
+1. On [npm][what is npm] as a release of the [`dkfds` package][dkfds on npm] with the same version number as the GitHub release
 
 ### The public API
 In most software projects, the "public API" corresponds to a single set of
@@ -126,14 +126,14 @@ example, any of the following should trigger a major version increment:
 
     1. Update the docs site with the new version number and release notes:
 
-        1. Update the `dkwds` Node dependency to the new version, e.g.:
+        1. Update the `dkfds` Node dependency to the new version, e.g.:
 
             ```sh
             cd path/to/web-design-standards-docs
             export VERSION=1.0.0
             git fetch origin
             git checkout -b release-${VERSION} origin/develop
-            npm install --save-dev dkwds@${VERSION}
+            npm install --save-dev dkfds@${VERSION}
             ```
 
         1. Update the `version` [variable in
@@ -168,7 +168,7 @@ planned versions. These are sometimes also called [release candidates]. Here's h
    * Include instructions for installing the pre-release from npm with the dist-tag, e.g.:
    
       ```sh
-      npm install --save dkwds@dev
+      npm install --save dkfds@dev
       ```
       
    * Directly notify users who may be impacted by the proposed changes, and encourage
@@ -197,7 +197,7 @@ If you need help or have any questions, please reach out to us:
 [pull request]: https://github.com/18F/web-design-standards/compare
 [releases]: https://github.com/18F/web-design-standards/releases
 [semver]: http://semver.org/
-[dkwds on npm]: https://npmjs.com/package/dkwds
+[dkfds on npm]: https://npmjs.com/package/dkfds
 [what is npm]: https://docs.npmjs.com/getting-started/what-is-npm
 [Slack]: https://slack.com/
 [release candidates]: https://en.wikipedia.org/wiki/Software_release_life_cycle#Release_candidate

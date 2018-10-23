@@ -1,7 +1,7 @@
 {
   "private": true,
   "dependencies": {
-    "dkwds": "^1.0.2"
+    "dkfds": "^1.0.2"
   },
   "scripts": {
     "build": "grunt js sass",

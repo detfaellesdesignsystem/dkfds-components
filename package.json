@@ -1,11 +1,11 @@
 {
-  "name": "dkwds",
+  "name": "dkfds",
   "version": "2.1.2",
-  "description": "Open source UI components and visual style guide for UFrontend Styleguide",
+  "description": "Frontend Styleguide er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
   "engines": {
     "node": ">= 4"
   },
-  "main": "dist/js/dkwds.min.js",
+  "main": "dist/js/dkfds.min.js",
   "jsnext:main": "src/js/start.js",
   "scripts": {
     "build": "gulp build",
@@ -27,7 +27,7 @@
   "fractal": {
     "main": "fractalfile.js"
   },
-  "author": "18F",
+  "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "@types/node": "^8.5.5",

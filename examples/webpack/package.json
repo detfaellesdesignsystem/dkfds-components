@@ -4,7 +4,7 @@
     "build:js": "webpack -p --devtool sourcemap src/js/main.js js/main.js"
   },
   "dependencies": {
-    "dkwds": "^1.0.2",
+    "dkfds": "^1.0.2",
     "webpack": "^2.5.1"
   }
 }

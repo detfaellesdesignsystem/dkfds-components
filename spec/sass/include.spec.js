@@ -13,8 +13,8 @@ const includePath = path.resolve(
 
 describe('include paths', function () {
 
-  it('can be loaded with @import "dkwds"', function () {
-    return render('@import "dkwds";', [ includePath ]);
+  it('can be loaded with @import "dkfds"', function () {
+    return render('@import "dkfds";', [ includePath ]);
   });
 
   it('can be loaded with @import "all"', function () {
@@ -30,8 +30,8 @@ describe('standalone dist scss', function () {
     return runGulp('copy-dist-sass');
   });
 
-  it('can be loaded with @import "dkwds"', function () {
-    return render('@import "dkwds";', [ distScssPath ]);
+  it('can be loaded with @import "dkfds"', function () {
+    return render('@import "dkfds";', [ distScssPath ]);
   });
 
   it('can be loaded with @import "all"', function () {

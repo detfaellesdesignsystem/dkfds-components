@@ -1,6 +1,6 @@
 label: Radio button
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 
 context:
   radiobuttons_example:

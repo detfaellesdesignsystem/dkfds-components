@@ -7,7 +7,7 @@ const AXE_CONTEXT = JSON.stringify({
   exclude: [
     // For some reason aXe takes a lot longer if it needs to dive into
     // iframes with data: URIs. The content of these iframes is just for
-    // non-dkwds example content anyways, so just skip them to speed things
+    // non-dkfds example content anyways, so just skip them to speed things
     // up.
     [ 'iframe[src^="data:"]' ],
   ],

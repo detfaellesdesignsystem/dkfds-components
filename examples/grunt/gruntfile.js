@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         options: {
           style: 'nested',
           includePaths: [
-            'node_modules/dkwds/src/stylesheets',
+            'node_modules/dkfds/src/stylesheets',
           ],
         },
       },

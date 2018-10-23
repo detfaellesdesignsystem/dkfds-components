@@ -1,6 +1,6 @@
 label: Multi Select (Select2)
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 
 context:
   select_multiple_example:

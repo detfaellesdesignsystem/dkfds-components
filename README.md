@@ -39,13 +39,13 @@ There are a few different ways to use the design system within your project. Whi
 4. Add `dkfds` to your project’s `package.json`:
 
   ```shell
-  npm install --save dkwds
+  npm install --save dkfds
   ```
 
 The `dkfds` module is now installed as a dependency. You can use the un-compiled files found in the `src/` or the compiled files in the `dist/` directory.
 
 ```
-node_modules/dkwds/
+node_modules/dkfds/
 ├── dist/
 │   ├── css/
 │   ├── fonts/

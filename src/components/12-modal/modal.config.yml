@@ -1,6 +1,6 @@
 label: Modal
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 
 context:
   modal_data_active:

@@ -402,17 +402,7 @@ th {
   padding: 0;
 }
 
-.header .portal-header {
-  background-color: #f1f1f1;
-}
-
-.header .portal-header .logo {
-  background-image: url("../img/logo-borgerdk.svg");
-  width: 144px;
-  height: 36px;
-}
-
-/*! dkwds @version */
+/*! dkfds @version */
 .tippy-touch {
   cursor: pointer !important;
 }
@@ -6588,7 +6578,7 @@ input[type=text]:disabled, input[type=textarea]:disabled {
 }
 
 [type=range]::-moz-range-track {
-  background: #568331;
+  background: #747474;
   border: 1px solid #747474;
   cursor: pointer;
   height: 1.2rem;
@@ -8718,22 +8708,22 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
   }
 }
 
 @media screen and (min-width: 992px) {
   .nav-primary .current span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
   }
 }
@@ -8746,18 +8736,18 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
   }
 }
 
 .nav-primary a.current {
   font-weight: 600;
-  color: #568331;
+  color: #747474;
 }
 
 .nav-primary button.current {
@@ -8846,7 +8836,7 @@ footer .footer-theme {
 
 @media screen and (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #747474;
     padding-bottom: 12px;
   }
 }
@@ -8982,7 +8972,7 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner .current {
   font-weight: 600;
-  color: #568331;
+  color: #747474;
 }
 
 @media screen and (min-width: 992px) {
@@ -10286,7 +10276,7 @@ input[type=search] {
 }
 
 .tabnav li a:hover {
-  color: #568331;
+  color: #747474;
   box-shadow: inset 0px -7px 0px 0px #747474;
 }
 
@@ -10295,7 +10285,7 @@ input[type=search] {
 }
 
 .tabnav li a.active {
-  color: #568331;
+  color: #747474;
   box-shadow: inset 0px -7px 0px 0px #747474;
   font-weight: 600;
 }

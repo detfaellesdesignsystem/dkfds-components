@@ -142,7 +142,7 @@ gulp.task('src:css', function () {
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: [
-        'node_modules/dkwds/dist/css',
+        'node_modules/dkfds/dist/css',
       ],
       outputStyle: 'compressed',
     }))
@@ -198,7 +198,7 @@ gulp.task('move:fonts', function() {
   console.log(color('::::::::::::::::::: Move Fonts :::::::::::::::::::', 'CYAN'));
   return gulp.src([
       paths.src.fonts + '/*.{eot,svg,ttf,woff,woff2}',
-      'node_modules/dkwds/src/fonts/**/*.{eot,svg,ttf,woff,woff2}'
+      'node_modules/dkfds/src/fonts/**/*.{eot,svg,ttf,woff,woff2}'
     ])
     .pipe(gulp.dest(paths.prototype.fonts))
 });
@@ -208,7 +208,7 @@ gulp.task('move:images', function() {
   console.log(color('::::::::::::::::::: Moving Images to Prototype :::::::::::::::::::', 'CYAN'));
   return gulp.src([
       paths.src.img + '/*.{jpg,jpeg,png,gif,svg}',
-      'node_modules/dkwds/src/img/**/*.{png,svg}'
+      'node_modules/dkfds/src/img/**/*.{png,svg}'
     ])
       .pipe(gulp.dest(paths.prototype.img))
 });

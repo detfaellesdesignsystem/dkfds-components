@@ -17,7 +17,7 @@ gulp.task('css', function () {
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: [
-        'node_modules/dkwds/src/stylesheets',
+        'node_modules/dkfds/src/stylesheets',
       ],
       outputStyle: 'compressed',
     }))

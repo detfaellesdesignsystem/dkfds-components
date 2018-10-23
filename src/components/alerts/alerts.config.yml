@@ -1,6 +1,6 @@
 label: Alerts
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 context:
   alert_example:
     items:

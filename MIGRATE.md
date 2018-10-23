@@ -15,10 +15,10 @@ like so:
 
 ```js
 // ES5
-var Accordion = require('dkwds/src/js/components/accordion');
+var Accordion = require('dkfds/src/js/components/accordion');
 
 // or, in ES2015
-import Accordion from 'dkwds/src/js/components/accordion';
+import Accordion from 'dkfds/src/js/components/accordion';
 ```
 
 And if you then use the `Accordion` constructor to re-initialize dynamically created
@@ -36,7 +36,7 @@ For backwards compatibility with v1.x, the following JavaScript submodule APIs h
 * [components/validator](src/js/components/validator.js) exports a function for backwards compatibility, but will export a [behavior].
 * [components/toggle-field-mask](src/js/components/toggle-field-mask.js) has been demoted to a [utility function](src/js/utils/toggle-field-mask.js) with a different API. The component submodule remains as a compatibility shim, but will be removed.
 * [components/toggle-form-input](src/js/components/toggle-form-input.js) has been demoted to a [utility function](src/js/utils/toggle-form-input.js) with a different API. The component submodule remains as a compatibility shim, but will be removed.
-* We've replaced our `when-dom-ready` utility with [domready](https://www.npmjs.com/package/domready). The [utils/when-dom-ready](src/js/utils/when-dom-ready.js) submodule remains for backwards compatibility with v1.x, but will be removed in v2.0.0. In the meantime, you can safely `npm install --save domready` and replace all instances of `require('dkwds/src/js/utils/when-dom-ready')` with `require('domready')`.
+* We've replaced our `when-dom-ready` utility with [domready](https://www.npmjs.com/package/domready). The [utils/when-dom-ready](src/js/utils/when-dom-ready.js) submodule remains for backwards compatibility with v1.x, but will be removed in v2.0.0. In the meantime, you can safely `npm install --save domready` and replace all instances of `require('dkfds/src/js/utils/when-dom-ready')` with `require('domready')`.
 * The `dispatch` utility is no longer used internally, and will be removed in v2.0.0. Rather than create per-element dispatch objects, you can use [receptor][] (or our [behavior utility function](src/js/utils/behavior.js)) to create [reusable behaviors][behavior].
 
 ### ES2015
@@ -54,7 +54,7 @@ tools, this should require zero additional configuration:
 1. If you're using [webpack] version 1, we suggest
    [migrating to version 2](https://webpack.js.org/guides/migrating/). Otherwise,
    you'll need to [use babel-loader](http://jamesknelson.com/using-es6-in-the-browser-with-babel-6-and-webpack/)
-   and configure it with `include: [require.resolve('dkwds')]`. More generally...
+   and configure it with `include: [require.resolve('dkfds')]`. More generally...
 1. If you're already using [Babel] to compile your JavaScript, be sure that your
    bundler also compiles third-party modules (i.e. anything in `node_modules`).
 1. If you're using Angular 2 or later, you're probably already using [TypeScript],

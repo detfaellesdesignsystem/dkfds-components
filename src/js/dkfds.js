@@ -17,10 +17,10 @@ const checkboxToggleContent = require('./components/checkbox-toggle-content');
  */
 require('./polyfills');
 
-const dkwds = require('./config');
+const dkfds = require('./config');
 
 const components = require('./components');
-dkwds.components = components;
+dkfds.components = components;
 
 domready(() => {
   const target = document.body;
@@ -52,4 +52,4 @@ domready(() => {
 
 });
 
-module.exports = dkwds;
+module.exports = dkfds;

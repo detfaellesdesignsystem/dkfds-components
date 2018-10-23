@@ -8,7 +8,7 @@ const context = {
     name: pkg.name,
     version: pkg.version,
   },
-  dkwds: {
+  dkfds: {
     path: '../../dist',
   },
 };
@@ -18,7 +18,7 @@ fractal.set('project.title', 'Frontend Styleguide');
 const components = fractal.components;
 components.set('ext', '.njk');
 components.set('path', 'src/components');
-components.set('default.preview', '@dkwds');
+components.set('default.preview', '@dkfds');
 components.set('default.context', context);
 
 // use Nunjucks as the templating engine

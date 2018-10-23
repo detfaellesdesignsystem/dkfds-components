@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
 
     <!-- Frontend styleguide stylesheet-->
-    <link rel="stylesheet" href="{{ dkwds.path }}/css/dkwds.min.css">
+    <link rel="stylesheet" href="{{ dkfds.path }}/css/dkfds.min.css">
   </head>
   <body>
     <div class="hide-base-svg">
       {% include "all-svg-icons.svg"  %}
     </div>
     {% block body %}{{ yield }}{% endblock %}
-    <script src="{{ dkwds.path }}/js/dkwds.js"></script>
-    <script src="{{ dkwds.path }}/js/dkwds-vendor-examples.js"></script>
+    <script src="{{ dkfds.path }}/js/dkfds.js"></script>
+    <script src="{{ dkfds.path }}/js/dkfds-vendor-examples.js"></script>
     <script>
     window.addEventListener('load', function() {
       document.body.addEventListener('submit', function(e) {

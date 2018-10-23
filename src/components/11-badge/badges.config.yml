@@ -1,6 +1,6 @@
 label: Badge
 status: ready
-preview: '@dkwds-framed'
+preview: '@dkfds-framed'
 
 variants:
   - name: default

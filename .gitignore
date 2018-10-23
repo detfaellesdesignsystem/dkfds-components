@@ -8,9 +8,9 @@ npm-debug.log*
 # code coverage
 coverage/
 
-# ignore the generated dkwds directory
-dkwds-*/
-dkwds-*.zip
+# ignore the generated dkfds directory
+dkfds-*/
+dkfds-*.zip
 
 # ignore the generated builds directory
 #build/components/detail/
