@@ -1,0 +1,216 @@
+.table {
+    margin: 0;
+    line-height: $body-text-line-height;
+    border: $outer-border;
+    width: 100%;
+
+    &.table--compact {
+      th,td {
+        padding-top: calc(#{map-get($spacers, 3)} - 1px);
+        padding-bottom: calc(#{map-get($spacers, 3)} - 1px);
+      }
+    }
+
+    &.table--extracompact {
+      th,td {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    td, th {
+        padding: calc(#{map-get($spacers, 4)} - 1px); //16px -1px (for the border)
+        background-color: inherit;
+        border-right: $inner-border;
+        vertical-align: top;
+        text-align: left;
+        border-bottom: $inner-border;
+
+        &:last-child{
+            border-right: none;
+        }
+    }
+
+    thead {
+        background-color: $color-gray-pale;
+        tr {
+            border-bottom: $inner-border;
+        }
+        th{
+            font-weight: $font-weight-semibold;
+            text-align: left;
+            border-bottom: solid 1px $color-gray-light;
+        }
+    }
+    tbody{
+        th{
+            font-weight: $font-weight-semibold;
+        }
+        tr {
+            background-color: transparent;
+        }
+    }
+
+    
+    tr{
+        &:last-child{
+            td{
+                border-bottom: none;
+            }
+        }
+    }
+
+    //no border
+    &.table--borderless {
+        tr {
+            &:last-child{
+                border-bottom: $inner-border;
+                
+            }
+        }
+        border: none;
+        thead {
+            background-color: transparent;
+            th{
+                background-color: transparent;
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-bottom: $inner-border;
+
+                &:first-child{
+                    padding-left: 0;
+                }
+                &:last-child{
+                    padding-right: 0;
+                    
+                }
+            }
+        }
+        tbody{
+            tr{
+                td, th {
+                    border: $inner-border;
+                    border-left-color: transparent;
+                    border-right-color: transparent;
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                    &:last-child{
+                        padding-right: 0;
+                    }
+                }
+                &:first-child {
+                    td, th{
+                        //border-top-color: transparent;
+                        //border-top-color: transparent;
+                    }
+                    
+                }
+                &:last-child{
+                    td, th{
+                        //border-bottom-color: transparent;
+                        //border-bottom-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    //No call borders right (row arrear as one single line)
+    &.table--lines {
+        thead {
+            th{
+                border-right-color: transparent;
+            }
+        }
+    
+        tbody{
+            td, th{
+                border-right: transparent;
+            }
+        }
+    }
+      
+
+    //zebra lines
+    &.table--zebra {
+        thead {
+          th{
+              border-right-color: transparent;
+          }
+        }
+        tr:nth-child(even) {
+            background-color: $color-gray-pale;
+        }
+
+        tbody{
+            td, th{
+                border-right: transparent;
+            }
+        }
+
+        &.table--borderless {
+            thead{
+                background-color: $color-gray-pale;
+            }
+            td,th {
+                border-color: transparent;
+                &:first-child{
+                    border-left-color: transparent;
+                    border-right-color: transparent;
+                }
+                &:last-child{
+                    border-left-color: transparent;
+                    border-right-color: transparent;
+                }
+            }
+            tr:last-child td{
+                border-bottom-color: transparent
+            }
+        }
+    }
+
+
+    //make row into a "card" on phone
+    &.table--responsive-headers{
+        @include media-breakpoint-down(sm) {
+            thead{
+                display: none;
+            }
+            tr{
+                border-bottom: $inner-border;
+                &:last-child{
+                    border-bottom: 0;
+                }
+            }
+            tr td, tr th {
+                display: block;
+                border: none !important;
+        
+                &[data-title]:not([data-title=""]):before {
+                    content: attr(data-title);
+                    text-align: left;
+                    display: block;
+                    font-weight: $font-weight-semibold;
+                }
+            }
+
+            &.table--borderless tbody tr{
+                &:first-child{
+                    border-top: solid 1px $color-gray-light;
+                }
+                &:last-child{
+                    border-bottom: solid 1px $color-gray-light;
+                }
+                td:first-child, th:first-child{
+                    padding-left: 16px;
+                }
+            }
+        }
+    }
+}
+.table--responsive-scroll{
+    overflow-x: auto;
+    min-height: .01%;
+}

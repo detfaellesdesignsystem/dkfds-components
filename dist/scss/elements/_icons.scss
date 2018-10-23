@@ -1,0 +1,85 @@
+$icons: (
+    "add",
+    "alert-outline",
+    "angle-arrow-down",
+    "angle-arrow-up",
+    "arrow-left",
+    "arrow-right",
+    "book-open",
+    "calendar",
+    "cash-multiple",
+    "check",
+    "check-circle-outline",
+    "chevron-left",
+    "chevron-right",
+    "close",
+    "close-circle",
+    "close-circle-outline",
+    "content-save",
+    "delete",
+    "delete-outline",
+    "dots-vertical",
+    "download",
+    "error",
+    "file",
+    "file-document-box",
+    "folder-multiple",
+    "help",
+    "help-circle-outline",
+    "info",
+    "language",
+    "magnify",
+    "menu-down",
+    "menu-left",
+    "menu-right",
+    "menu-up",
+    "message",
+    "minus",
+    "open-in-new",
+    "pencil",
+    "plus",
+    "printer",
+    "refresh",
+    "save",
+    "settings",
+    "sort-acending",
+    "sort-descending",
+    "sort-none",
+    "success",
+    "warning"
+) !default;
+
+.icon{
+    height: $body-text-line-height;
+    width: $body-text-line-height;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 100%;
+}
+.icon-svg {
+    height: $body-text-line-height;
+    width: $body-text-line-height;
+    vertical-align: middle;
+    &--inherit-color{
+        fill: currentColor; //svg inherit color
+    }
+}
+
+.icon-svg-large {
+    height: $display-1-heading-size;
+    width: $display-1-heading-size;
+    vertical-align: middle;
+    &--inherit-color{
+        fill: currentColor; //svg inherit color
+    }
+}
+
+@each $icon in $icons {
+    .icon-#{$icon} {
+        background-image: url($icons-folder-path + "/"+ $icon + ".svg");
+    }
+}
+
+.hide-base-svg{ //hide inline svgs
+    display: none;
+}

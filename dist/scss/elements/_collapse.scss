@@ -1,0 +1,17 @@
+
+.collapsed:not(.dataTable){
+    display: none;
+}
+.collapse-transition-collapse{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height .2s ease;
+}
+.collapse-transition-expand{
+    position: relative;
+    overflow: hidden;
+    transition: height .2s ease;
+}
+  
+      

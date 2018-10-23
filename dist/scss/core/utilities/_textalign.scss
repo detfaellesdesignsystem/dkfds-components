@@ -1,0 +1,13 @@
+//
+// Generates utility classes to control text alignment
+// Example: .align-text-left .align-text-md-left
+//
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .align-text#{$infix}-left        { text-align: left !important; }
+    .align-text#{$infix}-right       { text-align: right !important; }
+    .align-text#{$infix}-center      { text-align: center !important; }
+  }
+}

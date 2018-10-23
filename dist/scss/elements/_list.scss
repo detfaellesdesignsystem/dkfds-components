@@ -1,0 +1,67 @@
+
+ //Ul lists
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  color: $color-text;
+  line-height: $body-text-line-height;
+  li { 
+    margin-top:map-get($spacers, 3);
+    list-style-type: none;
+    position: relative;
+    padding-left: 37px;
+    line-height: $body-text-line-height;
+    &:before {
+      content: "\2022";
+      position: absolute;
+      left: 23px;
+    }
+  }
+}
+//Ol lists
+ol {
+  padding-left: 0;
+  counter-reset: item;
+  color: $color-text;
+  li {
+    margin-top:map-get($spacers, 3);
+    list-style: none;
+    position: relative;
+    padding-left: 37px;
+    line-height: $body-text-line-height;
+
+    &:before { 
+      content: counters(item, ".") "."; 
+      counter-increment: item; 
+      font-weight: $font-weight-medium;
+      position: absolute;
+      left: 20px;
+    }
+    ol {
+      li {
+        &:before { 
+          left: 6px;
+        }
+      }
+    }
+  }
+}
+
+
+
+// Unstyled lists
+.unstyled-list {
+  @include unstyled-list;
+
+  &.bottom-spacing{
+    li{
+      margin-bottom: $spacing;
+    }
+  }
+}
+
+.inline-list {
+  @include unstyled-list;
+  @include inline-list;
+}

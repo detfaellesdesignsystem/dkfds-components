@@ -1,0 +1,56 @@
+//BORDER RADIUS
+.static-border-radius-example {
+  border-top-left-radius:$static-border-radius;
+  width: 144px;
+  height: 120px;
+  background-color: $color-gray-pale;
+  border-left: solid 6px $color-black;
+  border-top: solid 6px $color-black;
+}
+
+.interactive-border-radius-example {
+  border-top-left-radius: $interactive-border-radius;
+  width: 144px;
+  height: 120px;
+  background-color: $color-gray-pale;
+  border-left: solid 6px $color-black;
+  border-top: solid 6px $color-black;
+}
+
+//BORDERS
+.outer-border-example {
+  border-top: $outer-border;
+}
+
+.inner-border-example {
+  border-top: $inner-border;
+}
+
+.button-border-example {
+  border-top: $button-border;
+}
+
+//SHADOWS
+.heavy-shadow-example {
+  width: 144px;
+  height: 104px;
+  box-shadow: $box-shadow-heavy;
+  background-color: $color-white;
+  border: $outer-border;
+}
+
+.moderately-shadow-example {
+  width: 144px;
+  height: 104px;
+  box-shadow: $box-shadow-moderately;
+  background-color: $color-white;
+  border: $outer-border;
+}
+
+.slightly-shadow-example {
+  width: 144px;
+  height: 104px;
+  box-shadow: $box-shadow-slightly;
+  background-color: $color-white;
+  border: $outer-border;
+}

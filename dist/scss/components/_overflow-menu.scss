@@ -1,0 +1,182 @@
+
+$overflow-menu-arrow-size: 8px;
+$overflow-menu-dropdown-distance: 8px;
+
+.overflow-menu + h1{
+    margin-top: 0;
+}
+
+.overflow-menu {
+    display: inline-block; //inlinblock so the .overflow-menu-inner is position underneath .button-overflow-menu 
+    position: relative;
+
+    .button-overflow-menu{
+        position: relative;
+        @include button-unstyled;
+        min-height: 40px;
+        min-width: 40px;
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-black;
+
+        &:hover{
+            text-decoration: underline;
+        }
+
+        //below: arrow with border
+        &:after, &:before {
+            display: none;
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            z-index: 2;
+            bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
+        }
+        &:after {
+            border-bottom-color: #fff;
+            border-width: calc(#{$overflow-menu-arrow-size} - 1px);
+            margin-left: calc((#{$overflow-menu-arrow-size} - 1px)*-1);
+        }
+        &:before {
+            border-bottom-color: $color-gray-medium-light;
+            border-width: $overflow-menu-arrow-size;
+            margin-left: calc(#{$overflow-menu-arrow-size} *-1);
+        }
+
+        &[aria-expanded="true"]{
+            &:after, &:before{
+                display: block;
+            }
+        }
+    }
+
+    &.overflow-menu--hover-bg{ //used when button only contains an icon
+        .button-overflow-menu{
+            padding: 0;
+            &:hover{
+                background-color: $color-gray-pale;
+            }
+        }
+    }
+
+    .overflow-menu-inner {
+        
+        position: absolute;
+        z-index: 1;
+        width: auto;
+        border: $outer-border;
+        box-shadow: $box-shadow-moderately;
+        background: #fff;
+        padding-top: map-get($spacers, 3);
+        padding-bottom: map-get($spacers, 3);
+        top: calc(100% + #{$overflow-menu-dropdown-distance});
+        min-width: 28rem;
+        
+        &[aria-hidden="true"]{
+            display: none;
+        }
+    }
+
+    .overflow-list{
+        @include unstyled-list;
+        font-size: $body-text; 
+        line-height: $body-text-line-height;
+        color: $color-text;
+
+        button{
+            @include button-unstyled;   
+        }
+        a{
+            @include body-copy-text;
+            display: block;
+            text-decoration: none;
+            &:hover, &:visited, &:focus{
+                color: $color-text;
+            }
+        }
+
+        button, a{
+            padding: 8px 16px;
+            width: 100%;
+            &:hover{
+                background-color: $color-gray-pale;
+            }
+        }
+    }
+
+    &:not(.overflow-menu--md-no-responsive) .sidenav-list{
+        border-top: 0;
+        border-bottom: 0;
+    }
+    &.overflow-menu--md-no-responsive .sidenav-list{
+        @include media-breakpoint-down(md) {
+            border-top: 0;
+            border-bottom: 0;
+        }
+    }
+    
+
+    &--open-right {
+        .overflow-menu-inner{
+            left: calc(50% - 19px);
+            &:after {
+                left: 13px;
+            }
+        }
+    }
+    &--open-left {
+        .overflow-menu-inner{
+            right: calc(50% - 19px);
+            &:after {
+                right: 13px;
+            }
+            li, a, button{
+                text-align: right;
+                .icon-svg{
+                    float: right;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+    .button-overflow-menu.js-dropdown--responsive-collapse{
+        //behaves like a collapse on mobile, no positon absolute and width 100%
+        @include media-breakpoint-down(md) {
+            &:before, &:after{
+                display: none; //hide arrow
+            }
+            &  ~ .overflow-menu-inner {
+                width: 100%;
+                position: static;
+            }
+		}
+    }
+    &.overflow-menu--md-no-responsive{
+        //overflow content always visible on large screens.
+        //does not look like a dropdown. 
+        @include media-breakpoint-up(md) {
+            display: block;
+            &:before, &:after{
+                display: none; //hide arrow
+            }
+            .button-overflow-menu{
+                display: none;
+            }
+            .overflow-menu-inner{
+                display: block !important;
+                width: 100%;
+                max-width: 100%;
+                position: static;
+                box-shadow: none;
+                border: none;
+            }
+		}
+    }
+}

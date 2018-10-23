@@ -1,0 +1,385 @@
+// Header navigation ------------- //
+
+@mixin nav-border {
+  border-bottom: 0.4rem solid $color-primary;
+  padding-bottom: 0.6rem;
+}
+
+@mixin nav-border-thick {
+  border-bottom: 0.7rem solid $color-primary;
+  padding-bottom: 0.9rem;
+}
+
+@mixin nav-active {
+  border-bottom: 7px solid $color-primary;
+  padding-bottom: 12px;
+}
+@mixin nav-hover {
+  border-bottom: 7px solid $color-primary;
+  padding-bottom: 12px;
+}
+@mixin nav-focus {
+  border-bottom: 7px solid $color-primary;
+  padding-bottom: 12px;
+}
+
+.navbar {
+  width: 100%;
+  //padding-left: map-get($spacers, 4);
+  //padding-right: map-get($spacers, 4);
+  padding-top: map-get($spacers, 5);
+  padding-bottom: map-get($spacers, 5);
+  border-bottom: $inner-border;
+  display: flex;
+  flex-direction: column;
+
+  @include media($nav-responsive-breakpoint) {
+    padding: 0;
+    border: 0;
+    flex-direction: row;
+  }
+}
+.navbar-primary{
+  border-bottom: $inner-border;
+  padding-top: 0;
+}
+.navbar-context-actions{
+  @include media($nav-responsive-breakpoint) {
+    padding-top: map-get($spacers, 3);
+  }
+}
+
+// Primary navigation ------------- //
+
+.nav-primary {
+  @include unstyled-list;
+  display: flex; 
+  flex-direction: column;
+  margin-top: 8px;
+
+  @include media($nav-responsive-breakpoint) {
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-left: -12px;
+  }
+
+  > li {
+    border-bottom: $inner-border;
+    @include media($nav-responsive-breakpoint) {
+      border-bottom: 0;
+    }
+    > a {
+      text-decoration: none;
+      color: $color-black;
+      font-size: $base-font-size;
+      line-height: $base-line-height;
+      display: block;
+      padding-top: calc(#{map-get($spacers, 4)} - 1px);
+      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      white-space: nowrap;
+
+      &:hover {
+        @include media($nav-responsive-breakpoint) {
+          background-color: transparent;
+        }
+      }
+      &:focus{
+        background-color: transparent;
+      }
+    }
+    & > a, & > button, & .button-overflow-menu{
+      @include media($nav-responsive-breakpoint) {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+  }
+
+  button[aria-expanded=true] {
+    span {
+      @include media($nav-responsive-breakpoint) {
+        @include nav-active;
+        @include nav-hover;
+        @include nav-focus;
+      }
+    }
+  }
+
+  .current {
+    @include media($nav-responsive-breakpoint) {
+      span {
+        @include nav-active;
+        @include nav-hover;
+        @include nav-focus;
+      }
+    }
+  }
+
+  .nav-link {
+    &:hover {
+      @media (max-width: $nav-responsive-breakpoint) {
+        background-color: $color-gray-pale;
+      }
+      span {
+        @include media($nav-responsive-breakpoint) {
+          @include nav-active;
+          @include nav-hover;
+          @include nav-focus;
+        }
+      }
+    }
+  }
+
+  a.current{
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+  }
+  button.current{
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.nav-secondary{
+  @include media($nav-responsive-breakpoint) {
+    display: flex;
+    align-items: center;
+  }
+  .nav-secondary-heading{
+    margin-bottom: map-get($spacers, 4);
+    font-size: 17px;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+    + ul{
+      @include media($nav-responsive-breakpoint) {
+        margin-left: map-get($spacers, 4);
+      }
+    }
+  }
+}
+
+.nav{
+  .overflow-menu{
+    display: block; //IE 11 fix 
+  }
+  @media (max-width: $nav-responsive-breakpoint) {
+    //overflow menu (the ones not in nav-primary)
+    .overflow-menu{
+      width: 100%;
+      .button-overflow-menu{
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 16px;
+        padding-bottom: 16px; 
+        &:after, &:before{
+          display: none !important;
+        }
+      }
+      .overflow-menu-inner{
+        position: static;
+        border: none;
+        box-shadow:  none;
+        .overflow-list{
+          padding-left: 16px;
+        }
+        a, button{
+          text-align: left;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 16px;
+          padding-bottom: 16px;
+        }
+      }
+    }
+  }
+}
+
+
+// Overflow menu(dropdown) in primary navigation.
+.nav-primary{
+  .overflow-menu{
+    .button-overflow-menu{
+      color: $color-black;
+      font-size: $base-font-size;
+      line-height: $base-line-height;
+      display: block;
+      padding-top: calc(#{map-get($spacers, 4)} - 1px);
+      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      white-space: nowrap;
+      width: 100%;
+      @include media($nav-responsive-breakpoint) {
+        width: unset;
+      }
+      span{
+        padding-right: 24px;
+      }
+      &:hover {
+        span {
+          @include media($nav-responsive-breakpoint) {
+            @include nav-hover;
+          }
+        }
+      }
+
+      &:focus,
+      &:active {
+        outline: $focus-outline;
+      }
+      &:hover{
+        text-decoration: none;
+      }
+  
+      &[aria-expanded=false] {
+        background-image: url('#{$icons-folder-path}/plus.svg');
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 24px;
+  
+        @include media($nav-responsive-breakpoint) {
+          background-image: url('#{$icons-folder-path}/angle-arrow-down.svg');
+          background-position: right 1rem center;
+          border-left: 1px solid transparent;
+          border-right: 1px solid transparent;
+        }
+      }
+  
+      &[aria-expanded=true] { 
+        background-image: url('#{$icons-folder-path}/minus.svg');
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 24px;
+  
+        @include media($nav-responsive-breakpoint) {
+          background-image: url('#{$icons-folder-path}/angle-arrow-down-white.svg');
+          background-position: right 1rem center;
+          //create borders:
+          border-left: 1px solid $color-gray-medium-light;
+          border-right: 1px solid $color-gray-medium-light;
+          //box-shadow: 0px 2px 0px -1px #fff; //hide nav bottom border.
+          background-color: $color-subnav-background;
+          color: #fff;
+          &:before, &:after{
+            display: none;
+          }
+        }
+      }
+    }
+
+    .overflow-menu-inner {
+      //@include sidenav-sublist;
+      @include unstyled-list;
+      font-size: $body-text;
+      line-height: $body-text-line-height;
+      color: $color-text;
+      background-color: #fff;
+      padding-left: 16px;
+      border-top: $inner-border;
+      padding-top: 0;
+      padding-bottom: 0;
+  
+      @include media($nav-responsive-breakpoint) {
+        width: 30rem;
+        border: $outer-border;
+        border-top: 0;
+        padding-left: 0;
+        position: absolute;
+        z-index: 1;
+        padding-top: map-get($spacers, 3);
+        padding-bottom: map-get($spacers, 3);
+        background-color: $color-subnav-background;
+        top: 100%;
+      }
+  
+      button{
+          @include button-unstyled;   
+      }
+      a{
+          @include body-copy-text;
+          display: block;
+          text-decoration: none;
+          &:hover, &:visited, &:focus{
+            color: $color-text;
+            background-color: transparent;
+            @include media($nav-responsive-breakpoint) {
+              color: #fff!important;
+              text-decoration: underline;
+            }
+          }
+          @include media($nav-responsive-breakpoint) {
+            color: #fff!important;
+          }
+      }
+  
+      .current {
+        font-weight: $font-weight-semibold;
+        color: $color-primary;
+        @include media($nav-responsive-breakpoint) {
+          color: #fff;
+        }
+      }
+  
+      button, a{
+        padding: 15px 0 15px 0;
+        border-top: $inner-border;
+        width: 100%;
+  
+        @include media($nav-responsive-breakpoint) {
+          padding: 8px 16px;
+          margin: 0;
+          border: none;
+        }
+        &:focus{
+          background-color: transparent;
+        }
+      }
+      li:first-child button, li:first-child a{
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.mobile_nav-active {
+  overflow: hidden;
+}
+
+// Navbar inner
+.navbar-inner {
+  display: flex;
+  flex-direction: column;
+  @include media($nav-responsive-breakpoint) {
+    flex-direction: row;
+  }
+}
+
+
+.nav-info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin: 0;
+    text-align: right;
+
+    &.clear {
+      display: block;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

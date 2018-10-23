@@ -1,0 +1,12 @@
+img {
+  max-width: 100%;
+}
+
+@mixin media-link {
+  display: block; //must be block due to IE11.
+  line-height: 0;
+}
+
+.media_link {
+  @include media-link();
+}

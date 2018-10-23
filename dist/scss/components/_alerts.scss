@@ -1,0 +1,81 @@
+// Alert variables ---------- //
+$custom-alerts: () !default;
+$custom-alerts-bar: () !default;
+
+$alerts: (
+  success: $color-success-light,
+  warning: $color-warning-light,
+  error: $color-error-light,
+  info: $color-info-light
+);
+
+$alerts-bar: (
+  success: $color-success,
+  warning: $color-warning,
+  error: $color-error,
+  info: $color-info
+);
+
+$alerts: map-merge($alerts, $custom-alerts);
+$alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
+
+$padding: map-get($spacers, 4);
+$bar-size:  map-get($spacers, 3);
+$left-padding: map-get($spacers, 9);
+$icon-size: 24px;
+
+.alert {
+  background-color: $color-gray-pale;
+  background-position: 16px 16px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  padding-bottom: $padding;
+  padding-left: $padding;
+  padding-right: $padding;
+  padding-top: $padding;
+  position: relative;
+  margin-top: map-get($spacers, 4);
+  margin-bottom: map-get($spacers, 4);
+ 
+  border-left: $bar-size solid darken($color-gray-pale, 40%);
+
+  &:first-child {
+    margin-top:0;
+  }
+
+  &.alert--paragraph {
+    max-width: $text-max-width;
+  }
+
+  .alert-heading {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: $alert-heading-fontsize;
+    font-weight: 600;
+    line-height: $alert-heading-lineheight;
+    color: $alert-heading-color;
+  }
+
+  .alert-text {
+    margin-bottom: 0;
+    margin-top: 0;
+    color: $alert-text-color;
+    max-width: $text-max-width;
+  }
+}
+ 
+@each $name, $bgcolor in $alerts {
+  .alert-#{$name} {
+    background-color: $bgcolor;
+    border-color: map-get($alerts-bar, $name);
+
+    &.alert--show-icon{
+      background-image: url('#{$image-path}/svg-icons/#{$name}.svg');
+      padding-left: $padding + $icon-size + 8px;
+    }
+  }
+}
+
+.alert + .alert{
+  margin-top: map-get($spacers, 4);
+}

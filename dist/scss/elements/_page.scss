@@ -1,0 +1,36 @@
+.page-header{
+
+}
+.page-content{
+ 
+}
+.page-footer{
+
+}
+
+
+.page-header + .page-content{
+    margin-top: 40px;
+}
+.page-content + .page-footer{
+    margin-top: 40px;
+}
+
+.page-container{
+    padding-top: $spacing-medium;
+    padding-bottom: $spacing-xxx-large;
+    @include media-breakpoint-up(md) {
+        padding-top: $spacing-x-large;
+        padding-bottom: $spacing-xxx-large;
+    }
+}
+
+//sticky footer
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+} 
+.page-container {
+    flex: 1 0 auto;
+}

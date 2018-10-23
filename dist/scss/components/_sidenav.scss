@@ -1,0 +1,84 @@
+.sidenav-list {
+  @include sidenav-list;
+  li {
+
+    a {
+
+      ul {
+        width:100%
+      }
+
+      .sidenav-icon-before {
+        margin-right: map-get($spacers, 2);
+        line-height: 23px;
+        text-align: left;
+      }
+
+      .sidenav-icon {
+        margin-left: auto;
+        width: 22px;
+        height: 22px;
+        line-height: 23px;
+        text-align: center;
+
+        i {
+          color: #fff;
+        }
+      }
+      .sidenav-information {
+        color: $color-gray-medium-dark;
+      }
+
+      &:focus{
+        background-color: transparent;
+      }
+    }
+  }
+}
+.sidenav-list-locked {
+  @include sidenav-list-locked;
+
+  li {
+
+    &.disabled {
+      cursor: not-allowed;
+      a {
+        cursor: not-allowed;
+      }
+    }
+
+    a {
+
+      .sidenav-icon-before {
+        line-height: 23px;
+        text-align: left;
+      }
+
+      .sidenav-icon {
+        margin-left: auto;
+        width: 22px;
+        height: 22px;
+        line-height: 23px;
+        text-align: center;
+        float: right;
+
+        i {
+          color: #fff;
+        }
+      }
+      .sidenav-information {
+        color: $color-gray-medium-dark;
+      }
+    }
+  }
+}
+
+.sidenav-sub_list {
+  @include sidenav-sublist;
+}
+
+.sidebar-col{
+  @include media($medium-screen) {
+    flex: 0 0 300px; //300 = 3 columns width
+  } 
+}

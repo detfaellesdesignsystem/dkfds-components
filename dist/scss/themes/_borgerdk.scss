@@ -1,0 +1,17 @@
+// These variables overwrite the default values, giving the style the virk.dk theme
+
+// Overwriting default values
+$color-primary:               #568331;
+$color-primary-medium:        #3C5C22;
+$color-primary-dark:          #233614;
+
+.header {
+    .portal-header{
+        background-color: #f1f1f1;
+        .logo{
+            background-image: url($image-path + '/logo-borgerdk.svg');
+            width: 144px;
+            height: 36px;
+        }    
+    }    
+}

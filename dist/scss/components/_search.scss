@@ -1,0 +1,22 @@
+.search {
+  display: flex;
+  
+  .form-input{
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  button{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    width: inherit; //not 100& width on mobile
+  }
+}
+
+// Extra specificity to override rules set in reset.css.
+input[type=search] { /* stylelint-disable-line selector-no-qualifying-type */
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none; //Fixes border-radius bug on iPhone X Safari. 
+}

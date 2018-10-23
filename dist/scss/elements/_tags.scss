@@ -1,0 +1,78 @@
+// Tags
+.tag{
+  appearance: none;
+  display: inline-block;
+  width: 100%; 
+  //@include margin(0.5em 0.5em 0.5em null);
+  padding:0;
+  padding-left: map-get($spacers, 3);
+  padding-right:map-get($spacers, 3);
+  border-radius: $button-border-radius;
+  border: none;
+  font-size: $base-font-size;
+  font-weight: $font-weight-medium;
+  //min-height: 24px;
+  
+  color: $tag-color;
+  background-color: $tag-bg;
+  @include font-smoothing;
+  line-height: $body-text-line-height;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  //padding for tags with icons
+
+  &.tag-icon {
+    padding:0;
+    padding-left:map-get($spacers, 3);
+  }
+
+  @include media($small-screen) {
+    width: auto;
+  }
+
+  &:hover,
+  &.tag-hover {
+    background-color: $tag-hover-bg;
+  }
+
+  &:active,
+  &.tag-active {
+    background-color: $tag-active-bg;
+  }
+
+  &.focus,
+  &:focus {
+    background-color: $tag-focus-bg;
+  }
+
+  //focus border
+  &.focus,
+  &:focus {
+    border-color: $color-focus;
+    outline-color: $color-focus;
+    position: relative;
+    &:after {
+      content: "";
+      background: $color-focus;
+        position: absolute;
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        left: -2px;
+        top: -2px;
+        z-index: -1;
+    }
+  }
+
+  .icon-svg {
+    float: right;
+    margin: 0px 0px 0px 5px;
+    fill: white;
+  }
+}
+// Button row
+.button-row {
+  display: flex;
+  margin: 2rem 0 1rem;
+}

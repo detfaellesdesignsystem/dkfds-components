@@ -1,0 +1,30 @@
+// Tags
+.badge{
+  //@include margin(0.5em 0.5em 0.5em null);
+  padding:0;
+  padding-left: map-get($spacers, 2);
+  padding-right:map-get($spacers, 2);
+  border: none;
+  font-weight: $font-weight-semibold;
+  color: $button-primary-color;
+  background: $color-black;
+  @include font-smoothing;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+
+  //############ Large badge ###############
+  &.badge-large {
+    color: $button-primary-color;
+    background-color: $color-black;
+    font-size: $base-font-size;
+    line-height: $body-text-line-height;
+  }
+ //############ Small badge ###############
+  &.badge-small {
+    color: $button-primary-color;
+    background-color: $color-black;
+    font-size: $small-text;
+    line-height: $small-text-line-height;
+  }
+}

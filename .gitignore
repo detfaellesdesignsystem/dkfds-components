@@ -8,9 +8,6 @@ npm-debug.log*
 # code coverage
 coverage/
 
-# ignore the generated dist directory
-dist/
-
 # ignore the generated dkwds directory
 dkwds-*/
 dkwds-*.zip
@@ -24,6 +21,3 @@ dkwds-*.zip
 #build/components/
 
 build/
-
-# ignore gulp-generated vendor files
-src/stylesheets/lib

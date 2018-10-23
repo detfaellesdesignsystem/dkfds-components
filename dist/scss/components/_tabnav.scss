@@ -1,0 +1,56 @@
+
+.tabnav {
+  @include unstyled-list;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 1px solid $color-border-focus;
+
+  li {
+    float: none; 
+    margin-bottom: 0;
+    float: none; 
+ 
+    @include media-breakpoint-up(md) {
+      float: left; 
+    }
+
+    a {
+      display: block;
+      color: $color-gray-001;
+      text-align: center;
+      text-decoration: none;
+      padding: map-get($spacers, 3);
+      padding-bottom: calc(#{map-get($spacers, 3) + 7px});
+      @include media($grid-sm) {
+        margin: map-get($spacers, 3);
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+      
+      
+      &:hover {
+        color: $color-primary;
+        box-shadow: inset 0px -7px 0px 0px $tabs-active-border-color
+      }
+
+      &:focus{
+        outline: 0px solid $color-focus;
+      }
+
+      &.active {
+        color: $color-primary;
+        box-shadow: inset 0px -7px 0px 0px $tabs-active-border-color;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    @include media($grid-sm) {
+      &:last-child{
+        a{
+          margin-right: map-get($spacers, 3);
+        }
+      }
+    }
+  }
+}
