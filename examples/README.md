@@ -5,8 +5,7 @@ with different tools:
 
 1. Compiling CSS with [node-sass](node-sass/)
 1. Bundling JavaScript with [browserify](browserify/) and [webpack](webpack/)
-1. Automating CSS and JS generation with the [Grunt](grunt/) and [Gulp](gulp/)
-   task runners
+1. Automating CSS and JS generation [Gulp](gulp/) task runner
 
 For each of these examples, you'll need to first install [Node.js] version 4 or
 greater. Node comes with [npm], the Node Package Manager, a dependency manager

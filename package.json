@@ -12,15 +12,9 @@
     "fb": "fractal build",
     "build:css": "gulp sass",
     "build:js": "gulp javascript",
-    "cover": "istanbul cover --config config/istanbul.yml gulp cover",
-    "cracks": "cracks --paths package.json,spec",
-    "federalist": "npm install --dev && gulp build && fractal build",
-    "mocha": "mocha --opts spec/mocha.opts",
     "prepublish": "gulp build",
     "release": "gulp release",
-    "spec": "npm run mocha -- 'spec/**/*.spec.js'",
     "start": "fractal start --sync",
-    "test": "gulp eslint typecheck stylelint test",
     "version": "npm run prepublish",
     "watch": "gulp watch"
   },
@@ -28,7 +22,6 @@
     "main": "fractalfile.js"
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
-  "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "@types/node": "^8.5.5",
     "array-filter": "^1.0.0",
