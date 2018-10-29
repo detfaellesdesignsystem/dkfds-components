@@ -6,7 +6,6 @@ require('./config/gulp/images');
 require('./config/gulp/fonts');
 require('./config/gulp/build');
 require('./config/gulp/release');
-require('./config/gulp/test');
 require('./config/gulp/watch');
 
 var gulp = require('gulp');
