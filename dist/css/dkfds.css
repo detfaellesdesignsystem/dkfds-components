@@ -1,12 +1,4 @@
 @charset "UTF-8";
-html {
-  box-sizing: border-box;
-}
-
-*, *::after, *::before {
-  box-sizing: inherit;
-}
-
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -6733,8 +6725,7 @@ ol li ol li:before {
 }
 
 .unstyled-list {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
 }
@@ -6755,8 +6746,7 @@ ol li ol li:before {
 }
 
 .inline-list {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
 }
@@ -6786,8 +6776,7 @@ ol li ol li:before {
   Styling for selectWoo/select2 component.
 */
 .select2 ul, .select2-container ul {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
 }
@@ -7228,8 +7217,7 @@ table.dataTable tbody tr.child td:first-child {
 }
 
 table.dataTable tbody tr.child ul.dtr-details {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
 }
@@ -7768,8 +7756,7 @@ textarea.input-char-27 {
 
 .accordion,
 .accordion-bordered {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   color: #1a1a1a;
@@ -8633,8 +8620,7 @@ footer .footer-theme {
 }
 
 .nav-primary {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   display: -ms-flexbox;
@@ -8887,8 +8873,7 @@ footer .footer-theme {
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   font-size: 1.6rem;
@@ -9077,25 +9062,8 @@ input[type=search] {
   -webkit-appearance: none;
 }
 
-.section {
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-@media screen and (min-width: 768px) {
-  .section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-.section-light {
-  background-color: #F5F5F5;
-}
-
 .sidenav-list {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   border-bottom: 1px solid #999999;
@@ -9197,8 +9165,7 @@ input[type=search] {
 }
 
 .sidenav-list-locked {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   border-top: 1px solid #999999;
@@ -9301,8 +9268,7 @@ input[type=search] {
 }
 
 .sidenav-sub_list {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   margin: 0;
@@ -9779,8 +9745,7 @@ input[type=search] {
 }
 
 .card-action .action-links ul {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   padding-left: 0;
@@ -10099,8 +10064,7 @@ input[type=search] {
 }
 
 .overflow-menu .overflow-list {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   font-size: 1.6rem;
@@ -10225,8 +10189,7 @@ input[type=search] {
 }
 
 .tabnav {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
   list-style-type: none;
   padding-left: 0;
   list-style-type: none;
