@@ -3,9 +3,7 @@
 !src/
 
 build/
-coverage/
-spec/
 .github/
 .editorconfig
 .eslintrc.yml
-circle.yml
+package-lock.json
