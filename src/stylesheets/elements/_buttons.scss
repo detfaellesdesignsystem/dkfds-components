@@ -21,7 +21,7 @@
   cursor: pointer;
   //transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out; 
 
-  @include media($small-screen) {
+  @include media-breakpoint-up(md) {
     width: auto;
   }
 
@@ -268,7 +268,7 @@
 }
 
 .button + .button{
-  @include media($small-screen) {
+  @include media-breakpoint-up(sm) {
     margin-left: 8px;
     &:first-child{
       margin-left: 0;

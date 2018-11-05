@@ -172,7 +172,7 @@ $pd-font-size: $body-text;
     }
     th,
     td {
-        @include media($medium-screen) {
+        @include media-breakpoint-up(md) {
             min-width: 52px;
         }
         //padding: 8px;
@@ -185,7 +185,7 @@ $pd-font-size: $body-text;
         text-align: center;
         padding: 8px 4px;
         border-bottom: $pd-picker-border-inner;
-        @include media($medium-screen) {
+        @include media-breakpoint-up(md) {
             padding: 8px;
         }
     }

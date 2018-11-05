@@ -27,6 +27,7 @@
       }
       .sidenav-information {
         color: $color-gray-medium-dark;
+        padding: 0;
       }
 
       &:focus{
@@ -68,6 +69,7 @@
       }
       .sidenav-information {
         color: $color-gray-medium-dark;
+        padding: 0;
       }
     }
   }
@@ -78,7 +80,7 @@
 }
 
 .sidebar-col{
-  @include media($medium-screen) {
+  @include media-breakpoint-up(md) {
     flex: 0 0 300px; //300 = 3 columns width
   } 
 }

@@ -1,12 +1,13 @@
-
 /*! dkfds @version */
 @import 'vendor/tippy';
+
+// Mixins -------------- //
+@import 'core/mixins/breakpoints';
 
 // Core -------------- //
 @import 'core/fonts';
 @import 'core/base';
-@import 'core/bootstrap-grid';
-@import 'core/uswd-grid';
+@import 'core/grid';
 @import 'core/utilities';
 
 // Utilities------------//
@@ -20,6 +21,7 @@
 
 // Elements -------------- //
 // Styles basic HTML elements
+@import 'elements/section';
 @import 'elements/typography';
 @import 'elements/buttons';
 @import 'elements/tags';
@@ -36,21 +38,18 @@
 @import 'elements/page';
 @import 'elements/collapse';
 @import 'elements/forms';
+@import 'elements/table';
 
 // Components -------------- //
 @import 'components/accordions';
 @import 'components/alerts';
 @import 'components/footer';
-@import 'components/header'; 
-@import 'components/layout';
-@import 'components/media-block';
+@import 'components/header';
 @import 'components/modal';
 @import 'components/navigation';
 @import 'components/search';
 @import 'components/sidenav';
 @import 'components/skipnav';
-@import 'components/styles';
-@import 'components/table';
 @import 'components/cards';
 @import 'components/overflow-menu';
 @import 'components/tabnav';

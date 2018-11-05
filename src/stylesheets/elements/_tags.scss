@@ -28,7 +28,7 @@
     padding-left:map-get($spacers, 3);
   }
 
-  @include media($small-screen) {
+  @include media-breakpoint-up(sm) {
     width: auto;
   }
 

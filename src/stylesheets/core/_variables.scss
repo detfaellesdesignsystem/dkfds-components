@@ -371,38 +371,15 @@ $background-modal: rgba(0, 0, 0, 0.75);
 //----------------
 // Grid
 // ----------------
-$enable-bs-grid:              true !default;  // Enable Bootstrap grid
-$enable-uswd-grid:            false !default; // Enable USWD grid
-
-// Both grids can't be enabled or disabled at once.
-@if(($enable-bs-grid == true) and ($enable-uswd-grid == true)) {
-  @error 'Both grids cannot be enabled. Please set either $enable-bs-grid or $enable-uswd-grid to false, and try again.'
-}
-
-@if(($enable-bs-grid == false) and ($enable-uswd-grid == false)) {
-  @error 'Both grids cannot be disabled. Please set either $enable-bs-grid or $enable-uswd-grid to true, and try again.'
-}
 
 // Common grid breakpoints variables
-//
-// This is where you define the breakpoints.
-// These will be reflected in both Bootstrap and USWD grid variants,
-// so you only have to change these at one place.
-
 $grid-xs:                     0 !default;
 $grid-sm:                     576px !default;
 $grid-md:                     768px !default;
 $grid-lg:                     992px !default;
 $grid-xl:                     1200px !default;
 
-// Bootstrap Grid
-//
-
-// Bootstrap grid breakpoints
-//
-// Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
-
+// Grid breakpoints..
 $grid-breakpoints: (
   xs: $grid-xs,
   sm: $grid-sm,
@@ -411,13 +388,7 @@ $grid-breakpoints: (
   xl: $grid-xl
 ) !default;
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
-
-// Bootstrap containers
-//
 // Define the maximum width of `.container` for different screen sizes.
-
 $container-max-widths: (
   sm: 100%,
   md: 100%,
@@ -425,41 +396,13 @@ $container-max-widths: (
   xl: 1200px
 ) !default;
 
-// @include _assert-ascending($container-max-widths, "$container-max-widths");
-
-// Bootstrap grid columns
-//
-// Set the number of columns and specify the width of the gutters.
-
 $grid-columns:                  12 !default;
 $grid-gutter-width:             32px !default; //16px on each side of the columns
 
-// USWD Grid
-//
-// Mobile First Breakpoints
-$small-screen:                  $grid-sm !default;
-$medium-screen:                 $grid-md !default;
-$large-screen:                  $grid-xl !default;
-
-// Grid column counts by screen size
-$grid-columns-small:            1 !default;
-$grid-columns-medium:           6 !default;
-$grid-columns-large:            12 !default;
-
-// @media single-keyword helpers
-$small:                         new-breakpoint(min-width $small-screen $grid-columns-small) !default;
-$medium:                        new-breakpoint(min-width $medium-screen $grid-columns-medium) !default;
-$large:                         new-breakpoint(min-width $large-screen $grid-columns-large) !default;
-
 //----------------
-// Grid end
-// ----------------
-
-// Set $asset-pipeline to true if you're using the Rails Asset Pipeline
-$asset-pipeline:                false !default;
-
 // Magic Numbers
-//
+//----------------
+
 $text-max-width:                66ch !default; //equivalent to 75 characters with spaces (ish).
 $site-max-width:                $grid-xl !default; // 1200px
 $site-margins:                  ($grid-gutter-width / 2) !default;
@@ -485,8 +428,5 @@ $box-shadow-moderately:          0 4px 8px 0 $color-shadow;
 $box-shadow-slightly:            0 2px 4px 0 $color-shadow;
 
 
-
-
 // 44 x 44 pixels hit target following Apple iOS Human Interface
-// Guidelines
 $hit-area:                      4.4rem !default;

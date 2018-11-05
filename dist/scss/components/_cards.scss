@@ -129,7 +129,7 @@
       }
     }
     .button + .button{
-      @include media($small-screen) {
+      @include media-breakpoint-up(sm) {
         margin-left: 0px;
         &:first-child{
           margin-left: 0;

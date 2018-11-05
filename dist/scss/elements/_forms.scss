@@ -17,13 +17,13 @@ input, select {
   width: 100%;
 
   &.input-tiny { /* stylelint-disable-line selector-no-qualifying-type */
-    @include media($medium-screen) {
+    @include media-breakpoint-up(md) {
       max-width: 6rem;
     }
   }
 
   &.input-medium { /* stylelint-disable-line selector-no-qualifying-type */
-    @include media($medium-screen) {
+    @include media-breakpoint-up(md) {
       max-width: 12rem;
     }
   }
@@ -79,13 +79,13 @@ textarea {
   max-width: 100%;
 
   &.input-tiny {
-    @include media($medium-screen) {
+    @include media-breakpoint-up(md) {
       min-width: 6rem;
     }
   }
 
   &.input-medium {
-    @include media($medium-screen) {
+    @include media-breakpoint-up(md) {
       min-width: 12rem;
     }
   }

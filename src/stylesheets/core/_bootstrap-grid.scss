@@ -3,9 +3,9 @@
 //
 // Mixins
 
-@import "mixins/breakpoints";
-@import "mixins/grid-framework";
-@import "mixins/grid";
+@import "mixins-bootstrap-grid/breakpoints";
+@import "mixins-bootstrap-grid/grid-framework";
+@import "mixins-bootstrap-grid/grid";
 
 @if $enable-bs-grid {
   // Container widths
