@@ -1,7 +1,6 @@
 // borgerdk theme
 
 @import './lib/normalize';
-@import './core/functions';
 @import './themes/borgerdk';  //import variable-overrides specific to this theme 
 @import './core/variables';
 @import 'dkfds-base'; //imports everything thats shared between all themes (the above theme handles making things specific to that theme).

@@ -250,7 +250,7 @@ small, .small-text {
 
 //Margin top and bottom for text
 //Generel principle for spacing: margin-top same as lineheight of the text, margin-bottom is just standard lineheight for text.  
-/*h1, .h1,
+/*h1, .h1, //Removed this styling, it make for a messy margin handling. 
 h2, .h2,
 h3, .h3,
 h4, .h4,
