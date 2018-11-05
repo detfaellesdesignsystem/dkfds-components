@@ -421,7 +421,7 @@ $button-box-shadow:             rgba(0,0,0,.4) !default;
 $box-shadow:                    0 0 2px $color-shadow !default;
 $focus-outline:                 4px solid $color-warning;
 $focus-spacing:                 0px;
-$nav-responsive-breakpoint:     $grid-lg !default; // 992px
+$nav-responsive-breakpoint:     lg !default; // 992px
 
 $box-shadow-heavy:               0 8px 16px 0 $color-shadow;
 $box-shadow-moderately:          0 4px 8px 0 $color-shadow;

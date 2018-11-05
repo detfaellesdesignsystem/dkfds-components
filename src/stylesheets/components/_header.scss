@@ -8,14 +8,7 @@ $z-index-nav:     9000;
 
 .header {
   width: 100%;
-  //background-color: $color-gray-pale;
   z-index: $z-index-header;
-  /*padding-left: calc(#{$grid-gutter-width}/2);
-  padding-right: calc(#{$grid-gutter-width}/2);
-  @include media($grid-xl){
-    padding-left: 0;
-    padding-right: 0;
-  }*/
 
   .logo{
     //background-image is set by the themes in the "themes"-scss-files.
@@ -30,7 +23,7 @@ $z-index-nav:     9000;
   
   .button{
     width: 100%;
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       width: auto;
     }
   }
@@ -38,7 +31,7 @@ $z-index-nav:     9000;
     margin-top: 0;
     margin-bottom: 0;
   }
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     .form-select, .form-input{
       margin-top: 0;
       margin-bottom: 0;
@@ -50,7 +43,7 @@ $z-index-nav:     9000;
 
   .button-menu-open {
     width: auto;
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
   }
@@ -66,7 +59,7 @@ $z-index-nav:     9000;
       position: relative;
       top: 1px;
     }
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
   }
@@ -80,14 +73,14 @@ $z-index-nav:     9000;
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
       display: flex;
       align-items: center;
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         flex-direction: row;
       }
     }
     
     .portal-info{
       display: none;
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         display: flex;
         align-items: center;
@@ -134,7 +127,7 @@ $z-index-nav:     9000;
     }
     .solution-info{
       display: none;
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         text-align: right;
         max-width: 60%;
@@ -164,7 +157,7 @@ $z-index-nav:     9000;
       margin-top: 8px;
       width: auto;
     }
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
   }
@@ -179,7 +172,7 @@ $z-index-nav:     9000;
         margin-bottom: 0;
       }
     }
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
   }
@@ -211,7 +204,7 @@ $z-index-nav:     9000;
     width: $sliding-panel-width;
     z-index: $z-index-nav;
 
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       border-left: none;
       display: block;
       overflow-y: visible;
@@ -220,7 +213,7 @@ $z-index-nav:     9000;
       width: auto;
     }
 
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       padding: 0;
       width: 100%;
     }
@@ -244,7 +237,7 @@ $z-index-nav:     9000;
       }
     }
     
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       margin-top: 0;
       margin-left: auto;
       display: flex;
@@ -270,7 +263,7 @@ $z-index-nav:     9000;
     }
   }
   .function-link + .function-link{
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       margin-left: map-get($spacers, 4);
       
     }

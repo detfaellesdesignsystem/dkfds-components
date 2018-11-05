@@ -22,7 +22,7 @@
       text-decoration: none;
       padding: map-get($spacers, 3);
       padding-bottom: calc(#{map-get($spacers, 3) + 7px});
-      @include media($grid-sm) {
+      @include media-breakpoint-up(sm) {
         margin: map-get($spacers, 3);
         margin-right: 0;
         margin-bottom: 0;
@@ -45,7 +45,7 @@
       }
     }
 
-    @include media($grid-sm) {
+    @include media-breakpoint-up(sm) {
       &:last-child{
         a{
           margin-right: map-get($spacers, 3);

@@ -4,13 +4,6 @@
   outline-offset: $focus-spacing;
 }
 
-// Mobile-first media query helper
-@mixin media($bp) {
-  @media screen and (min-width: #{$bp}) {
-    @content;
-  }
-}
-
 // Screen reader only helper
 @mixin sr-only() {
   position: absolute;
@@ -35,13 +28,6 @@
 
 .sr-only {
   @include sr-only();
-}
-
-// Aria hidden helper
-@mixin accessibly-hidden() {
-  &[aria-hidden=true] {
-    display: none;
-  }
 }
 
 // Unstyled list helper

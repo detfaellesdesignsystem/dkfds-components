@@ -1,0 +1,457 @@
+
+html {
+  font-family: $font-name, "system";
+  font-size: $em-base;
+}
+
+body {
+  font-size: $base-font-size;
+}
+
+p {
+  line-height: $base-line-height;
+  margin-bottom: 0.8rem; 
+  margin-top: 1.6rem;
+}
+
+
+a {
+  color: $color-link;
+
+  &:hover,
+  &.link-hover {
+    color:$color-link-hover;
+
+    &:disabled,
+    .disabled {
+      background-color: transparent !important;
+    }
+
+  }
+
+  &:active,
+  &.link-active {
+    color: $color-link-active;
+  }
+
+  &:focus,
+  &.link-focus {
+    color: $color-link-focus;
+    background-color: $color-focus;
+    outline: 4px solid $color-link-focus-bg;
+  }
+
+  &:visited,
+  &.link-visited {
+    color: $color-link-visited;
+  }
+
+  &:disabled,
+  &.disabled {
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    color: $color-gray-light !important;
+    box-shadow: none !important;
+    outline-offset: inherit !important;
+    &:focus{
+      outline: none;
+      background-color: transparent;
+    }
+  }
+
+  .background-dark &{
+    color: $color-gray-pale;
+
+    &:hover,
+    &.link-hover {
+      color:#ffffff;
+
+      &:disabled,
+      .disabled {
+        background-color: transparent !important;
+      }
+    }
+
+    &:active,
+    &.link-active {
+      color: $color-gray-light;
+    }
+
+    &:focus,
+    &.link-focus {
+      color: $color-gray-001;
+      background-color: $color-focus;
+      outline: 4px solid $color-link-focus-bg;
+    }
+
+    &:visited,
+    &.link-visited {
+      color: $color-gray-pale;
+    }
+
+    &:disabled,
+    &.disabled {
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      color: $color-gray-medium-light !important;
+      box-shadow: none !important;
+      outline-offset: inherit !important;
+      &:focus{
+        outline: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+//font-family, font-size and line-height for h1-h6, bodytext and smalltext
+@mixin h1{
+  font-size: $h1-font-size; 
+  line-height: $h1-line-height; 
+  font-weight: $font-weight-bold;
+  color: $color-black;
+}
+@mixin h2 {
+  font-size: $h2-font-size;
+  line-height: $h2-line-height; 
+  font-weight: $font-weight-semibold;
+  color: $color-black;
+}
+@mixin h3 {
+  font-size: $h3-font-size;
+  line-height: $h3-line-height;
+  font-weight: $font-weight-semibold;
+  color: $color-black;
+}
+@mixin h4{
+  font-size: $h4-font-size;
+  line-height: $h4-line-height;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+}
+@mixin h5 {
+  font-size: $h5-font-size;
+  line-height: $h5-line-height;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+}
+@mixin body-copy-text {
+  font-size: $body-text;
+  line-height: $body-text-line-height;
+  font-weight: $font-weight-normal;
+  color: $color-text;
+}
+@mixin form-label-text {
+  font-size: $form-label;
+  line-height: $form-label-line-height;
+  font-weight: $font-weight-semibold;
+  color: $color-black;
+}
+@mixin h6 {
+  font-size: $h6-font-size;
+  line-height: $h6-line-height;
+  font-weight: $font-weight-bold;
+  color: $color-black;
+}
+@mixin small-text {
+  font-size: $small-text;
+  line-height: $small-text-line-height;
+  font-weight: $font-weight-medium;
+  color:$color-gray-dark;
+}
+
+@mixin font-weight-bold {
+  font-weight: $font-weight-semibold;
+  color:$color-gray-dark;
+}
+
+@mixin font-style-italic {
+  font-style: $font-style-italic;
+  color:$color-gray-dark
+}
+
+@mixin color-text-positive {
+  color:$color-text-positive;
+}
+
+@mixin color-text-negative {
+  color:$color-text-negative;
+}
+
+h1, .h1 {
+  @include h1;
+  @include media-breakpoint-down(sm) {
+    @include h2;
+  }
+}
+h2, .h2{
+  @include h2;
+  @include media-breakpoint-down(sm) {
+    @include h3;
+  }
+}
+
+h3, .h3 {
+  @include h3;
+}
+
+h4, .h4{
+  @include h4;
+}
+
+h5, .h5{
+  @include h5;
+}
+
+h6, .h6{
+  @include h6;
+}
+
+p, .body-text, .body-copy-text{
+  @include body-copy-text;
+}
+
+.font-lead {
+  font-size: $lead-font-size;
+  font-weight: $font-weight-normal;
+  line-height: $lead-line-height;
+  max-width: $text-max-width;
+  color: $color-text;
+  @include media-breakpoint-down(sm) {
+    @include body-copy-text;
+  }
+}
+
+.weight-normal {
+  font-weight: $font-weight-normal;
+}
+
+.weight-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+strong, b, .bold {
+  font-weight: $font-weight-bold;
+}
+
+.italic, em {
+  font-style: $font-style-italic;
+}
+
+small, .small-text {
+  font-size: $small-text; //1.3rem
+  line-height: $small-text-line-height; //1.6rem
+  font-weight: $font-weight-medium;
+}
+
+.form-label {
+  @include form-label-text;
+}
+
+//Margin top and bottom for text
+//Generel principle for spacing: margin-top same as lineheight of the text, margin-bottom is just standard lineheight for text.  
+/*h1, .h1, //Removed this styling, it make for a messy margin handling. 
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6, 
+p{ 
+  &:first-child{
+    margin-top: 0;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
+}*/
+
+h1, .h1{
+  margin-top: $h2-line-height;
+  margin-bottom: $body-text-line-height;
+  @include media-breakpoint-up(md) {
+    margin-top: $h1-line-height;
+  }
+}
+
+h2, .h2 {
+  margin-top: $h3-line-height;
+  margin-bottom: $body-text-line-height;
+  @include media-breakpoint-up(md) {
+    margin-top: $h2-line-height;
+  }
+}
+h3, .h3{
+  margin-top: $h4-line-height;
+  margin-bottom: $body-text-line-height;
+  @include media-breakpoint-up(md) {
+    margin-top: $h3-line-height;
+  } 
+}
+h4, .h4{
+  margin-top: $h5-line-height;
+  margin-bottom: $body-text-line-height;
+  @include media-breakpoint-up(md) {
+    margin-top: $h4-line-height;
+  }
+}
+h5, .h5{
+  margin-top: $h6-line-height;
+  margin-bottom: $body-text-line-height;
+  @include media-breakpoint-up(md) {
+    margin-top: $h5-line-height;
+  }
+}
+h6, .h6{
+  margin-top: $h6-line-height;
+  margin-bottom: $body-text-line-height;
+}
+.font-lead{
+  margin-top: $lead-line-height;
+  margin-bottom: $body-text-line-height;
+}
+p, .body-text{
+  margin-top: $body-text-line-height;
+  margin-bottom: $body-text-line-height;
+}
+
+
+
+//a function link, does not look like a link
+.function-link{
+  @include body-copy-text;
+  display: inline-flex;
+  &:hover, &:visited, &:focus{
+    color: $color-text;
+  }
+  .icon-svg{
+    margin-right: map-get($spacers, 2);
+    .background-dark &{
+      fill: white;
+    } 
+  }
+
+  &.link-right {
+    text-align: right;
+  }
+}
+
+.icon-link{
+  line-height: $body-text-line-height;
+  .icon-svg{
+    margin-left: map-get($spacers, 2);
+  }
+}
+
+ //styling for link in heading
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+  a, a:hover, a:visited, a:focus{
+    color: $color-black;
+    text-decoration: underline;
+  }
+}
+
+// Remove user agent styles
+cite,
+var,
+address,
+dfn {
+  font-style: normal;
+}
+
+//max-width of 66ch for text
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+  max-width: $text-max-width;
+}
+p,
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary),
+ol:not(.accordion):not(.accordion-bordered){
+  max-width: $text-max-width;
+}
+.font-lead{
+  max-width: $text-max-width;
+}
+
+.form-label, .form-hint, .input-error-message{
+  max-width: $text-max-width;
+}
+[type=checkbox]+label, [type=radio]+label{
+  max-width: $text-max-width;
+}
+a:not(.button){
+  max-width: $text-max-width;
+}
+
+
+.displayheading {
+  &-1 {
+    font-weight: 700;
+    font-size: $display-1-heading-size;
+    line-height: $display-1-heading-line-height;
+    margin-bottom: 0;
+    color: $color-black;
+  }
+  &-2 {
+    font-weight: 700;
+    font-size: $display-2-heading-size;
+    line-height: $display-2-heading-line-height;
+    margin-bottom: 0;
+    color: $color-black;
+  }
+}
+
+.text-positive {
+  @include color-text-positive();
+}
+
+.text-negative {
+  @include color-text-negative();
+}
+
+.color-text-black {
+  color: $color-black;
+}
+
+.background-dark {
+  background-color: $color-black;
+
+  p,
+  span {
+    color: $color-white;
+  }
+}
+
+.field-group-title {
+  font-weight: 400;
+
+  ~ hr {
+    border: 2px solid $color-black;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
+  text-rendering: optimizeLegibility; //Vigtig — den er vidst default i Webkit nu, men den har effekt på andre engines
+  -webkit-font-smoothing: none; //Fikser for tyk typografi i Webkit-baserede browsers)
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+.lowercase{
+  text-transform: lowercase;
+}

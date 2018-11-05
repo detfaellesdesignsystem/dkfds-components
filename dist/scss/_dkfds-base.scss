@@ -3,12 +3,13 @@
 
 // Mixins -------------- //
 @import 'core/mixins/breakpoints';
+@import 'core/mixins/mixins';
 
 // Core -------------- //
 @import 'core/fonts';
 @import 'core/base';
 @import 'core/grid';
-@import 'core/utilities';
+@import 'core/typography';
 
 // Utilities------------//
 @import 'core/utilities/background';
@@ -19,10 +20,10 @@
 @import 'core/utilities/position';
 @import 'core/utilities/display';
 
+
 // Elements -------------- //
 // Styles basic HTML elements
 @import 'elements/section';
-@import 'elements/typography';
 @import 'elements/buttons';
 @import 'elements/tags';
 @import 'elements/badge';

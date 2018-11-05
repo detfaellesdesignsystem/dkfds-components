@@ -153,7 +153,7 @@ $v-padding: $spacing-md-small;
     @include sr-only();
   }
 
-  @include accessibly-hidden();
+  @include sr-only();
 }
 .accordion-button[aria-describedby="error-message"] {
   border: solid 2px $color-error !important;

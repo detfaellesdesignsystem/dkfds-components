@@ -3,12 +3,12 @@
 
 // Mixins -------------- //
 @import 'core/mixins/breakpoints';
+@import 'core/mixins/mixins';
 
 // Core -------------- //
 @import 'core/fonts';
 @import 'core/base';
 @import 'core/grid';
-@import 'core/utilities';
 @import 'core/typography';
 
 // Utilities------------//

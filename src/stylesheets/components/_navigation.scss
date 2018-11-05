@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
 
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     padding: 0;
     border: 0;
     flex-direction: row;
@@ -44,7 +44,7 @@
   padding-top: 0;
 }
 .navbar-context-actions{
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     padding-top: map-get($spacers, 3);
   }
 }
@@ -57,7 +57,7 @@
   flex-direction: column;
   margin-top: 8px;
 
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     flex-direction: row;
     flex-shrink: 0;
     flex-wrap: wrap;
@@ -67,7 +67,7 @@
 
   > li {
     border-bottom: $inner-border;
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       border-bottom: 0;
     }
     > a {
@@ -81,7 +81,7 @@
       white-space: nowrap;
 
       &:hover {
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           background-color: transparent;
         }
       }
@@ -90,7 +90,7 @@
       }
     }
     & > a, & > button, & .button-overflow-menu{
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-left: 12px;
         padding-right: 12px;
       }
@@ -99,7 +99,7 @@
 
   button[aria-expanded=true] {
     span {
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         @include nav-active;
         @include nav-hover;
         @include nav-focus;
@@ -108,7 +108,7 @@
   }
 
   .current {
-    @include media($nav-responsive-breakpoint) {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       span {
         @include nav-active;
         @include nav-hover;
@@ -123,7 +123,7 @@
         background-color: $color-gray-pale;
       }
       span {
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           @include nav-active;
           @include nav-hover;
           @include nav-focus;
@@ -142,7 +142,7 @@
 }
 
 .nav-secondary{
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     display: flex;
     align-items: center;
   }
@@ -152,7 +152,7 @@
     font-weight: $font-weight-bold;
     margin-bottom: 0;
     + ul{
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: map-get($spacers, 4);
       }
     }
@@ -210,7 +210,7 @@
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
       white-space: nowrap;
       width: 100%;
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         width: unset;
       }
       span{
@@ -218,7 +218,7 @@
       }
       &:hover {
         span {
-          @include media($nav-responsive-breakpoint) {
+          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
             @include nav-hover;
           }
         }
@@ -238,7 +238,7 @@
         background-position: right 16px center;
         background-size: 24px;
   
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           background-image: url('#{$icons-folder-path}/angle-arrow-down.svg');
           background-position: right 1rem center;
           border-left: 1px solid transparent;
@@ -252,7 +252,7 @@
         background-position: right 16px center;
         background-size: 24px;
   
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           background-image: url('#{$icons-folder-path}/angle-arrow-down-white.svg');
           background-position: right 1rem center;
           //create borders:
@@ -280,7 +280,7 @@
       padding-top: 0;
       padding-bottom: 0;
   
-      @include media($nav-responsive-breakpoint) {
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         width: 30rem;
         border: $outer-border;
         border-top: 0;
@@ -303,12 +303,12 @@
           &:hover, &:visited, &:focus{
             color: $color-text;
             background-color: transparent;
-            @include media($nav-responsive-breakpoint) {
+            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
               color: #fff!important;
               text-decoration: underline;
             }
           }
-          @include media($nav-responsive-breakpoint) {
+          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
             color: #fff!important;
           }
       }
@@ -316,7 +316,7 @@
       .current {
         font-weight: $font-weight-semibold;
         color: $color-primary;
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           color: #fff;
         }
       }
@@ -326,7 +326,7 @@
         border-top: $inner-border;
         width: 100%;
   
-        @include media($nav-responsive-breakpoint) {
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           padding: 8px 16px;
           margin: 0;
           border: none;
@@ -350,7 +350,7 @@
 .navbar-inner {
   display: flex;
   flex-direction: column;
-  @include media($nav-responsive-breakpoint) {
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     flex-direction: row;
   }
 }
