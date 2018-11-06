@@ -9332,7 +9332,7 @@ input[type=search] {
 
 .sidenav-list li a .sidenav-information {
   color: #747474;
-  padding: 0;
+  margin: 0;
 }
 
 .sidenav-list li a:focus {
@@ -9440,7 +9440,7 @@ input[type=search] {
 
 .sidenav-list-locked li a .sidenav-information {
   color: #747474;
-  padding: 0;
+  margin: 0;
 }
 
 .sidenav-sub_list {
