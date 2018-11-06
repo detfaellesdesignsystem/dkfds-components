@@ -269,7 +269,6 @@
     }
 
     .overflow-menu-inner {
-      //@include sidenav-sublist;
       @include unstyled-list;
       font-size: $body-text;
       line-height: $body-text-line-height;

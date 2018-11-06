@@ -63,5 +63,11 @@ ol {
 
 .inline-list {
   @include unstyled-list;
-  @include inline-list;
+  > li {
+    display: block;
+
+    @include media-breakpoint-up(md) {
+      display: inline-block; 
+    }
+  }
 }

@@ -1,5 +1,61 @@
 .sidenav-list {
-  @include sidenav-list;
+  @include unstyled-list();
+
+  border-bottom: 1px solid $color-border-focus;
+  border-top: 1px solid $color-border-focus;
+
+  > li {
+    background-color: transparent;
+    font-size: $base-font-size;
+    border-top: $inner-border;
+    &:first-child {
+        border-top: none;
+    }
+    &:last-child {
+      a {
+        padding-bottom: $input-top-bottom-padding;
+      }
+    }
+  }
+
+  a {
+    border: none;
+    color: $sidenav-link-color;
+    display: flex;
+    line-height: $base-line-height;
+    padding: $spacer;
+    padding-top:$input-top-bottom-padding;
+    padding-left: map-get($spacers, 4);
+    padding-right: map-get($spacers, 4);
+    text-decoration: none;
+
+    
+
+    &:hover {
+      background-color: $color-gray-pale;
+      text-decoration: none;
+      color: $sidenav-link-color-hover;
+    }
+
+    &:focus {
+      outline-offset: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    &.current { /* stylelint-disable-line selector-no-qualifying-type */
+      color: $sidenav-link-current-color;
+      font-weight: $font-weight-semibold;
+      padding-left: map-get($spacers, 4);
+    }
+    &.active { 
+      color: $sidenav-link-active-color;
+      font-weight: $font-weight-semibold;
+      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
+      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+    }
+  }
+
   li {
 
     a {
@@ -37,7 +93,64 @@
   }
 }
 .sidenav-list-locked {
-  @include sidenav-list-locked;
+  @include unstyled-list();
+
+  border-top: 1px solid $color-border-focus;
+  border-bottom: 1px solid $color-border-focus;
+
+  > li {
+    background-color: transparent;
+    border-top: $inner-border;
+    font-size: $base-font-size;
+    cursor:default;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      a {
+        padding-bottom: $spacer;
+      }
+    }
+  }
+
+  a {
+    border: none;
+    color: $sidenav-link-color;
+    display: block;
+    line-height: $base-line-height;
+    padding: $spacer;
+    padding-top:$input-top-bottom-padding;
+    padding-left: map-get($spacers, 4);
+    padding-right: map-get($spacers, 4);
+    text-decoration: none;
+
+
+    &:hover {
+      background-color: $color-white;
+      text-decoration: none;
+      color: $sidenav-link-color-hover;
+      cursor:default;
+    }
+
+    &:focus {
+      outline-offset: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    &.current { /* stylelint-disable-line selector-no-qualifying-type */
+      color: $sidenav-link-current-color;
+      font-weight: $font-weight-semibold;
+      padding-left: map-get($spacers, 4);
+    }
+    &.active { 
+      color: $sidenav-link-active-color;
+      font-weight: $font-weight-semibold;
+      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
+      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+    }
+  }
 
   li {
 
@@ -76,7 +189,54 @@
 }
 
 .sidenav-sub_list {
-  @include sidenav-sublist;
+  @include unstyled-list();
+  margin: 0;
+  width: 100%;
+
+  li {
+    border: none;
+    //font-size: $h5-font-size;
+
+    &:last-child {
+      a {
+        padding-bottom: $spacer;
+      }
+    }
+  }
+
+  a {
+
+    padding-left: map-get($spacers, 6);
+    padding-top: $spacer;
+    line-height: $base-line-height;
+
+    
+    &.current { /* stylelint-disable-line selector-no-qualifying-type */
+      padding-left: map-get($spacers, 6);
+
+    }
+    &.active { /* stylelint-disable-line selector-no-qualifying-type */
+      padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
+    }
+  }
+
+  .sidenav-sub_list {
+    a {
+      padding-left: map-get($spacers, 8);
+
+      &:focus {
+        outline-offset: 0;
+      }
+
+      &.current { /* stylelint-disable-line selector-no-qualifying-type */
+        padding-left: map-get($spacers, 8);
+        
+      }
+      &.active { /* stylelint-disable-line selector-no-qualifying-type */
+        padding-left: map-get($spacers, 8) - $sidenav-active-border-width;
+      }
+    }
+  }
 }
 
 .sidebar-col{
