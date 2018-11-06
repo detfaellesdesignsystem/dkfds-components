@@ -8062,15 +8062,6 @@ textarea.input-char-27 {
   background-color: #ffffff;
   overflow: auto;
   padding: 1.6rem;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  left: -999em;
 }
 
 .accordion-content > *:first-child {
@@ -8082,15 +8073,11 @@ textarea.input-char-27 {
 }
 
 .accordion-content:not([aria-hidden]) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  left: -999em;
+  display: none;
+}
+
+.accordion-content[aria-hidden=true] {
+  display: none;
 }
 
 .accordion-button[aria-describedby="error-message"] {

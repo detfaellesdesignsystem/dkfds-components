@@ -150,10 +150,12 @@ $v-padding: $spacing-md-small;
   }
 
   &:not([aria-hidden]) {
-    @include sr-only();
+      display: none;
   }
 
-  @include sr-only();
+  &[aria-hidden=true] {
+    display: none;
+  }
 }
 .accordion-button[aria-describedby="error-message"] {
   border: solid 2px $color-error !important;
