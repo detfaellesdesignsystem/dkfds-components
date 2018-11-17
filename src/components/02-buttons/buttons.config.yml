@@ -11,7 +11,7 @@ context:
   button_example:
     button_groups:
       - button_group:
-        label: 'Primær knapper'
+        label: 'Primær knapper.'
         items: 
           - class: 'primary'
             state: 'default'

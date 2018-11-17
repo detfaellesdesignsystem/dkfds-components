@@ -23,26 +23,6 @@ gulp.task('stylelint',
   })
 );
 
-gulp.task('copy-vendor-sass', function () {
-
-  dutil.logMessage('copy-vendor-sass', 'Compiling vendor CSS');
-
-  var stream = gulp.src([
-    './node_modules/normalize.css/normalize.css',
-    './node_modules/bourbon/app/assets/stylesheets/**/*.scss',
-    './node_modules/bourbon-neat/app/assets/stylesheets/**/*.scss',
-  ])
-    .pipe(normalizeCssFilter)
-    .pipe(rename('_normalize.scss'))
-    .pipe(normalizeCssFilter.restore)
-    .on('error', function (error) {
-      dutil.logError('copy-vendor-sass', error);
-    })
-    .pipe(gulp.dest('src/stylesheets/lib'));
-
-  return stream;
-});
-
 gulp.task('copy-dist-sass', function () {
   dutil.logMessage('copy-dist-sass', 'Copying all SASS to dist dir');
 
@@ -52,8 +32,7 @@ gulp.task('copy-dist-sass', function () {
   return stream;
 });
 
-
-gulp.task(task, ['copy-dist-sass' ], function () {  //['copy-vendor-sass', 'copy-dist-sass' ], 
+gulp.task(task, ['copy-dist-sass' ], function () {
 
   dutil.logMessage(task, 'Compiling Sass');
 

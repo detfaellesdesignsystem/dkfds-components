@@ -23,6 +23,7 @@
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "dependencies": {
+    "ansi-regex": "^4.0.0",
     "array-filter": "^1.0.0",
     "array-foreach": "^1.0.2",
     "browserify": "^13.0.0",
