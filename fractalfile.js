@@ -34,11 +34,6 @@ components.engine(require('@frctl/nunjucks')({
   ]
 }));
 
-
-
-const docs = fractal.docs;
-docs.set('path', 'docs');
-
 const web = fractal.web;
 
 web.theme(require('@frctl/mandelbrot')({

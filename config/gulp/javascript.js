@@ -17,8 +17,7 @@ gulp.task(task, function (done) {
   dutil.logMessage(task, 'Compiling JavaScript');
   
   var files = [
-      'dkfds.js',
-      'dkfds-vendor-examples.js'
+      'dkfds.js'
   ];
 
   //Create a bundle for each starting file in the list above. 
