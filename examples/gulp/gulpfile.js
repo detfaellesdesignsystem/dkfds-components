@@ -50,4 +50,11 @@ gulp.task('js', function () {
     .pipe(gulp.dest('assets/js'));
 });
 
+gulp.task('copy-fonts', function () {
+  return gulp.src([
+    'node_modules/dkfds/dist/fonts/**/*.*'
+    ])
+    .pipe(gulp.dest('assets/fonts'));
+});
+
 gulp.task('default', ['css', 'js']);

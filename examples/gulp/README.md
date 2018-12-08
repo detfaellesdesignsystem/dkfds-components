@@ -1,7 +1,4 @@
-# Using the Standards with [Gulp]
-
-This example illustrates how to build custom CSS and JS from the
-Standards JavaScript with [Gulp].
+# Using the Gulp starter
 
 First, install the dependencies with [npm]:
 
@@ -22,11 +19,8 @@ To build CSS from [src/css/main.scss], run:
 npm run build:css
 ```
 
-This example uses a slight variation of [this Gulp
-recipe](https://github.com/gulpjs/gulp/blob/master/docs/recipes/browserify-uglify-sourcemap.md)
-for the `js` task, and borrows from [the Standards' own `sass` task](../../config/gulp/sass.js)
-to build CSS from the SCSS sources.
+To build both js and css run: 
 
-[gulp]: http://gulpjs.com/
-[npm]: https://docs.npmjs.com/getting-started/what-is-npm
-[source map]: https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+```sh
+npm run build
+```
