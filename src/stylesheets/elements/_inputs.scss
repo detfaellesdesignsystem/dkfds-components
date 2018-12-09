@@ -1,5 +1,3 @@
-// scss-lint:disable QualifyingElement, PropertyCount
-
 .form-group{
   margin-top: map-get($spacers, 5); //4
   &:first-child{
@@ -7,10 +5,20 @@
   }
 }
 
+// Hint text
+.form-hint {
+  @include body-copy-text;
+  display: block;
+  color: $color-gray-medium-dark;
+}
 .form-label {
   display: inline-block;
   @include form-label-text();
 }
+
+////////////////////
+//** Text input **//
+////////////////////
 
 .form-input{
   appearance: none;
@@ -22,6 +30,7 @@
   line-height: $input-line-height;
   padding: $input-top-bottom-padding $input-left-right-padding;
   width: 100%;
+  max-width: 32rem;
   margin-top: map-get($spacers, 3);
   text-align: left;
 }
@@ -38,8 +47,10 @@ textarea.form-input{
   height: 16rem;
 }
 
+////////////////
+//** Select **//
+////////////////
 
-//Note for select. Uses browser-specific styling for arrow. No custom.
 .form-select {
   border: $outer-border;
   border-radius: $input-border-radius;
@@ -47,6 +58,7 @@ textarea.form-input{
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
+  max-width: 32rem;
   width: 100%;
   margin-top: $input-top-margin;
   text-align: left;
@@ -67,7 +79,7 @@ textarea.form-input{
   }
 
   &:disabled {
-    background: $color-gray-pale;
+    background-color: $color-gray-pale;
     color:$color-gray-medium-light;
     cursor: not-allowed;
   }
@@ -79,18 +91,11 @@ table {
   } 
 }
 
-
-legend {
-  font-size: $lead-font-size;
-  line-height: $lead-line-height;
-}
-
-
 //////////////////////
 //** Input states **//
 //////////////////////
 
-.form-group.input-error {
+.form-group.form-error {
   border-left: 4px solid $color-error;
   padding-top: map-get($spacers, 3);
   padding-left: calc(#{map-get($spacers, 4)} - 4px);
@@ -103,14 +108,14 @@ legend {
   }
 
 }
-.input-error-message {
+.form-error-message {
   @include form-label-text();
   display: block;
   color: $color-error;
   margin-top: map-get($spacers, 2);
 }
 
-.form-group.input-success {
+.form-group.form-success {
   .form-input,
   .form-select {
     border: $input-border-width-feedback solid $color-success;
@@ -118,34 +123,10 @@ legend {
   }
 }
 
-.input-disabled {
-  input {
-    background: $color-gray-pale;
-    color:$color-gray-medium-light;
-    cursor: not-allowed;
-  }
-}
 input[type=text]:disabled, input[type=textarea]:disabled{
   background: $color-gray-pale;
   color:$color-gray-medium-light;
   cursor: not-allowed;
-}
-
-.input-required:after {
-  color: $color-required;
-  content: ' (*required)';
-}
-
-.input-optional:after {
-  color: $color-gray-medium-dark;
-  content: ' (optional)';
-}
-
-// Hint text
-.form-hint {
-  @include body-copy-text;
-  display: block;
-  color: $color-gray-medium-dark;
 }
 
 /////////////////////////////////
@@ -158,23 +139,15 @@ $checkbox-radio-line-height-large: 4.0rem;
 $radio-size-large: 34px;
 
 
-[type=checkbox],
-[type=radio] {
+.form-checkbox,
+.form-radio {
   // The actual input element is only visible to screen readers, because
   // all visual styling is done via the label.
   @include sr-only();
-
-  .lt-ie9 & {
-    border: 0;
-    float: left;
-    margin: 0.4em 0.4em 0 0;
-    position: static;
-    width: auto;
-  }
 }
 
-[type=checkbox] + label,
-[type=radio] + label {
+.form-checkbox + label,
+.form-radio + label {
   cursor: pointer;
   font-weight: $font-weight-normal;
   line-height: $body-text-line-height;
@@ -188,8 +161,8 @@ $radio-size-large: 34px;
 }
 
 //Outline for checkbox and radio
-[type=checkbox] + label::before,
-[type=radio] + label::before {
+.form-checkbox + label::before,
+.form-radio + label::before {
   content: '';
   display: inline-block;
   background: $color-white;
@@ -204,7 +177,7 @@ $radio-size-large: 34px;
   left: 0;
 }
 //outline large
-[type=checkbox].checkbox-large + label {
+.form-checkbox.checkbox-large + label {
   padding-top: 8px;
   padding-left: calc(#{$checkbox-size-large} + 8px);
   padding-bottom: 8px;
@@ -217,12 +190,12 @@ $radio-size-large: 34px;
 }
 
 //extra for radio outline
-[type=radio] + label::before {
+.form-radio + label::before {
   border-radius: 100%;
   height: $radio-size;
   width: $radio-size;
 }
-[type=radio].radio-large + label{
+.form-radio.radio-large + label{
   padding-top: 8px;
   padding-left: calc(34px + 8px);
   padding-bottom: 8px;
@@ -234,7 +207,7 @@ $radio-size-large: 34px;
 }
 
 //checked checkbox
-[type=checkbox]:checked + label{
+.form-checkbox:checked + label{
   &:before{
     background-color: $color-text;
   }
@@ -250,7 +223,7 @@ $radio-size-large: 34px;
   }
 }
 //checkmark large
-[type=checkbox].checkbox-large:checked + label{
+.form-checkbox.checkbox-large:checked + label{
   &:after{
     height: 12px;
     width: 22px;
@@ -261,7 +234,7 @@ $radio-size-large: 34px;
 }
 
 //checked radio
-[type=radio]:checked + label{
+.form-radio:checked + label{
   position: relative;
   &:after{
     content: "";
@@ -275,7 +248,7 @@ $radio-size-large: 34px;
   }
 }
 //checked radio large
-[type=radio].radio-large:checked + label{
+.form-radio.radio-large:checked + label{
   &:after{
     content: "";
     height: calc(#{$radio-size-large} - 16px);
@@ -286,8 +259,8 @@ $radio-size-large: 34px;
 }
 
 //Disable
-[type=checkbox]:disabled + label,
-[type=radio]:disabled + label {
+.form-checkbox:disabled + label,
+.form-radio:disabled + label {
   color: $color-gray-medium-light;
   cursor: not-allowed;
   &:before{
@@ -297,14 +270,14 @@ $radio-size-large: 34px;
 }
 
 //Disable checked
-[type=checkbox]:checked[disabled] + label:before {
+.form-checkbox:checked[disabled] + label:before {
   background-color: $color-text;
   border-color: $color-text;
   opacity:0.5;
 }
 
 //Disable checked
-[type=radio]:checked[disabled] + label:before {
+.form-radio:checked[disabled] + label:before {
   background-color: $color-text;
   border-color: $color-text;
   opacity:0.5;
@@ -312,13 +285,13 @@ $radio-size-large: 34px;
 
 
 // checkbox focus
-[type=checkbox]:focus + label::before,
-[type=checkbox].focus + label::before{
+.form-checkbox:focus + label::before,
+.form-checkbox.focus + label::before{
   outline: $focus-outline;
   outline-offset: $focus-spacing;
 }
-[type=radio]:focus + label::before,
-[type=radio].focus + label::before {
+.form-radio:focus + label::before,
+.form-radio.focus + label::before {
   box-shadow: 0 0 0 3px $color-focus;
 }
 
@@ -443,8 +416,6 @@ input::-webkit-inner-spin-button {
   margin-top: map-get($spacers, 3);
 }
 
-
-// Required
-.required {
-  color: $color-error;
+input[type=file]{
+  display: block;
 }

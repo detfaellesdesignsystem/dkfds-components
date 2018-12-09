@@ -12,22 +12,7 @@ fieldset + fieldset{
   margin-top: map-get($spacers, 5);
 }
 
-input, select { 
-  max-width: 32rem;
-  width: 100%;
-
-  &.input-tiny { /* stylelint-disable-line selector-no-qualifying-type */
-    @include media-breakpoint-up(md) {
-      max-width: 6rem;
-    }
-  }
-
-  &.input-medium { /* stylelint-disable-line selector-no-qualifying-type */
-    @include media-breakpoint-up(md) {
-      max-width: 12rem;
-    }
-  }
-
+input, select, textarea {
   //Input width with rem
   &.input-width-xxs {
     max-width: 8rem !important;
@@ -69,74 +54,6 @@ input, select {
   }
   &.input-char-27 {
     max-width: calc(2px + 16px + 16px + 27ch);
-    width: 100%;
-  }
-}
-
-textarea {
-  min-width: 32rem!important;
-  width: 32rem;
-  max-width: 100%;
-
-  &.input-tiny {
-    @include media-breakpoint-up(md) {
-      min-width: 6rem;
-    }
-  }
-
-  &.input-medium {
-    @include media-breakpoint-up(md) {
-      min-width: 12rem;
-    }
-  }
-
-  //Input width with rem
-  &.input-width-xxs {
-    min-width: 8rem !important;
-    width: 8rem;
-    max-width: 100%;
-  }
-  &.input-width-xs {
-    min-width: 16rem !important;
-    width: 16rem;
-    max-width: 100%;
-  }
-  &.input-width-s {
-    min-width: 24rem !important;
-    width: 24rem;
-    max-width: 100%;
-  }
-  &.input-width-m {
-    min-width: 32rem!important;
-    width: 32rem;
-    max-width: 100%;
-  }
-  &.input-width-l {
-    min-width: 40rem !important;
-    width: 40rem;
-    max-width: 100%;
-  }
-  &.input-width-xl {
-    min-width: 48rem !important;
-    width: 48rem;
-    max-width: 100%;
-  }
-
-  //Input width with characters
-  &.input-char-4 {
-    min-width: calc(2px + 16px + 16px + 4ch);
-    width: 100%;
-  }
-  &.input-char-8 {
-    min-width: calc(2px + 16px + 16px + 8ch);
-    width: 100%;
-  }
-  &.input-char-11 {
-    min-width: calc(2px + 16px + 16px + 11ch);
-    width: 100%;
-  }
-  &.input-char-27 {
-    min-width: calc(2px + 16px + 16px + 27ch);
     width: 100%;
   }
 }

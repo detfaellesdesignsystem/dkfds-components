@@ -116,12 +116,12 @@ class datepickerGroup {
   }
 
   showError(msg){
-    this.formGroup.classList.add("input-error");
-    select(".input-error-message",  this.formGroup)[0].textContent = msg;
+    this.formGroup.classList.add("form-error");
+    select(".form-error-message",  this.formGroup)[0].textContent = msg;
   }
   removeError(){
-    this.formGroup.classList.remove("input-error");
-    select(".input-error-message",  this.formGroup)[0].textContent = "";
+    this.formGroup.classList.remove("form-error");
+    select(".form-error-message",  this.formGroup)[0].textContent = "";
   }
 
   updateDateInputs(date){

@@ -1,17 +1,17 @@
 {% macro textarea(id, label, optionallabel, class, name, classlabel, placeholder, hint, error) %}
   {% if error %}
-  <div class="form-group input-error">
+  <div class="form-group form-error">
      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label> {% endif %}
      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-      <span class="input-error-message" id="input-error-message-{{id}}" role="alert">{{error}}</span>
-     <textarea class="form-input textarea input-width-m {{class}}" placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" aria-describedby="input-error-message-{{id}}"></textarea>
+      <span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>
+     <textarea class="form-input {{class}}" placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" aria-describedby="form-error-message-{{id}}"></textarea>
   </div>
   {% else %} 
-  <div class="form-group{% if error %} input-error{% endif %}">
+  <div class="form-group{% if error %} form-error{% endif %}">
      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label>{% endif %}
      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-     {% if error %}<span class="input-error-message" id="input-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
-     <textarea class="form-input textarea input-width-m {{class}}" placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" {% if error %}aria-describedby="input-error-message-{{id}}"{% endif %}{% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}></textarea>
+     {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
+     <textarea class="form-input {{class}}" placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %}{% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}></textarea>
   </div>
   {% endif %}
 {% endmacro %}

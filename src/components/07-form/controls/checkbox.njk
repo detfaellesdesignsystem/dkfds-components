@@ -1,18 +1,16 @@
 {% macro checkbox(id, name, value, disabled, checked, text, class, focus, large, attr, inputClasses, inputAttrs, formClasses) %}
   <div class="form-group {{formClasses}}">
-    <input id="{{id}}" type="checkbox" name="{{name}}" value="{{value}}" class="{% if focus %}focus{% endif %} {% if large %}checkbox-large{% endif %} {{inputClasses}}"  {% if disabled %}disabled{% endif %} {% if checked %}checked{% endif %} {{inputAttrs}}>
+    <input id="{{id}}" type="checkbox" name="{{name}}" value="{{value}}" class="form-checkbox {% if focus %}focus{% endif %} {% if large %}checkbox-large{% endif %} {{inputClasses}}"  {% if disabled %}disabled{% endif %} {% if checked %}checked{% endif %} {{inputAttrs}}>
     <label for="{{id}}" class="{{class}}" {{attr}} >{{text}}</label>
   </div>
 {% endmacro %}
 
 <div class="container">
-  <fieldset class="fieldset-inputs sans">
-    <ul class="unstyled-list bottom-spacing">
-      {% for item in checkbox_example.items %}
-        <li>
-          {{ checkbox(item.id, item.name, item.value, item.disabled, item.checked, item.text, item.class, item.focus, item.large) }}
-        </li>
-      {% endfor %}
-    </ul>
-  </fieldset>
+  <ul class="unstyled-list">
+    {% for item in checkbox_example.items %}
+      <li class="mb-2">
+        {{ checkbox(item.id, item.name, item.value, item.disabled, item.checked, item.text, item.class, item.focus, item.large) }}
+      </li>
+    {% endfor %}
+  </ul>
 </div>  

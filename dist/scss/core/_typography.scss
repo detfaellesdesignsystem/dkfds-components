@@ -381,10 +381,10 @@ ol:not(.accordion):not(.accordion-bordered){
   max-width: $text-max-width;
 }
 
-.form-label, .form-hint, .input-error-message{
+.form-label, .form-hint, .form-error-message{
   max-width: $text-max-width;
 }
-[type=checkbox]+label, [type=radio]+label{
+.form-checkbox+label, .form-radio+label{
   max-width: $text-max-width;
 }
 a:not(.button){

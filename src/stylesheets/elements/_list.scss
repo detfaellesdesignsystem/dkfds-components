@@ -53,12 +53,6 @@ ol {
 // Unstyled lists
 .unstyled-list {
   @include unstyled-list;
-
-  &.bottom-spacing{
-    li{
-      margin-bottom: $spacing;
-    }
-  }
 }
 
 .inline-list {

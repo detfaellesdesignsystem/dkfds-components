@@ -1,20 +1,12 @@
 {% from "icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle) %}
-  {% if error1 %}
-  <div class="form-group input-error">
-    {% if label != "" %}<label class="form-label icon-link {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>{% endif %}
-    <span class="input-error-message" id="input-error-message-{{id}}" role="alert">{{error}}</span>
-    <input class="form-input {{class}}" placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="text" aria-describedby="input-error-message-{{id}}">
-  </div>
-  {% else %} 
-  <div class="form-group{% if success %} input-success{% endif %}{% if error %} input-error{% endif %}{% if disabled %} input-disabled{% endif %}">
-      {% if label != "" %}<label class="form-label icon-link {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>{% endif %}
+  <div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
+      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>{% endif %}
       {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-      {% if error %}<span class="input-error-message" id="input-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
-     <input class="form-input  {{class}}" placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="text" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-describedby="input-error-message-{{id}}"{% endif %} {% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}>
+      {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
+     <input class="form-input  {{class}}" placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="text" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %} {% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}>
   </div>
-  {% endif %}
 {% endmacro %}
 
 <div class="container">

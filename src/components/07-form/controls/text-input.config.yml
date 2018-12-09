@@ -13,11 +13,18 @@ context:
         label: Inputfelt i fokus
         class: focus
         name: input-focus
-      - id: input-error
-        name: input-error
+      - id: form-error
+        name: form-error
         label: Inputfelt med fejl
         error: Hjælpsom fejlbesked
         hint: Fx 12345678
       - id: input-success
         label: Inputfelt med succes
         success: true
+      - id: input-disabled
+        label: Inputfelt som er låst
+        disabled: true
+      - id: input-optinal
+        label: Inputfelt som er valgfrit
+        optionallabel: (frivilligt)
+        placeholder: Indskriv en frivillig tekst
