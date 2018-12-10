@@ -150,8 +150,9 @@ a {
 @mixin h6 {
   font-size: $h6-font-size;
   line-height: $h6-line-height;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-normal;
   color: $color-black;
+  text-transform: uppercase;
 }
 @mixin small-text {
   font-size: $small-text;
@@ -296,14 +297,14 @@ h4, .h4{
 }
 h5, .h5{
   margin-top: $h6-line-height;
-  margin-bottom: $body-text-line-height;
+  margin-bottom: 0;//h5 does not have margin bottom.
   @include media-breakpoint-up(md) {
     margin-top: $h5-line-height;
   }
 }
 h6, .h6{
   margin-top: $h6-line-height;
-  margin-bottom: $body-text-line-height;
+  margin-bottom: 0;//h6 does not have margin bottom.
 }
 .font-lead{
   margin-top: $lead-line-height;
@@ -313,8 +314,11 @@ p, .body-text{
   margin-top: $body-text-line-height;
   margin-bottom: $body-text-line-height;
 }
-
-
+h5, .h5, h6, .h6{
+  & + p{
+    margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag. 
+  }
+}
 
 //a function link, does not look like a link
 .function-link{
