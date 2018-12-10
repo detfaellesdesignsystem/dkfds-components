@@ -315,7 +315,7 @@ p, .body-text{
   margin-bottom: $body-text-line-height;
 }
 h5, .h5, h6, .h6{
-  & + p{
+  & + p, & + ul, & + ol{
     margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag. 
   }
 }

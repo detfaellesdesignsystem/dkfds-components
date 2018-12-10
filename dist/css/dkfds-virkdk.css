@@ -2356,7 +2356,7 @@ p, .body-text {
   margin-bottom: 2.4rem;
 }
 
-h5 + p, .h5 + p, h6 + p, .h6 + p {
+h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol, .h6 + p, .h6 + ul, .h6 + ol {
   margin-top: 0;
 }
 

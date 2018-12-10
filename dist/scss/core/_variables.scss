@@ -358,7 +358,6 @@ $alert-text-color: $color-text !default;
 //Borders
 $outer-border:            1px solid $color-gray-medium-light;
 $inner-border:            1px solid $color-gray-light;
-$focus-border:            2px dashed $color-gray-light;
 $button-border-width:     2px;
 $button-border:           $button-border-width solid $button-primary-border-color;
 
@@ -419,7 +418,7 @@ $static-border-radius:          0;
 $interactive-border-radius:     4px;
 $button-box-shadow:             rgba(0,0,0,.4) !default;
 $box-shadow:                    0 0 2px $color-shadow !default;
-$focus-outline:                 4px solid $color-warning;
+$focus-outline:                 4px solid $color-focus;
 $focus-spacing:                 0px;
 $nav-responsive-breakpoint:     lg !default; // 992px
 
