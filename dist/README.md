@@ -1,32 +1,19 @@
-# DKFDS - Det Fælles Designsystem
+# FDS - Det Fælles Designsystem
 
 This repo is part of the project for a Frontend Styleguide.
 
 
-## Using the design system
+## Using the design system in your project
 
 There are a few different ways to use the design system within your project. Which one you choose depends on the needs of your project and how you are most comfortable working. Here are a few notes on what to consider when deciding which installation method to use:
 
 ### Download
 
-1. Download the [design system as a zip file](https://github.com/detfaellesdesignsystem/dkfds-components/releases) and open that file.
+Download the [design system as a zip file](https://github.com/detfaellesdesignsystem/dkfds-components/releases) and open that file.
 
 ### Install using npm
 
-`npm` is a package manager for Node based projects. The npm package for DKFDS can be found [here](https://www.npmjs.com/package/dkfds) for you to utilize both the pre-compiled and compiled files on your project.
-
-1. Install `Node/npm`. Follow this link to download and install: Nodejs [Installation guides](https://nodejs.org/en/download/)
-
-2. Make sure you have installed it correctly:
-
-  ```shell
-  npm -v
-  3.10.8 # This line may vary depending on what version of Node you've installed.
-  ```
-
-3. In your project, create a `package.json` file. You can do this manually, but an easier method is to use the `npm init` command. This command will prompt you with a few questions to create your `package.json` file.
-
-4. Add `dkfds` to your project’s `package.json`:
+Install `dkfds` in your project by writing the following in a commad-prompt:
 
   ```shell
   npm install --save dkfds
@@ -34,23 +21,36 @@ There are a few different ways to use the design system within your project. Whi
 
 The `dkfds` module is now installed as a dependency. You can use the un-compiled files found in the `src/` or the compiled files in the `dist/` directory.
 
+### Including FDS in your project
+
+#### FDS as vendor
+If you downloaded the project as a zip folder simply include the follow code in the head-part of your page to include the css:
+```shell
+  <link type='text/css' rel='stylesheet' href='[path to dkfds folder]/dist/css/dkfds.css'>
 ```
-node_modules/dkfds/
-├── dist/
-│   ├── css/
-│   ├── fonts/
-│   ├── html/
-│   ├── img/
-│   ├── js/
-└── src/
-    ├── fonts/
-    ├── img/
-    ├── js/
-    ├── stylesheets/
-    └── templates/
+To include the javascript, include this tag at the bottom of the body-part of your page:
+```shell
+  <script src='[path to dkfds folder]/dist/js/dkfds.js'></script>
 ```
 
-## Fractal
+#### Webpack
+
+To include the styling add the following code to your main.scss file:
+
+```shell
+  $font-path:         '~dkfds/src/fonts/IBMPlexSans/';
+  $image-path:        '~dkfds/src/img';
+  $site-image-path:   '~dkfds/src/img';
+  $icons-folder-path: '~dkfds/src/img/svg-icons';
+  @import '../node_modules/dkfds/src/stylesheets/dkfds';
+```
+
+To include the javascript via webpack, import it in your main.js file:
+```shell
+  import "dkfds";
+```
+
+## Local development
 
 We're using [Fractal](http://fractal.build) to generate an interactive component library for the Designsystem. You can run it locally after `npm install` with:
 

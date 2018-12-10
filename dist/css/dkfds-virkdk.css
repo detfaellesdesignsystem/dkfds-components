@@ -2214,8 +2214,9 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1.3rem;
   line-height: 2.4rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #1a1a1a;
+  text-transform: uppercase;
 }
 
 p, .body-text, .body-copy-text {
@@ -2331,7 +2332,7 @@ h4, .h4 {
 
 h5, .h5 {
   margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -2342,7 +2343,7 @@ h5, .h5 {
 
 h6, .h6 {
   margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 0;
 }
 
 .font-lead {
@@ -2353,6 +2354,10 @@ h6, .h6 {
 p, .body-text {
   margin-top: 2.4rem;
   margin-bottom: 2.4rem;
+}
+
+h5 + p, .h5 + p, h6 + p, .h6 + p {
+  margin-top: 0;
 }
 
 .function-link {
