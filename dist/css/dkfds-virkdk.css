@@ -1060,26 +1060,14 @@ body {
   overflow-x: hidden;
 }
 
-.lt-ie9 * {
-  -webkit-filter: none !important;
-  filter: none !important;
-  /* stylelint-disable-line declaration-no-important */
-}
-
 [hidden] {
   display: none !important;
-  /* stylelint-disable-line declaration-no-important */
 }
 
 a:focus, button:focus, input:focus, select:focus, textarea:focus,
 .focus {
   outline: 4px solid #febb30;
   outline-offset: 0;
-}
-
-hr {
-  border-color: #999999;
-  border-top: 0;
 }
 
 /* stylelint-disable */
@@ -7406,6 +7394,11 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 .table--responsive-scroll {
   overflow-x: auto;
   min-height: .01%;
+}
+
+hr {
+  border-color: #BFBFBF;
+  border-top: 0;
 }
 
 .accordion-button {
