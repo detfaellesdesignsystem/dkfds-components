@@ -2156,6 +2156,7 @@ h1, .h1 {
   font-weight: 700;
   color: #1a1a1a;
   text-transform: none;
+  word-break: break-word;
 }
 
 @media (max-width: 767px) {
@@ -9082,6 +9083,7 @@ input[type=search] {
   font-weight: 700;
   color: #1a1a1a;
   text-transform: none;
+  word-break: break-word;
   color: #454545;
 }
 

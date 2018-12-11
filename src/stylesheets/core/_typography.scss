@@ -111,6 +111,7 @@ a {
   font-weight: $font-weight-bold;
   color: $color-black;
   text-transform: none;
+  word-break: break-word;
 }
 @mixin h2 {
   font-size: $h2-font-size;
