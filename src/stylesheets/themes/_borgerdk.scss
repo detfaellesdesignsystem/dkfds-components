@@ -1,7 +1,7 @@
 // These variables overwrite the default values, giving the style the virk.dk theme
 
 // Overwriting default values
-$color-primary:               #568331;
+$color-primary:               #44831E;
 $color-primary-medium:        #3C5C22;
 $color-primary-dark:          #233614;
 $image-path:                  '../img' !default;
@@ -11,8 +11,8 @@ $image-path:                  '../img' !default;
         background-color: #f1f1f1;
         .logo{
             background-image: url($image-path + '/logo-borgerdk.svg');
-            width: 144px;
-            height: 36px;
+            width: 200px;
+            height: 40px;
         }    
     }    
 }

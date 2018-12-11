@@ -400,7 +400,7 @@ th {
 
 .header .portal-header .logo {
   background-image: url("../img/logo-borgerdk.svg");
-  width: 144px;
+  width: 157px;
   height: 36px;
 }
 
@@ -5724,7 +5724,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-primary {
   color: #ffffff;
-  background-color: #568331;
+  background-color: #44831E;
   border-color: #3C5C22;
 }
 
@@ -5739,7 +5739,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button.button-primary.focus, .button.button-primary:focus {
-  background-color: #568331;
+  background-color: #44831E;
   border-color: #3C5C22;
 }
 
@@ -5752,7 +5752,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button.button-primary:disabled:hover,
 .button.button-primary .disabled:hover {
   color: #ffffff !important;
-  background-color: #568331 !important;
+  background-color: #44831E !important;
   border-color: #3C5C22 !important;
   opacity: 0.5 !important;
   box-shadow: none !important;
@@ -6612,7 +6612,7 @@ input[type=text]:disabled, input[type=textarea]:disabled {
 }
 
 [type=range]::-moz-range-track {
-  background: #568331;
+  background: #44831E;
   border: 1px solid #747474;
   cursor: pointer;
   height: 1.2rem;
@@ -8357,22 +8357,22 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
   }
 }
 
 @media (min-width: 992px) {
   .nav-primary .current span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
   }
 }
@@ -8385,18 +8385,18 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
   }
 }
 
 .nav-primary a.current {
   font-weight: 600;
-  color: #568331;
+  color: #44831E;
 }
 
 .nav-primary button.current {
@@ -8485,7 +8485,7 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom: 7px solid #568331;
+    border-bottom: 7px solid #44831E;
     padding-bottom: 12px;
   }
 }
@@ -8621,7 +8621,7 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner .current {
   font-weight: 600;
-  color: #568331;
+  color: #44831E;
 }
 
 @media (min-width: 992px) {
@@ -8792,10 +8792,10 @@ input[type=search] {
 }
 
 .sidenav-list a.active {
-  color: #568331;
+  color: #44831E;
   font-weight: 600;
   padding-left: 12px;
-  border-left: 4px solid #568331;
+  border-left: 4px solid #44831E;
 }
 
 .sidenav-list li a ul {
@@ -8896,10 +8896,10 @@ input[type=search] {
 }
 
 .sidenav-list-locked a.active {
-  color: #568331;
+  color: #44831E;
   font-weight: 600;
   padding-left: 12px;
-  border-left: 4px solid #568331;
+  border-left: 4px solid #44831E;
 }
 
 .sidenav-list-locked li.disabled {
@@ -9683,8 +9683,8 @@ input[type=search] {
 }
 
 .tabnav li a:hover {
-  color: #568331;
-  box-shadow: inset 0px -7px 0px 0px #568331;
+  color: #44831E;
+  box-shadow: inset 0px -7px 0px 0px #44831E;
 }
 
 .tabnav li a:focus {
@@ -9692,8 +9692,8 @@ input[type=search] {
 }
 
 .tabnav li a.active {
-  color: #568331;
-  box-shadow: inset 0px -7px 0px 0px #568331;
+  color: #44831E;
+  box-shadow: inset 0px -7px 0px 0px #44831E;
   font-weight: 600;
 }
 
