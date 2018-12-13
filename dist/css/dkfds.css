@@ -7748,6 +7748,7 @@ footer .footer-theme {
   background-image: url("https://via.placeholder.com/200x60");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   display: inline-block;
   height: 60px;
   width: 200px;
@@ -9599,6 +9600,9 @@ input[type=search] {
   .overflow-menu .button-overflow-menu.js-dropdown--responsive-collapse ~ .overflow-menu-inner {
     width: 100%;
     position: static;
+    border: none;
+    box-shadow: none;
+    min-width: inherit;
   }
 }
 

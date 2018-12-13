@@ -155,6 +155,9 @@ $overflow-menu-dropdown-distance: 8px;
             &  ~ .overflow-menu-inner {
                 width: 100%;
                 position: static;
+                border: none;
+                box-shadow: none;
+                min-width: inherit;
             }
 		}
     }

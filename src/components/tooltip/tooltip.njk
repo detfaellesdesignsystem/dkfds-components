@@ -3,13 +3,16 @@
 
 <div class="container">
   <p class="h5">Tooltip (kommer frem ved mouse-over):</p>
-  <button class="button button-primary js-tooltip" role="tooltip" title="Dette er et tooltip" aria-label="Dette er et tooltip">Knap med tooltip</button>
+  <button class="button button-primary js-tooltip" role="tooltip" title="Dette er et tooltip">
+    Knap med tooltip
+    <span class="sr-only">Dette er tooltipteksten til screenreaders</span>
+  </button>
   <p class="h5">Popover (kræver tryk)</p>
-  <a class="popover js-tooltip" data-tippy-trigger="click" role="tooltip" title="Dette er en hjælpetekst i en popover" aria-label="Dette er en hjælpetekst i en popover">{{ icon_svg('help-circle-outline')}}</a>
+  <a href="" class="popover js-tooltip" data-tippy-trigger="click" role="tooltip" title="Dette er en hjælpetekst i en popover">{{ icon_svg('help-circle-outline')}}<span class="sr-only">Dette er tooltipteksten til screenreaders, popover</span></a>
 
   <p class="h5">Eksempel på konfiguration - placering:</p>
-  <button class="button button-primary js-tooltip" data-tippy-placement="top" title="Top tooltip">Top</button>
-  <button class="button button-primary js-tooltip" data-tippy-placement="bottom" title="Bund tooltip">Bund</button>
-  <button class="button button-primary js-tooltip" data-tippy-placement="left" title="Venstre tooltip">Venstre</button>
-  <button class="button button-primary js-tooltip" data-tippy-placement="right" title="Højre tooltip">Højre</button>
+  <button class="button button-primary js-tooltip" data-tippy-placement="top" title="Top tooltip">Top <span class="sr-only">Dette er tooltipteksten til screenreaders, top</span></button>
+  <button class="button button-primary js-tooltip" data-tippy-placement="bottom" title="Bund tooltip">Bund <span class="sr-only">Dette er tooltipteksten til screenreaders, bottom</span></button>
+  <button class="button button-primary js-tooltip" data-tippy-placement="left" title="Venstre tooltip">Venstre <span class="sr-only">Dette er tooltipteksten til screenreaders, venstre</span></button>
+  <button class="button button-primary js-tooltip" data-tippy-placement="right" title="Højre tooltip">Højre <span class="sr-only">Dette er tooltipteksten til screenreaders, højre</span></button>
 </div>
