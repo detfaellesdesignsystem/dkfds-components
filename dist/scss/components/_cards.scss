@@ -2,7 +2,7 @@
   position: relative;
   border-radius: map-get($spacers, 0);
   box-shadow: 0 2px 4px 0 $color-gray-light;
-  border: 1px solid $color-gray-medium-light;
+  border: $outer-border;
   overflow: hidden;
   background: $color-white;
   height: 100%;

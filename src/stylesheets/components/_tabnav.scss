@@ -4,7 +4,7 @@
   list-style-type: none;
   padding: 0;
   overflow: hidden;
-  border-bottom: 1px solid $color-border-focus;
+  border-bottom: $outer-border;
 
   li {
     float: none; 

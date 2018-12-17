@@ -1,8 +1,8 @@
 .sidenav-list {
   @include unstyled-list();
 
-  border-bottom: 1px solid $color-border-focus;
-  border-top: 1px solid $color-border-focus;
+  border-bottom: $outer-border;
+  border-top: $outer-border;
 
   > li {
     background-color: transparent;

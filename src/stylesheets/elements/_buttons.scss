@@ -85,12 +85,12 @@
   &.button-secondary {
     color: $color-black;
     background-color: $color-gray-pale;
-    border-color: $color-gray-light;
+    border-color: $color-gray-medium-dark;
 
     &:hover,
     &.button-hover {
-      background-color: $color-gray-pale;
-      border-color: $color-border;
+      background-color: $color-gray-mediumpale;
+      border-color: $color-gray-dark;
     }
 
     &:active,
@@ -102,7 +102,7 @@
     &.focus,
     &:focus {
       background-color: $color-gray-pale;
-      border-color: $color-gray-light;
+      border-color: $color-gray-medium-dark;
     }
     &:disabled,
     .disabled {
@@ -129,7 +129,7 @@
 
     &:hover,
     &.button-hover {
-      background-color: $color-gray-pale;
+      background-color: $color-gray-mediumpale;
       box-shadow:none;
       text-decoration: underline;
     }
@@ -166,7 +166,7 @@
 
   //############### tertiary ############
   &.button-tertiary {
-    border-color:$color-gray-005;
+    border-color:$color-gray-medium-dark;
     background-color: transparent;
     color: $color-black;
     font-weight: $font-weight-normal;
@@ -178,7 +178,7 @@
 
     &:active,
     &.button-active {
-      border-color: $color-gray-002;
+      border-color: $color-gray-medium-dark;
     }
 
     &.focus,
@@ -193,7 +193,7 @@
       box-shadow: none !important;
 
       &:hover {
-        border-color:$color-gray-005 !important;
+        border-color:$color-gray-medium-dark !important;
         background-color: transparent !important;
         color: $color-black;
         font-weight: $font-weight-normal !important;

@@ -2069,7 +2069,7 @@ p {
 }
 
 a {
-  color: #0059b3;
+  color: #004D99;
 }
 
 a:hover, a.link-hover {
@@ -2087,7 +2087,7 @@ a:active, a.link-active {
 }
 
 a:focus, a.link-focus {
-  color: #0059b3;
+  color: #004D99;
   background-color: #febb30;
   outline: 4px solid #febb30;
 }
@@ -5761,12 +5761,12 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button.button-secondary {
   color: #1a1a1a;
   background-color: #F5F5F5;
-  border-color: #BFBFBF;
+  border-color: #747474;
 }
 
 .button.button-secondary:hover, .button.button-secondary.button-hover {
-  background-color: #F5F5F5;
-  border-color: #747474;
+  background-color: #DCDCDC;
+  border-color: #454545;
 }
 
 .button.button-secondary:active, .button.button-secondary.button-active {
@@ -5776,7 +5776,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-secondary.focus, .button.button-secondary:focus {
   background-color: #F5F5F5;
-  border-color: #BFBFBF;
+  border-color: #747474;
 }
 
 .button.button-secondary:disabled,
@@ -5803,7 +5803,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button.button-ghost:hover, .button.button-ghost.button-hover {
-  background-color: #F5F5F5;
+  background-color: #DCDCDC;
   box-shadow: none;
   text-decoration: underline;
 }
@@ -5837,7 +5837,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button.button-tertiary {
-  border-color: #BFBFBF;
+  border-color: #747474;
   background-color: transparent;
   color: #1a1a1a;
   font-weight: 400;
@@ -5848,7 +5848,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button.button-tertiary:active, .button.button-tertiary.button-active {
-  border-color: #454545;
+  border-color: #747474;
 }
 
 .button.button-tertiary.focus, .button.button-tertiary:focus {
@@ -5864,7 +5864,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-tertiary:disabled:hover,
 .button.button-tertiary .disabled:hover {
-  border-color: #BFBFBF !important;
+  border-color: #747474 !important;
   background-color: transparent !important;
   color: #1a1a1a;
   font-weight: 400 !important;
@@ -6343,7 +6343,7 @@ figure {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   border-radius: 4px;
   color: #1a1a1a;
   display: block;
@@ -6369,7 +6369,7 @@ textarea.form-input {
 }
 
 .form-select {
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   border-radius: 4px;
   color: #1a1a1a;
   display: block;
@@ -6824,8 +6824,8 @@ ol li ol li:before {
   position: relative;
   color: #1a1a1a;
   background: #fff;
-  border: 1px solid #999999;
-  border-bottom: 1px solid #999999;
+  border: 1px solid #747474;
+  border-bottom: 1px solid #747474;
   font-family: "IBMPlexSans", "system";
 }
 
@@ -7228,7 +7228,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 .table {
   margin: 0;
   line-height: 2.4rem;
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   width: 100%;
 }
 
@@ -7486,7 +7486,7 @@ hr {
 }
 
 .accordion-bordered .accordion-button {
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   border-radius: 3px 3px 0 0;
 }
 
@@ -7560,9 +7560,9 @@ hr {
 }
 
 .accordion-bordered .accordion-content {
-  border-bottom: 1px solid #999999;
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
+  border-bottom: 1px solid #747474;
+  border-left: 1px solid #747474;
+  border-right: 1px solid #747474;
   border-radius: 0 0 3px 3px;
 }
 
@@ -7699,7 +7699,7 @@ footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6 {
 }
 
 footer .footer {
-  border-top: 1px solid #999999;
+  border-top: 1px solid #747474;
   padding-top: calc(16px - 1px);
   padding-bottom: calc(16px - 1px);
 }
@@ -8564,7 +8564,7 @@ footer .footer-theme {
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .overflow-menu-inner {
     width: 30rem;
-    border: 1px solid #999999;
+    border: 1px solid #747474;
     border-top: 0;
     padding-left: 0;
     position: absolute;
@@ -8731,8 +8731,8 @@ input[type=search] {
   margin: 0;
   list-style-type: none;
   padding-left: 0;
-  border-bottom: 1px solid #999999;
-  border-top: 1px solid #999999;
+  border-bottom: 1px solid #747474;
+  border-top: 1px solid #747474;
 }
 
 .sidenav-list > li {
@@ -9026,7 +9026,7 @@ input[type=search] {
   position: relative;
   border-radius: 0;
   box-shadow: 0 2px 4px 0 #BFBFBF;
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   overflow: hidden;
   background: #ffffff;
   height: 100%;
@@ -9494,7 +9494,7 @@ input[type=search] {
   position: absolute;
   z-index: 1;
   width: auto;
-  border: 1px solid #999999;
+  border: 1px solid #747474;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background: #fff;
   padding-top: 8px;
@@ -9643,7 +9643,7 @@ input[type=search] {
   list-style-type: none;
   padding: 0;
   overflow: hidden;
-  border-bottom: 1px solid #999999;
+  border-bottom: 1px solid #747474;
 }
 
 .tabnav > li {
@@ -9740,7 +9740,7 @@ input[type=search] {
   font-size: 1.3rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background-color: #fff;
-  border: 1px solid #999999;
+  border: 1px solid #747474;
 }
 
 .tippy-tooltip .tippy-backdrop {

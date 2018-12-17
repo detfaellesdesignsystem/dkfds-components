@@ -116,6 +116,7 @@ $color-gray-002:              #454545 !default;
 $color-gray-003:              #747474 !default;
 $color-gray-004:              #999999 !default;
 $color-gray-005:              #BFBFBF !default;
+$color-gray-055:              #DCDCDC !default;
 $color-gray-006:              #F5F5F5 !default;
 
 //Greeen
@@ -139,7 +140,7 @@ $color-red-002:               #E92021 !default;
 $color-red-003:               #fbd3d3 !default; 
 
 //blue
-$color-blue-001:              #0059b3 !default; 
+$color-blue-001:              #004D99 !default; 
 $color-blue-002:              #004080 !default; 
 $color-blue-003:              #000040 !default; 
 $color-blue-004:              #e2f2fb !default; 
@@ -195,6 +196,7 @@ $color-gray-dark:             $color-gray-002 !default;
 $color-gray-medium-dark:      $color-gray-003 !default;
 $color-gray-medium-light:     $color-gray-004 !default;
 $color-gray-light:            $color-gray-005 !default;
+$color-gray-mediumpale:       $color-gray-055 !default;
 $color-gray-pale:             $color-gray-006 !default;
 
 //Focus
@@ -356,7 +358,7 @@ $alert-heading-color: $color-text !default;
 $alert-text-color: $color-text !default;
 
 //Borders
-$outer-border:            1px solid $color-gray-medium-light;
+$outer-border:            1px solid $color-gray-medium-dark; //$color-gray-medium-light;
 $inner-border:            1px solid $color-gray-light;
 $button-border-width:     2px;
 $button-border:           $button-border-width solid $button-primary-border-color;
