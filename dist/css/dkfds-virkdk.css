@@ -1067,7 +1067,7 @@ body {
 a:focus, button:focus, input:focus, select:focus, textarea:focus,
 .focus {
   outline: 4px solid #747474;
-  outline-offset: 0;
+  outline-offset: 1px;
 }
 
 /* stylelint-disable */
@@ -2165,8 +2165,8 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: 1.9rem;
-  line-height: 2.4rem;
+  font-size: 2rem;
+  line-height: 3.2rem;
   font-weight: 600;
   color: #1a1a1a;
   text-transform: none;

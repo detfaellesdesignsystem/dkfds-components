@@ -4,23 +4,51 @@
 {% endmacro %}
 
 <div class="container">
-  <p>This is a {{ link('javascript:void(0);', '', 'default link state','') }}</p>
+  <div class="row">
+        <div class="col-12 col-md-6">
+            <p>{{ link('javascript:void(0);', '', 'Standard link','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #004d99</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <p>{{ link('javascript:void(0);', 'link-hover', 'Standard link, hover','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #004080</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <p>{{ link('javascript:void(0);', 'link-active', 'Standard link, active','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #000040</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <p>{{ link('javascript:void(0);', 'link-visited', 'Standard link, visited','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #800080</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <p>Standard link, focus{{ link('javascript:void(0);', 'link-focus', 'Standard link, focus','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #004D99;outline: 4px solid #747474;</pre>
+        </div>
+    </div>
 
-  <p>This is a {{ link('javascript:void(0);', 'link-hover', 'hover link state','') }} </p>
 
-  <p>This is a {{ link('javascript:void(0);', 'link-active', 'active link state','') }}</p>
+  <p>Link som åbner en <a href="" class="icon-link">ekstern website{{ icon_svg('open-in-new')}}</a> </p>
 
-  <p>This is a {{ link('javascript:void(0);', 'link-visited', 'visited link state','') }}</p>
-
-  <p>This is a {{ link('javascript:void(0);', 'link-focus', 'focus link state','') }}</p>
-
-  <p>This is a link that goes to an <a href="" class="icon-link">external website{{ icon_svg('open-in-new')}}</a> </p>
-
-  <p>This is a text <a href="javascript:void(0);" class="disabled" disabled="disabled" tabindex="-1">disabled link state</a></p>
-
-  <p><b>This is a {{ link('javascript:void(0);', '', 'link','') }} in bold</b></p>
-
-  <p><small>This is a {{ link('javascript:void(0);', '', 'link','') }} in smalltext</small></p>
+  <p>Dette er <a href="javascript:void(0);" class="disabled" disabled="disabled" tabindex="-1">et standard link, disabled</a></p>
 
   <div class="background-dark p-6">
     <p>This is a {{ link('javascript:void(0);', '', 'default link state','') }} on a dark background.</p>
