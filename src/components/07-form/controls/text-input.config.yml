@@ -18,13 +18,9 @@ context:
         label: Inputfelt med fejl
         error: Hjælpsom fejlbesked
         hint: Fx 12345678
-      - id: input-success
-        label: Inputfelt med succes
-        success: true
       - id: input-disabled
         label: Inputfelt som er låst
         disabled: true
       - id: input-optinal
         label: Inputfelt som er valgfrit
         optionallabel: (frivilligt)
-        placeholder: Indskriv en frivillig tekst
