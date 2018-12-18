@@ -2210,16 +2210,6 @@ p, .body-text, .body-copy-text {
   color: #1a1a1a;
 }
 
-@media (max-width: 767px) {
-  .font-lead {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
-    font-weight: 400;
-    color: #1a1a1a;
-    text-transform: none;
-  }
-}
-
 .weight-normal {
   font-weight: 400;
 }
@@ -7567,7 +7557,7 @@ hr {
 }
 
 .accordion-button[aria-expanded=true] {
-  font-weight: 600;
+  background-color: #DCDCDC;
 }
 
 .accordion-bordered .accordion-button[aria-expanded=true] {

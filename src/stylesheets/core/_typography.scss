@@ -200,9 +200,6 @@ p, .body-text, .body-copy-text{
   line-height: $lead-line-height;
   max-width: $text-max-width;
   color: $color-text;
-  @include media-breakpoint-down(sm) {
-    @include body-copy-text;
-  }
 }
 
 .weight-normal {
