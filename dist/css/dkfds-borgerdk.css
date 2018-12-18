@@ -2088,7 +2088,6 @@ a:active, a.link-active {
 
 a:focus, a.link-focus {
   color: #004D99;
-  background-color: #747474;
   outline: 4px solid #747474;
 }
 
@@ -2129,7 +2128,6 @@ a:disabled:focus, a.disabled:focus {
 
 .background-dark a:focus, .background-dark a.link-focus {
   color: #1a1a1a;
-  background-color: #747474;
   outline: 4px solid #747474;
 }
 
@@ -8713,10 +8711,23 @@ footer .footer-theme {
   border-bottom-right-radius: 0;
 }
 
-.search button {
+.search .form-input:focus {
+  z-index: 1;
+}
+
+.search .button-search {
+  color: #1a1a1a;
+  background-color: #fff;
+  border-width: 1px;
+  border-color: #747474;
+  border-left: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   width: inherit;
+}
+
+.search .button-search:hover {
+  background-color: #DCDCDC;
 }
 
 input[type=search] {

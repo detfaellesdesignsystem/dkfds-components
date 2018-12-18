@@ -37,8 +37,7 @@ a {
   &:focus,
   &.link-focus {
     color: $color-link-focus;
-    background-color: $color-focus;
-    outline: 4px solid $color-link-focus-bg;
+    outline: $focus-outline;
   }
 
   &:visited,
@@ -80,8 +79,7 @@ a {
     &:focus,
     &.link-focus {
       color: $color-gray-001;
-      background-color: $color-focus;
-      outline: 4px solid $color-link-focus-bg;
+      outline: $focus-outline;
     }
 
     &:visited,
