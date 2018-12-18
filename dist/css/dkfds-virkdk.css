@@ -1066,7 +1066,7 @@ body {
 
 a:focus, button:focus, input:focus, select:focus, textarea:focus,
 .focus {
-  outline: 4px solid #febb30;
+  outline: 4px solid #747474;
   outline-offset: 0;
 }
 
@@ -2084,8 +2084,8 @@ a:active, a.link-active {
 
 a:focus, a.link-focus {
   color: #004D99;
-  background-color: #febb30;
-  outline: 4px solid #febb30;
+  background-color: #747474;
+  outline: 4px solid #747474;
 }
 
 a:visited, a.link-visited {
@@ -2125,8 +2125,8 @@ a:disabled:focus, a.disabled:focus {
 
 .background-dark a:focus, .background-dark a.link-focus {
   color: #1a1a1a;
-  background-color: #febb30;
-  outline: 4px solid #febb30;
+  background-color: #747474;
+  outline: 4px solid #747474;
 }
 
 .background-dark a:visited, .background-dark a.link-visited {
@@ -5702,14 +5702,14 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button:not(.button-ghost).focus, .button:not(.button-ghost):focus {
-  border-color: #febb30;
-  outline-color: #febb30;
+  border-color: #747474;
+  outline-color: #747474;
   position: relative;
 }
 
 .button:not(.button-ghost).focus:after, .button:not(.button-ghost):focus:after {
   content: "";
-  background: #febb30;
+  background: #747474;
   position: absolute;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
@@ -6000,14 +6000,14 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .tag.focus, .tag:focus {
-  border-color: #febb30;
-  outline-color: #febb30;
+  border-color: #747474;
+  outline-color: #747474;
   position: relative;
 }
 
 .tag.focus:after, .tag:focus:after {
   content: "";
-  background: #febb30;
+  background: #747474;
   position: absolute;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
@@ -6401,7 +6401,7 @@ table .form-select {
 }
 
 .form-group.form-error {
-  border-left: 4px solid #E92021;
+  border-left: 4px solid #E31616;
   padding-top: 8px;
   padding-left: calc(16px - 4px);
   padding-bottom: 8px;
@@ -6409,7 +6409,7 @@ table .form-select {
 
 .form-group.form-error .form-input,
 .form-group.form-error .form-select {
-  border: 2px solid #E92021;
+  border: 2px solid #E31616;
   padding: calc(8px - 2px) calc(16px - 2px);
 }
 
@@ -6420,7 +6420,7 @@ table .form-select {
   color: #1a1a1a;
   text-transform: none;
   display: block;
-  color: #E92021;
+  color: #E31616;
   margin-top: 4px;
 }
 
@@ -6581,13 +6581,13 @@ input[type=text]:disabled, input[type=textarea]:disabled {
 
 .form-checkbox:focus + label::before,
 .form-checkbox.focus + label::before {
-  outline: 4px solid #febb30;
+  outline: 4px solid #747474;
   outline-offset: 0px;
 }
 
 .form-radio:focus + label::before,
 .form-radio.focus + label::before {
-  box-shadow: 0 0 0 3px #febb30;
+  box-shadow: 0 0 0 3px #747474;
 }
 
 [type=range] {
@@ -7434,7 +7434,7 @@ hr {
 }
 
 .accordion-button:hover {
-  background-color: #BFBFBF;
+  background-color: #DCDCDC;
 }
 
 .accordion-button h1, .accordion-button .h1,
@@ -7585,7 +7585,7 @@ hr {
 }
 
 .accordion-button[aria-describedby="error-message"] {
-  border: solid 2px #E92021 !important;
+  border: solid 2px #E31616 !important;
 }
 
 .accordion-button[aria-expanded=true] {
@@ -7664,7 +7664,7 @@ hr {
 
 .alert-error {
   background-color: #fbd3d3;
-  border-color: #E92021;
+  border-color: #E31616;
 }
 
 .alert-error.alert--show-icon {
@@ -8488,7 +8488,7 @@ footer .footer-theme {
 }
 
 .nav-primary .overflow-menu .button-overflow-menu:focus, .nav-primary .overflow-menu .button-overflow-menu:active {
-  outline: 4px solid #febb30;
+  outline: 4px solid #747474;
 }
 
 .nav-primary .overflow-menu .button-overflow-menu:hover {
@@ -9688,7 +9688,7 @@ input[type=search] {
 }
 
 .tabnav li a:focus {
-  outline: 0px solid #febb30;
+  outline: 0px solid #747474;
 }
 
 .tabnav li a.active {
