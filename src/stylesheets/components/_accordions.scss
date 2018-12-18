@@ -32,7 +32,6 @@ $v-padding: $spacing-md-small;
   color: $color-black;
   cursor: pointer;
   display: inline-block;
-  //font-weight: $font-weight-bold;
   margin: 0;
   line-height: $body-text-line-height;
   padding: $h-padding $v-padding $h-padding $spacing-xxx-large;
@@ -161,7 +160,7 @@ $v-padding: $spacing-md-small;
   border: solid 2px $color-error !important;
 }
 .accordion-button[aria-expanded=true] {
-  font-weight: $font-weight-semibold;
+  background-color: $color-gray-mediumpale;
   .accordion-bordered &{
     border-bottom: $inner-border;
   }
