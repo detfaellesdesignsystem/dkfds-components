@@ -53,17 +53,17 @@ context:
             state: 'disabled'
       
       - button_group:
-        label: 'Ghost knapper'
+        label: 'Knap, der ligner et link. '
         items: 
-          - class: 'ghost'
+          - class: 'quaternary'
             state: 'default'
-          - class: 'ghost'
+          - class: 'quaternary'
             state: 'hover'
-          - class: 'ghost'
+          - class: 'quaternary'
             state: 'active'
-          - class: 'ghost'
+          - class: 'quaternary'
             state: 'focus'
-          - class: 'ghost'
+          - class: 'quaternary'
             state: 'disabled'
       
       - button_group:

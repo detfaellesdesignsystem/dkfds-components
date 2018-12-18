@@ -2108,31 +2108,8 @@ a:disabled:focus, a.disabled:focus {
   background-color: transparent;
 }
 
-.background-dark a {
-  color: #F5F5F5;
-}
-
-.background-dark a:hover, .background-dark a.link-hover {
+.background-dark a:not(.button) {
   color: #ffffff;
-}
-
-.background-dark a:hover:disabled,
-.background-dark a:hover .disabled, .background-dark a.link-hover:disabled,
-.background-dark a.link-hover .disabled {
-  background-color: transparent !important;
-}
-
-.background-dark a:active, .background-dark a.link-active {
-  color: #BFBFBF;
-}
-
-.background-dark a:focus, .background-dark a.link-focus {
-  color: #1a1a1a;
-  outline: 4px solid #747474;
-}
-
-.background-dark a:visited, .background-dark a.link-visited {
-  color: #F5F5F5;
 }
 
 .background-dark a:disabled, .background-dark a.disabled {
@@ -2490,8 +2467,7 @@ a:not(.button) {
   background-color: #1a1a1a;
 }
 
-.background-dark p,
-.background-dark span {
+.background-dark p, .background-dark span {
   color: #ffffff;
 }
 
@@ -5703,13 +5679,13 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   }
 }
 
-.button:not(.button-ghost).focus, .button:not(.button-ghost):focus {
+.button:not(.button-quaternary).focus, .button:not(.button-quaternary):focus {
   border-color: #747474;
   outline-color: #747474;
   position: relative;
 }
 
-.button:not(.button-ghost).focus:after, .button:not(.button-ghost):focus:after {
+.button:not(.button-quaternary).focus:after, .button:not(.button-quaternary):focus:after {
   content: "";
   background: #747474;
   position: absolute;
@@ -5792,48 +5768,6 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   box-shadow: none !important;
 }
 
-.button.button-ghost {
-  color: #454545;
-  background-color: transparent;
-  border-color: transparent;
-  text-decoration: underline;
-  font-weight: 400;
-}
-
-.button.button-ghost:hover, .button.button-ghost.button-hover {
-  background-color: #DCDCDC;
-  box-shadow: none;
-  text-decoration: underline;
-}
-
-.button.button-ghost:active, .button.button-ghost.button-active {
-  background-color: #BFBFBF;
-  box-shadow: none;
-  text-decoration: underline;
-}
-
-.button.button-ghost.focus, .button.button-ghost:focus {
-  color: #1a1a1a;
-  box-shadow: none;
-}
-
-.button.button-ghost:disabled,
-.button.button-ghost .disabled {
-  opacity: 0.5;
-  box-shadow: none !important;
-}
-
-.button.button-ghost:disabled:hover,
-.button.button-ghost .disabled:hover {
-  color: #454545 !important;
-  background-color: transparent !important;
-  border-color: transparent !important;
-  text-decoration: underline !important;
-  font-weight: 400 !important;
-  opacity: 0.5 !important;
-  box-shadow: none !important;
-}
-
 .button.button-tertiary {
   border-color: #747474;
   background-color: transparent;
@@ -5867,6 +5801,48 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #1a1a1a;
   font-weight: 400 !important;
   opacity: 0.5;
+  box-shadow: none !important;
+}
+
+.button.button-quaternary {
+  color: #454545;
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.button.button-quaternary:hover, .button.button-quaternary.button-hover {
+  background-color: #DCDCDC;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.button.button-quaternary:active, .button.button-quaternary.button-active {
+  background-color: #BFBFBF;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+.button.button-quaternary.focus, .button.button-quaternary:focus {
+  color: #1a1a1a;
+  box-shadow: none;
+}
+
+.button.button-quaternary:disabled,
+.button.button-quaternary .disabled {
+  opacity: 0.5;
+  box-shadow: none !important;
+}
+
+.button.button-quaternary:disabled:hover,
+.button.button-quaternary .disabled:hover {
+  color: #454545 !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  text-decoration: underline !important;
+  font-weight: 400 !important;
+  opacity: 0.5 !important;
   box-shadow: none !important;
 }
 
@@ -7416,7 +7392,7 @@ hr {
   color: inherit;
   background-color: #F5F5F5;
   background-image: url("../img/svg-icons/minus.svg");
-  background-position: right 1.6rem center;
+  background-position: left 1.6rem center;
   background-repeat: no-repeat;
   background-size: 2.4rem;
   color: #1a1a1a;
@@ -7424,7 +7400,7 @@ hr {
   display: inline-block;
   margin: 0;
   line-height: 2.4rem;
-  padding: 1.6rem 1.6rem;
+  padding: 1.6rem 1.6rem 1.6rem 5.6rem;
   width: 100%;
   position: relative;
   transition: none;
@@ -7455,7 +7431,7 @@ hr {
 }
 
 .accordion-button .accordion-icon {
-  right: calc(16px + 16px + 24px);
+  right: 1.6rem;
   height: 2.4rem;
   line-height: 2.4rem;
   position: initial;

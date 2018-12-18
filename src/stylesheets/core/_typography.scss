@@ -59,32 +59,8 @@ a {
   }
 
   .background-dark &{
-    color: $color-gray-pale;
-
-    &:hover,
-    &.link-hover {
-      color:#ffffff;
-
-      &:disabled,
-      .disabled {
-        background-color: transparent !important;
-      }
-    }
-
-    &:active,
-    &.link-active {
-      color: $color-gray-light;
-    }
-
-    &:focus,
-    &.link-focus {
-      color: $color-gray-001;
-      outline: $focus-outline;
-    }
-
-    &:visited,
-    &.link-visited {
-      color: $color-gray-pale;
+    &:not(.button){
+      color: $color-white;
     }
 
     &:disabled,
@@ -434,8 +410,7 @@ a:not(.button){
 .background-dark {
   background-color: $color-black;
 
-  p,
-  span {
+  p, span{
     color: $color-white;
   }
 }

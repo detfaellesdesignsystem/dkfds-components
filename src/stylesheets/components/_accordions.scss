@@ -26,7 +26,7 @@ $v-padding: $spacing-md-small;
   @include button-unstyled;
   background-color: $color-gray-pale;
   background-image: url('#{$icons-folder-path}/minus.svg');
-  background-position: right $h-padding center;
+  background-position: left $h-padding center;
   background-repeat: no-repeat;
   background-size: $icon-size;
   color: $color-black;
@@ -35,7 +35,7 @@ $v-padding: $spacing-md-small;
   //font-weight: $font-weight-bold;
   margin: 0;
   line-height: $body-text-line-height;
-  padding: $h-padding $v-padding;
+  padding: $h-padding $v-padding $h-padding $spacing-xxx-large;
   width: 100%;
 
   &:hover {
@@ -85,7 +85,7 @@ $v-padding: $spacing-md-small;
   }
   .accordion-icon {
 
-    right: calc(16px + 16px + 24px); //2x padding + 24px icon
+    right: $v-padding;
     height: 2.4rem;
     line-height: 2.4rem;
     position: initial;

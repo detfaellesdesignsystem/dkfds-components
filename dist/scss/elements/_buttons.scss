@@ -25,8 +25,8 @@
     width: auto;
   }
 
-  &:not(.button-ghost).focus,
-  &:not(.button-ghost):focus {
+  &:not(.button-quaternary).focus,
+  &:not(.button-quaternary):focus {
     border-color: $color-focus;
     outline-color: $color-focus;
     position: relative;
@@ -119,8 +119,47 @@
     }
   }
 
-  //############ Ghost #################
-  &.button-ghost {
+  //############### tertiary ############
+  &.button-tertiary {
+    border-color:$color-gray-medium-dark;
+    background-color: transparent;
+    color: $color-black;
+    font-weight: $font-weight-normal;
+
+    &:hover,
+    &.button-hover {
+      border-color: $color-gray-medium-dark;
+    }
+
+    &:active,
+    &.button-active {
+      border-color: $color-gray-medium-dark;
+    }
+
+    &.focus,
+    &:focus {
+      border-color:$color-gray-light;
+      background-color: transparent;
+    }
+
+    &:disabled,
+    .disabled {
+      opacity:0.5;
+      box-shadow: none !important;
+
+      &:hover {
+        border-color:$color-gray-medium-dark !important;
+        background-color: transparent !important;
+        color: $color-black;
+        font-weight: $font-weight-normal !important;
+        opacity:0.5;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  //############ Button quaternary - button styled as a link #################
+  &.button-quaternary {
     color: $color-gray-dark;
     background-color: transparent;
     border-color: transparent;
@@ -159,45 +198,6 @@
         text-decoration: underline !important;
         font-weight: $font-weight-normal !important;
         opacity:0.5 !important;
-        box-shadow: none !important;
-      }
-    }
-  }
-
-  //############### tertiary ############
-  &.button-tertiary {
-    border-color:$color-gray-medium-dark;
-    background-color: transparent;
-    color: $color-black;
-    font-weight: $font-weight-normal;
-
-    &:hover,
-    &.button-hover {
-      border-color: $color-gray-medium-dark;
-    }
-
-    &:active,
-    &.button-active {
-      border-color: $color-gray-medium-dark;
-    }
-
-    &.focus,
-    &:focus {
-      border-color:$color-gray-light;
-      background-color: transparent;
-    }
-
-    &:disabled,
-    .disabled {
-      opacity:0.5;
-      box-shadow: none !important;
-
-      &:hover {
-        border-color:$color-gray-medium-dark !important;
-        background-color: transparent !important;
-        color: $color-black;
-        font-weight: $font-weight-normal !important;
-        opacity:0.5;
         box-shadow: none !important;
       }
     }
