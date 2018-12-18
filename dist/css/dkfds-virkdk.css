@@ -2167,7 +2167,7 @@ h3, .h3 {
 h4, .h4 {
   font-size: 1.9rem;
   line-height: 2.4rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #1a1a1a;
   text-transform: none;
 }
@@ -2175,7 +2175,7 @@ h4, .h4 {
 h5, .h5 {
   font-size: 1.6rem;
   line-height: 2.4rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #1a1a1a;
   text-transform: none;
 }
@@ -2183,7 +2183,7 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1.3rem;
   line-height: 2.4rem;
-  font-weight: 400;
+  font-weight: 500;
   color: #1a1a1a;
   text-transform: uppercase;
 }
@@ -2249,19 +2249,19 @@ p{
   }
 }*/
 h1, .h1 {
-  margin-top: 4rem;
-  margin-bottom: 2.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1.6rem;
 }
 
 @media (min-width: 768px) {
   h1, .h1 {
-    margin-top: 4.8rem;
+    margin-top: 4rem;
   }
 }
 
 h2, .h2 {
-  margin-top: 3.2rem;
-  margin-bottom: 2.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1.6rem;
 }
 
 @media (min-width: 768px) {
@@ -2271,36 +2271,24 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1.6rem;
 }
 
 @media (min-width: 768px) {
   h3, .h3 {
-    margin-top: 3.2rem;
+    margin-top: 4rem;
   }
 }
 
 h4, .h4 {
   margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
-}
-
-@media (min-width: 768px) {
-  h4, .h4 {
-    margin-top: 2.4rem;
-  }
+  margin-bottom: 1.6rem;
 }
 
 h5, .h5 {
   margin-top: 2.4rem;
   margin-bottom: 0;
-}
-
-@media (min-width: 768px) {
-  h5, .h5 {
-    margin-top: 2.4rem;
-  }
 }
 
 h6, .h6 {
@@ -2309,13 +2297,13 @@ h6, .h6 {
 }
 
 .font-lead {
-  margin-top: 3.2rem;
-  margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1.6rem;
 }
 
 p, .body-text {
-  margin-top: 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-top: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol, .h6 + p, .h6 + ul, .h6 + ol {
