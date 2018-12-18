@@ -33,6 +33,10 @@
   max-width: 32rem;
   margin-top: map-get($spacers, 3);
   text-align: left;
+  &:focus, &.focus{
+    outline: $focus-outline;
+    outline-offset: $focus-spacing;
+  }
 }
 
 table {
@@ -76,6 +80,11 @@ textarea.form-input{
   &:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 $color-black;
+  }
+
+  &:focus, &.focus{
+    outline: $focus-outline;
+    outline-offset: $focus-spacing;
   }
 
   &:disabled {

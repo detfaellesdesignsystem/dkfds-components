@@ -2085,6 +2085,7 @@ a:active, a.link-active {
 a:focus, a.link-focus {
   color: #004D99;
   outline: 4px solid #747474;
+  outline-offset: 1px;
 }
 
 a:visited, a.link-visited {
@@ -2092,11 +2093,8 @@ a:visited, a.link-visited {
 }
 
 a:disabled, a.disabled {
-  box-shadow: none !important;
   cursor: not-allowed !important;
   color: #BFBFBF !important;
-  box-shadow: none !important;
-  outline-offset: inherit !important;
 }
 
 a:disabled:focus, a.disabled:focus {
@@ -5665,21 +5663,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   }
 }
 
-.button:not(.button-quaternary).focus, .button:not(.button-quaternary):focus {
-  border-color: #747474;
-  outline-color: #747474;
-  position: relative;
-}
-
-.button:not(.button-quaternary).focus:after, .button:not(.button-quaternary):focus:after {
-  content: "";
-  background: #747474;
-  position: absolute;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  left: -2px;
-  top: -2px;
-  z-index: -1;
+.button.focus, .button:focus {
+  outline: 4px solid #747474;
+  outline-offset: 1px;
 }
 
 .button.button-primary {
@@ -6316,6 +6302,11 @@ figure {
   text-align: left;
 }
 
+.form-input:focus, .form-input.focus {
+  outline: 4px solid #747474;
+  outline-offset: 1px;
+}
+
 table .form-input {
   margin-top: 0;
 }
@@ -6352,6 +6343,11 @@ textarea.form-input {
 .form-select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #1a1a1a;
+}
+
+.form-select:focus, .form-select.focus {
+  outline: 4px solid #747474;
+  outline-offset: 1px;
 }
 
 .form-select:disabled {
@@ -6546,7 +6542,7 @@ input[type=text]:disabled, input[type=textarea]:disabled {
 .form-checkbox:focus + label::before,
 .form-checkbox.focus + label::before {
   outline: 4px solid #747474;
-  outline-offset: 0px;
+  outline-offset: 1px;
 }
 
 .form-radio:focus + label::before,

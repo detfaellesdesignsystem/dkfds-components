@@ -38,6 +38,7 @@ a {
   &.link-focus {
     color: $color-link-focus;
     outline: $focus-outline;
+    outline-offset: $focus-spacing;
   }
 
   &:visited,
@@ -47,11 +48,8 @@ a {
 
   &:disabled,
   &.disabled {
-    box-shadow: none !important;
     cursor: not-allowed !important;
     color: $color-gray-light !important;
-    box-shadow: none !important;
-    outline-offset: inherit !important;
     &:focus{
       outline: none;
       background-color: transparent;

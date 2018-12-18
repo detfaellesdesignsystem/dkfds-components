@@ -25,21 +25,10 @@
     width: auto;
   }
 
-  &:not(.button-quaternary).focus,
-  &:not(.button-quaternary):focus {
-    border-color: $color-focus;
-    outline-color: $color-focus;
-    position: relative;
-    &:after {
-      content: "";
-      background: $color-focus;
-        position: absolute;
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        left: -2px;
-        top: -2px;
-        z-index: -1;
-    }
+  &.focus,
+  &:focus {
+    outline: $focus-outline;  
+    outline-offset: $focus-spacing;
   }
 
   //############ Primary ###############
