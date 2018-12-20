@@ -1,7 +1,7 @@
 {
   "name": "dkfds",
-  "version": "2.1.3",
-  "description": "Frontend Styleguide er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
+  "version": "3.0.0",
+  "description": "Det Fælles Designsystem er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
   "engines": {
     "node": ">= 4"
   },
