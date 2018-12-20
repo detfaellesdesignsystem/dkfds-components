@@ -6349,7 +6349,7 @@ table .form-select {
 }
 
 .form-group.form-error {
-  border-left: 4px solid #E31616;
+  border-left: 4px solid #CC0000;
   padding-top: 8px;
   padding-left: calc(16px - 4px);
   padding-bottom: 8px;
@@ -6357,7 +6357,7 @@ table .form-select {
 
 .form-group.form-error .form-input,
 .form-group.form-error .form-select {
-  border: 2px solid #E31616;
+  border: 2px solid #CC0000;
   padding: calc(8px - 2px) calc(16px - 2px);
 }
 
@@ -6368,13 +6368,13 @@ table .form-select {
   color: #1a1a1a;
   text-transform: none;
   display: block;
-  color: #E31616;
+  color: #CC0000;
   margin-top: 4px;
 }
 
 .form-group.form-success .form-input,
 .form-group.form-success .form-select {
-  border: 2px solid #87c51c;
+  border: 2px solid #358000;
   padding: calc(8px - 2px) calc(16px - 2px);
 }
 
@@ -7533,7 +7533,7 @@ hr {
 }
 
 .accordion-button[aria-describedby="error-message"] {
-  border: solid 2px #E31616 !important;
+  border: solid 2px #CC0000 !important;
 }
 
 .accordion-button[aria-expanded=true] {
@@ -7591,8 +7591,8 @@ hr {
 }
 
 .alert-success {
-  background-color: #e7fbe4;
-  border-color: #87c51c;
+  background-color: #eeffe2;
+  border-color: #358000;
 }
 
 .alert-success.alert--show-icon {
@@ -7611,8 +7611,8 @@ hr {
 }
 
 .alert-error {
-  background-color: #fbd3d3;
-  border-color: #E31616;
+  background-color: #ffe0e0;
+  border-color: #CC0000;
 }
 
 .alert-error.alert--show-icon {
