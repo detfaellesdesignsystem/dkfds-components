@@ -59,11 +59,17 @@ context:
         title: "Fejlbesked - med ikon"
         content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
         aria: "Beskedbox der viser en fejlmeddelselse"
-      
+
       - name: info no text
         classes: "alert-info alert--show-icon"
         role: "alert"
         title: "Informativ besked - kun overskrift"
+        aria: "Beskedbox der viser information"
+
+      - name: info no heading
+        classes: "alert-info"
+        role: "alert"
+        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
         aria: "Beskedbox der viser information"
 
       - name: Info paragraph
