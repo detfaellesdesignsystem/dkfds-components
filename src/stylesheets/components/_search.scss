@@ -11,13 +11,14 @@
   }
 
   .button-search{
-    color: $color-text;
     background-color: #fff;
     border-width: 1px;
     border-color: $color-gray-medium-dark;
     border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    color: $color-text;
+    font-weight: 400;
     width: inherit; //not 100& width on mobile
     &:hover{
       background-color: $color-gray-mediumpale;
