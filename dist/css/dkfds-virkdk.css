@@ -2119,6 +2119,10 @@ a:disabled:focus, a.disabled:focus {
   background-color: transparent;
 }
 
+a .icon-svg {
+  fill: currentColor;
+}
+
 h1, .h1 {
   font-size: 4rem;
   line-height: 4.8rem;
@@ -7347,7 +7351,9 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 
 hr {
   border-color: #BFBFBF;
-  border-top: 0;
+  display: block;
+  border-top-width: 0;
+  border-bottom-width: 1px;
 }
 
 .accordion-button {
@@ -8520,6 +8526,23 @@ footer .footer-theme {
   }
 }
 
+.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list {
+  margin-left: 16px;
+}
+
+.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list li a {
+  border-top: 0;
+  padding: 8px 0 8px 0;
+}
+
+.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list li:first-of-type a {
+  padding: 0px 0 8px 0;
+}
+
+.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list li:last-of-type a {
+  padding: 8px 0 32px 0;
+}
+
 .nav-primary .overflow-menu .overflow-menu-inner button {
   background-color: transparent;
   border: 0;
@@ -8662,13 +8685,14 @@ footer .footer-theme {
 }
 
 .search .button-search {
-  color: #1a1a1a;
   background-color: #fff;
   border-width: 1px;
   border-color: #747474;
   border-left: none;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  color: #1a1a1a;
+  font-weight: 400;
   width: inherit;
 }
 

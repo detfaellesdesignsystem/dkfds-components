@@ -291,7 +291,27 @@
         background-color: $color-subnav-background;
         top: 100%;
       }
-  
+
+      .overflow-list{
+        .overflow-list {
+          margin-left: 16px;
+          li {
+            a {
+
+              border-top: 0;
+              padding: 8px 0 8px 0;
+            }
+            &:first-of-type a {
+              padding: 0px 0 8px 0;
+            }
+            &:last-of-type a {
+              padding: 8px 0 32px 0;
+            }
+          }
+        }
+
+      }
+
       button{
           @include button-unstyled;   
       }
