@@ -11,9 +11,7 @@ context:
       - icon: angle-arrow-up
       - icon: arrow-left
       - icon: arrow-right
-      - icon: book-open
       - icon: calendar
-      - icon: cash-multiple
       - icon: check
       - icon: check-circle-outline
       - icon: chevron-left
@@ -28,8 +26,6 @@ context:
       - icon: download
       - icon: error
       - icon: file
-      - icon: file-document-box
-      - icon: folder-multiple
       - icon: help
       - icon: help-circle-outline
       - icon: info
@@ -39,7 +35,6 @@ context:
       - icon: menu-left
       - icon: menu-right
       - icon: menu-up
-      - icon: message
       - icon: minus
       - icon: open-in-new
       - icon: pencil
