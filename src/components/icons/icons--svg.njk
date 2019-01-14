@@ -1,6 +1,4 @@
-{% macro icon_svg(iconname, classes, aria) %}
-  <svg class="icon-svg {{ classes }}" {% if aria %}aria-label ="{{aria}}"{% endif %}><use xlink:href="#{{iconname}}"></use></svg>
-{% endmacro %}
+{% macro icon_svg(iconname, classes, aria) %}<svg class="icon-svg {{ classes }}" {% if aria %}aria-label ="{{aria}}"{% endif %}><use xlink:href="#{{iconname}}"></use></svg>{% endmacro %}
 
 <div class="container">
   <div class="icon-list row">
