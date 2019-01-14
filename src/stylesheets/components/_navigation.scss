@@ -291,7 +291,16 @@
         background-color: $color-subnav-background;
         top: 100%;
       }
-  
+
+      .overflow-list{
+        .overflow-list {
+          a {
+            border-top: 0;
+          }
+        }
+
+      }
+
       button{
           @include button-unstyled;   
       }
