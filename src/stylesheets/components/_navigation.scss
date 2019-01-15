@@ -294,8 +294,8 @@
 
       .overflow-list{
         a{
-          font-size: 1.4rem;
-          line-height: 2rem;
+          font-size: $small-text;
+          line-height: $small-text-line-height;
         }
         .overflow-list {
           margin-left: 16px;
