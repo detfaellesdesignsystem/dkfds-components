@@ -293,11 +293,14 @@
       }
 
       .overflow-list{
+        a{
+          font-size: 1.4rem;
+          line-height: 2rem;
+        }
         .overflow-list {
           margin-left: 16px;
           li {
             a {
-
               border-top: 0;
               padding: 8px 0 8px 0;
             }
