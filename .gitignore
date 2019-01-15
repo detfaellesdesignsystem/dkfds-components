@@ -21,3 +21,4 @@ dkfds-*.zip
 #build/components/
 
 build/
+.idea/
