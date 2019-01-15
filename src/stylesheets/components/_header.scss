@@ -12,7 +12,7 @@ $z-index-nav:     9000;
 
   .logo{
     //background-image is set by the themes in the "themes"-scss-files.
-    background-image: url('https://via.placeholder.com/200x60');
+    background-image: url($image-path + '/logo-header-placeholder.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

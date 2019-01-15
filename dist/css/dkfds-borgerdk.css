@@ -7709,7 +7709,7 @@ footer .footer-theme {
 }
 
 .header .logo {
-  background-image: url("https://via.placeholder.com/200x60");
+  background-image: url("../img/logo-header-placeholder.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
