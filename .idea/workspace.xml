@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1e9b06a-710c-4837-99d7-dbb2a5aafc39" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/dkfds-borgerdk.min.css.map" afterDir="false" />
@@ -13,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/dist/css/dkfds.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/css/dkfds.min.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/scss/core/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dist/scss/core/_variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/01-type/headings.njk" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/01-type/headings.njk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/01-type/inlinetext.njk" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/01-type/inlinetext.njk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stylesheets/core/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/core/_variables.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +46,7 @@
           <entry key="json" value="1" />
           <entry key="njk" value="47" />
           <entry key="png" value="1" />
-          <entry key="scss" value="18" />
+          <entry key="scss" value="19" />
           <entry key="svg" value="11" />
           <entry key="yml" value="16" />
         </counts>
@@ -58,7 +58,7 @@
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="48" />
-          <entry key="SCSS" value="18" />
+          <entry key="SCSS" value="19" />
           <entry key="SVG" value="11" />
           <entry key="YAML" value="16" />
         </counts>
@@ -66,8 +66,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="1" />
-          <entry key="njk" value="107" />
-          <entry key="scss" value="261" />
+          <entry key="njk" value="111" />
+          <entry key="scss" value="262" />
           <entry key="svg" value="328" />
           <entry key="yml" value="51" />
         </counts>
@@ -75,8 +75,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="PLAIN_TEXT" value="107" />
-          <entry key="SCSS" value="261" />
+          <entry key="PLAIN_TEXT" value="111" />
+          <entry key="SCSS" value="262" />
           <entry key="SVG" value="328" />
           <entry key="YAML" value="51" />
         </counts>
@@ -102,8 +102,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/01-type/headings.njk">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="46" column="87" selection-start-line="46" selection-start-column="87" selection-end-line="46" selection-end-column="87" />
+            <state relative-caret-position="458">
+              <caret line="46" column="55" lean-forward="true" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/dist/scss/core/_variables.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -140,15 +149,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/stylesheets/components/_navigation.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="307" column="33" selection-start-line="307" selection-start-column="33" selection-end-line="307" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stylesheets/core/_typography.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="218">
@@ -160,8 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stylesheets/core/_variables.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+            <state relative-caret-position="201">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -195,11 +195,11 @@
       <find>typesetting</find>
       <find>Link til et sted på siden&lt;/p&gt;</find>
       <find>.overflow-menu-inner</find>
-      <find>small-text</find>
       <find>1.3rem</find>
-      <find>small, .small-text</find>
-      <find>1.3</find>
       <find>small-tag</find>
+      <find>1.3</find>
+      <find>small-text</find>
+      <find>small, .small-text</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Projects\DetFaellesDesignSystem\dkfds-components\src\stylesheets</dir>
@@ -243,8 +243,8 @@
         <option value="$PROJECT_DIR$/src/components/01-type/links.njk" />
         <option value="$PROJECT_DIR$/src/stylesheets/components/_navigation.scss" />
         <option value="$PROJECT_DIR$/src/components/01-type/inlinetext.njk" />
-        <option value="$PROJECT_DIR$/src/components/01-type/headings.njk" />
         <option value="$PROJECT_DIR$/src/stylesheets/core/_variables.scss" />
+        <option value="$PROJECT_DIR$/src/components/01-type/headings.njk" />
       </list>
     </option>
   </component>
@@ -343,7 +343,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547554486821" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547555193061" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -388,12 +388,12 @@
       <workItem from="1547199004471" duration="2037000" />
       <workItem from="1547451527652" duration="336000" />
       <workItem from="1547451878124" duration="17364000" />
-      <workItem from="1547537416907" duration="10454000" />
+      <workItem from="1547537416907" duration="11159000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40420000" />
+    <option name="totallyTimeSpent" value="41125000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -408,7 +408,7 @@
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -416,7 +416,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49946696" visible="true" weight="0.32973504" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -424,8 +424,8 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32973504" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32875368" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" visible="true" weight="0.32875368" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32973504" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49946696" weight="0.32875368" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -471,9 +471,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/stylesheets/components/_page-navigation.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/svg-icons/close-circle.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -665,9 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/01-type/small_text.njk">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/01-type/type.config.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -693,6 +687,23 @@
         <state relative-caret-position="-459" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/stylesheets/core/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/dist/scss/core/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/01-type/small_text.njk">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/stylesheets/core/_typography.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -700,17 +711,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stylesheets/core/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/01-type/headings.njk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="46" column="87" selection-start-line="46" selection-start-column="87" selection-end-line="46" selection-end-column="87" />
+        <state relative-caret-position="458">
+          <caret line="46" column="55" lean-forward="true" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
         </state>
       </provider>
     </entry>
