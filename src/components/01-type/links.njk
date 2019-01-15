@@ -38,17 +38,30 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-6">
-            <p>Standard link, focus{{ link('javascript:void(0);', 'link-focus', 'Standard link, focus','') }}</p>
+            <p>{{ link('javascript:void(0);', 'link-focus', 'Standard link, focus','') }}</p>
         </div>
         <div class="col-12 col-md-6">
             <pre>color: #004D99;outline: 4px solid #747474;</pre>
         </div>
     </div>
-
-
-  <p>Link som åbner en <a href="" class="icon-link">ekstern website{{icon_svg('open-in-new')}}</a> </p>
-
-  <p>Dette er <a href="javascript:void(0);" class="disabled" disabled="disabled" tabindex="-1">et standard link, disabled</a></p>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <p>{{ link('javascript:void(0);', 'function-link', 'Footer link','') }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <pre>color: #1a1a1a;</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>Link som åbner en <a href="" class="icon-link">ekstern website{{icon_svg('open-in-new')}}</a> </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>Dette er <a href="javascript:void(0);" class="disabled" disabled="disabled" tabindex="-1">et standard link, disabled</a></p>
+        </div>
+    </div>
 
   <div class="background-dark p-6">
     <p>This is a {{ link('javascript:void(0);', '', 'default link state','') }} on a dark background.</p>
