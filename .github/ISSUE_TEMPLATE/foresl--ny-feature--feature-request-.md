@@ -8,6 +8,8 @@ assignees: ''
 
 ---
 
+[Brug dette issue til at ønske tilføjelse af nye komponenter, ny funktionalitet eller andet der ikke allerede findes i designsystemet. (Use this issue to request new features, functionality or other that doesn't already exist in the design system.)]
+
 **Skyldes dit forslag et særligt behov eller et problem? Beskriv venligst. (Is your feature request related to a certain need or problem? Please describe.)**
 Beskriv problemet klart og præcist. Fx jeg har ofte brug for, at kunne... (A clear and concise description of what the need or problem is. Ex. I often need to be able to...)
 
