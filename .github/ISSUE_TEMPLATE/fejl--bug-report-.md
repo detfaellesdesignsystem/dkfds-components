@@ -2,14 +2,15 @@
 name: Fejl (Bug report)
 about: Indmeld en fejl, og hjælp os med at forbedre os (Create a report to help us
   improve)
-title: Giv issuet en sigende overskrift - kun en fejl pr issue. (Add a descriptive
-  title to the issue - only one bug per issue.)
+title: Gør overskriften beskrivende  (Add a descriptive title)
 labels: ''
 assignees: ''
 
 ---
 
-**Beksriv fejlen (Describe the bug)**
+[Indmeld kun 1 fejl pr. issue og tjek gerne om fejlen allerede er indmeldt. (Only one bug per issue and make sure to check if the issue already exists)]
+
+**Bekskriv fejlen (Describe the bug)**
 Vær klar og præcis i din beskrivelse af fejlen. (A clear and concise description of what the bug is.)
 
 **Genskab fejlen (To Reproduce)**
