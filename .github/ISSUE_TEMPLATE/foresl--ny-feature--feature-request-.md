@@ -2,7 +2,7 @@
 name: Foreslå ny feature (Feature request)
 about: Foreslå en ny komponent, ny funktionalitet eller noget tredje. (Suggest a new
   component, functionality or something else.)
-title: ''
+title: Beskrivende overskrift (descriptive title)
 labels: ''
 assignees: ''
 
