@@ -1,5 +1,5 @@
 ---
-name: Foreslå opdatering (Update request)
+name: Foreslå en opdatering (Update request)
 about: Foreslå opdateringer og forbedringer til eksisterende elementer. (Suggest an
   update or improvement of existing features.)
 title: Beskrivende overskrift (descriptive title)

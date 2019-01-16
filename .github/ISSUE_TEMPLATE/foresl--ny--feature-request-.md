@@ -1,6 +1,7 @@
 ---
-name: Forslå ny komponent (Feature request)
-about: Foreslå nye komponenter, funktionalitet eller andet (
+name: Foreslå ny (Feature request)
+about: Foreslå en ny komponent, ny funktionalitet eller noget tredje. (Suggest a new
+  component, functionality or something else.)
 title: ''
 labels: ''
 assignees: ''
