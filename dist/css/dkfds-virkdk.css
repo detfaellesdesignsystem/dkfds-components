@@ -2090,7 +2090,8 @@ a:visited, a.link-visited {
 
 a:disabled, a.disabled {
   cursor: not-allowed !important;
-  color: #BFBFBF !important;
+  color: #454545 !important;
+  opacity: 0.5;
 }
 
 a:disabled:focus, a.disabled:focus {
