@@ -74,10 +74,6 @@ a {
       }
     }
   }
-
-  .icon-svg {
-    fill: currentColor;
-  }
 }
 
 //font-family, font-size and line-height for h1-h6, bodytext and smalltext
@@ -298,7 +294,6 @@ h5, .h5, h6, .h6{
 //a function link, does not look like a link
 .function-link{
   @include body-copy-text;
-  display: inline-flex;
   &:hover, &:visited, &:focus{
     color: $color-text;
   }
@@ -318,6 +313,9 @@ h5, .h5, h6, .h6{
   line-height: $body-text-line-height;
   .icon-svg{
     margin-left: map-get($spacers, 2);
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
   }
 }
 

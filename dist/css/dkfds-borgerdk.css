@@ -2123,10 +2123,6 @@ a:disabled:focus, a.disabled:focus {
   background-color: transparent;
 }
 
-a .icon-svg {
-  fill: currentColor;
-}
-
 h1, .h1 {
   font-size: 4rem;
   line-height: 4.8rem;
@@ -2324,8 +2320,6 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   font-weight: 400;
   color: #1a1a1a;
   text-transform: none;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
 }
 
 .function-link:hover, .function-link:visited, .function-link:focus {
@@ -2350,6 +2344,9 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
 
 .icon-link .icon-svg {
   margin-left: 4px;
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
 }
 
 h1 a, h1 a:hover, h1 a:visited, h1 a:focus, .h1 a, .h1 a:hover, .h1 a:visited, .h1 a:focus,
