@@ -1,6 +1,7 @@
 ---
 name: Hjælp (Help)
-about: Få hjælp til anvendelsen af FDS (Request help about how to use FDS)
+about: Få hjælp til anvendelsen af Det Fælles Designsystem (Request help about how
+  to use Det Fælles Designsystem)
 title: Beskrivende overskrift (Descriptive title)
 labels: ''
 assignees: ''

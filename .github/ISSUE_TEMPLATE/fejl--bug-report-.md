@@ -1,7 +1,7 @@
 ---
 name: Fejl (Bug report)
-about: Indmeld en fejl, og hjælp os med at forbedre os (Create a report to help us
-  improve)
+about: Indmeld en fejl, og hjælp os med at forbedre designsystemet (Create a report
+  to help us improve)
 title: Gør overskriften beskrivende  (Add a descriptive title)
 labels: ''
 assignees: ''
