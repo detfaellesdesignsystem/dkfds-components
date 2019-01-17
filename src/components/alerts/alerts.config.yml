@@ -69,7 +69,7 @@ context:
       - name: info no heading
         classes: "alert-info"
         role: "alert"
-        content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+        content: "Besked uden overskrift. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
         aria: "Beskedbox der viser information"
 
       - name: Info paragraph
