@@ -7197,6 +7197,10 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   border-right: none;
 }
 
+.table td.break-word, .table th.break-word {
+  word-break: break-all;
+}
+
 .table thead {
   background-color: #F5F5F5;
 }
