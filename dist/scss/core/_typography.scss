@@ -29,11 +29,6 @@ a {
 
   }
 
-  &:active,
-  &.link-active {
-    color: $color-link-active;
-  }
-
   &:focus,
   &.link-focus {
     color: $color-link-focus;

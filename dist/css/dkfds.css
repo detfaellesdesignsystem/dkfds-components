@@ -2063,17 +2063,13 @@ a {
 }
 
 a:hover, a.link-hover {
-  color: #004080;
+  color: #000040;
 }
 
 a:hover:disabled,
 a:hover .disabled, a.link-hover:disabled,
 a.link-hover .disabled {
   background-color: transparent !important;
-}
-
-a:active, a.link-active {
-  color: #000040;
 }
 
 a:focus, a.link-focus {
