@@ -7,7 +7,6 @@ context:
     items:
       - label: Indsendelsesfrist
         hint: "For eksempel: 05 12 2018"
-        day: "Day"
+        day: "Dag"
         month: "Måned"
         year: "År"
-    
