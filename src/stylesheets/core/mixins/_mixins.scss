@@ -47,6 +47,20 @@
   }
 }
 
+
+// Unstyled list helper
+@mixin nobullet-list() {
+  list-style-type: none;
+  padding-left: 0;
+  > li {
+    padding-left: 0;
+    &:before {
+      content: "" !important;
+      padding-right: 0 !important;
+    }
+  }
+}
+
 // Font smoothing mixin
 // Only use for light text on dark background
 // TODO: Remove after adding PostCSS

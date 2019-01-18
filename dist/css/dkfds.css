@@ -6719,6 +6719,20 @@ ol li ol li:before {
   padding-right: 0 !important;
 }
 
+.nobullet-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nobullet-list > li {
+  padding-left: 0;
+}
+
+.nobullet-list > li:before {
+  content: "" !important;
+  padding-right: 0 !important;
+}
+
 .inline-list {
   margin: 0;
   list-style-type: none;
