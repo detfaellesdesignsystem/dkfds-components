@@ -6675,7 +6675,6 @@ ul {
 ul li {
   margin-top: 8px;
   list-style-type: none;
-  list-style-image: none;
   position: relative;
   padding-left: 37px;
   line-height: 2.4rem;
@@ -7804,7 +7803,7 @@ footer .footer-theme {
 }
 
 .header .portal-header {
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid #BFBFBF;
   width: 100%;
 }
 
@@ -7852,7 +7851,7 @@ footer .footer-theme {
 }
 
 .header .solution-header {
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid #BFBFBF;
   width: 100%;
 }
 
