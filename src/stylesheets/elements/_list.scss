@@ -12,7 +12,7 @@ ul {
     position: relative;
     padding-left: 37px;
     line-height: $body-text-line-height;
-    &:before {
+    &::before {
       content: "\2022";
       position: absolute;
       left: 23px;

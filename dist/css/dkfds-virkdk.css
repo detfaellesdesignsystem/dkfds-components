@@ -6671,12 +6671,13 @@ ul {
 ul li {
   margin-top: 8px;
   list-style-type: none;
+  list-style-image: none;
   position: relative;
   padding-left: 37px;
   line-height: 2.4rem;
 }
 
-ul li:before {
+ul li::before {
   content: "\2022";
   position: absolute;
   left: 23px;
@@ -6720,9 +6721,13 @@ ol li ol li:before {
   padding-left: 0;
 }
 
-.unstyled-list > li:before {
-  content: "" !important;
+.unstyled-list > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.unstyled-list > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .nobullet-list {
@@ -6751,9 +6756,13 @@ ol li ol li:before {
   padding-left: 0;
 }
 
-.inline-list > li:before {
-  content: "" !important;
+.inline-list > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.inline-list > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .inline-list > li {
@@ -7470,10 +7479,15 @@ hr {
   padding-left: 0;
 }
 
-.accordion > li:before,
-.accordion-bordered > li:before {
-  content: "" !important;
+.accordion > li::before,
+.accordion-bordered > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.accordion > li li,
+.accordion-bordered > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .accordion > ul li ul,
@@ -8262,9 +8276,13 @@ footer .footer-theme {
   padding-left: 0;
 }
 
-.nav-primary > li:before {
-  content: "" !important;
+.nav-primary > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.nav-primary > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 @media (min-width: 992px) {
@@ -8518,9 +8536,13 @@ footer .footer-theme {
   padding-left: 0;
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner > li:before {
-  content: "" !important;
+.nav-primary .overflow-menu .overflow-menu-inner > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.nav-primary .overflow-menu .overflow-menu-inner > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 @media (min-width: 992px) {
@@ -8739,9 +8761,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.sidenav-list > li:before {
-  content: "" !important;
+.sidenav-list > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.sidenav-list > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .sidenav-list > li {
@@ -8842,9 +8868,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.sidenav-list-locked > li:before {
-  content: "" !important;
+.sidenav-list-locked > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.sidenav-list-locked > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .sidenav-list-locked > li {
@@ -8946,9 +8976,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.sidenav-sub_list > li:before {
-  content: "" !important;
+.sidenav-sub_list > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.sidenav-sub_list > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .sidenav-sub_list li {
@@ -9199,9 +9233,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.card-action .action-links ul > li:before {
-  content: "" !important;
+.card-action .action-links ul > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.card-action .action-links ul > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .card-action .action-links ul li {
@@ -9520,9 +9558,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.overflow-menu .overflow-list > li:before {
-  content: "" !important;
+.overflow-menu .overflow-list > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.overflow-menu .overflow-list > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .overflow-menu .overflow-list button {
@@ -9650,9 +9692,13 @@ input[type=search] {
   padding-left: 0;
 }
 
-.tabnav > li:before {
-  content: "" !important;
+.tabnav > li::before {
+  content: normal !important;
   padding-right: 0 !important;
+}
+
+.tabnav > li li {
+  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
 }
 
 .tabnav li {
