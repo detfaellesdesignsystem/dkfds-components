@@ -7236,7 +7236,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 }
 
 .table.table--borderless {
-  border: none;
+  border-color: transparent;
 }
 
 .table.table--borderless tr:last-child {
