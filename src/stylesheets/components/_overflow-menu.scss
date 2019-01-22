@@ -90,6 +90,10 @@ $overflow-menu-dropdown-distance: 8px;
         line-height: $body-text-line-height;
         color: $color-text;
 
+        li li{
+          list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+        }
+
         button{
             @include button-unstyled;   
         }
