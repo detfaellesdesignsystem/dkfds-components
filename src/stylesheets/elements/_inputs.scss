@@ -86,6 +86,9 @@ textarea.form-input{
     outline: $focus-outline;
     outline-offset: $focus-spacing;
   }
+  &::-ms-expand {
+    display: none;
+  }
 
   &:disabled {
     background-color: $color-gray-pale;
