@@ -34,6 +34,14 @@ class dropdown {
                 event.stopPropagation();//prevents ouside click listener from triggering. 
                 that.toggleDropdown();
             });
+
+          document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode === 27) {
+              that.closeAll();
+            }
+          };
+
         }       
     }
 
@@ -54,11 +62,24 @@ class dropdown {
         }
     }
 
+    closeAll (){
+      var triggerEl = select('.js-dropdown', 'body');
+      var targetEl = select('.overflow-menu-inner', 'body');
+
+      for (var i = 0; i < triggerEl.length; i++){
+        triggerEl[i].setAttribute('aria-expanded', 'false');
+      }
+      for (var b = 0; b < targetEl.length; b++){
+        targetEl[b].classList.add('collapsed');
+        targetEl[b].setAttribute('aria-hidden', 'true');
+      }
+    }
     
-    toggleDropdown(forceClose) {
+    toggleDropdown (forceClose) {
         if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
             //change state
             if(this.triggerEl.getAttribute("aria-expanded") == "true" || forceClose){
+
                 //close
                 this.triggerEl.setAttribute("aria-expanded", "false");
                 this.targetEl.classList.add("collapsed");
@@ -70,9 +91,9 @@ class dropdown {
                 this.targetEl.setAttribute("aria-hidden", "false");
             }
         }
-    };
+    }
 
-    outsideClose(event){
+    outsideClose (event){
         if(!this.doResponsiveCollapse()){
             //closes dropdown when clicked outside. 
             var dropdownElm = closest(event.target, this.targetEl.id);
@@ -81,7 +102,7 @@ class dropdown {
                 this.toggleDropdown(true);
             }
         }
-    };
+    }
 
     doResponsiveCollapse(){
         //returns true if responsive collapse is enabled and we are on a small screen. 
