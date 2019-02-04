@@ -7761,7 +7761,7 @@ footer .footer-theme {
     margin-right: -4px;
   }
   .header .nav-actions > li, .header .nav-actions > li:first-child {
-    margin: calc(8px - 1px) 4px;
+    margin: calc(8px - 2px) 4px;
   }
 }
 

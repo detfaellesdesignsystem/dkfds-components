@@ -247,7 +247,7 @@ $z-index-nav:     9000;
       flex-wrap: wrap;
       margin-right: -4px;
       & > li, & > li:first-child{
-        margin: calc(#{map-get($spacers, 3)} - 1px) 4px;
+        margin: calc(#{map-get($spacers, 3)} - 2px) 4px;
       }
     }
   }
