@@ -141,6 +141,14 @@ input[type=text]:disabled, input[type=textarea]:disabled{
   cursor: not-allowed;
 }
 
+
+input[type=text]:read-only, input[type=textarea]:read-only{
+  background-color: transparent;
+  color:$color-black;
+  border: none;
+  cursor: default;
+}
+
 /////////////////////////////////
 // Custom checkboxes & radios
 /////////////////////////////////

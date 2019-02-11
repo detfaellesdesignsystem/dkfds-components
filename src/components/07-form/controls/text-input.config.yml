@@ -24,3 +24,7 @@ context:
       - id: input-optinal
         label: Inputfelt som er valgfrit
         optionallabel: (frivilligt)
+      - id: input-readonly
+        label: Inputfelt som er readonly
+        readonly: true
+        value: 012345-6789
