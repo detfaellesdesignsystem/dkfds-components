@@ -1,20 +1,18 @@
 {% import "02-buttons/buttons.njk" as button %}
 {% from "07-form/controls/radiobutton.njk" import radiobutton as radiobutton %}
+{% from "07-form/controls/text-input.njk" import textinput as textinput %}
 
 <div class="container js-radio-toggle-group">
-  {{radiobutton("id-radio1", "radio-group1", "Value", false, true, "Radioknap viser indhold", "", false, true, "", "", "data-js-target='#collapse-radio1' aria-controls='collapse-radio1' aria-expanded='false'")}}
+  {{radiobutton("id-radio1", "radio-group1", "Value", false, true, "Radioknap viser indhold", "", false, true, "", "", "data-js-target='#collapse-radio1' aria-controls='collapse-radio1' aria-expanded='false'", "", "Udfyld informationer herunder")}}
   <div id="collapse-radio1" aria-hidden="true" class="box-border-l collapsed">
     <div class="py-4">
-      <p>Dette indhold bliver vist når radio-knappen er valgt.</p>
+      {{textinput("textinput1", "Inputfelt med label", "", "input-width-m", "", "text1", "", false, "", "", "", "", "", "", true)}}
     </div>
   </div>
-   {{radiobutton("id-radio2", "radio-group1", "Value", false, false, "Radioknap viser indhold", "", false, true, "", "", "data-js-target='#collapse-radio2'")}}
+   {{radiobutton("id-radio2", "radio-group1", "Value", false, false, "Radioknap viser indhold", "", false, true, "", "", "data-js-target='#collapse-radio2'", "", "Udfyld informationer herunder")}}
   <div id="collapse-radio2" aria-hidden="true" class="box-border-l collapsed">
     <div class="py-4">
-      <p>Dette indhold bliver vist når radio-knappen er valgt.</p>
+      {{textinput("textinput2", "Inputfelt med label", "", "input-width-m", "", "text2", "", false, "", "", "", "", "", "", true)}}
     </div>
   </div>
 </div>
-  
-
-

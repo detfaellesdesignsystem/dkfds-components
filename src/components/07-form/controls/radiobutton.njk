@@ -1,7 +1,7 @@
-{% macro radiobutton(id, name, value, disabled, checked, text, class, focus, large, attr, inputClasses, inputAttrs, formClasses) %}
+{% macro radiobutton(id, name, value, disabled, checked, text, class, focus, large, attr, inputClasses, inputAttrs, formClasses, srOnly) %}
   <div class="form-group {{formClasses}}">
     <input id="{{id}}" type="radio" name="{{name}}" value="{{value}}" class="form-radio {% if focus %}focus{% endif %} {% if large %}radio-large{% endif %} {{inputClasses}}" {% if disabled %}disabled{% endif %} {% if checked %}checked{% endif %} {{inputAttrs}}>
-    <label for="{{id}}" class="{{class}}" {{attr}}>{{text}}</label>
+    <label for="{{id}}" class="{{class}}" {{attr}}>{{text}} {% if srOnly %}<span class="sr-only">{{srOnly}}</span>{% endif %}</label>
   </div>
 {% endmacro %}
 
@@ -9,7 +9,7 @@
     <ul class="unstyled-list">
       {% for item in radiobuttons_example.items %}
       <li class="mb-2">
-        {{ radiobutton(item.id, item.name, item.value, item.disabled, item.checked, item.text, item.class, item.focus, item.large) }}
+        {{ radiobutton(item.id, item.name, item.value, item.disabled, item.checked, item.text, item.class, item.focus, item.large, item.sr) }}
       </li>
       {% endfor %}
     </ul>
