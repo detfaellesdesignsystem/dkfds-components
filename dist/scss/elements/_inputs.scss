@@ -147,6 +147,7 @@ input[type=text]:read-only, input[type=textarea]:read-only{
   color:$color-black;
   border: none;
   cursor: default;
+  padding: 0;
 }
 
 /////////////////////////////////

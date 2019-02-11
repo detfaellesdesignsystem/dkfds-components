@@ -6394,6 +6394,7 @@ input[type=text]:-moz-read-only, input[type=textarea]:-moz-read-only {
   color: #1a1a1a;
   border: none;
   cursor: default;
+  padding: 0;
 }
 
 input[type=text]:read-only, input[type=textarea]:read-only {
@@ -6401,6 +6402,7 @@ input[type=text]:read-only, input[type=textarea]:read-only {
   color: #1a1a1a;
   border: none;
   cursor: default;
+  padding: 0;
 }
 
 .form-checkbox,
