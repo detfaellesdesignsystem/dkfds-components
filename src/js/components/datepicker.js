@@ -3,7 +3,6 @@ const behavior = require('../utils/behavior');
 const select = require('../utils/select');
 const closest = require('../utils/closest');
 
-const jsDatepickerSelector = '.js-calendar-datepicker';
 const jsDayInput = '.js-calendar-day-input';
 const jsMonthInput = '.js-calendar-month-input';
 const jsYearInput = '.js-calendar-year-input';
@@ -11,7 +10,6 @@ const jsYearInput = '.js-calendar-year-input';
 class datepickerGroup {
   constructor(el){
 
-    this.datepickerElement = select(jsDatepickerSelector, el);
     this.dateGroup = el;
     this.formGroup = closest(el, '.form-group');
     this.dayInputElement = null;
@@ -19,7 +17,6 @@ class datepickerGroup {
     this.yearInputElement = null;
 
     this.initDateInputs();
-    this.initDatepicker(this.datepickerElement[0]);
   }
 
   initDateInputs(){
@@ -44,23 +41,11 @@ class datepickerGroup {
     });
   }
 
-  initDatepicker(el){
-    if(el){
-      //Note: el may not be a <svg>, IE11 does not add .blur() method to svg elements (--> esc and enter does not dismiss pikaday).
-      this.initDone = false;
-
-      var initDate = new Date();
-      this.pikadayInstance.setDate(initDate);
-      this.initDone = true;
-    }
-  }
-
   validateInputs(){
     var day = parseInt(this.dayInputElement.value)
     var month = parseInt(this.monthInputElement.value);
     var year = parseInt(this.yearInputElement.value);
     var maxDay = new Date(year, month, 0).getDate();
-
     var msg = "";
     var isValid = true;
     if(day > maxDay){
