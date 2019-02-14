@@ -1,20 +1,31 @@
 {% from "icons/icons--svg.njk" import icon_svg as icon_svg %}
 {%- macro button(class, state) -%}
-  {%- if (state == 'default') -%}
+  {% if (state == 'default') %}
     <button class="button button-{{class}}">Default</button>
-  {%- elif (state == 'hover') -%}
+  {% elif (state == 'hover') %}
     <button class="button button-{{class}} button-hover">Hover</button>
-  {%- elif (state == 'active') -%}
+  {% elif (state == 'active') %}
     <button class="button button-{{class}} button-active">Active</button>
-  {%- elif (state == 'focus') -%}
+  {% elif (state == 'focus') %}
     <button class="button button-{{class}} focus">Focus</button>
-  {%- elif (state == 'tertiary') -%}
+  {% elif (state == 'tertiary') %}
     <button class="button button-{{class}} tertiary">Tertiary</button>
-  {%- elif (state == 'disabled') -%}
+  {% elif (state == 'disabled') %}
     <button class="button button-{{class}}" disabled tab-index="-1" aria-disabled="true">Disabled</button>
-  {%- elif (state == 'icon') -%}
+  {% elif (state == 'icon') %}
   <button class="button button-{{class}}">{{ icon_svg('refresh')}} Refresh</button>
+  {% elif (state == 'back-default') %}
+    <button class="button button-{{class}}">{{icon_svg('menu-left')}}Tilbage</button>
+  {% elif (state == 'back-hover') %}
+    <button class="button button-{{class}} button-hover">{{icon_svg('menu-left')}}Tilbage</button>
+  {% elif (state == 'back-active') %}
+    <button class="button button-{{class}} button-active">{{icon_svg('menu-left')}}Tilbage</button>
+  {% elif (state == 'back-focus') %}
+    <button class="button button-{{class}} focus">{{icon_svg('menu-left')}}Tilbage</button>
+  {% elif (state == 'back-disabled') %}
+    <button class="button button-{{class}}" disabled tab-index="-1" aria-disabled="true">{{icon_svg('menu-left')}}Tilbage</button>
   {%- endif %}
+
 
 {%- endmacro -%}
 
@@ -28,7 +39,5 @@
     {% endfor -%}
   {% endfor -%}
 
-  <p class="h5">Funktionslink</p>
-  <p><a href="#" class="function-link">{{ icon_svg('printer')}} Print hele guiden</a></p>
 </div>
 

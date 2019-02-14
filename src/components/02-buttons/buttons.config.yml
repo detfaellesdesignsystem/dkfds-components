@@ -53,18 +53,18 @@ context:
             state: 'disabled'
       
       - button_group:
-        label: 'Knap, der ligner et link. '
+        label: 'Tilbage-knap'
         items: 
           - class: 'quaternary'
-            state: 'default'
+            state: 'back-default'
           - class: 'quaternary'
-            state: 'hover'
+            state: 'back-hover'
           - class: 'quaternary'
-            state: 'active'
+            state: 'back-active'
           - class: 'quaternary'
-            state: 'focus'
+            state: 'back-focus'
           - class: 'quaternary'
-            state: 'disabled'
+            state: 'back-disabled'
       
       - button_group:
         label: 'Knap med ikon'
