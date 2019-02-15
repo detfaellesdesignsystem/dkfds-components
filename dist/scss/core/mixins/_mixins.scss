@@ -54,7 +54,7 @@
   padding-left: 0;
   > li {
     padding-left: 0;
-    &:before {
+    &::before {
       content: "" !important;
       padding-right: 0 !important;
     }

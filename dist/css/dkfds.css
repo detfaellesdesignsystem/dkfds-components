@@ -5761,6 +5761,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   border-color: transparent;
   text-decoration: underline;
   font-weight: 400;
+  padding-left: calc(8px - 2px);
 }
 
 .button.button-quaternary:hover, .button.button-quaternary.button-hover {
@@ -6747,7 +6748,7 @@ ol li ol li:before {
   padding-left: 0;
 }
 
-.nobullet-list > li:before {
+.nobullet-list > li::before {
   content: "" !important;
   padding-right: 0 !important;
 }

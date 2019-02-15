@@ -154,6 +154,7 @@
     border-color: transparent;
     text-decoration: underline;
     font-weight: $font-weight-normal;
+    padding-left: calc(8px - #{$button-border-width});
 
     &:hover,
     &.button-hover {
