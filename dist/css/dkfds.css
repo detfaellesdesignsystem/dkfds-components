@@ -6735,7 +6735,7 @@ ol li ol li:before {
 }
 
 .unstyled-list > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -6766,7 +6766,7 @@ ol li ol li:before {
 }
 
 .inline-list > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -7232,7 +7232,7 @@ hr {
 
 .accordion > li::before,
 .accordion-bordered > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8023,7 +8023,7 @@ footer .footer-theme {
 }
 
 .nav-primary > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8279,7 +8279,7 @@ footer .footer-theme {
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8500,7 +8500,7 @@ input[type=search] {
 }
 
 .sidenav-list > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8603,7 +8603,7 @@ input[type=search] {
 }
 
 .sidenav-list-locked > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8707,7 +8707,7 @@ input[type=search] {
 }
 
 .sidenav-sub_list > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -8960,7 +8960,7 @@ input[type=search] {
 }
 
 .card-action .action-links ul > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -9281,7 +9281,7 @@ input[type=search] {
 }
 
 .overflow-menu .overflow-list > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 
@@ -9415,7 +9415,7 @@ input[type=search] {
 }
 
 .tabnav > li::before {
-  content: normal !important;
+  content: "" !important;
   padding-right: 0 !important;
 }
 

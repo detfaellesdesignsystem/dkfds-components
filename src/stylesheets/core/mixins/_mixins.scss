@@ -41,14 +41,14 @@
     margin-top: 0;
     padding-left: 0;
     &::before {
-      content: normal !important;
+      content: "" !important;
       padding-right: 0 !important;
     }
   }
 }
 
 
-// Unstyled list helper
+// nobullet list helper
 @mixin nobullet-list() {
   list-style-type: none;
   padding-left: 0;
