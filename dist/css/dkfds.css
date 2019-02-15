@@ -5645,6 +5645,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button.focus, .button:focus {
   outline: 4px solid #747474;
   outline-offset: 1px;
+  color: #ffffff;
 }
 
 .button.button-primary {
@@ -5759,40 +5760,41 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #454545;
   background-color: transparent;
   border-color: transparent;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: 400;
   padding-left: calc(8px - 2px);
+  border-bottom: 1px solid #747474;
 }
 
 .button.button-quaternary:hover, .button.button-quaternary.button-hover {
   background-color: #DCDCDC;
   box-shadow: none;
-  text-decoration: underline;
+  border-bottom-color: transparent;
 }
 
 .button.button-quaternary:active, .button.button-quaternary.button-active {
   background-color: #BFBFBF;
   box-shadow: none;
-  text-decoration: underline;
+  border-bottom-color: transparent;
 }
 
 .button.button-quaternary.focus, .button.button-quaternary:focus {
   color: #1a1a1a;
   box-shadow: none;
+  border-bottom-color: transparent;
 }
 
 .button.button-quaternary:disabled,
 .button.button-quaternary .disabled {
   opacity: 0.5;
   box-shadow: none !important;
+  border-bottom: 1px solid #BFBFBF;
 }
 
 .button.button-quaternary:disabled:hover,
 .button.button-quaternary .disabled:hover {
   color: #454545 !important;
   background-color: transparent !important;
-  border-color: transparent !important;
-  text-decoration: underline !important;
   font-weight: 400 !important;
   opacity: 0.5 !important;
   box-shadow: none !important;

@@ -29,6 +29,7 @@
   &:focus {
     outline: $focus-outline;  
     outline-offset: $focus-spacing;
+    color: $button-primary-color;
   }
 
   //############ Primary ###############
@@ -152,40 +153,41 @@
     color: $color-gray-dark;
     background-color: transparent;
     border-color: transparent;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: $font-weight-normal;
     padding-left: calc(8px - #{$button-border-width});
+    border-bottom: $outer-border;
 
     &:hover,
     &.button-hover {
       background-color: $color-gray-mediumpale;
       box-shadow:none;
-      text-decoration: underline;
+      border-bottom-color: transparent;
     }
 
     &:active,
     &.button-active {
       background-color: $color-gray-light;
       box-shadow:none;
-      text-decoration: underline;
+      border-bottom-color: transparent;
     }
 
     &.focus,
     &:focus {
       color: $color-black;
       box-shadow:none;
+      border-bottom-color: transparent;
     }
 
     &:disabled,
     .disabled {
       opacity:0.5;
       box-shadow: none !important;
+      border-bottom: $inner-border;
 
       &:hover {
         color: $color-gray-dark !important;
         background-color: transparent !important;
-        border-color: transparent !important;
-        text-decoration: underline !important;
         font-weight: $font-weight-normal !important;
         opacity:0.5 !important;
         box-shadow: none !important;
