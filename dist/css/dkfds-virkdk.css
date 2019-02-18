@@ -5769,7 +5769,6 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   text-decoration: none;
   font-weight: 400;
   padding-left: calc(8px - 2px);
-  border-bottom: 1px solid #747474;
 }
 
 .button.button-quaternary:hover, .button.button-quaternary.button-hover {
@@ -5794,7 +5793,6 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button.button-quaternary .disabled {
   opacity: 0.5;
   box-shadow: none !important;
-  border-bottom: 1px solid #BFBFBF;
 }
 
 .button.button-quaternary:disabled:hover,
@@ -5804,6 +5802,10 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   font-weight: 400 !important;
   opacity: 0.5 !important;
   box-shadow: none !important;
+}
+
+.button.button-quaternary .icon-svg {
+  margin-right: 0;
 }
 
 .button.button-small {

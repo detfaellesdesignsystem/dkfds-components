@@ -156,7 +156,6 @@
     text-decoration: none;
     font-weight: $font-weight-normal;
     padding-left: calc(8px - #{$button-border-width});
-    border-bottom: $outer-border;
 
     &:hover,
     &.button-hover {
@@ -183,7 +182,6 @@
     .disabled {
       opacity:0.5;
       box-shadow: none !important;
-      border-bottom: $inner-border;
 
       &:hover {
         color: $color-gray-dark !important;
@@ -192,6 +190,10 @@
         opacity:0.5 !important;
         box-shadow: none !important;
       }
+    }
+
+    .icon-svg{
+      margin-right: 0;
     }
   }
 
