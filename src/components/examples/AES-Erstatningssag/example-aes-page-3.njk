@@ -103,17 +103,11 @@
 
     <h1>Oplysninger om skadelidte</h1>
 
-    <div class="form-group">
-        <label class="form-label mb-3" for="id-cpr">Skadelidtes CPR-nr.</label>
-        <div class="search">
-                <input class="form-input input-width-xs" id="input-type-text" name="" title="Search" type="search">
-            <button class="button button-primary">
-                <svg class="icon-svg m-0"><use xlink:href="#magnify"></use></svg>
-                <span class="sr-only">Søg</span>
-            </button>
-        </div>
+    <div class="form-group search">
+      <label for="iid-cpr" class="sr-only">Skadelidtes CPR-nr.</label>
+      <input class="form-input input-width-xs" id="id-cpr" name="" title="Search" type="search">
+      <button class="button button-search">{{ icon_svg('magnify', 'm-0')}}<span class="sr-only">Søg</span></button>
     </div>
-
     <div class="mt-5">
         <label class="form-label">Navn</label>
         <p class="mt-0">Susanne Maria Zaggariasen</p>
