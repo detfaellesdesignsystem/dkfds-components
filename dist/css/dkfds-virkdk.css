@@ -7606,6 +7606,10 @@ footer .footer-theme {
   width: 100%;
 }
 
+.header .solution-header.header-end {
+  border-bottom: 1px solid #747474;
+}
+
 .header .solution-header .solution-header-inner {
   display: -ms-flexbox;
   display: flex;
@@ -8003,7 +8007,7 @@ footer .footer-theme {
 }
 
 .navbar-primary {
-  border-bottom: 1px solid #BFBFBF;
+  border-bottom: 1px solid #747474;
   padding-top: 0;
 }
 

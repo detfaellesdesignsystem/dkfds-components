@@ -103,6 +103,9 @@ $z-index-nav:     9000;
   .solution-header{
     border-bottom: $inner-border;
     width: 100%;
+    &.header-end{
+      border-bottom: $outer-border;
+    }
 
     .solution-header-inner{
       display: flex;
