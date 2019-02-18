@@ -13,6 +13,7 @@ context:
       class: 'button-secondary'
       text: 'Log ud'
   solution_header_data:
+    class: 'header-end'
     title:
       href: '#'
       title: 'Hjem'

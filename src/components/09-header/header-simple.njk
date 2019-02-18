@@ -22,7 +22,7 @@
 
 {% macro solution_header(solution_header_data) %}
   <!--2A: Solutiuon header -->
-  <div class="solution-header header-end">
+  <div class="solution-header {{ solution_header_data.class }}">
     <div class="container solution-header-inner">
       <div class="solution-heading">
         <a href="{{ solution_header_data.title.href | default('/') }}" title="{{ solution_header_data.title.title | default('Home') }}"  aria-label="{{ solution_header_data.title.label | default('Home') }}">
