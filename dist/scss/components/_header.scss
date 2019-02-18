@@ -101,7 +101,12 @@ $z-index-nav:     9000;
   }
 
   .solution-header{
-    border-bottom: $inner-border;
+    border-bottom: $outer-border;
+
+    @include media-breakpoint-up(lg) {
+      border-bottom: $inner-border;
+    }
+
     width: 100%;
     &.header-end{
       border-bottom: $outer-border;

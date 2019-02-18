@@ -7596,8 +7596,14 @@ footer .footer-theme {
 }
 
 .header .solution-header {
-  border-bottom: 1px solid #BFBFBF;
+  border-bottom: 1px solid #747474;
   width: 100%;
+}
+
+@media (min-width: 992px) {
+  .header .solution-header {
+    border-bottom: 1px solid #BFBFBF;
+  }
 }
 
 .header .solution-header.header-end {
