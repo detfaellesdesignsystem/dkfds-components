@@ -9204,7 +9204,6 @@ input[type=search] {
 }
 
 .overflow-menu .button-overflow-menu {
-  position: relative;
   background-color: transparent;
   border: 0;
   border-radius: 0;
