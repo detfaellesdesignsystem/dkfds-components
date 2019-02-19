@@ -9299,10 +9299,6 @@ input[type=search] {
   padding-right: 0 !important;
 }
 
-.overflow-menu .overflow-list li li {
-  list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
-}
-
 .overflow-menu .overflow-list button {
   background-color: transparent;
   border: 0;
