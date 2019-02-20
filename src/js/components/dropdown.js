@@ -62,33 +62,45 @@ class dropdown {
         }
     }
 
-    closeAll (){
-      var triggerEl = select('.js-dropdown', 'body');
-      var targetEl = select('.overflow-menu-inner', 'body');
 
-      for (var i = 0; i < triggerEl.length; i++){
-        triggerEl[i].setAttribute('aria-expanded', 'false');
-      }
-      for (var b = 0; b < targetEl.length; b++){
-        targetEl[b].classList.add('collapsed');
-        targetEl[b].setAttribute('aria-hidden', 'true');
+    closeAll (){
+      const body = document.querySelector('body');
+
+      var overflowMenuEl = select('.overflow-menu', 'body');
+
+      for (var oi = 0; oi < overflowMenuEl.length; oi++){
+        var currentOverflowMenuEL = overflowMenuEl[oi];
+        var triggerEl = select('.js-dropdown', currentOverflowMenuEL);
+        var targetEl = select('.overflow-menu-inner', currentOverflowMenuEL);
+
+        if(body.classList.contains('mobile_nav-active')){
+          if(!currentOverflowMenuEL.closest('.navbar')) {
+            triggerEl[0].setAttribute('aria-expanded', 'false');
+            targetEl[0].classList.add('collapsed');
+            targetEl[0].setAttribute('aria-hidden', 'true');
+          }
+        } else{
+          triggerEl[0].setAttribute('aria-expanded', 'false');
+          targetEl[0].classList.add('collapsed');
+          targetEl[0].setAttribute('aria-hidden', 'true');
+        }
       }
     }
     
     toggleDropdown (forceClose) {
         if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
             //change state
-            if(this.triggerEl.getAttribute("aria-expanded") == "true" || forceClose){
-
+            if(this.triggerEl.getAttribute('aria-expanded') == 'true' || forceClose){
                 //close
-                this.triggerEl.setAttribute("aria-expanded", "false");
-                this.targetEl.classList.add("collapsed");
-                this.targetEl.setAttribute("aria-hidden", "true");
+                this.triggerEl.setAttribute('aria-expanded', 'false');
+                this.targetEl.classList.add('collapsed');
+                this.targetEl.setAttribute('aria-hidden', 'true');
             }else{
+                this.closeAll();
                 //open
-                this.triggerEl.setAttribute("aria-expanded", "true");
-                this.targetEl.classList.remove("collapsed");
-                this.targetEl.setAttribute("aria-hidden", "false");
+                this.triggerEl.setAttribute('aria-expanded', 'true');
+                this.targetEl.classList.remove('collapsed');
+                this.targetEl.setAttribute('aria-hidden', 'false');
             }
         }
     }
