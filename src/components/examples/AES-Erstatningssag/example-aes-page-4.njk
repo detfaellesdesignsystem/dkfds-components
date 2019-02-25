@@ -4,7 +4,7 @@
 
 {%- from "09-header/header-simple.njk" import portal_header as portal_header -%}
 {%- from "09-header/header-simple.njk" import solution_header as solution_header -%}
-{% from "14-footers/footer-basic.njk" import footer_basic as footer_basic %}
+{% from "14-footers/footer-simple.njk" import footer_simple as footer_simple %}
 
 {% from "07-form/controls/radiobutton.njk" import radiobutton as radiobutton %}
 
@@ -140,7 +140,7 @@
 {% endblock %}
 
 {% block footer -%}
-  {{ footer_basic(footer_data) }}
+  {{ footer_simple(footer_data) }}
 {% endblock %}
 
 {{ modal('modal-contact', modal_contact_data) }}

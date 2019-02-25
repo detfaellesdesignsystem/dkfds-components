@@ -1,0 +1,50 @@
+status: ready
+
+context:
+  footer_data:
+    cols:
+    - col:
+      col_size_desktop: 3
+      text_align_right: false
+      content: <h1 class="h5 mb-4" title="Ansvarlig myndighed" aria-label="Ansvarlig myndighed">Ansvarlig myndighed</h1>
+      lists:
+      - list:
+        inline_list: false
+        listitems:
+          - content: '<p>Digitaliseringsstyrelsen</p>'
+          - content: '<p>Landgreven 4</p>'
+          - content: '<p>1413 København K</p>'
+    - col:
+      col_size_desktop: 3
+      text_align_right: false
+      content: '<h1 class="h5 mb-4" title="Kontakt" aria-label="Kontakt">Kontakt</h1>'
+      lists:
+      - list:
+        inline_list: false
+        listclass: 'mt-0 nobullet-list'
+        listitems:
+          - content: '<a class="function-link" href="mailto:support@myndighed.dk">support@myndighed.dk</a>'
+          - content: '<a class="function-link" href="tel:004512345678">(+45) 12 34 56 78</a>'
+    - col:
+      col_size_desktop: 3
+      text_align_right: false
+      content: '<h1 class="h5 mb-4" title="Links" aria-label="Links">Links</1>'
+      lists:
+      - list:
+        inline_list: false
+        listclass: 'mt-0 nobullet-list'
+        listitems:
+        - content: <a class="function-link" href="#">Læs lidt om dit</a>
+        - content: <a class="function-link" href="#">Her er også lidt om dat</a>
+        - content: <a class="function-link" href="#">Eller måske er du interesseret i noget helt andet, som tager mange linjer at forklare</a>
+    - col:
+      col_size_desktop: 3
+      text_align_right: false
+      content: '<h1 class="h5 mb-4" title="Kontakt" aria-label="Webtilgængelighed og cookies">Webtilgængelighed og cookies</h1>'
+      lists:
+      - list:
+        inline_list: false
+        listclass: 'mt-0 nobullet-list'
+        listitems:
+        - content: <a class="function-link" href="#">Tilgængelighedserklæring</a>
+        - content: <a class="function-link" href="#">Privatlivspolitik (cookies)</a>

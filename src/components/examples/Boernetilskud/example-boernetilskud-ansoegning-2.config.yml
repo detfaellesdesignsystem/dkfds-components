@@ -26,22 +26,9 @@ context:
   lead: "For at du kan modtage børnetilskud til enlige, skal du være enlig forsørger. Du er enlig forsørger, når du ikke får økonomisk og praktisk hjælp fra en anden person over 18 år, som du kan blive gift med.<br><a href='#'>Læs mere om, hvornår du er enlig forsøger på borger.dk/enlig</a>"
 
   footer_data:
-    cols:
-      - col:
-        col_size_desktop: 6
-        text_align_right: false
-        lists:
-          - list:
-            inline_list: false
-            listitems:
-              - content: '<span class="h5 weight-semibold">Ansvarlig myndighed</span>'
-              - content: '<p>Styrelsen for Eksempel</p>'
-      - col:
-        col_size_desktop: 6
-        text_align_right: true
-        lists:
-          - list:
-            inline_list: false
-            listitems:
-              - content: <a class="function-link" href="mailto:support@example.dk">support@example.dk</a>
-              - content: <a class="function-link" href="tel:12 34 56 78">12 34 56 78</a>
+    listitems:
+      - content: '<span class="h5 weight-semibold">Eksempelstyrelsen</span>'
+      - content: '<a class="function-link" href="mailto:support@example.dk">support@example.dk</a>'
+      - content: '<a class="function-link" href="tel:12 34 56 78">12 34 56 78</a>'
+      - content: '<a href="#" class="function-link">Tilgængelighedserklæring</a>'
+      - content: '<a href="#" class="function-link">Privatlivspolitik (cookies)</a>'

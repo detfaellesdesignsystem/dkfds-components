@@ -1,0 +1,17 @@
+{% macro footer_simple(footer_simple_data) %}
+  <footer>
+    <div class="footer">
+      <div class="container">
+          <div class="align-text-left">
+            <ul class="unstyled-list inline-list">
+              {%- for item in footer_simple_data.listitems -%}
+              <li>{{item.content | safe}}</li>
+              {% endfor -%}
+            </ul>
+          </div>
+      </div>
+    </div>
+  </footer>
+{% endmacro %}
+
+{{ footer_simple(footer_simple_data) }}

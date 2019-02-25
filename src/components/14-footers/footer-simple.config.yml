@@ -1,0 +1,10 @@
+status: ready
+
+context:
+  footer_simple_data:
+    listitems:
+      - content: '<span class="h5 weight-semibold">Digitaliseringsstyrelsen</span>'
+      - content: '<a href="mailto:support@myndighed.dk" class="function-link" title="Skriv til Digitaliseringsstyrelsen">support@myndighed.dk</a>'
+      - content: '<a href="tel:+4512345678" class="function-link" title="Ring til Digitaliseringsstyrelsen">(+45) 12 34 56 78</a>'
+      - content: '<a href="#" class="function-link">Tilgængelighedserklæring</a>'
+      - content: '<a href="#" class="function-link">Privatlivspolitik (cookies)</a>'

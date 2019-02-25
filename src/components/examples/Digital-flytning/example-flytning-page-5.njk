@@ -7,7 +7,7 @@
 
 {% from "alerts/alerts.njk" import alert as alert %}
 
-{% from "14-footers/footer-basic.njk" import footer_basic as footer_basic %}
+{% from "14-footers/footer-simple.njk" import footer_simple as footer_simple %}
 
 
 {% block header %}
@@ -134,7 +134,7 @@
 {% endblock %}
 
 {% block footer -%}
-  {{ footer_basic(footer_data) }}
+  {{ footer_simple(footer_data) }}
 {% endblock %}
 
 {{ modal('modal-contact', modal_contact_data) }}

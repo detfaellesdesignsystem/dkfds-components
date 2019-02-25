@@ -2387,7 +2387,7 @@ h6, .h6 {
 }
 
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary),
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list),
 ol:not(.accordion):not(.accordion-bordered) {
   max-width: 66ch;
 }
