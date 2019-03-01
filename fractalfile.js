@@ -17,7 +17,6 @@ fractal.set('project.title', 'Frontend Styleguide');
 
 const components = fractal.components;
 components.set('ext', '.njk');
-components.set('path', 'src/components');
 components.set('default.preview', '@dkfds');
 components.set('default.context', context);
 
@@ -29,7 +28,6 @@ components.engine(require('@frctl/nunjucks')({
     dataurl: (d, type) => `data:${type},${encodeURIComponent(d)}`,
   },
   paths: [
-    'src/components',
     'src/img'
   ]
 }));

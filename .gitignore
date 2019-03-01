@@ -1,5 +1,6 @@
 .DS_store
 .*.swp
+package-lock.json
 
 # ignore Node-specific files and directories
 node_modules/
@@ -22,3 +23,5 @@ dkfds-*.zip
 
 build/
 .idea/
+
+
