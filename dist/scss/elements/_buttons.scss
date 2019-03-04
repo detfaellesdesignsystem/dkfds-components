@@ -25,6 +25,12 @@
     width: auto;
   }
 
+  @include media-breakpoint-down(sm) {
+    & + .button {
+      margin-top: 8px;
+    }
+  }
+
   &.focus,
   &:focus {
     outline: $focus-outline;  

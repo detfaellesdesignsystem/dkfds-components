@@ -31,6 +31,11 @@
   @include media-breakpoint-up(sm) {
     width: auto;
   }
+  @include media-breakpoint-down(sm) {
+    & + .tag {
+      margin-top: 8px;
+    }
+  }
 
   &:hover,
   &.tag-hover {

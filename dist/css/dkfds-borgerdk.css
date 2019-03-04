@@ -5652,6 +5652,12 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   }
 }
 
+@media (max-width: 767px) {
+  .button + .button {
+    margin-top: 8px;
+  }
+}
+
 .button.focus, .button:focus {
   outline: 4px solid #747474;
   outline-offset: 1px;
@@ -5928,6 +5934,12 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 @media (min-width: 576px) {
   .tag {
     width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .tag + .tag {
+    margin-top: 8px;
   }
 }
 
