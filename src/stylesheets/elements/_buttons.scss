@@ -117,24 +117,24 @@
 
   //############### tertiary ############
   &.button-tertiary {
-    border-color:$color-gray-medium-dark;
+    border-color: $color-gray-medium-dark;
     background-color: transparent;
     color: $color-black;
     font-weight: $font-weight-normal;
 
     &:hover,
     &.button-hover {
-      border-color: $color-gray-medium-dark;
+      border-color: $color-gray-dark;
     }
 
     &:active,
     &.button-active {
-      border-color: $color-gray-medium-dark;
+      border-color: $color-black;
     }
 
     &.focus,
     &:focus {
-      border-color:$color-gray-light;
+      border-color:$color-gray-medium-dark;
       background-color: transparent;
     }
 

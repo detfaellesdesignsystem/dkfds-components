@@ -5740,15 +5740,15 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 }
 
 .button.button-tertiary:hover, .button.button-tertiary.button-hover {
-  border-color: #747474;
+  border-color: #454545;
 }
 
 .button.button-tertiary:active, .button.button-tertiary.button-active {
-  border-color: #747474;
+  border-color: #1a1a1a;
 }
 
 .button.button-tertiary.focus, .button.button-tertiary:focus {
-  border-color: #BFBFBF;
+  border-color: #747474;
   background-color: transparent;
 }
 
