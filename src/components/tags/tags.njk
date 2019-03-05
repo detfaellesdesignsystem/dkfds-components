@@ -1,0 +1,4 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{%- macro tag(text, class, attribute, icon) -%}
+    <button class="tag {{ class }}" {{ attribute }}>{{ text }} {% if icon %} {{ icon_svg(icon)}} {% endif %}</button>
+{%- endmacro -%}

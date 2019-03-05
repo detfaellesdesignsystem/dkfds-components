@@ -1,0 +1,6 @@
+{% macro checkbox(id, name, value, disabled, checked, text, class, focus, large, attr, inputClasses, inputAttrs, formClasses) %}
+  <div class="form-group {{formClasses}}">
+    <input id="{{id}}" type="checkbox" name="{{name}}" value="{{value}}" class="form-checkbox {% if focus %}focus{% endif %} {% if large %}checkbox-large{% endif %} {{inputClasses}}"  {% if disabled %}disabled{% endif %} {% if checked %}checked{% endif %} {{inputAttrs | safe }}>
+    <label for="{{id}}" class="{{class}}" {{attr}} >{{text | safe }}</label>
+  </div>
+{% endmacro %}

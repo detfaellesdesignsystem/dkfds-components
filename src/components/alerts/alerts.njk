@@ -1,0 +1,25 @@
+{# 
+  @param classes: alert-info, alert-success, alert-warning, alert-error, alert-paragraph, alert-slim. 
+  @param role: e.g. 'alert'. 
+  @param title: String, title of the alert. 
+  @param content: String, the text content of the alert. 
+
+  @usage: 
+    {% import "alerts/alerts.njk" as alerts %}
+    ...
+    {{ alert('alert-info', 'alert', 'A fancy title', 'Some alert content text') }}
+
+  @return: the HTML for an alert-box.
+#}
+{% macro alert(classes, role, title, content, aria) %}
+
+<div class="alert {{ classes }}" {% if role %}role="{{role}}"{% endif %} aria-label ="{{ aria }}">
+  <div class="alert-body">
+    {%- if title -%}
+    <p class="alert-heading">{{ title | safe }}</p>
+    {%- endif -%}
+    <p class="alert-text">{{ content | safe }}</p>
+  </div>
+</div>
+
+{% endmacro %}

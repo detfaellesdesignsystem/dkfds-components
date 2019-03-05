@@ -1,0 +1,24 @@
+
+{% import "components/form/controls/text-input.njk" as input %}
+
+{% macro adresseform() %}
+  <div class="input-grid input-grid-small">
+    {{input.textinput("input-text-postnummer", "Postnummer", "", false, "", "input-text-postnummer")}}
+  </div>
+
+  <div class="input-grid input-grid-medium">
+    {{input.textinput("input-text-by", "By", "", false, "", "input-text-by")}}
+  </div>
+
+  {{input.textinput("input-text-gade", "Gade", "", false, "", "input-text-gade")}}
+
+  <div class="input-grid input-grid-small">
+    {{input.textinput("input-text-husnummer", "Husnummer", "", false, "", "input-text-husnummer")}}
+  </div>
+  <div class="input-grid input-grid-small">
+    {{input.textinput("input-text-dør", "Dør", "", false, "", "input-text-dør")}}
+  </div>
+  <div class="input-grid input-grid-large" >
+    {{input.textinput("input-text-coadresse", "C/O-adresse", "", false, "", "input-text-coadresse", "input-optional")}}
+  </div>
+{% endmacro %}

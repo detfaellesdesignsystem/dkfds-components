@@ -1,0 +1,28 @@
+{% macro footer_columns(footer_data) %}
+  <footer>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          {%- for col in footer_data.cols -%}
+          <div class="col-12 col-sm-12 col-md-{{ col.col_size_desktop }} footer-col">
+            <section>
+              <div class="{%- if col.text_align_right %} align-text-right  {% else %} align-text-left {% endif -%}">
+                {{ col.content | safe }}
+                {% for listsitem in col.lists %}
+                  <ul class=" {{ listsitem.listclass|default('unstyled-list') }} {%- if listsitem.inline_list %} inline-list {% endif -%} ">
+                    {% for item in listsitem.listitems %}
+                    <li>{{item.content | safe}}</li>
+                    {% endfor %}
+                  </ul>
+                {% endfor %}
+              </div>
+            </section>
+          </div>
+          {% endfor -%}
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endmacro %}
+
+{{ footer_columns(footer_data) }}

@@ -1,0 +1,26 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+<div class="container">
+{% macro accordion(variant, items, id_prefix, multiselectable) %}
+<ul class="accordion {% if variant %}accordion-{{ variant }}{% endif %}"
+  {% if multiselectable == true %} aria-multiselectable="true"{% endif %}>
+  {% for item in items %}
+  <li>
+    <button class="accordion-button"
+      aria-expanded="{{ item.expanded | default('false') }}"
+      {% if item.error_message %} aria-describedby="error-message" {% endif %}
+      aria-controls="{{ id_prefix }}{{ item.id }}">
+      {{ item.title }}
+
+      {%- if item.icon %}
+        <span class="accordion-icon {% if item.iconclass %} {% endif %}">
+          <span class="icon_text">{{ item.icontext }}</span>  {{ icon_svg(item.icon)}}
+        </span>
+      {% endif -%}
+    </button>
+    <div id="{{ id_prefix }}{{ item.id }}" class="accordion-content">
+      <p>{{ item.content }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

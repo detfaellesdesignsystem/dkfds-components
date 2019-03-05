@@ -1,0 +1,63 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
+
+{# Free step guide #}
+{% macro tringuide(trinliste) %}
+  <ul class="sidenav-list">
+    {% for trin in trinliste %}
+      <li{% if trin.disabled %} class="disabled"{% endif %}>
+        <a href="{{trin.href}}" {% if trin.active %} class="active" {% endif %}>
+            {{loop.index}}. {{trin.text}}
+
+            {% if trin.icon %}
+            <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
+                {{ icon_svg(trin.icon) }}
+            </span>
+            {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{# Locked step guide #}
+{% macro tringuide_locked(trinliste) %}
+  <ul class="sidenav-list-locked">
+    {% for trin in trinliste %}
+      <li class="disabled">
+        <a  {% if trin.active %} class="active" {% endif %} disabled tab-index="-1" aria-disabled="true">
+            {{loop.index}}. {{trin.text}}
+
+            {% if trin.icon %}
+            <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
+                {{ icon_svg(trin.icon) }}
+            </span>
+            {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+{# information step guide #}
+{% macro tringuide_information(trinliste) %}
+  <ul class="sidenav-list">
+    {% for trin in trinliste %}
+      <li{% if trin.disabled %} class="disabled"{% endif %}>
+        <a href="{{trin.href}}" {% if trin.active %} class="active" {% endif %}>
+            <div class="d-inline-block">
+                {{loop.index}}. {{trin.text}}
+                {% if trin.information %}
+                    <p class="sidenav-information">{{trin.information}}</p>
+                {% endif %}
+            </div>
+            {% if trin.icon %}
+                <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
+                    {{ icon_svg(trin.icon) }}
+                </span>
+            {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

@@ -1,0 +1,195 @@
+{% import "components/buttons/buttons.njk" as button %}
+
+{% macro cards1(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card1') -%}
+    <div class="card">
+    {%if (header) or (subheader) %}
+      <div class="card-header">
+        <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+        <p class="sub-header">{{subheader}}</p>
+      </div>
+    {% endif %}
+    {%if cardtext %} 
+      <div class="card-text">
+        <p class="text">{{cardtext | safe}}</p>
+      </div>
+    {% endif %}
+    {%if (contenttext) or (cardcontent) %}
+      <div class="card-content">
+        <div class="content-text">
+          <p>{{contenttext | safe}}</p>
+        </div>
+        <div class="content">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                {{cardcontent | safe}}
+              </div>
+            </div>
+        </div>
+      </div>
+    {% endif %}
+    {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
+      <div class="card-action">
+        <div class="action-content">
+          {{actioncontent | safe}}
+        </div>
+        <div class="action-buttons">
+        {{ actionbuttons | safe}}
+        </div>
+        <div class="action-links">
+        {{ actionlinks | safe}}
+        </div>
+      </div>
+    {% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}
+
+{% macro cards2(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card2') -%}
+    <div class="card">
+    {%if (header) or (subheader) %}
+      <div class="card-header">
+        <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+        <p class="sub-header">{{subheader}}</p>
+      </div>
+      {% endif %}
+      {%if (contenttext) or (cardcontent) %}
+        <div class="card-content">
+          <div class="content-text">
+            <p>{{contenttext | safe}}</p>
+          </div>
+          <div class="content">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                {{cardcontent | safe}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {%if cardtext %} 
+      <div class="card-text">
+        <p class="text">{{cardtext | safe}}</p>
+      </div>
+      {% endif %}
+      </div>
+  {%- endif %}
+{% endmacro %}
+
+
+{% macro cards3(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card3') -%}
+    <div class="card">
+      {%if (contenttext) or (cardcontent) %}
+        <div class="card-content">
+          <div class="content-text">
+            <p>{{contenttext | safe}}</p>
+          </div>
+          <div class="content">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                {{cardcontent | safe}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {%if (header) or (subheader) %}
+        <div class="card-header">
+          <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+          <p class="sub-header">{{subheader}}</p>
+        </div>
+    {% endif %}
+    {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
+      <div class="card-action">
+        <div class="action-content">
+          {{actioncontent | safe}}
+        </div>
+        <div class="action-buttons">
+        {{ actionbuttons | safe }}
+        </div>
+        <div class="action-links">
+        {{ actionlinks | safe }}
+        </div>
+      </div>
+    {% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}
+
+{% macro cards4(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card4') -%}
+    <div class="card">
+      {%if (header) or (subheader) %}
+        <div class="card-header">
+          <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+          <p class="sub-header">{{subheader}}</p>
+        </div>
+      {% endif %}
+      {%if cardtext %} 
+        <div class="card-text">
+          <p class="text">{{cardtext | safe}}</p>
+        </div>
+      {% endif %}
+      {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
+        <div class="card-action">
+          <div class="action-content">
+            {{actioncontent | safe}}
+          </div>
+          <div class="action-buttons">
+          {{ actionbuttons | safe}}
+          </div>
+          <div class="action-links">
+          {{ actionlinks | safe }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}
+
+{% macro cards5(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card5') -%}
+    <div class="card">
+      {%if (header) or (subheader) %}
+        <div class="card-header">
+          <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+          <p class="sub-header">{{subheader}}</p>
+        </div>
+      {% endif %}
+      {%if (contenttext) or (cardcontent) %}
+        <div class="card-content">
+          <div class="content-text">
+            <p>{{contenttext | safe}}</p>
+          </div>
+          <div class="content">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                {{cardcontent | safe}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}
+
+{% macro cards6(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+  {%- if (name == 'card6') -%}
+    <div class="card">
+      {%if (header) or (subheader) %}
+        <div class="card-header">
+          <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
+          <p class="sub-header">{{subheader}}</p>
+        </div>
+      {% endif %}
+      {%if cardtext %} 
+        <div class="card-text">
+          <p class="text">{{cardtext | safe}}</p>
+        </div>
+      {% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}

@@ -1,0 +1,6 @@
+{% import "components/form/controls/text-input.njk" as input %}
+
+{% macro navneform() %}
+      {{input.textinput(input-text-fornavn, "Fornavn", "", false, "", input-text-fornavn)}}
+      {{input.textinput(input-text-efternavn, "Efternavn", "", false, "", input-text-efternavn)}}
+{% endmacro %}

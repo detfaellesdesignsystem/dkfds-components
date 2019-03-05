@@ -1,0 +1,14 @@
+
+
+{% macro tabnav(tabnav) %}
+
+<ul class="tabnav">
+  {% for item in tabnavlist.items %}
+  <li>
+    <a href="{{item.href}}" {% if item.active %} class="active"{% endif %}>
+      {{ item.title }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}

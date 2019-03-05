@@ -1,0 +1,27 @@
+{# Unordered list #}
+{% macro ul_list(list_ul, subclass) %}
+  {% for item in list_ul %}
+  <li>
+    {{ item.text }}
+    {% if item.list_ul %}
+    <ul class="{{ subclass }}">
+      {{ ul_list(item.list_ul, subclass) }}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %}
+{% endmacro %}
+
+{# Ordered list #}
+{% macro ol_list(list_ol, subclass) %}
+  {% for item in list_ol %}
+  <li>
+    {{ item.text }}
+    {% if item.list_ol %}
+    <ol class="{{ subclass }}">
+      {{ ol_list(item.list_ol, subclass) }}
+    </ol>
+    {% endif %}
+  </li>
+  {% endfor %}
+{% endmacro %}

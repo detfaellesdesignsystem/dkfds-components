@@ -1,0 +1,5 @@
+{% macro icon(iconname, classes, aria) %}
+  <i class="icon icon-{{iconname}} {{ classes }}" {% if aria %}aria-label ="{{aria}}"{% endif %}></i>
+{% endmacro %}
+
+{% macro icon_old(icon, classes) %}<i class="mdi mdi-{{icon}}{% if classes %} {{classes}}{% endif %}"></i>{% endmacro %}
