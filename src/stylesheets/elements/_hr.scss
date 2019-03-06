@@ -1,6 +1,5 @@
 hr{
-    border-color: $color-gray-light; //inner border color
+    border-top: $inner-border; //inner border color
     display: block;
-    border-top-width: 0;
-    border-bottom-width: 1px;
+    border-bottom-width: 0;
 }
