@@ -6732,7 +6732,7 @@ ol li {
   margin-top: 8px;
   list-style: none;
   position: relative;
-  padding-left: 37px;
+  padding-left: 4rem;
   line-height: 2.4rem;
 }
 
@@ -6740,7 +6740,6 @@ ol li:before {
   content: counters(item, ".") ".";
   counter-increment: item;
   font-weight: 500;
-  position: absolute;
   left: 20px;
 }
 
