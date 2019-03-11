@@ -7486,7 +7486,8 @@ footer .footer ul.footer-links li {
 @media (min-width: 768px) {
   footer .footer .inline-list > li:not(:last-child):after {
     content: "\00b7" !important;
-    margin-left: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
   }
 }
 

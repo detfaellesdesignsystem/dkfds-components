@@ -54,7 +54,8 @@ footer {
         &:after {
           @include media-breakpoint-up(md) { 
             content: "\00b7" !important;
-            margin-left: map-get($spacers, 2);
+            margin-left: map-get($spacers, 3);
+            margin-right: map-get($spacers, 3);
           }
         }
       }
