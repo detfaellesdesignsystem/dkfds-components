@@ -2,7 +2,7 @@
 
 .button{
   appearance: none;
-  display: inline-flex;
+  display: inline-block;
   width: 100%;
   //@include margin(0.5em 0.5em 0.5em null);
   padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width});
