@@ -14,14 +14,13 @@
 
 {# Ordered list #}
 {% macro ol_list(list_ol, subclass) %}
-  {% for item in list_ol %}
-  <li>
-    {{ item.text }}
+  {%- for item in list_ol -%}
+  <li>{{ item.text }}
     {% if item.list_ol %}
     <ol class="{{ subclass }}">
       {{ ol_list(item.list_ol, subclass) }}
     </ol>
     {% endif %}
   </li>
-  {% endfor %}
+  {%- endfor -%}
 {% endmacro %}

@@ -6736,6 +6736,7 @@ ol li:before {
   counter-increment: item;
   font-weight: 500;
   left: 20px;
+  padding-right: 4px;
 }
 
 ol li ol li:before {
