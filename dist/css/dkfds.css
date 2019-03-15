@@ -7806,7 +7806,7 @@ footer .footer-theme {
   }
 }
 
-@media (max-width: lg) {
+@media (max-width: 1199px) {
   .header .function-link {
     display: block;
     margin-top: 8px;

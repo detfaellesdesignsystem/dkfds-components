@@ -261,7 +261,7 @@ $z-index-nav:     9000;
   }
 
   .function-link {
-    @media (max-width: $nav-responsive-breakpoint) {
+    @include media-breakpoint-down(#{$nav-responsive-breakpoint}) {
       display: block;
       margin-top: 8px;
       .icon-svg {
