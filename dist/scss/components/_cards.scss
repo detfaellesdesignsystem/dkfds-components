@@ -81,9 +81,6 @@
 .card-content {
   @include body-copy-text;
   padding: map-get($spacers, 0);
-  padding-left: map-get($spacers, 5);
-  padding-right: map-get($spacers, 5);
-  background: repeating-linear-gradient(45deg, rgba(245, 245, 245, 0.3), rgba(245, 245, 245, 0.3) 10px, rgba(191, 191, 191, 0.3) 10px, rgba(191, 191, 191, 0.3) 20px);
   color: $color-gray-dark;
   ul {
     margin-bottom:map-get($spacers, 0);

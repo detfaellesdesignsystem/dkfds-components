@@ -8908,9 +8908,6 @@ input[type=search] {
   color: #1a1a1a;
   text-transform: none;
   padding: 0;
-  padding-left: 24px;
-  padding-right: 24px;
-  background: repeating-linear-gradient(45deg, rgba(245, 245, 245, 0.3), rgba(245, 245, 245, 0.3) 10px, rgba(191, 191, 191, 0.3) 10px, rgba(191, 191, 191, 0.3) 20px);
   color: #454545;
 }
 
