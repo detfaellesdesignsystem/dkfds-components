@@ -5,7 +5,6 @@
   border: $outer-border;
   overflow: hidden;
   background: $color-white;
-  height: 100%;
 
   //small card
   &-small {
@@ -25,6 +24,10 @@
     > :last-of-type {
       padding-bottom:map-get($spacers, 5);
     }
+  }
+
+  &-align-height {
+    height: 100%;
   }
 
   p {

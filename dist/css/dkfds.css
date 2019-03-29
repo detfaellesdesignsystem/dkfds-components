@@ -8815,7 +8815,6 @@ input[type=search] {
   border: 1px solid #747474;
   overflow: hidden;
   background: #ffffff;
-  height: 100%;
 }
 
 .card-small > :last-of-type {
@@ -8828,6 +8827,10 @@ input[type=search] {
 
 .card-large > :last-of-type {
   padding-bottom: 24px;
+}
+
+.card-align-height {
+  height: 100%;
 }
 
 .card p {
