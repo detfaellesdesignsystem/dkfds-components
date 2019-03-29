@@ -45,7 +45,7 @@ a {
   &.disabled {
     cursor: not-allowed !important;
     color: $color-gray-002 !important;
-    opacity: 0.5;
+    opacity: 0.3;
     &:focus{
       outline: none;
       background-color: transparent;

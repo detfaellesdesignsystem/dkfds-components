@@ -2094,7 +2094,7 @@ a:visited, a.link-visited {
 a:disabled, a.disabled {
   cursor: not-allowed !important;
   color: #454545 !important;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 a:disabled:focus, a.disabled:focus {
@@ -5686,8 +5686,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-primary:disabled,
 .button.button-primary .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 .button.button-primary:disabled:hover,
@@ -5695,7 +5696,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #ffffff !important;
   background-color: #44831E !important;
   border-color: #3C5C22 !important;
-  opacity: 0.5 !important;
+  opacity: 0.3 !important;
   box-shadow: none !important;
 }
 
@@ -5722,8 +5723,10 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-secondary:disabled,
 .button.button-secondary .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
+  cursor: not-allowed;
+  border-color: #BFBFBF !important;
 }
 
 .button.button-secondary:disabled:hover,
@@ -5731,7 +5734,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #1a1a1a !important;
   background-color: #F5F5F5 !important;
   border-color: #BFBFBF !important;
-  opacity: 0.5 !important;
+  opacity: 0.3 !important;
   box-shadow: none !important;
 }
 
@@ -5757,8 +5760,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-tertiary:disabled,
 .button.button-tertiary .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 .button.button-tertiary:disabled:hover,
@@ -5767,7 +5771,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   background-color: transparent !important;
   color: #1a1a1a;
   font-weight: 400 !important;
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
 }
 
@@ -5800,8 +5804,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-quaternary:disabled,
 .button.button-quaternary .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 .button.button-quaternary:disabled:hover,
@@ -5809,7 +5814,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #454545 !important;
   background-color: transparent !important;
   font-weight: 400 !important;
-  opacity: 0.5 !important;
+  opacity: 0.3 !important;
   box-shadow: none !important;
 }
 
@@ -5840,8 +5845,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-small:disabled,
 .button.button-small .disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 .button.button-small:disabled:hover,
@@ -5849,7 +5855,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #1a1a1a !important;
   background-color: #F5F5F5 !important;
   border-color: #BFBFBF !important;
-  opacity: 0.5 !important;
+  opacity: 0.3 !important;
   box-shadow: none !important;
 }
 
