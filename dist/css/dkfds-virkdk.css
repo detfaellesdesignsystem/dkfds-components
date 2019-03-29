@@ -394,7 +394,7 @@ th {
 }
 
 .header .portal-header .logo {
-  background-image: url("../img/logo_virk_indberet.svg");
+  background-image: url("../img/logo_virk.svg");
   width: 200px;
   height: 58px;
 }
@@ -5622,7 +5622,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   width: 100%;
   padding: calc(8px - 2px) calc(16px - 2px);
   border-radius: 4px;
-  border: 2px solid #04556E;
+  border: 2px solid #004993;
   font-size: 1.6rem;
   font-weight: 500;
   min-height: 40px;
@@ -5661,23 +5661,23 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 
 .button.button-primary {
   color: #ffffff;
-  background-color: #067293;
-  border-color: #04556E;
+  background-color: #0059B3;
+  border-color: #004993;
 }
 
 .button.button-primary:hover, .button.button-primary.button-hover {
-  background-color: #04556E;
-  border-color: #033747;
+  background-color: #004993;
+  border-color: #003972;
 }
 
 .button.button-primary:active, .button.button-primary.button-active {
-  background-color: #033747;
-  border-color: #033747;
+  background-color: #003972;
+  border-color: #003972;
 }
 
 .button.button-primary.focus, .button.button-primary:focus {
-  background-color: #067293;
-  border-color: #04556E;
+  background-color: #0059B3;
+  border-color: #004993;
 }
 
 .button.button-primary:disabled,
@@ -5689,8 +5689,8 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button.button-primary:disabled:hover,
 .button.button-primary .disabled:hover {
   color: #ffffff !important;
-  background-color: #067293 !important;
-  border-color: #04556E !important;
+  background-color: #0059B3 !important;
+  border-color: #004993 !important;
   opacity: 0.5 !important;
   box-shadow: none !important;
 }
@@ -6589,7 +6589,7 @@ input[type=text]:read-only, input[type=textarea]:read-only {
 }
 
 [type=range]::-moz-range-track {
-  background: #067293;
+  background: #0059B3;
   border: 1px solid #747474;
   cursor: pointer;
   height: 1.2rem;
@@ -8114,22 +8114,22 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
   }
 }
 
 @media (min-width: 992px) {
   .nav-primary .current span {
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
   }
 }
@@ -8142,18 +8142,18 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
   }
 }
 
 .nav-primary a.current {
   font-weight: 600;
-  color: #067293;
+  color: #0059B3;
 }
 
 .nav-primary button.current {
@@ -8242,7 +8242,7 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom: 7px solid #067293;
+    border-bottom: 7px solid #0059B3;
     padding-bottom: 12px;
   }
 }
@@ -8400,7 +8400,7 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner .current {
   font-weight: 600;
-  color: #067293;
+  color: #0059B3;
 }
 
 @media (min-width: 992px) {
@@ -8568,7 +8568,7 @@ input[type=search] {
 .sidenav-list a:hover {
   background-color: #F5F5F5;
   text-decoration: none;
-  color: #033747;
+  color: #003972;
 }
 
 .sidenav-list a:focus {
@@ -8585,10 +8585,10 @@ input[type=search] {
 }
 
 .sidenav-list a.active {
-  color: #067293;
+  color: #0059B3;
   font-weight: 600;
   padding-left: 12px;
-  border-left: 4px solid #067293;
+  border-left: 4px solid #0059B3;
 }
 
 .sidenav-list li a ul {
@@ -8671,7 +8671,7 @@ input[type=search] {
 .sidenav-list-locked a:hover {
   background-color: #ffffff;
   text-decoration: none;
-  color: #033747;
+  color: #003972;
   cursor: default;
 }
 
@@ -8689,10 +8689,10 @@ input[type=search] {
 }
 
 .sidenav-list-locked a.active {
-  color: #067293;
+  color: #0059B3;
   font-weight: 600;
   padding-left: 12px;
-  border-left: 4px solid #067293;
+  border-left: 4px solid #0059B3;
 }
 
 .sidenav-list-locked li.disabled {
@@ -9476,8 +9476,8 @@ input[type=search] {
 }
 
 .tabnav li a:hover {
-  color: #067293;
-  box-shadow: inset 0px -7px 0px 0px #067293;
+  color: #0059B3;
+  box-shadow: inset 0px -7px 0px 0px #0059B3;
 }
 
 .tabnav li a:focus {
@@ -9485,8 +9485,8 @@ input[type=search] {
 }
 
 .tabnav li a.active {
-  color: #067293;
-  box-shadow: inset 0px -7px 0px 0px #067293;
+  color: #0059B3;
+  box-shadow: inset 0px -7px 0px 0px #0059B3;
   font-weight: 600;
 }
 

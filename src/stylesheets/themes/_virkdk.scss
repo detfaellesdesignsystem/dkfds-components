@@ -1,16 +1,16 @@
 // These variables overwrite the default values, giving the style the virk.dk theme
 
 // Overwriting default values
-$color-primary:               #067293;
-$color-primary-medium:        #04556E;
-$color-primary-dark:          #033747;
+$color-primary:               #0059B3;
+$color-primary-medium:        #004993;
+$color-primary-dark:          #003972;
 $image-path:                  '../img' !default;
 
 .header {
     .portal-header{
         .logo{
-            background-image: url($image-path + '/logo_virk_indberet.svg');
-            width: 200px;
+            background-image: url($image-path + '/logo_virk.svg');
+            width: 90px;
             height: 58px;
         }    
     }
