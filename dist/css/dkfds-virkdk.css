@@ -2219,7 +2219,7 @@ strong, b, .bold {
 small, .small-text {
   font-size: 1.4rem;
   line-height: 2.4rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .form-label {
