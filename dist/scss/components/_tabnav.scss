@@ -3,17 +3,15 @@
   @include unstyled-list;
   list-style-type: none;
   padding: 0;
-  overflow: hidden;
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
   border-bottom: $outer-border;
 
   li {
-    float: none; 
     margin-bottom: 0;
-    float: none; 
- 
-    @include media-breakpoint-up(md) {
-      float: left; 
-    }
+
+
 
     a {
       display: block;
@@ -35,7 +33,7 @@
       }
 
       &:focus{
-        outline: 0px solid $color-focus;
+        outline: $focus-outline;
       }
 
       &.active {
