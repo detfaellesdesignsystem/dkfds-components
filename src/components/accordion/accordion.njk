@@ -17,7 +17,15 @@
         </span>
       {% endif -%}
     </button>
-    <div id="{{ id_prefix }}{{ item.id }}" class="accordion-content">
+
+       {% set ariahidden = "true" %}
+
+      {%- if item.expanded %}
+        {% set ariahidden = "false" %}
+      {% else -%}
+        {% set ariahidden = "true" %}
+      {% endif -%}
+    <div id="{{ id_prefix }}{{ item.id }}" aria-hidden="{{ariahidden}}" class="accordion-content">
       <p>{{ item.content }}</p>
     </div>
   </li>

@@ -6861,13 +6861,11 @@ ol li ol li ol li:before {
 
 .page-container {
   padding-top: 2.4rem;
-  padding-bottom: 5.6rem;
 }
 
 @media (min-width: 768px) {
   .page-container {
     padding-top: 4rem;
-    padding-bottom: 5.6rem;
   }
 }
 
@@ -7453,6 +7451,7 @@ footer .footer {
   border-top: 1px solid #747474;
   padding-top: calc(16px - 1px);
   padding-bottom: calc(16px - 1px);
+  margin-top: 8rem;
 }
 
 @media (min-width: 768px) {
@@ -9530,7 +9529,7 @@ input[type=search] {
   font-weight: 400;
   color: #1a1a1a;
   text-transform: none;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background-color: #fff;
   border: 1px solid #747474;
