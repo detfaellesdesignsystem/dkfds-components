@@ -8101,7 +8101,7 @@ footer .footer-theme {
   line-height: 2.4rem;
   display: block;
   padding-top: calc(16px - 1px);
-  padding-bottom: calc(16px - 1px);
+  padding-bottom: 0px;
   white-space: nowrap;
 }
 
@@ -8124,23 +8124,9 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-  }
-}
-
-@media (min-width: 992px) {
-  .nav-primary .current span {
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
   }
 }
 
@@ -8152,12 +8138,25 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-primary .nav-link span {
+    display: block;
+    border-bottom: 7px solid transparent;
+    padding-bottom: 9px;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-primary .current span {
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
+    border-bottom-color: #44831E;
   }
 }
 
@@ -8252,8 +8251,7 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom: 7px solid #44831E;
-    padding-bottom: 12px;
+    border-bottom-color: #44831E;
   }
 }
 
