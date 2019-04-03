@@ -8822,6 +8822,10 @@ input[type=search] {
   transition: all 0.2s ease-in-out;
 }
 
+#main-content {
+  outline: none;
+}
+
 .card {
   position: relative;
   border-radius: 0;
