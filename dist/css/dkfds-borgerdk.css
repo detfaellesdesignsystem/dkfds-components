@@ -5875,8 +5875,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: inherit;
 }
 
-.button-unstyled:hover {
+.button-unstyled:hover, .button-unstyled:focus {
   background-color: transparent;
+  color: inherit;
 }
 
 @media (min-width: 576px) {
@@ -7185,8 +7186,9 @@ hr {
   border-radius: 3px;
 }
 
-.accordion-button:hover {
+.accordion-button:hover, .accordion-button:focus {
   background-color: transparent;
+  color: inherit;
 }
 
 .accordion-button:hover {
@@ -7651,7 +7653,7 @@ footer .footer-theme {
   padding-bottom: calc(16px - 1px);
 }
 
-.header .solution-header .solution-heading a {
+.header .solution-header .solution-heading a, .header .solution-header .solution-heading h1 {
   font-size: 2.8rem;
   line-height: 3.2rem;
   font-weight: 600;
@@ -7661,7 +7663,7 @@ footer .footer-theme {
 }
 
 @media (max-width: 767px) {
-  .header .solution-header .solution-heading a {
+  .header .solution-header .solution-heading a, .header .solution-header .solution-heading h1 {
     font-size: 2.2rem;
     line-height: 2.4rem;
   }
@@ -8374,8 +8376,9 @@ footer .footer-theme {
   color: inherit;
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner button:hover {
+.nav-primary .overflow-menu .overflow-menu-inner button:hover, .nav-primary .overflow-menu .overflow-menu-inner button:focus {
   background-color: transparent;
+  color: inherit;
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner a {
@@ -9241,8 +9244,9 @@ input[type=search] {
   color: #1a1a1a;
 }
 
-.overflow-menu .button-overflow-menu:hover {
+.overflow-menu .button-overflow-menu:hover, .overflow-menu .button-overflow-menu:focus {
   background-color: transparent;
+  color: inherit;
 }
 
 .overflow-menu .button-overflow-menu:hover {
@@ -9336,8 +9340,9 @@ input[type=search] {
   color: inherit;
 }
 
-.overflow-menu .overflow-list button:hover {
+.overflow-menu .overflow-list button:hover, .overflow-menu .overflow-list button:focus {
   background-color: transparent;
+  color: inherit;
 }
 
 .overflow-menu .overflow-list a {
