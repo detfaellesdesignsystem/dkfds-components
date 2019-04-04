@@ -8805,24 +8805,30 @@ input[type=search] {
   }
 }
 
-.skipnav {
-  background: transparent;
+a.skipnav {
   color: #1a1a1a;
   left: 0;
   padding: 1rem 1.5rem;
   position: absolute;
   top: -4.2rem;
   transition: all 0.2s ease-in-out;
-  z-index: 100;
+  z-index: 8000;
+  max-width: none;
+  outline-offset: 0;
 }
 
-.skipnav:focus {
-  background: #ffffff;
-  left: 0;
-  outline: 0;
-  position: absolute;
-  top: 0;
-  transition: all 0.2s ease-in-out;
+@media (min-width: 768px) {
+  a.skipnav:focus {
+    background-color: #ffffff;
+    left: 0;
+    outline: 4px solid #747474;
+    position: absolute;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    padding: 1rem calc((32px / 2) / 2);
+    margin-top: calc(16px - 1px);
+    margin-left: calc((32px / 2) / 2);
+  }
 }
 
 #main-content {
