@@ -10,7 +10,7 @@ a.skipnav {
   outline-offset: 0;
 
   &:focus {
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(sm) {
       background-color: $color-white;
       left: 0;
       outline: $focus-outline;

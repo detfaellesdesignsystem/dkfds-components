@@ -8817,7 +8817,7 @@ a.skipnav {
   outline-offset: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   a.skipnav:focus {
     background-color: #ffffff;
     left: 0;
