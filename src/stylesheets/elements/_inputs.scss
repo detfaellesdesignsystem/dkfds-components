@@ -28,6 +28,7 @@
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
+  height: calc(#{$input-line-height} + (8px * 2)); // internet explorer ignores line-height
   padding: $input-top-bottom-padding $input-left-right-padding;
   width: 100%;
   max-width: 32rem;
@@ -62,6 +63,7 @@ textarea.form-input{
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
+  height: calc(#{$input-line-height} + (8px * 2));
   max-width: 32rem;
   width: 100%;
   margin-top: $input-top-margin;
@@ -135,14 +137,13 @@ table {
   }
 }
 
-input[type=text]:disabled, input[type=textarea]:disabled{
+input[type=text]:disabled, textarea:disabled{
   background: $color-gray-pale;
   color:$color-gray-medium-light;
   cursor: not-allowed;
 }
 
-
-input[type=text]:read-only, input[type=textarea]:read-only{
+input[readonly][type=text], textarea[readonly]{
   background-color: transparent;
   color:$color-black;
   border: none;

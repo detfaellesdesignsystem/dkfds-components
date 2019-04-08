@@ -264,8 +264,9 @@
   -webkit-font-smoothing: auto;
   color: inherit;
 
-  &:hover {
+  &:hover, &:focus {
     background-color: transparent;
+    color: inherit;
   }
 }
 

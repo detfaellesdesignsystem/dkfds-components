@@ -9,9 +9,9 @@ $image-path:                  '../img' !default;
 .header {
     .portal-header{
         .logo{
-            background-image: url($image-path + '/logo_virk.svg');
-            width: 90px;
-            height: 58px;
+          background-image: url($image-path + '/logo_virk.svg');
+          height: 4.8rem;
+          width: 7.8rem;
         }    
     }
 }

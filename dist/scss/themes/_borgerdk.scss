@@ -11,8 +11,7 @@ $image-path:                  '../img' !default;
         background-color: #f1f1f1;
         .logo{
             background-image: url($image-path + '/logo-borgerdk.svg');
-            width: 200px;
-            height: 47px;
+            height: 4.8rem;
         }
     }
 }

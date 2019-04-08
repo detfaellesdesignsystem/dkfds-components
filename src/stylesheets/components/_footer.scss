@@ -11,8 +11,9 @@ footer {
   //generel for footer
   .footer {
     border-top: $outer-border;
-    padding-top: calc(#{map-get($spacers, 4)} - 1px);
+    padding-top: calc(#{map-get($spacers, 5)} - 1px);
     padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+    margin-top: 8rem;
     @include media-breakpoint-up(md) { 
       padding-bottom: 56px;
     }

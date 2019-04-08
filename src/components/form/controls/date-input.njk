@@ -18,6 +18,12 @@
         <label class="form-label" for="date_of_year_3">{{year}}</label>
         <input class="form-input js-calendar-year-input" for="date_of_year_3" type="tel" min="1900" max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal">
       </div>
+      {% if datepicker %}
+       <button class="button-unstyled button-open-calendar js-calendar-datepicker">
+        <svg class="icon-svg "><use xlink:href="#calendar"></use></svg>
+       </button>
+
+      {% endif %}
     </div>
   </div>
 </fieldset>

@@ -11,16 +11,13 @@
 }
 
 @mixin nav-active {
-  border-bottom: 7px solid $color-primary;
-  padding-bottom: 12px;
+  border-bottom-color: $color-primary;
 }
 @mixin nav-hover {
-  border-bottom: 7px solid $color-primary;
-  padding-bottom: 12px;
+  border-bottom-color: $color-primary;
 }
 @mixin nav-focus {
-  border-bottom: 7px solid $color-primary;
-  padding-bottom: 12px;
+  border-bottom-color: $color-primary;
 }
 
 .navbar {
@@ -77,7 +74,7 @@
       line-height: $base-line-height;
       display: block;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      padding-bottom: 0px;
       white-space: nowrap;
 
       &:hover {
@@ -107,16 +104,6 @@
     }
   }
 
-  .current {
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      span {
-        @include nav-active;
-        @include nav-hover;
-        @include nav-focus;
-      }
-    }
-  }
-
   .nav-link {
     &:hover {
       @media (max-width: $nav-responsive-breakpoint) {
@@ -128,6 +115,23 @@
           @include nav-hover;
           @include nav-focus;
         }
+      }
+    }
+    span{
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        display: block;
+        border-bottom: 7px solid transparent;
+        padding-bottom: 9px;
+      }
+    }
+  }
+
+  .current {
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      span {
+        @include nav-active;
+        @include nav-hover;
+        @include nav-focus;
       }
     }
   }
