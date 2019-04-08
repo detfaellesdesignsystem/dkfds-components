@@ -6445,15 +6445,7 @@ input[type=text]:disabled, input[type=textarea]:disabled {
   cursor: not-allowed;
 }
 
-input[type=text]:-moz-read-only, input[type=textarea]:-moz-read-only {
-  background-color: transparent;
-  color: #1a1a1a;
-  border: none;
-  cursor: default;
-  padding: 0;
-}
-
-input[type=text]:read-only, input[type=textarea]:read-only {
+input[readonly][type=text], textarea[readonly] {
   background-color: transparent;
   color: #1a1a1a;
   border: none;

@@ -143,8 +143,7 @@ input[type=text]:disabled, input[type=textarea]:disabled{
   cursor: not-allowed;
 }
 
-
-input[type=text]:read-only, input[type=textarea]:read-only{
+input[readonly][type=text], textarea[readonly]{
   background-color: transparent;
   color:$color-black;
   border: none;
