@@ -137,7 +137,7 @@ table {
   }
 }
 
-input[type=text]:disabled, input[type=textarea]:disabled{
+input[type=text]:disabled, textarea:disabled{
   background: $color-gray-pale;
   color:$color-gray-medium-light;
   cursor: not-allowed;

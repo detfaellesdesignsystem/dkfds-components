@@ -6439,7 +6439,7 @@ table .form-select {
   padding: calc(8px - 2px) calc(16px - 2px);
 }
 
-input[type=text]:disabled, input[type=textarea]:disabled {
+input[type=text]:disabled, textarea:disabled {
   background: #F5F5F5;
   color: #999999;
   cursor: not-allowed;
