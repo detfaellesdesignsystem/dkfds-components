@@ -7933,7 +7933,7 @@ footer .footer-theme {
 }
 
 .modal .modal__title {
-  margin: 0;
+  margin: 0 48px 0 0;
 }
 
 .modal .modal__content {
