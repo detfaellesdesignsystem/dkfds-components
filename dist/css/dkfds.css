@@ -5989,17 +5989,6 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   position: relative;
 }
 
-.tag.focus:after, .tag:focus:after {
-  content: "";
-  background: #747474;
-  position: absolute;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  left: -2px;
-  top: -2px;
-  z-index: -1;
-}
-
 .tag .icon-svg {
   float: right;
   margin: 0px 0px 0px 5px;
@@ -8141,9 +8130,9 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary button[aria-expanded=true] span {
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
   }
 }
 
@@ -8155,9 +8144,9 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .nav-link:hover span {
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
   }
 }
 
@@ -8171,9 +8160,9 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .current span {
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
-    border-bottom-color: #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
+    border-bottom: 7px solid #747474;
   }
 }
 
@@ -8251,7 +8240,7 @@ footer .footer-theme {
   line-height: 2.4rem;
   display: block;
   padding-top: calc(16px - 1px);
-  padding-bottom: calc(16px - 1px);
+  padding-bottom: 0;
   white-space: nowrap;
   width: 100%;
 }
@@ -8264,11 +8253,13 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .button-overflow-menu span {
   padding-right: 24px;
+  padding-bottom: 9px;
+  display: block;
 }
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
-    border-bottom-color: #747474;
+    border-bottom: 7px solid #747474;
   }
 }
 
