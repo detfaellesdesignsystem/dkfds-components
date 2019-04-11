@@ -5945,6 +5945,8 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   padding: 0;
   padding-left: 8px;
   padding-right: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
   border-radius: 4px;
   border: none;
   font-size: 1.6rem;
@@ -9509,7 +9511,6 @@ a.skipnav {
 }
 
 .tabnav li a:hover {
-  color: #0059B3;
   box-shadow: inset 0px -7px 0px 0px #0059B3;
 }
 
