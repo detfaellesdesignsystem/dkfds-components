@@ -5976,10 +5976,8 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   }
 }
 
-@media (max-width: 767px) {
-  .tag + .tag {
-    margin-top: 8px;
-  }
+.tag + .tag {
+  margin-bottom: 8px;
 }
 
 .tag:hover, .tag.tag-hover {
