@@ -43,13 +43,10 @@
 table {
   .form-input {
     margin-top:0;
-  } 
-  textarea.form-input{
-    height: 4rem;
   }
 }
 textarea.form-input{
-  height: 16rem;
+  height: auto;
 }
 
 ////////////////
