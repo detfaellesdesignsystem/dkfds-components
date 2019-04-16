@@ -4,7 +4,7 @@
   <!--1A: Portal header -->
   <div class="portal-header">
     <div class="container portal-header-inner">
-      <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title | default('Home') }}" aria-label="{{ portal_header.logolink.label | default('Home') }}" class="logo"></a>
+      <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title | default('Home') }}" aria-label="{{ portal_header.logolink.label | default('Home') }}" class="logo alert-leave"></a>
       <button class="button button-secondary button-menu-open js-menu-open ml-auto" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
@@ -12,7 +12,7 @@
         {% if portal_header.user %}  
           <p class="user"><b class="username">{{ portal_header.user.name | safe }}</b> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
         {% endif %}
-         <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }}" role="button">
+         <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave" role="button">
           {{ portal_header.link.text }}
         </a>
       </div>
@@ -25,7 +25,7 @@
   <div class="solution-header {{ solution_header_data.class }}">
     <div class="container solution-header-inner">
       <div class="solution-heading">
-        <a href="{{ solution_header_data.title.href | default('/') }}" title="{{ solution_header_data.title.title | default('Home') }}"  aria-label="{{ solution_header_data.title.label | default('Home') }}">
+        <a href="{{ solution_header_data.title.href | default('/') }}" title="{{ solution_header_data.title.title | default('Home') }}"  aria-label="{{ solution_header_data.title.label | default('Home') }}" class="alert-leave2">
           {{ solution_header_data.title.text }}
         </a>
       </div>
