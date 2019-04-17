@@ -346,7 +346,7 @@ h6, .h6{
   max-width: $text-max-width;
 }
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list),
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list):not(.tabnav),
 ol:not(.accordion):not(.accordion-bordered){
   max-width: $text-max-width;
 }
