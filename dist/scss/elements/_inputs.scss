@@ -99,7 +99,7 @@ textarea.form-input{
 table {
   .form-select {
     margin-top:0;
-  } 
+  }
 }
 
 //////////////////////
@@ -146,6 +146,7 @@ input[readonly][type=text], textarea[readonly]{
   border: none;
   cursor: default;
   padding: 0;
+  pointer-events: none;
 }
 
 /////////////////////////////////

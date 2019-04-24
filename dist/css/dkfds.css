@@ -6427,6 +6427,7 @@ input[readonly][type=text], textarea[readonly] {
   border: none;
   cursor: default;
   padding: 0;
+  pointer-events: none;
 }
 
 .form-checkbox,
