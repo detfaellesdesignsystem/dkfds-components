@@ -7492,8 +7492,9 @@ footer .footer .logo {
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  height: 100px;
-  width: 150px;
+  height: auto;
+  max-height: 100%;
+  max-width: 150px;
 }
 
 footer .footer ul:not(:last-child) {
