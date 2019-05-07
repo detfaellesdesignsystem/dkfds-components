@@ -1,6 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly) %}
+{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type) %}
   <div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
       {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>{% endif %}
       {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
