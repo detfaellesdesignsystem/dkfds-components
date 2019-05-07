@@ -5,6 +5,6 @@
       {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>{% endif %}
       {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
       {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
-     <input class="form-input  {{class}} " placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="text" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %} {% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %} {% if readonly %} readonly {% endif %}>
+     <input class="form-input  {{class}} " placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %} {% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %} {% if readonly %} readonly {% endif %}>
   </div>
 {% endmacro %}
