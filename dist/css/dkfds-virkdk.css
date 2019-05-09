@@ -6081,6 +6081,11 @@ figure {
   fill: currentColor;
 }
 
+.inline-svg {
+  height: 1em;
+  width: 1em;
+}
+
 .icon-svg-large {
   height: 4.8rem;
   width: 4.8rem;
