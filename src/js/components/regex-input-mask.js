@@ -1,7 +1,7 @@
 
 /*
 * Prevents the user from inputting based on a regex.
-* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input. 
+* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
 * Usecase: number input for date-component.
 * Example - number only: <input type="text" data-input-regex="^\d*$">
 */
@@ -41,9 +41,9 @@ function inputRegexMask(event) {
             if(element.type === "number"){
                 var newValue = this.value;//Note input[type=number] does not have .selectionStart/End (Chrome).
             }else{
-                var newValue = this.value.slice(0, element.selectionStart) + this.value.slice(element.selectionEnd) + newChar; //removes the numbers selected by the user, then adds new char. 
+                var newValue = this.value.slice(0, element.selectionStart) + this.value.slice(element.selectionEnd) + newChar; //removes the numbers selected by the user, then adds new char.
             }
-            
+
             var regexStr = this.getAttribute("data-input-regex");
             var r = new RegExp(regexStr);
             if(r.exec(newValue) === null){
@@ -59,6 +59,6 @@ function inputRegexMask(event) {
 
 module.exports = behavior({
   'keypress paste': {
-    'input[data-input-regex]': inputRegexMask,
+    'input[data-input-regex]:focus': inputRegexMask,
   }
 });
