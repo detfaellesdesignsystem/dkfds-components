@@ -6913,8 +6913,26 @@ fieldset {
   padding: 0;
 }
 
+legend + .form-group {
+  margin-top: 0px;
+}
+
+fieldset ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 fieldset + fieldset {
   margin-top: 24px;
+}
+
+.form-group h1, .form-group .h1, .form-group h2, .form-group .h2, .form-group h3, .form-group .h3, .form-group h4, .form-group .h4, .form-group h5, .form-group .h5, .form-group h6, .form-group .h6 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.form-group legend {
+  padding-top: 16px;
 }
 
 .form-group + fieldset {
