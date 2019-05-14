@@ -6913,10 +6913,6 @@ fieldset {
   padding: 0;
 }
 
-legend + .form-group {
-  margin-top: 0px;
-}
-
 fieldset ul {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -6926,21 +6922,8 @@ fieldset + fieldset {
   margin-top: 24px;
 }
 
-legend {
-  padding-top: 16px;
-}
-
-.form-group + fieldset h1, .form-group + fieldset .h1, .form-group + fieldset h2, .form-group + fieldset .h2, .form-group + fieldset h3, .form-group + fieldset .h3, .form-group + fieldset h4, .form-group + fieldset .h4, .form-group + fieldset h5, .form-group + fieldset .h5, .form-group + fieldset h6, .form-group + fieldset .h6, fieldset + fieldset h1, fieldset + fieldset .h1, fieldset + fieldset h2, fieldset + fieldset .h2, fieldset + fieldset h3, fieldset + fieldset .h3, fieldset + fieldset h4, fieldset + fieldset .h4, fieldset + fieldset h5, fieldset + fieldset .h5, fieldset + fieldset h6, fieldset + fieldset .h6 {
-  margin-top: 0px;
-}
-
-.form-group h1, .form-group .h1, .form-group h2, .form-group .h2, .form-group h3, .form-group .h3, .form-group h4, .form-group .h4, .form-group h5, .form-group .h5, .form-group h6, .form-group .h6 {
-  margin-top: 0px;
+legend h1, legend .h1, legend h2, legend .h2, legend h3, legend .h3, legend h4, legend .h4, legend h5, legend .h5, legend h6, legend .h6 {
   margin-bottom: 0px;
-}
-
-.form-group + fieldset {
-  margin-top: 24px;
 }
 
 input.input-width-xxs, select.input-width-xxs, textarea.input-width-xxs {
