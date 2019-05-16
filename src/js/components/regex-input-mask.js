@@ -1,4 +1,3 @@
-
 /*
 * Prevents the user from inputting based on a regex.
 * Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
@@ -15,12 +14,12 @@ const modifierState = {
   command: false
 };
 
-function inputRegexMask(event) {
+function inputRegexMask (event) {
   if(modifierState.ctrl || modifierState.command) {
     return;
   }
   var newChar = null;
-  if(typeof event.key !== "undefined"){
+  if(typeof event.key !== 'undefined'){
     if(event.key.length === 1){
       newChar = event.key;
     }
@@ -59,7 +58,8 @@ function inputRegexMask(event) {
           }
         }
       }
-    }}
+    }
+  }
 }
 
 module.exports = behavior({
