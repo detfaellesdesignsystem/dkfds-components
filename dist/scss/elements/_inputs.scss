@@ -139,7 +139,12 @@ input[type=text]:disabled, textarea:disabled{
   color:$color-gray-medium-light;
   cursor: not-allowed;
 }
-
+input[readonly][type=text]{
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: auto;
+}
 input[readonly][type=text], textarea[readonly]{
   background-color: transparent;
   color:$color-black;
