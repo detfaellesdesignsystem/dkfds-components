@@ -9476,10 +9476,11 @@ a.skipnav {
 
 @media (min-width: 768px) {
   .tabnav li {
-    margin-bottom: 0;
     position: static;
     background-color: transparent;
     width: auto;
+    margin-right: 8px;
+    margin-bottom: -1px;
   }
 }
 
@@ -9493,34 +9494,49 @@ a.skipnav {
     color: #1a1a1a;
     text-align: center;
     text-decoration: none;
-    padding: 16px;
-    padding-bottom: calc(15px);
-    margin-bottom: -1px;
+    padding: 0px;
     border-top: 1px solid transparent;
     border-right: 1px solid transparent;
     border-left: 1px solid transparent;
     background-color: transparent;
+    border-radius: 0px;
+    border-bottom: 1px solid #747474;
+  }
+  .tabnav li a span:not(.sr-only) {
+    padding: 16px;
+    margin-bottom: 8px;
+    display: block;
   }
   .tabnav li a[aria-expanded=false] {
     background-image: none;
-    border-radius: 0px;
-    background-color: transparent;
+  }
+  .tabnav li a[aria-expanded=false] span:not(.sr-only) {
+    background-color: #F5F5F5;
   }
   .tabnav li a:hover {
-    border-bottom: 7px solid #747474;
-    padding-bottom: calc(8px);
+    background-color: transparent;
+  }
+  .tabnav li a:hover span:not(.sr-only) {
+    background-color: #DCDCDC;
   }
   .tabnav li a:focus {
+    outline: none;
+  }
+  .tabnav li a:focus span:not(.sr-only) {
     outline: 4px solid #747474;
   }
   .tabnav li a[aria-expanded=true] {
-    color: #747474;
-    font-weight: 600;
     border-top: 1px solid #747474;
     border-right: 1px solid #747474;
     border-left: 1px solid #747474;
-    background-color: #ffffff;
+    border-bottom-color: #ffffff;
+    background-color: transparent;
     background-image: none;
+  }
+  .tabnav li a[aria-expanded=true] span:not(.sr-only) {
+    background-color: transparent;
+    display: block;
+    margin-bottom: 8px;
   }
 }
 

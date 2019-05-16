@@ -11,10 +11,11 @@
   }
   li {
     @include media-breakpoint-up(md) {
-      margin-bottom: 0;
       position: static;
       background-color: transparent;
       width: auto;
+      margin-right: map-get($spacers, 3);
+      margin-bottom: -1px;
     }
 
     a {
@@ -28,38 +29,57 @@
         color: $color-gray-001;
         text-align: center;
         text-decoration: none;
-        padding: map-get($spacers, 4);
-        padding-bottom: calc(#{map-get($spacers, 3) + 7px});
-        margin-bottom: -1px;
+        padding: 0px;
         border-top: 1px solid transparent;
         border-right: 1px solid transparent;
         border-left: 1px solid transparent;
         background-color: transparent;
+        border-radius: 0px;
+        border-bottom: $outer-border;
 
+        span:not(.sr-only) {
+          padding: map-get($spacers, 4);
+          margin-bottom: map-get($spacers, 3);
+          display: block;
+        }
         &[aria-expanded=false]{
+
+          span:not(.sr-only) {
+            background-color: $background-alternative;
+          }
           background-image: none;
-          border-radius: 0px;
-          background-color: transparent;
         }
 
         &:hover {
-          border-bottom: 7px solid $color-primary;
-          padding-bottom: calc(#{map-get($spacers, 3)});
+          background-color: transparent;
+          span:not(.sr-only) {
+            background-color: $color-gray-mediumpale;
+          }
         }
 
         &:focus{
-          outline: $focus-outline;
+          outline: none;
+          span:not(.sr-only) {
+            outline: $focus-outline;
+          }
         }
 
         &[aria-expanded=true] {
-          color: $color-primary;
-          font-weight: $font-weight-semibold;
           border-top: $outer-border;
           border-right: $outer-border;
           border-left: $outer-border;
-          background-color: $color-white;
+          border-bottom-color: $color-white;
+
+          background-color: transparent;
           background-image: none;
+
+          span:not(.sr-only) {
+            background-color: transparent;
+            display: block;
+            margin-bottom: map-get($spacers, 3);
+          }
         }
+
       }
     }
 

@@ -7,7 +7,7 @@
   <li>
     <a href="#{{item.id}}" {% if item.active %} class="active"{% endif %}
       aria-expanded="{{ item.active | default('false') }}">
-      {{ item.title }}
+      <span>{{ item.title }}</span>
       {% if item.active %}<span class="sr-only">(valgt)</span>{% endif %}
     </a>
 
