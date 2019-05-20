@@ -8122,8 +8122,14 @@ footer .footer-theme {
   line-height: 2.4rem;
   display: block;
   padding-top: calc(16px - 1px);
-  padding-bottom: 0px;
+  padding-bottom: calc(16px - 1px);
   white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+  .nav-primary > li > a {
+    padding-bottom: 0px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -8169,7 +8175,6 @@ footer .footer-theme {
   .nav-primary .nav-link span {
     display: block;
     border-bottom: 7px solid transparent;
-    padding-bottom: 9px;
   }
 }
 
@@ -8267,8 +8272,14 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .button-overflow-menu span {
   padding-right: 24px;
-  padding-bottom: 9px;
+  padding-bottom: calc(16px - 1px);
   display: block;
+}
+
+@media (min-width: 992px) {
+  .nav-primary .overflow-menu .button-overflow-menu span {
+    padding-bottom: 9px;
+  }
 }
 
 @media (min-width: 992px) {
