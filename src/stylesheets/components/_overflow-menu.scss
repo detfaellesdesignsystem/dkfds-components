@@ -34,7 +34,7 @@ $overflow-menu-dropdown-distance: 8px;
             width: 0;
             position: absolute;
             pointer-events: none;
-            z-index: 2;
+            z-index: 3;
             bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
         }
         &:after {
