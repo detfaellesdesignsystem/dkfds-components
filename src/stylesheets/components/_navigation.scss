@@ -125,6 +125,9 @@
         display: block;
         border-bottom: 7px solid transparent;
       }
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        padding-bottom: 9px;
+      }
     }
   }
 

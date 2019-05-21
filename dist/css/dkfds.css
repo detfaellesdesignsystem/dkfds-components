@@ -7842,11 +7842,11 @@ footer .footer-theme {
 }
 
 @media (max-width: 1199px) {
-  .header .function-link {
+  .header .function-link:not(.icon-link) {
     display: block;
     margin-top: 8px;
   }
-  .header .function-link .icon-svg {
+  .header .function-link:not(.icon-link) .icon-svg {
     float: left;
     margin-left: 0;
     margin-right: 4px;
@@ -8175,6 +8175,12 @@ footer .footer-theme {
   .nav-primary .nav-link span {
     display: block;
     border-bottom: 7px solid transparent;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav-primary .nav-link span {
+    padding-bottom: 9px;
   }
 }
 
