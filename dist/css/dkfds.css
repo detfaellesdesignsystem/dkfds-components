@@ -9503,7 +9503,10 @@ a.skipnav {
     border-bottom: 1px solid #747474;
   }
   .tabnav li a span:not(.sr-only) {
-    padding: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
     margin-bottom: 8px;
     display: block;
   }

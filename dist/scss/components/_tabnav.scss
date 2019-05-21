@@ -38,7 +38,10 @@
         border-bottom: $outer-border;
 
         span:not(.sr-only) {
-          padding: map-get($spacers, 4);
+          padding-top: map-get($spacers, 3);
+          padding-bottom: map-get($spacers, 3);
+          padding-left: map-get($spacers, 4);
+          padding-right: map-get($spacers, 4);
           margin-bottom: map-get($spacers, 3);
           display: block;
         }
