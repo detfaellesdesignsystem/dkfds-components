@@ -7147,6 +7147,9 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 }
 
 @media (max-width: 767px) {
+  .table.table--responsive-headers {
+    display: block;
+  }
   .table.table--responsive-headers thead {
     display: none;
   }
