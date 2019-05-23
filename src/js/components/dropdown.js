@@ -35,12 +35,10 @@ class dropdown {
       if (window.IntersectionObserver) {
         var observer = new IntersectionObserver(function(entries) {
           if (entries[ 0 ].intersectionRatio) {
-            console.log('visible');
             if(element.getAttribute('aria-expanded') === 'false'){
               that.targetEl.setAttribute('aria-hidden', true);
             }
           } else {
-            console.log('hidden');
             if(that.targetEl.getAttribute('aria-hidden') === 'true'){
               that.targetEl.setAttribute('aria-hidden', false);
             }
