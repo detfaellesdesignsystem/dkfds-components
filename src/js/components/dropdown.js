@@ -8,8 +8,10 @@ class dropdown {
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
     this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
+    this.tringuideBreakpoint = 768; //same as $nav-responsive-breakpoint from the scss.
     this.jsResponsiveCollapseModifier = '.js-dropdown--responsive-collapse';
     this.responsiveCollapseEnabled = false;
+    this.responsiveListCollapseEnabled = true;
 
     this.triggerEl = null;
     this.targetEl = null;
@@ -31,22 +33,52 @@ class dropdown {
         that.toggleDropdown();
       });
 
-      var element = this.triggerEl;
-      if (window.IntersectionObserver) {
-        var observer = new IntersectionObserver(function(entries) {
-          if (entries[ 0 ].intersectionRatio) {
-            if(element.getAttribute('aria-expanded') === 'false'){
-              that.targetEl.setAttribute('aria-hidden', true);
+      // set aria-hidden correctly for screenreaders (Tringuide responsive)
+      if(this.responsiveListCollapseEnabled) {
+        var element = this.triggerEl;
+        if (window.IntersectionObserver) {
+          // trigger event when button changes visibility
+          var observer = new IntersectionObserver(function (entries) {
+            // button is visible
+            if (entries[0].intersectionRatio) {
+              if (element.getAttribute('aria-expanded') === 'false') {
+                that.targetEl.setAttribute('aria-hidden', true);
+              }
+            } else {
+              // button is not visible
+              if (that.targetEl.getAttribute('aria-hidden') === 'true') {
+                that.targetEl.setAttribute('aria-hidden', false);
+              }
             }
-          } else {
-            if(that.targetEl.getAttribute('aria-hidden') === 'true'){
+          }, {
+            root: document.body
+          });
+          observer.observe(element);
+        } else {
+          // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
+          if (that.doResponsiveStepguideCollapse()) {
+            // small screen
+            if (element.getAttribute('aria-expanded') === 'false') {
+              that.targetEl.setAttribute('aria-hidden', true);
+            } else{
               that.targetEl.setAttribute('aria-hidden', false);
             }
+          } else {
+            // Large screen
+            that.targetEl.setAttribute('aria-hidden', false);
           }
-        }, {
-          root: document.body
-        });
-        observer.observe(element);
+          window.addEventListener('resize', function () {
+            if (that.doResponsiveStepguideCollapse()) {
+              if (element.getAttribute('aria-expanded') === 'false') {
+                that.targetEl.setAttribute('aria-hidden', true);
+              } else{
+                that.targetEl.setAttribute('aria-hidden', false);
+              }
+            } else {
+              that.targetEl.setAttribute('aria-hidden', false);
+            }
+          });
+        }
       }
 
       document.onkeydown = function (evt) {
@@ -74,6 +106,11 @@ class dropdown {
     if(this.triggerEl.classList.contains('js-dropdown--responsive-collapse')){
       this.responsiveCollapseEnabled = true;
     }
+
+    if(this.triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
+      this.responsiveListCollapseEnabled = true;
+    }
+
   }
 
   closeAll (){
@@ -127,6 +164,7 @@ class dropdown {
     }
   }
 
+
   outsideClose (event){
     if(!this.doResponsiveCollapse()){
       //closes dropdown when clicked outside.
@@ -140,7 +178,14 @@ class dropdown {
 
   doResponsiveCollapse (){
     //returns true if responsive collapse is enabled and we are on a small screen.
-    if(this.responsiveCollapseEnabled && window.innerWidth <= this.navResponsiveBreakpoint){
+    if((this.responsiveCollapseEnabled || this.responsiveListCollapseEnabled) && window.innerWidth <= this.navResponsiveBreakpoint){
+      return true;
+    }
+    return false;
+  }
+  doResponsiveStepguideCollapse (){
+    //returns true if responsive collapse is enabled and we are on a small screen.
+    if((this.responsiveListCollapseEnabled) && window.innerWidth <= this.tringuideBreakpoint){
       return true;
     }
     return false;
