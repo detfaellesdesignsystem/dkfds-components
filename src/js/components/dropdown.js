@@ -31,6 +31,26 @@ class dropdown {
         that.toggleDropdown();
       });
 
+      var element = this.triggerEl;
+      if (window.IntersectionObserver) {
+        var observer = new IntersectionObserver(function(entries) {
+          if (entries[ 0 ].intersectionRatio) {
+            console.log('visible');
+            if(element.getAttribute('aria-expanded') === 'false'){
+              that.targetEl.setAttribute('aria-hidden', true);
+            }
+          } else {
+            console.log('hidden');
+            if(that.targetEl.getAttribute('aria-hidden') === 'true'){
+              that.targetEl.setAttribute('aria-hidden', false);
+            }
+          }
+        }, {
+          root: document.body
+        });
+        observer.observe(element);
+      }
+
       document.onkeydown = function (evt) {
         evt = evt || window.event;
         if (evt.keyCode === 27) {
@@ -39,6 +59,7 @@ class dropdown {
       };
     }
   }
+
 
   init (el){
     this.triggerEl = el;
