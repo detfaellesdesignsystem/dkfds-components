@@ -8406,8 +8406,14 @@ footer .footer-theme {
   padding: 0px 0 8px 0;
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list li:last-of-type a {
-  padding: 8px 0 32px 0;
+@media (min-width: 992px) {
+  .nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list li:last-of-type a {
+    padding: 8px 0 32px 0;
+  }
+}
+
+.nav-primary .overflow-menu .overflow-menu-inner .overflow-list .sidenav-sub_list {
+  margin-left: 16px;
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner button {
