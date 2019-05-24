@@ -7,7 +7,7 @@ $overflow-menu-dropdown-distance: 8px;
 }
 
 .overflow-menu {
-    display: inline-block; //inlinblock so the .overflow-menu-inner is position underneath .button-overflow-menu 
+    display: inline-block; //inlinblock so the .overflow-menu-inner is position underneath .button-overflow-menu
     position: relative;
 
     .button-overflow-menu{
@@ -34,7 +34,7 @@ $overflow-menu-dropdown-distance: 8px;
             width: 0;
             position: absolute;
             pointer-events: none;
-            z-index: 2;
+            z-index: 3;
             bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
         }
         &:after {
@@ -66,9 +66,9 @@ $overflow-menu-dropdown-distance: 8px;
     }
 
     .overflow-menu-inner {
-        
+
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         width: auto;
         border: $outer-border;
         box-shadow: $box-shadow-moderately;
@@ -77,7 +77,7 @@ $overflow-menu-dropdown-distance: 8px;
         padding-bottom: map-get($spacers, 3);
         top: calc(100% + #{$overflow-menu-dropdown-distance});
         min-width: 28rem;
-        
+
         &[aria-hidden="true"]{
             display: none;
         }
@@ -85,12 +85,12 @@ $overflow-menu-dropdown-distance: 8px;
 
     .overflow-list{
         @include unstyled-list;
-        font-size: $body-text; 
+        font-size: $body-text;
         line-height: $body-text-line-height;
         color: $color-text;
 
         button{
-            @include button-unstyled;   
+            @include button-unstyled;
         }
         a{
             @include body-copy-text;
@@ -120,7 +120,7 @@ $overflow-menu-dropdown-distance: 8px;
             border-bottom: 0;
         }
     }
-    
+
 
     &--open-right {
         .overflow-menu-inner{
@@ -162,7 +162,7 @@ $overflow-menu-dropdown-distance: 8px;
     }
     &.overflow-menu--md-no-responsive{
         //overflow content always visible on large screens.
-        //does not look like a dropdown. 
+        //does not look like a dropdown.
         @include media-breakpoint-up(md) {
             display: block;
             &:before, &:after{

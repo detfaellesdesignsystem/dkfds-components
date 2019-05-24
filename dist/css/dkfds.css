@@ -6075,6 +6075,11 @@ figure {
   fill: currentColor;
 }
 
+.inline-svg {
+  height: 1em;
+  width: 1em;
+}
+
 .icon-svg-large {
   height: 4.8rem;
   width: 4.8rem;
@@ -6419,6 +6424,13 @@ input[type=text]:disabled, textarea:disabled {
   background: #F5F5F5;
   color: #999999;
   cursor: not-allowed;
+}
+
+input[readonly][type=text] {
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: auto;
 }
 
 input[readonly][type=text], textarea[readonly] {
@@ -6913,12 +6925,17 @@ fieldset {
   padding: 0;
 }
 
+fieldset ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 fieldset + fieldset {
   margin-top: 24px;
 }
 
-.form-group + fieldset {
-  margin-top: 24px;
+legend h1, legend .h1, legend h2, legend .h2, legend h3, legend .h3, legend h4, legend .h4, legend h5, legend .h5, legend h6, legend .h6 {
+  margin-bottom: 0px;
 }
 
 input.input-width-xxs, select.input-width-xxs, textarea.input-width-xxs {
@@ -7483,8 +7500,9 @@ footer .footer .logo {
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
-  height: 100px;
-  width: 150px;
+  height: auto;
+  max-height: 100%;
+  max-width: 150px;
 }
 
 footer .footer ul:not(:last-child) {
@@ -8165,7 +8183,6 @@ footer .footer-theme {
 
 .nav-primary a.current {
   font-weight: 600;
-  color: #747474;
 }
 
 .nav-primary button.current {
@@ -9276,7 +9293,7 @@ a.skipnav {
   width: 0;
   position: absolute;
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
   bottom: calc(8px * -1 - 1px);
 }
 
@@ -9306,7 +9323,7 @@ a.skipnav {
 
 .overflow-menu .overflow-menu-inner {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: auto;
   border: 1px solid #747474;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);

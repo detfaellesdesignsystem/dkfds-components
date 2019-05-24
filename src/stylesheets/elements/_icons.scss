@@ -64,6 +64,10 @@ $icons: (
         fill: currentColor; //svg inherit color
     }
 }
+.inline-svg{
+  height: 1em;
+  width: 1em;
+}
 
 .icon-svg-large {
     height: $display-1-heading-size;
