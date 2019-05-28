@@ -4,7 +4,6 @@ const forEach = require('array-foreach');
 const select = require('./utils/select');
 const modal = require('./components/modal');
 const table = require('./components/table');
-const tooltip = require('./components/tooltip');
 const dropdown = require('./components/dropdown');
 const radioToggleContent = require('./components/radio-toggle-content');
 const checkboxToggleContent = require('./components/checkbox-toggle-content');
