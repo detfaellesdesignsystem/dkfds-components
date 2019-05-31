@@ -8,8 +8,10 @@ class dropdown {
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
     this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
+    this.tringuideBreakpoint = 768; //same as $nav-responsive-breakpoint from the scss.
     this.jsResponsiveCollapseModifier = '.js-dropdown--responsive-collapse';
     this.responsiveCollapseEnabled = false;
+    this.responsiveListCollapseEnabled = true;
 
     this.triggerEl = null;
     this.targetEl = null;
@@ -31,6 +33,54 @@ class dropdown {
         that.toggleDropdown();
       });
 
+      // set aria-hidden correctly for screenreaders (Tringuide responsive)
+      if(this.responsiveListCollapseEnabled) {
+        var element = this.triggerEl;
+        if (window.IntersectionObserver) {
+          // trigger event when button changes visibility
+          var observer = new IntersectionObserver(function (entries) {
+            // button is visible
+            if (entries[0].intersectionRatio) {
+              if (element.getAttribute('aria-expanded') === 'false') {
+                that.targetEl.setAttribute('aria-hidden', true);
+              }
+            } else {
+              // button is not visible
+              if (that.targetEl.getAttribute('aria-hidden') === 'true') {
+                that.targetEl.setAttribute('aria-hidden', false);
+              }
+            }
+          }, {
+            root: document.body
+          });
+          observer.observe(element);
+        } else {
+          // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
+          if (that.doResponsiveStepguideCollapse()) {
+            // small screen
+            if (element.getAttribute('aria-expanded') === 'false') {
+              that.targetEl.setAttribute('aria-hidden', true);
+            } else{
+              that.targetEl.setAttribute('aria-hidden', false);
+            }
+          } else {
+            // Large screen
+            that.targetEl.setAttribute('aria-hidden', false);
+          }
+          window.addEventListener('resize', function () {
+            if (that.doResponsiveStepguideCollapse()) {
+              if (element.getAttribute('aria-expanded') === 'false') {
+                that.targetEl.setAttribute('aria-hidden', true);
+              } else{
+                that.targetEl.setAttribute('aria-hidden', false);
+              }
+            } else {
+              that.targetEl.setAttribute('aria-hidden', false);
+            }
+          });
+        }
+      }
+
       document.onkeydown = function (evt) {
         evt = evt || window.event;
         if (evt.keyCode === 27) {
@@ -39,6 +89,7 @@ class dropdown {
       };
     }
   }
+
 
   init (el){
     this.triggerEl = el;
@@ -55,6 +106,11 @@ class dropdown {
     if(this.triggerEl.classList.contains('js-dropdown--responsive-collapse')){
       this.responsiveCollapseEnabled = true;
     }
+
+    if(this.triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
+      this.responsiveListCollapseEnabled = true;
+    }
+
   }
 
   closeAll (){
@@ -93,6 +149,12 @@ class dropdown {
   toggleDropdown (forceClose) {
     if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
       //change state
+
+      this.targetEl.style.left = null;
+      this.targetEl.style.right = null;
+
+      var rect = this.triggerEl.getBoundingClientRect();
+      console.log(rect.left);
       if(this.triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
         //close
         this.triggerEl.setAttribute('aria-expanded', 'false');
@@ -104,9 +166,50 @@ class dropdown {
         this.triggerEl.setAttribute('aria-expanded', 'true');
         this.targetEl.classList.remove('collapsed');
         this.targetEl.setAttribute('aria-hidden', 'false');
+
+        var offset = this.offset(this.targetEl)
+
+        if(offset.left < 0){
+          console.log('Out of bounds: LEFT');
+          this.targetEl.style.left = '0px';
+          this.targetEl.style.right = 'auto';
+        }
+        var right = offset.left + this.targetEl.offsetWidth;
+        console.log(right);
+        if(right > window.innerWidth){
+          console.log('Out of bounds: RIGHT');
+          this.targetEl.style.left = 'auto';
+          this.targetEl.style.right = '0px';
+        }
+
+        var offsetAgain = this.offset(this.targetEl);
+
+        if(offsetAgain.left < 0){
+          console.log('Out of bounds: LEFT');
+
+          this.targetEl.style.left = '0px';
+          this.targetEl.style.right = 'auto';
+        }
+        right = offsetAgain.left + this.targetEl.offsetWidth;
+        if(right > window.innerWidth){
+          console.log('Out of bounds: RIGHT');
+
+          this.targetEl.style.left = 'auto';
+          this.targetEl.style.right = '0px';
+        }
       }
+
     }
+
   }
+
+  offset (el) {
+    var rect = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+  }
+
 
   outsideClose (event){
     if(!this.doResponsiveCollapse()){
@@ -121,7 +224,14 @@ class dropdown {
 
   doResponsiveCollapse (){
     //returns true if responsive collapse is enabled and we are on a small screen.
-    if(this.responsiveCollapseEnabled && window.innerWidth <= this.navResponsiveBreakpoint){
+    if((this.responsiveCollapseEnabled || this.responsiveListCollapseEnabled) && window.innerWidth <= this.navResponsiveBreakpoint){
+      return true;
+    }
+    return false;
+  }
+  doResponsiveStepguideCollapse (){
+    //returns true if responsive collapse is enabled and we are on a small screen.
+    if((this.responsiveListCollapseEnabled) && window.innerWidth <= this.tringuideBreakpoint){
       return true;
     }
     return false;

@@ -74,9 +74,12 @@
       line-height: $base-line-height;
       display: block;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: 0px;
+      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
       white-space: nowrap;
 
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        padding-bottom: 0px;
+      }
       &:hover {
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           background-color: transparent;
@@ -121,6 +124,8 @@
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         display: block;
         border-bottom: 7px solid transparent;
+      }
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-bottom: 9px;
       }
     }
@@ -218,8 +223,12 @@
       }
       span{
         padding-right: 24px;
-        padding-bottom: 9px;
+        padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
         display: block;
+
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+          padding-bottom: 9px;
+        }
       }
       &:hover {
         span {
@@ -303,7 +312,7 @@
           line-height: $small-text-line-height;
         }
         .overflow-list {
-          margin-left: 16px;
+          margin-left: map-get($spacers, 4);
           li {
             a {
               border-top: 0;
@@ -312,10 +321,15 @@
             &:first-of-type a {
               padding: 0px 0 8px 0;
             }
-            &:last-of-type a {
-              padding: 8px 0 32px 0;
+            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+              &:last-of-type a {
+                padding: 8px 0 32px 0;
+              }
             }
           }
+        }
+        .sidenav-sub_list{
+          margin-left: map-get($spacers, 4);
         }
 
       }
