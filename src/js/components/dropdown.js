@@ -11,7 +11,8 @@ class dropdown {
     this.tringuideBreakpoint = 768; //same as $nav-responsive-breakpoint from the scss.
     this.jsResponsiveCollapseModifier = '.js-dropdown--responsive-collapse';
     this.responsiveCollapseEnabled = false;
-    this.responsiveListCollapseEnabled = true;
+    this.responsiveListCollapseEnabled = false;
+
 
     this.triggerEl = null;
     this.targetEl = null;
@@ -20,6 +21,11 @@ class dropdown {
 
     if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
       let that = this;
+
+
+      if(this.triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
+        this.responsiveListCollapseEnabled = true;
+      }
 
       //Clicked outside dropdown -> close it
       document.getElementsByTagName('body')[ 0 ].addEventListener('click', function (event){
