@@ -9556,6 +9556,14 @@ a.skipnav {
   margin-left: 0;
 }
 
+.js-tooltip {
+  display: inline-block;
+}
+
+.js-tooltip svg {
+  pointer-events: none;
+}
+
 .popover {
   cursor: pointer;
 }
@@ -9571,6 +9579,7 @@ a.skipnav {
   background-color: #fff;
   border: 1px solid #747474;
   border-radius: 4px;
+  padding: .3rem .6rem;
 }
 
 .tooltip-popper {
@@ -9579,13 +9588,14 @@ a.skipnav {
 
 .tooltip-popper .tooltip-arrow {
   position: absolute;
-  bottom: -6px;
 }
 
 .tooltip-popper[x-placement^=top] .tooltip-arrow {
   border-top: 7px solid #999999;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
+  bottom: -6px;
+  left: calc(50% - 7px);
 }
 
 .tooltip-popper[x-placement^=top] .tooltip-arrow:after {
@@ -9603,6 +9613,8 @@ a.skipnav {
   border-bottom: 7px solid #999999;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
+  top: -6px;
+  left: calc(50% - 7px);
 }
 
 .tooltip-popper[x-placement^=bottom] .tooltip-arrow:after {
@@ -9620,6 +9632,8 @@ a.skipnav {
   border-left: 7px solid #999999;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
+  right: -6px;
+  top: calc(50% - 7px);
 }
 
 .tooltip-popper[x-placement^=left] .tooltip-arrow:after {
@@ -9637,6 +9651,8 @@ a.skipnav {
   border-right: 7px solid #999999;
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
+  left: -6px;
+  top: calc(50% - 7px);
 }
 
 .tooltip-popper[x-placement^=right] .tooltip-arrow:after {
