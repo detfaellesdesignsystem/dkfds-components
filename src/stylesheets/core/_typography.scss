@@ -10,7 +10,7 @@ body {
 
 p {
   line-height: $base-line-height;
-  margin-bottom: 0.8rem; 
+  margin-bottom: 0.8rem;
   margin-top: 1.6rem;
 }
 
@@ -74,8 +74,8 @@ a {
 
 //font-family, font-size and line-height for h1-h6, bodytext and smalltext
 @mixin h1{
-  font-size: $h1-font-size; 
-  line-height: $h1-line-height; 
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
   font-weight: $font-weight-bold;
   color: $color-black;
   text-transform: none;
@@ -83,7 +83,7 @@ a {
 }
 @mixin h2 {
   font-size: $h2-font-size;
-  line-height: $h2-line-height; 
+  line-height: $h2-line-height;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
@@ -223,14 +223,14 @@ small, .small-text {
 }
 
 //Margin top and bottom for text
-//Generel principle for spacing: margin-top same as lineheight of the text, margin-bottom is just standard lineheight for text.  
-/*h1, .h1, //Removed this styling, it make for a messy margin handling. 
+//Generel principle for spacing: margin-top same as lineheight of the text, margin-bottom is just standard lineheight for text.
+/*h1, .h1, //Removed this styling, it make for a messy margin handling.
 h2, .h2,
 h3, .h3,
 h4, .h4,
 h5, .h5,
-h6, .h6, 
-p{ 
+h6, .h6,
+p{
   &:first-child{
     margin-top: 0;
   }
@@ -240,11 +240,8 @@ p{
 }*/
 
 h1, .h1{
-  margin-top: $h2-font-size;
   margin-bottom: $body-text;
-  @include media-breakpoint-up(md) {
-    margin-top: $h1-font-size;
-  }
+  margin-top: 0px;
 }
 
 h2, .h2 {
@@ -259,7 +256,7 @@ h3, .h3{
   margin-bottom: $body-text;
   @include media-breakpoint-up(md) {
     margin-top: $h1-font-size;
-  } 
+  }
 }
 h4, .h4{
   margin-top: $body-text-line-height;
@@ -283,7 +280,7 @@ p, .body-text{
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
-    margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag. 
+    margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
   }
 }
 
@@ -297,7 +294,7 @@ h5, .h5, h6, .h6{
     margin-right: map-get($spacers, 2);
     .background-dark &{
       fill: white;
-    } 
+    }
   }
 
   &.link-right {
