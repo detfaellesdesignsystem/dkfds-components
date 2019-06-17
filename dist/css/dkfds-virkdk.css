@@ -7365,7 +7365,8 @@ hr {
   display: none;
 }
 
-.accordion-button[aria-describedby="error-message"] {
+.accordion-button[aria-describedby="error-message"],
+.accordion-button.accordion-error {
   border: solid 2px #CC0000 !important;
 }
 

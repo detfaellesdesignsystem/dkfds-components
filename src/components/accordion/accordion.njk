@@ -5,9 +5,9 @@
   {% if multiselectable == true %} aria-multiselectable="true"{% endif %}>
   {% for item in items %}
   <li>
-    <button class="accordion-button"
+    <button class="accordion-button {% if item.error_message %} accordion-error {% endif %}"
       aria-expanded="{{ item.expanded | default('false') }}"
-      {% if item.error_message %} aria-describedby="error-message" {% endif %}
+      {% if item.error_message %} aria-describedby="{{ id_prefix }}{{ item.id }}" {% endif %}
       aria-controls="{{ id_prefix }}{{ item.id }}">
       {{ item.title }}
 
@@ -26,6 +26,15 @@
         {% set ariahidden = "true" %}
       {% endif -%}
     <div id="{{ id_prefix }}{{ item.id }}" aria-hidden="{{ariahidden}}" class="accordion-content">
+    {% if item.error_message %}
+      <div class="alert alert-error" role="alert"
+             aria-label="Fejlbesked i accordion">
+             <div class="alert-body">
+                 <p class="alert-text">Sed ut perspiciatis unde omnis iste natus
+                     error sit voluptatem accusantium doloremque laudantium.</p>
+             </div>
+         </div>
+     {% endif %}
       <p>{{ item.content }}</p>
     </div>
   </li>
