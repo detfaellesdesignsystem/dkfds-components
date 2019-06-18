@@ -5649,7 +5649,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   appearance: none;
   display: inline-block;
   width: 100%;
-  padding: calc(8px - 2px) calc(16px - 2px);
+  padding: calc(2px) calc(16px - 2px) 0px;
   border-radius: 4px;
   border: 2px solid #3C5C22;
   font-size: 1.6rem;
@@ -5658,7 +5658,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #ffffff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  line-height: 2.4rem;
+  line-height: 1em;
   text-align: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -5668,6 +5668,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  height: 40px;
 }
 
 @media (min-width: 768px) {
@@ -5887,6 +5888,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button .icon-svg {
   margin-right: 4px;
   fill: currentColor;
+  margin-top: -0.2em;
 }
 
 .button-unstyled {
