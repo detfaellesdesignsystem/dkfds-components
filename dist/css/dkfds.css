@@ -2238,6 +2238,15 @@ p{
     margin-bottom: 0;
   }
 }*/
+h1:focus, .h1:focus,
+h2:focus, .h2:focus,
+h3:focus, .h3:focus,
+h4:focus, .h4:focus,
+h5:focus, .h5:focus,
+h6:focus, .h6:focus {
+  outline: none;
+}
+
 h1, .h1 {
   margin-bottom: 1.6rem;
   margin-top: 0px;
@@ -7404,6 +7413,23 @@ hr {
   max-width: 66ch;
 }
 
+.alert .alert-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  color: #454545;
+}
+
+.alert .alert-close .icon-svg {
+  margin-right: 4px;
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
+}
+
 .alert .alert-heading {
   margin-top: 0;
   margin-bottom: 0;
@@ -7411,6 +7437,10 @@ hr {
   font-weight: 600;
   line-height: 2.4rem;
   color: #1a1a1a;
+}
+
+.alert.has-close .alert-heading {
+  padding-right: 16px;
 }
 
 .alert .alert-text {
