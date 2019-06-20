@@ -156,7 +156,8 @@ $v-padding: $spacing-md-small;
     display: none;
   }
 }
-.accordion-button[aria-describedby="error-message"] {
+.accordion-button[aria-describedby="error-message"],
+.accordion-button.accordion-error {
   border: solid 2px $color-error !important;
 }
 .accordion-button[aria-expanded=true] {

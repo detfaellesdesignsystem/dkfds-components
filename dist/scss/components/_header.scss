@@ -21,7 +21,7 @@ $z-index-nav:     9000;
     width: 200px;
     max-width: 60%;
   }
-  
+
   .button{
     width: 100%;
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -78,7 +78,7 @@ $z-index-nav:     9000;
         flex-direction: row;
       }
     }
-    
+
     .portal-info{
       display: none;
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -122,14 +122,14 @@ $z-index-nav:     9000;
 
     .solution-heading{
       a, h1{
-        font-size: 2.8rem; 
+        font-size: 2.8rem;
         line-height: 3.2rem;
         font-weight: $font-weight-semibold;
         color: $color-black;
         text-decoration: none;
         display: inline-block;
         @include media-breakpoint-down(sm) {
-          font-size: 2.2rem; 
+          font-size: 2.2rem;
           line-height: 2.4rem;
         }
       }
@@ -245,7 +245,7 @@ $z-index-nav:     9000;
         margin-top: 0;
       }
     }
-    
+
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       margin-top: 0;
       margin-left: auto;
@@ -260,7 +260,7 @@ $z-index-nav:     9000;
     }
   }
 
-  .function-link {
+  .function-link:not(.icon-link) {
     @include media-breakpoint-down(#{$nav-responsive-breakpoint}) {
       display: block;
       margin-top: 8px;
@@ -274,7 +274,7 @@ $z-index-nav:     9000;
   .function-link + .function-link{
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       margin-left: map-get($spacers, 4);
-      
+
     }
   }
 }
