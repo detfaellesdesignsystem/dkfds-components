@@ -66,11 +66,6 @@ $icon-size: 24px;
     font-weight: 600;
     line-height: $alert-heading-lineheight;
     color: $alert-heading-color;
-
-  }
-
-  &.has-close .alert-heading{
-    padding-right: map-get($spacers, 4);
   }
 
   .alert-text {

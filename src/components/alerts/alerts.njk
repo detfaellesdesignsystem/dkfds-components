@@ -16,7 +16,7 @@
 <div class="alert {{ classes }} {% if close %} has-close{% endif %}" {% if role %}role="{{role}}"{% endif %} aria-label ="{{ aria }}">
   <div class="alert-body">
     {%- if title -%}
-    <p class="alert-heading">{{ title | safe }}</p>
+    <p class="alert-heading {% if close %} pr-7{% endif %}">{{ title | safe }}</p>
     {%- endif -%}
 
     {%- if close -%}
