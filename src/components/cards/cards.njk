@@ -1,15 +1,15 @@
 {% import "components/buttons/buttons.njk" as button %}
 
-{% macro cards1(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks) %}
+{% macro cards1(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
   {%- if (name == 'card1') -%}
-    <div class="card">
+    <div class="card {% if align %}card-align-height{% endif %}">
     {%if (header) or (subheader) %}
       <div class="card-header">
         <p class="h5 header-title" title="Card header" aria-label="Card header">{{header}}</p>
         <p class="sub-header">{{subheader}}</p>
       </div>
     {% endif %}
-    {%if cardtext %} 
+    {%if cardtext %}
       <div class="card-text">
         <p class="text">{{cardtext | safe}}</p>
       </div>
@@ -68,7 +68,7 @@
           </div>
         </div>
       {% endif %}
-      {%if cardtext %} 
+      {%if cardtext %}
       <div class="card-text">
         <p class="text">{{cardtext | safe}}</p>
       </div>
@@ -127,7 +127,7 @@
           <p class="sub-header">{{subheader}}</p>
         </div>
       {% endif %}
-      {%if cardtext %} 
+      {%if cardtext %}
         <div class="card-text">
           <p class="text">{{cardtext | safe}}</p>
         </div>
@@ -185,7 +185,7 @@
           <p class="sub-header">{{subheader}}</p>
         </div>
       {% endif %}
-      {%if cardtext %} 
+      {%if cardtext %}
         <div class="card-text">
           <p class="text">{{cardtext | safe}}</p>
         </div>

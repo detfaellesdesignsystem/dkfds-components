@@ -6328,12 +6328,18 @@ figure {
   display: block;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  height: calc(2.4rem + (8px * 2));
   padding: calc(8px - 1px) calc(16px - 1px);
   width: 100%;
   max-width: 32rem;
   margin-top: 8px;
   text-align: left;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-input {
+    /* IE10+ CSS styles go here */
+    height: calc(2.4rem + (8px * 2));
+  }
 }
 
 .form-input:focus, .form-input.focus {
