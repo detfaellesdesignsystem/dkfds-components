@@ -29,8 +29,6 @@
     padding-right: map-get($spacers, 4);
     text-decoration: none;
 
-    
-
     &:hover {
       background-color: $color-gray-pale;
       text-decoration: none;
@@ -43,17 +41,6 @@
       z-index: 1;
     }
 
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      color: $sidenav-link-current-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4);
-    }
-    &.active { 
-      color: $sidenav-link-active-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
-      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
-    }
   }
 
   li {
@@ -88,6 +75,33 @@
 
       &:focus{
         background-color: transparent;
+      }
+    }
+
+    &.current {
+      > a { /* stylelint-disable-line selector-no-qualifying-type */
+        color: $sidenav-link-current-color;
+        font-weight: $font-weight-semibold;
+        padding-left: map-get($spacers, 4);
+      }
+    }
+    &.active{
+      &:not(.has-anchor-links) > a{
+        background-color: $color-gray-pale;
+        border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+      }
+      &.has-anchor-links {
+        border-top: $inner-inner-border;
+        background-color: $color-gray-pale;
+        border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+        ul {
+          @include small-text;
+        }
+      }
+      > a{
+        color: $sidenav-link-active-color;
+        font-weight: $font-weight-semibold;
+        padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
       }
     }
   }
@@ -138,18 +152,17 @@
       position: relative;
       z-index: 1;
     }
-
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      color: $sidenav-link-current-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4);
-    }
-    &.active { 
-      color: $sidenav-link-active-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
-      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
-    }
+  }
+  li.current > a{ /* stylelint-disable-line selector-no-qualifying-type */
+    color: $sidenav-link-current-color;
+    font-weight: $font-weight-semibold;
+    padding-left: map-get($spacers, 4);
+  }
+  li.active > a {
+    color: $sidenav-link-active-color;
+    font-weight: $font-weight-semibold;
+    padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
+    border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
   }
 
   li {
@@ -197,6 +210,13 @@
     border: none;
     //font-size: $h5-font-size;
 
+    &.active {
+      &.has-anchor-links {
+        &:not(:last-child) {
+          border-bottom: $inner-inner-border;
+        }
+      }
+    }
     &:last-child {
       a {
         padding-bottom: $spacer;
@@ -209,38 +229,36 @@
     padding-left: map-get($spacers, 6);
     padding-top: $spacer;
     line-height: $base-line-height;
+  }
+  li.current > a{ /* stylelint-disable-line selector-no-qualifying-type */
+    padding-left: map-get($spacers, 6);
 
-    
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      padding-left: map-get($spacers, 6);
-
-    }
-    &.active { /* stylelint-disable-line selector-no-qualifying-type */
-      padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
-    }
+  }
+  li.active > a { /* stylelint-disable-line selector-no-qualifying-type */
+    padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
   }
 
-  .sidenav-sub_list {
+  li:not(.has-anchor-links) .sidenav-sub_list {
     a {
       padding-left: map-get($spacers, 8);
 
       &:focus {
         outline-offset: 0;
       }
+    }
+    li.current > a{ /* stylelint-disable-line selector-no-qualifying-type */
+      padding-left: map-get($spacers, 8);
 
-      &.current { /* stylelint-disable-line selector-no-qualifying-type */
-        padding-left: map-get($spacers, 8);
-        
-      }
-      &.active { /* stylelint-disable-line selector-no-qualifying-type */
-        padding-left: map-get($spacers, 8) - $sidenav-active-border-width;
-      }
+    }
+    li.active > a{ /* stylelint-disable-line selector-no-qualifying-type */
+      padding-left: map-get($spacers, 8) - $sidenav-active-border-width;
     }
   }
+
 }
 
 .sidebar-col{
   @include media-breakpoint-up(md) {
     flex: 0 0 300px; //300 = 3 columns width
-  } 
+  }
 }
