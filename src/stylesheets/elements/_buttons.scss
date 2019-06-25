@@ -1,5 +1,8 @@
 // Buttons
-
+a.button{
+  padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+  line-height: $body-text-line-height;
+}
 .button{
   appearance: none;
   display: inline-block;
