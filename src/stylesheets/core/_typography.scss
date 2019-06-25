@@ -239,6 +239,15 @@ p{
   }
 }*/
 
+h1:focus, .h1:focus, //Removed this styling, it make for a messy margin handling.
+h2:focus, .h2:focus,
+h3:focus, .h3:focus,
+h4:focus, .h4:focus,
+h5:focus, .h5:focus,
+h6:focus, .h6:focus {
+  outline: none;
+}
+
 h1, .h1{
   margin-bottom: $body-text;
   margin-top: 0px;

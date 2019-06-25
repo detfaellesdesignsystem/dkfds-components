@@ -14,7 +14,7 @@
   }
   //medium card
   &-medium {
-    //The last 
+    //The last
     > :last-of-type {
       padding-bottom:map-get($spacers, 5);
     }
@@ -28,6 +28,19 @@
 
   &-align-height {
     height: 100%;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    .card-footer{
+      align-self: flex-end;
+    }
   }
 
   p {
@@ -116,14 +129,14 @@
     border-bottom: map-get($spacers, 0);
   }
 
- 
+
 
   .action-buttons {
     button {
       margin-right: map-get($spacers, 4);
       margin-top:map-get($spacers, 3);
- 
-      @include media-breakpoint-up(md) { 
+
+      @include media-breakpoint-up(md) {
         margin-right: map-get($spacers, 4);
         margin-top:map-get($spacers, 3);
       }
@@ -138,7 +151,7 @@
     }
 
   }
-  
+
 
   .action-links {
     margin-top:map-get($spacers, 4);
