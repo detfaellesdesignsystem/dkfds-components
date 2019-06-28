@@ -5,8 +5,8 @@
 {% macro tringuide(trinliste) %}
   <ul class="sidenav-list">
     {% for trin in trinliste %}
-      <li{% if trin.disabled %} class="disabled"{% endif %}>
-        <a href="{{trin.href}}" {% if trin.active %} class="active" {% endif %}>
+      <li class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active{% endif %}">
+        <a href="{{trin.href}}">
             {{loop.index}}. {{trin.text}}
 
             {% if trin.icon %}
@@ -24,8 +24,8 @@
 {% macro tringuide_locked(trinliste) %}
   <ul class="sidenav-list-locked">
     {% for trin in trinliste %}
-      <li class="disabled">
-        <a  {% if trin.active %} class="active" {% endif %} disabled tab-index="-1" aria-disabled="true">
+      <li class="disabled {% if trin.active %}active{% endif %} ">
+        <a disabled tab-index="-1" aria-disabled="true">
             {{loop.index}}. {{trin.text}}
 
             {% if trin.icon %}
@@ -43,8 +43,8 @@
 {% macro tringuide_information(trinliste) %}
   <ul class="sidenav-list">
     {% for trin in trinliste %}
-      <li{% if trin.disabled %} class="disabled"{% endif %}>
-        <a href="{{trin.href}}" {% if trin.active %} class="active" {% endif %}>
+      <li class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active{% endif %}">
+        <a href="{{trin.href}}">
             <div class="d-inline-block">
                 {{loop.index}}. {{trin.text}}
                 {% if trin.information %}

@@ -8638,6 +8638,10 @@ input[type=search] {
   padding-bottom: calc(8px - 1px);
 }
 
+.sidenav-list > li li {
+  border-top: 1px solid #DCDCDC;
+}
+
 .sidenav-list a {
   border: none;
   color: #1a1a1a;
@@ -8717,6 +8721,10 @@ input[type=search] {
   line-height: 2.4rem;
   font-weight: 500;
   color: #454545;
+}
+
+.sidenav-list li.active.has-anchor-links ul li a {
+  padding-left: 28px;
 }
 
 .sidenav-list li.active > a {
@@ -8873,7 +8881,7 @@ input[type=search] {
 
 .sidenav-sub_list li.active > a {
   /* stylelint-disable-line selector-no-qualifying-type */
-  padding-left: 28px;
+  padding-left: 32px;
 }
 
 .sidenav-sub_list li:not(.has-anchor-links) .sidenav-sub_list a {

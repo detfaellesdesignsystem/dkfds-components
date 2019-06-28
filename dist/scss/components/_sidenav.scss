@@ -16,6 +16,9 @@
         padding-bottom: $input-top-bottom-padding;
       }
     }
+    li{
+      border-top: $inner-inner-border;
+    }
   }
 
   a {
@@ -96,6 +99,9 @@
         border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
         ul {
           @include small-text;
+          li a{
+            padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
+          }
         }
       }
       > a{
@@ -235,7 +241,7 @@
 
   }
   li.active > a { /* stylelint-disable-line selector-no-qualifying-type */
-    padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
+    padding-left: map-get($spacers, 6);
   }
 
   li:not(.has-anchor-links) .sidenav-sub_list {
