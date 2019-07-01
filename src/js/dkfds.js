@@ -2,12 +2,26 @@
 const domready = require('domready');
 const forEach = require('array-foreach');
 const select = require('./utils/select');
+import {collapse as collapseModule } from './components/collapse';
+import {dropdown as dropdownModule } from './components/dropdown';
+import {checkboxToggleContent as checkboxToggleContentModule } from './components/checkbox-toggle-content';
+import {radioToggleContent as radioToggleContentModule } from './components/radio-toggle-content';
 const modal = require('./components/modal');
 const table = require('./components/table');
 const tooltip = require('./components/tooltip');
-const dropdown = require('./components/dropdown');
-const radioToggleContent = require('./components/radio-toggle-content');
-const checkboxToggleContent = require('./components/checkbox-toggle-content');
+
+function collapse (element){
+  new collapseModule(element);
+}
+function dropdown (element){
+  new dropdownModule(element);
+}
+function checkboxToggleContent (element){
+  new checkboxToggleContentModule(element);
+}
+function radioToggleContent (element){
+  new radioToggleContentModule(element);
+}
 
 
 /**
@@ -26,23 +40,24 @@ domready(() => {
   for (let name in components) {
     const behavior = components[ name ];
     behavior.on(target);
+    console.log(name);
   }
 
   const jsSelectorDropdown = '.js-dropdown';
   forEach(select(jsSelectorDropdown), dropdownElement => {
-    new dropdown(dropdownElement);
+    new dropdownModule(dropdownElement);
   });
 
   const jsRadioToggleGroup = '.js-radio-toggle-group';
   forEach(select(jsRadioToggleGroup), toggleElement => {
-    new radioToggleContent(toggleElement);
+    new radioToggleContentModule(toggleElement);
   });
 
   const jsCheckboxToggleContent = '.js-checkbox-toggle-content';
   forEach(select(jsCheckboxToggleContent), toggleElement => {
-    new checkboxToggleContent(toggleElement);
+    new checkboxToggleContentModule(toggleElement);
   });
 
 });
 
-module.exports = dkfds;
+module.exports = { collapse, dropdown, checkboxToggleContent, radioToggleContent };
