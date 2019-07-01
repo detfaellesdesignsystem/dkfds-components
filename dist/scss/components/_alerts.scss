@@ -51,6 +51,7 @@ $icon-size: 24px;
     top: map-get($spacers, 4);
     right: map-get($spacers, 4);
     @include small-text;
+    color: $color-black;
     .icon-svg{
       margin-right: map-get($spacers, 2);
       width: 1.6rem;
@@ -66,6 +67,8 @@ $icon-size: 24px;
     font-weight: 600;
     line-height: $alert-heading-lineheight;
     color: $alert-heading-color;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .alert-text {

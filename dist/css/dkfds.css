@@ -7432,6 +7432,7 @@ hr {
   line-height: 2.4rem;
   font-weight: 500;
   color: #454545;
+  color: #1a1a1a;
 }
 
 .alert .alert-close .icon-svg {
@@ -7448,6 +7449,8 @@ hr {
   font-weight: 600;
   line-height: 2.4rem;
   color: #1a1a1a;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .alert .alert-text {
