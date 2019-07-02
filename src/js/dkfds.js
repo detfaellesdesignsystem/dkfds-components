@@ -2,7 +2,6 @@
 const domready = require('domready');
 const forEach = require('array-foreach');
 const select = require('./utils/select');
-const modal = require('./components/modal');
 const table = require('./components/table');
 const tooltip = require('./components/tooltip');
 const dropdown = require('./components/dropdown');
