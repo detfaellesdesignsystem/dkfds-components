@@ -1,0 +1,21 @@
+@media print{
+  body{
+    display: block;
+  }
+  .page-container{
+    display: block;
+  }
+
+  fieldset{
+    page-break-before: avoid;
+    page-break-inside: auto;
+    display: block;
+    overflow: visible !important;
+  }
+  .form-group{
+    page-break-inside: avoid;
+  }
+  .form-label{
+    page-break-after: avoid;
+  }
+}

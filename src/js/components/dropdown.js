@@ -160,7 +160,6 @@ class dropdown {
       this.targetEl.style.right = null;
 
       var rect = this.triggerEl.getBoundingClientRect();
-      console.log(rect.left);
       if(this.triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
         //close
         this.triggerEl.setAttribute('aria-expanded', 'false');
@@ -176,14 +175,11 @@ class dropdown {
         var offset = this.offset(this.targetEl)
 
         if(offset.left < 0){
-          console.log('Out of bounds: LEFT');
           this.targetEl.style.left = '0px';
           this.targetEl.style.right = 'auto';
         }
         var right = offset.left + this.targetEl.offsetWidth;
-        console.log(right);
         if(right > window.innerWidth){
-          console.log('Out of bounds: RIGHT');
           this.targetEl.style.left = 'auto';
           this.targetEl.style.right = '0px';
         }
@@ -191,15 +187,11 @@ class dropdown {
         var offsetAgain = this.offset(this.targetEl);
 
         if(offsetAgain.left < 0){
-          console.log('Out of bounds: LEFT');
-
           this.targetEl.style.left = '0px';
           this.targetEl.style.right = 'auto';
         }
         right = offsetAgain.left + this.targetEl.offsetWidth;
         if(right > window.innerWidth){
-          console.log('Out of bounds: RIGHT');
-
           this.targetEl.style.left = 'auto';
           this.targetEl.style.right = '0px';
         }

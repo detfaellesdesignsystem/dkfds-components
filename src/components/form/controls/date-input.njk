@@ -1,9 +1,9 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro datoinput(label, hint, day, month, year, tooltip, tooltipTitle, datepicker, error, dayValue, monthValue, yearValue) %}
-<fieldset>
-  <div class="form-group {% if error %} form-error {% endif %}">
-    <label class="form-label icon-link">{{label}}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>
-    <span class="form-hint">{{hint}}</span>
+<div class="form-group {% if error %} form-error {% endif %}">
+  <fieldset>
+    <legend><label class="form-label icon-link">{{label}}{% if tooltip %}<button class="js-tooltip tooltip" data-tippy-trigger="click" title="{{tooltipTitle}}" aria-label="{{tooltipTitle}}"><svg class='icon-svg'><use xlink:href='#help-circle-outline'></use></svg></button>{% endif %}</label>
+    <span class="form-hint">{{hint}}</span></legend>
     <span class="form-error-message" id="form-error-message-input-error" role="alert">{{error}}</span>
     <div class="date-group js-calendar-group mt-3">
       <div class="form-group form-group-day">
@@ -26,6 +26,6 @@
 
       {% endif %}
     </div>
-  </div>
-</fieldset>
+  </fieldset>
+</div>
 {% endmacro %}

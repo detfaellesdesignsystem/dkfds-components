@@ -8957,6 +8957,10 @@ a.skipnav {
   flex-flow: row wrap;
 }
 
+.card-align-height > * {
+  width: 100%;
+}
+
 .card-align-height .card-footer {
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -9738,4 +9742,25 @@ a.skipnav {
   border: none;
   background: none;
   padding: 0;
+}
+
+@media print {
+  body {
+    display: block;
+  }
+  .page-container {
+    display: block;
+  }
+  fieldset {
+    page-break-before: avoid;
+    page-break-inside: auto;
+    display: block;
+    overflow: visible !important;
+  }
+  .form-group {
+    page-break-inside: avoid;
+  }
+  .form-label {
+    page-break-after: avoid;
+  }
 }
