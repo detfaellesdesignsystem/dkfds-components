@@ -36,7 +36,7 @@ $icon-size: 24px;
   position: relative;
   margin-top: map-get($spacers, 4);
   margin-bottom: map-get($spacers, 4);
- 
+
   border-left: $bar-size solid darken($color-gray-pale, 40%);
 
   &:first-child {
@@ -46,6 +46,19 @@ $icon-size: 24px;
   &.alert--paragraph {
     max-width: $text-max-width;
   }
+  .alert-close{
+    position: absolute;
+    top: map-get($spacers, 4);
+    right: map-get($spacers, 4);
+    @include small-text;
+    color: $color-black;
+    .icon-svg{
+      margin-right: map-get($spacers, 2);
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: currentColor;
+    }
+  }
 
   .alert-heading {
     margin-top: 0;
@@ -54,6 +67,8 @@ $icon-size: 24px;
     font-weight: 600;
     line-height: $alert-heading-lineheight;
     color: $alert-heading-color;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .alert-text {
@@ -63,7 +78,7 @@ $icon-size: 24px;
     max-width: $text-max-width;
   }
 }
- 
+
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
     background-color: $bgcolor;

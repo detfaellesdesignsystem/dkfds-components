@@ -2244,6 +2244,15 @@ p{
     margin-bottom: 0;
   }
 }*/
+h1:focus, .h1:focus,
+h2:focus, .h2:focus,
+h3:focus, .h3:focus,
+h4:focus, .h4:focus,
+h5:focus, .h5:focus,
+h6:focus, .h6:focus {
+  outline: none;
+}
+
 h1, .h1 {
   margin-bottom: 1.6rem;
   margin-top: 0px;
@@ -5640,13 +5649,18 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   margin-top: 24px;
 }
 
+a.button {
+  padding: calc(8px - 2px) calc(16px - 2px) 0px;
+  line-height: 2.4rem;
+}
+
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   display: inline-block;
   width: 100%;
-  padding: calc(8px - 2px) calc(16px - 2px);
+  padding: calc(2px) calc(16px - 2px) 0px;
   border-radius: 4px;
   border: 2px solid #004993;
   font-size: 1.6rem;
@@ -5655,7 +5669,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   color: #ffffff;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  line-height: 2.4rem;
+  line-height: 1em;
   text-align: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -5665,6 +5679,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  height: 40px;
 }
 
 @media (min-width: 768px) {
@@ -5884,6 +5899,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn {
 .button .icon-svg {
   margin-right: 4px;
   fill: currentColor;
+  margin-top: -0.2em;
 }
 
 .button-unstyled {
@@ -6323,12 +6339,18 @@ figure {
   display: block;
   font-size: 1.6rem;
   line-height: 2.4rem;
-  height: calc(2.4rem + (8px * 2));
   padding: calc(8px - 1px) calc(16px - 1px);
   width: 100%;
   max-width: 32rem;
   margin-top: 8px;
   text-align: left;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-input {
+    /* IE10+ CSS styles go here */
+    height: calc(2.4rem + (8px * 2));
+  }
 }
 
 .form-input:focus, .form-input.focus {
@@ -7408,6 +7430,23 @@ hr {
   max-width: 66ch;
 }
 
+.alert .alert-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.alert .alert-close .icon-svg {
+  margin-right: 4px;
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
+}
+
 .alert .alert-heading {
   margin-top: 0;
   margin-bottom: 0;
@@ -7415,6 +7454,8 @@ hr {
   font-weight: 600;
   line-height: 2.4rem;
   color: #1a1a1a;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .alert .alert-text {
@@ -8905,6 +8946,21 @@ a.skipnav {
 
 .card-align-height {
   height: 100%;
+  -ms-box-orient: horizontal;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.card-align-height > * {
+  width: 100%;
+}
+
+.card-align-height .card-footer {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
 }
 
 .card p {
@@ -9683,4 +9739,25 @@ a.skipnav {
   border: none;
   background: none;
   padding: 0;
+}
+
+@media print {
+  body {
+    display: block;
+  }
+  .page-container {
+    display: block;
+  }
+  fieldset {
+    page-break-before: avoid;
+    page-break-inside: auto;
+    display: block;
+    overflow: visible !important;
+  }
+  .form-group {
+    page-break-inside: avoid;
+  }
+  .form-label {
+    page-break-after: avoid;
+  }
 }

@@ -2,14 +2,14 @@
 
 {% macro portal_header(portal_header) %}
   <!--1A: Portal header -->
-  <div class="portal-header">
+  <div class="portal-header d-print-none">
     <div class="container portal-header-inner">
       <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title | default('Home') }}" aria-label="{{ portal_header.logolink.label | default('Home') }}" class="logo alert-leave"></a>
-      <button class="button button-secondary button-menu-open js-menu-open ml-auto" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
+      <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
       <div class="portal-info">
-        {% if portal_header.user %}  
+        {% if portal_header.user %}
           <p class="user"><b class="username">{{ portal_header.user.name | safe }}</b> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
         {% endif %}
          <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave" role="button">
@@ -32,10 +32,10 @@
 
       <!--2B: Solution header: Authority name + text-->
       <div class="solution-info"> <!-- nav-secondary -->
-        {% if solution_header_data.authority.name %}  
+        {% if solution_header_data.authority.name %}
           <h6 class="h5 authority-name"> {{ solution_header_data.authority.name }}</h6>
         {% endif %}
-        {% if solution_header_data.authority.text %}  
+        {% if solution_header_data.authority.text %}
           <p>{{ solution_header_data.authority.text | safe }}</p>
         {% endif %}
       </div>

@@ -1,11 +1,14 @@
 // Buttons
-
+a.button{
+  padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+  line-height: $body-text-line-height;
+}
 .button{
   appearance: none;
   display: inline-block;
   width: 100%;
   //@include margin(0.5em 0.5em 0.5em null);
-  padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width});
+  padding: calc(#{map-get($spacers, 1)}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
   border-radius: $button-border-radius;
   border: $button-border;
   font-size: $base-font-size;
@@ -13,13 +16,14 @@
   min-height: 40px;
   color: $button-primary-color;
   @include font-smoothing;
-  line-height: $body-text-line-height;
+  line-height: 1em;
   text-align: center;
   justify-content: center;
   text-decoration: none;
   user-select: none;
   cursor: pointer;
-  //transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out; 
+  //transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
+  height: #{map-get($spacers, 7)};
 
   @include media-breakpoint-up(md) {
     width: auto;
@@ -33,7 +37,7 @@
 
   &.focus,
   &:focus {
-    outline: $focus-outline;  
+    outline: $focus-outline;
     outline-offset: $focus-spacing;
     color: $button-primary-color;
   }
@@ -250,6 +254,7 @@
   .icon-svg {
     margin-right: 4px;
     fill: currentColor;
+    margin-top: -0.2em;
   }
 }
 

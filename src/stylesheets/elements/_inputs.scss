@@ -28,12 +28,16 @@
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
-  height: calc(#{$input-line-height} + (8px * 2)); // internet explorer ignores line-height
   padding: $input-top-bottom-padding $input-left-right-padding;
   width: 100%;
   max-width: 32rem;
   margin-top: map-get($spacers, 3);
   text-align: left;
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    height: calc(#{$input-line-height} + (8px * 2));
+  }
+
   &:focus, &.focus{
     outline: $focus-outline;
     outline-offset: $focus-spacing;
