@@ -187,11 +187,13 @@ class dropdown {
         var offsetAgain = this.offset(this.targetEl);
 
         if(offsetAgain.left < 0){
+
           this.targetEl.style.left = '0px';
           this.targetEl.style.right = 'auto';
         }
         right = offsetAgain.left + this.targetEl.offsetWidth;
         if(right > window.innerWidth){
+
           this.targetEl.style.left = 'auto';
           this.targetEl.style.right = '0px';
         }
