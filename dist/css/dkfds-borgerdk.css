@@ -8733,7 +8733,7 @@ input[type=search] {
 }
 
 .sidenav-list li.active > a {
-  color: #44831E;
+  color: #1a1a1a;
   font-weight: 600;
   padding-left: 12px;
 }
@@ -8812,7 +8812,7 @@ input[type=search] {
 }
 
 .sidenav-list-locked li.active > a {
-  color: #44831E;
+  color: #1a1a1a;
   font-weight: 600;
   padding-left: 12px;
   border-left: 4px solid #44831E;

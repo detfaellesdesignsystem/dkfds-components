@@ -102,7 +102,7 @@
         }
       }
       > a{
-        color: $sidenav-link-active-color;
+        color: $color-black;
         font-weight: $font-weight-semibold;
         padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
       }
@@ -170,7 +170,7 @@
     padding-left: map-get($spacers, 4);
   }
   li.active > a {
-    color: $sidenav-link-active-color;
+    color: $color-black;
     font-weight: $font-weight-semibold;
     padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
     border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
