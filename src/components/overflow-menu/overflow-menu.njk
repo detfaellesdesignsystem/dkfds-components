@@ -2,7 +2,7 @@
     <div class="overflow-menu {% if openRight %} overflow-menu--open-right {% endif %}{% if openLeft %} overflow-menu--open-left {% endif %}">
         <button class="button-overflow-menu js-dropdown {% if doResponsiveCollapse %} js-dropdown--responsive-collapse {% endif %}" data-js-target="#{{ id }}" aria-haspopup="true" aria-expanded="false">
             {{ text }}
-            {% if icon %}<svg class="icon-svg"><use xlink:href="#{{ icon }}"></use></svg>{% endif %}
+            {% if icon %}<svg class="icon-svg" aria-hidden="true" focusable="false" tabindex="-1"><use xlink:href="#{{ icon }}"></use></svg>{% endif %}
             <span class="sr-only">Åbner overflow menu</span>
         </button>
         <div class="overflow-menu-inner" id="{{ id }}" aria-hidden="true">
