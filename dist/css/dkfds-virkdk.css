@@ -7071,7 +7071,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   background-color: transparent;
 }
 
-.table tr:last-child td {
+.table tr:last-child td, .table tr:last-child th {
   border-bottom: none;
 }
 
@@ -7155,6 +7155,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   border-right-color: transparent;
 }
 
+.table.table--zebra.table--borderless tr:last-child th,
 .table.table--zebra.table--borderless tr:last-child td {
   border-bottom-color: transparent;
 }

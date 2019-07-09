@@ -57,7 +57,7 @@
 
     tr{
         &:last-child{
-            td{
+            td, th{
                 border-bottom: none;
             }
         }
@@ -168,7 +168,8 @@
                     border-right-color: transparent;
                 }
             }
-            tr:last-child td{
+          tr:last-child th,
+          tr:last-child td{
                 border-bottom-color: transparent
             }
         }
