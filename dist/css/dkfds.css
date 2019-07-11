@@ -9543,6 +9543,28 @@ a.skipnav {
     position: static;
     box-shadow: none;
     border: none;
+    min-width: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .overflow-menu.overflow-menu--lg-no-responsive {
+    display: block;
+  }
+  .overflow-menu.overflow-menu--lg-no-responsive:before, .overflow-menu.overflow-menu--lg-no-responsive:after {
+    display: none;
+  }
+  .overflow-menu.overflow-menu--lg-no-responsive .button-overflow-menu {
+    display: none;
+  }
+  .overflow-menu.overflow-menu--lg-no-responsive .overflow-menu-inner {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    position: static;
+    box-shadow: none;
+    border: none;
+    min-width: auto;
   }
 }
 
