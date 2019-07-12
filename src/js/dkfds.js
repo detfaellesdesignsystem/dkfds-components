@@ -1,28 +1,12 @@
 'use strict';
 const domready = require('domready');
-const forEach = require('array-foreach');
-const select = require('./utils/select');
-import {collapse as collapseModule } from './components/collapse';
-import {dropdown as dropdownModule } from './components/dropdown';
-import {checkboxToggleContent as checkboxToggleContentModule } from './components/checkbox-toggle-content';
-import {radioToggleContent as radioToggleContentModule } from './components/radio-toggle-content';
+const collapse = require('./components/collapse');
+const radioToggleGroup = require('./components/radio-toggle-content');
+const checkboxToggleContent = require('./components/checkbox-toggle-content');
+//const dropdown = require('./components/dropdown');
 const modal = require('./components/modal');
 const table = require('./components/table');
 const tooltip = require('./components/tooltip');
-
-function collapse (element){
-  new collapseModule(element);
-}
-function dropdown (element){
-  new dropdownModule(element);
-}
-function checkboxToggleContent (element){
-  new checkboxToggleContentModule(element);
-}
-function radioToggleContent (element){
-  new radioToggleContentModule(element);
-}
-
 
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -40,24 +24,23 @@ domready(() => {
   for (let name in components) {
     const behavior = components[ name ];
     behavior.on(target);
-    console.log(name);
   }
 
-  const jsSelectorDropdown = '.js-dropdown';
-  forEach(select(jsSelectorDropdown), dropdownElement => {
-    new dropdownModule(dropdownElement);
-  });
+  const jsSelectorCollapse = document.getElementsByClassName('js-collapse');
+  for(let c = 0; c < jsSelectorCollapse.length; c++){
+    new collapse(jsSelectorCollapse[ c ]);
+  }
 
-  const jsRadioToggleGroup = '.js-radio-toggle-group';
-  forEach(select(jsRadioToggleGroup), toggleElement => {
-    new radioToggleContentModule(toggleElement);
-  });
+  const jsSelectorRadioCollapse = document.getElementsByClassName('js-radio-toggle-group');
+  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
+    new radioToggleGroup(jsSelectorRadioCollapse[ c ]);
+  }
 
-  const jsCheckboxToggleContent = '.js-checkbox-toggle-content';
-  forEach(select(jsCheckboxToggleContent), toggleElement => {
-    new checkboxToggleContentModule(toggleElement);
-  });
+  const jsSelectorCheckboxCollapse = document.getElementsByClassName('js-checkbox-toggle-content');
+  for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
+    new checkboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
+  }
 
 });
 
-module.exports = { collapse, dropdown, checkboxToggleContent, radioToggleContent };
+module.exports = { collapse, radioToggleGroup, checkboxToggleContent };

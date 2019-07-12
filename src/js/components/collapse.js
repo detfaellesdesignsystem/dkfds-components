@@ -2,7 +2,7 @@
  * Collapse/expand.
  */
 
-'use strict';
+'use strict'
 
 class collapse {
   constructor (element, action = 'toggle'){
