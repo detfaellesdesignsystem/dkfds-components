@@ -8739,7 +8739,6 @@ input[type=search] {
   background-color: transparent;
   border-top: 1px solid #BFBFBF;
   font-size: 1.6rem;
-  cursor: default;
 }
 
 .sidenav-list-locked > li:first-child {
@@ -8766,7 +8765,6 @@ input[type=search] {
   background-color: #ffffff;
   text-decoration: none;
   color: #1a1a1a;
-  cursor: default;
 }
 
 .sidenav-list-locked a:focus {
