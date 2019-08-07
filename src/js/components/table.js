@@ -1,6 +1,6 @@
 const select = require('../utils/select');
 
-class ResponsiveTables {
+class ResponsiveTable {
     constructor(table) {
         this.insertHeaderAsAttributes(table);
     }
@@ -30,4 +30,4 @@ class ResponsiveTables {
 }
 
 
-module.exports = ResponsiveTables;
+module.exports = ResponsiveTable;

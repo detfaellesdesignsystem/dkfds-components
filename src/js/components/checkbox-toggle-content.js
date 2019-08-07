@@ -1,5 +1,5 @@
 'use strict';
-class checkboxToggleContent{
+class CheckboxToggleContent{
     constructor(el){
         this.jsToggleTrigger = '.js-checkbox-toggle-content';
         this.jsToggleTarget = 'data-js-target';
@@ -49,4 +49,4 @@ class checkboxToggleContent{
     }
 }
 
-module.exports = checkboxToggleContent;
+module.exports = CheckboxToggleContent;

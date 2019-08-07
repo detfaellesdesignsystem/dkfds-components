@@ -1,6 +1,6 @@
 'use strict';
 
-class radioToggleGroup{
+class RadioToggleGroup{
     constructor(el){
         this.jsToggleTrigger = '.js-radio-toggle-group';
         this.jsToggleTarget = 'data-js-target';
@@ -58,4 +58,4 @@ class radioToggleGroup{
     }
 }
 
-module.exports = radioToggleGroup;
+module.exports = RadioToggleGroup;

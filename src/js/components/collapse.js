@@ -4,7 +4,7 @@
 
 'use strict'
 
-class collapse {
+class Collapse {
   constructor (element, action = 'toggle'){
     this.jsCollapseTarget = 'data-js-target';
     this.triggerEl = element;
@@ -85,4 +85,4 @@ class collapse {
   }
 }
 
-module.exports = collapse;
+module.exports = Collapse;
