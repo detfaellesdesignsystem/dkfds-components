@@ -7926,6 +7926,15 @@ footer .footer-theme {
   visibility: visible;
 }
 
+@media print {
+  body.modal-active .page-container {
+    display: none;
+  }
+  body.modal-active > footer {
+    display: none;
+  }
+}
+
 .modal {
   /**************************		Animation Style
 	\**************************/
@@ -7947,6 +7956,12 @@ footer .footer-theme {
   align-items: center;
   z-index: 9999;
   padding: 16px;
+}
+
+@media print {
+  .modal .modal__overlay {
+    display: block;
+  }
 }
 
 .modal .modal__container {
@@ -7979,6 +7994,12 @@ footer .footer-theme {
   align-items: center;
 }
 
+@media print {
+  .modal .modal__header {
+    display: block;
+  }
+}
+
 @media (min-width: 768px) {
   .modal .modal__header {
     padding-right: 48px;
@@ -8005,6 +8026,12 @@ footer .footer-theme {
   .modal .modal__footer {
     display: -ms-flexbox;
     display: flex;
+  }
+}
+
+@media print and (min-width: 992px) {
+  .modal .modal__footer {
+    display: block;
   }
 }
 
@@ -9768,6 +9795,7 @@ a.skipnav {
 @media print {
   body {
     display: block;
+    min-height: 0;
   }
   .page-container {
     display: block;

@@ -1,6 +1,7 @@
 @media print{
   body{
     display: block;
+    min-height: 0;
   }
   .page-container{
     display: block;
