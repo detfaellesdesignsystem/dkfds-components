@@ -7957,6 +7957,9 @@ footer .footer-theme {
 }
 
 @media print {
+  body.modal-active > header {
+    display: none;
+  }
   body.modal-active .page-container {
     display: none;
   }

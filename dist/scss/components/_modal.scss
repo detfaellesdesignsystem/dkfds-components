@@ -1,6 +1,8 @@
 body.modal-active{
   @media print{
-
+    > header{
+      display: none
+    }
     .page-container{
       display: none;
     }
