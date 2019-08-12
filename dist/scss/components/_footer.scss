@@ -18,6 +18,18 @@ footer {
       padding-bottom: 56px;
     }
 
+
+    @media print{
+      margin-top: map-get($spacers, 6);
+      padding-bottom: 0;
+      .inline-list > li{
+        display: inline-block;
+        + li{
+          margin-left: map-get($spacers, 4);
+        }
+      }
+    }
+
     .footer-col {
       &:not(:first-child) {
         margin-top: map-get($spacers, 5);

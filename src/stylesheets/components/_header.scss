@@ -20,6 +20,11 @@ $z-index-nav:     9000;
     height: 60px;
     width: 200px;
     max-width: 60%;
+
+    @media print{
+      height: auto;
+      width: auto;
+    }
   }
 
   .button{
@@ -66,13 +71,19 @@ $z-index-nav:     9000;
   }
 
   .portal-header{
-      border-bottom: $inner-border;
-      width: 100%;
+    border-bottom: $inner-border;
+    width: 100%;
+    @media print{
+      overflow:hidden;
+    }
     .portal-header-inner{
       width: 100%;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
       display: flex;
+      @media print{
+        display: block;
+      }
       align-items: center;
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         flex-direction: row;
@@ -81,6 +92,10 @@ $z-index-nav:     9000;
 
     .portal-info{
       display: none;
+      @media print{
+        display: block;
+        float: right;
+      }
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         display: flex;

@@ -12,6 +12,9 @@ $image-path:                  '../img' !default;
         .logo{
             background-image: url($image-path + '/logo-borgerdk.svg');
             height: 4.8rem;
+            @media print{
+              height: auto;
+            }
         }
     }
 }

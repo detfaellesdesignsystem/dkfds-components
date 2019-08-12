@@ -2,9 +2,11 @@
 
 {% macro portal_header(portal_header) %}
   <!--1A: Portal header -->
-  <div class="portal-header d-print-none">
+  <div class="portal-header">
     <div class="container portal-header-inner">
-      <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title | default('Home') }}" aria-label="{{ portal_header.logolink.label | default('Home') }}" class="logo alert-leave"></a>
+      <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title | default('Home') }}" aria-label="{{ portal_header.logolink.label | default('Home') }}" class="logo alert-leave">
+        <span class="d-none d-print-block">Portalnavn</span>
+      </a>
       <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
@@ -12,7 +14,7 @@
         {% if portal_header.user %}
           <p class="user"><b class="username">{{ portal_header.user.name | safe }}</b> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
         {% endif %}
-         <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave" role="button">
+         <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave d-print-none" role="button">
           {{ portal_header.link.text }}
         </a>
       </div>

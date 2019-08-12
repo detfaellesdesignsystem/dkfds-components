@@ -177,7 +177,7 @@
 
 
     //make row into a "card" on phone
-    &.table--responsive-headers{
+    &.table--responsive-headers:not(.d-print-table){
         @include media-breakpoint-down(sm) {
             display: block;
 
