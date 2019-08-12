@@ -2266,7 +2266,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  margin-top: 3rem;
+  margin-top: 32px;
   margin-bottom: 1.6rem;
 }
 
@@ -2277,7 +2277,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  margin-top: 3rem;
+  margin-top: 32px;
   margin-bottom: 1.6rem;
 }
 

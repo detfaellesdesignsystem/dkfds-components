@@ -253,14 +253,14 @@ h1, .h1{
 }
 
 h2, .h2 {
-  margin-top: $h2-font-size;
+  margin-top: map-get($spacers, 6);
   margin-bottom: $body-text;
   @include media-breakpoint-up(md) {
     margin-top: $h1-font-size;
   }
 }
 h3, .h3{
-  margin-top: $h2-font-size;
+  margin-top: map-get($spacers, 6);
   margin-bottom: $body-text;
   @include media-breakpoint-up(md) {
     margin-top: $h1-font-size;
