@@ -7154,7 +7154,41 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   border-bottom-color: transparent;
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
+  .table.table--responsive-headers {
+    display: block;
+  }
+  .table.table--responsive-headers thead {
+    display: none;
+  }
+  .table.table--responsive-headers tr {
+    border-bottom: 1px solid #BFBFBF;
+  }
+  .table.table--responsive-headers tr:last-child {
+    border-bottom: 0;
+  }
+  .table.table--responsive-headers tr td, .table.table--responsive-headers tr th {
+    display: block;
+    border: none !important;
+  }
+  .table.table--responsive-headers tr td[data-title]:not([data-title=""]):before, .table.table--responsive-headers tr th[data-title]:not([data-title=""]):before {
+    content: attr(data-title);
+    text-align: left;
+    display: block;
+    font-weight: 600;
+  }
+  .table.table--responsive-headers.table--borderless tbody tr:first-child {
+    border-top: solid 1px #BFBFBF;
+  }
+  .table.table--responsive-headers.table--borderless tbody tr:last-child {
+    border-bottom: solid 1px #BFBFBF;
+  }
+  .table.table--responsive-headers.table--borderless tbody tr td:first-child, .table.table--responsive-headers.table--borderless tbody tr th:first-child {
+    padding-left: 16px;
+  }
+}
+
+@media print and (max-width: 767px) {
   .table.table--responsive-headers:not(.d-print-table) {
     display: block;
   }
