@@ -133,6 +133,10 @@ $z-index-nav:     9000;
       flex-direction: row;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      @media print{
+        display: block;
+        overflow: hidden;
+      }
     }
 
     .solution-heading{
@@ -148,14 +152,27 @@ $z-index-nav:     9000;
           line-height: 2.4rem;
         }
       }
+      @media print{
+        display: inline-block;
+      }
     }
     .solution-info{
       display: none;
+      @media print{
+        display: block;
+        float: right;
+        margin-left: 0;
+        text-align: right;
+      }
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         text-align: right;
         max-width: 60%;
         display: block;
+
+        @media print{
+          margin-left: 0;
+        }
       }
     }
   }
