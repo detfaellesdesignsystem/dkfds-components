@@ -263,21 +263,6 @@ $radio-size-large: 34px;
 }
 
 //checked radio
-@media print {
-  .form-radio.printIfChecked, .form-checkbox.printIfChecked{
-    display: none;
-    & + label{
-      display: none;
-    }
-    &:checked{
-      display: inline-block;
-      + label{
-        display: inline-block;
-      }
-    }
-  }
-}
-
 .form-radio:checked + label{
   position: relative;
   &:after{

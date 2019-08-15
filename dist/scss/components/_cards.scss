@@ -6,10 +6,6 @@
   overflow: hidden;
   background: $color-white;
 
-  @media print{
-    box-shadow: none;
-  }
-
   //small card
   &-small {
     > :last-of-type {

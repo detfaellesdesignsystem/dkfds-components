@@ -20,11 +20,6 @@ $z-index-nav:     9000;
     height: 60px;
     width: 200px;
     max-width: 60%;
-
-    @media print{
-      height: auto;
-      width: auto;
-    }
   }
 
   .button{
@@ -73,17 +68,11 @@ $z-index-nav:     9000;
   .portal-header{
     border-bottom: $inner-border;
     width: 100%;
-    @media print{
-      overflow:hidden;
-    }
     .portal-header-inner{
       width: 100%;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
       display: flex;
-      @media print{
-        display: block;
-      }
       align-items: center;
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         flex-direction: row;
@@ -92,10 +81,6 @@ $z-index-nav:     9000;
 
     .portal-info{
       display: none;
-      @media print{
-        display: block;
-        float: right;
-      }
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         display: flex;
@@ -133,10 +118,6 @@ $z-index-nav:     9000;
       flex-direction: row;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);
       padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
-      @media print{
-        display: block;
-        overflow: hidden;
-      }
     }
 
     .solution-heading{
@@ -152,27 +133,14 @@ $z-index-nav:     9000;
           line-height: 2.4rem;
         }
       }
-      @media print{
-        display: inline-block;
-      }
     }
     .solution-info{
       display: none;
-      @media print{
-        display: block;
-        float: right;
-        margin-left: 0;
-        text-align: right;
-      }
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         margin-left: auto;
         text-align: right;
         max-width: 60%;
         display: block;
-
-        @media print{
-          margin-left: 0;
-        }
       }
     }
   }
