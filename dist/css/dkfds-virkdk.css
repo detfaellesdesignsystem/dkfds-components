@@ -6091,6 +6091,10 @@ figure {
   fill: currentColor;
 }
 
+.icon-svg:focus {
+  outline: none;
+}
+
 .inline-svg {
   height: 1em;
   width: 1em;
