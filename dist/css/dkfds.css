@@ -6818,6 +6818,14 @@ ol li ol li ol li:before {
   padding-right: 0 !important;
 }
 
+.noindent-list > li {
+  padding-left: calc(8px + 6px);
+}
+
+.noindent-list > li::before {
+  left: 0px;
+}
+
 .inline-list {
   margin: 0;
   list-style-type: none;
