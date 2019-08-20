@@ -1,5 +1,5 @@
 .modal {
-		
+
 	.modal__overlay {
 		position: fixed;
 		top: 0;
@@ -69,7 +69,7 @@
 			right: map-get($spacers, 6);
 		}
 	}
-	
+
 	/**************************\
 		Animation Style
 	\**************************/
@@ -77,46 +77,46 @@
 		from { opacity: 0; }
 			to { opacity: 1; }
 	}
-	
+
 	@keyframes modalfadeOut {
 		from { opacity: 1; }
 			to { opacity: 0; }
 	}
-	
+
 	@keyframes modalslideIn {
 		from { transform: translateY(15%); }
 		to { transform: translateY(0); }
 	}
-	
+
 	@keyframes modalslideOut {
 		from { transform: translateY(0); }
 		to { transform: translateY(-10%); }
 	}
-	
+
 	display: none;
-	
+
 	&.is-open {
 		display: block;
 	}
-	
+
 	&[aria-hidden="false"] .modal__overlay {
 		animation: modalfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 	}
-	
+
 	&[aria-hidden="false"] .modal__container {
 		animation: modalslideIn .3s cubic-bezier(0, 0, .2, 1);
 	}
-	
+
 	&[aria-hidden="true"] .modal__overlay {
 		animation: modalfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 	}
-	
+
 	&[aria-hidden="true"] .modal__container {
 		animation: modalslideOut .3s cubic-bezier(0, 0, .2, 1);
 	}
-	
+
 	& .modal__container,
 	& .modal__overlay {
 		will-change: transform;
-	}	
+	}
 }

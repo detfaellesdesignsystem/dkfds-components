@@ -178,7 +178,30 @@ $overflow-menu-dropdown-distance: 8px;
                 position: static;
                 box-shadow: none;
                 border: none;
+                min-width: auto;
             }
-		}
+		    }
     }
+  &.overflow-menu--lg-no-responsive{
+    //overflow content always visible on large screens.
+    //does not look like a dropdown.
+    @include media-breakpoint-up(lg) {
+      display: block;
+      &:before, &:after{
+        display: none; //hide arrow
+      }
+      .button-overflow-menu{
+        display: none;
+      }
+      .overflow-menu-inner{
+        display: block !important;
+        width: 100%;
+        max-width: 100%;
+        position: static;
+        box-shadow: none;
+        border: none;
+        min-width: auto;
+      }
+    }
+  }
 }

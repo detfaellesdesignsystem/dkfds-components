@@ -20,7 +20,7 @@
     {%- endif -%}
 
     {%- if close -%}
-    <a href="javascript:void(0);" class="alert-close"><svg class="icon-svg"><use xlink:href="#close"></use></svg>Luk</a>
+    <a href="javascript:void(0);" class="alert-close"><svg class="icon-svg" aria-hidden="true" focusable="false" tabindex="-1"><use xlink:href="#close"></use></svg>Luk</a>
     {%- endif -%}
 
     <p class="alert-text">{{ content | safe }}</p>

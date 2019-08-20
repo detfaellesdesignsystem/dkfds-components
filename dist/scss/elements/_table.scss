@@ -57,7 +57,7 @@
 
     tr{
         &:last-child{
-            td{
+            td, th{
                 border-bottom: none;
             }
         }
@@ -168,51 +168,53 @@
                     border-right-color: transparent;
                 }
             }
-            tr:last-child td{
+          tr:last-child th,
+          tr:last-child td{
                 border-bottom-color: transparent
             }
         }
     }
 
-
-    //make row into a "card" on phone
-    &.table--responsive-headers{
+    @media screen {
+      //make row into a "card" on phone
+      &.table--responsive-headers {
         @include media-breakpoint-down(sm) {
+          display: block;
+
+          thead {
+            display: none;
+          }
+          tr {
+            border-bottom: $inner-border;
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+          tr td, tr th {
             display: block;
+            border: none !important;
 
-            thead{
-                display: none;
+            &[data-title]:not([data-title=""]):before {
+              content: attr(data-title);
+              text-align: left;
+              display: block;
+              font-weight: $font-weight-semibold;
             }
-            tr{
-                border-bottom: $inner-border;
-                &:last-child{
-                    border-bottom: 0;
-                }
-            }
-            tr td, tr th {
-                display: block;
-                border: none !important;
+          }
 
-                &[data-title]:not([data-title=""]):before {
-                    content: attr(data-title);
-                    text-align: left;
-                    display: block;
-                    font-weight: $font-weight-semibold;
-                }
+          &.table--borderless tbody tr {
+            &:first-child {
+              border-top: solid 1px $color-gray-light;
             }
-
-            &.table--borderless tbody tr{
-                &:first-child{
-                    border-top: solid 1px $color-gray-light;
-                }
-                &:last-child{
-                    border-bottom: solid 1px $color-gray-light;
-                }
-                td:first-child, th:first-child{
-                    padding-left: 16px;
-                }
+            &:last-child {
+              border-bottom: solid 1px $color-gray-light;
             }
+            td:first-child, th:first-child {
+              padding-left: 16px;
+            }
+          }
         }
+      }
     }
 }
 .table--responsive-scroll{

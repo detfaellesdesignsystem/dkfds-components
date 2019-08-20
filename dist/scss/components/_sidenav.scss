@@ -29,7 +29,7 @@
     padding-right: map-get($spacers, 4);
     text-decoration: none;
 
-    
+
 
     &:hover {
       background-color: $color-gray-pale;
@@ -48,7 +48,7 @@
       font-weight: $font-weight-semibold;
       padding-left: map-get($spacers, 4);
     }
-    &.active { 
+    &.active {
       color: $sidenav-link-active-color;
       font-weight: $font-weight-semibold;
       padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
@@ -102,7 +102,6 @@
     background-color: transparent;
     border-top: $inner-border;
     font-size: $base-font-size;
-    cursor:default;
 
     &:first-child {
       border-top: none;
@@ -130,7 +129,6 @@
       background-color: $color-white;
       text-decoration: none;
       color: $sidenav-link-color-hover;
-      cursor:default;
     }
 
     &:focus {
@@ -144,7 +142,7 @@
       font-weight: $font-weight-semibold;
       padding-left: map-get($spacers, 4);
     }
-    &.active { 
+    &.active {
       color: $sidenav-link-active-color;
       font-weight: $font-weight-semibold;
       padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
@@ -210,7 +208,7 @@
     padding-top: $spacer;
     line-height: $base-line-height;
 
-    
+
     &.current { /* stylelint-disable-line selector-no-qualifying-type */
       padding-left: map-get($spacers, 6);
 
@@ -230,7 +228,7 @@
 
       &.current { /* stylelint-disable-line selector-no-qualifying-type */
         padding-left: map-get($spacers, 8);
-        
+
       }
       &.active { /* stylelint-disable-line selector-no-qualifying-type */
         padding-left: map-get($spacers, 8) - $sidenav-active-border-width;
@@ -242,5 +240,5 @@
 .sidebar-col{
   @include media-breakpoint-up(md) {
     flex: 0 0 300px; //300 = 3 columns width
-  } 
+  }
 }

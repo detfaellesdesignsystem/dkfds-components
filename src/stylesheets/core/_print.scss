@@ -1,6 +1,11 @@
 @media print{
+  html{
+    font-family: Georgia, "Times New Roman", Serif;
+    font-size: 48%;
+  }
   body{
     display: block;
+    min-height: 0;
   }
   .page-container{
     display: block;
@@ -18,4 +23,183 @@
   .form-label{
     page-break-after: avoid;
   }
+
+  // header
+  .header {
+    .logo, .portal-header .logo{
+      height: auto;
+      width: auto;
+    }
+
+    .portal-header{
+      overflow:hidden;
+
+      .portal-header-inner{
+        display: block;
+      }
+
+      .portal-info{
+        display: block;
+        float: right;
+      }
+    }
+
+    .solution-header{
+      .solution-header-inner{
+        display: block;
+        overflow: hidden;
+      }
+
+      .solution-heading{
+        display: inline-block;
+      }
+      .solution-info{
+        display: block;
+        float: right;
+        margin-left: 0;
+        text-align: right;
+
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  // footer
+  footer{
+    .footer{
+      margin-top: map-get($spacers, 6);
+      padding-bottom: 0;
+      .inline-list > li{
+        display: inline-block;
+        + li{
+          margin-left: map-get($spacers, 4);
+        }
+      }
+    }
+  }
+
+  // card
+  .card{
+    box-shadow: none;
+  }
+
+  // modal
+  body.modal-active{
+    @media print{
+      > header{
+        display: none
+      }
+      .page-container{
+        display: none;
+      }
+      > footer{
+        display: none;
+      }
+    }
+  }
+  .modal {
+    .modal__overlay {
+      display: block;
+    }
+
+    .modal__header {
+      display: block;
+    }
+
+    .modal__footer{
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
+    }
+  }
+
+  // table
+  &.table--responsive-headers:not(.d-print-table) {
+    @include media-breakpoint-down(sm) {
+      display: block;
+
+      thead {
+        display: none;
+      }
+      tr {
+        border-bottom: $inner-border;
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+      tr td, tr th {
+        display: block;
+        border: none !important;
+
+        &[data-title]:not([data-title=""]):before {
+          content: attr(data-title);
+          text-align: left;
+          display: block;
+          font-weight: $font-weight-semibold;
+        }
+      }
+
+      &.table--borderless tbody tr {
+        &:first-child {
+          border-top: solid 1px $color-gray-light;
+        }
+        &:last-child {
+          border-bottom: solid 1px $color-gray-light;
+        }
+        td:first-child, th:first-child {
+          padding-left: 16px;
+        }
+      }
+    }
+  }
+
+  // inputs
+  .form-radio.printIfChecked, .form-checkbox.printIfChecked{
+    display: none;
+    & + label{
+      display: none;
+    }
+    &:checked{
+      display: inline-block;
+      + label{
+        display: inline-block;
+      }
+    }
+  }
+
+  .form-checkbox + label::before, .form-radio + label::before{
+    border: none;
+
+  }
+  .form-radio.radio-large + label:before{
+    content: none;
+  }
+  .form-checkbox:checked + label:after, .form-radio:checked + label:after, .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
+    box-shadow: -2px 2px 0 0 #000;
+    transform: rotate(-46deg);
+    -webkit-transform:rotate(-46deg);
+    border-radius: 0;
+    height: 7px;
+    width: 12px;
+    background-color: transparent;
+    position: absolute;
+    left: 3px;
+    top: 1px;
+  }
+  .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
+    height: 10px;
+    width: 15px;
+    left: 6px;
+    top: 6px;
+  }
+  .form-radio + label::before{
+    border-radius: 0;
+  }
+  .form-checkbox + label::before, .form-radio + label::before, .form-checkbox:checked + label:before{
+    border: 0;
+    background-color: transparent;
+  }
+
 }
