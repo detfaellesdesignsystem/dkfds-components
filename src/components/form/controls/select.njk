@@ -1,11 +1,12 @@
-{% macro select(name, id, label, class, optiontitle, options, disabled, classlabel) %}
-  <div class="form-group">
+{% macro select(name, id, label, class, optiontitle, options, disabled, classlabel, formError) %}
+  <div class="form-group {% if formError %}form-error{% endif %}">
+    {% if formError %}<span class="form-error-message" role="alert">{{ formError }}</span> {% endif %}
     {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}</label>{% endif %}
     <select class="{{class}} form-select" name="{{name}}" id="{{id}}"  {% if disabled %}disabled="disabled"{% endif %}>
       <option value>{{optiontitle}}</option>
       {% for option in options %}
-        <option value="{{option.value}}">{{option.text}}</option>
+        <option value="{{option.value}}" {%if option.selected %}selected{% endif %}>{{option.text}}</option>
       {% endfor %}
     </select>
-  </div> 
+  </div>
 {% endmacro %}

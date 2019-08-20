@@ -7,5 +7,12 @@ const domready = require('domready');
  */
 const microModal = require("../../vendor/micromodal.js");
 domready(() => {
-	microModal.init(); //init all modals
+	microModal.init({
+    onShow: function(){
+      document.getElementsByTagName('body')[0].classList.add('modal-active');
+    },
+    onClose: function(){
+      document.getElementsByTagName('body')[0].classList.remove('modal-active');
+    }
+  }); //init all modals
 });

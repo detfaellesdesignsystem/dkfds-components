@@ -5,7 +5,7 @@
           <div class="align-text-left">
             <ul class="unstyled-list inline-list">
               {%- for item in footer_simple_data.listitems -%}
-              <li>{{item.content | safe}}</li>
+              <li class="{% if item.hideOnPrint %}d-print-none{% endif %}">{{item.content | safe}}</li>
               {% endfor -%}
             </ul>
           </div>
