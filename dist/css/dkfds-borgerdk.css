@@ -6831,6 +6831,14 @@ ol li ol li ol li:before {
   padding-right: 0 !important;
 }
 
+.noindent-list > li {
+  padding-left: calc(8px + 6px);
+}
+
+.noindent-list > li::before {
+  left: 0px;
+}
+
 .inline-list {
   margin: 0;
   list-style-type: none;
@@ -9872,35 +9880,35 @@ a.skipnav {
 }
 
 @media print and (max-width: 767px) {
-  .table--responsive-headers:not(.d-print-table) {
+  .table.table--responsive-headers:not(.d-print-table) {
     display: block;
   }
-  .table--responsive-headers:not(.d-print-table) thead {
+  .table.table--responsive-headers:not(.d-print-table) thead {
     display: none;
   }
-  .table--responsive-headers:not(.d-print-table) tr {
+  .table.table--responsive-headers:not(.d-print-table) tr {
     border-bottom: 1px solid #BFBFBF;
   }
-  .table--responsive-headers:not(.d-print-table) tr:last-child {
+  .table.table--responsive-headers:not(.d-print-table) tr:last-child {
     border-bottom: 0;
   }
-  .table--responsive-headers:not(.d-print-table) tr td, .table--responsive-headers:not(.d-print-table) tr th {
+  .table.table--responsive-headers:not(.d-print-table) tr td, .table.table--responsive-headers:not(.d-print-table) tr th {
     display: block;
     border: none !important;
   }
-  .table--responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before, .table--responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before {
+  .table.table--responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before, .table.table--responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before {
     content: attr(data-title);
     text-align: left;
     display: block;
     font-weight: 600;
   }
-  .table--responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child {
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child {
     border-top: solid 1px #BFBFBF;
   }
-  .table--responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child {
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child {
     border-bottom: solid 1px #BFBFBF;
   }
-  .table--responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child, .table--responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child {
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child, .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child {
     padding-left: 16px;
   }
 }

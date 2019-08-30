@@ -116,7 +116,7 @@
   }
 
   // table
-  &.table--responsive-headers:not(.d-print-table) {
+  .table.table--responsive-headers:not(.d-print-table) {
     @include media-breakpoint-down(sm) {
       display: block;
 
