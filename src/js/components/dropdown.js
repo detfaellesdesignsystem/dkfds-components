@@ -1,7 +1,7 @@
 'use strict';
 const closest = require('../utils/closest');
 
-class dropdown {
+class Dropdown {
   constructor (el){
     this.jsDropdownTrigger = '.js-dropdown';
     this.jsDropdownTarget = 'data-js-target';
@@ -238,4 +238,4 @@ class dropdown {
   }
 }
 
-module.exports = dropdown;
+module.exports = Dropdown;

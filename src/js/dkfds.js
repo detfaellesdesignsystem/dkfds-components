@@ -1,14 +1,13 @@
 'use strict';
 const domready = require('domready');
-const forEach = require('array-foreach');
-const select = require('./utils/select');
+const Collapse = require('./components/collapse');
+const RadioToggleGroup = require('./components/radio-toggle-content');
+const CheckboxToggleContent = require('./components/checkbox-toggle-content');
+const Dropdown = require('./components/dropdown');
+const Accordion = require('./components/accordion');
 const modal = require('./components/modal');
-const table = require('./components/table');
+const ResponsiveTable = require('./components/table');
 const tooltip = require('./components/tooltip');
-const dropdown = require('./components/dropdown');
-const radioToggleContent = require('./components/radio-toggle-content');
-const checkboxToggleContent = require('./components/checkbox-toggle-content');
-
 
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -28,21 +27,39 @@ domready(() => {
     behavior.on(target);
   }
 
-  const jsSelectorDropdown = '.js-dropdown';
-  forEach(select(jsSelectorDropdown), dropdownElement => {
-    new dropdown(dropdownElement);
-  });
+  const jsSelectorAccordion = document.getElementsByClassName('accordion');
+  for(let c = 0; c < jsSelectorAccordion.length; c++){
+    new Accordion(jsSelectorAccordion[ c ]);
+  }
+  const jsSelectorAccordionBordered = document.querySelectorAll('.accordion-bordered:not(.accordion)');
+  for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
+    new Accordion(jsSelectorAccordionBordered[ c ]);
+  }
 
-  const jsRadioToggleGroup = '.js-radio-toggle-group';
-  forEach(select(jsRadioToggleGroup), toggleElement => {
-    new radioToggleContent(toggleElement);
-  });
+  const jsSelectorTable = document.querySelectorAll('table:not(.dataTable)');
+  for(let c = 0; c < jsSelectorTable.length; c++){
+    new ResponsiveTable(jsSelectorTable[ c ]);
+  }
 
-  const jsCheckboxToggleContent = '.js-checkbox-toggle-content';
-  forEach(select(jsCheckboxToggleContent), toggleElement => {
-    new checkboxToggleContent(toggleElement);
-  });
+  const jsSelectorCollapse = document.getElementsByClassName('js-collapse');
+  for(let c = 0; c < jsSelectorCollapse.length; c++){
+    new Collapse(jsSelectorCollapse[ c ]);
+  }
+
+  const jsSelectorRadioCollapse = document.getElementsByClassName('js-radio-toggle-group');
+  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
+    new RadioToggleGroup(jsSelectorRadioCollapse[ c ]);
+  }
+
+  const jsSelectorCheckboxCollapse = document.getElementsByClassName('js-checkbox-toggle-content');
+  for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
+    new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
+  }
+  const jsSelectorDropdown = document.getElementsByClassName('js-dropdown');
+  for(let c = 0; c < jsSelectorDropdown.length; c++){
+    new Dropdown(jsSelectorDropdown[ c ]);
+  }
 
 });
 
-module.exports = dkfds;
+module.exports = { Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion };

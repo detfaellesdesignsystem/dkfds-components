@@ -1,120 +1,89 @@
 'use strict';
-const behavior = require('../utils/behavior');
-const filter = require('array-filter');
-const forEach = require('array-foreach');
 const toggle = require('../utils/toggle');
 const isElementInViewport = require('../utils/is-in-viewport');
-
-const CLICK = require('../events').CLICK;
-const PREFIX = require('../config').prefix;
-
-// XXX match .accordion and .accordion-bordered
-const ACCORDION = `.${PREFIX}accordion, .${PREFIX}accordion-bordered`;
-const BUTTON = `.${PREFIX}accordion-button[aria-controls]`;
+const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const MULTISELECTABLE = 'aria-multiselectable';
 
-/**
- * Toggle a button's "pressed" state, optionally providing a target
- * state.
- *
- * @param {HTMLButtonElement} button
- * @param {boolean?} expanded If no state is provided, the current
- * state will be toggled (from false to true, and vice-versa).
- * @return {boolean} the resulting state
- */
-const toggleButton = (button, expanded) => {
-  var accordion = button.closest(ACCORDION);
-  if (!accordion) {
-    throw new Error(`${BUTTON} is missing outer ${ACCORDION}`);
+class Accordion{
+  constructor (accordion){
+    this.accordion = accordion;
+    this.buttons = accordion.querySelectorAll(BUTTON);
+
+    this.init();
   }
 
-  expanded = toggle(button, expanded);
-  // XXX multiselectable is opt-in, to preserve legacy behavior
-  const multiselectable = accordion.getAttribute(MULTISELECTABLE) === 'true';
+  init (){
+    for (var i = 0; i < this.buttons.length; i++){
+      let currentButton = this.buttons[i];
 
-  if (expanded && !multiselectable) {
-    forEach(getAccordionButtons(accordion), other => {
-      if (other !== button) {
-        toggle(other, false);
-      }
-    });
+      let expanded = currentButton.getAttribute(EXPANDED) === 'true';
+      this.toggleButton(currentButton, expanded);
+
+      const that = this;
+      currentButton.addEventListener('click', function(event){
+        that.eventOnClick(event, this);
+      });
+
+    }
   }
-};
 
-/**
- * @param {HTMLButtonElement} button
- * @return {boolean} true
- */
-const showButton = button => toggleButton(button, true);
 
-/**
- * @param {HTMLButtonElement} button
- * @return {boolean} false
- */
-const hideButton = button => toggleButton(button, false);
+  eventOnClick (event, button){
+    event.preventDefault();
+    this.toggleButton(button);
+    if (button.getAttribute(EXPANDED) === 'true') {
+      // We were just expanded, but if another accordion was also just
+      // collapsed, we may no longer be in the viewport. This ensures
+      // that we are still visible, so the user isn't confused.
+      if (!isElementInViewport(button)) button.scrollIntoView();
+    }
+  }
 
-/**
- * Get an Array of button elements belonging directly to the given
- * accordion element.
- * @param {HTMLElement} accordion
- * @return {array<HTMLButtonElement>}
- */
-const getAccordionButtons = accordion => {
-  return filter(accordion.querySelectorAll(BUTTON), button => {
-    return button.closest(ACCORDION) === accordion;
-  });
-};
 
-const accordion = behavior({
-  [ CLICK ]: {
-    [ BUTTON ]: function (event) {
-      event.preventDefault();
-      toggleButton(this);
+  /**
+   * Toggle a button's "pressed" state, optionally providing a target
+   * state.
+   *
+   * @param {HTMLButtonElement} button
+   * @param {boolean?} expanded If no state is provided, the current
+   * state will be toggled (from false to true, and vice-versa).
+   * @return {boolean} the resulting state
+   */
+  toggleButton (button, expanded) {
+    if (!this.accordion) {
+      throw new Error(BUTTON+' is missing outer ACCORDION');
+    }
 
-      if (this.getAttribute(EXPANDED) === 'true') {
-        // We were just expanded, but if another accordion was also just
-        // collapsed, we may no longer be in the viewport. This ensures
-        // that we are still visible, so the user isn't confused.
-        if (!isElementInViewport(this)) this.scrollIntoView();
+    expanded = toggle(button, expanded);
+    // XXX multiselectable is opt-in, to preserve legacy behavior
+    const multiselectable = this.accordion.getAttribute(MULTISELECTABLE) === 'true';
+
+    if (expanded && !multiselectable) {
+      for(let i = 0; i < this.buttons.length; i++) {
+        let currentButtton = this.buttons[i];
+          if (currentButtton !== button) {
+            toggle(currentButtton, false);
+          }
+
       }
-    },
-  },
-}, {
-  init: root => {
-    forEach(root.querySelectorAll(BUTTON), button => {
-      const expanded = button.getAttribute(EXPANDED) === 'true';
-      toggleButton(button, expanded);
-    });
-  },
-  ACCORDION,
-  BUTTON,
-  show: showButton,
-  hide: hideButton,
-  toggle: toggleButton,
-  getButtons: getAccordionButtons,
-});
+    }
+  }
+  /**
+   * @param {HTMLButtonElement} button
+   * @return {boolean} true
+   */
+  showButton (button){
+    toggleButton(button, true);
+  }
 
-/**
- * TODO: for 2.0, remove everything below this comment and export the
- * behavior directly:
- *
- * module.exports = behavior({...});
- */
-const Accordion = function (root) {
-  this.root = root;
-  accordion.on(this.root);
-};
-
-// copy all of the behavior methods and props to Accordion
-const assign = require('object-assign');
-assign(Accordion, accordion);
-
-Accordion.prototype.show = showButton;
-Accordion.prototype.hide = hideButton;
-
-Accordion.prototype.remove = function () {
-  accordion.off(this.root);
-};
+  /**
+   * @param {HTMLButtonElement} button
+   * @return {boolean} false
+   */
+  hideButton (button) {
+    toggleButton(button, false);
+  }
+}
 
 module.exports = Accordion;

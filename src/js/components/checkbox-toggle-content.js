@@ -1,14 +1,8 @@
 'use strict';
-const behavior = require('../utils/behavior');
-const select = require('../utils/select');
-const closest = require('../utils/closest');
-const forEach = require('array-foreach');
-
-
-class checkboxToggleContent{
+class CheckboxToggleContent{
     constructor(el){
-        this.jsToggleTrigger = ".js-checkbox-toggle-content";
-        this.jsToggleTarget = "data-js-target";
+        this.jsToggleTrigger = '.js-checkbox-toggle-content';
+        this.jsToggleTarget = 'data-js-target';
 
         this.targetEl = null;
         this.checkboxEl = null;
@@ -28,12 +22,12 @@ class checkboxToggleContent{
     toggle(triggerEl){
         var targetAttr = triggerEl.getAttribute(this.jsToggleTarget)
         if(targetAttr !== null && targetAttr !== undefined){
-            var targetEl = select(targetAttr, 'body');
-            if(targetEl !== null && targetEl !== undefined && targetEl.length > 0){
+            var targetEl = document.querySelector(targetAttr);
+            if(targetEl !== null && targetEl !== undefined){
                 if(triggerEl.checked){
-                    this.open(triggerEl, targetEl[0]);
+                    this.open(triggerEl, targetEl);
                 }else{
-                    this.close(triggerEl, targetEl[0]);
+                    this.close(triggerEl, targetEl);
                 }
             }
         }
@@ -41,18 +35,18 @@ class checkboxToggleContent{
 
     open(triggerEl, targetEl){
         if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute("aria-expanded", "true");
-            targetEl.classList.remove("collapsed");
-            targetEl.setAttribute("aria-hidden", "false");
+            triggerEl.setAttribute('aria-expanded', 'true');
+            targetEl.classList.remove('collapsed');
+            targetEl.setAttribute('aria-hidden', 'false');
         }
     }
     close(triggerEl, targetEl){
         if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute("aria-expanded", "false");
-            targetEl.classList.add("collapsed");
-            targetEl.setAttribute("aria-hidden", "true");
+            triggerEl.setAttribute('aria-expanded', 'false');
+            targetEl.classList.add('collapsed');
+            targetEl.setAttribute('aria-hidden', 'true');
         }
     }
 }
 
-module.exports = checkboxToggleContent;
+module.exports = CheckboxToggleContent;
