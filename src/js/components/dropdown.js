@@ -4,7 +4,9 @@ const closest = require('../utils/closest');
 class Dropdown {
   constructor (el){
     this.jsDropdownTrigger = '.js-dropdown';
-    this.jsDropdownTarget = 'data-js-target';
+    this.jsDropdownTarget = 'data-js-target'
+    this.eventOpen = new Event('expanded');
+    this.eventClose = new Event('collapsed');
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
     this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
@@ -139,14 +141,22 @@ class Dropdown {
       if (targetEl !== null && triggerEl !== null) {
         if (body.classList.contains('mobile_nav-active')) {
           if (!currentOverflowMenuEL.closest('.navbar')) {
+
+            if(triggerEl.getAttribute('aria-expanded') === true){
+              triggerEl.dispatchEvent(this.eventClose);
+            }
             triggerEl.setAttribute('aria-expanded', 'false');
             targetEl.classList.add('collapsed');
             targetEl.setAttribute('aria-hidden', 'true');
           }
         } else {
+          if(triggerEl.getAttribute('aria-expanded') === true){
+            triggerEl.dispatchEvent(this.eventClose);
+          }
           triggerEl.setAttribute('aria-expanded', 'false');
           targetEl.classList.add('collapsed');
           targetEl.setAttribute('aria-hidden', 'true');
+
         }
       }
     }
@@ -165,13 +175,14 @@ class Dropdown {
         this.triggerEl.setAttribute('aria-expanded', 'false');
         this.targetEl.classList.add('collapsed');
         this.targetEl.setAttribute('aria-hidden', 'true');
+        this.triggerEl.dispatchEvent(this.eventClose);
       }else{
         this.closeAll();
         //open
         this.triggerEl.setAttribute('aria-expanded', 'true');
         this.targetEl.classList.remove('collapsed');
         this.targetEl.setAttribute('aria-hidden', 'false');
-
+        this.triggerEl.dispatchEvent(this.eventOpen);
         var offset = this.offset(this.targetEl)
 
         if(offset.left < 0){

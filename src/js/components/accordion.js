@@ -9,7 +9,8 @@ class Accordion{
   constructor (accordion){
     this.accordion = accordion;
     this.buttons = accordion.querySelectorAll(BUTTON);
-
+    this.eventOpen = new Event('expanded');
+    this.eventClose = new Event('collapsed');
     this.init();
   }
 
@@ -56,16 +57,23 @@ class Accordion{
     }
 
     expanded = toggle(button, expanded);
+
+    if(expanded){
+      button.dispatchEvent(this.eventOpen);
+    } else{
+      button.dispatchEvent(this.eventClose);
+    }
+
     // XXX multiselectable is opt-in, to preserve legacy behavior
     const multiselectable = this.accordion.getAttribute(MULTISELECTABLE) === 'true';
 
     if (expanded && !multiselectable) {
       for(let i = 0; i < this.buttons.length; i++) {
         let currentButtton = this.buttons[i];
-          if (currentButtton !== button) {
-            toggle(currentButtton, false);
-          }
-
+        if (currentButtton !== button) {
+          toggle(currentButtton, false);
+          currentButtton.dispatchEvent(this.eventClose);
+        }
       }
     }
   }

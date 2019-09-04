@@ -11,6 +11,8 @@ class Collapse {
     this.targetEl;
     this.animateInProgress = false;
     let that = this;
+    this.eventClose = new Event('collapsed');
+    this.eventOpen = new Event('expanded');
     this.triggerEl.addEventListener('click', function (){
       that.toggle();
     });
@@ -57,6 +59,7 @@ class Collapse {
         that.triggerEl.setAttribute('aria-expanded', 'false');
         that.targetEl.setAttribute('aria-hidden', 'true');
         that.animateInProgress = false;
+        that.triggerEl.dispatchEvent(that.eventClose);
       }, 200);
     }
   }
@@ -80,6 +83,7 @@ class Collapse {
         that.targetEl.setAttribute('aria-hidden', 'false');
         that.triggerEl.setAttribute('aria-expanded', 'true');
         that.animateInProgress = false;
+        that.triggerEl.dispatchEvent(that.eventOpen);
       }, 200);
     }
   }

@@ -4,7 +4,8 @@ class RadioToggleGroup{
     constructor(el){
         this.jsToggleTrigger = '.js-radio-toggle-group';
         this.jsToggleTarget = 'data-js-target';
-
+        this.eventOpen = new Event('expanded');
+        this.eventClose = new Event('collapsed');
         this.radioEls = null;
         this.targetEl = null;
 
@@ -47,6 +48,7 @@ class RadioToggleGroup{
             triggerEl.setAttribute('aria-expanded', 'true');
             targetEl.classList.remove('collapsed');
             targetEl.setAttribute('aria-hidden', 'false');
+            triggerEl.dispatchEvent(this.eventOpen);
         }
     }
     close(triggerEl, targetEl){
@@ -54,6 +56,7 @@ class RadioToggleGroup{
             triggerEl.setAttribute('aria-expanded', 'false');
             targetEl.classList.add('collapsed');
             targetEl.setAttribute('aria-hidden', 'true');
+            triggerEl.dispatchEvent(this.eventClose);
         }
     }
 }
