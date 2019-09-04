@@ -3,8 +3,8 @@ class CheckboxToggleContent{
     constructor(el){
         this.jsToggleTrigger = '.js-checkbox-toggle-content';
         this.jsToggleTarget = 'data-js-target';
-        this.eventOpen = new Event('expanded');
-        this.eventClose = new Event('collapsed');
+        this.eventClose = new Event('fds.collapse.close');
+        this.eventOpen = new Event('fds.collapse.open');
         this.targetEl = null;
         this.checkboxEl = null;
 

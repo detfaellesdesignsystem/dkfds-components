@@ -9,8 +9,8 @@ class Accordion{
   constructor (accordion){
     this.accordion = accordion;
     this.buttons = accordion.querySelectorAll(BUTTON);
-    this.eventOpen = new Event('expanded');
-    this.eventClose = new Event('collapsed');
+    this.eventClose = new Event('fds.accordion.close');
+    this.eventOpen = new Event('fds.accordion.open');
     this.init();
   }
 

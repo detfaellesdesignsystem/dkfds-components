@@ -4,9 +4,9 @@ const closest = require('../utils/closest');
 class Dropdown {
   constructor (el){
     this.jsDropdownTrigger = '.js-dropdown';
-    this.jsDropdownTarget = 'data-js-target'
-    this.eventOpen = new Event('expanded');
-    this.eventClose = new Event('collapsed');
+    this.jsDropdownTarget = 'data-js-target';
+    this.eventClose = new Event('fds.dropdown.close');
+    this.eventOpen = new Event('fds.dropdown.open');
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
     this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.

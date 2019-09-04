@@ -11,8 +11,8 @@ class Collapse {
     this.targetEl;
     this.animateInProgress = false;
     let that = this;
-    this.eventClose = new Event('collapsed');
-    this.eventOpen = new Event('expanded');
+    this.eventClose = new Event('fds.collapse.close');
+    this.eventOpen = new Event('fds.collapse.open');
     this.triggerEl.addEventListener('click', function (){
       that.toggle();
     });
