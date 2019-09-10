@@ -5,7 +5,6 @@ const RadioToggleGroup = require('./components/radio-toggle-content');
 const CheckboxToggleContent = require('./components/checkbox-toggle-content');
 const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
-const Modal = require('./components/modal');
 const ResponsiveTable = require('./components/table');
 const tooltip = require('./components/tooltip');
 
@@ -26,11 +25,6 @@ domready(() => {
     const behavior = components[ name ];
     behavior.on(target);
   }
-  const jsSelectorModalBody = document.querySelectorAll('*[data-toggle=modal]');
-  for(let c = 0; c < jsSelectorModalBody.length; c++){
-    new Modal(jsSelectorModalBody[ c ]);
-  }
-
   const jsSelectorAccordion = document.getElementsByClassName('accordion');
   for(let c = 0; c < jsSelectorAccordion.length; c++){
     new Accordion(jsSelectorAccordion[ c ]);
