@@ -6,6 +6,7 @@ const CheckboxToggleContent = require('./components/checkbox-toggle-content');
 const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
 const ResponsiveTable = require('./components/table');
+const Tabnav = require('./components/tabnav');
 const tooltip = require('./components/tooltip');
 
 /**
@@ -25,6 +26,12 @@ domready(() => {
     const behavior = components[ name ];
     behavior.on(target);
   }
+
+  const jsSelectorTabnav = document.getElementsByClassName('tabnav');
+  for(let c = 0; c < jsSelectorTabnav.length; c++){
+    new Tabnav(jsSelectorTabnav[ c ]);
+  }
+
   const jsSelectorAccordion = document.getElementsByClassName('accordion');
   for(let c = 0; c < jsSelectorAccordion.length; c++){
     new Accordion(jsSelectorAccordion[ c ]);
@@ -60,4 +67,4 @@ domready(() => {
 
 });
 
-module.exports = { Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion };
+module.exports = { Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav };

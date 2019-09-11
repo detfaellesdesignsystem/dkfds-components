@@ -5,10 +5,23 @@
 <ul class="tabnav">
   {% for item in tabnav.items %}
   <li>
-    <a href="{{item.href}}" {% if item.active %} class="active"{% endif %}>
-      {{ item.title }}
+    <a href="#{{item.id}}" class="{% if item.active %}active{% endif %} tabnav-item"
+      aria-expanded="{{ item.active | default('false') }}">
+      <span>{{ item.title }}</span>
       {% if item.active %}<span class="sr-only">(valgt)</span>{% endif %}
     </a>
+
+       {% set ariahidden = "true" %}
+
+      {%- if item.active %}
+        {% set ariahidden = "false" %}
+      {% else -%}
+        {% set ariahidden = "true" %}
+      {% endif -%}
+     <section class="tabnav-panel" aria-hidden="{{ariahidden}}" id="{{item.id}}">
+        <h2>{{ item.title }}</h2>
+        {{ item.content | safe }}
+      </section>
   </li>
   {% endfor %}
 </ul>
