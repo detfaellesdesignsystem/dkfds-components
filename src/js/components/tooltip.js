@@ -99,7 +99,7 @@ class Tooltip{
 
     var tooltipContent = document.createElement('div');
     tooltipContent.className = 'tooltip-content';
-    tooltipContent.innerHTML = element.getAttribute('data-title');
+    tooltipContent.innerHTML = element.getAttribute('data-tooltip');
     tooltipInner.appendChild(tooltipContent);
     tooltip.appendChild(tooltipInner);
 
