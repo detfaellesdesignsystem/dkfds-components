@@ -7939,6 +7939,10 @@ input[type=search] {
   padding-bottom: calc(8px - 1px);
 }
 
+.sidenav-list > li li {
+  border-top: 1px solid #DCDCDC;
+}
+
 .sidenav-list a {
   border: none;
   color: #1a1a1a;
@@ -7962,20 +7966,6 @@ input[type=search] {
   outline-offset: 0;
   position: relative;
   z-index: 1;
-}
-
-.sidenav-list a.current {
-  /* stylelint-disable-line selector-no-qualifying-type */
-  color: #1a1a1a;
-  font-weight: 600;
-  padding-left: 16px;
-}
-
-.sidenav-list a.active {
-  color: #44831E;
-  font-weight: 600;
-  padding-left: 12px;
-  border-left: 4px solid #44831E;
 }
 
 .sidenav-list li a ul {
@@ -8009,6 +7999,36 @@ input[type=search] {
   background-color: transparent;
 }
 
+.sidenav-list li.current > a {
+  /* stylelint-disable-line selector-no-qualifying-type */
+  color: #1a1a1a;
+  font-weight: 600;
+  padding-left: 16px;
+}
+
+.sidenav-list li.active:not(.has-anchor-links) > a {
+  background-color: #F5F5F5;
+  border-left: 4px solid #44831E;
+}
+
+.sidenav-list li.active.has-anchor-links {
+  border-top: 1px solid #DCDCDC;
+  background-color: #F5F5F5;
+  border-left: 4px solid #44831E;
+}
+
+.sidenav-list li.active.has-anchor-links ul {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+}
+
+.sidenav-list li.active > a {
+  color: #1a1a1a;
+  font-weight: 600;
+  padding-left: 12px;
+}
+
 .sidenav-list-locked {
   margin: 0;
   list-style-type: none;
@@ -8029,9 +8049,9 @@ input[type=search] {
 }
 
 .sidenav-list-locked > li {
-  background-color: transparent;
   border-top: 1px solid #BFBFBF;
   font-size: 1.6rem;
+  cursor: default;
 }
 
 .sidenav-list-locked > li:first-child {
@@ -8040,6 +8060,14 @@ input[type=search] {
 
 .sidenav-list-locked > li:last-child a {
   padding-bottom: 8px;
+}
+
+.sidenav-list-locked > li.active:not(.has-anchor-links) > a {
+  background-color: #F5F5F5;
+}
+
+.sidenav-list-locked > li.active.has-anchor-links {
+  background-color: #F5F5F5;
 }
 
 .sidenav-list-locked a {
@@ -8058,6 +8086,7 @@ input[type=search] {
   background-color: #ffffff;
   text-decoration: none;
   color: #233614;
+  cursor: default;
 }
 
 .sidenav-list-locked a:focus {
@@ -8066,15 +8095,15 @@ input[type=search] {
   z-index: 1;
 }
 
-.sidenav-list-locked a.current {
+.sidenav-list-locked li.current > a {
   /* stylelint-disable-line selector-no-qualifying-type */
   color: #1a1a1a;
   font-weight: 600;
   padding-left: 16px;
 }
 
-.sidenav-list-locked a.active {
-  color: #44831E;
+.sidenav-list-locked li.active > a {
+  color: #1a1a1a;
   font-weight: 600;
   padding-left: 12px;
   border-left: 4px solid #44831E;
@@ -8134,6 +8163,10 @@ input[type=search] {
   border: none;
 }
 
+.sidenav-sub_list li.active.has-anchor-links:not(:last-child) {
+  border-bottom: 1px solid #DCDCDC;
+}
+
 .sidenav-sub_list li:last-child a {
   padding-bottom: 8px;
 }
@@ -8144,30 +8177,30 @@ input[type=search] {
   line-height: 2.4rem;
 }
 
-.sidenav-sub_list a.current {
+.sidenav-sub_list li.current > a {
   /* stylelint-disable-line selector-no-qualifying-type */
   padding-left: 32px;
 }
 
-.sidenav-sub_list a.active {
+.sidenav-sub_list li.active > a {
   /* stylelint-disable-line selector-no-qualifying-type */
   padding-left: 28px;
 }
 
-.sidenav-sub_list .sidenav-sub_list a {
+.sidenav-sub_list li:not(.has-anchor-links) .sidenav-sub_list a {
   padding-left: 48px;
 }
 
-.sidenav-sub_list .sidenav-sub_list a:focus {
+.sidenav-sub_list li:not(.has-anchor-links) .sidenav-sub_list a:focus {
   outline-offset: 0;
 }
 
-.sidenav-sub_list .sidenav-sub_list a.current {
+.sidenav-sub_list li:not(.has-anchor-links) .sidenav-sub_list li.current > a {
   /* stylelint-disable-line selector-no-qualifying-type */
   padding-left: 48px;
 }
 
-.sidenav-sub_list .sidenav-sub_list a.active {
+.sidenav-sub_list li:not(.has-anchor-links) .sidenav-sub_list li.active > a {
   /* stylelint-disable-line selector-no-qualifying-type */
   padding-left: 44px;
 }
@@ -8177,6 +8210,14 @@ input[type=search] {
     -ms-flex: 0 0 300px;
     flex: 0 0 300px;
   }
+}
+
+.sidenav-list li.active.has-anchor-links > ul > li a {
+  padding-left: 12px;
+}
+
+.sidenav-list li li.active.has-anchor-links > ul > li a {
+  padding-left: 28px;
 }
 
 a.skipnav {
@@ -8205,7 +8246,7 @@ a.skipnav {
   }
 }
 
-#main-content {
+#main-content, #main-content div, #main-content section {
   outline: none;
 }
 
