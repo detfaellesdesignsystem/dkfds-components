@@ -22,8 +22,6 @@ a.button{
   text-decoration: none;
   user-select: none;
   cursor: pointer;
-  //transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
-  height: #{map-get($spacers, 7)};
 
   @include media-breakpoint-up(md) {
     width: auto;

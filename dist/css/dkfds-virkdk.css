@@ -5111,7 +5111,6 @@ a.button {
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  height: 40px;
 }
 
 @media (min-width: 768px) {
