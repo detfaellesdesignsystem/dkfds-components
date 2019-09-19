@@ -9,12 +9,10 @@
               {{ icon_svg(item.iconbefore) }}
           </span>
       {% endif %}
-      <div class="d-inline-block">
-        {{ item.text }}
-        {% if item.information %}
-            <p class="sidenav-information">{{item.information}}</p>
-        {% endif %}
-      </div>
+      {{ item.text }}
+      {% if item.information %}
+          <span class="sidenav-information">{{item.information}}</span>
+      {% endif %}
     </a>
     {% if item.current and item.links %}
     <ul class="{{ subclass }}">
