@@ -8015,12 +8015,40 @@ input[type=search] {
   font-weight: 600;
 }
 
-.sidenav-list li li:not(.has-anchor-links) li {
-  padding-left: 8px;
+.sidenav-list > li > ul > li > ul > li > a {
+  padding-left: 24px;
 }
 
-.sidenav-list li.has-anchor-links li {
-  padding-left: 16px;
+.sidenav-list > li > ul > li > ul > li > ul > li > a {
+  padding-left: 32px;
+}
+
+.sidenav-list > li > ul > li > ul > li > ul > li > ul > li > a {
+  padding-left: 40px;
+}
+
+.sidenav-list > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+  padding-left: 48px;
+}
+
+.sidenav-list > li.has-anchor-links > ul > li > a {
+  padding-left: calc(8px * 4);
+}
+
+.sidenav-list > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a {
+  padding-left: calc(8px * 4);
+}
+
+.sidenav-list > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a {
+  padding-left: calc(8px * 5);
+}
+
+.sidenav-list > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a {
+  padding-left: calc(8px * 6);
+}
+
+.sidenav-list > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a {
+  padding-left: calc(8px * 7);
 }
 
 .sidenav-list > li {

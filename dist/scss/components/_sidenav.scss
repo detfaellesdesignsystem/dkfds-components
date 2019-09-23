@@ -82,13 +82,36 @@
         font-weight: $font-weight-semibold;
       }
     }
-    li:not(.has-anchor-links) li {
-      padding-left: map-get($spacers, 3);
-    }
   }
 
-  li.has-anchor-links li {
-    padding-left: map-get($spacers, 4);
+
+  > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 5);
+  }
+  > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 6);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 7);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 8);
+  }
+
+  > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 5);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 6);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 7);
   }
 
   > li {
