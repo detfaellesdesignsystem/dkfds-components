@@ -15,7 +15,17 @@
       background-color: transparent;
       width: auto;
       margin-right: map-get($spacers, 3);
-      margin-bottom: -1px;
+      border-bottom: $outer-border;
+      margin: 0 map-get($spacers, 2) -1px 0px;
+      padding-top: map-get($spacers, 2);
+      padding-bottom: map-get($spacers, 2);
+      &:first-child{
+        margin-left: 0px;
+      }
+      &.active{
+        border: $outer-border;
+        border-bottom: 1px solid $color-white;
+      }
     }
 
     a {
@@ -30,34 +40,28 @@
         text-align: center;
         text-decoration: none;
         padding: 0px;
-        border-top: 1px solid transparent;
-        border-right: 1px solid transparent;
-        border-left: 1px solid transparent;
         background-color: transparent;
         border-radius: 0px;
-        border-bottom: $outer-border;
+        line-height: normal;
+        padding-top: map-get($spacers, 3);
+        padding-bottom: map-get($spacers, 3);
+        padding-left: map-get($spacers, 5);
+        padding-right: map-get($spacers, 5);
 
         span:not(.sr-only) {
-          padding-top: map-get($spacers, 3);
-          padding-bottom: map-get($spacers, 3);
-          padding-left: map-get($spacers, 4);
-          padding-right: map-get($spacers, 4);
-          margin-bottom: map-get($spacers, 3);
           display: block;
         }
         &[aria-expanded=false]{
-
-          span:not(.sr-only) {
-            background-color: $background-alternative;
-          }
+          background-color: $background-alternative;
           background-image: none;
+          border-radius: 0px;
+          span {
+            text-decoration: underline;
+          }
         }
 
         &:hover {
-          background-color: transparent;
-          span:not(.sr-only) {
             background-color: $color-gray-mediumpale;
-          }
         }
 
         &:focus{
@@ -68,18 +72,12 @@
         }
 
         &[aria-expanded=true] {
-          border-top: $outer-border;
-          border-right: $outer-border;
-          border-left: $outer-border;
-          border-bottom-color: $color-white;
-
           background-color: transparent;
           background-image: none;
 
+          border-radius: 0px;
           span:not(.sr-only) {
-            background-color: transparent;
             display: block;
-            margin-bottom: map-get($spacers, 3);
           }
         }
 
@@ -108,6 +106,7 @@
       right: 0px;
       margin-bottom: calc(#{map-get($spacers, 4)});
       background-color: transparent;
+      top: 100%;
 
     }
     &[aria-hidden=false]{

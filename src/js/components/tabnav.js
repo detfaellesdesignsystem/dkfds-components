@@ -37,6 +37,7 @@ class Tabnav {
                 allNodes[i].childNodes[a].dispatchEvent(tabCloseEvent);
               }
 
+              allNodes[i].childNodes[a].parentNode.classList.remove('active');
               allNodes[i].childNodes[a].setAttribute('aria-expanded', false);
               var nodeTarget = allNodes[i].childNodes[a].getAttribute('href').replace('#', '');
               document.getElementById(nodeTarget).setAttribute('aria-hidden', true);
@@ -48,6 +49,7 @@ class Tabnav {
     // enable selected tab
     let targetId = triggerEl.getAttribute('href').replace('#', '');
     triggerEl.setAttribute('aria-expanded', true);
+    triggerEl.parentNode.classList.add('active');
     document.getElementById(targetId).setAttribute('aria-hidden', false);
     triggerEl.dispatchEvent(tabOpenEvent);
     // set margin-bottom on tabnav so content below doesn't overlap

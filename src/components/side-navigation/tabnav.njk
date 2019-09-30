@@ -4,8 +4,8 @@
 
 <ul class="tabnav">
   {% for item in tabnav.items %}
-  <li>
-    <a href="#{{item.id}}" class="{% if item.active %}active{% endif %} tabnav-item"
+  <li class="{% if item.active %}active{% endif %}">
+    <a href="#{{item.id}}" class="tabnav-item"
       aria-expanded="{{ item.active | default('false') }}">
       <span>{{ item.title }}</span>
       {% if item.active %}<span class="sr-only">(valgt)</span>{% endif %}
