@@ -4,14 +4,14 @@
      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label> {% endif %}
      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
       <span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>
-     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" aria-describedby="form-error-message-{{id}}"></textarea>
+     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" aria-describedby="form-error-message-{{id}}"></textarea>
   </div>
-  {% else %} 
+  {% else %}
   <div class="form-group{% if error %} form-error{% endif %}">
      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label>{% endif %}
      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
      {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
-     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" type="text" {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %}{% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}></textarea>
+     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %}{% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}></textarea>
   </div>
   {% endif %}
 {% endmacro %}

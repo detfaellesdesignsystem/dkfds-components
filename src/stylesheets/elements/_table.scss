@@ -184,9 +184,11 @@
       &.table--responsive-headers {
         @include media-breakpoint-down(sm) {
           display: block;
-
           thead {
             display: none;
+          }
+          tbody, tr {
+            display: block;
           }
           tr {
             border-bottom: $inner-border;

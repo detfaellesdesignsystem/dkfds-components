@@ -65,7 +65,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -104,7 +104,7 @@ a.button{
       border-color: $color-gray-medium-dark;
     }
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -144,7 +144,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -191,7 +191,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -234,7 +234,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;

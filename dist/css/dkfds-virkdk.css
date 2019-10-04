@@ -6552,15 +6552,13 @@ a.button {
   border-color: #004993;
 }
 
-.button.button-primary:disabled,
-.button.button-primary .disabled {
+.button.button-primary:disabled, .button.button-primary.disabled {
   opacity: 0.3;
   box-shadow: none !important;
   cursor: not-allowed;
 }
 
-.button.button-primary:disabled:hover,
-.button.button-primary .disabled:hover {
+.button.button-primary:disabled:hover, .button.button-primary.disabled:hover {
   color: #ffffff !important;
   background-color: #0059B3 !important;
   border-color: #004993 !important;
@@ -6589,16 +6587,14 @@ a.button {
   border-color: #747474;
 }
 
-.button.button-secondary:disabled,
-.button.button-secondary .disabled {
+.button.button-secondary:disabled, .button.button-secondary.disabled {
   opacity: 0.3;
   box-shadow: none !important;
   cursor: not-allowed;
   border-color: #BFBFBF !important;
 }
 
-.button.button-secondary:disabled:hover,
-.button.button-secondary .disabled:hover {
+.button.button-secondary:disabled:hover, .button.button-secondary.disabled:hover {
   color: #1a1a1a !important;
   background-color: #F5F5F5 !important;
   border-color: #BFBFBF !important;
@@ -6626,15 +6622,13 @@ a.button {
   background-color: transparent;
 }
 
-.button.button-tertiary:disabled,
-.button.button-tertiary .disabled {
+.button.button-tertiary:disabled, .button.button-tertiary.disabled {
   opacity: 0.3;
   box-shadow: none !important;
   cursor: not-allowed;
 }
 
-.button.button-tertiary:disabled:hover,
-.button.button-tertiary .disabled:hover {
+.button.button-tertiary:disabled:hover, .button.button-tertiary.disabled:hover {
   border-color: #747474 !important;
   background-color: transparent !important;
   color: #1a1a1a;
@@ -6670,15 +6664,13 @@ a.button {
   border-bottom-color: transparent;
 }
 
-.button.button-quaternary:disabled,
-.button.button-quaternary .disabled {
+.button.button-quaternary:disabled, .button.button-quaternary.disabled {
   opacity: 0.3;
   box-shadow: none !important;
   cursor: not-allowed;
 }
 
-.button.button-quaternary:disabled:hover,
-.button.button-quaternary .disabled:hover {
+.button.button-quaternary:disabled:hover, .button.button-quaternary.disabled:hover {
   color: #454545 !important;
   background-color: transparent !important;
   font-weight: 400 !important;
@@ -6711,15 +6703,13 @@ a.button {
   border-color: #BFBFBF;
 }
 
-.button.button-small:disabled,
-.button.button-small .disabled {
+.button.button-small:disabled, .button.button-small.disabled {
   opacity: 0.3;
   box-shadow: none !important;
   cursor: not-allowed;
 }
 
-.button.button-small:disabled:hover,
-.button.button-small .disabled:hover {
+.button.button-small:disabled:hover, .button.button-small.disabled:hover {
   color: #1a1a1a !important;
   background-color: #F5F5F5 !important;
   border-color: #BFBFBF !important;
@@ -8014,6 +8004,9 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   }
   .table.table--responsive-headers thead {
     display: none;
+  }
+  .table.table--responsive-headers tbody, .table.table--responsive-headers tr {
+    display: block;
   }
   .table.table--responsive-headers tr {
     border-bottom: 1px solid #BFBFBF;
