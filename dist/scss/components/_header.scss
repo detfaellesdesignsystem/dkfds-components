@@ -52,6 +52,7 @@ $z-index-nav:     9000;
     width: unset;
     margin-left: auto;
     display: flex;
+    align-items: center;
     margin-right: map-get($spacers, 4);
     .icon-svg{
       margin: 0 8px 0 0;

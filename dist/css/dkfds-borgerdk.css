@@ -7860,6 +7860,10 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 
 .table.table--compact th, .table.table--compact td {
   padding-top: calc(8px - 1px);
+  padding-bottom: 8px;
+}
+
+.table.table--compact tbody tr:last-child th, .table.table--compact tbody tr:last-child td {
   padding-bottom: calc(8px - 1px);
 }
 
@@ -8474,6 +8478,8 @@ footer .footer-theme {
   margin-left: auto;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
+  align-items: center;
   margin-right: 16px;
 }
 

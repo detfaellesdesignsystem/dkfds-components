@@ -7,8 +7,13 @@
     &.table--compact {
       th,td {
         padding-top: calc(#{map-get($spacers, 3)} - 1px);
+        padding-bottom: #{map-get($spacers, 3)};
+      }
+
+      tbody tr:last-child th, tbody tr:last-child td {
         padding-bottom: calc(#{map-get($spacers, 3)} - 1px);
       }
+
     }
 
     &.table--extracompact {
@@ -68,7 +73,6 @@
         tr {
             &:last-child{
                 border-bottom: $inner-border;
-
             }
         }
         border-color: transparent;
