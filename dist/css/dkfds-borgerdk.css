@@ -7874,6 +7874,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 
 .table td, .table th {
   padding: calc(16px - 1px);
+  padding-bottom: 16px;
   background-color: inherit;
   border-right: 1px solid #BFBFBF;
   vertical-align: top;
@@ -7909,6 +7910,10 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 
 .table tbody tr {
   background-color: transparent;
+}
+
+.table tbody tr:last-child td, .table tbody tr:last-child th {
+  padding-bottom: calc(16px - 1px);
 }
 
 .table tr:last-child td, .table tr:last-child th {

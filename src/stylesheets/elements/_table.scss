@@ -25,6 +25,7 @@
 
     td, th {
         padding: calc(#{map-get($spacers, 4)} - 1px); //16px -1px (for the border)
+        padding-bottom: #{map-get($spacers, 4)}; //16px -1px (for the border)
         background-color: inherit;
         border-right: $inner-border;
         vertical-align: top;
@@ -55,7 +56,10 @@
             font-weight: $font-weight-semibold;
         }
         tr {
-            background-color: transparent;
+          background-color: transparent;
+          &:last-child td, &:last-child th{
+            padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+          }
         }
     }
 
