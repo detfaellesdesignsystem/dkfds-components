@@ -8,6 +8,8 @@ const Accordion = require('./components/accordion');
 const ResponsiveTable = require('./components/table');
 const Tabnav = require('./components/tabnav');
 const Tooltip = require('./components/tooltip');
+const SetTabIndex = require('./components/skipnav');
+const Navigation = require('./components/navigation');
 
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -15,18 +17,14 @@ const Tooltip = require('./components/tooltip');
  */
 require('./polyfills');
 
-const dkfds = require('./config');
+var init = function () {
 
-const components = require('./components');
-dkfds.components = components;
+  new Navigation();
 
-domready(() => {
-  const target = document.body;
-  for (let name in components) {
-    const behavior = components[ name ];
-    behavior.on(target);
+  const jsSelectorTabindex = document.querySelectorAll('.skipnav[href^="#"]');
+  for(let c = 0; c < jsSelectorTabindex.length; c++){
+    new SetTabIndex(jsSelectorTabindex[ c ]);
   }
-
   const jsSelectorTooltip = document.getElementsByClassName('js-tooltip');
   for(let c = 0; c < jsSelectorTooltip.length; c++){
     new Tooltip(jsSelectorTooltip[ c ]);
@@ -68,7 +66,6 @@ domready(() => {
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]);
   }
+};
 
-});
-
-module.exports = { Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip};
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation };

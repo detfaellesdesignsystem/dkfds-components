@@ -19,20 +19,21 @@ class Accordion{
       let currentButton = this.buttons[i];
 
       let expanded = currentButton.getAttribute(EXPANDED) === 'true';
-      this.toggleButton(currentButton, expanded);
+      toggleButton(currentButton, expanded);
 
       const that = this;
-      currentButton.addEventListener('click', function(event){
-        that.eventOnClick(event, this);
-      });
+      currentButton.removeEventListener('click', that.eventOnClick, false);
+      currentButton.addEventListener('click', that.eventOnClick, false);
 
     }
   }
 
 
-  eventOnClick (event, button){
+  eventOnClick (event){
+    event.stopPropagation();
+    let button = event.target;
     event.preventDefault();
-    this.toggleButton(button);
+    toggleButton(button);
     if (button.getAttribute(EXPANDED) === 'true') {
       // We were just expanded, but if another accordion was also just
       // collapsed, we may no longer be in the viewport. This ensures
@@ -51,47 +52,44 @@ class Accordion{
    * state will be toggled (from false to true, and vice-versa).
    * @return {boolean} the resulting state
    */
-  toggleButton (button, expanded) {
-    if (!this.accordion) {
-      throw new Error(BUTTON+' is missing outer ACCORDION');
+}
+
+var toggleButton  = function (button, expanded) {
+  let accordion = null;
+  if(button.parentNode.parentNode.classList.contains('accordion')){
+    accordion = button.parentNode.parentNode;
+  }
+
+  let eventClose = new Event('fds.accordion.close');
+  let eventOpen = new Event('fds.accordion.open');
+  expanded = toggle(button, expanded);
+
+  if(expanded){
+    button.dispatchEvent(eventOpen);
+  } else{
+    button.dispatchEvent(eventClose);
+  }
+
+  // XXX multiselectable is opt-in, to preserve legacy behavior
+  let multiselectable = false;
+  if(accordion !== null && accordion.getAttribute(MULTISELECTABLE) === 'true'){
+    multiselectable = true;
+  }
+
+  if (expanded && !multiselectable) {
+    let buttons = [ button ];
+    if(accordion !== null) {
+      buttons = accordion.querySelectorAll(BUTTON);
     }
-
-    expanded = toggle(button, expanded);
-
-    if(expanded){
-      button.dispatchEvent(this.eventOpen);
-    } else{
-      button.dispatchEvent(this.eventClose);
-    }
-
-    // XXX multiselectable is opt-in, to preserve legacy behavior
-    const multiselectable = this.accordion.getAttribute(MULTISELECTABLE) === 'true';
-
-    if (expanded && !multiselectable) {
-      for(let i = 0; i < this.buttons.length; i++) {
-        let currentButtton = this.buttons[i];
-        if (currentButtton !== button) {
-          toggle(currentButtton, false);
-          currentButtton.dispatchEvent(this.eventClose);
-        }
+    for(let i = 0; i < buttons.length; i++) {
+      let currentButtton = buttons[i];
+      if (currentButtton !== button) {
+        toggle(currentButtton, false);
+        currentButtton.dispatchEvent(eventClose);
       }
     }
   }
-  /**
-   * @param {HTMLButtonElement} button
-   * @return {boolean} true
-   */
-  showButton (button){
-    toggleButton(button, true);
-  }
+};
 
-  /**
-   * @param {HTMLButtonElement} button
-   * @return {boolean} false
-   */
-  hideButton (button) {
-    toggleButton(button, false);
-  }
-}
 
 module.exports = Accordion;

@@ -1,5 +1,6 @@
 'use strict';
 const closest = require('../utils/closest');
+const BUTTON = '.js-dropdown';
 
 class Dropdown {
   constructor (el){
@@ -248,5 +249,45 @@ class Dropdown {
     return false;
   }
 }
+/**
+ * Toggle a button's "pressed" state, optionally providing a target
+ * state.
+ *
+ * @param {HTMLButtonElement} button
+ * @param {boolean?} expanded If no state is provided, the current
+ * state will be toggled (from false to true, and vice-versa).
+ * @return {boolean} the resulting state
+ */
+const toggleButton = (button, expanded) => {
+  toggle(button, expanded);
+};
+
+/**
+ * Get an Array of button elements belonging directly to the given
+ * accordion element.
+ * @param {HTMLElement} accordion
+ * @return {array<HTMLButtonElement>}
+ */
+var getButtons = function(parent) {
+  return parent.querySelectorAll(BUTTON);
+};
+
+
+
+/**
+ * @param {HTMLButtonElement} button
+ * @return {boolean} true
+ */
+var show = function (button){
+  toggleButton(button, true);
+};
+
+/**
+ * @param {HTMLButtonElement} button
+ * @return {boolean} false
+ */
+var hide = function (button) {
+  toggleButton(button, false);
+};
 
 module.exports = Dropdown;

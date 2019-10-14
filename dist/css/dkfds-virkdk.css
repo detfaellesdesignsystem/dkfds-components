@@ -8930,7 +8930,7 @@ footer .footer-theme {
   }
 }
 
-.nav-primary a.current {
+.nav-primary .current > a {
   font-weight: 600;
 }
 
@@ -9190,13 +9190,13 @@ footer .footer-theme {
   }
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner .current {
+.nav-primary .overflow-menu .overflow-menu-inner .current > a {
   font-weight: 600;
   color: #0059B3;
 }
 
 @media (min-width: 992px) {
-  .nav-primary .overflow-menu .overflow-menu-inner .current {
+  .nav-primary .overflow-menu .overflow-menu-inner .current > a {
     color: #fff;
   }
 }

@@ -141,7 +141,7 @@
     }
   }
 
-  a.current{
+  .current > a{
     font-weight: $font-weight-semibold;
   }
   button.current{
@@ -354,7 +354,7 @@
           }
       }
 
-      .current {
+      .current > a{
         font-weight: $font-weight-semibold;
         color: $color-primary;
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {

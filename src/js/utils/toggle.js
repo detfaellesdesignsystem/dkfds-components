@@ -9,7 +9,6 @@ module.exports = (button, expanded) => {
     expanded = button.getAttribute(EXPANDED) === 'false';
   }
   button.setAttribute(EXPANDED, expanded);
-
   const id = button.getAttribute(CONTROLS);
   const controls = document.getElementById(id);
   if (!controls) {

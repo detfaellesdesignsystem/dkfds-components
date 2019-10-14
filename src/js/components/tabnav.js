@@ -5,7 +5,8 @@ class Tabnav {
     let tabMenuItems = this.tabnav.querySelectorAll('a');
     let that = this;
     for(let i = 0; i < tabMenuItems.length; i++) {
-      tabMenuItems[ i ].addEventListener('click', function (){
+      tabMenuItems[ i ].addEventListener('click', function (event){
+        event.preventDefault();
         that.changeFocusTab(this);
       });
     }
@@ -17,7 +18,16 @@ class Tabnav {
     if(targetID != '') {
       var triggerEL = this.tabnav.querySelector('a[href="#'+targetID+'"]');
       this.changeFocusTab(triggerEL);
+    } else{
+      // set margin-bottom on tabnav so content below doesn't overlap
+
+      var targetId = this.tabnav.querySelector('li.active .tabnav-item').getAttribute('href').replace('#', '');
+      var style = window.getComputedStyle(document.getElementById(targetId));
+      var height = parseInt(document.getElementById(targetId).offsetHeight) + parseInt(style.getPropertyValue('margin-bottom'));
+      this.tabnav.style.marginBottom = height + 'px';
+
     }
+
   }
 
   changeFocusTab (triggerEl) {
@@ -48,6 +58,12 @@ class Tabnav {
     }
     // enable selected tab
     let targetId = triggerEl.getAttribute('href').replace('#', '');
+    if(history.pushState) {
+      history.pushState(null, null, '#'+targetId);
+    }
+    else {
+      location.hash = '#'+targetId;
+    }
     triggerEl.setAttribute('aria-expanded', true);
     triggerEl.parentNode.classList.add('active');
     document.getElementById(targetId).setAttribute('aria-hidden', false);
