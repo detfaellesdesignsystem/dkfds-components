@@ -19,7 +19,7 @@
         {% set ariahidden = "true" %}
       {% endif -%}
      <section class="tabnav-panel" aria-hidden="{{ariahidden}}" id="{{item.id}}">
-        <h2>{{ item.title }}</h2>
+        <h2>{{ item.heading }}</h2>
         {{ item.content | safe }}
       </section>
   </li>

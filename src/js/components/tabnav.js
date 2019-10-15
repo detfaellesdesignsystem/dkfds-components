@@ -24,7 +24,18 @@ class Tabnav {
       var targetId = this.tabnav.querySelector('li.active .tabnav-item').getAttribute('href').replace('#', '');
       var style = window.getComputedStyle(document.getElementById(targetId));
       var height = parseInt(document.getElementById(targetId).offsetHeight) + parseInt(style.getPropertyValue('margin-bottom'));
-      this.tabnav.style.marginBottom = height + 'px';
+
+      var w=window,
+        d=document,
+        e=d.documentElement,
+        g=d.getElementsByTagName('body')[0],
+        x=w.innerWidth||e.clientWidth||g.clientWidth;
+
+      if(x >= 768) {
+        this.tabnav.style.marginBottom = height + 'px';
+      } else{
+        this.tabnav.style.marginBottom = '';
+      }
 
     }
 
