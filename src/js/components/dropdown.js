@@ -1,13 +1,15 @@
 'use strict';
 const closest = require('../utils/closest');
 const BUTTON = '.js-dropdown';
+const TARGET = 'data-js-target';
+const eventCloseName = 'fds.dropdown.close';
+const eventOpenName = 'fds.dropdown.open';
 
 class Dropdown {
   constructor (el){
     this.jsDropdownTrigger = '.js-dropdown';
-    this.jsDropdownTarget = 'data-js-target';
-    this.eventClose = new Event('fds.dropdown.close');
-    this.eventOpen = new Event('fds.dropdown.open');
+    this.eventClose = new Event(eventCloseName);
+    this.eventOpen = new Event(eventOpenName);
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
     this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
@@ -36,11 +38,8 @@ class Dropdown {
       });
 
       //Clicked on dropdown open button --> toggle it
-      this.triggerEl.addEventListener('click', function (event){
-        event.preventDefault();
-        event.stopPropagation();//prevents ouside click listener from triggering.
-        that.toggleDropdown();
-      });
+      this.triggerEl.removeEventListener('click', toggleDropdown, false);
+      this.triggerEl.addEventListener('click', toggleDropdown, false);
 
       // set aria-hidden correctly for screenreaders (Tringuide responsive)
       if(this.responsiveListCollapseEnabled) {
@@ -93,17 +92,16 @@ class Dropdown {
       document.onkeydown = function (evt) {
         evt = evt || window.event;
         if (evt.keyCode === 27) {
-          that.closeAll();
+          closeAll();
         }
       };
     }
   }
 
-
   init (el){
     this.triggerEl = el;
     if(this.triggerEl !== null && this.triggerEl !== undefined){
-      let targetAttr = this.triggerEl.getAttribute(this.jsDropdownTarget);
+      let targetAttr = this.triggerEl.getAttribute(TARGET);
       if(targetAttr !== null && targetAttr !== undefined){
         let targetEl = document.getElementById(targetAttr.replace('#', ''));
         if(targetEl !== null && targetEl !== undefined){
@@ -122,106 +120,6 @@ class Dropdown {
 
   }
 
-  closeAll (){
-    const body = document.querySelector('body');
-
-    let overflowMenuEl = document.getElementsByClassName('overflow-menu');
-    let triggerEl = null;
-    let targetEl = null;
-    for (let oi = 0; oi < overflowMenuEl.length; oi++) {
-      let currentOverflowMenuEL = overflowMenuEl[ oi ];
-      for (let a = 0; a < currentOverflowMenuEL.childNodes.length; a++) {
-        if (currentOverflowMenuEL.childNodes[ a ].tagName !== undefined) {
-          if (currentOverflowMenuEL.childNodes[ a ].classList.contains('js-dropdown')) {
-            triggerEl = currentOverflowMenuEL.childNodes[ a ];
-          } else if (currentOverflowMenuEL.childNodes[ a ].classList.contains('overflow-menu-inner')) {
-            targetEl = currentOverflowMenuEL.childNodes[ a ];
-          }
-        }
-      }
-      if (targetEl !== null && triggerEl !== null) {
-        if (body.classList.contains('mobile_nav-active')) {
-          if (!currentOverflowMenuEL.closest('.navbar')) {
-
-            if(triggerEl.getAttribute('aria-expanded') === true){
-              triggerEl.dispatchEvent(this.eventClose);
-            }
-            triggerEl.setAttribute('aria-expanded', 'false');
-            targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
-          }
-        } else {
-          if(triggerEl.getAttribute('aria-expanded') === true){
-            triggerEl.dispatchEvent(this.eventClose);
-          }
-          triggerEl.setAttribute('aria-expanded', 'false');
-          targetEl.classList.add('collapsed');
-          targetEl.setAttribute('aria-hidden', 'true');
-
-        }
-      }
-    }
-  }
-
-  toggleDropdown (forceClose) {
-    if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
-      //change state
-
-      this.targetEl.style.left = null;
-      this.targetEl.style.right = null;
-
-      var rect = this.triggerEl.getBoundingClientRect();
-      if(this.triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
-        //close
-        this.triggerEl.setAttribute('aria-expanded', 'false');
-        this.targetEl.classList.add('collapsed');
-        this.targetEl.setAttribute('aria-hidden', 'true');
-        this.triggerEl.dispatchEvent(this.eventClose);
-      }else{
-        this.closeAll();
-        //open
-        this.triggerEl.setAttribute('aria-expanded', 'true');
-        this.targetEl.classList.remove('collapsed');
-        this.targetEl.setAttribute('aria-hidden', 'false');
-        this.triggerEl.dispatchEvent(this.eventOpen);
-        var offset = this.offset(this.targetEl)
-
-        if(offset.left < 0){
-          this.targetEl.style.left = '0px';
-          this.targetEl.style.right = 'auto';
-        }
-        var right = offset.left + this.targetEl.offsetWidth;
-        if(right > window.innerWidth){
-          this.targetEl.style.left = 'auto';
-          this.targetEl.style.right = '0px';
-        }
-
-        var offsetAgain = this.offset(this.targetEl);
-
-        if(offsetAgain.left < 0){
-
-          this.targetEl.style.left = '0px';
-          this.targetEl.style.right = 'auto';
-        }
-        right = offsetAgain.left + this.targetEl.offsetWidth;
-        if(right > window.innerWidth){
-
-          this.targetEl.style.left = 'auto';
-          this.targetEl.style.right = '0px';
-        }
-      }
-
-    }
-
-  }
-
-  offset (el) {
-    var rect = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-  }
-
 
   outsideClose (event){
     if(!this.doResponsiveCollapse()){
@@ -229,7 +127,7 @@ class Dropdown {
       let dropdownElm = closest(event.target, this.targetEl.id);
       if((dropdownElm === null || dropdownElm === undefined) && (event.target !== this.triggerEl)){
         //clicked outside trigger, force close
-        this.toggleDropdown(true);
+        toggleDropdown(event, true);
       }
     }
   }
@@ -268,10 +166,122 @@ const toggleButton = (button, expanded) => {
  * @param {HTMLElement} accordion
  * @return {array<HTMLButtonElement>}
  */
-var getButtons = function(parent) {
+var getButtons = function (parent) {
   return parent.querySelectorAll(BUTTON);
 };
+var closeAll = function (){
 
+  let eventClose = new Event(eventCloseName);
+
+  const body = document.querySelector('body');
+
+  let overflowMenuEl = document.getElementsByClassName('overflow-menu');
+  let triggerEl = null;
+  let targetEl = null;
+  for (let oi = 0; oi < overflowMenuEl.length; oi++) {
+    let currentOverflowMenuEL = overflowMenuEl[ oi ];
+    for (let a = 0; a < currentOverflowMenuEL.childNodes.length; a++) {
+      if (currentOverflowMenuEL.childNodes[ a ].tagName !== undefined) {
+        if (currentOverflowMenuEL.childNodes[ a ].classList.contains('js-dropdown')) {
+          triggerEl = currentOverflowMenuEL.childNodes[ a ];
+        } else if (currentOverflowMenuEL.childNodes[ a ].classList.contains('overflow-menu-inner')) {
+          targetEl = currentOverflowMenuEL.childNodes[ a ];
+        }
+      }
+    }
+    if (targetEl !== null && triggerEl !== null) {
+      if (body.classList.contains('mobile_nav-active')) {
+        if (!currentOverflowMenuEL.closest('.navbar')) {
+
+          if(triggerEl.getAttribute('aria-expanded') === true){
+            triggerEl.dispatchEvent(eventClose);
+          }
+          triggerEl.setAttribute('aria-expanded', 'false');
+          targetEl.classList.add('collapsed');
+          targetEl.setAttribute('aria-hidden', 'true');
+        }
+      } else {
+        if(triggerEl.getAttribute('aria-expanded') === true){
+          triggerEl.dispatchEvent(eventClose);
+        }
+        triggerEl.setAttribute('aria-expanded', 'false');
+        targetEl.classList.add('collapsed');
+        targetEl.setAttribute('aria-hidden', 'true');
+
+      }
+    }
+  }
+};
+var offset = function (el) {
+  var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+};
+
+var toggleDropdown = function (event, forceClose) {
+  event.stopPropagation();
+  event.preventDefault();
+
+  let eventClose = new Event(eventCloseName);
+  let eventOpen = new Event(eventOpenName);
+  let triggerEl = event.target;
+  let targetEl = null;
+  if(triggerEl !== null && triggerEl !== undefined){
+    let targetAttr = triggerEl.getAttribute(TARGET);
+    if(targetAttr !== null && targetAttr !== undefined){
+      targetEl = document.getElementById(targetAttr.replace('#', ''));
+    }
+  }
+  if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
+    //change state
+
+    targetEl.style.left = null;
+    targetEl.style.right = null;
+
+    var rect = triggerEl.getBoundingClientRect();
+    if(triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
+      //close
+      triggerEl.setAttribute('aria-expanded', 'false');
+      targetEl.classList.add('collapsed');
+      targetEl.setAttribute('aria-hidden', 'true');
+      triggerEl.dispatchEvent(eventClose);
+    }else{
+      closeAll();
+      //open
+      triggerEl.setAttribute('aria-expanded', 'true');
+      targetEl.classList.remove('collapsed');
+      targetEl.setAttribute('aria-hidden', 'false');
+      triggerEl.dispatchEvent(eventOpen);
+      var targetOffset = offset(targetEl);
+
+      if(targetOffset.left < 0){
+        targetEl.style.left = '0px';
+        targetEl.style.right = 'auto';
+      }
+      var right = targetOffset.left + targetEl.offsetWidth;
+      if(right > window.innerWidth){
+        targetEl.style.left = 'auto';
+        targetEl.style.right = '0px';
+      }
+
+      var offsetAgain = offset(targetEl);
+
+      if(offsetAgain.left < 0){
+
+        targetEl.style.left = '0px';
+        targetEl.style.right = 'auto';
+      }
+      right = offsetAgain.left + targetEl.offsetWidth;
+      if(right > window.innerWidth){
+
+        targetEl.style.left = 'auto';
+        targetEl.style.right = '0px';
+      }
+    }
+
+  }
+};
 
 
 /**
@@ -281,6 +291,8 @@ var getButtons = function(parent) {
 var show = function (button){
   toggleButton(button, true);
 };
+
+
 
 /**
  * @param {HTMLButtonElement} button
