@@ -10,6 +10,7 @@ const Tabnav = require('./components/tabnav');
 const Tooltip = require('./components/tooltip');
 const SetTabIndex = require('./components/skipnav');
 const Navigation = require('./components/navigation');
+const InputRegexMask = require('./components/regex-input-mask');
 
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -21,6 +22,10 @@ var init = function () {
 
   new Navigation();
 
+  const jsSelectorRegex = document.querySelectorAll('input[data-input-regex]');
+  for(let c = 0; c < jsSelectorRegex.length; c++){
+    new InputRegexMask(jsSelectorRegex[ c ]);
+  }
   const jsSelectorTabindex = document.querySelectorAll('.skipnav[href^="#"]');
   for(let c = 0; c < jsSelectorTabindex.length; c++){
     new SetTabIndex(jsSelectorTabindex[ c ]);
@@ -68,4 +73,4 @@ var init = function () {
   }
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask };
