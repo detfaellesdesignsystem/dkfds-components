@@ -127,7 +127,7 @@ class Dropdown {
       let dropdownElm = closest(event.target, this.targetEl.id);
       if((dropdownElm === null || dropdownElm === undefined) && (event.target !== this.triggerEl)){
         //clicked outside trigger, force close
-        toggleDropdown(event, true);
+        closeAll();
       }
     }
   }

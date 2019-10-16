@@ -6740,7 +6740,7 @@ a.button {
   color: inherit;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .button + .button {
     margin-left: 8px;
   }

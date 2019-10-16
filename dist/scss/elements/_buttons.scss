@@ -278,7 +278,7 @@ a.button{
 }
 
 .button + .button{
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     margin-left: 8px;
     &:first-child{
       margin-left: 0;
