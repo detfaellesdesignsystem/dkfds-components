@@ -67,6 +67,7 @@ var init = function () {
   for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
     new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
   }
+
   const jsSelectorDropdown = document.getElementsByClassName('js-dropdown');
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]);

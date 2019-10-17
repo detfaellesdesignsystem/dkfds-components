@@ -44,7 +44,7 @@ const _focusTrap = (trapContainer) => {
     }
 
     // ESCAPE
-    if (e.keyCode === 27) {
+    if (e.key === 'Escape') {
       toggleNav.call(this, false);
     }
   }
@@ -76,7 +76,6 @@ const toggleNav = function (active) {
   forEach(select(TOGGLES), el => {
     el.classList.toggle(VISIBLE_CLASS, active);
   });
-
   if (active) {
     focusTrap.enable();
   } else {
@@ -149,10 +148,9 @@ class Navigation {
   }
 
   init () {
-    const trapContainer = document.querySelector(NAV);
-
-    if (trapContainer) {
-      focusTrap = _focusTrap(trapContainer);
+    const trapContainers = document.querySelectorAll(NAV);
+    for(let i = 0; i < trapContainers.length; i++){
+        focusTrap = _focusTrap(trapContainers[i]);
     }
 
     resize();

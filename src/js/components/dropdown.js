@@ -36,10 +36,9 @@ class Dropdown {
       document.getElementsByTagName('body')[ 0 ].addEventListener('click', function (event){
         that.outsideClose(event);
       });
-
       //Clicked on dropdown open button --> toggle it
-      this.triggerEl.removeEventListener('click', toggleDropdown, false);
-      this.triggerEl.addEventListener('click', toggleDropdown, false);
+      this.triggerEl.removeEventListener('click', toggleDropdown);
+      this.triggerEl.addEventListener('click', toggleDropdown);
 
       // set aria-hidden correctly for screenreaders (Tringuide responsive)
       if(this.responsiveListCollapseEnabled) {
@@ -219,13 +218,13 @@ var offset = function (el) {
   return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 };
 
-var toggleDropdown = function (event, forceClose) {
+var toggleDropdown = function (event, forceClose = false) {
   event.stopPropagation();
   event.preventDefault();
 
   let eventClose = new Event(eventCloseName);
   let eventOpen = new Event(eventOpenName);
-  let triggerEl = event.target;
+  let triggerEl = this;
   let targetEl = null;
   if(triggerEl !== null && triggerEl !== undefined){
     let targetAttr = triggerEl.getAttribute(TARGET);
