@@ -31,7 +31,7 @@ class Accordion{
 
   eventOnClick (event){
     event.stopPropagation();
-    let button = event.target;
+    let button = this;
     event.preventDefault();
     toggleButton(button);
     if (button.getAttribute(EXPANDED) === 'true') {
