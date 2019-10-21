@@ -43,9 +43,12 @@ class Tabnav {
 
   changeFocusTab (triggerEl) {
 
-    let changeTabEvent = new Event('fds.tabnav.changed');
-    let tabOpenEvent = new Event('fds.tabnav.open');
-    let tabCloseEvent = new Event('fds.tabnav.close');
+    let changeTabEvent = document.createEvent('Event');
+    changeTabEvent.initEvent('fds.tabnav.changed', true, true);
+    let tabOpenEvent = document.createEvent('Event');
+    tabOpenEvent.initEvent('fds.tabnav.open', true, true);
+    let tabCloseEvent = document.createEvent('Event');
+    tabCloseEvent.initEvent('fds.tabnav.close', true, true);
     // loop all elements in current tabnav and disable them
     let parentNode = triggerEl.parentNode.parentNode;
     let allNodes = triggerEl.parentNode.parentNode.childNodes;

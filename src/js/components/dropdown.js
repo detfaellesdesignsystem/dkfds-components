@@ -1,21 +1,21 @@
 'use strict';
 const closest = require('../utils/closest');
+const toggle = require('../utils/toggle');
 const BUTTON = '.js-dropdown';
 const TARGET = 'data-js-target';
 const eventCloseName = 'fds.dropdown.close';
 const eventOpenName = 'fds.dropdown.open';
 
+const navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
+const tringuideBreakpoint = 768; //same as $nav-responsive-breakpoint from the scss.
+
 class Dropdown {
   constructor (el){
     this.jsDropdownTrigger = '.js-dropdown';
-    this.eventClose = new Event(eventCloseName);
-    this.eventOpen = new Event(eventOpenName);
 
     //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
-    this.navResponsiveBreakpoint = 992; //same as $nav-responsive-breakpoint from the scss.
-    this.tringuideBreakpoint = 768; //same as $nav-responsive-breakpoint from the scss.
     this.jsResponsiveCollapseModifier = '.js-dropdown--responsive-collapse';
-    this.responsiveCollapseEnabled = false;
+    this.refsponsiveCollapseEnabled = false;
     this.responsiveListCollapseEnabled = false;
 
 
@@ -33,9 +33,8 @@ class Dropdown {
       }
 
       //Clicked outside dropdown -> close it
-      document.getElementsByTagName('body')[ 0 ].addEventListener('click', function (event){
-        that.outsideClose(event);
-      });
+      document.getElementsByTagName('body')[ 0 ].removeEventListener('click', outsideClose);
+      document.getElementsByTagName('body')[ 0 ].addEventListener('click', outsideClose);
       //Clicked on dropdown open button --> toggle it
       this.triggerEl.removeEventListener('click', toggleDropdown);
       this.triggerEl.addEventListener('click', toggleDropdown);
@@ -63,7 +62,7 @@ class Dropdown {
           observer.observe(element);
         } else {
           // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
-          if (that.doResponsiveStepguideCollapse()) {
+          if (doResponsiveStepguideCollapse(that.triggerEl)) {
             // small screen
             if (element.getAttribute('aria-expanded') === 'false') {
               that.targetEl.setAttribute('aria-hidden', true);
@@ -75,7 +74,7 @@ class Dropdown {
             that.targetEl.setAttribute('aria-hidden', false);
           }
           window.addEventListener('resize', function () {
-            if (that.doResponsiveStepguideCollapse()) {
+            if (doResponsiveStepguideCollapse(that.triggerEl)) {
               if (element.getAttribute('aria-expanded') === 'false') {
                 that.targetEl.setAttribute('aria-hidden', true);
               } else{
@@ -108,44 +107,9 @@ class Dropdown {
         }
       }
     }
-
-    if(this.triggerEl.classList.contains('js-dropdown--responsive-collapse')){
-      this.responsiveCollapseEnabled = true;
-    }
-
-    if(this.triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
-      this.responsiveListCollapseEnabled = true;
-    }
-
-  }
-
-
-  outsideClose (event){
-    if(!this.doResponsiveCollapse()){
-      //closes dropdown when clicked outside.
-      let dropdownElm = closest(event.target, this.targetEl.id);
-      if((dropdownElm === null || dropdownElm === undefined) && (event.target !== this.triggerEl)){
-        //clicked outside trigger, force close
-        closeAll();
-      }
-    }
-  }
-
-  doResponsiveCollapse (){
-    //returns true if responsive collapse is enabled and we are on a small screen.
-    if((this.responsiveCollapseEnabled || this.responsiveListCollapseEnabled) && window.innerWidth <= this.navResponsiveBreakpoint){
-      return true;
-    }
-    return false;
-  }
-  doResponsiveStepguideCollapse (){
-    //returns true if responsive collapse is enabled and we are on a small screen.
-    if((this.responsiveListCollapseEnabled) && window.innerWidth <= this.tringuideBreakpoint){
-      return true;
-    }
-    return false;
   }
 }
+
 /**
  * Toggle a button's "pressed" state, optionally providing a target
  * state.
@@ -170,7 +134,8 @@ var getButtons = function (parent) {
 };
 var closeAll = function (){
 
-  let eventClose = new Event(eventCloseName);
+  var eventClose = document.createEvent('Event');
+  eventClose.initEvent(eventCloseName, true, true);
 
   const body = document.querySelector('body');
 
@@ -190,7 +155,7 @@ var closeAll = function (){
     }
     if (targetEl !== null && triggerEl !== null) {
       if (body.classList.contains('mobile_nav-active')) {
-        if (!currentOverflowMenuEL.closest('.navbar')) {
+        if (!closest(currentOverflowMenuEL, '.navbar')) {
 
           if(triggerEl.getAttribute('aria-expanded') === true){
             triggerEl.dispatchEvent(eventClose);
@@ -222,8 +187,11 @@ var toggleDropdown = function (event, forceClose = false) {
   event.stopPropagation();
   event.preventDefault();
 
-  let eventClose = new Event(eventCloseName);
-  let eventOpen = new Event(eventOpenName);
+  var eventClose = document.createEvent('Event');
+  eventClose.initEvent(eventCloseName, true, true);
+
+  var eventOpen = document.createEvent('Event');
+  eventOpen.initEvent(eventOpenName, true, true);
   let triggerEl = this;
   let targetEl = null;
   if(triggerEl !== null && triggerEl !== undefined){
@@ -300,5 +268,66 @@ var show = function (button){
 var hide = function (button) {
   toggleButton(button, false);
 };
+
+
+let outsideClose = function (evt){
+  let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
+  for(var i = 0; i < openDropdowns.length; i++) {
+    let triggerEl = openDropdowns[ i ];
+    let targetEl = null;
+    let targetAttr = triggerEl.getAttribute(TARGET);
+    if(targetAttr !== null && targetAttr !== undefined){
+      targetEl = document.getElementById(targetAttr.replace('#', ''));
+    }
+    if (!doResponsiveCollapse(triggerEl)) {
+      //closes dropdown when clicked outside
+      if (evt.target !== triggerEl) {
+        //clicked outside trigger, force close
+        triggerEl.setAttribute('aria-expanded', 'false');
+        targetEl.classList.add('collapsed');
+        targetEl.setAttribute('aria-hidden', 'true');
+
+        var eventClose = document.createEvent('Event');
+        eventClose.initEvent(eventCloseName, true, true);
+        triggerEl.dispatchEvent(eventClose);
+      }
+    }
+  }
+};
+
+
+let doResponsiveCollapse = function (triggerEl){
+  let responsiveCollapseEnabled = false;
+  let responsiveListCollapseEnabled = false;
+
+  if(triggerEl.classList.contains('js-dropdown--responsive-collapse')){
+    responsiveCollapseEnabled = true;
+  }
+
+  if(triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
+    responsiveListCollapseEnabled = true;
+  }
+
+  //returns true if responsive collapse is enabled and we are on a small screen.
+  if((responsiveCollapseEnabled || responsiveListCollapseEnabled) && window.innerWidth <= navResponsiveBreakpoint){
+    return true;
+  }
+  return false;
+};
+
+let doResponsiveStepguideCollapse = function (triggerEl){
+  let responsiveListCollapseEnabled = false;
+
+  if(triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive')){
+    responsiveListCollapseEnabled = true;
+  }
+
+  //returns true if responsive collapse is enabled and we are on a small screen.
+  if((responsiveListCollapseEnabled) && window.innerWidth <= tringuideBreakpoint){
+    return true;
+  }
+  return false;
+};
+
 
 module.exports = Dropdown;

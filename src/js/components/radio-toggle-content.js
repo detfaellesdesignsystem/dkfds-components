@@ -4,8 +4,12 @@ class RadioToggleGroup{
     constructor(el){
         this.jsToggleTrigger = '.js-radio-toggle-group';
         this.jsToggleTarget = 'data-js-target';
-        this.eventClose = new Event('fds.collapse.close');
-        this.eventOpen = new Event('fds.collapse.open');
+
+        this.eventClose = document.createEvent('Event');
+        this.eventClose.initEvent('fds.collapse.close', true, true);
+
+        this.eventOpen = document.createEvent('Event');
+        this.eventOpen.initEvent('fds.collapse.open', true, true);
         this.radioEls = null;
         this.targetEl = null;
 

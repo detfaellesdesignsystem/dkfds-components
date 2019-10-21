@@ -9,8 +9,10 @@ class Accordion{
   constructor (accordion){
     this.accordion = accordion;
     this.buttons = accordion.querySelectorAll(BUTTON);
-    this.eventClose = new Event('fds.accordion.close');
-    this.eventOpen = new Event('fds.accordion.open');
+    this.eventClose = document.createEvent('Event');
+    this.eventClose.initEvent('fds.accordion.close', true, true);
+    this.eventOpen = document.createEvent('Event');
+    this.eventOpen.initEvent('fds.accordion.open', true, true);
     this.init();
   }
 
@@ -60,8 +62,10 @@ var toggleButton  = function (button, expanded) {
     accordion = button.parentNode.parentNode;
   }
 
-  let eventClose = new Event('fds.accordion.close');
-  let eventOpen = new Event('fds.accordion.open');
+  let eventClose = document.createEvent('Event');
+  eventClose.initEvent('fds.accordion.close', true, true);
+  let eventOpen = document.createEvent('Event');
+  eventOpen.initEvent('fds.accordion.open', true, true);
   expanded = toggle(button, expanded);
 
   if(expanded){
