@@ -50,25 +50,6 @@ To include the javascript via webpack, import it in your main.js file:
   import "dkfds";
 ```
 
-## Local development
-
-We're using [Fractal](http://fractal.build) to generate an interactive component library for the Designsystem. You can run it locally after `npm install` with:
-
-```sh
-npm start
-```
-
-Then, visit [http://localhost:3000/](http://localhost:3000/) to see the Standards in action.
-
-_**Optional**: To re-build when code changes are made, run the following command from the project directory in a separate terminal window:_
-```sh
-npm run watch
-```
-
-### Template compatibility
-
-Many of our Fractal view templates are compatible with [Nunjucks](https://mozilla.github.io/nunjucks/) (for JavaScript/Node), [Jinja](http://jinja.pocoo.org/docs/2.9/) (Python), and [Twig](https://twig.sensiolabs.org/) (PHP) out of the box. Components that reference other components use a Fractal-specific `{% render %}` tag that will either need to be implemented in other environments or replaced with the appropriate `{% include %}` tags.
-
 ## Contribute
 The project is available on Github. You are more than welcome to contact us with suggestions or if you have a bug to report.
 [See the project on Github](https://github.com/detfaellesdesignsystem/dkfds-components)
