@@ -1,11 +1,7 @@
 'use strict';
-const behavior = require('../utils/behavior');
 const forEach = require('array-foreach');
 const select = require('../utils/select');
-const accordion = require('./accordion');
-
-const CLICK = require('../events').CLICK;
-const PREFIX = require('../config').prefix;
+const dropdown = require('./dropdown');
 
 const NAV = `.nav`;
 const NAV_LINKS = `${NAV} a`;
@@ -48,7 +44,7 @@ const _focusTrap = (trapContainer) => {
     }
 
     // ESCAPE
-    if (e.keyCode === 27) {
+    if (e.key === 'Escape') {
       toggleNav.call(this, false);
     }
   }
@@ -80,7 +76,6 @@ const toggleNav = function (active) {
   forEach(select(TOGGLES), el => {
     el.classList.toggle(VISIBLE_CLASS, active);
   });
-
   if (active) {
     focusTrap.enable();
   } else {
@@ -119,51 +114,52 @@ const resize = () => {
   }
 };
 
-const navigation = behavior({
-  [ CLICK ]: {
-    [ OPENERS ]: toggleNav,
-    [ CLOSERS ]: toggleNav,
-    [ NAV_LINKS ]: function () {
-      // A navigation link has been clicked! We want to collapse any
-      // hierarchical navigation UI it's a part of, so that the user
-      // can focus on whatever they've just selected.
+class Navigation {
+  constructor (){
+    let openers = document.querySelectorAll(OPENERS);
+    for(let o = 0; o < openers.length; o++) {
+      openers[ o ].addEventListener('click', toggleNav);
+    }
 
-      // Some navigation links are inside accordions; when they're
-      // clicked, we want to collapse those accordions.
-      const acc = this.closest(accordion.ACCORDION);
-      if (acc) {
-        accordion.getButtons(acc).forEach(btn => accordion.hide(btn));
-      }
+    let closers = document.querySelectorAll(CLOSERS);
+    for(let c = 0; c < closers.length; c++) {
+      closers[ c ].addEventListener('click', toggleNav);
+    }
 
-      // If the mobile navigation menu is active, we want to hide it.
-      if (isActive()) {
-        toggleNav.call(this, false);
-      }
-    },
-  },
-}, {
+    let navLinks = document.querySelectorAll(NAV_LINKS);
+    for(let n = 0; n < navLinks.length; n++) {
+      navLinks[ n ].addEventListener('click', function(){
+        // A navigation link has been clicked! We want to collapse any
+        // hierarchical navigation UI it's a part of, so that the user
+        // can focus on whatever they've just selected.
+
+        // Some navigation links are inside dropdowns; when they're
+        // clicked, we want to collapse those dropdowns.
+
+
+        // If the mobile navigation menu is active, we want to hide it.
+        if (isActive()) {
+          toggleNav.call(this, false);
+        }
+      });
+    }
+
+    this.init();
+  }
+
   init () {
-    const trapContainer = document.querySelector(NAV);
-
-    if (trapContainer) {
-      focusTrap = _focusTrap(trapContainer);
+    const trapContainers = document.querySelectorAll(NAV);
+    for(let i = 0; i < trapContainers.length; i++){
+        focusTrap = _focusTrap(trapContainers[i]);
     }
 
     resize();
     window.addEventListener('resize', resize, false);
-  },
+  }
+
   teardown () {
     window.removeEventListener('resize', resize, false);
-  },
-});
+  }
+}
 
-/**
- * TODO for 2.0, remove this statement and export `navigation` directly:
- *
- * module.exports = behavior({...});
- */
-const assign = require('object-assign');
-module.exports = assign(
-  el => navigation.on(el),
-  navigation
-);
+module.exports = Navigation;

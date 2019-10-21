@@ -4,8 +4,7 @@
   <!--1A: Portal header -->
   <div class="portal-header">
     <div class="container portal-header-inner">
-      <a href="{{ portal_header.logolink.href | default('/') }}" title="{{ portal_header.logolink.title}}" {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
-        <span class="d-none d-print-block">Portalnavn</span>
+      <a href="{{ portal_header.logolink.href | default('/') }}" {% if portal_header.logolink.title %}title="{{ portal_header.logolink.title}}"{% endif %} {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
       </a>
       <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 

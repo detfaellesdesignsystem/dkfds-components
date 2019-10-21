@@ -3,7 +3,7 @@
     {% if formError %}<span class="form-error-message" role="alert">{{ formError }}</span> {% endif %}
     {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}</label>{% endif %}
     <select class="{{class}} form-select" name="{{name}}" id="{{id}}"  {% if disabled %}disabled="disabled"{% endif %}>
-      <option value>{{optiontitle}}</option>
+      <option value>{{optiontitle | default("Vælg")}}</option>
       {% for option in options %}
         <option value="{{option.value}}" {%if option.selected %}selected{% endif %}>{{option.text}}</option>
       {% endfor %}

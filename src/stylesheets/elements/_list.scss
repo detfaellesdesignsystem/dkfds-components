@@ -6,7 +6,7 @@ ul {
   list-style-type: none;
   color: $color-text;
   line-height: $body-text-line-height;
-  li { 
+  li {
     margin-top:map-get($spacers, 3);
     list-style-type: none;
     position: relative;
@@ -31,9 +31,9 @@ ol {
     padding-left: 4rem;
     line-height: $body-text-line-height;
 
-    &:before { 
-      content: counters(item, ".") "."; 
-      counter-increment: item; 
+    &:before {
+      content: counters(item, ".") ".";
+      counter-increment: item;
       font-weight: $font-weight-medium;
       left: 0px;
       position: absolute;
@@ -63,9 +63,14 @@ ol {
   @include unstyled-list;
 }
 
- // Unstyled lists
+ // No bullet lists
  .nobullet-list {
    @include nobullet-list;
+ }
+
+ // No indententation list
+ .noindent-list {
+   @include noindent-list;
  }
 
 
@@ -75,7 +80,7 @@ ol {
     display: block;
 
     @include media-breakpoint-up(md) {
-      display: inline-block; 
+      display: inline-block;
     }
   }
 }

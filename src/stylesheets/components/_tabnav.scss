@@ -1,44 +1,86 @@
 
 .tabnav {
-  @include unstyled-list;
-  list-style-type: none;
-  padding: 0;
+  @extend .accordion;
   @include media-breakpoint-up(md) {
+    @include unstyled-list;
+    list-style-type: none;
+    padding: 0;
+    position: relative;
     display: flex;
+    border-bottom: $outer-border;
   }
-  border-bottom: $outer-border;
-
   li {
-    margin-bottom: 0;
-
-
+    @include media-breakpoint-up(md) {
+      position: static;
+      background-color: transparent;
+      width: auto;
+      margin-right: map-get($spacers, 3);
+      border-bottom: $outer-border;
+      margin: 0 map-get($spacers, 2) -1px 0px;
+      padding-top: map-get($spacers, 2);
+      padding-bottom: map-get($spacers, 2);
+      &:first-child{
+        margin-left: 0px;
+      }
+      &.active{
+        border: $outer-border;
+        border-bottom: 1px solid $color-white;
+      }
+    }
 
     a {
-      display: block;
-      color: $color-gray-001;
-      text-align: center;
+
+      @extend .accordion-button;
       text-decoration: none;
-      padding: map-get($spacers, 3);
-      padding-bottom: calc(#{map-get($spacers, 3) + 7px});
-      @include media-breakpoint-up(sm) {
-        margin: map-get($spacers, 3);
-        margin-right: 0;
-        margin-bottom: 0;
-      }
-      
-      
-      &:hover {
-        box-shadow: inset 0px -7px 0px 0px $tabs-active-border-color
-      }
 
-      &:focus{
-        outline: $focus-outline;
-      }
+      @include media-breakpoint-up(md) {
 
-      &.active {
-        color: $color-primary;
-        box-shadow: inset 0px -7px 0px 0px $tabs-active-border-color;
-        font-weight: $font-weight-semibold;
+        display: block;
+        color: $color-gray-001;
+        text-align: center;
+        text-decoration: none;
+        padding: 0px;
+        background-color: transparent;
+        border-radius: 0px;
+        line-height: normal;
+        padding-top: map-get($spacers, 3);
+        padding-bottom: map-get($spacers, 3);
+        padding-left: map-get($spacers, 5);
+        padding-right: map-get($spacers, 5);
+
+        span:not(.sr-only) {
+          display: block;
+        }
+        &[aria-expanded=false]{
+          background-color: $background-alternative;
+          background-image: none;
+          border-radius: 0px;
+          span {
+            text-decoration: underline;
+          }
+        }
+
+        &:hover {
+            background-color: $color-gray-mediumpale;
+        }
+
+        &:focus{
+          outline: none;
+          span:not(.sr-only) {
+            outline: $focus-outline;
+          }
+        }
+
+        &[aria-expanded=true] {
+          background-color: transparent;
+          background-image: none;
+
+          border-radius: 0px;
+          span:not(.sr-only) {
+            display: block;
+          }
+        }
+
       }
     }
 
@@ -48,6 +90,27 @@
           margin-right: map-get($spacers, 3);
         }
       }
+    }
+  }
+
+  &-panel{
+    @extend .accordion-content;
+    @include media-breakpoint-up(md) {
+      display: none;
+      border-right: $outer-border;
+      border-bottom: $outer-border;
+      border-left: $outer-border;
+      overflow: hidden;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      margin-bottom: calc(#{map-get($spacers, 4)});
+      background-color: transparent;
+      top: 100%;
+
+    }
+    &[aria-hidden=false]{
+      display: block;
     }
   }
 }

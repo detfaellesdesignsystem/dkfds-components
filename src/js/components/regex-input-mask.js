@@ -5,7 +5,6 @@
 * Example - number only: <input type="text" data-input-regex="^\d*$">
 */
 'use strict';
-const behavior = require('../utils/behavior');
 
 const modifierState = {
   shift: false,
@@ -14,7 +13,13 @@ const modifierState = {
   command: false
 };
 
-function inputRegexMask (event) {
+class InputRegexMask {
+  constructor (element){
+    element.addEventListener('paste', regexMask);
+    element.addEventListener('keydown', regexMask);
+  }
+}
+var regexMask = function (event) {
   if(modifierState.ctrl || modifierState.command) {
     return;
   }
@@ -60,10 +65,6 @@ function inputRegexMask (event) {
       }
     }
   }
-}
+};
 
-module.exports = behavior({
-  'keypress paste': {
-    'input[data-input-regex]:focus': inputRegexMask,
-  }
-});
+module.exports = InputRegexMask;

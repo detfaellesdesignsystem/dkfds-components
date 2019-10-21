@@ -22,8 +22,6 @@ a.button{
   text-decoration: none;
   user-select: none;
   cursor: pointer;
-  //transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
-  height: #{map-get($spacers, 7)};
 
   @include media-breakpoint-up(md) {
     width: auto;
@@ -67,7 +65,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -106,7 +104,7 @@ a.button{
       border-color: $color-gray-medium-dark;
     }
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -146,7 +144,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -193,7 +191,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -236,7 +234,7 @@ a.button{
     }
 
     &:disabled,
-    .disabled {
+    &.disabled {
       opacity:0.3;
       box-shadow: none !important;
       cursor: not-allowed;
@@ -280,7 +278,7 @@ a.button{
 }
 
 .button + .button{
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     margin-left: 8px;
     &:first-child{
       margin-left: 0;

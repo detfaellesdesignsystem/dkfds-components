@@ -9,7 +9,7 @@
 $global-font-size:  100% !default;
 // Removing the !default from $em-base so we are not inheriting that
 // value from Bourbon.
-$em-base:           62.5%; //-> 10px for standard browsers, now 'Font size' from the browser setting works correctly if the uses specifies a bigger standard font-size. 
+$em-base:           62.5%; //-> 10px for standard browsers, now 'Font size' from the browser setting works correctly if the uses specifies a bigger standard font-size.
 
 $base-font-size:    1.6rem !default;
 $base-line-height:  2.4rem !default;
@@ -22,7 +22,7 @@ $icons-folder-path:             "../img/svg-icons" !default;
 // Typography
 // Typography font-size and line-height
 
-$h1-font-size:                4.0rem !default; 
+$h1-font-size:                4.0rem !default;
 $h1-line-height:              4.8rem !default;
 
 $h2-font-size:                3.0rem !default;
@@ -80,12 +80,19 @@ $spacers: (
   1: ($spacer * .25),   //2px
   2: ($spacer * .5),    //4px
   3: $spacer,           //8px
+  305:($spacer * 1.5),  //8px
   4: ($spacer * 2),     //16px
+  405: ($spacer * 2.5), //20px
   5: ($spacer * 3),     //24px
-  6: ($spacer * 4),     //32px 
+  505: ($spacer * 3.5), //28px
+  6: ($spacer * 4),     //32px
+  605: ($spacer * 4.5), //36px
   7: ($spacer * 5),     //40px
+  705: ($spacer * 5.5), //44px
   8: ($spacer * 6),     //48px
-  9: ($spacer * 7),      //56px
+  805: ($spacer * 6.5), //52px
+  9: ($spacer * 7),     //56px
+  905: ($spacer * 7.5), //60px
 ) !default;
 
 //Translate $spacer into rem
@@ -95,8 +102,8 @@ $spacing-md-small:              1.6rem !default;
 $spacing-medium:                2.4rem !default;
 $spacing-large:                 3.2rem !default;
 $spacing-x-large:               4.0rem !default;
-$spacing-xx-large:              4.8rem !default; 
-$spacing-xxx-large:             5.6rem !default; 
+$spacing-xx-large:              4.8rem !default;
+$spacing-xxx-large:             5.6rem !default;
 
 
 //############################### Swatches and Theming ####################
@@ -135,21 +142,21 @@ $color-orange-004:            #febb30 !default;
 $color-orange-005:            #ffeecc !default;
 
 //red
-$color-red-001:               #CC0000 !default; 
-$color-red-002:               #ffe0e0 !default; 
+$color-red-001:               #CC0000 !default;
+$color-red-002:               #ffe0e0 !default;
 
 //blue
-$color-blue-001:              #004D99 !default; 
-$color-blue-002:              #004080 !default; 
-$color-blue-003:              #000040 !default; 
-$color-blue-004:              #e2f2fb !default; 
-$color-blue-005:              #067293 !default; 
-$color-blue-006:              #04556E !default; 
-$color-blue-007:              #033747 !default; 
+$color-blue-001:              #004D99 !default;
+$color-blue-002:              #004080 !default;
+$color-blue-003:              #000040 !default;
+$color-blue-004:              #e2f2fb !default;
+$color-blue-005:              #067293 !default;
+$color-blue-006:              #04556E !default;
+$color-blue-007:              #033747 !default;
 $color-blue-008:              #1B86C3 !default;
 
 //purple
-$color-purple-001:            #800080!default; 
+$color-purple-001:            #800080!default;
 
 //Data visualisation colors
 $color-data-turquoise-001:     #56D4D6 !default;
@@ -343,7 +350,7 @@ $tabs-active-border-color: $color-primary !default;
 
 //Sidenavigation
 $sidenav-link-color: $color-gray-001 !default;
-$sidenav-link-color-hover: $color-primary-dark !default;
+$sidenav-link-color-hover: $color-primary !default;
 $sidenav-link-current-color: $color-gray-001 !default;
 $sidenav-link-active-color: $color-primary !default;
 $sidenav-active-border-width: 4px !default;
@@ -357,6 +364,7 @@ $alert-text-color: $color-text !default;
 //Borders
 $outer-border:            1px solid $color-gray-medium-dark; //$color-gray-medium-light;
 $inner-border:            1px solid $color-gray-light;
+$inner-inner-border:      1px solid $color-gray-mediumpale;
 $button-border-width:     2px;
 $button-border:           $button-border-width solid $button-primary-border-color;
 

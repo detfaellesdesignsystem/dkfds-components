@@ -2,90 +2,93 @@
  * Collapse/expand.
  */
 
-'use strict';
-const behavior = require('../utils/behavior');
-const select = require('../utils/select');
-const closest = require('../utils/closest');
-const forEach = require('array-foreach');
+'use strict'
 
-const jsCollapseTrigger = ".js-collapse";
-const jsCollapseTarget = "data-js-target";
+class Collapse {
+  constructor (element, action = 'toggle'){
+    this.jsCollapseTarget = 'data-js-target';
+    this.triggerEl = element;
+    this.targetEl;
+    this.animateInProgress = false;
+    let that = this;
+    this.eventClose = document.createEvent('Event');
+    this.eventClose.initEvent('fds.collapse.close', true, true);
+    this.eventOpen = document.createEvent('Event');
+    this.eventOpen.initEvent('fds.collapse.open', true, true);
+    this.triggerEl.addEventListener('click', function (){
+      that.toggle();
+    });
+  }
 
-const toggleCollapse = function (triggerEl, forceClose) {
-    if(triggerEl !== null && triggerEl !== undefined){
-        var targetAttr = triggerEl.getAttribute(jsCollapseTarget)
-        if(targetAttr !== null && targetAttr !== undefined){
-            var targetEl = select(targetAttr, 'body');
-            if(targetEl !== null && targetEl !== undefined && targetEl.length > 0){
-                //target found, check state
-                targetEl = targetEl[0];
-                //change state
-                if(triggerEl.getAttribute("aria-expanded") == "true" || triggerEl.getAttribute("aria-expanded") == undefined || forceClose ){
-                    //close
-                    animateCollapse(targetEl, triggerEl);
-                }else{
-                    //open
-                    animateExpand(targetEl, triggerEl);
-                }
-            }
-        }       
+  toggleCollapse (forceClose) {
+    let targetAttr = this.triggerEl.getAttribute(this.jsCollapseTarget);
+    if(targetAttr !== null && targetAttr !== undefined){
+      this.targetEl = document.querySelector(targetAttr);
+      if(this.targetEl !== null && this.targetEl !== undefined){
+        //change state
+        if(this.triggerEl.getAttribute('aria-expanded') === 'true' || this.triggerEl.getAttribute('aria-expanded') === undefined || forceClose ){
+          //close
+          this.animateCollapse();
+        }else{
+          //open
+          this.animateExpand();
+        }
+      }
     }
-};
+  }
 
-const toggle = function (event) {
-    //event.preventDefault();
-    var triggerElm = closest(event.target, jsCollapseTrigger);
-    if(triggerElm !== null && triggerElm !== undefined){
-        toggleCollapse(triggerElm);
+  toggle (){
+    if(this.triggerEl !== null && this.triggerEl !== undefined){
+      this.toggleCollapse();
     }
-};
+  }
 
-var animateInProgress = false;
 
-function animateCollapse(targetEl, triggerEl) {
-    if(!animateInProgress){
-        animateInProgress = true;
-        
-        targetEl.style.height = targetEl.clientHeight+ "px";
-        targetEl.classList.add("collapse-transition-collapse");
-        setTimeout(function(){ 
-            targetEl.removeAttribute("style");
-        }, 5);
-        setTimeout(function(){ 
-            targetEl.classList.add("collapsed");
-            targetEl.classList.remove("collapse-transition-collapse");
-            
-            triggerEl.setAttribute("aria-expanded", "false");
-            targetEl.setAttribute("aria-hidden", "true");
-            animateInProgress = false;
-        }, 200);
+  animateCollapse () {
+    if(!this.animateInProgress){
+      this.animateInProgress = true;
+
+      this.targetEl.style.height = this.targetEl.clientHeight+ 'px';
+      this.targetEl.classList.add('collapse-transition-collapse');
+      let that = this;
+      setTimeout(function (){
+        that.targetEl.removeAttribute('style');
+      }, 5);
+      setTimeout(function (){
+        that.targetEl.classList.add('collapsed');
+        that.targetEl.classList.remove('collapse-transition-collapse');
+
+        that.triggerEl.setAttribute('aria-expanded', 'false');
+        that.targetEl.setAttribute('aria-hidden', 'true');
+        that.animateInProgress = false;
+        that.triggerEl.dispatchEvent(that.eventClose);
+      }, 200);
     }
+  }
+
+  animateExpand () {
+    if(!this.animateInProgress){
+      this.animateInProgress = true;
+      this.targetEl.classList.remove('collapsed');
+      let expandedHeight = this.targetEl.clientHeight;
+      this.targetEl.style.height = '0px';
+      this.targetEl.classList.add('collapse-transition-expand');
+      let that = this;
+      setTimeout(function (){
+        that.targetEl.style.height = expandedHeight+ 'px';
+      }, 5);
+
+      setTimeout(function (){
+        that.targetEl.classList.remove('collapse-transition-expand');
+        that.targetEl.removeAttribute('style');
+
+        that.targetEl.setAttribute('aria-hidden', 'false');
+        that.triggerEl.setAttribute('aria-expanded', 'true');
+        that.animateInProgress = false;
+        that.triggerEl.dispatchEvent(that.eventOpen);
+      }, 200);
+    }
+  }
 }
 
-function animateExpand(targetEl, triggerEl) {
-    if(!animateInProgress){
-        animateInProgress = true;
-        targetEl.classList.remove("collapsed");
-        var expandedHeight = targetEl.clientHeight;
-        targetEl.style.height = "0px";
-        targetEl.classList.add("collapse-transition-expand");
-        setTimeout(function(){ 
-            targetEl.style.height = expandedHeight+ "px";
-        }, 5);
-        
-        setTimeout(function(){ 
-            targetEl.classList.remove("collapse-transition-expand");
-            targetEl.removeAttribute("style");
-
-            targetEl.setAttribute("aria-hidden", "false");
-            triggerEl.setAttribute("aria-expanded", "true");
-            animateInProgress = false;
-        }, 200);
-    }
-}
-
-module.exports = behavior({
-  ['click']: {
-    [ jsCollapseTrigger ]: toggle
-  },
-});
+module.exports = Collapse;

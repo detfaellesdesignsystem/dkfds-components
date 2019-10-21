@@ -7,8 +7,13 @@
     &.table--compact {
       th,td {
         padding-top: calc(#{map-get($spacers, 3)} - 1px);
+        padding-bottom: #{map-get($spacers, 3)};
+      }
+
+      tbody tr:last-child th, tbody tr:last-child td {
         padding-bottom: calc(#{map-get($spacers, 3)} - 1px);
       }
+
     }
 
     &.table--extracompact {
@@ -20,6 +25,7 @@
 
     td, th {
         padding: calc(#{map-get($spacers, 4)} - 1px); //16px -1px (for the border)
+        padding-bottom: #{map-get($spacers, 4)}; //16px -1px (for the border)
         background-color: inherit;
         border-right: $inner-border;
         vertical-align: top;
@@ -50,7 +56,10 @@
             font-weight: $font-weight-semibold;
         }
         tr {
-            background-color: transparent;
+          background-color: transparent;
+          &:last-child td, &:last-child th{
+            padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+          }
         }
     }
 
@@ -68,17 +77,20 @@
         tr {
             &:last-child{
                 border-bottom: $inner-border;
-
             }
         }
         border-color: transparent;
+        td, th {
+          padding-left: #{map-get($spacers, 4)}; //16px -1px (for the border)
+          padding-right: #{map-get($spacers, 4)}; //16px -1px (for the border)
+        }
         thead {
             background-color: transparent;
             th{
                 background-color: transparent;
                 border-top-color: transparent;
-                border-left-color: transparent;
-                border-right-color: transparent;
+                border-left: 0;
+                border-right: 0;
                 border-bottom: $inner-border;
 
                 &:first-child{
@@ -94,8 +106,8 @@
             tr{
                 td, th {
                     border: $inner-border;
-                    border-left-color: transparent;
-                    border-right-color: transparent;
+                    border-left: 0;
+                    border-right: 0;
                     &:first-child{
                         padding-left: 0;
                     }
@@ -180,9 +192,11 @@
       &.table--responsive-headers {
         @include media-breakpoint-down(sm) {
           display: block;
-
           thead {
             display: none;
+          }
+          tbody, tr {
+            display: block;
           }
           tr {
             border-bottom: $inner-border;

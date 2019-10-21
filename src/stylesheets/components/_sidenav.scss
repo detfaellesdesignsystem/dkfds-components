@@ -1,165 +1,47 @@
 .sidenav-list {
   @include unstyled-list();
 
+  ul{
+    @include unstyled-list();
+  }
   border-bottom: $outer-border;
   border-top: $outer-border;
 
-  > li {
-    background-color: transparent;
-    font-size: $base-font-size;
-    border-top: $inner-border;
-    &:first-child {
-        border-top: none;
-    }
-    &:last-child {
-      a {
-        padding-bottom: $input-top-bottom-padding;
-      }
-    }
-  }
+
 
   a {
+    display: block;
     border: none;
     color: $sidenav-link-color;
-    display: flex;
     line-height: $base-line-height;
     padding: $spacer;
     padding-top:$input-top-bottom-padding;
     padding-left: map-get($spacers, 4);
     padding-right: map-get($spacers, 4);
     text-decoration: none;
-
-
-
-    &:hover {
-      background-color: $color-gray-pale;
-      text-decoration: none;
-      color: $sidenav-link-color-hover;
-    }
-
+    max-width: none;
     &:focus {
       outline-offset: 0;
       position: relative;
       z-index: 1;
     }
 
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      color: $sidenav-link-current-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4);
-    }
-    &.active {
-      color: $sidenav-link-active-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
-      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
-    }
   }
 
   li {
+    &:hover {
+      background-color: $color-gray-pale;
+    }
+    a:hover {
+      text-decoration: none;
+      color: $sidenav-link-active-color;
+    }
 
     a {
 
       ul {
         width:100%
       }
-
-      .sidenav-icon-before {
-        margin-right: map-get($spacers, 2);
-        line-height: 23px;
-        text-align: left;
-      }
-
-      .sidenav-icon {
-        margin-left: auto;
-        width: 22px;
-        height: 22px;
-        line-height: 23px;
-        text-align: center;
-
-        i {
-          color: #fff;
-        }
-      }
-      .sidenav-information {
-        color: $color-gray-medium-dark;
-        margin: 0;
-      }
-
-      &:focus{
-        background-color: transparent;
-      }
-    }
-  }
-}
-.sidenav-list-locked {
-  @include unstyled-list();
-
-  border-top: 1px solid $color-border-focus;
-  border-bottom: 1px solid $color-border-focus;
-
-  > li {
-    background-color: transparent;
-    border-top: $inner-border;
-    font-size: $base-font-size;
-
-    &:first-child {
-      border-top: none;
-    }
-    &:last-child {
-      a {
-        padding-bottom: $spacer;
-      }
-    }
-  }
-
-  a {
-    border: none;
-    color: $sidenav-link-color;
-    display: block;
-    line-height: $base-line-height;
-    padding: $spacer;
-    padding-top:$input-top-bottom-padding;
-    padding-left: map-get($spacers, 4);
-    padding-right: map-get($spacers, 4);
-    text-decoration: none;
-
-
-    &:hover {
-      background-color: $color-white;
-      text-decoration: none;
-      color: $sidenav-link-color-hover;
-    }
-
-    &:focus {
-      outline-offset: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      color: $sidenav-link-current-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4);
-    }
-    &.active {
-      color: $sidenav-link-active-color;
-      font-weight: $font-weight-semibold;
-      padding-left: map-get($spacers, 4) - $sidenav-active-border-width;
-      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
-    }
-  }
-
-  li {
-
-    &.disabled {
-      cursor: not-allowed;
-      a {
-        cursor: not-allowed;
-      }
-    }
-
-    a {
 
       .sidenav-icon-before {
         line-height: 23px;
@@ -181,6 +63,133 @@
       .sidenav-information {
         color: $color-gray-medium-dark;
         margin: 0;
+        display: block;
+      }
+
+      &:focus{
+        background-color: transparent;
+      }
+    }
+
+    &.current {
+      > a {
+        font-weight: $font-weight-semibold;
+      }
+    }
+    &.active{
+      > a{
+        color: $sidenav-link-active-color;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+
+  > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 5);
+  }
+  > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 6);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 7);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: map-get($spacers, 8);
+  }
+
+  > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 5);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 6);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{map-get($spacers, 3)} * 7);
+  }
+
+  > li {
+    background-color: transparent;
+    font-size: $base-font-size;
+    border-top: $inner-border;
+
+    &.active > a{
+      color: $color-black;
+    }
+
+    &.current{
+      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+      background-color: $color-gray-pale;
+    }
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      a {
+        padding-bottom: $input-top-bottom-padding;
+      }
+    }
+    li{
+      border-top: $inner-inner-border;
+      font-size: $small-text;
+    }
+  }
+}
+.sidenav-list-locked {
+  @include unstyled-list();
+
+  > li {
+    border-top: $inner-border;
+    cursor:default;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      a {
+        padding-bottom: $spacer;
+      }
+    }
+  }
+
+
+  a {
+    border: none;
+    color: $sidenav-link-color;
+    display: block;
+    line-height: $base-line-height;
+    padding: $spacer;
+    padding-top:$input-top-bottom-padding;
+    padding-left: map-get($spacers, 4);
+    padding-right: map-get($spacers, 4);
+    text-decoration: none;
+
+
+    &:hover {
+      background-color: $color-white;
+      text-decoration: none;
+      color: $sidenav-link-color-hover;
+      cursor:default;
+    }
+
+    &:focus {
+      outline-offset: 0;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  li {
+    &.disabled {
+      cursor: not-allowed;
+      a {
+        cursor: not-allowed;
       }
     }
   }
@@ -193,8 +202,6 @@
 
   li {
     border: none;
-    //font-size: $h5-font-size;
-
     &:last-child {
       a {
         padding-bottom: $spacer;
@@ -203,38 +210,17 @@
   }
 
   a {
-
-    padding-left: map-get($spacers, 6);
     padding-top: $spacer;
     line-height: $base-line-height;
-
-
-    &.current { /* stylelint-disable-line selector-no-qualifying-type */
-      padding-left: map-get($spacers, 6);
-
-    }
-    &.active { /* stylelint-disable-line selector-no-qualifying-type */
-      padding-left: map-get($spacers, 6) - $sidenav-active-border-width;
-    }
   }
-
-  .sidenav-sub_list {
+  li:not(.has-anchor-links) .sidenav-sub_list {
     a {
-      padding-left: map-get($spacers, 8);
-
       &:focus {
         outline-offset: 0;
       }
-
-      &.current { /* stylelint-disable-line selector-no-qualifying-type */
-        padding-left: map-get($spacers, 8);
-
-      }
-      &.active { /* stylelint-disable-line selector-no-qualifying-type */
-        padding-left: map-get($spacers, 8) - $sidenav-active-border-width;
-      }
     }
   }
+
 }
 
 .sidebar-col{

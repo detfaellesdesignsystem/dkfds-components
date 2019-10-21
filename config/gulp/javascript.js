@@ -15,16 +15,17 @@ var task = 'javascript';
 gulp.task(task, function (done) {
 
   dutil.logMessage(task, 'Compiling JavaScript');
-  
+
   var files = [
       'dkfds.js'
   ];
 
-  //Create a bundle for each starting file in the list above. 
+  //Create a bundle for each starting file in the list above.
   var tasks = files.map(function(entry) {
-    return browserify({ 
+    return browserify({
           entries: ['src/js/'+ entry],
-          debug: true //adds sourcemaps at the end of file.
+          debug: true, //adds sourcemaps at the end of file.
+          standalone: 'DKFDS'
         })
         .ignore('moment') //we use pikaday.js (without moment.js), tell browserify not to look for momentjs. //https://github.com/dbushell/Pikaday#commonjs-module-support
         .transform('babelify', {

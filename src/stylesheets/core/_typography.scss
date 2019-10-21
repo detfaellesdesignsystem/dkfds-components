@@ -350,8 +350,8 @@ h6, .h6{
   max-width: $text-max-width;
 }
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list),
-ol:not(.accordion):not(.accordion-bordered){
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list):not(.tabnav):not(.sidenav-list):not(.sidenav-sub_list),
+ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list){
   max-width: $text-max-width;
 }
 .font-lead{
