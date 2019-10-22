@@ -9016,13 +9016,14 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu span {
-    padding-bottom: 9px;
+    padding-bottom: calc(9px + 7px);
   }
 }
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
     border-bottom: 7px solid #747474;
+    padding-bottom: 9px;
   }
 }
 
@@ -9219,6 +9220,12 @@ footer .footer-theme {
 
 .nav-primary .current .button-overflow-menu {
   font-weight: 600;
+}
+
+@media (min-width: 992px) {
+  .nav-primary .current .button-overflow-menu span {
+    padding-bottom: 9px;
+  }
 }
 
 .mobile_nav-active {
