@@ -354,7 +354,7 @@
           }
       }
 
-      .current > a{
+      .active > a{
         font-weight: $font-weight-semibold;
         color: $color-primary;
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -380,6 +380,9 @@
         border-top: 0;
       }
     }
+  }
+  .current .button-overflow-menu{
+    font-weight: $font-weight-semibold;
   }
 }
 

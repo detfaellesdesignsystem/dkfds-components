@@ -9190,13 +9190,13 @@ footer .footer-theme {
   }
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner .current > a {
+.nav-primary .overflow-menu .overflow-menu-inner .active > a {
   font-weight: 600;
   color: #0059B3;
 }
 
 @media (min-width: 992px) {
-  .nav-primary .overflow-menu .overflow-menu-inner .current > a {
+  .nav-primary .overflow-menu .overflow-menu-inner .active > a {
     color: #fff;
   }
 }
@@ -9221,6 +9221,10 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner li:first-child button, .nav-primary .overflow-menu .overflow-menu-inner li:first-child a {
   border-top: 0;
+}
+
+.nav-primary .current .button-overflow-menu {
+  font-weight: 600;
 }
 
 .mobile_nav-active {
