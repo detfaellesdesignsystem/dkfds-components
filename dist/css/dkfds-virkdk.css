@@ -6867,6 +6867,26 @@ a.button {
   line-height: 2.4rem;
 }
 
+.badge.badge-info {
+  color: #1a1a1a;
+  background-color: #e2f2fb;
+}
+
+.badge.badge-success {
+  color: #1a1a1a;
+  background-color: #eeffe2;
+}
+
+.badge.badge-warning {
+  color: #1a1a1a;
+  background-color: #ffeecc;
+}
+
+.badge.badge-error {
+  color: #1a1a1a;
+  background-color: #ffe0e0;
+}
+
 .embed-container iframe,
 .embed-container object,
 .embed-container embed {

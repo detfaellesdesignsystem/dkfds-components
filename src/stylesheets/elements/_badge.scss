@@ -27,4 +27,20 @@
     font-size: $small-text;
     line-height: $small-text-line-height;
   }
+  &.badge-info{
+    color: $color-black;
+    background-color: $color-info-light;
+  }
+  &.badge-success{
+    color: $color-black;
+    background-color: $color-success-light;
+  }
+  &.badge-warning{
+    color: $color-black;
+    background-color: $color-warning-light;
+  }
+  &.badge-error{
+    color: $color-black;
+    background-color: $color-error-light;
+  }
 }

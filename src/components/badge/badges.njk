@@ -1,7 +1,3 @@
-{%- macro badge(class, state) -%}
-  {%- if (state == 'large') -%}
-    <label class="badge badge-{{class}}">Nyhed</label>
-  {%- elif (state == 'small') -%}
-    <label class="badge badge-{{class}}">Lille nyhed</label>
-  {%- endif %}
+{%- macro badge(class, label) -%}
+    <label class="badge {{class}}">{{ label }}</label>
 {%- endmacro -%}
