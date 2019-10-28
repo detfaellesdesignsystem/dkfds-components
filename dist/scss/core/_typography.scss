@@ -309,6 +309,36 @@ h5, .h5, h6, .h6{
   }
 }
 
+.back-link{
+  border-bottom: $outer-border;
+  color: $color-black;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 14px;
+  &::before{
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+    clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+    border-width: 5px 6px 5px 0;
+    border-right-color: inherit;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  &:active, &:focus, &:hover, &:visited{
+    color: $color-black;
+  }
+}
+
 .icon-link{
   line-height: $body-text-line-height;
   .icon-svg{
