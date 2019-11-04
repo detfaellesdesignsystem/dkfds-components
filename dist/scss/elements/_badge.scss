@@ -2,8 +2,8 @@
 .badge{
   //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
-  padding-left: map-get($spacers, 2);
-  padding-right:map-get($spacers, 2);
+  padding-left: map-get($spacers, 3);
+  padding-right:map-get($spacers, 3);
   border: none;
   font-weight: $font-weight-semibold;
   color: $button-primary-color;

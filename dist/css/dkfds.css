@@ -6866,8 +6866,8 @@ a.button {
 
 .badge {
   padding: 0;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
   border: none;
   font-weight: 600;
   color: #ffffff;
