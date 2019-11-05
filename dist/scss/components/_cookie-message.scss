@@ -1,0 +1,15 @@
+#cookieMessage{
+  color: $color-black;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 9500;
+  margin-bottom: map-get($spacers, 4);
+
+  @include media-breakpoint-up(md) {
+    margin-right: map-get($spacers, 5);
+    margin-left: map-get($spacers, 5);
+    margin-bottom: map-get($spacers, 5);
+  }
+}
