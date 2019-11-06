@@ -9456,7 +9456,7 @@ input[type=search] {
 
 .sidenav-list li a:hover {
   text-decoration: none;
-  color: #44831E;
+  color: #3C5C22;
 }
 
 .sidenav-list li a ul {
@@ -9496,7 +9496,7 @@ input[type=search] {
 }
 
 .sidenav-list li.active > a {
-  color: #44831E;
+  color: #3C5C22;
   font-weight: 600;
 }
 

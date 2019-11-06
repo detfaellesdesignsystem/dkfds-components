@@ -124,7 +124,7 @@
     }
 
     &.current{
-      border-left: $sidenav-active-border-width solid $sidenav-link-active-color;
+      border-left: $sidenav-active-border-width solid $color-primary;
       background-color: $color-gray-pale;
     }
     &:first-child {
