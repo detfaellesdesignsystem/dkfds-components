@@ -10677,16 +10677,22 @@ a.skipnav {
 }
 
 @media print {
-  .modal .modal__overlay {
+  body .modal .modal__overlay {
     display: block;
+    position: relative;
+    background-color: transparent;
   }
-  .modal .modal__header {
+  body .modal .bg-modal {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+  body .modal .modal__header {
     display: block;
   }
 }
 
 @media print and (min-width: 992px) {
-  .modal .modal__footer {
+  body .modal .modal__footer {
     display: block;
   }
 }
