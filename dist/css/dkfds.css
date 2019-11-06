@@ -9687,8 +9687,8 @@ a.skipnav {
   }
 }
 
-#main-content, #main-content div, #main-content section {
-  outline: none;
+#main-content:focus {
+  outline: 4px solid #747474;
 }
 
 .card {

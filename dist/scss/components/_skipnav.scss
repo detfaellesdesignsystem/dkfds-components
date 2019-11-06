@@ -24,6 +24,6 @@ a.skipnav {
   }
 }
 
-#main-content, #main-content div, #main-content section{
-  outline: none;
+#main-content:focus{
+  outline: $focus-outline;
 }
