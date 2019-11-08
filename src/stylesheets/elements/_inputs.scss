@@ -112,9 +112,7 @@ table {
 
 .form-group.form-error {
   border-left: 4px solid $color-error;
-  padding-top: map-get($spacers, 3);
   padding-left: calc(#{map-get($spacers, 4)} - 4px);
-  padding-bottom: map-get($spacers, 3);
 
   .form-input,
   .form-select {
