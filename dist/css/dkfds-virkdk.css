@@ -7583,6 +7583,12 @@ input[readonly][type=text], textarea[readonly] {
   font-weight: 400;
 }
 
+.date-group input[type=number]::-webkit-inner-spin-button,
+.date-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .date-group .form-group-day,
 .date-group .form-group-month,
 .date-group .form-group-year {

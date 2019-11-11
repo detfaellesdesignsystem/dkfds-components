@@ -1,5 +1,4 @@
 'use strict';
-const domready = require('domready');
 const Collapse = require('./components/collapse');
 const RadioToggleGroup = require('./components/radio-toggle-content');
 const CheckboxToggleContent = require('./components/checkbox-toggle-content');

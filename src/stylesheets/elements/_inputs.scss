@@ -98,6 +98,7 @@ textarea.form-input{
     color:$color-gray-medium-light;
     cursor: not-allowed;
   }
+
 }
 
 table {
@@ -406,6 +407,12 @@ $radio-size-large: 34px;
   label {
     margin-top: 0;
     font-weight: $font-weight-normal;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .form-group-day,

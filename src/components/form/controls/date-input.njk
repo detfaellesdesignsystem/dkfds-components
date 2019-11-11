@@ -4,19 +4,19 @@
   <fieldset>
     <legend><label class="form-label">{{label}}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}</label>
     <span class="form-hint">{{hint}}</span></legend>
-    {% if error %}<span class="form-error-message" id="form-error-message-input-error" role="alert">{{error}}</span>{% endif %}
+    <span class="form-error-message {% if not error %} d-none{% endif %}" id="form-error-message-input-error" role="alert">{{error}}</span>
     <div class="date-group js-calendar-group mt-3">
       <div class="form-group form-group-day">
         <label class="form-label" for="{{ id.day | default('date-day') }}">{{day}}</label>
-        <input class="form-input js-calendar-day-input" id="{{ id.day | default('date-day') }}" value="{{dayValue}}" type="tel" min="1" max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indskriv dag på månenden som tal" />
+        <input class="form-input js-calendar-day-input" id="{{ id.day | default('date-day') }}" value="{{dayValue}}" type="tel" data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indskriv dag på månenden som tal" />
       </div>
       <div class="form-group form-group-month">
         <label class="form-label" for="{{ id.month | default('date-month') }}">{{month}}</label>
-        <input class="form-input js-calendar-month-input" id="{{ id.month | default('date-month') }}" value="{{monthValue}}" type="tel" min="1" max="12" maxlength="2" pattern="^[0-9]{0,2}$"  data-input-regex="^[0-9]{0,2}$" title="Indskriv månedens nummer" />
+        <input class="form-input js-calendar-month-input" id="{{ id.month | default('date-month') }}" value="{{monthValue}}" type="tel" data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$"  data-input-regex="^[0-9]{0,2}$" title="Indskriv månedens nummer" />
       </div>
       <div class="form-group form-group-year ">
         <label class="form-label" for="{{ id.year | default('date-year') }}">{{year}}</label>
-        <input class="form-input js-calendar-year-input" id="{{ id.year | default('date-year') }}" value="{{yearValue}}" type="tel" min="1900" max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal" />
+        <input class="form-input js-calendar-year-input" id="{{ id.year | default('date-year') }}" value="{{yearValue}}" type="tel" data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal" />
       </div>
       {% if datepicker %}
        <button class="button-unstyled button-open-calendar js-calendar-datepicker">
