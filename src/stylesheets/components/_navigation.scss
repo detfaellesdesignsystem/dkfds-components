@@ -227,13 +227,14 @@
         display: block;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          padding-bottom: 9px;
+          padding-bottom: calc(9px + 7px);
         }
       }
       &:hover {
         span {
           @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
             @include nav-hover;
+            padding-bottom: 9px;
           }
         }
       }
@@ -354,7 +355,7 @@
           }
       }
 
-      .current > a{
+      .active > a{
         font-weight: $font-weight-semibold;
         color: $color-primary;
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -378,6 +379,14 @@
       }
       li:first-child button, li:first-child a{
         border-top: 0;
+      }
+    }
+  }
+  .current .button-overflow-menu{
+    font-weight: $font-weight-semibold;
+    span{
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        padding-bottom: 9px;
       }
     }
   }

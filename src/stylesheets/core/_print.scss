@@ -99,9 +99,16 @@
       }
     }
   }
-  .modal {
+
+  body .modal {
     .modal__overlay {
       display: block;
+      position: relative;
+      background-color: transparent;
+    }
+    .bg-modal{
+      background-color: transparent !important;
+      background: transparent !important;
     }
 
     .modal__header {

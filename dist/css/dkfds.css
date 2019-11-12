@@ -1759,6 +1759,38 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   text-align: right;
 }
 
+.back-link {
+  border-bottom: 1px solid #747474;
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 14px;
+}
+
+.back-link::before {
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+  border-width: 5px 6px 5px 0;
+  border-right-color: inherit;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.back-link:active, .back-link:focus, .back-link:hover, .back-link:visited {
+  color: #1a1a1a;
+}
+
 .icon-link {
   line-height: 2.4rem;
 }
@@ -6834,8 +6866,8 @@ a.button {
 
 .badge {
   padding: 0;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
   border: none;
   font-weight: 600;
   color: #ffffff;
@@ -6859,6 +6891,26 @@ a.button {
   background-color: #1a1a1a;
   font-size: 1.4rem;
   line-height: 2.4rem;
+}
+
+.badge.badge-info {
+  color: #1a1a1a;
+  background-color: #e2f2fb;
+}
+
+.badge.badge-success {
+  color: #1a1a1a;
+  background-color: #eeffe2;
+}
+
+.badge.badge-warning {
+  color: #1a1a1a;
+  background-color: #ffeecc;
+}
+
+.badge.badge-error {
+  color: #1a1a1a;
+  background-color: #ffe0e0;
 }
 
 .embed-container iframe,
@@ -8356,6 +8408,24 @@ hr {
   margin-top: 16px;
 }
 
+#cookieMessage {
+  color: #1a1a1a;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 9500;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  #cookieMessage {
+    margin-right: 24px;
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+}
+
 footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
   margin: 0;
 }
@@ -9016,13 +9086,14 @@ footer .footer-theme {
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu span {
-    padding-bottom: 9px;
+    padding-bottom: calc(9px + 7px);
   }
 }
 
 @media (min-width: 992px) {
   .nav-primary .overflow-menu .button-overflow-menu:hover span {
     border-bottom: 7px solid #747474;
+    padding-bottom: 9px;
   }
 }
 
@@ -9184,13 +9255,13 @@ footer .footer-theme {
   }
 }
 
-.nav-primary .overflow-menu .overflow-menu-inner .current > a {
+.nav-primary .overflow-menu .overflow-menu-inner .active > a {
   font-weight: 600;
   color: #747474;
 }
 
 @media (min-width: 992px) {
-  .nav-primary .overflow-menu .overflow-menu-inner .current > a {
+  .nav-primary .overflow-menu .overflow-menu-inner .active > a {
     color: #fff;
   }
 }
@@ -9215,6 +9286,16 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner li:first-child button, .nav-primary .overflow-menu .overflow-menu-inner li:first-child a {
   border-top: 0;
+}
+
+.nav-primary .current .button-overflow-menu {
+  font-weight: 600;
+}
+
+@media (min-width: 992px) {
+  .nav-primary .current .button-overflow-menu span {
+    padding-bottom: 9px;
+  }
 }
 
 .mobile_nav-active {
@@ -9366,7 +9447,7 @@ input[type=search] {
 
 .sidenav-list li a:hover {
   text-decoration: none;
-  color: #747474;
+  color: #454545;
 }
 
 .sidenav-list li a ul {
@@ -9406,7 +9487,7 @@ input[type=search] {
 }
 
 .sidenav-list li.active > a {
-  color: #747474;
+  color: #454545;
   font-weight: 600;
 }
 
@@ -9606,8 +9687,8 @@ a.skipnav {
   }
 }
 
-#main-content, #main-content div, #main-content section {
-  outline: none;
+#main-content:focus {
+  outline: 4px solid #747474;
 }
 
 .card {
@@ -10596,16 +10677,22 @@ a.skipnav {
 }
 
 @media print {
-  .modal .modal__overlay {
+  body .modal .modal__overlay {
     display: block;
+    position: relative;
+    background-color: transparent;
   }
-  .modal .modal__header {
+  body .modal .bg-modal {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+  body .modal .modal__header {
     display: block;
   }
 }
 
 @media print and (min-width: 992px) {
-  .modal .modal__footer {
+  body .modal .modal__footer {
     display: block;
   }
 }

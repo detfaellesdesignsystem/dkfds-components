@@ -2,8 +2,8 @@
 .badge{
   //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
-  padding-left: map-get($spacers, 2);
-  padding-right:map-get($spacers, 2);
+  padding-left: map-get($spacers, 3);
+  padding-right:map-get($spacers, 3);
   border: none;
   font-weight: $font-weight-semibold;
   color: $button-primary-color;
@@ -26,5 +26,21 @@
     background-color: $color-black;
     font-size: $small-text;
     line-height: $small-text-line-height;
+  }
+  &.badge-info{
+    color: $color-black;
+    background-color: $color-info-light;
+  }
+  &.badge-success{
+    color: $color-black;
+    background-color: $color-success-light;
+  }
+  &.badge-warning{
+    color: $color-black;
+    background-color: $color-warning-light;
+  }
+  &.badge-error{
+    color: $color-black;
+    background-color: $color-error-light;
   }
 }
