@@ -4,6 +4,7 @@ const isElementInViewport = require('../utils/is-in-viewport');
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const MULTISELECTABLE = 'aria-multiselectable';
+const MULTISELECTABLE_CLASS = 'accordion-multiselectable';
 
 class Accordion{
   constructor (accordion){
@@ -76,7 +77,7 @@ var toggleButton  = function (button, expanded) {
 
   // XXX multiselectable is opt-in, to preserve legacy behavior
   let multiselectable = false;
-  if(accordion !== null && accordion.getAttribute(MULTISELECTABLE) === 'true'){
+  if(accordion !== null && (accordion.getAttribute(MULTISELECTABLE) === 'true' || accordion.classList.contains(MULTISELECTABLE_CLASS))){
     multiselectable = true;
   }
 

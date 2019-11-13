@@ -1791,6 +1791,10 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   color: #1a1a1a;
 }
 
+a.bold-link {
+  font-weight: 700;
+}
+
 .icon-link {
   line-height: 2.4rem;
 }
@@ -7285,9 +7289,7 @@ table .form-select {
 
 .form-group.form-error {
   border-left: 4px solid #CC0000;
-  padding-top: 8px;
   padding-left: calc(16px - 4px);
-  padding-bottom: 8px;
 }
 
 .form-group.form-error .form-input,
@@ -7573,6 +7575,12 @@ input[readonly][type=text], textarea[readonly] {
 .date-group label {
   margin-top: 0;
   font-weight: 400;
+}
+
+.date-group input[type=number]::-webkit-inner-spin-button,
+.date-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .date-group .form-group-day,

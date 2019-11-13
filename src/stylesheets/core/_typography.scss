@@ -339,6 +339,10 @@ h5, .h5, h6, .h6{
   }
 }
 
+a.bold-link{
+  font-weight: $font-weight-bold;
+}
+
 .icon-link{
   line-height: $body-text-line-height;
   .icon-svg{
