@@ -1792,7 +1792,7 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
 }
 
 a.bold-link {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .icon-link {
@@ -9728,15 +9728,19 @@ a.skipnav {
   display: flex;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: start;
+  align-items: flex-start;
 }
 
 .card-align-height > * {
   width: 100%;
 }
 
-.card-align-height .card-footer {
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+.card-align-height .card-text {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .card p {
