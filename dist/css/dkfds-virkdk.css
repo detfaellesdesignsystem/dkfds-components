@@ -7744,6 +7744,16 @@ ol li ol li ol li:before {
   }
 }
 
+.inline-list li + li {
+  margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .inline-list li + li {
+    margin-top: 0;
+  }
+}
+
 .spinner {
   margin: 50px auto;
   font-size: 10px;
@@ -9462,6 +9472,10 @@ input[type=search] {
 .sidenav-list li a:hover {
   text-decoration: none;
   color: #004993;
+}
+
+.sidenav-list li a {
+  overflow: hidden;
 }
 
 .sidenav-list li a ul {

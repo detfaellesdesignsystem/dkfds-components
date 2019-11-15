@@ -83,4 +83,11 @@ ol {
       display: inline-block;
     }
   }
+
+  li + li{
+    margin-top: map-get($spacers, 305);
+    @include media-breakpoint-up(md) {
+      margin-top: 0;
+    }
+  }
 }
