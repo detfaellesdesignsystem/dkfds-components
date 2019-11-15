@@ -9732,21 +9732,16 @@ a.skipnav {
   display: -ms-flexbox;
   display: -moz-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
   -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-align: start;
-  align-items: flex-start;
 }
 
 .card-align-height > * {
   width: 100%;
 }
 
-.card-align-height .card-text {
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+.card-align-height .card-footer {
+  margin-top: auto;
 }
 
 .card p {

@@ -35,18 +35,14 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;
-
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
     flex-direction: column;
-    align-items: flex-start;
 
     > *{
       width: 100%;
     }
 
-    .card-text{
-      flex-grow: 1;
+    .card-footer{
+      margin-top: auto;
     }
 
   }
