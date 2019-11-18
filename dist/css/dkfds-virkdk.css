@@ -1558,11 +1558,7 @@ h1, .h1 {
 
 @media (max-width: 767px) {
   h1, .h1 {
-    font-size: 3rem;
-    line-height: 4rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    text-transform: none;
+    font-size: 3.2rem;
   }
 }
 
@@ -1576,11 +1572,7 @@ h2, .h2 {
 
 @media (max-width: 767px) {
   h2, .h2 {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    text-transform: none;
+    font-size: 2.8rem;
   }
 }
 
@@ -1590,6 +1582,12 @@ h3, .h3 {
   font-weight: 600;
   color: #1a1a1a;
   text-transform: none;
+}
+
+@media (max-width: 767px) {
+  h3, .h3 {
+    font-size: 2.4rem;
+  }
 }
 
 h4, .h4 {
