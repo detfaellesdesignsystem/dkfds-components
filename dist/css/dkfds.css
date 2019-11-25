@@ -9506,6 +9506,11 @@ input[type=search] {
   font-weight: 600;
 }
 
+.sidenav-list li.current .sidenav-information {
+  color: #454545;
+  font-weight: normal;
+}
+
 .sidenav-list li.active > a {
   color: #454545;
   font-weight: 600;
