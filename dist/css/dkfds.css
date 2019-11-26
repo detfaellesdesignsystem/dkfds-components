@@ -1739,6 +1739,7 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   font-weight: 400;
   color: #1a1a1a;
   text-transform: none;
+  display: inline-block;
 }
 
 .function-link:hover, .function-link:visited, .function-link:focus {
