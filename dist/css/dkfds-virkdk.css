@@ -7369,6 +7369,11 @@ input[readonly][type=text], textarea[readonly] {
   min-height: 18px;
 }
 
+.form-checkbox + label + .form-hint,
+.form-radio + label + .form-hint {
+  padding-left: calc(18px + 8px);
+}
+
 .form-checkbox + label::before,
 .form-radio + label::before {
   content: '';
@@ -7397,6 +7402,10 @@ input[readonly][type=text], textarea[readonly] {
   width: 34px;
 }
 
+.form-checkbox.checkbox-large + label + .form-hint {
+  padding-left: calc(34px + 8px);
+}
+
 .form-radio + label::before {
   border-radius: 100%;
   height: 18px;
@@ -7412,6 +7421,10 @@ input[readonly][type=text], textarea[readonly] {
 .form-radio.radio-large + label:before {
   height: 34px;
   width: 34px;
+}
+
+.form-radio.radio-large + label + .form-hint {
+  padding-left: calc(34px + 8px);
 }
 
 .form-checkbox:checked + label:before {

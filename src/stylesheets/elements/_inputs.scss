@@ -188,6 +188,11 @@ $radio-size-large: 34px;
   min-height: $checkbox-size;
 }
 
+.form-checkbox + label + .form-hint,
+.form-radio + label + .form-hint{
+  padding-left: calc(#{$checkbox-size} + 8px);
+}
+
 //Outline for checkbox and radio
 .form-checkbox + label::before,
 .form-radio + label::before {
@@ -217,6 +222,10 @@ $radio-size-large: 34px;
   }
 }
 
+.form-checkbox.checkbox-large + label + .form-hint{
+  padding-left: calc(#{$checkbox-size-large} + 8px);
+}
+
 //extra for radio outline
 .form-radio + label::before {
   border-radius: 100%;
@@ -234,6 +243,9 @@ $radio-size-large: 34px;
   }
 }
 
+.form-radio.radio-large + label + .form-hint{
+  padding-left: calc(34px + 8px);
+}
 //checked checkbox
 .form-checkbox:checked + label{
   &:before{
