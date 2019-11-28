@@ -2,7 +2,7 @@
     margin: 0;
     line-height: $body-text-line-height;
     border: $outer-border;
-    width: 100%;
+    width: calc(100% - 2px);
 
     &.table--compact {
       th,td {
@@ -79,7 +79,8 @@
                 border-bottom: $inner-border;
             }
         }
-        border-color: transparent;
+        border: 0;
+        width: 100%;
         td, th {
           padding-left: #{map-get($spacers, 4)}; //16px -1px (for the border)
           padding-right: #{map-get($spacers, 4)}; //16px -1px (for the border)

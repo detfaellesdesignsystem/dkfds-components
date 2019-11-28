@@ -7920,7 +7920,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   margin: 0;
   line-height: 2.4rem;
   border: 1px solid #747474;
-  width: 100%;
+  width: calc(100% - 2px);
 }
 
 .table.table--compact th, .table.table--compact td {
@@ -7986,7 +7986,8 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 }
 
 .table.table--borderless {
-  border-color: transparent;
+  border: 0;
+  width: 100%;
 }
 
 .table.table--borderless tr:last-child {
