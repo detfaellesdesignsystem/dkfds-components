@@ -38,6 +38,7 @@
     }
 
     a {
+      overflow:hidden;
 
       ul {
         width:100%
@@ -60,6 +61,8 @@
           color: #fff;
         }
       }
+
+
       .sidenav-information {
         color: $color-gray-medium-dark;
         margin: 0;
@@ -74,6 +77,11 @@
     &.current {
       > a {
         font-weight: $font-weight-semibold;
+      }
+
+      .sidenav-information {
+        color: $color-gray-dark;
+        font-weight: normal;
       }
     }
     &.active{

@@ -11,7 +11,7 @@
       <!-- 1B: Portal header: info + actions-->
       <div class="portal-info">
         {% if portal_header.user %}
-          <p class="user"><b class="username">{{ portal_header.user.name | safe }}</b> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
+          <p class="user"><span class="username bold">{{ portal_header.user.name | safe }}</span> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
         {% endif %}
          <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave d-print-none" role="button">
           {{ portal_header.link.text }}
@@ -22,7 +22,7 @@
 {% endmacro %}
 
 {% macro solution_header(solution_header_data) %}
-  <!--2A: Solutiuon header -->
+  <!--2A: Solution header -->
   <div class="solution-header {{ solution_header_data.class }}">
     <div class="container solution-header-inner">
       <div class="solution-heading">

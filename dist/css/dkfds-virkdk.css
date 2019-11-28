@@ -1558,11 +1558,7 @@ h1, .h1 {
 
 @media (max-width: 767px) {
   h1, .h1 {
-    font-size: 3rem;
-    line-height: 4rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    text-transform: none;
+    font-size: 3.2rem;
   }
 }
 
@@ -1576,11 +1572,7 @@ h2, .h2 {
 
 @media (max-width: 767px) {
   h2, .h2 {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    text-transform: none;
+    font-size: 2.8rem;
   }
 }
 
@@ -1590,6 +1582,12 @@ h3, .h3 {
   font-weight: 600;
   color: #1a1a1a;
   text-transform: none;
+}
+
+@media (max-width: 767px) {
+  h3, .h3 {
+    font-size: 2.4rem;
+  }
 }
 
 h4, .h4 {
@@ -1795,6 +1793,10 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
 
 .back-link:active, .back-link:focus, .back-link:hover, .back-link:visited {
   color: #1a1a1a;
+}
+
+a.bold-link {
+  font-weight: 600;
 }
 
 .icon-link {
@@ -7291,9 +7293,7 @@ table .form-select {
 
 .form-group.form-error {
   border-left: 4px solid #CC0000;
-  padding-top: 8px;
   padding-left: calc(16px - 4px);
-  padding-bottom: 8px;
 }
 
 .form-group.form-error .form-input,
@@ -7581,6 +7581,12 @@ input[readonly][type=text], textarea[readonly] {
   font-weight: 400;
 }
 
+.date-group input[type=number]::-webkit-inner-spin-button,
+.date-group input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .date-group .form-group-day,
 .date-group .form-group-month,
 .date-group .form-group-year {
@@ -7733,6 +7739,16 @@ ol li ol li ol li:before {
 @media (min-width: 768px) {
   .inline-list > li {
     display: inline-block;
+  }
+}
+
+.inline-list li + li {
+  margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .inline-list li + li {
+    margin-top: 0;
   }
 }
 
@@ -7904,7 +7920,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   margin: 0;
   line-height: 2.4rem;
   border: 1px solid #747474;
-  width: 100%;
+  width: calc(100% - 2px);
 }
 
 .table.table--compact th, .table.table--compact td {
@@ -7970,7 +7986,8 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
 }
 
 .table.table--borderless {
-  border-color: transparent;
+  border: 0;
+  width: 100%;
 }
 
 .table.table--borderless tr:last-child {
@@ -9456,6 +9473,10 @@ input[type=search] {
   color: #004993;
 }
 
+.sidenav-list li a {
+  overflow: hidden;
+}
+
 .sidenav-list li a ul {
   width: 100%;
 }
@@ -9490,6 +9511,11 @@ input[type=search] {
 
 .sidenav-list li.current > a {
   font-weight: 600;
+}
+
+.sidenav-list li.current .sidenav-information {
+  color: #454545;
+  font-weight: normal;
 }
 
 .sidenav-list li.active > a {
@@ -9724,8 +9750,8 @@ a.skipnav {
   display: -ms-flexbox;
   display: -moz-flex;
   display: flex;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .card-align-height > * {
@@ -9733,8 +9759,7 @@ a.skipnav {
 }
 
 .card-align-height .card-footer {
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  margin-top: auto;
 }
 
 .card p {

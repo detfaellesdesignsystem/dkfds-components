@@ -218,8 +218,8 @@
           {% endif %}
       {%if (header) or (subheader) %}
         <div class="card-header">
-          <p class="h5 header-title">{{header}}</p>
-          <p class="sub-header">{{subheader}}</p>
+          <h2 class="h5 header-title">{{header}}</h2>
+          {% if subheader %}<p class="sub-header">{{subheader}}</p>{% endif %}
         </div>
       {% endif %}
       {%if cardtext %}
