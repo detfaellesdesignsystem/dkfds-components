@@ -26,7 +26,9 @@
   //padding-right: map-get($spacers, 4);
   padding-top: map-get($spacers, 5);
   padding-bottom: map-get($spacers, 5);
-  border-bottom: $inner-border;
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-bottom: $inner-border;
+  }
   display: flex;
   flex-direction: column;
 
@@ -37,7 +39,10 @@
   }
 }
 .navbar-primary{
-  border-bottom: $outer-border;
+
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-bottom: $outer-border;
+  }
   padding-top: 0;
 }
 .navbar-context-actions{
