@@ -34,7 +34,7 @@
       <!--2B: Solution header: Authority name + text-->
       <div class="solution-info {% if solution_header_data.solutionInfo.hideOnPrint %}d-print-none{% endif %}"> <!-- nav-secondary -->
         {% if solution_header_data.authority.name %}
-          <h6 class="h5 authority-name"> {{ solution_header_data.authority.name }}</h6>
+          <p class="h5 authority-name"> {{ solution_header_data.authority.name }}</p>
         {% endif %}
         {% if solution_header_data.authority.text %}
           <p>{{ solution_header_data.authority.text | safe }}</p>
