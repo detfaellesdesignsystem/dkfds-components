@@ -74,7 +74,7 @@
     }
     > a {
       text-decoration: none;
-      color: $color-black;
+      color: $color-neutral;
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
@@ -147,10 +147,11 @@
   }
 
   .current > a{
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
+    color: $color-black;
   }
   button.current{
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
   }
 }
 

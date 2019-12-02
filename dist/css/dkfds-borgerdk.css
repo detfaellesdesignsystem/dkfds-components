@@ -8969,7 +8969,7 @@ footer .footer-theme {
 
 .nav-primary > li > a {
   text-decoration: none;
-  color: #1a1a1a;
+  color: #454545;
   font-size: 1.6rem;
   line-height: 2.4rem;
   display: block;
@@ -9045,11 +9045,12 @@ footer .footer-theme {
 }
 
 .nav-primary .current > a {
-  font-weight: 600;
+  font-weight: 500;
+  color: #1a1a1a;
 }
 
 .nav-primary button.current {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @media (min-width: 992px) {
@@ -9475,7 +9476,7 @@ input[type=search] {
 .sidenav-list a {
   display: block;
   border: none;
-  color: #1a1a1a;
+  color: #454545;
   line-height: 2.4rem;
   padding: 8px;
   padding-top: calc(8px - 1px);
@@ -9537,7 +9538,7 @@ input[type=search] {
 }
 
 .sidenav-list li.current > a {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .sidenav-list li.current .sidenav-information {
@@ -9547,7 +9548,7 @@ input[type=search] {
 
 .sidenav-list li.active > a {
   color: #3C5C22;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .sidenav-list > li > ul > li > ul > li > a {

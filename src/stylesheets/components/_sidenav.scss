@@ -12,7 +12,7 @@
   a {
     display: block;
     border: none;
-    color: $sidenav-link-color;
+    color: $color-neutral;
     line-height: $base-line-height;
     padding: $spacer;
     padding-top:$input-top-bottom-padding;
@@ -76,7 +76,7 @@
 
     &.current {
       > a {
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-medium;
       }
 
       .sidenav-information {
@@ -87,7 +87,7 @@
     &.active{
       > a{
         color: $sidenav-link-active-color;
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-medium;
       }
     }
   }
