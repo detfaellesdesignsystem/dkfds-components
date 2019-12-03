@@ -13,10 +13,10 @@
 
 {# Ordered list #}
 {% macro ol_list(list_ol, subclass) %}
-  {%- for item in list_ol -%}
+  {%- for item in list_ol.items -%}
   <li>{{ item.text }}
     {%- if item.list_ol -%}
-    <ol class="{{ subclass }}">
+    <ol class="{{ subclass }}" {% if item.list_ol.type %}type="{{item.list_ol.type}}"{% endif %}>
       {{ ol_list(item.list_ol, subclass) }}
     </ol>
     {%- endif -%}
