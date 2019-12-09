@@ -8939,6 +8939,16 @@ footer .footer-theme {
   }
 }
 
+.nav-primary > li:first-of-type {
+  border-top: 1px solid #BFBFBF;
+}
+
+@media (min-width: 992px) {
+  .nav-primary > li:first-of-type {
+    border-top: none;
+  }
+}
+
 .nav-primary > li {
   border-bottom: 1px solid #BFBFBF;
 }

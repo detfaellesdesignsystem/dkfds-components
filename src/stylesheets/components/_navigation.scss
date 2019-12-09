@@ -67,6 +67,16 @@
     margin-left: -12px;
   }
 
+  & > li:first-of-type {
+    border-top: $inner-border;
+  }
+
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    & > li:first-of-type {
+      border-top: none;
+    }
+  }
+
   > li {
     border-bottom: $inner-border;
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
