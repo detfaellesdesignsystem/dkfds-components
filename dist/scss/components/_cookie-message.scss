@@ -4,12 +4,14 @@
   bottom: 0px;
   right: 0px;
   left: 0px;
+  top: 0px;
   z-index: 9500;
-  margin-bottom: map-get($spacers, 4);
-
-  @include media-breakpoint-up(md) {
-    margin-right: map-get($spacers, 5);
-    margin-left: map-get($spacers, 5);
-    margin-bottom: map-get($spacers, 5);
+  background-color:$background-modal;
+  display: flex;
+  align-items: center;
+  .card{
+    margin: 0 auto;
+    box-shadow: none;
+    border: none;
   }
 }

@@ -8436,16 +8436,19 @@ hr {
   bottom: 0px;
   right: 0px;
   left: 0px;
+  top: 0px;
   z-index: 9500;
-  margin-bottom: 16px;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
-  #cookieMessage {
-    margin-right: 24px;
-    margin-left: 24px;
-    margin-bottom: 24px;
-  }
+#cookieMessage .card {
+  margin: 0 auto;
+  box-shadow: none;
+  border: none;
 }
 
 footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
