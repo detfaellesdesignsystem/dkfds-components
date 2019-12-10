@@ -47,7 +47,7 @@
 }
 .navbar-context-actions{
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: map-get($spacers, 3);
+    padding-top: map-get($spacers, 4);
   }
 }
 
