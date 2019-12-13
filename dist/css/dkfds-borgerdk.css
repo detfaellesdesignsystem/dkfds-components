@@ -1774,6 +1774,7 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   display: inline-block;
   position: relative;
   margin-bottom: 15px;
+  line-height: 2.4rem;
   padding-left: 14px;
 }
 
@@ -9359,6 +9360,8 @@ footer .footer-theme {
   .navbar-inner {
     -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
   }
 }
 
