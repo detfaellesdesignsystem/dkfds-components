@@ -297,6 +297,7 @@ h5, .h5, h6, .h6{
 //a function link, does not look like a link
 .function-link{
   @include body-copy-text;
+  display: inline-block;
   &:hover, &:visited, &:focus{
     color: $color-text;
   }
@@ -319,6 +320,7 @@ h5, .h5, h6, .h6{
   display: inline-block;
   position: relative;
   margin-bottom: 15px;
+  line-height: 2.4rem;
   padding-left: 14px;
   &::before{
     display: block;

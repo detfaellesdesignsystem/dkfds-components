@@ -29,6 +29,7 @@
     }
 
     a {
+      max-width: none;
 
       @extend .accordion-button;
       text-decoration: none;
@@ -84,7 +85,7 @@
       }
     }
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(md) {
       &:last-child{
         a{
           margin-right: map-get($spacers, 3);

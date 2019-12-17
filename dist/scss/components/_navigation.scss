@@ -26,7 +26,9 @@
   //padding-right: map-get($spacers, 4);
   padding-top: map-get($spacers, 5);
   padding-bottom: map-get($spacers, 5);
-  border-bottom: $inner-border;
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-bottom: $inner-border;
+  }
   display: flex;
   flex-direction: column;
 
@@ -37,12 +39,15 @@
   }
 }
 .navbar-primary{
-  border-bottom: $outer-border;
+
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-bottom: $outer-border;
+  }
   padding-top: 0;
 }
 .navbar-context-actions{
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: map-get($spacers, 3);
+    padding-top: map-get($spacers, 4);
   }
 }
 
@@ -62,6 +67,16 @@
     margin-left: -12px;
   }
 
+  & > li:first-of-type {
+    border-top: $inner-border;
+  }
+
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    & > li:first-of-type {
+      border-top: none;
+    }
+  }
+
   > li {
     border-bottom: $inner-border;
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -69,7 +84,7 @@
     }
     > a {
       text-decoration: none;
-      color: $color-black;
+      color: $color-neutral;
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
@@ -142,10 +157,11 @@
   }
 
   .current > a{
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
+    color: $color-black;
   }
   button.current{
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
   }
 }
 
@@ -402,6 +418,7 @@
   flex-direction: column;
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 

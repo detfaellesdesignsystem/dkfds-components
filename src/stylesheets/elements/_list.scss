@@ -1,58 +1,32 @@
 
  //Ul lists
 
-ul {
-  padding-left: 0;
-  list-style-type: none;
-  color: $color-text;
-  line-height: $body-text-line-height;
-  li {
-    margin-top:map-get($spacers, 3);
-    list-style-type: none;
-    position: relative;
-    padding-left: 37px;
-    line-height: $body-text-line-height;
-    &::before {
-      content: "\2022";
-      position: absolute;
-      left: 23px;
-    }
-  }
-}
+ ul {
+   padding-left: 0;
+   list-style-type: none;
+   color: $color-text;
+   line-height: $body-text-line-height;
+   li {
+     margin-top:map-get($spacers, 3);
+     list-style-type: none;
+     position: relative;
+     padding-left: map-get($spacers, 4);
+     line-height: $body-text-line-height;
+     &::before {
+       content: "\2022";
+       position: absolute;
+       left: 0px;
+       top: -1px;
+       font-size: 20px;
+     }
+   }
+ }
 //Ol lists
 ol {
-  padding-left: 0;
-  counter-reset: item;
-  color: $color-text;
-  li {
-    margin-top:map-get($spacers, 3);
-    list-style: none;
-    position: relative;
-    padding-left: 4rem;
-    line-height: $body-text-line-height;
-
-    &:before {
-      content: counters(item, ".") ".";
-      counter-increment: item;
-      font-weight: $font-weight-medium;
-      left: 0px;
-      position: absolute;
-      width: 4rem;
-      padding-right: 0.5rem;
-      text-align: right;
-    }
-
-    ol {
-      li {
-        ol {
-          li {
-            &:before {
-              position: relative;
-            }
-          }
-        }
-      }
-    }
+  padding-left: map-get($spacers, 505);
+  li{
+    margin-top: map-get($spacers, 3);
+    line-height: 2.4rem;
   }
 }
 
