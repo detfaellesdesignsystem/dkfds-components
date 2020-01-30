@@ -9,7 +9,7 @@
     display: flex;
     border-bottom: $outer-border;
   }
-  li {
+  > li {
     @include media-breakpoint-up(md) {
       position: static;
       background-color: transparent;
@@ -28,7 +28,7 @@
       }
     }
 
-    a {
+    > a {
       max-width: none;
 
       @extend .accordion-button;
