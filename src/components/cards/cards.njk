@@ -1,5 +1,46 @@
 {% import "components/buttons/buttons.njk" as button %}
 
+
+{% macro card(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
+  {%- if (name == 'card1') -%}
+    <div class="card{% if align %} card-align-height{% endif %}">
+    {%- if (header) or (subheader) -%}
+      <div class="card-header">
+        <h3 class="header-title">{{header}}</h3>
+        {%- if subheader -%}<p class="sub-header">{{subheader}}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%if cardtext %}
+      <div class="card-text">
+        <p>{{cardtext | safe}}</p>
+      </div>{% endif %}
+    {%if (contenttext) or (cardcontent) %}<div class="card-content">
+        <div class="content-text">
+          <p>{{contenttext | safe}}</p>
+        </div>
+        <div class="content">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                {{cardcontent | safe}}
+              </div>
+            </div>
+        </div>
+      </div>{% endif %}
+    {% if (actioncontent) or (actionbuttons) or (actionlinks) %}<div class="card-footer card-action">
+        {% if actioncontent %}<div class="action-content">
+          {{actioncontent | safe}}
+        </div>{% endif %}
+        {% if actionbuttons %}<div class="action-buttons">
+        {{ actionbuttons | safe}}
+        </div>{% endif %}
+        {% if actionlinks %}<div class="action-links">
+        {{ actionlinks | safe}}
+        </div>{% endif %}
+      </div>{% endif %}
+    </div>
+  {%- endif %}
+{% endmacro %}
+
 {% macro cards1(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
   {%- if (name == 'card1') -%}
     <div class="card {% if align %}card-align-height{% endif %}">

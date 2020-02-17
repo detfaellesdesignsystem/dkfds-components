@@ -1,42 +1,34 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 <div class="container">
 {% macro accordion(variant, items, id_prefix, multiselectable) %}
-<ul class="accordion {% if variant %}accordion-{{ variant }}{% endif %}{% if multiselectable == true %} accordion-multiselectable{% endif %}">
-  {% for item in items %}
+<ul class="accordion{% if variant %} accordion-{{ variant }}{% endif %}{% if multiselectable == true %} accordion-multiselectable{% endif %}">
+  {%- for item in items -%}
   <li>
-    <button class="accordion-button {% if item.error_message %} accordion-error {% endif %}"
-      aria-expanded="{{ item.expanded | default('false') }}"
-      {% if item.error_message %} aria-describedby="{{ id_prefix }}{{ item.id }}" {% endif %}
-      aria-controls="{{ id_prefix }}{{ item.id }}">
+    <button class="accordion-button{% if item.error_message %} accordion-error {% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.error_message %} aria-describedby="{{ id_prefix }}{{ item.id }}" {% endif %} aria-controls="{{ id_prefix }}{{ item.id }}">
       {{ item.title }}
-
       {%- if item.icon %}
-        <span class="accordion-icon {% if item.iconclass %} {% endif %}">
+        <span class="accordion-icon">
           <span class="icon_text">{{ item.icontext }}</span>  {{ icon_svg(item.icon)}}
         </span>
       {% endif -%}
     </button>
-
-       {% set ariahidden = "true" %}
-
+       {%- set ariahidden = "true" -%}
       {%- if item.expanded %}
         {% set ariahidden = "false" %}
       {% else -%}
         {% set ariahidden = "true" %}
       {% endif -%}
-    <div id="{{ id_prefix }}{{ item.id }}" aria-hidden="{{ariahidden}}" class="accordion-content">
-    {% if item.error_message %}
-      <div class="alert alert-error" role="alert"
-             aria-label="Fejlbesked i accordion">
+    <div id="{{ id_prefix }}{{ item.id }}"{% if ariahidden %}aria-hidden="{{ariahidden}}"{% endif %} class="accordion-content">
+    {%- if item.error_message %}
+      <div class="alert alert-error" role="alert" aria-label="Fejlbesked i accordion">
              <div class="alert-body">
-                 <p class="alert-text">Sed ut perspiciatis unde omnis iste natus
-                     error sit voluptatem accusantium doloremque laudantium.</p>
+                 <p class="alert-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
              </div>
          </div>
-     {% endif %}
+     {% endif -%}
       <p>{{ item.content }}</p>
     </div>
   </li>
-  {% endfor %}
+  {%- endfor -%}
 </ul>
 {% endmacro %}

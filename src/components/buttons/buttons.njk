@@ -1,4 +1,12 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {%- macro button(text, class, attributes, icon, sronly) -%}
-    <button class="button button-{{class}}" {{ attributes | safe}}> {% if icon %} {{icon_svg(icon, "", "", true)}} {% endif %} {{ text }} {% if sronly %}<span class="sr-only">{{ sronly }}</span>{% endif %}</button>
+<button class="button button-{{class}}" {{ attributes | safe}}>
+  {% if icon %}{{icon_svg(icon, "", "", true)}}
+  {% endif %}
+  {%- if text -%}
+  {{ text }}
+  {%- endif -%}
+  {% if sronly %}
+  <span class="sr-only">{{ sronly }}</span>  {% endif %}
+</button>
 {%- endmacro -%}
