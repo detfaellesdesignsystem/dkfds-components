@@ -10441,6 +10441,10 @@ a.skipnav {
   margin-bottom: 8px;
 }
 
+.tabnav > button[aria-selected=false]:focus {
+  background-color: #F5F5F5;
+}
+
 @media (min-width: 768px) {
   .tabnav > button {
     display: inline-block;

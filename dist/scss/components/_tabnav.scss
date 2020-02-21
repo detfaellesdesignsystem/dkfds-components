@@ -41,6 +41,9 @@
 
     &[aria-selected=false]{
       @extend .accordion-button[aria-expanded=false];
+      &:focus{
+        background-color: $background-alternative;
+      }
     }
 
     @include media-breakpoint-up(md) {
