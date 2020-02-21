@@ -35,25 +35,24 @@ class Tabnav {
 }
 
 // For easy reference
-let keys = {
-  end: 'End',
-  home: 'Home',
-  left: 'ArrowLeft',
-  up: 'ArrowUp',
-  right: 'ArrowRight',
-  down: 'ArrowDown',
-  delete: 'Delete',
-  enter: 'Enter',
-  space: 'Space'
+var keys = {
+  end: 35,
+  home: 36,
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40,
+  delete: 46
 };
 
-// Add or subtract depending on key pressed
-let direction = {
-  'ArrowLeft': -1,
-  'ArrowUp': -1,
-  'ArrowRight': 1,
-  'ArrowDown': 1
+// Add or substract depending on key pressed
+var direction = {
+  37: -1,
+  38: -1,
+  39: 1,
+  40: 1
 };
+
 
 function addListeners (tab) {
   tab.addEventListener('click', clickEventListener);
@@ -70,7 +69,7 @@ function clickEventListener (event) {
 
 // Handle keydown on tabs
 function keydownEventListener (event) {
-  let key = event.code;
+  let key = event.keyCode;
 
   switch (key) {
     case keys.end:
@@ -94,7 +93,7 @@ function keydownEventListener (event) {
 
 // Handle keyup on tabs
 function keyupEventListener (event) {
-  let key = event.code;
+  let key = event.keyCode;
 
   switch (key) {
     case keys.left:
@@ -116,7 +115,7 @@ function keyupEventListener (event) {
 // only up and down arrow should function.
 // In all other cases only left and right arrow function.
 function determineOrientation (event) {
-  let key = event.code;
+  let key = event.keyCode;
 
   let w=window,
     d=document,
@@ -147,7 +146,7 @@ function determineOrientation (event) {
 // Either focus the next, previous, first, or last tab
 // depending on key pressed
 function switchTabOnArrowPress (event) {
-  var pressed = event.code;
+  var pressed = event.keyCode;
   if (direction[ pressed ]) {
     let target = event.target;
     let tabs = getAllTabsInList(target);
