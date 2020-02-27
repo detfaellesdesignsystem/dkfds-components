@@ -1,4 +1,4 @@
-#cookieMessage{
+.cookie-container{
   color: $color-black;
   position: fixed;
   bottom: 0px;
@@ -9,9 +9,20 @@
   background-color:$background-modal;
   display: flex;
   align-items: center;
-  .card{
-    margin: 0 auto;
-    box-shadow: none;
-    border: none;
+
+  .cookie-message{
+    position: relative;
+    overflow: hidden;
+    background: $color-white;
+    padding: map-get($spacers, 6) map-get($spacers, 6);
+    margin: 0px map-get($spacers, 4);
+
+    @include media-breakpoint-up(md) {
+      margin: 0px auto;
+      max-width: $text-max-width;
+    }
+    .cookie-actions{
+      margin-top: map-get($spacers, 4);
+    }
   }
 }

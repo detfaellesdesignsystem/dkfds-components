@@ -8431,7 +8431,7 @@ hr {
   margin-top: 16px;
 }
 
-#cookieMessage {
+.cookie-container {
   color: #1a1a1a;
   position: fixed;
   bottom: 0px;
@@ -8446,10 +8446,23 @@ hr {
   align-items: center;
 }
 
-#cookieMessage .card {
-  margin: 0 auto;
-  box-shadow: none;
-  border: none;
+.cookie-container .cookie-message {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 32px 32px;
+  margin: 0px 16px;
+}
+
+@media (min-width: 768px) {
+  .cookie-container .cookie-message {
+    margin: 0px auto;
+    max-width: 66ch;
+  }
+}
+
+.cookie-container .cookie-message .cookie-actions {
+  margin-top: 16px;
 }
 
 footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
