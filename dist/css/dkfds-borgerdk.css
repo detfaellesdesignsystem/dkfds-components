@@ -7981,7 +7981,7 @@ input.input-char-27, select.input-char-27, textarea.input-char-27 {
   padding-bottom: calc(16px - 1px);
 }
 
-.table tr:last-child td, .table tr:last-child th {
+.table tr:last-child > td, .table tr:last-child > th {
   border-bottom: none;
 }
 
