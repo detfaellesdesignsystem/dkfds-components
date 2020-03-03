@@ -1833,7 +1833,42 @@ h6 a,
 h6 a:hover,
 h6 a:visited,
 h6 a:focus, .h6 a, .h6 a:hover, .h6 a:visited, .h6 a:focus {
-  color: #1a1a1a;
+  text-decoration: underline;
+}
+
+h1 a.search-link, .h1 a.search-link,
+h2 a.search-link, .h2 a.search-link,
+h3 a.search-link, .h3 a.search-link,
+h4 a.search-link, .h4 a.search-link,
+h5 a.search-link, .h5 a.search-link,
+h6 a.search-link, .h6 a.search-link {
+  text-decoration: none;
+}
+
+h1 a.search-link:visited, .h1 a.search-link:visited,
+h2 a.search-link:visited, .h2 a.search-link:visited,
+h3 a.search-link:visited, .h3 a.search-link:visited,
+h4 a.search-link:visited, .h4 a.search-link:visited,
+h5 a.search-link:visited, .h5 a.search-link:visited,
+h6 a.search-link:visited, .h6 a.search-link:visited {
+  text-decoration: underline;
+}
+
+h1 a.search-link:focus, .h1 a.search-link:focus,
+h2 a.search-link:focus, .h2 a.search-link:focus,
+h3 a.search-link:focus, .h3 a.search-link:focus,
+h4 a.search-link:focus, .h4 a.search-link:focus,
+h5 a.search-link:focus, .h5 a.search-link:focus,
+h6 a.search-link:focus, .h6 a.search-link:focus {
+  text-decoration: none;
+}
+
+h1 a.search-link:hover, .h1 a.search-link:hover,
+h2 a.search-link:hover, .h2 a.search-link:hover,
+h3 a.search-link:hover, .h3 a.search-link:hover,
+h4 a.search-link:hover, .h4 a.search-link:hover,
+h5 a.search-link:hover, .h5 a.search-link:hover,
+h6 a.search-link:hover, .h6 a.search-link:hover {
   text-decoration: underline;
 }
 
