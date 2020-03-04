@@ -8472,27 +8472,48 @@ hr {
   bottom: 0px;
   right: 0px;
   left: 0px;
-  top: 0px;
   z-index: 9500;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
+  background-color: #ffffff;
+  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border: 1px solid #747474;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
 
 .cookie-container .cookie-message {
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: calc(48px - 1px);
+  padding-bottom: calc(48px - 1px);
   position: relative;
   overflow: hidden;
-  background: #ffffff;
-  padding: 32px 32px;
-  margin: 0px 16px;
+}
+
+@media (min-width: 576px) {
+  .cookie-container .cookie-message {
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 768px) {
   .cookie-container .cookie-message {
-    margin: 0px auto;
-    max-width: 66ch;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .cookie-container .cookie-message {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cookie-container .cookie-message {
+    max-width: 1200px;
   }
 }
 

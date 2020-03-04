@@ -1,9 +1,9 @@
-{% macro cookie_message(message, accept, decline) %}
+{% macro cookie_message(message, accept, decline, title) %}
 <div class="cookie-container">
   <div class="cookie-message">
     <div class="cookie-text">
-      <h2 class="h5 mt-0">Cookies</h2>
-      <p>{{ message | safe }}</p>
+      <h2 class="h4 mt-0 mb-2">{{ title | safe }}</h2>
+      <p class="mt-0">{{ message | safe }}</p>
     </div>
     <div class="cookie-actions">
       <ul class="inline-list">
