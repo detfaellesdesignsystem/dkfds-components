@@ -8473,12 +8473,9 @@ hr {
   right: 0px;
   left: 0px;
   z-index: 9500;
-  background-color: #ffffff;
   margin-bottom: 8px;
   margin-left: 8px;
   margin-right: 8px;
-  border: 1px solid #747474;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
 
 .cookie-container .cookie-message {
@@ -8487,33 +8484,25 @@ hr {
   padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
+  background-color: #ffffff;
+  border: 1px solid #747474;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
   padding-top: calc(32px - 1px);
   padding-bottom: calc(40px - 1px);
   position: relative;
   overflow: hidden;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 1200px) {
   .cookie-container .cookie-message {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 768px) {
-  .cookie-container .cookie-message {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 992px) {
-  .cookie-container .cookie-message {
-    max-width: 100%;
+    max-width: calc(1200px + 40px + 40px);
   }
 }
 
 @media (min-width: 1200px) {
-  .cookie-container .cookie-message {
-    max-width: 1200px;
+  .cookie-container .cookie-message .cookie-text, .cookie-container .cookie-message .cookie-actions {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 

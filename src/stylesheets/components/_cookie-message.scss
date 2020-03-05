@@ -6,21 +6,31 @@
   right: 0px;
   left: 0px;
   z-index: 9500;
-  background-color:$color-white;
   margin-bottom: map-get($spacers, 3);
   margin-left: map-get($spacers, 3);
   margin-right: map-get($spacers, 3);
-  border: $outer-border;
-  box-shadow: $box-shadow-heavy;
 
   .cookie-message{
     @include grid-container();
-    @include grid-container-max-widths();
+
+    background-color:$color-white;
+    border: $outer-border;
+    box-shadow: $box-shadow-heavy;
     padding-top: calc(#{map-get($spacers, 6)} - 1px);
     padding-bottom: calc(#{map-get($spacers, 7)} - 1px);
     position: relative;
     overflow: hidden;
 
+    @include media-breakpoint-up(xl) {
+      max-width: calc(#{map-get($container-max-widths, xl)} + #{map-get($spacers, 7)} + #{map-get($spacers, 7)});
+    }
+
+    .cookie-text, .cookie-actions{
+      @include media-breakpoint-up(xl) {
+        padding-left: map-get($spacers, 7);
+        padding-right: map-get($spacers, 7);
+      }
+    }
     .cookie-actions{
       margin-top: map-get($spacers, 4);
     }
