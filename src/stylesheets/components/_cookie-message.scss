@@ -16,8 +16,8 @@
   .cookie-message{
     @include grid-container();
     @include grid-container-max-widths();
-    padding-top: calc(#{map-get($spacers, 8)} - 1px);
-    padding-bottom: calc(#{map-get($spacers, 8)} - 1px);
+    padding-top: calc(#{map-get($spacers, 6)} - 1px);
+    padding-bottom: calc(#{map-get($spacers, 7)} - 1px);
     position: relative;
     overflow: hidden;
 

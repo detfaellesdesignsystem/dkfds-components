@@ -8484,8 +8484,8 @@ hr {
   padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
-  padding-top: calc(48px - 1px);
-  padding-bottom: calc(48px - 1px);
+  padding-top: calc(32px - 1px);
+  padding-bottom: calc(40px - 1px);
   position: relative;
   overflow: hidden;
 }
