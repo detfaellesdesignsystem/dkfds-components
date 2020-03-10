@@ -6,10 +6,14 @@ const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
 const ResponsiveTable = require('./components/table');
 const Tabnav = require('./components/tabnav');
+//const Details = require('./components/details');
 const Tooltip = require('./components/tooltip');
 const SetTabIndex = require('./components/skipnav');
 const Navigation = require('./components/navigation');
 const InputRegexMask = require('./components/regex-input-mask');
+
+
+import Details from './components/details'
 
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -20,6 +24,11 @@ require('./polyfills');
 var init = function () {
 
   new Navigation();
+
+  const details = document.querySelectorAll('.js-details');
+  for(let d = 0; d < details.length; d++){
+    new Details(details[ d ]).init();
+  }
 
   const jsSelectorRegex = document.querySelectorAll('input[data-input-regex]');
   for(let c = 0; c < jsSelectorRegex.length; c++){

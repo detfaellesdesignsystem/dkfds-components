@@ -366,8 +366,20 @@ h4, .h4,
 h5, .h5,
 h6, .h6{
   a, a:hover, a:visited, a:focus{
-    color: $color-black;
     text-decoration: underline;
+  }
+
+  a.search-link {
+    text-decoration: none;
+    &:visited {
+      text-decoration: underline;
+    }
+    &:focus {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

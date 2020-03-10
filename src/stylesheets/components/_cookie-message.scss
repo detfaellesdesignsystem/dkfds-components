@@ -1,17 +1,38 @@
-#cookieMessage{
+.cookie-container{
+
   color: $color-black;
   position: fixed;
   bottom: 0px;
   right: 0px;
   left: 0px;
-  top: 0px;
   z-index: 9500;
-  background-color:$background-modal;
-  display: flex;
-  align-items: center;
-  .card{
-    margin: 0 auto;
-    box-shadow: none;
-    border: none;
+  margin-bottom: map-get($spacers, 3);
+  margin-left: map-get($spacers, 3);
+  margin-right: map-get($spacers, 3);
+
+  .cookie-message{
+    @include grid-container();
+
+    background-color:$color-white;
+    border: $outer-border;
+    box-shadow: $box-shadow-heavy;
+    padding-top: calc(#{map-get($spacers, 6)} - 1px);
+    padding-bottom: calc(#{map-get($spacers, 7)} - 1px);
+    position: relative;
+    overflow: hidden;
+
+    @include media-breakpoint-up(xl) {
+      max-width: calc(#{map-get($container-max-widths, xl)} + #{map-get($spacers, 7)} + #{map-get($spacers, 7)});
+    }
+
+    .cookie-text, .cookie-actions{
+      @include media-breakpoint-up(xl) {
+        padding-left: map-get($spacers, 7);
+        padding-right: map-get($spacers, 7);
+      }
+    }
+    .cookie-actions{
+      margin-top: map-get($spacers, 4);
+    }
   }
 }

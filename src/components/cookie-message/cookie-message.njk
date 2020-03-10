@@ -1,22 +1,19 @@
-{% macro cookie_message(message, accept, decline) %}
-<div class="cookie-message" id="cookieMessage">
-  <div class="container">
-    <div class="card w-percent-md-70 w-percent-lg-50">
-      <div class="card-text pt-6 pl-6 pr-6 pb-0">
-        <p class="mt-0 mb-0">
-          {{ message | safe }}
-        </p>
-      </div>
-      <div class="card-action pb-6 pl-6 pr-6">
-        <ul class="unstyled-list mt-4">
-          <li class="d-md-inline-block mb-4 mb-md-0">
-            <a href="#" class="button button-secondary" id="acceptCookieButton">{{ accept }}</a>
-          </li>
-          <li class="d-md-inline-block ml-md-4">
-            <a href="#" id="declineCookieButton" class="button button-tertiary">{{ decline }}</a>
-          </li>
-        </ul>
-      </div>
+{% macro cookie_message(message, accept, decline, title) %}
+<div class="cookie-container">
+  <div class="cookie-message">
+    <div class="cookie-text">
+      <h2 class="h3 mt-0 mb-3">{{ title | safe }}</h2>
+      <p class="mt-0">{{ message | safe }}</p>
+    </div>
+    <div class="cookie-actions">
+      <ul class="inline-list">
+        <li>
+          <a href="#" class="button button-secondary">{{ accept }}</a>
+        </li>
+        <li>
+          <a href="#" class="ml-md-4 button button-tertiary">{{ decline }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

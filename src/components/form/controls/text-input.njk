@@ -1,10 +1,14 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type) %}
-  <div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
-      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}" id="form-label-{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}</label>{% endif %}
-      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-      {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">{{error}}</span>{% endif %}
-     <input class="form-input  {{class}} " placeholder="{{placeholder}}" id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %} {% if hint %}aria-labelledby="form-label-{{id}} input-hint-message-{{id}}"{% endif %} {% if readonly %} readonly {% endif %}>
-  </div>
-{% endmacro %}
+{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
+      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}" id="form-label-{{id}}">
+        {{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}
+        </label>{% endif %}
+      {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">
+      {{hint}}
+      </span>{% endif %}
+      {% if error %}<span class="form-error-message" id="form-error-message-{{id}}" role="alert">
+      {{error}}
+      </span>{% endif %}
+     <input class="form-input  {{class}} " {% if optionallabel == nil %}required {% endif %}{% if placeholder %} placeholder="{{placeholder}}" {% endif %}id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-invalid="true" aria-describedby="form-error-message-{{id}}"{% endif %} {% if hint %}aria-labelledby="form-label-{{id}} input-hint-message-{{id}}"{% endif %} {% if readonly %} readonly {% endif %}>
+  </div>{% endmacro %}

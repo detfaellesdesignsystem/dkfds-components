@@ -1,0 +1,12 @@
+{% macro details(data) %}
+<details class="details js-details">
+  <summary class="details-summary">
+    <span class="details-summary-text">
+      {{ data.text }}
+    </span>
+  </summary>
+  <div class="details-text">
+      {{ data.content | safe }}
+  </div>
+</details>
+{% endmacro %}
