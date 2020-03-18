@@ -8346,15 +8346,15 @@ hr {
   border: solid 2px #CC0000 !important;
 }
 
-.accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true], .tabnav > button[aria-selected=true] {
+.accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true] {
   background-color: #DCDCDC;
 }
 
-.accordion-bordered .accordion-button[aria-expanded=true], .accordion-bordered .tabnav > button[aria-expanded=true], .accordion-bordered .tabnav > button[aria-selected=true] {
+.accordion-bordered .accordion-button[aria-expanded=true], .accordion-bordered .tabnav > button[aria-expanded=true] {
   border-bottom: 1px solid #BFBFBF;
 }
 
-.accordion-button[aria-expanded=false], .tabnav > button[aria-expanded=false], .tabnav > button[aria-selected=false] {
+.accordion-button[aria-expanded=false], .tabnav > button[aria-expanded=false] {
   background-image: url("../img/svg-icons/plus.svg");
   background-repeat: no-repeat;
   background-size: 2.4rem;
@@ -10531,28 +10531,6 @@ a.skipnav {
   }
 }
 
-.tabnav {
-  /*> li {
-    @include media-breakpoint-up(md) {
-      position: static;
-      background-color: transparent;
-      width: auto;
-      margin-right: map-get($spacers, 3);
-      border-bottom: $outer-border;
-      margin: 0 map-get($spacers, 2) -1px 0px;
-      padding-top: map-get($spacers, 2);
-      padding-bottom: map-get($spacers, 2);
-      &:first-child{
-        margin-left: 0px;
-      }
-      &.active{
-        border: $outer-border;
-        border-bottom: 1px solid $color-white;
-      }
-    }
-*/
-}
-
 @media (min-width: 768px) {
   .tabnav {
     margin: 0;
@@ -10581,6 +10559,17 @@ a.skipnav {
   max-width: none;
   text-decoration: none;
   margin-bottom: 8px;
+}
+
+.tabnav > button[aria-selected=true] {
+  background-color: #DCDCDC;
+}
+
+.tabnav > button[aria-selected=false] {
+  background-image: url("../img/svg-icons/plus.svg");
+  background-repeat: no-repeat;
+  background-size: 24px;
+  border-radius: 3px 3px 3px 3px;
 }
 
 .tabnav > button[aria-selected=false]:focus {
