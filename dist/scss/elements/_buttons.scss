@@ -8,7 +8,7 @@ a.button{
   display: inline-block;
   width: 100%;
   //@include margin(0.5em 0.5em 0.5em null);
-  padding: 0px calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+  padding: calc(#{map-get($spacers, 1)}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
   border-radius: $button-border-radius;
   border: $button-border;
   font-size: $base-font-size;

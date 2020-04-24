@@ -3,7 +3,15 @@
 !src/
 
 build/
+.git/
 .github/
 .editorconfig
+.eslintignore
 .eslintrc.yml
 package-lock.json
+.idea/
+node_modules
+config
+examples
+gulpfile.js
+fractalfile.js

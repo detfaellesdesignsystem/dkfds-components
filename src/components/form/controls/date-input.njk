@@ -1,10 +1,10 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro datoinput(label, hint, day, month, year, tooltip, tooltipTitle, datepicker, error, dayValue, monthValue, yearValue, id, formClass) %}
 <div class="form-group {% if error %} form-error {% endif %} {{ formClass }}">
-  <fieldset>
-    <legend><label class="form-label">{{label}}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}</label>
-    <span class="form-hint">{{hint}}</span></legend>
-    <span class="form-error-message {% if not error %} d-none{% endif %}" id="{{ id.error | default('form-error-message-input-error') }}" role="alert">{{error}}</span>
+  <fieldset aria-dsecribedby="example-date-field-hint {% if error %}{{id.error | default('example-date-field-error')}}{% endif %}">
+    <legend class="form-label">{{label}}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}</legend>
+    <span class="form-hint" id="example-date-field-hint">{{hint}}</span>
+    <span class="form-error-message {% if not error %} d-none{% endif %}" id="{{ id.error | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{error}}</span>
     <div class="date-group js-calendar-group mt-3">
       <div class="form-group form-group-day">
         <label class="form-label" for="{{ id.day | default('date-day') }}">{{day}}</label>
@@ -23,7 +23,6 @@
         <span class="sr-only">Åben kalenderen</span>
         <svg class="icon-svg" aria-hidden="true" focusable="false" tabindex="-1"><use xlink:href="#calendar"></use></svg>
        </button>
-
       {% endif %}
     </div>
   </fieldset>

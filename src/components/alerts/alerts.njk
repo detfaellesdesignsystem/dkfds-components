@@ -1,11 +1,15 @@
-{% macro alert(classes, role, title, content, aria, close) %}
+{% macro alert(classes, role, title, content, aria, close, contentContainer) %}
 <div class="alert{% if classes %} {{ classes }}{% endif %}{% if close %} has-close{% endif %}"{% if role %} role="{{role}}"{% endif %}{% if aria %}aria-label ="{{ aria }}"{% endif %}>
   <div class="alert-body">
     {%- if title -%}
     <p class="alert-heading{% if close %} pr-7{% endif %}">{{ title | safe }}</p>
     {%- endif -%}
 
+    {%- if contentContainer == false -%}
+    {{ content | safe }}
+    {%- else -%}
     <p class="alert-text">{{ content | safe }}</p>
+    {%- endif -%}
 
     {%- if close -%}
     <a href="javascript:void(0);" class="alert-close"><svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#close"></use></svg>Luk</a>
