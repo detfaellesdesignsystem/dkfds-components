@@ -25,9 +25,12 @@
       position: relative;
       z-index: 1;
     }
-
   }
-
+  > li.current{
+    > a, > ul > li > a{
+      padding-left: calc(#{map-get($spacers, 4)} - #{$sidenav-active-border-width});
+    }
+  }
   li {
     &:hover {
       background-color: $color-gray-pale;
@@ -91,7 +94,6 @@
       }
     }
   }
-
 
   > li > ul > li > ul > li > a{
     padding-left: map-get($spacers, 5);

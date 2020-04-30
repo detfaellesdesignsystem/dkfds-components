@@ -9684,6 +9684,10 @@ input[type=search] {
   z-index: 1;
 }
 
+.sidenav-list > li.current > a, .sidenav-list > li.current > ul > li > a {
+  padding-left: calc(16px - 4px);
+}
+
 .sidenav-list li:hover {
   background-color: #F5F5F5;
 }
