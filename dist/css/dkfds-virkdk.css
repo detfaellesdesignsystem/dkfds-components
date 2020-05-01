@@ -8465,8 +8465,7 @@ hr {
 
 .breadcrumbs {
   color: #1a1a1a;
-  margin-top: 8px;
-  margin-bottom: 4px;
+  font-size: 1.4rem;
 }
 
 .breadcrumbs__list {
@@ -8518,6 +8517,10 @@ hr {
 }
 
 .breadcrumbs__link {
+  color: #1a1a1a;
+}
+
+.breadcrumbs__link:visited, .breadcrumbs__link:hover, .breadcrumbs__link:active {
   color: #1a1a1a;
 }
 
