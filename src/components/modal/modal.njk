@@ -1,22 +1,20 @@
-{% macro modal(modal_id,modal_data) %}
-	<div class="modal" id="{{ modal_id | default('modal-id-1') }}" aria-hidden="true">
-		<div class="modal__overlay bg-modal" tabindex="-1" data-micromodal-close>
-			<div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="{{ modal_data.modal_title_id | default('modal-id-1-title') }}">
-				<div class="modal__header">
-					<h1 class="modal__title h2" id="{{ modal_data.modal_title_id | default('modal-id-1-title') }}">
-						{{ modal_data.modal_title | default('Modal title') }}
-					</h1>
-				</div>
-				<div class="modal__content">
-					{{ modal_data.modal_content | safe }}
-				</div>
-				{% if  modal_data.modal_actions %}
-				<div class="modal__footer">
-					{{ modal_data.modal_actions | safe }}
-				</div>
-				{% endif %}
-				<button class="modal__close button button-secondary" aria-label="Close modal" data-micromodal-close>{{ modal_data.modal_close_text  | default('Luk') }}</button>
-			</div>
-		</div>
+{% macro modal(modal_data) %}
+	<div class="modal" id="{{ modal_data.id | default('modal-id-1') }}" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="{{ modal_data.title_id | default('modal-id-1-title') }}">
+      <div class="modal-header">
+        <h1 class="modal-title h2" id="{{ modal_data.title_id | default('modal-id-1-title') }}">
+          {{ modal_data.title | default('Modal title') }}
+        </h1>
+      </div>
+      <div class="modal-body">
+        {{ modal_data.content | safe }}
+      </div>
+      {% if  modal_data.actions %}
+      <div class="modal-footer">
+        {{ modal_data.actions | safe }}
+      </div>
+      {% endif %}
+      <button class="modal-close button button-secondary" aria-label="Close modal" data-modal-close>{{ modal_data.close_text  | default('Luk') }}</button>
+    </div>
 	</div>
 {% endmacro %}

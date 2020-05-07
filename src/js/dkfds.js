@@ -11,10 +11,8 @@ const Tooltip = require('./components/tooltip');
 const SetTabIndex = require('./components/skipnav');
 const Navigation = require('./components/navigation');
 const InputRegexMask = require('./components/regex-input-mask');
-
-
 import Details from './components/details'
-
+import Modal from './components/modal'
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
@@ -24,6 +22,11 @@ require('./polyfills');
 var init = function () {
 
   new Navigation();
+
+  var modals = document.querySelectorAll('.modal');
+  for(let d = 0; d < modals.length; d++) {
+    new Modal(modals[d]).init();
+  }
 
   const details = document.querySelectorAll('.js-details');
   for(let d = 0; d < details.length; d++){
@@ -82,4 +85,4 @@ var init = function () {
   }
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal };
