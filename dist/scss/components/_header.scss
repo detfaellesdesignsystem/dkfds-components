@@ -69,6 +69,28 @@ $z-index-nav:     9000;
   .portal-header{
     border-bottom: $inner-border;
     width: 100%;
+    &.portal-header-compact{
+
+      font-size: $small-text;
+      line-height: $small-text-line-height;
+      p {
+        font-size: $small-text;
+        line-height: $small-text-line-height;
+      }
+      .portal-info .user{
+        max-width: none;
+      }
+
+
+      .portal-header-inner{
+        padding-top: map-get($spacers, 305);
+        padding-bottom: calc(#{map-get($spacers, 305)} - 1px);
+      }
+
+      .logo{
+        max-height: 24px;
+      }
+    }
     .portal-header-inner{
       width: 100%;
       padding-top: calc(#{map-get($spacers, 4)} - 1px);

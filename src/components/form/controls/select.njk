@@ -1,6 +1,6 @@
 {% macro select(name, id, label, class, optiontitle, options, disabled, classlabel, formError) %}
   <div class="form-group {% if formError %}form-error{% endif %}">
-    {% if formError %}<span class="form-error-message" role="alert">{{ formError }}</span> {% endif %}
+    {% if formError %}<span class="form-error-message"><span class="sr-only">Fejl:</span> {{ formError }}</span> {% endif %}
     {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}</label>{% endif %}
     <select class="{{class}} form-select" name="{{name}}" id="{{id}}"  {% if disabled %}disabled="disabled"{% endif %}>
       <option value>{{optiontitle | default("Vælg")}}</option>

@@ -211,42 +211,9 @@ a.button{
   }
 
   &.button-small {
-    color: $color-black;
-    background-color: $color-gray-pale;
-    border-color: $color-gray-light;
-
-    &:hover,
-    &.button-hover {
-      background-color: $color-gray-pale;
-      border-color: $color-border;
-    }
-
-    &:active,
-    &.button-active {
-      background-color: $color-gray-light;
-      border-color: $color-black;
-    }
-
-    &.focus,
-    &:focus {
-      background-color: $color-gray-pale;
-      border-color: $color-gray-light;
-    }
-
-    &:disabled,
-    &.disabled {
-      opacity:0.3;
-      box-shadow: none !important;
-      cursor: not-allowed;
-
-      &:hover {
-        color: $color-black !important;
-        background-color: $color-gray-pale !important;
-        border-color: $color-gray-light !important;
-        opacity:0.3 !important;
-        box-shadow: none !important;
-      }
-    }
+    padding: calc(#{map-get($spacers, 1)}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+    font-size: $small-text;
+    min-height: 24px;
   }
 
   .icon-svg {

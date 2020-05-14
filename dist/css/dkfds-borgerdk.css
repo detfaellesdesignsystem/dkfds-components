@@ -402,6 +402,11 @@ th {
   height: 4.8rem;
 }
 
+.header .portal-header.portal-header-compact .logo {
+  background-image: url("../img/logo-borgerdk.svg");
+  width: 10rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1651,7 +1656,7 @@ strong, b, .bold {
 
 small, .small-text {
   font-size: 1.4rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
   font-weight: 400;
 }
 
@@ -6757,38 +6762,9 @@ a.button {
 }
 
 .button.button-small {
-  color: #1a1a1a;
-  background-color: #F5F5F5;
-  border-color: #BFBFBF;
-}
-
-.button.button-small:hover, .button.button-small.button-hover {
-  background-color: #F5F5F5;
-  border-color: #747474;
-}
-
-.button.button-small:active, .button.button-small.button-active {
-  background-color: #BFBFBF;
-  border-color: #1a1a1a;
-}
-
-.button.button-small.focus, .button.button-small:focus {
-  background-color: #F5F5F5;
-  border-color: #BFBFBF;
-}
-
-.button.button-small:disabled, .button.button-small.disabled {
-  opacity: 0.3;
-  box-shadow: none !important;
-  cursor: not-allowed;
-}
-
-.button.button-small:disabled:hover, .button.button-small.disabled:hover {
-  color: #1a1a1a !important;
-  background-color: #F5F5F5 !important;
-  border-color: #BFBFBF !important;
-  opacity: 0.3 !important;
-  box-shadow: none !important;
+  padding: calc(2px) calc(16px - 2px) 0px;
+  font-size: 1.4rem;
+  min-height: 24px;
 }
 
 .button .icon-svg {
@@ -6938,7 +6914,7 @@ a.button {
   color: #ffffff;
   background-color: #1a1a1a;
   font-size: 1.4rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
 }
 
 .badge.badge-info {
@@ -8392,7 +8368,7 @@ hr {
   top: 16px;
   right: 16px;
   font-size: 1.4rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
   font-weight: 500;
   color: #1a1a1a;
 }
@@ -8464,6 +8440,67 @@ hr {
 
 .alert + .alert {
   margin-top: 16px;
+}
+
+.breadcrumbs {
+  color: #1a1a1a;
+  font-size: 1.4rem;
+}
+
+.breadcrumbs__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.breadcrumbs__list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.breadcrumbs__list-item {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 2px;
+  margin-left: 8px;
+  padding-left: 13.655px;
+  float: left;
+}
+
+.breadcrumbs__list-item:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -3.31px;
+  width: 7px;
+  height: 7px;
+  margin: auto 0;
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border: solid;
+  border-width: 1px 1px 0 0;
+  border-color: #747474;
+}
+
+.breadcrumbs__list-item:first-child {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.breadcrumbs__list-item:first-child:before {
+  content: none;
+  display: none;
+}
+
+.breadcrumbs__link {
+  color: #1a1a1a;
+}
+
+.breadcrumbs__link:visited, .breadcrumbs__link:hover, .breadcrumbs__link:active {
+  color: #1a1a1a;
 }
 
 .cookie-container {
@@ -8729,6 +8766,29 @@ footer .footer-theme {
 .header .portal-header {
   border-bottom: 1px solid #BFBFBF;
   width: 100%;
+}
+
+.header .portal-header.portal-header-compact {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.header .portal-header.portal-header-compact p {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.header .portal-header.portal-header-compact .portal-info .user {
+  max-width: none;
+}
+
+.header .portal-header.portal-header-compact .portal-header-inner {
+  padding-top: 12px;
+  padding-bottom: calc(12px - 1px);
+}
+
+.header .portal-header.portal-header-compact .logo {
+  max-height: 24px;
 }
 
 .header .portal-header .portal-header-inner {
@@ -9367,7 +9427,7 @@ footer .footer-theme {
 
 .nav-primary .overflow-menu .overflow-menu-inner .overflow-list a {
   font-size: 1.4rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner .overflow-list .overflow-list {
@@ -9624,6 +9684,10 @@ input[type=search] {
   outline-offset: 0;
   position: relative;
   z-index: 1;
+}
+
+.sidenav-list > li.current > a, .sidenav-list > li.current > ul > li > a {
+  padding-left: calc(16px - 4px);
 }
 
 .sidenav-list li:hover {
