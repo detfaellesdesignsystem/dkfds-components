@@ -13,5 +13,12 @@ $image-path:                  '../img' !default;
           height: 4.8rem;
           width: 7.8rem;
         }
+
+      &.portal-header-compact{
+        .logo{
+          background-image: url($image-path + '/logo_virk.svg');
+          width: 3.8rem;
+        }
+      }
     }
 }

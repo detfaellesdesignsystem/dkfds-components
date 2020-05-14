@@ -13,5 +13,12 @@ $image-path:                  '../img' !default;
             background-image: url($image-path + '/logo-borgerdk.svg');
             height: 4.8rem;
         }
+
+        &.portal-header-compact{
+          .logo{
+            background-image: url($image-path + '/logo-borgerdk.svg');
+            width: 10rem;
+          }
+        }
     }
 }

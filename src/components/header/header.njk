@@ -2,20 +2,20 @@
 
 {% macro portal_header(portal_header) %}
   <!--1A: Portal header -->
-  <div class="portal-header">
+  <div class="portal-header {% if portal_header.compact == true %}portal-header-compact{% endif %}">
     <div class="container portal-header-inner">
       <a href="{{ portal_header.logolink.href | default('/') }}" {% if portal_header.logolink.title %}title="{{ portal_header.logolink.title}}"{% endif %} {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
       </a>
-      <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
+      <button class="button button-secondary {% if portal_header.compact == true %}button-small {% endif %}button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
       <div class="portal-info">
         {% if portal_header.user %}
-          <p class="user"><span class="username bold">{{ portal_header.user.name | safe }}</span> {% if portal_header.user.work %}· {{ portal_header.user.work}}  {% endif %}</p>
+          <p class="user"><span class="username{% if portal_header.compact == null or portal_header.compact == false %} weight-semibold{% endif %}">{{ portal_header.user.name | safe }}</span> {% if portal_header.user.work %}<br />{{ portal_header.user.work}}  {% endif %}</p>
         {% endif %}
-         <a href="{{ portal_header.link.href }}" class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave d-print-none" role="button">
+         <button class="button {{ portal_header.link.class | default('button-secondary') }} {% if portal_header.compact == true %}button-small {% endif %} alert-leave d-print-none">
           {{ portal_header.link.text }}
-        </a>
+        </button>
       </div>
     </div>
   </div>
