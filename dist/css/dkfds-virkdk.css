@@ -8780,8 +8780,8 @@ footer .footer-theme {
 }
 
 .header .portal-header.portal-header-compact .portal-header-inner {
-  padding-top: 12px;
-  padding-bottom: calc(12px - 1px);
+  padding-top: 4px;
+  padding-bottom: calc(4px - 1px);
 }
 
 .header .portal-header.portal-header-compact .logo {

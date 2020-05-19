@@ -83,8 +83,8 @@ $z-index-nav:     9000;
 
 
       .portal-header-inner{
-        padding-top: map-get($spacers, 305);
-        padding-bottom: calc(#{map-get($spacers, 305)} - 1px);
+        padding-top: map-get($spacers, 2);
+        padding-bottom: calc(#{map-get($spacers, 2)} - 1px);
       }
 
       .logo{
