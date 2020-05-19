@@ -9055,6 +9055,10 @@ footer .footer-theme {
   visibility: visible;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -9083,23 +9087,22 @@ footer .footer-theme {
   /**************************        Animation Style
     \**************************/
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   z-index: 9999;
-  -ms-flex-align: center;
-  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .modal .modal-content {
   background-color: #fff;
   padding: 16px 24px;
   max-width: 800px;
-  max-height: calc(100vh - 32px);
-  overflow-y: auto;
   position: relative;
-  margin: 0 auto;
+  margin: 24px auto 24px;
 }
 
 @media (min-width: 768px) {
