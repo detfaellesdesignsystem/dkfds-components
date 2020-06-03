@@ -4,7 +4,7 @@
  *
  * http://caniuse.com/#feat=details
  */
-import { generateUniqueID } from '../utils/generate-unique-id.js'
+import { generateUniqueID } from '../utils/generate-unique-id.js';
 
 const KEY_ENTER = 13;
 const KEY_SPACE = 32;
