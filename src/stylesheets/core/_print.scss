@@ -184,22 +184,28 @@
     content: none;
   }
   .form-checkbox:checked + label:after, .form-radio:checked + label:after, .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
-    box-shadow: -2px 2px 0 0 #000;
-    transform: rotate(-46deg);
-    -webkit-transform:rotate(-46deg);
-    border-radius: 0;
-    height: 7px;
-    width: 12px;
-    background-color: transparent;
+    content: "";
     position: absolute;
     left: 3px;
-    top: 1px;
+    top: 2px;
+    width: 12px;
+    height: 7px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    border: solid;
+    border-width: 0 0 3px 3px;
+    border-color: $color-black;
+    border-top-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0px;
   }
   .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
     height: 10px;
-    width: 15px;
+    width: 18px;
     left: 6px;
-    top: 6px;
+    top: 8px;
   }
   .form-radio + label::before{
     border-radius: 0;

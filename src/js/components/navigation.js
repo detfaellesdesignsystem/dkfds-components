@@ -113,6 +113,47 @@ const toggleNav = function (active) {
 };
 
 const resize = () => {
+
+  let mobile = false;
+  let openers = document.querySelectorAll(OPENERS);
+  for(let o = 0; o < openers.length; o++) {
+    if(window.getComputedStyle(openers[o], null).display !== 'none') {
+      openers[o].addEventListener('click', toggleNav);
+      mobile = true;
+    }
+  }
+
+  if(mobile){
+    let closers = document.querySelectorAll(CLOSERS);
+    for(let c = 0; c < closers.length; c++) {
+      closers[ c ].addEventListener('click', toggleNav);
+    }
+
+    let navLinks = document.querySelectorAll(NAV_LINKS);
+    for(let n = 0; n < navLinks.length; n++) {
+      navLinks[ n ].addEventListener('click', function(){
+        // A navigation link has been clicked! We want to collapse any
+        // hierarchical navigation UI it's a part of, so that the user
+        // can focus on whatever they've just selected.
+
+        // Some navigation links are inside dropdowns; when they're
+        // clicked, we want to collapse those dropdowns.
+
+
+        // If the mobile navigation menu is active, we want to hide it.
+        if (isActive()) {
+          toggleNav.call(this, false);
+        }
+      });
+    }
+
+    const trapContainers = document.querySelectorAll(NAV);
+    for(let i = 0; i < trapContainers.length; i++){
+      focusTrap = _focusTrap(trapContainers[i]);
+    }
+
+  }
+
   const closer = document.body.querySelector(CLOSE_BUTTON);
 
   if (isActive() && closer && closer.getBoundingClientRect().width === 0) {
@@ -134,45 +175,6 @@ class Navigation {
   }
 
   init () {
-    let mobile = false;
-    let openers = document.querySelectorAll(OPENERS);
-    for(let o = 0; o < openers.length; o++) {
-      if(window.getComputedStyle(openers[o], null).display !== 'none') {
-        openers[o].addEventListener('click', toggleNav);
-        mobile = true;
-      }
-    }
-
-    if(mobile){
-      let closers = document.querySelectorAll(CLOSERS);
-      for(let c = 0; c < closers.length; c++) {
-        closers[ c ].addEventListener('click', toggleNav);
-      }
-
-      let navLinks = document.querySelectorAll(NAV_LINKS);
-      for(let n = 0; n < navLinks.length; n++) {
-        navLinks[ n ].addEventListener('click', function(){
-          // A navigation link has been clicked! We want to collapse any
-          // hierarchical navigation UI it's a part of, so that the user
-          // can focus on whatever they've just selected.
-
-          // Some navigation links are inside dropdowns; when they're
-          // clicked, we want to collapse those dropdowns.
-
-
-          // If the mobile navigation menu is active, we want to hide it.
-          if (isActive()) {
-            toggleNav.call(this, false);
-          }
-        });
-      }
-
-      const trapContainers = document.querySelectorAll(NAV);
-      for(let i = 0; i < trapContainers.length; i++){
-          focusTrap = _focusTrap(trapContainers[i]);
-      }
-
-    }
 
     resize();
   }

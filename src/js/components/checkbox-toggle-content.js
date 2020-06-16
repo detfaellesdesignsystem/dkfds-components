@@ -2,7 +2,7 @@
 class CheckboxToggleContent{
     constructor(el){
         this.jsToggleTrigger = '.js-checkbox-toggle-content';
-        this.jsToggleTarget = 'data-js-target';
+        this.jsToggleTarget = 'data-aria-controls';
         this.eventClose = document.createEvent('Event');
         this.eventClose.initEvent('fds.collapse.close', true, true);
         this.eventOpen = document.createEvent('Event');
@@ -16,7 +16,7 @@ class CheckboxToggleContent{
     init(el){
         this.checkboxEl = el;
         var that = this;
-        this.checkboxEl.addEventListener('change',function(event){
+        this.checkboxEl.addEventListener('change', function (event){
             that.toggle(that.checkboxEl);
         });
         this.toggle(this.checkboxEl);
@@ -25,7 +25,7 @@ class CheckboxToggleContent{
     toggle(triggerEl){
         var targetAttr = triggerEl.getAttribute(this.jsToggleTarget)
         if(targetAttr !== null && targetAttr !== undefined){
-            var targetEl = document.querySelector(targetAttr);
+            var targetEl = document.querySelector('#' + targetAttr);
             if(targetEl !== null && targetEl !== undefined){
                 if(triggerEl.checked){
                     this.open(triggerEl, targetEl);
@@ -38,7 +38,7 @@ class CheckboxToggleContent{
 
     open(triggerEl, targetEl){
         if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('aria-expanded', 'true');
+            triggerEl.setAttribute('data-aria-expanded', 'true');
             targetEl.classList.remove('collapsed');
             targetEl.setAttribute('aria-hidden', 'false');
             triggerEl.dispatchEvent(this.eventOpen);
@@ -46,7 +46,7 @@ class CheckboxToggleContent{
     }
     close(triggerEl, targetEl){
         if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('aria-expanded', 'false');
+            triggerEl.setAttribute('data-aria-expanded', 'false');
             targetEl.classList.add('collapsed');
             targetEl.setAttribute('aria-hidden', 'true');
             triggerEl.dispatchEvent(this.eventClose);
