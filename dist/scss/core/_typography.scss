@@ -319,7 +319,7 @@ h5, .h5, h6, .h6{
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: map-get($spacers, 6);
   line-height: 2.4rem;
   padding-left: 14px;
   &::before{

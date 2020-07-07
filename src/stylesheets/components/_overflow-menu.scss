@@ -110,16 +110,23 @@ $overflow-menu-dropdown-distance: 8px;
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive) .sidenav-list{
+    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list{
         border-top: 0;
         border-bottom: 0;
     }
-    &.overflow-menu--md-no-responsive .sidenav-list{
+  &.overflow-menu--md-no-responsive .sidenav-list{
         @include media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
     }
+
+  &.overflow-menu--lg-no-responsive .sidenav-list{
+    @include media-breakpoint-down(lg) {
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
 
 
     &--open-right {

@@ -2579,7 +2579,7 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 32px;
   line-height: 2.4rem;
   padding-left: 14px;
 }
@@ -11479,13 +11479,20 @@ a.skipnav {
   background-color: #F5F5F5;
 }
 
-.overflow-menu:not(.overflow-menu--md-no-responsive) .sidenav-list {
+.overflow-menu:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list {
   border-top: 0;
   border-bottom: 0;
 }
 
 @media (max-width: 991px) {
   .overflow-menu.overflow-menu--md-no-responsive .sidenav-list {
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .overflow-menu.overflow-menu--lg-no-responsive .sidenav-list {
     border-top: 0;
     border-bottom: 0;
   }
@@ -11745,6 +11752,7 @@ a.skipnav {
 
 .tooltip-popper {
   position: absolute;
+  max-width: 66ch;
 }
 
 .tooltip-popper .tooltip-arrow {
