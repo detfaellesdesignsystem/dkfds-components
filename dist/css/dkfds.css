@@ -2579,9 +2579,15 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   line-height: 2.4rem;
   padding-left: 14px;
+}
+
+@media (min-width: 992px) {
+  .back-link {
+    margin-bottom: 32px;
+  }
 }
 
 .back-link::before {
@@ -9490,7 +9496,6 @@ footer .footer-theme {
 
 .header {
   width: 100%;
-  z-index: 7000;
 }
 
 .header .logo {

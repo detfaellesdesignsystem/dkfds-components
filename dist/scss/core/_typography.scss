@@ -319,7 +319,10 @@ h5, .h5, h6, .h6{
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: map-get($spacers, 6);
+  margin-bottom: map-get($spacers, 5);
+  @include media-breakpoint-up(lg) {
+    margin-bottom: map-get($spacers, 6);
+  }
   line-height: 2.4rem;
   padding-left: 14px;
   &::before{
