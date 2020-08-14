@@ -35,17 +35,14 @@ $chevron-altitude-calculated: 5.655px;
 
   display: inline-block;
   position: relative;
-
+  margin-top: 0;
   margin-bottom: map-get($spacers, 1);
 
-  // Add both margin and padding such that the chevron appears centrally
-  // between each breadcrumb item
   margin-left: map-get($spacers, 3);
   padding-left: map-get($spacers, 3) + $chevron-altitude-calculated;
 
   float: left;
 
-  // Create a chevron using a box with borders on two sides, rotated 45deg.
   &:before {
     content: "";
     display: block;
