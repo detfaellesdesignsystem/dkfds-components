@@ -17,15 +17,26 @@ const VISIBLE_CLASS = 'is-visible';
 const isActive = () => document.body.classList.contains(ACTIVE_CLASS);
 
 const _focusTrap = (trapContainer) => {
+
   // Find all focusable children
   const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-  const focusableElements = trapContainer.querySelectorAll(focusableElementsString);
-  const firstTabStop = focusableElements[ 0 ];
-  const lastTabStop = focusableElements[ focusableElements.length - 1 ];
+  let focusableElements = trapContainer.querySelectorAll(focusableElementsString);
+  let firstTabStop = focusableElements[ 0 ];
 
   function trapTabKey (e) {
+    var key = event.which || event.keyCode;
     // Check for TAB key press
-    if (e.keyCode === 9) {
+    if (key === 9) {
+
+      let lastTabStop = null;
+      for(let i = 0; i < focusableElements.length; i++){
+        let number = focusableElements.length - 1;
+        let element = focusableElements[ number - i ];
+        if (element.offsetWidth > 0 && element.offsetHeight > 0) {
+          lastTabStop = element;
+          break;
+        }
+      }
 
       // SHIFT + TAB
       if (e.shiftKey) {
@@ -49,17 +60,16 @@ const _focusTrap = (trapContainer) => {
     }
   }
 
-  // Focus first child
-  firstTabStop.focus();
-
   return {
     enable () {
+        // Focus first child
+        firstTabStop.focus();
       // Listen for and trap the keyboard
-      trapContainer.addEventListener('keydown', trapTabKey);
+      document.addEventListener('keydown', trapTabKey);
     },
 
     release () {
-      trapContainer.removeEventListener('keydown', trapTabKey);
+      document.removeEventListener('keydown', trapTabKey);
     },
   };
 };
@@ -103,24 +113,17 @@ const toggleNav = function (active) {
 };
 
 const resize = () => {
-  const closer = document.body.querySelector(CLOSE_BUTTON);
 
-  if (isActive() && closer && closer.getBoundingClientRect().width === 0) {
-    // The mobile nav is active, but the close box isn't visible, which
-    // means the user's viewport has been resized so that it is no longer
-    // in mobile mode. Let's make the page state consistent by
-    // deactivating the mobile nav.
-    toggleNav.call(closer, false);
-  }
-};
-
-class Navigation {
-  constructor (){
-    let openers = document.querySelectorAll(OPENERS);
-    for(let o = 0; o < openers.length; o++) {
-      openers[ o ].addEventListener('click', toggleNav);
+  let mobile = false;
+  let openers = document.querySelectorAll(OPENERS);
+  for(let o = 0; o < openers.length; o++) {
+    if(window.getComputedStyle(openers[o], null).display !== 'none') {
+      openers[o].addEventListener('click', toggleNav);
+      mobile = true;
     }
+  }
 
+  if(mobile){
     let closers = document.querySelectorAll(CLOSERS);
     for(let c = 0; c < closers.length; c++) {
       closers[ c ].addEventListener('click', toggleNav);
@@ -144,17 +147,36 @@ class Navigation {
       });
     }
 
+    const trapContainers = document.querySelectorAll(NAV);
+    for(let i = 0; i < trapContainers.length; i++){
+      focusTrap = _focusTrap(trapContainers[i]);
+    }
+
+  }
+
+  const closer = document.body.querySelector(CLOSE_BUTTON);
+
+  if (isActive() && closer && closer.getBoundingClientRect().width === 0) {
+    // The mobile nav is active, but the close box isn't visible, which
+    // means the user's viewport has been resized so that it is no longer
+    // in mobile mode. Let's make the page state consistent by
+    // deactivating the mobile nav.
+    toggleNav.call(closer, false);
+  }
+};
+
+class Navigation {
+  constructor (){
     this.init();
+
+    window.addEventListener('resize', resize, false);
+
+
   }
 
   init () {
-    const trapContainers = document.querySelectorAll(NAV);
-    for(let i = 0; i < trapContainers.length; i++){
-        focusTrap = _focusTrap(trapContainers[i]);
-    }
 
     resize();
-    window.addEventListener('resize', resize, false);
   }
 
   teardown () {

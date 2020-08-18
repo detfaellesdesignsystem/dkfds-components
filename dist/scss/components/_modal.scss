@@ -1,0 +1,131 @@
+body.modal-open{
+  overflow: hidden;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $background-modal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8888;
+  padding: 16px;
+  /*&[aria-hidden="false"] .modal-overlay {
+    animation: modalfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+  &[aria-hidden="true"] .modal-overlay {
+    animation: modalfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+*/
+}
+.fds-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+
+  &[aria-hidden="false"] {
+    display: flex;
+  }
+
+ .modal-content {
+
+    align-self: center;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 16px 24px;
+    max-width: 800px;
+    position: relative;
+    margin: 24px auto 24px;
+    @include media-breakpoint-up(md) {
+      padding: 28px 48px;
+    }
+    @include media-breakpoint-up(lg) {
+      padding: 48px 88px;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media-breakpoint-up(md) {
+      padding-right: 48px;
+    }
+  }
+  .modal-title {
+    margin: 0 map-get($spacers, 8) 0 0;
+  }
+
+  .modal-body {
+    margin-top: 8px;
+    & > *:first-child{
+      margin-top: 0;
+    }
+  }
+
+  .modal-footer{
+    margin-top: 16px;
+    @include media-breakpoint-up(lg) {
+      display: flex;
+    }
+    .button {
+      margin-top: map-get($spacers, 3);
+      margin-right: map-get($spacers, 4);
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: inherit;
+    @include media-breakpoint-up(md) {
+      top:map-get($spacers, 5);
+      right: map-get($spacers, 6);
+    }
+  }
+
+  /**************************\
+        Animation Style
+    \**************************/
+  @keyframes modalfadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes modalfadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes modalslideIn {
+    from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes modalslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+  }
+
+
+
+
+  &[aria-hidden="false"] .modal-content {
+    animation: modalslideIn .3s cubic-bezier(0, 0, .2, 1);
+  }
+
+  &[aria-hidden="true"] .modal-content {
+    animation: modalslideOut .3s cubic-bezier(0, 0, .2, 1);
+  }
+
+}
