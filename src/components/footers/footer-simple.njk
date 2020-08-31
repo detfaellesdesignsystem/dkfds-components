@@ -11,6 +11,17 @@
           </div>
       </div>
     </div>
+    {% if footer_simple_data.language_switcher %}
+    <div class="language-switcher">
+      <div class="container">
+        <ul aria-label="{{ footer_simple_data.language_switcher.aria_label | default("Vælg sprog") }} ">
+          {%- for language in footer_simple_data.language_switcher.languages -%}
+          <li><a href="#" lang="{{language.code}}" {% if language.tooltip %}class="js-tooltip" data-tooltip="{{language.tooltip}}"{% endif %} {% if loop.first %}aria-label="{{ footer_simple_data.language_switcher.first_aria_label | default("Valgt sprog: Dansk")}}"{% endif %}>{% if loop.first %}<svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#check"></use></svg>{% endif %}{{language.name}}</a></li>
+          {% endfor -%}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
   </footer>
 {% endmacro %}
 
