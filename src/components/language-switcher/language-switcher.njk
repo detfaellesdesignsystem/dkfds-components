@@ -1,0 +1,13 @@
+{% macro language_switcher(data) %}
+    <div class="language-switcher">
+      <div class="container">
+        <ul aria-label="{{ data.aria_label | default("Vælg sprog") }} ">
+          {%- for language in data.languages -%}
+          <li><a href="{{ language.href }}" lang="{{language.code}}" {% if language.tooltip %}class="js-tooltip" data-tooltip="{{language.tooltip}}"{% endif %} {% if loop.first %}aria-label="{{ data.first_aria_label | default("Valgt sprog: Dansk")}}"{% endif %}>{% if loop.first %}<svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#check"></use></svg>{% endif %}{{language.name}}</a></li>
+          {% endfor -%}
+        </ul>
+      </div>
+    </div>
+{% endmacro %}
+
+{{ language_switcher(data) }}
