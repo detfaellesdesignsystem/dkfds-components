@@ -10910,9 +10910,8 @@ input[type=search] {
 }
 
 .language-switcher {
-  border-top: 1px solid #BFBFBF;
+  border-top: 1px solid #DCDCDC;
   padding-top: 24px;
-  padding-bottom: 16px;
 }
 
 @media (min-width: 768px) {
@@ -10970,12 +10969,6 @@ input[type=search] {
   margin-top: -4px;
   margin-right: 8px;
   display: inline-block;
-}
-
-@media (min-width: 768px) {
-  .language-switcher ul > li a svg, .language-switcher ul > li a:hover svg, .language-switcher ul > li a:visited svg, .language-switcher ul > li a:active svg, .language-switcher ul > li a:focus svg {
-    display: none;
-  }
 }
 
 .language-switcher ul > li:first-of-type {
