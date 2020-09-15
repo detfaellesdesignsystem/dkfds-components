@@ -1,3 +1,5 @@
+{% from "components/language-switcher/language-switcher.njk" import language_switcher as language_switcher %}
+
 {% macro footer_columns(footer_data) %}
   <footer>
     <div class="footer">
@@ -22,6 +24,10 @@
         </div>
       </div>
     </div>
+
+    {% if footer_data.language_switcher %}
+      {{ language_switcher(footer_data.language_switcher) }}
+    {% endif %}
   </footer>
 {% endmacro %}
 

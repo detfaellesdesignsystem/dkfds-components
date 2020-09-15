@@ -7407,7 +7407,6 @@ a.button {
   justify-content: center;
   text-decoration: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
@@ -10910,6 +10909,84 @@ input[type=search] {
     -ms-flex: 0 0 300px;
     flex: 0 0 300px;
   }
+}
+
+.language-switcher {
+  border-top: 1px solid #DCDCDC;
+  padding-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .language-switcher {
+    margin-top: -24px;
+    padding-top: 16px;
+  }
+}
+
+.language-switcher ul {
+  margin: 0;
+  list-style-type: none;
+  padding-left: 0;
+  max-width: none !important;
+}
+
+.language-switcher ul > li {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.language-switcher ul > li::before {
+  content: "" !important;
+  padding-right: 0 !important;
+}
+
+.language-switcher ul > li {
+  margin-bottom: 12px;
+  padding-left: 32px;
+}
+
+@media (min-width: 768px) {
+  .language-switcher ul > li {
+    display: inline-block;
+    padding-left: 0;
+  }
+  .language-switcher ul > li::after {
+    display: inline-block;
+    content: "|";
+    margin-left: calc(16px - 1px);
+    margin-right: 16px;
+  }
+  .language-switcher ul > li:last-of-type::after {
+    content: "";
+  }
+}
+
+.language-switcher ul > li a, .language-switcher ul > li a:hover, .language-switcher ul > li a:visited, .language-switcher ul > li a:active, .language-switcher ul > li a:focus {
+  color: #1a1a1a;
+  display: inline-block;
+}
+
+.language-switcher ul > li a svg, .language-switcher ul > li a:hover svg, .language-switcher ul > li a:visited svg, .language-switcher ul > li a:active svg, .language-switcher ul > li a:focus svg {
+  margin-top: -4px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.language-switcher ul > li:first-of-type {
+  padding-left: 0px;
+}
+
+.language-switcher ul > li:first-of-type a, .language-switcher ul > li:first-of-type a:hover, .language-switcher ul > li:first-of-type a:visited, .language-switcher ul > li:first-of-type a:active, .language-switcher ul > li:first-of-type a:focus {
+  padding-left: 0;
+  font-weight: 600;
+  color: #454545;
+  text-decoration: none;
+  border-left: 0;
+}
+
+.language-switcher ul > li:last-of-type a, .language-switcher ul > li:last-of-type a:hover, .language-switcher ul > li:last-of-type a:visited, .language-switcher ul > li:last-of-type a:active, .language-switcher ul > li:last-of-type a:focus {
+  padding-right: 0;
 }
 
 a.skipnav {
