@@ -295,6 +295,13 @@
           &:before, &:after{
             display: none;
           }
+
+
+          &:hover {
+            span {
+                padding-bottom: 9px;
+            }
+          }
         }
       }
     }

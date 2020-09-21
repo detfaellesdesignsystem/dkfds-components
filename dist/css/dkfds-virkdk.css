@@ -10372,6 +10372,9 @@ body.modal-open {
   .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=true]:before, .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=true]:after {
     display: none;
   }
+  .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=true]:hover span {
+    padding-bottom: 9px;
+  }
 }
 
 .nav-primary .overflow-menu .overflow-menu-inner {

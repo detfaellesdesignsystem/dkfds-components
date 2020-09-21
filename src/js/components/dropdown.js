@@ -224,6 +224,16 @@ let toggleDropdown = function (event, forceClose = false) {
   }
 };
 
+let hasParent = function (child, parentTagName){
+  if(child.parentNode.tagName === parentTagName){
+    return true;
+  } else if(parentTagName !== 'BODY' && child.parentNode.tagName !== 'BODY'){
+    return hasParent(child.parentNode, parentTagName);
+  }else{
+    return false;
+  }
+};
+
 
 /**
  * @param {HTMLButtonElement} button
@@ -254,7 +264,8 @@ let outsideClose = function (evt){
       if (targetAttr !== null && targetAttr !== undefined) {
         targetEl = document.getElementById(targetAttr);
       }
-      if (doResponsiveCollapse(triggerEl)) {
+
+      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !document.getElementsByTagName('body').classList.contains('mobile_nav-active'))) {
         //closes dropdown when clicked outside
         if (evt.target !== triggerEl) {
           //clicked outside trigger, force close
