@@ -1,5 +1,4 @@
 'use strict';
-const closest = require('../utils/closest');
 const toggle = require('../utils/toggle');
 const breakpoints = require('../utils/breakpoints');
 const BUTTON = '.js-dropdown';
@@ -255,17 +254,18 @@ let hide = function (button) {
 
 
 let outsideClose = function (evt){
-  if(document.querySelector('body.mobile_nav-active') === null) {
     let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
     for (let i = 0; i < openDropdowns.length; i++) {
       let triggerEl = openDropdowns[i];
       let targetEl = null;
       let targetAttr = triggerEl.getAttribute(TARGET);
       if (targetAttr !== null && targetAttr !== undefined) {
+        if(targetAttr.indexOf('#') !== -1){
+          targetAttr = targetAttr.replace('#', '');
+        }
         targetEl = document.getElementById(targetAttr);
       }
-
-      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !document.getElementsByTagName('body').classList.contains('mobile_nav-active'))) {
+      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
         //closes dropdown when clicked outside
         if (evt.target !== triggerEl) {
           //clicked outside trigger, force close
@@ -279,7 +279,6 @@ let outsideClose = function (evt){
         }
       }
     }
-  }
 };
 
 let doResponsiveCollapse = function (triggerEl){
