@@ -254,6 +254,7 @@ let hide = function (button) {
 
 
 let outsideClose = function (evt){
+  if(document.querySelector('body.mobile_nav-active') === null) {
     let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
     for (let i = 0; i < openDropdowns.length; i++) {
       let triggerEl = openDropdowns[i];
@@ -279,6 +280,7 @@ let outsideClose = function (evt){
         }
       }
     }
+  }
 };
 
 let doResponsiveCollapse = function (triggerEl){
