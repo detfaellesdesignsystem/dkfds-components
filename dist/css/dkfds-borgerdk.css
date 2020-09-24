@@ -10824,6 +10824,16 @@ input[type=search] {
   cursor: not-allowed;
 }
 
+.sidenav-list-locked li.disabled.active a {
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+.sidenav-list-locked li.disabled.active a:hover {
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
 .sidenav-sub_list {
   margin: 0;
   list-style-type: none;

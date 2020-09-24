@@ -167,6 +167,9 @@
           cursor: not-allowed;
         }
       }
+
+      &.active a{color: $sidenav-link-active-color; background-color: $color-white;}
+      &.active a:hover{color: $sidenav-link-active-color; background-color: $color-white;}
     }
   }
 }
