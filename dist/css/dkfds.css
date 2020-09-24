@@ -10794,66 +10794,19 @@ input[type=search] {
   font-size: 1.4rem;
 }
 
-.sidenav-list-locked {
-  margin: 0;
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.sidenav-list-locked > li {
-  margin-bottom: 0;
-  margin-top: 0;
-  padding-left: 0;
-}
-
-.sidenav-list-locked > li::before {
-  content: "" !important;
-  padding-right: 0 !important;
-}
-
-.sidenav-list-locked > li {
-  border-top: 1px solid #BFBFBF;
-  cursor: default;
-}
-
-.sidenav-list-locked > li:first-child {
-  border-top: none;
-}
-
-.sidenav-list-locked > li:last-child a {
-  padding-bottom: 8px;
-}
-
-.sidenav-list-locked a {
-  border: none;
-  color: #1a1a1a;
-  display: block;
-  line-height: 2.4rem;
-  padding: 8px;
-  padding-top: calc(8px - 1px);
-  padding-left: 16px;
-  padding-right: 16px;
-  text-decoration: none;
-}
-
-.sidenav-list-locked a:hover {
-  background-color: #ffffff;
-  text-decoration: none;
-  color: #747474;
-  cursor: default;
-}
-
-.sidenav-list-locked a:focus {
-  outline-offset: 0;
-  position: relative;
-  z-index: 1;
-}
-
 .sidenav-list-locked li.disabled {
   cursor: not-allowed;
 }
 
 .sidenav-list-locked li.disabled a {
+  cursor: not-allowed;
+  color: #454545;
+}
+
+.sidenav-list-locked li.disabled a:hover {
+  background-color: #ffffff;
+  text-decoration: none;
+  color: #454545;
   cursor: not-allowed;
 }
 

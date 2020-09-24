@@ -152,54 +152,20 @@
   }
 }
 .sidenav-list-locked {
-  @include unstyled-list();
-
-  > li {
-    border-top: $inner-border;
-    cursor:default;
-
-    &:first-child {
-      border-top: none;
-    }
-    &:last-child {
-      a {
-        padding-bottom: $spacer;
-      }
-    }
-  }
-
-
-  a {
-    border: none;
-    color: $sidenav-link-color;
-    display: block;
-    line-height: $base-line-height;
-    padding: $spacer;
-    padding-top:$input-top-bottom-padding;
-    padding-left: map-get($spacers, 4);
-    padding-right: map-get($spacers, 4);
-    text-decoration: none;
-
-
-    &:hover {
-      background-color: $color-white;
-      text-decoration: none;
-      color: $sidenav-link-color-hover;
-      cursor:default;
-    }
-
-    &:focus {
-      outline-offset: 0;
-      position: relative;
-      z-index: 1;
-    }
-  }
 
   li {
     &.disabled {
       cursor: not-allowed;
       a {
         cursor: not-allowed;
+        color: $color-neutral;
+
+        &:hover {
+          background-color: $color-white;
+          text-decoration: none;
+          color: $color-neutral;
+          cursor: not-allowed;
+        }
       }
     }
   }
