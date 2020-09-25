@@ -10815,18 +10815,18 @@ input[type=search] {
 }
 
 .sidenav-list-locked li.disabled a:hover {
-  background-color: #ffffff;
+  background-color: transparent;
   text-decoration: none;
   color: #454545;
   cursor: not-allowed;
 }
 
-.sidenav-list-locked li.disabled.active a {
+.sidenav-list-locked li.disabled.active, .sidenav-list-locked li.disabled.active a {
   color: #1a1a1a;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
-.sidenav-list-locked li.disabled.active a:hover {
+.sidenav-list-locked li.disabled:hover, .sidenav-list-locked li.disabled.active a:hover {
   color: #1a1a1a;
   background-color: #ffffff;
 }
