@@ -437,10 +437,16 @@ $radio-size-large: 34px;
   .form-group-day,
   .form-group-month{
     width: calc(2px + #{map-get($spacers, 4)} + #{map-get($spacers, 4)} + 2ch );
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      width: 6.4ex;
+    }
   }
 
   .form-group-year {
     width: calc(2px + #{map-get($spacers, 4)} + #{map-get($spacers, 4)} + 4ch );
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      width: 9ex;
+    }
   }
 
   .button-open-calendar{

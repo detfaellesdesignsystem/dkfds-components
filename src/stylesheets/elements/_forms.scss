@@ -49,18 +49,45 @@ input, select, textarea {
   //Input width with characters
   &.input-char-4 {
     max-width: calc(2px + 16px + 16px + 4ch);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-width: 9ex;
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
     width: 100%;
   }
   &.input-char-8 {
     max-width: calc(2px + 16px + 16px + 8ch);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-width: 14ex;
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
     width: 100%;
   }
   &.input-char-11 {
     max-width: calc(2px + 16px + 16px + 11ch);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-width: 17ex;
+    }
+    &::-ms-clear {
+      display: none;
+    }
     width: 100%;
   }
   &.input-char-27 {
     max-width: calc(2px + 16px + 16px + 27ch);
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      max-width: 36ex;
+    }
+
+    &::-ms-clear {
+      display: none;
+    }
     width: 100%;
   }
 }
