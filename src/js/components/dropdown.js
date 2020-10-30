@@ -1,5 +1,4 @@
 'use strict';
-const closest = require('../utils/closest');
 const toggle = require('../utils/toggle');
 const breakpoints = require('../utils/breakpoints');
 const BUTTON = '.js-dropdown';
@@ -224,6 +223,16 @@ let toggleDropdown = function (event, forceClose = false) {
   }
 };
 
+let hasParent = function (child, parentTagName){
+  if(child.parentNode.tagName === parentTagName){
+    return true;
+  } else if(parentTagName !== 'BODY' && child.parentNode.tagName !== 'BODY'){
+    return hasParent(child.parentNode, parentTagName);
+  }else{
+    return false;
+  }
+};
+
 
 /**
  * @param {HTMLButtonElement} button
@@ -252,9 +261,12 @@ let outsideClose = function (evt){
       let targetEl = null;
       let targetAttr = triggerEl.getAttribute(TARGET);
       if (targetAttr !== null && targetAttr !== undefined) {
+        if(targetAttr.indexOf('#') !== -1){
+          targetAttr = targetAttr.replace('#', '');
+        }
         targetEl = document.getElementById(targetAttr);
       }
-      if (doResponsiveCollapse(triggerEl)) {
+      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
         //closes dropdown when clicked outside
         if (evt.target !== triggerEl) {
           //clicked outside trigger, force close

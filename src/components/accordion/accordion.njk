@@ -20,7 +20,7 @@
       {% endif -%}
     <div id="{{ id_prefix }}{{ item.id }}"{% if ariahidden %}aria-hidden="{{ariahidden}}"{% endif %} class="accordion-content">
     {%- if item.error_message %}
-      <div class="alert alert-error" role="alert" aria-label="Fejlbesked i accordion">
+      <div class="alert alert-error" role="alert" aria-atomic="true"  aria-label="Fejlbesked i accordion">
              <div class="alert-body">
                  <p class="alert-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
              </div>

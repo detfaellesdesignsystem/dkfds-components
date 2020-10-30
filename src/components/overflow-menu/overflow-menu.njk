@@ -3,7 +3,6 @@
         <button class="button-overflow-menu js-dropdown {% if doResponsiveCollapse %} js-dropdown--responsive-collapse {% endif %}" data-js-target="{{ id }}" aria-haspopup="true" aria-expanded="false">
             {{ text }}
             {% if icon %}<svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ icon }}"></use></svg>{% endif %}
-            <span class="sr-only">Åbner overflow menu</span>
         </button>
         <div class="overflow-menu-inner" id="{{ id }}" aria-hidden="true">
             {{ contentHTML|safe }}

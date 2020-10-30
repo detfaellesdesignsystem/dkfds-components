@@ -3,9 +3,10 @@
 
 {# Free step guide #}
 {% macro tringuide(trinliste) %}
-  <ul class="sidenav-list">
-    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %}>
-        <a href="{{trin.href}}">
+<nav>
+  <ul class="sidenav-list" role="menu">
+    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
+        <a href="{{trin.href}}" role="menuitem" {% if trin.active %}aria-current="page"{% endif %}>
             {{loop.index}}. {{trin.text}}
 
             {% if trin.icon %}
@@ -16,13 +17,15 @@
         </a>
       </li>{% endfor %}
   </ul>
+</nav>
 {% endmacro %}
 
 {# Locked step guide #}
 {% macro tringuide_locked(trinliste) %}
-  <ul class="sidenav-list sidenav-list-locked">
-    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="disabled {% if trin.active %}active current{% endif %}"{% endif %}>
-        <a tabindex="-1" aria-disabled="true">
+<nav>
+  <ul class="sidenav-list sidenav-list-locked" role="menu">
+    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="disabled {% if trin.active %}active current{% endif %}"{% endif %} role="none">
+        <a tabindex="-1" aria-disabled="true" role="menuitem" {% if trin.active %}aria-current="page"{% endif %}>
             {{loop.index}}. {{trin.text}}
 
             {% if trin.icon %}
@@ -33,13 +36,15 @@
         </a>
       </li>{% endfor %}
   </ul>
+  </nav>
 {% endmacro %}
 
 {# information step guide #}
 {% macro tringuide_information(trinliste) %}
-  <ul class="sidenav-list">
-    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %}>
-        <a href="{{trin.href}}">
+<nav>
+  <ul class="sidenav-list" role="menu">
+    {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
+        <a href="{{trin.href}}" role="menuitem" {% if trin.active %}aria-current="page"{% endif %}>
             <div class="d-inline-block">
                 {{loop.index}}. {{trin.text}}
                 {% if trin.information %}
@@ -54,4 +59,5 @@
         </a>
       </li>{% endfor %}
   </ul>
+  </nav>
 {% endmacro %}

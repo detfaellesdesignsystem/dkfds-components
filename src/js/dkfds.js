@@ -21,8 +21,6 @@ require('./polyfills');
 
 var init = function () {
 
-  new Navigation();
-
   var modals = document.querySelectorAll('.fds-modal');
   for(let d = 0; d < modals.length; d++) {
     new Modal(modals[d]).init();
@@ -83,6 +81,10 @@ var init = function () {
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]);
   }
+
+
+  new Navigation();
+
 };
 
 module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal };

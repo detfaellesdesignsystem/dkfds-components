@@ -295,6 +295,9 @@
           &:before, &:after{
             display: none;
           }
+          span{
+            padding-bottom: 9px;
+          }
         }
       }
     }
