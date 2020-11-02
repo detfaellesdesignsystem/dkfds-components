@@ -1,76 +1,58 @@
-const del = require("del");
-const spawn = require("cross-spawn");
-const gulp = require("gulp");
-const dutil = require("./doc-util");
+var gulp = require('gulp');
+var dutil = require('./doc-util');
+var appRoot = require('app-root-path');
+var zipFolder = require('zip-folder');
+var runSequence = require('gulp4-run-sequence');
+var del = require('del');
+var task = 'release';
 
-const task = "release";
+gulp.task('make-tmp-directory', done => {
 
-gulp.task("make-tmp-directory", () => {
-  dutil.logMessage(
-    "make-tmp-directory",
-    "Creating temporary release directory."
-  );
+  dutil.logMessage('make-tmp-directory', 'Creating temporary release directory.');
 
-  return gulp.src("dist/**/*").pipe(gulp.dest(dutil.dirName));
+  return gulp.src('dist/**/*')
+    .pipe(gulp.dest(dutil.dirName));
+
 });
 
-gulp.task("clean-tmp-directory", () => {
-  dutil.logMessage(
-    "clean-tmp-directory",
-    "Deleting temporary release directory."
-  );
+gulp.task('clean-tmp-directory', done => {
+
+  dutil.logMessage('clean-tmp-directory', 'Deleting temporary release directory.');
+
   return del(dutil.dirName);
 });
 
-gulp.task("zip-archives", done => {
-  const zip = spawn("zip", [
-    "--log-info",
-    "-r",
-    `./dist/${dutil.dirName}.zip`,
-    dutil.dirName,
-    '-x "*.DS_Store"'
-  ]);
+/*
+Gulp.task for zipping the compiled files to the dist folder, to make it easier to distribute the compiled code
+The function uses two simple node packages:
+- zip-folder     (https://github.com/sole/node-zip-folder)
+- app-root-path  (https://github.com/inxilpro/node-app-root-path)
+The zip-folder package allows for zipping a specific folder to a specific path.
+The app-root-path package automatically finds the root path of the project, which is necassery with the zip-folder package.
+*/
+gulp.task('zip-archives', done => {
 
-  dutil.logMessage(
-    "zip-archives",
-    `Creating a zip archive in dist/${dutil.dirName}.zip`
-  );
+  dutil.logMessage('zip-archives', 'Creating a zip archive in dist/' + dutil.dirName + '.zip');
 
-  zip.stdout.on("data", data => {
-    if (/[\w\d]+/.test(data)) {
-      dutil.logData("zip-archives", data);
+  zipFolder(appRoot + '/' + dutil.dirName, appRoot + '/dist/'+ dutil.dirName + '.zip', function(err) {
+    if(err) {
+      dutil.logMessage("Something went wrong while zipping", err);
+    } else {
+      dutil.logMessage('zip-archives', dutil.dirName + "succesfully zipped to dist/" + dutil.dirName + ".zip");
     }
-  });
 
-  zip.stderr.on("data", data => {
-    dutil.logError("zip-archives", data);
-  });
-
-  zip.on("error", error => {
-    dutil.logError("zip-archives", "Failed to create a zip archive");
-    done(error);
-  });
-
-  zip.on("close", code => {
-    if (code === 0) {
-      done();
-    }
+    done();
   });
 });
 
-gulp.task(
-  task,
-  gulp.series(
-    done => {
-      dutil.logMessage(
-        task,
-        `Creating a zip archive at dist/${dutil.dirName}.zip`
-      );
-      done();
-    },
-    "build",
-    "make-tmp-directory",
-    "zip-archives",
-    "clean-tmp-directory"
-  )
-);
+gulp.task(task, done => {
+
+  dutil.logMessage(task, 'Creating a zip archive at dist/' + dutil.dirName + '.zip');
+
+  runSequence(
+    'make-tmp-directory',
+    'zip-archives',
+    'clean-tmp-directory',
+    done
+  );
+});
