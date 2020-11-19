@@ -8371,6 +8371,11 @@ textarea.form-input{
   color:#999999;
   cursor:not-allowed;
 }
+@-moz-document url-prefix(){
+  .form-select option{
+    font-family:Helvetica, Arial, sans-serif;
+  }
+}
 
 table .form-select{
   margin-top:0;
