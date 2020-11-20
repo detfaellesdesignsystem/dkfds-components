@@ -2,7 +2,7 @@
 .tag{
   appearance: none;
   display: inline-block;
-  width: 100%; 
+  width: auto;
   //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
   padding-left: map-get($spacers, 3);
@@ -14,7 +14,7 @@
   font-size: $base-font-size;
   font-weight: $font-weight-medium;
   //min-height: 24px;
-  
+
   color: $tag-color;
   background-color: $tag-bg;
   @include font-smoothing;
@@ -30,9 +30,6 @@
     padding-left:map-get($spacers, 3);
   }
 
-  @include media-breakpoint-up(sm) {
-    width: auto;
-  }
   & + .tag {
     margin-bottom: map-get($spacers, 3);
   }

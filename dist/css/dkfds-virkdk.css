@@ -7917,7 +7917,7 @@ a.button{
      -moz-appearance:none;
           appearance:none;
   display:inline-block;
-  width:100%;
+  width:auto;
   padding:0;
   padding-left:8px;
   padding-right:8px;
@@ -7940,11 +7940,6 @@ a.button{
 .tag.tag-icon{
   padding:0;
   padding-left:8px;
-}
-@media (min-width: 576px){
-  .tag{
-    width:auto;
-  }
 }
 .tag + .tag{
   margin-bottom:8px;
