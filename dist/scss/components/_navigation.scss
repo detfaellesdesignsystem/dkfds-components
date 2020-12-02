@@ -376,7 +376,7 @@
 
       .active > a{
         font-weight: $font-weight-semibold;
-        color: $color-primary;
+        color: $color-black;
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           color: #fff;
         }

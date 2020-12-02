@@ -10545,7 +10545,7 @@ body.modal-open{
 }
 .nav-primary .overflow-menu .overflow-menu-inner .active > a{
   font-weight:600;
-  color:#44831E;
+  color:#1a1a1a;
 }
 @media (min-width: 992px){
   .nav-primary .overflow-menu .overflow-menu-inner .active > a{
