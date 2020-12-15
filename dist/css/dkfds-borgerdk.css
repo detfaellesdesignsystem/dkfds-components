@@ -9637,6 +9637,354 @@ hr{
   margin-bottom:0;
 }
 
+.date-picker{
+  max-width:25rem;
+}
+
+.date-picker__wrapper{
+  display:block;
+  position:relative;
+}
+.date-picker__wrapper:focus{
+  outline:0;
+}
+
+.date-picker--active .date-picker__calendar, .date-picker--initialized .date-picker__calendar{
+  z-index:400;
+}
+
+.date-picker__button{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  background-image:url("../img/svg-icons/calendar.svg");
+  background-repeat:no-repeat;
+  align-self:stretch;
+  background-color:transparent;
+  background-position:center;
+  margin-top:0.5em;
+  width:3em;
+}
+.date-picker__button:hover, .date-picker__button:focus{
+  background-color:transparent;
+  color:inherit;
+}
+
+.date-picker--initialized .date-picker__wrapper{
+  display:flex;
+}
+
+.date-picker__calendar{
+  border:1px solid #747474;
+  background-color:#F5F5F5;
+  left:0;
+  position:absolute;
+  width:100%;
+  z-index:100;
+  margin-top:4px;
+}
+
+.date-picker__calendar__table{
+  border-spacing:0;
+  border-collapse:collapse;
+  table-layout:fixed;
+  text-align:center;
+  width:100%;
+}
+.date-picker__calendar__table th{
+  font-weight:normal;
+}
+.date-picker__calendar__table td{
+  padding:0;
+}
+
+.date-picker__calendar__row{
+  display:flex;
+  text-align:center;
+  width:100%;
+}
+
+.date-picker__calendar__cell{
+  background-color:#F5F5F5;
+  flex:1;
+}
+
+.date-picker__calendar__cell--center-items{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.date-picker__calendar__previous-year,
+.date-picker__calendar__previous-month,
+.date-picker__calendar__next-year,
+.date-picker__calendar__next-month{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  background-position:center;
+  height:30px;
+  padding:20px 10px;
+}
+.date-picker__calendar__previous-year:hover, .date-picker__calendar__previous-year:focus,
+.date-picker__calendar__previous-month:hover,
+.date-picker__calendar__previous-month:focus,
+.date-picker__calendar__next-year:hover,
+.date-picker__calendar__next-year:focus,
+.date-picker__calendar__next-month:hover,
+.date-picker__calendar__next-month:focus{
+  background-color:transparent;
+  color:inherit;
+}
+
+.date-picker__calendar__previous-year:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-double-left.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__previous-month:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-left.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__next-year:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-double-right.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__next-month:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-right.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__day-of-week{
+  padding:6px 0px;
+}
+
+.date-picker__calendar__date{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  text-align:center;
+  width:100%;
+  padding:10px 0px;
+}
+.date-picker__calendar__date:hover, .date-picker__calendar__date:focus{
+  background-color:transparent;
+  color:inherit;
+}
+.date-picker__calendar__date[disabled]{
+  opacity:0.3;
+}
+.date-picker__calendar__date--focused{
+  outline:4px solid #747474;
+  position:relative;
+  z-index:100;
+}
+.date-picker__calendar__date--next-month:not([disabled]), .date-picker__calendar__date--previous-month:not([disabled]){
+  color:#F5F5F5;
+}
+.date-picker__calendar__date--selected, .date-picker__calendar__date--range-date{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__date--selected:not([disabled]), .date-picker__calendar__date--range-date:not([disabled]){
+  background-color:#1a1a1a;
+  color:#ffffff;
+}
+.date-picker__calendar__date--range-date-start{
+  border-top-left-radius:10%;
+  border-bottom-left-radius:10%;
+}
+.date-picker__calendar__date--range-date-end{
+  border-top-right-radius:10%;
+  border-bottom-right-radius:10%;
+}
+.date-picker__calendar__date--within-range{
+  background-color:#44831E;
+}
+.date-picker__calendar__date--within-range:not([disabled]){
+  background-color:#44831E;
+}
+.date-picker__calendar__date--within-range:not([disabled]):hover{
+  background-color:#44831E;
+}
+.date-picker__calendar__date--within-range:not([disabled]):focus{
+  background-color:#44831E;
+}
+.date-picker__calendar__date--within-range:not([disabled]):active{
+  background-color:#44831E;
+}
+
+.date-picker__calendar__month-label{
+  display:flex;
+  flex:4;
+  text-align:center;
+}
+
+.date-picker__calendar__year-selection,
+.date-picker__calendar__month-selection{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  display:inline-block;
+  height:100%;
+  padding:8px 4px;
+  width:auto;
+}
+.date-picker__calendar__year-selection:hover, .date-picker__calendar__year-selection:focus,
+.date-picker__calendar__month-selection:hover,
+.date-picker__calendar__month-selection:focus{
+  background-color:transparent;
+  color:inherit;
+}
+
+.date-picker__calendar__month-picker{
+  padding:20px 5px;
+}
+
+.date-picker__calendar__month{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  padding:10px 0;
+}
+.date-picker__calendar__month:hover, .date-picker__calendar__month:focus{
+  background-color:transparent;
+  color:inherit;
+}
+.date-picker__calendar__month--focused{
+  outline:4px solid #747474;
+  position:relative;
+  z-index:100;
+}
+.date-picker__calendar__month--selected{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__month--selected:not([disabled]){
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__month--selected:not([disabled]):hover{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__month--selected:not([disabled]):focus{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__month--selected:not([disabled]):active{
+  background-color:#233614;
+}
+
+.date-picker__calendar__year-picker{
+  padding:20px 5px;
+}
+
+.date-picker__calendar__previous-year-chunk,
+.date-picker__calendar__next-year-chunk{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  background-position:center;
+  margin:auto;
+  padding:40px 0;
+}
+.date-picker__calendar__previous-year-chunk:hover, .date-picker__calendar__previous-year-chunk:focus,
+.date-picker__calendar__next-year-chunk:hover,
+.date-picker__calendar__next-year-chunk:focus{
+  background-color:transparent;
+  color:inherit;
+}
+
+.date-picker__calendar__previous-year-chunk:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-left.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__next-year-chunk:not([disabled]){
+  background-image:url("../img/svg-icons/chevron-right.svg");
+  background-repeat:no-repeat;
+}
+
+.date-picker__calendar__year{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  padding:10px 0;
+}
+.date-picker__calendar__year:hover, .date-picker__calendar__year:focus{
+  background-color:transparent;
+  color:inherit;
+}
+.date-picker__calendar__year--focused{
+  outline:4px solid #747474;
+  position:relative;
+  z-index:100;
+}
+.date-picker__calendar__year--selected{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__year--selected:not([disabled]){
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__year--selected:not([disabled]):hover{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__year--selected:not([disabled]):focus{
+  background-color:#44831E;
+  color:#999999;
+}
+.date-picker__calendar__year--selected:not([disabled]):active{
+  background-color:#233614;
+}
+
 footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6{
   margin:0;
 }

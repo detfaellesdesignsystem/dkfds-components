@@ -1,5 +1,6 @@
 // Mixins -------------- //
 @import 'core/mixins/breakpoints';
+@import 'core/mixins/add-background-svg';
 @import 'core/mixins/mixins';
 
 // Core -------------- //
@@ -42,6 +43,7 @@
 @import 'components/breadcrumbs';
 @import 'components/cookie-message';
 @import 'components/details';
+@import 'components/date-picker';
 @import 'components/footer';
 @import 'components/header';
 @import 'components/modal';
