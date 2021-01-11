@@ -3,7 +3,6 @@
   appearance: none;
   display: inline-block;
   width: auto;
-  //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
   padding-left: map-get($spacers, 3);
   padding-right:map-get($spacers, 3);
@@ -13,8 +12,6 @@
   border: none;
   font-size: $base-font-size;
   font-weight: $font-weight-medium;
-  //min-height: 24px;
-
   color: $tag-color;
   background-color: $tag-bg;
   @include font-smoothing;
@@ -23,7 +20,6 @@
   text-decoration: none;
   cursor: pointer;
   transition: all .2s ease-in-out;
-  //padding for tags with icons
 
   &.tag-icon {
     padding:0;
@@ -49,7 +45,6 @@
     background-color: $tag-focus-bg;
   }
 
-  //focus border
   &.focus,
   &:focus {
     border-color: $color-focus;
@@ -63,7 +58,7 @@
     fill: white;
   }
 }
-// Button row
+
 .button-row {
   display: flex;
   margin: 2rem 0 1rem;

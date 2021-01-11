@@ -11,6 +11,9 @@ class Tabnav {
   constructor (tabnav) {
     this.tabnav = tabnav;
     this.tabs = this.tabnav.querySelectorAll('button.tabnav-item');
+    if(this.tabs.length === 0){
+      throw new Error(`Tabnav HTML seems to be missing tabnav-item. Add tabnav items to ensure each panel has a button in the tabnavs navigation.`);
+    }
 
     // if no hash is set on load, set active tab
     if (!setActiveHashTab()) {
@@ -224,6 +227,9 @@ function activateTab (tab, setFocus) {
 
   let tabpanelID = tab.getAttribute('aria-controls');
   let tabpanel = document.getElementById(tabpanelID);
+  if(tabpanel === null){
+    throw new Error(`Could not find accordion panel.`);
+  }
 
   tab.setAttribute('aria-selected', 'true');
   tabpanel.setAttribute('aria-hidden', 'false');
@@ -257,7 +263,12 @@ function deactivateAllTabsExcept (activeTab) {
 
     tab.setAttribute('tabindex', '-1');
     tab.setAttribute('aria-selected', 'false');
-    document.getElementById(tab.getAttribute('aria-controls')).setAttribute('aria-hidden', 'true');
+    let tabpanelID = tab.getAttribute('aria-controls');
+    let tabpanel = document.getElementById(tabpanelID)
+    if(tabpanel === null){
+      throw new Error(`Could not find accordion panel.`);
+    }
+    tabpanel.setAttribute('aria-hidden', 'true');
   }
 }
 

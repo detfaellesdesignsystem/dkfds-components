@@ -11,7 +11,7 @@ a.button{
   padding: 0px calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
   border-radius: $button-border-radius;
   border: $button-border;
-  font-size: $base-font-size;
+  font-size: 1.8rem;
   font-weight: 500;
   min-height: 40px;
   color: $button-primary-color;

@@ -8,26 +8,33 @@ const MULTISELECTABLE_CLASS = 'accordion-multiselectable';
 
 class Accordion{
   constructor (accordion){
+    if(!accordion){
+      throw new Error(`Missing accordion group element`);
+    }
     this.accordion = accordion;
     this.buttons = accordion.querySelectorAll(BUTTON);
-    this.eventClose = document.createEvent('Event');
-    this.eventClose.initEvent('fds.accordion.close', true, true);
-    this.eventOpen = document.createEvent('Event');
-    this.eventOpen.initEvent('fds.accordion.open', true, true);
-    this.init();
+    if(this.buttons.length == 0){
+      throw new Error(`Missing accordion buttons`);
+    } else{
+      this.eventClose = document.createEvent('Event');
+      this.eventClose.initEvent('fds.accordion.close', true, true);
+      this.eventOpen = document.createEvent('Event');
+      this.eventOpen.initEvent('fds.accordion.open', true, true);
+      this.init();
+    }
   }
 
   init (){
     for (var i = 0; i < this.buttons.length; i++){
       let currentButton = this.buttons[i];
-
+      
+      // Verify state on button and state on panel
       let expanded = currentButton.getAttribute(EXPANDED) === 'true';
       toggleButton(currentButton, expanded);
 
       const that = this;
       currentButton.removeEventListener('click', that.eventOnClick, false);
       currentButton.addEventListener('click', that.eventOnClick, false);
-
     }
   }
 
@@ -75,7 +82,6 @@ var toggleButton  = function (button, expanded) {
     button.dispatchEvent(eventClose);
   }
 
-  // XXX multiselectable is opt-in, to preserve legacy behavior
   let multiselectable = false;
   if(accordion !== null && (accordion.getAttribute(MULTISELECTABLE) === 'true' || accordion.classList.contains(MULTISELECTABLE_CLASS))){
     multiselectable = true;

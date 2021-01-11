@@ -30,6 +30,13 @@ ol {
   }
 }
 
+.article{
+  ul > li, ol > li{
+    font-size:$article-font-size;
+    line-height: $article-line-height;
+    letter-spacing: $article-letter-spacing;
+  }
+}
 
 
 // Unstyled lists

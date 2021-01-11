@@ -73,40 +73,117 @@ a {
 
 //font-family, font-size and line-height for h1-h6, bodytext and smalltext
 @mixin h1{
-  font-size: $h1-font-size;
-  line-height: $h1-line-height;
+  font-size: 2.5rem;
+  line-height: 3.2rem;
   font-weight: $font-weight-bold;
   color: $color-black;
   text-transform: none;
   word-break: break-word;
+  letter-spacing: -0.3%;
+
+  @include media-breakpoint-up(md) {
+    font-size: 3.1rem;
+    line-height: 4.0rem;
+    letter-spacing: -0.4px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h1-font-size;
+    line-height: $h1-line-height;
+    letter-spacing: -0.5px;
+  }
 }
 @mixin h2 {
-  font-size: $h2-font-size;
-  line-height: $h2-line-height;
+  font-size: 2.2rem;
+  line-height: 3.0rem;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
+  letter-spacing: -0.2px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+    letter-spacing: -0.3px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+    letter-spacing: -0.4px;
+  }
 }
 @mixin h3 {
-  font-size: $h3-font-size;
-  line-height: $h3-line-height;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
+  letter-spacing: -0.1px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 2.0rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.2px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h3-font-size;
+    line-height: $h3-line-height;
+    letter-spacing: -0.3px;
+  }
 }
 @mixin h4{
-  font-size: $h4-font-size;
-  line-height: $h4-line-height;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.15px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+    letter-spacing: -0.2px;
+  }
 }
 @mixin h5 {
-  font-size: $h5-font-size;
-  line-height: $h5-line-height;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
+  letter-spacing: -0.1px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.4rem;
+    line-height: 2.0rem;
+    letter-spacing: normal;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h5-font-size;
+    line-height: $h5-line-height;
+  }
+}
+
+@mixin h6 {
+  font-size: 1.3rem;
+  line-height: 2.0rem;
+  font-weight: $font-weight-medium;
+  color: $color-black;
+  letter-spacing: -0.25px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.3rem;
+    line-height: 2.0rem;
+    letter-spacing: -0.25px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: $h6-font-size;
+    line-height: $h6-line-height;
+    letter-spacing: -0.25px;
+  }
 }
 @mixin body-copy-text {
   font-size: $body-text;
@@ -114,20 +191,30 @@ a {
   font-weight: $font-weight-normal;
   color: $color-text;
   text-transform: none;
+  letter-spacing: $body-text-letter-spacing;
 }
+@mixin caption {
+  font-size: $caption-font-size;
+  line-height: $caption-line-height;
+  color: $color-gray-001;
+  letter-spacing: $caption-letter-spacing;
+}
+@mixin subheading {
+  font-size: $subheading-font-size;
+  line-height: $subheading-line-height;
+  color: $color-gray-003;
+  letter-spacing: $subheading-letter-spacing;
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 @mixin form-label-text {
   font-size: $form-label;
   line-height: $form-label-line-height;
   font-weight: $font-weight-semibold;
   color: $color-black;
   text-transform: none;
-}
-@mixin h6 {
-  font-size: $h6-font-size;
-  line-height: $h6-line-height;
-  font-weight: $font-weight-medium;
-  color: $color-black;
-  text-transform: uppercase;
 }
 @mixin small-text {
   font-size: $small-text;
@@ -155,22 +242,13 @@ a {
 
 h1, .h1 {
   @include h1;
-  @include media-breakpoint-down(sm) {
-    font-size: 3.2rem;
-  }
 }
 h2, .h2{
   @include h2;
-  @include media-breakpoint-down(sm) {
-    font-size: 2.8rem;
-  }
 }
 
 h3, .h3 {
   @include h3;
-  @include media-breakpoint-down(sm) {
-    font-size: 2.4rem;
-  }
 }
 
 h4, .h4{
@@ -188,6 +266,12 @@ h6, .h6{
 p, .body-text, .body-copy-text{
   @include body-copy-text;
 }
+figcaption, .figcaption{
+  @include caption;
+}
+.subheading{
+  @include subheading;
+}
 
 .font-lead {
   font-size: $lead-font-size;
@@ -195,6 +279,15 @@ p, .body-text, .body-copy-text{
   line-height: $lead-line-height;
   max-width: $text-max-width;
   color: $color-text;
+  letter-spacing: $lead-letter-spacing;
+}
+.article{
+  font-size: $article-font-size;
+  font-weight: $font-weight-normal;
+  line-height: $article-line-height;
+  max-width: $text-max-width;
+  color: $color-text;
+  letter-spacing: $article-letter-spacing;
 }
 
 .weight-normal {
@@ -217,6 +310,7 @@ small, .small-text {
   font-size: $small-text; //1.3rem
   line-height: $small-text-line-height; //1.6rem
   font-weight: $font-weight-normal;
+  letter-spacing: $small-text-letter-spacing;
 }
 
 .form-label {
@@ -425,18 +519,20 @@ a:not(.button){
 
 .displayheading {
   &-1 {
-    font-weight: 700;
+    font-weight: 500;
     font-size: $display-1-heading-size;
     line-height: $display-1-heading-line-height;
     margin-bottom: 0;
     color: $color-black;
+    letter-spacing: -0.2px;
   }
   &-2 {
-    font-weight: 700;
+    font-weight: 500;
     font-size: $display-2-heading-size;
     line-height: $display-2-heading-line-height;
     margin-bottom: 0;
     color: $color-black;
+    letter-spacing: -0.2px;
   }
 }
 
