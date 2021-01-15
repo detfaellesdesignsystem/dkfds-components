@@ -266,7 +266,7 @@ function deactivateAllTabsExcept (activeTab) {
     let tabpanelID = tab.getAttribute('aria-controls');
     let tabpanel = document.getElementById(tabpanelID)
     if(tabpanel === null){
-      throw new Error(`Could not find accordion panel.`);
+      throw new Error(`Could not find tabpanel.`);
     }
     tabpanel.setAttribute('aria-hidden', 'true');
   }

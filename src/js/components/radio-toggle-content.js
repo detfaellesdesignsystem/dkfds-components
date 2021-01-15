@@ -19,6 +19,9 @@ class RadioToggleGroup{
     init (el){
         this.radioGroup = el;
         this.radioEls = this.radioGroup.querySelectorAll('input[type="radio"]');
+        if(this.radioEls.length === 0){
+            throw new Error('No radiobuttons found in radiobutton group.');
+        }
         var that = this;
 
         for(let i = 0; i < this.radioEls.length; i++){

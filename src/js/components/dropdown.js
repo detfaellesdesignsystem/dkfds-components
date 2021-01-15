@@ -90,15 +90,20 @@ class Dropdown {
 
   init (el){
     this.triggerEl = el;
-    if(this.triggerEl !== null && this.triggerEl !== undefined){
-      let targetAttr = this.triggerEl.getAttribute(TARGET);
-      if(targetAttr !== null && targetAttr !== undefined){
-        let targetEl = document.getElementById(targetAttr.replace('#', ''));
-        if(targetEl !== null && targetEl !== undefined){
-          this.targetEl = targetEl;
-        }
-      }
+    
+    if(this.triggerEl === null ||this.triggerEl === undefined){
+      throw new Error(`Could not find button for Details component.`);
     }
+    let targetAttr = this.triggerEl.getAttribute(TARGET);
+    if(targetAttr === null || targetAttr === undefined){
+      throw new Error('Attribute could not be found on details component: '+TARGET);
+    }
+    let targetEl = document.getElementById(targetAttr.replace('#', ''));
+    if(targetEl === null || targetEl === undefined){
+      throw new Error('Panel for Details component could not be found.');
+    }
+    
+    this.targetEl = targetEl;  
   }
 }
 
