@@ -1,6 +1,9 @@
 class Tooltip{
   constructor(element){
     this.element = element;
+    if(this.element.getAttribute('data-tooltip') === null){
+      throw new Error(`Tooltip text is missing. Add attribute data-tooltip and the content of the tip as value.`);
+    }
     this.setEvents();
   }
 
