@@ -9793,12 +9793,18 @@ hr{
 
 .date-picker__calendar{
   border:1px solid #747474;
-  background-color:#F5F5F5;
+  background-color:#FFFFFF;
+  box-shadow:0 5px 15px -5px rgba(0, 0, 0, 0.5);
   left:0;
   position:absolute;
   width:100%;
   z-index:100;
   margin-top:4px;
+}
+@media (min-width: 768px){
+  .date-picker__calendar{
+    width:344px;
+  }
 }
 
 .date-picker__calendar__table{
@@ -9808,17 +9814,31 @@ hr{
   text-align:center;
   width:100%;
 }
+.date-picker__calendar__table thead{
+  border-bottom:1px solid #BFBFBF;
+}
 .date-picker__calendar__table th{
   font-weight:normal;
 }
+.date-picker__calendar__table tr{
+  border-bottom:1px solid #BFBFBF;
+}
 .date-picker__calendar__table td{
   padding:0;
+}
+.date-picker__calendar__table td .date-picker__calendar__date{
+  border-right:1px solid #BFBFBF;
+}
+.date-picker__calendar__table td:last-of-type .date-picker__calendar__date{
+  border-right:none;
 }
 
 .date-picker__calendar__row{
   display:flex;
   text-align:center;
   width:100%;
+  background-color:#F5F5F5;
+  border-bottom:1px solid #BFBFBF;
 }
 
 .date-picker__calendar__cell{
@@ -9894,31 +9914,42 @@ hr{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
-  text-align:center;
+  text-align:right;
   width:100%;
-  padding:10px 0px;
+  padding:10px 8px 10px 0px;
+  border-right:1px solid #BFBFBF;
 }
 .date-picker__calendar__date:hover, .date-picker__calendar__date:focus{
   background-color:transparent;
   color:inherit;
+}
+.date-picker__calendar__date:focus{
+  outline-offset:0px;
+}
+.date-picker__calendar__date:hover{
+  background-color:#F5F5F5;
 }
 .date-picker__calendar__date[disabled]{
   opacity:0.3;
 }
 .date-picker__calendar__date--focused{
   outline:4px solid #747474;
+  outline-offset:0px;
   position:relative;
   z-index:100;
 }
 .date-picker__calendar__date--next-month:not([disabled]), .date-picker__calendar__date--previous-month:not([disabled]){
   color:#F5F5F5;
+  text-indent:-99999px;
+  background-color:#F5F5F5;
 }
 .date-picker__calendar__date--selected, .date-picker__calendar__date--range-date{
-  background-color:#44831E;
-  color:#999999;
+  background-color:#454545;
+  color:#ffffff;
+  font-weight:600;
 }
 .date-picker__calendar__date--selected:not([disabled]), .date-picker__calendar__date--range-date:not([disabled]){
-  background-color:#1a1a1a;
+  background-color:#454545;
   color:#ffffff;
 }
 .date-picker__calendar__date--range-date-start{
@@ -9936,7 +9967,7 @@ hr{
   background-color:#44831E;
 }
 .date-picker__calendar__date--within-range:not([disabled]):hover{
-  background-color:#44831E;
+  background-color:#747474;
 }
 .date-picker__calendar__date--within-range:not([disabled]):focus{
   background-color:#44831E;
@@ -10000,16 +10031,17 @@ hr{
   z-index:100;
 }
 .date-picker__calendar__month--selected{
-  background-color:#44831E;
-  color:#999999;
+  background-color:#454545;
+  color:#ffffff;
+  font-weight:600;
 }
 .date-picker__calendar__month--selected:not([disabled]){
-  background-color:#44831E;
-  color:#999999;
+  background-color:#454545;
+  color:#ffffff;
 }
 .date-picker__calendar__month--selected:not([disabled]):hover{
-  background-color:#44831E;
-  color:#999999;
+  background-color:#747474;
+  color:#ffffff;
 }
 .date-picker__calendar__month--selected:not([disabled]):focus{
   background-color:#44831E;
@@ -10077,16 +10109,17 @@ hr{
   z-index:100;
 }
 .date-picker__calendar__year--selected{
-  background-color:#44831E;
-  color:#999999;
+  background-color:#454545;
+  color:#ffffff;
+  font-weight:600;
 }
 .date-picker__calendar__year--selected:not([disabled]){
-  background-color:#44831E;
-  color:#999999;
+  background-color:#454545;
+  color:#ffffff;
 }
 .date-picker__calendar__year--selected:not([disabled]):hover{
-  background-color:#44831E;
-  color:#999999;
+  background-color:#747474;
+  color:#ffffff;
 }
 .date-picker__calendar__year--selected:not([disabled]):focus{
   background-color:#44831E;

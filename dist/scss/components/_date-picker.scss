@@ -41,10 +41,14 @@
 
 .date-picker__calendar {
   border: $outer-border;
-  background-color: $background-alternative;
+  background-color: $background-normal;
+  box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
   position: absolute;
   width: 100%;
+  @include media-breakpoint-up(md) {
+    width: 344px;
+  }
   z-index: 100;
   margin-top: 4px;
 }
@@ -58,12 +62,25 @@
   text-align: center;
   width: 100%;
 
+  thead{
+    border-bottom: $inner-border;
+  }
+
   th {
     font-weight: normal;
+  }
+  tr{
+    border-bottom: $inner-border;
   }
 
   td {
     padding: 0;
+    .date-picker__calendar__date {
+      border-right: $inner-border;
+    }
+    &:last-of-type .date-picker__calendar__date{
+      border-right: none;
+    }
   }
 }
 
@@ -73,6 +90,8 @@
   display: flex;
   text-align: center;
   width: 100%;
+  background-color: $color-gray-pale;
+  border-bottom: $inner-border;
 }
 
 .date-picker__calendar__cell {
@@ -120,9 +139,18 @@
 
 .date-picker__calendar__date {
   @include button-unstyled;
-  text-align: center;
+  text-align: right;
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 8px 10px 0px;
+  border-right: $inner-border;
+
+  &:focus{
+    outline-offset: 0px;
+  }
+
+  &:hover {
+    background-color: $color-gray-pale;
+  }
 
   &[disabled]{
   opacity: 0.3;
@@ -130,22 +158,26 @@
 
   &--focused {
     outline: $focus-outline;
+    outline-offset: 0px;
     position: relative;
     z-index: 100;
   }
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
-    color: $color-gray-006;
+    color: $background-alternative;
+    text-indent: -99999px;
+    background-color: $background-alternative;
   }
 
   &--selected,
   &--range-date {
-    background-color: $color-primary;
-    color: $color-gray-medium-light;
+    background-color: $color-gray-dark;
+    color: $color-white;
+    font-weight: 600;
 
     &:not([disabled]) {
-      background-color: $color-black;
+      background-color: $color-gray-dark;
       color: $color-white;
     }
   }
@@ -168,7 +200,7 @@
       background-color: $color-primary;
 
       &:hover {
-        background-color: $color-primary;
+        background-color: $color-gray-medium-dark;
       }
 
       &:focus {
@@ -215,16 +247,17 @@
   }
 
   &--selected {
-    background-color: $color-primary;
-    color: $color-gray-medium-light;
+    background-color: $color-gray-dark;
+    color: $color-white;
+    font-weight: 600;
 
     &:not([disabled]) {
-      background-color: $color-primary;
-      color: $color-gray-medium-light;
+      background-color: $color-gray-dark;
+      color: $color-white;
 
       &:hover {
-        background-color: $color-primary;
-        color: $color-gray-medium-light;
+        background-color: $color-gray-medium-dark;
+        color: $color-white;
       }
 
       &:focus {
@@ -272,16 +305,17 @@
   }
 
   &--selected {
-    background-color: $color-primary;
-    color: $color-gray-medium-light;
+    background-color: $color-gray-dark;
+    color: $color-white;
+    font-weight: 600;
 
     &:not([disabled]) {
-      background-color: $color-primary;
-      color: $color-gray-medium-light;
+      background-color: $color-gray-dark;
+      color: $color-white;
 
       &:hover {
-        background-color: $color-primary;
-        color: $color-gray-medium-light;
+        background-color: $color-gray-medium-dark;
+        color: $color-white;
       }
 
       &:focus {
