@@ -492,9 +492,8 @@ const parseDateString = (
 
   if (dateString) {
     let monthStr, dayStr, yearStr;
-
     if (dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT) {
-      [monthStr, dayStr, yearStr] = dateString.split("/");
+      [dayStr, monthStr, yearStr] = dateString.split("/");
     } else {
       [yearStr, monthStr, dayStr] = dateString.split("-");
     }
@@ -563,7 +562,7 @@ const formatDate = (date, dateFormat = INTERNAL_DATE_FORMAT) => {
   const year = date.getFullYear();
 
   if (dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT) {
-    return [padZeros(month, 2), padZeros(day, 2), padZeros(year, 4)].join("/");
+    return [padZeros(day, 2), padZeros(month, 2), padZeros(year, 4)].join("/");
   }
 
   return [padZeros(year, 4), padZeros(month, 2), padZeros(day, 2)].join("-");
@@ -731,7 +730,7 @@ const isDateInputInvalid = (el) => {
     isInvalid = true;
 
     const dateStringParts = dateString.split("/");
-    const [month, day, year] = dateStringParts.map((str) => {
+    const [day, month, year] = dateStringParts.map((str) => {
       let value;
       const parsed = parseInt(str, 10);
       if (!Number.isNaN(parsed)) value = parsed;
@@ -1217,9 +1216,9 @@ const displayNextYear = (_buttonEl) => {
 const hideCalendar = (el) => {
   const { datePickerEl, calendarEl, statusEl } = getDatePickerContext(el);
 
-  //datePickerEl.classList.remove(DATE_PICKER_ACTIVE_CLASS);
-  //calendarEl.hidden = true;
-  //statusEl.textContent = "";
+  datePickerEl.classList.remove(DATE_PICKER_ACTIVE_CLASS);
+  calendarEl.hidden = true;
+  statusEl.textContent = "";
 };
 
 /**
@@ -1233,7 +1232,6 @@ const selectDate = (calendarDateEl) => {
   const { datePickerEl, externalInputEl } = getDatePickerContext(
     calendarDateEl
   );
-
   setCalendarValue(calendarDateEl, calendarDateEl.dataset.value);
   hideCalendar(datePickerEl);
 
