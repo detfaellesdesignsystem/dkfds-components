@@ -2308,7 +2308,14 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   margin-top:0;
 }
 
+button.function-link{
+  background:none;
+  padding:0px;
+  text-decoration:underline;
+}
+
 .function-link{
+  border:none;
   font-size:1.6rem;
   line-height:2.6rem;
   font-weight:400;
@@ -9146,7 +9153,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 .table.table--compact tbody tr:last-child th, .table.table--compact tbody tr:last-child td{
   padding-bottom:calc(8px - 1px);
 }
-.table.table--extracompact th, .table.table--extracompact td{
+.table.table--extracompact th, .table.table--extracompact td, .table.table--extracompact tr:last-child td, .table.table--extracompact tr:last-child th{
   padding-top:0;
   padding-bottom:0;
 }

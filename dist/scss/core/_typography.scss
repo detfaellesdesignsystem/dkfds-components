@@ -389,7 +389,13 @@ h5, .h5, h6, .h6{
 }
 
 //a function link, does not look like a link
+button.function-link{
+  background: none;
+  padding: 0px;
+  text-decoration: underline
+}
 .function-link{
+  border: none;
   @include body-copy-text;
   display: inline-block;
   &:hover, &:visited, &:focus{

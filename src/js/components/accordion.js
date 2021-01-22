@@ -5,6 +5,9 @@ const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const MULTISELECTABLE = 'aria-multiselectable';
 const MULTISELECTABLE_CLASS = 'accordion-multiselectable';
+const BULK_FUNCTION_OPEN_TEXT = "Åbn alle";
+const BULK_FUNCTION_CLOSE_TEXT = "Luk alle";
+const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
 
 class Accordion{
   constructor (accordion){
@@ -12,6 +15,10 @@ class Accordion{
       throw new Error(`Missing accordion group element`);
     }
     this.accordion = accordion;
+    let prevSibling = accordion.previousElementSibling ;
+    if(prevSibling !== null && prevSibling.classList.contains('accordion-bulk-button')){
+      this.bulkFunctionButton = prevSibling;
+    }
     this.buttons = accordion.querySelectorAll(BUTTON);
     if(this.buttons.length == 0){
       throw new Error(`Missing accordion buttons`);
@@ -35,10 +42,41 @@ class Accordion{
       const that = this;
       currentButton.removeEventListener('click', that.eventOnClick, false);
       currentButton.addEventListener('click', that.eventOnClick, false);
+      this.enableBulkFunction();
     }
   }
 
+  enableBulkFunction(){
+    if(this.bulkFunctionButton !== undefined){
+      this.bulkFunctionButton.addEventListener('click', function(){
+        let accordion = this.nextElementSibling;
+        let buttons = accordion.querySelectorAll(BUTTON);
+        if(!accordion.classList.contains('accordion')){  
+          throw new Error(`Could not find accordion.`);
+        }
+        if(buttons.length == 0){
+          throw new Error(`Missing accordion buttons`);
+        }
+         
+        let expand = true;
+        if(this.getAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE) === "false") {
+          expand = false;
+        }
+        for (var i = 0; i < buttons.length; i++){
+          toggleButton(buttons[i], expand);
+        }
+        
+        this.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, !expand);
+        if(!expand === true){
+          this.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_OPEN_TEXT;
+        } else{
+          this.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_CLOSE_TEXT;
+        }
+      });
+    }
+  }
 
+  
   eventOnClick (event){
     event.stopPropagation();
     let button = this;
@@ -85,6 +123,27 @@ var toggleButton  = function (button, expanded) {
   let multiselectable = false;
   if(accordion !== null && (accordion.getAttribute(MULTISELECTABLE) === 'true' || accordion.classList.contains(MULTISELECTABLE_CLASS))){
     multiselectable = true;
+    let bulkFunction = accordion.previousElementSibling;
+    if(bulkFunction !== null && bulkFunction.classList.contains('accordion-bulk-button')){
+      let status = bulkFunction.getAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE);
+      let buttons = accordion.querySelectorAll(BUTTON);
+      let buttonsOpen = accordion.querySelectorAll(BUTTON+'[aria-expanded="true"]');
+      let buttonsClosed = accordion.querySelectorAll(BUTTON+'[aria-expanded="false"]');
+      let newStatus = true;
+      if(buttons.length === buttonsOpen.length){
+        newStatus = false;
+      }
+      if(buttons.length === buttonsClosed.length){
+        newStatus = true;
+      }
+      bulkFunction.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, newStatus);
+      if(newStatus === true){
+        bulkFunction.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_OPEN_TEXT;
+      } else{
+        bulkFunction.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_CLOSE_TEXT;
+      }
+
+    }
   }
 
   if (expanded && !multiselectable) {

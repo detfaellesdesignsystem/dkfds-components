@@ -17,10 +17,11 @@
     }
 
     &.table--extracompact {
-      th,td {
+      th,td, tr:last-child td, tr:last-child th {
         padding-top: 0;
         padding-bottom: 0;
       }
+      
     }
 
     td, th {
