@@ -72,7 +72,7 @@ class Tooltip{
     }
 
     document.getElementsByTagName('body')[0].addEventListener('click', function (event) {
-      if (!event.target.classList.contains('js-tooltip')) {
+      if (!event.target.classList.contains('js-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content')) {
         that.closeAll();
       }
     });
