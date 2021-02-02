@@ -21,6 +21,7 @@ $v-padding: $spacing-md-small;
   width: 100%;
 }
 
+
 // scss-lint:disable PropertyCount
 @mixin accordion-button-styles {
   @include button-unstyled;
@@ -36,6 +37,7 @@ $v-padding: $spacing-md-small;
   line-height: $body-text-line-height;
   padding: $h-padding $v-padding $h-padding $spacing-xxx-large;
   width: 100%;
+  font-size: $body-text;
 
   &:hover {
     background-color: $color-gray-mediumpale;
@@ -123,6 +125,11 @@ $v-padding: $spacing-md-small;
   }
   > li {
     @include accordion-list-item-styles;
+    > h1, > h2, > h3, > h4, > h5, > h6{
+      margin-top: 0px;
+      margin-bottom: 0px;
+      letter-spacing: normal;
+    }
   }
 }
 

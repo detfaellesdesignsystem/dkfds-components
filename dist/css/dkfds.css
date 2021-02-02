@@ -9324,6 +9324,7 @@ hr{
   line-height:2.6rem;
   padding:1.6rem 1.6rem 1.6rem 5.6rem;
   width:100%;
+  font-size:1.6rem;
   position:relative;
   transition:none;
   border-radius:3px;
@@ -9441,6 +9442,17 @@ hr{
   list-style:none;
   margin-bottom:0.8rem;
   width:100%;
+}
+.accordion > li > h1, .tabnav > li > h1, .accordion > li > h2, .tabnav > li > h2, .accordion > li > h3, .tabnav > li > h3, .accordion > li > h4, .tabnav > li > h4, .accordion > li > h5, .tabnav > li > h5, .accordion > li > h6, .tabnav > li > h6,
+.accordion-bordered > li > h1,
+.accordion-bordered > li > h2,
+.accordion-bordered > li > h3,
+.accordion-bordered > li > h4,
+.accordion-bordered > li > h5,
+.accordion-bordered > li > h6{
+  margin-top:0px;
+  margin-bottom:0px;
+  letter-spacing:normal;
 }
 
 .accordion-bordered .accordion-content, .accordion-bordered .tabnav-panel{
