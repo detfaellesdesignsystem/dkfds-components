@@ -9783,6 +9783,11 @@ hr{
   z-index:400;
 }
 
+.date-picker__external-input{
+  max-width:none;
+  width:calc(100% - 16px - 16px);
+}
+
 .date-picker__button{
   background-color:transparent;
   border:0;
@@ -9800,6 +9805,7 @@ hr{
   background-position:center;
   margin-top:0.5em;
   width:3em;
+  display:block;
 }
 .date-picker__button:hover, .date-picker__button:focus{
   background-color:transparent;

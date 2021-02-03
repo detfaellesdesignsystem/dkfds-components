@@ -21,6 +21,10 @@
   }
 }
 
+.date-picker__external-input{
+  max-width: none;
+  width: calc(100% - 16px - 16px);
+}
 .date-picker__button {
   @include button-unstyled;
   @include add-background-svg("calendar");
@@ -29,6 +33,7 @@
   background-position: center;
   margin-top: 0.5em;
   width: 3em;
+  display: block;
 }
 
 .date-picker--initialized {
