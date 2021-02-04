@@ -149,7 +149,7 @@ module.exports = {
   },
 
   logMessage(name, message) {
-    log(colors.cyan(name), colors.green(message));
-    notify(`${this.dirName} gulp ${name}`, message, false);
+    //log(colors.cyan(name), colors.green(message));
+    //notify(`${this.dirName} gulp ${name}`, message, false);
   }
 };

@@ -106,6 +106,8 @@ var toggleButton  = function (button, expanded) {
   let accordion = null;
   if(button.parentNode.parentNode.classList.contains('accordion')){
     accordion = button.parentNode.parentNode;
+  } else if(button.parentNode.parentNode.parentNode.classList.contains('accordion')){
+    accordion = button.parentNode.parentNode.parentNode;
   }
 
   let eventClose = document.createEvent('Event');

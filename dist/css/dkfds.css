@@ -9453,6 +9453,7 @@ hr{
   margin-top:0px;
   margin-bottom:0px;
   letter-spacing:normal;
+  max-width:none;
 }
 
 .accordion-bordered .accordion-content, .accordion-bordered .tabnav-panel{
