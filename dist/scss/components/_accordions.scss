@@ -108,6 +108,23 @@ $v-padding: $spacing-md-small;
     }
   }
 }
+
+button.accordion-bulk-button{
+  @extend .function-link;
+  
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left:map-get($spacers, 505);
+  margin-bottom: map-get($spacers, 4);
+  
+  &[data-accordion-bulk-expand="true"] {
+    background-image: url('#{$icons-folder-path}/plus.svg');
+  }
+  &[data-accordion-bulk-expand="false"] {
+    background-image: url('#{$icons-folder-path}/minus.svg');
+  }
+
+}
 .accordion-bordered .accordion-button{
   border: $outer-border;
   border-radius: $border-radius $border-radius 0 0;

@@ -2296,13 +2296,13 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   margin-top:0;
 }
 
-button.function-link{
+button.function-link, button.accordion-bulk-button{
   background:none;
   padding:0px;
   text-decoration:underline;
 }
 
-.function-link{
+.function-link, button.accordion-bulk-button{
   border:none;
   font-size:1.6rem;
   line-height:2.6rem;
@@ -2312,16 +2312,16 @@ button.function-link{
   letter-spacing:-0.1px;
   display:inline-block;
 }
-.function-link:hover, .function-link:visited, .function-link:focus{
+.function-link:hover, button.accordion-bulk-button:hover, .function-link:visited, button.accordion-bulk-button:visited, .function-link:focus, button.accordion-bulk-button:focus{
   color:#1a1a1a;
 }
-.function-link .icon-svg{
+.function-link .icon-svg, button.accordion-bulk-button .icon-svg{
   margin-right:4px;
 }
-.background-dark .function-link .icon-svg{
+.background-dark .function-link .icon-svg, .background-dark button.accordion-bulk-button .icon-svg{
   fill:white;
 }
-.function-link.link-right{
+.function-link.link-right, button.link-right.accordion-bulk-button{
   text-align:right;
 }
 
@@ -9378,6 +9378,19 @@ hr{
   float:left;
 }
 
+button.accordion-bulk-button{
+  background-repeat:no-repeat;
+  background-position:left top;
+  padding-left:28px;
+  margin-bottom:16px;
+}
+button.accordion-bulk-button[data-accordion-bulk-expand=true]{
+  background-image:url("../img/svg-icons/plus.svg");
+}
+button.accordion-bulk-button[data-accordion-bulk-expand=false]{
+  background-image:url("../img/svg-icons/minus.svg");
+}
+
 .accordion-bordered .accordion-button, .accordion-bordered .tabnav > button{
   border:1px solid #747474;
   border-radius:3px 3px 0 0;
@@ -10474,18 +10487,18 @@ footer .footer-theme{
   }
 }
 @media (max-width: 1199px){
-  .header .function-link:not(.icon-link){
+  .header .function-link:not(.icon-link), .header button.accordion-bulk-button:not(.icon-link){
     display:block;
     margin-top:8px;
   }
-  .header .function-link:not(.icon-link) .icon-svg{
+  .header .function-link:not(.icon-link) .icon-svg, .header button.accordion-bulk-button:not(.icon-link) .icon-svg{
     float:left;
     margin-left:0;
     margin-right:4px;
   }
 }
 @media (min-width: 992px){
-  .header .function-link + .function-link{
+  .header .function-link + .function-link, .header button.accordion-bulk-button + .function-link, .header .function-link + button.accordion-bulk-button, .header button.accordion-bulk-button + button.accordion-bulk-button{
     margin-left:16px;
   }
 }
@@ -11654,7 +11667,7 @@ a.skipnav{
   margin-top:16px;
   text-align:right;
 }
-.card-action .action-functionlinks .function-link{
+.card-action .action-functionlinks .function-link, .card-action .action-functionlinks button.accordion-bulk-button{
   margin-left:16px;
 }
 

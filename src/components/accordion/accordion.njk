@@ -1,7 +1,7 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 <div class="container">
 {% macro accordion(variant, items, id_prefix, multiselectable, bulk_function) %}
-{% if bulk_function %}<button class="function-link accordion-bulk-button mb-4" data-accordion-bulk-expand="true"><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#plus"></use></svg><span>Åbn alle</span></button>{% endif %}
+{% if bulk_function %}<button class="accordion-bulk-button" data-accordion-bulk-expand="true">Åbn alle</button>{% endif %}
 <ul class="accordion{% if variant %} accordion-{{ variant }}{% endif %}{% if multiselectable == true %} accordion-multiselectable{% endif %}">
   {%- for item in items -%}
   <li>

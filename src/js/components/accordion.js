@@ -140,9 +140,9 @@ var toggleButton  = function (button, expanded) {
       }
       bulkFunction.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, newStatus);
       if(newStatus === true){
-        bulkFunction.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_OPEN_TEXT;
+        bulkFunction.innerText = BULK_FUNCTION_OPEN_TEXT;
       } else{
-        bulkFunction.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_CLOSE_TEXT;
+        bulkFunction.innerText = BULK_FUNCTION_CLOSE_TEXT;
       }
 
     }
