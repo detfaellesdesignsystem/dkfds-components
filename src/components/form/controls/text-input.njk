@@ -2,7 +2,7 @@
 
 {% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
       {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">
-        {{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}
+        {{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle"></use></svg></a>{% endif %}
         </label>{% endif %}
       {% if hint %}<span class="form-hint" id="{{id}}-hint">
       {{hint}}

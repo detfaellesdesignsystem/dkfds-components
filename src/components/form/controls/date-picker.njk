@@ -2,7 +2,7 @@
 
 {% macro datepicker(params) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
       {% if params.label != "" %}<label class="form-label {{params.classlabel}}" for="{{params.id}}">
-        {{params.label}}{% if params.optionallabel %}<span class="weight-normal"> {{params.optionallabel}}</span>{% endif %}{% if params.tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{params.tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle-outline"></use></svg></a>{% endif %}
+        {{params.label}}{% if params.optionallabel %}<span class="weight-normal"> {{params.optionallabel}}</span>{% endif %}{% if params.tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{params.tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help-circle"></use></svg></a>{% endif %}
         </label>{% endif %}
       {% if params.hint %}<span class="form-hint" id="{{params.id}}-hint">
       {{params.hint}}
