@@ -24,15 +24,14 @@ class CheckboxToggleContent{
 
     toggle(triggerEl){
         var targetAttr = triggerEl.getAttribute(this.jsToggleTarget)
-        if(targetAttr !== null && targetAttr !== undefined){
-            var targetEl = document.querySelector('#' + targetAttr);
-            if(targetEl !== null && targetEl !== undefined){
-                if(triggerEl.checked){
-                    this.open(triggerEl, targetEl);
-                }else{
-                    this.close(triggerEl, targetEl);
-                }
-            }
+        var targetEl = document.getElementById(targetAttr);
+        if(targetEl === null || targetEl === undefined){
+            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
+        }
+        if(triggerEl.checked){
+            this.open(triggerEl, targetEl);
+        }else{
+            this.close(triggerEl, targetEl);
         }
     }
 

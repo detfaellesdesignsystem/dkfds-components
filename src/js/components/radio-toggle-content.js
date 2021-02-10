@@ -19,6 +19,9 @@ class RadioToggleGroup{
     init (el){
         this.radioGroup = el;
         this.radioEls = this.radioGroup.querySelectorAll('input[type="radio"]');
+        if(this.radioEls.length === 0){
+            throw new Error('No radiobuttons found in radiobutton group.');
+        }
         var that = this;
 
         for(let i = 0; i < this.radioEls.length; i++){
@@ -35,15 +38,17 @@ class RadioToggleGroup{
 
     toggle (triggerEl){
         var targetAttr = triggerEl.getAttribute(this.jsToggleTarget);
-        if(targetAttr !== null && targetAttr !== undefined){
-            var targetEl = document.querySelector(targetAttr);
-            if(targetEl !== null && targetEl !== undefined){
-                if(triggerEl.checked){
-                    this.open(triggerEl, targetEl);
-                }else{
-                    this.close(triggerEl, targetEl);
-                }
-            }
+        if(targetAttr === null || targetAttr === undefined || targetAttr === ""){
+            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
+        }
+        var targetEl = document.querySelector(targetAttr);
+        if(targetEl === null || targetEl === undefined){
+            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
+        }
+        if(triggerEl.checked){
+            this.open(triggerEl, targetEl);
+        }else{
+            this.close(triggerEl, targetEl);
         }
     }
 

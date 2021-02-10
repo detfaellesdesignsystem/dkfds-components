@@ -21,6 +21,7 @@ $v-padding: $spacing-md-small;
   width: 100%;
 }
 
+
 // scss-lint:disable PropertyCount
 @mixin accordion-button-styles {
   @include button-unstyled;
@@ -36,6 +37,7 @@ $v-padding: $spacing-md-small;
   line-height: $body-text-line-height;
   padding: $h-padding $v-padding $h-padding $spacing-xxx-large;
   width: 100%;
+  font-size: $body-text;
 
   &:hover {
     background-color: $color-gray-mediumpale;
@@ -106,6 +108,23 @@ $v-padding: $spacing-md-small;
     }
   }
 }
+
+button.accordion-bulk-button{
+  @extend .function-link;
+  
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left:map-get($spacers, 505);
+  margin-bottom: map-get($spacers, 4);
+  
+  &[data-accordion-bulk-expand="true"] {
+    background-image: url('#{$icons-folder-path}/plus.svg');
+  }
+  &[data-accordion-bulk-expand="false"] {
+    background-image: url('#{$icons-folder-path}/minus.svg');
+  }
+
+}
 .accordion-bordered .accordion-button{
   border: $outer-border;
   border-radius: $border-radius $border-radius 0 0;
@@ -123,6 +142,12 @@ $v-padding: $spacing-md-small;
   }
   > li {
     @include accordion-list-item-styles;
+    > h1, > h2, > h3, > h4, > h5, > h6{
+      margin-top: 0px;
+      margin-bottom: 0px;
+      letter-spacing: normal;
+      max-width: none;
+    }
   }
 }
 

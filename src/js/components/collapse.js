@@ -22,18 +22,17 @@ class Collapse {
 
   toggleCollapse (forceClose) {
     let targetAttr = this.triggerEl.getAttribute(this.jsCollapseTarget);
-    if(targetAttr !== null && targetAttr !== undefined){
-      this.targetEl = document.querySelector(targetAttr);
-      if(this.targetEl !== null && this.targetEl !== undefined){
-        //change state
-        if(this.triggerEl.getAttribute('aria-expanded') === 'true' || this.triggerEl.getAttribute('aria-expanded') === undefined || forceClose ){
-          //close
-          this.animateCollapse();
-        }else{
-          //open
-          this.animateExpand();
-        }
-      }
+    this.targetEl = document.querySelector(targetAttr);
+    if(this.targetEl === null || this.targetEl == undefined){
+      throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsCollapseTarget);
+    }
+    //change state
+    if(this.triggerEl.getAttribute('aria-expanded') === 'true' || this.triggerEl.getAttribute('aria-expanded') === undefined || forceClose ){
+      //close
+      this.animateCollapse();
+    }else{
+      //open
+      this.animateExpand();
     }
   }
 

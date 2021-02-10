@@ -17,9 +17,6 @@ Modal.prototype.init = function () {
     let closer = closers[ c ];
     closer.addEventListener('click', this.hide.bind(this));
   }
-
-
-
 };
 
 Modal.prototype.hide = function (){

@@ -38,7 +38,7 @@ Details.prototype.polyfillDetails = function () {
   // If <details> doesn't have a <summary> and a <div> representing the content
   // it means the required HTML structure is not met so the script will stop
   if (!$summary || !$content) {
-    return;
+    throw new Error(`Missing important HTML structure of component: summary and div representing the content.`);
   }
 
   // If the content doesn't have an ID, assign it one now

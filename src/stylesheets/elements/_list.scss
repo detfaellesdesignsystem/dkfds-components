@@ -6,7 +6,7 @@
    list-style-type: none;
    color: $color-text;
    line-height: $body-text-line-height;
-   li {
+   > li {
      margin-top:map-get($spacers, 3);
      list-style-type: none;
      position: relative;
@@ -30,6 +30,13 @@ ol {
   }
 }
 
+.article{
+  ul > li, ol > li{
+    font-size:$article-font-size;
+    line-height: $article-line-height;
+    letter-spacing: $article-letter-spacing;
+  }
+}
 
 
 // Unstyled lists

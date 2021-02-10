@@ -98,6 +98,11 @@ textarea.form-input{
     color:$color-gray-medium-light;
     cursor: not-allowed;
   }
+  option {
+    @-moz-document url-prefix() {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  }
 
 }
 

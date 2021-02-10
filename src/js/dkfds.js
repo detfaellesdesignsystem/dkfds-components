@@ -11,8 +11,9 @@ const Tooltip = require('./components/tooltip');
 const SetTabIndex = require('./components/skipnav');
 const Navigation = require('./components/navigation');
 const InputRegexMask = require('./components/regex-input-mask');
-import Details from './components/details'
-import Modal from './components/modal'
+import Details from './components/details';
+import Modal from './components/modal';
+const datePicker = require('./components/date-picker');
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
@@ -20,6 +21,8 @@ import Modal from './components/modal'
 require('./polyfills');
 
 var init = function () {
+
+  datePicker.on(document.body);
 
   var modals = document.querySelectorAll('.fds-modal');
   for(let d = 0; d < modals.length; d++) {
@@ -87,4 +90,4 @@ var init = function () {
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker };
