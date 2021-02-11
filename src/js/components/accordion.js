@@ -68,9 +68,9 @@ class Accordion{
         
         this.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, !expand);
         if(!expand === true){
-          this.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_OPEN_TEXT;
+          this.innerText = BULK_FUNCTION_OPEN_TEXT;
         } else{
-          this.getElementsByTagName('span')[0].innerText = BULK_FUNCTION_CLOSE_TEXT;
+          this.innerText = BULK_FUNCTION_CLOSE_TEXT;
         }
       });
     }
