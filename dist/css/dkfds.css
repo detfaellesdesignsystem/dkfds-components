@@ -11137,6 +11137,128 @@ body.modal-open{
   text-decoration:none;
 }
 
+.notification-container{
+  position:fixed;
+  right:0px;
+  left:0px;
+  bottom:0px;
+}
+@media (min-width: 768px){
+  .notification-container{
+    right:16px;
+    top:48px;
+    left:auto;
+    bottom:auto;
+  }
+}
+
+.notification{
+  width:100%;
+  max-width:100%;
+  background-color:#ffffff;
+  display:flex;
+  transition:opacity 0.15s linear;
+}
+.notification + .notification{
+  margin-top:16px;
+}
+@media (min-width: 768px){
+  .notification{
+    width:464px;
+  }
+}
+.notification .notification-icon{
+  align-items:center;
+  display:flex;
+  padding-left:calc(16px + 24px);
+  padding-right:16px;
+  background-size:28px;
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+.notification .notification-message{
+  padding:16px;
+  position:relative;
+}
+.notification .notification-message .notification-close{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  position:absolute;
+  top:16px;
+  right:16px;
+  text-indent:-9999px;
+  width:24px;
+  height:24px;
+  background-image:url("../img/svg-icons/close.svg");
+  background-repeat:no-repeat;
+}
+.notification .notification-message .notification-close:hover, .notification .notification-message .notification-close:focus{
+  background-color:transparent;
+  color:inherit;
+}
+.notification .notification-message p{
+  margin:0px;
+  word-break:break-word;
+}
+.notification .notification-message p:first-of-type{
+  margin-right:32px;
+}
+
+.notification-success{
+  background-color:#eeffe2;
+}
+
+.notification-warning{
+  background-color:#ffeecc;
+}
+
+.notification-error{
+  background-color:#ffe0e0;
+}
+
+.notification-info{
+  background-color:#e2f2fb;
+}
+
+.notification-success .notification-icon{
+  background-color:#358000;
+}
+
+.notification-warning .notification-icon{
+  background-color:#febb30;
+}
+
+.notification-error .notification-icon{
+  background-color:#CC0000;
+}
+
+.notification-info .notification-icon{
+  background-color:#1B86C3;
+}
+
+.notification-success .notification-icon{
+  background-image:url("../img/svg-icons/success-white.svg");
+}
+
+.notification-warning .notification-icon{
+  background-image:url("../img/svg-icons/warning.svg");
+}
+
+.notification-error .notification-icon{
+  background-image:url("../img/svg-icons/error-white.svg");
+}
+
+.notification-info .notification-icon{
+  background-image:url("../img/svg-icons/info-white.svg");
+}
+
 .search{
   display:flex;
 }

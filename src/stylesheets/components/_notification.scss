@@ -1,0 +1,97 @@
+
+$notification-backgrounds: (
+    success: $color-success-light,
+    warning: $color-warning-light,
+    error: $color-error-light,
+    info: $color-info-light
+);
+
+$notification-icon-names: (
+    success: "success-white",
+    warning: "warning",
+    error: "error-white",
+    info: "info-white"
+);
+$notification-icon-backgrounds: (
+    success: $color-success,
+    warning: $color-warning,
+    error: $color-error,
+    info: $color-info
+);
+.notification-container{
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    
+    @include media-breakpoint-up(md) {   
+        right: map-get($spacers, 4);
+        top: map-get($spacers, 8);
+        left: auto;
+        bottom: auto;
+    }
+}
+.notification{
+    width: 100%;
+    max-width: 100%;
+    background-color: $color-white;
+    display: flex;
+    transition: opacity .15s linear;
+    & + .notification{
+        margin-top:map-get($spacers, 4);
+    }
+
+    @include media-breakpoint-up(md) {    
+        width: 464px;
+    }
+    
+    .notification-icon {
+        align-items: center;
+        display: flex;
+        padding-left: calc(#{map-get($spacers, 4)} + #{map-get($spacers, 5)});
+        padding-right: map-get($spacers, 4);
+        background-size: map-get($spacers, 505);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .notification-message{
+        padding: map-get($spacers, 4);
+        position: relative;
+        .notification-close{
+            @include button-unstyled;
+            position: absolute;
+            top: map-get($spacers, 4);
+            right: map-get($spacers, 4);
+            text-indent: -9999px;
+            width: 24px;
+            height: 24px;
+            
+            background-image: url('#{$image-path}/svg-icons/close.svg');
+            background-repeat: no-repeat;
+        }
+        p{
+            margin: 0px;
+            word-break: break-word;
+            &:first-of-type{
+                margin-right: map-get($spacers, 6);
+            }
+        }
+    }
+}
+@each $name, $bgcolor in $notification-backgrounds {
+    .notification-#{$name} {
+        background-color: $bgcolor;
+    }
+}
+
+@each $name, $iconcolor in $notification-icon-backgrounds {
+    .notification-#{$name} .notification-icon {
+        background-color: $iconcolor;
+    }
+}
+
+@each $name, $iconname in $notification-icon-names {
+    .notification-#{$name} .notification-icon{
+        background-image: url('#{$image-path}/svg-icons/#{$iconname}.svg');
+    }
+}
