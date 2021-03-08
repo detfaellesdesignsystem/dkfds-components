@@ -26,7 +26,7 @@ $v-padding: $spacing-md-small;
 @mixin accordion-button-styles {
   @include button-unstyled;
   background-color: $color-gray-pale;
-  background-image: url('#{$icons-folder-path}/minus.svg');
+  background-image: url('#{$icons-folder-path}/remove.svg');
   background-position: left $h-padding center;
   background-repeat: no-repeat;
   background-size: $icon-size;
@@ -55,7 +55,7 @@ $v-padding: $spacing-md-small;
 // scss-lint:enable PropertyCount
 
 @mixin accordion-button-unopened-styles {
-  background-image: url('#{$icons-folder-path}/plus.svg');
+  background-image: url('#{$icons-folder-path}/add.svg');
   background-repeat: no-repeat;
   background-size: $icon-size;
 }
@@ -118,10 +118,10 @@ button.accordion-bulk-button{
   margin-bottom: map-get($spacers, 4);
   
   &[data-accordion-bulk-expand="true"] {
-    background-image: url('#{$icons-folder-path}/plus.svg');
+    background-image: url('#{$icons-folder-path}/add.svg');
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url('#{$icons-folder-path}/minus.svg');
+    background-image: url('#{$icons-folder-path}/remove.svg');
   }
 
 }

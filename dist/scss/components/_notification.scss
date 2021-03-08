@@ -7,10 +7,10 @@ $notification-backgrounds: (
 );
 
 $notification-icon-names: (
-    success: "success-white",
-    warning: "warning",
-    error: "error-white",
-    info: "info-white"
+    success: "check_circle_white",
+    warning: "report_problem",
+    error: "highlight_off_white",
+    info: "info_white"
 );
 $notification-icon-backgrounds: (
     success: $color-success,

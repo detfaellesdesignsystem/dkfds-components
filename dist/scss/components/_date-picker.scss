@@ -27,7 +27,7 @@
 }
 .date-picker__button {
   @include button-unstyled;
-  @include add-background-svg("calendar");
+  @include add-background-svg("insert_invitation");
   align-self: stretch;
   background-color: transparent;
   background-position: center;

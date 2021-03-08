@@ -264,13 +264,13 @@
       }
 
       &[aria-expanded=false] {
-        background-image: url('#{$icons-folder-path}/plus.svg');
+        background-image: url('#{$icons-folder-path}/add.svg');
         background-repeat: no-repeat;
         background-position: right 16px center;
         background-size: 24px;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-image: url('#{$icons-folder-path}/angle-arrow-down.svg');
+          background-image: url('#{$icons-folder-path}/expand_more.svg');
           background-position: right 1rem center;
           border-left: 1px solid transparent;
           border-right: 1px solid transparent;
@@ -278,18 +278,17 @@
       }
 
       &[aria-expanded=true] {
-        background-image: url('#{$icons-folder-path}/minus.svg');
+        background-image: url('#{$icons-folder-path}/remove.svg');
         background-repeat: no-repeat;
         background-position: right 16px center;
         background-size: 24px;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-image: url('#{$icons-folder-path}/angle-arrow-down-white.svg');
+          background-image: url('#{$icons-folder-path}/expand_more_white.svg');
           background-position: right 1rem center;
           //create borders:
           border-left: 1px solid $color-gray-medium-light;
           border-right: 1px solid $color-gray-medium-light;
-          //box-shadow: 0px 2px 0px -1px #fff; //hide nav bottom border.
           background-color: $color-subnav-background;
           color: #fff;
           &:before, &:after{
