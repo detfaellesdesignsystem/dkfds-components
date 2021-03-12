@@ -4,6 +4,7 @@ const RadioToggleGroup = require('./components/radio-toggle-content');
 const CheckboxToggleContent = require('./components/checkbox-toggle-content');
 const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
+const Toast = require('./components/toast');
 const ResponsiveTable = require('./components/table');
 const Tabnav = require('./components/tabnav');
 //const Details = require('./components/details');
@@ -90,4 +91,4 @@ var init = function () {
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast };
