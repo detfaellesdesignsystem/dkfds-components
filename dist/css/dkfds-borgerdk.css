@@ -11722,14 +11722,14 @@ body.modal-open{
   text-decoration:none;
 }
 
-.notification-container{
+.toast-container{
   position:fixed;
   right:0px;
   left:0px;
   bottom:0px;
 }
 @media (min-width: 768px){
-  .notification-container{
+  .toast-container{
     right:16px;
     top:48px;
     left:auto;
@@ -11737,7 +11737,7 @@ body.modal-open{
   }
 }
 
-.notification{
+.toast{
   width:100%;
   max-width:100%;
   background-color:#ffffff;
@@ -11745,18 +11745,18 @@ body.modal-open{
   transition:opacity 0.15s linear;
   margin-bottom:16px;
 }
-.notification:not(.show){
+.toast:not(.show){
   opacity:0;
 }
-.notification.hide{
+.toast.hide{
   display:none;
 }
 @media (min-width: 768px){
-  .notification{
+  .toast{
     width:464px;
   }
 }
-.notification .notification-icon{
+.toast .toast-icon{
   align-items:center;
   display:flex;
   padding-left:calc(16px + 24px);
@@ -11765,11 +11765,11 @@ body.modal-open{
   background-repeat:no-repeat;
   background-position:center center;
 }
-.notification .notification-message{
+.toast .toast-message{
   padding:16px;
   position:relative;
 }
-.notification .notification-message .notification-close{
+.toast .toast-message .toast-close{
   background-color:transparent;
   border:0;
   border-radius:0;
@@ -11788,63 +11788,63 @@ body.modal-open{
   background-image:url("../img/svg-icons/close.svg");
   background-repeat:no-repeat;
 }
-.notification .notification-message .notification-close:hover, .notification .notification-message .notification-close:focus{
+.toast .toast-message .toast-close:hover, .toast .toast-message .toast-close:focus{
   background-color:transparent;
   color:inherit;
 }
-.notification .notification-message p{
+.toast .toast-message p{
   margin:0px;
   word-break:break-word;
 }
-.notification .notification-message p:first-of-type{
+.toast .toast-message p:first-of-type{
   margin-right:32px;
 }
 
-.notification-success{
+.toast-success{
   background-color:#eeffe2;
 }
 
-.notification-warning{
+.toast-warning{
   background-color:#ffeecc;
 }
 
-.notification-error{
+.toast-error{
   background-color:#ffe0e0;
 }
 
-.notification-info{
+.toast-info{
   background-color:#e2f2fb;
 }
 
-.notification-success .notification-icon{
+.toast-success .toast-icon{
   background-color:#358000;
 }
 
-.notification-warning .notification-icon{
+.toast-warning .toast-icon{
   background-color:#febb30;
 }
 
-.notification-error .notification-icon{
+.toast-error .toast-icon{
   background-color:#CC0000;
 }
 
-.notification-info .notification-icon{
+.toast-info .toast-icon{
   background-color:#1B86C3;
 }
 
-.notification-success .notification-icon{
+.toast-success .toast-icon{
   background-image:url("../img/svg-icons/check-circle-white.svg");
 }
 
-.notification-warning .notification-icon{
+.toast-warning .toast-icon{
   background-image:url("../img/svg-icons/report-problem.svg");
 }
 
-.notification-error .notification-icon{
+.toast-error .toast-icon{
   background-image:url("../img/svg-icons/highlight-off-white.svg");
 }
 
-.notification-info .notification-icon{
+.toast-info .toast-icon{
   background-image:url("../img/svg-icons/info-white.svg");
 }
 
