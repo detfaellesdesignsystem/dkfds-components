@@ -2144,7 +2144,6 @@ if (!isIosDevice()) {
 const datePicker = behavior(datePickerEvents, {
   init(root) {
     select(DATE_PICKER, root).forEach((datePickerEl) => {
-      console.log('datePickerEl', datePickerEl);
       if(!datePickerEl.classList.contains(DATE_PICKER_INITIALIZED_CLASS)){
         enhanceDatePicker(datePickerEl);
       }
