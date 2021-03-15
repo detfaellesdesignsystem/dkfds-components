@@ -7,7 +7,7 @@ class Toast{
     show(){
         this.element.classList.remove('hide');
         this.element.classList.add('showing');
-        this.element.getElementsByClassName('notification-close')[0].addEventListener('click', function(){
+        this.element.getElementsByClassName('toast-close')[0].addEventListener('click', function(){
             let toast = this.parentNode.parentNode;
             new Toast(toast).hide();
         });
@@ -16,8 +16,7 @@ class Toast{
 
     hide(){
         this.element.classList.remove('show');
-        this.element.classList.add('hiding');        
-        requestAnimationFrame(hideToast);
+        this.element.classList.add('hide');
                 
     }
 
@@ -27,18 +26,10 @@ class Toast{
     }
 }
 function showToast(){
-    let toasts = document.querySelectorAll('.notification.showing');
+    let toasts = document.querySelectorAll('.toast.showing');
     toasts.forEach(toast => {
         toast.classList.remove('showing');
         toast.classList.add('show');
-    });
-}
-
-function hideToast(){
-    let toasts = document.querySelectorAll('.notification.hiding');
-    toasts.forEach(toast => {
-        toast.classList.remove('hiding');
-        toast.classList.add('hide');
     });
 }
 
