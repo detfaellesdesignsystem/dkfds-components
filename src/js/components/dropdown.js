@@ -79,12 +79,13 @@ class Dropdown {
         }
       }
 
-      document.onkeydown = function (evt) {
-        evt = evt || window.event;
-        if (evt.keyCode === 27) {
-          closeAll();
+      
+      document.addEventListener('keyup', function(event){
+        var key = event.which || event.keyCode;
+        if (key === 27) {
+          closeAll(event);
         }
-      };
+      });
     }
   }
 
@@ -130,7 +131,8 @@ let getButtons = function (parent) {
   return parent.querySelectorAll(BUTTON);
 };
 
-let closeAll = function (){
+let closeAll = function (event = null){
+  let changed = false;
 
   let eventClose = document.createEvent('Event');
   eventClose.initEvent(eventCloseName, true, true);
@@ -140,19 +142,26 @@ let closeAll = function (){
   let overflowMenuEl = document.getElementsByClassName('overflow-menu');
   for (let oi = 0; oi < overflowMenuEl.length; oi++) {
     let currentOverflowMenuEL = overflowMenuEl[ oi ];
-    let triggerEl = currentOverflowMenuEL.querySelector(BUTTON);
-    let targetEl = currentOverflowMenuEL.querySelector('#'+triggerEl.getAttribute(TARGET).replace('#', ''));
+    let triggerEl = currentOverflowMenuEL.querySelector(BUTTON+'[aria-expanded="true"]');
+    if(triggerEl !== null){
+      changed = true;
+      let targetEl = currentOverflowMenuEL.querySelector('#'+triggerEl.getAttribute(TARGET).replace('#', ''));
 
-    if (targetEl !== null && triggerEl !== null) {
-      if(doResponsiveCollapse(triggerEl)){
-        if(triggerEl.getAttribute('aria-expanded') === true){
-          triggerEl.dispatchEvent(eventClose);
+        if (targetEl !== null && triggerEl !== null) {
+          if(doResponsiveCollapse(triggerEl)){
+            if(triggerEl.getAttribute('aria-expanded') === true){
+              triggerEl.dispatchEvent(eventClose);
+            }
+            triggerEl.setAttribute('aria-expanded', 'false');
+            targetEl.classList.add('collapsed');
+            targetEl.setAttribute('aria-hidden', 'true');
+          }
         }
-        triggerEl.setAttribute('aria-expanded', 'false');
-        targetEl.classList.add('collapsed');
-        targetEl.setAttribute('aria-hidden', 'true');
-      }
     }
+  }
+
+  if(changed && event !== null){
+    event.stopImmediatePropagation();
   }
 };
 let offset = function (el) {

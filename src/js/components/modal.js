@@ -68,9 +68,13 @@ Modal.prototype.show = function (){
 
 let handleEscape = function (event) {
   var key = event.which || event.keyCode;
+  let modalElement = document.querySelector('.fds-modal[aria-hidden=false]');
   let currentModal = new Modal(document.querySelector('.fds-modal[aria-hidden=false]'));
-  if (key === 27 && currentModal.hide()) {
-    event.stopPropagation();
+  if (key === 27){
+    let possibleOverflowMenus = modalElement.querySelectorAll('.button-overflow-menu[aria-expanded="true"]');
+    if(possibleOverflowMenus.length === 0){
+      currentModal.hide();
+    }
   }
 };
 
