@@ -123,7 +123,11 @@
   }
 
   // table
-  .table.table--responsive-headers:not(.d-print-table) {
+  .table.table--responsive-headers:not(.d-print-table),
+  .table.table-sm-responsive-headers:not(.d-print-table),
+  .table.table-md-responsive-headers:not(.d-print-table),
+  .table.table-lg-responsive-headers:not(.d-print-table),
+  .table.table-xl-responsive-headers:not(.d-print-table) {
     @include media-breakpoint-down(sm) {
       display: block;
 
