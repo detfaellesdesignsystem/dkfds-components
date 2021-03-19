@@ -2230,6 +2230,12 @@ small, .small-text{
   font-weight:600;
 }
 
+.facit{
+  border-bottom:1px solid #747474;
+  border-bottom-style:double;
+  border-bottom-width:4px;
+}
+
 strong, b, .bold{
   font-weight:700;
 }
