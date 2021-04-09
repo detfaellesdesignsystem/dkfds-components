@@ -4,7 +4,7 @@
 
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
-  .details-summary::marker {
+  .details-summary::marker, .details-summary::-webkit-details-marker {
     display: none;
   }
 

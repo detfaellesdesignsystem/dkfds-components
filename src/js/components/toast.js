@@ -19,12 +19,8 @@ class Toast{
         this.element.classList.add('hide');
                 
     }
-
-    dispose(){
-        this.hide();
-
-    }
 }
+
 function showToast(){
     let toasts = document.querySelectorAll('.toast.showing');
     toasts.forEach(toast => {

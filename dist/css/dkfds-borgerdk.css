@@ -9768,7 +9768,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:block;
   margin-bottom:32px;
 }
-.details .details-summary::marker{
+.details .details-summary::marker, .details .details-summary::-webkit-details-marker{
   display:none;
 }
 .details[open] .details-summary{
