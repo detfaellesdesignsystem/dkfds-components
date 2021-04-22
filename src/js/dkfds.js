@@ -4,6 +4,7 @@ const RadioToggleGroup = require('./components/radio-toggle-content');
 const CheckboxToggleContent = require('./components/checkbox-toggle-content');
 const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
+const Toast = require('./components/toast');
 const ResponsiveTable = require('./components/table');
 const Tabnav = require('./components/tabnav');
 //const Details = require('./components/details');
@@ -24,10 +25,6 @@ var init = function () {
 
   datePicker.on(document.body);
 
-  var modals = document.querySelectorAll('.fds-modal');
-  for(let d = 0; d < modals.length; d++) {
-    new Modal(modals[d]).init();
-  }
 
   const details = document.querySelectorAll('.js-details');
   for(let d = 0; d < details.length; d++){
@@ -85,9 +82,13 @@ var init = function () {
     new Dropdown(jsSelectorDropdown[ c ]);
   }
 
+  var modals = document.querySelectorAll('.fds-modal');
+  for(let d = 0; d < modals.length; d++) {
+    new Modal(modals[d]).init();
+  }
 
   new Navigation();
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast };

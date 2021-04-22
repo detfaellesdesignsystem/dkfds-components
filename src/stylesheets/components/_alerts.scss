@@ -85,7 +85,19 @@ $icon-size: 24px;
     border-color: map-get($alerts-bar, $name);
 
     &.alert--show-icon{
-      background-image: url('#{$image-path}/svg-icons/#{$name}.svg');
+      $alert-icon: $name;
+      @if $name == error {
+        $alert-icon: highlight-off;
+      }
+      
+      @if $name == success {
+        $alert-icon: check-circle;
+      }
+      
+      @if $name == warning {
+        $alert-icon: report-problem;
+      }
+      background-image: url('#{$image-path}/svg-icons/#{$alert-icon}.svg');
       padding-left: $padding + $icon-size + 8px;
     }
   }

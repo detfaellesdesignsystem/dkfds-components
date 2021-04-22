@@ -289,6 +289,12 @@ figcaption, .figcaption{
   color: $color-text;
   letter-spacing: $article-letter-spacing;
 }
+small, .small-text {
+  font-size: $small-text; //1.3rem
+  line-height: $small-text-line-height; //1.6rem
+  font-weight: $font-weight-normal;
+  letter-spacing: $small-text-letter-spacing;
+}
 
 .weight-normal {
   font-weight: $font-weight-normal;
@@ -297,7 +303,11 @@ figcaption, .figcaption{
 .weight-semibold {
   font-weight: $font-weight-semibold;
 }
-
+.facit {
+  border-bottom: $outer-border;
+  border-bottom-style: double;
+  border-bottom-width: 4px;
+}
 strong, b, .bold {
   font-weight: $font-weight-bold;
 }
@@ -306,12 +316,6 @@ strong, b, .bold {
   font-style: $font-style-italic;
 }
 
-small, .small-text {
-  font-size: $small-text; //1.3rem
-  line-height: $small-text-line-height; //1.6rem
-  font-weight: $font-weight-normal;
-  letter-spacing: $small-text-letter-spacing;
-}
 
 .form-label {
   @include form-label-text;

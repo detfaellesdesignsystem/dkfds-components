@@ -4,7 +4,7 @@
 
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
-  .details-summary::-webkit-details-marker {
+  .details-summary::marker, .details-summary::-webkit-details-marker {
     display: none;
   }
 
@@ -62,6 +62,7 @@
   .details-text {
     padding: map-get($spacers, 4);
     border-left: 4px solid $color-gray-light;
+    box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;
     }

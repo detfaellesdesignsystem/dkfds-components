@@ -1,0 +1,101 @@
+$toast-backgrounds: (
+    success: $color-success-light,
+    warning: $color-warning-light,
+    error: $color-error-light,
+    info: $color-info-light
+);
+
+$toast-icon-names: (
+    success: "check-circle-white",
+    warning: "report-problem",
+    error: "highlight-off-white",
+    info: "info-white"
+);
+$toast-icon-backgrounds: (
+    success: $color-success,
+    warning: $color-warning,
+    error: $color-error,
+    info: $color-info
+);
+.toast-container{
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    
+    @include media-breakpoint-up(md) {   
+        right: map-get($spacers, 4);
+        top: map-get($spacers, 8);
+        left: auto;
+        bottom: auto;
+    }
+}
+.toast{
+    width: 100%;
+    max-width: 100%;
+    background-color: $color-white;
+    display: flex;
+    transition: opacity .15s linear;
+    margin-bottom: map-get($spacers, 4);
+
+    &:not(.show){
+        opacity: 0;
+    }
+    &.hide{
+        display: none;
+    }
+
+    @include media-breakpoint-up(md) {    
+        width: 464px;
+    }
+    
+    .toast-icon {
+        align-items: center;
+        display: flex;
+        padding-left: calc(#{map-get($spacers, 4)} + #{map-get($spacers, 5)});
+        padding-right: map-get($spacers, 4);
+        background-size: map-get($spacers, 505);
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .toast-message{
+        padding: map-get($spacers, 4);
+        position: relative;
+        .toast-close{
+            @include button-unstyled;
+            position: absolute;
+            top: map-get($spacers, 4);
+            right: map-get($spacers, 4);
+            text-indent: -9999px;
+            width: 24px;
+            height: 24px;
+            
+            background-image: url('#{$image-path}/svg-icons/close.svg');
+            background-repeat: no-repeat;
+        }
+        p{
+            margin: 0px;
+            word-break: break-word;
+            &:first-of-type{
+                margin-right: map-get($spacers, 6);
+            }
+        }
+    }
+}
+@each $name, $bgcolor in $toast-backgrounds {
+    .toast-#{$name} {
+        background-color: $bgcolor;
+    }
+}
+
+@each $name, $iconcolor in $toast-icon-backgrounds {
+    .toast-#{$name} .toast-icon {
+        background-color: $iconcolor;
+    }
+}
+
+@each $name, $iconname in $toast-icon-names {
+    .toast-#{$name} .toast-icon{
+        background-image: url('#{$image-path}/svg-icons/#{$iconname}.svg');
+    }
+}

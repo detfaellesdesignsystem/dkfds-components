@@ -1,11 +1,11 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 <div class="container">
-{% macro accordion(variant, items, id_prefix, multiselectable, bulk_function) %}
+{% macro accordion(variant, items, id_prefix, multiselectable, bulk_function, heading_level) %}
 {% if bulk_function %}<button class="accordion-bulk-button" data-accordion-bulk-expand="true">Åbn alle</button>{% endif %}
 <ul class="accordion{% if variant %} accordion-{{ variant }}{% endif %}{% if multiselectable == true %} accordion-multiselectable{% endif %}">
   {%- for item in items -%}
   <li>
-    <h3>
+    <{{heading_level | default('h3') }}>
     <button class="accordion-button{% if item.error_message %} accordion-error {% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.error_message %} aria-describedby="{{ id_prefix }}{{ item.id }}" {% endif %} aria-controls="{{ id_prefix }}{{ item.id }}">
       {{ item.title }}
       {%- if item.icon %}
@@ -14,7 +14,7 @@
         </span>
       {% endif -%}
     </button>
-    </h3>
+    </{{heading_level | default('h3') }}>
        {%- set ariahidden = "true" -%}
       {%- if item.expanded %}
         {% set ariahidden = "false" %}

@@ -212,54 +212,6 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Bold-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:italic;
   font-weight:700;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-BoldItalic.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-BoldItalic.woff") format("woff");
@@ -267,105 +219,9 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:700;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-BoldItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:normal;
   font-weight:200;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-ExtraLight.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-ExtraLight.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLight-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -378,104 +234,8 @@ th{
 @font-face{
   font-family:"IBM Plex Sans";
   font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:200;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ExtraLightItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
   font-weight:400;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-Italic.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-Italic.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Italic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -487,105 +247,9 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Light-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:italic;
   font-weight:300;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-LightItalic.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-LightItalic.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:300;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-LightItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -597,105 +261,9 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Medium-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:italic;
   font-weight:500;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-MediumItalic.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-MediumItalic.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:500;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-MediumItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -709,104 +277,8 @@ th{
 @font-face{
   font-family:"IBM Plex Sans";
   font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:400;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Regular-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
   font-weight:600;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-SemiBold.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-SemiBold.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBold-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -818,54 +290,6 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:600;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-SemiBoldItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:normal;
   font-weight:100;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-Thin.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-Thin.woff") format("woff");
@@ -873,105 +297,9 @@ th{
 }
 @font-face{
   font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:normal;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-Thin-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
   font-style:italic;
   font-weight:100;
   src:url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-ThinItalic.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-ThinItalic.woff") format("woff");
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Cyrillic.woff2") format("woff2");
-  unicode-range:U+0400-045F, U+0472-0473, U+0490-049D, U+04A0-04A5, U+04AA-04AB, U+04AE-04B3, U+04B6-04BB, U+04C0-04C2, U+04CF-04D9, U+04DC-04DF, U+04E2-04E9, U+04EE-04F5, U+04F8-04F9;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Pi.woff2") format("woff2");
-  unicode-range:U+0E3F, U+2032-2033, U+2070, U+2075-2079, U+2080-2081, U+2083, U+2085-2089, U+2113, U+2116, U+2126, U+212E, U+2150-2151, U+2153-215E, U+2190-2199, U+21A9-21AA, U+21B0-21B3, U+21B6-21B7, U+21BA-21BB, U+21C4, U+21C6, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+25CA, U+2713, U+274C, U+2B0E-2B11, U+EBE1-EBE7, U+ECE0, U+EFCC;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Latin3.woff2") format("woff2");
-  unicode-range:U+0102-0103, U+1EA0-1EF9, U+20AB;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Latin2.woff2") format("woff2");
-  unicode-range:U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Latin1.woff2") format("woff2");
-  unicode-range:U+0000, U+000D, U+0020-007E, U+00A0-00A3, U+00A4-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+2074, U+20AC, U+2122, U+2212, U+FB01-FB02;
-  font-display:swap;
-}
-@font-face{
-  font-family:"IBM Plex Sans";
-  font-style:italic;
-  font-weight:100;
-  src:url("../fonts/IBMPlexSans/split/woff2/IBMPlexSans-ThinItalic-Greek.woff2") format("woff2");
-  unicode-range:U+0384-038A, U+038C, U+038E-03A1, U+03A3-03CE;
   font-display:swap;
 }
 @font-face{
@@ -2213,6 +1541,13 @@ figcaption, .figcaption{
   letter-spacing:-0.15px;
 }
 
+small, .small-text{
+  font-size:1.4rem;
+  line-height:2rem;
+  font-weight:400;
+  letter-spacing:0.2px;
+}
+
 .weight-normal{
   font-weight:400;
 }
@@ -2221,19 +1556,18 @@ figcaption, .figcaption{
   font-weight:600;
 }
 
+.facit{
+  border-bottom:1px solid #747474;
+  border-bottom-style:double;
+  border-bottom-width:4px;
+}
+
 strong, b, .bold{
   font-weight:700;
 }
 
 .italic, em{
   font-style:italic;
-}
-
-small, .small-text{
-  font-size:1.4rem;
-  line-height:2rem;
-  font-weight:400;
-  letter-spacing:0.2px;
 }
 
 .form-label{
@@ -8184,196 +7518,768 @@ figure{
   fill:currentColor;
 }
 
-.icon-add{
+.icon-accessibility-new:not(a){
+  background-image:url("../img/svg-icons/accessibility-new.svg");
+}
+
+.icon-account-circle:not(a){
+  background-image:url("../img/svg-icons/account-circle.svg");
+}
+
+.icon-add:not(a){
   background-image:url("../img/svg-icons/add.svg");
 }
 
-.icon-alert-outline{
+.icon-add-a-photo:not(a){
+  background-image:url("../img/svg-icons/add-a-photo.svg");
+}
+
+.icon-agriculture:not(a){
+  background-image:url("../img/svg-icons/agriculture.svg");
+}
+
+.icon-alert-outline:not(a){
   background-image:url("../img/svg-icons/alert-outline.svg");
 }
 
-.icon-angle-arrow-down{
+.icon-angle-arrow-down-white:not(a){
+  background-image:url("../img/svg-icons/angle-arrow-down-white.svg");
+}
+
+.icon-angle-arrow-down:not(a){
   background-image:url("../img/svg-icons/angle-arrow-down.svg");
 }
 
-.icon-angle-arrow-up{
+.icon-angle-arrow-up:not(a){
   background-image:url("../img/svg-icons/angle-arrow-up.svg");
 }
 
-.icon-arrow-left{
+.icon-apps:not(a){
+  background-image:url("../img/svg-icons/apps.svg");
+}
+
+.icon-arrow-left:not(a){
   background-image:url("../img/svg-icons/arrow-left.svg");
 }
 
-.icon-arrow-right{
+.icon-arrow-right:not(a){
   background-image:url("../img/svg-icons/arrow-right.svg");
 }
 
-.icon-book-open{
+.icon-arrow-back:not(a){
+  background-image:url("../img/svg-icons/arrow-back.svg");
+}
+
+.icon-arrow-downward:not(a){
+  background-image:url("../img/svg-icons/arrow-downward.svg");
+}
+
+.icon-arrow-drop-down:not(a){
+  background-image:url("../img/svg-icons/arrow-drop-down.svg");
+}
+
+.icon-arrow-drop-up:not(a){
+  background-image:url("../img/svg-icons/arrow-drop-up.svg");
+}
+
+.icon-arrow-forward:not(a){
+  background-image:url("../img/svg-icons/arrow-forward.svg");
+}
+
+.icon-arrow-right:not(a){
+  background-image:url("../img/svg-icons/arrow-right.svg");
+}
+
+.icon-arrow-upward:not(a){
+  background-image:url("../img/svg-icons/arrow-upward.svg");
+}
+
+.icon-assessment:not(a){
+  background-image:url("../img/svg-icons/assessment.svg");
+}
+
+.icon-assignment:not(a){
+  background-image:url("../img/svg-icons/assignment.svg");
+}
+
+.icon-attach-file:not(a){
+  background-image:url("../img/svg-icons/attach-file.svg");
+}
+
+.icon-book-open:not(a){
   background-image:url("../img/svg-icons/book-open.svg");
 }
 
-.icon-calendar{
+.icon-bookmarks:not(a){
+  background-image:url("../img/svg-icons/bookmarks.svg");
+}
+
+.icon-bookmark-border:not(a){
+  background-image:url("../img/svg-icons/bookmark-border.svg");
+}
+
+.icon-cached:not(a){
+  background-image:url("../img/svg-icons/cached.svg");
+}
+
+.icon-calculator:not(a){
+  background-image:url("../img/svg-icons/calculator.svg");
+}
+
+.icon-calendar:not(a){
   background-image:url("../img/svg-icons/calendar.svg");
 }
 
-.icon-cash-multiple{
+.icon-card-account-details:not(a){
+  background-image:url("../img/svg-icons/card-account-details.svg");
+}
+
+.icon-card-text:not(a){
+  background-image:url("../img/svg-icons/card-text.svg");
+}
+
+.icon-cash-multiple:not(a){
   background-image:url("../img/svg-icons/cash-multiple.svg");
 }
 
-.icon-check{
-  background-image:url("../img/svg-icons/check.svg");
+.icon-chat:not(a){
+  background-image:url("../img/svg-icons/chat.svg");
 }
 
-.icon-check-circle-outline{
+.icon-check-circle-outline:not(a){
   background-image:url("../img/svg-icons/check-circle-outline.svg");
 }
 
-.icon-chevron-left{
+.icon-check:not(a){
+  background-image:url("../img/svg-icons/check.svg");
+}
+
+.icon-check-circle:not(a){
+  background-image:url("../img/svg-icons/check-circle.svg");
+}
+
+.icon-chevron-double-left:not(a){
+  background-image:url("../img/svg-icons/chevron-double-left.svg");
+}
+
+.icon-chevron-double-right:not(a){
+  background-image:url("../img/svg-icons/chevron-double-right.svg");
+}
+
+.icon-chevron-left:not(a){
   background-image:url("../img/svg-icons/chevron-left.svg");
 }
 
-.icon-chevron-right{
+.icon-chevron-right:not(a){
   background-image:url("../img/svg-icons/chevron-right.svg");
 }
 
-.icon-close{
-  background-image:url("../img/svg-icons/close.svg");
+.icon-chevron-left:not(a){
+  background-image:url("../img/svg-icons/chevron-left.svg");
 }
 
-.icon-close-circle{
-  background-image:url("../img/svg-icons/close-circle.svg");
+.icon-chevron-right:not(a){
+  background-image:url("../img/svg-icons/chevron-right.svg");
 }
 
-.icon-close-circle-outline{
+.icon-close-circle-outline:not(a){
   background-image:url("../img/svg-icons/close-circle-outline.svg");
 }
 
-.icon-content-save{
+.icon-close-circle:not(a){
+  background-image:url("../img/svg-icons/close-circle.svg");
+}
+
+.icon-close:not(a){
+  background-image:url("../img/svg-icons/close.svg");
+}
+
+.icon-construction:not(a){
+  background-image:url("../img/svg-icons/construction.svg");
+}
+
+.icon-contact-support:not(a){
+  background-image:url("../img/svg-icons/contact-support.svg");
+}
+
+.icon-content-save:not(a){
   background-image:url("../img/svg-icons/content-save.svg");
 }
 
-.icon-delete{
-  background-image:url("../img/svg-icons/delete.svg");
+.icon-content-copy:not(a){
+  background-image:url("../img/svg-icons/content-copy.svg");
 }
 
-.icon-delete-outline{
+.icon-coronavirus:not(a){
+  background-image:url("../img/svg-icons/coronavirus.svg");
+}
+
+.icon-create-new-folder:not(a){
+  background-image:url("../img/svg-icons/create-new-folder.svg");
+}
+
+.icon-credit-card:not(a){
+  background-image:url("../img/svg-icons/credit-card.svg");
+}
+
+.icon-database:not(a){
+  background-image:url("../img/svg-icons/database.svg");
+}
+
+.icon-delete-outline:not(a){
   background-image:url("../img/svg-icons/delete-outline.svg");
 }
 
-.icon-dots-vertical{
+.icon-delete:not(a){
+  background-image:url("../img/svg-icons/delete.svg");
+}
+
+.icon-desktop-windows:not(a){
+  background-image:url("../img/svg-icons/desktop-windows.svg");
+}
+
+.icon-domain:not(a){
+  background-image:url("../img/svg-icons/domain.svg");
+}
+
+.icon-done:not(a){
+  background-image:url("../img/svg-icons/done.svg");
+}
+
+.icon-dots-vertical:not(a){
   background-image:url("../img/svg-icons/dots-vertical.svg");
 }
 
-.icon-download{
+.icon-download:not(a){
   background-image:url("../img/svg-icons/download.svg");
 }
 
-.icon-error{
+.icon-download-done:not(a){
+  background-image:url("../img/svg-icons/download-done.svg");
+}
+
+.icon-drive-eta:not(a){
+  background-image:url("../img/svg-icons/drive-eta.svg");
+}
+
+.icon-email:not(a){
+  background-image:url("../img/svg-icons/email.svg");
+}
+
+.icon-engineering:not(a){
+  background-image:url("../img/svg-icons/engineering.svg");
+}
+
+.icon-error:not(a){
   background-image:url("../img/svg-icons/error.svg");
 }
 
-.icon-file{
-  background-image:url("../img/svg-icons/file.svg");
+.icon-expand-less:not(a){
+  background-image:url("../img/svg-icons/expand-less.svg");
 }
 
-.icon-file-document-box{
+.icon-expand-more:not(a){
+  background-image:url("../img/svg-icons/expand-more.svg");
+}
+
+.icon-expand-more-white:not(a){
+  background-image:url("../img/svg-icons/expand-more-white.svg");
+}
+
+.icon-face:not(a){
+  background-image:url("../img/svg-icons/face.svg");
+}
+
+.icon-feedback:not(a){
+  background-image:url("../img/svg-icons/feedback.svg");
+}
+
+.icon-file-document-box:not(a){
   background-image:url("../img/svg-icons/file-document-box.svg");
 }
 
-.icon-folder-multiple{
+.icon-file-excel:not(a){
+  background-image:url("../img/svg-icons/file-excel.svg");
+}
+
+.icon-file-image:not(a){
+  background-image:url("../img/svg-icons/file-image.svg");
+}
+
+.icon-file-pdf-outline:not(a){
+  background-image:url("../img/svg-icons/file-pdf-outline.svg");
+}
+
+.icon-file-pdf:not(a){
+  background-image:url("../img/svg-icons/file-pdf.svg");
+}
+
+.icon-file-word:not(a){
+  background-image:url("../img/svg-icons/file-word.svg");
+}
+
+.icon-file:not(a){
+  background-image:url("../img/svg-icons/file.svg");
+}
+
+.icon-file-download:not(a){
+  background-image:url("../img/svg-icons/file-download.svg");
+}
+
+.icon-first-page:not(a){
+  background-image:url("../img/svg-icons/first-page.svg");
+}
+
+.icon-flag:not(a){
+  background-image:url("../img/svg-icons/flag.svg");
+}
+
+.icon-folder-multiple:not(a){
   background-image:url("../img/svg-icons/folder-multiple.svg");
 }
 
-.icon-help{
-  background-image:url("../img/svg-icons/help.svg");
+.icon-folder:not(a){
+  background-image:url("../img/svg-icons/folder.svg");
 }
 
-.icon-help-circle-outline{
+.icon-folder-open:not(a){
+  background-image:url("../img/svg-icons/folder-open.svg");
+}
+
+.icon-format-list-checks:not(a){
+  background-image:url("../img/svg-icons/format-list-checks.svg");
+}
+
+.icon-format-align-center:not(a){
+  background-image:url("../img/svg-icons/format-align-center.svg");
+}
+
+.icon-format-align-justify:not(a){
+  background-image:url("../img/svg-icons/format-align-justify.svg");
+}
+
+.icon-format-align-left:not(a){
+  background-image:url("../img/svg-icons/format-align-left.svg");
+}
+
+.icon-format-align-right:not(a){
+  background-image:url("../img/svg-icons/format-align-right.svg");
+}
+
+.icon-format-bold:not(a){
+  background-image:url("../img/svg-icons/format-bold.svg");
+}
+
+.icon-format-clear:not(a){
+  background-image:url("../img/svg-icons/format-clear.svg");
+}
+
+.icon-format-color-fill:not(a){
+  background-image:url("../img/svg-icons/format-color-fill.svg");
+}
+
+.icon-format-color-text:not(a){
+  background-image:url("../img/svg-icons/format-color-text.svg");
+}
+
+.icon-format-indent-decrease:not(a){
+  background-image:url("../img/svg-icons/format-indent-decrease.svg");
+}
+
+.icon-format-indent-increase:not(a){
+  background-image:url("../img/svg-icons/format-indent-increase.svg");
+}
+
+.icon-format-italic:not(a){
+  background-image:url("../img/svg-icons/format-italic.svg");
+}
+
+.icon-format-list-bulleted:not(a){
+  background-image:url("../img/svg-icons/format-list-bulleted.svg");
+}
+
+.icon-format-list-numbered:not(a){
+  background-image:url("../img/svg-icons/format-list-numbered.svg");
+}
+
+.icon-format-size:not(a){
+  background-image:url("../img/svg-icons/format-size.svg");
+}
+
+.icon-format-underlined:not(a){
+  background-image:url("../img/svg-icons/format-underlined.svg");
+}
+
+.icon-forum:not(a){
+  background-image:url("../img/svg-icons/forum.svg");
+}
+
+.icon-forward:not(a){
+  background-image:url("../img/svg-icons/forward.svg");
+}
+
+.icon-fullscreen:not(a){
+  background-image:url("../img/svg-icons/fullscreen.svg");
+}
+
+.icon-fullscreen-exit:not(a){
+  background-image:url("../img/svg-icons/fullscreen-exit.svg");
+}
+
+.icon-grade-outline:not(a){
+  background-image:url("../img/svg-icons/grade-outline.svg");
+}
+
+.icon-grade:not(a){
+  background-image:url("../img/svg-icons/grade.svg");
+}
+
+.icon-groups:not(a){
+  background-image:url("../img/svg-icons/groups.svg");
+}
+
+.icon-headphones:not(a){
+  background-image:url("../img/svg-icons/headphones.svg");
+}
+
+.icon-help-circle-outline:not(a){
   background-image:url("../img/svg-icons/help-circle-outline.svg");
 }
 
-.icon-info{
+.icon-help:not(a){
+  background-image:url("../img/svg-icons/help.svg");
+}
+
+.icon-highlight-off:not(a){
+  background-image:url("../img/svg-icons/highlight-off.svg");
+}
+
+.icon-home:not(a){
+  background-image:url("../img/svg-icons/home.svg");
+}
+
+.icon-hourglass-empty:not(a){
+  background-image:url("../img/svg-icons/hourglass-empty.svg");
+}
+
+.icon-how-to-reg:not(a){
+  background-image:url("../img/svg-icons/how-to-reg.svg");
+}
+
+.icon-info-white:not(a){
+  background-image:url("../img/svg-icons/info-white.svg");
+}
+
+.icon-info:not(a){
   background-image:url("../img/svg-icons/info.svg");
 }
 
-.icon-language{
+.icon-insert-drive-file:not(a){
+  background-image:url("../img/svg-icons/insert-drive-file.svg");
+}
+
+.icon-insert-invitation:not(a){
+  background-image:url("../img/svg-icons/insert-invitation.svg");
+}
+
+.icon-language:not(a){
   background-image:url("../img/svg-icons/language.svg");
 }
 
-.icon-magnify{
+.icon-laptop:not(a){
+  background-image:url("../img/svg-icons/laptop.svg");
+}
+
+.icon-last-page:not(a){
+  background-image:url("../img/svg-icons/last-page.svg");
+}
+
+.icon-link:not(a){
+  background-image:url("../img/svg-icons/link.svg");
+}
+
+.icon-list-alt:not(a){
+  background-image:url("../img/svg-icons/list-alt.svg");
+}
+
+.icon-local-shipping:not(a){
+  background-image:url("../img/svg-icons/local-shipping.svg");
+}
+
+.icon-location-on:not(a){
+  background-image:url("../img/svg-icons/location-on.svg");
+}
+
+.icon-lock:not(a){
+  background-image:url("../img/svg-icons/lock.svg");
+}
+
+.icon-lock-open:not(a){
+  background-image:url("../img/svg-icons/lock-open.svg");
+}
+
+.icon-magnify:not(a){
   background-image:url("../img/svg-icons/magnify.svg");
 }
 
-.icon-menu-down{
+.icon-map:not(a){
+  background-image:url("../img/svg-icons/map.svg");
+}
+
+.icon-menu-down:not(a){
   background-image:url("../img/svg-icons/menu-down.svg");
 }
 
-.icon-menu-left{
+.icon-menu-left:not(a){
   background-image:url("../img/svg-icons/menu-left.svg");
 }
 
-.icon-menu-right{
+.icon-menu-right:not(a){
   background-image:url("../img/svg-icons/menu-right.svg");
 }
 
-.icon-menu-up{
+.icon-menu-up:not(a){
   background-image:url("../img/svg-icons/menu-up.svg");
 }
 
-.icon-message{
+.icon-menu:not(a){
+  background-image:url("../img/svg-icons/menu.svg");
+}
+
+.icon-message:not(a){
   background-image:url("../img/svg-icons/message.svg");
 }
 
-.icon-minus{
+.icon-minus:not(a){
   background-image:url("../img/svg-icons/minus.svg");
 }
 
-.icon-open-in-new{
+.icon-mode:not(a){
+  background-image:url("../img/svg-icons/mode.svg");
+}
+
+.icon-more-horiz:not(a){
+  background-image:url("../img/svg-icons/more-horiz.svg");
+}
+
+.icon-more-vert:not(a){
+  background-image:url("../img/svg-icons/more-vert.svg");
+}
+
+.icon-mouse:not(a){
+  background-image:url("../img/svg-icons/mouse.svg");
+}
+
+.icon-note-add:not(a){
+  background-image:url("../img/svg-icons/note-add.svg");
+}
+
+.icon-notifications:not(a){
+  background-image:url("../img/svg-icons/notifications.svg");
+}
+
+.icon-open-in-new:not(a){
   background-image:url("../img/svg-icons/open-in-new.svg");
 }
 
-.icon-pencil{
+.icon-open-in-new:not(a){
+  background-image:url("../img/svg-icons/open-in-new.svg");
+}
+
+.icon-open-with:not(a){
+  background-image:url("../img/svg-icons/open-with.svg");
+}
+
+.icon-outlined-flag:not(a){
+  background-image:url("../img/svg-icons/outlined-flag.svg");
+}
+
+.icon-palette:not(a){
+  background-image:url("../img/svg-icons/palette.svg");
+}
+
+.icon-payments:not(a){
+  background-image:url("../img/svg-icons/payments.svg");
+}
+
+.icon-pencil:not(a){
   background-image:url("../img/svg-icons/pencil.svg");
 }
 
-.icon-plus{
+.icon-people-alt:not(a){
+  background-image:url("../img/svg-icons/people-alt.svg");
+}
+
+.icon-person:not(a){
+  background-image:url("../img/svg-icons/person.svg");
+}
+
+.icon-person-add-alt-1:not(a){
+  background-image:url("../img/svg-icons/person-add-alt-1.svg");
+}
+
+.icon-person-remove:not(a){
+  background-image:url("../img/svg-icons/person-remove.svg");
+}
+
+.icon-phone-iphone:not(a){
+  background-image:url("../img/svg-icons/phone-iphone.svg");
+}
+
+.icon-photo-camera:not(a){
+  background-image:url("../img/svg-icons/photo-camera.svg");
+}
+
+.icon-playlist-add:not(a){
+  background-image:url("../img/svg-icons/playlist-add.svg");
+}
+
+.icon-playlist-add-check:not(a){
+  background-image:url("../img/svg-icons/playlist-add-check.svg");
+}
+
+.icon-plus:not(a){
   background-image:url("../img/svg-icons/plus.svg");
 }
 
-.icon-printer{
+.icon-print:not(a){
+  background-image:url("../img/svg-icons/print.svg");
+}
+
+.icon-printer:not(a){
   background-image:url("../img/svg-icons/printer.svg");
 }
 
-.icon-refresh{
+.icon-query-builder:not(a){
+  background-image:url("../img/svg-icons/query-builder.svg");
+}
+
+.icon-refresh:not(a){
   background-image:url("../img/svg-icons/refresh.svg");
 }
 
-.icon-save{
+.icon-remove:not(a){
+  background-image:url("../img/svg-icons/remove.svg");
+}
+
+.icon-reply:not(a){
+  background-image:url("../img/svg-icons/reply.svg");
+}
+
+.icon-report-problem:not(a){
+  background-image:url("../img/svg-icons/report-problem.svg");
+}
+
+.icon-save:not(a){
   background-image:url("../img/svg-icons/save.svg");
 }
 
-.icon-settings{
+.icon-school:not(a){
+  background-image:url("../img/svg-icons/school.svg");
+}
+
+.icon-science:not(a){
+  background-image:url("../img/svg-icons/science.svg");
+}
+
+.icon-search:not(a){
+  background-image:url("../img/svg-icons/search.svg");
+}
+
+.icon-send:not(a){
+  background-image:url("../img/svg-icons/send.svg");
+}
+
+.icon-settings:not(a){
   background-image:url("../img/svg-icons/settings.svg");
 }
 
-.icon-sort-acending{
+.icon-share:not(a){
+  background-image:url("../img/svg-icons/share.svg");
+}
+
+.icon-shopping-cart:not(a){
+  background-image:url("../img/svg-icons/shopping-cart.svg");
+}
+
+.icon-sort-acending:not(a){
   background-image:url("../img/svg-icons/sort-acending.svg");
 }
 
-.icon-sort-descending{
+.icon-sort-descending:not(a){
   background-image:url("../img/svg-icons/sort-descending.svg");
 }
 
-.icon-sort-none{
+.icon-sort-none:not(a){
   background-image:url("../img/svg-icons/sort-none.svg");
 }
 
-.icon-success{
+.icon-sort:not(a){
+  background-image:url("../img/svg-icons/sort.svg");
+}
+
+.icon-sort-by-alpha:not(a){
+  background-image:url("../img/svg-icons/sort-by-alpha.svg");
+}
+
+.icon-subdirectory-arrow-left:not(a){
+  background-image:url("../img/svg-icons/subdirectory-arrow-left.svg");
+}
+
+.icon-subdirectory-arrow-right:not(a){
+  background-image:url("../img/svg-icons/subdirectory-arrow-right.svg");
+}
+
+.icon-success:not(a){
   background-image:url("../img/svg-icons/success.svg");
 }
 
-.icon-warning{
+.icon-support-agent:not(a){
+  background-image:url("../img/svg-icons/support-agent.svg");
+}
+
+.icon-text-format:not(a){
+  background-image:url("../img/svg-icons/text-format.svg");
+}
+
+.icon-tune:not(a){
+  background-image:url("../img/svg-icons/tune.svg");
+}
+
+.icon-upload:not(a){
+  background-image:url("../img/svg-icons/upload.svg");
+}
+
+.icon-vertical-split:not(a){
+  background-image:url("../img/svg-icons/vertical-split.svg");
+}
+
+.icon-videocam:not(a){
+  background-image:url("../img/svg-icons/videocam.svg");
+}
+
+.icon-view-headline:not(a){
+  background-image:url("../img/svg-icons/view-headline.svg");
+}
+
+.icon-visibility:not(a){
+  background-image:url("../img/svg-icons/visibility.svg");
+}
+
+.icon-visibility-off:not(a){
+  background-image:url("../img/svg-icons/visibility-off.svg");
+}
+
+.icon-warning:not(a){
   background-image:url("../img/svg-icons/warning.svg");
+}
+
+.icon-zoom-in:not(a){
+  background-image:url("../img/svg-icons/zoom-in.svg");
+}
+
+.icon-zoom-out:not(a){
+  background-image:url("../img/svg-icons/zoom-out.svg");
 }
 
 .hide-base-svg{
@@ -9300,6 +9206,150 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
     padding-left:16px;
   }
 }
+@media screen and (max-width: 767px){
+  .table.table-sm-responsive-headers{
+    display:block;
+  }
+  .table.table-sm-responsive-headers thead{
+    display:none;
+  }
+  .table.table-sm-responsive-headers tbody, .table.table-sm-responsive-headers tr{
+    display:block;
+  }
+  .table.table-sm-responsive-headers tr{
+    border-bottom:1px solid #BFBFBF;
+  }
+  .table.table-sm-responsive-headers tr:last-child{
+    border-bottom:0;
+  }
+  .table.table-sm-responsive-headers tr td, .table.table-sm-responsive-headers tr th{
+    display:block;
+    border:none !important;
+  }
+  .table.table-sm-responsive-headers tr td[data-title]:not([data-title=""]):before, .table.table-sm-responsive-headers tr th[data-title]:not([data-title=""]):before{
+    content:attr(data-title);
+    text-align:left;
+    display:block;
+    font-weight:600;
+  }
+  .table.table-sm-responsive-headers.table--borderless tbody tr:first-child{
+    border-top:solid 1px #BFBFBF;
+  }
+  .table.table-sm-responsive-headers.table--borderless tbody tr:last-child{
+    border-bottom:solid 1px #BFBFBF;
+  }
+  .table.table-sm-responsive-headers.table--borderless tbody tr td:first-child, .table.table-sm-responsive-headers.table--borderless tbody tr th:first-child{
+    padding-left:16px;
+  }
+}
+@media screen and (max-width: 991px){
+  .table.table-md-responsive-headers{
+    display:block;
+  }
+  .table.table-md-responsive-headers thead{
+    display:none;
+  }
+  .table.table-md-responsive-headers tbody, .table.table-md-responsive-headers tr{
+    display:block;
+  }
+  .table.table-md-responsive-headers tr{
+    border-bottom:1px solid #BFBFBF;
+  }
+  .table.table-md-responsive-headers tr:last-child{
+    border-bottom:0;
+  }
+  .table.table-md-responsive-headers tr td, .table.table-md-responsive-headers tr th{
+    display:block;
+    border:none !important;
+  }
+  .table.table-md-responsive-headers tr td[data-title]:not([data-title=""]):before, .table.table-md-responsive-headers tr th[data-title]:not([data-title=""]):before{
+    content:attr(data-title);
+    text-align:left;
+    display:block;
+    font-weight:600;
+  }
+  .table.table-md-responsive-headers.table--borderless tbody tr:first-child{
+    border-top:solid 1px #BFBFBF;
+  }
+  .table.table-md-responsive-headers.table--borderless tbody tr:last-child{
+    border-bottom:solid 1px #BFBFBF;
+  }
+  .table.table-md-responsive-headers.table--borderless tbody tr td:first-child, .table.table-md-responsive-headers.table--borderless tbody tr th:first-child{
+    padding-left:16px;
+  }
+}
+@media screen and (max-width: 1199px){
+  .table.table-lg-responsive-headers{
+    display:block;
+  }
+  .table.table-lg-responsive-headers thead{
+    display:none;
+  }
+  .table.table-lg-responsive-headers tbody, .table.table-lg-responsive-headers tr{
+    display:block;
+  }
+  .table.table-lg-responsive-headers tr{
+    border-bottom:1px solid #BFBFBF;
+  }
+  .table.table-lg-responsive-headers tr:last-child{
+    border-bottom:0;
+  }
+  .table.table-lg-responsive-headers tr td, .table.table-lg-responsive-headers tr th{
+    display:block;
+    border:none !important;
+  }
+  .table.table-lg-responsive-headers tr td[data-title]:not([data-title=""]):before, .table.table-lg-responsive-headers tr th[data-title]:not([data-title=""]):before{
+    content:attr(data-title);
+    text-align:left;
+    display:block;
+    font-weight:600;
+  }
+  .table.table-lg-responsive-headers.table--borderless tbody tr:first-child{
+    border-top:solid 1px #BFBFBF;
+  }
+  .table.table-lg-responsive-headers.table--borderless tbody tr:last-child{
+    border-bottom:solid 1px #BFBFBF;
+  }
+  .table.table-lg-responsive-headers.table--borderless tbody tr td:first-child, .table.table-lg-responsive-headers.table--borderless tbody tr th:first-child{
+    padding-left:16px;
+  }
+}
+@media screen{
+  .table.table-xl-responsive-headers{
+    display:block;
+  }
+  .table.table-xl-responsive-headers thead{
+    display:none;
+  }
+  .table.table-xl-responsive-headers tbody, .table.table-xl-responsive-headers tr{
+    display:block;
+  }
+  .table.table-xl-responsive-headers tr{
+    border-bottom:1px solid #BFBFBF;
+  }
+  .table.table-xl-responsive-headers tr:last-child{
+    border-bottom:0;
+  }
+  .table.table-xl-responsive-headers tr td, .table.table-xl-responsive-headers tr th{
+    display:block;
+    border:none !important;
+  }
+  .table.table-xl-responsive-headers tr td[data-title]:not([data-title=""]):before, .table.table-xl-responsive-headers tr th[data-title]:not([data-title=""]):before{
+    content:attr(data-title);
+    text-align:left;
+    display:block;
+    font-weight:600;
+  }
+  .table.table-xl-responsive-headers.table--borderless tbody tr:first-child{
+    border-top:solid 1px #BFBFBF;
+  }
+  .table.table-xl-responsive-headers.table--borderless tbody tr:last-child{
+    border-bottom:solid 1px #BFBFBF;
+  }
+  .table.table-xl-responsive-headers.table--borderless tbody tr td:first-child, .table.table-xl-responsive-headers.table--borderless tbody tr th:first-child{
+    padding-left:16px;
+  }
+}
 
 .table--responsive-scroll{
   overflow-x:auto;
@@ -9323,7 +9373,7 @@ hr{
   -webkit-font-smoothing:auto;
   color:inherit;
   background-color:#F5F5F5;
-  background-image:url("../img/svg-icons/minus.svg");
+  background-image:url("../img/svg-icons/remove.svg");
   background-position:left 1.6rem center;
   background-repeat:no-repeat;
   background-size:2.4rem;
@@ -9395,10 +9445,10 @@ button.accordion-bulk-button{
   margin-bottom:16px;
 }
 button.accordion-bulk-button[data-accordion-bulk-expand=true]{
-  background-image:url("../img/svg-icons/plus.svg");
+  background-image:url("../img/svg-icons/add.svg");
 }
 button.accordion-bulk-button[data-accordion-bulk-expand=false]{
-  background-image:url("../img/svg-icons/minus.svg");
+  background-image:url("../img/svg-icons/remove.svg");
 }
 
 .accordion-bordered .accordion-button, .accordion-bordered .tabnav > button{
@@ -9518,7 +9568,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .accordion-button[aria-expanded=false], .tabnav > button[aria-expanded=false]{
-  background-image:url("../img/svg-icons/plus.svg");
+  background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
   border-radius:3px 3px 3px 3px;
@@ -9581,7 +9631,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   border-color:#358000;
 }
 .alert-success.alert--show-icon{
-  background-image:url("../img/svg-icons/success.svg");
+  background-image:url("../img/svg-icons/check-circle.svg");
   padding-left:48px;
 }
 
@@ -9590,7 +9640,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   border-color:#febb30;
 }
 .alert-warning.alert--show-icon{
-  background-image:url("../img/svg-icons/warning.svg");
+  background-image:url("../img/svg-icons/report-problem.svg");
   padding-left:48px;
 }
 
@@ -9599,7 +9649,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   border-color:#CC0000;
 }
 .alert-error.alert--show-icon{
-  background-image:url("../img/svg-icons/error.svg");
+  background-image:url("../img/svg-icons/highlight-off.svg");
   padding-left:48px;
 }
 
@@ -9716,7 +9766,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:block;
   margin-bottom:32px;
 }
-.details .details-summary::-webkit-details-marker{
+.details .details-summary::marker, .details .details-summary::-webkit-details-marker{
   display:none;
 }
 .details[open] .details-summary{
@@ -9767,6 +9817,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .details .details-text{
   padding:16px;
   border-left:4px solid #BFBFBF;
+  box-sizing:border-box;
 }
 .details .details-text[aria-hidden=true]{
   display:none;
@@ -9810,7 +9861,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
-  background-image:url("../img/svg-icons/calendar.svg");
+  background-image:url("../img/svg-icons/insert-invitation.svg");
   background-repeat:no-repeat;
   align-self:stretch;
   background-color:transparent;
@@ -10939,28 +10990,28 @@ body.modal-open{
   text-decoration:none;
 }
 .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=false]{
-  background-image:url("../img/svg-icons/plus.svg");
+  background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-position:right 16px center;
   background-size:24px;
 }
 @media (min-width: 992px){
   .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=false]{
-    background-image:url("../img/svg-icons/angle-arrow-down.svg");
+    background-image:url("../img/svg-icons/expand-more.svg");
     background-position:right 1rem center;
     border-left:1px solid transparent;
     border-right:1px solid transparent;
   }
 }
 .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=true]{
-  background-image:url("../img/svg-icons/minus.svg");
+  background-image:url("../img/svg-icons/remove.svg");
   background-repeat:no-repeat;
   background-position:right 16px center;
   background-size:24px;
 }
 @media (min-width: 992px){
   .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=true]{
-    background-image:url("../img/svg-icons/angle-arrow-down-white.svg");
+    background-image:url("../img/svg-icons/expand-more-white.svg");
     background-position:right 1rem center;
     border-left:1px solid #999999;
     border-right:1px solid #999999;
@@ -11145,6 +11196,132 @@ body.modal-open{
 }
 .nav-info-list li a{
   text-decoration:none;
+}
+
+.toast-container{
+  position:fixed;
+  right:0px;
+  left:0px;
+  bottom:0px;
+}
+@media (min-width: 768px){
+  .toast-container{
+    right:16px;
+    top:48px;
+    left:auto;
+    bottom:auto;
+  }
+}
+
+.toast{
+  width:100%;
+  max-width:100%;
+  background-color:#ffffff;
+  display:flex;
+  transition:opacity 0.15s linear;
+  margin-bottom:16px;
+}
+.toast:not(.show){
+  opacity:0;
+}
+.toast.hide{
+  display:none;
+}
+@media (min-width: 768px){
+  .toast{
+    width:464px;
+  }
+}
+.toast .toast-icon{
+  align-items:center;
+  display:flex;
+  padding-left:calc(16px + 24px);
+  padding-right:16px;
+  background-size:28px;
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+.toast .toast-message{
+  padding:16px;
+  position:relative;
+}
+.toast .toast-message .toast-close{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  position:absolute;
+  top:16px;
+  right:16px;
+  text-indent:-9999px;
+  width:24px;
+  height:24px;
+  background-image:url("../img/svg-icons/close.svg");
+  background-repeat:no-repeat;
+}
+.toast .toast-message .toast-close:hover, .toast .toast-message .toast-close:focus{
+  background-color:transparent;
+  color:inherit;
+}
+.toast .toast-message p{
+  margin:0px;
+  word-break:break-word;
+}
+.toast .toast-message p:first-of-type{
+  margin-right:32px;
+}
+
+.toast-success{
+  background-color:#eeffe2;
+}
+
+.toast-warning{
+  background-color:#ffeecc;
+}
+
+.toast-error{
+  background-color:#ffe0e0;
+}
+
+.toast-info{
+  background-color:#e2f2fb;
+}
+
+.toast-success .toast-icon{
+  background-color:#358000;
+}
+
+.toast-warning .toast-icon{
+  background-color:#febb30;
+}
+
+.toast-error .toast-icon{
+  background-color:#CC0000;
+}
+
+.toast-info .toast-icon{
+  background-color:#1B86C3;
+}
+
+.toast-success .toast-icon{
+  background-image:url("../img/svg-icons/check-circle-white.svg");
+}
+
+.toast-warning .toast-icon{
+  background-image:url("../img/svg-icons/report-problem.svg");
+}
+
+.toast-error .toast-icon{
+  background-image:url("../img/svg-icons/highlight-off-white.svg");
+}
+
+.toast-info .toast-icon{
+  background-image:url("../img/svg-icons/info-white.svg");
 }
 
 .search{
@@ -11988,7 +12165,7 @@ a.skipnav{
   background-color:#DCDCDC;
 }
 .tabnav > button[aria-selected=false]{
-  background-image:url("../img/svg-icons/plus.svg");
+  background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:24px;
   border-radius:3px 3px 3px 3px;
@@ -12306,35 +12483,83 @@ a.skipnav{
   }
 }
 @media print and (max-width: 767px){
-  .table.table--responsive-headers:not(.d-print-table){
+  .table.table--responsive-headers:not(.d-print-table),
+.table.table-sm-responsive-headers:not(.d-print-table),
+.table.table-md-responsive-headers:not(.d-print-table),
+.table.table-lg-responsive-headers:not(.d-print-table),
+.table.table-xl-responsive-headers:not(.d-print-table){
     display:block;
   }
-  .table.table--responsive-headers:not(.d-print-table) thead{
+  .table.table--responsive-headers:not(.d-print-table) thead,
+.table.table-sm-responsive-headers:not(.d-print-table) thead,
+.table.table-md-responsive-headers:not(.d-print-table) thead,
+.table.table-lg-responsive-headers:not(.d-print-table) thead,
+.table.table-xl-responsive-headers:not(.d-print-table) thead{
     display:none;
   }
-  .table.table--responsive-headers:not(.d-print-table) tr{
+  .table.table--responsive-headers:not(.d-print-table) tr,
+.table.table-sm-responsive-headers:not(.d-print-table) tr,
+.table.table-md-responsive-headers:not(.d-print-table) tr,
+.table.table-lg-responsive-headers:not(.d-print-table) tr,
+.table.table-xl-responsive-headers:not(.d-print-table) tr{
     border-bottom:1px solid #BFBFBF;
   }
-  .table.table--responsive-headers:not(.d-print-table) tr:last-child{
+  .table.table--responsive-headers:not(.d-print-table) tr:last-child,
+.table.table-sm-responsive-headers:not(.d-print-table) tr:last-child,
+.table.table-md-responsive-headers:not(.d-print-table) tr:last-child,
+.table.table-lg-responsive-headers:not(.d-print-table) tr:last-child,
+.table.table-xl-responsive-headers:not(.d-print-table) tr:last-child{
     border-bottom:0;
   }
-  .table.table--responsive-headers:not(.d-print-table) tr td, .table.table--responsive-headers:not(.d-print-table) tr th{
+  .table.table--responsive-headers:not(.d-print-table) tr td, .table.table--responsive-headers:not(.d-print-table) tr th,
+.table.table-sm-responsive-headers:not(.d-print-table) tr td,
+.table.table-sm-responsive-headers:not(.d-print-table) tr th,
+.table.table-md-responsive-headers:not(.d-print-table) tr td,
+.table.table-md-responsive-headers:not(.d-print-table) tr th,
+.table.table-lg-responsive-headers:not(.d-print-table) tr td,
+.table.table-lg-responsive-headers:not(.d-print-table) tr th,
+.table.table-xl-responsive-headers:not(.d-print-table) tr td,
+.table.table-xl-responsive-headers:not(.d-print-table) tr th{
     display:block;
     border:none !important;
   }
-  .table.table--responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before, .table.table--responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before{
+  .table.table--responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before, .table.table--responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before,
+.table.table-sm-responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before,
+.table.table-sm-responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before,
+.table.table-md-responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before,
+.table.table-md-responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before,
+.table.table-lg-responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before,
+.table.table-lg-responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before,
+.table.table-xl-responsive-headers:not(.d-print-table) tr td[data-title]:not([data-title=""]):before,
+.table.table-xl-responsive-headers:not(.d-print-table) tr th[data-title]:not([data-title=""]):before{
     content:attr(data-title);
     text-align:left;
     display:block;
     font-weight:600;
   }
-  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child{
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child,
+.table.table-sm-responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child,
+.table.table-md-responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child,
+.table.table-lg-responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child,
+.table.table-xl-responsive-headers:not(.d-print-table).table--borderless tbody tr:first-child{
     border-top:solid 1px #BFBFBF;
   }
-  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child{
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child,
+.table.table-sm-responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child,
+.table.table-md-responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child,
+.table.table-lg-responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child,
+.table.table-xl-responsive-headers:not(.d-print-table).table--borderless tbody tr:last-child{
     border-bottom:solid 1px #BFBFBF;
   }
-  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child, .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child{
+  .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child, .table.table--responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child,
+.table.table-sm-responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child,
+.table.table-sm-responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child,
+.table.table-md-responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child,
+.table.table-md-responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child,
+.table.table-lg-responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child,
+.table.table-lg-responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child,
+.table.table-xl-responsive-headers:not(.d-print-table).table--borderless tbody tr td:first-child,
+.table.table-xl-responsive-headers:not(.d-print-table).table--borderless tbody tr th:first-child{
     padding-left:16px;
   }
 }

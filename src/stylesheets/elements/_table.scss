@@ -1,3 +1,42 @@
+
+@mixin responsive-table() {
+  display: block;
+  thead {
+    display: none;
+  }
+  tbody, tr {
+    display: block;
+  }
+  tr {
+    border-bottom: $inner-border;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  tr td, tr th {
+    display: block;
+    border: none !important;
+
+    &[data-title]:not([data-title=""]):before {
+      content: attr(data-title);
+      text-align: left;
+      display: block;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &.table--borderless tbody tr {
+    &:first-child {
+      border-top: solid 1px $color-gray-light;
+    }
+    &:last-child {
+      border-bottom: solid 1px $color-gray-light;
+    }
+    td:first-child, th:first-child {
+      padding-left: 16px;
+    }
+  }
+}
 .table {
     margin: 0;
     line-height: $body-text-line-height;
@@ -193,40 +232,16 @@
       //make row into a "card" on phone
       &.table--responsive-headers {
         @include media-breakpoint-down(sm) {
-          display: block;
-          thead {
-            display: none;
-          }
-          tbody, tr {
-            display: block;
-          }
-          tr {
-            border-bottom: $inner-border;
-            &:last-child {
-              border-bottom: 0;
-            }
-          }
-          tr td, tr th {
-            display: block;
-            border: none !important;
-
-            &[data-title]:not([data-title=""]):before {
-              content: attr(data-title);
-              text-align: left;
-              display: block;
-              font-weight: $font-weight-semibold;
-            }
-          }
-
-          &.table--borderless tbody tr {
-            &:first-child {
-              border-top: solid 1px $color-gray-light;
-            }
-            &:last-child {
-              border-bottom: solid 1px $color-gray-light;
-            }
-            td:first-child, th:first-child {
-              padding-left: 16px;
+          @include responsive-table();
+        }
+      }
+      
+      @each $breakpoint in map-keys($grid-breakpoints) {
+        @if $breakpoint != xs {
+          @include media-breakpoint-down($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+            &.table#{$infix}-responsive-headers{
+              @include responsive-table();
             }
           }
         }
