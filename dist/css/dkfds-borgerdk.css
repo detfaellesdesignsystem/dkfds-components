@@ -7415,6 +7415,128 @@ a.button{
   display:flex;
   margin:2rem 0 1rem;
 }
+input[type=checkbox].form-toggle{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0, 0, 0, 0);
+  border:0;
+  left:-999em;
+}
+
+input[type=checkbox].form-toggle ~ .form-toggle-label{
+  position:relative;
+  display:inline-block;
+  min-height:20px;
+  padding-left:68px;
+  line-height:20px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  padding-top:8px;
+  cursor:pointer;
+}
+
+input[type=checkbox].form-toggle ~ .form-toggle-label:before{
+  content:"Fra";
+  position:absolute;
+  top:4px;
+  left:4px;
+  bottom:0;
+  border-radius:50%;
+  background-color:#ffffff;
+  width:29px;
+  height:29px;
+  color:#1a1a1a;
+  font-size:13px;
+  font-weight:500;
+  padding-top:5px;
+  transition:all 0.15s ease-out;
+  z-index:10;
+  text-align:center;
+  box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label{
+  cursor:not-allowed;
+}
+
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:before,
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:hover:before,
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:active:before,
+input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:before{
+  color:#999999;
+}
+
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:after,
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:hover:after,
+input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:active:after{
+  opacity:0.5;
+  background-color:#999999;
+}
+
+input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:after,
+input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:hover:after,
+input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:active:after{
+  opacity:0.5;
+  background-color:#44831E;
+}
+
+input[type=checkbox].form-toggle ~ .form-toggle-label:after{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:2px;
+  bottom:3px;
+  width:56px;
+  height:33px;
+  border-radius:20px;
+  line-height:1;
+  text-align:center;
+  background-color:#999999;
+  transition:all 0.15s ease-out;
+}
+
+input[type=checkbox].form-toggle ~ .form-toggle-label:hover:after{
+  background-color:#747474;
+}
+
+input[type=checkbox].form-toggle ~ .form-toggle-label:active:after{
+  background-color:#454545;
+}
+
+input[type=checkbox].form-toggle:checked ~ .form-toggle-label:after{
+  background-color:#44831E;
+}
+
+input[type=checkbox].form-toggle:checked ~ .form-toggle-label:hover:after{
+  background-color:#3C5C22;
+}
+
+input[type=checkbox].form-toggle:checked ~ .form-toggle-label:active:after{
+  background-color:#233614;
+}
+
+input[type=checkbox].form-toggle:focus ~ .form-toggle-label:after{
+  outline:4px solid #747474;
+  outline-offset:1px;
+}
+input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
+  content:"Til";
+  left:26px;
+}
+.switch-alternative input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
+  content:"✔";
+  text-indent:10px;
+}
+
+.switch-alternative input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
+  background-color:#3399cc;
+}
 
 .badge{
   padding:0;
@@ -8852,6 +8974,10 @@ ol li{
   transform:translateZ(0);
 }
 
+.spinner-status{
+  text-align:center;
+}
+
 @-webkit-keyframes spinner{
   0%, 100%{
     box-shadow:0em -2.6em 0em 0em #454545, 1.8em -1.8em 0 0em rgba(69, 69, 69, 0.2), 2.5em 0em 0 0em rgba(69, 69, 69, 0.2), 1.75em 1.75em 0 0em rgba(69, 69, 69, 0.2), 0em 2.5em 0 0em rgba(69, 69, 69, 0.2), -1.8em 1.8em 0 0em rgba(69, 69, 69, 0.2), -2.6em 0em 0 0em rgba(69, 69, 69, 0.5), -1.8em -1.8em 0 0em rgba(69, 69, 69, 0.7);
@@ -9794,10 +9920,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .details .details-summary:before{
   content:"";
   position:absolute;
-  top:-1px;
+  top:3px;
   bottom:0;
   left:0;
-  margin:auto;
+  margin:0 auto;
   display:block;
   width:0;
   height:0;
@@ -10619,6 +10745,7 @@ body.modal-open{
   overflow-x:hidden;
   overflow-y:auto;
   background-color:#fff;
+  box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
   padding:16px 24px;
   max-width:800px;
   position:relative;
@@ -11663,7 +11790,7 @@ a.skipnav{
 .card{
   position:relative;
   border-radius:0;
-  box-shadow:0 2px 4px 0 #BFBFBF;
+  box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border:1px solid #747474;
   overflow:hidden;
   background:#ffffff;
