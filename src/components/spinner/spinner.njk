@@ -1,3 +1,4 @@
-{% macro spinner() %}
- <div class="spinner"></div>
+{% macro spinner(status) %}
+<div class="spinner"></div>
+<div class="spinner-status" role="status">{{ status | default('Arbejder') }}</div>
 {% endmacro %}
