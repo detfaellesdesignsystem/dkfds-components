@@ -9,22 +9,52 @@ class Tooltip{
 
   setEvents (){
     let that = this;
-    if(this.element.getAttribute('data-tooltip-trigger') !== 'click') {
-      this.element.addEventListener('mouseover', function (e) {
-        var element = e.target;
+      this.element.addEventListener('mouseenter', function (e) {
+        
+        e.target.classList.add('tooltip-hover');
+        setTimeout(function(){ 
+          if(e.target.classList.contains('tooltip-hover')){
+            var element = e.target;
 
-        if (element.getAttribute('aria-describedby') !== null) return;
-        e.preventDefault();
+            if (element.getAttribute('aria-describedby') !== null) return;
+            e.preventDefault();
 
-        var pos = element.getAttribute('data-tooltip-position') || 'top';
+            var pos = element.getAttribute('data-tooltip-position') || 'top';
 
-        var tooltip = that.createTooltip(element, pos);
+            var tooltip = that.createTooltip(element, pos);
 
-        document.body.appendChild(tooltip);
+            document.body.appendChild(tooltip);
 
-        that.positionAt(element, tooltip, pos);
+            that.positionAt(element, tooltip, pos);
+          }
+        }, 300);
 
       });
+      
+      this.element.addEventListener('mouseleave', function (e) {
+        let trigger = this;
+        trigger.classList.remove('tooltip-hover');
+        if(!trigger.classList.contains('active')){
+          var tooltip = trigger.getAttribute('aria-describedby');
+          if(tooltip !== null && document.getElementById(tooltip) !== null){
+            document.body.removeChild(document.getElementById(tooltip));
+          }
+          trigger.removeAttribute('aria-describedby');
+        }
+      });
+
+      this.element.addEventListener('keyup', function(event){
+        var key = event.which || event.keyCode;
+        if (key === 27) {
+          var tooltip = this.getAttribute('aria-describedby');
+          if(tooltip !== null && document.getElementById(tooltip) !== null){
+            document.body.removeChild(document.getElementById(tooltip));
+          }
+          this.classList.remove('active');
+          this.removeAttribute('aria-describedby');
+        }
+      });
+
       this.element.addEventListener('focus', function (e) {
         var element = e.target;
 
@@ -47,15 +77,10 @@ class Tooltip{
           document.body.removeChild(document.getElementById(tooltip));
         }
         this.removeAttribute('aria-describedby');
+        this.classList.remove('active');
       });
-      this.element.addEventListener('mouseout', function (e) {
-        var tooltip = this.getAttribute('aria-describedby');
-        if(tooltip !== null && document.getElementById(tooltip) !== null){
-          document.body.removeChild(document.getElementById(tooltip));
-        }
-        this.removeAttribute('aria-describedby');
-      });
-    } else {
+
+    if(this.element.getAttribute('data-tooltip-trigger') === 'click'){
       this.element.addEventListener('click', function (e) {
         var element = this;
         if (element.getAttribute('aria-describedby') === null) {
@@ -64,9 +89,14 @@ class Tooltip{
           document.body.appendChild(tooltip);
           that.positionAt(element, tooltip, pos);
         } else {
-          var popper = element.getAttribute('aria-describedby');
-          document.body.removeChild(document.getElementById(popper));
-          element.removeAttribute('aria-describedby');
+          if(element.classList.contains('active')){
+            var popper = element.getAttribute('aria-describedby');
+            document.body.removeChild(document.getElementById(popper));
+            element.classList.remove('active');
+            element.removeAttribute('aria-describedby');
+          } else{
+            element.classList.add('active');
+          }
         }
       });
     }
@@ -100,6 +130,10 @@ class Tooltip{
     var tooltipInner = document.createElement('div');
     tooltipInner.className = 'tooltip';
 
+    var tooltipArrow = document.createElement('div');
+    tooltipArrow.className = 'tooltip-arrow';
+    tooltipInner.appendChild(tooltipArrow);
+
     var tooltipContent = document.createElement('div');
     tooltipContent.className = 'tooltip-content';
     tooltipContent.innerHTML = element.getAttribute('data-tooltip');
@@ -119,16 +153,22 @@ class Tooltip{
    *
    */
   positionAt (parent, tooltip, pos) {
+    let trigger = parent;
+    let arrow = tooltip.getElementsByClassName('tooltip-arrow')[0];
+    let triggerPosition = parent.getBoundingClientRect();
+    
     var parentCoords = parent.getBoundingClientRect(), left, top;
+
     var tooltipWidth = tooltip.offsetWidth;
 
-    var dist = 8;
-
+    var dist = 12;
+    let arrowDirection = "down";
     left = parseInt(parentCoords.left) + ((parent.offsetWidth - tooltip.offsetWidth) / 2);
 
     switch (pos) {
       case 'bottom':
         top = parseInt(parentCoords.bottom) + dist;
+        arrowDirection = "up";
         break;
 
       default:
@@ -136,22 +176,37 @@ class Tooltip{
         top = parseInt(parentCoords.top) - tooltip.offsetHeight - dist;
     }
 
+    // if tooltip is out of bounds on left side
     if(left < 0) {
-      left = parseInt(parentCoords.left);
+      left = dist;
+      let endPositionOnPage = triggerPosition.left + (trigger.offsetWidth / 2);
+      let tooltipArrowHalfWidth = 8;
+      let arrowLeftPosition = endPositionOnPage - dist - tooltipArrowHalfWidth;
+      tooltip.getElementsByClassName('tooltip-arrow')[0].style.left = arrowLeftPosition+'px';
     }
 
+    // 
     if((top + tooltip.offsetHeight) >= window.innerHeight){
       top = parseInt(parentCoords.top) - tooltip.offsetHeight - dist;
+      arrowDirection = "up";
     }
-
-
-    top  = (top < 0) ? parseInt(parentCoords.bottom) + dist : top;
+    
+    if(top < 0) {
+      top = parseInt(parentCoords.bottom) + dist;
+      arrowDirection = "up";
+    }
     if(window.innerWidth < (left + tooltipWidth)){
       tooltip.style.right = dist + 'px';
+      let endPositionOnPage = triggerPosition.right - (trigger.offsetWidth / 2);
+      let tooltipArrowHalfWidth = 8;
+      let arrowRightPosition = window.innerWidth - endPositionOnPage - dist - tooltipArrowHalfWidth;
+      tooltip.getElementsByClassName('tooltip-arrow')[0].style.right = arrowRightPosition+'px';
+      tooltip.getElementsByClassName('tooltip-arrow')[0].style.left = 'auto';
     } else {
       tooltip.style.left = left + 'px';
     }
     tooltip.style.top  = top + pageYOffset + 'px';
+    tooltip.getElementsByClassName('tooltip-arrow')[0].classList.add(arrowDirection);
   }
 }
 
