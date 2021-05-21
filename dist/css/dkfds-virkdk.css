@@ -9751,6 +9751,9 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   color:#1a1a1a;
   max-width:66ch;
 }
+.alert .alert-text a, .alert .alert-text a:link, .alert .alert-text a:active, .alert .alert-text a:visited, .alert .alert-text a:hover{
+  color:#1a1a1a;
+}
 
 .alert-success{
   background-color:#eeffe2;

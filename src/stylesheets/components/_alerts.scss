@@ -76,6 +76,9 @@ $icon-size: 24px;
     margin-top: 0;
     color: $alert-text-color;
     max-width: $text-max-width;
+    a, a:link, a:active, a:visited, a:hover{
+      color: $color-black;
+    }
   }
 }
 
