@@ -5,6 +5,7 @@
   <div class="portal-header {% if portal_header.compact == true %}portal-header-compact{% endif %}">
     <div class="container portal-header-inner">
       <a href="{{ portal_header.logolink.href | default('/') }}" {% if portal_header.logolink.title %}title="{{ portal_header.logolink.title}}"{% endif %} {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
+        {% if portal_header.logolink.sronly %}<span class="sr-only">{{ portal_header.logolink.sronly}}</span>{% endif %}
       </a>
       <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
 
