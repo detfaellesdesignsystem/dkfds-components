@@ -23,10 +23,11 @@ class Toast{
 
 function showToast(){
     let toasts = document.querySelectorAll('.toast.showing');
-    toasts.forEach(toast => {
+    for(let t in toasts){
+        let toast = toasts[t];
         toast.classList.remove('showing');
         toast.classList.add('show');
-    });
+    }
 }
 
 module.exports = Toast;
