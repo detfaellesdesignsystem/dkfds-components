@@ -12,6 +12,9 @@
     -ms-transform: translateZ(0);
     transform: translateZ(0);
   }
+  .spinner-status{
+    text-align: center;
+  }
 
 
   @-webkit-keyframes spinner {

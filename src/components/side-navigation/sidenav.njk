@@ -2,7 +2,7 @@
 
 {% macro nav_list(links, subclass) %}
 {% for item in links %}<li{% if item.current or item.active or item.isAnchorLinks %} class="{% if item.current %}current{% endif %} {% if item.active %}{% if item.current %} {% endif %}active{% endif %} {% if item.isAnchorLinks %}{% if item.current or item.active %} {% endif %}has-anchor-links{% endif %}"{% endif %} role="none">
-  <a href="{{ item.href }}" role="menuitem" {% if item.current %}aria-current="true"{% endif %} {% if item.active %}aria-current="page"{% endif %}>
+  <a href="{{ item.href | default('#')}}" role="menuitem" {% if item.current %}aria-current="true"{% endif %} {% if item.active %}aria-current="page"{% endif %}>
     {% if item.iconbefore %}<span class="sidenav-icon-before">{{ icon_svg(item.iconbefore) }} </span>{% endif %}{{ item.text }}{% if item.information %}<span class="sidenav-information">{{item.information}}</span>{% endif %}
   </a>
   {% if item.current and item.links %}<ul class="{{ subclass }}" role="menu">{{ nav_list(item.links, subclass) }}</ul>{% endif %}

@@ -41,6 +41,7 @@ body.modal-open{
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #fff;
+    box-shadow: $box-shadow-heavy;
     padding: 16px 24px;
     max-width: 800px;
     position: relative;

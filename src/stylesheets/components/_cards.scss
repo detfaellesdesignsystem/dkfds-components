@@ -1,7 +1,7 @@
 .card {
   position: relative;
   border-radius: map-get($spacers, 0);
-  box-shadow: 0 2px 4px 0 $color-gray-light;
+  box-shadow: $box-shadow-slightly;
   border: $outer-border;
   overflow: hidden;
   background: $color-white;

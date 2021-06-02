@@ -1,0 +1,124 @@
+/* hide the default checkbox */
+input[type='checkbox'].form-toggle {
+  @include sr-only();
+}
+
+input[type='checkbox'].form-toggle ~ .form-toggle-label {
+  position: relative;
+  display: inline-block;
+  min-height: 20px; /* required in case the label is empty */
+  padding-left: 68px;
+  line-height: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent
+}
+
+input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
+  content: 'Fra';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 0;
+  border-radius: 50%;
+  background-color: $color-white;
+  width: 29px;
+  height: 29px;
+  color: $color-black;
+  font-size: 13px;
+  font-weight: 500;
+  padding-top: 5px;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+  z-index: 10;
+  text-align: center;
+  box-shadow:  $box-shadow-slightly;
+}
+
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label{
+  cursor: not-allowed;
+}
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:before,
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:before,
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:before,
+input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:before{
+  color: $color-gray-medium-light;
+}
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:after,
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:after,
+input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:after{
+  opacity:0.5;
+  background-color: #999999;
+}
+
+input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:after,
+input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:hover:after,
+input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:active:after{
+  opacity:0.5;
+  background-color: $color-primary;
+}
+
+input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 3px;
+  width: 56px;
+  height: 33px;
+  border-radius: 20px;
+  line-height: 1;
+  text-align: center;
+  background-color: #999999;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+
+input[type='checkbox'].form-toggle ~ .form-toggle-label:hover:after{
+  background-color: $color-gray-medium-dark;
+}
+
+input[type='checkbox'].form-toggle ~ .form-toggle-label:active:after{
+  background-color: $color-gray-dark;
+}
+
+input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:after {
+  background-color: $color-primary;
+}
+
+input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:hover:after {
+  background-color: $color-primary-medium;
+}
+
+input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:active:after {
+  background-color: $color-primary-dark;
+}
+
+input[type='checkbox'].form-toggle:focus ~ .form-toggle-label:after {
+  outline: $focus-outline;
+  outline-offset: $focus-spacing;
+}
+
+/* checked state */
+input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
+  content: 'Til';
+  left: 26px;
+}
+
+/* blue switch variation */
+.switch-alternative input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
+  content: '\2714';   /* "✔" character */
+  text-indent: 10px;
+}
+
+.switch-alternative input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
+  background-color: #3399cc;
+}

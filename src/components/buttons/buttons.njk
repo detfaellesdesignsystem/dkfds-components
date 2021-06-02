@@ -6,7 +6,6 @@
   {%- if text -%}
   {{ text }}
   {%- endif -%}
-  {% if sronly %}
-  <span class="sr-only">{{ sronly }}</span>  {% endif %}
+  {% if sronly %}<span class="sr-only">{{ sronly }}</span>{% endif %}
 </button>
 {%- endmacro -%}
