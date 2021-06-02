@@ -7427,6 +7427,7 @@ input[type=checkbox].form-toggle ~ .form-toggle-label{
   user-select:none;
   padding-top:8px;
   cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
 }
 
 input[type=checkbox].form-toggle ~ .form-toggle-label:before{
