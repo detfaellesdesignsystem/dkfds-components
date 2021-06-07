@@ -1,0 +1,14 @@
+$accordion-button-background-color-default: $color-gray-pale !default;
+$accordion-button-background-color-hover: $color-gray-mediumpale !default;
+$accordion-button-open-border: $inner-border !default;
+$accordion-button-open-background-color: $color-gray-mediumpale !default; 
+$accordion-button-open-icon: "remove.svg" !default;
+$accordion-button-closed-icon: "add.svg" !default;
+$accordion-button-border-radius: $border-radius !default;
+$accordion-button-color-default: $color-black !default;
+$accordion-button-color-hover: $color-black !default;
+$accordion-button-error-border: 2px solid $color-error !default;
+$accordion-content-border: $outer-border !default;
+$accordion-content-border-radius: 0 0 $border-radius $border-radius !default;
+$accordion-content-background-color: $color-white !default;
+$accordion-content-color: $color-black !default;

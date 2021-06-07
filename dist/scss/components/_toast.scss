@@ -37,6 +37,7 @@ $toast-icon-backgrounds: (
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: map-get($spacers, 4);
+    box-shadow: $box-shadow-moderately;
 
     &:not(.show){
         opacity: 0;

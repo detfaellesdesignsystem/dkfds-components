@@ -1,21 +1,18 @@
 // Variables
 
 // Accordion Styles
-
 $icon-size: $spacing-medium;
 $h-padding: $spacing-md-small;
 $v-padding: $spacing-md-small;
 
 @mixin accordion-list-styles {
   @include unstyled-list;
-  color: $color-black;
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
 @mixin accordion-list-item-styles {
-  background-color: $color-gray-pale;
   list-style: none;
   margin-bottom: $spacing;
   width: 100%;
@@ -25,12 +22,12 @@ $v-padding: $spacing-md-small;
 // scss-lint:disable PropertyCount
 @mixin accordion-button-styles {
   @include button-unstyled;
-  background-color: $color-gray-pale;
-  background-image: url('#{$icons-folder-path}/remove.svg');
+  background-color: $accordion-button-background-color-default;
+  background-image: url('#{$icons-folder-path}/'+$accordion-button-closed-icon);
   background-position: left $h-padding center;
   background-repeat: no-repeat;
   background-size: $icon-size;
-  color: $color-black;
+  color: $accordion-button-color-default;
   cursor: pointer;
   display: inline-block;
   margin: 0;
@@ -40,7 +37,8 @@ $v-padding: $spacing-md-small;
   font-size: $body-text;
 
   &:hover {
-    background-color: $color-gray-mediumpale;
+    background-color: $accordion-button-background-color-hover;
+    color: $accordion-button-color-hover;
   }
 
   h1, .h1,
@@ -55,7 +53,7 @@ $v-padding: $spacing-md-small;
 // scss-lint:enable PropertyCount
 
 @mixin accordion-button-unopened-styles {
-  background-image: url('#{$icons-folder-path}/add.svg');
+  background-image: url('#{$icons-folder-path}/'+$accordion-button-open-icon);
   background-repeat: no-repeat;
   background-size: $icon-size;
 }
@@ -78,7 +76,7 @@ $v-padding: $spacing-md-small;
   @include accordion-button-styles;
   position: relative;
   transition: none;
-  border-radius: $border-radius;
+  border-radius: $accordion-button-border-radius;
   .icon_text {
     font-weight: $font-weight-semibold;
     margin-right: map-get($spacers, 3);
@@ -103,8 +101,11 @@ $v-padding: $spacing-md-small;
    }
 
     .icon-svg {
-      fill: $color-black;
+      fill: $accordion-button-color-default;
       float: left;
+    }
+    &:hover .icon-svg{
+      fill: $accordion-button-color-hover;
     }
   }
 }
@@ -118,22 +119,21 @@ button.accordion-bulk-button{
   margin-bottom: map-get($spacers, 4);
   
   &[data-accordion-bulk-expand="true"] {
-    background-image: url('#{$icons-folder-path}/add.svg');
+    background-image: url('#{$icons-folder-path}/'+$accordion-button-open-icon);
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url('#{$icons-folder-path}/remove.svg');
+    background-image: url('#{$icons-folder-path}/'+$accordion-button-closed-icon);
   }
 
 }
 .accordion-bordered .accordion-button{
-  border: $outer-border;
-  border-radius: $border-radius $border-radius 0 0;
+  border: $accordion-content-border;
+  border-radius: $accordion-content-border-radius;
 }
 
 .accordion,
 .accordion-bordered {
   @include accordion-list-styles;
-  @include accordion-nested-list;
   @include accordion-nested-list;
 
   + .accordion,
@@ -153,17 +153,21 @@ button.accordion-bulk-button{
 
 .accordion-bordered {
   .accordion-content {
-    border-bottom: $outer-border;
-    border-left: $outer-border;
-    border-right: $outer-border;
-    border-radius: 0 0 $border-radius $border-radius;
+    border-bottom: $accordion-content-border;
+    border-left: $accordion-content-border;
+    border-right: $accordion-content-border;
+    border-radius: $accordion-content-border-radius;
   }
 }
 
 .accordion-content {
-  background-color: $color-white;
+  background-color: $accordion-content-background-color;
+  color: $accordion-content-color;
   overflow: auto;
   padding: $spacing-md-small;
+  p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
+    color: $accordion-content-color;
+  }
 
   > *:first-child {
     margin-top: 0;
@@ -183,16 +187,15 @@ button.accordion-bulk-button{
 }
 .accordion-button[aria-describedby="error-message"],
 .accordion-button.accordion-error {
-  border: solid 2px $color-error !important;
+  border: $accordion-button-error-border;
 }
 .accordion-button[aria-expanded=true] {
-  background-color: $color-gray-mediumpale;
+  background-color: $accordion-button-open-background-color;
   .accordion-bordered &{
-    border-bottom: $inner-border;
+    border-bottom: $accordion-button-open-border;
   }
 }
 .accordion-button[aria-expanded=false] {
   @include accordion-button-unopened-styles;
-  border-radius: $border-radius $border-radius $border-radius $border-radius;
-  // display: flex;
+  border-radius: $accordion-button-border-radius;
 }
