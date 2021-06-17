@@ -11304,6 +11304,7 @@ body.modal-open{
   right:0px;
   left:0px;
   bottom:0px;
+  z-index:7000;
 }
 @media (min-width: 768px){
   .toast-container{

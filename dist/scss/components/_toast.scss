@@ -22,6 +22,7 @@ $toast-icon-backgrounds: (
     right: 0px;
     left: 0px;
     bottom: 0px;
+    z-index: 7000;
     
     @include media-breakpoint-up(md) {   
         right: map-get($spacers, 4);

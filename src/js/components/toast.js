@@ -23,7 +23,7 @@ class Toast{
 
 function showToast(){
     let toasts = document.querySelectorAll('.toast.showing');
-    for(let t in toasts){
+    for(let t = 0; t < toasts.length; t++){
         let toast = toasts[t];
         toast.classList.remove('showing');
         toast.classList.add('show');
