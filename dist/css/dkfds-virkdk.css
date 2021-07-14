@@ -1499,7 +1499,7 @@ h6, .h6{
 
 p, .body-text, .body-copy-text{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -1612,22 +1612,22 @@ h3, .h3{
 }
 
 h4, .h4{
-  margin-top:2.6rem;
+  margin-top:2.4rem;
   margin-bottom:1.6rem;
 }
 
 h5, .h5{
-  margin-top:2.6rem;
+  margin-top:2.4rem;
   margin-bottom:0;
 }
 
 h6, .h6{
-  margin-top:2.6rem;
+  margin-top:2.4rem;
   margin-bottom:0;
 }
 
 .font-lead{
-  margin-top:2.6rem;
+  margin-top:2.4rem;
   margin-bottom:1.6rem;
 }
 
@@ -1649,7 +1649,7 @@ button.function-link, button.accordion-bulk-button{
 .function-link, button.accordion-bulk-button{
   border:none;
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -1710,7 +1710,7 @@ a.bold-link{
 }
 
 .icon-link{
-  line-height:2.6rem;
+  line-height:2.4rem;
 }
 .icon-link .icon-svg{
   margin-left:4px;
@@ -7139,7 +7139,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 
 a.button{
   padding:calc(8px - 2px) calc(16px - 2px) 0px;
-  line-height:2.6rem;
+  line-height:2.4rem;
 }
 
 .button{
@@ -7376,7 +7376,7 @@ a.button{
   background-color:#454545;
   -moz-osx-font-smoothing:grayscale;
   -webkit-font-smoothing:antialiased;
-  line-height:2.6rem;
+  line-height:2.4rem;
   text-align:center;
   text-decoration:none;
   cursor:pointer;
@@ -7555,7 +7555,7 @@ input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
   color:#ffffff;
   background-color:#1a1a1a;
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
 }
 .badge.badge-small{
   color:#ffffff;
@@ -7608,16 +7608,16 @@ figure{
 }
 
 .icon{
-  height:2.6rem;
-  width:2.6rem;
+  height:2.4rem;
+  width:2.4rem;
   background-repeat:no-repeat;
   display:inline-block;
   background-size:100%;
 }
 
 .icon-svg{
-  height:2.6rem;
-  width:2.6rem;
+  height:2.4rem;
+  width:2.4rem;
   vertical-align:middle;
 }
 .icon-svg--inherit-color{
@@ -8418,7 +8418,7 @@ figure{
 
 .form-hint{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -8445,7 +8445,7 @@ figure{
   color:#1a1a1a;
   display:block;
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   padding:calc(8px - 1px) calc(16px - 1px);
   width:100%;
   max-width:32rem;
@@ -8454,7 +8454,7 @@ figure{
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
   .form-input{
-    height:calc(2.6rem + (8px * 2));
+    height:calc(2.4rem + (8px * 2));
   }
 }
 .form-input:focus, .form-input.focus{
@@ -8476,8 +8476,8 @@ textarea.form-input{
   color:#1a1a1a;
   display:block;
   font-size:1.6rem;
-  line-height:2.6rem;
-  height:calc(2.6rem + (8px * 2));
+  line-height:2.4rem;
+  height:calc(2.4rem + (8px * 2));
   max-width:32rem;
   width:100%;
   margin-top:8px;
@@ -8583,7 +8583,7 @@ input[readonly][type=text], textarea[readonly]{
 .form-radio + label{
   cursor:pointer;
   font-weight:400;
-  line-height:2.6rem;
+  line-height:2.4rem;
   margin-bottom:0;
   display:inline-block;
   outline:none;
@@ -8606,7 +8606,7 @@ input[readonly][type=text], textarea[readonly]{
   border-radius:2px;
   border:2px solid #1a1a1a;
   height:18px;
-  line-height:2.6rem;
+  line-height:2.4rem;
   margin-right:8px;
   width:18px;
   position:absolute;
@@ -8864,14 +8864,14 @@ ul{
   padding-left:0;
   list-style-type:none;
   color:#1a1a1a;
-  line-height:2.6rem;
+  line-height:2.4rem;
 }
 ul > li{
   margin-top:8px;
   list-style-type:none;
   position:relative;
   padding-left:16px;
-  line-height:2.6rem;
+  line-height:2.4rem;
 }
 ul > li::before{
   content:"•";
@@ -9173,7 +9173,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 
 .table{
   margin:0;
-  line-height:2.6rem;
+  line-height:2.4rem;
   border:1px solid #747474;
   width:calc(100% - 2px);
 }
@@ -9508,7 +9508,7 @@ hr{
   cursor:pointer;
   display:inline-block;
   margin:0;
-  line-height:2.6rem;
+  line-height:2.4rem;
   padding:1.6rem 1.6rem 1.6rem 5.6rem;
   width:100%;
   font-size:1.6rem;
@@ -11137,7 +11137,7 @@ body.modal-open{
   list-style-type:none;
   padding-left:0;
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   color:#1a1a1a;
   background-color:#fff;
   padding-left:16px;
@@ -11207,7 +11207,7 @@ body.modal-open{
 }
 .nav-primary .overflow-menu .overflow-menu-inner a{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -11819,7 +11819,7 @@ a.skipnav{
 }
 .card-header .header-title{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -11854,7 +11854,7 @@ a.skipnav{
 }
 .card-header .sub-header{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -11870,7 +11870,7 @@ a.skipnav{
 }
 .card-text .text{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -11882,7 +11882,7 @@ a.skipnav{
 
 .card-content{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -11906,7 +11906,7 @@ a.skipnav{
 
 .card-action{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -12112,7 +12112,7 @@ a.skipnav{
   list-style-type:none;
   padding-left:0;
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   color:#1a1a1a;
 }
 .overflow-menu .overflow-list > li{
@@ -12141,7 +12141,7 @@ a.skipnav{
 }
 .overflow-menu .overflow-list a{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
@@ -12399,7 +12399,7 @@ a.skipnav{
 
 .tooltip{
   font-size:1.6rem;
-  line-height:2.6rem;
+  line-height:2.4rem;
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
