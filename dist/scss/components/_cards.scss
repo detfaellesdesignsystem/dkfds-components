@@ -1,10 +1,10 @@
 .card {
   position: relative;
   border-radius: map-get($spacers, 0);
-  box-shadow: $box-shadow-slightly;
-  border: $outer-border;
+  box-shadow: $cards-shadow;
+  border: $cards-border;
   overflow: hidden;
-  background: $color-white;
+  background: $cards-background-color;
 
   //small card
   &-small {
@@ -44,7 +44,6 @@
     .card-footer{
       margin-top: auto;
     }
-
   }
 
   p {
@@ -65,34 +64,33 @@
 }
 //card-header
 .card-header {
-  background-color: $color-white;
+  background-color: $cards-header-background-color;
   padding: map-get($spacers, 4) map-get($spacers, 5);
   .header-title {
     @include body-copy-text;
     font-weight: $font-weight-semibold;
-    color: $color-black;
+    color: $cards-heading-color;
     margin:map-get($spacers, 0);
 
     &.large-text {
       @include h1;
-      color: $color-gray-dark;
+      color: $cards-heading-large-color;
     }
   }
   .sub-header {
     @include body-copy-text;
     margin-top:  map-get($spacers, 0);
     margin-bottom: map-get($spacers, 0);
-    color: $color-text-secondary;
+    color: $cards-sub-heading-color;
   }
 }
-
 .card-text {
-  background-color: $color-white;
+  background-color: $cards-text-background-color;
   padding: map-get($spacers, 4) map-get($spacers, 5);
   .text {
     @include body-copy-text;
     margin-top: map-get($spacers, 4);
-    color: $color-gray-dark;
+    color: $cards-text-color;
     margin-bottom: map-get($spacers, 0);
   }
 }
@@ -101,7 +99,8 @@
 .card-content {
   @include body-copy-text;
   padding: map-get($spacers, 0);
-  color: $color-gray-dark;
+  color: $cards-text-color;
+  background-color: $cards-content-background-color;
   ul {
     margin-bottom:map-get($spacers, 0);
   }
@@ -116,14 +115,13 @@
   }
 }
 
-
-
 //card-action
 .card-action {
   @include body-copy-text;
   padding: map-get($spacers, 4) map-get($spacers, 5);
-  color: $color-gray-dark;
+  color: $cards-text-color;
   margin-bottom: map-get($spacers, 0);
+  background-color: $cards-action-background-color;
 
   div:first-child {
     margin-top:map-get($spacers, 0);
@@ -132,9 +130,6 @@
   &:last-child {
     border-bottom: map-get($spacers, 0);
   }
-
-
-
   .action-buttons {
     button {
       margin-right: map-get($spacers, 4);
@@ -153,10 +148,7 @@
         }
       }
     }
-
   }
-
-
   .action-links {
     margin-top:map-get($spacers, 4);
     ul {
@@ -208,22 +200,6 @@
 .card-text + .card-text{
   padding-top:map-get($spacers, 0);
 }
-//If text comes after content
-// .card-content + .card-text{
-//   padding-top:map-get($spacers, 0);
-// }
-// //If action comes after content
-// .card-content + .card-action {
-//   padding-top:map-get($spacers, 0);
-// }
-// //If header comes after content
-// .card-content + .card-header {
-//   padding-top:map-get($spacers, 0);
-// }
-// //If content comes after content
-// .card-content + .card-content {
-//   padding-top:map-get($spacers, 0);
-// }
 //If text comes after action
 .card-action + .card-text{
   padding-top:map-get($spacers, 0);
@@ -240,9 +216,6 @@
 .card-action + .card-action{
   padding-top:map-get($spacers, 0);
 }
-
-
-
 .card {
   > .list-group:first-child {
       .list-group-item:first-child {
@@ -260,144 +233,3 @@
 .card-center {
   text-align: center;
 }
-
-//Extra functionality for cards that can be implemented later on - from USPTO
-//
-// Inverse text within a card for use with dark backgrounds
-//
-/*
-.card-inverse {
-  .card-header,
-  .card-footer {
-      border-bottom: 1px solid rgba(255,255,255,.2);
-  }
-  .card-header,
-  .card-footer,
-  .card-title,
-  .card-blockquote {
-      color: white;
-  }
-  .card-link,
-  .card-text,
-  .card-blockquote > footer {
-      color: rgba(255,255,255,.65);
-  }
-  .card-link {
-      &:hover,
-      &:focus {
-          color: white;
-      }
-  }
-}
-*/
-//
-// Blockquote
-//
-/*
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
-}
-
-// Card image
-.card-img {
-  border-radius: 2px;
-}
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 5px;
-}
-
-
-
-// Card image caps
-.card-img {
-  &-top {
-    border-radius: 2px 2px 0 0;
-  }
-  &-bottom {
-    border-radius: 0 0 2px 2px;
-  }
-}
-
-//
-// Card set
-//
-
-.card-deck {
-  display: table;
-  table-layout: fixed;
-  border-spacing: 8px 0;
-
-  .card {
-      display: table-cell;
-      width: 1%;
-      vertical-align: top;
-  }
-}
-.card-deck-wrapper {
-  margin-right: -8px;
-  margin-left: -8px;
-}
-
-//
-// Card groups
-//
-
-.card-group {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-
-  .card {
-      display: table-cell;
-      vertical-align: top;
-
-      + .card {
-          margin-left: 0;
-          border-left: 0;
-      }
-
-      // Handle rounded corners
-      &:first-child {
-          .card-img-top {
-              border-top-right-radius: 0;
-          }
-          .card-img-bottom {
-              border-bottom-right-radius: 0;
-          }
-      }
-      &:last-child {
-          .card-img-top {
-              border-top-left-radius: 0;
-          }
-          .card-img-bottom {
-              border-bottom-left-radius: 0;
-          }
-      }
-
-      &:not(:first-child):not(:last-child) {
-          border-radius: 0;
-
-          .card-img-top,
-          .card-img-bottom {
-              border-radius: 0;
-          }
-      }
-  }
-}
-
-.card-columns {
-  column-count: 3;
-  column-gap: 8px;
-  .card {
-      display: inline-block;
-      width: 100%; // Don't let them exceed the column width
-  }
-}
-*/

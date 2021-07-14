@@ -3,41 +3,36 @@ $custom-alerts: () !default;
 $custom-alerts-bar: () !default;
 
 $alerts: (
-  success: $color-success-light,
-  warning: $color-warning-light,
-  error: $color-error-light,
-  info: $color-info-light
+  success: $alert-success-background-color,
+  warning: $alert-warning-background-color,
+  error: $alert-error-background-color,
+  info: $alert-info-background-color
 );
 
 $alerts-bar: (
-  success: $color-success,
-  warning: $color-warning,
-  error: $color-error,
-  info: $color-info
+  success: $alert-success-border-color,
+  warning: $alert-warning-border-color,
+  error: $alert-error-border-color,
+  info: $alert-info-border-color
 );
 
 $alerts: map-merge($alerts, $custom-alerts);
 $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
 
-$padding: map-get($spacers, 4);
-$bar-size:  map-get($spacers, 3);
-$left-padding: map-get($spacers, 9);
-$icon-size: 24px;
-
 .alert {
-  background-color: $color-gray-pale;
+  background-color: $alert-background-color;
   background-position: 16px 16px;
   background-repeat: no-repeat;
   background-size: 24px;
-  padding-bottom: $padding;
-  padding-left: $padding;
-  padding-right: $padding;
-  padding-top: $padding;
+  padding-bottom: $alert-padding;
+  padding-left: $alert-padding;
+  padding-right: $alert-padding;
+  padding-top: $alert-padding;
   position: relative;
   margin-top: map-get($spacers, 4);
   margin-bottom: map-get($spacers, 4);
 
-  border-left: $bar-size solid darken($color-gray-pale, 40%);
+  border-left: $alert-border-size solid $alert-border-color;
 
   &:first-child {
     margin-top:0;
@@ -51,7 +46,7 @@ $icon-size: 24px;
     top: map-get($spacers, 4);
     right: map-get($spacers, 4);
     @include small-text;
-    color: $color-black;
+    color: $alert-close-text-color;
     .icon-svg{
       margin-right: map-get($spacers, 2);
       width: 1.6rem;
@@ -77,7 +72,7 @@ $icon-size: 24px;
     color: $alert-text-color;
     max-width: $text-max-width;
     a, a:link, a:active, a:visited, a:hover{
-      color: $color-black;
+      color: $alert-text-color;
     }
   }
 }
@@ -101,7 +96,7 @@ $icon-size: 24px;
         $alert-icon: report-problem;
       }
       background-image: url('#{$image-path}/svg-icons/#{$alert-icon}.svg');
-      padding-left: $padding + $icon-size + 8px;
+      padding-left: $alert-padding + $alert-icon-size + 8px;
     }
   }
 }

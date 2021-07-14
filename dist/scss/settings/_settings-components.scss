@@ -1,3 +1,4 @@
+// Accordion
 $accordion-button-background-color-default: $color-gray-pale !default;
 $accordion-button-background-color-hover: $color-gray-mediumpale !default;
 $accordion-button-open-border: $inner-border !default;
@@ -13,6 +14,68 @@ $accordion-content-border-radius: 0 0 $border-radius $border-radius !default;
 $accordion-content-background-color: $color-white !default;
 $accordion-content-color: $color-black !default;
 
+// Alert
+$alert-success-background-color: $color-success-light !default;
+$alert-warning-background-color: $color-warning-light !default;
+$alert-error-background-color: $color-error-light !default;
+$alert-info-background-color: $color-info-light !default;
+$alert-success-border-color: $color-success !default;
+$alert-warning-border-color: $color-warning !default;
+$alert-error-border-color: $color-error !default;
+$alert-info-border-color: $color-info !default;
+$alert-border-color:  darken($color-gray-pale, 40%) !default;
+$alert-background-color: $color-gray-pale !default;
+$alert-padding: map-get($spacers, 4) !default;
+$alert-border-size:  map-get($spacers, 3) !default;
+$alert-left-padding: map-get($spacers, 9) !default;
+$alert-icon-size: 24px !default;
+$alert-text-color: $color-black !default;
+$alert-heading-fontsize: $h5-font-size !default;
+$alert-heading-lineheight: $h5-line-height !default;
+$alert-heading-color: $alert-text-color !default;
+$alert-close-text-color: $alert-text-color !default;
 
+// Breadcrumbs
+$breadcrumbs-font-size: $small-text !default;
+$breadcrumbs-text-color: $color-black !default;
+$breadcrumbs-chevron-size: 7px !default;
+$breadcrumbs-chevron-border-width: 1px !default;
+$breadcrumbs-chevron-border-colour: $color-text-secondary !default;
+$breadcrumbs-chevron-altitude-calculated: 5.655px !default;
+
+// Cards
+$cards-shadow: $box-shadow-slightly !default;
+$cards-border: $outer-border !default;
+$cards-background-color: $color-white !default;
+$cards-header-background-color: $cards-background-color !default;
+$cards-text-background-color: $cards-background-color !default;
+$cards-content-background-color: $cards-background-color !default;
+$cards-action-background-color: $cards-background-color !default;
+$cards-text-color: $color-gray-dark !default;
+$cards-heading-color: $color-black !default;
+$cards-heading-large-color: $color-gray-dark !default;
+$cards-sub-heading-color: $color-text-secondary !default;
+
+// Cookie Message
+$cookie-message-background-color: $color-white !default;
+$cookie-message-border: $outer-border !default;
+$cookie-message-shadow: $box-shadow-heavy !default;
+$cookie-message-text-color: $color-black !default;
+
+// Datepicker
+$datepicker-background-color: $color-white !default;
+$datepicker-header-background-color: $color-gray-pale !default;
+$datepicker-header-text-color: $color-black !default;
+$datepicker-icon-previous-year: "chevron-double-left" !default;
+$datepicker-icon-next-year: "chevron-double-right" !default;
+$datepicker-icon-previous-month: "chevron-left" !default;
+$datepicker-icon-next-month: "chevron-right" !default;
+$datepicker-button-icon: "insert-invitation" !default;
+$datepicker-previous-next-month-background-color: $background-alternative !default;
+$datepicker-previous-next-month-text-color: $background-alternative !default;
+$datepicker-border: $outer-border !default;
+$datepicker-table-border: $inner-border !default;
+
+// Detail
 $details-button-closed-icon: "arrow-right.svg" !default;
 $details-button-open-icon: "arrow-drop-down.svg" !default;

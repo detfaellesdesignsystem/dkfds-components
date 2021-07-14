@@ -27,7 +27,7 @@
 }
 .date-picker__button {
   @include button-unstyled;
-  @include add-background-svg("insert-invitation");
+  @include add-background-svg($datepicker-button-icon);
   align-self: stretch;
   background-color: transparent;
   background-position: center;
@@ -45,8 +45,8 @@
 // Date Picker - Calendar View
 
 .date-picker__calendar {
-  border: $outer-border;
-  background-color: $background-normal;
+  border: $datepicker-border;
+  background-color: $datepicker-background-color;
   box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
   position: absolute;
@@ -68,24 +68,30 @@
   width: 100%;
 
   thead{
-    border-bottom: $inner-border;
+    border-bottom: $datepicker-table-border;
   }
 
   th {
     font-weight: normal;
   }
   tr{
-    border-bottom: $inner-border;
+    border-bottom: $datepicker-table-border;
   }
 
   td {
     padding: 0;
     .date-picker__calendar__date {
-      border-right: $inner-border;
+      border-right: $datepicker-table-border;
     }
     &:last-of-type .date-picker__calendar__date{
       border-right: none;
     }
+  }
+}
+
+.date-picker__calendar__month-picker .date-picker__calendar__table, .date-picker__calendar__year-picker .date-picker__calendar__table{
+  thead, tr{
+    border: 0;
   }
 }
 
@@ -96,11 +102,12 @@
   text-align: center;
   width: 100%;
   background-color: $color-gray-pale;
-  border-bottom: $inner-border;
+  border-bottom: $datepicker-table-border;
 }
 
 .date-picker__calendar__cell {
-  background-color: $color-gray-pale;
+  background-color: $datepicker-header-background-color;
+  color: $datepicker-header-text-color;
   flex: 1;
 }
 
@@ -123,19 +130,19 @@
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
-  @include add-background-svg("chevron-double-left");
+  @include add-background-svg($datepicker-icon-previous-year);
 }
 
 .date-picker__calendar__previous-month:not([disabled]) {
-  @include add-background-svg("chevron-left");
+  @include add-background-svg($datepicker-icon-previous-month);
 }
 
 .date-picker__calendar__next-year:not([disabled]) {
-  @include add-background-svg("chevron-double-right");
+  @include add-background-svg($datepicker-icon-next-year);
 }
 
 .date-picker__calendar__next-month:not([disabled]) {
-  @include add-background-svg("chevron-right");
+  @include add-background-svg($datepicker-icon-next-month);
 }
 
 .date-picker__calendar__day-of-week {
@@ -170,9 +177,9 @@
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
-    color: $background-alternative;
+    color: $datepicker-previous-next-month-text-color;
     text-indent: -99999px;
-    background-color: $background-alternative;
+    background-color: $datepicker-previous-next-month-background-color;
   }
 
   &--selected,
@@ -243,34 +250,29 @@
 .date-picker__calendar__month {
   @include button-unstyled;
   padding: 10px 0;
+  width: 100%;
+  display: block;
+  text-align: center;
 
   &--focused {
     outline: $focus-outline;
+    outline-offset: 1px;
     position: relative;
     z-index: 100;
   }
 
   &--selected {
-    background-color: $color-gray-dark;
-    color: $color-white;
+    color: $color-black;
     font-weight: 600;
 
     &:not([disabled]) {
-      background-color: $color-gray-dark;
-      color: $color-white;
 
       &:hover {
-        background-color: $color-gray-medium-dark;
-        color: $color-white;
+        color: $color-black;
       }
 
       &:focus {
-        background-color: $color-primary;
-        color: $color-gray-medium-light;
-      }
-
-      &:active {
-        background-color: $color-primary-dark;
+        color: $color-black;
       }
     }
   }
@@ -287,7 +289,7 @@
   @include button-unstyled;
   background-position: center;
   margin: auto;
-  padding: 40px 0;
+  padding: 0px 8px;
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
@@ -301,34 +303,29 @@
 .date-picker__calendar__year {
   @include button-unstyled;
   padding: 10px 0;
+  width: 100%;
+  display: block;
+  text-align: center;
 
   &--focused {
     outline: $focus-outline;
+    outline-offset: 1px;
     position: relative;
     z-index: 100;
   }
 
   &--selected {
-    background-color: $color-gray-dark;
-    color: $color-white;
+    color: $color-black;
     font-weight: 600;
 
     &:not([disabled]) {
-      background-color: $color-gray-dark;
-      color: $color-white;
 
       &:hover {
-        background-color: $color-gray-medium-dark;
-        color: $color-white;
+        color: $color-black;
       }
 
       &:focus {
-        background-color: $color-primary;
-        color: $color-gray-medium-light;
-      }
-
-      &:active {
-        background-color: $color-primary-dark;
+        color: $color-black;
       }
     }
   }

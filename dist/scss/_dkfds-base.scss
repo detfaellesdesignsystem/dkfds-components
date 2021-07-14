@@ -4,6 +4,9 @@
 @import 'core/mixins/add-background-svg';
 @import 'core/mixins/mixins';
 
+@import "settings/settings-color";
+@import "settings/settings-components";
+
 // Core -------------- //
 @import 'core/fonts';
 @import 'core/base';
@@ -18,8 +21,6 @@
 @import 'core/utilities/spacing';
 @import 'core/utilities/position';
 @import 'core/utilities/display';
-
-@import "settings/settings-components";
 
 // Elements -------------- //
 // Styles basic HTML elements

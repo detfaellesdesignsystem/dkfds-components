@@ -9871,6 +9871,9 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   position:relative;
   overflow:hidden;
 }
+.cookie-container .cookie-message p, .cookie-container .cookie-message h1, .cookie-container .cookie-message h2, .cookie-container .cookie-message h3, .cookie-container .cookie-message h4, .cookie-container .cookie-message h5, .cookie-container .cookie-message h6, .cookie-container .cookie-message .h1, .cookie-container .cookie-message .h2, .cookie-container .cookie-message .h3, .cookie-container .cookie-message .h4, .cookie-container .cookie-message .h5, .cookie-container .cookie-message .h6{
+  color:#1a1a1a;
+}
 @media (min-width: 1200px){
   .cookie-container .cookie-message{
     max-width:calc(1200px + 40px + 40px);
@@ -9991,7 +9994,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 
 .date-picker__calendar{
   border:1px solid #747474;
-  background-color:#FFFFFF;
+  background-color:#ffffff;
   box-shadow:0 5px 15px -5px rgba(0, 0, 0, 0.5);
   left:0;
   position:absolute;
@@ -10031,6 +10034,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   border-right:none;
 }
 
+.date-picker__calendar__month-picker .date-picker__calendar__table thead, .date-picker__calendar__month-picker .date-picker__calendar__table tr, .date-picker__calendar__year-picker .date-picker__calendar__table thead, .date-picker__calendar__year-picker .date-picker__calendar__table tr{
+  border:0;
+}
+
 .date-picker__calendar__row{
   display:flex;
   text-align:center;
@@ -10041,6 +10048,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 
 .date-picker__calendar__cell{
   background-color:#F5F5F5;
+  color:#1a1a1a;
   flex:1;
 }
 
@@ -10217,6 +10225,9 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   -webkit-font-smoothing:auto;
   color:inherit;
   padding:10px 0;
+  width:100%;
+  display:block;
+  text-align:center;
 }
 .date-picker__calendar__month:hover, .date-picker__calendar__month:focus{
   background-color:transparent;
@@ -10224,28 +10235,19 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .date-picker__calendar__month--focused{
   outline:4px solid #747474;
+  outline-offset:1px;
   position:relative;
   z-index:100;
 }
 .date-picker__calendar__month--selected{
-  background-color:#454545;
-  color:#ffffff;
+  color:#1a1a1a;
   font-weight:600;
 }
-.date-picker__calendar__month--selected:not([disabled]){
-  background-color:#454545;
-  color:#ffffff;
-}
 .date-picker__calendar__month--selected:not([disabled]):hover{
-  background-color:#747474;
-  color:#ffffff;
+  color:#1a1a1a;
 }
 .date-picker__calendar__month--selected:not([disabled]):focus{
-  background-color:#0059B3;
-  color:#999999;
-}
-.date-picker__calendar__month--selected:not([disabled]):active{
-  background-color:#003972;
+  color:#1a1a1a;
 }
 
 .date-picker__calendar__year-picker{
@@ -10265,7 +10267,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   color:inherit;
   background-position:center;
   margin:auto;
-  padding:40px 0;
+  padding:0px 8px;
 }
 .date-picker__calendar__previous-year-chunk:hover, .date-picker__calendar__previous-year-chunk:focus,
 .date-picker__calendar__next-year-chunk:hover,
@@ -10295,6 +10297,9 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   -webkit-font-smoothing:auto;
   color:inherit;
   padding:10px 0;
+  width:100%;
+  display:block;
+  text-align:center;
 }
 .date-picker__calendar__year:hover, .date-picker__calendar__year:focus{
   background-color:transparent;
@@ -10302,28 +10307,19 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .date-picker__calendar__year--focused{
   outline:4px solid #747474;
+  outline-offset:1px;
   position:relative;
   z-index:100;
 }
 .date-picker__calendar__year--selected{
-  background-color:#454545;
-  color:#ffffff;
+  color:#1a1a1a;
   font-weight:600;
 }
-.date-picker__calendar__year--selected:not([disabled]){
-  background-color:#454545;
-  color:#ffffff;
-}
 .date-picker__calendar__year--selected:not([disabled]):hover{
-  background-color:#747474;
-  color:#ffffff;
+  color:#1a1a1a;
 }
 .date-picker__calendar__year--selected:not([disabled]):focus{
-  background-color:#0059B3;
-  color:#999999;
-}
-.date-picker__calendar__year--selected:not([disabled]):active{
-  background-color:#003972;
+  color:#1a1a1a;
 }
 
 footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6{
@@ -11893,6 +11889,7 @@ a.skipnav{
   letter-spacing:-0.1px;
   padding:0;
   color:#454545;
+  background-color:#ffffff;
 }
 .card-content ul{
   margin-bottom:0;
@@ -11917,6 +11914,7 @@ a.skipnav{
   padding:16px 24px;
   color:#454545;
   margin-bottom:0;
+  background-color:#ffffff;
 }
 .card-action div:first-child{
   margin-top:0;
@@ -12029,6 +12027,7 @@ a.skipnav{
 .card-center{
   text-align:center;
 }
+
 .overflow-menu + h1{
   margin-top:0;
 }
@@ -12280,7 +12279,7 @@ a.skipnav{
 .tabnav > button[aria-selected=false]{
   background-image:url("../img/svg-icons/remove.svg");
   background-repeat:no-repeat;
-  background-size:24px;
+  background-size:2.4rem;
   border-radius:3px 3px 3px 3px;
 }
 .tabnav > button[aria-selected=false]:focus{

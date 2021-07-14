@@ -251,8 +251,6 @@ $color-primary:               $color-gray-003 !default;
 $color-primary-medium:        $color-gray-002 !default;
 $color-primary-dark:          $color-gray-001 !default;
 
-$color-positive:              $color-green-005 !default;
-$color-negative:              $color-red-001 !default;
 
 //$color-primary-dark:
 $color-primary-darker:        $color-base-002 !default;
@@ -260,19 +258,6 @@ $color-primary-darkest:       $color-base-002 !default;
 $color-primary-lightest:      $color-gray-004 !default;
 $color-background:            $color-gray-006 !default;
 
-// Special text colors
-$color-text-positive:         $color-green-005 !default;
-$color-text-negative:         $color-red-001 !default;
-
-// Colors used for alert boxes
-$color-success:               $color-green-003 !default;
-$color-success-light:         $color-green-004 !default;
-$color-warning:               $color-orange-004 !default;
-$color-warning-light:         $color-orange-005 !default;
-$color-error:                 $color-red-001 !default;
-$color-error-light:           $color-red-002 !default;
-$color-info:                  $color-blue-008 !default;
-$color-info-light:            $color-blue-004 !default;
 
 //Data visualisation colors
 $color-data-turquoise:                 $color-data-turquoise-001 !default;
@@ -375,12 +360,6 @@ $sidenav-link-color-hover: $color-primary !default;
 $sidenav-link-current-color: $color-gray-001 !default;
 $sidenav-link-active-color: $color-black !default;
 $sidenav-active-border-width: 4px !default;
-
-//Alert
-$alert-heading-fontsize: $h5-font-size !default;
-$alert-heading-lineheight: $h5-line-height !default;
-$alert-heading-color: $color-text !default;
-$alert-text-color: $color-text !default;
 
 //Borders
 $outer-border:            1px solid $color-gray-medium-dark; //$color-gray-medium-light;
