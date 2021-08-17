@@ -7329,6 +7329,7 @@ a.button{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
 }
 .button-unstyled:hover, .button-unstyled:focus{
   background-color:transparent;
@@ -9214,6 +9215,9 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   text-align:left;
   border-bottom:solid 1px #BFBFBF;
 }
+.table thead th.table-header-no-wrap{
+  white-space:nowrap;
+}
 .table tbody th{
   font-weight:600;
 }
@@ -9499,6 +9503,7 @@ hr{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   background-color:#F5F5F5;
   background-image:url("../img/svg-icons/add.svg");
   background-position:left 1.6rem center;
@@ -9974,6 +9979,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   background-image:url("../img/svg-icons/insert-invitation.svg");
   background-repeat:no-repeat;
   align-self:stretch;
@@ -10071,6 +10077,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   background-position:center;
   height:30px;
   padding:20px 10px;
@@ -10120,6 +10127,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   text-align:right;
   width:100%;
   padding:10px 8px 10px 0px;
@@ -10198,6 +10206,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   display:inline-block;
   height:100%;
   padding:8px 4px;
@@ -10224,6 +10233,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   padding:10px 0;
   width:100%;
   display:block;
@@ -10265,6 +10275,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   background-position:center;
   margin:auto;
   padding:0px 8px;
@@ -10296,6 +10307,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   padding:10px 0;
   width:100%;
   display:block;
@@ -11200,6 +11212,7 @@ body.modal-open{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
 }
 .nav-primary .overflow-menu .overflow-menu-inner button:hover, .nav-primary .overflow-menu .overflow-menu-inner button:focus{
   background-color:transparent;
@@ -11364,6 +11377,7 @@ body.modal-open{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   position:absolute;
   top:16px;
   right:16px;
@@ -12046,6 +12060,7 @@ a.skipnav{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
   min-height:40px;
   min-width:40px;
   padding:8px 0;
@@ -12134,6 +12149,7 @@ a.skipnav{
   text-align:left;
   -webkit-font-smoothing:auto;
   color:inherit;
+  min-height:auto;
 }
 .overflow-menu .overflow-list button:hover, .overflow-menu .overflow-list button:focus{
   background-color:transparent;
@@ -12245,6 +12261,25 @@ a.skipnav{
     border:none;
     min-width:auto;
   }
+}
+.overflow-menu--sort .button-overflow-menu{
+  text-decoration:underline;
+}
+.overflow-menu--sort .button-overflow-menu .selected-value{
+  text-decoration:none;
+  display:inline-block;
+  margin-left:4px;
+  font-weight:600;
+}
+.overflow-menu--sort .button-overflow-menu svg{
+  margin-right:4px;
+}
+.overflow-menu--sort .overflow-menu-inner .overflow-list li[aria-selected=true] button{
+  font-weight:600;
+  background-image:url("../img/svg-icons/done.svg");
+  background-repeat:no-repeat;
+  background-repeat:no-repeat;
+  background-position:calc(100% - 16px) center;
 }
 
 @media (min-width: 768px){

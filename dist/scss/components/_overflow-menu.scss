@@ -211,4 +211,25 @@ $overflow-menu-dropdown-distance: 8px;
       }
     }
   }
+
+  &--sort{
+    .button-overflow-menu{
+        text-decoration: underline;
+        .selected-value{
+            text-decoration: none;
+            display: inline-block;
+            margin-left: map-get($spacers, 2);
+            font-weight: $font-weight-semibold;
+        }
+        svg {
+            margin-right: map-get($spacers, 2);
+        }
+    }
+    .overflow-menu-inner .overflow-list li[aria-selected="true"] button{
+        font-weight: $font-weight-semibold;
+        @include add-background-svg('done');
+        background-repeat: no-repeat;
+        background-position: calc(100% - #{map-get($spacers, 4)}) center;
+    }
+  }
 }

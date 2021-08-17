@@ -233,6 +233,7 @@ a.button{
   text-align: left;
   -webkit-font-smoothing: auto;
   color: inherit;
+  min-height: auto;
 
   &:hover, &:focus {
     background-color: transparent;

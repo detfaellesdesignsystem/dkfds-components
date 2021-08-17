@@ -89,6 +89,9 @@
             font-weight: $font-weight-semibold;
             text-align: left;
             border-bottom: solid 1px $color-gray-light;
+            &.table-header-no-wrap{
+              white-space: nowrap;
+            }
         }
     }
     tbody{
