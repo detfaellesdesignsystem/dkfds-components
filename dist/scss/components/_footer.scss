@@ -15,7 +15,7 @@ footer {
     padding-bottom: map-get($spacers, 4);
     margin-top: 8rem;
     @include media-breakpoint-up(md) {
-      padding-bottom: calc(#{map-get($spacers, 4)} + #{map-get($spacers, 2)} + #{map-get($spacers, 3)});
+      padding-bottom: calc(#{map-get($spacers, 9)} + #{map-get($spacers, 4)});
     }
 
     .footer-col {

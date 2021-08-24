@@ -10348,7 +10348,7 @@ footer .footer{
 }
 @media (min-width: 768px){
   footer .footer{
-    padding-bottom:calc(16px + 4px + 8px);
+    padding-bottom:calc(56px + 16px);
   }
 }
 footer .footer .footer-col:not(:first-child){
