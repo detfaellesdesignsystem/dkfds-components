@@ -12,10 +12,10 @@ footer {
   .footer {
     border-top: $outer-border;
     padding-top: calc(#{map-get($spacers, 5)} - 1px);
-    padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+    padding-bottom: map-get($spacers, 4);
     margin-top: 8rem;
     @include media-breakpoint-up(md) {
-      padding-bottom: 56px;
+      padding-bottom: calc(#{map-get($spacers, 4)} + #{map-get($spacers, 2)} + #{map-get($spacers, 3)});
     }
 
     .footer-col {

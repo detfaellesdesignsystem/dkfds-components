@@ -10333,12 +10333,12 @@ footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6{
 footer .footer{
   border-top:1px solid #747474;
   padding-top:calc(24px - 1px);
-  padding-bottom:calc(16px - 1px);
+  padding-bottom:16px;
   margin-top:8rem;
 }
 @media (min-width: 768px){
   footer .footer{
-    padding-bottom:56px;
+    padding-bottom:calc(16px + 4px + 8px);
   }
 }
 footer .footer .footer-col:not(:first-child){
