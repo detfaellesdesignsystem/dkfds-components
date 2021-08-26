@@ -1876,8 +1876,8 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 }
 
 .bg-modal{
-  background:rgba(0, 0, 0, 0.75) !important;
-  background-color:rgba(0, 0, 0, 0.75) !important;
+  background:rgba(0, 0, 0, 0.4) !important;
+  background-color:rgba(0, 0, 0, 0.4) !important;
 }
 
 .w-percent-10{
@@ -10699,7 +10699,7 @@ body.modal-open{
   left:0;
   right:0;
   bottom:0;
-  background-color:rgba(0, 0, 0, 0.75);
+  background-color:rgba(0, 0, 0, 0.4);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -10726,35 +10726,23 @@ body.modal-open{
   overflow-y:auto;
   background-color:#fff;
   box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
-  padding:16px 24px;
   max-width:800px;
   position:relative;
   margin:24px auto 24px;
-}
-@media (min-width: 768px){
-  .fds-modal .modal-content{
-    padding:28px 48px;
-  }
-}
-@media (min-width: 992px){
-  .fds-modal .modal-content{
-    padding:48px 88px;
-  }
 }
 .fds-modal .modal-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-}
-@media (min-width: 768px){
-  .fds-modal .modal-header{
-    padding-right:48px;
-  }
+  border-bottom:1px solid #BFBFBF;
+  padding:16px 32px;
 }
 .fds-modal .modal-title{
   margin:0 48px 0 0;
+  word-break:break-all;
 }
 .fds-modal .modal-body{
+  padding:16px 32px;
   margin-top:8px;
 }
 .fds-modal .modal-body > *:first-child{
@@ -10762,6 +10750,7 @@ body.modal-open{
 }
 .fds-modal .modal-footer{
   margin-top:16px;
+  padding:16px 32px;
 }
 @media (min-width: 992px){
   .fds-modal .modal-footer{
