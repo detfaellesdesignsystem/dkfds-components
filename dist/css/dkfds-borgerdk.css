@@ -10029,17 +10029,8 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .date-picker__calendar__table th{
   font-weight:normal;
 }
-.date-picker__calendar__table tr{
-  border-bottom:1px solid #BFBFBF;
-}
 .date-picker__calendar__table td{
   padding:0;
-}
-.date-picker__calendar__table td .date-picker__calendar__date{
-  border-right:1px solid #BFBFBF;
-}
-.date-picker__calendar__table td:last-of-type .date-picker__calendar__date{
-  border-right:none;
 }
 
 .date-picker__calendar__month-picker .date-picker__calendar__table thead, .date-picker__calendar__month-picker .date-picker__calendar__table tr, .date-picker__calendar__year-picker .date-picker__calendar__table thead, .date-picker__calendar__year-picker .date-picker__calendar__table tr{
@@ -10132,27 +10123,49 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   min-height:auto;
   text-align:right;
   width:100%;
-  padding:10px 8px 10px 0px;
-  border-right:1px solid #BFBFBF;
+  padding:10px 12px 10px 0px;
+  position:relative;
 }
 .date-picker__calendar__date:hover, .date-picker__calendar__date:focus{
   background-color:transparent;
   color:inherit;
 }
-.date-picker__calendar__date:focus{
-  outline-offset:0px;
-}
-.date-picker__calendar__date:hover{
-  background-color:#F5F5F5;
+.date-picker__calendar__date:after{
+  position:absolute;
+  top:-1px;
+  bottom:0px;
+  left:-1px;
+  right:0px;
+  border:1px solid #BFBFBF;
+  content:"";
+  display:block;
+  pointer-events:none;
 }
 .date-picker__calendar__date[disabled]{
   opacity:0.3;
+  cursor:not-allowed;
 }
 .date-picker__calendar__date--focused{
-  outline:4px solid #747474;
-  outline-offset:0px;
   position:relative;
   z-index:100;
+}
+.date-picker__calendar__date--focused:after{
+  border:1px solid #747474;
+}
+.date-picker__calendar__date:focus{
+  outline:none;
+}
+.date-picker__calendar__date:focus:before{
+  outline:4px solid #747474;
+  outline-offset:1px;
+  position:absolute;
+  top:-1px;
+  bottom:0px;
+  left:-1px;
+  right:0px;
+  content:"";
+  display:block;
+  pointer-events:none;
 }
 .date-picker__calendar__date--next-month:not([disabled]), .date-picker__calendar__date--previous-month:not([disabled]){
   color:#F5F5F5;
@@ -10213,6 +10226,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   height:100%;
   padding:8px 4px;
   width:auto;
+  font-weight:600;
 }
 .date-picker__calendar__year-selection:hover, .date-picker__calendar__year-selection:focus,
 .date-picker__calendar__month-selection:hover,
@@ -10247,9 +10261,13 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .date-picker__calendar__month--focused{
   outline:4px solid #747474;
-  outline-offset:1px;
+  outline-offset:2px;
   position:relative;
   z-index:100;
+}
+.date-picker__calendar__month[disabled]{
+  opacity:0.3;
+  cursor:not-allowed;
 }
 .date-picker__calendar__month--selected{
   color:#1a1a1a;
@@ -10324,6 +10342,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   outline-offset:1px;
   position:relative;
   z-index:100;
+}
+.date-picker__calendar__year[disabled]{
+  opacity:0.3;
+  cursor:not-allowed;
 }
 .date-picker__calendar__year--selected{
   color:#1a1a1a;

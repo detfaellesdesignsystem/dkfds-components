@@ -74,18 +74,9 @@
   th {
     font-weight: normal;
   }
-  tr{
-    border-bottom: $datepicker-table-border;
-  }
 
   td {
     padding: 0;
-    .date-picker__calendar__date {
-      border-right: $datepicker-table-border;
-    }
-    &:last-of-type .date-picker__calendar__date{
-      border-right: none;
-    }
   }
 }
 
@@ -153,27 +144,51 @@
   @include button-unstyled;
   text-align: right;
   width: 100%;
-  padding: 10px 8px 10px 0px;
-  border-right: $inner-border;
+  padding: 10px 12px 10px 0px;
+  position: relative;
 
-  &:focus{
-    outline-offset: 0px;
-  }
-
-  &:hover {
-    background-color: $color-gray-pale;
+  &:after {
+    position: absolute;
+    top: -1px;
+    bottom: 0px;
+    left: -1px;
+    right: 0px;
+    border: $inner-border;
+    content: "";
+    display: block;
+    pointer-events:none;
   }
 
   &[disabled]{
-  opacity: 0.3;
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
-  &--focused {
-    outline: $focus-outline;
-    outline-offset: 0px;
+  &--focused{
     position: relative;
     z-index: 100;
+    
+    &:after {
+      border: $outer-border;
+    }
   }
+
+  &:focus {
+    outline: none;
+    &:before {
+      outline: $focus-outline;
+      outline-offset: 1px;
+      position: absolute;
+      top: -1px;
+      bottom: 0px;
+      left: -1px;
+      right: 0px;
+      content: "";
+      display: block;
+      pointer-events:none;
+    }
+  }
+
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
@@ -239,6 +254,7 @@
   height: 100%;
   padding: 8px 4px;
   width: auto;
+  font-weight: $font-weight-semibold;
 }
 
 // Date Picker - Month Selection View
@@ -256,9 +272,15 @@
 
   &--focused {
     outline: $focus-outline;
-    outline-offset: 1px;
+    outline-offset: 2px;
     position: relative;
     z-index: 100;
+  }
+
+
+  &[disabled]{
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   &--selected {
@@ -312,6 +334,12 @@
     outline-offset: 1px;
     position: relative;
     z-index: 100;
+  }
+  
+
+  &[disabled]{
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   &--selected {
