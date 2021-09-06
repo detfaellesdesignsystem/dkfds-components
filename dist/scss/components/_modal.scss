@@ -28,32 +28,37 @@ body.modal-open{
   }
 
  .modal-content {
+
     align-self: center;
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #fff;
     box-shadow: $box-shadow-heavy;
+    padding: 16px 24px;
     max-width: 800px;
+    width: 100%;
     position: relative;
     margin: 24px auto 24px;
+    @include media-breakpoint-up(md) {
+      padding: map-get($spacers, 7);
+    }
   }
 
   .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: $inner-border;
-    padding: map-get($spacers, 4) map-get($spacers, 6);
+    @include media-breakpoint-up(md) {
+      padding-right: 48px;
+    }
   }
   .modal-title {
     margin: 0 map-get($spacers, 8) 0 0;
-    word-break: break-all;
   }
 
   .modal-body {
-    padding: map-get($spacers, 4) map-get($spacers, 6);
-    margin-top: 8px;
+    margin-top: map-get($spacers, 4);
     & > *:first-child{
       margin-top: 0;
     }
@@ -61,7 +66,6 @@ body.modal-open{
 
   .modal-footer{
     margin-top: 16px;
-    padding: map-get($spacers, 4) map-get($spacers, 6);
     @include media-breakpoint-up(lg) {
       display: flex;
     }

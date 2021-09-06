@@ -10758,31 +10758,38 @@ body.modal-open{
   overflow-y:auto;
   background-color:#fff;
   box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  padding:16px 24px;
   max-width:800px;
+  width:100%;
   position:relative;
   margin:24px auto 24px;
+}
+@media (min-width: 768px){
+  .fds-modal .modal-content{
+    padding:40px;
+  }
 }
 .fds-modal .modal-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #BFBFBF;
-  padding:16px 32px;
+}
+@media (min-width: 768px){
+  .fds-modal .modal-header{
+    padding-right:48px;
+  }
 }
 .fds-modal .modal-title{
   margin:0 48px 0 0;
-  word-break:break-all;
 }
 .fds-modal .modal-body{
-  padding:16px 32px;
-  margin-top:8px;
+  margin-top:16px;
 }
 .fds-modal .modal-body > *:first-child{
   margin-top:0;
 }
 .fds-modal .modal-footer{
   margin-top:16px;
-  padding:16px 32px;
 }
 @media (min-width: 992px){
   .fds-modal .modal-footer{
