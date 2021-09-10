@@ -407,6 +407,7 @@ button.function-link{
   }
   .icon-svg{
     margin-right: map-get($spacers, 2);
+    fill: currentColor;
     .background-dark &{
       fill: white;
     }

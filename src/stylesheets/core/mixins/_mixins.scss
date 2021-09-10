@@ -47,6 +47,10 @@
   }
 }
 
+@mixin focus-outline() {
+  outline: $focus-outline;
+  outline-offset: 1px;
+}
 
 // nobullet list helper
 @mixin nobullet-list() {

@@ -79,3 +79,88 @@ $datepicker-table-border: $inner-border !default;
 // Detail
 $details-button-closed-icon: "arrow-right.svg" !default;
 $details-button-open-icon: "arrow-drop-down.svg" !default;
+$details-panel-border: 4px solid $color-gray-light !default;
+
+// Footer
+$footer-border: $outer-border !default;
+$footer-background-color: $background-normal !default;
+$footer-text-color: $color-black !default;
+$footer-logo: 'logo-placeholder.png' !default;
+
+// Header
+$header-border-bottom: $outer-border !default;
+$header-portal-background-color: $background-normal !default;
+$header-portal-border: $inner-border !default;
+$header-portal-logo: 'logo-header-placeholder.png' !default;
+$header-portal-logo-width: 200px !default;
+$header-portal-logo-height: 60px !default;
+$header-portal-compact-logo-width: auto !default;
+$header-solution-border: $inner-border !default;
+$header-solution-background-color: $background-normal !default;
+$header-solution-text-color: $color-black !default;
+$header-solution-authority-name: $color-gray-dark !default;
+$header-solution-info-mobile-background-color: $color-gray-pale !default;
+$header-solution-info-mobile-text-color: $color-black !default;
+$header-navigation-background-color: $background-normal !default;
+
+// Language switcher
+$language-switcher-border: $inner-inner-border !default;
+$language-switcher-text-color: $color-black !default;
+$language-switcher-active-text-color: $color-gray-dark !default;
+$language-switcher-background-color: $background-normal !default;
+
+// Modal
+$modal-overlay-background-color: $background-modal !default;
+$modal-background-color: $background-normal !default;
+$modal-text-color: $color-black !default;
+$modal-shadow: $box-shadow-heavy !default;
+$modal-header-background-color: $modal-background-color !default;
+$modal-header-text-color: $modal-text-color !default;
+$modal-header-close-color: $modal-header-text-color !default;
+$modal-footer-background-color: $modal-background-color !default;
+$modal-footer-text-color: $modal-text-color !default;
+$modal-body-background-color: $modal-background-color !default;
+$modal-body-text-color: $modal-text-color !default;
+
+// Navigation
+$navigation-link-default-color: $color-black !default;
+$navigation-link-hover-color: $navigation-link-default-color !default;
+$navigation-link-focus-color: $navigation-link-default-color !default;
+$navigation-link-current-color: $navigation-link-default-color !default;
+
+$navigation-link-default-border-width: 7px !default;
+
+$navigation-link-default-border-color: transparent !default;
+$navigation-link-hover-border-color: $navigation-link-default-border-color!default;
+$navigation-link-focus-border-color: $navigation-link-default-border-color !default;
+$navigation-link-current-border-color: $color-primary !default;
+
+$navigation-link-default-background-color: transparent !default;
+$navigation-link-hover-background-color: $navigation-link-default-background-color!default;
+$navigation-link-focus-background-color: $navigation-link-default-background-color !default;
+$navigation-link-current-background-color: $navigation-link-default-background-color !default;
+
+$navigation-overflow-menu-open-background-color: $background-normal !default;
+$navigation-overflow-menu-open-background-color-desktop: $color-subnav-background !default;
+$navigation-overflow-menu-open-text-color: $color-white !default;
+
+$navigation-overflow-menu-collapsed-icon: "add";
+$navigation-overflow-menu-collapsed-icon-desktop: "expand-more";
+$navigation-overflow-menu-expanded-icon: "remove";
+$navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
+
+
+// Overflow Menu
+
+
+// Page navigation
+
+// Search field
+
+// Side navigation
+
+// Tabs
+
+// Toast
+
+// Tooltip

@@ -12,7 +12,7 @@
     .details-summary {
       margin-bottom: map-get($spacers, 3);
       &:before {
-        background-image: url('#{$icons-folder-path}/'+$details-button-open-icon);
+        background-image: url($icons-folder-path+'/'+$details-button-open-icon);
         background-position: -10px top;
       }
     }
@@ -21,14 +21,13 @@
   .details-summary {
     display: inline-block;
     position: relative;
-    color: $color-black;
     cursor: pointer;
     text-decoration: underline;
 
     &:before {
       content: "";
       display: inline-block;
-      background-image: url('#{$icons-folder-path}/'+$details-button-closed-icon);
+      background-image: url($icons-folder-path+'/'+$details-button-closed-icon);
       background-position: -14px top;
       background-repeat: no-repeat;
       background-size: 3.4rem;;
@@ -37,8 +36,7 @@
     }
 
     &:focus{
-      outline: $focus-outline;
-      outline-offset: 1px;
+      @include focus-outline;
     }
     .details-summary-text {
       text-decoration: underline;
@@ -47,7 +45,7 @@
 
   .details-text {
     padding: map-get($spacers, 4);
-    border-left: 4px solid $color-gray-light;
+    border-left: $details-panel-border;
     box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;

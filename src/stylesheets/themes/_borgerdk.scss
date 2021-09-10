@@ -4,21 +4,11 @@
 $color-primary:               #44831E;
 $color-primary-medium:        #3C5C22;
 $color-primary-dark:          #233614;
+
 $image-path:                  '../img' !default;
 
-.header {
-    .portal-header{
-        background-color: #f1f1f1;
-        .logo{
-            background-image: url($image-path + '/logo-borgerdk.svg');
-            height: 4.8rem;
-        }
+$header-portal-background-color: #f1f1f1;
+$header-portal-logo: 'logo-borgerdk.svg';
+$header-portal-logo-height: 4.8rem;
 
-        &.portal-header-compact{
-          .logo{
-            background-image: url($image-path + '/logo-borgerdk.svg');
-            width: 10rem;
-          }
-        }
-    }
-}
+$header-portal-compact-logo-width: 10rem;
