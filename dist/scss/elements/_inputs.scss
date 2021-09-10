@@ -22,13 +22,13 @@
 
 .form-input{
   appearance: none;
-  border: $outer-border;
+  border: $input-border;
   border-radius: $input-border-radius;
   color: $color-black; // standardize on firefox
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
-  padding: $input-top-bottom-padding $input-left-right-padding;
+  padding: calc(8px - #{$input-border-width}) calc(16px - #{$input-border-width});
   width: 100%;
   max-width: 32rem;
   margin-top: map-get($spacers, 3);
@@ -53,6 +53,55 @@ textarea.form-input{
   height: auto;
 }
 
+.form-input-wrapper{
+  display:flex;
+  .form-input{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto
+  }
+  .form-input-prefix + .form-input, &.form-input-wrapper--prefix .form-input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  &.form-input-wrapper--suffix .form-input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .form-input-prefix, .form-input-suffix {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 40px;
+    padding: calc(#{map-get($spacers, 3)} - #{$input-border-width}) calc(#{map-get($spacers, 3)} - #{$input-border-width});
+    margin-top: map-get($spacers, 3);
+    border: $input-border;
+    background-color: $input-prefix-suffix-background-color;
+    text-align: center;
+    white-space: nowrap;
+    cursor: default;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    
+  }
+  .form-input-suffix {
+    border-left: 0;
+    border-top-right-radius: $input-border-radius;
+    border-bottom-right-radius: $input-border-radius;
+  }
+  .form-input-prefix {
+    border-right: 0;
+    border-top-left-radius: $input-border-radius;
+    border-bottom-left-radius: $input-border-radius;
+  }
+}
+
 ////////////////
 //** Select **//
 ////////////////
@@ -67,9 +116,9 @@ textarea.form-input{
   height: calc(#{$input-line-height} + (8px * 2));
   max-width: 32rem;
   width: 100%;
-  margin-top: $input-top-margin;
+  margin-top:  map-get($spacers, 3);;
   text-align: left;
-  padding: $input-top-bottom-padding $input-left-right-padding;
+  padding: calc(8px - #{$input-border-width}) calc(16px - #{$input-border-width});
   padding-right: 32px;
   //custom arrrow:
   -webkit-appearance: none;

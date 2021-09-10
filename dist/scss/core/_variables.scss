@@ -311,18 +311,6 @@ $color-alt-background-hover:  $color-blue-004 !default;
 $color-alt-table-header:      $color-gray-004 !default;
 $color-required:              $color-red-001 !default;
 
-// Button colors
-$button-primary-color: $color-white !default;
-$button-primary-bg: $color-primary !default;
-$button-primary-border-color: $color-primary-medium !default;
-$button-primary-hover-bg: $color-primary-medium !default;
-$button-primary-hover-border-color: $color-primary-dark !default;
-$button-primary-active-bg: $color-primary-dark !default;
-$button-primary-active-border-color: $color-primary-dark !default;
-$button-primary-focus-bg:  $color-primary !default;
-$button-primary-focus-border-color: $color-primary-medium !default;
-$button-disabled-bg: $color-gray-pale !default;
-
 // Tag colors
 $tag-color: $color-white !default;
 $tag-bg: $color-gray-dark !default;
@@ -333,15 +321,6 @@ $tag-focus-bg: $color-gray-dark !default;
 $color-shadow:                rgba(#000, 0.3) !default;
 $color-transparent:           rgba(#000, 0) !default;
 
-//input
-$input-border-radius: 4px;
-$input-border-width: 1px;
-$input-top-bottom-padding: calc(8px - #{$input-border-width}); //7px
-$input-left-right-padding: calc(16px - #{$input-border-width}); //15px
-$input-font-size: $body-text;
-$input-line-height: $body-text-line-height;
-$input-standard-height: 4.0rem;
-$input-top-margin: map-get($spacers, 3);
 
 $input-border-width-feedback: 2px;
 $input-top-bottom-padding-feedback: calc(8px - #{$input-border-width-feedback});
@@ -361,8 +340,6 @@ $sidenav-active-border-width: 4px !default;
 $outer-border:            1px solid $color-gray-medium-dark; //$color-gray-medium-light;
 $inner-border:            1px solid $color-gray-light;
 $inner-inner-border:      1px solid $color-gray-mediumpale;
-$button-border-width:     2px;
-$button-border:           $button-border-width solid $button-primary-border-color;
 
 //Backgrounds
 $background-normal: #FFFFFF;

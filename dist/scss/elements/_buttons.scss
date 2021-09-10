@@ -1,4 +1,5 @@
 // Buttons
+
 a.button{
   padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
   line-height: $body-text-line-height;
@@ -8,15 +9,16 @@ a.button{
   display: inline-block;
   width: 100%;
   //@include margin(0.5em 0.5em 0.5em null);
-  padding: 0px calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+  padding: map-get($spacers, 3) calc(#{map-get($spacers, 4)} - #{$button-border-width}) calc(#{map-get($spacers, 3)} - #{$button-border-width});
   border-radius: $button-border-radius;
-  border: $button-border;
+  border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
+  border-style: solid;
+  border-color: $button-primary-border-color;
   font-size: 1.8rem;
   font-weight: 500;
-  min-height: 40px;
   color: $button-primary-color;
   @include font-smoothing;
-  line-height: 1em;
+  line-height: 2rem;
   text-align: center;
   justify-content: center;
   text-decoration: none;
@@ -43,38 +45,38 @@ a.button{
   //############ Primary ###############
   &.button-primary {
     color: $button-primary-color;
-    background-color: $button-primary-bg;
-    border-color: $button-primary-border-color;
+    background-color: $button-primary-default-background-color;
+    border-color: $button-primary-default-border-color;
 
     &:hover,
     &.button-hover {
-      background-color: $button-primary-hover-bg;
+      background-color: $button-primary-hover-background-color;
       border-color: $button-primary-hover-border-color;
     }
 
     &:active,
     &.button-active {
-      background-color: $button-primary-active-bg;
+      background-color: $button-primary-active-background-color;
       border-color: $button-primary-active-border-color;
     }
 
     &.focus,
     &:focus {
-      background-color: $button-primary-focus-bg;
+      background-color: $button-primary-focus-background-color;
       border-color: $button-primary-focus-border-color;
     }
 
     &:disabled,
     &.disabled {
-      opacity:0.3;
+      opacity: $button-disabled-opacity;
       box-shadow: none !important;
       cursor: not-allowed;
 
       &:hover {
         color: $button-primary-color !important;
-        background-color: $button-primary-bg !important;
+        background-color: $button-primary-default-background-color !important;
         border-color: $button-primary-border-color !important;
-        opacity:0.3 !important;
+        opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }
     }
@@ -82,39 +84,42 @@ a.button{
 
   //############ Secondary ##############
   &.button-secondary {
-    color: $color-black;
-    background-color: $color-gray-pale;
-    border-color: $color-gray-medium-dark;
+    color: $button-secondary-default-color;
+    background-color: $button-secondary-default-background-color;
+    border-color: $button-secondary-default-border-color;
 
     &:hover,
     &.button-hover {
-      background-color: $color-gray-mediumpale;
-      border-color: $color-gray-dark;
+      color: $button-secondary-hover-color;
+      background-color: $button-secondary-hover-background-color;
+      border-color: $button-secondary-hover-border-color;
     }
 
     &:active,
     &.button-active {
-      background-color: $color-gray-light;
-      border-color: $color-black;
+      color: $button-secondary-active-color;
+      background-color: $button-secondary-active-background-color;
+      border-color: $button-secondary-active-border-color;
     }
 
     &.focus,
     &:focus {
-      background-color: $color-gray-pale;
-      border-color: $color-gray-medium-dark;
+      color: $button-secondary-focus-color;
+      background-color: $button-secondary-focus-background-color;
+      border-color: $button-secondary-focus-border-color;
     }
     &:disabled,
     &.disabled {
-      opacity:0.3;
+      opacity:$button-disabled-opacity;
       box-shadow: none !important;
       cursor: not-allowed;
-      border-color: $color-gray-light !important;
+      border-color: $button-secondary-disabled-border-color !important;
 
       &:hover {
-        color: $color-black !important;
-        background-color: $color-gray-pale !important;
-        border-color: $color-gray-light !important;
-        opacity:0.3 !important;
+        color: $button-secondary-default-color !important;
+        background-color: $button-secondary-default-background-color !important;
+        border-color: $button-secondary-disabled-border-color !important;
+        opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }
     }
@@ -122,39 +127,44 @@ a.button{
 
   //############### tertiary ############
   &.button-tertiary {
-    border-color: $color-gray-medium-dark;
-    background-color: transparent;
-    color: $color-black;
+    border-color: $button-tertiary-default-border-color;
+    background-color: $button-tertiary-default-background-color;
+    color: $button-tertiary-default-color;
     font-weight: $font-weight-normal;
 
     &:hover,
     &.button-hover {
-      border-color: $color-gray-dark;
+      border-color: $button-tertiary-hover-border-color;
+      background-color: $button-tertiary-hover-background-color;
+      color: $button-tertiary-hover-color;
     }
 
     &:active,
     &.button-active {
-      border-color: $color-black;
+      border-color: $button-tertiary-active-border-color;
+      background-color: $button-tertiary-active-background-color;
+      color: $button-tertiary-active-color;
     }
 
     &.focus,
     &:focus {
-      border-color:$color-gray-medium-dark;
-      background-color: transparent;
+      border-color: $button-tertiary-focus-border-color;
+      background-color: $button-tertiary-focus-background-color;
+      color: $button-tertiary-focus-color;
     }
 
     &:disabled,
     &.disabled {
-      opacity:0.3;
+      opacity:$button-disabled-opacity;
       box-shadow: none !important;
       cursor: not-allowed;
 
       &:hover {
-        border-color:$color-gray-medium-dark !important;
-        background-color: transparent !important;
-        color: $color-black;
+        border-color: $button-tertiary-default-background-color !important;
+        background-color: $button-tertiary-default-background-color !important;
+        color: $button-tertiary-default-color;;
         font-weight: $font-weight-normal !important;
-        opacity:0.3;
+        opacity:$button-disabled-opacity;
         box-shadow: none !important;
       }
     }
@@ -162,8 +172,8 @@ a.button{
 
   //############ Button quaternary - button styled as a link #################
   &.button-quaternary {
-    color: $color-gray-dark;
-    background-color: transparent;
+    color: $button-quaternary-default-color;
+    background-color: $button-quaternary-default-background-color;
     border-color: transparent;
     text-decoration: none;
     font-weight: $font-weight-normal;
@@ -171,42 +181,45 @@ a.button{
 
     &:hover,
     &.button-hover {
-      background-color: $color-gray-mediumpale;
+      background-color: $button-quaternary-hover-background-color;
       box-shadow:none;
       border-bottom-color: transparent;
     }
 
     &:active,
     &.button-active {
-      background-color: $color-gray-light;
+      background-color: $button-quaternary-active-background-color;
       box-shadow:none;
       border-bottom-color: transparent;
     }
 
     &.focus,
     &:focus {
-      color: $color-black;
+      color: $button-quaternary-default-color;
       box-shadow:none;
       border-bottom-color: transparent;
+      background-color: $button-quaternary-focus-background-color;
     }
 
     &:disabled,
     &.disabled {
-      opacity:0.3;
+      opacity: $button-disabled-opacity;
       box-shadow: none !important;
       cursor: not-allowed;
 
       &:hover {
-        color: $color-gray-dark !important;
-        background-color: transparent !important;
+        color: $button-quaternary-default-color !important;
+        background-color: $button-quaternary-default-background-color !important;
         font-weight: $font-weight-normal !important;
-        opacity:0.3 !important;
+        opacity: $button-disabled-opacity !important;
         box-shadow: none !important;
       }
     }
 
     .icon-svg{
       margin-right: 0;
+      margin-bottom: -2px;
+      margin-top: -4px;
     }
   }
 
