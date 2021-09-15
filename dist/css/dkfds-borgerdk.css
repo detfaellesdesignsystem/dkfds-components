@@ -8480,6 +8480,10 @@ textarea.form-input{
 .form-input-wrapper .form-input{
   flex:0 1 auto;
 }
+.form-input-wrapper .form-input:focus{
+  position:relative;
+  z-index:1;
+}
 .form-input-wrapper .form-input-prefix + .form-input, .form-input-wrapper.form-input-wrapper--prefix .form-input{
   border-top-left-radius:0;
   border-bottom-left-radius:0;
@@ -8772,6 +8776,19 @@ input[readonly][type=text], textarea[readonly]{
 .form-radio:focus + label::before,
 .form-radio.focus + label::before{
   box-shadow:0 0 0 3px #747474;
+}
+
+.form-checkbox[aria-checked=mixed] + label:before{
+  background-color:#1a1a1a;
+}
+.form-checkbox[aria-checked=mixed] + label:after{
+  content:"";
+  height:2px;
+  width:8px;
+  left:7px;
+  top:9px;
+  position:absolute;
+  box-shadow:-2px 2px 0 0 #ffffff;
 }
 
 [type=range]{
@@ -9223,6 +9240,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   line-height:2.4rem;
   border:1px solid #747474;
   width:calc(100% - 2px);
+  border-collapse:separate;
 }
 .table.table--compact th, .table.table--compact td{
   padding-top:calc(8px - 1px);
@@ -9526,6 +9544,24 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   .table.table-xl-responsive-headers.table--borderless tbody tr td:first-child, .table.table-xl-responsive-headers.table--borderless tbody tr th:first-child{
     padding-left:16px;
   }
+}
+
+.table--selectable{
+  width:100%;
+}
+
+.table-actions{
+  border-right:1px solid #747474;
+  border-bottom:1px solid #747474;
+  border-left:1px solid #747474;
+  overflow:hidden;
+  padding:16px calc(16px - 1px) calc(16px - 1px) calc(16px - 1px);
+}
+.table-actions .table-selected-number{
+  margin-top:0px;
+}
+.table-actions .table-selected-number.no-selected{
+  color:#747474;
 }
 
 .table--responsive-scroll{

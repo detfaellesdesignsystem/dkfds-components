@@ -42,6 +42,7 @@
     line-height: $body-text-line-height;
     border: $outer-border;
     width: calc(100% - 2px);
+    border-collapse: separate;
 
     &.table--compact {
       th,td {
@@ -250,6 +251,24 @@
         }
       }
     }
+}
+.table--selectable{
+  width: 100%;
+}
+.table-actions{
+  border-right: $outer-border;
+  border-bottom: $outer-border;
+  border-left: $outer-border;
+  overflow: hidden;
+  padding: #{map-get($spacers, 4)} calc(#{map-get($spacers, 4)} - 1px) calc(#{map-get($spacers, 4)} - 1px) calc(#{map-get($spacers, 4)} - 1px);
+
+  .table-selected-number{
+    margin-top: 0px;
+    &.no-selected{
+      color: $color-gray-medium-dark;
+    }
+  }
+  
 }
 .table--responsive-scroll{
     overflow-x: auto;

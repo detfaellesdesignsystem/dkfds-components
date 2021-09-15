@@ -6,6 +6,7 @@ const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
 const Toast = require('./components/toast');
 const ResponsiveTable = require('./components/table');
+const TableSelectableRows = require('./components/selectable-table');
 const Tabnav = require('./components/tabnav');
 //const Details = require('./components/details');
 const Tooltip = require('./components/tooltip');
@@ -58,6 +59,11 @@ var init = function () {
     new Accordion(jsSelectorAccordionBordered[ c ]);
   }
 
+  const jsSelectableTable = document.querySelectorAll('table.table--selectable');
+  for(let c = 0; c < jsSelectableTable.length; c++){
+    new TableSelectableRows(jsSelectableTable[ c ]).init();
+  }
+
   const jsSelectorTable = document.querySelectorAll('table:not(.dataTable)');
   for(let c = 0; c < jsSelectorTable.length; c++){
     new ResponsiveTable(jsSelectorTable[ c ]);
@@ -97,4 +103,4 @@ var init = function () {
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast, TableSelectableRows};

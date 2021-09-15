@@ -1,0 +1,49 @@
+
+
+{% from "components/buttons/buttons.njk" import button as button %}
+{% macro table(data) %}
+{%- set ariacontrols = "" -%}
+{%- for row in data.tbody -%}
+    {%- set ariacontrols = ariacontrols + " " + data.id+"-check-"+loop.index -%}
+{%- endfor -%}
+<div class="table--responsive-scroll">
+    <table class="table table--zebra table--selectable" id="{{data.id}}">
+        <thead>
+            <tr>
+            {%- if data.selectable -%}
+            <th>{{checkbox(data.id+"-check-all", "Vælg alle rækker", false, false, ariacontrols)}}</th>
+            {%- endif -%}
+            {% for th in data.thead %}
+                <th>{{th}}</th>
+            {% endfor %}
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for row in data.tbody %}
+            <tr>
+                {%- if data.selectable -%}
+                <td data-title="">{{checkbox(data.id+"-check-"+loop.index, "Vælg række", data.id+"-check[]", row[0])}}</td>
+                {%- endif -%}
+                {% for td in row %}
+                <td>{{td}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if data.actions %}
+    <div class="table-actions">
+        <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
+        {% for action in data.actions %}
+            {{ button(action.text, action.class, action.attribute, action.icon, action.sronly) }}
+        {% endfor %}
+    </div>
+    {%- endif -%}
+</div>
+{% endmacro %}
+
+{% macro checkbox(id, label, name, value, controls) %}
+  <input id="{{id}}" type="checkbox"{% if name %}name="{{name}}"{% endif %} class="form-checkbox"{% if value %}value="{{value}}"{% endif %}{% if controls %} aria-controls="{{controls}}"{% endif %} />
+  <label for="{{id}}" aria-label="{{label}}"></label>
+{% endmacro %}

@@ -58,7 +58,11 @@ textarea.form-input{
   .form-input{
     -webkit-box-flex: 0;
     -ms-flex: 0 1 auto;
-    flex: 0 1 auto
+    flex: 0 1 auto;
+    &:focus{
+      position: relative;
+      z-index: 1;
+    }
   }
   .form-input-prefix + .form-input, &.form-input-wrapper--prefix .form-input{
     border-top-left-radius: 0;
@@ -387,6 +391,22 @@ $radio-size-large: 34px;
 .form-radio:focus + label::before,
 .form-radio.focus + label::before {
   box-shadow: 0 0 0 3px $color-focus;
+}
+
+// checkbox mixed
+.form-checkbox[aria-checked="mixed"] + label{
+  &:before{
+    background-color: $color-text;
+  }
+  &:after{
+    content: "";
+    height: 2px;
+    width: 8px;
+    left: 7px;
+    top: 9px;  
+    position: absolute;
+    box-shadow: -2px 2px 0 0 $color-white;
+  }
 }
 
 /////////////////////////
