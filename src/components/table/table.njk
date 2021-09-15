@@ -23,7 +23,7 @@
             {% for row in data.tbody %}
             <tr>
                 {%- if data.selectable -%}
-                <td data-title="">{{checkbox(data.id+"-check-"+loop.index, "Vælg række", data.id+"-check[]", row[0])}}</td>
+                <td>{{checkbox(data.id+"-check-"+loop.index, "Vælg række", data.id+"-check[]", row[0])}}</td>
                 {%- endif -%}
                 {% for td in row %}
                 <td>{{td}}</td>
