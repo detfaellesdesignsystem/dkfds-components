@@ -44,6 +44,15 @@ ol {
   @include unstyled-list;
 }
 
+.bordered-list{
+  @include unstyled-list;
+  border-top: $inner-border;
+  li{
+    padding: map-get($spacers, 3) 0px;
+    border-bottom: $inner-border;
+  }
+}
+
  // No bullet lists
  .nobullet-list {
    @include nobullet-list;
