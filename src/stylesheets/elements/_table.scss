@@ -42,7 +42,6 @@
     line-height: $body-text-line-height;
     border: $outer-border;
     width: calc(100% - 2px);
-    border-collapse: separate;
 
     &.table--compact {
       th,td {
@@ -78,6 +77,15 @@
         }
       &.break-word{
         word-break: break-all;
+      }
+      &.vertical-align-middle{
+        vertical-align: middle;
+      }
+      &.vertical-align-top{
+        vertical-align: top;
+      }
+      &.vertical-align-bottom{
+        vertical-align: bottom;
       }
     }
 
