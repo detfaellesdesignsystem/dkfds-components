@@ -9797,7 +9797,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true]{
   background-color:#DCDCDC;
 }
-.accordion-bordered .accordion-button[aria-expanded=true], .accordion-bordered .tabnav > button[aria-expanded=true]{
+.accordion-bordered .accordion-button[aria-expanded=true]:not(.accordion-error), .accordion-bordered .tabnav > button[aria-expanded=true]:not(.accordion-error){
   border-bottom:1px solid #BFBFBF;
 }
 
@@ -10014,7 +10014,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .details[open] .details-summary:before{
   background-image:url("../img/svg-icons/arrow-drop-down.svg");
-  background-position:-10px top;
+  background-position:-10px -8px;
 }
 .details .details-summary{
   display:inline-block;
@@ -10026,11 +10026,12 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   content:"";
   display:inline-block;
   background-image:url("../img/svg-icons/arrow-right.svg");
-  background-position:-14px top;
+  background-position:-14px -8px;
   background-repeat:no-repeat;
   background-size:3.4rem;
-  width:2.2rem;
-  height:2.4rem;
+  width:1.6rem;
+  height:1.6rem;
+  margin-right:4px;
 }
 .details .details-summary:focus{
   outline:4px solid #747474;

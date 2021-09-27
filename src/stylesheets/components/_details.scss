@@ -13,7 +13,7 @@
       margin-bottom: map-get($spacers, 3);
       &:before {
         background-image: url($icons-folder-path+'/'+$details-button-open-icon);
-        background-position: -10px top;
+        background-position: -10px -8px;
       }
     }
   }
@@ -28,11 +28,12 @@
       content: "";
       display: inline-block;
       background-image: url($icons-folder-path+'/'+$details-button-closed-icon);
-      background-position: -14px top;
+      background-position: -14px -8px;
       background-repeat: no-repeat;
       background-size: 3.4rem;;
-      width: 2.2rem;
-      height: 2.4rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-right: map-get($spacers, 2);
     }
 
     &:focus{

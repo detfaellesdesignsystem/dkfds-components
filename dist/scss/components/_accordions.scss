@@ -191,7 +191,7 @@ button.accordion-bulk-button{
 }
 .accordion-button[aria-expanded=true] {
   background-color: $accordion-button-open-background-color;
-  .accordion-bordered &{
+  .accordion-bordered &:not(.accordion-error){
     border-bottom: $accordion-button-open-border;
   }
 }
