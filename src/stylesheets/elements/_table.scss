@@ -42,7 +42,6 @@
     line-height: $body-text-line-height;
     border: $outer-border;
     width: calc(100% - 2px);
-    border-collapse: separate;
 
     &.table--compact {
       th,td {
@@ -254,7 +253,15 @@
 }
 .table--selectable{
   width: 100%;
+  tbody tr:hover{
+    background-color: $color-gray-pale;
+  }
+  &.table.table--zebra tr.table-row-selected:nth-child(even), &.table.table--zebra tr.table-row-selected:nth-child(even):hover,
+  .table-row-selected, .table-row-selected:hover{
+    background-color: $color-gray-mediumpale;
+  }
 }
+
 .table-actions{
   border-right: $outer-border;
   border-bottom: $outer-border;

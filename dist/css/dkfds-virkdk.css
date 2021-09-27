@@ -7129,7 +7129,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 }
 
 a.button{
-  padding:calc(8px - 2px) calc(16px - 2px) 0px;
+  padding:8px calc(16px - 2px) calc(8px - 2px);
   line-height:2.4rem;
 }
 
@@ -9260,7 +9260,6 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   line-height:2.4rem;
   border:1px solid #747474;
   width:calc(100% - 2px);
-  border-collapse:separate;
 }
 .table.table--compact th, .table.table--compact td{
   padding-top:calc(8px - 1px);
@@ -9568,6 +9567,13 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 
 .table--selectable{
   width:100%;
+}
+.table--selectable tbody tr:hover{
+  background-color:#F5F5F5;
+}
+.table--selectable.table.table--zebra tr.table-row-selected:nth-child(even), .table--selectable.table.table--zebra tr.table-row-selected:nth-child(even):hover,
+.table--selectable .table-row-selected, .table--selectable .table-row-selected:hover{
+  background-color:#DCDCDC;
 }
 
 .table-actions{

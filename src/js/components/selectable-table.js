@@ -64,14 +64,16 @@ function updateCheckboxList(e){
   if(checkbox.checked){
     for(let c = 0; c < checkboxList.length; c++){
       checkboxList[c].checked = true;
+      checkboxList[c].parentNode.parentNode.classList.add('table-row-selected');
       checkboxList[c].nextElementSibling.setAttribute('aria-label', dk.unselect_row);
     }
-    
+
     checkedNumber = checkboxList.length;
     checkbox.nextElementSibling.setAttribute('aria-label', dk.unselect_all_rows);
   } else{
     for(let c = 0; c < checkboxList.length; c++){
       checkboxList[c].checked = false;
+      checkboxList[c].parentNode.parentNode.classList.remove('table-row-selected');
       checkboxList[c].nextElementSibling.setAttribute('aria-label', dk.select_row);
     }
     checkbox.nextElementSibling.setAttribute('aria-label', dk.select_all_rows);
@@ -92,8 +94,10 @@ function updateCheckboxList(e){
 function updateGroupCheck(e){
   // update label for event checkbox
   if(e.target.checked){
+    e.target.parentNode.parentNode.classList.add('table-row-selected');
     e.target.nextElementSibling.setAttribute('aria-label', dk.unselect_row);
   } else{
+    e.target.parentNode.parentNode.classList.remove('table-row-selected');
     e.target.nextElementSibling.setAttribute('aria-label', dk.select_row);
   }
   let table = e.target.parentNode.parentNode.parentNode.parentNode;
