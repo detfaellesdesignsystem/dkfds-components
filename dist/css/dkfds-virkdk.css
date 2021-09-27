@@ -9613,7 +9613,7 @@ hr{
   color:inherit;
   min-height:auto;
   background-color:#F5F5F5;
-  background-image:url("../img/svg-icons/add.svg");
+  background-image:url("../img/svg-icons/remove.svg");
   background-position:left 1.6rem center;
   background-repeat:no-repeat;
   background-size:2.4rem;
@@ -9689,10 +9689,10 @@ button.accordion-bulk-button{
   margin-bottom:16px;
 }
 button.accordion-bulk-button[data-accordion-bulk-expand=true]{
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/add.svg");
 }
 button.accordion-bulk-button[data-accordion-bulk-expand=false]{
-  background-image:url("../img/svg-icons/add.svg");
+  background-image:url("../img/svg-icons/remove.svg");
 }
 
 .accordion-bordered .accordion-button, .accordion-bordered .tabnav > button{
@@ -9802,7 +9802,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .accordion-button[aria-expanded=false], .tabnav > button[aria-expanded=false]{
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
   border-radius:3px;
@@ -12526,7 +12526,7 @@ a.skipnav{
   background-color:#DCDCDC;
 }
 .tabnav > button[aria-selected=false]{
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
   border-radius:3px 3px 3px 3px;
