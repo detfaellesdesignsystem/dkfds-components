@@ -12,7 +12,7 @@
         <thead>
             <tr>
             {%- if data.selectable -%}
-            <th>{{checkbox(data.id+"-check-all", "Vælg alle rækker", false, false, ariacontrols)}}</th>
+            <th>{{checkbox(data.id+"-check-"+unique+"-all", "Vælg alle rækker", false, false, ariacontrols)}}</th>
             {%- endif -%}
             {% for th in data.thead %}
                 <th>{{th}}</th>

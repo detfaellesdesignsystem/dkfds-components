@@ -9697,7 +9697,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 
 .accordion-bordered .accordion-button, .accordion-bordered .tabnav > button{
   border:1px solid #747474;
-  border-radius:0 0 3px 3px;
+  border-radius:3px 3px 0 0;
 }
 
 .accordion, .tabnav,

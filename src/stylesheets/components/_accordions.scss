@@ -128,7 +128,7 @@ button.accordion-bulk-button{
 }
 .accordion-bordered .accordion-button{
   border: $accordion-content-border;
-  border-radius: $accordion-content-border-radius;
+  border-radius: $accordion-button-open-border-radius;
 }
 
 .accordion,
