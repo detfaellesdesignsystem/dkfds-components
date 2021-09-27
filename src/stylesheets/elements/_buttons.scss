@@ -1,7 +1,7 @@
 // Buttons
 
 a.button{
-  padding: calc(#{map-get($spacers, 3)} - #{$button-border-width}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+  padding: map-get($spacers, 3) calc(#{map-get($spacers, 4)} - #{$button-border-width}) calc(#{map-get($spacers, 3)} - #{$button-border-width});
   line-height: $body-text-line-height;
 }
 .button{
