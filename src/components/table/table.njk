@@ -2,11 +2,12 @@
 
 {% from "components/buttons/buttons.njk" import button as button %}
 {% macro table(data) %}
+
+{%- set unique = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50] | random -%}
 {%- set ariacontrols = "" -%}
 {%- for row in data.tbody -%}
-    {%- set ariacontrols = ariacontrols + " " + data.id+"-check-"+loop.index -%}
+    {%- set ariacontrols = ariacontrols + " " + data.id+"-check-"+unique+"-"+loop.index -%}
 {%- endfor -%}
-{%- set unique = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50] | random -%}
 <div class="table--responsive-scroll">
     <table class="table table--selectable" id="{{data.id}}">
         <thead>
@@ -45,6 +46,6 @@
 {% endmacro %}
 
 {% macro checkbox(id, label, name, value, controls) %}
-  <input id="{{id}}" type="checkbox"{% if name %}name="{{name}}"{% endif %} class="form-checkbox"{% if value %}value="{{value}}"{% endif %}{% if controls %} aria-controls="{{controls}}"{% endif %} />
+  <input id="{{id}}" type="checkbox"{% if name %}name="{{name}}"{% endif %} class="form-checkbox"{% if value %}value="{{value}}"{% endif %}{% if controls %} aria-controls="{{controls | trim}}"{% endif %} />
   <label for="{{id}}" aria-label="{{label}}"></label>
 {% endmacro %}
