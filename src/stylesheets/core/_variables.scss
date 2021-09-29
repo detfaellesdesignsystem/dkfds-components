@@ -51,7 +51,7 @@ $display-2-heading-line-height: 3.2rem !default;
 $display-2-heading-letter-spacing: -0.2px !default;
 
 $body-text:                   1.6rem !default;
-$body-text-line-height:       2.6rem !default;
+$body-text-line-height:       2.4rem !default;
 $body-text-letter-spacing:    -0.1px !default;
 
 
@@ -234,11 +234,7 @@ $color-text:                  $color-black !default;
 $color-text-secondary:        $color-gray-003 !default;
 $color-text-bright:           $color-gray-006 !default;
 
-//Links color
-$color-link:                  $color-blue-001 !default;
-$color-link-hover:            $color-blue-003 !default;
-$color-link-focus:            $color-blue-001 !default;
-$color-link-visited:          $color-purple-001 !default;
+
 
 // Default neutral color-scheme (the neutral one that is neither virk.dk nor borger.dk)
 $color-neutral:               $color-gray-002 !default;
@@ -251,8 +247,6 @@ $color-primary:               $color-gray-003 !default;
 $color-primary-medium:        $color-gray-002 !default;
 $color-primary-dark:          $color-gray-001 !default;
 
-$color-positive:              $color-green-005 !default;
-$color-negative:              $color-red-001 !default;
 
 //$color-primary-dark:
 $color-primary-darker:        $color-base-002 !default;
@@ -260,19 +254,6 @@ $color-primary-darkest:       $color-base-002 !default;
 $color-primary-lightest:      $color-gray-004 !default;
 $color-background:            $color-gray-006 !default;
 
-// Special text colors
-$color-text-positive:         $color-green-005 !default;
-$color-text-negative:         $color-red-001 !default;
-
-// Colors used for alert boxes
-$color-success:               $color-green-003 !default;
-$color-success-light:         $color-green-004 !default;
-$color-warning:               $color-orange-004 !default;
-$color-warning-light:         $color-orange-005 !default;
-$color-error:                 $color-red-001 !default;
-$color-error-light:           $color-red-002 !default;
-$color-info:                  $color-blue-008 !default;
-$color-info-light:            $color-blue-004 !default;
 
 //Data visualisation colors
 $color-data-turquoise:                 $color-data-turquoise-001 !default;
@@ -330,18 +311,6 @@ $color-alt-background-hover:  $color-blue-004 !default;
 $color-alt-table-header:      $color-gray-004 !default;
 $color-required:              $color-red-001 !default;
 
-// Button colors
-$button-primary-color: $color-white !default;
-$button-primary-bg: $color-primary !default;
-$button-primary-border-color: $color-primary-medium !default;
-$button-primary-hover-bg: $color-primary-medium !default;
-$button-primary-hover-border-color: $color-primary-dark !default;
-$button-primary-active-bg: $color-primary-dark !default;
-$button-primary-active-border-color: $color-primary-dark !default;
-$button-primary-focus-bg:  $color-primary !default;
-$button-primary-focus-border-color: $color-primary-medium !default;
-$button-disabled-bg: $color-gray-pale !default;
-
 // Tag colors
 $tag-color: $color-white !default;
 $tag-bg: $color-gray-dark !default;
@@ -352,15 +321,6 @@ $tag-focus-bg: $color-gray-dark !default;
 $color-shadow:                rgba(#000, 0.3) !default;
 $color-transparent:           rgba(#000, 0) !default;
 
-//input
-$input-border-radius: 4px;
-$input-border-width: 1px;
-$input-top-bottom-padding: calc(8px - #{$input-border-width}); //7px
-$input-left-right-padding: calc(16px - #{$input-border-width}); //15px
-$input-font-size: $body-text;
-$input-line-height: $body-text-line-height;
-$input-standard-height: 4.0rem;
-$input-top-margin: map-get($spacers, 3);
 
 $input-border-width-feedback: 2px;
 $input-top-bottom-padding-feedback: calc(8px - #{$input-border-width-feedback});
@@ -376,23 +336,15 @@ $sidenav-link-current-color: $color-gray-001 !default;
 $sidenav-link-active-color: $color-black !default;
 $sidenav-active-border-width: 4px !default;
 
-//Alert
-$alert-heading-fontsize: $h5-font-size !default;
-$alert-heading-lineheight: $h5-line-height !default;
-$alert-heading-color: $color-text !default;
-$alert-text-color: $color-text !default;
-
 //Borders
 $outer-border:            1px solid $color-gray-medium-dark; //$color-gray-medium-light;
 $inner-border:            1px solid $color-gray-light;
 $inner-inner-border:      1px solid $color-gray-mediumpale;
-$button-border-width:     2px;
-$button-border:           $button-border-width solid $button-primary-border-color;
 
 //Backgrounds
 $background-normal: #FFFFFF;
 $background-alternative: #F5F5F5;
-$background-modal: rgba(0, 0, 0, 0.75);
+$background-modal: rgba(0, 0, 0, 0.40);
 
 
 //----------------

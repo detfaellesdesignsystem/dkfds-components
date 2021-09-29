@@ -12,15 +12,8 @@
     .details-summary {
       margin-bottom: map-get($spacers, 3);
       &:before {
-        display: block;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-color: transparent;
-        -webkit-clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-        clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-        border-width: 12px 7px 0 7px;
-        border-top-color: inherit;
+        background-image: url($icons-folder-path+'/'+$details-button-open-icon);
+        background-position: -10px -8px;
       }
     }
   }
@@ -28,40 +21,32 @@
   .details-summary {
     display: inline-block;
     position: relative;
-    color: $color-black;
     cursor: pointer;
+    text-decoration: underline;
 
     &:before {
       content: "";
-      position: absolute;
-      top: 3px;
-      bottom: 0;
-      left: 0;
-      margin: 0 auto;
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-      clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-      border-width: 7px 0 7px 12px;
-      border-left-color: inherit;
+      display: inline-block;
+      background-image: url($icons-folder-path+'/'+$details-button-closed-icon);
+      background-position: -14px -8px;
+      background-repeat: no-repeat;
+      background-size: 3.4rem;;
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-right: map-get($spacers, 2);
     }
 
     &:focus{
-      outline: $focus-outline;
-      outline-offset: 1px;
+      @include focus-outline;
     }
     .details-summary-text {
       text-decoration: underline;
-      margin-left: calc(#{map-get($spacers, 4)} + 4px);
     }
   }
 
   .details-text {
     padding: map-get($spacers, 4);
-    border-left: 4px solid $color-gray-light;
+    border-left: $details-panel-border;
     box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;

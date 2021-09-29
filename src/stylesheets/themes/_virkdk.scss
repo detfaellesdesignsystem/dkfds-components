@@ -4,21 +4,12 @@
 $color-primary:               #0059B3;
 $color-primary-medium:        #004993;
 $color-primary-dark:          #003972;
+
 $image-path:                  '../img' !default;
 
-.header {
-    .portal-header{
-        .logo{
-          background-image: url($image-path + '/logo_virk.svg');
-          height: 4.8rem;
-          width: 7.8rem;
-        }
+$header-portal-logo: 'logo_virk.svg';
+$header-portal-logo-height: 4.8rem;
+$header-portal-logo-width: 7.8rem;
 
-      &.portal-header-compact{
-        .logo{
-          background-image: url($image-path + '/logo_virk.svg');
-          width: 3.8rem;
-        }
-      }
-    }
-}
+$header-portal-compact-logo-width: 3.8rem;
+

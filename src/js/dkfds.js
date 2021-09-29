@@ -6,6 +6,7 @@ const Dropdown = require('./components/dropdown');
 const Accordion = require('./components/accordion');
 const Toast = require('./components/toast');
 const ResponsiveTable = require('./components/table');
+const TableSelectableRows = require('./components/selectable-table');
 const Tabnav = require('./components/tabnav');
 //const Details = require('./components/details');
 const Tooltip = require('./components/tooltip');
@@ -14,6 +15,7 @@ const Navigation = require('./components/navigation');
 const InputRegexMask = require('./components/regex-input-mask');
 import Details from './components/details';
 import Modal from './components/modal';
+import DropdownSort from './components/dropdown-sort';
 const datePicker = require('./components/date-picker');
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -57,6 +59,11 @@ var init = function () {
     new Accordion(jsSelectorAccordionBordered[ c ]);
   }
 
+  const jsSelectableTable = document.querySelectorAll('table.table--selectable');
+  for(let c = 0; c < jsSelectableTable.length; c++){
+    new TableSelectableRows(jsSelectableTable[ c ]).init();
+  }
+
   const jsSelectorTable = document.querySelectorAll('table:not(.dataTable)');
   for(let c = 0; c < jsSelectorTable.length; c++){
     new ResponsiveTable(jsSelectorTable[ c ]);
@@ -77,6 +84,11 @@ var init = function () {
     new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
   }
 
+  const jsSelectorDropdownSort = document.getElementsByClassName('overflow-menu--sort');
+  for(let c = 0; c < jsSelectorDropdownSort.length; c++){
+    new DropdownSort(jsSelectorDropdownSort[ c ]).init();
+  }
+
   const jsSelectorDropdown = document.getElementsByClassName('js-dropdown');
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]);
@@ -91,4 +103,4 @@ var init = function () {
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast };
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast, TableSelectableRows};

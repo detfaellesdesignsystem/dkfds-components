@@ -1,12 +1,12 @@
 {% import "components/buttons/buttons.njk" as button %}
 
 
-{% macro card(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
+{% macro card(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align, heading_level) %}
   {%- if (name == 'card1') -%}
     <div class="card{% if align %} card-align-height{% endif %}">
     {%- if (header) or (subheader) -%}
       <div class="card-header">
-        <h3 class="header-title">{{header}}</h3>
+        <{{heading_level | default('h3')}} class="header-title">{{header}}</{{heading_level | default('h3')}}>
         {%- if subheader -%}<p class="sub-header">{{subheader}}</p>{%- endif -%}
       </div>
     {%- endif -%}

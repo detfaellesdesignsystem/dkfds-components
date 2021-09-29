@@ -1,0 +1,251 @@
+// Accordion
+$accordion-button-background-color-default: $color-gray-pale !default;
+$accordion-button-background-color-hover: $color-gray-mediumpale !default;
+$accordion-button-open-border: $inner-border !default;
+$accordion-button-open-background-color: $color-gray-mediumpale !default; 
+$accordion-button-open-icon: "add.svg" !default;
+$accordion-button-closed-icon: "remove.svg" !default;
+$accordion-button-border-radius: $border-radius !default;
+$accordion-button-open-border-radius: $border-radius $border-radius 0 0  !default;
+$accordion-button-color-default: $color-black !default;
+$accordion-button-color-hover: $color-black !default;
+$accordion-button-error-border: 2px solid $color-error !default;
+$accordion-content-border: $outer-border !default;
+$accordion-content-border-radius: 0 0 $border-radius $border-radius !default;
+$accordion-content-background-color: $color-white !default;
+$accordion-content-color: $color-black !default;
+
+// Alert
+$alert-success-background-color: $color-success-light !default;
+$alert-warning-background-color: $color-warning-light !default;
+$alert-error-background-color: $color-error-light !default;
+$alert-info-background-color: $color-info-light !default;
+$alert-success-border-color: $color-success !default;
+$alert-warning-border-color: $color-warning !default;
+$alert-error-border-color: $color-error !default;
+$alert-info-border-color: $color-info !default;
+$alert-border-color:  darken($color-gray-pale, 40%) !default;
+$alert-background-color: $color-gray-pale !default;
+$alert-padding: map-get($spacers, 4) !default;
+$alert-border-size:  map-get($spacers, 3) !default;
+$alert-left-padding: map-get($spacers, 9) !default;
+$alert-icon-size: 24px !default;
+$alert-text-color: $color-black !default;
+$alert-heading-fontsize: $h5-font-size !default;
+$alert-heading-lineheight: $h5-line-height !default;
+$alert-heading-color: $alert-text-color !default;
+$alert-close-text-color: $alert-text-color !default;
+
+// Breadcrumbs
+$breadcrumbs-font-size: $small-text !default;
+$breadcrumbs-text-color: $color-black !default;
+$breadcrumbs-chevron-size: 7px !default;
+$breadcrumbs-chevron-border-width: 1px !default;
+$breadcrumbs-chevron-border-colour: $color-text-secondary !default;
+$breadcrumbs-chevron-altitude-calculated: 5.655px !default;
+
+// Cards
+$cards-shadow: $box-shadow-slightly !default;
+$cards-border: $outer-border !default;
+$cards-background-color: $color-white !default;
+$cards-header-background-color: $cards-background-color !default;
+$cards-text-background-color: $cards-background-color !default;
+$cards-content-background-color: $cards-background-color !default;
+$cards-action-background-color: $cards-background-color !default;
+$cards-text-color: $color-gray-dark !default;
+$cards-heading-color: $color-black !default;
+$cards-heading-large-color: $color-gray-dark !default;
+$cards-sub-heading-color: $color-text-secondary !default;
+
+// Cookie Message
+$cookie-message-background-color: $color-white !default;
+$cookie-message-border: $outer-border !default;
+$cookie-message-shadow: $box-shadow-heavy !default;
+$cookie-message-text-color: $color-black !default;
+
+// Datepicker
+$datepicker-background-color: $color-white !default;
+$datepicker-header-background-color: $color-gray-pale !default;
+$datepicker-header-text-color: $color-black !default;
+$datepicker-icon-previous-year: "chevron-double-left" !default;
+$datepicker-icon-next-year: "chevron-double-right" !default;
+$datepicker-icon-previous-month: "chevron-left" !default;
+$datepicker-icon-next-month: "chevron-right" !default;
+$datepicker-button-icon: "insert-invitation" !default;
+$datepicker-previous-next-month-background-color: $background-alternative !default;
+$datepicker-previous-next-month-text-color: $background-alternative !default;
+$datepicker-border: $outer-border !default;
+$datepicker-table-border: $inner-border !default;
+
+// Detail
+$details-button-closed-icon: "arrow-right.svg" !default;
+$details-button-open-icon: "arrow-drop-down.svg" !default;
+$details-panel-border: 4px solid $color-gray-light !default;
+
+// Footer
+$footer-border: $outer-border !default;
+$footer-background-color: $background-normal !default;
+$footer-text-color: $color-black !default;
+$footer-logo: 'logo-placeholder.png' !default;
+
+// Header
+$header-border-bottom: $outer-border !default;
+$header-portal-background-color: $background-normal !default;
+$header-portal-border: $inner-border !default;
+$header-portal-logo: 'logo-header-placeholder.png' !default;
+$header-portal-logo-width: 200px !default;
+$header-portal-logo-height: 60px !default;
+$header-portal-compact-logo-width: auto !default;
+$header-solution-border: $inner-border !default;
+$header-solution-background-color: $background-normal !default;
+$header-solution-text-color: $color-black !default;
+$header-solution-authority-name: $color-gray-dark !default;
+$header-solution-info-mobile-background-color: $color-gray-pale !default;
+$header-solution-info-mobile-text-color: $color-black !default;
+$header-navigation-background-color: $background-normal !default;
+
+// Language switcher
+$language-switcher-border: $inner-inner-border !default;
+$language-switcher-text-color: $color-black !default;
+$language-switcher-active-text-color: $color-gray-dark !default;
+$language-switcher-background-color: $background-normal !default;
+
+// Modal
+$modal-overlay-background-color: $background-modal !default;
+$modal-background-color: $background-normal !default;
+$modal-text-color: $color-black !default;
+$modal-shadow: $box-shadow-heavy !default;
+$modal-header-background-color: $modal-background-color !default;
+$modal-header-text-color: $modal-text-color !default;
+$modal-header-close-color: $modal-header-text-color !default;
+$modal-footer-background-color: $modal-background-color !default;
+$modal-footer-text-color: $modal-text-color !default;
+$modal-body-background-color: $modal-background-color !default;
+$modal-body-text-color: $modal-text-color !default;
+
+// Navigation
+$navigation-link-default-color: $color-black !default;
+$navigation-link-hover-color: $navigation-link-default-color !default;
+$navigation-link-focus-color: $navigation-link-default-color !default;
+$navigation-link-current-color: $navigation-link-default-color !default;
+
+$navigation-link-default-border-width: 7px !default;
+
+$navigation-link-default-border-color: transparent !default;
+$navigation-link-hover-border-color: $navigation-link-default-border-color!default;
+$navigation-link-focus-border-color: $navigation-link-default-border-color !default;
+$navigation-link-current-border-color: $color-primary !default;
+
+$navigation-link-default-background-color: transparent !default;
+$navigation-link-hover-background-color: $navigation-link-default-background-color!default;
+$navigation-link-focus-background-color: $navigation-link-default-background-color !default;
+$navigation-link-current-background-color: $navigation-link-default-background-color !default;
+
+$navigation-overflow-menu-open-background-color: $background-normal !default;
+$navigation-overflow-menu-open-background-color-desktop: $color-subnav-background !default;
+$navigation-overflow-menu-open-text-color: $color-white !default;
+
+$navigation-overflow-menu-collapsed-icon: "add" !default;
+$navigation-overflow-menu-collapsed-icon-desktop: "expand-more";
+$navigation-overflow-menu-expanded-icon: "remove";
+$navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
+
+// Overflow Menu
+
+
+// Page navigation
+
+// Search field
+
+// Side navigation
+
+// Tabs
+
+// Toast
+
+// Tooltip
+
+// Button
+$button-border-width:     2px !default;
+$button-border-bottom-width: 4px !default;
+
+$button-disabled-bg: $color-gray-pale !default; // deprecated
+$button-disabled-opacity: 0.3 !default;
+// primary
+$button-primary-color: $color-white !default; // old variable
+$button-primary-border-color: $color-primary-medium !default; // old variable
+$button-primary-hover-bg: $color-primary-medium !default; // old variable
+$button-primary-active-bg: $color-primary-dark !default; // old variable
+$button-primary-focus-bg:  $color-primary !default; // old variable
+$button-primary-bg: $color-primary !default; // old variable
+
+$button-primary-default-border-color: $button-primary-border-color !default;
+$button-primary-hover-border-color: $color-primary-dark !default;
+$button-primary-active-border-color: $color-primary-dark !default;
+$button-primary-focus-border-color: $button-primary-default-border-color !default;
+$button-primary-disabled-border-color: $color-primary-medium !default;
+
+$button-primary-default-background-color: $button-primary-bg !default;
+$button-primary-hover-background-color: $button-primary-hover-bg !default;
+$button-primary-active-background-color: $button-primary-active-bg !default;
+$button-primary-focus-background-color: $button-primary-focus-bg !default;
+
+$button-primary-default-color: $button-primary-color !default;
+$button-primary-hover-color: $button-primary-default-color !default;
+$button-primary-active-color: $button-primary-default-color !default;
+$button-primary-focus-color: $button-primary-default-color !default;
+
+// secondary
+$button-secondary-default-border-color: $color-gray-medium-dark !default;
+$button-secondary-hover-border-color: $color-gray-dark !default;
+$button-secondary-active-border-color: $color-black !default;
+$button-secondary-focus-border-color: $button-secondary-default-border-color !default;
+$button-secondary-disabled-border-color: $color-gray-light !default;
+
+$button-secondary-default-background-color: $color-gray-pale !default;
+$button-secondary-hover-background-color: $color-gray-mediumpale !default;
+$button-secondary-active-background-color: $color-gray-light !default;
+$button-secondary-focus-background-color: $color-gray-pale !default;
+
+$button-secondary-default-color: $color-black !default;
+$button-secondary-hover-color: $button-secondary-default-color !default;
+$button-secondary-active-color: $button-secondary-default-color !default;
+$button-secondary-focus-color: $button-secondary-default-color !default;
+
+// tertiary
+$button-tertiary-default-border-color: $color-gray-medium-dark !default;
+$button-tertiary-hover-border-color: $color-gray-dark !default;
+$button-tertiary-active-border-color: $color-black !default;
+$button-tertiary-focus-border-color: $color-gray-medium-dark !default;
+$button-tertiary-disabled-border-color: $color-gray-light !default;
+
+$button-tertiary-default-background-color: transparent !default;
+$button-tertiary-hover-background-color: $button-tertiary-default-background-color !default;
+$button-tertiary-active-background-color: $button-tertiary-default-background-color !default;
+$button-tertiary-focus-background-color: $button-tertiary-default-background-color !default;
+
+$button-tertiary-default-color: $color-black !default;
+$button-tertiary-hover-color: $button-tertiary-default-color !default;
+$button-tertiary-active-color: $button-tertiary-default-color !default;
+$button-tertiary-focus-color: $button-tertiary-default-color !default;
+
+// quaternary
+$button-quaternary-default-background-color: transparent !default;
+$button-quaternary-hover-background-color: $color-gray-mediumpale !default;
+$button-quaternary-active-background-color: $color-gray-light !default;
+$button-quaternary-focus-background-color: $button-quaternary-default-background-color !default;
+
+$button-quaternary-default-color: $color-gray-dark !default;
+$button-quaternary-hover-color: $button-quaternary-default-color !default;
+$button-quaternary-active-color: $button-quaternary-default-color !default;
+$button-quaternary-focus-color: $button-quaternary-default-color !default;
+
+$button-border:           $button-border-width solid $button-primary-default-border-color; // deprecated
+
+// Form input
+$input-border-radius: 4px !default;
+$input-prefix-suffix-background-color: $color-gray-pale !default;
+$input-border: $outer-border !default;
+$input-border-width: 1px !default;
+$input-font-size: $body-text;
+$input-line-height: $body-text-line-height;

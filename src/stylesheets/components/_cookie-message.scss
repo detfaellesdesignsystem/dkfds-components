@@ -1,6 +1,5 @@
 .cookie-container{
-
-  color: $color-black;
+  color: $cookie-message-text-color;
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -12,14 +11,18 @@
 
   .cookie-message{
     @include grid-container();
-
-    background-color:$color-white;
-    border: $outer-border;
-    box-shadow: $box-shadow-heavy;
+    background-color:$cookie-message-background-color;
+    border: $cookie-message-border;
+    box-shadow: $cookie-message-shadow;
     padding-top: calc(#{map-get($spacers, 6)} - 1px);
     padding-bottom: calc(#{map-get($spacers, 7)} - 1px);
     position: relative;
     overflow: hidden;
+
+    p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+      color: $cookie-message-text-color;
+    }
+
 
     @include media-breakpoint-up(xl) {
       max-width: calc(#{map-get($container-max-widths, xl)} + #{map-get($spacers, 7)} + #{map-get($spacers, 7)});

@@ -2,6 +2,6 @@
 // See https://css-tricks.com/a-complete-guide-to-svg-fallbacks/
 
 @mixin add-background-svg($image-name) {
-  background-image: url("#{$image-path}/svg-icons/#{$image-name}.svg");
+  background-image: url("#{$icons-folder-path}/#{$image-name}.svg");
   background-repeat: no-repeat;
 }

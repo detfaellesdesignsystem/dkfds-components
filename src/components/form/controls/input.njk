@@ -1,0 +1,21 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
+{% macro textinput(data) %}<div class="form-group{% if data.success %} form-success{% endif %}{% if data.error %} form-error{% endif %}">
+      {% if data.label != "" %}<label class="form-label{% if data.classlabel %} {{data.classlabel}}{% endif %}" for="{{data.id}}">
+        {{data.label}}{% if data.optionallabel %}<span class="weight-normal"> {{data.optionallabel}}</span>{% endif %}{% if data.mandatorylabel %}<span class="weight-normal"> {{data.mandatorylabel}}</span>{% endif %}{% if data.tooltip %}<button class="button-unstyled js-tooltip" data-tooltip="{{data.tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}
+        </label>{% endif %}
+      {% if data.hint %}<span class="form-hint" id="{{data.id}}-hint">
+      {{data.hint}}
+      </span>{% endif %}
+      {% if data.error %}<span class="form-error-message" id="{{data.id}}-error">
+      <span class="sr-only">Fejl:</span> {{data.error}}
+      </span>{% endif %}
+      {%- if data.suffix or data.prefix %}<div class="form-input-wrapper{% if data.prefix %} form-input-wrapper--prefix{% endif %}{% if data.suffix %} form-input-wrapper--suffix{% endif %}">{% endif -%}
+       {%- if data.prefix -%}
+       <div class="form-input-prefix" aria-hidden="true">{{data.prefix}}</div>
+       {%- endif -%}
+      <input class="form-input{% if data.class%} {{data.class}}{% endif %}" {% if data.placeholder %} placeholder="{{data.placeholder}}" {% endif %}id="{{data.id}}"{% if data.value %} value="{{data.value}}"{% endif %} name="{{data.name}}" type="{{data.type | default('text') }}" {% if data.disabled %}disabled="disabled"{% endif %} {% if data.error %}aria-invalid="true" {% endif %}{% if data.error or data.hint %}aria-describedby="{% if data.hint%}{{data.id}}-hint{% if data.error %} {% endif %}{% endif %}{% if data.error %}{{data.id}}-error{% endif %}"{% endif %}{% if data.readonly %} readonly{% endif %}{% if not data.optional %} required{% endif %} />
+       {%- if data.suffix -%}
+       <div class="form-input-suffix" aria-hidden="true">{{data.suffix}}</div>{%- endif -%}
+      {% if data.suffix or data.prefix %}</div>{% endif %}
+  </div>{% endmacro %}

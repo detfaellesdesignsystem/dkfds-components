@@ -8,11 +8,9 @@ $z-index-nav:     9000;
 
 .header {
   width: 100%;
-  //z-index: $z-index-header;
 
   .logo{
-    //background-image is set by the themes in the "themes"-scss-files.
-    background-image: url($image-path + '/logo-header-placeholder.png');
+    background-image: url($image-path+'/'+$header-portal-logo);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -38,7 +36,7 @@ $z-index-nav:     9000;
       margin-bottom: 0;
     }
     .form-select, .form-input{
-      width: auto; //overwrite width 100%
+      width: auto;
     }
   }
 
@@ -67,10 +65,10 @@ $z-index-nav:     9000;
   }
 
   .portal-header{
-    border-bottom: $inner-border;
+    background-color: $header-portal-background-color;
+    border-bottom: $header-portal-border;
     width: 100%;
     &.portal-header-compact{
-
       font-size: $small-text;
       line-height: $small-text-line-height;
       p {
@@ -89,6 +87,7 @@ $z-index-nav:     9000;
 
       .logo{
         max-height: 24px;
+        width: $header-portal-compact-logo-width;
       }
     }
     .portal-header-inner{
@@ -124,15 +123,16 @@ $z-index-nav:     9000;
   }
 
   .solution-header{
-    border-bottom: $outer-border;
+    border-bottom: $header-border-bottom;
+    background-color: $header-solution-background-color;
 
     @include media-breakpoint-up(lg) {
-      border-bottom: $inner-border;
+      border-bottom: $header-solution-border;
     }
 
     width: 100%;
     &.header-end{
-      border-bottom: $outer-border;
+      border-bottom: $header-border-bottom;
     }
 
     .solution-header-inner{
@@ -144,16 +144,25 @@ $z-index-nav:     9000;
     }
 
     .solution-heading{
-      a, h1{
+      a, h1, .g1{
         font-size: 2.8rem;
         line-height: 3.2rem;
         font-weight: $font-weight-semibold;
-        color: $color-black;
+        color: $header-solution-text-color;
         text-decoration: none;
         display: inline-block;
         @include media-breakpoint-down(sm) {
           font-size: 2.2rem;
           line-height: 2.4rem;
+        }
+      }
+      p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
+        color: $header-solution-text-color;
+      }
+      .function-link{
+        color: $header-solution-text-color;
+        &:hover, &:focus, &:visited{
+          color: $header-solution-text-color;
         }
       }
     }
@@ -168,7 +177,7 @@ $z-index-nav:     9000;
     }
   }
   .authority-name{
-    color: $color-gray-dark;
+    color: $header-solution-authority-name;
   }
   .button-contact{
     display: inline-flex;
@@ -197,11 +206,18 @@ $z-index-nav:     9000;
   .solution-info-mobile{
     padding: map-get($spacers, 5) map-get($spacers, 4);
     text-align: right;
-    background-color: $color-gray-pale;
+    background-color: $header-solution-info-mobile-background-color;
     p{
       margin-bottom: map-get($spacers, 3);
+      color: $header-solution-info-mobile-text-color;
       &:last-child{
         margin-bottom: 0;
+      }
+    }
+    .function-link{
+      color: $header-solution-info-mobile-text-color;
+      &:hover, &:focus, &:visited{
+        color: $header-solution-info-mobile-text-color;
       }
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -226,8 +242,7 @@ $z-index-nav:     9000;
     right: 0;
     bottom: 0;
     left: auto;
-
-    background: $color-white;
+    background-color: $header-navigation-background-color;
     display: none;
     flex-direction: column;
     overflow-y: auto;
@@ -241,7 +256,6 @@ $z-index-nav:     9000;
       display: block;
       overflow-y: visible;
       position: static;
-      //transform: translateX(0);
       width: auto;
     }
 

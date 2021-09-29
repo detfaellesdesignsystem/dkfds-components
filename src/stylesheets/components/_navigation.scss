@@ -10,14 +10,17 @@
   padding-bottom: 0.9rem;
 }
 
-@mixin nav-active {
-  border-bottom: 7px solid $color-primary;
+@mixin nav-current {
+  border-bottom: $navigation-link-default-border-width solid $navigation-link-current-border-color;
 }
 @mixin nav-hover {
-  border-bottom: 7px solid $color-primary;
+  border-bottom: $navigation-link-default-border-width solid $navigation-link-hover-border-color;
 }
 @mixin nav-focus {
-  border-bottom: 7px solid $color-primary;
+  border-bottom: $navigation-link-default-border-width solid $navigation-link-focus-border-color;
+}
+@mixin nav-link {
+  border-bottom: $navigation-link-default-border-width solid $navigation-link-default-border-color;
 }
 
 .navbar {
@@ -84,7 +87,8 @@
     }
     > a {
       text-decoration: none;
-      color: $color-neutral;
+      color: $navigation-link-default-color;
+      background-color: $navigation-link-default-background-color;
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
@@ -97,48 +101,54 @@
       }
       &:hover {
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-color: transparent;
+          background-color: $navigation-link-hover-background-color;
+          color: $navigation-link-hover-color;
+          span{
+            @include nav-hover;
+          }
         }
       }
       &:focus{
-        background-color: transparent;
+        position: relative;
+        z-index: 100;
+        background-color: $navigation-link-focus-background-color;
+        color: $navigation-link-focus-color;
+        span{
+          @include nav-focus;
+        }
       }
     }
     & > a, & > button, & .button-overflow-menu{
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-left: 12px;
         padding-right: 12px;
+        span{        
+          @include nav-link;
+        }
+        &:hover span{
+          @include nav-hover;
+        }
+        &:focus span{
+          @include nav-focus;
+        }
       }
     }
   }
-
-  button[aria-expanded=true] {
-    span {
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        @include nav-active;
-        @include nav-hover;
-        @include nav-focus;
-      }
-    }
-  }
-
   .nav-link {
-    &:hover {
+    > &:hover {
       @media (max-width: $nav-responsive-breakpoint) {
         background-color: $color-gray-pale;
       }
       span {
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          @include nav-active;
-          @include nav-hover;
-          @include nav-focus;
+            @include nav-hover;
         }
       }
     }
     span{
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         display: block;
-        border-bottom: 7px solid transparent;
+        @include nav-link;
       }
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-bottom: 9px;
@@ -148,20 +158,19 @@
 
   .current {
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      span {
-        @include nav-active;
-        @include nav-hover;
-        @include nav-focus;
+      > a, > a:hover, .button-overflow-menu, .button-overflow-menu:hover{
+        background-color: $navigation-link-current-background-color;
+        color: $navigation-link-current-color;
+        span {
+          @include nav-current;
+        }
       }
     }
   }
 
-  .current > a{
+  .current > a, .current .button-overflow-menu{
     font-weight: $font-weight-medium;
-    color: $color-black;
-  }
-  button.current{
-    font-weight: $font-weight-medium;
+    color: $navigation-link-current-color;
   }
 }
 
@@ -221,12 +230,11 @@
   }
 }
 
-
 // Overflow menu(dropdown) in primary navigation.
 .nav-primary{
   .overflow-menu{
     .button-overflow-menu{
-      color: $color-black;
+      color: $navigation-link-default-color;
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
@@ -239,64 +247,49 @@
       }
       span{
         padding-right: 24px;
-        padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+        padding-bottom: 9px;
         display: block;
-
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          padding-bottom: calc(9px + 7px);
-        }
       }
-      &:hover {
-        span {
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            @include nav-hover;
-            padding-bottom: 9px;
-          }
-        }
-      }
-
+          
       &:focus,
       &:active {
         outline: $focus-outline;
+        color: $navigation-link-focus-color;
       }
       &:hover{
         text-decoration: none;
+        color: $navigation-link-hover-color;
       }
 
+
       &[aria-expanded=false] {
-        background-image: url('#{$icons-folder-path}/add.svg');
-        background-repeat: no-repeat;
+        @include add-background-svg($navigation-overflow-menu-collapsed-icon);
         background-position: right 16px center;
         background-size: 24px;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-image: url('#{$icons-folder-path}/expand-more.svg');
-          background-position: right 1rem center;
-          border-left: 1px solid transparent;
-          border-right: 1px solid transparent;
+          @include add-background-svg($navigation-overflow-menu-collapsed-icon-desktop);
+          background-position: right 1rem center; 
         }
       }
 
       &[aria-expanded=true] {
-        background-image: url('#{$icons-folder-path}/remove.svg');
-        background-repeat: no-repeat;
+        @include add-background-svg($navigation-overflow-menu-expanded-icon);
         background-position: right 16px center;
         background-size: 24px;
+        background-color: $navigation-overflow-menu-open-background-color;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-image: url('#{$icons-folder-path}/expand-more-white.svg');
+          @include add-background-svg($navigation-overflow-menu-expanded-icon-desktop);
           background-position: right 1rem center;
-          //create borders:
-          border-left: 1px solid $color-gray-medium-light;
-          border-right: 1px solid $color-gray-medium-light;
-          background-color: $color-subnav-background;
-          color: #fff;
+          background-color: $navigation-overflow-menu-open-background-color-desktop;
+          color: $navigation-overflow-menu-open-text-color;
+          position: relative;
+          z-index: 2;
           &:before, &:after{
             display: none;
           }
-          span{
-            padding-bottom: 9px;
-          }
+         
         }
       }
     }
@@ -306,7 +299,7 @@
       font-size: $body-text;
       line-height: $body-text-line-height;
       color: $color-text;
-      background-color: #fff;
+      background-color: $navigation-overflow-menu-open-background-color;
       padding-left: 16px;
       border-top: $inner-border;
       padding-top: 0;
@@ -321,7 +314,7 @@
         z-index: 1;
         padding-top: map-get($spacers, 3);
         padding-bottom: map-get($spacers, 3);
-        background-color: $color-subnav-background;
+        background-color: $navigation-overflow-menu-open-background-color-desktop;
         top: 100%;
       }
 
@@ -361,23 +354,23 @@
           display: block;
           text-decoration: none;
           &:hover, &:visited, &:focus{
-            color: $color-text;
+            color: $navigation-link-default-color;
             background-color: transparent;
             @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              color: #fff!important;
+              color: $navigation-overflow-menu-open-text-color;
               text-decoration: underline;
             }
           }
           @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            color: #fff!important;
+            color: $navigation-overflow-menu-open-text-color;
           }
       }
 
       .active > a{
         font-weight: $font-weight-semibold;
-        color: $color-black;
+        color: $navigation-link-default-color;
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          color: #fff;
+          color: $navigation-overflow-menu-open-text-color;
         }
       }
 
@@ -400,11 +393,51 @@
       }
     }
   }
-  .current .button-overflow-menu{
-    font-weight: $font-weight-semibold;
-    span{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 9px;
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    li.current{
+      .overflow-menu{
+        .button-overflow-menu{
+          font-weight: $font-weight-semibold;
+          color: $navigation-link-current-color;
+          background-color: $navigation-link-current-background-color;
+          
+          span{
+            @include nav-current;
+          }
+
+          &:focus,
+          &:active {
+            color: $navigation-link-current-color;
+            background-color: $navigation-link-current-background-color;
+            span {
+              @include nav-current;
+            }
+          }
+          &:hover{
+            color: $navigation-link-current-color;
+            background-color: $navigation-link-current-background-color;
+            span{
+              @include nav-current;
+            }
+          }
+
+          &[aria-expanded=true] {
+            background-color: $navigation-overflow-menu-open-background-color-desktop;
+            color: $navigation-overflow-menu-open-text-color;
+            
+            span{
+              @include nav-current;
+            }
+
+            &:hover, &:focus, &:active {
+              background-color: $navigation-overflow-menu-open-background-color-desktop;
+              color: $navigation-overflow-menu-open-text-color;
+              span{
+                @include nav-current;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -423,7 +456,6 @@
     justify-content: space-between;
   }
 }
-
 
 .nav-info-list {
   display: flex;

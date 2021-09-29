@@ -1,5 +1,4 @@
 'use strict';
-const toggle = require('../utils/toggle');
 const breakpoints = require('../utils/breakpoints');
 const BUTTON = '.js-dropdown';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
@@ -11,10 +10,10 @@ class Dropdown {
   constructor (el){
     this.responsiveListCollapseEnabled = false;
 
-    this.triggerEl = null;
+    this.triggerEl = el;
     this.targetEl = null;
 
-    this.init(el);
+    this.init();
 
     if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
       let that = this;
@@ -89,9 +88,7 @@ class Dropdown {
     }
   }
 
-  init (el){
-    this.triggerEl = el;
-    
+  init (){    
     if(this.triggerEl === null ||this.triggerEl === undefined){
       throw new Error(`Could not find button for Details component.`);
     }
@@ -106,20 +103,16 @@ class Dropdown {
     
     this.targetEl = targetEl;  
   }
-}
 
-/**
- * Toggle a button's "pressed" state, optionally providing a target
- * state.
- *
- * @param {HTMLButtonElement} button
- * @param {boolean?} expanded If no state is provided, the current
- * state will be toggled (from false to true, and vice-versa).
- * @return {boolean} the resulting state
- */
-const toggleButton = (button, expanded) => {
-  toggle(button, expanded);
-};
+  hide(){
+    toggle(this.triggerEl);
+  }
+
+  show(){
+    toggle(this.triggerEl);
+  }
+
+}
 
 /**
  * Get an Array of button elements belonging directly to the given
@@ -175,12 +168,18 @@ let toggleDropdown = function (event, forceClose = false) {
   event.stopPropagation();
   event.preventDefault();
 
+  toggle(this, forceClose);
+
+};
+
+let toggle = function(button, forceClose = false){
+  
   let eventClose = document.createEvent('Event');
   eventClose.initEvent(eventCloseName, true, true);
 
   let eventOpen = document.createEvent('Event');
   eventOpen.initEvent(eventOpenName, true, true);
-  let triggerEl = this;
+  let triggerEl = button;
   let targetEl = null;
   if(triggerEl !== null && triggerEl !== undefined){
     let targetAttr = triggerEl.getAttribute(TARGET);
@@ -235,7 +234,7 @@ let toggleDropdown = function (event, forceClose = false) {
     }
 
   }
-};
+}
 
 let hasParent = function (child, parentTagName){
   if(child.parentNode.tagName === parentTagName){
@@ -246,26 +245,6 @@ let hasParent = function (child, parentTagName){
     return false;
   }
 };
-
-
-/**
- * @param {HTMLButtonElement} button
- * @return {boolean} true
- */
-let show = function (button){
-  toggleButton(button, true);
-};
-
-
-
-/**
- * @param {HTMLButtonElement} button
- * @return {boolean} false
- */
-let hide = function (button) {
-  toggleButton(button, false);
-};
-
 
 let outsideClose = function (evt){
   if(document.querySelector('body.mobile_nav-active') === null) {

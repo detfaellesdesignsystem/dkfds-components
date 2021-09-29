@@ -1,6 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
+{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type, mandatorylabel) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
       {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">
         {{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button class="button-unstyled js-tooltip" data-tooltip="{{tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}
         </label>{% endif %}
@@ -10,5 +10,5 @@
       {% if error %}<span class="form-error-message" id="{{id}}-error">
       <span class="sr-only">Fejl:</span> {{error}}
       </span>{% endif %}
-     <input class="form-input {{class}}" {% if optionallabel == nil %}required {% endif %}{% if placeholder %} placeholder="{{placeholder}}" {% endif %}id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-invalid="true" {% endif %}{% if error or hint %}aria-describedby="{% if hint%}{{id}}-hint{% endif %} {% if error %}{{id}}-error{% endif %}"{% endif %}  {% if readonly %} readonly {% endif %}>
+     <input class="form-input {{class}}" {% if not optionallabel %}required {% endif %}{% if placeholder %} placeholder="{{placeholder}}" {% endif %}id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-invalid="true" {% endif %}{% if error or hint %}aria-describedby="{% if hint%}{{id}}-hint{% endif %} {% if error %}{{id}}-error{% endif %}"{% endif %}  {% if readonly %} readonly {% endif %}>
   </div>{% endmacro %}

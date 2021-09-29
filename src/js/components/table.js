@@ -23,7 +23,9 @@ class ResponsiveTable {
               if (cellEls.length === headerCellEls.length) {
                 Array.from(headerCellEls).forEach((headerCellEl, i) => {
                   // Grab header cell text and use it body cell data title.
-                  cellEls[ i ].setAttribute('data-title', headerCellEl.textContent);
+                  if(!cellEls[ i ].hasAttribute('data-title') ){
+                    cellEls[ i ].setAttribute('data-title', headerCellEl.textContent);
+                  }
                 });
               }
             });

@@ -22,6 +22,7 @@ $toast-icon-backgrounds: (
     right: 0px;
     left: 0px;
     bottom: 0px;
+    z-index: 7000;
     
     @include media-breakpoint-up(md) {   
         right: map-get($spacers, 4);
@@ -37,6 +38,7 @@ $toast-icon-backgrounds: (
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: map-get($spacers, 4);
+    box-shadow: $box-shadow-moderately;
 
     &:not(.show){
         opacity: 0;
@@ -70,7 +72,7 @@ $toast-icon-backgrounds: (
             width: 24px;
             height: 24px;
             
-            background-image: url('#{$image-path}/svg-icons/close.svg');
+            background-image: url($icons-folder-path+'/'+'close.svg');
             background-repeat: no-repeat;
         }
         p{
@@ -96,6 +98,6 @@ $toast-icon-backgrounds: (
 
 @each $name, $iconname in $toast-icon-names {
     .toast-#{$name} .toast-icon{
-        background-image: url('#{$image-path}/svg-icons/#{$iconname}.svg');
+        background-image: url($icons-folder-path+'/'+$iconname+'.svg');
     }
 }
