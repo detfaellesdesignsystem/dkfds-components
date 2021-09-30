@@ -292,7 +292,7 @@ $radio-size-large: map-get($spacers, $input-checkbox-radio-large-size);
 }
 .form-radio.radio-large + label{
   padding-top: 8px;
-  padding-left: calc(34px + 8px);
+  padding-left: calc(#{$radio-size-large} + 8px);
   padding-bottom: 8px;
 
   &:before{
@@ -302,7 +302,7 @@ $radio-size-large: map-get($spacers, $input-checkbox-radio-large-size);
 }
 
 .form-radio.radio-large + label + .form-hint{
-  padding-left: calc(34px + 8px);
+  padding-left: calc(#{$radio-size-large} + 8px);
 }
 //checked checkbox
 .form-checkbox:checked + label{
@@ -418,7 +418,7 @@ $radio-size-large: map-get($spacers, $input-checkbox-radio-large-size);
   margin-top: map-get($spacers, 2);
   
   &-large{
-    padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
+    padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)} - (#{map-get($spacers, $input-checkbox-radio-content-border-width)} / 2));
     margin-left: calc((#{map-get($spacers, $input-checkbox-radio-large-size)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)}) / 2);
   }
   &[aria-hidden="true"]{
