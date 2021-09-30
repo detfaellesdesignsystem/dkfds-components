@@ -42,6 +42,7 @@
 
     a {
       overflow:hidden;
+      display: flex;
 
       ul {
         width:100%
@@ -63,6 +64,9 @@
         i {
           color: #fff;
         }
+      }
+      .sidenav-title{
+        margin-left: map-get($spacers, 2);
       }
 
 

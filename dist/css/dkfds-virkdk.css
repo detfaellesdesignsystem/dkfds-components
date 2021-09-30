@@ -8640,13 +8640,13 @@ input[readonly][type=text], textarea[readonly]{
   outline:none;
   color:#1a1a1a;
   position:relative;
-  padding-left:calc(18px + 8px);
-  min-height:18px;
+  padding-left:calc(20px + 8px);
+  min-height:20px;
 }
 
 .form-checkbox + label + .form-hint,
 .form-radio + label + .form-hint{
-  padding-left:calc(18px + 8px);
+  padding-left:calc(20px + 8px);
 }
 
 .form-checkbox + label::before,
@@ -8656,10 +8656,10 @@ input[readonly][type=text], textarea[readonly]{
   background:#ffffff;
   border-radius:2px;
   border:2px solid #1a1a1a;
-  height:18px;
+  height:20px;
   line-height:2.4rem;
   margin-right:8px;
-  width:18px;
+  width:20px;
   position:absolute;
   top:3px;
   left:0;
@@ -8667,23 +8667,23 @@ input[readonly][type=text], textarea[readonly]{
 
 .form-checkbox.checkbox-large + label{
   padding-top:8px;
-  padding-left:calc(34px + 8px);
+  padding-left:calc(32px + 8px);
   padding-bottom:8px;
-  min-height:34px;
+  min-height:32px;
 }
 .form-checkbox.checkbox-large + label:before{
-  height:34px;
-  width:34px;
+  height:32px;
+  width:32px;
 }
 
 .form-checkbox.checkbox-large + label + .form-hint{
-  padding-left:calc(34px + 8px);
+  padding-left:calc(32px + 8px);
 }
 
 .form-radio + label::before{
   border-radius:100%;
-  height:18px;
-  width:18px;
+  height:20px;
+  width:20px;
 }
 
 .form-radio.radio-large + label{
@@ -8692,8 +8692,8 @@ input[readonly][type=text], textarea[readonly]{
   padding-bottom:8px;
 }
 .form-radio.radio-large + label:before{
-  height:34px;
-  width:34px;
+  height:32px;
+  width:32px;
 }
 
 .form-radio.radio-large + label + .form-hint{
@@ -8708,15 +8708,15 @@ input[readonly][type=text], textarea[readonly]{
   height:7px;
   width:12px;
   position:absolute;
-  left:3px;
-  top:4px;
+  left:4px;
+  top:5px;
   box-shadow:-2px 2px 0 0 #fff;
   transform:rotate(-46deg);
 }
 
 .form-checkbox.checkbox-large:checked + label:after{
   height:12px;
-  width:22px;
+  width:20px;
   left:6px;
   top:6px;
   box-shadow:-3px 3px 0 0 #fff;
@@ -8727,8 +8727,8 @@ input[readonly][type=text], textarea[readonly]{
 }
 .form-radio:checked + label:after{
   content:"";
-  height:calc(18px - 10px);
-  width:calc(18px - 10px);
+  height:calc(20px - 10px);
+  width:calc(20px - 10px);
   background-color:#1a1a1a;
   position:absolute;
   left:5px;
@@ -8738,8 +8738,8 @@ input[readonly][type=text], textarea[readonly]{
 
 .form-radio.radio-large:checked + label:after{
   content:"";
-  height:calc(34px - 16px);
-  width:calc(34px - 16px);
+  height:calc(32px - 16px);
+  width:calc(32px - 16px);
   left:8px;
   top:11px;
 }
@@ -8785,10 +8785,26 @@ input[readonly][type=text], textarea[readonly]{
   content:"";
   height:2px;
   width:8px;
-  left:7px;
-  top:9px;
+  left:8px;
+  top:10px;
   position:absolute;
   box-shadow:-2px 2px 0 0 #ffffff;
+}
+
+.checkbox-content, .radio-content{
+  padding-left:calc(20px - 4px);
+  padding-top:0;
+  padding-bottom:0;
+  border-left:4px solid #BFBFBF;
+  margin-left:calc((20px - 4px) / 2);
+  margin-top:4px;
+}
+.checkbox-content-large, .radio-content-large{
+  padding-left:calc(28px - 4px);
+  margin-left:calc((32px - 4px) / 2);
+}
+.checkbox-content[aria-hidden=true], .radio-content[aria-hidden=true]{
+  display:none;
 }
 
 [type=range]{
@@ -9286,6 +9302,15 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 }
 .table td.break-word, .table th.break-word{
   word-break:break-all;
+}
+.table td.vertical-align-middle, .table th.vertical-align-middle{
+  vertical-align:middle;
+}
+.table td.vertical-align-top, .table th.vertical-align-top{
+  vertical-align:top;
+}
+.table td.vertical-align-bottom, .table th.vertical-align-bottom{
+  vertical-align:bottom;
 }
 .table thead{
   background-color:#F5F5F5;
@@ -11753,6 +11778,7 @@ input[type=search]{
 }
 .sidenav-list li a{
   overflow:hidden;
+  display:flex;
 }
 .sidenav-list li a ul{
   width:100%;
@@ -11771,6 +11797,9 @@ input[type=search]{
 }
 .sidenav-list li a .sidenav-icon i{
   color:#fff;
+}
+.sidenav-list li a .sidenav-title{
+  margin-left:4px;
 }
 .sidenav-list li a .sidenav-information{
   color:#747474;

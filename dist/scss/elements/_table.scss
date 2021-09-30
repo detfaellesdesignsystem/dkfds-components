@@ -78,6 +78,15 @@
       &.break-word{
         word-break: break-all;
       }
+      &.vertical-align-middle{
+        vertical-align: middle;
+      }
+      &.vertical-align-top{
+        vertical-align: top;
+      }
+      &.vertical-align-bottom{
+        vertical-align: bottom;
+      }
     }
 
     thead {

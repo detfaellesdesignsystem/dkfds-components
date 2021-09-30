@@ -218,11 +218,11 @@ input[readonly][type=text], textarea[readonly]{
 /////////////////////////////////
 // Custom checkboxes & radios
 /////////////////////////////////
-$checkbox-size: 18px;
-$radio-size: 18px;
-$checkbox-size-large: 34px;
+$checkbox-size: map-get($spacers, $input-checkbox-radio-small-size);
+$radio-size: map-get($spacers, $input-checkbox-radio-small-size);
+$checkbox-size-large: map-get($spacers, $input-checkbox-radio-large-size);
 $checkbox-radio-line-height-large: 4.0rem;
-$radio-size-large: 34px;
+$radio-size-large: map-get($spacers, $input-checkbox-radio-large-size);
 
 
 .form-checkbox,
@@ -314,8 +314,8 @@ $radio-size-large: 34px;
     height: 7px;
     width: 12px;
     position: absolute;
-    left: 3px;
-    top: 4px;
+    left: 4px;
+    top: 5px;
     box-shadow: -2px 2px 0 0 #fff;
     transform: rotate(-46deg);
   }
@@ -324,7 +324,7 @@ $radio-size-large: 34px;
 .form-checkbox.checkbox-large:checked + label{
   &:after{
     height: 12px;
-    width: 22px;
+    width: 20px;
     left: 6px;
     top: 6px;
     box-shadow: -3px 3px 0 0 #fff;
@@ -402,10 +402,27 @@ $radio-size-large: 34px;
     content: "";
     height: 2px;
     width: 8px;
-    left: 7px;
-    top: 9px;  
+    left: 8px;
+    top: 10px;  
     position: absolute;
     box-shadow: -2px 2px 0 0 $color-white;
+  }
+}
+
+.checkbox-content, .radio-content{
+  padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
+  padding-top: map-get($spacers, $input-checkbox-radio-content-padding-top);
+  padding-bottom: map-get($spacers, $input-checkbox-radio-content-padding-bottom);
+	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid $input-checkbox-radio-content-border-color;
+  margin-left: calc((#{map-get($spacers, $input-checkbox-radio-small-size)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)}) / 2);
+  margin-top: map-get($spacers, 2);
+  
+  &-large{
+    padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
+    margin-left: calc((#{map-get($spacers, $input-checkbox-radio-large-size)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)}) / 2);
+  }
+  &[aria-hidden="true"]{
+    display:none;
   }
 }
 

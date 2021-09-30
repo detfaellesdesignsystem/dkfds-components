@@ -2,7 +2,7 @@
 {% macro datoinput(label, hint, day, month, year, tooltip, tooltipTitle, datepicker, error, dayValue, monthValue, yearValue, id, formClass) %}
 <div class="form-group {% if error %} form-error {% endif %} {{ formClass }}">
   <fieldset aria-describedby="{{id.hint | default('example-date-field-hint')}} {% if error %}{{id.error | default('example-date-field-error')}}{% endif %}">
-    <legend class="form-label">{{label}}{% if tooltip %}<button class="js-tooltip button-unstyled" data-tooltip="{{tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
+    <legend class="form-label">{{label}}{% if tooltip %}<button type="button" class="js-tooltip button-unstyled ml-3" data-tooltip="{{tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
     <span class="form-hint" id="{{id.hint | default('example-date-field-hint')}}">{{hint}}</span>
     <span class="form-error-message {% if not error %} d-none{% endif %}" id="{{ id.error | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{error}}</span>
     <div class="date-group js-calendar-group mt-3">
