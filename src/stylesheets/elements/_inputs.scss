@@ -408,6 +408,15 @@ $radio-size-large: map-get($spacers, $input-checkbox-radio-large-size);
     box-shadow: -2px 2px 0 0 $color-white;
   }
 }
+.form-checkbox[aria-checked="mixed"] + label{
+  
+  &:after{
+    width: 12px;
+    left: 13px;
+    top: 16px;
+    box-shadow: -3px 3px 0 0 $color-white;
+  }
+}
 
 .checkbox-content, .radio-content{
   padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
