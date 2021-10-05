@@ -1,5 +1,5 @@
-{% macro alert(classes, role, title, content, aria, close, contentContainer) %}
-<div class="alert{% if classes %} {{ classes }}{% endif %}{% if close %} has-close{% endif %}"{% if role %} role="{{role}}" aria-atomic="true"{% endif %}{% if aria %}aria-label ="{{ aria }}"{% endif %}>
+{% macro alert(classes, role, title, content, aria, close, contentContainer, alertAttributes) %}
+<div class="alert{% if classes %} {{ classes }}{% endif %}{% if close %} has-close{% endif %}"{% if role %} role="{{role}}" aria-atomic="true"{% endif %}{% if aria %}aria-label ="{{ aria }}"{% endif %}{% if alertAttributes %} {{alertAttributes | safe}}{% endif %} >
   <div class="alert-body">
     {%- if title -%}
     <p class="alert-heading{% if close %} pr-7{% endif %}">{{ title | safe }}</p>

@@ -16,6 +16,7 @@ const InputRegexMask = require('./components/regex-input-mask');
 import Details from './components/details';
 import Modal from './components/modal';
 import DropdownSort from './components/dropdown-sort';
+import ErrorSummary from './components/error-summary';
 const datePicker = require('./components/date-picker');
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -99,8 +100,12 @@ var init = function () {
     new Modal(modals[d]).init();
   }
 
+  // Find first error summary module to enhance.
+  var $errorSummary = document.querySelector('[data-module="error-summary"]')
+  new ErrorSummary($errorSummary).init()
+
   new Navigation();
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast, TableSelectableRows};
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast, TableSelectableRows, ErrorSummary};
