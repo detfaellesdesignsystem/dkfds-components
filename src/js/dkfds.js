@@ -24,84 +24,89 @@ const datePicker = require('./components/date-picker');
  */
 require('./polyfills');
 
-var init = function () {
+var init = function (options) {
+  // Set the options to an empty object by default if no options are passed.
+  options = typeof options !== 'undefined' ? options : {}
 
-  datePicker.on(document.body);
+  // Allow the user to initialise FDS in only certain sections of the page
+  // Defaults to the entire document if nothing is set.
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
+  datePicker.on(scope);
 
-  const details = document.querySelectorAll('.js-details');
+  const details = scope.querySelectorAll('.js-details');
   for(let d = 0; d < details.length; d++){
     new Details(details[ d ]).init();
   }
 
-  const jsSelectorRegex = document.querySelectorAll('input[data-input-regex]');
+  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
   for(let c = 0; c < jsSelectorRegex.length; c++){
     new InputRegexMask(jsSelectorRegex[ c ]);
   }
-  const jsSelectorTabindex = document.querySelectorAll('.skipnav[href^="#"]');
+  const jsSelectorTabindex = scope.querySelectorAll('.skipnav[href^="#"]');
   for(let c = 0; c < jsSelectorTabindex.length; c++){
     new SetTabIndex(jsSelectorTabindex[ c ]);
   }
-  const jsSelectorTooltip = document.getElementsByClassName('js-tooltip');
+  const jsSelectorTooltip = scope.getElementsByClassName('js-tooltip');
   for(let c = 0; c < jsSelectorTooltip.length; c++){
     new Tooltip(jsSelectorTooltip[ c ]);
   }
-  const jsSelectorTabnav = document.getElementsByClassName('tabnav');
+  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
   for(let c = 0; c < jsSelectorTabnav.length; c++){
     new Tabnav(jsSelectorTabnav[ c ]);
   }
 
-  const jsSelectorAccordion = document.getElementsByClassName('accordion');
+  const jsSelectorAccordion = scope.getElementsByClassName('accordion');
   for(let c = 0; c < jsSelectorAccordion.length; c++){
     new Accordion(jsSelectorAccordion[ c ]);
   }
-  const jsSelectorAccordionBordered = document.querySelectorAll('.accordion-bordered:not(.accordion)');
+  const jsSelectorAccordionBordered = scope.querySelectorAll('.accordion-bordered:not(.accordion)');
   for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
     new Accordion(jsSelectorAccordionBordered[ c ]);
   }
 
-  const jsSelectableTable = document.querySelectorAll('table.table--selectable');
+  const jsSelectableTable = scope.querySelectorAll('table.table--selectable');
   for(let c = 0; c < jsSelectableTable.length; c++){
     new TableSelectableRows(jsSelectableTable[ c ]).init();
   }
 
-  const jsSelectorTable = document.querySelectorAll('table:not(.dataTable)');
+  const jsSelectorTable = scope.querySelectorAll('table:not(.dataTable)');
   for(let c = 0; c < jsSelectorTable.length; c++){
     new ResponsiveTable(jsSelectorTable[ c ]);
   }
 
-  const jsSelectorCollapse = document.getElementsByClassName('js-collapse');
+  const jsSelectorCollapse = scope.getElementsByClassName('js-collapse');
   for(let c = 0; c < jsSelectorCollapse.length; c++){
     new Collapse(jsSelectorCollapse[ c ]);
   }
 
-  const jsSelectorRadioCollapse = document.getElementsByClassName('js-radio-toggle-group');
+  const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
   for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
     new RadioToggleGroup(jsSelectorRadioCollapse[ c ]);
   }
 
-  const jsSelectorCheckboxCollapse = document.getElementsByClassName('js-checkbox-toggle-content');
+  const jsSelectorCheckboxCollapse = scope.getElementsByClassName('js-checkbox-toggle-content');
   for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
     new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
   }
 
-  const jsSelectorDropdownSort = document.getElementsByClassName('overflow-menu--sort');
+  const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
   for(let c = 0; c < jsSelectorDropdownSort.length; c++){
     new DropdownSort(jsSelectorDropdownSort[ c ]).init();
   }
 
-  const jsSelectorDropdown = document.getElementsByClassName('js-dropdown');
+  const jsSelectorDropdown = scope.getElementsByClassName('js-dropdown');
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]);
   }
 
-  var modals = document.querySelectorAll('.fds-modal');
+  var modals = scope.querySelectorAll('.fds-modal');
   for(let d = 0; d < modals.length; d++) {
     new Modal(modals[d]).init();
   }
 
   // Find first error summary module to enhance.
-  var $errorSummary = document.querySelector('[data-module="error-summary"]')
+  var $errorSummary = scope.querySelector('[data-module="error-summary"]')
   new ErrorSummary($errorSummary).init()
 
   new Navigation();

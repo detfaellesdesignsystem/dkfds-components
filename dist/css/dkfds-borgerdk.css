@@ -1502,6 +1502,12 @@ figcaption, .figcaption{
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
+figcaption p, .figcaption p{
+  font-size:1.3rem;
+  line-height:1.6rem;
+  color:#1a1a1a;
+  letter-spacing:0.4px;
+}
 
 .subheading{
   font-size:1.3rem;
