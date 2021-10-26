@@ -31,7 +31,12 @@
     }
   }  
 
-  //USWD changed: responsive column gaps has been removed. 
+  &.row-bordered{
+    border-top: border(20);
+    &:last-of-type{
+      border-bottom: border(20);
+    }
+  }
 }
 
 // responsive columns...
@@ -112,4 +117,3 @@
     }
   }
 }
-/* stylelint-enable */
