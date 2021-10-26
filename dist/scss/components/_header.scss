@@ -66,7 +66,7 @@ $z-index-nav:     9000;
 
   .portal-header{
     background-color: $header-portal-background-color;
-    border-bottom: $header-portal-border;
+    border-bottom: border($header-portal-border);
     width: 100%;
     &.portal-header-compact{
       font-size: $small-text;
@@ -123,16 +123,16 @@ $z-index-nav:     9000;
   }
 
   .solution-header{
-    border-bottom: $header-border-bottom;
+    border-bottom: border($header-border-bottom);
     background-color: $header-solution-background-color;
 
     @include media-breakpoint-up(lg) {
-      border-bottom: $header-solution-border;
+      border-bottom: border($header-solution-border);
     }
 
     width: 100%;
     &.header-end{
-      border-bottom: $header-border-bottom;
+      border-bottom: border($header-border-bottom);
     }
 
     .solution-header-inner{

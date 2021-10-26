@@ -10,7 +10,7 @@ footer {
 
   //generel for footer
   .footer {
-    border-top: $footer-border;
+    border-top: border($footer-border);
     background-color: $footer-background-color;
     padding-top: calc(#{map-get($spacers, 5)} - 1px);
     padding-bottom: map-get($spacers, 4);

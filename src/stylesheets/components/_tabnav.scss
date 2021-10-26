@@ -17,7 +17,7 @@
     margin-bottom: map-get($spacers, 3);
 
     &[aria-selected=true]{
-      background-color: $color-gray-mediumpale;
+      background-color: $accordion-button-open-background-color;
     }
 
     &[aria-selected=false]{
@@ -25,14 +25,14 @@
       border-radius: $border-radius $border-radius $border-radius $border-radius;
 
       &:focus{
-        background-color: $background-alternative;
+        background-color: $tavnav-button-default-background-color;
       }
     }
 
     @include media-breakpoint-up(md) {
       display: inline-block;
       width: auto;
-      color: $color-gray-001;
+      color: $tavnav-button-text-color;
       text-align: center;
       text-decoration: none;
       padding: 0px;
@@ -48,13 +48,13 @@
       border-top: map-get($spacers, 2) solid $color-white;
 
       &[aria-selected=false]{
-        background-color: $background-alternative;
+        background-color: $tavnav-button-default-background-color;
         background-image: none;
         border-radius: 0px;
       }
 
       &:hover {
-          background-color: $color-gray-mediumpale;
+          background-color: $tavnav-button-hover-background-color;
       }
 
       &:focus{
@@ -65,12 +65,12 @@
       }
 
       &[aria-selected=true] {
-        background-color: $color-white;
+        background-color: $tabnav-background-color;
         background-image: none;
-        border: $outer-border;
+        border: border($tabnav-border);
         padding-left: calc(#{map-get($spacers, 5)} - 1px);
         padding-right: calc(#{map-get($spacers, 5)} - 1px);
-        border-bottom: 1px solid $color-white;
+        border-bottom: 1px solid $tabnav-background-color;
         border-radius: 0px;
         text-decoration: none;
         margin: 0 map-get($spacers, 2) -1px 0px;
@@ -95,7 +95,7 @@
     @extend .accordion-content;
     @include media-breakpoint-up(md) {
       display: none;
-      border: $outer-border;
+      border: border($tabnav-border);
       overflow: hidden;
       margin-bottom: calc(#{map-get($spacers, 4)});
       background-color: transparent;

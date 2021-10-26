@@ -1,5 +1,5 @@
 .language-switcher{
-  border-top: $inner-inner-border;
+  border-top: border($language-switcher-border);
   background-color: $language-switcher-background-color;
   padding-top: #{map-get($spacers, 5)};
   @include media-breakpoint-up(md) {

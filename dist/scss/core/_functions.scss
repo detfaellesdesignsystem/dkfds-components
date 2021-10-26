@@ -1,0 +1,178 @@
+/*
+========================================
+Functions
+----------------------------------------
+*/
+
+
+/*
+----------------------------------------
+map-collect()
+----------------------------------------
+Collect multiple maps into a single
+large map
+source: https://gist.github.com/bigglesrocks/d75091700f8f2be5abfe
+----------------------------------------
+*/
+
+@function map-collect($maps...) {
+    $collection: ();
+  
+    @each $map in $maps {
+      $collection: map-merge($collection, $map);
+    }
+  
+    @return $collection;
+  }
+
+/*
+----------------------------------------
+smart-quote()
+----------------------------------------
+Quotes strings
+Inspects `px`, `xs`, and `xl` numbers
+Leaves bools as is
+----------------------------------------
+*/
+
+@function smart-quote($value) {
+    @if type-of($value) == "string" {
+      @return quote($value);
+    }
+  
+    @if type-of($value) == "number" and index(("px", "xl", "xs"), unit($value)) {
+      @return inspect($value);
+    }
+  
+    @if type-of($value) == "color" {
+      @error 'Only use quoted color tokens in FDS functions and mixins. ';
+    }
+  
+    @return $value;
+  }
+
+/*
+========================================
+General-purpose functions
+----------------------------------------
+*/
+
+/*
+----------------------------------------
+fds-error()
+----------------------------------------
+Allow the system to pass an error as text
+to test error states in unit testing
+----------------------------------------
+*/
+
+$_error-output-override: false !default;
+@function fds-error($message, $override: $_error-output-override) {
+  @if $override {
+    @return "Error: #{$message}";
+  }
+
+  @error "#{$message}";
+}
+
+/*
+----------------------------------------
+error-not-token()
+----------------------------------------
+Returns a common not-a-token error.
+----------------------------------------
+*/
+
+@function error-not-token($token, $type, $valid-token-map: false) {
+    $valid-token-message: if(
+        $valid-token-map,
+        " Valid tokens: #{map-keys($valid-token-map)}",
+        ""
+    );
+    @return fds-error(
+        "'#{$token}' is not a valid FDS #{$type} token.#{$valid-token-message}"
+    );
+}
+
+
+/*
+----------------------------------------
+border()
+----------------------------------------
+Gets a valid FDS border value
+----------------------------------------
+*/
+
+@function border($value) {
+    $value: smart-quote($value);
+    
+    $our-standard-values: map-get($system-properties, border);
+
+    @if not map-has-key($our-standard-values, $value) {
+        @return error-not-token($value, "border", $our-standard-values);
+    }
+    $border-map: map-get($our-standard-values, $value);
+    $border-width: map-get($border-map, 'width');
+    $border-style: map-get($border-map, 'style');
+    $border-color: map-get($border-map, 'color');
+    @return $border-width $border-style $border-color;
+}
+  
+/*
+----------------------------------------
+border-width()
+----------------------------------------
+Gets a valid FDS border width
+----------------------------------------
+*/
+
+@function border-width($value) {
+  $value: smart-quote($value);
+    
+  $our-standard-values: map-get($system-properties, border);
+
+  @if not map-has-key($our-standard-values, $value) {
+      @return error-not-token($value, "border", $our-standard-values);
+  }
+  $border-map: map-get($our-standard-values, $value);
+  @return map-get($border-map, 'width');
+}
+
+/*
+----------------------------------------
+border-style()
+----------------------------------------
+Gets a valid FDS border style
+----------------------------------------
+*/
+
+@function border-style($value) {
+  $value: smart-quote($value);
+    
+  $our-standard-values: map-get($system-properties, border);
+
+  @if not map-has-key($our-standard-values, $value) {
+      @return error-not-token($value, "border", $our-standard-values);
+  }
+  $border-map: map-get($our-standard-values, $value);
+  @return map-get($border-map, 'style');
+}
+/*
+----------------------------------------
+border-color()
+----------------------------------------
+Gets a valid FDS border color
+----------------------------------------
+*/
+
+@function border-color($value) {
+  $value: smart-quote($value);
+    
+  $our-standard-values: map-get($system-properties, border);
+
+  @if not map-has-key($our-standard-values, $value) {
+      @return error-not-token($value, "border", $our-standard-values);
+  }
+  $border-map: map-get($our-standard-values, $value);
+  @return map-get($border-map, 'color');
+}

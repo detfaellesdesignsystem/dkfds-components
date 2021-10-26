@@ -12,7 +12,7 @@
   .cookie-message{
     @include grid-container();
     background-color:$cookie-message-background-color;
-    border: $cookie-message-border;
+    border: border($cookie-message-border);
     box-shadow: $cookie-message-shadow;
     padding-top: calc(#{map-get($spacers, 6)} - 1px);
     padding-bottom: calc(#{map-get($spacers, 7)} - 1px);

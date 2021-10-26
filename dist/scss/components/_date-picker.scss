@@ -45,7 +45,7 @@
 // Date Picker - Calendar View
 
 .date-picker__calendar {
-  border: $datepicker-border;
+  border: border($datepicker-border);
   background-color: $datepicker-background-color;
   box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
@@ -68,7 +68,7 @@
   width: 100%;
 
   thead{
-    border-bottom: $datepicker-table-border;
+    border-bottom: border($datepicker-table-border);
   }
 
   th {
@@ -93,7 +93,7 @@
   text-align: center;
   width: 100%;
   background-color: $color-gray-pale;
-  border-bottom: $datepicker-table-border;
+  border-bottom: border($datepicker-table-border);
 }
 
 .date-picker__calendar__cell {

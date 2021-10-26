@@ -124,10 +124,9 @@ button.accordion-bulk-button{
   &[data-accordion-bulk-expand="false"] {
     background-image: url($icons-folder-path+'/'+$accordion-button-closed-icon);
   }
-
 }
 .accordion-bordered .accordion-button{
-  border: $accordion-content-border;
+  border: border($accordion-content-border);
   border-radius: $accordion-button-open-border-radius;
 }
 
@@ -153,9 +152,9 @@ button.accordion-bulk-button{
 
 .accordion-bordered {
   .accordion-content {
-    border-bottom: $accordion-content-border;
-    border-left: $accordion-content-border;
-    border-right: $accordion-content-border;
+    border-bottom: border($accordion-content-border);
+    border-left: border($accordion-content-border);
+    border-right: border($accordion-content-border);
     border-radius: $accordion-content-border-radius;
   }
 }
@@ -192,7 +191,7 @@ button.accordion-bulk-button{
 .accordion-button[aria-expanded=true] {
   background-color: $accordion-button-open-background-color;
   .accordion-bordered &:not(.accordion-error){
-    border-bottom: $accordion-button-open-border;
+    border-bottom: border($accordion-button-open-border);
   }
 }
 .accordion-button[aria-expanded=false] {

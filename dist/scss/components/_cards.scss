@@ -2,7 +2,7 @@
   position: relative;
   border-radius: map-get($spacers, 0);
   box-shadow: $cards-shadow;
-  border: $cards-border;
+  border: border($cards-border);
   overflow: hidden;
   background: $cards-background-color;
 

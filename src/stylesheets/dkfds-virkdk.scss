@@ -2,5 +2,7 @@
 
 @import './lib/normalize';
 @import './themes/virkdk';  //import variable-overrides specific to this theme 
+@import "./core/properties";
+@import "./core/functions";
 @import './core/variables';
 @import 'dkfds-base';

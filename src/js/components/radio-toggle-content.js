@@ -25,30 +25,29 @@ class RadioToggleGroup{
         var that = this;
 
         for(let i = 0; i < this.radioEls.length; i++){
-          var radio = this.radioEls[ i ];
-          radio.addEventListener('change', function (){
-            for(let a = 0; a < that.radioEls.length; a++ ){
-              that.toggle(that.radioEls[ a ]);
-            }
-          });
-
-          this.toggle(radio); //Initial value;
+            var radio = this.radioEls[ i ];
+            
+            radio.addEventListener('change', function (){
+                for(let a = 0; a < that.radioEls.length; a++ ){
+                    that.toggle(that.radioEls[ a ]);
+                }
+            });
+            this.toggle(radio);
         }
     }
 
     toggle (triggerEl){
         var targetAttr = triggerEl.getAttribute(this.jsToggleTarget);
-        if(targetAttr === null || targetAttr === undefined || targetAttr === ""){
-            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
-        }
-        var targetEl = document.querySelector(targetAttr);
-        if(targetEl === null || targetEl === undefined){
-            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
-        }
-        if(triggerEl.checked){
-            this.open(triggerEl, targetEl);
-        }else{
-            this.close(triggerEl, targetEl);
+        if(targetAttr !== null && targetAttr !== undefined && targetAttr !== ""){
+            var targetEl = document.querySelector(targetAttr);
+            if(targetEl === null || targetEl === undefined){
+                throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
+            }
+            if(triggerEl.checked){
+                this.open(triggerEl, targetEl);
+            }else{
+                this.close(triggerEl, targetEl);
+            }
         }
     }
 

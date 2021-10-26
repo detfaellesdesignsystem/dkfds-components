@@ -15,7 +15,7 @@
     color: $color-neutral;
     line-height: $base-line-height;
     padding: $spacer;
-    padding-top: calc(8px - #{$input-border-width});
+    padding-top: calc(8px - #{border-width($input-border)});
     padding-left: map-get($spacers, 4);
     padding-right: map-get($spacers, 4);
     text-decoration: none;
@@ -146,7 +146,7 @@
     }
     &:last-child {
       a {
-        padding-bottom: calc(8px - #{$input-border-width});
+        padding-bottom: calc(8px - #{border-width($input-border)});
       }
     }
     li{

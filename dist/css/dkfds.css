@@ -180,7 +180,6 @@ td,
 th{
   padding:0;
 }
-
 .sr-only{
   position:absolute;
   width:1px;
@@ -192,7 +191,6 @@ th{
   border:0;
   left:-999em;
 }
-
 @font-face{
   font-family:"IBM Plex Sans";
   font-style:normal;
@@ -370,6 +368,12 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus,
 .row.no-gutters > [class*=col-]{
   padding-right:0;
   padding-left:0;
+}
+.row.row-bordered{
+  border-top:1px solid #BFBFBF;
+}
+.row.row-bordered:last-of-type{
+  border-bottom:1px solid #BFBFBF;
 }
 
 .col-xl,
@@ -8480,6 +8484,10 @@ textarea.form-input{
   height:auto;
 }
 
+textarea.no-resize{
+  resize:none;
+}
+
 .form-input-wrapper{
   display:flex;
 }
@@ -8620,7 +8628,6 @@ input[readonly][type=text], textarea[readonly]{
   border:none;
   cursor:default;
   padding:0;
-  pointer-events:none;
 }
 
 .form-checkbox,

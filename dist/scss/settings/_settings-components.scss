@@ -1,7 +1,7 @@
 // Accordion
 $accordion-button-background-color-default: $color-gray-pale !default;
 $accordion-button-background-color-hover: $color-gray-mediumpale !default;
-$accordion-button-open-border: $inner-border !default;
+$accordion-button-open-border: 20 !default;
 $accordion-button-open-background-color: $color-gray-mediumpale !default; 
 $accordion-button-open-icon: "add.svg" !default;
 $accordion-button-closed-icon: "remove.svg" !default;
@@ -10,7 +10,7 @@ $accordion-button-open-border-radius: $border-radius $border-radius 0 0  !defaul
 $accordion-button-color-default: $color-black !default;
 $accordion-button-color-hover: $color-black !default;
 $accordion-button-error-border: 2px solid $color-error !default;
-$accordion-content-border: $outer-border !default;
+$accordion-content-border: 10 !default;
 $accordion-content-border-radius: 0 0 $border-radius $border-radius !default;
 $accordion-content-background-color: $color-white !default;
 $accordion-content-color: $color-black !default;
@@ -46,7 +46,7 @@ $breadcrumbs-chevron-altitude-calculated: 5.655px !default;
 
 // Cards
 $cards-shadow: $box-shadow-slightly !default;
-$cards-border: $outer-border !default;
+$cards-border: 10 !default;
 $cards-background-color: $color-white !default;
 $cards-header-background-color: $cards-background-color !default;
 $cards-text-background-color: $cards-background-color !default;
@@ -59,7 +59,7 @@ $cards-sub-heading-color: $color-text-secondary !default;
 
 // Cookie Message
 $cookie-message-background-color: $color-white !default;
-$cookie-message-border: $outer-border !default;
+$cookie-message-border: 10 !default;
 $cookie-message-shadow: $box-shadow-heavy !default;
 $cookie-message-text-color: $color-black !default;
 
@@ -74,8 +74,8 @@ $datepicker-icon-next-month: "chevron-right" !default;
 $datepicker-button-icon: "insert-invitation" !default;
 $datepicker-previous-next-month-background-color: $background-alternative !default;
 $datepicker-previous-next-month-text-color: $background-alternative !default;
-$datepicker-border: $outer-border !default;
-$datepicker-table-border: $inner-border !default;
+$datepicker-border: 10 !default;
+$datepicker-table-border: 20 !default;
 
 // Detail
 $details-button-closed-icon: "arrow-right.svg" !default;
@@ -83,20 +83,20 @@ $details-button-open-icon: "arrow-drop-down.svg" !default;
 $details-panel-border: 4px solid $color-gray-light !default;
 
 // Footer
-$footer-border: $outer-border !default;
+$footer-border: 10 !default;
 $footer-background-color: $background-normal !default;
 $footer-text-color: $color-black !default;
 $footer-logo: 'logo-placeholder.png' !default;
 
 // Header
-$header-border-bottom: $outer-border !default;
+$header-border-bottom: 10 !default;
 $header-portal-background-color: $background-normal !default;
-$header-portal-border: $inner-border !default;
+$header-portal-border: 20 !default;
 $header-portal-logo: 'logo-header-placeholder.png' !default;
 $header-portal-logo-width: 200px !default;
 $header-portal-logo-height: 60px !default;
 $header-portal-compact-logo-width: auto !default;
-$header-solution-border: $inner-border !default;
+$header-solution-border: 20 !default;
 $header-solution-background-color: $background-normal !default;
 $header-solution-text-color: $color-black !default;
 $header-solution-authority-name: $color-gray-dark !default;
@@ -105,12 +105,14 @@ $header-solution-info-mobile-text-color: $color-black !default;
 $header-navigation-background-color: $background-normal !default;
 
 // Language switcher
-$language-switcher-border: $inner-inner-border !default;
+$language-switcher-border: 30 !default;
 $language-switcher-text-color: $color-black !default;
 $language-switcher-active-text-color: $color-gray-dark !default;
 $language-switcher-background-color: $background-normal !default;
 
 // Modal
+
+$background-modal: rgba(0, 0, 0, 0.40);
 $modal-overlay-background-color: $background-modal !default;
 $modal-background-color: $background-normal !default;
 $modal-text-color: $color-black !default;
@@ -160,6 +162,11 @@ $navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
 // Side navigation
 
 // Tabs
+$tabnav-border: 10 !default;
+$tabnav-background-color: $color-white !default;
+$tavnav-button-default-background-color: $background-alternative !default;
+$tavnav-button-hover-background-color: $color-gray-mediumpale !default;
+$tavnav-button-text-color: $color-black !default;
 
 // Toast
 
@@ -240,13 +247,12 @@ $button-quaternary-hover-color: $button-quaternary-default-color !default;
 $button-quaternary-active-color: $button-quaternary-default-color !default;
 $button-quaternary-focus-color: $button-quaternary-default-color !default;
 
-$button-border:           $button-border-width solid $button-primary-default-border-color; // deprecated
+$button-border: $button-border-width solid $button-primary-default-border-color; // deprecated
 
 // Form input
 $input-border-radius: 4px !default;
 $input-prefix-suffix-background-color: $color-gray-pale !default;
-$input-border: $outer-border !default;
-$input-border-width: 1px !default;
+$input-border: 10 !default;
 $input-font-size: $body-text;
 $input-line-height: $body-text-line-height;
 
