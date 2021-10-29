@@ -10183,6 +10183,12 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .date-picker__calendar__table td{
   padding:0;
 }
+.date-picker__calendar__table td:first-of-type .date-picker__calendar__date:after{
+  border-left-width:0px;
+}
+.date-picker__calendar__table td:last-of-type .date-picker__calendar__date:after{
+  border-right-width:0px;
+}
 
 .date-picker__calendar__month-picker .date-picker__calendar__table thead, .date-picker__calendar__month-picker .date-picker__calendar__table tr, .date-picker__calendar__year-picker .date-picker__calendar__table thead, .date-picker__calendar__year-picker .date-picker__calendar__table tr{
   border:0;
@@ -10194,6 +10200,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:100%;
   background-color:#F5F5F5;
   border-bottom:1px solid #BFBFBF;
+}
+.date-picker__calendar__row button:focus{
+  z-index:10;
+  position:relative;
 }
 
 .date-picker__calendar__cell{
@@ -10274,12 +10284,17 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   min-height:auto;
   text-align:right;
   width:100%;
-  padding:10px 12px 10px 0px;
+  padding:10px 8px 10px 0px;
   position:relative;
 }
 .date-picker__calendar__date:hover, .date-picker__calendar__date:focus{
   background-color:transparent;
   color:inherit;
+}
+@media (min-width: 768px){
+  .date-picker__calendar__date{
+    padding:10px 12px 10px 0px;
+  }
 }
 .date-picker__calendar__date:after{
   position:absolute;
@@ -10374,9 +10389,9 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   color:inherit;
   min-height:auto;
   display:inline-block;
-  height:100%;
   padding:8px 4px;
-  width:auto;
+  width:100%;
+  text-align:center;
   font-weight:600;
 }
 .date-picker__calendar__year-selection:hover, .date-picker__calendar__year-selection:focus,
@@ -10384,6 +10399,14 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .date-picker__calendar__month-selection:focus{
   background-color:transparent;
   color:inherit;
+}
+@media (min-width: 768px){
+  .date-picker__calendar__year-selection,
+.date-picker__calendar__month-selection{
+    height:100%;
+    width:auto;
+    text-align:left;
+  }
 }
 
 .date-picker__calendar__month-picker{

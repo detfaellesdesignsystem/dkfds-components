@@ -77,6 +77,13 @@
 
   td {
     padding: 0;
+
+    &:first-of-type .date-picker__calendar__date:after{
+      border-left-width: 0px;
+    }
+    &:last-of-type .date-picker__calendar__date:after{
+      border-right-width: 0px;
+    }
   }
 }
 
@@ -94,6 +101,11 @@
   width: 100%;
   background-color: $color-gray-pale;
   border-bottom: border($datepicker-table-border);
+
+  button:focus{
+    z-index: 10;
+    position: relative;
+  }
 }
 
 .date-picker__calendar__cell {
@@ -144,8 +156,13 @@
   @include button-unstyled;
   text-align: right;
   width: 100%;
-  padding: 10px 12px 10px 0px;
+  padding: 10px 8px 10px 0px;
   position: relative;
+
+  
+  @include media-breakpoint-up(md) {
+    padding: 10px 12px 10px 0px;
+  }
 
   &:after {
     position: absolute;
@@ -251,10 +268,17 @@
 .date-picker__calendar__month-selection {
   @include button-unstyled;
   display: inline-block;
-  height: 100%;
+  
   padding: 8px 4px;
-  width: auto;
+  width: 100%;
+  text-align: center;
   font-weight: $font-weight-semibold;
+
+  @include media-breakpoint-up(md) {
+    height: 100%;
+    width: auto;
+    text-align: left;
+  }
 }
 
 // Date Picker - Month Selection View
