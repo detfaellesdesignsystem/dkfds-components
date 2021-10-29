@@ -5,7 +5,9 @@
 <ul class="accordion{% if variant %} accordion-{{ variant }}{% endif %}{% if multiselectable == true %} accordion-multiselectable{% endif %}">
   {%- for item in items -%}
   <li>
+    {%-  if heading_level !== false -%}
     <{{heading_level | default('h3') }}>
+    {%- endif -%}
     <button class="accordion-button{% if item.error_message %} accordion-error {% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.error_message %} aria-describedby="{{ id_prefix }}{{ item.id }}" {% endif %} aria-controls="{{ id_prefix }}{{ item.id }}">
       {{ item.title }}
       {%- if item.icon %}
@@ -14,7 +16,9 @@
         </span>
       {% endif -%}
     </button>
+    {%-  if heading_level !== false -%}
     </{{heading_level | default('h3') }}>
+    {%- endif -%}
        {%- set ariahidden = "true" -%}
       {%- if item.expanded %}
         {% set ariahidden = "false" %}
