@@ -836,9 +836,6 @@ const enhanceDatePicker = (el) => {
     throw new Error(`${DATE_PICKER} is missing inner input`);
   }
 
-  if (internalInputEl.value) {
-    internalInputEl.value = "";
-  }
 
   const minDate = parseDateString(
     datePickerEl.dataset.minDate || internalInputEl.getAttribute("min")
@@ -892,6 +889,10 @@ const enhanceDatePicker = (el) => {
   if (internalInputEl.disabled) {
     disable(datePickerEl);
     internalInputEl.disabled = false;
+  }
+  
+  if (externalInputEl.value) {
+    validateDateInput(externalInputEl);
   }
 };
 
