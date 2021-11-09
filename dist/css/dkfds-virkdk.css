@@ -8826,6 +8826,7 @@ input[readonly][type=text], textarea[readonly]{
   border-left:4px solid #BFBFBF;
   margin-left:calc((20px - 4px) / 2);
   margin-top:4px;
+  margin-bottom:24px;
 }
 .checkbox-content-large, .radio-content-large{
   padding-left:calc(28px - 4px - (4px / 2));
