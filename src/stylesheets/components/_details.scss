@@ -1,6 +1,6 @@
 .details{
   display: block;
-  margin-bottom: map-get($spacers, 6);
+  margin-bottom: units(6);
 
   // Remove the default details marker so we can style our own consistently and
   // ensure it displays in Firefox (see implementation.md for details)
@@ -10,7 +10,7 @@
 
   &[open] {
     .details-summary {
-      margin-bottom: map-get($spacers, 3);
+      margin-bottom: units(3);
       &:before {
         background-image: url($icons-folder-path+'/'+$details-button-open-icon);
         background-position: -10px -8px;
@@ -33,11 +33,11 @@
       background-size: 3.4rem;;
       width: 1.6rem;
       height: 1.6rem;
-      margin-right: map-get($spacers, 2);
+      margin-right: units(2);
     }
 
     &:focus{
-      @include focus-outline;
+      @include focus();
     }
     .details-summary-text {
       text-decoration: underline;
@@ -45,7 +45,7 @@
   }
 
   .details-text {
-    padding: map-get($spacers, 4);
+    padding: units(4);
     border-left: $details-panel-border;
     box-sizing: border-box;
     &[aria-hidden=true]{

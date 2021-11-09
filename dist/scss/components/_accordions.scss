@@ -79,7 +79,7 @@ $v-padding: $spacing-md-small;
   border-radius: $accordion-button-border-radius;
   .icon_text {
     font-weight: $font-weight-semibold;
-    margin-right: map-get($spacers, 3);
+    margin-right: units(3);
     float: left;
   }
   .accordion-icon {
@@ -115,8 +115,8 @@ button.accordion-bulk-button{
   
   background-repeat: no-repeat;
   background-position: left top;
-  padding-left:map-get($spacers, 505);
-  margin-bottom: map-get($spacers, 4);
+  padding-left:units(505);
+  margin-bottom: units(4);
   
   &[data-accordion-bulk-expand="true"] {
     background-image: url($icons-folder-path+'/'+$accordion-button-open-icon);

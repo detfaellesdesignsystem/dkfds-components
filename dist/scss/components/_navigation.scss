@@ -25,10 +25,10 @@
 
 .navbar {
   width: 100%;
-  //padding-left: map-get($spacers, 4);
-  //padding-right: map-get($spacers, 4);
-  padding-top: map-get($spacers, 5);
-  padding-bottom: map-get($spacers, 5);
+  //padding-left: units(4);
+  //padding-right: units(4);
+  padding-top: units(5);
+  padding-bottom: units(5);
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     border-bottom: $inner-border;
   }
@@ -50,7 +50,7 @@
 }
 .navbar-context-actions{
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: map-get($spacers, 4);
+    padding-top: units(4);
   }
 }
 
@@ -92,8 +92,8 @@
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      padding-top: calc(#{units(4)} - 1px);
+      padding-bottom: calc(#{units(4)} - 1px);
       white-space: nowrap;
 
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -180,13 +180,11 @@
     align-items: center;
   }
   .nav-secondary-heading{
-    margin-bottom: map-get($spacers, 4);
-    font-size: 17px;
     font-weight: $font-weight-bold;
-    margin-bottom: 0;
+    margin-bottom: units(1);
     + ul{
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        margin-left: map-get($spacers, 4);
+        margin-left: units(4);
       }
     }
   }
@@ -238,7 +236,7 @@
       font-size: $base-font-size;
       line-height: $base-line-height;
       display: block;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
+      padding-top: calc(#{units(4)} - 1px);
       padding-bottom: 0;
       white-space: nowrap;
       width: 100%;
@@ -253,7 +251,7 @@
           
       &:focus,
       &:active {
-        outline: $focus-outline;
+        @include focus-outline();
         color: $navigation-link-focus-color;
       }
       &:hover{
@@ -312,8 +310,8 @@
         padding-left: 0;
         position: absolute;
         z-index: 1;
-        padding-top: map-get($spacers, 3);
-        padding-bottom: map-get($spacers, 3);
+        padding-top: units(3);
+        padding-bottom: units(3);
         background-color: $navigation-overflow-menu-open-background-color-desktop;
         top: 100%;
       }
@@ -324,7 +322,7 @@
           line-height: $small-text-line-height;
         }
         .overflow-list {
-          margin-left: map-get($spacers, 4);
+          margin-left: units(4);
           li {
             a {
               border-top: 0;
@@ -341,7 +339,7 @@
           }
         }
         .sidenav-sub_list{
-          margin-left: map-get($spacers, 4);
+          margin-left: units(4);
         }
 
       }

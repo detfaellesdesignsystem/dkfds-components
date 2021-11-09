@@ -1,7 +1,21 @@
 // Focus state mixin
+
+@mixin focus-outline {
+  outline: $theme-focus-width $theme-focus-style $theme-focus-color;
+}
+@mixin focus-offset {
+  outline-offset: $theme-focus-offset;
+}
+
 @mixin focus {
-  outline: $focus-outline;
-  outline-offset: $focus-spacing;
+  @include focus-outline();
+  @include focus-offset();
+}
+
+// Font
+@mixin font($index) {
+  font-size: font-size($index);
+  line-height: line-height($index);
 }
 
 // Screen reader only helper
@@ -45,11 +59,6 @@
       padding-right: 0 !important;
     }
   }
-}
-
-@mixin focus-outline() {
-  outline: $focus-outline;
-  outline-offset: 1px;
 }
 
 // nobullet list helper

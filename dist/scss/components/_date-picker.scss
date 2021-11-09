@@ -193,8 +193,7 @@
   &:focus {
     outline: none;
     &:before {
-      outline: $focus-outline;
-      outline-offset: 1px;
+      @include focus();
       position: absolute;
       top: -1px;
       bottom: 0px;
@@ -295,7 +294,7 @@
   text-align: center;
 
   &--focused {
-    outline: $focus-outline;
+    @include focus-outline();
     outline-offset: 2px;
     position: relative;
     z-index: 100;
@@ -354,8 +353,7 @@
   text-align: center;
 
   &--focused {
-    outline: $focus-outline;
-    outline-offset: 1px;
+    @include focus();
     position: relative;
     z-index: 100;
   }

@@ -33,7 +33,7 @@ body.modal-open{
     overflow-x: hidden;
     overflow-y: auto;
     background-color: $modal-background-color;
-    box-shadow: $modal-shadow;
+    box-shadow: shadow($modal-shadow);
     max-width: 800px;
     width: 100%;
     position: relative;
@@ -43,7 +43,7 @@ body.modal-open{
   .modal-header {
     padding: 16px 24px 0px 24px;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 7) map-get($spacers, 7) map-get($spacers, 3) map-get($spacers, 7);
+      padding: units(7) units(7) units(3) units(7);
     }
     display: flex;
     justify-content: space-between;
@@ -59,7 +59,7 @@ body.modal-open{
     }
   }
   .modal-title {
-    margin: 0 map-get($spacers, 8) 0 0;
+    margin: 0 units(8) 0 0;
   }
 
   .modal-body {
@@ -67,7 +67,7 @@ body.modal-open{
     color: $modal-body-text-color;
     padding: 0px 24px;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 3) map-get($spacers, 7) map-get($spacers, 3) map-get($spacers, 7);
+      padding: units(3) units(7) units(3) units(7);
     }
     & > *:first-child{
       margin-top: 0;
@@ -81,7 +81,7 @@ body.modal-open{
   .modal-footer{
     padding: 0px 24px 16px 24px;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 3) map-get($spacers, 7) map-get($spacers, 7) map-get($spacers, 7);
+      padding: units(3) units(7) units(7) units(7);
     }
     background-color: $modal-footer-background-color;
     color: $modal-footer-text-color;
@@ -89,8 +89,8 @@ body.modal-open{
       display: flex;
     }
     .button {
-      margin-top: map-get($spacers, 3);
-      margin-right: map-get($spacers, 4);
+      margin-top: units(3);
+      margin-right: units(4);
     }
     
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
@@ -105,8 +105,8 @@ body.modal-open{
     width: inherit;
     color: $modal-header-close-color;
     @include media-breakpoint-up(md) {
-      top:map-get($spacers, 5);
-      right: map-get($spacers, 6);
+      top:units(5);
+      right: units(6);
     }
 
     &:hover, &:visited, &:focus{

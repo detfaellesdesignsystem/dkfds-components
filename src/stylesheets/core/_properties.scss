@@ -1,5 +1,6 @@
-//############################### Swatches and Theming ####################
-//###########################################################################
+//----------------
+// Colors
+// ----------------
 
 //color contrasting
 $color-base-001:              #ffffff !default;
@@ -19,7 +20,7 @@ $color-green-001:             #568331 !default;
 $color-green-002:             #3C5C22 !default;
 $color-green-021:             #233614 !default;
 $color-green-003:             #358000 !default;
-$color-green-004:             #eeffe2  !default;
+$color-green-004:             #eeffe2 !default;
 $color-green-005:             #358000 !default;
 
 //orange
@@ -74,15 +75,8 @@ $color-data-violet-002:        #9195BF !default;
 $color-data-violet-003:        #C8CADF !default;
 $color-data-violet-004:        #ECEDF4 !default;
 
-//############################### Component variables ####################
-//########################################################################
-
-// Base colors
-$color-white:                 $color-base-001 !default;
-$color-black:                 $color-base-002 !default;
 
 // Gray-scales
-//new
 $color-gray-dark:             $color-gray-002 !default;
 $color-gray-medium-dark:      $color-gray-003 !default;
 $color-gray-medium-light:     $color-gray-004 !default;
@@ -90,33 +84,15 @@ $color-gray-light:            $color-gray-005 !default;
 $color-gray-mediumpale:       $color-gray-055 !default;
 $color-gray-pale:             $color-gray-006 !default;
 
-//Focus
-$color-focus:                 $color-gray-medium-dark !default;
-
-// Text color
-$color-text:                  $color-black !default;
-$color-text-secondary:        $color-gray-003 !default;
-$color-text-bright:           $color-gray-006 !default;
-
-
-
-// Default neutral color-scheme (the neutral one that is neither virk.dk nor borger.dk)
-$color-neutral:               $color-gray-002 !default;
-$color-neutral-darker:        $color-base-002 !default;
-$color-neutral-darkest:       $color-base-002 !default;
-$color-neutral-lightest:      $color-gray-004 !default; //TODO, need base color for lightest
-
 // Functional theme colors
 $color-primary:               $color-gray-003 !default;
 $color-primary-medium:        $color-gray-002 !default;
 $color-primary-dark:          $color-gray-001 !default;
 
-
 //$color-primary-dark:
 $color-primary-darker:        $color-base-002 !default;
 $color-primary-darkest:       $color-base-002 !default;
 $color-primary-lightest:      $color-gray-004 !default;
-$color-background:            $color-gray-006 !default;
 
 
 //Data visualisation colors
@@ -150,29 +126,12 @@ $color-data-violet-high-opacity:      $color-data-violet-002 !default;
 $color-data-violet-medium-opacity:    $color-data-violet-003 !default;
 $color-data-violet-low-opacity:       $color-data-violet-004 !default;
 
+$color-shadow: rgba(#000, 0.3) !default;
 
-// Header, footer & navigation colors
-$color-header-background:     $color-gray-006 !default;
-$color-footer-background:     $color-gray-002 !default;
-$color-topmenu-background:    $color-gray-002!default;
-$color-subnav-background:     $color-gray-002!default;
-$color-page:                  $color-base-001 !default;
-
-// Colors for borders
-$color-border:                $color-gray-003 !default;
-$color-border-light:          $color-gray-006 !default;
-$color-border-bright:         $color-base-001 !default;
-$color-border-focus:          $color-gray-004 !default;
-
-// Special colors
-$color-alt-background:        $color-gray-006 !default;
-$color-alt-background-hover:  $color-blue-004 !default;
-$color-alt-table-header:      $color-gray-004 !default;
-$color-required:              $color-red-001 !default;
-
-
-
-$system-properties: (
+//----------------
+// Borders
+// ----------------
+$system-border: (
   border: (
     10: (
       'width': 1px,
@@ -191,3 +150,93 @@ $system-properties: (
     )
   )
 );
+
+/*
+//----------------
+// Font size
+// ----------------
+$system-font-size: (
+  font-size: (
+    '2xs': 1.3rem,
+    'xs': 1.4rem,
+    'sm': 1.6rem,
+    'md': 2.0rem,
+    'lg': 2.1rem,
+    'xl': 2.5rem,
+    '2xl': 3.1rem,
+    '3xl': 3.9rem
+  )
+) !default;*/
+
+//----------------
+// Shadow
+// ----------------
+
+$system-shadow: (
+  shadow: (
+    'light': 0 2px 4px 0 $color-shadow,
+    'medium': 0 4px 8px 0 $color-shadow,
+    'heavy': 0 8px 16px 0 $color-shadow
+  )
+) !default;
+
+$system-properties: map-merge($system-border, $system-shadow);
+
+//----------------
+// Grid
+// ----------------
+
+// Common grid breakpoints variables
+$grid-xs:                     0 !default;
+$grid-sm:                     576px !default;
+$grid-md:                     768px !default;
+$grid-lg:                     992px !default;
+$grid-xl:                     1200px !default;
+
+// Grid breakpoints..
+$grid-breakpoints: (
+  xs: $grid-xs,
+  sm: $grid-sm,
+  md: $grid-md,
+  lg: $grid-lg,
+  xl: $grid-xl
+) !default;
+
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1200px
+) !default;
+
+$grid-columns:                  12 !default;
+$grid-gutter-width:             32px !default; //16px on each side of the columns
+
+// Spacing helpers
+//
+// Mostly used to control spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+// How to use: units(2); This will give 4px (8*0.5).
+
+$spacer: 8px !default;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),   //2px
+  2: ($spacer * .5),    //4px
+  3: $spacer,           //8px
+  305:($spacer * 1.5),  //12px
+  4: ($spacer * 2),     //16px
+  405: ($spacer * 2.5), //20px
+  5: ($spacer * 3),     //24px
+  505: ($spacer * 3.5), //28px
+  6: ($spacer * 4),     //32px
+  605: ($spacer * 4.5), //36px
+  7: ($spacer * 5),     //40px
+  705: ($spacer * 5.5), //44px
+  8: ($spacer * 6),     //48px
+  805: ($spacer * 6.5), //52px
+  9: ($spacer * 7),     //56px
+  905: ($spacer * 7.5), //60px
+) !default;
+

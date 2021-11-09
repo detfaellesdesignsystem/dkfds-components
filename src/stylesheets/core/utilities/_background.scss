@@ -4,8 +4,8 @@
 //
 
 $backgroundcolors: (
-  normal: $background-normal, //WHITE
-  alternative: $background-alternative, //GRAY
+  normal: $color-white, //WHITE
+  alternative: $color-gray-pale, //GRAY
   modal: $background-modal //BLACK
 ) !default;
 

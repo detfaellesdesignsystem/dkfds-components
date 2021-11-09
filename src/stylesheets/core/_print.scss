@@ -69,12 +69,12 @@
   // footer
   footer{
     .footer{
-      margin-top: map-get($spacers, 6);
+      margin-top: units(6);
       padding-bottom: 0;
       .inline-list > li{
         display: inline-block;
         + li{
-          margin-left: map-get($spacers, 4);
+          margin-left: units(4);
         }
       }
     }

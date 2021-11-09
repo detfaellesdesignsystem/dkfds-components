@@ -1,5 +1,5 @@
 a.skipnav {
-  color: $color-black;
+  color: $skipnav-text-color;
   left: 0;
   padding: 1rem 1.5rem;
   position: absolute;
@@ -11,19 +11,20 @@ a.skipnav {
 
   &:focus {
     @include media-breakpoint-up(sm) {
-      background-color: $color-white;
+      
+      @include focus-outline();
+      background-color: $skipnav-background-color;
       left: 0;
-      outline: $focus-outline;
       position: absolute;
       top: 0;
       transition: all 0.2s ease-in-out;
       padding: 1rem calc((#{$grid-gutter-width} / 2) / 2);
-      margin-top: calc(#{map-get($spacers, 4)} - 1px);
+      margin-top: calc(#{units(4)} - 1px);
       margin-left: calc((#{$grid-gutter-width} / 2) / 2);
     }
   }
 }
 
 #main-content:focus{
-  outline: $focus-outline;
+  @include focus-outline();
 }

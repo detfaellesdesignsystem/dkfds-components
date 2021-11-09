@@ -24,11 +24,10 @@ $alert-success-border-color: $color-success !default;
 $alert-warning-border-color: $color-warning !default;
 $alert-error-border-color: $color-error !default;
 $alert-info-border-color: $color-info !default;
-$alert-border-color:  darken($color-gray-pale, 40%) !default;
+$alert-border-color: darken($color-gray-pale, 40%) !default;
 $alert-background-color: $color-gray-pale !default;
-$alert-padding: map-get($spacers, 4) !default;
-$alert-border-size:  map-get($spacers, 3) !default;
-$alert-left-padding: map-get($spacers, 9) !default;
+$alert-padding: 4 !default;
+$alert-border-size: 3 !default;
 $alert-icon-size: 24px !default;
 $alert-text-color: $color-black !default;
 $alert-heading-fontsize: $h5-font-size !default;
@@ -36,148 +35,32 @@ $alert-heading-lineheight: $h5-line-height !default;
 $alert-heading-color: $alert-text-color !default;
 $alert-close-text-color: $alert-text-color !default;
 
-// Breadcrumbs
-$breadcrumbs-font-size: $small-text !default;
-$breadcrumbs-text-color: $color-black !default;
-$breadcrumbs-chevron-size: 7px !default;
-$breadcrumbs-chevron-border-width: 1px !default;
-$breadcrumbs-chevron-border-colour: $color-text-secondary !default;
-$breadcrumbs-chevron-altitude-calculated: 5.655px !default;
-
-// Cards
-$cards-shadow: $box-shadow-slightly !default;
-$cards-border: 10 !default;
-$cards-background-color: $color-white !default;
-$cards-header-background-color: $cards-background-color !default;
-$cards-text-background-color: $cards-background-color !default;
-$cards-content-background-color: $cards-background-color !default;
-$cards-action-background-color: $cards-background-color !default;
-$cards-text-color: $color-gray-dark !default;
-$cards-heading-color: $color-black !default;
-$cards-heading-large-color: $color-gray-dark !default;
-$cards-sub-heading-color: $color-text-secondary !default;
-
-// Cookie Message
-$cookie-message-background-color: $color-white !default;
-$cookie-message-border: 10 !default;
-$cookie-message-shadow: $box-shadow-heavy !default;
-$cookie-message-text-color: $color-black !default;
-
-// Datepicker
-$datepicker-background-color: $color-white !default;
-$datepicker-header-background-color: $color-gray-pale !default;
-$datepicker-header-text-color: $color-black !default;
-$datepicker-icon-previous-year: "chevron-double-left" !default;
-$datepicker-icon-next-year: "chevron-double-right" !default;
-$datepicker-icon-previous-month: "chevron-left" !default;
-$datepicker-icon-next-month: "chevron-right" !default;
-$datepicker-button-icon: "insert-invitation" !default;
-$datepicker-previous-next-month-background-color: $background-alternative !default;
-$datepicker-previous-next-month-text-color: $background-alternative !default;
-$datepicker-border: 10 !default;
-$datepicker-table-border: 20 !default;
-
-// Detail
-$details-button-closed-icon: "arrow-right.svg" !default;
-$details-button-open-icon: "arrow-drop-down.svg" !default;
-$details-panel-border: 4px solid $color-gray-light !default;
-
-// Footer
-$footer-border: 10 !default;
-$footer-background-color: $background-normal !default;
-$footer-text-color: $color-black !default;
-$footer-logo: 'logo-placeholder.png' !default;
-
-// Header
-$header-border-bottom: 10 !default;
-$header-portal-background-color: $background-normal !default;
-$header-portal-border: 20 !default;
-$header-portal-logo: 'logo-header-placeholder.png' !default;
-$header-portal-logo-width: 200px !default;
-$header-portal-logo-height: 60px !default;
-$header-portal-compact-logo-width: auto !default;
-$header-solution-border: 20 !default;
-$header-solution-background-color: $background-normal !default;
-$header-solution-text-color: $color-black !default;
-$header-solution-authority-name: $color-gray-dark !default;
-$header-solution-info-mobile-background-color: $color-gray-pale !default;
-$header-solution-info-mobile-text-color: $color-black !default;
-$header-navigation-background-color: $background-normal !default;
-
-// Language switcher
-$language-switcher-border: 30 !default;
-$language-switcher-text-color: $color-black !default;
-$language-switcher-active-text-color: $color-gray-dark !default;
-$language-switcher-background-color: $background-normal !default;
-
-// Modal
-
-$background-modal: rgba(0, 0, 0, 0.40);
-$modal-overlay-background-color: $background-modal !default;
-$modal-background-color: $background-normal !default;
-$modal-text-color: $color-black !default;
-$modal-shadow: $box-shadow-heavy !default;
-$modal-header-background-color: $modal-background-color !default;
-$modal-header-text-color: $modal-text-color !default;
-$modal-header-close-color: $modal-header-text-color !default;
-$modal-footer-background-color: $modal-background-color !default;
-$modal-footer-text-color: $modal-text-color !default;
-$modal-body-background-color: $modal-background-color !default;
-$modal-body-text-color: $modal-text-color !default;
-
-// Navigation
-$navigation-link-default-color: $color-black !default;
-$navigation-link-hover-color: $navigation-link-default-color !default;
-$navigation-link-focus-color: $navigation-link-default-color !default;
-$navigation-link-current-color: $navigation-link-default-color !default;
-
-$navigation-link-default-border-width: 7px !default;
-
-$navigation-link-default-border-color: transparent !default;
-$navigation-link-hover-border-color: $navigation-link-default-border-color!default;
-$navigation-link-focus-border-color: $navigation-link-default-border-color !default;
-$navigation-link-current-border-color: $color-primary !default;
-
-$navigation-link-default-background-color: transparent !default;
-$navigation-link-hover-background-color: $navigation-link-default-background-color!default;
-$navigation-link-focus-background-color: $navigation-link-default-background-color !default;
-$navigation-link-current-background-color: $navigation-link-default-background-color !default;
-
-$navigation-overflow-menu-open-background-color: $background-normal !default;
-$navigation-overflow-menu-open-background-color-desktop: $color-subnav-background !default;
-$navigation-overflow-menu-open-text-color: $color-white !default;
-
-$navigation-overflow-menu-collapsed-icon: "add" !default;
-$navigation-overflow-menu-collapsed-icon-desktop: "expand-more";
-$navigation-overflow-menu-expanded-icon: "remove";
-$navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
-
-// Overflow Menu
-
-
-// Page navigation
-
-// Search field
-
-// Side navigation
-
-// Tabs
-$tabnav-border: 10 !default;
-$tabnav-background-color: $color-white !default;
-$tavnav-button-default-background-color: $background-alternative !default;
-$tavnav-button-hover-background-color: $color-gray-mediumpale !default;
-$tavnav-button-text-color: $color-black !default;
-
-// Toast
-
-// Tooltip
+// Badge
+$badge-font-weight: $font-weight-semibold !default;
+$badge-default-text-color: $color-white !default;
+$badge-default-background-color: $color-black !default;
+$badge-small-font-size: $small-text !default;
+$badge-small-line-height: $small-text-line-height !default;
+$badge-large-font-size: $typography-body-text-size !default;
+$badge-large-line-height: $typography-body-text-line-height !default;
+$badge-info-text-color: $color-black !default;
+$badge-success-text-color: $color-black !default;
+$badge-warning-text-color: $color-black !default;
+$badge-error-text-color: $color-black !default;
+$badge-info-background-color: $color-info-light !default;
+$badge-success-background-color: $color-success-light !default;
+$badge-warning-background-color: $color-warning-light !default;
+$badge-error-background-color: $color-error-light !default;
 
 // Button
-$button-border-width:     2px !default;
+$button-border-width: 2px !default;
 $button-border-bottom-width: 4px !default;
 
 $button-disabled-bg: $color-gray-pale !default; // deprecated
 $button-disabled-opacity: 0.3 !default;
+
+$button-border-radius: 4px !default;
+
 // primary
 $button-primary-color: $color-white !default; // old variable
 $button-primary-border-color: $color-primary-medium !default; // old variable
@@ -249,12 +132,73 @@ $button-quaternary-focus-color: $button-quaternary-default-color !default;
 
 $button-border: $button-border-width solid $button-primary-default-border-color; // deprecated
 
+// search field
+$button-search-text-color: $color-text !default;
+$button-search-default-background-color: $color-white !default;
+$button-search-hover-background-color: $color-gray-mediumpale !default;
+
+// Breadcrumbs
+$breadcrumbs-font-size: $small-text !default;
+$breadcrumbs-text-color: $color-black !default;
+$breadcrumbs-chevron-size: 7px !default;
+$breadcrumbs-chevron-border-width: 1px !default;
+$breadcrumbs-chevron-border-colour: $color-text-secondary !default;
+$breadcrumbs-chevron-altitude-calculated: 5.655px !default;
+
+// Cards
+$cards-shadow: 'light' !default;
+$cards-border: 10 !default;
+$cards-background-color: $color-white !default;
+$cards-header-background-color: $cards-background-color !default;
+$cards-text-background-color: $cards-background-color !default;
+$cards-content-background-color: $cards-background-color !default;
+$cards-action-background-color: $cards-background-color !default;
+$cards-text-color: $color-gray-dark !default;
+$cards-heading-color: $color-black !default;
+$cards-heading-large-color: $color-gray-dark !default;
+$cards-sub-heading-color: $color-text-secondary !default;
+
+// Cookie Message
+$cookie-message-background-color: $color-white !default;
+$cookie-message-border: 10 !default;
+$cookie-message-shadow: 'heavy' !default;
+$cookie-message-text-color: $color-black !default;
+
+// Datepicker
+$datepicker-background-color: $color-white !default;
+$datepicker-header-background-color: $color-gray-pale !default;
+$datepicker-header-text-color: $color-black !default;
+$datepicker-icon-previous-year: "chevron-double-left" !default;
+$datepicker-icon-next-year: "chevron-double-right" !default;
+$datepicker-icon-previous-month: "chevron-left" !default;
+$datepicker-icon-next-month: "chevron-right" !default;
+$datepicker-button-icon: "insert-invitation" !default;
+$datepicker-previous-next-month-background-color: $color-gray-pale !default;
+$datepicker-previous-next-month-text-color: $color-gray-pale !default;
+$datepicker-border: 10 !default;
+$datepicker-table-border: 20 !default;
+
+// Detail
+$details-button-closed-icon: "arrow-right.svg" !default;
+$details-button-open-icon: "arrow-drop-down.svg" !default;
+$details-panel-border: 4px solid $color-gray-light !default;
+
+// Footer
+$footer-border: 10 !default;
+$footer-background-color: $color-white !default;
+$footer-text-color: $color-black !default;
+$footer-logo: 'logo-placeholder.png' !default;
+
 // Form input
 $input-border-radius: 4px !default;
 $input-prefix-suffix-background-color: $color-gray-pale !default;
 $input-border: 10 !default;
-$input-font-size: $body-text;
-$input-line-height: $body-text-line-height;
+$input-font-size: $body-text !default;
+$input-line-height: $body-text-line-height !default;
+$input-text-color: $color-text !default;
+
+$checkbox-border-radius: 2px !default;
+$input-checkbox-border-radius: $checkbox-border-radius !default;
 
 $input-checkbox-radio-small-size: 405 !default;
 $input-checkbox-radio-large-size: 6 !default;
@@ -264,3 +208,201 @@ $input-checkbox-radio-content-padding-left: 405 !default;
 $input-checkbox-radio-content-large-padding-left: 505 !default;
 $input-checkbox-radio-content-border-width: 2 !default;
 $input-checkbox-radio-content-border-color: $color-gray-light !default;
+
+$input-disabled-background-color: $color-gray-pale !default;
+$input-disabled-text-color: $color-gray-medium-light !default;
+
+$input-border-width-feedback: 2px !default;
+$input-border-color-feedback-error: $color-error !default;
+$input-border-color-feedback-success: $color-error !default;
+
+$form-hint-text-color: $color-text-secondary !default;
+$form-hint-font-size: $typography-body-text-size !default;
+$form-hint-line-height: $typography-body-text-line-height !default;
+$form-hint-letter-spacing: $typography-body-text-letter-spacing !default;
+$form-hint-font-weight: $typography-body-text-font-weight !default;
+
+// Header
+$header-border-bottom: 10 !default;
+$header-portal-background-color: $color-white !default;
+$header-portal-border: 20 !default;
+$header-portal-logo: 'logo-header-placeholder.png' !default;
+$header-portal-logo-width: 200px !default;
+$header-portal-logo-height: 60px !default;
+$header-portal-compact-logo-width: auto !default;
+$header-solution-border: 20 !default;
+$header-solution-background-color: $color-white !default;
+$header-solution-text-color: $color-black !default;
+$header-solution-authority-name: $color-gray-dark !default;
+$header-solution-info-mobile-background-color: $color-gray-pale !default;
+$header-solution-info-mobile-text-color: $color-black !default;
+$header-navigation-background-color: $color-white !default;
+
+// HR - horizontal ruler
+$hr-border: 20 !default;
+
+// Language switcher
+$language-switcher-border: 30 !default;
+$language-switcher-text-color: $color-black !default;
+$language-switcher-active-text-color: $color-gray-dark !default;
+$language-switcher-background-color: $color-white !default;
+
+// Modal
+$background-modal: rgba(0, 0, 0, 0.40);
+$modal-overlay-background-color: $background-modal !default;
+$modal-background-color: $color-white !default;
+$modal-text-color: $color-black !default;
+$modal-shadow: 'heavy' !default;
+$modal-header-background-color: $modal-background-color !default;
+$modal-header-text-color: $modal-text-color !default;
+$modal-header-close-color: $modal-header-text-color !default;
+$modal-footer-background-color: $modal-background-color !default;
+$modal-footer-text-color: $modal-text-color !default;
+$modal-body-background-color: $modal-background-color !default;
+$modal-body-text-color: $modal-text-color !default;
+
+// Navigation
+$navigation-link-default-color: $color-black !default;
+$navigation-link-hover-color: $navigation-link-default-color !default;
+$navigation-link-focus-color: $navigation-link-default-color !default;
+$navigation-link-current-color: $navigation-link-default-color !default;
+
+$navigation-link-default-border-width: 7px !default;
+
+$navigation-link-default-border-color: transparent !default;
+$navigation-link-hover-border-color: $navigation-link-default-border-color!default;
+$navigation-link-focus-border-color: $navigation-link-default-border-color !default;
+$navigation-link-current-border-color: $color-primary !default;
+
+$navigation-link-default-background-color: transparent !default;
+$navigation-link-hover-background-color: $navigation-link-default-background-color!default;
+$navigation-link-focus-background-color: $navigation-link-default-background-color !default;
+$navigation-link-current-background-color: $navigation-link-default-background-color !default;
+
+$navigation-overflow-menu-open-background-color: $color-white !default;
+$navigation-overflow-menu-open-background-color-desktop: $color-gray-002 !default;
+$navigation-overflow-menu-open-text-color: $color-white !default;
+
+$navigation-overflow-menu-collapsed-icon: "add" !default;
+$navigation-overflow-menu-collapsed-icon-desktop: "expand-more";
+$navigation-overflow-menu-expanded-icon: "remove";
+$navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
+
+// Overflow Menu
+$overflow-menu-arrow-size: 8px;
+$overflow-menu-dropdown-distance: 8px;
+$overflow-menu-button-text-color: $color-text !default;
+$overflow-menu-button-icon-only-hover-background-color: $color-gray-pale !default;
+$overflow-menu-content-shadow: 'medium' !default;
+$overflow-menu-content-background-color: $color-white !default;
+$overflow-menu-content-border: 10 !default;
+$overflow-menu-content-font-size: $body-text !default;
+$overflow-menu-content-line-height: $body-text-line-height !default;
+$overflow-menu-content-text-color: $color-text !default;
+$overflow-menu-content-link-hover-background-color: $color-gray-pale !default;
+
+// Side navigation
+$sidenav-border: 10 !default;
+$sidenav-link-default-color: $color-text !default;
+$sidenav-link-hover-color: $sidenav-link-default-color !default;
+$sidenav-link-active-color: $sidenav-link-default-color !default; 
+$sidenav-link-current-color: $sidenav-link-default-color !default;
+$sidenav-link-disabled-color: $color-gray-dark !default;
+$sidenav-link-hover-background-color: $color-gray-pale !default;
+$sidenav-link-default-background-color: $color-white !default;
+$sidenav-link-current-background-color: $color-gray-pale !default;
+
+$sidenav-link-default-extra-information-text-color: $color-gray-medium-dark !default;
+$sidenav-link-current-extra-information-text-color: $color-gray-dark !default;
+
+$sidenav-list-level1-border: 20 !default;
+$sidenav-list-level2-border: 30 !default;
+$sidenav-active-border-width: 4px !default;
+$sidenav-active-border-color: $color-primary !default;
+$sidenav-link-line-height: $base-line-height !default;
+
+$nav-responsive-breakpoint: lg !default; // 992px
+
+// Table
+$table-head-background-color: $color-gray-pale !default;
+$table-head-font-weight: $font-weight-semibold !default;
+$table-border: 10 !default;
+$table-row-border: 20 !default;
+$table-cell-border: $table-row-border !default;
+
+$table-font-size: $typography-body-text-size !default;
+$table-text-line-height: $body-text-line-height !default;
+$table-text-color: $typography-body-text-color !default;
+
+$table-row-even-background-color: $color-gray-pale !default;
+$table-row-odd-background-color: $color-white !default;
+
+$table-selectable-hover-background-color: $color-gray-pale !default;
+$table-selectable-selected-background-color: $color-gray-mediumpale !default;
+$table-selectable-help-text-color: $color-text-secondary !default;
+
+// Tabs
+$tabnav-border: 10 !default;
+$tabnav-background-color: $color-white !default;
+$tavnav-button-default-background-color: $color-gray-pale !default;
+$tavnav-button-hover-background-color: $color-gray-mediumpale !default;
+$tavnav-button-text-color: $color-black !default;
+
+// Tags
+
+// old - remove before major release
+$tag-color: $color-white !default;
+$tag-bg: $color-gray-dark !default;
+$tag-hover-bg: $color-gray-medium-dark !default;
+$tag-active-bg: $color-black !default;
+$tag-focus-bg: $color-gray-dark !default;
+
+// new
+$tag-border-radius: $button-border-radius !default;
+$tag-font-size: $typography-body-text-size !default;
+$tag-font-weight: $font-weight-medium !default;
+$tag-text-color: $tag-color !default;
+$tag-default-background-color: $tag-bg !default;
+$tag-hover-background-color: $tag-hover-bg !default;
+$tag-active-background-color: $tag-active-bg !default;
+$tag-focus-background-color: $tag-focus-bg !default;
+$tag-line-height: $typography-body-text-line-height !default;
+$tag-icon-color: $tag-text-color !default;
+
+// Toast
+$toast-default-background-color: $color-white !default;
+$toast-info-background-color: $color-info-light !default;
+$toast-success-background-color: $color-success-light !default;
+$toast-warning-background-color: $color-warning-light !default;
+$toast-error-background-color: $color-error-light !default;
+$toast-info-icon: 'info-white' !default;
+$toast-success-icon: 'check-circle-white' !default;
+$toast-warning-icon: 'report-problem' !default;
+$toast-error-icon: 'highlight-off-white' !default;
+$toast-info-color: $color-info !default;
+$toast-success-color: $color-success !default;
+$toast-warning-color: $color-warning !default;
+$toast-error-color: $color-error !default;
+$toast-shadow: 'medium' !default;
+
+// Toggle
+$toggle-background-color: $color-gray-medium-light !default;
+$toggle-text-on: "Til" !default;
+$toggle-text-off: "Fra" !default;
+$toggle-shadow: 'light' !default;
+$toggle-background-color: $color-gray-medium-light !default;
+$toggle-button-background-color: $color-white !default;
+$toggle-button-on-default-background-color: $color-primary !default;
+$toggle-button-on-hover-background-color: $color-primary-medium !default;
+$toggle-button-on-active-background-color: $color-primary-dark !default;
+
+// Tooltip
+$tooltip-background-color: $color-white !default;
+$tooltip-shadow: 'medium' !default;
+$tooltip-border: 10 !default;
+$tooltip-link-color: $typography-body-text-color !default;
+$tooltip-link-border: 1px dotted $tooltip-link-color !default;
+
+// Skipnav
+$skipnav-background-color: $color-white !default;
+$skipnav-text-color: $color-text !default;

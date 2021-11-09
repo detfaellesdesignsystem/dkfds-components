@@ -1,3 +1,12 @@
+// Base colors
+$color-white:                 $color-base-001 !default;
+$color-black:                 $color-base-002 !default;
+
+// Text color
+$color-text:                  $color-black !default;
+$color-text-secondary:        $color-gray-003 !default;
+
+// Status colors
 $color-success:               $color-green-003 !default;
 $color-success-light:         $color-green-004 !default;
 $color-warning:               $color-orange-004 !default;
@@ -19,3 +28,6 @@ $color-link:                  $color-blue-001 !default;
 $color-link-hover:            $color-blue-003 !default;
 $color-link-focus:            $color-blue-001 !default;
 $color-link-visited:          $color-purple-001 !default;
+
+
+

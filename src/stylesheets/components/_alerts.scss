@@ -24,15 +24,15 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   background-position: 16px 16px;
   background-repeat: no-repeat;
   background-size: 24px;
-  padding-bottom: $alert-padding;
-  padding-left: $alert-padding;
-  padding-right: $alert-padding;
-  padding-top: $alert-padding;
+  padding-bottom: units($alert-padding);
+  padding-left: units($alert-padding);
+  padding-right: units($alert-padding);
+  padding-top: units($alert-padding);
   position: relative;
-  margin-top: map-get($spacers, 4);
-  margin-bottom: map-get($spacers, 4);
+  margin-top: units(4);
+  margin-bottom: units(4);
 
-  border-left: $alert-border-size solid $alert-border-color;
+  border-left: units($alert-border-size) solid $alert-border-color;
 
   &:first-child {
     margin-top:0;
@@ -43,12 +43,12 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   }
   .alert-close{
     position: absolute;
-    top: map-get($spacers, 4);
-    right: map-get($spacers, 4);
+    top: units(4);
+    right: units(4);
     @include small-text;
     color: $alert-close-text-color;
     .icon-svg{
-      margin-right: map-get($spacers, 2);
+      margin-right: units(2);
       width: 1.6rem;
       height: 1.6rem;
       fill: currentColor;
@@ -85,22 +85,22 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     &.alert--show-icon{
       $alert-icon: $name;
       @if $name == error {
-        $alert-icon: highlight-off;
+        $alert-icon: 'highlight-off';
       }
       
       @if $name == success {
-        $alert-icon: check-circle;
+        $alert-icon: 'check-circle';
       }
       
       @if $name == warning {
-        $alert-icon: report-problem;
+        $alert-icon: 'report-problem';
       }
       background-image: url($icons-folder-path+'/'+$alert-icon+'.svg');
-      padding-left: $alert-padding + $alert-icon-size + 8px;
+      padding-left: calc(#{units($alert-padding)} + #{$alert-icon-size} + 8px);
     }
   }
 }
 
 .alert + .alert{
-  margin-top: map-get($spacers, 4);
+  margin-top: units(4);
 }

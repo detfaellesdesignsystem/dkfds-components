@@ -3,5 +3,5 @@ module.exports = [
   'Last 2 versions',
   'IE 11',
   'IE 10',
-  'IE 9',
+  'IE 9'
 ];

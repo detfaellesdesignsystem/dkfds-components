@@ -14,7 +14,7 @@
 
     @extend .accordion-button;
     text-decoration: none;
-    margin-bottom: map-get($spacers, 3);
+    margin-bottom: units(3);
 
     &[aria-selected=true]{
       background-color: $accordion-button-open-background-color;
@@ -39,13 +39,13 @@
       background-color: transparent;
       border-radius: 0px;
       line-height: normal;
-      padding-top: map-get($spacers, 3);
-      padding-bottom: map-get($spacers, 3);
-      padding-left: map-get($spacers, 5);
-      padding-right: map-get($spacers, 5);
-      margin: 0 map-get($spacers, 2) map-get($spacers, 2) 0px;
+      padding-top: units(3);
+      padding-bottom: units(3);
+      padding-left: units(5);
+      padding-right: units(5);
+      margin: 0 units(2) units(2) 0px;
       text-decoration: underline;
-      border-top: map-get($spacers, 2) solid $color-white;
+      border-top: units(2) solid $color-white;
 
       &[aria-selected=false]{
         background-color: $tavnav-button-default-background-color;
@@ -60,7 +60,7 @@
       &:focus{
         outline: none;
         span{
-          outline: $focus-outline;
+          @include focus-outline();
         }
       }
 
@@ -68,13 +68,13 @@
         background-color: $tabnav-background-color;
         background-image: none;
         border: border($tabnav-border);
-        padding-left: calc(#{map-get($spacers, 5)} - 1px);
-        padding-right: calc(#{map-get($spacers, 5)} - 1px);
+        padding-left: calc(#{units(5)} - 1px);
+        padding-right: calc(#{units(5)} - 1px);
         border-bottom: 1px solid $tabnav-background-color;
         border-radius: 0px;
         text-decoration: none;
-        margin: 0 map-get($spacers, 2) -1px 0px;
-        padding-bottom: calc(#{map-get($spacers, 3)} + 2px);
+        margin: 0 units(2) -1px 0px;
+        padding-bottom: calc(#{units(3)} + 2px);
         position: relative;
         z-index: 350;
         span:not(.sr-only) {
@@ -87,7 +87,7 @@
 
   @include media-breakpoint-up(md) {
     > button:last-of-type{
-      margin-right: map-get($spacers, 3);
+      margin-right: units(3);
     }
   }
 
@@ -97,14 +97,13 @@
       display: none;
       border: border($tabnav-border);
       overflow: hidden;
-      margin-bottom: calc(#{map-get($spacers, 4)});
+      margin-bottom: calc(#{units(4)});
       background-color: transparent;
       position: relative;
       z-index: 300;
 
       &:focus{
-        outline: $focus-outline;
-        outline-offset: 1px;
+        @include focus();
       }
     }
     &[aria-hidden=false]{

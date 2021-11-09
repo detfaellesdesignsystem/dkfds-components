@@ -1,0 +1,76 @@
+$base-font-size:    1.6rem !default;
+$base-line-height:  2.4rem !default;
+
+$font-name: 'IBM Plex Sans'!default;
+$text-max-width:                66ch !default; //equivalent to 75 characters with spaces (ish).
+
+$h1-font-size:                3.9rem !default;
+$h1-line-height:              4.8rem !default;
+
+$h2-font-size:                3.1rem !default;
+$h2-line-height:              4.0rem !default;
+
+$h3-font-size:                2.5rem !default;
+$h3-line-height:              3.2rem !default;
+
+$h4-font-size:                2.0rem !default;
+$h4-line-height:              2.8rem !default;
+
+$h5-font-size:                1.6rem !default;
+$h5-line-height:              2.4rem !default;
+
+$h6-font-size:                1.3rem !default;
+$h6-line-height:              2.0rem !default;
+
+$display-1-heading-size:       2.5rem !default;
+$display-1-heading-line-height: 3.8rem !default;
+$display-1-heading-letter-spacing: -0.2px !default;
+
+$display-2-heading-size: 2.1rem !default;
+$display-2-heading-line-height: 3.2rem !default;
+$display-2-heading-letter-spacing: -0.2px !default;
+
+$body-text:                   1.6rem !default;
+$body-text-line-height:       2.4rem !default;
+$body-text-letter-spacing:    -0.1px !default;
+
+
+$caption-font-size: 1.3rem !default;
+$caption-line-height: 1.6rem !default;
+$caption-letter-spacing: 0.4px !default;
+
+$subheading-font-size: 1.3rem !default;
+$subheading-line-height: 1.6rem !default;
+$subheading-letter-spacing: 1px !default;
+
+$article-font-size:              1.8rem !default;
+$article-line-height:            2.8rem !default;
+$article-letter-spacing:         -0.15px !default;
+
+$form-label:                  1.6rem !default;
+$form-label-line-height:      2.4rem !default;
+
+$small-text:                  1.4rem !default;
+$small-text-letter-spacing:   0.2px !default;
+$small-text-line-height:      2rem !default;
+
+$lead-font-size:              2.1rem !default;
+$lead-line-height:            3.2rem !default;
+$lead-letter-spacing:         -0.15px !default;
+
+$font-weight-normal:          400 !default;
+$font-weight-medium:          500 !default;
+$font-weight-semibold:        600 !default;
+$font-weight-bold:            700 !default;
+$font-style-normal:           normal !default;
+$font-style-italic:           italic !default;
+
+$font-family:                'IBM Plex Sans', 'system' !default;
+
+///// New
+$typography-body-text-size: $body-text !default;
+$typography-body-text-line-height: $body-text-line-height !default;
+$typography-body-text-letter-spacing: $body-text-letter-spacing !default;
+$typography-body-text-font-weight: $font-weight-normal !default;
+$typography-body-text-color: $color-text !default;
+

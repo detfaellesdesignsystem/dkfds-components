@@ -1,7 +1,3 @@
-
-
-
-//Styling of tippy.js tooltips
 .js-tooltip{
   display: inline-block;
 
@@ -14,19 +10,19 @@
     cursor: pointer;
 }
 .tooltip-link{
-  border-bottom: 1px dotted;
+  border-bottom: $tooltip-link-border;
   display: inline;
   text-decoration: none;
   &:link, &:active, &:hover, &:visited, &:focus{
-    color: $color-black;
+    color: $tooltip-link-color;
   }
 }
 .tooltip{
   @include body-copy-text;
   font-size: 1.6rem;
-  box-shadow: $box-shadow-moderately;
-  background-color:#fff;
-  border: $outer-border;
+  box-shadow: shadow($tooltip-shadow);
+  background-color: $tooltip-background-color;
+  border: border($tooltip-border);
   border-radius: 4px;
   padding: .3rem .6rem;
 }
@@ -40,7 +36,7 @@
   position: absolute;
 }
 .tooltip-popper .tooltip-arrow.down{
-    border-top:8px solid $color-gray-medium-dark;
+    border-top:8px solid border-color($tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     bottom: -7px;
@@ -48,7 +44,7 @@
 
     &:after{
         content: '';
-        border-top: 7px solid white;
+        border-top: 7px solid $tooltip-background-color;
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;
@@ -58,14 +54,14 @@
     }
 }
 .tooltip-popper .tooltip-arrow.up{
-    border-bottom:8px solid $color-gray-medium-dark;
+    border-bottom:8px solid border-color($tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     top: -7px;
     left: calc(50% - 8px);
     &:after{
         content: '';
-        border-bottom: 7px solid white;
+        border-bottom: 7px solid $tooltip-background-color;
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;

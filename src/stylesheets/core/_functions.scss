@@ -4,7 +4,6 @@ Functions
 ----------------------------------------
 */
 
-
 /*
 ----------------------------------------
 map-collect()
@@ -16,14 +15,13 @@ source: https://gist.github.com/bigglesrocks/d75091700f8f2be5abfe
 */
 
 @function map-collect($maps...) {
-    $collection: ();
-  
-    @each $map in $maps {
-      $collection: map-merge($collection, $map);
-    }
-  
-    @return $collection;
+  $collection: ();
+  @each $map in $maps {
+    $collection: map-merge($collection, $map);
   }
+
+  @return $collection;
+}
 
 /*
 ----------------------------------------
@@ -35,7 +33,7 @@ Leaves bools as is
 ----------------------------------------
 */
 
-@function smart-quote($value) {
+@function smart-quote($value) { 
     @if type-of($value) == "string" {
       @return quote($value);
     }
@@ -94,6 +92,46 @@ Returns a common not-a-token error.
     );
 }
 
+/*
+----------------------------------------
+px-to-rem()
+----------------------------------------
+Converts a value in px to a value in rem
+----------------------------------------
+*/
+
+@function px-to-rem($pixels) {
+  @if not $pixels {
+    @return false;
+  }
+  $px-to-rem: ($pixels / $root-font-size-equiv) * 1rem;
+  $px-to-rem: round($px-to-rem * 100) / 100;
+
+  @return $px-to-rem;
+}
+
+/*
+----------------------------------------
+units()
+----------------------------------------
+Gets a valid FDS unit
+----------------------------------------
+*/
+
+@function units($value, $unit: 'px') {
+  $value: smart-quote($value);
+
+  @if not map-has-key($spacers, $value) {
+      @return error-not-token($value, "spacers", $spacers);
+  }
+  $result: map-get($spacers, $value);
+
+  @if $unit == 'rem' {
+    $result: px-to-rem($result);
+  }
+  
+  @return $result;
+}
 
 /*
 ----------------------------------------
@@ -176,3 +214,26 @@ Gets a valid FDS border color
   $border-map: map-get($our-standard-values, $value);
   @return map-get($border-map, 'color');
 }
+
+
+/*
+----------------------------------------
+shadow()
+----------------------------------------
+Gets a valid FDS shadow
+----------------------------------------
+*/
+
+@function shadow($value) {
+  $value: smart-quote($value);
+    
+  $our-standard-values: map-get($system-properties, shadow);
+
+  @if not map-has-key($our-standard-values, $value) {
+      @return error-not-token($value, "shadow", $our-standard-values);
+  }
+
+  @return map-get($our-standard-values, $value);
+}
+
+

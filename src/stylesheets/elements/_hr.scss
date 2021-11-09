@@ -1,5 +1,5 @@
 hr{
-    border-top: $inner-border; //inner border color
+    border-top: border($hr-border); //inner border color
     display: block;
     border-bottom-width: 0;
 }

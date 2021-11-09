@@ -19,9 +19,9 @@
   display: inline-block;
   position: relative;
   margin-top: 0;
-  margin-bottom: map-get($spacers, 1);
-  margin-left: map-get($spacers, 3);
-  padding-left: map-get($spacers, 3) + $breadcrumbs-chevron-altitude-calculated;
+  margin-bottom: units(1);
+  margin-left: units(3);
+  padding-left: units(3) + $breadcrumbs-chevron-altitude-calculated;
   float: left;
 
   &:before {

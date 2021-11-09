@@ -1,7 +1,7 @@
 // Buttons
 
 a.button{
-  padding: map-get($spacers, 3) calc(#{map-get($spacers, 4)} - #{$button-border-width}) calc(#{map-get($spacers, 3)} - #{$button-border-width});
+  padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   line-height: $body-text-line-height;
 }
 .button{
@@ -9,7 +9,7 @@ a.button{
   display: inline-block;
   width: 100%;
   //@include margin(0.5em 0.5em 0.5em null);
-  padding: map-get($spacers, 3) calc(#{map-get($spacers, 4)} - #{$button-border-width}) calc(#{map-get($spacers, 3)} - #{$button-border-width});
+  padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
   border-style: solid;
@@ -37,8 +37,7 @@ a.button{
 
   &.focus,
   &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-spacing;
+    @include focus();
     color: $button-primary-color;
   }
 
@@ -224,7 +223,7 @@ a.button{
   }
 
   &.button-small {
-    padding: calc(#{map-get($spacers, 1)}) calc(#{map-get($spacers, 4)} - #{$button-border-width}) 0px;
+    padding: calc(#{units(1)}) calc(#{units(4)} - #{$button-border-width}) 0px;
     font-size: $small-text;
     min-height: 24px;
   }

@@ -31,8 +31,7 @@ a {
   &:focus,
   &.link-focus {
     color: $color-link-focus;
-    outline: $focus-outline;
-    outline-offset: $focus-spacing;
+    @include focus();
   }
 
   &:visited,
@@ -186,12 +185,12 @@ a {
   }
 }
 @mixin body-copy-text {
-  font-size: $body-text;
-  line-height: $body-text-line-height;
-  font-weight: $font-weight-normal;
-  color: $color-text;
+  font-size: $typography-body-text-size;
+  line-height: $typography-body-text-line-height;
+  font-weight: $typography-body-text-font-weight;
+  color: $typography-body-text-color;
   text-transform: none;
-  letter-spacing: $body-text-letter-spacing;
+  letter-spacing: $typography-body-text-letter-spacing;
 }
 @mixin caption {
   font-size: $caption-font-size;
@@ -324,22 +323,6 @@ strong, b, .bold {
   @include form-label-text;
 }
 
-//Margin top and bottom for text
-//Generel principle for spacing: margin-top same as lineheight of the text, margin-bottom is just standard lineheight for text.
-/*h1, .h1, //Removed this styling, it make for a messy margin handling.
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6,
-p{
-  &:first-child{
-    margin-top: 0;
-  }
-  &:last-child{
-    margin-bottom: 0;
-  }
-}*/
 
 h1:focus, .h1:focus, //Removed this styling, it make for a messy margin handling.
 h2:focus, .h2:focus,
@@ -356,14 +339,14 @@ h1, .h1{
 }
 
 h2, .h2 {
-  margin-top: map-get($spacers, 6);
+  margin-top: units(6);
   margin-bottom: $body-text;
   @include media-breakpoint-up(md) {
     margin-top: $h1-font-size;
   }
 }
 h3, .h3{
-  margin-top: map-get($spacers, 6);
+  margin-top: units(6);
   margin-bottom: $body-text;
   @include media-breakpoint-up(md) {
     margin-top: $h1-font-size;
@@ -409,7 +392,7 @@ button.function-link{
     color: $color-text;
   }
   .icon-svg{
-    margin-right: map-get($spacers, 2);
+    margin-right: units(2);
     fill: currentColor;
     .background-dark &{
       fill: white;
@@ -427,9 +410,9 @@ button.function-link{
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: map-get($spacers, 5);
+  margin-bottom: units(5);
   @include media-breakpoint-up(lg) {
-    margin-bottom: map-get($spacers, 6);
+    margin-bottom: units(6);
   }
   line-height: 2.4rem;
   padding-left: 14px;
@@ -462,7 +445,7 @@ a.bold-link{
 .icon-link{
   line-height: $body-text-line-height;
   .icon-svg{
-    margin-left: map-get($spacers, 2);
+    margin-left: units(2);
     width: 1.6rem;
     height: 1.6rem;
     fill: currentColor;
