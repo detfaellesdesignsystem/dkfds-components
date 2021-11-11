@@ -1,9 +1,9 @@
 {% macro cookie_message(message, accept, decline, title) %}
-<div class="cookie-container">
+<div class="cookie-container" role="complementary" aria-labelledby="cookie-message-heading" aria-describedby="cookie-message-text">
   <div class="cookie-message">
     <div class="cookie-text">
-      <h2 class="h3 mt-0 mb-3">{{ title | safe }}</h2>
-      <p class="mt-0">{{ message | safe }}</p>
+      <div class="h3 mt-0 mb-3" id="cookie-message-heading1">{{ title | safe }}</div>
+      <p class="mt-0" id="cookie-message-text">{{ message | safe }}</p>
     </div>
     <div class="cookie-actions">
       <ul class="inline-list">
