@@ -41,6 +41,7 @@
     a {
       overflow:hidden;
       display: flex;
+      flex-wrap: wrap;
 
       ul {
         width:100%
@@ -68,6 +69,7 @@
         color: $sidenav-link-default-extra-information-text-color;
         margin: 0;
         display: block;
+        width: 100%;
       }
 
       &:focus{

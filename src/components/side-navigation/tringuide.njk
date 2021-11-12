@@ -45,17 +45,15 @@
   <ul class="sidenav-list" role="menu">
     {% for trin in trinliste %}<li{% if trin.disabled or trin.active %} class="{% if trin.disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
         <a href="{{trin.href}}" role="menuitem" {% if trin.active %}aria-current="page"{% endif %}>
-            <div class="d-inline-block">
-                {{loop.index}}. {{trin.text}}
-                {% if trin.information %}
-                    <p class="sidenav-information">{{trin.information}}</p>
-                {% endif %}
-            </div>
-            {% if trin.icon %}
-                <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
-                    {{ icon_svg(trin.icon) }}
-                </span>
-            {% endif %}
+          {{loop.index}}. {{trin.text}}
+          {% if trin.icon %}
+          <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
+              {{ icon_svg(trin.icon) }}
+          </span>
+          {% endif %}
+          {% if trin.information %}
+              <span class="sidenav-information">{{trin.information}}</span>
+          {% endif %}
         </a>
       </li>{% endfor %}
   </ul>

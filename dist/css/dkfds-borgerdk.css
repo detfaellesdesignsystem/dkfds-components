@@ -11834,6 +11834,7 @@ input[type=search]{
 .sidenav-list li a{
   overflow:hidden;
   display:flex;
+  flex-wrap:wrap;
 }
 .sidenav-list li a ul{
   width:100%;
@@ -11857,6 +11858,7 @@ input[type=search]{
   color:#747474;
   margin:0;
   display:block;
+  width:100%;
 }
 .sidenav-list li a:focus{
   background-color:transparent;
