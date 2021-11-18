@@ -245,18 +245,21 @@ const addWeeks = (_date, numWeeks) => addDays(_date, numWeeks * 7);
 const subWeeks = (_date, numWeeks) => addWeeks(_date, -numWeeks);
 
 /**
- * Set date to the start of the week (Sunday)
+ * Set date to the start of the week (Monday)
  *
  * @param {Date} _date the date to adjust
  * @returns {Date} the adjusted date
  */
 const startOfWeek = (_date) => {
-  const dayOfWeek = _date.getDay();
-  return subDays(_date, dayOfWeek-1);
+  let dayOfWeek = _date.getDay()-1;
+  if(dayOfWeek === -1){
+    dayOfWeek = 6;
+  }
+  return subDays(_date, dayOfWeek);
 };
 
 /**
- * Set date to the end of the week (Saturday)
+ * Set date to the end of the week (Sunday)
  *
  * @param {Date} _date the date to adjust
  * @param {number} numWeeks the difference in weeks
@@ -264,7 +267,7 @@ const startOfWeek = (_date) => {
  */
 const endOfWeek = (_date) => {
   const dayOfWeek = _date.getDay();
-  return addDays(_date, 6 - dayOfWeek);
+  return addDays(_date, 7 - dayOfWeek);
 };
 
 /**
@@ -833,9 +836,6 @@ const enhanceDatePicker = (el) => {
     throw new Error(`${DATE_PICKER} is missing inner input`);
   }
 
-  if (internalInputEl.value) {
-    internalInputEl.value = "";
-  }
 
   const minDate = parseDateString(
     datePickerEl.dataset.minDate || internalInputEl.getAttribute("min")
@@ -889,6 +889,10 @@ const enhanceDatePicker = (el) => {
   if (internalInputEl.disabled) {
     disable(datePickerEl);
     internalInputEl.disabled = false;
+  }
+  
+  if (externalInputEl.value) {
+    validateDateInput(externalInputEl);
   }
 };
 
@@ -1012,12 +1016,11 @@ const renderCalendar = (el, _dateToDisplay) => {
       data-month="${month + 1}" 
       data-year="${year}" 
       data-value="${formattedDate}"
-      aria-label="${day} ${monthStr} ${year} ${dayStr}"
+      aria-label="${dayStr} den ${day} ${monthStr} ${year} "
       aria-selected="${isSelected ? "true" : "false"}"
       ${isDisabled ? `disabled="disabled"` : ""}
     >${day}</button>`;
   };
-
   // set date to first rendered day
   dateToDisplay = startOfWeek(firstOfMonth);
 
@@ -1029,9 +1032,8 @@ const renderCalendar = (el, _dateToDisplay) => {
     days.length % 7 !== 0
   ) {
     days.push(generateDateHtml(dateToDisplay));
-    dateToDisplay = addDays(dateToDisplay, 1);
+    dateToDisplay = addDays(dateToDisplay, 1);    
   }
-
   const datesHtml = listToGridHtml(days, 7);
 
   const newCalendar = calendarEl.cloneNode();
