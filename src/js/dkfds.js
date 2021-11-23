@@ -13,7 +13,6 @@ const Tooltip = require('./components/tooltip');
 const SetTabIndex = require('./components/skipnav');
 const Navigation = require('./components/navigation');
 const InputRegexMask = require('./components/regex-input-mask');
-import Details from './components/details';
 import Modal from './components/modal';
 import DropdownSort from './components/dropdown-sort';
 import ErrorSummary from './components/error-summary';
@@ -33,11 +32,6 @@ var init = function (options) {
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
   datePicker.on(scope);
-
-  const details = scope.querySelectorAll('.js-details');
-  for(let d = 0; d < details.length; d++){
-    new Details(details[ d ]).init();
-  }
 
   const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
   for(let c = 0; c < jsSelectorRegex.length; c++){
@@ -113,4 +107,4 @@ var init = function (options) {
 
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, Details, datePicker, Toast, TableSelectableRows, ErrorSummary};
+module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, datePicker, Toast, TableSelectableRows, ErrorSummary};
