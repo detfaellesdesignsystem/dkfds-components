@@ -46,7 +46,7 @@
 
   .details-text {
     padding: units(4);
-    border-left: $details-panel-border;
+    border-left: $details-panel-border-width solid color($details-panel-border-color);
     box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;

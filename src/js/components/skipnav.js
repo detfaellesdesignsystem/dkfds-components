@@ -1,5 +1,5 @@
 'use strict';
-const once = require('receptor/once');
+const receptor = require('receptor');
 
 class SetTabIndex {
   constructor (element){
@@ -10,7 +10,7 @@ class SetTabIndex {
       const target = document.getElementById(id);
       if (target) {
         target.setAttribute('tabindex', 0);
-        target.addEventListener('blur', once(event => {
+        target.addEventListener('blur', receptor.once(event => {
           target.setAttribute('tabindex', -1);
         }));
       } else {

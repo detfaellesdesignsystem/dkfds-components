@@ -1,5 +1,7 @@
 
 // Mixins -------------- //
+
+@import './core/variables';
 @import 'core/mixins/breakpoints';
 @import 'core/mixins/add-background-svg';
 @import 'core/mixins/mixins';
@@ -8,6 +10,11 @@
 @import "settings/settings-color";
 @import "settings/settings-typography";
 @import "settings/settings-components";
+
+
+@import "./core/properties";
+@import "./core/functions";
+@import "./core/system-tokens";
 
 // Core -------------- //
 @import 'core/fonts';

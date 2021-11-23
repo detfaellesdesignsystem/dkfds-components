@@ -1,5 +1,5 @@
 .breadcrumbs {
-  color: $breadcrumbs-text-color;
+  color: color($breadcrumbs-text-color);
   font-size: $breadcrumbs-font-size;
 }
 
@@ -16,7 +16,8 @@
 }
 
 .breadcrumbs__list-item {
-  display: inline-block;
+  display: block;
+  list-style-type: none;
   position: relative;
   margin-top: 0;
   margin-bottom: units(1);
@@ -39,7 +40,7 @@
     transform: rotate(45deg);
     border: solid;
     border-width: $breadcrumbs-chevron-border-width $breadcrumbs-chevron-border-width 0 0;
-    border-color: $breadcrumbs-chevron-border-colour;
+    border-color: color($breadcrumbs-chevron-border-colour);
   }
 
   &:first-child {
@@ -54,8 +55,8 @@
 }
 
 .breadcrumbs__link {
-  color: $breadcrumbs-text-color;
+  color: color($breadcrumbs-text-color);
   &:visited, &:hover, &:active{
-    color: $breadcrumbs-text-color;
+    color: color($breadcrumbs-text-color);
   }
 }

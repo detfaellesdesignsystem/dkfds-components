@@ -1,33 +1,48 @@
-// Base colors
-$color-white:                 $color-base-001 !default;
-$color-black:                 $color-base-002 !default;
+/*
+----------------------------------------
+Theme palette colors
+----------------------------------------
+*/
+
+// Primary colors
+$theme-color-primary-family: "gray" !default;
+$theme-color-primary-lightest: false !default;
+$theme-color-primary-lighter: false !default;
+$theme-color-primary-light: false !default;
+$theme-color-primary: 'gray-500' !default;
+$theme-color-primary-dark: 'gray-600' !default;
+$theme-color-primary-darker: 'gray-900' !default;
+$theme-color-primary-darkest: false !default;
 
 // Text color
-$color-text:                  $color-black !default;
-$color-text-secondary:        $color-gray-003 !default;
+$theme-color-ink: 'black' !default;
+$theme-color-ink-light: 'gray-500' !default;
 
 // Status colors
-$color-success:               $color-green-003 !default;
-$color-success-light:         $color-green-004 !default;
-$color-warning:               $color-orange-004 !default;
-$color-warning-light:         $color-orange-005 !default;
-$color-error:                 $color-red-001 !default;
-$color-error-light:           $color-red-002 !default;
-$color-info:                  $color-blue-008 !default;
-$color-info-light:            $color-blue-004 !default;
+$theme-color-success:               'green-700' !default;
+$theme-color-success-light:         'green-100' !default;
+$theme-color-warning:               'orange-700' !default;
+$theme-color-warning-light:         'orange-100' !default;
+$theme-color-error:                 'red-700' !default;
+$theme-color-error-light:           'red-100' !default;
+$theme-color-info:                  'blue-700' !default;
+$theme-color-info-light:            'blue-100' !default;
 
 // Special text colors
-$color-text-positive:         $color-green-005 !default;
-$color-text-negative:         $color-red-001 !default;
+$theme-color-text-positive:         'green-700' !default;
+$theme-color-text-negative:         'red-700' !default;
 
-$color-positive:              $color-green-005 !default;
-$color-negative:              $color-red-001 !default;
+$theme-color-positive:              'green-700' !default; // ??
+$theme-color-negative:              'red-700' !default; // ??
 
 // Link colors
-$color-link:                  $color-blue-001 !default;
-$color-link-hover:            $color-blue-003 !default;
-$color-link-focus:            $color-blue-001 !default;
-$color-link-visited:          $color-purple-001 !default;
+$theme-color-link:                  'blue-800' !default;
+$theme-color-link-hover:            'blue-900' !default;
+$theme-color-link-focus:            'blue-800' !default;
+$theme-color-link-visited:          'purple-700' !default;
 
-
-
+// Disabled colors - CHECK VALUES!!!!
+$theme-color-disabled-family: "gray" !default; 
+$theme-color-disabled-light: 'gray-400' !default;
+$theme-color-disabled: "gray-600" !default;
+$theme-color-disabled-dark: false !default;

@@ -4,7 +4,7 @@
   box-shadow: shadow($cards-shadow);
   border: border($cards-border);
   overflow: hidden;
-  background: $cards-background-color;
+  background: color($cards-background-color);
 
   //small card
   &-small {
@@ -64,33 +64,33 @@
 }
 //card-header
 .card-header {
-  background-color: $cards-header-background-color;
+  background-color: color($cards-header-background-color);
   padding: units(4) units(5);
   .header-title {
     @include body-copy-text;
     font-weight: $font-weight-semibold;
-    color: $cards-heading-color;
+    color: color($cards-heading-color);
     margin:units(0);
 
     &.large-text {
       @include h1;
-      color: $cards-heading-large-color;
+      color: color($cards-heading-large-color);
     }
   }
   .sub-header {
     @include body-copy-text;
     margin-top:  units(0);
     margin-bottom: units(0);
-    color: $cards-sub-heading-color;
+    color: color($cards-sub-heading-color);
   }
 }
 .card-text {
-  background-color: $cards-text-background-color;
+  background-color: color($cards-text-background-color);
   padding: units(4) units(5);
   .text {
     @include body-copy-text;
     margin-top: units(4);
-    color: $cards-text-color;
+    color: color($cards-text-color);
     margin-bottom: units(0);
   }
 }
@@ -99,8 +99,8 @@
 .card-content {
   @include body-copy-text;
   padding: units(0);
-  color: $cards-text-color;
-  background-color: $cards-content-background-color;
+  color: color($cards-text-color);
+  background-color: color($cards-content-background-color);
   ul {
     margin-bottom:units(0);
   }
@@ -119,9 +119,9 @@
 .card-action {
   @include body-copy-text;
   padding: units(4) units(5);
-  color: $cards-text-color;
+  color: color($cards-text-color);
   margin-bottom: units(0);
-  background-color: $cards-action-background-color;
+  background-color: color($cards-action-background-color);
 
   div:first-child {
     margin-top:units(0);

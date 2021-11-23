@@ -20,7 +20,7 @@ $alerts: map-merge($alerts, $custom-alerts);
 $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
 
 .alert {
-  background-color: $alert-background-color;
+  background-color: color($alert-background-color);
   background-position: 16px 16px;
   background-repeat: no-repeat;
   background-size: 24px;
@@ -32,7 +32,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   margin-top: units(4);
   margin-bottom: units(4);
 
-  border-left: units($alert-border-size) solid $alert-border-color;
+  border-left: units($alert-border-size) solid color($alert-border-color);
 
   &:first-child {
     margin-top:0;
@@ -46,7 +46,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     top: units(4);
     right: units(4);
     @include small-text;
-    color: $alert-close-text-color;
+    color: color($alert-close-text-color);
     .icon-svg{
       margin-right: units(2);
       width: 1.6rem;
@@ -61,7 +61,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     font-size: $alert-heading-fontsize;
     font-weight: 600;
     line-height: $alert-heading-lineheight;
-    color: $alert-heading-color;
+    color: color($alert-heading-color);
     -ms-word-wrap: break-word;
     word-wrap: break-word;
   }
@@ -69,18 +69,18 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   .alert-text {
     margin-bottom: 0;
     margin-top: 0;
-    color: $alert-text-color;
+    color: color($alert-text-color);
     max-width: $text-max-width;
     a, a:link, a:active, a:visited, a:hover{
-      color: $alert-text-color;
+      color: color($alert-text-color);
     }
   }
 }
 
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
-    background-color: $bgcolor;
-    border-color: map-get($alerts-bar, $name);
+    background-color: color($bgcolor);
+    border-color: color(map-get($alerts-bar, $name));
 
     &.alert--show-icon{
       $alert-icon: $name;

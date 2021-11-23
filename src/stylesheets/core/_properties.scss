@@ -3,7 +3,7 @@
 // ----------------
 
 //color contrasting
-$color-base-001:              #ffffff !default;
+/*$color-base-001:              #ffffff !default;
 $color-base-002:              #1a1a1a !default;
 
 //Gray
@@ -44,6 +44,30 @@ $color-blue-008:              #1B86C3 !default;
 //purple
 $color-purple-001:            #800080!default;
 
+
+
+
+// Gray-scales
+$color-gray-dark:             $color-gray-002 !default;
+$color-gray-medium-dark:      $color-gray-003 !default;
+$color-gray-medium-light:     $color-gray-004 !default;
+$color-gray-light:            $color-gray-005 !default;
+$color-gray-mediumpale:       $color-gray-055 !default;
+$color-gray-pale:             $color-gray-006 !default;
+
+// Functional theme colors
+$color-primary:               $color-gray-003 !default;
+$color-primary-medium:        $color-gray-002 !default;
+$color-primary-dark:          $color-gray-001 !default;
+
+//$color-primary-dark:
+$color-primary-darker:        $color-base-002 !default;
+$color-primary-darkest:       $color-base-002 !default;
+$color-primary-lightest:      $color-gray-004 !default;
+*/
+
+//Data visualisation colors
+
 //Data visualisation colors
 $color-data-turquoise-001:     #56D4D6 !default;
 $color-data-turquoise-002:     #9AE5E6 !default;
@@ -74,28 +98,6 @@ $color-data-violet-001:        #474E95 !default;
 $color-data-violet-002:        #9195BF !default;
 $color-data-violet-003:        #C8CADF !default;
 $color-data-violet-004:        #ECEDF4 !default;
-
-
-// Gray-scales
-$color-gray-dark:             $color-gray-002 !default;
-$color-gray-medium-dark:      $color-gray-003 !default;
-$color-gray-medium-light:     $color-gray-004 !default;
-$color-gray-light:            $color-gray-005 !default;
-$color-gray-mediumpale:       $color-gray-055 !default;
-$color-gray-pale:             $color-gray-006 !default;
-
-// Functional theme colors
-$color-primary:               $color-gray-003 !default;
-$color-primary-medium:        $color-gray-002 !default;
-$color-primary-dark:          $color-gray-001 !default;
-
-//$color-primary-dark:
-$color-primary-darker:        $color-base-002 !default;
-$color-primary-darkest:       $color-base-002 !default;
-$color-primary-lightest:      $color-gray-004 !default;
-
-
-//Data visualisation colors
 $color-data-turquoise:                 $color-data-turquoise-001 !default;
 $color-data-turquoise-high-opacity:    $color-data-turquoise-002 !default;
 $color-data-turquoise-medium-opacity:  $color-data-turquoise-003 !default;
@@ -136,17 +138,17 @@ $system-border: (
     10: (
       'width': 1px,
       'style': solid,
-      'color': $color-gray-medium-dark
+      'color': 'gray-500'
     ),
     20: (
       'width': 1px,
       'style': solid,
-      'color': $color-gray-light
+      'color': 'gray-300'
     ),
     30: (
       'width': 1px,
       'style': solid,
-      'color': $color-gray-mediumpale
+      'color': 'gray-200'
     )
   )
 );

@@ -10,18 +10,18 @@
     cursor: pointer;
 }
 .tooltip-link{
-  border-bottom: $tooltip-link-border;
+  border-bottom: $tooltip-link-border-width $tooltip-link-border-style color($tooltip-link-border-color);
   display: inline;
   text-decoration: none;
   &:link, &:active, &:hover, &:visited, &:focus{
-    color: $tooltip-link-color;
+    color: color($tooltip-link-color);
   }
 }
 .tooltip{
   @include body-copy-text;
   font-size: 1.6rem;
   box-shadow: shadow($tooltip-shadow);
-  background-color: $tooltip-background-color;
+  background-color: color($tooltip-background-color);
   border: border($tooltip-border);
   border-radius: 4px;
   padding: .3rem .6rem;
@@ -44,7 +44,7 @@
 
     &:after{
         content: '';
-        border-top: 7px solid $tooltip-background-color;
+        border-top: 7px solid color($tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;
@@ -61,7 +61,7 @@
     left: calc(50% - 8px);
     &:after{
         content: '';
-        border-bottom: 7px solid $tooltip-background-color;
+        border-bottom: 7px solid color($tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;

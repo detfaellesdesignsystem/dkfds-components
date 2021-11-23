@@ -65,14 +65,14 @@ $z-index-nav:     9000;
   }
 
   .portal-header{
-    background-color: $header-portal-background-color;
+    background-color: color($header-portal-background-color);
     border-bottom: border($header-portal-border);
     width: 100%;
     &.portal-header-compact{
-      font-size: $small-text;
+      font-size: $small-text-font-size;
       line-height: $small-text-line-height;
       p {
-        font-size: $small-text;
+        font-size: $small-text-font-size;
         line-height: $small-text-line-height;
       }
       .portal-info .user{
@@ -124,7 +124,7 @@ $z-index-nav:     9000;
 
   .solution-header{
     border-bottom: border($header-border-bottom);
-    background-color: $header-solution-background-color;
+    background-color: color($header-solution-background-color);
 
     @include media-breakpoint-up(lg) {
       border-bottom: border($header-solution-border);
@@ -148,7 +148,7 @@ $z-index-nav:     9000;
         font-size: 2.8rem;
         line-height: 3.2rem;
         font-weight: $font-weight-semibold;
-        color: $header-solution-text-color;
+        color: color($header-solution-text-color);
         text-decoration: none;
         display: inline-block;
         @include media-breakpoint-down(sm) {
@@ -157,12 +157,12 @@ $z-index-nav:     9000;
         }
       }
       p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
-        color: $header-solution-text-color;
+        color: color($header-solution-text-color);
       }
       .function-link{
-        color: $header-solution-text-color;
+        color: color($header-solution-text-color);
         &:hover, &:focus, &:visited{
-          color: $header-solution-text-color;
+          color: color($header-solution-text-color);
         }
       }
     }
@@ -177,7 +177,7 @@ $z-index-nav:     9000;
     }
   }
   .authority-name{
-    color: $header-solution-authority-name;
+    color: color($header-solution-authority-name);
   }
   .button-contact{
     display: inline-flex;
@@ -189,7 +189,7 @@ $z-index-nav:     9000;
 
   .portal-info-mobile{
     padding: units(5) units(4);
-    border-bottom: $inner-border;
+    border-bottom: border(20);
     text-align: right;
     p{
       margin-bottom: units(3);
@@ -206,18 +206,18 @@ $z-index-nav:     9000;
   .solution-info-mobile{
     padding: units(5) units(4);
     text-align: right;
-    background-color: $header-solution-info-mobile-background-color;
+    background-color: color($header-solution-info-mobile-background-color);
     p{
       margin-bottom: units(3);
-      color: $header-solution-info-mobile-text-color;
+      color: color($header-solution-info-mobile-text-color);
       &:last-child{
         margin-bottom: 0;
       }
     }
     .function-link{
-      color: $header-solution-info-mobile-text-color;
+      color: color($header-solution-info-mobile-text-color);
       &:hover, &:focus, &:visited{
-        color: $header-solution-info-mobile-text-color;
+        color: color($header-solution-info-mobile-text-color);
       }
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -242,7 +242,7 @@ $z-index-nav:     9000;
     right: 0;
     bottom: 0;
     left: auto;
-    background-color: $header-navigation-background-color;
+    background-color: color($header-navigation-background-color);
     display: none;
     flex-direction: column;
     overflow-y: auto;
@@ -322,7 +322,7 @@ $z-index-nav:     9000;
   right: 0;
   bottom: 0;
   left: 0;
-  background: $color-black;
+  background: color('black');
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   visibility: hidden;

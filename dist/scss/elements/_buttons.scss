@@ -13,10 +13,10 @@ a.button{
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
   border-style: solid;
-  border-color: $button-primary-border-color;
+  border-color: color($button-primary-border-color);
   font-size: 1.8rem;
   font-weight: 500;
-  color: $button-primary-color;
+  color: color($button-primary-color);
   @include font-smoothing;
   line-height: 2rem;
   text-align: center;
@@ -38,31 +38,31 @@ a.button{
   &.focus,
   &:focus {
     @include focus();
-    color: $button-primary-color;
+    color: color($button-primary-color);
   }
 
   //############ Primary ###############
   &.button-primary {
-    color: $button-primary-color;
-    background-color: $button-primary-default-background-color;
-    border-color: $button-primary-default-border-color;
+    color: color($button-primary-color);
+    background-color: color($button-primary-default-background-color);
+    border-color: color($button-primary-default-border-color);
 
     &:hover,
     &.button-hover {
-      background-color: $button-primary-hover-background-color;
-      border-color: $button-primary-hover-border-color;
+      background-color: color($button-primary-hover-background-color);
+      border-color: color($button-primary-hover-border-color);
     }
 
     &:active,
     &.button-active {
-      background-color: $button-primary-active-background-color;
-      border-color: $button-primary-active-border-color;
+      background-color: color($button-primary-active-background-color);
+      border-color: color($button-primary-active-border-color);
     }
 
     &.focus,
     &:focus {
-      background-color: $button-primary-focus-background-color;
-      border-color: $button-primary-focus-border-color;
+      background-color: color($button-primary-focus-background-color);
+      border-color: color($button-primary-focus-border-color);
     }
 
     &:disabled,
@@ -72,9 +72,9 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        color: $button-primary-color !important;
-        background-color: $button-primary-default-background-color !important;
-        border-color: $button-primary-border-color !important;
+        color: color($button-primary-color) !important;
+        background-color: color($button-primary-default-background-color) !important;
+        border-color: color($button-primary-border-color) !important;
         opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }
@@ -83,41 +83,41 @@ a.button{
 
   //############ Secondary ##############
   &.button-secondary {
-    color: $button-secondary-default-color;
-    background-color: $button-secondary-default-background-color;
-    border-color: $button-secondary-default-border-color;
+    color: color($button-secondary-default-color);
+    background-color: color($button-secondary-default-background-color);
+    border-color: color($button-secondary-default-border-color);
 
     &:hover,
     &.button-hover {
-      color: $button-secondary-hover-color;
-      background-color: $button-secondary-hover-background-color;
-      border-color: $button-secondary-hover-border-color;
+      color: color($button-secondary-hover-color);
+      background-color: color($button-secondary-hover-background-color);
+      border-color: color($button-secondary-hover-border-color);
     }
 
     &:active,
     &.button-active {
-      color: $button-secondary-active-color;
-      background-color: $button-secondary-active-background-color;
-      border-color: $button-secondary-active-border-color;
+      color: color($button-secondary-active-color);
+      background-color: color($button-secondary-active-background-color);
+      border-color: color($button-secondary-active-border-color);
     }
 
     &.focus,
     &:focus {
-      color: $button-secondary-focus-color;
-      background-color: $button-secondary-focus-background-color;
-      border-color: $button-secondary-focus-border-color;
+      color: color($button-secondary-focus-color);
+      background-color: color($button-secondary-focus-background-color);
+      border-color: color($button-secondary-focus-border-color);
     }
     &:disabled,
     &.disabled {
       opacity:$button-disabled-opacity;
       box-shadow: none !important;
       cursor: not-allowed;
-      border-color: $button-secondary-disabled-border-color !important;
+      border-color: color($button-secondary-disabled-border-color) !important;
 
       &:hover {
-        color: $button-secondary-default-color !important;
-        background-color: $button-secondary-default-background-color !important;
-        border-color: $button-secondary-disabled-border-color !important;
+        color: color($button-secondary-default-color) !important;
+        background-color: color($button-secondary-default-background-color) !important;
+        border-color: color($button-secondary-disabled-border-color) !important;
         opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }
@@ -126,30 +126,30 @@ a.button{
 
   //############### tertiary ############
   &.button-tertiary {
-    border-color: $button-tertiary-default-border-color;
-    background-color: $button-tertiary-default-background-color;
-    color: $button-tertiary-default-color;
+    border-color: color($button-tertiary-default-border-color);
+    background-color: color($button-tertiary-default-background-color);
+    color: color($button-tertiary-default-color);
     font-weight: $font-weight-normal;
 
     &:hover,
     &.button-hover {
-      border-color: $button-tertiary-hover-border-color;
-      background-color: $button-tertiary-hover-background-color;
-      color: $button-tertiary-hover-color;
+      border-color: color($button-tertiary-hover-border-color);
+      background-color: color($button-tertiary-hover-background-color);
+      color: color($button-tertiary-hover-color);
     }
 
     &:active,
     &.button-active {
-      border-color: $button-tertiary-active-border-color;
-      background-color: $button-tertiary-active-background-color;
-      color: $button-tertiary-active-color;
+      border-color: color($button-tertiary-active-border-color);
+      background-color: color($button-tertiary-active-background-color);
+      color: color($button-tertiary-active-color);
     }
 
     &.focus,
     &:focus {
-      border-color: $button-tertiary-focus-border-color;
-      background-color: $button-tertiary-focus-background-color;
-      color: $button-tertiary-focus-color;
+      border-color: color($button-tertiary-focus-border-color);
+      background-color: color($button-tertiary-focus-background-color);
+      color: color($button-tertiary-focus-color);
     }
 
     &:disabled,
@@ -159,9 +159,9 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        border-color: $button-tertiary-default-background-color !important;
-        background-color: $button-tertiary-default-background-color !important;
-        color: $button-tertiary-default-color;;
+        border-color: color($button-tertiary-default-background-color) !important;
+        background-color: color($button-tertiary-default-background-color) !important;
+        color: color($button-tertiary-default-color);
         font-weight: $font-weight-normal !important;
         opacity:$button-disabled-opacity;
         box-shadow: none !important;
@@ -171,8 +171,8 @@ a.button{
 
   //############ Button quaternary - button styled as a link #################
   &.button-quaternary {
-    color: $button-quaternary-default-color;
-    background-color: $button-quaternary-default-background-color;
+    color: color($button-quaternary-default-color);
+    background-color: color($button-quaternary-default-background-color);
     border-color: transparent;
     text-decoration: none;
     font-weight: $font-weight-normal;
@@ -180,24 +180,24 @@ a.button{
 
     &:hover,
     &.button-hover {
-      background-color: $button-quaternary-hover-background-color;
+      background-color: color($button-quaternary-hover-background-color);
       box-shadow:none;
       border-bottom-color: transparent;
     }
 
     &:active,
     &.button-active {
-      background-color: $button-quaternary-active-background-color;
+      background-color: color($button-quaternary-active-background-color);
       box-shadow:none;
       border-bottom-color: transparent;
     }
 
     &.focus,
     &:focus {
-      color: $button-quaternary-default-color;
+      color: color($button-quaternary-default-color);
       box-shadow:none;
       border-bottom-color: transparent;
-      background-color: $button-quaternary-focus-background-color;
+      background-color: color($button-quaternary-focus-background-color);
     }
 
     &:disabled,
@@ -207,8 +207,8 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        color: $button-quaternary-default-color !important;
-        background-color: $button-quaternary-default-background-color !important;
+        color: color($button-quaternary-default-color) !important;
+        background-color: color($button-quaternary-default-background-color) !important;
         font-weight: $font-weight-normal !important;
         opacity: $button-disabled-opacity !important;
         box-shadow: none !important;
@@ -224,7 +224,7 @@ a.button{
 
   &.button-small {
     padding: calc(#{units(1)}) calc(#{units(4)} - #{$button-border-width}) 0px;
-    font-size: $small-text;
+    font-size: $small-text-font-size;
     min-height: 24px;
   }
 

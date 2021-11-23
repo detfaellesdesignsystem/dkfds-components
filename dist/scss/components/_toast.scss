@@ -35,7 +35,7 @@ $toast-icon-backgrounds: (
 .toast{
     width: 100%;
     max-width: 100%;
-    background-color: $toast-default-background-color;
+    background-color: color($toast-default-background-color);
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: units(4);
@@ -87,13 +87,13 @@ $toast-icon-backgrounds: (
 }
 @each $name, $bgcolor in $toast-backgrounds {
     .toast-#{$name} {
-        background-color: $bgcolor;
+        background-color: color($bgcolor);
     }
 }
 
 @each $name, $iconcolor in $toast-icon-backgrounds {
     .toast-#{$name} .toast-icon {
-        background-color: $iconcolor;
+        background-color: color($iconcolor);
     }
 }
 

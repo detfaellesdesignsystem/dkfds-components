@@ -42,7 +42,7 @@
     line-height: $table-text-line-height;
     border: border($table-border);
     width: calc(100% - 2px);
-    color: $table-text-color;
+    color: color($table-text-color);
     font-size: $table-font-size;
 
     &.table--compact {
@@ -92,7 +92,7 @@
     }
 
     thead {
-        background-color: $table-head-background-color;
+        background-color: color($table-head-background-color);
         tr {
             border-bottom: border($table-row-border);
         }
@@ -198,7 +198,7 @@
           }
         }
         tr:nth-child(even) {
-            background-color: $table-row-even-background-color;
+            background-color: color($table-row-even-background-color);
         }
 
         tbody{
@@ -207,13 +207,13 @@
             }
             
           tr:nth-child(odd) {
-            background-color: $table-row-odd-background-color;
+            background-color: color($table-row-odd-background-color);
           }
         }
 
         &.table--borderless {
             thead{
-                background-color: $table-row-even-background-color;
+                background-color: color($table-row-even-background-color);
             }
             td,th {
                 border-color: transparent;
@@ -256,11 +256,11 @@
 .table--selectable{
   width: 100%;
   tbody tr:hover{
-    background-color: $table-selectable-hover-background-color;
+    background-color: color($table-selectable-hover-background-color);
   }
   &.table.table--zebra tr.table-row-selected:nth-child(even), &.table.table--zebra tr.table-row-selected:nth-child(even):hover,
   .table-row-selected, .table-row-selected:hover{
-    background-color: $table-selectable-selected-background-color;
+    background-color: color($table-selectable-selected-background-color);
   }
 }
 
@@ -274,7 +274,7 @@
   .table-selected-number{
     margin-top: 0px;
     &.no-selected{
-      color: $table-selectable-help-text-color;
+      color: color($table-selectable-help-text-color);
     }
   }
   

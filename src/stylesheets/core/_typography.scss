@@ -15,11 +15,11 @@ p {
 
 
 a {
-  color: $color-link;
+  color: color($theme-color-link);
 
   &:hover,
   &.link-hover {
-    color:$color-link-hover;
+    color: color($theme-color-link-hover);
 
     &:disabled,
     .disabled {
@@ -30,19 +30,19 @@ a {
 
   &:focus,
   &.link-focus {
-    color: $color-link-focus;
+    color: color($theme-color-link-focus);
     @include focus();
   }
 
   &:visited,
   &.link-visited {
-    color: $color-link-visited;
+    color: color($theme-color-link-visited);
   }
 
   &:disabled,
   &.disabled {
     cursor: not-allowed !important;
-    color: $color-gray-002 !important;
+    color: color('disabled') !important;
     opacity: 0.3;
     &:focus{
       outline: none;
@@ -52,14 +52,14 @@ a {
 
   .background-dark &{
     &:not(.button){
-      color: $color-white;
+      color: color('white');
     }
 
     &:disabled,
     &.disabled {
       box-shadow: none !important;
       cursor: not-allowed !important;
-      color: $color-gray-medium-light !important;
+      color: color('disabled-light') !important;
       box-shadow: none !important;
       outline-offset: inherit !important;
       &:focus{
@@ -75,7 +75,7 @@ a {
   font-size: 2.5rem;
   line-height: 3.2rem;
   font-weight: $font-weight-bold;
-  color: $color-black;
+  color: color('black');
   text-transform: none;
   word-break: break-word;
   letter-spacing: -0.3%;
@@ -95,7 +95,7 @@ a {
   font-size: 2.2rem;
   line-height: 3.0rem;
   font-weight: $font-weight-semibold;
-  color: $color-black;
+  color: color('black');
   text-transform: none;
   letter-spacing: -0.2px;
 
@@ -114,7 +114,7 @@ a {
   font-size: 1.8rem;
   line-height: 2.4rem;
   font-weight: $font-weight-semibold;
-  color: $color-black;
+  color: color('black');
   text-transform: none;
   letter-spacing: -0.1px;
 
@@ -133,7 +133,7 @@ a {
   font-size: 1.6rem;
   line-height: 2.4rem;
   font-weight: $font-weight-semibold;
-  color: $color-black;
+  color: color('black');
   text-transform: none;
 
   @include media-breakpoint-up(md) {
@@ -151,7 +151,7 @@ a {
   font-size: 1.4rem;
   line-height: 2.0rem;
   font-weight: $font-weight-semibold;
-  color: $color-black;
+  color: color('black');
   text-transform: none;
   letter-spacing: -0.1px;
 
@@ -170,7 +170,7 @@ a {
   font-size: 1.3rem;
   line-height: 2.0rem;
   font-weight: $font-weight-medium;
-  color: $color-black;
+  color: color('black');
   letter-spacing: -0.25px;
 
   @include media-breakpoint-up(md) {
@@ -188,35 +188,35 @@ a {
   font-size: $typography-body-text-size;
   line-height: $typography-body-text-line-height;
   font-weight: $typography-body-text-font-weight;
-  color: $typography-body-text-color;
+  color: color($typography-body-text-color);
   text-transform: none;
   letter-spacing: $typography-body-text-letter-spacing;
 }
 @mixin caption {
-  font-size: $caption-font-size;
-  line-height: $caption-line-height;
-  color: $color-gray-001;
-  letter-spacing: $caption-letter-spacing;
+  font-size: $typography-caption-font-size;
+  line-height: $typography-caption-line-height;
+  color: color($typography-caption-text-color);
+  letter-spacing: $typography-caption-letter-spacing;
 }
 @mixin subheading {
-  font-size: $subheading-font-size;
-  line-height: $subheading-line-height;
-  color: $color-gray-003;
-  letter-spacing: $subheading-letter-spacing;
+  font-size: $typography-subheading-font-size;
+  line-height: $typography-subheading-line-height;
+  color: color($typography-subheading-text-color);
+  letter-spacing: $typography-subheading-letter-spacing;
   text-transform: uppercase;
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
 @mixin form-label-text {
-  font-size: $form-label;
-  line-height: $form-label-line-height;
+  font-size: $typography-form-label-font-size;
+  line-height: $typography-form-label-line-height;
   font-weight: $font-weight-semibold;
-  color: $color-black;
+  color: color($typography-form-label-text-color);
   text-transform: none;
 }
 @mixin small-text {
-  font-size: $small-text;
+  font-size: $small-text-font-size;
   line-height: $small-text-line-height;
   font-weight: $font-weight-medium;
 }
@@ -232,11 +232,11 @@ a {
 }
 
 @mixin color-text-positive {
-  color:$color-text-positive;
+  color: color($theme-color-text-positive);
 }
 
 @mixin color-text-negative {
-  color:$color-text-negative;
+  color:color($theme-color-text-negative);
 }
 
 h1, .h1 {
@@ -280,7 +280,7 @@ figcaption, .figcaption{
   font-weight: $font-weight-normal;
   line-height: $lead-line-height;
   max-width: $text-max-width;
-  color: $color-text;
+  color: color('ink');
   letter-spacing: $lead-letter-spacing;
 }
 .article{
@@ -288,11 +288,11 @@ figcaption, .figcaption{
   font-weight: $font-weight-normal;
   line-height: $article-line-height;
   max-width: $text-max-width;
-  color: $color-text;
+  color: color('ink');
   letter-spacing: $article-letter-spacing;
 }
 small, .small-text {
-  font-size: $small-text; //1.3rem
+  font-size: $small-text-font-size; //1.3rem
   line-height: $small-text-line-height; //1.6rem
   font-weight: $font-weight-normal;
   letter-spacing: $small-text-letter-spacing;
@@ -306,7 +306,7 @@ small, .small-text {
   font-weight: $font-weight-semibold;
 }
 .facit {
-  border-bottom: $outer-border;
+  border-bottom: border(10);
   border-bottom-style: double;
   border-bottom-width: 4px;
 }
@@ -389,14 +389,11 @@ button.function-link{
   @include body-copy-text;
   display: inline-block;
   &:hover, &:visited, &:focus{
-    color: $color-text;
+    color: color('ink');
   }
   .icon-svg{
     margin-right: units(2);
     fill: currentColor;
-    .background-dark &{
-      fill: white;
-    }
   }
 
   &.link-right {
@@ -405,8 +402,8 @@ button.function-link{
 }
 
 .back-link{
-  border-bottom: $outer-border;
-  color: $color-black;
+  border-bottom: border(10);
+  color: color('black');
   text-decoration: none;
   display: inline-block;
   position: relative;
@@ -434,7 +431,7 @@ button.function-link{
     margin: auto;
   }
   &:active, &:focus, &:hover, &:visited{
-    color: $color-black;
+    color: color('black');
   }
 }
 
@@ -520,7 +517,7 @@ a:not(.button){
     font-size: $display-1-heading-size;
     line-height: $display-1-heading-line-height;
     margin-bottom: 0;
-    color: $color-black;
+    color: color('black');
     letter-spacing: -0.2px;
   }
   &-2 {
@@ -528,7 +525,7 @@ a:not(.button){
     font-size: $display-2-heading-size;
     line-height: $display-2-heading-line-height;
     margin-bottom: 0;
-    color: $color-black;
+    color: color('black');
     letter-spacing: -0.2px;
   }
 }
@@ -542,14 +539,14 @@ a:not(.button){
 }
 
 .color-text-black {
-  color: $color-black;
+  color: color('black');
 }
 
 .background-dark {
-  background-color: $color-black;
+  background-color: color('black');
 
   p, span{
-    color: $color-white;
+    color: color('white');
   }
 }
 
@@ -557,7 +554,7 @@ a:not(.button){
   font-weight: 400;
 
   ~ hr {
-    border: 2px solid $color-black;
+    border: 2px solid color('black');
   }
 }
 

@@ -1,6 +1,6 @@
 .language-switcher{
   border-top: border($language-switcher-border);
-  background-color: $language-switcher-background-color;
+  background-color: color($language-switcher-background-color);
   padding-top: #{units(5)};
   @include media-breakpoint-up(md) {
     margin-top: -#{units(5)};
@@ -30,7 +30,7 @@
       }
 
       a, a:hover, a:visited, a:active, a:focus{
-        color: $language-switcher-text-color;
+        color: color($language-switcher-text-color);
         display: inline-block;
 
 
@@ -47,7 +47,7 @@
         a, a:hover, a:visited, a:active, a:focus {
           padding-left: 0;
           font-weight: $font-weight-semibold;
-          color: $language-switcher-active-text-color;
+          color: color($language-switcher-active-text-color);
           text-decoration: none;
           border-left: 0;
         }

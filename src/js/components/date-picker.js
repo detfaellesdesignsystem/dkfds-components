@@ -1,5 +1,6 @@
-const keymap = require("receptor/keymap");
+const receptor = require("receptor");
 const behavior = require("../utils/behavior");
+console.log();
 const select = require("../utils/select");
 const { prefix: PREFIX } = require("../config");
 const { CLICK } = require("../events");
@@ -2044,7 +2045,7 @@ const datePickerEvents = {
         validateDateInput(this);
       }
     },
-    [CALENDAR_DATE]: keymap({
+    [CALENDAR_DATE]: receptor.keymap({
       Up: handleUpFromDate,
       ArrowUp: handleUpFromDate,
       Down: handleDownFromDate,
@@ -2060,11 +2061,11 @@ const datePickerEvents = {
       "Shift+PageDown": handleShiftPageDownFromDate,
       "Shift+PageUp": handleShiftPageUpFromDate,
     }),
-    [CALENDAR_DATE_PICKER]: keymap({
+    [CALENDAR_DATE_PICKER]: receptor.keymap({
       Tab: datePickerTabEventHandler.tabAhead,
       "Shift+Tab": datePickerTabEventHandler.tabBack,
     }),
-    [CALENDAR_MONTH]: keymap({
+    [CALENDAR_MONTH]: receptor.keymap({
       Up: handleUpFromMonth,
       ArrowUp: handleUpFromMonth,
       Down: handleDownFromMonth,
@@ -2078,11 +2079,11 @@ const datePickerEvents = {
       PageDown: handlePageDownFromMonth,
       PageUp: handlePageUpFromMonth,
     }),
-    [CALENDAR_MONTH_PICKER]: keymap({
+    [CALENDAR_MONTH_PICKER]: receptor.keymap({
       Tab: monthPickerTabEventHandler.tabAhead,
       "Shift+Tab": monthPickerTabEventHandler.tabBack,
     }),
-    [CALENDAR_YEAR]: keymap({
+    [CALENDAR_YEAR]: receptor.keymap({
       Up: handleUpFromYear,
       ArrowUp: handleUpFromYear,
       Down: handleDownFromYear,
@@ -2096,7 +2097,7 @@ const datePickerEvents = {
       PageDown: handlePageDownFromYear,
       PageUp: handlePageUpFromYear,
     }),
-    [CALENDAR_YEAR_PICKER]: keymap({
+    [CALENDAR_YEAR_PICKER]: receptor.keymap({
       Tab: yearPickerTabEventHandler.tabAhead,
       "Shift+Tab": yearPickerTabEventHandler.tabBack,
     }),
@@ -2104,7 +2105,7 @@ const datePickerEvents = {
       this.dataset.keydownKeyCode = event.keyCode;
     },
     [DATE_PICKER](event) {
-      const keyMap = keymap({
+      const keyMap = receptor.keymap({
         Escape: handleEscapeFromCalendar,
       });
 

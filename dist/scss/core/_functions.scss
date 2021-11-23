@@ -22,6 +22,26 @@ source: https://gist.github.com/bigglesrocks/d75091700f8f2be5abfe
 
   @return $collection;
 }
+  
+/*
+----------------------------------------
+map-deep-get()
+----------------------------------------
+@author Hugo Giraudel
+@access public
+@param {Map} $map - Map
+@param {Arglist} $keys - Key chain
+@return {*} - Desired value
+----------------------------------------
+*/
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
 
 /*
 ----------------------------------------
@@ -132,6 +152,216 @@ Gets a valid FDS unit
   
   @return $result;
 }
+  
+/*
+----------------------------------------
+de-list()
+----------------------------------------
+Transform a one-element list or arglist
+into that single element.
+----------------------------------------
+(1) => 1
+((1)) => (1)
+----------------------------------------
+*/
+
+@function de-list($value) {
+  $types: ("list", "arglist");
+
+  @if not index($types, type-of($value)) {
+    @return $value;
+  }
+
+  $output: if(length($value) == 1, nth($value, 1), $value);
+
+  @return $output;
+}
+
+/*
+----------------------------------------
+unpack()
+----------------------------------------
+Create lists of single items from lists
+of lists.
+----------------------------------------
+(1, (2.1, 2.2), 3) -->
+(1, 2.1, 2.2, 3)
+----------------------------------------
+*/
+
+@function unpack($value) {
+  $output: ();
+
+  @if length($value) == 0 {
+    @return $value;
+  }
+
+  @each $i in $value {
+    @if type-of($i) == "list" {
+      @each $ii in $i {
+        $output: append($output, $ii, comma);
+      }
+    } @else {
+      $output: append($output, $i, comma);
+    }
+  }
+
+  @return de-list($output);
+}
+
+/*
+----------------------------------------
+get-system-color()
+----------------------------------------
+Derive a system color from its
+family, value, and vivid or a passed
+variable that is, itself, a list
+----------------------------------------
+*/
+@function get-system-color(
+  $color-family: false,
+  $color-grade: false,
+  $color-variant: false
+) {
+  // If the arg being passed to the fn
+  // is a variable defined as a list,
+  // $color-family will contain this
+  // entire list, and needs to be
+  // unpacked.
+  // ex:
+  //    in settings:
+  //      $theme-color-primary.'dark': 'blue', 70
+  //    in the theme colors map:
+  //      $color-primary-dark: get-system-color($theme-color-primary.'dark'),
+
+  @if type-of($color-family) == "list" {
+    @if length($color-family) > 2 {
+      $color-variant: nth($color-family, 3);
+    }
+    $color-grade: nth($color-family, 2);
+    $color-family: nth($color-family, 1);
+  }
+
+  $color-family: smart-quote($color-family);
+  $color-variant: smart-quote($color-variant);
+
+  // If the arg being passed to the fn
+  // is false, it should output as `false`
+  // to preserve a false value in the
+  // target map
+  // ex:
+  //    in settings:
+  //      $theme-color-primary.'darkest': false;
+  //    in the theme colors map:
+  //      'darkest': get-system-color($theme-color-primary.'darkest'),
+  //      'darkest': false, // is the desired outcome
+  // TODO: should a false-pass color function be a separate fn?
+
+  @if not $color-family {
+    @return false;
+  }
+
+  @if $color-variant {
+    $output: map-deep-get(
+        $system-colors,
+        $color-family,
+        $color-variant,
+        $color-grade
+    );
+
+    @return $output;
+  }
+
+  $output: map-deep-get($system-colors, $color-family, $color-grade);
+
+  @return $output;
+}
+
+/*
+----------------------------------------
+color()
+----------------------------------------
+Derive a color from a color shortcode
+----------------------------------------
+*/
+
+@function color($value, $flags...) {
+    $value: unpack($value);
+  
+    // Non-token colors may be passed with specific flags
+    @if type-of($value) == color {
+      // override or set-theme will allow any color
+      @if index($flags, override) or index($flags, set-theme) {
+        // override + no-warn will skip warnings
+        @if index($flags, no-warn) {
+          @return $value;
+        }
+  
+        @if $theme-show-compile-warnings {
+          @warn 'Override: `#{$value}` is not a FDS color token.';
+        }
+  
+        @return $value;
+      }
+    }
+  
+    // False values may be passed through when setting theme colors
+    @if $value == false {
+      @if index($flags, set-theme) {
+        @return $value;
+      }
+    }
+  
+    // Now, any value should be evaluated as a token
+  
+    $value: smart-quote($value);
+    @if map-has-key($system-color-shortcodes, $value) {
+      $our-color: map-get($system-color-shortcodes, $value);
+      @if $our-color == false {
+        @error '`#{$value}` is a color that does not exist '
+          + 'or is set to false.';
+      }
+      @return #{$our-color};
+    }
+  
+    $theme-color-shortcodes: ();
+    @each $collection-key, $collection-value in $theme-colors {
+      @each $key, $value in $collection-value {
+        $new-color-key: $collection-key + "-" + $key;
+        $new-color-value: $value;
+        $new-color: (
+          $new-color-key: $new-color-value
+        );
+  
+        $theme-color-shortcodes: map-merge($theme-color-shortcodes, $new-color);
+      }
+    }
+    @if map-has-key($theme-color-shortcodes, $value) {
+      $our-color: map-get($theme-color-shortcodes, $value);
+      @if $our-color == false {
+        @error '`#{$value}` is a color that does not exist '
+          + 'or is set to false.';
+      }
+      @return #{$our-color};
+    }
+  
+  
+    // If we're using the theme flag, $project-color-shortcodes has not yet been set
+    @if not index($flags, set-theme) {
+      @if map-has-key($project-color-shortcodes, $value) {
+        $our-color: (map-get($project-color-shortcodes, $value));
+        @if $our-color == false {
+          @error '`#{$value}` is a color that does not exist '
+            + 'or is set to false.';
+        }
+        @return #{$our-color};
+      }
+    }
+  
+    @error '`#{$value}` is not a valid FDS color token. '
+        + 'See designsystem.dk/design/farver/ '
+        + 'for more information.';
+  }
 
 /*
 ----------------------------------------
@@ -152,7 +382,7 @@ Gets a valid FDS border value
     $border-map: map-get($our-standard-values, $value);
     $border-width: map-get($border-map, 'width');
     $border-style: map-get($border-map, 'style');
-    $border-color: map-get($border-map, 'color');
+    $border-color: color(map-get($border-map, 'color'));
     @return $border-width $border-style $border-color;
 }
   
@@ -212,7 +442,7 @@ Gets a valid FDS border color
       @return error-not-token($value, "border", $our-standard-values);
   }
   $border-map: map-get($our-standard-values, $value);
-  @return map-get($border-map, 'color');
+  @return color(map-get($border-map, 'color'));
 }
 
 
@@ -235,5 +465,4 @@ Gets a valid FDS shadow
 
   @return map-get($our-standard-values, $value);
 }
-
 

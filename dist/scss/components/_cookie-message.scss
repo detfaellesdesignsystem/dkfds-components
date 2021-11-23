@@ -1,5 +1,5 @@
 .cookie-container{
-  color: $cookie-message-text-color;
+  color: color($cookie-message-text-color);
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -11,7 +11,7 @@
 
   .cookie-message{
     @include grid-container();
-    background-color:$cookie-message-background-color;
+    background-color: color($cookie-message-background-color);
     border: border($cookie-message-border);
     box-shadow: shadow($cookie-message-shadow);
     padding-top: calc(#{units(6)} - 1px);
@@ -20,7 +20,7 @@
     overflow: hidden;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $cookie-message-text-color;
+      color: color($cookie-message-text-color);
     }
 
 

@@ -35,22 +35,13 @@ $body-text-line-height:       2.4rem !default;
 $body-text-letter-spacing:    -0.1px !default;
 
 
-$caption-font-size: 1.3rem !default;
-$caption-line-height: 1.6rem !default;
-$caption-letter-spacing: 0.4px !default;
 
-$subheading-font-size: 1.3rem !default;
-$subheading-line-height: 1.6rem !default;
-$subheading-letter-spacing: 1px !default;
 
 $article-font-size:              1.8rem !default;
 $article-line-height:            2.8rem !default;
 $article-letter-spacing:         -0.15px !default;
 
-$form-label:                  1.6rem !default;
-$form-label-line-height:      2.4rem !default;
-
-$small-text:                  1.4rem !default;
+$small-text-font-size: 1.4rem !default;
 $small-text-letter-spacing:   0.2px !default;
 $small-text-line-height:      2rem !default;
 
@@ -72,5 +63,18 @@ $typography-body-text-size: $body-text !default;
 $typography-body-text-line-height: $body-text-line-height !default;
 $typography-body-text-letter-spacing: $body-text-letter-spacing !default;
 $typography-body-text-font-weight: $font-weight-normal !default;
-$typography-body-text-color: $color-text !default;
+$typography-body-text-color: 'ink' !default;
 
+$typography-caption-text-color: 'ink' !default;
+$typography-caption-font-size: 1.3rem !default;
+$typography-caption-line-height: 1.6rem !default;
+$typography-caption-letter-spacing: 0.4px !default;
+
+$typography-subheading-text-color: 'gray-500' !default;
+$typography-subheading-font-size: 1.3rem !default;
+$typography-subheading-line-height: 1.6rem !default;
+$typography-subheading-letter-spacing: 1px !default;
+
+$typography-form-label-font-size: 1.6rem !default;
+$typography-form-label-line-height: 2.4rem !default;
+$typography-form-label-text-color: 'ink' !default;

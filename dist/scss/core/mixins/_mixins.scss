@@ -1,7 +1,7 @@
 // Focus state mixin
 
 @mixin focus-outline {
-  outline: $theme-focus-width $theme-focus-style $theme-focus-color;
+  outline: $theme-focus-width $theme-focus-style color($theme-focus-color);
 }
 @mixin focus-offset {
   outline-offset: $theme-focus-offset;

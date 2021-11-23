@@ -91,9 +91,3 @@ input, select, textarea {
     width: 100%;
   }
 }
-
-// deprecated
-.box-border-l{
-	padding-left: calc(#{units(4)} - 4px);
-	border-left: 4px solid $color-gray-light;
-}

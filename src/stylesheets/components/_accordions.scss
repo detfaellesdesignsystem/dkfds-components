@@ -22,12 +22,12 @@ $v-padding: $spacing-md-small;
 // scss-lint:disable PropertyCount
 @mixin accordion-button-styles {
   @include button-unstyled;
-  background-color: $accordion-button-background-color-default;
+  background-color: color($accordion-button-background-color-default);
   background-image: url($icons-folder-path+'/'+$accordion-button-closed-icon);
   background-position: left $h-padding center;
   background-repeat: no-repeat;
   background-size: $icon-size;
-  color: $accordion-button-color-default;
+  color: color($accordion-button-color-default);
   cursor: pointer;
   display: inline-block;
   margin: 0;
@@ -37,8 +37,8 @@ $v-padding: $spacing-md-small;
   font-size: $body-text;
 
   &:hover {
-    background-color: $accordion-button-background-color-hover;
-    color: $accordion-button-color-hover;
+    background-color: color($accordion-button-background-color-hover);
+    color: color($accordion-button-color-hover);
   }
 
   h1, .h1,
@@ -101,11 +101,11 @@ $v-padding: $spacing-md-small;
    }
 
     .icon-svg {
-      fill: $accordion-button-color-default;
+      fill: color($accordion-button-color-default);
       float: left;
     }
     &:hover .icon-svg{
-      fill: $accordion-button-color-hover;
+      fill: color($accordion-button-color-hover);
     }
   }
 }
@@ -160,12 +160,12 @@ button.accordion-bulk-button{
 }
 
 .accordion-content {
-  background-color: $accordion-content-background-color;
-  color: $accordion-content-color;
+  background-color: color($accordion-content-background-color);
+  color: color($accordion-content-color);
   overflow: auto;
   padding: $spacing-md-small;
   p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
-    color: $accordion-content-color;
+    color: color($accordion-content-color);
   }
 
   > *:first-child {
@@ -186,10 +186,10 @@ button.accordion-bulk-button{
 }
 .accordion-button[aria-describedby="error-message"],
 .accordion-button.accordion-error {
-  border: $accordion-button-error-border;
+  border: $accordion-button-error-border-width solid color($accordion-button-error-border-color);
 }
 .accordion-button[aria-expanded=true] {
-  background-color: $accordion-button-open-background-color;
+  background-color: color($accordion-button-open-background-color);
   .accordion-bordered &:not(.accordion-error){
     border-bottom: border($accordion-button-open-border);
   }

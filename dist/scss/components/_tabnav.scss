@@ -17,7 +17,7 @@
     margin-bottom: units(3);
 
     &[aria-selected=true]{
-      background-color: $accordion-button-open-background-color;
+      background-color: color($accordion-button-open-background-color);
     }
 
     &[aria-selected=false]{
@@ -25,14 +25,14 @@
       border-radius: $border-radius $border-radius $border-radius $border-radius;
 
       &:focus{
-        background-color: $tavnav-button-default-background-color;
+        background-color: color($tavnav-button-default-background-color);
       }
     }
 
     @include media-breakpoint-up(md) {
       display: inline-block;
       width: auto;
-      color: $tavnav-button-text-color;
+      color: color($tavnav-button-text-color);
       text-align: center;
       text-decoration: none;
       padding: 0px;
@@ -45,16 +45,16 @@
       padding-right: units(5);
       margin: 0 units(2) units(2) 0px;
       text-decoration: underline;
-      border-top: units(2) solid $color-white;
+      border-top: units(2) solid color('white');
 
       &[aria-selected=false]{
-        background-color: $tavnav-button-default-background-color;
+        background-color: color($tavnav-button-default-background-color);
         background-image: none;
         border-radius: 0px;
       }
 
       &:hover {
-          background-color: $tavnav-button-hover-background-color;
+          background-color: color($tavnav-button-hover-background-color);
       }
 
       &:focus{
@@ -65,12 +65,12 @@
       }
 
       &[aria-selected=true] {
-        background-color: $tabnav-background-color;
+        background-color: color($tabnav-background-color);
         background-image: none;
         border: border($tabnav-border);
         padding-left: calc(#{units(5)} - 1px);
         padding-right: calc(#{units(5)} - 1px);
-        border-bottom: 1px solid $tabnav-background-color;
+        border-bottom: 1px solid color($tabnav-background-color);
         border-radius: 0px;
         text-decoration: none;
         margin: 0 units(2) -1px 0px;

@@ -4,7 +4,7 @@
  ul {
    padding-left: 0;
    list-style-type: none;
-   color: $typography-body-text-color;
+   color: color($typography-body-text-color);
    font-size: $typography-body-text-size;
    line-height: $typography-body-text-line-height;
    > li {

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .form-group{
   margin-top: units(5); //4
   &:first-child{
@@ -8,7 +10,7 @@
 // Hint text
 .form-hint {
   display: block;
-  color: $form-hint-text-color;
+  color: color($form-hint-text-color);
   font-size: $form-hint-font-size;
   line-height: $form-hint-line-height;
   letter-spacing: $form-hint-letter-spacing;
@@ -27,7 +29,7 @@
   appearance: none;
   border: border($input-border);
   border-radius: $input-border-radius;
-  color: $input-text-color; // standardize on firefox
+  color: color($input-text-color); // standardize on firefox
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
@@ -90,7 +92,7 @@ textarea.no-resize{
     padding: calc(#{units(3)} - #{border-width($input-border)}) calc(#{units(3)} - #{border-width($input-border)});
     margin-top: units(3);
     border: border($input-border);
-    background-color: $input-prefix-suffix-background-color;
+    background-color: color($input-prefix-suffix-background-color);
     text-align: center;
     white-space: nowrap;
     cursor: default;
@@ -118,7 +120,7 @@ textarea.no-resize{
 .form-select {
   border: border($input-border);
   border-radius: $input-border-radius;
-  color: $input-text-color; // standardize on firefox
+  color: color($input-text-color); // standardize on firefox
   display: block;
   font-size: $input-font-size;
   line-height: $input-line-height;
@@ -140,7 +142,7 @@ textarea.no-resize{
   // Remove dotted outline from select element on focus in Firefox
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 $color-black;
+    text-shadow: 0 0 0 color('black');
   }
 
   &:focus, &.focus{
@@ -151,8 +153,8 @@ textarea.no-resize{
   }
 
   &:disabled {
-    background-color: $input-disabled-background-color;
-    color:$input-disabled-text-color;
+    background-color: color($input-disabled-background-color);
+    color: color($input-disabled-text-color);
     cursor: not-allowed;
   }
   option {
@@ -178,12 +180,12 @@ $input-top-bottom-padding-feedback: calc(8px - #{$input-border-width-feedback});
 $input-left-right-padding-feedback: calc(16px - #{$input-border-width-feedback});
 
 .form-group.form-error {
-  border-left: 4px solid $color-error;
+  border-left: $form-group-error-border-width solid color($form-group-error-border-color);
   padding-left: calc(#{units(4)} - 4px);
 
   .form-input,
   .form-select {
-    border: $input-border-width-feedback solid $input-border-color-feedback-error;
+    border: $input-border-width-feedback solid color($input-border-color-feedback-error);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 
@@ -191,21 +193,21 @@ $input-left-right-padding-feedback: calc(16px - #{$input-border-width-feedback})
 .form-error-message {
   @include form-label-text();
   display: block;
-  color: $color-error;
+  color: color('error');
   margin-top: units(2);
 }
 
 .form-group.form-success {
   .form-input,
   .form-select {
-    border: $input-border-width-feedback solid $input-border-color-feedback-success;
+    border: $input-border-width-feedback solid color($input-border-color-feedback-success);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 }
 
 input[type=text]:disabled, textarea:disabled{
-  background-color: $input-disabled-background-color;
-  color:$input-disabled-text-color;
+  background-color: color($input-disabled-background-color);
+  color: color($input-disabled-text-color);
   cursor: not-allowed;
 }
 input[readonly][type=text]{
@@ -216,7 +218,7 @@ input[readonly][type=text]{
 }
 input[readonly][type=text], textarea[readonly]{
   background-color: transparent;
-  color:$input-text-color;
+  color: color($input-text-color);
   border: none;
   cursor: default;
   padding: 0;
@@ -247,7 +249,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   margin-bottom: 0;
   display: inline-block;
   outline: none;
-  color: $input-text-color;
+  color: color($input-text-color);
   position: relative;
   padding-left: calc(#{$checkbox-size} + 8px);
   min-height: $checkbox-size;
@@ -263,9 +265,9 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 .form-radio + label::before {
   content: '';
   display: inline-block;
-  background: $color-white;
+  background: color('white');
   border-radius: $input-checkbox-border-radius;
-  border: 2px solid $color-text;
+  border: 2px solid color('black');
   height: $checkbox-size;
   line-height: $body-text-line-height;
   margin-right: units(3);
@@ -314,7 +316,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 //checked checkbox
 .form-checkbox:checked + label{
   &:before{
-    background-color: $color-text;
+    background-color: color('black');
   }
   &:after{
     content: "";
@@ -345,7 +347,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
     content: "";
     height: calc(#{$radio-size} - 10px);
     width: calc(#{$radio-size} - 10px);
-    background-color: $color-text;
+    background-color: color('black');
     position: absolute;
     left: 5px;
     top: 8px;
@@ -366,25 +368,25 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 //Disable
 .form-checkbox:disabled + label,
 .form-radio:disabled + label {
-  color: $input-disabled-text-color;
+  color: color($input-disabled-text-color);
   cursor: not-allowed;
   &:before{
-    border-color: $input-disabled-text-color;
-    background-color: $input-disabled-background-color;
+    border-color: color($input-disabled-text-color);
+    background-color: color($input-disabled-background-color);
   }
 }
 
 //Disable checked
 .form-checkbox:checked[disabled] + label:before {
-  background-color: $color-text;
-  border-color: $color-text;
+  background-color: color('black');
+  border-color: color('black');
   opacity:0.5;
 }
 
 //Disable checked
 .form-radio:checked[disabled] + label:before {
-  background-color: $color-text;
-  border-color: $color-text;
+  background-color: color('black');
+  border-color: color('black');
   opacity:0.5;
 }
 
@@ -402,7 +404,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 // checkbox mixed
 .form-checkbox[aria-checked="mixed"] + label{
   &:before{
-    background-color: $color-text;
+    background-color: color('black');
   }
   &:after{
     content: "";
@@ -411,7 +413,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
     left: 8px;
     top: 10px;  
     position: absolute;
-    box-shadow: -2px 2px 0 0 $color-white;
+    box-shadow: -2px 2px 0 0 color('white');
   }
 }
 .form-checkbox.checkbox-large[aria-checked="mixed"] + label{
@@ -420,7 +422,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
     width: 12px;
     left: 13px;
     top: 16px;
-    box-shadow: -3px 3px 0 0 $color-white;
+    box-shadow: -3px 3px 0 0 color('white');
   }
 }
 
@@ -428,14 +430,14 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
   padding-top: map-get($spacers, $input-checkbox-radio-content-padding-top);
   padding-bottom: map-get($spacers, $input-checkbox-radio-content-padding-bottom);
-	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid $input-checkbox-radio-content-border-color;
-  margin-left: calc((#{map-get($spacers, $input-checkbox-radio-small-size)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)}) / 2);
+	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid color($input-checkbox-radio-content-border-color);
+  margin-left: math.div((map-get($spacers, $input-checkbox-radio-small-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
   margin-top: units(2);
   margin-bottom: units(5);
   
   &-large{
     padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)} - (#{map-get($spacers, $input-checkbox-radio-content-border-width)} / 2));
-    margin-left: calc((#{map-get($spacers, $input-checkbox-radio-large-size)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)}) / 2);
+    margin-left: math.div((map-get($spacers, $input-checkbox-radio-large-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
   }
   &[aria-hidden="true"]{
     display:none;
@@ -453,24 +455,16 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 }
 
 [type=range]::-webkit-slider-runnable-track {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
+  background: color($input-range-track-default-background-color);
+  border: border($input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
 }
 
 [type=range]::-moz-range-track {
-  background: $color-primary;
-  border: 1px solid $color-gray-medium-dark;
-  cursor: pointer;
-  height: 1.2rem;
-  width: 100%;
-}
-
-[type=range]::-ms-track {
-  background: transparent;
-  color: transparent;
+  background: color($input-range-track-default-background-color);
+  border: border($input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
@@ -478,43 +472,22 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 
 [type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: 1px solid $color-gray-medium-dark;
+  border: border($input-range-thumb-default-border);
   height: 2.2rem;
   border-radius: 1.5rem;
-  background: $color-gray-pale;
+  background: color($input-range-thumb-default-background-color);
   cursor: pointer;
   margin-top: -.65rem;
   width: 2.2rem;
 }
 
 [type=range]::-moz-range-thumb {
-  background: $color-gray-pale;
-  border: 1px solid $color-gray-medium-dark;
+  background: color($input-range-thumb-default-background-color);
+  border: border($input-range-thumb-default-border);
   border-radius: 1.5rem;
   cursor: pointer;
   height: 2.2rem;
   width: 2.2rem;
-}
-
-[type=range]::-ms-thumb {
-  background: $color-gray-pale;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 1.5rem;
-  cursor: pointer;
-  height: 2.2rem;
-  width: 2.2rem;
-}
-
-[type=range]::-ms-fill-lower {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 2rem;
-}
-
-[type=range]::-ms-fill-upper {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 2rem;
 }
 
 /////////////////////////
