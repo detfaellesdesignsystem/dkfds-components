@@ -7153,10 +7153,10 @@ a.button{
   text-align:center;
   justify-content:center;
   text-decoration:none;
-  -webkit-user-select:none;
-     -moz-user-select:none;
-      -ms-user-select:none;
-          user-select:none;
+  -webkit-user-select:text;
+     -moz-user-select:text;
+      -ms-user-select:text;
+          user-select:text;
   cursor:pointer;
 }
 @media (min-width: 768px){

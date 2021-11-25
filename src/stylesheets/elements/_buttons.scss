@@ -22,7 +22,7 @@ a.button{
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  user-select: none;
+  user-select: text;
   cursor: pointer;
 
   @include media-breakpoint-up(md) {
