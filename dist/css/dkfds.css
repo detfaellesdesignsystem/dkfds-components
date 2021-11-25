@@ -7131,10 +7131,6 @@ a.button{
   text-align:center;
   justify-content:center;
   text-decoration:none;
-  -webkit-user-select:none;
-     -moz-user-select:none;
-      -ms-user-select:none;
-          user-select:none;
   cursor:pointer;
 }
 @media (min-width: 768px){
