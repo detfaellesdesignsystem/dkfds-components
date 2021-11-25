@@ -44,6 +44,7 @@
     width: calc(100% - 2px);
     color: color($table-text-color);
     font-size: $table-font-size;
+    border-collapse: collapse;
 
     &.table--compact {
       th,td {

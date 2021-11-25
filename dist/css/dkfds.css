@@ -9237,6 +9237,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   width:calc(100% - 2px);
   color:#1a1a1a;
   font-size:1.6rem;
+  border-collapse:collapse;
 }
 .table.table--compact th, .table.table--compact td{
   padding-top:calc(8px - 1px);
