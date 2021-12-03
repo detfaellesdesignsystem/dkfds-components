@@ -42,6 +42,7 @@
     line-height: $body-text-line-height;
     border: $outer-border;
     width: calc(100% - 2px);
+    border-collapse: collapse;
 
     &.table--compact {
       th,td {

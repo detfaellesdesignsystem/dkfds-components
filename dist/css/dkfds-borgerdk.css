@@ -1508,7 +1508,6 @@ figcaption, .figcaption{
   line-height:1.6rem;
   color:#747474;
   letter-spacing:1px;
-  text-transform:uppercase;
   margin-top:0px;
   margin-bottom:0px;
 }
@@ -9260,6 +9259,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   line-height:2.4rem;
   border:1px solid #747474;
   width:calc(100% - 2px);
+  border-collapse:collapse;
 }
 .table.table--compact th, .table.table--compact td{
   padding-top:calc(8px - 1px);
