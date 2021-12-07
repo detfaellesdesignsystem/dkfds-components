@@ -1,72 +1,82 @@
 'use strict';
+const TOGGLE_ATTRIBUTE = 'data-controls';
 
-class RadioToggleGroup{
-    constructor(el){
-        this.jsToggleTrigger = '.js-radio-toggle-group';
-        this.jsToggleTarget = 'data-js-target';
+/**
+ * Adds click functionality to radiobutton collapse list
+ * @param {HTMLElement} containerElement 
+ */
+function RadioToggleGroup(containerElement){
+    this.radioGroup = containerElement;
+    this.radioEls = null;
+    this.targetEl = null;
+}
 
-        this.eventClose = document.createEvent('Event');
-        this.eventClose.initEvent('fds.collapse.close', true, true);
-
-        this.eventOpen = document.createEvent('Event');
-        this.eventOpen.initEvent('fds.collapse.open', true, true);
-        this.radioEls = null;
-        this.targetEl = null;
-
-        this.init(el);
+/**
+ * Set events
+ */
+RadioToggleGroup.prototype.init = function (){
+    this.radioEls = this.radioGroup.querySelectorAll('input[type="radio"]');
+    if(this.radioEls.length === 0){
+        throw new Error('No radiobuttons found in radiobutton group.');
     }
+    var that = this;
 
-    init (el){
-        this.radioGroup = el;
-        this.radioEls = this.radioGroup.querySelectorAll('input[type="radio"]');
-        if(this.radioEls.length === 0){
-            throw new Error('No radiobuttons found in radiobutton group.');
-        }
-        var that = this;
-
-        for(let i = 0; i < this.radioEls.length; i++){
-            var radio = this.radioEls[ i ];
-            
-            radio.addEventListener('change', function (){
-                for(let a = 0; a < that.radioEls.length; a++ ){
-                    that.toggle(that.radioEls[ a ]);
-                }
-            });
-            this.toggle(radio);
-        }
-    }
-
-    toggle (triggerEl){
-        var targetAttr = triggerEl.getAttribute(this.jsToggleTarget);
-        if(targetAttr !== null && targetAttr !== undefined && targetAttr !== ""){
-            var targetEl = document.querySelector(targetAttr);
-            if(targetEl === null || targetEl === undefined){
-                throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
+    for(let i = 0; i < this.radioEls.length; i++){
+        var radio = this.radioEls[ i ];
+        
+        radio.addEventListener('change', function (){
+            for(let a = 0; a < that.radioEls.length; a++ ){
+                that.toggle(that.radioEls[ a ]);
             }
-            if(triggerEl.checked){
-                this.open(triggerEl, targetEl);
-            }else{
-                this.close(triggerEl, targetEl);
-            }
-        }
+        });
+        this.toggle(radio);
     }
+}
 
-    open(triggerEl, targetEl){
-        if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('aria-expanded', 'true');
-            targetEl.classList.remove('collapsed');
-            targetEl.setAttribute('aria-hidden', 'false');
-            triggerEl.dispatchEvent(this.eventOpen);
+/**
+ * Toggle radiobutton content
+ * @param {HTMLInputElement} radioInputElement 
+ */
+RadioToggleGroup.prototype.toggle = function (radioInputElement){
+    var contentId = radioInputElement.getAttribute(TOGGLE_ATTRIBUTE);
+    if(contentId !== null && contentId !== undefined && contentId !== ""){
+        var contentElement = document.querySelector(contentId);
+        if(contentElement === null || contentElement === undefined){
+            throw new Error(`Could not find panel element. Verify value of attribute `+ TOGGLE_ATTRIBUTE);
         }
-    }
-    close(triggerEl, targetEl){
-        if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('aria-expanded', 'false');
-            targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
-            triggerEl.dispatchEvent(this.eventClose);
+        if(radioInputElement.checked){
+            this.expand(radioInputElement, contentElement);
+        }else{
+            this.collapse(radioInputElement, contentElement);
         }
     }
 }
 
-module.exports = RadioToggleGroup;
+/**
+ * Expand radio button content
+ * @param {} radioInputElement Radio Input element
+ * @param {*} contentElement Content element
+ */
+RadioToggleGroup.prototype.expand = function (radioInputElement, contentElement){
+    if(radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined){
+        radioInputElement.setAttribute('data-expanded', 'true');
+        contentElement.setAttribute('aria-hidden', 'false');
+        let eventOpen = new Event('fds.radio.expanded');
+        radioInputElement.dispatchEvent(eventOpen);
+    }
+}
+/**
+ * Collapse radio button content
+ * @param {} radioInputElement Radio Input element
+ * @param {*} contentElement Content element
+ */
+RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement){
+    if(radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined){
+        radioInputElement.setAttribute('data-expanded', 'false');
+        contentElement.setAttribute('aria-hidden', 'true');
+        let eventClose = new Event('fds.radio.collapsed');
+        radioInputElement.dispatchEvent(eventClose);
+    }
+}
+
+export default RadioToggleGroup;

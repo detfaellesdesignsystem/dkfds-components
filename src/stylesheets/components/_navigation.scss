@@ -1,15 +1,5 @@
 // Header navigation ------------- //
 
-@mixin nav-border {
-  border-bottom: 0.4rem solid $color-primary;
-  padding-bottom: 0.6rem;
-}
-
-@mixin nav-border-thick {
-  border-bottom: 0.7rem solid $color-primary;
-  padding-bottom: 0.9rem;
-}
-
 @mixin nav-current {
   border-bottom: $navigation-link-default-border-width solid color($navigation-link-current-border-color);
 }

@@ -462,7 +462,12 @@ Gets a valid FDS shadow
   @if not map-has-key($our-standard-values, $value) {
       @return error-not-token($value, "shadow", $our-standard-values);
   }
+  $shadow-map: map-get($our-standard-values, $value);
+  $shadow-h-offset: map-get($shadow-map, 'h-offset');
+  $shadow-v-offset: map-get($shadow-map, 'v-offset');
+  $shadow-blur: map-get($shadow-map, 'blur');
+  $shadow-spread: map-get($shadow-map, 'spread');
+  $shadow-color: color(map-get($shadow-map, 'color'));
 
-  @return map-get($our-standard-values, $value);
+  @return $shadow-h-offset $shadow-v-offset $shadow-blur $shadow-spread $shadow-color;
 }
-

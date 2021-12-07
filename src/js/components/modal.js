@@ -1,11 +1,17 @@
-
-function Modal ($modal){
-  this.$modal = $modal;
-  let id = this.$modal.getAttribute('id');
-  this.triggers = document.querySelectorAll('[data-module="modal"][data-target="'+id+'"]');
-  window.modal = {"lastFocus": document.activeElement, "ignoreUtilFocusChanges": false};
+'use strict';
+/**
+ * Adds click functionality to modal
+ * @param {HTMLElement} $modal Modal element
+ */
+function Modal ($modal) {
+    this.$modal = $modal;
+    let id = this.$modal.getAttribute('id');
+    this.triggers = document.querySelectorAll('[data-module="modal"][data-target="'+id+'"]');
 }
 
+/**
+ * Set events
+ */
 Modal.prototype.init = function () {
   let triggers = this.triggers;
   for (let i = 0; i < triggers.length; i++){
@@ -19,6 +25,9 @@ Modal.prototype.init = function () {
   }
 };
 
+/**
+ * Hide modal
+ */
 Modal.prototype.hide = function (){
   let modalElement = this.$modal;
   if(modalElement !== null){
@@ -32,13 +41,15 @@ Modal.prototype.hide = function (){
     $backdrop.parentNode.removeChild($backdrop);
 
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
-    document.removeEventListener('focus', this.trapFocus, true);
+    document.removeEventListener('keydown', this.trapFocus, true);
 
     document.removeEventListener('keyup', handleEscape);
   }
 };
 
-
+/**
+ * Show modal
+ */
 Modal.prototype.show = function (){
   let modalElement = this.$modal;
   if(modalElement !== null){
@@ -57,15 +68,18 @@ Modal.prototype.show = function (){
     document.getElementsByTagName('body')[0].classList.add('modal-open');
 
     modalElement.focus();
-    window.modal.lastFocus = document.activeElement;
 
-    document.addEventListener('focus', this.trapFocus, true);
+    document.addEventListener('keydown', this.trapFocus, true);
 
     document.addEventListener('keyup', handleEscape);
 
   }
 };
 
+/**
+ * Close modal when hitting ESC
+ * @param {KeyboardEvent} event 
+ */
 let handleEscape = function (event) {
   var key = event.which || event.keyCode;
   let modalElement = document.querySelector('.fds-modal[aria-hidden=false]');
@@ -78,85 +92,35 @@ let handleEscape = function (event) {
   }
 };
 
+/**
+ * Trap focus in modal when open
+ * @param {PointerEvent} e
+ */
+Modal.prototype.trapFocus = function(e){
+  var currentDialog = document.querySelector('.fds-modal[aria-hidden=false]');
 
-Modal.prototype.trapFocus = function(event){
-    if (window.modal.ignoreUtilFocusChanges) {
-      return;
-    }
-    var currentDialog = new Modal(document.querySelector('.fds-modal[aria-hidden=false]'));
-    if (currentDialog.$modal.getElementsByClassName('modal-content')[0].contains(event.target) || currentDialog.$modal == event.target) {
-      window.modal.lastFocus = event.target;
-    }
-    else {
-      currentDialog.focusFirstDescendant(currentDialog.$modal);
-      if (window.modal.lastFocus == document.activeElement) {
-        currentDialog.focusLastDescendant(currentDialog.$modal);
-      }
-      window.modal.lastFocus = document.activeElement;
-    }
-};
+  var focusableElements = currentDialog.querySelectorAll('a[href]:not([disabled]):not([aria-hidden=true]), button:not([disabled]):not([aria-hidden=true]), textarea:not([disabled]):not([aria-hidden=true]), input:not([type=hidden]):not([disabled]):not([aria-hidden=true]), select:not([disabled]):not([aria-hidden=true]), details:not([disabled]):not([aria-hidden=true]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-hidden=true])');
+  
+  var firstFocusableElement = focusableElements[0];
+  var lastFocusableElement = focusableElements[focusableElements.length - 1];
 
-Modal.prototype.isFocusable = function (element) {
-  if (element.tabIndex > 0 || (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)) {
-    return true;
+  var isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
+
+  if (!isTabPressed) { 
+    return; 
   }
 
-  if (element.disabled) {
-    return false;
-  }
-
-  switch (element.nodeName) {
-    case 'A':
-      return !!element.href && element.rel != 'ignore';
-    case 'INPUT':
-      return element.type != 'hidden' && element.type != 'file';
-    case 'BUTTON':
-    case 'SELECT':
-    case 'TEXTAREA':
-      return true;
-    default:
-      return false;
-  }
-};
-
-
-Modal.prototype.focusFirstDescendant = function (element) {
-  for (var i = 0; i < element.childNodes.length; i++) {
-    var child = element.childNodes[i];
-    if (this.attemptFocus(child) ||
-      this.focusFirstDescendant(child)) {
-      return true;
-
+  if ( e.shiftKey ) /* shift + tab */ {
+    if (document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus();
+        e.preventDefault();
+    }
+  } else /* tab */ {
+    if (document.activeElement === lastFocusableElement) {
+      firstFocusableElement.focus();
+        e.preventDefault();
     }
   }
-  return false;
 };
-
-Modal.prototype.focusLastDescendant = function (element) {
-  for (var i = element.childNodes.length - 1; i >= 0; i--) {
-    var child = element.childNodes[i];
-    if (this.attemptFocus(child) ||
-      this.focusLastDescendant(child)) {
-      return true;
-    }
-  }
-  return false;
-};
-
-Modal.prototype.attemptFocus = function (element) {
-  if (!this.isFocusable(element)) {
-    return false;
-  }
-
-  window.modal.ignoreUtilFocusChanges = true;
-  try {
-    element.focus();
-  }
-  catch (e) {
-  }
-  window.modal.ignoreUtilFocusChanges = false;
-  return (document.activeElement === element);
-};
-
 
 export default Modal;

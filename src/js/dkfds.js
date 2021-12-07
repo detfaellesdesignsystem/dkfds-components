@@ -1,21 +1,18 @@
 'use strict';
-const Collapse = require('./components/collapse');
-const RadioToggleGroup = require('./components/radio-toggle-content');
-const CheckboxToggleContent = require('./components/checkbox-toggle-content');
-const Dropdown = require('./components/dropdown');
-const Accordion = require('./components/accordion');
-const Toast = require('./components/toast');
-const ResponsiveTable = require('./components/table');
-const TableSelectableRows = require('./components/selectable-table');
-const Tabnav = require('./components/tabnav');
-//const Details = require('./components/details');
-const Tooltip = require('./components/tooltip');
-const SetTabIndex = require('./components/skipnav');
-const Navigation = require('./components/navigation');
-const InputRegexMask = require('./components/regex-input-mask');
-import Modal from './components/modal';
+import Accordion from './components/accordion';
+import CheckboxToggleContent from './components/checkbox-toggle-content';
+import Dropdown from './components/dropdown';
 import DropdownSort from './components/dropdown-sort';
 import ErrorSummary from './components/error-summary';
+import InputRegexMask from './components/regex-input-mask';
+import Modal from './components/modal';
+import Navigation from './components/navigation';
+import RadioToggleGroup from './components/radio-toggle-content';
+import ResponsiveTable from './components/table';
+import Tabnav from  './components/tabnav';
+import TableSelectableRows from './components/selectable-table';
+import Toast from './components/toast';
+import Tooltip from './components/tooltip';
 const datePicker = require('./components/date-picker');
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -23,6 +20,10 @@ const datePicker = require('./components/date-picker');
  */
 require('./polyfills');
 
+/**
+ * Init all components
+ * @param {JSON} options {scope: HTMLElement} - Init all components within scope (default is document)
+ */
 var init = function (options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {}
@@ -31,59 +32,35 @@ var init = function (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  datePicker.on(scope);
-
-  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
-  for(let c = 0; c < jsSelectorRegex.length; c++){
-    new InputRegexMask(jsSelectorRegex[ c ]);
-  }
-  const jsSelectorTabindex = scope.querySelectorAll('.skipnav[href^="#"]');
-  for(let c = 0; c < jsSelectorTabindex.length; c++){
-    new SetTabIndex(jsSelectorTabindex[ c ]);
-  }
-  const jsSelectorTooltip = scope.getElementsByClassName('js-tooltip');
-  for(let c = 0; c < jsSelectorTooltip.length; c++){
-    new Tooltip(jsSelectorTooltip[ c ]);
-  }
-  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
-  for(let c = 0; c < jsSelectorTabnav.length; c++){
-    new Tabnav(jsSelectorTabnav[ c ]);
-  }
-
+  /*
+  ---------------------
+  Accordions
+  ---------------------
+  */
   const jsSelectorAccordion = scope.getElementsByClassName('accordion');
   for(let c = 0; c < jsSelectorAccordion.length; c++){
-    new Accordion(jsSelectorAccordion[ c ]);
+    new Accordion(jsSelectorAccordion[ c ]).init();
   }
   const jsSelectorAccordionBordered = scope.querySelectorAll('.accordion-bordered:not(.accordion)');
   for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
-    new Accordion(jsSelectorAccordionBordered[ c ]);
+    new Accordion(jsSelectorAccordionBordered[ c ]).init();
   }
-
-  const jsSelectableTable = scope.querySelectorAll('table.table--selectable');
-  for(let c = 0; c < jsSelectableTable.length; c++){
-    new TableSelectableRows(jsSelectableTable[ c ]).init();
-  }
-
-  const jsSelectorTable = scope.querySelectorAll('table:not(.dataTable)');
-  for(let c = 0; c < jsSelectorTable.length; c++){
-    new ResponsiveTable(jsSelectorTable[ c ]);
-  }
-
-  const jsSelectorCollapse = scope.getElementsByClassName('js-collapse');
-  for(let c = 0; c < jsSelectorCollapse.length; c++){
-    new Collapse(jsSelectorCollapse[ c ]);
-  }
-
-  const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
-  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
-    new RadioToggleGroup(jsSelectorRadioCollapse[ c ]);
-  }
-
+  
+  /*
+  ---------------------
+  Checkbox collapse
+  ---------------------
+  */
   const jsSelectorCheckboxCollapse = scope.getElementsByClassName('js-checkbox-toggle-content');
   for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
-    new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]);
+    new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]).init();
   }
 
+  /*
+  ---------------------
+  Overflow menu
+  ---------------------
+  */
   const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
   for(let c = 0; c < jsSelectorDropdownSort.length; c++){
     new DropdownSort(jsSelectorDropdownSort[ c ]).init();
@@ -91,20 +68,95 @@ var init = function (options) {
 
   const jsSelectorDropdown = scope.getElementsByClassName('js-dropdown');
   for(let c = 0; c < jsSelectorDropdown.length; c++){
-    new Dropdown(jsSelectorDropdown[ c ]);
+    new Dropdown(jsSelectorDropdown[ c ]).init();
   }
 
-  var modals = scope.querySelectorAll('.fds-modal');
+  /*
+  ---------------------
+  Datepicker
+  ---------------------
+  */
+  datePicker.on(scope);
+  
+  /*
+  ---------------------
+  Error summary
+  ---------------------
+  */
+  var $errorSummary = scope.querySelector('[data-module="error-summary"]');
+  new ErrorSummary($errorSummary).init();
+
+  /*
+  ---------------------
+  Input Regex - used on date fields
+  ---------------------
+  */
+  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
+  for(let c = 0; c < jsSelectorRegex.length; c++){
+    new InputRegexMask(jsSelectorRegex[ c ]);
+  }
+
+  /*
+  ---------------------
+  Modal
+  ---------------------
+  */
+  const modals = scope.querySelectorAll('.fds-modal');
   for(let d = 0; d < modals.length; d++) {
     new Modal(modals[d]).init();
   }
+  
+  /*
+  ---------------------
+  Navigation
+  ---------------------
+  */
+  new Navigation().init();
 
-  // Find first error summary module to enhance.
-  var $errorSummary = scope.querySelector('[data-module="error-summary"]')
-  new ErrorSummary($errorSummary).init()
+  const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
+  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
+    new RadioToggleGroup(jsSelectorRadioCollapse[ c ]).init();
+  }
 
-  new Navigation();
+  /*
+  ---------------------
+  Responsive tables
+  ---------------------
+  */
+  const jsSelectorTable = scope.querySelectorAll('table:not(.dataTable)');
+  for(let c = 0; c < jsSelectorTable.length; c++){
+    new ResponsiveTable(jsSelectorTable[ c ]);
+  }
 
+  /*
+  ---------------------
+  Selectable rows in table
+  ---------------------
+  */
+  const jsSelectableTable = scope.querySelectorAll('table.table--selectable');
+  for(let c = 0; c < jsSelectableTable.length; c++){
+    new TableSelectableRows(jsSelectableTable[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Tabnav
+  ---------------------
+  */
+  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
+  for(let c = 0; c < jsSelectorTabnav.length; c++){
+    new Tabnav(jsSelectorTabnav[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Tooltip
+  ---------------------
+  */
+  const jsSelectorTooltip = scope.getElementsByClassName('js-tooltip');
+  for(let c = 0; c < jsSelectorTooltip.length; c++){
+    new Tooltip(jsSelectorTooltip[ c ]).init();
+  }
 };
 
-module.exports = { init, Collapse, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, SetTabIndex, Navigation, InputRegexMask, Modal, datePicker, Toast, TableSelectableRows, ErrorSummary};
+module.exports = { init, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, Navigation, InputRegexMask, Modal, datePicker, Toast, TableSelectableRows, ErrorSummary};

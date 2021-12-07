@@ -221,16 +221,6 @@ a {
   font-weight: $font-weight-medium;
 }
 
-@mixin font-weight-bold {
-  font-weight: $font-weight-semibold;
-  color:$color-gray-dark;
-}
-
-@mixin font-style-italic {
-  font-style: $font-style-italic;
-  color:$color-gray-dark
-}
-
 @mixin color-text-positive {
   color: color($theme-color-text-positive);
 }

@@ -1,17 +1,22 @@
-
-
-function ErrorSummary ($module) {
-  this.$module = $module
+'use strict';
+/**
+ * Handle focus on input elements upon clicking link in error message
+ * @param {HTMLElement} element Error summary element
+ */
+function ErrorSummary (element) {
+  this.element = element
 }
 
+/**
+ * Set events on links in error summary
+ */
 ErrorSummary.prototype.init = function () {
-  var $module = this.$module
-  if (!$module) {
+  if (!this.element) {
     return
   }
-  $module.focus()
+  this.element.focus()
 
-  $module.addEventListener('click', this.handleClick.bind(this))
+  this.element.addEventListener('click', this.handleClick.bind(this))
 }
 
 /**
@@ -142,4 +147,4 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     $input.closest('label')
 }
 
-export default ErrorSummary
+export default ErrorSummary;

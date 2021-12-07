@@ -1,6 +1,5 @@
 const receptor = require("receptor");
 const behavior = require("../utils/behavior");
-console.log();
 const select = require("../utils/select");
 const { prefix: PREFIX } = require("../config");
 const { CLICK } = require("../events");
