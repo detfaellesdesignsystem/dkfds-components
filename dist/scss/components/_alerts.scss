@@ -42,6 +42,8 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     max-width: $text-max-width;
   }
   .alert-close{
+    @include button-unstyled();
+    cursor:pointer;
     position: absolute;
     top: units(4);
     right: units(4);

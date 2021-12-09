@@ -1,5 +1,6 @@
 'use strict';
 import Accordion from './components/accordion';
+import Alert from './components/alert';
 import CheckboxToggleContent from './components/checkbox-toggle-content';
 import Dropdown from './components/dropdown';
 import DropdownSort from './components/dropdown-sort';
@@ -45,6 +46,17 @@ var init = function (options) {
   for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
     new Accordion(jsSelectorAccordionBordered[ c ]).init();
   }
+
+  /*
+  ---------------------
+  Alerts
+  ---------------------
+  */
+
+  const alertsWithCloseButton = scope.querySelectorAll('.alert.has-close');
+  for(let c = 0; c < alertsWithCloseButton.length; c++){
+    new Alert(alertsWithCloseButton[ c ]).init();
+  }
   
   /*
   ---------------------
@@ -61,14 +73,20 @@ var init = function (options) {
   Overflow menu
   ---------------------
   */
-  const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
-  for(let c = 0; c < jsSelectorDropdownSort.length; c++){
-    new DropdownSort(jsSelectorDropdownSort[ c ]).init();
-  }
-
   const jsSelectorDropdown = scope.getElementsByClassName('js-dropdown');
   for(let c = 0; c < jsSelectorDropdown.length; c++){
     new Dropdown(jsSelectorDropdown[ c ]).init();
+  }
+
+  
+  /*
+  ---------------------
+  Overflow menu sort
+  ---------------------
+  */
+  const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
+  for(let c = 0; c < jsSelectorDropdownSort.length; c++){
+    new DropdownSort(jsSelectorDropdownSort[ c ]).init();
   }
 
   /*
@@ -112,7 +130,12 @@ var init = function (options) {
   ---------------------
   */
   new Navigation().init();
-
+   
+  /*
+  ---------------------
+  Radiobutton group collapse
+  ---------------------
+  */
   const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
   for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
     new RadioToggleGroup(jsSelectorRadioCollapse[ c ]).init();
@@ -159,4 +182,4 @@ var init = function (options) {
   }
 };
 
-module.exports = { init, RadioToggleGroup, CheckboxToggleContent, Dropdown, DropdownSort, ResponsiveTable, Accordion, Tabnav, Tooltip, Navigation, InputRegexMask, Modal, datePicker, Toast, TableSelectableRows, ErrorSummary};
+module.exports = { init, Accordion, Alert, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Tooltip};

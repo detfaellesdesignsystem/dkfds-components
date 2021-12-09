@@ -164,5 +164,4 @@ Accordion.prototype.eventOnClick = function ($button, e) {
   }
 };
 
-
 export default Accordion;

@@ -9666,6 +9666,17 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   max-width:66ch;
 }
 .alert .alert-close{
+  background-color:transparent;
+  border:0;
+  border-radius:0;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  text-align:left;
+  -webkit-font-smoothing:auto;
+  color:inherit;
+  min-height:auto;
+  cursor:pointer;
   position:absolute;
   top:16px;
   right:16px;
@@ -9673,6 +9684,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   line-height:2rem;
   font-weight:500;
   color:#1a1a1a;
+}
+.alert .alert-close:hover, .alert .alert-close:focus{
+  background-color:transparent;
+  color:inherit;
 }
 .alert .alert-close .icon-svg{
   margin-right:4px;
