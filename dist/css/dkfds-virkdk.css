@@ -7626,22 +7626,6 @@ figure{
   background-image:url("../img/svg-icons/agriculture.svg");
 }
 
-.icon-alert-outline:not(a){
-  background-image:url("../img/svg-icons/alert-outline.svg");
-}
-
-.icon-angle-arrow-down-white:not(a){
-  background-image:url("../img/svg-icons/angle-arrow-down-white.svg");
-}
-
-.icon-angle-arrow-down:not(a){
-  background-image:url("../img/svg-icons/angle-arrow-down.svg");
-}
-
-.icon-angle-arrow-up:not(a){
-  background-image:url("../img/svg-icons/angle-arrow-up.svg");
-}
-
 .icon-apps:not(a){
   background-image:url("../img/svg-icons/apps.svg");
 }
@@ -7694,10 +7678,6 @@ figure{
   background-image:url("../img/svg-icons/attach-file.svg");
 }
 
-.icon-book-open:not(a){
-  background-image:url("../img/svg-icons/book-open.svg");
-}
-
 .icon-bookmarks:not(a){
   background-image:url("../img/svg-icons/bookmarks.svg");
 }
@@ -7714,10 +7694,6 @@ figure{
   background-image:url("../img/svg-icons/calculator.svg");
 }
 
-.icon-calendar:not(a){
-  background-image:url("../img/svg-icons/calendar.svg");
-}
-
 .icon-card-account-details:not(a){
   background-image:url("../img/svg-icons/card-account-details.svg");
 }
@@ -7726,34 +7702,14 @@ figure{
   background-image:url("../img/svg-icons/card-text.svg");
 }
 
-.icon-cash-multiple:not(a){
-  background-image:url("../img/svg-icons/cash-multiple.svg");
-}
-
 .icon-chat:not(a){
   background-image:url("../img/svg-icons/chat.svg");
-}
-
-.icon-check-circle-outline:not(a){
-  background-image:url("../img/svg-icons/check-circle-outline.svg");
-}
-
-.icon-check:not(a){
-  background-image:url("../img/svg-icons/check.svg");
 }
 
 .icon-check-circle:not(a){
   background-image:url("../img/svg-icons/check-circle.svg");
 }
 
-.icon-chevron-double-left:not(a){
-  background-image:url("../img/svg-icons/chevron-double-left.svg");
-}
-
-.icon-chevron-double-right:not(a){
-  background-image:url("../img/svg-icons/chevron-double-right.svg");
-}
-
 .icon-chevron-left:not(a){
   background-image:url("../img/svg-icons/chevron-left.svg");
 }
@@ -7768,14 +7724,6 @@ figure{
 
 .icon-chevron-right:not(a){
   background-image:url("../img/svg-icons/chevron-right.svg");
-}
-
-.icon-close-circle-outline:not(a){
-  background-image:url("../img/svg-icons/close-circle-outline.svg");
-}
-
-.icon-close-circle:not(a){
-  background-image:url("../img/svg-icons/close-circle.svg");
 }
 
 .icon-close:not(a){
@@ -7788,10 +7736,6 @@ figure{
 
 .icon-contact-support:not(a){
   background-image:url("../img/svg-icons/contact-support.svg");
-}
-
-.icon-content-save:not(a){
-  background-image:url("../img/svg-icons/content-save.svg");
 }
 
 .icon-content-copy:not(a){
@@ -7814,10 +7758,6 @@ figure{
   background-image:url("../img/svg-icons/database.svg");
 }
 
-.icon-delete-outline:not(a){
-  background-image:url("../img/svg-icons/delete-outline.svg");
-}
-
 .icon-delete:not(a){
   background-image:url("../img/svg-icons/delete.svg");
 }
@@ -7834,14 +7774,6 @@ figure{
   background-image:url("../img/svg-icons/done.svg");
 }
 
-.icon-dots-vertical:not(a){
-  background-image:url("../img/svg-icons/dots-vertical.svg");
-}
-
-.icon-download:not(a){
-  background-image:url("../img/svg-icons/download.svg");
-}
-
 .icon-download-done:not(a){
   background-image:url("../img/svg-icons/download-done.svg");
 }
@@ -7856,10 +7788,6 @@ figure{
 
 .icon-engineering:not(a){
   background-image:url("../img/svg-icons/engineering.svg");
-}
-
-.icon-error:not(a){
-  background-image:url("../img/svg-icons/error.svg");
 }
 
 .icon-expand-less:not(a){
@@ -7882,10 +7810,6 @@ figure{
   background-image:url("../img/svg-icons/feedback.svg");
 }
 
-.icon-file-document-box:not(a){
-  background-image:url("../img/svg-icons/file-document-box.svg");
-}
-
 .icon-file-excel:not(a){
   background-image:url("../img/svg-icons/file-excel.svg");
 }
@@ -7894,20 +7818,12 @@ figure{
   background-image:url("../img/svg-icons/file-image.svg");
 }
 
-.icon-file-pdf-outline:not(a){
-  background-image:url("../img/svg-icons/file-pdf-outline.svg");
-}
-
 .icon-file-pdf:not(a){
   background-image:url("../img/svg-icons/file-pdf.svg");
 }
 
 .icon-file-word:not(a){
   background-image:url("../img/svg-icons/file-word.svg");
-}
-
-.icon-file:not(a){
-  background-image:url("../img/svg-icons/file.svg");
 }
 
 .icon-file-download:not(a){
@@ -7920,10 +7836,6 @@ figure{
 
 .icon-flag:not(a){
   background-image:url("../img/svg-icons/flag.svg");
-}
-
-.icon-folder-multiple:not(a){
-  background-image:url("../img/svg-icons/folder-multiple.svg");
 }
 
 .icon-folder:not(a){
@@ -8030,10 +7942,6 @@ figure{
   background-image:url("../img/svg-icons/headphones.svg");
 }
 
-.icon-help-circle-outline:not(a){
-  background-image:url("../img/svg-icons/help-circle-outline.svg");
-}
-
 .icon-help:not(a){
   background-image:url("../img/svg-icons/help.svg");
 }
@@ -8106,40 +8014,12 @@ figure{
   background-image:url("../img/svg-icons/lock-open.svg");
 }
 
-.icon-magnify:not(a){
-  background-image:url("../img/svg-icons/magnify.svg");
-}
-
 .icon-map:not(a){
   background-image:url("../img/svg-icons/map.svg");
 }
 
-.icon-menu-down:not(a){
-  background-image:url("../img/svg-icons/menu-down.svg");
-}
-
-.icon-menu-left:not(a){
-  background-image:url("../img/svg-icons/menu-left.svg");
-}
-
-.icon-menu-right:not(a){
-  background-image:url("../img/svg-icons/menu-right.svg");
-}
-
-.icon-menu-up:not(a){
-  background-image:url("../img/svg-icons/menu-up.svg");
-}
-
 .icon-menu:not(a){
   background-image:url("../img/svg-icons/menu.svg");
-}
-
-.icon-message:not(a){
-  background-image:url("../img/svg-icons/message.svg");
-}
-
-.icon-minus:not(a){
-  background-image:url("../img/svg-icons/minus.svg");
 }
 
 .icon-mode:not(a){
@@ -8190,10 +8070,6 @@ figure{
   background-image:url("../img/svg-icons/payments.svg");
 }
 
-.icon-pencil:not(a){
-  background-image:url("../img/svg-icons/pencil.svg");
-}
-
 .icon-people-alt:not(a){
   background-image:url("../img/svg-icons/people-alt.svg");
 }
@@ -8226,16 +8102,8 @@ figure{
   background-image:url("../img/svg-icons/playlist-add-check.svg");
 }
 
-.icon-plus:not(a){
-  background-image:url("../img/svg-icons/plus.svg");
-}
-
 .icon-print:not(a){
   background-image:url("../img/svg-icons/print.svg");
-}
-
-.icon-printer:not(a){
-  background-image:url("../img/svg-icons/printer.svg");
 }
 
 .icon-query-builder:not(a){
@@ -8298,24 +8166,12 @@ figure{
   background-image:url("../img/svg-icons/sort-table-descending.svg");
 }
 
-.icon-sort-none:not(a){
-  background-image:url("../img/svg-icons/sort-none.svg");
-}
-
-.icon-sort-acending:not(a){
-  background-image:url("../img/svg-icons/sort-acending.svg");
-}
-
-.icon-sort-acending:not(a){
-  background-image:url("../img/svg-icons/sort-acending.svg");
+.icon-sort-ascending:not(a){
+  background-image:url("../img/svg-icons/sort-ascending.svg");
 }
 
 .icon-sort-descending:not(a){
   background-image:url("../img/svg-icons/sort-descending.svg");
-}
-
-.icon-sort-none:not(a){
-  background-image:url("../img/svg-icons/sort-none.svg");
 }
 
 .icon-sort:not(a){
@@ -8332,10 +8188,6 @@ figure{
 
 .icon-subdirectory-arrow-right:not(a){
   background-image:url("../img/svg-icons/subdirectory-arrow-right.svg");
-}
-
-.icon-success:not(a){
-  background-image:url("../img/svg-icons/success.svg");
 }
 
 .icon-support-agent:not(a){
@@ -8376,10 +8228,6 @@ figure{
 
 .icon-visibility-off:not(a){
   background-image:url("../img/svg-icons/visibility-off.svg");
-}
-
-.icon-warning:not(a){
-  background-image:url("../img/svg-icons/warning.svg");
 }
 
 .icon-zoom-in:not(a){
