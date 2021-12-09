@@ -9684,6 +9684,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   line-height:2rem;
   font-weight:500;
   color:#1a1a1a;
+  text-decoration:underline;
 }
 .alert .alert-close:hover, .alert .alert-close:focus{
   background-color:transparent;

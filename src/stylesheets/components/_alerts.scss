@@ -49,6 +49,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     right: units(4);
     @include small-text;
     color: color($alert-close-text-color);
+    text-decoration: underline;
     .icon-svg{
       margin-right: units(2);
       width: 1.6rem;
