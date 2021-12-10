@@ -43,16 +43,34 @@ Modal.prototype.hide = function (){
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.removeEventListener('keydown', this.trapFocus, true);
 
-    document.removeEventListener('keyup', handleEscape);
+    if(!isDialog(modalElement)){
+      document.removeEventListener('keyup', handleEscape);
+    }
+    let dataModalOpener = modalElement.getAttribute('data-modal-opener');
+    if(dataModalOpener !== null){
+      let opener = document.getElementById(dataModalOpener)
+      if(opener !== null){
+        opener.focus();
+      }
+      modalElement.removeAttribute('data-modal-opener');
+    }
   }
 };
 
 /**
  * Show modal
  */
-Modal.prototype.show = function (){
+Modal.prototype.show = function (e = null){
   let modalElement = this.$modal;
   if(modalElement !== null){
+    if(e !== null){
+      let openerId = e.target.getAttribute('id');
+      if(openerId === null){
+        openerId = 'modal-opener-'+Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
+        e.target.setAttribute('id', openerId)
+      }
+      modalElement.setAttribute('data-modal-opener', openerId);
+    }
     modalElement.setAttribute('aria-hidden', 'false');
     modalElement.setAttribute('tabindex', '-1');
 
@@ -70,8 +88,9 @@ Modal.prototype.show = function (){
     modalElement.focus();
 
     document.addEventListener('keydown', this.trapFocus, true);
-
-    document.addEventListener('keyup', handleEscape);
+    if(!isDialog(modalElement)){
+      document.addEventListener('keyup', handleEscape);
+    }
 
   }
 };
@@ -122,5 +141,12 @@ Modal.prototype.trapFocus = function(e){
     }
   }
 };
+
+function isDialog (modal){
+  if(modal.getAttribute('data-modal-dialog') === null){
+    return false;
+  }
+  return true;
+}
 
 export default Modal;
