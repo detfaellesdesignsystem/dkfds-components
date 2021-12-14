@@ -1624,6 +1624,7 @@ button.function-link, button.accordion-bulk-button{
   color:#1a1a1a;
   text-transform:none;
   letter-spacing:-0.1px;
+  cursor:pointer;
   display:inline-block;
 }
 .function-link:hover, button.accordion-bulk-button:hover, .function-link:visited, button.accordion-bulk-button:visited, .function-link:focus, button.accordion-bulk-button:focus{

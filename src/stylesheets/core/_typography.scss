@@ -377,6 +377,7 @@ button.function-link{
 .function-link{
   border: none;
   @include body-copy-text;
+  cursor: pointer;
   display: inline-block;
   &:hover, &:visited, &:focus{
     color: color('ink');
