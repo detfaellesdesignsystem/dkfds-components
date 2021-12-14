@@ -1,12 +1,12 @@
 {% macro modal(modal_data) %}
-{% set dialog = modal_data.dialog | default(false) %}
-	<div class="fds-modal" id="{{ modal_data.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{ modal_data.title_id | default('modal-id-1-title') }}"{% if dialog %}data-modal-dialog{% endif %}>
+{% set forced_action = modal_data.forced_action | default(false) %}
+	<div class="fds-modal" id="{{ modal_data.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{ modal_data.title_id | default('modal-id-1-title') }}"{% if forced_action %}data-modal-forced-action{% endif %}>
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title" id="{{ modal_data.title_id | default('modal-id-1-title') }}">
           {{ modal_data.title | default('Modal title') }}
         </h2>
-        {% if not dialog %}<button class="modal-close function-link" data-modal-close><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#close"></use></svg>Luk</button>{% endif %}
+        {% if not forced_action %}<button class="modal-close function-link" data-modal-close><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#close"></use></svg>Luk</button>{% endif %}
       </div>
       <div class="modal-body">
         {{ modal_data.content | safe }}

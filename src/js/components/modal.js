@@ -43,7 +43,7 @@ Modal.prototype.hide = function (){
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.removeEventListener('keydown', this.trapFocus, true);
 
-    if(!isDialog(modalElement)){
+    if(!hasForcedAction(modalElement)){
       document.removeEventListener('keyup', handleEscape);
     }
     let dataModalOpener = modalElement.getAttribute('data-modal-opener');
@@ -95,7 +95,7 @@ Modal.prototype.show = function (e = null){
     modalElement.focus();
 
     document.addEventListener('keydown', this.trapFocus, true);
-    if(!isDialog(modalElement)){
+    if(!hasForcedAction(modalElement)){
       document.addEventListener('keyup', handleEscape);
     }
 
@@ -149,8 +149,8 @@ Modal.prototype.trapFocus = function(e){
   }
 };
 
-function isDialog (modal){
-  if(modal.getAttribute('data-modal-dialog') === null){
+function hasForcedAction (modal){
+  if(modal.getAttribute('data-modal-forced-action') === null){
     return false;
   }
   return true;
