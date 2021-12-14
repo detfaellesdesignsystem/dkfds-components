@@ -41,7 +41,7 @@ Modal.prototype.hide = function (){
     $backdrop.parentNode.removeChild($backdrop);
 
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
-    document.removeEventListener('keydown', this.trapFocus, true);
+    document.removeEventListener('keydown', trapFocus, true);
 
     if(!hasForcedAction(modalElement)){
       document.removeEventListener('keyup', handleEscape);
@@ -94,7 +94,7 @@ Modal.prototype.show = function (e = null){
 
     modalElement.focus();
 
-    document.addEventListener('keydown', this.trapFocus, true);
+    document.addEventListener('keydown', trapFocus, true);
     if(!hasForcedAction(modalElement)){
       document.addEventListener('keyup', handleEscape);
     }
@@ -122,29 +122,30 @@ let handleEscape = function (event) {
  * Trap focus in modal when open
  * @param {PointerEvent} e
  */
-Modal.prototype.trapFocus = function(e){
+ function trapFocus(e){
   var currentDialog = document.querySelector('.fds-modal[aria-hidden=false]');
+  if(currentDialog !== null){
+    var focusableElements = currentDialog.querySelectorAll('a[href]:not([disabled]):not([aria-hidden=true]), button:not([disabled]):not([aria-hidden=true]), textarea:not([disabled]):not([aria-hidden=true]), input:not([type=hidden]):not([disabled]):not([aria-hidden=true]), select:not([disabled]):not([aria-hidden=true]), details:not([disabled]):not([aria-hidden=true]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-hidden=true])');
+    
+    var firstFocusableElement = focusableElements[0];
+    var lastFocusableElement = focusableElements[focusableElements.length - 1];
 
-  var focusableElements = currentDialog.querySelectorAll('a[href]:not([disabled]):not([aria-hidden=true]), button:not([disabled]):not([aria-hidden=true]), textarea:not([disabled]):not([aria-hidden=true]), input:not([type=hidden]):not([disabled]):not([aria-hidden=true]), select:not([disabled]):not([aria-hidden=true]), details:not([disabled]):not([aria-hidden=true]), [tabindex]:not([tabindex="-1"]):not([disabled]):not([aria-hidden=true])');
-  
-  var firstFocusableElement = focusableElements[0];
-  var lastFocusableElement = focusableElements[focusableElements.length - 1];
+    var isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
 
-  var isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
-
-  if (!isTabPressed) { 
-    return; 
-  }
-
-  if ( e.shiftKey ) /* shift + tab */ {
-    if (document.activeElement === firstFocusableElement) {
-      lastFocusableElement.focus();
-        e.preventDefault();
+    if (!isTabPressed) { 
+      return; 
     }
-  } else /* tab */ {
-    if (document.activeElement === lastFocusableElement) {
-      firstFocusableElement.focus();
-        e.preventDefault();
+
+    if ( e.shiftKey ) /* shift + tab */ {
+      if (document.activeElement === firstFocusableElement) {
+        lastFocusableElement.focus();
+          e.preventDefault();
+      }
+    } else /* tab */ {
+      if (document.activeElement === lastFocusableElement) {
+        firstFocusableElement.focus();
+          e.preventDefault();
+      }
     }
   }
 };
