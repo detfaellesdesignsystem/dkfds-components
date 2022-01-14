@@ -8419,6 +8419,11 @@ figure{
   margin-top:0;
 }
 
+.form-group-radio{
+  margin-top:8px;
+  position:relative;
+}
+
 .form-hint{
   font-size:1.6rem;
   line-height:2.4rem;
@@ -8616,8 +8621,7 @@ input[readonly][type=text], textarea[readonly]{
   pointer-events:none;
 }
 
-.form-checkbox,
-.form-radio{
+.form-checkbox{
   position:absolute;
   width:1px;
   height:1px;
@@ -8627,6 +8631,17 @@ input[readonly][type=text], textarea[readonly]{
   clip:rect(0, 0, 0, 0);
   border:0;
   left:-999em;
+}
+
+.form-radio{
+  position:absolute;
+  cursor:pointer;
+  position:absolute;
+  z-index:1;
+  margin:0;
+  opacity:0;
+  left:0px;
+  top:3px;
 }
 
 .form-checkbox + label,
@@ -8679,6 +8694,15 @@ input[readonly][type=text], textarea[readonly]{
   padding-left:calc(34px + 8px);
 }
 
+.form-radio{
+  height:18px;
+  width:18px;
+}
+.form-radio.radio-large{
+  height:34px;
+  width:34px;
+}
+
 .form-radio + label::before{
   border-radius:100%;
   height:18px;
@@ -8699,6 +8723,15 @@ input[readonly][type=text], textarea[readonly]{
   padding-left:42px;
 }
 
+.form-checkbox.checkbox-large{
+  width:18px;
+  height:18px;
+}
+.form-checkbox.checkbox-large.checkbox-large{
+  width:34px;
+  height:34px;
+}
+
 .form-checkbox:checked + label:before{
   background-color:#1a1a1a;
 }
@@ -8711,6 +8744,11 @@ input[readonly][type=text], textarea[readonly]{
   top:4px;
   box-shadow:-2px 2px 0 0 #fff;
   transform:rotate(-46deg);
+}
+
+.form-checkbox.checkbox-large{
+  width:22px;
+  height:22px;
 }
 
 .form-checkbox.checkbox-large:checked + label:after{

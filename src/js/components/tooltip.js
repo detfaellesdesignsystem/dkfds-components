@@ -8,38 +8,30 @@ class Tooltip{
   }
 
   setEvents (){
-    let that = this;
+    let module = this;
       this.element.addEventListener('mouseenter', function (e) {
-        
-        e.target.classList.add('tooltip-hover');
-        setTimeout(function(){ 
-          if(e.target.classList.contains('tooltip-hover')){
-            var element = e.target;
+        let trigger = e.target;
+        if(trigger.classList.contains('tooltip-hover') === false && trigger.classList.contains('tooltip-focus') === false){
+          closeAllTooltips(e);
+          trigger.classList.add("tooltip-hover");
+          setTimeout(function(){ 
+            if(trigger.classList.contains('tooltip-hover')){
+              var element = e.target;
 
-            if (element.getAttribute('aria-describedby') !== null) return;
-            e.preventDefault();
-
-            var pos = element.getAttribute('data-tooltip-position') || 'top';
-
-            var tooltip = that.createTooltip(element, pos);
-
-            document.body.appendChild(tooltip);
-
-            that.positionAt(element, tooltip, pos);
-          }
-        }, 300);
-
+              if (element.getAttribute('aria-describedby') !== null) return;
+              module.addTooltip(element);
+            }
+          }, 300);
+        }
       });
-      
       this.element.addEventListener('mouseleave', function (e) {
-        let trigger = this;
-        trigger.classList.remove('tooltip-hover');
-        if(!trigger.classList.contains('active')){
-          var tooltip = trigger.getAttribute('aria-describedby');
-          if(tooltip !== null && document.getElementById(tooltip) !== null){
-            document.body.removeChild(document.getElementById(tooltip));
+        let trigger = e.target;
+        if(trigger.classList.contains('tooltip-hover')){
+          var tooltipId = trigger.getAttribute('aria-describedby'); 
+          let tooltipElement = document.getElementById(tooltipId);
+          if(tooltipElement !== null){
+            closeHoverTooltip(trigger);
           }
-          trigger.removeAttribute('aria-describedby');
         }
       });
 
@@ -54,59 +46,19 @@ class Tooltip{
           this.removeAttribute('aria-describedby');
         }
       });
+      
+    
+    this.element.addEventListener('focus', function (e) {
+      var trigger = e.target;
+      closeAllTooltips(e);
+      trigger.classList.add('tooltip-focus');
+      trigger.classList.remove('tooltip-hover');
+      if (trigger.getAttribute('aria-describedby') !== null) return;
+      module.addTooltip(trigger);
 
-      this.element.addEventListener('focus', function (e) {
-        var element = e.target;
-
-        if (element.getAttribute('aria-describedby') !== null) return;
-        e.preventDefault();
-
-        var pos = element.getAttribute('data-tooltip-position') || 'top';
-
-        var tooltip = that.createTooltip(element, pos);
-
-        document.body.appendChild(tooltip);
-
-        that.positionAt(element, tooltip, pos);
-
-      });
-
-      this.element.addEventListener('blur', function (e) {
-        var tooltip = this.getAttribute('aria-describedby');
-        if(tooltip !== null && document.getElementById(tooltip) !== null){
-          document.body.removeChild(document.getElementById(tooltip));
-        }
-        this.removeAttribute('aria-describedby');
-        this.classList.remove('active');
-      });
-
-    if(this.element.getAttribute('data-tooltip-trigger') === 'click'){
-      this.element.addEventListener('click', function (e) {
-        var element = this;
-        if (element.getAttribute('aria-describedby') === null) {
-          var pos = element.getAttribute('data-tooltip-position') || 'top';
-          var tooltip = that.createTooltip(element, pos);
-          document.body.appendChild(tooltip);
-          that.positionAt(element, tooltip, pos);
-        } else {
-          if(element.classList.contains('active')){
-            var popper = element.getAttribute('aria-describedby');
-            document.body.removeChild(document.getElementById(popper));
-            element.classList.remove('active');
-            element.removeAttribute('aria-describedby');
-          } else{
-            element.classList.add('active');
-          }
-        }
-      });
-    }
-
-    document.getElementsByTagName('body')[0].addEventListener('click', function (event) {
-      if (!event.target.classList.contains('js-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content')) {
-        that.closeAll();
-      }
     });
-
+    document.getElementsByTagName('body')[0].removeEventListener('click', closeAllTooltips);
+    document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
   }
 
   closeAll (){
@@ -117,6 +69,20 @@ class Tooltip{
       document.body.removeChild(document.getElementById(popper));
     }
   }
+
+  
+
+
+  addTooltip(trigger){
+    var pos = trigger.getAttribute('data-tooltip-position') || 'top';
+
+    var tooltip = this.createTooltip(trigger, pos);
+
+    document.body.appendChild(tooltip);
+
+    this.positionAt(trigger, tooltip, pos);
+  }
+
   createTooltip (element, pos) {
     var tooltip = document.createElement('div');
     tooltip.className = 'tooltip-popper';
@@ -209,5 +175,62 @@ class Tooltip{
     tooltip.getElementsByClassName('tooltip-arrow')[0].classList.add(arrowDirection);
   }
 }
+
+function closeAllTooltips(event){
+  if (!event.target.classList.contains('js-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content')) {  
+    var elements = document.querySelectorAll('.tooltip-popper');
+    for(var i = 0; i < elements.length; i++) {
+      let trigger = document.querySelector('[aria-describedby='+elements[i].getAttribute('id')+']');
+      trigger.removeAttribute('data-tooltip-active');
+      trigger.removeAttribute('aria-describedby');
+      trigger.classList.remove('tooltip-focus');
+      trigger.classList.remove('tooltip-hover');
+      document.body.removeChild(elements[i]);
+    }
+  }
+}
+
+function closeHoverTooltip(trigger){
+  if(trigger.classList.contains('tooltip-hover')){
+    var tooltipId = trigger.getAttribute('aria-describedby'); 
+    let tooltipElement = document.getElementById(tooltipId);
+    console.log('tooltipId', tooltipId);
+    console.log('tooltipElement', tooltipElement);
+    tooltipElement.classList.add('removing');
+    tooltipElement.removeEventListener('mouseenter', onTooltipHover);
+    tooltipElement.addEventListener('mouseenter', onTooltipHover);
+    /*setTimeout(function(){     
+      let tooltipElement = document.getElementById(tooltipId);
+      if(tooltipElement.classList.contains("removing")){
+        removeTooltip(trigger);
+      }
+    }, 300);*/
+  }
+}
+
+function onTooltipHover(e){
+  let tooltipElement = this;
+  tooltipElement.addEventListener('mouseleave', function(){
+    let trigger = document.querySelector('[aria-describedby='+tooltipElement.getAttribute('id')+']');
+    if(trigger !== null){
+      closeHoverTooltip(trigger);
+    }
+  })
+
+}
+
+function removeTooltip(trigger){
+  var tooltipId = trigger.getAttribute('aria-describedby'); 
+  let tooltipElement = document.getElementById(tooltipId);
+  
+  if(tooltipId !== null && tooltipElement !== null){
+    document.body.removeChild(tooltipElement);
+  }
+  trigger.removeAttribute('aria-describedby');
+  trigger.classList.remove('tooltip-hover');
+  trigger.classList.remove('tooltip-focus');
+
+}
+
 
 module.exports = Tooltip;
