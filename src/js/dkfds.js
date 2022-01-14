@@ -180,6 +180,7 @@ var init = function (options) {
   for(let c = 0; c < jsSelectorTooltip.length; c++){
     new Tooltip(jsSelectorTooltip[ c ]).init();
   }
+  
 };
 
-module.exports = { init, Accordion, Alert, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Tooltip};
+module.exports = { init, Accordion, Alert, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
