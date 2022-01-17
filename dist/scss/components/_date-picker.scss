@@ -1,20 +1,16 @@
 // Date Picker
-
 .date-picker{
   max-width: 25rem;
 }
 
 .date-picker__wrapper {
-  display: block; // !!
+  display: block; 
   position: relative;
 
   &:focus {
     outline: 0;
   }
 }
-
-// Date Picker -- initialized
-
 .date-picker--active, .date-picker--initialized {
   .date-picker__calendar {
     z-index: 400;
