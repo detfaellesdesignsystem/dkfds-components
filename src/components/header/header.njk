@@ -7,7 +7,7 @@
       <a href="{{ portal_header.logolink.href | default('/') }}" {% if portal_header.logolink.title %}title="{{ portal_header.logolink.title}}"{% endif %} {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
         {% if portal_header.logolink.sronly %}<span class="sr-only">{{ portal_header.logolink.sronly}}</span>{% endif %}
       </a>
-      <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
+      <button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu"><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#menu"></use></svg>Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
       <div class="portal-info">

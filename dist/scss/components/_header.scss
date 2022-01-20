@@ -13,7 +13,7 @@ $z-index-nav:     9000;
     background-image: url($image-path+'/'+$header-portal-logo);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center left;
     display: inline-block;
     height: 60px;
     width: 200px;
@@ -42,6 +42,7 @@ $z-index-nav:     9000;
 
   .button-menu-open {
     width: auto;
+    white-space: nowrap;
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
@@ -52,6 +53,8 @@ $z-index-nav:     9000;
     display: flex;
     align-items: center;
     margin-right: units(4);
+    margin-top: 0px;
+    margin-bottom: units(3);
     .icon-svg{
       margin: 0 8px 0 0;
     }
@@ -88,6 +91,8 @@ $z-index-nav:     9000;
       .logo{
         max-height: 24px;
         width: $header-portal-compact-logo-width;
+        margin-top: units(3);
+        margin-bottom: units(3);
       }
     }
     .portal-header-inner{
@@ -145,15 +150,15 @@ $z-index-nav:     9000;
 
     .solution-heading{
       a, h1, .g1{
-        font-size: 2.8rem;
-        line-height: 3.2rem;
+        font-size:$header-solution-text-size;
+        line-height: $header-solution-line-height;
         font-weight: $font-weight-semibold;
         color: color($header-solution-text-color);
         text-decoration: none;
         display: inline-block;
-        @include media-breakpoint-down(sm) {
-          font-size: 2.2rem;
-          line-height: 2.4rem;
+        @include media-breakpoint-up(md) {
+          font-size: $header-solution-text-size-desktop;
+          line-height: $header-solution-line-height-desktop;
         }
       }
       p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
@@ -297,7 +302,7 @@ $z-index-nav:     9000;
     }
   }
 
-  .function-link:not(.icon-link) {
+  .function-link:not(.icon-link):not(.button-menu-close):not(.button-menu-open) {
     @include media-breakpoint-down(#{$nav-responsive-breakpoint}) {
       display: block;
       margin-top: 8px;

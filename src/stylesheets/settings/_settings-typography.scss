@@ -34,9 +34,6 @@ $body-text:                   1.6rem !default;
 $body-text-line-height:       2.4rem !default;
 $body-text-letter-spacing:    -0.1px !default;
 
-
-
-
 $article-font-size:              1.8rem !default;
 $article-line-height:            2.8rem !default;
 $article-letter-spacing:         -0.15px !default;
@@ -64,6 +61,7 @@ $typography-body-text-line-height: $body-text-line-height !default;
 $typography-body-text-letter-spacing: $body-text-letter-spacing !default;
 $typography-body-text-font-weight: $font-weight-normal !default;
 $typography-body-text-color: 'ink' !default;
+$typography-body-text-secondary-color: 'ink-light' !default;
 
 $typography-caption-text-color: 'ink' !default;
 $typography-caption-font-size: 1.3rem !default;

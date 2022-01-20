@@ -30,6 +30,11 @@
     border: 0;
     flex-direction: row;
   }
+
+  .helptext{
+    color: color($navigation-link-information-text-color);
+    font-weight: $font-weight-normal;
+  }
 }
 .navbar-primary{
 

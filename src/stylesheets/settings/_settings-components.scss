@@ -251,6 +251,10 @@ $header-portal-compact-logo-width: auto !default;
 $header-solution-border: 20 !default;
 $header-solution-background-color: 'white' !default;
 $header-solution-text-color: 'black' !default;
+$header-solution-text-size: 2rem !default;
+$header-solution-line-height: 2.4rem !default;
+$header-solution-text-size-desktop: 2.8rem !default;
+$header-solution-line-height-desktop: 3.2rem !default;
 $header-solution-authority-name: 'gray-600' !default;
 $header-solution-info-mobile-background-color: 'gray-100' !default;
 $header-solution-info-mobile-text-color: 'black' !default;
@@ -280,6 +284,7 @@ $modal-body-text-color: $modal-text-color !default;
 
 // Navigation
 $navigation-link-default-color: 'black' !default;
+$navigation-link-information-text-color: 'ink-light' !default;
 $navigation-link-hover-color: $navigation-link-default-color !default;
 $navigation-link-focus-color: $navigation-link-default-color !default;
 $navigation-link-current-color: $navigation-link-default-color !default;
