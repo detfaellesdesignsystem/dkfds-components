@@ -224,7 +224,7 @@ a.button{
 
   &.button-small {
     padding: calc(#{units(1)}) calc(#{units(4)} - #{$button-border-width}) 0px;
-    font-size: $small-text-font-size;
+    font-size: $typography-small-text-font-size;
     min-height: 24px;
   }
 

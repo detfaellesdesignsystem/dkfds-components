@@ -40,8 +40,8 @@ $alert-close-text-color: $alert-text-color !default;
 $badge-font-weight: $font-weight-semibold !default;
 $badge-default-text-color: 'white' !default;
 $badge-default-background-color: 'black' !default;
-$badge-small-font-size: $small-text-font-size !default;
-$badge-small-line-height: $small-text-line-height !default;
+$badge-small-font-size: $typography-small-text-font-size !default;
+$badge-small-line-height: $typography-small-text-line-height !default;
 $badge-large-font-size: $typography-body-text-size !default;
 $badge-large-line-height: $typography-body-text-line-height !default;
 $badge-info-text-color: 'black' !default;
@@ -139,7 +139,7 @@ $button-search-default-background-color: 'white' !default;
 $button-search-hover-background-color: 'gray-200' !default;
 
 // Breadcrumbs
-$breadcrumbs-font-size: $small-text-font-size !default;
+$breadcrumbs-font-size: $typography-small-text-font-size !default;
 $breadcrumbs-text-color: 'black' !default;
 $breadcrumbs-chevron-size: 7px !default;
 $breadcrumbs-chevron-border-width: 1px !default;

@@ -14,7 +14,6 @@
         align-items: center;
         justify-content: center;
         color: color($overflow-menu-button-text-color);
-
         &:hover{
             text-decoration: underline;
         }
@@ -147,21 +146,7 @@
             }
         }
     }
-    .button-overflow-menu.js-dropdown--responsive-collapse{
-        //behaves like a collapse on mobile, no positon absolute and width 100%
-        @include media-breakpoint-down(md) {
-            &:before, &:after{
-                display: none; //hide arrow
-            }
-            &  ~ .overflow-menu-inner {
-                width: 100%;
-                position: static;
-                border: none;
-                box-shadow: none;
-                min-width: inherit;
-            }
-		}
-    }
+
     &.overflow-menu--md-no-responsive{
         //overflow content always visible on large screens.
         //does not look like a dropdown.
@@ -182,7 +167,7 @@
                 border: none;
                 min-width: auto;
             }
-		    }
+		}
     }
   &.overflow-menu--lg-no-responsive{
     //overflow content always visible on large screens.

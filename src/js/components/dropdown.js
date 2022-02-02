@@ -199,7 +199,10 @@ let toggle = function(button, forceClose = false){
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     }else{
-      closeAll();
+      
+      if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+        closeAll();
+      }
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
@@ -247,27 +250,29 @@ let hasParent = function (child, parentTagName){
 };
 
 let outsideClose = function (evt){
-  if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
-    let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
-    for (let i = 0; i < openDropdowns.length; i++) {
-      let triggerEl = openDropdowns[i];
-      let targetEl = null;
-      let targetAttr = triggerEl.getAttribute(TARGET);
-      if (targetAttr !== null && targetAttr !== undefined) {
-        if(targetAttr.indexOf('#') !== -1){
-          targetAttr = targetAttr.replace('#', '');
+  if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+    if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
+      let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
+      for (let i = 0; i < openDropdowns.length; i++) {
+        let triggerEl = openDropdowns[i];
+        let targetEl = null;
+        let targetAttr = triggerEl.getAttribute(TARGET);
+        if (targetAttr !== null && targetAttr !== undefined) {
+          if(targetAttr.indexOf('#') !== -1){
+            targetAttr = targetAttr.replace('#', '');
+          }
+          targetEl = document.getElementById(targetAttr);
         }
-        targetEl = document.getElementById(targetAttr);
-      }
-      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
-        //closes dropdown when clicked outside
-        if (evt.target !== triggerEl) {
-          //clicked outside trigger, force close
-          triggerEl.setAttribute('aria-expanded', 'false');
-          targetEl.classList.add('collapsed');
-          targetEl.setAttribute('aria-hidden', 'true');          
-          let eventClose = new Event('fds.dropdown.close');
-          triggerEl.dispatchEvent(eventClose);
+        if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
+          //closes dropdown when clicked outside
+          if (evt.target !== triggerEl) {
+            //clicked outside trigger, force close
+            triggerEl.setAttribute('aria-expanded', 'false');
+            targetEl.classList.add('collapsed');
+            targetEl.setAttribute('aria-hidden', 'true');          
+            let eventClose = new Event('fds.dropdown.close');
+            triggerEl.dispatchEvent(eventClose);
+          }
         }
       }
     }

@@ -54,7 +54,7 @@ $z-index-nav:     9000;
     align-items: center;
     margin-right: units(4);
     margin-top: 0px;
-    margin-bottom: units(3);
+    margin-bottom: 0;
     .icon-svg{
       margin: 0 8px 0 0;
     }
@@ -72,11 +72,11 @@ $z-index-nav:     9000;
     border-bottom: border($header-portal-border);
     width: 100%;
     &.portal-header-compact{
-      font-size: $small-text-font-size;
-      line-height: $small-text-line-height;
+      font-size: $typography-small-text-font-size;
+      line-height: $typography-small-text-line-height;
       p {
-        font-size: $small-text-font-size;
-        line-height: $small-text-line-height;
+        font-size: $typography-small-text-font-size;
+        line-height: $typography-small-text-line-height;
       }
       .portal-info .user{
         max-width: none;
@@ -195,7 +195,7 @@ $z-index-nav:     9000;
   .portal-info-mobile{
     padding: units(5) units(4);
     border-bottom: border(20);
-    text-align: right;
+    text-align: left;
     p{
       margin-bottom: units(3);
     }
@@ -210,7 +210,6 @@ $z-index-nav:     9000;
 
   .solution-info-mobile{
     padding: units(5) units(4);
-    text-align: right;
     background-color: color($header-solution-info-mobile-background-color);
     p{
       margin-bottom: units(3);
@@ -277,6 +276,7 @@ $z-index-nav:     9000;
 
   .nav-actions{
     margin-top: units(3);
+    padding: 0 units(4);
     &:first-child{
       margin-top: 0;
     }
@@ -296,6 +296,7 @@ $z-index-nav:     9000;
       justify-content: flex-end;
       flex-wrap: wrap;
       margin-right: -4px;
+      padding: 0;
       & > li, & > li:first-child{
         margin: calc(#{units(3)} - 2px) 4px;
       }

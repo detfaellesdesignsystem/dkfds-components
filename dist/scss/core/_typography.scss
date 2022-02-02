@@ -216,9 +216,10 @@ a {
   text-transform: none;
 }
 @mixin small-text {
-  font-size: $small-text-font-size;
-  line-height: $small-text-line-height;
-  font-weight: $font-weight-medium;
+  font-size: $typography-small-text-font-size; //1.3rem
+  line-height: $typography-small-text-line-height; //1.6rem
+  font-weight: $font-weight-normal;
+  letter-spacing: $typography-small-text-letter-spacing;
 }
 
 @mixin color-text-positive {
@@ -282,10 +283,10 @@ figcaption, .figcaption{
   letter-spacing: $article-letter-spacing;
 }
 small, .small-text {
-  font-size: $small-text-font-size; //1.3rem
-  line-height: $small-text-line-height; //1.6rem
+  font-size: $typography-small-text-font-size; //1.3rem
+  line-height: $typography-small-text-line-height; //1.6rem
   font-weight: $font-weight-normal;
-  letter-spacing: $small-text-letter-spacing;
+  letter-spacing: $typography-small-text-letter-spacing;
 }
 
 .weight-normal {
