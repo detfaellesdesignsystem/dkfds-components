@@ -12851,63 +12851,23 @@ a.skipnav{
   }
 }
 @media print{
-  .form-radio.printIfChecked, .form-checkbox.printIfChecked{
-    display:none;
-  }
-  .form-radio.printIfChecked + label, .form-checkbox.printIfChecked + label{
-    display:none;
-  }
-  .form-radio.printIfChecked:checked, .form-checkbox.printIfChecked:checked{
-    display:inline-block;
-  }
-  .form-radio.printIfChecked:checked + label, .form-checkbox.printIfChecked:checked + label{
-    display:inline-block;
+  .form-radio.radio-large:checked + label:after{
+    border:8px solid #1a1a1a;
   }
 }
 @media print{
-  .form-checkbox + label::before, .form-radio + label::before{
-    border:none;
+  .form-radio:checked + label:after{
+    border:4px solid #1a1a1a;
   }
 }
 @media print{
-  .form-radio.radio-large + label:before{
-    content:none;
-  }
-}
-@media print{
-  .form-checkbox:checked + label:after, .form-radio:checked + label:after, .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
-    content:"";
-    position:absolute;
-    left:3px;
-    top:2px;
-    width:12px;
-    height:7px;
-    transform:rotate(-45deg);
-    border:solid;
-    border-width:0 0 3px 3px;
-    border-color:#1a1a1a;
-    border-top-color:transparent;
-    background:transparent;
-    box-shadow:none;
-    border-radius:0px;
-  }
-}
-@media print{
-  .form-checkbox.checkbox-large:checked + label:after, .form-radio.radio-large:checked + label:after{
-    height:10px;
-    width:18px;
-    left:6px;
-    top:8px;
-  }
-}
-@media print{
-  .form-radio + label::before{
-    border-radius:0;
-  }
-}
-@media print{
-  .form-checkbox + label::before, .form-radio + label::before, .form-checkbox:checked + label:before{
-    border:0;
+  .form-checkbox:checked + label:before{
     background-color:transparent;
+    border:10px solid #1a1a1a;
+  }
+}
+@media print{
+  .form-checkbox.checkbox-large:checked + label:before{
+    border:16px solid #1a1a1a;
   }
 }
