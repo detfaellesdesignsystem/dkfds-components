@@ -1,0 +1,18 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes of the tag.
+- name: attributes
+  type: string
+  required: false
+  description: Attributes of the tag.
+- name: text
+  type: string
+  required: false
+  description: Text of the tag.
+- name: icon
+  type: string
+  required: false
+  description: Icon name
+  

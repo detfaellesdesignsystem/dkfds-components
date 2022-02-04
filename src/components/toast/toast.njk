@@ -1,10 +1,10 @@
-{% macro toast(data) %}
-<div class="toast toast-{{data.type}}{% if data.show %} show{% endif %}" id="{{data.id}}" role="status">
+{% macro toast(params) %}
+<div class="toast toast-{{params.type}}{% if params.show %} show{% endif %}" id="{{params.id}}" role="status">
     <div class="toast-icon"></div>
     <div class="toast-message">
-        {% if data.heading %}<p class="bold">{{data.heading}}</p>{% endif %}
+        {% if params.heading %}<p class="bold">{{params.heading}}</p>{% endif %}
         <button class="toast-close">Luk</button>
-        {% if data.content %}<p>{{data.content}}</p>{% endif %}
+        {% if params.content %}<p>{{params.content}}</p>{% endif %}
     </div>
 </div>
 {% endmacro %}

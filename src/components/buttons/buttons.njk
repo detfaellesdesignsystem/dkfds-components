@@ -1,11 +1,11 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-{%- macro button(text, class, attributes, icon, sronly) -%}
-<button class="button button-{{class}}" {{ attributes | safe}}>
-  {% if icon %}{{icon_svg(icon, "", "", true)}}
+{%- macro button(params) -%}
+<button class="button button-{{params.classes}}" {{ params.attributes | safe}}>
+  {% if params.icon %}{{icon_svg({"name": params.icon})}}
   {% endif %}
-  {%- if text -%}
-  {{ text }}
+  {%- if params.text -%}
+  {{ params.text }}
   {%- endif -%}
-  {% if sronly %}<span class="sr-only">{{ sronly }}</span>{% endif %}
+  {% if params.srOnly %}<span class="sr-only">{{ params.srOnly }}</span>{% endif %}
 </button>
 {%- endmacro -%}

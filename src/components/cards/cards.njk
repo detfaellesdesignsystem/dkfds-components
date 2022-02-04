@@ -1,282 +1,56 @@
 {% import "components/buttons/buttons.njk" as button %}
 
+{% macro card(params) %}
+  {% macro cardHeader(params) %}
+    {%- if (params.heading) or (params.subheading) -%}
+        <div class="card-header">
+          <{{params.headingLevel | default('h3')}} class="header-title">{{params.heading}}</{{params.headingLevel | default('h3')}}>
+          {%- if params.subheading -%}<p class="sub-header">{{params.subheading}}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+  {% endmacro %}
 
-{% macro card(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align, heading_level) %}
-  {%- if (name == 'card1') -%}
-    <div class="card{% if align %} card-align-height{% endif %}">
-    {%- if (header) or (subheader) -%}
-      <div class="card-header">
-        <{{heading_level | default('h3')}} class="header-title">{{header}}</{{heading_level | default('h3')}}>
-        {%- if subheader -%}<p class="sub-header">{{subheader}}</p>{%- endif -%}
-      </div>
+  {% macro cardText(params) %}
+      {%if params.text %}
+        <div class="card-text">
+          <p>{{params.text | safe}}</p>
+        </div>{% endif %}
+  {% endmacro %}
+
+  {% macro cardContent(params) %}
+  {% if params.content %}<div class="card-content">
+        {{params.content | safe}}
+    </div>{% endif %}
+  {% endmacro %}
+
+  {% macro cardActions(params) %}
+  {% if (params.actionContent) or (params.actionButtons) or (params.actionLinks) %}<div class="card-footer card-action">
+      {% if params.actionContent %}<div class="action-content">
+        {{params.actionContent | safe}}
+      </div>{% endif %}
+      {% if params.actionButtons %}<div class="action-buttons">
+      {{ params.actionButtons | safe}}
+      </div>{% endif %}
+      {% if params.actionLinks %}<div class="action-links">
+      {{ params.actionLinks | safe}}
+      </div>{% endif %}
+    </div>{% endif %}
+  {% endmacro %}
+
+  <div class="card{% if params.sameHeight %} card-align-height{% endif %}">
+    {% set order = params.order | default(["header", "text", "content", "action"]) %}
+    {%- for item in order -%}
+    {%- if item == "header" -%}
+    {{cardHeader(params)}}
+    {%- elseif item == "text" -%}
+    {{cardText(params)}}
+    {%- elseif item == "content" -%}
+    {{cardContent(params)}}
+    {%- elseif item == "action" -%}
+    {{cardActions(params)}}
     {%- endif -%}
-    {%if cardtext %}
-      <div class="card-text">
-        <p>{{cardtext | safe}}</p>
-      </div>{% endif %}
-    {%if (contenttext) or (cardcontent) %}<div class="card-content">
-        <div class="content-text">
-          <p>{{contenttext | safe}}</p>
-        </div>
-        <div class="content">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                {{cardcontent | safe}}
-              </div>
-            </div>
-        </div>
-      </div>{% endif %}
-    {% if (actioncontent) or (actionbuttons) or (actionlinks) %}<div class="card-footer card-action">
-        {% if actioncontent %}<div class="action-content">
-          {{actioncontent | safe}}
-        </div>{% endif %}
-        {% if actionbuttons %}<div class="action-buttons">
-        {{ actionbuttons | safe}}
-        </div>{% endif %}
-        {% if actionlinks %}<div class="action-links">
-        {{ actionlinks | safe}}
-        </div>{% endif %}
-      </div>{% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-{% macro cards1(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card1') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-    {%if (header) or (subheader) %}
-      <div class="card-header">
-        <p class="h5 header-title">{{header}}</p>
-        <p class="sub-header">{{subheader}}</p>
-      </div>
-    {% endif %}
-    {%if cardtext %}
-      <div class="card-text">
-        <p class="text">{{cardtext | safe}}</p>
-      </div>
-    {% endif %}
-    {%if (contenttext) or (cardcontent) %}
-      <div class="card-content">
-        <div class="content-text">
-          <p>{{contenttext | safe}}</p>
-        </div>
-        <div class="content">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                {{cardcontent | safe}}
-              </div>
-            </div>
-        </div>
-      </div>
-    {% endif %}
-    {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
-      <div class="card-action">
-        <div class="action-content">
-          {{actioncontent | safe}}
-        </div>
-        <div class="action-buttons">
-        {{ actionbuttons | safe}}
-        </div>
-        <div class="action-links">
-        {{ actionlinks | safe}}
-        </div>
-      </div>
-    {% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-{% macro cards2(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card2') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-    {%if (header) or (subheader) %}
-      <div class="card-header">
-        <p class="h5 header-title">{{header}}</p>
-        <p class="sub-header">{{subheader}}</p>
-      </div>
-      {% endif %}
-      {%if (contenttext) or (cardcontent) %}
-        <div class="card-content">
-          <div class="content-text">
-            <p>{{contenttext | safe}}</p>
-          </div>
-          <div class="content">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                {{cardcontent | safe}}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-      {%if cardtext %}
-      <div class="card-text">
-        <p class="text">{{cardtext | safe}}</p>
-      </div>
-      {% endif %}
-      </div>
-  {%- endif %}
+    {%- endfor -%}
+  </div>
 {% endmacro %}
 
 
-{% macro cards3(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card3') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-      {%if (contenttext) or (cardcontent) %}
-        <div class="card-content">
-          <div class="content-text">
-            <p>{{contenttext | safe}}</p>
-          </div>
-          <div class="content">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                {{cardcontent | safe}}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {%if (header) or (subheader) %}
-        <div class="card-header">
-          <p class="h5 header-title">{{header}}</p>
-          <p class="sub-header">{{subheader}}</p>
-        </div>
-    {% endif %}
-    {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
-      <div class="card-action">
-        <div class="action-content">
-          {{actioncontent | safe}}
-        </div>
-        <div class="action-buttons">
-        {{ actionbuttons | safe }}
-        </div>
-        <div class="action-links">
-        {{ actionlinks | safe }}
-        </div>
-      </div>
-    {% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-{% macro cards4(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card4') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-      {%if (header) or (subheader) %}
-        <div class="card-header">
-          <p class="h5 header-title">{{header}}</p>
-          <p class="sub-header">{{subheader}}</p>
-        </div>
-      {% endif %}
-      {%if cardtext %}
-        <div class="card-text">
-          <p class="text">{{cardtext | safe}}</p>
-        </div>
-      {% endif %}
-      {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
-        <div class="card-action">
-          <div class="action-content">
-            {{actioncontent | safe}}
-          </div>
-          <div class="action-buttons">
-          {{ actionbuttons | safe}}
-          </div>
-          <div class="action-links">
-          {{ actionlinks | safe }}
-          </div>
-        </div>
-      {% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-{% macro cards5(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card5') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-      {%if (header) or (subheader) %}
-        <div class="card-header">
-          <p class="h5 header-title">{{header}}</p>
-          <p class="sub-header">{{subheader}}</p>
-        </div>
-      {% endif %}
-      {%if (contenttext) or (cardcontent) %}
-        <div class="card-content">
-          <div class="content-text">
-            <p>{{contenttext | safe}}</p>
-          </div>
-          <div class="content">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                {{cardcontent | safe}}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-{% macro cards6(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card6') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-      {%if (header) or (subheader) %}
-        <div class="card-header">
-          <p class="h5 header-title">{{header}}</p>
-          <p class="sub-header">{{subheader}}</p>
-        </div>
-      {% endif %}
-      {%if cardtext %}
-        <div class="card-text">
-          <p class="text">{{cardtext | safe}}</p>
-        </div>
-      {% endif %}
-    </div>
-  {%- endif %}
-{% endmacro %}
-
-
-{% macro cards7(name, header, subheader, cardtext, contenttext, cardcontent, actioncontent, actionbuttons, actionlinks, align) %}
-  {%- if (name == 'card7') -%}
-    <div class="card {% if align %}card-align-height{% endif %}">
-     {%if (contenttext) or (cardcontent) %}
-            <div class="card-content">
-              {%if contenttext %}
-              <div class="content-text">
-                <p>{{contenttext | safe}}</p>
-              </div>
-              {% endif %}
-              {%if cardcontent %}
-              <div class="content">
-                <div class="row justify-content-center">
-                  <div class="col-12">
-                    {{cardcontent | safe}}
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-            </div>
-          {% endif %}
-      {%if (header) or (subheader) %}
-        <div class="card-header">
-          <h2 class="h5 header-title">{{header}}</h2>
-          {% if subheader %}<p class="sub-header">{{subheader}}</p>{% endif %}
-        </div>
-      {% endif %}
-      {%if cardtext %}
-        <div class="card-text">
-          <p class="text">{{cardtext | safe}}</p>
-        </div>
-      {% endif %}
-      <div class="card-footer">
-      {%if (actioncontent) or (actionbuttons) or (actionlinks) %}
-        <div class="card-action">
-          <div class="action-buttons">
-          {{ actionbuttons | safe}}
-          </div>
-        </div>
-      {% endif %}
-      </div>
-    </div>
-  {%- endif %}
-{% endmacro %}

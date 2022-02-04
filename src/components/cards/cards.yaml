@@ -1,0 +1,39 @@
+params:
+- name: heading
+  type: string
+  required: false
+  description: Heading of the card
+- name: headingLevel
+  type: string
+  required: false
+  description: Heading level of the heading. Default is h3.
+- name: subheading
+  type: string
+  required: false
+  description: Subheading of the card
+- name: text
+  type: string
+  required: true
+  description: Card text
+- name: content
+  type: string
+  required: false
+  description: content of the card
+- name: actionContent
+  type: string
+  required: false
+  description: Content added at the bottom of the card
+- name: actionButtons
+  type: string
+  required: false
+  description: Buttons added at the bottom of the card
+- name: actionLinks
+  type: string
+  required: false
+  description: Links added at the bottom of the card
+- name: sameHeight
+  type: boolean
+  required: false
+  description: On true, sets same height of cards in row.
+
+  

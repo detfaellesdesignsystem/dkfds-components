@@ -1,0 +1,81 @@
+params:
+- name: id
+  type: object
+  required: true
+  description: Ids of the elements.
+  - name: helptext
+    type: string
+    required: true
+    description: Id of the helptext element.
+  - name: errorMessage
+    type: string
+    required: true
+    description: Id of the error element.
+  - name: day
+    type: string
+    required: true
+    description: Id of the day input.
+  - name: month
+    type: string
+    required: true
+    description: Id of the month input.
+  - name: year
+    type: string
+    required: true
+    description: Id of the year input.
+- name: tooltip
+  type: string
+  required: false
+  description: Tooltip text.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext.
+- name: labels
+  type: object
+  required: true
+  description: Labels for the inputs.
+  - name: legend
+    type: string
+    required: true
+    description: Legend label text.
+  - name: day
+    type: string
+    required: true
+    description: Day label text.
+  - name: month
+    type: string
+    required: true
+    description: Month label text.
+  - name: year
+    type: string
+    required: true
+    description: Year label text.
+- name: datepicker
+  type: boolean
+  required: false
+  description: Enables datepicker on true.
+- name: errorMessage
+  type: string
+  required: false
+  description: Error message text
+- name: values
+  type: object
+  required: false
+  description: value object containing values for each input.
+  - name: day
+    type: string
+    required: false
+    description: Value for the day input.
+  - name: month
+    type: string
+    required: false
+    description: Value for the month input.
+  - name: year
+    type: string
+    required: false
+    description: Value for the year input.
+- name: classes
+  type: string
+  required: false
+  description: Additional classes for the form-group

@@ -1,0 +1,9 @@
+params:
+- name: classes
+  type: string
+  required: true
+  description: Classes of the badge.
+- name: text
+  type: string
+  required: true
+  description: Text of the badge

@@ -1,10 +1,17 @@
-{% macro select(name, id, label, class, optiontitle, options, disabled, classlabel, formError) %}
-  <div class="form-group {% if formError %}form-error{% endif %}">
-    {% if formError %}<span class="form-error-message"><span class="sr-only">Fejl:</span> {{ formError }}</span> {% endif %}
-    {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}</label>{% endif %}
-    <select class="{{class}} form-select" name="{{name}}" id="{{id}}"  {% if disabled %}disabled="disabled"{% endif %}>
-      <option value>{{optiontitle | default("Vælg")}}</option>
-      {% for option in options %}
+{% from "components/form/controls/label.njk" import label as label %}
+{% macro select(params) %}
+  <div class="form-group {% if params.errorMessage %}form-error{% endif %}">
+     {{label({
+    text: params.label.text,
+    classes: params.label.classes,
+    tooltip: params.label.tooltip,
+    for: params.id,
+    optionalLabel: params.label.optionalLabel,
+    requiredLabel: params.label.requiredLabel
+  }) | indent(2) | trim }}
+    {% if params.errorMessage %}<span class="form-error-message"><span class="sr-only">Fejl:</span> {{ params.errorMessage }}</span> {% endif %}
+    <select class="{{params.classes}} form-select" name="{{params.name}}" id="{{params.id}}"  {% if params.disabled %}disabled="disabled"{% endif %}{% if params.multiple %} multiple{% endif %}>
+      {% for option in params.options %}
         <option value="{{option.value}}" {%if option.selected %}selected{% endif %}>{{option.text}}</option>
       {% endfor %}
     </select>

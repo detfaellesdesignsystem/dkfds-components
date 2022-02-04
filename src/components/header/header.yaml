@@ -1,0 +1,101 @@
+# portal_header
+params:
+- name: compact
+  type: string
+  required: false
+  description: The ID of the input.
+- name: logo
+  type: object
+  required: true
+  description: Logo object.
+  - name: href
+    type: string
+    required: true
+    description: Link on logo.
+  - name: title
+    type: string
+    required: false
+    description: Title on logo.
+  - name: label
+    type: string
+    required: false
+    description: aria-label on logo.
+  - name: classes
+    type: string
+    required: false
+    description: Classes on logo.
+  - name: sronly
+    type: string
+    required: false
+    description: Link text on logo - only read by screenreaders.
+- name: user
+  type: object
+  required: true
+  description: User object
+  - name: name
+    type: string
+    required: true
+    description: Name of user
+  - name: work
+    type: string
+    required: false
+    description: Name of company the user is acting on behalf of.
+- name: link
+  type: object
+  required: false
+  description: Log out button object.
+  - name: classes
+    type: string
+    required: false
+    description: Classes of button.
+  - name: text
+    type: string
+    required: false
+    description: Text on button.
+
+# solution_header
+params:
+- name: classes
+  type: string
+  required: false
+  description: Additional classes of the solution header
+- name: title
+  type: object
+  required: true
+  description: Title object.
+  - name: href
+    type: string
+    required: true
+    description: Link url on solution title
+  - name: text
+    type: string
+    required: true
+    description: Name of solution
+  - name: ariaLabel
+    type: string
+    required: false
+    description: aria-label on solution title.
+  - name: classes
+    type: string
+    required: false
+    description: Additional classes on solution title.
+- name: solutionInfo
+  type: object
+  required: false
+  description: Solution info object
+  - name: hideOnPrint
+    type: boolean
+    required: false
+    description: Hide solution info on print
+- name: authority
+  type: object
+  required: true
+  description: Authority object
+  - name: name
+    type: string
+    required: true
+    description: Name of authority.
+  - name: text
+    type: string
+    required: false
+    description: Text of authority - could be contact info.

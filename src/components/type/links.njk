@@ -1,4 +1,3 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-{% macro link(url, class, text, attr) %}
-  <a href="{{url}}" class="{{class}}" {{attr}}>{{text}}</a>
+{% macro link(params) %}
+  <a href="{{params.url}}" class="{{params.classes}}" {{params.attributes}}>{{params.text}}</a>
 {% endmacro %}

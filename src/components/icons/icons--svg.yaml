@@ -1,0 +1,25 @@
+params:
+- name: name
+  type: string
+  required: true
+  description: Name of icon.
+- name: classes
+  type: string
+  required: false
+  description: Classes of the svg element
+- name: ariaLabel
+  type: string
+  required: false
+  description: Aria-label of the svg
+- name: focusable
+  type: boolean
+  required: false
+  description: If defined, sets focusable to value.
+- name: ariaHidden
+  type: boolean
+  required: false
+  description: Default is true. Sets aria-hidden on svg element.
+- name: tabindex
+  type: boolean
+  required: false
+  description: Sets tabindex to -1 on true.

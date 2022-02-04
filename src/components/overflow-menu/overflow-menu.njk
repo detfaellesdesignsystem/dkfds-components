@@ -1,11 +1,13 @@
- {% macro overflowmenu(text, id, openRight, openLeft, icon, contentHTML, doResponsiveCollapse) %}
-    <div class="overflow-menu {% if openRight %} overflow-menu--open-right {% endif %}{% if openLeft %} overflow-menu--open-left {% endif %}">
-        <button class="button-overflow-menu js-dropdown {% if doResponsiveCollapse %} js-dropdown--responsive-collapse {% endif %}" data-js-target="{{ id }}" aria-haspopup="true" aria-expanded="false">
-            {{ text }}
+ {% macro overflowmenu(params) %}
+ {% set openRight = params.openRight | default(true) %}
+ {% set icon = params.button.icon | default('more-vert') %}
+    <div class="overflow-menu {% if openRight %} overflow-menu--open-right{% else %} overflow-menu--open-left{% endif %}">
+        <button class="button-overflow-menu js-dropdown {% if params.doResponsiveCollapse %} js-dropdown--responsive-collapse {% endif %}" data-js-target="{{ params.id }}" aria-haspopup="true" aria-expanded="false">
+            {% if params.button.srOnly %}<span class="sr-only">{% endif %}{{ params.button.text }}{% if params.button.srOnly %}</span>{% endif %}
             {% if icon %}<svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ icon }}"></use></svg>{% endif %}
         </button>
-        <div class="overflow-menu-inner" id="{{ id }}" aria-hidden="true">
-            {{ contentHTML|safe }}
+        <div class="overflow-menu-inner" id="{{ params.id }}" aria-hidden="true">
+            {{ params.content | safe }}
         </div>
     </div>
 {% endmacro %}

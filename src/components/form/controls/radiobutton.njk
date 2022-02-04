@@ -1,5 +1,5 @@
-{% macro radiobutton(param) %}
-  <input id="{{param.id}}" type="radio" name="{{param.name}}" value="{{param.value}}" {% if param.helptext %}aria-labelledby="form-label-{{param.id}} helptext-{{param.id}}"{% endif %}class="form-radio {% if param.large %}radio-large{% endif %} {{param.inputClasses}}" {% if param.disabled %}disabled{% endif %} {% if param.checked %}checked{% endif %} {{param.inputAttrs | safe }} />
-  <label for="{{param.id}}" id="form-label-{{param.id}}" class="{{param.class}}" {{param.attr | safe}}>{{param.text}} {% if param.srOnly %}<span class="sr-only">{{param.srOnly}}</span>{% endif %}</label>
-  {% if param.helptext %}<span class="form-hint" id="helptext-{{param.id}}">{{ param.helptext }}</span>{% endif %}
+{% macro radiobutton(params) %}
+  <input id="{{params.id}}" type="radio" name="{{params.name}}" value="{{params.value}}" {% if params.helptext %}aria-labelledby="form-label-{{params.id}} helptext-{{params.id}}"{% endif %}class="form-radio {% if params.large %}radio-large{% endif %} {{params.inputClasses}}" {% if params.disabled %}disabled{% endif %} {% if params.checked %}checked{% endif %} {{params.inputAttributes | safe }} />
+  <label for="{{params.id}}" id="form-label-{{params.id}}" class="{{params.labelClassses}}" {{params.labelAttrirbutes | safe}}>{{params.label}} {% if params.srOnly %}<span class="sr-only">{{params.srOnly}}</span>{% endif %}</label>
+  {% if params.helptext %}<span class="form-hint" id="helptext-{{params.id}}">{{ params.helptext }}</span>{% endif %}
 {% endmacro %}

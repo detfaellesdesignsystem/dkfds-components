@@ -1,14 +1,29 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-
-{% macro textinput(id, label, optionallabel, class, error, name, classlabel, success, disabled, hint, placeholder, value, tooltip, tooltipTitle, readonly, type, mandatorylabel) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
-      {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">
-        {{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}{% if tooltip %}<button type="button" class="button-unstyled js-tooltip ml-3" data-tooltip="{{tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}
-        </label>{% endif %}
-      {% if hint %}<span class="form-hint" id="{{id}}-hint">
-      {{hint}}
+{% from "components/form/controls/label.njk" import label as label %}
+{% macro textinput(params) %}<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}">
+{% set isRequired = params.required | default(true) %}
+{% set hintId = params.id + '-hint' %}
+{% set errorId = params.id + '-error' %}
+  {{label({
+    text: params.label.text,
+    classes: params.label.classes,
+    tooltip: params.label.tooltip,
+    for: params.id,
+    optionalLabel: params.label.optionalLabel,
+    requiredLabel: params.label.requiredLabel
+  }) | indent(2) | trim }}
+      {% if params.hint %}<span class="form-hint" id="{{hintId}}">
+      {{params.hint}}
       </span>{% endif %}
-      {% if error %}<span class="form-error-message" id="{{id}}-error">
-      <span class="sr-only">Fejl:</span> {{error}}
+      {% if params.errorMessage %}<span class="form-error-message" id="{{errorId}}">
+      <span class="sr-only">Fejl:</span> {{params.errorMessage | safe}}
       </span>{% endif %}
-     <input class="form-input {{class}}" {% if not optionallabel %}required {% endif %}{% if placeholder %} placeholder="{{placeholder}}" {% endif %}id="{{id}}" value="{{value}}" name="{{name}}" type="{{type | default('text') }}" {% if disabled %}disabled="disabled"{% endif %} {% if error %}aria-invalid="true" {% endif %}{% if error or hint %}aria-describedby="{% if hint%}{{id}}-hint{% endif %} {% if error %}{{id}}-error{% endif %}"{% endif %}  {% if readonly %} readonly {% endif %}>
+      {%- if params.suffix or params.prefix %}<div class="form-input-wrapper{% if params.prefix %} form-input-wrapper--prefix{% endif %}{% if params.suffix %} form-input-wrapper--suffix{% endif %}">{% endif -%}
+       {%- if params.prefix -%}
+       <div class="form-input-prefix" aria-hidden="true">{{params.prefix}}</div>
+       {%- endif -%}
+      <input class="form-input{% if params.classes %} {{params.classes}}{% endif %}" {% if params.placeholder %} placeholder="{{params.placeholder}}" {% endif %}id="{{params.id}}"{% if params.value %} value="{{params.value}}"{% endif %} name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.error %}aria-invalid="true" {% endif %}{% if params.error or params.hint %}aria-describedby="{% if params.hint%}{{hintId}}{% if params.error %} {% endif %}{% endif %}{% if params.error %}{{errorId}}{% endif %}"{% endif %}{% if params.readonly %} readonly{% endif %}{% if isRequired %} required{% endif %}{% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %} />
+       {%- if params.suffix -%}
+       <div class="form-input-suffix" aria-hidden="true">{{params.suffix}}</div>{%- endif -%}
+      {% if params.suffix or params.prefix %}</div>{% endif %}
   </div>{% endmacro %}

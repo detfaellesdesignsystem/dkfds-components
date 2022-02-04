@@ -62,8 +62,8 @@
       }
       .sidenav-title{
         margin-left: units(2);
+        white-space: pre-line;
       }
-
 
       .sidenav-information {
         color: color($sidenav-link-default-extra-information-text-color);

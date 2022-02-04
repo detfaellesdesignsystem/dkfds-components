@@ -1,17 +1,16 @@
-{% macro textarea(id, label, optionallabel, class, name, classlabel, placeholder, hint, error, rows) %}
-  {% if error %}
-  <div class="form-group form-error">
-     {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label> {% endif %}
-     {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-      <span class="form-error-message" id="form-error-message-{{id}}"><span class="sr-only">Fejl:</span> {{error}}</span>
-     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" aria-describedby="form-error-message-{{id}}"></textarea>
+{% from "components/form/controls/label.njk" import label as label %}
+{% macro textarea(params) %}
+  <div class="form-group{% if params.errorMessage %} form-error{% endif %}">
+     {{label({
+    text: params.label.text,
+    classes: params.label.classes,
+    tooltip: params.label.tooltip,
+    for: params.id,
+    optionalLabel: params.label.optionalLabel,
+    requiredLabel: params.label.requiredLabel
+  }) | indent(2) | trim }}
+     {% if params.helptext %}<span class="form-hint" id="input-hint-message-{{params.id}}">{{params.helptext}}</span>{% endif %}
+     {% if params.errorMessage %}<span class="form-error-message" id="form-error-message-{{params.id}}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
+     <textarea class="form-input {{params.classes}}"{% if params.rows %} rows="{{ params.rows }}"{% endif %}{% if params.placeholder %} placeholder="{{params.placeholder}}"{% endif %}{% if params.required %} required{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.readonly %} readonly{% endif %} id="{{params.id}}" name="{{params.name}}" {% if params.errorMessage or params.helptext %}aria-describedby="{% if params.errorMessage %}form-error-message-{{params.id}}{% endif %} {% if params.helptext %}input-hint-message-{{params.id}}"{% endif %}{% endif %}>{{params.value}}</textarea>
   </div>
-  {% else %}
-  <div class="form-group{% if error %} form-error{% endif %}">
-     {% if label != "" %}<label class="form-label {{classlabel}}" for="{{id}}">{{label}}{% if optionallabel %}<span class="weight-normal"> {{optionallabel}}</span>{% endif %}</label>{% endif %}
-     {% if hint %}<span class="form-hint" id="input-hint-message-{{id}}">{{hint}}</span>{% endif %}
-     {% if error %}<span class="form-error-message" id="form-error-message-{{id}}"><span class="sr-only">Fejl:</span> {{error}}</span>{% endif %}
-     <textarea class="form-input {{class}}" {% if rows %}rows="{{ rows }}"{% endif %} placeholder="{{placeholder}}" id="{{id}}" name="{{name}}" {% if error %}aria-describedby="form-error-message-{{id}}"{% endif %}{% if error %}aria-describedby="input-hint-message-{{id}}"{% endif %}></textarea>
-  </div>
-  {% endif %}
 {% endmacro %}

@@ -1,0 +1,17 @@
+params:
+- name: type
+  type: string
+  required: false
+  description: Type of toast. Options are success, warning, error, info
+- name: id
+  type: string
+  required: false
+  description: Id of the toast.
+- name: heading
+  type: string
+  required: false
+  description: Heading of the toast.
+- name: content
+  type: string
+  required: false
+  description: Message of the toast.

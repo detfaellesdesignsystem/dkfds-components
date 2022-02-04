@@ -1,0 +1,33 @@
+params:
+- name: openRight
+  type: boolean
+  required: false
+  description: Opens the overflow menu on the right on true. Left on false. Default is true.
+- name: doResponsiveCollapse
+  type: boolean
+  required: false
+  description: 
+- name: button
+  type: object
+  required: true
+  description: Text on button.
+  - name: text
+    type: string
+    required: true
+    description: Text on button.
+  - name: srOnly
+    type: boolean
+    required: false
+    description: Hide text on button except for screenreaders.
+  - name: icon
+    type: string
+    required: true
+    description: Icon to use on button.
+- name: id
+  type: string
+  required: true
+  description: Id of the drop down element.
+- name: content
+  type: string
+  required: true
+  description: Id of the drop down element. Allows HTML.

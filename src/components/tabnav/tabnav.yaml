@@ -1,0 +1,33 @@
+params:
+- name: items
+  type: array
+  required: true
+  description: The ID of the input.
+  - name: button
+    type: object
+    required: true
+    description: The ID of the input.
+    - name: id
+      type: string
+      required: true
+      description: The ID of the button.
+    - name: text
+      type: string
+      required: true
+      description: The text of the button.
+  - name: panel
+    type: object
+    required: true
+    description: The ID of the input.
+    - name: panel
+      type: object
+      required: true
+      description: The ID of the panel.
+    - name: content
+      type: string
+      required: true
+      description: Content of the panel.
+  - name: active
+    type: boolean
+    required: false
+    description: Tab is active on true.

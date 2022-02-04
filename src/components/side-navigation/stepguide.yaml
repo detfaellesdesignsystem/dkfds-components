@@ -1,0 +1,37 @@
+params:
+- name: subclass
+  type: string
+  required: true
+  description: Classes on sublists (ul element)
+- name: steps
+  type: array
+  required: true
+  description: List of steps.
+  - name: text
+    type: string
+    required: true
+    description: Link text
+  - name: href
+    type: string
+    required: true
+    description: Link url
+  - name: active
+    type: boolean
+    required: false
+    description: Is link active page?
+  - name: information
+    type: string
+    required: false
+    description: Additional text information on link
+  - name: icon
+    type: string
+    required: false
+    description: Icon object.
+  - name: iconclass
+    type: string
+    required: false
+    description: additional classes on sidenav-icon element.
+  - name: disabled
+    type: boolean
+    required: false
+    description: Is step disabled?

@@ -1,0 +1,25 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The ID of the modal.
+- name: forcedAction
+  type: boolean
+  required: false
+  description: Disables close functions and forces the user to choose (on true - default is false).
+- name: heading
+  type: string
+  required: true
+  description: Heading of the modal.
+- name: headingId
+  type: string
+  required: true
+  description: Id of the heading element.
+- name: content
+  type: string
+  required: true
+  description: Content of the modal. Allows HTML.
+- name: actions
+  type: string
+  required: true
+  description: Action buttons of the content. Allows HTML.

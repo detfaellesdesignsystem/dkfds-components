@@ -1,0 +1,66 @@
+params:
+- name: columns
+  type: object
+  required: false
+  description: Array of column objects 
+  - name: columnSize
+    type: int
+    required: true
+    description: Number of columns out of 12. Sets the width of the column
+  - name: classes
+    type: string
+    required: false
+    description: Additional classes to add to the column
+  - name: textAlignRight
+    type: boolean
+    required: false
+    description: Sets the text to align right on true. Left on false.
+  - name: content
+    type: string
+    required: false
+    description: Content of the column
+  - name: lists
+    type: array
+    required: false
+    description: Array of lists.
+    - name: classes
+      type: string
+      required: false
+      description: Classes of the list. Default is "unstyled-list".
+    - name: inlineList
+      type: boolean
+      required: false
+      description: Makes the list inline on true.
+    - name: items
+      type: object
+      required: false
+      description: Array of items for the list.
+      - name: hideOnPrint
+        type: boolean
+        required: false
+        description: Hides list item on print.
+      - name: content
+        type: string
+        required: false
+        description: Content of list item. Can contain HTML.
+- name: list
+  type: array
+  required: false
+  description: Inline list.
+  - name: items
+    type: object
+    required: false
+    description: Array of items for the list.
+    - name: hideOnPrint
+      type: boolean
+      required: false
+      description: Hides list item on print.
+    - name: content
+      type: string
+      required: false
+      description: Content of list item. Can contain HTML.
+- name: languageSwitcher
+  type: object
+  required: false
+  description: Language switcher object.
+  

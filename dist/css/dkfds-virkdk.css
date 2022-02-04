@@ -11733,6 +11733,7 @@ input[type=search]{
 }
 .sidenav-list li a .sidenav-title{
   margin-left:4px;
+  white-space:pre-line;
 }
 .sidenav-list li a .sidenav-information{
   color:#747474;

@@ -1,4 +1,4 @@
-{% macro toggle(param) %}
-<input id="{{param.id}}" type="checkbox" {% if param.name %}name="{{param.name}}"{% endif %} value="{{param.value}}" class="form-toggle" {% if param.disabled %}disabled{% endif %} {% if param.checked %}checked{% endif %} {{param.inputAttrs | safe }} />
-<label for="{{param.id}}" class="form-toggle-label{{param.class}}" {{param.attr}} >{{param.text | safe }}</label>
+{% macro toggle(params) %}
+<input id="{{params.id}}" type="checkbox" {% if params.name %}name="{{params.name}}"{% endif %} value="{{params.value}}" class="form-toggle" {% if params.disabled %}disabled{% endif %} {% if params.checked %}checked{% endif %} {{params.inputAttributes | safe }} />
+<label for="{{params.id}}" class="form-toggle-label {{params.labelClasses}}" {{params.labelAttributes | safe}} >{{params.label | safe }}</label>
 {% endmacro %}

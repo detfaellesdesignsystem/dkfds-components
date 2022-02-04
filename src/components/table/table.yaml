@@ -1,0 +1,42 @@
+params:
+- name: selectable
+  type: boolean
+  required: false
+  description: Set to true if rows are selectable.
+- name: id
+  type: string
+  required: false
+  description: Id of the table.
+- name: thead
+  type: array
+  required: true
+  description: List of table headers.
+  - type: string
+    required: true
+    description: Table header
+- name: tbody
+  type: array
+  required: true
+  description: List of table rows.
+  - type: array
+    required: true
+    description: List of cell values.
+    - type: string
+      required: true
+      description: Cell value
+- name: actions
+  type: array
+  required: false
+  description: List of actions to take with selected rows.
+  - name: text
+    type: string
+    required: true
+    description: Text on action button.
+  - name: classes
+    type: string
+    required: true
+    description: Classes of action button.
+  - name: icon
+    type: string
+    required: false
+    description: Icon name of action button.
