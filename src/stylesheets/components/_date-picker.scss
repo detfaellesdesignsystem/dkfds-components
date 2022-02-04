@@ -30,6 +30,7 @@
   margin-top: 0.5em;
   width: 3em;
   display: block;
+  cursor: pointer;
 }
 
 .date-picker--initialized {
@@ -126,6 +127,7 @@
   background-position: center;
   height: 30px;
   padding: 20px 10px;
+  cursor: pointer;
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
@@ -154,6 +156,7 @@
   width: 100%;
   padding: 10px 8px 10px 0px;
   position: relative;
+  cursor: pointer;
 
   
   @include media-breakpoint-up(md) {
@@ -207,6 +210,10 @@
     color: color($datepicker-previous-next-month-text-color);
     text-indent: -99999px;
     background-color: color($datepicker-previous-next-month-background-color);
+
+    &:hover {
+      background-color: color($datepicker-previous-next-month-background-color-hover);
+    }
   }
 
   &--selected,
@@ -265,11 +272,11 @@
 .date-picker__calendar__month-selection {
   @include button-unstyled;
   display: inline-block;
-  
   padding: 8px 4px;
   width: 100%;
   text-align: center;
   font-weight: $font-weight-semibold;
+  cursor: pointer;
 
   @include media-breakpoint-up(md) {
     height: 100%;
@@ -290,6 +297,7 @@
   width: 100%;
   display: block;
   text-align: center;
+  cursor: pointer;
 
   &--focused {
     @include focus-outline();
@@ -333,6 +341,7 @@
   background-position: center;
   margin: auto;
   padding: 0px 8px;
+  cursor: pointer;
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
@@ -349,6 +358,7 @@
   width: 100%;
   display: block;
   text-align: center;
+  cursor: pointer;
 
   &--focused {
     @include focus();

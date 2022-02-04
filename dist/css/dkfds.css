@@ -9957,6 +9957,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin-top:0.5em;
   width:3em;
   display:block;
+  cursor:pointer;
 }
 .date-picker__button:hover, .date-picker__button:focus{
   background-color:transparent;
@@ -10051,6 +10052,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-position:center;
   height:30px;
   padding:20px 10px;
+  cursor:pointer;
 }
 .date-picker__calendar__previous-year:hover, .date-picker__calendar__previous-year:focus,
 .date-picker__calendar__previous-month:hover,
@@ -10102,6 +10104,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:100%;
   padding:10px 8px 10px 0px;
   position:relative;
+  cursor:pointer;
 }
 .date-picker__calendar__date:hover, .date-picker__calendar__date:focus{
   background-color:transparent;
@@ -10150,9 +10153,12 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   pointer-events:none;
 }
 .date-picker__calendar__date--next-month:not([disabled]), .date-picker__calendar__date--previous-month:not([disabled]){
-  color:#F5F5F5;
+  color:#1a1a1a;
   text-indent:-99999px;
   background-color:#F5F5F5;
+}
+.date-picker__calendar__date--next-month:not([disabled]):hover, .date-picker__calendar__date--previous-month:not([disabled]):hover{
+  background-color:#DCDCDC;
 }
 .date-picker__calendar__date--selected, .date-picker__calendar__date--range-date{
   background-color:#454545;
@@ -10211,6 +10217,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:100%;
   text-align:center;
   font-weight:600;
+  cursor:pointer;
 }
 .date-picker__calendar__year-selection:hover, .date-picker__calendar__year-selection:focus,
 .date-picker__calendar__month-selection:hover,
@@ -10246,6 +10253,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:100%;
   display:block;
   text-align:center;
+  cursor:pointer;
 }
 .date-picker__calendar__month:hover, .date-picker__calendar__month:focus{
   background-color:transparent;
@@ -10291,6 +10299,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-position:center;
   margin:auto;
   padding:0px 8px;
+  cursor:pointer;
 }
 .date-picker__calendar__previous-year-chunk:hover, .date-picker__calendar__previous-year-chunk:focus,
 .date-picker__calendar__next-year-chunk:hover,
@@ -10324,6 +10333,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:100%;
   display:block;
   text-align:center;
+  cursor:pointer;
 }
 .date-picker__calendar__year:hover, .date-picker__calendar__year:focus{
   background-color:transparent;
