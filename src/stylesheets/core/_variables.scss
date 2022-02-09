@@ -1,3 +1,4 @@
+@use 'sass:math';
 // These variables drive almost every aspect of the Frontend Styleguide.
 // Every variable is declared as !default so that it can be overridden
 // by a previous import.
@@ -384,7 +385,7 @@ $grid-gutter-width:             32px !default; //16px on each side of the column
 
 $text-max-width:                66ch !default; //equivalent to 75 characters with spaces (ish).
 $site-max-width:                $grid-xl !default; // 1200px
-$site-margins:                  ($grid-gutter-width / 2) !default;
+$site-margins:                  math.div($grid-gutter-width, -2) !default;
 $site-margins-mobile:           1.5rem !default;
 $article-max-width:             600px !default;
 $label-border-radius:           2px !default;
