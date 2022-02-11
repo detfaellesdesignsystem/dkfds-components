@@ -42,8 +42,8 @@
   position: relative;
   width: 100%;
   min-height: 1px; // Prevent columns from collapsing when empty
-  padding-right: math.div($grid-gutter-width, -2);
-  padding-left: math.div($grid-gutter-width, -2);
+  padding-right: math.div($grid-gutter-width, 2);
+  padding-left: math.div($grid-gutter-width, 2);
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {

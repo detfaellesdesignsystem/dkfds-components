@@ -5,8 +5,8 @@
 
 @mixin grid-container() {
   width: 100%;
-  padding-right: math.div($grid-gutter-width, -2);
-  padding-left: math.div($grid-gutter-width, -2);
+  padding-right: math.div($grid-gutter-width, 2);
+  padding-left: math.div($grid-gutter-width, 2);
   margin-right: auto;
   margin-left: auto;
 }
@@ -24,8 +24,8 @@
 @mixin grid-row() {
   display: flex;
   flex-wrap: wrap;
-  margin-right: ($grid-gutter-width / -2);
-  margin-left: ($grid-gutter-width / -2);
+  margin-right: ($grid-gutter-width / 2);
+  margin-left: ($grid-gutter-width / 2);
 }
 
 @mixin grid-col($size, $columns: $grid-columns) {
