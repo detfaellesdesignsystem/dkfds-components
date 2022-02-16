@@ -11,10 +11,6 @@ params:
   type: string
   required: false
   description: Heading level of the button. If false, no heading around the button. Otherwise default is h3.
-- name: borderless
-  type: boolean
-  required: false
-  description: Default is false. If true, the borders around button and content in accordions will not be visible.
 - name: multiselectable
   type: boolean
   required: false

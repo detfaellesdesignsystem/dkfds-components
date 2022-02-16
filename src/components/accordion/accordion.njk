@@ -2,10 +2,9 @@
 <div class="container">
 {% macro accordion(params) %}
 {% set bulk = params.openCloseButton | default(false) %}
-{% set borderless = params.borderless | default(false) %}
 {% set multiselectable = params.multiselectable | default(true) %}
 {% if bulk %}<button class="accordion-bulk-button" data-accordion-bulk-expand="true">Åbn alle</button>{% endif %}
-<ul class="accordion{% if borderless %} accordion-borderless{% else %} accordion-bordered{% endif %}{% if multiselectable %} accordion-multiselectable{% endif %}">
+<ul class="accordion{% if multiselectable %} accordion-multiselectable{% endif %}">
   {%- for item in params.items -%}
   <li>
     {%- if params.headingLevel !== false -%}
