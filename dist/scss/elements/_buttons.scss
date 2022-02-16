@@ -7,7 +7,7 @@ a.button{
 .button{
   appearance: none;
   display: inline-block;
-  width: 100%;
+  width: auto;
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
