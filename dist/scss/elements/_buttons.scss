@@ -8,7 +8,6 @@ a.button{
   appearance: none;
   display: inline-block;
   width: 100%;
-  //@include margin(0.5em 0.5em 0.5em null);
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
@@ -24,16 +23,6 @@ a.button{
   text-decoration: none;
   user-select: text;
   cursor: pointer;
-
-  @include media-breakpoint-up(md) {
-    width: auto;
-  }
-
-  @include media-breakpoint-down(sm) {
-    & + .button {
-      margin-top: 8px;
-    }
-  }
 
   &.focus,
   &:focus {

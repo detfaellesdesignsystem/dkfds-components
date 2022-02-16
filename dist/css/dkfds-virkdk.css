@@ -7137,16 +7137,6 @@ a.button{
           user-select:text;
   cursor:pointer;
 }
-@media (min-width: 768px){
-  .button{
-    width:auto;
-  }
-}
-@media (max-width: 767px){
-  .button + .button{
-    margin-top:8px;
-  }
-}
 .button.focus, .button:focus{
   outline:4px solid #747474;
   outline-offset:1px;
@@ -9470,6 +9460,7 @@ hr{
   position:relative;
   transition:none;
   border-radius:3px;
+  border:1px solid #747474;
 }
 .accordion-button:hover, .tabnav > button:hover, .accordion-button:focus, .tabnav > button:focus{
   background-color:transparent;
@@ -9537,13 +9528,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-image:url("../img/svg-icons/remove.svg");
 }
 
-.accordion-bordered .accordion-button, .accordion-bordered .tabnav > button{
-  border:1px solid #747474;
-  border-radius:3px 3px 0 0;
-}
-
-.accordion, .tabnav,
-.accordion-bordered{
+.accordion, .tabnav{
   margin:0;
   list-style-type:none;
   padding-left:0;
@@ -9551,61 +9536,37 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   padding:0;
   width:100%;
 }
-.accordion > li, .tabnav > li,
-.accordion-bordered > li{
+.accordion > li, .tabnav > li{
   margin-bottom:0;
   margin-top:0;
   padding-left:0;
 }
-.accordion > li::before, .tabnav > li::before,
-.accordion-bordered > li::before{
+.accordion > li::before, .tabnav > li::before{
   content:"" !important;
   padding-right:0 !important;
 }
-.accordion > ul li ul, .tabnav > ul li ul,
-.accordion-bordered > ul li ul{
+.accordion > ul li ul, .tabnav > ul li ul{
   list-style:disc;
 }
-.accordion > ul li ul > li > ul, .tabnav > ul li ul > li > ul,
-.accordion-bordered > ul li ul > li > ul{
+.accordion > ul li ul > li > ul, .tabnav > ul li ul > li > ul{
   list-style:circle;
 }
-.accordion > ul li ul > li > ul > li > ul, .tabnav > ul li ul > li > ul > li > ul,
-.accordion-bordered > ul li ul > li > ul > li > ul{
+.accordion > ul li ul > li > ul > li > ul, .tabnav > ul li ul > li > ul > li > ul{
   list-style:square;
 }
-.accordion + .accordion, .tabnav + .accordion, .accordion + .tabnav, .tabnav + .tabnav,
-.accordion + .accordion-bordered,
-.tabnav + .accordion-bordered,
-.accordion-bordered + .accordion,
-.accordion-bordered + .tabnav,
-.accordion-bordered + .accordion-bordered{
+.accordion + .accordion, .tabnav + .accordion, .accordion + .tabnav, .tabnav + .tabnav{
   margin-top:0.8rem;
 }
-.accordion > li, .tabnav > li,
-.accordion-bordered > li{
+.accordion > li, .tabnav > li{
   list-style:none;
   margin-bottom:0.8rem;
   width:100%;
 }
-.accordion > li > h1, .tabnav > li > h1, .accordion > li > h2, .tabnav > li > h2, .accordion > li > h3, .tabnav > li > h3, .accordion > li > h4, .tabnav > li > h4, .accordion > li > h5, .tabnav > li > h5, .accordion > li > h6, .tabnav > li > h6,
-.accordion-bordered > li > h1,
-.accordion-bordered > li > h2,
-.accordion-bordered > li > h3,
-.accordion-bordered > li > h4,
-.accordion-bordered > li > h5,
-.accordion-bordered > li > h6{
+.accordion > li > h1, .tabnav > li > h1, .accordion > li > h2, .tabnav > li > h2, .accordion > li > h3, .tabnav > li > h3, .accordion > li > h4, .tabnav > li > h4, .accordion > li > h5, .tabnav > li > h5, .accordion > li > h6, .tabnav > li > h6{
   margin-top:0px;
   margin-bottom:0px;
   letter-spacing:normal;
   max-width:none;
-}
-
-.accordion-bordered .accordion-content, .accordion-bordered .tabnav-panel{
-  border-bottom:1px solid #747474;
-  border-left:1px solid #747474;
-  border-right:1px solid #747474;
-  border-radius:0 0 3px 3px;
 }
 
 .accordion-content, .tabnav-panel{
@@ -9613,6 +9574,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   color:#1a1a1a;
   overflow:auto;
   padding:1.6rem;
+  border-bottom:1px solid #747474;
+  border-left:1px solid #747474;
+  border-right:1px solid #747474;
+  border-radius:0 0 3px 3px;
 }
 .accordion-content p, .tabnav-panel p, .accordion-content h1, .tabnav-panel h1, .accordion-content h2, .tabnav-panel h2, .accordion-content h3, .tabnav-panel h3, .accordion-content h4, .tabnav-panel h4, .accordion-content h5, .tabnav-panel h5, .accordion-content .h1, .tabnav-panel .h1, .accordion-content .h2, .tabnav-panel .h2, .accordion-content .h3, .tabnav-panel .h3, .accordion-content .h4, .tabnav-panel .h4, .accordion-content .h5, .tabnav-panel .h5{
   color:#1a1a1a;
@@ -9639,7 +9604,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true]{
   background-color:#DCDCDC;
 }
-.accordion-bordered .accordion-button[aria-expanded=true]:not(.accordion-error), .accordion-bordered .tabnav > button[aria-expanded=true]:not(.accordion-error){
+.accordion-button[aria-expanded=true]:not(.accordion-error), .tabnav > button[aria-expanded=true]:not(.accordion-error){
   border-bottom:1px solid #BFBFBF;
 }
 
@@ -10824,7 +10789,12 @@ body.modal-open{
   color:#1a1a1a;
 }
 .fds-modal .modal-title{
-  margin:0 48px 0 0;
+  margin:24px 48px 8px 0;
+}
+@media (min-width: 768px){
+  .fds-modal .modal-title{
+    margin:0 48px 0 0;
+  }
 }
 .fds-modal .modal-body{
   background-color:white;

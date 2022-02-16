@@ -59,7 +59,11 @@ body.modal-open{
     }
   }
   .modal-title {
-    margin: 0 units(8) 0 0;
+    margin: units(5) units(8) units(3) 0;
+    
+    @include media-breakpoint-up(md) {
+      margin: 0 units(8) 0 0;
+    }
   }
 
   .modal-body {
