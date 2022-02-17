@@ -7,7 +7,7 @@ a.button{
 .button{
   appearance: none;
   display: inline-block;
-  width: auto;
+  width: 100%;
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
@@ -23,6 +23,16 @@ a.button{
   text-decoration: none;
   user-select: text;
   cursor: pointer;
+  & + button{
+    margin-top: units(3);
+  }
+
+  @include media-breakpoint-up(sm) {
+    width: auto;
+    & + button{
+      margin-top: 0;
+    }
+  }
 
   &.focus,
   &:focus {

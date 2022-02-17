@@ -7117,7 +7117,7 @@ a.button{
      -moz-appearance:none;
           appearance:none;
   display:inline-block;
-  width:auto;
+  width:100%;
   padding:8px calc(16px - 2px) calc(8px - 2px);
   border-radius:4px;
   border-width:2px 2px 4px 2px;
@@ -7137,6 +7137,17 @@ a.button{
       -ms-user-select:text;
           user-select:text;
   cursor:pointer;
+}
+.button + button{
+  margin-top:8px;
+}
+@media (min-width: 576px){
+  .button{
+    width:auto;
+  }
+  .button + button{
+    margin-top:0;
+  }
 }
 .button.focus, .button:focus{
   outline:4px solid #747474;
