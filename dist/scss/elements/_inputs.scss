@@ -118,23 +118,24 @@ textarea.no-resize{
 ////////////////
 
 .form-select {
-  border: border($input-border);
-  border-radius: $input-border-radius;
-  color: color($input-text-color); // standardize on firefox
+  border: border($select-border);
+  border-radius: $select-border-radius;
+  color: color($select-text-color); // standardize on firefox
   display: block;
-  font-size: $input-font-size;
-  line-height: $input-line-height;
-  height: calc(#{$input-line-height} + (8px * 2));
+  font-size: $select-font-size;
+  line-height: $select-line-height;
+  height: calc(#{$select-line-height} + (8px * 2));
   max-width: 32rem;
   width: 100%;
-  margin-top:  units(3);;
+  margin-top:  units(3);
   text-align: left;
-  padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
+  padding: calc(8px - #{border-width($select-border)}) calc(16px - #{border-width($select-border)});
   padding-right: 32px;
   //custom arrrow:
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-color: color($select-background-color);
   background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: calc(100% - 10px);

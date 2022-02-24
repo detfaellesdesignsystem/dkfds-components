@@ -172,19 +172,26 @@
 
   // level 1
   > li {
-    padding-left: units(4);
+    & > .overflow-menu > button.button-overflow-menu{
+      padding-left: units(4);
+    }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       border-bottom: 0;
-      padding-left: 0;
       padding-right: 0;
+      padding-left: 0;
+      & > .overflow-menu > button.button-overflow-menu{
+        padding-left: 0;
+      }
     }
     > .nav-link {
       font-size: $base-font-size;
       line-height: $base-line-height;
       white-space: nowrap;
+      padding-left: units(4);
 
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-bottom: 0px;
+        padding-left: 0;
       }
       &:hover {
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {

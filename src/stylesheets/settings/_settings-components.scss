@@ -241,6 +241,14 @@ $input-range-track-default-border: $input-border !default;
 $input-range-thumb-default-border: $input-border !default;
 $input-range-thumb-default-background-color: 'gray-100' !default;
 
+// Select
+$select-background-color: 'white';
+$select-border: $input-border !default;
+$select-border-radius: $input-border-radius !default;
+$select-text-color: $input-text-color !default;
+$select-font-size: $input-font-size !default;
+$select-line-height: $input-line-height !default;
+
 // Header
 $header-border-bottom: 10 !default;
 $header-portal-background-color: 'white' !default;

@@ -33,6 +33,8 @@
 
   &.row-bordered{
     border-top: border(20);
+    padding-top: units(4);
+    padding-bottom: units(4);
     &:last-of-type{
       border-bottom: border(20);
     }
