@@ -7526,7 +7526,6 @@ input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
   -moz-osx-font-smoothing:grayscale;
   -webkit-font-smoothing:antialiased;
   text-align:center;
-  text-transform:uppercase;
   display:inline-block;
 }
 .badge.badge-large{

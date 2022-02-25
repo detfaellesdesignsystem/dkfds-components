@@ -1,6 +1,4 @@
-// Tags
 .badge{
-  //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
   padding-left: units(3);
   padding-right:units(3);
@@ -10,15 +8,11 @@
   background: color($badge-default-background-color);
   @include font-smoothing;
   text-align: center;
-  text-transform: uppercase;
   display: inline-block;
-
-  //############ Large badge ###############
   &.badge-large {
     font-size: $badge-large-font-size;
     line-height: $badge-large-line-height;
   }
- //############ Small badge ###############
   &.badge-small {
     font-size: $badge-small-font-size;
     line-height: $badge-small-line-height;
