@@ -201,7 +201,6 @@ $z-index-nav:     9000;
     }
     .button-signin, .button-signout{
       margin-top: 8px;
-      width: auto;
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
@@ -210,7 +209,6 @@ $z-index-nav:     9000;
 
   .solution-info-mobile{
     padding: units(5) units(4);
-    background-color: color($header-solution-info-mobile-background-color);
     p{
       margin-bottom: units(3);
       color: color($header-solution-info-mobile-text-color);
