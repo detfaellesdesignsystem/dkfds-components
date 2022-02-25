@@ -44,7 +44,8 @@
     width: calc(100% - 2px);
     color: color($table-text-color);
     font-size: $table-font-size;
-    border-collapse: collapse;
+    border-collapse: inherit;
+    border-spacing: 0;
 
     &.table--compact {
       th,td {
@@ -94,9 +95,6 @@
 
     thead {
         background-color: color($table-head-background-color);
-        tr {
-            border-bottom: border($table-row-border);
-        }
         th{
             font-weight: $table-head-font-weight;
             text-align: left;
@@ -107,24 +105,20 @@
         }
     }
     tbody{
-        th{
-            font-weight: $table-head-font-weight;
-        }
-        tr {
-          background-color: transparent;
-          &:last-child td, &:last-child th{
+      th{
+          font-weight: $table-head-font-weight;
+      }
+      tr {
+        background-color: transparent;
+        &:last-child{
+          td, th{
             padding-bottom: calc(#{units(4)} - 1px);
           }
+          & > td, & > th{
+              border-bottom: none;
+          }
         }
-    }
-
-
-    tr{
-        &:last-child{
-            & > td, & > th{
-                border-bottom: none;
-            }
-        }
+      }
     }
 
     //no border
@@ -161,7 +155,7 @@
         tbody{
             tr{
                 td, th {
-                    border: border($table-row-border);
+                    border-bottom: border($table-row-border);
                     border-left: 0;
                     border-right: 0;
                     &:first-child{

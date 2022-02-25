@@ -9092,7 +9092,8 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   width:calc(100% - 2px);
   color:#1a1a1a;
   font-size:1.6rem;
-  border-collapse:collapse;
+  border-collapse:inherit;
+  border-spacing:0;
 }
 .table.table--compact th, .table.table--compact td{
   padding-top:calc(8px - 1px);
@@ -9132,9 +9133,6 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 .table thead{
   background-color:#F5F5F5;
 }
-.table thead tr{
-  border-bottom:1px solid #BFBFBF;
-}
 .table thead th{
   font-weight:600;
   text-align:left;
@@ -9152,7 +9150,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 .table tbody tr:last-child td, .table tbody tr:last-child th{
   padding-bottom:calc(16px - 1px);
 }
-.table tr:last-child > td, .table tr:last-child > th{
+.table tbody tr:last-child > td, .table tbody tr:last-child > th{
   border-bottom:none;
 }
 .table.table--borderless{
@@ -9183,7 +9181,7 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   padding-right:0;
 }
 .table.table--borderless tbody tr td, .table.table--borderless tbody tr th{
-  border:1px solid #BFBFBF;
+  border-bottom:1px solid #BFBFBF;
   border-left:0;
   border-right:0;
 }
