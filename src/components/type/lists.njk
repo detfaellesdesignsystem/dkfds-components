@@ -2,9 +2,9 @@
 {% macro ul_list(params) %}
   {% for item in params.items %}
   <li>{{ item.text }}
-    {%- if item.list -%}
-    <ul class="{{ subclass }}">
-      {{ ul_list({"items": item.list, "subclass": params.subclass}) }}
+    {%- if item.items -%}
+    <ul {% if params.subclass%}class="{{ params.subclass }}" {% endif %}>
+      {{ ul_list({"items": item.items, "subclass": params.subclass}) }}
     </ul>
     {%- endif -%}
   </li>
@@ -16,8 +16,8 @@
   {%- for item in params.items -%}
   <li>{{ item.text }}
     {%- if item.list -%}
-    <ol class="{{ params.subclass }}" {% if item.list.type %}type="{{item.list.type}}"{% endif %}>
-      {{ ol_list({"items": item.list, "subclass": params.subclass}) }}
+    <ol {% if params.subclass%}class="{{ params.subclass }}" {% endif %}{% if item.list.type %}type="{{item.list.type}}"{% endif %}>
+      {{ ol_list({"items": item.list.items, "type": item.list.type, "subclass": params.subclass}) }}
     </ol>
     {%- endif -%}
   </li>
