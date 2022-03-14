@@ -607,11 +607,8 @@ const changeElementValue = (el, value = "") => {
   const elementToChange = el;
   elementToChange.value = value;
 
-  const event = new CustomEvent("change", {
-    bubbles: true,
-    cancelable: true,
-    detail: { value },
-  });
+
+  var event = new Event('change');
   elementToChange.dispatchEvent(event);
 };
 
