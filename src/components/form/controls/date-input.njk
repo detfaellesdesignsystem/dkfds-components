@@ -4,7 +4,7 @@
   <fieldset aria-describedby="{{params.id.helptext | default('example-date-field-hint')}} {% if params.errorMessage %}{{params.id.errorMessage | default('example-date-field-error')}}{% endif %}">
     <legend class="form-label">{{params.labels.legend}}{% if params.tooltip %}<button type="button" class="js-tooltip button-unstyled ml-3" data-tooltip="{{params.tooltip}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
     <span class="form-hint" id="{{params.id.helptext | default('example-date-field-hint')}}">{{params.helptext}}</span>
-    <span class="form-error-message {% if not params.errorMessage %} d-none{% endif %}" id="{{ params.id.errorMessage | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>
+    {% if params.errorMessage %}<span class="form-error-message {% if not params.errorMessage %} d-none{% endif %}" id="{{ params.id.errorMessage | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
     <div class="date-group js-calendar-group mt-3">
       <div class="form-group form-group-day">
         <label class="form-label" for="{{ params.id.day | default('date-day') }}">{{params.labels.day}}</label>

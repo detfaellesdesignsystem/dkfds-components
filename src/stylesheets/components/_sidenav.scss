@@ -150,27 +150,23 @@
       font-size: $typography-small-text-font-size;
     }
   }
-}
-.sidenav-list-locked {
-
-  li {
-    &.disabled {
+  
+  li.disabled {
+    cursor: not-allowed;
+    a {
       cursor: not-allowed;
-      a {
-        cursor: not-allowed;
+      color: color($sidenav-link-disabled-color);
+
+      &:hover {
+        background-color: transparent;
+        text-decoration: none;
         color: color($sidenav-link-disabled-color);
-
-        &:hover {
-          background-color: transparent;
-          text-decoration: none;
-          color: color($sidenav-link-disabled-color);
-          cursor: not-allowed;
-        }
+        cursor: not-allowed;
       }
-
-      &.active, &.active a{color: color($sidenav-link-active-color); background-color: transparent;}
-      &:hover , &.active a:hover{color: color($sidenav-link-active-color); background-color: color($sidenav-link-default-background-color);}
     }
+
+    &.active, &.active a{color: color($sidenav-link-active-color); background-color: transparent;}
+    &:hover , &.active a:hover{color: color($sidenav-link-active-color); background-color: color($sidenav-link-default-background-color);}
   }
 }
 

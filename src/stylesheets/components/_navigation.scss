@@ -299,7 +299,7 @@
       color: color($navigation-link-current-color);
       
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        font-weight: $font-weight-semibold;
+        font-weight: $font-weight-medium;
       }
     }
   }

@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: center;
         color: color($overflow-menu-button-text-color);
+        cursor: pointer;
         &:hover{
             text-decoration: underline;
         }
@@ -85,11 +86,14 @@
 
         button{
             @include button-unstyled;
+            line-height: units(5);
+            cursor: pointer;
         }
         a{
             @include body-copy-text;
             display: block;
             text-decoration: none;
+            line-height: units(5);
             &:hover, &:visited, &:focus{
                 color: color($overflow-menu-content-text-color);
             }
@@ -195,6 +199,7 @@
   &--sort{
     .button-overflow-menu{
         text-decoration: underline;
+        line-height: units(5);
         .selected-value{
             text-decoration: none;
             display: inline-block;

@@ -35,13 +35,12 @@
     border-top: border(20);
     padding-top: units(4);
     padding-bottom: units(4);
+    line-height: 2.4rem;
     &:last-of-type{
       border-bottom: border(20);
     }
   }
 }
-
-// responsive columns...
 
 // Common properties for all breakpoints
 %grid-column {

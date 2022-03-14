@@ -269,6 +269,7 @@ template{
 }
 html{
   box-sizing:border-box;
+  line-height:normal;
 }
 
 *,
@@ -343,6 +344,7 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus,
   border-top:1px solid #BFBFBF;
   padding-top:16px;
   padding-bottom:16px;
+  line-height:2.4rem;
 }
 .row.row-bordered:last-of-type{
   border-bottom:1px solid #BFBFBF;
@@ -1474,13 +1476,13 @@ p, .body-text, .body-copy-text{
 
 figcaption, .figcaption{
   font-size:1.3rem;
-  line-height:1.6rem;
+  line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
 figcaption p, .figcaption p{
   font-size:1.3rem;
-  line-height:1.6rem;
+  line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
@@ -7838,6 +7840,10 @@ figure{
   background-image:url("../img/svg-icons/file-download.svg");
 }
 
+.icon-file-upload:not(a){
+  background-image:url("../img/svg-icons/file-upload.svg");
+}
+
 .icon-first-page:not(a){
   background-image:url("../img/svg-icons/first-page.svg");
 }
@@ -8212,10 +8218,6 @@ figure{
 
 .icon-tune:not(a){
   background-image:url("../img/svg-icons/tune.svg");
-}
-
-.icon-upload:not(a){
-  background-image:url("../img/svg-icons/upload.svg");
 }
 
 .icon-vertical-split:not(a){
@@ -8640,8 +8642,8 @@ input[readonly][type=text], textarea[readonly]{
 
 .checkbox-content, .radio-content{
   padding-left:calc(20px - 4px);
-  padding-top:0;
-  padding-bottom:0;
+  padding-top:16px;
+  padding-bottom:16px;
   border-left:4px solid #BFBFBF;
   margin-left:8px;
   margin-top:4px;
@@ -9615,6 +9617,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 
 .accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true]{
   background-color:#DCDCDC;
+  border-radius:3px 3px 0 0;
 }
 .accordion-button[aria-expanded=true]:not(.accordion-error), .tabnav > button[aria-expanded=true]:not(.accordion-error){
   border-bottom:1px solid #BFBFBF;
@@ -11215,7 +11218,7 @@ body.modal-open{
 }
 @media (min-width: 992px){
   .nav-primary .current > a, .nav-primary .current > .overflow-menu > .button-overflow-menu{
-    font-weight:600;
+    font-weight:500;
   }
 }
 .nav-primary .overflow-menu{
@@ -11799,25 +11802,24 @@ input[type=search]{
   border-top:1px solid #DCDCDC;
   font-size:1.4rem;
 }
-
-.sidenav-list-locked li.disabled{
+.sidenav-list li.disabled{
   cursor:not-allowed;
 }
-.sidenav-list-locked li.disabled a{
+.sidenav-list li.disabled a{
   cursor:not-allowed;
   color:#454545;
 }
-.sidenav-list-locked li.disabled a:hover{
+.sidenav-list li.disabled a:hover{
   background-color:transparent;
   text-decoration:none;
   color:#454545;
   cursor:not-allowed;
 }
-.sidenav-list-locked li.disabled.active, .sidenav-list-locked li.disabled.active a{
+.sidenav-list li.disabled.active, .sidenav-list li.disabled.active a{
   color:#1a1a1a;
   background-color:transparent;
 }
-.sidenav-list-locked li.disabled:hover, .sidenav-list-locked li.disabled.active a:hover{
+.sidenav-list li.disabled:hover, .sidenav-list li.disabled.active a:hover{
   color:#1a1a1a;
   background-color:white;
 }
@@ -12241,6 +12243,7 @@ a.skipnav{
   align-items:center;
   justify-content:center;
   color:#1a1a1a;
+  cursor:pointer;
 }
 .overflow-menu .button-overflow-menu:hover, .overflow-menu .button-overflow-menu:focus{
   background-color:transparent;
@@ -12324,6 +12327,8 @@ a.skipnav{
   -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
+  line-height:24px;
+  cursor:pointer;
 }
 .overflow-menu .overflow-list button:hover, .overflow-menu .overflow-list button:focus{
   background-color:transparent;
@@ -12338,6 +12343,7 @@ a.skipnav{
   letter-spacing:-0.1px;
   display:block;
   text-decoration:none;
+  line-height:24px;
 }
 .overflow-menu .overflow-list a:hover, .overflow-menu .overflow-list a:visited, .overflow-menu .overflow-list a:focus{
   color:#1a1a1a;
@@ -12426,6 +12432,7 @@ a.skipnav{
 }
 .overflow-menu--sort .button-overflow-menu{
   text-decoration:underline;
+  line-height:24px;
 }
 .overflow-menu--sort .button-overflow-menu .selected-value{
   text-decoration:none;
@@ -12469,6 +12476,7 @@ a.skipnav{
   max-width:none;
   text-decoration:none;
   margin-bottom:8px;
+  border:none;
 }
 .tabnav > button[aria-selected=true]{
   background-color:#DCDCDC;
@@ -12542,6 +12550,7 @@ a.skipnav{
   .tabnav-panel{
     display:none;
     border:1px solid #747474;
+    border-radius:0;
     overflow:hidden;
     margin-bottom:calc(16px);
     background-color:transparent;

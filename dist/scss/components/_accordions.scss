@@ -180,6 +180,7 @@ button.accordion-bulk-button{
 }
 .accordion-button[aria-expanded=true] {
   background-color: color($accordion-button-open-background-color);
+  border-radius: $accordion-button-open-border-radius;
   &:not(.accordion-error){
     border-bottom: border($accordion-button-open-border);
   }
