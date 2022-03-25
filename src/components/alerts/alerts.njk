@@ -1,5 +1,5 @@
 {% macro alert(params) %}
-<div class="alert{% if params.classes %} {{ params.classes }}{% endif %}{% if params.paragraph %} alert--paragraph{% endif %}{% if params.icon %} alert--show-icon{% endif %}{% if params.closeButton %} has-close{% endif %}"{% if params.role %} role="{{params.role}}" aria-atomic="true"{% endif %}{% if params.ariaLabel %}aria-label ="{{ params.ariaLabel }}"{% endif %}{% if params.attributes %} {{params.attributes | safe}}{% endif %} >
+<div class="alert{% if params.classes %} {{ params.classes }}{% endif %}{% if params.paragraph %} alert--paragraph{% endif %}{% if params.icon %} alert--show-icon{% endif %}{% if params.closeButton %} has-close{% endif %}"{% if params.role %} role="{{params.role}}" aria-atomic="true"{% endif %}{% if params.ariaLabel %} aria-label ="{{ params.ariaLabel }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
   <div class="alert-body">
     {%- if params.heading -%}
     <p class="alert-heading{% if params.closeButton %} pr-7{% endif %}">{{ params.heading | safe }}</p>
