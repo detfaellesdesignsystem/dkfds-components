@@ -4,7 +4,7 @@
  * @param {HTMLElement} element Error summary element
  */
 function ErrorSummary (element) {
-  this.element = element
+  this.element = element;
 }
 
 /**

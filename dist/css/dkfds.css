@@ -12223,8 +12223,15 @@ a.skipnav{
 }
 
 .overflow-menu{
-  display:inline-block;
+  display:block;
   position:relative;
+  width:100%;
+}
+@media (min-width: 768px){
+  .overflow-menu{
+    width:auto;
+    display:inline-block;
+  }
 }
 .overflow-menu .button-overflow-menu{
   background-color:transparent;
@@ -12243,6 +12250,7 @@ a.skipnav{
   align-items:center;
   justify-content:center;
   color:#1a1a1a;
+  position:relative;
   cursor:pointer;
 }
 .overflow-menu .button-overflow-menu:hover, .overflow-menu .button-overflow-menu:focus{
@@ -12286,8 +12294,8 @@ a.skipnav{
 }
 .overflow-menu .overflow-menu-inner{
   position:absolute;
+  width:100%;
   z-index:2;
-  width:auto;
   border:1px solid #747474;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background:white;
@@ -12295,6 +12303,11 @@ a.skipnav{
   padding-bottom:8px;
   top:calc(100% + 8px);
   min-width:28rem;
+}
+@media (min-width: 768px){
+  .overflow-menu .overflow-menu-inner{
+    width:auto;
+  }
 }
 .overflow-menu .overflow-menu-inner[aria-hidden=true]{
   display:none;
@@ -12371,11 +12384,13 @@ a.skipnav{
     border-bottom:0;
   }
 }
-.overflow-menu--open-right .overflow-menu-inner{
-  left:calc(50% - 19px);
-}
-.overflow-menu--open-right .overflow-menu-inner:after{
-  left:13px;
+@media (min-width: 768px){
+  .overflow-menu--open-right .overflow-menu-inner{
+    left:calc(50% - 19px);
+  }
+  .overflow-menu--open-right .overflow-menu-inner:after{
+    left:13px;
+  }
 }
 .overflow-menu--open-left .overflow-menu-inner{
   right:calc(50% - 19px);
