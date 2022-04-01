@@ -10636,12 +10636,12 @@ footer .footer-theme{
   overflow-y:auto;
   padding:0;
   padding-top:16px;
-  width:282px;
+  width:85%;
   z-index:9000;
 }
 @-webkit-keyframes slidein-left{
   from{
-    transform:translateX(282px);
+    transform:translateX(85%);
   }
   to{
     transform:translateX(0);
@@ -10649,7 +10649,7 @@ footer .footer-theme{
 }
 @keyframes slidein-left{
   from{
-    transform:translateX(282px);
+    transform:translateX(85%);
   }
   to{
     transform:translateX(0);
