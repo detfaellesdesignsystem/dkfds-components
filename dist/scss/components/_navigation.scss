@@ -172,8 +172,13 @@
 
   // level 1
   > li {
-    & > .overflow-menu > button.button-overflow-menu{
-      padding-left: units(4);
+    & > .overflow-menu {
+      & > button.button-overflow-menu{
+        padding-left: units(4);
+      }
+      & > .overflow-menu-inner > .overflow-list{
+        margin-left: units(5);
+      } 
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       border-bottom: 0;
@@ -347,6 +352,7 @@
       &:hover{
         text-decoration: none;
         color: color($navigation-link-hover-color);
+        background-color: transparent;
       }
 
       &[aria-expanded=false] {

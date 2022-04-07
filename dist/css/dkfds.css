@@ -11100,6 +11100,9 @@ body.modal-open{
 .nav-primary > li > .overflow-menu > button.button-overflow-menu{
   padding-left:16px;
 }
+.nav-primary > li > .overflow-menu > .overflow-menu-inner > .overflow-list{
+  margin-left:24px;
+}
 @media (min-width: 992px){
   .nav-primary > li{
     border-bottom:0;
@@ -11266,6 +11269,7 @@ body.modal-open{
 .nav-primary .overflow-menu .button-overflow-menu:hover{
   text-decoration:none;
   color:#1a1a1a;
+  background-color:transparent;
 }
 .nav-primary .overflow-menu .button-overflow-menu[aria-expanded=false]{
   background-image:url("../img/svg-icons/add.svg");
@@ -12490,17 +12494,23 @@ a.skipnav{
 .tabnav > button{
   max-width:none;
   text-decoration:none;
-  margin-bottom:8px;
-  border:none;
+  margin-top:8px;
+  margin-bottom:0;
+}
+@media (min-width: 768px){
+  .tabnav > button{
+    border:none;
+  }
 }
 .tabnav > button[aria-selected=true]{
   background-color:#DCDCDC;
+  border-radius:3px 3px 0 0;
 }
 .tabnav > button[aria-selected=false]{
   background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
-  border-radius:3px 3px 3px 3px;
+  border-radius:3px;
 }
 .tabnav > button[aria-selected=false]:focus{
   background-color:#F5F5F5;
