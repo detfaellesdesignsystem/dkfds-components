@@ -9144,6 +9144,9 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 .table thead th.table-header-no-wrap{
   white-space:nowrap;
 }
+.table thead th button, .table thead th .button{
+  width:auto;
+}
 .table tbody th{
   font-weight:600;
 }
