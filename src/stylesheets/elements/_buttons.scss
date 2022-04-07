@@ -93,6 +93,13 @@ a.button{
       border-color: color($button-secondary-hover-border-color);
     }
 
+    &.focus,
+    &:focus {
+      color: color($button-secondary-focus-color);
+      background-color: color($button-secondary-focus-background-color);
+      border-color: color($button-secondary-focus-border-color);
+    }
+
     &:active,
     &.button-active {
       color: color($button-secondary-active-color);
@@ -100,12 +107,6 @@ a.button{
       border-color: color($button-secondary-active-border-color);
     }
 
-    &.focus,
-    &:focus {
-      color: color($button-secondary-focus-color);
-      background-color: color($button-secondary-focus-background-color);
-      border-color: color($button-secondary-focus-border-color);
-    }
     &:disabled,
     &.disabled {
       opacity:$button-disabled-opacity;

@@ -1,0 +1,83 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% macro pagination(params) %}
+<nav class="pagination" {% if params.id %}id="{{ params.id }}"{% endif %} aria-label="Pagineringseksempel med {{ params.totalPages }} sider">
+    <a href="#" class="button button-arrow button-previous{% if params.currentPage == 1 %} hidden{% endif %}" aria-label="Forrige side">
+        {{ icon_svg({"name": "arrow-left"}) }}{{ params.previousName | default('Forrige') }}
+    </a>
+    <div class="pagination__dropdown">
+        <label class="sr-only" for='{% if params.id %}id="{{ params.id }}-options"{% endif %}'>Vælg en side og skift til den med det samme.</label>
+        <select class="pagination-dropdown" name='{% if params.id %}id="{{ params.id }}-options"{% endif %}' id='{% if params.id %}id="{{ params.id }}-options"{% endif %}'>{% for i in range(1, params.totalPages + 1) %}{% set pageValue = "page" + i %}{% if i == params.currentPage %}
+                <option value={{ pageValue }} selected>{{ i }}</option>{% else %}
+                <option value={{ pageValue }}>{{ i }}</option>{% endif %}{% endfor %}
+        </select>
+        <span class="totalpages-text" aria-hidden="true">{{ params.ofLabel | default('af') }} {{ params.totalPages }}</span>
+    </div>
+    <ul class="pagination__items">{% if params.totalPages > 7 %}{% if params.currentPage < 5 %}
+                {% for i in range(1, 6) %}
+                    {% if i == params.currentPage %}
+                    <li class="pagination-item pagination-number">
+                        <a href="#" class="current-page" aria-label='{{ "Side " + i }}' aria-current="page">{{ i }}</a>
+                    </li>
+                    {% else %}
+                    <li class="pagination-item pagination-number">
+                        <a href="#" class="button button-secondary" aria-label='{{ "Side " + i }}'>{{ i }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}<li class="pagination-item pagination-overflow" role="presentation">
+                    <span>...</span>
+                </li>
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='{{ "Sidste side, side " + params.totalPages }}'>{{ params.totalPages }}</a>
+                </li>
+            {% elseif params.currentPage + 4 > params.totalPages %}
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='Side 1'>1</a>
+                </li>
+                <li class="pagination-item pagination-overflow" role="presentation">
+                    <span>...</span>
+                </li>
+                {% for i in range(params.totalPages - 4, params.totalPages + 1) %}
+                    {% if i == params.currentPage %}
+                    <li class="pagination-item pagination-number">
+                        <a href="#" class="current-page" aria-label='{{ "Side " + i }}' aria-current="page">{{ i }}</a>
+                    </li>
+                    {% else %}
+                    <li class="pagination-item pagination-number">
+                        <a href="#" class="button button-secondary" aria-label='{{ "Side " + i }}'>{{ i }}</a>
+                    </li>{% endif %}{% endfor %}
+            {% else %}
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='Side 1'>1</a>
+                </li>
+                <li class="pagination-item pagination-overflow" role="presentation">
+                    <span>...</span>
+                </li>
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='{{ "Side " + (params.currentPage - 1) }}'>{{ params.currentPage - 1 }}</a>
+                </li>
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="current-page" aria-label='{{ "Side " + params.currentPage }}' aria-current="page">{{ params.currentPage }}</a>
+                </li>
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='{{ "Side " + (params.currentPage + 1) }}'>{{ params.currentPage + 1 }}</a>
+                </li>
+                <li class="pagination-item pagination-overflow" role="presentation">
+                    <span>...</span>
+                </li>
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='{{ "Sidste side, side " + (params.totalPages) }}'>{{ params.totalPages }}</a>
+                </li>{% endif %}{% else %}
+            {% for i in range(1, params.totalPages + 1) %}
+                {% if i == params.currentPage %}
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="current-page" aria-label='{{ "Side " + i }}' aria-current="page">{{ i }}</a>
+                </li>
+                {% else %}
+                <li class="pagination-item pagination-number">
+                    <a href="#" class="button button-secondary" aria-label='{{ "Side " + i }}'>{{ i }}</a>
+                </li>{% endif %}{% endfor %}{% endif %}</ul>
+    <a href="#" class="button button-arrow button-next{% if params.currentPage == params.totalPages %} hidden{% endif %}" aria-label="Næste side">
+        {{ params.nextName | default('Næste') }}{{ icon_svg({"name": "arrow-right"}) }}
+    </a>
+</nav>
+{% endmacro %}
