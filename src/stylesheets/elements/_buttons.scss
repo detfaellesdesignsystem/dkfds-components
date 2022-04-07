@@ -52,16 +52,16 @@ a.button{
       border-color: color($button-primary-hover-border-color);
     }
 
-    &:active,
-    &.button-active {
-      background-color: color($button-primary-active-background-color);
-      border-color: color($button-primary-active-border-color);
-    }
-
     &.focus,
     &:focus {
       background-color: color($button-primary-focus-background-color);
       border-color: color($button-primary-focus-border-color);
+    }
+
+    &:active,
+    &.button-active {
+      background-color: color($button-primary-active-background-color);
+      border-color: color($button-primary-active-border-color);
     }
 
     &:disabled,
@@ -138,18 +138,18 @@ a.button{
       color: color($button-tertiary-hover-color);
     }
 
-    &:active,
-    &.button-active {
-      border-color: color($button-tertiary-active-border-color);
-      background-color: color($button-tertiary-active-background-color);
-      color: color($button-tertiary-active-color);
-    }
-
     &.focus,
     &:focus {
       border-color: color($button-tertiary-focus-border-color);
       background-color: color($button-tertiary-focus-background-color);
       color: color($button-tertiary-focus-color);
+    }
+
+    &:active,
+    &.button-active {
+      border-color: color($button-tertiary-active-border-color);
+      background-color: color($button-tertiary-active-background-color);
+      color: color($button-tertiary-active-color);
     }
 
     &:disabled,
@@ -185,19 +185,19 @@ a.button{
       border-bottom-color: transparent;
     }
 
-    &:active,
-    &.button-active {
-      background-color: color($button-quaternary-active-background-color);
-      box-shadow:none;
-      border-bottom-color: transparent;
-    }
-
     &.focus,
     &:focus {
       color: color($button-quaternary-default-color);
       box-shadow:none;
       border-bottom-color: transparent;
       background-color: color($button-quaternary-focus-background-color);
+    }
+
+    &:active,
+    &.button-active {
+      background-color: color($button-quaternary-active-background-color);
+      box-shadow:none;
+      border-bottom-color: transparent;
     }
 
     &:disabled,

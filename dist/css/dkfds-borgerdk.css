@@ -7166,13 +7166,13 @@ a.button{
   background-color:#3C5C22;
   border-color:#233614;
 }
-.button.button-primary:active, .button.button-primary.button-active{
-  background-color:#233614;
-  border-color:#233614;
-}
 .button.button-primary.focus, .button.button-primary:focus{
   background-color:#44831E;
   border-color:#3C5C22;
+}
+.button.button-primary:active, .button.button-primary.button-active{
+  background-color:#233614;
+  border-color:#233614;
 }
 .button.button-primary:disabled, .button.button-primary.disabled{
   opacity:0.3;
@@ -7230,13 +7230,13 @@ a.button{
   background-color:transparent;
   color:#1a1a1a;
 }
-.button.button-tertiary:active, .button.button-tertiary.button-active{
-  border-color:#1a1a1a;
+.button.button-tertiary.focus, .button.button-tertiary:focus{
+  border-color:#747474;
   background-color:transparent;
   color:#1a1a1a;
 }
-.button.button-tertiary.focus, .button.button-tertiary:focus{
-  border-color:#747474;
+.button.button-tertiary:active, .button.button-tertiary.button-active{
+  border-color:#1a1a1a;
   background-color:transparent;
   color:#1a1a1a;
 }
@@ -7266,16 +7266,16 @@ a.button{
   box-shadow:none;
   border-bottom-color:transparent;
 }
-.button.button-quaternary:active, .button.button-quaternary.button-active{
-  background-color:#BFBFBF;
-  box-shadow:none;
-  border-bottom-color:transparent;
-}
 .button.button-quaternary.focus, .button.button-quaternary:focus{
   color:#454545;
   box-shadow:none;
   border-bottom-color:transparent;
   background-color:transparent;
+}
+.button.button-quaternary:active, .button.button-quaternary.button-active{
+  background-color:#BFBFBF;
+  box-shadow:none;
+  border-bottom-color:transparent;
 }
 .button.button-quaternary:disabled, .button.button-quaternary.disabled{
   opacity:0.3;
