@@ -3,8 +3,15 @@
 }
 
 .overflow-menu {
-    display: inline-block; //inlinblock so the .overflow-menu-inner is position underneath .button-overflow-menu
+    display: block;
     position: relative;
+    width: 100%;
+
+    
+    @include media-breakpoint-up(md) {
+        width: auto;
+        display: inline-block;
+    }
 
     .button-overflow-menu{
         @include button-unstyled;
@@ -14,6 +21,7 @@
         align-items: center;
         justify-content: center;
         color: color($overflow-menu-button-text-color);
+        position: relative;
         cursor: pointer;
         &:hover{
             text-decoration: underline;
@@ -63,8 +71,8 @@
 
     .overflow-menu-inner {
         position: absolute;
+        width: 100%;
         z-index: 2;
-        width: auto;
         border: border($overflow-menu-content-border);
         box-shadow: shadow($overflow-menu-content-shadow);
         background: color($overflow-menu-content-background-color);
@@ -72,6 +80,10 @@
         padding-bottom: units(3);
         top: calc(100% + #{$overflow-menu-dropdown-distance});
         min-width: 28rem;
+
+        @include media-breakpoint-up(md) {
+            width: auto;
+        }
 
         &[aria-hidden="true"]{
             display: none;
@@ -129,9 +141,11 @@
 
     &--open-right {
         .overflow-menu-inner{
-            left: calc(50% - 19px);
-            &:after {
-                left: 13px;
+            @include media-breakpoint-up(md) {
+                left: calc(50% - 19px);
+                &:after {
+                    left: 13px;
+                }
             }
         }
     }

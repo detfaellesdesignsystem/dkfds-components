@@ -1,6 +1,6 @@
 'use strict';
 const breakpoints = require('../utils/breakpoints');
-const BUTTON = '.js-dropdown';
+const BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
 
@@ -93,12 +93,8 @@ Dropdown.prototype.init = function (){
     }
 
     
-    document.addEventListener('keyup', function(e){
-      var key = e.which || e.keyCode;
-      if (key === 27) {
-        closeAll(e);
-      }
-    });
+    document.removeEventListener('keyup', closeOnEscape);
+    document.addEventListener('keyup', closeOnEscape);
   }
 }
 
@@ -116,6 +112,12 @@ Dropdown.prototype.show = function(){
   toggle(this.buttonElement);
 }
 
+let closeOnEscape = function(event){
+  var key = event.which || event.keyCode;
+  if (key === 27) {
+    closeAll(event);
+  }
+};
 
 /**
  * Get an Array of button elements belonging directly to the given
@@ -252,7 +254,7 @@ let hasParent = function (child, parentTagName){
 let outsideClose = function (evt){
   if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
     if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
-      let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
+      let openDropdowns = document.querySelectorAll(BUTTON+'[aria-expanded=true]');
       for (let i = 0; i < openDropdowns.length; i++) {
         let triggerEl = openDropdowns[i];
         let targetEl = null;
