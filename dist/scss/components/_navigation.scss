@@ -174,10 +174,10 @@
   > li {
     & > .overflow-menu {
       & > button.button-overflow-menu{
-        padding-left: units(4);
+        padding-left: units(5);
       }
       & > .overflow-menu-inner > .overflow-list{
-        margin-left: units(5);
+        margin-left: units(6);
       } 
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
