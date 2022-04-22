@@ -41,13 +41,12 @@ Accordion.prototype.init = function(){
     // Set click event on accordion buttons
     currentButton.removeEventListener('click', this.eventOnClick.bind(this, currentButton), false);
     currentButton.addEventListener('click', this.eventOnClick.bind(this, currentButton), false);
-    
-    // Set click event on bulk button if present
-    let prevSibling = this.accordion.previousElementSibling ;
-    if(prevSibling !== null && prevSibling.classList.contains('accordion-bulk-button')){
-      this.bulkFunctionButton = prevSibling;
-      this.bulkFunctionButton.addEventListener('click', this.bulkEvent.bind(this));
-    }
+  }
+  // Set click event on bulk button if present
+  let prevSibling = this.accordion.previousElementSibling ;
+  if(prevSibling !== null && prevSibling.classList.contains('accordion-bulk-button')){
+    this.bulkFunctionButton = prevSibling;
+    this.bulkFunctionButton.addEventListener('click', this.bulkEvent.bind(this));
   }
 }
 
@@ -68,7 +67,7 @@ Accordion.prototype.bulkEvent = function(){
     expand = false;
   }
   for (var i = 0; i < $module.buttons.length; i++){
-    $module.toggleButton($module.buttons[i], expand);
+    $module.toggleButton($module.buttons[i], expand, true);
   }
   
   $module.bulkFunctionButton.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, !expand);
@@ -106,14 +105,13 @@ Accordion.prototype.eventOnClick = function ($button, e) {
  * state will be toggled (from false to true, and vice-versa).
  * @return {boolean} the resulting state
  */
- Accordion.prototype.toggleButton = function (button, expanded) {
+ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
   let accordion = null;
   if(button.parentNode.parentNode.classList.contains('accordion')){
     accordion = button.parentNode.parentNode;
   } else if(button.parentNode.parentNode.parentNode.classList.contains('accordion')){
     accordion = button.parentNode.parentNode.parentNode;
   }
-
   expanded = toggle(button, expanded);
   if(expanded){    
     let eventOpen = new Event('fds.accordion.open');
@@ -129,22 +127,21 @@ Accordion.prototype.eventOnClick = function ($button, e) {
     let bulkFunction = accordion.previousElementSibling;
     if(bulkFunction !== null && bulkFunction.classList.contains('accordion-bulk-button')){
       let buttons = accordion.querySelectorAll(BUTTON);
-      let buttonsOpen = accordion.querySelectorAll(BUTTON+'[aria-expanded="true"]');
-      let buttonsClosed = accordion.querySelectorAll(BUTTON+'[aria-expanded="false"]');
-      let newStatus = true;
-      if(buttons.length === buttonsOpen.length){
-        newStatus = false;
-      }
-      if(buttons.length === buttonsClosed.length){
-        newStatus = true;
-      }
-      bulkFunction.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, newStatus);
-      if(newStatus === true){
-        bulkFunction.innerText = BULK_FUNCTION_OPEN_TEXT;
-      } else{
-        bulkFunction.innerText = BULK_FUNCTION_CLOSE_TEXT;
-      }
+      if(bulk === false){
+        let buttonsOpen = accordion.querySelectorAll(BUTTON+'[aria-expanded="true"]');
+        let newStatus = true;
 
+        if(buttons.length === buttonsOpen.length){
+          newStatus = false;
+        }
+        
+        bulkFunction.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, newStatus);
+        if(newStatus === true){
+          bulkFunction.innerText = BULK_FUNCTION_OPEN_TEXT;
+        } else{
+          bulkFunction.innerText = BULK_FUNCTION_CLOSE_TEXT;
+        }
+      }
     }
   }
 
