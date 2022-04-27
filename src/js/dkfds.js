@@ -1,6 +1,7 @@
 'use strict';
 import Accordion from './components/accordion';
 import Alert from './components/alert';
+import BackToTop from './components/back-to-top';
 import CheckboxToggleContent from './components/checkbox-toggle-content';
 import Dropdown from './components/dropdown';
 import DropdownSort from './components/dropdown-sort';
@@ -56,6 +57,17 @@ var init = function (options) {
   const alertsWithCloseButton = scope.querySelectorAll('.alert.has-close');
   for(let c = 0; c < alertsWithCloseButton.length; c++){
     new Alert(alertsWithCloseButton[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Back to top button
+  ---------------------
+  */
+
+  const backToTopButtons = scope.getElementsByClassName('back-to-top-button');
+  for(let c = 0; c < backToTopButtons.length; c++){
+    new BackToTop(backToTopButtons[ c ]).init();
   }
   
   /*
@@ -183,4 +195,4 @@ var init = function (options) {
   
 };
 
-module.exports = { init, Accordion, Alert, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
+module.exports = { init, Accordion, Alert, BackToTop, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
