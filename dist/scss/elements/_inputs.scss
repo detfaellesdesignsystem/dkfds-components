@@ -7,6 +7,11 @@
   }
 }
 
+.form-group-radio{
+  margin-top: map-get($spacers, 3);
+  position: relative;
+}
+
 // Hint text
 .form-hint {
   display: block;
@@ -235,11 +240,20 @@ $checkbox-radio-line-height-large: 4.0rem;
 $radio-size-large: units($input-checkbox-radio-large-size);
 
 
-.form-checkbox,
-.form-radio {
+.form-checkbox{
   // The actual input element is only visible to screen readers, because
   // all visual styling is done via the label.
   @include sr-only();
+}
+.form-radio {
+  position: absolute;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  opacity: 0;
+  left: 0px;
+  top: 3px;
 }
 
 .form-checkbox + label,
@@ -295,6 +309,15 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 }
 
 //extra for radio outline
+.form-radio{
+  height: $radio-size;
+  width: $radio-size;
+
+  &.radio-large{
+    height: $radio-size-large;
+    width: $radio-size-large;
+  }
+}
 .form-radio + label::before {
   border-radius: 100%;
   height: $radio-size;
@@ -315,6 +338,16 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   padding-left: calc(#{$radio-size-large} + 8px);
 }
 //checked checkbox
+.form-checkbox.checkbox-large{
+  width: $checkbox-size;
+  height: $checkbox-size;
+
+  &.checkbox-large{
+    width: $checkbox-size-large;
+    height: $checkbox-size-large;
+  }
+}
+
 .form-checkbox:checked + label{
   &:before{
     background-color: color('black');
@@ -331,6 +364,10 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   }
 }
 //checkmark large
+.form-checkbox.checkbox-large{
+  width: 22px;
+  height: 22px;
+}
 .form-checkbox.checkbox-large:checked + label{
   &:after{
     height: 12px;

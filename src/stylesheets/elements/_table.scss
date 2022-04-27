@@ -102,6 +102,9 @@
             &.table-header-no-wrap{
               white-space: nowrap;
             }
+            button, .button{
+              width: auto;
+            }
         }
     }
     tbody{

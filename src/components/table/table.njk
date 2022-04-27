@@ -33,7 +33,7 @@
                 </td>
                 {%- endif -%}
                 {% for td in row %}
-                <td>{{td}}</td>
+                <td>{{td | safe}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}

@@ -229,7 +229,7 @@ $z-index-nav:     9000;
 
 
   .nav {
-    $sliding-panel-width: 282px;
+    $sliding-panel-width: 85%;
     @keyframes slidein-left {
       from {
         transform: translateX($sliding-panel-width);
