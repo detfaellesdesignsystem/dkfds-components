@@ -4,7 +4,6 @@ GENERAL SETTINGS
 ----------------------------------------
 */
 
-
 /*
 ----------------------------------------
 Show compile warnings
@@ -23,6 +22,15 @@ $theme-use-custom-font: false !default;
 
 /*
 ----------------------------------------
+Paths
+----------------------------------------
+*/
+$font-path:                     '../fonts/IBMPlexSans/' !default;
+$image-path:                    '../img' !default;
+$icons-folder-path:             "../img/svg-icons" !default;
+
+/*
+----------------------------------------
 Focus styles
 ----------------------------------------
 */
@@ -32,4 +40,4 @@ $theme-focus-offset: 1px !default;
 $theme-focus-style: solid !default;
 $theme-focus-width: 4px !default;
 
-$border-radius:                 3px !default;
+$theme-border-radius: 3px !default;

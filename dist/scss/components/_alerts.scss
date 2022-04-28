@@ -1,4 +1,8 @@
-// Alert variables ---------- //
+/*
+----------------------------------------
+Alert
+----------------------------------------
+*/
 $custom-alerts: () !default;
 $custom-alerts-bar: () !default;
 
@@ -39,7 +43,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   }
 
   &.alert--paragraph {
-    max-width: $text-max-width;
+    max-width: $typography-text-max-width;
   }
   .alert-close{
     @include button-unstyled();
@@ -59,11 +63,11 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   }
 
   .alert-heading {
+    @include responsive-style($alert-heading-fontsize, font-size);
+    @include responsive-style($alert-heading-lineheight, line-height);
     margin-top: 0;
     margin-bottom: 0;
-    font-size: $alert-heading-fontsize;
-    font-weight: 600;
-    line-height: $alert-heading-lineheight;
+    font-weight: font-weight("semibold");
     color: color($alert-heading-color);
     -ms-word-wrap: break-word;
     word-wrap: break-word;
@@ -73,7 +77,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     margin-bottom: 0;
     margin-top: 0;
     color: color($alert-text-color);
-    max-width: $text-max-width;
+    max-width: $typography-text-max-width;
     a, a:link, a:active, a:visited, a:hover{
       color: color($alert-text-color);
     }

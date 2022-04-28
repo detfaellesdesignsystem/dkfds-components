@@ -11,7 +11,7 @@
     display: block;
     border: none;
     color: color($sidenav-link-default-color);
-    line-height: $sidenav-link-line-height;
+    line-height: units($sidenav-link-line-height, 'rem');
     padding: $spacer;
     padding-top: calc(8px - #{border-width($sidenav-list-level1-border)});
     padding-left: units(4);
@@ -79,18 +79,18 @@
 
     &.current {
       > a {
-        font-weight: $font-weight-medium;
+        font-weight: font-weight("medium");
       }
 
       .sidenav-information {
         color: color($sidenav-link-current-extra-information-text-color);
-        font-weight: normal;
+        font-weight: font-weight("normal");
       }
     }
     &.active{
       > a{
         color: color($sidenav-link-active-color);
-        font-weight: $font-weight-medium;
+        font-weight: font-weight("medium");
       }
     }
   }
@@ -126,7 +126,7 @@
 
   > li {
     background-color: transparent;
-    font-size: $base-font-size;
+    font-size: font-size($typography-base-font-size);
     border-top: border($sidenav-list-level1-border);
 
     &.active > a{
@@ -147,7 +147,7 @@
     }
     li{
       border-top: border($sidenav-list-level2-border);
-      font-size: $typography-small-text-font-size;
+      font-size: font-size($typography-small-text-font-size);
     }
   }
   
@@ -179,14 +179,14 @@
     border: none;
     &:last-child {
       a {
-        padding-bottom: $spacer;
+        padding-bottom: units(3);
       }
     }
   }
 
   a {
-    padding-top: $spacer;
-    line-height: $base-line-height;
+    padding-top: units(3);
+    line-height: units($typography-base-line-height, 'rem');
   }
   li:not(.has-anchor-links) .sidenav-sub_list {
     a {

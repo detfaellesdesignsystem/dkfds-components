@@ -12,12 +12,6 @@
   @include focus-offset();
 }
 
-// Font
-@mixin font($index) {
-  font-size: font-size($index);
-  line-height: line-height($index);
-}
-
 // Screen reader only helper
 @mixin sr-only() {
   position: absolute;
@@ -84,9 +78,49 @@
 }
 
 // Font smoothing mixin
-// Only use for light text on dark background
-// TODO: Remove after adding PostCSS
 @mixin font-smoothing {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+----------------------------------------
+responsive-style
+----------------------------------------
+Sets styles within breakpoints
+----------------------------------------
+*/
+@mixin responsive-style($map, $style){
+  @if type-of($map) == 'map' {
+    @each $breakpoint, $value in $map{
+      @if $breakpoint == "default" {
+        @if $style == line-height{
+          #{$style}: units($value, 'rem');
+        }@else if $style == font-size{
+          #{$style}: font-size($value);
+        }@else{
+          #{$style}: $value;
+        }
+      } @else{
+        @include media-breakpoint-up($breakpoint) {
+          @if $style == line-height{
+            #{$style}: units($value, 'rem');
+          }@else if $style == font-size{
+            #{$style}: font-size($value);
+          }@else{
+            #{$style}: $value;
+          }
+        }
+      }
+    }
+  } @else{
+    @if $style == line-height{
+      #{$style}: units($map, 'rem');
+    }@else if $style == font-size{
+      #{$style}: font-size($map);
+    }@else{
+      #{$style}: $map;
+    }
+  }
 }

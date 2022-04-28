@@ -1,6 +1,6 @@
 .breadcrumbs {
   color: color($breadcrumbs-text-color);
-  font-size: $breadcrumbs-font-size;
+  font-size: font-size($breadcrumbs-font-size);
 }
 
 .breadcrumbs__list {

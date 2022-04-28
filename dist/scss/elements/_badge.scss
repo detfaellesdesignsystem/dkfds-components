@@ -3,19 +3,19 @@
   padding-left: units(3);
   padding-right:units(3);
   border: none;
-  font-weight: $badge-font-weight;
+  font-weight: font-weight($badge-font-weight);
   color: color($badge-default-text-color);
   background: color($badge-default-background-color);
   @include font-smoothing;
   text-align: center;
   display: inline-block;
   &.badge-large {
-    font-size: $badge-large-font-size;
-    line-height: $badge-large-line-height;
+    font-size: font-size($badge-large-font-size);
+    line-height: units($badge-large-line-height, 'rem');
   }
   &.badge-small {
-    font-size: $badge-small-font-size;
-    line-height: $badge-small-line-height;
+    font-size: font-size($badge-small-font-size);
+    line-height: units($badge-small-line-height, 'rem');
   }
   &.badge-info{
     color: color($badge-info-text-color);

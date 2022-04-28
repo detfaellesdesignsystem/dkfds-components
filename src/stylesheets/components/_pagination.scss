@@ -26,7 +26,7 @@
 
     .button {
         &.button-arrow {
-            font-size: $pagination-button-arrow-font-size;
+            font-size: font-size($pagination-button-arrow-font-size);
             appearance: none;
             display: inline-block;
             background-color: color($pagination-button-arrow-background-color);
@@ -91,8 +91,8 @@
             color: color($pagination-dropdown-color);
             padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
             padding-right: units(7);
-            font-size: 1.8rem;
-            font-weight: 500;
+            font-size: font-size('md');
+            font-weight: font-weight("medium");
             height: 4.0rem;
             //custom arrrow:
             -webkit-appearance: none;
@@ -138,7 +138,7 @@
                 border-radius: $button-border-radius;
                 border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
                 border-style: solid;
-                font-weight: 500;
+                font-weight: font-weight("medium");
                 @include font-smoothing;
                 line-height: 2rem;
                 text-align: center;
@@ -146,7 +146,7 @@
                 text-decoration: none;
                 user-select: text;
 
-                font-size: 1.8rem;
+                font-size: font-size('md');
                 color: color($pagination-current-page-color);
                 background-color: color($pagination-current-page-background-color);
                 border-color: color($pagination-current-page-border-color);
@@ -211,8 +211,8 @@
         display: inline-flex;
         padding-left: units(4);
         padding-right: units(4);
-        font-size: 1.8rem;
-        font-weight: 500;
+        font-size: font-size('md');
+        font-weight: font-weight("medium");
 
         &:hover {
           background-color: color($pagination-button-default-hover-background-color);
@@ -254,8 +254,8 @@
         display: inline-flex;
         padding-left: units(4);
         padding-right: units(4);
-        font-size: 1.8rem;
-        font-weight: 500;
+        font-size: font-size('md');
+        font-weight: font-weight("medium");
     }
 
     .pagination__select {
@@ -279,8 +279,8 @@
             color: color($pagination-button-default-color);
             padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
             padding-right: units(605);
-            font-size: 1.8rem;
-            font-weight: 500;
+            font-size: font-size('md');
+            font-weight: font-weight("medium");
             height: 4.0rem;
               //custom arrrow:
             -webkit-appearance: none;

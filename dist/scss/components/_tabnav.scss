@@ -26,7 +26,9 @@
     }
 
     &[aria-selected=false]{
-      @include accordion-button-unopened-styles;
+      background-image: url($icons-folder-path+'/'+$accordion-button-open-icon);
+      background-repeat: no-repeat;
+      background-size: units($accordion-button-icon-size, 'rem');
       border-radius: $accordion-button-border-radius;
       &:focus{
         background-color: color($tavnav-button-default-background-color);

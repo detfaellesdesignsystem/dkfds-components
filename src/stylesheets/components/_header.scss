@@ -72,11 +72,11 @@ $z-index-nav:     9000;
     border-bottom: border($header-portal-border);
     width: 100%;
     &.portal-header-compact{
-      font-size: $typography-small-text-font-size;
-      line-height: $typography-small-text-line-height;
+      font-size: font-size($typography-small-text-font-size);
+      line-height: units($typography-small-text-line-height, 'rem');
       p {
-        font-size: $typography-small-text-font-size;
-        line-height: $typography-small-text-line-height;
+        font-size: font-size($typography-small-text-font-size);
+        line-height: units($typography-small-text-line-height, 'rem');
       }
       .portal-info .user{
         max-width: none;
@@ -150,15 +150,15 @@ $z-index-nav:     9000;
 
     .solution-heading{
       a, h1, .g1{
-        font-size:$header-solution-text-size;
-        line-height: $header-solution-line-height;
-        font-weight: $font-weight-semibold;
+        font-size:font-size($header-solution-text-size);
+        line-height: units($header-solution-line-height, 'rem');
+        font-weight: font-weight("semibold");
         color: color($header-solution-text-color);
         text-decoration: none;
         display: inline-block;
         @include media-breakpoint-up(md) {
-          font-size: $header-solution-text-size-desktop;
-          line-height: $header-solution-line-height-desktop;
+          font-size: font-size($header-solution-text-size-desktop);
+          line-height: units($header-solution-line-height-desktop, 'rem');
         }
       }
       p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
