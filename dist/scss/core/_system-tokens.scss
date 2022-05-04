@@ -5,7 +5,6 @@ Colors
 ----------------------------------------
 */
 
-// Data
 @import "./colors/data-blue";
 @import "./colors/data-green-blue";
 @import "./colors/data-green";
@@ -19,7 +18,6 @@ Colors
 @import "./colors/orange";
 @import "./colors/purple";
 @import "./colors/red";
-
 
 $system-color-black-transparent: (
   "black-transparent": (
@@ -71,7 +69,12 @@ $system-colors: map-collect(
     $system-color-white-transparent
 );
 
-// Data colors
+/*
+----------------------------------------
+Data Colors
+----------------------------------------
+*/
+// Data: Blue
 $color-data-blue-100: get-system-color("data-blue", 100);
 $color-data-blue-200: get-system-color("data-blue", 200);
 $color-data-blue-300: get-system-color("data-blue", 300);
@@ -82,6 +85,7 @@ $color-data-blue-700: get-system-color("data-blue", 700);
 $color-data-blue-800: get-system-color("data-blue", 800);
 $color-data-blue-900: get-system-color("data-blue", 900);
 
+// Data: Green/Blue
 $color-data-green-blue-100: get-system-color("data-green-blue", 100);
 $color-data-green-blue-200: get-system-color("data-green-blue", 200);
 $color-data-green-blue-300: get-system-color("data-green-blue", 300);
@@ -92,6 +96,7 @@ $color-data-green-blue-700: get-system-color("data-green-blue", 700);
 $color-data-green-blue-800: get-system-color("data-green-blue", 800);
 $color-data-green-blue-900: get-system-color("data-green-blue", 900);
 
+// Data: Green
 $color-data-green-100: get-system-color("data-green", 100);
 $color-data-green-200: get-system-color("data-green", 200);
 $color-data-green-300: get-system-color("data-green", 300);
@@ -102,6 +107,7 @@ $color-data-green-700: get-system-color("data-green", 700);
 $color-data-green-800: get-system-color("data-green", 800);
 $color-data-green-900: get-system-color("data-green", 900);
 
+// Data: Orange
 $color-data-orange-100: get-system-color("data-orange", 100);
 $color-data-orange-200: get-system-color("data-orange", 200);
 $color-data-orange-300: get-system-color("data-orange", 300);
@@ -112,6 +118,7 @@ $color-data-orange-700: get-system-color("data-orange", 700);
 $color-data-orange-800: get-system-color("data-orange", 800);
 $color-data-orange-900: get-system-color("data-orange", 900);
 
+// Data: Pink/Violet
 $color-data-pink-violet-100: get-system-color("data-pink-violet", 100);
 $color-data-pink-violet-200: get-system-color("data-pink-violet", 200);
 $color-data-pink-violet-300: get-system-color("data-pink-violet", 300);
@@ -122,6 +129,7 @@ $color-data-pink-violet-700: get-system-color("data-pink-violet", 700);
 $color-data-pink-violet-800: get-system-color("data-pink-violet", 800);
 $color-data-pink-violet-900: get-system-color("data-pink-violet", 900);
 
+// Data: Violet
 $color-data-violet-100: get-system-color("data-violet", 100);
 $color-data-violet-200: get-system-color("data-violet", 200);
 $color-data-violet-300: get-system-color("data-violet", 300);
@@ -132,6 +140,7 @@ $color-data-violet-700: get-system-color("data-violet", 700);
 $color-data-violet-800: get-system-color("data-violet", 800);
 $color-data-violet-900: get-system-color("data-violet", 900);
 
+// Data: Yellow/Red
 $color-data-yellow-red-100: get-system-color("data-yellow-red", 100);
 $color-data-yellow-red-200: get-system-color("data-yellow-red", 200);
 $color-data-yellow-red-300: get-system-color("data-yellow-red", 300);
@@ -142,11 +151,18 @@ $color-data-yellow-red-700: get-system-color("data-yellow-red", 700);
 $color-data-yellow-red-800: get-system-color("data-yellow-red", 800);
 $color-data-yellow-red-900: get-system-color("data-yellow-red", 900);
 
+/*
+----------------------------------------
+General Colors
+----------------------------------------
+*/
+// Blue
 $color-blue-100: get-system-color("blue", 100);
 $color-blue-700: get-system-color("blue", 700);
 $color-blue-800: get-system-color("blue", 800);
 $color-blue-900: get-system-color("blue", 900);
 
+// Gray
 $color-gray-100: get-system-color("gray", 100);
 $color-gray-200: get-system-color("gray", 200);
 $color-gray-300: get-system-color("gray", 300);
@@ -155,18 +171,22 @@ $color-gray-500: get-system-color("gray", 500);
 $color-gray-600: get-system-color("gray", 600);
 $color-gray-900: get-system-color("gray", 900);
 
+// Green
 $color-green-100: get-system-color("green", 100);
 $color-green-700: get-system-color("green", 700);
 
+// Orange
 $color-orange-100: get-system-color("orange", 100);
 $color-orange-700: get-system-color("orange", 700);
 
+// Purple
 $color-purple-700: get-system-color("purple", 700);
 
+// Red
 $color-red-100: get-system-color("red", 100);
 $color-red-700: get-system-color("red", 700);
 
-// black-transparent
+// Black transparent
 $color-black-transparent-100: get-system-color("black-transparent", 100);
 $color-black-transparent-200: get-system-color("black-transparent", 200);
 $color-black-transparent-300: get-system-color("black-transparent", 300);
@@ -178,7 +198,7 @@ $color-black-transparent-800: get-system-color("black-transparent", 800);
 $color-black-transparent-900: get-system-color("black-transparent", 900);
 $color-black-transparent-950: get-system-color("black-transparent", 905);
 
-// white-transparent
+// White transparent
 $color-white-transparent-100: get-system-color("white-transparent", 100);
 $color-white-transparent-200: get-system-color("white-transparent", 200);
 $color-white-transparent-300: get-system-color("white-transparent", 300);
@@ -303,8 +323,6 @@ $system-color-shortcodes: (
 Theme color map
 ----------------------------------------
 */
-
-
 $project-colors: (
   "primary": (
     "lightest": color($theme-color-primary-lightest, set-theme),
@@ -374,12 +392,10 @@ $tokens-color-state: (
   "disabled-dark": color($theme-color-disabled-dark, set-theme, no-warn),
 );
 
-
 $project-color-shortcodes: map-collect(
     $tokens-color-theme,
     $tokens-color-state
 );
-
 
 $all-color-shortcodes: map-collect(
     $system-color-shortcodes,

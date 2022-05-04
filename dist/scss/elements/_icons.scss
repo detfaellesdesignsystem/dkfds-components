@@ -160,15 +160,15 @@ $icons: (
 ) !default;
 
 .icon{
-    height: $body-text-line-height;
-    width: $body-text-line-height;
+    height: units($typography-body-text-line-height, 'rem');
+    width: units($typography-body-text-line-height, 'rem');
     background-repeat: no-repeat;
     display: inline-block;
     background-size: 100%;
 }
 .icon-svg {
-    height: $body-text-line-height;
-    width: $body-text-line-height;
+    height: units($typography-body-text-line-height, 'rem');
+    width: units($typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor; //svg inherit color
@@ -183,11 +183,11 @@ $icons: (
 }
 
 .icon-svg-large {
-    height: $display-1-heading-size;
-    width: $display-1-heading-size;
+    height: font-size($typography-display-1-heading-font-size);
+    width: font-size($typography-display-1-heading-font-size);
     vertical-align: middle;
     &--inherit-color{
-        fill: currentColor; //svg inherit color
+        fill: currentColor;
     }
 }
 

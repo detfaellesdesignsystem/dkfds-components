@@ -19,7 +19,7 @@
 }
 .tooltip{
   @include body-copy-text;
-  font-size: 1.6rem;
+  font-size: font-size('sm');
   box-shadow: shadow($tooltip-shadow);
   background-color: color($tooltip-background-color);
   border: border($tooltip-border);

@@ -16,10 +16,10 @@
 .form-hint {
   display: block;
   color: color($form-hint-text-color);
-  font-size: $form-hint-font-size;
-  line-height: $form-hint-line-height;
+  font-size: font-size($form-hint-font-size);
+  line-height: units($form-hint-line-height, 'rem');
   letter-spacing: $form-hint-letter-spacing;
-  font-weight: $form-hint-font-weight;
+  font-weight: font-weight($form-hint-font-weight);
 }
 .form-label {
   display: inline-block;
@@ -36,8 +36,8 @@
   border-radius: $input-border-radius;
   color: color($input-text-color); // standardize on firefox
   display: block;
-  font-size: $input-font-size;
-  line-height: $input-line-height;
+  font-size: font-size($input-font-size);
+  line-height: units($input-line-height, 'rem');
   padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
   width: 100%;
   max-width: 32rem;
@@ -45,7 +45,7 @@
   text-align: left;
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     /* IE10+ CSS styles go here */
-    height: calc(#{$input-line-height} + (8px * 2));
+    height: calc(#{units($input-line-height, 'rem')} + (8px * 2));
   }
 
   &:focus, &.focus{
@@ -87,9 +87,9 @@ textarea.no-resize{
   .form-input-prefix, .form-input-suffix {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
-    font-size: $input-font-size;
-    line-height: $input-line-height;
+    font-weight: font-weight("normal");
+    font-size: font-size($input-font-size);
+    line-height: units($input-line-height, 'rem');
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;
@@ -129,23 +129,21 @@ textarea.no-resize{
   background-repeat: no-repeat;
   border: border($select-border);
   border-radius: $select-border-radius;
-  color: color($select-text-color); // standardize on firefox
+  color: color($select-text-color);
   display: block;
-  font-size: $select-font-size;
-  line-height: $select-line-height;
-  height: calc(#{$select-line-height} + (8px * 2));
+  font-size: font-size($select-font-size);
+  line-height: units($select-line-height, 'rem');
+  height: calc(#{units($select-line-height, 'rem')} + (8px * 2));
   max-width: 32rem;
   width: 100%;
-  margin-top:  units(3);
+  margin-top: units(3);
   text-align: left;
   padding: calc(8px - #{border-width($select-border)}) calc(16px - #{border-width($select-border)});
   padding-right: 32px;
-  //custom arrrow:
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
-  // Remove dotted outline from select element on focus in Firefox
+  
   &:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 color('black');
@@ -259,8 +257,8 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 .form-checkbox + label,
 .form-radio + label {
   cursor: pointer;
-  font-weight: $font-weight-normal;
-  line-height: $body-text-line-height;
+  font-weight: font-weight("normal");
+  line-height: units($typography-body-text-line-height, 'rem');
   margin-bottom: 0;
   display: inline-block;
   outline: none;
@@ -284,7 +282,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   border-radius: $input-checkbox-border-radius;
   border: 2px solid color('black');
   height: $checkbox-size;
-  line-height: $body-text-line-height;
+  line-height: units($typography-body-text-line-height, 'rem');
   margin-right: units(3);
   width: $checkbox-size;
   position: absolute;
@@ -536,7 +534,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
   align-items: flex-end;
   label {
     margin-top: 0;
-    font-weight: $font-weight-normal;
+    font-weight: font-weight("normal");
   }
 
   input[type=number]::-webkit-inner-spin-button,

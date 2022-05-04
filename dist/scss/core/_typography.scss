@@ -1,18 +1,17 @@
 html {
-  font-family: $font-name, "system";
-  font-size: $em-base;
+  font-family: $typography-font-family;
+  font-size: $root-font-size;
 }
 
 body {
-  font-size: $base-font-size;
+  font-size: font-size($typography-base-font-size);
 }
 
 p {
-  line-height: $base-line-height;
-  margin-bottom: 0.8rem;
-  margin-top: 1.6rem;
+  line-height: units($typography-base-line-height, 'rem');
+  margin-bottom: units(3, 'rem');
+  margin-top: units(4, 'rem');
 }
-
 
 a {
   color: color($theme-color-link);
@@ -70,137 +69,72 @@ a {
   }
 }
 
-//font-family, font-size and line-height for h1-h6, bodytext and smalltext
 @mixin h1{
-  font-size: 2.5rem;
-  line-height: 3.2rem;
-  font-weight: $font-weight-bold;
+  @include responsive-style($typography-h1-font-size, font-size);
+  @include responsive-style($typography-h1-line-height, line-height);
+  @include responsive-style($typography-h1-letter-spacing, letter-spacing);
+  font-weight: font-weight("bold");
   color: color('black');
   text-transform: none;
   word-break: break-word;
-  letter-spacing: -0.3%;
-
-  @include media-breakpoint-up(md) {
-    font-size: 3.1rem;
-    line-height: 4.0rem;
-    letter-spacing: -0.4px;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h1-font-size;
-    line-height: $h1-line-height;
-    letter-spacing: -0.5px;
-  }
 }
 @mixin h2 {
-  font-size: 2.2rem;
-  line-height: 3.0rem;
-  font-weight: $font-weight-semibold;
+  @include responsive-style($typography-h2-font-size, font-size);
+  @include responsive-style($typography-h2-line-height, line-height);
+  @include responsive-style($typography-h2-letter-spacing, letter-spacing);
+  font-weight: font-weight("semibold");
   color: color('black');
   text-transform: none;
-  letter-spacing: -0.2px;
-
-  @include media-breakpoint-up(md) {
-    font-size: 2.5rem;
-    line-height: 3.2rem;
-    letter-spacing: -0.3px;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h2-font-size;
-    line-height: $h2-line-height;
-    letter-spacing: -0.4px;
-  }
 }
 @mixin h3 {
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-  font-weight: $font-weight-semibold;
+  @include responsive-style($typography-h3-font-size, font-size);
+  @include responsive-style($typography-h3-line-height, line-height);
+  @include responsive-style($typography-h3-letter-spacing, letter-spacing);
+  font-weight: font-weight("semibold");
   color: color('black');
   text-transform: none;
-  letter-spacing: -0.1px;
-
-  @include media-breakpoint-up(md) {
-    font-size: 2.0rem;
-    line-height: 2.8rem;
-    letter-spacing: -0.2px;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h3-font-size;
-    line-height: $h3-line-height;
-    letter-spacing: -0.3px;
-  }
 }
 @mixin h4{
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  font-weight: $font-weight-semibold;
+  @include responsive-style($typography-h4-font-size, font-size);
+  @include responsive-style($typography-h4-line-height, line-height);
+  @include responsive-style($typography-h4-letter-spacing, letter-spacing);
+  font-weight: font-weight("semibold");
   color: color('black');
   text-transform: none;
-
-  @include media-breakpoint-up(md) {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
-    letter-spacing: -0.15px;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h4-font-size;
-    line-height: $h4-line-height;
-    letter-spacing: -0.2px;
-  }
 }
 @mixin h5 {
-  font-size: 1.4rem;
-  line-height: 2.0rem;
-  font-weight: $font-weight-semibold;
+  @include responsive-style($typography-h5-font-size, font-size);
+  @include responsive-style($typography-h5-line-height, line-height);
+  @include responsive-style($typography-h5-letter-spacing, letter-spacing);
+  font-weight: font-weight("semibold");
   color: color('black');
   text-transform: none;
-  letter-spacing: -0.1px;
-
-  @include media-breakpoint-up(md) {
-    font-size: 1.4rem;
-    line-height: 2.0rem;
-    letter-spacing: normal;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h5-font-size;
-    line-height: $h5-line-height;
-  }
 }
 
 @mixin h6 {
-  font-size: 1.3rem;
-  line-height: 2.0rem;
-  font-weight: $font-weight-medium;
+  @include responsive-style($typography-h6-font-size, font-size);
+  @include responsive-style($typography-h6-line-height, line-height);
+  @include responsive-style($typography-h6-letter-spacing, letter-spacing);
+  font-weight: font-weight("medium");
   color: color('black');
-  letter-spacing: -0.25px;
-
-  @include media-breakpoint-up(md) {
-    font-size: 1.3rem;
-    line-height: 2.0rem;
-    letter-spacing: -0.25px;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $h6-font-size;
-    line-height: $h6-line-height;
-    letter-spacing: -0.25px;
-  }
 }
 @mixin body-copy-text {
-  font-size: $typography-body-text-size;
-  line-height: $typography-body-text-line-height;
-  font-weight: $typography-body-text-font-weight;
+  font-size: font-size($typography-body-text-font-size);
+  line-height: units($typography-body-text-line-height, 'rem');
+  font-weight: font-weight($typography-body-text-font-weight);
   color: color($typography-body-text-color);
   text-transform: none;
   letter-spacing: $typography-body-text-letter-spacing;
 }
 @mixin caption {
-  font-size: $typography-caption-font-size;
-  line-height: $typography-caption-line-height;
+  font-size: font-size($typography-caption-font-size);
+  line-height: units($typography-caption-line-height, 'rem');
   color: color($typography-caption-text-color);
   letter-spacing: $typography-caption-letter-spacing;
 }
 @mixin subheading {
-  font-size: $typography-subheading-font-size;
-  line-height: $typography-subheading-line-height;
+  font-size: font-size($typography-subheading-font-size);
+  line-height: units($typography-subheading-line-height, 'rem');
   color: color($typography-subheading-text-color);
   letter-spacing: $typography-subheading-letter-spacing;
   text-transform: uppercase;
@@ -209,16 +143,16 @@ a {
 }
 
 @mixin form-label-text {
-  font-size: $typography-form-label-font-size;
-  line-height: $typography-form-label-line-height;
-  font-weight: $font-weight-semibold;
+  font-size: font-size($typography-form-label-font-size);
+  line-height: units($typography-form-label-line-height, 'rem');
+  font-weight: font-weight("semibold");
   color: color($typography-form-label-text-color);
   text-transform: none;
 }
 @mixin small-text {
-  font-size: $typography-small-text-font-size; //1.3rem
-  line-height: $typography-small-text-line-height; //1.6rem
-  font-weight: $font-weight-normal;
+  font-size: font-size($typography-small-text-font-size);
+  line-height: units($typography-small-text-line-height, 'rem');
+  font-weight: font-weight("normal");
   letter-spacing: $typography-small-text-letter-spacing;
 }
 
@@ -267,34 +201,31 @@ figcaption, .figcaption{
 }
 
 .font-lead {
-  font-size: $lead-font-size;
-  font-weight: $font-weight-normal;
-  line-height: $lead-line-height;
-  max-width: $text-max-width;
+  font-size: font-size($typography-lead-font-size);
+  font-weight: font-weight("normal");
+  line-height: units($typography-lead-line-height, 'rem');
+  max-width: $typography-text-max-width;
   color: color('ink');
-  letter-spacing: $lead-letter-spacing;
+  letter-spacing: $typography-lead-letter-spacing;
 }
 .article{
-  font-size: $article-font-size;
-  font-weight: $font-weight-normal;
-  line-height: $article-line-height;
-  max-width: $text-max-width;
+  font-size: font-size($typography-article-font-size);
+  font-weight: font-weight("normal");
+  line-height: units($typography-article-line-height, 'rem');
+  max-width: $typography-text-max-width;
   color: color('ink');
-  letter-spacing: $article-letter-spacing;
+  letter-spacing: $typography-article-letter-spacing;
 }
 small, .small-text {
-  font-size: $typography-small-text-font-size; //1.3rem
-  line-height: $typography-small-text-line-height; //1.6rem
-  font-weight: $font-weight-normal;
-  letter-spacing: $typography-small-text-letter-spacing;
+  @include small-text();
 }
 
 .weight-normal {
-  font-weight: $font-weight-normal;
+  font-weight: font-weight("normal");
 }
 
 .weight-semibold {
-  font-weight: $font-weight-semibold;
+  font-weight: font-weight("semibold");
 }
 .facit {
   border-bottom: border(10);
@@ -302,11 +233,11 @@ small, .small-text {
   border-bottom-width: 4px;
 }
 strong, b, .bold {
-  font-weight: $font-weight-bold;
+  font-weight: font-weight("bold");
 }
 
 .italic, em {
-  font-style: $font-style-italic;
+  font-style: italic;
 }
 
 
@@ -315,7 +246,7 @@ strong, b, .bold {
 }
 
 
-h1:focus, .h1:focus, //Removed this styling, it make for a messy margin handling.
+h1:focus, .h1:focus,
 h2:focus, .h2:focus,
 h3:focus, .h3:focus,
 h4:focus, .h4:focus,
@@ -325,43 +256,43 @@ h6:focus, .h6:focus {
 }
 
 h1, .h1{
-  margin-bottom: $body-text;
-  margin-top: 0px;
+  margin-bottom: units(4, 'rem');
+  margin-top: 0rem;
 }
 
 h2, .h2 {
-  margin-top: units(6);
-  margin-bottom: $body-text;
+  margin-top: units(6, 'rem');
+  margin-bottom: units(4, 'rem');
   @include media-breakpoint-up(md) {
-    margin-top: $h1-font-size;
+    margin-top: units(7, 'rem');
   }
 }
 h3, .h3{
-  margin-top: units(6);
-  margin-bottom: $body-text;
+  margin-top: units(6, 'rem');
+  margin-bottom: units(4, 'rem');
   @include media-breakpoint-up(md) {
-    margin-top: $h1-font-size;
+    margin-top: units(7, 'rem');
   }
 }
 h4, .h4{
-  margin-top: $body-text-line-height;
-  margin-bottom: $body-text;
+  margin-top: units(5, 'rem');
+  margin-bottom:  units(4, 'rem');
 }
 h5, .h5{
-  margin-top: $body-text-line-height;
-  margin-bottom: 0;//h5 does not have margin bottom.
+  margin-top: units(5, 'rem');
+  margin-bottom: 0;
 }
 h6, .h6{
-  margin-top: $body-text-line-height;
-  margin-bottom: 0;//h6 does not have margin bottom.
+  margin-top: units(5, 'rem');
+  margin-bottom: 0;
 }
 .font-lead{
-  margin-top: $body-text-line-height;
-  margin-bottom: $body-text;
+  margin-top: units(5, 'rem');
+  margin-bottom:  units(4, 'rem');
 }
 p, .body-text{
-  margin-top: $body-text;
-  margin-bottom: $body-text;
+  margin-top: units(4, 'rem');
+  margin-bottom: units(4, 'rem');
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
@@ -428,11 +359,11 @@ button.function-link{
 }
 
 a.bold-link{
-  font-weight: $font-weight-semibold;
+  font-weight: font-weight("semibold");
 }
 
 .icon-link{
-  line-height: $body-text-line-height;
+  line-height: units($typography-body-text-line-height, 'rem');
   .icon-svg{
     margin-left: units(2);
     width: 1.6rem;
@@ -481,44 +412,44 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6{
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list):not(.tabnav):not(.sidenav-list):not(.sidenav-sub_list),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list){
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 .font-lead{
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 
 .form-label, .form-hint, .form-error-message{
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 .form-checkbox+label, .form-radio+label{
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 a:not(.button){
-  max-width: $text-max-width;
+  max-width: $typography-text-max-width;
 }
 
 
 .displayheading {
   &-1 {
-    font-weight: 500;
-    font-size: $display-1-heading-size;
-    line-height: $display-1-heading-line-height;
+    font-weight: font-weight("medium");
+    font-size: font-size($typography-display-1-heading-font-size);
+    line-height: units($typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
     color: color('black');
-    letter-spacing: -0.2px;
+    letter-spacing: $typography-display-1-heading-letter-spacing;
   }
   &-2 {
-    font-weight: 500;
-    font-size: $display-2-heading-size;
-    line-height: $display-2-heading-line-height;
+    font-weight: font-weight("medium");
+    font-size: font-size($typography-display-2-heading-font-size);
+    line-height: units($typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
     color: color('black');
-    letter-spacing: -0.2px;
+    letter-spacing: $typography-display-2-heading-letter-spacing;
   }
 }
 
@@ -543,7 +474,7 @@ a:not(.button){
 }
 
 .field-group-title {
-  font-weight: 400;
+  font-weight: font-weight("normal");
 
   ~ hr {
     border: 2px solid color('black');

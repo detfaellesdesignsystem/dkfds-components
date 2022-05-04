@@ -2,7 +2,7 @@
 
 a.button{
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
-  line-height: $body-text-line-height;
+  line-height: units($typography-body-text-line-height, 'rem');
 }
 .button{
   appearance: none;
@@ -12,12 +12,12 @@ a.button{
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
   border-style: solid;
-  border-color: color($button-primary-border-color);
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: color($button-primary-color);
+  border-color: color($button-primary-default-border-color);
+  font-size: font-size('md');
+  font-weight: font-weight("medium");
+  color: color($button-primary-default-color);
   @include font-smoothing;
-  line-height: 2rem;
+  line-height: units(405, 'rem');
   text-align: center;
   justify-content: center;
   text-decoration: none;
@@ -37,12 +37,12 @@ a.button{
   &.focus,
   &:focus {
     @include focus();
-    color: color($button-primary-color);
+    color: color($button-primary-focus-color);
   }
 
   //############ Primary ###############
   &.button-primary {
-    color: color($button-primary-color);
+    color: color($button-primary-default-border-color);
     background-color: color($button-primary-default-background-color);
     border-color: color($button-primary-default-border-color);
 
@@ -71,9 +71,9 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        color: color($button-primary-color) !important;
+        color: color($button-primary-hover-color) !important;
         background-color: color($button-primary-default-background-color) !important;
-        border-color: color($button-primary-border-color) !important;
+        border-color: color($button-primary-default-border-color) !important;
         opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }
@@ -129,7 +129,7 @@ a.button{
     border-color: color($button-tertiary-default-border-color);
     background-color: color($button-tertiary-default-background-color);
     color: color($button-tertiary-default-color);
-    font-weight: $font-weight-normal;
+    font-weight: font-weight("normal");
 
     &:hover,
     &.button-hover {
@@ -162,7 +162,7 @@ a.button{
         border-color: color($button-tertiary-default-background-color) !important;
         background-color: color($button-tertiary-default-background-color) !important;
         color: color($button-tertiary-default-color);
-        font-weight: $font-weight-normal !important;
+        font-weight: font-weight("normal") !important;
         opacity:$button-disabled-opacity;
         box-shadow: none !important;
       }
@@ -175,7 +175,7 @@ a.button{
     background-color: color($button-quaternary-default-background-color);
     border-color: transparent;
     text-decoration: none;
-    font-weight: $font-weight-normal;
+    font-weight: font-weight("normal");
     padding-left: calc(8px - #{$button-border-width});
 
     &:hover,
@@ -209,7 +209,7 @@ a.button{
       &:hover {
         color: color($button-quaternary-default-color) !important;
         background-color: color($button-quaternary-default-background-color) !important;
-        font-weight: $font-weight-normal !important;
+        font-weight: font-weight("normal") !important;
         opacity: $button-disabled-opacity !important;
         box-shadow: none !important;
       }
@@ -224,7 +224,7 @@ a.button{
 
   &.button-small {
     padding: calc(#{units(1)}) calc(#{units(4)} - #{$button-border-width}) 0px;
-    font-size: $typography-small-text-font-size;
+    font-size: font-size($typography-small-text-font-size);
     min-height: 24px;
   }
 
@@ -239,7 +239,7 @@ a.button{
   background-color: transparent;
   border: 0;
   border-radius: 0;
-  font-weight: $font-weight-normal;
+  font-weight: font-weight("normal");
   margin: 0;
   padding: 0;
   text-align: left;

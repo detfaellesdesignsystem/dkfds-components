@@ -1,25 +1,18 @@
-$em-base:           62.5%; //-> 10px for standard browsers, now 'Font size' from the browser setting works correctly if the uses specifies a bigger standard font-size.
+/*
+* * * * * * * ==== * * * * * * * 
+* * * * * * * ==== * * * * * * * 
+* * * * * * * ==== * * * * * * * 
+================================
+================================
+* * * * * * * ==== * * * * * * * 
+* * * * * * * ==== * * * * * * * 
+* * * * * * * ==== * * * * * * * 
+----------------------------------------
+FDS Variables
+Use for computed variables or any
+not meant to be set by system users
+directly.
+----------------------------------------
+*/
 
-// Paths
-// Relative font and image file paths
-$font-path:                     '../fonts/IBMPlexSans/' !default;
-$image-path:                    '../img' !default;
-$icons-folder-path:             "../img/svg-icons" !default;
-
-
-//Translate $spacer into rem
-$spacing-small:                 0.4rem !default;
-$spacing:                       0.8rem !default;
-$spacing-md-small:              1.6rem !default;
-$spacing-medium:                2.4rem !default;
-$spacing-large:                 3.2rem !default;
-$spacing-x-large:               4.0rem !default;
-$spacing-xx-large:              4.8rem !default;
-$spacing-xxx-large:             5.6rem !default;
-
-
-//Borders
-$outer-border:            border(10);
-$inner-border:            border(20);
-$inner-inner-border:      border(30);
-
+$em-base: 62.5%;

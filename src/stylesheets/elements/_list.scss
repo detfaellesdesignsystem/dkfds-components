@@ -5,20 +5,20 @@
    padding-left: 0;
    list-style-type: none;
    color: color($typography-body-text-color);
-   font-size: $typography-body-text-size;
-   line-height: $typography-body-text-line-height;
+   font-size: font-size($typography-body-text-font-size);
+   line-height: units($typography-body-text-line-height, 'rem');
    > li {
      margin-top:units(3);
      list-style-type: none;
      position: relative;
      padding-left: units(4);
-     line-height: $typography-body-text-line-height;
+     line-height: units($typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";
        position: absolute;
        left: 0px;
        top: -1px;
-       font-size: 20px;
+       font-size: font-size('lg');
      }
    }
  }
@@ -27,18 +27,17 @@ ol {
   padding-left: units(505);
   li{
     margin-top: units(3);
-    line-height: 2.4rem;
+    line-height: units(5, 'rem');
   }
 }
 
 .article{
   ul > li, ol > li{
-    font-size:$article-font-size;
-    line-height: $article-line-height;
-    letter-spacing: $article-letter-spacing;
+    font-size: font-size($typography-article-font-size);
+    line-height: units($typography-article-line-height, 'rem');
+    letter-spacing: $typography-article-letter-spacing;
   }
 }
-
 
 // Unstyled lists
 .unstyled-list {

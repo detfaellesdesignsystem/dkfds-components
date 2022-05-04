@@ -29,8 +29,8 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
   width: 29px;
   height: 29px;
   color: color('black');
-  font-size: 13px;
-  font-weight: 500;
+  font-size: font-size('2xs');
+  font-weight: font-weight("medium");
   padding-top: 5px;
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;

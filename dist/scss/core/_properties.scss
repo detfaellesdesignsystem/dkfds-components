@@ -21,22 +21,42 @@ $system-border: (
   )
 );
 
-/*
+
 //----------------
 // Font size
 // ----------------
 $system-font-size: (
   font-size: (
-    '2xs': 1.3rem,
-    'xs': 1.4rem,
-    'sm': 1.6rem,
-    'md': 2.0rem,
-    'lg': 2.1rem,
-    'xl': 2.5rem,
-    '2xl': 3.1rem,
-    '3xl': 3.9rem
+    "2xs": $typography-font-size-2xs,
+    "xs": $typography-font-size-xs,
+    "sm": $typography-font-size-sm,
+    "md": $typography-font-size-md,
+    "lg": $typography-font-size-lg,
+    "xl": $typography-font-size-xl,
+    "2xl": $typography-font-size-2xl,
+    "3xl": $typography-font-size-3xl,
+    "4xl": $typography-font-size-4xl,
+    "5xl": $typography-font-size-5xl,
+    "6xl": $typography-font-size-6xl
   )
-) !default;*/
+);
+$project-custom-font-size: () !default;
+
+//----------------
+// Font weight
+// ----------------
+$system-font-weight: (
+  font-weight: (
+    "thin": $typography-font-weight-thin,
+    "extralight": $typography-font-weight-extralight,
+    "light": $typography-font-weight-light,
+    "normal": $typography-font-weight-normal,
+    "medium": $typography-font-weight-medium,
+    "semibold": $typography-font-weight-semibold,
+    "bold": $typography-font-weight-bold,
+    "heavy": $typography-font-weight-heavy
+  )
+);
 
 //----------------
 // Shadow
@@ -64,9 +84,7 @@ $system-shadow: (
       'spread': 0,
       'color': $theme-color-shadow)
   )
-) !default;
-
-$system-properties: map-merge($system-border, $system-shadow);
+);
 
 //----------------
 // Grid
@@ -125,4 +143,3 @@ $spacers: (
   9: ($spacer * 7),     //56px
   905: ($spacer * 7.5), //60px
 ) !default;
-
