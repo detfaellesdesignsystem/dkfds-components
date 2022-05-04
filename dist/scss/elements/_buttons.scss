@@ -12,10 +12,10 @@ a.button{
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
   border-style: solid;
-  border-color: color($button-primary-border-color);
+  border-color: color($button-primary-default-border-color);
   font-size: font-size('md');
   font-weight: font-weight("medium");
-  color: color($button-primary-color);
+  color: color($button-primary-default-color);
   @include font-smoothing;
   line-height: units(405, 'rem');
   text-align: center;
@@ -37,12 +37,12 @@ a.button{
   &.focus,
   &:focus {
     @include focus();
-    color: color($button-primary-color);
+    color: color($button-primary-focus-color);
   }
 
   //############ Primary ###############
   &.button-primary {
-    color: color($button-primary-color);
+    color: color($button-primary-default-border-color);
     background-color: color($button-primary-default-background-color);
     border-color: color($button-primary-default-border-color);
 
@@ -71,9 +71,9 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        color: color($button-primary-color) !important;
+        color: color($button-primary-hover-color) !important;
         background-color: color($button-primary-default-background-color) !important;
-        border-color: color($button-primary-border-color) !important;
+        border-color: color($button-primary-default-border-color) !important;
         opacity:$button-disabled-opacity !important;
         box-shadow: none !important;
       }

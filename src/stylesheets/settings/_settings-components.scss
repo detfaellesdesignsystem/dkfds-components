@@ -17,7 +17,7 @@ $accordion-button-open-border-radius: $theme-border-radius $theme-border-radius 
 $accordion-button-color-default: 'black' !default;
 $accordion-button-color-hover: 'black' !default;
 $accordion-button-error-border-width: 2px !default;
-$accordion-button-error-border-color: $theme-color-error !default; // not used
+$accordion-button-error-border-color: $theme-color-error !default;
 $accordion-content-border: 10 !default;
 $accordion-content-border-radius: 0 0 $theme-border-radius $theme-border-radius !default;
 $accordion-content-background-color: 'white' !default;
@@ -63,27 +63,20 @@ $badge-error-background-color: $theme-color-error-light !default;
 // Button
 $button-border-width: 2px !default;
 $button-border-bottom-width: 4px !default;
-$button-disabled-bg: 'gray-100' !default; // deprecated // TODO
 $button-disabled-opacity: 0.3 !default;
 $button-border-radius: 4px !default;
 
 // Button: Primary
-$button-primary-color: 'white' !default; // old variable // TODO
-$button-primary-border-color: 'primary-dark' !default; // old variable // TODO
-$button-primary-hover-bg: 'primary-dark' !default; // old variable// TODO
-$button-primary-active-bg: 'primary-darker' !default; // old variable// TODO
-$button-primary-focus-bg:  'primary' !default; // old variable// TODO
-$button-primary-bg: 'primary' !default; // old variable// TODO
-$button-primary-default-border-color: $button-primary-border-color !default;
+$button-primary-default-border-color: 'primary-dark' !default;
 $button-primary-hover-border-color: 'primary-darker' !default;
 $button-primary-active-border-color: 'primary-darker' !default;
 $button-primary-focus-border-color: $button-primary-default-border-color !default;
 $button-primary-disabled-border-color: 'primary-dark' !default;
-$button-primary-default-background-color: $button-primary-bg !default;
-$button-primary-hover-background-color: $button-primary-hover-bg !default;
-$button-primary-active-background-color: $button-primary-active-bg !default;
-$button-primary-focus-background-color: $button-primary-focus-bg !default;
-$button-primary-default-color: $button-primary-color !default;
+$button-primary-default-background-color: 'primary' !default;
+$button-primary-hover-background-color: 'primary-dark' !default;
+$button-primary-active-background-color: 'primary-darker' !default;
+$button-primary-focus-background-color: 'primary' !default;
+$button-primary-default-color: 'white' !default;
 $button-primary-hover-color: $button-primary-default-color !default;
 $button-primary-active-color: $button-primary-default-color !default;
 $button-primary-focus-color: $button-primary-default-color !default;
@@ -127,7 +120,6 @@ $button-quaternary-default-color: 'gray-600' !default;
 $button-quaternary-hover-color: $button-quaternary-default-color !default;
 $button-quaternary-active-color: $button-quaternary-default-color !default;
 $button-quaternary-focus-color: $button-quaternary-default-color !default;
-$button-border: $button-border-width solid color($button-primary-default-border-color); // deprecated // TODO
 
 // Search field
 $button-search-text-color: 'ink' !default;
