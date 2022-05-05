@@ -8681,11 +8681,11 @@ input[readonly][type=text], textarea[readonly]{
 .checkbox-content, .radio-content{
   padding-left:calc(20px - 4px);
   padding-top:16px;
-  padding-bottom:16px;
+  padding-bottom:24px;
   border-left:4px solid #BFBFBF;
   margin-left:8px;
   margin-top:4px;
-  margin-bottom:24px;
+  margin-bottom:8px;
 }
 .checkbox-content-large, .radio-content-large{
   padding-left:calc(28px - 4px - (4px / 2));

@@ -465,11 +465,11 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 .checkbox-content, .radio-content{
   padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
   padding-top: map-get($spacers, $input-checkbox-radio-content-padding-top);
-  padding-bottom: map-get($spacers, $input-checkbox-radio-content-padding-bottom);
+  padding-bottom: units(5);
 	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid color($input-checkbox-radio-content-border-color);
   margin-left: math.div((map-get($spacers, $input-checkbox-radio-small-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
   margin-top: units(2);
-  margin-bottom: units(5);
+  margin-bottom: units(3);
   
   &-large{
     padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)} - (#{map-get($spacers, $input-checkbox-radio-content-border-width)} / 2));
