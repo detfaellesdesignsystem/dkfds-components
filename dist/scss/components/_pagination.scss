@@ -35,90 +35,60 @@
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
+            padding-left: units(3);
+            padding-right: units(3);
 
             &.hidden {
                 visibility: hidden;
             }
+
+            .icon-svg {
+                margin-right: units(0);
+            }
+
+            .pagination-nav-link {
+                @include media-breakpoint-down(sm) {
+                    display: none;
+                }
+            }
+        }
+
+        &.button-first, &.button-last {
+            @include media-breakpoint-up(md) {
+                display: none;
+            }
         }
 
         &.button-previous {
-            padding-right: units(3);
-            margin-right: units(3);
-            padding-left: units(1);
-
             .icon-svg {
                 margin-right: units(2);
 
                 @include media-breakpoint-down(sm) {
-                    display: none;
+                    margin-right: units(0);
                 }
-            }
-
-            @include media-breakpoint-down(sm) {
-                padding-left: units(3);
             }
         }
 
         &.button-next {
-            padding-left: units(3);
-            margin-left: units(3);
-            padding-right: units(1);
-            
             .icon-svg {
                 margin-left: units(2);
 
                 @include media-breakpoint-down(sm) {
-                    display: none;
+                    margin-left: units(0);
                 }
-            }
-
-            @include media-breakpoint-down(sm) {
-                padding-right: units(3);
             }
         }
     }
 
-    .pagination__dropdown {
-        
-        .pagination-dropdown {
-            display: inline-flex;
-            background-color: color($pagination-dropdown-background-color);
-            border-width: $pagination-dropdown-border-width;
-            border-bottom-width: $pagination-dropdown-border-bottom-width;
-            border-style: solid;
-            border-radius: $pagination-dropdown-border-radius;
-            border-color: color($pagination-dropdown-border-color);
-            color: color($pagination-dropdown-color);
-            padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
-            padding-right: units(7);
-            font-size: font-size('md');
-            font-weight: font-weight("medium");
-            height: 4.0rem;
-            //custom arrrow:
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: calc(100% - units(3));
+    .pagination-mobile {
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        margin-left: units(3);
+        margin-right: units(3);
 
-            &:hover {
-                background-color: color($pagination-dropdown-background-hover-color);
-                border-color: color($pagination-dropdown-border-hover-color);
-            }
-        
-            &.focus,
-            &:focus {
-            background-color: color($button-secondary-focus-background-color);
-            border-color: color($button-secondary-focus-border-color);
-            }
-        }
-
-        .totalpages-text {
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            margin-left: units(3);
+        @include media-breakpoint-up(md) {
+            display: none;
         }
     }
 
@@ -152,167 +122,8 @@
                 border-color: color($pagination-current-page-border-color);
             }
         }
-
-        /* .pagination__item {
-            display: inline-flex;
-            height: 4.0rem;
-            justify-content: center;
-            line-height: 1;
-            margin-left: units(3);
-            margin-right: units(3);
-        }
-          
-        .pagination__previous {
-            padding-right: units(3);
-            .icon-svg {
-                margin-right: units(2);
-            }
-        
-            @include media-breakpoint-down(sm) {
-                padding-right: units(0);
-            }
-        }
-        
-        .pagination__next {
-            padding-left: units(3);
-            .icon-svg {
-                margin-left: units(2);
-            }
-        
-            @include media-breakpoint-down(sm) {
-                padding-left: units(0);
-            }
-        } */
     }
 
-    /* .pagination__link {
-        color: color($pagination-link-default-color);
-        display: inline-flex;
-        text-decoration: underline;
-        align-items: center;
-    
-        .icon-svg {
-            fill: currentColor;
-        }
-    }
-
-    .pagination__button {
-        align-items: center;
-        width: 100%;
-        border-color: color($pagination-button-default-border-color);
-        border-width: $pagination-button-default-border-width;
-        border-bottom-width: $pagination-button-default-border-bottom-width;
-        border-style: solid;
-        border-radius: $pagination-button-default-border-radius;
-        background-color: color($pagination-button-default-background-color);
-        color: color($pagination-button-default-color);
-        justify-content: center;
-        text-decoration: none;
-        display: inline-flex;
-        padding-left: units(4);
-        padding-right: units(4);
-        font-size: font-size('md');
-        font-weight: font-weight("medium");
-
-        &:hover {
-          background-color: color($pagination-button-default-hover-background-color);
-          border-color: color($pagination-button-default-hover-border-color);
-        }
-    
-        &.focus,
-        &:focus {
-          background-color: color($pagination-button-default-focus-background-color);
-          border-color: color($pagination-button-default-focus-border-color);
-        }
-
-        &:active {
-            background-color: color($pagination-button-default-active-background-color);
-            border-color: color($pagination-button-default-active-border-color);
-        }
-      
-    }
-    
-    .pagination__overflow {
-        align-items: center;
-        align-self: stretch;
-        display: inherit;
-        user-select: none;
-    }
-    
-    .pagination__current {
-        align-items: center;
-        width: 100%;
-        border-color: color($pagination-button-current-border-color);
-        border-width: $pagination-button-default-border-width;
-        border-bottom-width: $pagination-button-default-border-bottom-width;
-        border-style: solid;
-        border-radius: $pagination-button-default-border-radius;
-        background-color: color($pagination-button-current-background-color);
-        color: color($pagination-button-current-color);
-        justify-content: center;
-        text-decoration: none;
-        display: inline-flex;
-        padding-left: units(4);
-        padding-right: units(4);
-        font-size: font-size('md');
-        font-weight: font-weight("medium");
-    }
-
-    .pagination__select {
-        display: none;
-        align-items: center;
-        padding-right: units(0);
-        margin-right: units(2);
-
-        @include media-breakpoint-down(sm) {
-            display: inline-flex;
-        }
-
-        .pagination-select {
-            display: inline-flex;
-            border-color: color($pagination-button-default-border-color);
-            border-width: $pagination-button-default-border-width;
-            border-bottom-width: $pagination-button-default-border-bottom-width;
-            border-style: solid;
-            border-radius: $pagination-button-default-border-radius;
-            background-color: color($pagination-button-default-background-color);
-            color: color($pagination-button-default-color);
-            padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
-            padding-right: units(605);
-            font-size: font-size('md');
-            font-weight: font-weight("medium");
-            height: 4.0rem;
-              //custom arrrow:
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: calc(100% - units(3));
-
-            &:hover {
-                background-color: color($pagination-button-default-hover-background-color);
-                border-color: color($pagination-button-default-hover-border-color);
-            }
-        
-            &.focus,
-            &:focus {
-            background-color: color($pagination-button-default-focus-background-color);
-            border-color: color($pagination-button-default-focus-border-color);
-            }
-        }
-
-        .pagination-select-label {
-            display: inline-flex;
-            margin-left: units(3);
-        }
-    }
-
-    .pagination__number, .pagination__overflow, .pagination__current {
-        @include media-breakpoint-down(sm) {
-            display: none;
-        }
-    } */
 }
 
 
