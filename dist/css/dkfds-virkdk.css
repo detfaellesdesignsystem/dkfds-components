@@ -7113,7 +7113,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 
 a.button{
   padding:8px calc(16px - 2px) calc(8px - 2px);
-  line-height:2.4rem;
+  line-height:2rem;
 }
 
 .button{
@@ -7122,6 +7122,7 @@ a.button{
           appearance:none;
   display:inline-block;
   width:100%;
+  max-height:40px;
   padding:8px calc(16px - 2px) calc(8px - 2px);
   border-radius:4px;
   border-width:2px 2px 4px 2px;

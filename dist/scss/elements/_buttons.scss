@@ -2,12 +2,13 @@
 
 a.button{
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
-  line-height: units($typography-body-text-line-height, 'rem');
+  line-height: units($button-line-height, 'rem');
 }
 .button{
   appearance: none;
   display: inline-block;
   width: 100%;
+  max-height: units(7);
   padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
   border-radius: $button-border-radius;
   border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
@@ -17,7 +18,7 @@ a.button{
   font-weight: font-weight("medium");
   color: color($button-primary-default-color);
   @include font-smoothing;
-  line-height: units(405, 'rem');
+  line-height: units($button-line-height, 'rem');
   text-align: center;
   justify-content: center;
   text-decoration: none;
