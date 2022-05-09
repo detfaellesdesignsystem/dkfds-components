@@ -11711,6 +11711,7 @@ body.modal-open{
 .toast .toast-message{
   padding:16px;
   position:relative;
+  width:100%;
 }
 .toast .toast-message .toast-close{
   background-color:transparent;
