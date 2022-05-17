@@ -7,7 +7,7 @@ body.modal-open{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $modal-overlay-background-color;
+  background-color: color($modal-overlay-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +32,8 @@ body.modal-open{
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: $modal-background-color;
-    box-shadow: $modal-shadow;
+    background-color: color($modal-background-color);
+    box-shadow: shadow($modal-shadow);
     max-width: 800px;
     width: 100%;
     position: relative;
@@ -43,58 +43,62 @@ body.modal-open{
   .modal-header {
     padding: 16px 24px 0px 24px;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 7) map-get($spacers, 7) map-get($spacers, 3) map-get($spacers, 7);
+      padding: units(7) units(7) units(3) units(7);
     }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $modal-header-background-color;
-    color: $modal-header-text-color;
+    background-color: color($modal-header-background-color);
+    color: color($modal-header-text-color);
     @include media-breakpoint-up(md) {
       padding-right: 48px;
     }
 
     h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $modal-header-text-color;
+      color: color($modal-header-text-color);
     }
   }
   .modal-title {
-    margin: 0 map-get($spacers, 8) 0 0;
+    margin: units(5) units(8) units(3) 0;
+    
+    @include media-breakpoint-up(md) {
+      margin: 0 units(8) 0 0;
+    }
   }
 
   .modal-body {
-    background-color: $modal-body-background-color;
-    color: $modal-body-text-color;
+    background-color: color($modal-body-background-color);
+    color: color($modal-body-text-color);
     padding: 0px 24px;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 3) map-get($spacers, 7) map-get($spacers, 3) map-get($spacers, 7);
+      padding: units(3) units(7) units(3) units(7);
     }
     & > *:first-child{
       margin-top: 0;
     }
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $modal-body-text-color;
+      color: color($modal-body-text-color);
     }
   }
 
   .modal-footer{
-    padding: 0px 24px 16px 24px;
+    padding: 0px units(5) units(5) ;
     @include media-breakpoint-up(md) {
-      padding: map-get($spacers, 3) map-get($spacers, 7) map-get($spacers, 7) map-get($spacers, 7);
+      padding: units(3) units(7) units(7) units(7);
     }
-    background-color: $modal-footer-background-color;
-    color: $modal-footer-text-color;
+    background-color: color($modal-footer-background-color);
+    color: color($modal-footer-text-color);
     @include media-breakpoint-up(lg) {
       display: flex;
     }
     .button {
-      margin-top: map-get($spacers, 3);
-      margin-right: map-get($spacers, 4);
+      margin-top: units(3);
+      margin-right: units(4);
     }
     
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $modal-footer-text-color;
+      color: color($modal-footer-text-color);
     }
   }
 
@@ -103,14 +107,14 @@ body.modal-open{
     top: 8px;
     right: 8px;
     width: inherit;
-    color: $modal-header-close-color;
+    color: color($modal-header-close-color);
     @include media-breakpoint-up(md) {
-      top:map-get($spacers, 5);
-      right: map-get($spacers, 6);
+      top:units(5);
+      right: units(6);
     }
 
     &:hover, &:visited, &:focus{
-      color: $modal-header-close-color;
+      color: color($modal-header-close-color);
     }
   }
 

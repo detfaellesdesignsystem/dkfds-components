@@ -1,0 +1,25 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: The ID of the pagination container.
+- name: ariaLabel
+  type: string
+  required: false
+  description: The description of the pagination.
+- name: totalPages
+  type: int
+  required: true
+  description: Total number of pages.
+- name: currentPage
+  type: int
+  required: true
+  description: The number of the current page displayed.
+- name: previousName
+  type: string
+  required: false
+  description: The name of the previous page button, defaults to 'Forrige'.
+- name: nextName
+  type: string
+  required: false
+  description: The name of the next page button, defaults to 'Næste'.

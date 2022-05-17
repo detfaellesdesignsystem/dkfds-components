@@ -1,0 +1,5 @@
+{% macro errorMessage(params) %}
+ {% if params.text %}<span class="form-error-message" id="{{params.id}}-error">
+<span class="sr-only">Fejl:</span> {{params.text}}
+</span>{% endif %}
+{% endmacro %}

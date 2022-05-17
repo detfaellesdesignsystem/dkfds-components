@@ -1,118 +1,123 @@
 'use strict';
 const breakpoints = require('../utils/breakpoints');
-const BUTTON = '.js-dropdown';
+const BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
-const eventCloseName = 'fds.dropdown.close';
-const eventOpenName = 'fds.dropdown.open';
 
-class Dropdown {
-  constructor (el){
-    this.responsiveListCollapseEnabled = false;
+/**
+ * Add functionality to overflow menu component
+ * @param {HTMLButtonElement} buttonElement Overflow menu button
+ */
+function Dropdown (buttonElement) {
+  this.buttonElement = buttonElement;
+  this.targetEl = null;
+  this.responsiveListCollapseEnabled = false;
 
-    this.triggerEl = el;
-    this.targetEl = null;
+  if(this.buttonElement === null ||this.buttonElement === undefined){
+    throw new Error(`Could not find button for overflow menu component.`);
+  }
+  let targetAttr = this.buttonElement.getAttribute(TARGET);
+  if(targetAttr === null || targetAttr === undefined){
+    throw new Error('Attribute could not be found on overflow menu component: '+TARGET);
+  }
+  let targetEl = document.getElementById(targetAttr.replace('#', ''));
+  if(targetEl === null || targetEl === undefined){
+    throw new Error('Panel for overflow menu component could not be found.');
+  }
+  this.targetEl = targetEl;
+}
 
-    this.init();
+/**
+ * Set click events
+ */
+Dropdown.prototype.init = function (){
+  if(this.buttonElement !== null && this.buttonElement !== undefined && this.targetEl !== null && this.targetEl !== undefined){
 
-    if(this.triggerEl !== null && this.triggerEl !== undefined && this.targetEl !== null && this.targetEl !== undefined){
-      let that = this;
+    if(this.buttonElement.parentNode.classList.contains('overflow-menu--md-no-responsive') || this.buttonElement.parentNode.classList.contains('overflow-menu--lg-no-responsive')){
+      this.responsiveListCollapseEnabled = true;
+    }
 
-
-      if(this.triggerEl.parentNode.classList.contains('overflow-menu--md-no-responsive') || this.triggerEl.parentNode.classList.contains('overflow-menu--lg-no-responsive')){
-        this.responsiveListCollapseEnabled = true;
-      }
-
-      //Clicked outside dropdown -> close it
-      document.getElementsByTagName('body')[ 0 ].removeEventListener('click', outsideClose);
-      document.getElementsByTagName('body')[ 0 ].addEventListener('click', outsideClose);
-      //Clicked on dropdown open button --> toggle it
-      this.triggerEl.removeEventListener('click', toggleDropdown);
-      this.triggerEl.addEventListener('click', toggleDropdown);
-
-      // set aria-hidden correctly for screenreaders (Tringuide responsive)
-      if(this.responsiveListCollapseEnabled) {
-        let element = this.triggerEl;
-        if (window.IntersectionObserver) {
-          // trigger event when button changes visibility
-          let observer = new IntersectionObserver(function (entries) {
-            // button is visible
-            if (entries[ 0 ].intersectionRatio) {
-              if (element.getAttribute('aria-expanded') === 'false') {
-                that.targetEl.setAttribute('aria-hidden', 'true');
-              }
-            } else {
-              // button is not visible
-              if (that.targetEl.getAttribute('aria-hidden') === 'true') {
-                that.targetEl.setAttribute('aria-hidden', 'false');
-              }
-            }
-          }, {
-            root: document.body
-          });
-          observer.observe(element);
-        } else {
-          // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
-          if (doResponsiveCollapse(that.triggerEl)) {
-            // small screen
+    //Clicked outside dropdown -> close it
+    document.getElementsByTagName('body')[ 0 ].removeEventListener('click', outsideClose);
+    document.getElementsByTagName('body')[ 0 ].addEventListener('click', outsideClose);
+    //Clicked on dropdown open button --> toggle it
+    this.buttonElement.removeEventListener('click', toggleDropdown);
+    this.buttonElement.addEventListener('click', toggleDropdown);
+    let $module = this;
+    // set aria-hidden correctly for screenreaders (Tringuide responsive)
+    if(this.responsiveListCollapseEnabled) {
+      let element = this.buttonElement;
+      if (window.IntersectionObserver) {
+        // trigger event when button changes visibility
+        let observer = new IntersectionObserver(function (entries) {
+          // button is visible
+          if (entries[ 0 ].intersectionRatio) {
             if (element.getAttribute('aria-expanded') === 'false') {
-              that.targetEl.setAttribute('aria-hidden', 'true');
-            } else{
-              that.targetEl.setAttribute('aria-hidden', 'false');
+              $module.targetEl.setAttribute('aria-hidden', 'true');
             }
           } else {
-            // Large screen
-            that.targetEl.setAttribute('aria-hidden', 'false');
-          }
-          window.addEventListener('resize', function () {
-            if (doResponsiveCollapse(that.triggerEl)) {
-              if (element.getAttribute('aria-expanded') === 'false') {
-                that.targetEl.setAttribute('aria-hidden', 'true');
-              } else{
-                that.targetEl.setAttribute('aria-hidden', 'false');
-              }
-            } else {
-              that.targetEl.setAttribute('aria-hidden', 'false');
+            // button is not visible
+            if ($module.targetEl.getAttribute('aria-hidden') === 'true') {
+              $module.targetEl.setAttribute('aria-hidden', 'false');
             }
-          });
+          }
+        }, {
+          root: document.body
+        });
+        observer.observe(element);
+      } else {
+        // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
+        if (doResponsiveCollapse($module.triggerEl)) {
+          // small screen
+          if (element.getAttribute('aria-expanded') === 'false') {
+            $module.targetEl.setAttribute('aria-hidden', 'true');
+          } else{
+            $module.targetEl.setAttribute('aria-hidden', 'false');
+          }
+        } else {
+          // Large screen
+          $module.targetEl.setAttribute('aria-hidden', 'false');
         }
+        window.addEventListener('resize', function () {
+          if (doResponsiveCollapse($module.triggerEl)) {
+            if (element.getAttribute('aria-expanded') === 'false') {
+              $module.targetEl.setAttribute('aria-hidden', 'true');
+            } else{
+              $module.targetEl.setAttribute('aria-hidden', 'false');
+            }
+          } else {
+            $module.targetEl.setAttribute('aria-hidden', 'false');
+          }
+        });
       }
+    }
 
-      
-      document.addEventListener('keyup', function(event){
-        var key = event.which || event.keyCode;
-        if (key === 27) {
-          closeAll(event);
-        }
-      });
-    }
-  }
-
-  init (){    
-    if(this.triggerEl === null ||this.triggerEl === undefined){
-      throw new Error(`Could not find button for Details component.`);
-    }
-    let targetAttr = this.triggerEl.getAttribute(TARGET);
-    if(targetAttr === null || targetAttr === undefined){
-      throw new Error('Attribute could not be found on details component: '+TARGET);
-    }
-    let targetEl = document.getElementById(targetAttr.replace('#', ''));
-    if(targetEl === null || targetEl === undefined){
-      throw new Error('Panel for Details component could not be found.');
-    }
     
-    this.targetEl = targetEl;  
+    document.removeEventListener('keyup', closeOnEscape);
+    document.addEventListener('keyup', closeOnEscape);
   }
-
-  hide(){
-    toggle(this.triggerEl);
-  }
-
-  show(){
-    toggle(this.triggerEl);
-  }
-
 }
+
+/**
+ * Hide overflow menu
+ */
+Dropdown.prototype.hide = function(){
+  toggle(this.buttonElement);
+}
+
+/**
+ * Show overflow menu
+ */
+Dropdown.prototype.show = function(){
+  toggle(this.buttonElement);
+}
+
+let closeOnEscape = function(event){
+  var key = event.which || event.keyCode;
+  if (key === 27) {
+    closeAll(event);
+  }
+};
 
 /**
  * Get an Array of button elements belonging directly to the given
@@ -124,12 +129,12 @@ let getButtons = function (parent) {
   return parent.querySelectorAll(BUTTON);
 };
 
+/**
+ * Close all overflow menus
+ * @param {event} event default is null
+ */
 let closeAll = function (event = null){
   let changed = false;
-
-  let eventClose = document.createEvent('Event');
-  eventClose.initEvent(eventCloseName, true, true);
-
   const body = document.querySelector('body');
 
   let overflowMenuEl = document.getElementsByClassName('overflow-menu');
@@ -143,6 +148,7 @@ let closeAll = function (event = null){
         if (targetEl !== null && triggerEl !== null) {
           if(doResponsiveCollapse(triggerEl)){
             if(triggerEl.getAttribute('aria-expanded') === true){
+              let eventClose = new Event('fds.dropdown.close');
               triggerEl.dispatchEvent(eventClose);
             }
             triggerEl.setAttribute('aria-expanded', 'false');
@@ -173,12 +179,6 @@ let toggleDropdown = function (event, forceClose = false) {
 };
 
 let toggle = function(button, forceClose = false){
-  
-  let eventClose = document.createEvent('Event');
-  eventClose.initEvent(eventCloseName, true, true);
-
-  let eventOpen = document.createEvent('Event');
-  eventOpen.initEvent(eventOpenName, true, true);
   let triggerEl = button;
   let targetEl = null;
   if(triggerEl !== null && triggerEl !== undefined){
@@ -197,14 +197,19 @@ let toggle = function(button, forceClose = false){
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
       targetEl.classList.add('collapsed');
-      targetEl.setAttribute('aria-hidden', 'true');
+      targetEl.setAttribute('aria-hidden', 'true');      
+      let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     }else{
-      closeAll();
+      
+      if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+        closeAll();
+      }
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
       targetEl.setAttribute('aria-hidden', 'false');
+      let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
       let targetOffset = offset(targetEl);
 
@@ -247,29 +252,29 @@ let hasParent = function (child, parentTagName){
 };
 
 let outsideClose = function (evt){
-  if(document.querySelector('body.mobile_nav-active') === null) {
-    let openDropdowns = document.querySelectorAll('.js-dropdown[aria-expanded=true]');
-    for (let i = 0; i < openDropdowns.length; i++) {
-      let triggerEl = openDropdowns[i];
-      let targetEl = null;
-      let targetAttr = triggerEl.getAttribute(TARGET);
-      if (targetAttr !== null && targetAttr !== undefined) {
-        if(targetAttr.indexOf('#') !== -1){
-          targetAttr = targetAttr.replace('#', '');
+  if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+    if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
+      let openDropdowns = document.querySelectorAll(BUTTON+'[aria-expanded=true]');
+      for (let i = 0; i < openDropdowns.length; i++) {
+        let triggerEl = openDropdowns[i];
+        let targetEl = null;
+        let targetAttr = triggerEl.getAttribute(TARGET);
+        if (targetAttr !== null && targetAttr !== undefined) {
+          if(targetAttr.indexOf('#') !== -1){
+            targetAttr = targetAttr.replace('#', '');
+          }
+          targetEl = document.getElementById(targetAttr);
         }
-        targetEl = document.getElementById(targetAttr);
-      }
-      if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
-        //closes dropdown when clicked outside
-        if (evt.target !== triggerEl) {
-          //clicked outside trigger, force close
-          triggerEl.setAttribute('aria-expanded', 'false');
-          targetEl.classList.add('collapsed');
-          targetEl.setAttribute('aria-hidden', 'true');
-
-          let eventClose = document.createEvent('Event');
-          eventClose.initEvent(eventCloseName, true, true);
-          triggerEl.dispatchEvent(eventClose);
+        if (doResponsiveCollapse(triggerEl) || (hasParent(triggerEl, 'HEADER') && !evt.target.classList.contains('overlay'))) {
+          //closes dropdown when clicked outside
+          if (evt.target !== triggerEl) {
+            //clicked outside trigger, force close
+            triggerEl.setAttribute('aria-expanded', 'false');
+            targetEl.classList.add('collapsed');
+            targetEl.setAttribute('aria-hidden', 'true');          
+            let eventClose = new Event('fds.dropdown.close');
+            triggerEl.dispatchEvent(eventClose);
+          }
         }
       }
     }
@@ -303,4 +308,4 @@ let getTringuideBreakpoint = function (button){
   }
 };
 
-module.exports = Dropdown;
+export default Dropdown;

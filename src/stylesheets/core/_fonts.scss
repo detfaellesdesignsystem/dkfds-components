@@ -1,132 +1,139 @@
 $font-system: 'system' !default;
+@if not $theme-use-custom-font {
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: font-weight("bold");
+    src: url($font-path + "complete/woff2/IBMPlexSans-Bold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Bold.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url($font-path + "complete/woff2/IBMPlexSans-Bold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Bold.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: italic;
+    font-weight: font-weight("bold");
+    src: url($font-path + "complete/woff2/IBMPlexSans-BoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-BoldItalic.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: url($font-path + "complete/woff2/IBMPlexSans-BoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-BoldItalic.woff") format("woff");
-  font-display: swap;
-}
+  @if font-weight("extralight", false) != false{
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: font-weight("extralight");
+      src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLight.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLight.woff") format("woff");
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 200;
-  src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLight.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLight.woff") format("woff");
-  font-display: swap;
-}
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: italic;
+      font-weight: font-weight("extralight");
+      src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLightItalic.woff") format("woff");
+      font-display: swap;
+    }
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 200;
-  src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLightItalic.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: italic;
+    font-weight: font-weight("normal");
+    src: url($font-path + "complete/woff2/IBMPlexSans-Italic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Italic.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: url($font-path + "complete/woff2/IBMPlexSans-Italic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Italic.woff") format("woff");
-  font-display: swap;
-}
+  @if font-weight("light", false) != false{
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: font-weight("light");
+      src: url($font-path + "complete/woff2/IBMPlexSans-Light.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Light.woff") format("woff");
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: url($font-path + "complete/woff2/IBMPlexSans-Light.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Light.woff") format("woff");
-  font-display: swap;
-}
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: italic;
+      font-weight: font-weight("light");
+      src: url($font-path + "complete/woff2/IBMPlexSans-LightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-LightItalic.woff") format("woff");
+      font-display: swap;
+    }
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 300;
-  src: url($font-path + "complete/woff2/IBMPlexSans-LightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-LightItalic.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: font-weight("medium");
+    src: url($font-path + "complete/woff2/IBMPlexSans-Medium.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Medium.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: url($font-path + "complete/woff2/IBMPlexSans-Medium.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Medium.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: italic;
+    font-weight: font-weight("medium");
+    src: url($font-path + "complete/woff2/IBMPlexSans-MediumItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-MediumItalic.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: url($font-path + "complete/woff2/IBMPlexSans-MediumItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-MediumItalic.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: font-weight("normal");
+    src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot'); /* IE9 Compat Modes */
+    src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url($font-path + 'complete/woff/IBMPlexSans-Regular.woff') format('woff'), /* Modern Browsers */
+    url($font-path + 'complete/woff2/IBMPlexSans-Regular.woff2') format('woff2'), /* Modern Browsers */
+    url($font-path + 'complete/ttf/IBMPlexSans-Regular.ttf')  format('truet ype'); /* Safari, Android, iOS */
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot'); /* IE9 Compat Modes */
-  src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url($font-path + 'complete/woff/IBMPlexSans-Regular.woff') format('woff'), /* Modern Browsers */
-  url($font-path + 'complete/woff2/IBMPlexSans-Regular.woff2') format('woff2'), /* Modern Browsers */
-  url($font-path + 'complete/ttf/IBMPlexSans-Regular.ttf')  format('truet ype'); /* Safari, Android, iOS */
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: font-weight("semibold");
+    src: url($font-path + "complete/woff2/IBMPlexSans-SemiBold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBold.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: url($font-path + "complete/woff2/IBMPlexSans-SemiBold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBold.woff") format("woff");
-  font-display: swap;
-}
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: italic;
+    font-weight: font-weight("semibold");
+    src: url($font-path + "complete/woff2/IBMPlexSans-SemiBoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBoldItalic.woff") format("woff");
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 600;
-  src: url($font-path + "complete/woff2/IBMPlexSans-SemiBoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBoldItalic.woff") format("woff");
-  font-display: swap;
-}
+  @if font-weight("thin", false) != false{
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: font-weight("thin");
+      src: url($font-path + "complete/woff2/IBMPlexSans-Thin.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Thin.woff") format("woff");
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 100;
-  src: url($font-path + "complete/woff2/IBMPlexSans-Thin.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Thin.woff") format("woff");
-  font-display: swap;
-}
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: italic;
+      font-weight: font-weight("thin");
+      src: url($font-path + "complete/woff2/IBMPlexSans-ThinItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ThinItalic.woff") format("woff");
+      font-display: swap;
+    }
+  }
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: italic;
-  font-weight: 100;
-  src: url($font-path + "complete/woff2/IBMPlexSans-ThinItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ThinItalic.woff") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: system;
-  src:  local(".SFNSText-Light"), //Mac OS X - El Captain
-  local(".HelveticaNeueDeskInterface-Light"), //Mac OS X - Yosemite
-  local(".LucidaGrandeUI"), //Mac OS X - Mavericks
-  local("Ubuntu Light"), //Ubuntu
-  local("Segoe UI Light"), //Windows - Vista
-  local("Roboto-Light"), //Android - Ice Cream Sandwich (4.0)+
-  local("DroidSans"), //Android - Cupcake (1.5) to Honeycomb (3.2.6)
-  local("Tahoma"); //Windows - XP
-  font-style:   $font-style-normal;
-  font-weight:  $font-weight-normal;
-  font-display: swap;
+  @font-face {
+    font-family: system;
+    src:  local(".SFNSText-Light"), //Mac OS X - El Captain
+    local(".HelveticaNeueDeskInterface-Light"), //Mac OS X - Yosemite
+    local(".LucidaGrandeUI"), //Mac OS X - Mavericks
+    local("Ubuntu Light"), //Ubuntu
+    local("Segoe UI Light"), //Windows - Vista
+    local("Roboto-Light"), //Android - Ice Cream Sandwich (4.0)+
+    local("DroidSans"), //Android - Cupcake (1.5) to Honeycomb (3.2.6)
+    local("Tahoma"); //Windows - XP
+    font-style: normal;
+    font-weight: font-weight("normal");
+    font-display: swap;
+  }
 }

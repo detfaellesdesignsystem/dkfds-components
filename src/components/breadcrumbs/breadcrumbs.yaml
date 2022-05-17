@@ -1,0 +1,45 @@
+params:
+- name: classes
+  type: string
+  required: false
+  description: Classes of the breadcrumb.
+- name: attributes
+  type: array
+  required: false
+  description: Array of attributes.
+  - name: attribute
+    type: string
+    required: true
+    description: Name of attribute
+  - name: value
+    type: string
+    required: true
+    description: Value of attribute
+- name: ariaLabel
+  type: string
+  required: false
+  description: Value of attribute aria-label. Default is "Brødkrumme"
+- name: items
+  type: array
+  required: true
+  description: List of crumbs
+  - name: href
+    type: string 
+    required: false
+    description: Path to crumb page.
+  - name: text
+    type: string 
+    required: false
+    description: Text title of crumb.
+  - name: attributes
+    type: array
+    required: false
+    description: Array of attributes for the crumb.
+    - name: attribute
+      type: string
+      required: true
+      description: Name of attribute
+    - name: value
+      type: string
+      required: true
+      description: Value of attribute

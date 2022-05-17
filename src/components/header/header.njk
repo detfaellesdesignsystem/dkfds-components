@@ -1,44 +1,44 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro portal_header(portal_header) %}
+{% macro portal_header(params) %}
   <!--1A: Portal header -->
-  <div class="portal-header {% if portal_header.compact == true %}portal-header-compact{% endif %}">
+  <div class="portal-header {% if params.compact == true %}portal-header-compact{% endif %}">
     <div class="container portal-header-inner">
-      <a href="{{ portal_header.logolink.href | default('/') }}" {% if portal_header.logolink.title %}title="{{ portal_header.logolink.title}}"{% endif %} {% if portal_header.logolink.label %}aria-label="{{ portal_header.logolink.label }}"{% endif %} class="logo alert-leave">
-        {% if portal_header.logolink.sronly %}<span class="sr-only">{{ portal_header.logolink.sronly}}</span>{% endif %}
+      <a href="{{ params.logolink.href | default('/') }}" {% if params.logolink.title %}title="{{ params.logolink.title}}"{% endif %} {% if params.logolink.label %}aria-label="{{ params.logolink.label }}"{% endif %} class="logo {{params.logolink.classes}}">
+        {% if params.logolink.sronly %}<span class="sr-only">{{ params.logolink.sronly}}</span>{% endif %}
       </a>
-      <button class="button button-secondary button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu">Menu</button>
+      <button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu"><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#menu"></use></svg>Menu</button>
 
       <!-- 1B: Portal header: info + actions-->
       <div class="portal-info">
-        {% if portal_header.user %}
-          <p class="user"><span class="username{% if portal_header.compact == null or portal_header.compact == false %} weight-semibold{% endif %}">{{ portal_header.user.name | safe }}</span> {% if portal_header.user.work %}<br />{{ portal_header.user.work}}  {% endif %}</p>
+        {% if params.user %}
+          <p class="user"><span class="username{% if params.compact == null or params.compact == false %} weight-semibold{% endif %}">{{ params.user.name | safe }}</span> {% if params.user.work %}<br />{{ params.user.work}}  {% endif %}</p>
         {% endif %}
-         <button class="button {{ portal_header.link.class | default('button-secondary') }} alert-leave d-print-none">
-          {{ portal_header.link.text }}
+         <button class="button {{ params.link.classes | default('button-secondary') }} d-print-none">
+          {{ params.link.text }}
         </button>
       </div>
     </div>
   </div>
 {% endmacro %}
 
-{% macro solution_header(solution_header_data) %}
+{% macro solution_header(params) %}
   <!--2A: Solution header -->
-  <div class="solution-header {{ solution_header_data.class }}">
+  <div class="solution-header {{ params.classes }}">
     <div class="container solution-header-inner">
       <div class="solution-heading">
-        <a href="{{ solution_header_data.title.href | default('/') }}" title="{{ solution_header_data.title.title }}"  {% if solution_header_data.title.label %}aria-label="{{ solution_header_data.title.label }}"{% endif %} class="alert-leave2">
-          {{ solution_header_data.title.text }}
+        <a href="{{ params.title.href | default('/') }}"  {% if params.title.ariaLabel %}aria-label="{{ params.title.ariaLabel }}"{% endif %} class="{{params.title.classes}}">
+          {{ params.title.text }}
         </a>
       </div>
 
       <!--2B: Solution header: Authority name + text-->
-      <div class="solution-info {% if solution_header_data.solutionInfo.hideOnPrint %}d-print-none{% endif %}"> <!-- nav-secondary -->
-        {% if solution_header_data.authority.name %}
-          <p class="h5 authority-name"> {{ solution_header_data.authority.name }}</p>
+      <div class="solution-info {% if params.solutionInfo.hideOnPrint %}d-print-none{% endif %}"> <!-- nav-secondary -->
+        {% if params.authority.name %}
+          <p class="h5 authority-name"> {{ params.authority.name }}</p>
         {% endif %}
-        {% if solution_header_data.authority.text %}
-          <p>{{ solution_header_data.authority.text | safe }}</p>
+        {% if params.authority.text %}
+          <p>{{ params.authority.text | safe }}</p>
         {% endif %}
       </div>
     </div>

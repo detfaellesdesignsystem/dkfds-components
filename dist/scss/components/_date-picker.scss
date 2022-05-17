@@ -30,6 +30,7 @@
   margin-top: 0.5em;
   width: 3em;
   display: block;
+  cursor: pointer;
 }
 
 .date-picker--initialized {
@@ -41,8 +42,8 @@
 // Date Picker - Calendar View
 
 .date-picker__calendar {
-  border: $datepicker-border;
-  background-color: $datepicker-background-color;
+  border: border($datepicker-border);
+  background-color: color($datepicker-background-color);
   box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
   position: absolute;
@@ -64,11 +65,11 @@
   width: 100%;
 
   thead{
-    border-bottom: $datepicker-table-border;
+    border-bottom: border($datepicker-table-border);
   }
 
   th {
-    font-weight: normal;
+    font-weight: font-weight("normal");
   }
 
   td {
@@ -95,8 +96,8 @@
   display: flex;
   text-align: center;
   width: 100%;
-  background-color: $color-gray-pale;
-  border-bottom: $datepicker-table-border;
+  background-color: color($datepicker-header-background-color);
+  border-bottom: border($datepicker-table-border);
 
   button:focus{
     z-index: 10;
@@ -105,8 +106,8 @@
 }
 
 .date-picker__calendar__cell {
-  background-color: $datepicker-header-background-color;
-  color: $datepicker-header-text-color;
+  background-color: color($datepicker-header-background-color);
+  color: color($datepicker-header-text-color);
   flex: 1;
 }
 
@@ -126,6 +127,7 @@
   background-position: center;
   height: 30px;
   padding: 20px 10px;
+  cursor: pointer;
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
@@ -154,6 +156,7 @@
   width: 100%;
   padding: 10px 8px 10px 0px;
   position: relative;
+  cursor: pointer;
 
   
   @include media-breakpoint-up(md) {
@@ -166,7 +169,7 @@
     bottom: 0px;
     left: -1px;
     right: 0px;
-    border: $inner-border;
+    border: border(20);
     content: "";
     display: block;
     pointer-events:none;
@@ -182,15 +185,14 @@
     z-index: 100;
     
     &:after {
-      border: $outer-border;
+      border: border(10);
     }
   }
 
   &:focus {
     outline: none;
     &:before {
-      outline: $focus-outline;
-      outline-offset: 1px;
+      @include focus();
       position: absolute;
       top: -1px;
       bottom: 0px;
@@ -205,20 +207,24 @@
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
-    color: $datepicker-previous-next-month-text-color;
+    color: color($datepicker-previous-next-month-text-color);
     text-indent: -99999px;
-    background-color: $datepicker-previous-next-month-background-color;
+    background-color: color($datepicker-previous-next-month-background-color);
+
+    &:hover {
+      background-color: color($datepicker-previous-next-month-background-color-hover);
+    }
   }
 
   &--selected,
   &--range-date {
-    background-color: $color-gray-dark;
-    color: $color-white;
-    font-weight: 600;
+    background-color: color($datepicker-date-selected-background-color);
+    color: color($datepicker-date-selected-text-color);
+    font-weight: font-weight("semibold");
 
     &:not([disabled]) {
-      background-color: $color-gray-dark;
-      color: $color-white;
+      background-color: color($datepicker-date-selected-background-color);
+      color: color($datepicker-date-selected-text-color);
     }
   }
 
@@ -234,21 +240,23 @@
   }
 
   &--within-range {
-    background-color: $color-primary;
+    background-color: color($datepicker-date-within-range-background-color);
+    color: color($datepicker-date-within-range-text-color);
 
     &:not([disabled]) {
-      background-color: $color-primary;
+      background-color: color($datepicker-date-within-range-background-color);
+      color: color($datepicker-date-within-range-text-color);
 
       &:hover {
-        background-color: $color-gray-medium-dark;
+        background-color: color($datepicker-date-within-range-background-color);
       }
 
       &:focus {
-        background-color: $color-primary;
+        background-color: color($datepicker-date-within-range-background-color);
       }
 
       &:active {
-        background-color: $color-primary;
+        background-color: color($datepicker-date-within-range-background-color);
       }
     }
   }
@@ -264,11 +272,11 @@
 .date-picker__calendar__month-selection {
   @include button-unstyled;
   display: inline-block;
-  
   padding: 8px 4px;
   width: 100%;
   text-align: center;
-  font-weight: $font-weight-semibold;
+  font-weight: font-weight("semibold");
+  cursor: pointer;
 
   @include media-breakpoint-up(md) {
     height: 100%;
@@ -289,9 +297,10 @@
   width: 100%;
   display: block;
   text-align: center;
+  cursor: pointer;
 
   &--focused {
-    outline: $focus-outline;
+    @include focus-outline();
     outline-offset: 2px;
     position: relative;
     z-index: 100;
@@ -304,17 +313,17 @@
   }
 
   &--selected {
-    color: $color-black;
-    font-weight: 600;
+    color: color($datepicker-month-selected-text-color);
+    font-weight: font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: $color-black;
+        color: color($datepicker-month-selected-text-color);
       }
 
       &:focus {
-        color: $color-black;
+        color: color($datepicker-month-selected-text-color);
       }
     }
   }
@@ -332,6 +341,7 @@
   background-position: center;
   margin: auto;
   padding: 0px 8px;
+  cursor: pointer;
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
@@ -348,10 +358,10 @@
   width: 100%;
   display: block;
   text-align: center;
+  cursor: pointer;
 
   &--focused {
-    outline: $focus-outline;
-    outline-offset: 1px;
+    @include focus();
     position: relative;
     z-index: 100;
   }
@@ -363,17 +373,17 @@
   }
 
   &--selected {
-    color: $color-black;
-    font-weight: 600;
+    color: color($datepicker-year-selected-text-color);
+    font-weight: font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: $color-black;
+        color: color($datepicker-year-selected-text-color);
       }
 
       &:focus {
-        color: $color-black;
+        color: color($datepicker-year-selected-text-color);
       }
     }
   }

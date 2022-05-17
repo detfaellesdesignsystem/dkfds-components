@@ -1,8 +1,8 @@
-{% macro details(data) %}
-<details class="details js-details">
-  <summary class="details-summary">{{ data.text }}</summary>
+{% macro details(params) %}
+<details class="details">
+  <summary class="details-summary">{{ params.summary }}</summary>
   <div class="details-text">
-      {{ data.content | safe }}
+      {{ params.content | safe }}
   </div>
 </details>
 {% endmacro %}

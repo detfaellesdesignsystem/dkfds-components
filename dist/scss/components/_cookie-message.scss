@@ -1,41 +1,41 @@
 .cookie-container{
-  color: $cookie-message-text-color;
+  color: color($cookie-message-text-color);
   position: fixed;
   bottom: 0px;
   right: 0px;
   left: 0px;
   z-index: 9500;
-  margin-bottom: map-get($spacers, 3);
-  margin-left: map-get($spacers, 3);
-  margin-right: map-get($spacers, 3);
+  margin-bottom: units(3);
+  margin-left: units(3);
+  margin-right: units(3);
 
   .cookie-message{
     @include grid-container();
-    background-color:$cookie-message-background-color;
-    border: $cookie-message-border;
-    box-shadow: $cookie-message-shadow;
-    padding-top: calc(#{map-get($spacers, 6)} - 1px);
-    padding-bottom: calc(#{map-get($spacers, 7)} - 1px);
+    background-color: color($cookie-message-background-color);
+    border: border($cookie-message-border);
+    box-shadow: shadow($cookie-message-shadow);
+    padding-top: calc(#{units(6)} - 1px);
+    padding-bottom: calc(#{units(7)} - 1px);
     position: relative;
     overflow: hidden;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $cookie-message-text-color;
+      color: color($cookie-message-text-color);
     }
 
 
     @include media-breakpoint-up(xl) {
-      max-width: calc(#{map-get($container-max-widths, xl)} + #{map-get($spacers, 7)} + #{map-get($spacers, 7)});
+      max-width: calc(#{map-get($container-max-widths, xl)} + #{units(7)} + #{units(7)});
     }
 
     .cookie-text, .cookie-actions{
       @include media-breakpoint-up(xl) {
-        padding-left: map-get($spacers, 7);
-        padding-right: map-get($spacers, 7);
+        padding-left: units(7);
+        padding-right: units(7);
       }
     }
     .cookie-actions{
-      margin-top: map-get($spacers, 4);
+      margin-top: units(4);
     }
   }
 }

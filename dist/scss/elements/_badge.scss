@@ -1,46 +1,36 @@
-// Tags
 .badge{
-  //@include margin(0.5em 0.5em 0.5em null);
   padding:0;
-  padding-left: map-get($spacers, 3);
-  padding-right:map-get($spacers, 3);
+  padding-left: units(3);
+  padding-right:units(3);
   border: none;
-  font-weight: $font-weight-semibold;
-  color: $button-primary-color;
-  background: $color-black;
+  font-weight: font-weight($badge-font-weight);
+  color: color($badge-default-text-color);
+  background: color($badge-default-background-color);
   @include font-smoothing;
   text-align: center;
-  text-transform: uppercase;
   display: inline-block;
-
-  //############ Large badge ###############
   &.badge-large {
-    color: $button-primary-color;
-    background-color: $color-black;
-    font-size: $base-font-size;
-    line-height: $body-text-line-height;
+    font-size: font-size($badge-large-font-size);
+    line-height: units($badge-large-line-height, 'rem');
   }
- //############ Small badge ###############
   &.badge-small {
-    color: $button-primary-color;
-    background-color: $color-black;
-    font-size: $small-text;
-    line-height: $small-text-line-height;
+    font-size: font-size($badge-small-font-size);
+    line-height: units($badge-small-line-height, 'rem');
   }
   &.badge-info{
-    color: $color-black;
-    background-color: $color-info-light;
+    color: color($badge-info-text-color);
+    background-color: color($badge-info-background-color);
   }
   &.badge-success{
-    color: $color-black;
-    background-color: $color-success-light;
+    color: color($badge-success-text-color);
+    background-color: color($badge-success-background-color);
   }
   &.badge-warning{
-    color: $color-black;
-    background-color: $color-warning-light;
+    color: color($badge-warning-text-color);
+    background-color: color($badge-warning-background-color);
   }
   &.badge-error{
-    color: $color-black;
-    background-color: $color-error-light;
+    color: color($badge-error-text-color);
+    background-color: color($badge-error-background-color);
   }
 }

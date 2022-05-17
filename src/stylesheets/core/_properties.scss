@@ -1,0 +1,145 @@
+//----------------
+// Borders
+// ----------------
+$system-border: (
+  border: (
+    10: (
+      'width': 1px,
+      'style': solid,
+      'color': 'gray-500'
+    ),
+    20: (
+      'width': 1px,
+      'style': solid,
+      'color': 'gray-300'
+    ),
+    30: (
+      'width': 1px,
+      'style': solid,
+      'color': 'gray-200'
+    )
+  )
+);
+
+
+//----------------
+// Font size
+// ----------------
+$system-font-size: (
+  font-size: (
+    "2xs": $typography-font-size-2xs,
+    "xs": $typography-font-size-xs,
+    "sm": $typography-font-size-sm,
+    "md": $typography-font-size-md,
+    "lg": $typography-font-size-lg,
+    "xl": $typography-font-size-xl,
+    "2xl": $typography-font-size-2xl,
+    "3xl": $typography-font-size-3xl,
+    "4xl": $typography-font-size-4xl,
+    "5xl": $typography-font-size-5xl,
+    "6xl": $typography-font-size-6xl
+  )
+);
+$project-custom-font-size: () !default;
+
+//----------------
+// Font weight
+// ----------------
+$system-font-weight: (
+  font-weight: (
+    "thin": $typography-font-weight-thin,
+    "extralight": $typography-font-weight-extralight,
+    "light": $typography-font-weight-light,
+    "normal": $typography-font-weight-normal,
+    "medium": $typography-font-weight-medium,
+    "semibold": $typography-font-weight-semibold,
+    "bold": $typography-font-weight-bold,
+    "heavy": $typography-font-weight-heavy
+  )
+);
+
+//----------------
+// Shadow
+// ----------------
+$system-shadow: (
+  shadow: (
+    'light': (
+      'h-offset': 0,
+      'v-offset': 2px, 
+      'blur': 4px,
+      'spread': 0,
+      'color': $theme-color-shadow
+      ),
+    'medium': (
+      'h-offset': 0,
+      'v-offset': 4px, 
+      'blur': 8px,
+      'spread': 0,
+      'color': $theme-color-shadow
+    ),
+    'heavy': (
+      'h-offset': 0,
+      'v-offset': 8px, 
+      'blur': 16px,
+      'spread': 0,
+      'color': $theme-color-shadow)
+  )
+);
+
+//----------------
+// Grid
+// ----------------
+
+// Common grid breakpoints variables
+$grid-xs:                     0 !default;
+$grid-sm:                     576px !default;
+$grid-md:                     768px !default;
+$grid-lg:                     992px !default;
+$grid-xl:                     1200px !default;
+
+// Grid breakpoints..
+$grid-breakpoints: (
+  xs: $grid-xs,
+  sm: $grid-sm,
+  md: $grid-md,
+  lg: $grid-lg,
+  xl: $grid-xl
+) !default;
+
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1200px
+) !default;
+
+$grid-columns:                  12 !default;
+$grid-gutter-width:             32px !default; //16px on each side of the columns
+
+// Spacing helpers
+//
+// Mostly used to control spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+// How to use: units(2); This will give 4px (8*0.5).
+
+$spacer: 8px !default;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),   //2px
+  2: ($spacer * .5),    //4px
+  3: $spacer,           //8px
+  305:($spacer * 1.5),  //12px
+  4: ($spacer * 2),     //16px
+  405: ($spacer * 2.5), //20px
+  5: ($spacer * 3),     //24px
+  505: ($spacer * 3.5), //28px
+  6: ($spacer * 4),     //32px
+  605: ($spacer * 4.5), //36px
+  7: ($spacer * 5),     //40px
+  705: ($spacer * 5.5), //44px
+  8: ($spacer * 6),     //48px
+  805: ($spacer * 6.5), //52px
+  9: ($spacer * 7),     //56px
+  905: ($spacer * 7.5), //60px
+) !default;

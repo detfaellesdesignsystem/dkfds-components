@@ -1,7 +1,15 @@
 // Focus state mixin
+
+@mixin focus-outline {
+  outline: $theme-focus-width $theme-focus-style color($theme-focus-color);
+}
+@mixin focus-offset {
+  outline-offset: $theme-focus-offset;
+}
+
 @mixin focus {
-  outline: $focus-outline;
-  outline-offset: $focus-spacing;
+  @include focus-outline();
+  @include focus-offset();
 }
 
 // Screen reader only helper
@@ -47,11 +55,6 @@
   }
 }
 
-@mixin focus-outline() {
-  outline: $focus-outline;
-  outline-offset: 1px;
-}
-
 // nobullet list helper
 @mixin nobullet-list() {
   list-style-type: none;
@@ -75,9 +78,49 @@
 }
 
 // Font smoothing mixin
-// Only use for light text on dark background
-// TODO: Remove after adding PostCSS
 @mixin font-smoothing {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+----------------------------------------
+responsive-style
+----------------------------------------
+Sets styles within breakpoints
+----------------------------------------
+*/
+@mixin responsive-style($map, $style){
+  @if type-of($map) == 'map' {
+    @each $breakpoint, $value in $map{
+      @if $breakpoint == "default" {
+        @if $style == line-height{
+          #{$style}: units($value, 'rem');
+        }@else if $style == font-size{
+          #{$style}: font-size($value);
+        }@else{
+          #{$style}: $value;
+        }
+      } @else{
+        @include media-breakpoint-up($breakpoint) {
+          @if $style == line-height{
+            #{$style}: units($value, 'rem');
+          }@else if $style == font-size{
+            #{$style}: font-size($value);
+          }@else{
+            #{$style}: $value;
+          }
+        }
+      }
+    }
+  } @else{
+    @if $style == line-height{
+      #{$style}: units($map, 'rem');
+    }@else if $style == font-size{
+      #{$style}: font-size($map);
+    }@else{
+      #{$style}: $map;
+    }
+  }
 }

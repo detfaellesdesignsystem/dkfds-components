@@ -1,18 +1,16 @@
-/*
-* Prevents the user from inputting based on a regex.
-* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
-* Usecase: number input for date-component.
-* Example - number only: <input type="text" data-input-regex="^\d*$">
-*/
 'use strict';
-
 const modifierState = {
   shift: false,
   alt: false,
   ctrl: false,
   command: false
 };
-
+/*
+* Prevents the user from inputting based on a regex.
+* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
+* Usecase: number input for date-component.
+* Example - number only: <input type="text" data-input-regex="^\d*$">
+*/
 class InputRegexMask {
   constructor (element){
     element.addEventListener('paste', regexMask);
@@ -67,4 +65,4 @@ var regexMask = function (event) {
   }
 };
 
-module.exports = InputRegexMask;
+export default InputRegexMask;

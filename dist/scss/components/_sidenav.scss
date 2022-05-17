@@ -4,20 +4,18 @@
   ul{
     @include unstyled-list();
   }
-  border-bottom: $outer-border;
-  border-top: $outer-border;
-
-
+  border-bottom: border($sidenav-border);
+  border-top: border($sidenav-border);
 
   a {
     display: block;
     border: none;
-    color: $color-neutral;
-    line-height: $base-line-height;
+    color: color($sidenav-link-default-color);
+    line-height: units($sidenav-link-line-height, 'rem');
     padding: $spacer;
-    padding-top: calc(8px - #{$input-border-width});
-    padding-left: map-get($spacers, 4);
-    padding-right: map-get($spacers, 4);
+    padding-top: calc(8px - #{border-width($sidenav-list-level1-border)});
+    padding-left: units(4);
+    padding-right: units(4);
     text-decoration: none;
     max-width: none;
     &:focus {
@@ -28,20 +26,22 @@
   }
   > li.current{
     > a, > ul > li > a{
-      padding-left: calc(#{map-get($spacers, 4)} - #{$sidenav-active-border-width});
+      padding-left: calc(#{units(4)} - #{$sidenav-active-border-width});
     }
   }
   li {
     &:hover {
-      background-color: $color-gray-pale;
+      background-color: color($sidenav-link-hover-background-color);
     }
     a:hover {
       text-decoration: none;
-      color: $sidenav-link-active-color;
+      color: color($sidenav-link-active-color);
     }
 
     a {
       overflow:hidden;
+      display: flex;
+      flex-wrap: wrap;
 
       ul {
         width:100%
@@ -59,17 +59,17 @@
         line-height: 23px;
         text-align: center;
         float: right;
-
-        i {
-          color: #fff;
-        }
+      }
+      .sidenav-title{
+        margin-left: units(2);
+        white-space: pre-line;
       }
 
-
       .sidenav-information {
-        color: $color-gray-medium-dark;
+        color: color($sidenav-link-default-extra-information-text-color);
         margin: 0;
         display: block;
+        width: 100%;
       }
 
       &:focus{
@@ -79,98 +79,94 @@
 
     &.current {
       > a {
-        font-weight: $font-weight-medium;
+        font-weight: font-weight("medium");
       }
 
       .sidenav-information {
-        color: $color-gray-dark;
-        font-weight: normal;
+        color: color($sidenav-link-current-extra-information-text-color);
+        font-weight: font-weight("normal");
       }
     }
     &.active{
       > a{
-        color: $sidenav-link-active-color;
-        font-weight: $font-weight-medium;
+        color: color($sidenav-link-active-color);
+        font-weight: font-weight("medium");
       }
     }
   }
 
   > li > ul > li > ul > li > a{
-    padding-left: map-get($spacers, 5);
+    padding-left: units(5);
   }
   > li > ul > li > ul > li > ul > li > a{
-    padding-left: map-get($spacers, 6);
+    padding-left: units(6);
   }
   > li > ul > li > ul > li > ul > li > ul > li > a{
-    padding-left: map-get($spacers, 7);
+    padding-left: units(7);
   }
   > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
-    padding-left: map-get($spacers, 8);
+    padding-left: units(8);
   }
 
   > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{map-get($spacers, 3)} * 4);
+    padding-left: calc(#{units(3)} * 4);
   }
   > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{map-get($spacers, 3)} * 4);
+    padding-left: calc(#{units(3)} * 4);
   }
   > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{map-get($spacers, 3)} * 5);
+    padding-left: calc(#{units(3)} * 5);
   }
   > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{map-get($spacers, 3)} * 6);
+    padding-left: calc(#{units(3)} * 6);
   }
   > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{map-get($spacers, 3)} * 7);
+    padding-left: calc(#{units(3)} * 7);
   }
 
   > li {
     background-color: transparent;
-    font-size: $base-font-size;
-    border-top: $inner-border;
+    font-size: font-size($typography-base-font-size);
+    border-top: border($sidenav-list-level1-border);
 
     &.active > a{
-      color: $color-black;
+      color: color('black');
     }
 
     &.current{
-      border-left: $sidenav-active-border-width solid $color-primary;
-      background-color: $color-gray-pale;
+      border-left: $sidenav-active-border-width solid color($sidenav-active-border-color);
+      background-color: color($sidenav-link-current-background-color);
     }
     &:first-child {
       border-top: none;
     }
     &:last-child {
       a {
-        padding-bottom: calc(8px - #{$input-border-width});
+        padding-bottom: calc(8px - #{border-width($input-border)});
       }
     }
     li{
-      border-top: $inner-inner-border;
-      font-size: $small-text;
+      border-top: border($sidenav-list-level2-border);
+      font-size: font-size($typography-small-text-font-size);
     }
   }
-}
-.sidenav-list-locked {
-
-  li {
-    &.disabled {
+  
+  li.disabled {
+    cursor: not-allowed;
+    a {
       cursor: not-allowed;
-      a {
+      color: color($sidenav-link-disabled-color);
+
+      &:hover {
+        background-color: transparent;
+        text-decoration: none;
+        color: color($sidenav-link-disabled-color);
         cursor: not-allowed;
-        color: $color-neutral;
-
-        &:hover {
-          background-color: transparent;
-          text-decoration: none;
-          color: $color-neutral;
-          cursor: not-allowed;
-        }
       }
-
-      &.active, &.active a{color: $sidenav-link-active-color; background-color: transparent;}
-      &:hover , &.active a:hover{color: $sidenav-link-active-color; background-color: $color-white;}
     }
+
+    &.active, &.active a{color: color($sidenav-link-active-color); background-color: transparent;}
+    &:hover , &.active a:hover{color: color($sidenav-link-active-color); background-color: color($sidenav-link-default-background-color);}
   }
 }
 
@@ -183,14 +179,14 @@
     border: none;
     &:last-child {
       a {
-        padding-bottom: $spacer;
+        padding-bottom: units(3);
       }
     }
   }
 
   a {
-    padding-top: $spacer;
-    line-height: $base-line-height;
+    padding-top: units(3);
+    line-height: units($typography-base-line-height, 'rem');
   }
   li:not(.has-anchor-links) .sidenav-sub_list {
     a {

@@ -1,0 +1,13 @@
+params:
+- name: iconName
+  type: string
+  required: true
+  description: Name of icon.
+- name: classes
+  type: string
+  required: false
+  description: Classes of the svg element
+- name: ariaLabel
+  type: string
+  required: false
+  description: Aria-label of the svg

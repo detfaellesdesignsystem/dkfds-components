@@ -1,0 +1,403 @@
+
+/*
+----------------------------------------
+Colors
+----------------------------------------
+*/
+
+@import "./colors/data-blue";
+@import "./colors/data-green-blue";
+@import "./colors/data-green";
+@import "./colors/data-orange";
+@import "./colors/data-pink-violet";
+@import "./colors/data-violet";
+@import "./colors/data-yellow-red";
+@import "./colors/blue";
+@import "./colors/gray";
+@import "./colors/green";
+@import "./colors/orange";
+@import "./colors/purple";
+@import "./colors/red";
+
+$system-color-black-transparent: (
+  "black-transparent": (
+    100: rgba(0, 0, 0, 0.01),
+    200: rgba(0, 0, 0, 0.1),
+    300: rgba(0, 0, 0, 0.2),
+    400: rgba(0, 0, 0, 0.3),
+    500: rgba(0, 0, 0, 0.4),
+    600: rgba(0, 0, 0, 0.5),
+    700: rgba(0, 0, 0, 0.6),
+    800: rgba(0, 0, 0, 0.7),
+    900: rgba(0, 0, 0, 0.8),
+    950: rgba(0, 0, 0, 0.9)
+  )
+);
+
+$system-color-white-transparent: (
+  "white-transparent": (
+    100: rgba(255, 255, 255, 0.01),
+    200: rgba(255, 255, 255, 0.1),
+    300: rgba(255, 255, 255, 0.2),
+    400: rgba(255, 255, 255, 0.3),
+    500: rgba(255, 255, 255, 0.4),
+    600: rgba(255, 255, 255, 0.5),
+    700: rgba(255, 255, 255, 0.6),
+    800: rgba(255, 255, 255, 0.7),
+    900: rgba(255, 255, 255, 0.8),
+    950: rgba(255, 255, 255, 0.9)
+  )
+);
+$theme-colors: () !default;
+
+$system-colors: map-collect(
+    $theme-colors,
+    $system-color-blue,
+    $system-color-gray,
+    $system-color-green,
+    $system-color-orange,
+    $system-color-purple,
+    $system-color-red,
+    $system-color-data-blue,
+    $system-color-data-green-blue,
+    $system-color-data-green,
+    $system-color-data-orange,
+    $system-color-data-pink-violet,
+    $system-color-data-violet,
+    $system-color-data-yellow-red,
+    $system-color-black-transparent,
+    $system-color-white-transparent
+);
+
+/*
+----------------------------------------
+Data Colors
+----------------------------------------
+*/
+// Data: Blue
+$color-data-blue-100: get-system-color("data-blue", 100);
+$color-data-blue-200: get-system-color("data-blue", 200);
+$color-data-blue-300: get-system-color("data-blue", 300);
+$color-data-blue-400: get-system-color("data-blue", 400);
+$color-data-blue-500: get-system-color("data-blue", 500);
+$color-data-blue-600: get-system-color("data-blue", 600);
+$color-data-blue-700: get-system-color("data-blue", 700);
+$color-data-blue-800: get-system-color("data-blue", 800);
+$color-data-blue-900: get-system-color("data-blue", 900);
+
+// Data: Green/Blue
+$color-data-green-blue-100: get-system-color("data-green-blue", 100);
+$color-data-green-blue-200: get-system-color("data-green-blue", 200);
+$color-data-green-blue-300: get-system-color("data-green-blue", 300);
+$color-data-green-blue-400: get-system-color("data-green-blue", 400);
+$color-data-green-blue-500: get-system-color("data-green-blue", 500);
+$color-data-green-blue-600: get-system-color("data-green-blue", 600);
+$color-data-green-blue-700: get-system-color("data-green-blue", 700);
+$color-data-green-blue-800: get-system-color("data-green-blue", 800);
+$color-data-green-blue-900: get-system-color("data-green-blue", 900);
+
+// Data: Green
+$color-data-green-100: get-system-color("data-green", 100);
+$color-data-green-200: get-system-color("data-green", 200);
+$color-data-green-300: get-system-color("data-green", 300);
+$color-data-green-400: get-system-color("data-green", 400);
+$color-data-green-500: get-system-color("data-green", 500);
+$color-data-green-600: get-system-color("data-green", 600);
+$color-data-green-700: get-system-color("data-green", 700);
+$color-data-green-800: get-system-color("data-green", 800);
+$color-data-green-900: get-system-color("data-green", 900);
+
+// Data: Orange
+$color-data-orange-100: get-system-color("data-orange", 100);
+$color-data-orange-200: get-system-color("data-orange", 200);
+$color-data-orange-300: get-system-color("data-orange", 300);
+$color-data-orange-400: get-system-color("data-orange", 400);
+$color-data-orange-500: get-system-color("data-orange", 500);
+$color-data-orange-600: get-system-color("data-orange", 600);
+$color-data-orange-700: get-system-color("data-orange", 700);
+$color-data-orange-800: get-system-color("data-orange", 800);
+$color-data-orange-900: get-system-color("data-orange", 900);
+
+// Data: Pink/Violet
+$color-data-pink-violet-100: get-system-color("data-pink-violet", 100);
+$color-data-pink-violet-200: get-system-color("data-pink-violet", 200);
+$color-data-pink-violet-300: get-system-color("data-pink-violet", 300);
+$color-data-pink-violet-400: get-system-color("data-pink-violet", 400);
+$color-data-pink-violet-500: get-system-color("data-pink-violet", 500);
+$color-data-pink-violet-600: get-system-color("data-pink-violet", 600);
+$color-data-pink-violet-700: get-system-color("data-pink-violet", 700);
+$color-data-pink-violet-800: get-system-color("data-pink-violet", 800);
+$color-data-pink-violet-900: get-system-color("data-pink-violet", 900);
+
+// Data: Violet
+$color-data-violet-100: get-system-color("data-violet", 100);
+$color-data-violet-200: get-system-color("data-violet", 200);
+$color-data-violet-300: get-system-color("data-violet", 300);
+$color-data-violet-400: get-system-color("data-violet", 400);
+$color-data-violet-500: get-system-color("data-violet", 500);
+$color-data-violet-600: get-system-color("data-violet", 600);
+$color-data-violet-700: get-system-color("data-violet", 700);
+$color-data-violet-800: get-system-color("data-violet", 800);
+$color-data-violet-900: get-system-color("data-violet", 900);
+
+// Data: Yellow/Red
+$color-data-yellow-red-100: get-system-color("data-yellow-red", 100);
+$color-data-yellow-red-200: get-system-color("data-yellow-red", 200);
+$color-data-yellow-red-300: get-system-color("data-yellow-red", 300);
+$color-data-yellow-red-400: get-system-color("data-yellow-red", 400);
+$color-data-yellow-red-500: get-system-color("data-yellow-red", 500);
+$color-data-yellow-red-600: get-system-color("data-yellow-red", 600);
+$color-data-yellow-red-700: get-system-color("data-yellow-red", 700);
+$color-data-yellow-red-800: get-system-color("data-yellow-red", 800);
+$color-data-yellow-red-900: get-system-color("data-yellow-red", 900);
+
+/*
+----------------------------------------
+General Colors
+----------------------------------------
+*/
+// Blue
+$color-blue-100: get-system-color("blue", 100);
+$color-blue-700: get-system-color("blue", 700);
+$color-blue-800: get-system-color("blue", 800);
+$color-blue-900: get-system-color("blue", 900);
+
+// Gray
+$color-gray-100: get-system-color("gray", 100);
+$color-gray-200: get-system-color("gray", 200);
+$color-gray-300: get-system-color("gray", 300);
+$color-gray-400: get-system-color("gray", 400);
+$color-gray-500: get-system-color("gray", 500);
+$color-gray-600: get-system-color("gray", 600);
+$color-gray-900: get-system-color("gray", 900);
+
+// Green
+$color-green-100: get-system-color("green", 100);
+$color-green-700: get-system-color("green", 700);
+
+// Orange
+$color-orange-100: get-system-color("orange", 100);
+$color-orange-700: get-system-color("orange", 700);
+
+// Purple
+$color-purple-700: get-system-color("purple", 700);
+
+// Red
+$color-red-100: get-system-color("red", 100);
+$color-red-700: get-system-color("red", 700);
+
+// Black transparent
+$color-black-transparent-100: get-system-color("black-transparent", 100);
+$color-black-transparent-200: get-system-color("black-transparent", 200);
+$color-black-transparent-300: get-system-color("black-transparent", 300);
+$color-black-transparent-400: get-system-color("black-transparent", 400);
+$color-black-transparent-500: get-system-color("black-transparent", 500);
+$color-black-transparent-600: get-system-color("black-transparent", 600);
+$color-black-transparent-700: get-system-color("black-transparent", 700);
+$color-black-transparent-800: get-system-color("black-transparent", 800);
+$color-black-transparent-900: get-system-color("black-transparent", 900);
+$color-black-transparent-950: get-system-color("black-transparent", 905);
+
+// White transparent
+$color-white-transparent-100: get-system-color("white-transparent", 100);
+$color-white-transparent-200: get-system-color("white-transparent", 200);
+$color-white-transparent-300: get-system-color("white-transparent", 300);
+$color-white-transparent-400: get-system-color("white-transparent", 400);
+$color-white-transparent-500: get-system-color("white-transparent", 500);
+$color-white-transparent-600: get-system-color("white-transparent", 600);
+$color-white-transparent-700: get-system-color("white-transparent", 700);
+$color-white-transparent-800: get-system-color("white-transparent", 800);
+$color-white-transparent-900: get-system-color("white-transparent", 900);
+$color-white-transparent-950: get-system-color("white-transparent", 950);
+
+$system-color-shortcodes: (
+  "transparent": transparent,
+  "black": $color-gray-900,
+  "white": white,
+  "blue-100": $color-blue-100,
+  "blue-700": $color-blue-700,
+  "blue-800": $color-blue-800,
+  "blue-900": $color-blue-900,
+  "gray-100": $color-gray-100,
+  "gray-200": $color-gray-200,
+  "gray-300": $color-gray-300,
+  "gray-400": $color-gray-400,
+  "gray-500": $color-gray-500,
+  "gray-600": $color-gray-600,
+  "gray-900": $color-gray-900,
+  "green-100": $color-green-100,
+  "green-700": $color-green-700,
+  "orange-100": $color-orange-100,
+  "orange-700": $color-orange-700,
+  "purple-700": $color-purple-700,
+  "red-100": $color-red-100,
+  "red-700": $color-red-700,
+  "data-blue-100": $color-data-blue-100,
+  "data-blue-200": $color-data-blue-200,
+  "data-blue-300": $color-data-blue-300,
+  "data-blue-400": $color-data-blue-400,
+  "data-blue-500": $color-data-blue-500,
+  "data-blue-600": $color-data-blue-600,
+  "data-blue-700": $color-data-blue-700,
+  "data-blue-800": $color-data-blue-800,
+  "data-blue-900": $color-data-blue-900,
+  "data-green-blue-100": $color-data-green-blue-100,
+  "data-green-blue-200": $color-data-green-blue-200,
+  "data-green-blue-300": $color-data-green-blue-300,
+  "data-green-blue-400": $color-data-green-blue-400,
+  "data-green-blue-500": $color-data-green-blue-500,
+  "data-green-blue-600": $color-data-green-blue-600,
+  "data-green-blue-700": $color-data-green-blue-700,
+  "data-green-blue-800": $color-data-green-blue-800,
+  "data-green-blue-900": $color-data-green-blue-900,
+  "data-green-100": $color-data-green-100,
+  "data-green-200": $color-data-green-200,
+  "data-green-300": $color-data-green-300,
+  "data-green-400": $color-data-green-400,
+  "data-green-500": $color-data-green-500,
+  "data-green-600": $color-data-green-600,
+  "data-green-700": $color-data-green-700,
+  "data-green-800": $color-data-green-800,
+  "data-green-900": $color-data-green-900,
+  "data-orange-100": $color-data-orange-100,
+  "data-orange-200": $color-data-orange-200,
+  "data-orange-300": $color-data-orange-300,
+  "data-orange-400": $color-data-orange-400,
+  "data-orange-500": $color-data-orange-500,
+  "data-orange-600": $color-data-orange-600,
+  "data-orange-700": $color-data-orange-700,
+  "data-orange-800": $color-data-orange-800,
+  "data-orange-900": $color-data-orange-900,
+  "data-pink-violet-100": $color-data-pink-violet-100,
+  "data-pink-violet-200": $color-data-pink-violet-200,
+  "data-pink-violet-300": $color-data-pink-violet-300,
+  "data-pink-violet-400": $color-data-pink-violet-400,
+  "data-pink-violet-500": $color-data-pink-violet-500,
+  "data-pink-violet-600": $color-data-pink-violet-600,
+  "data-pink-violet-700": $color-data-pink-violet-700,
+  "data-pink-violet-800": $color-data-pink-violet-800,
+  "data-pink-violet-900": $color-data-pink-violet-900,
+  "data-violet-100": $color-data-violet-100,
+  "data-violet-200": $color-data-violet-200,
+  "data-violet-300": $color-data-violet-300,
+  "data-violet-400": $color-data-violet-400,
+  "data-violet-500": $color-data-violet-500,
+  "data-violet-600": $color-data-violet-600,
+  "data-violet-700": $color-data-violet-700,
+  "data-violet-800": $color-data-violet-800,
+  "data-violet-900": $color-data-violet-900,
+  "data-yellow-red-100": $color-data-yellow-red-100,
+  "data-yellow-red-200": $color-data-yellow-red-200,
+  "data-yellow-red-300": $color-data-yellow-red-300,
+  "data-yellow-red-400": $color-data-yellow-red-400,
+  "data-yellow-red-500": $color-data-yellow-red-500,
+  "data-yellow-red-600": $color-data-yellow-red-600,
+  "data-yellow-red-700": $color-data-yellow-red-700,
+  "data-yellow-red-800": $color-data-yellow-red-800,
+  "data-yellow-red-900": $color-data-yellow-red-900,
+  "black-transparent-100": $color-black-transparent-100,
+  "black-transparent-200": $color-black-transparent-200,
+  "black-transparent-300": $color-black-transparent-300,
+  "black-transparent-400": $color-black-transparent-400,
+  "black-transparent-500": $color-black-transparent-500,
+  "black-transparent-600": $color-black-transparent-600,
+  "black-transparent-700": $color-black-transparent-700,
+  "black-transparent-800": $color-black-transparent-800,
+  "black-transparent-900": $color-black-transparent-900,
+  "black-transparent-950": $color-black-transparent-950,
+  "white-transparent-100": $color-white-transparent-100,
+  "white-transparent-200": $color-white-transparent-200,
+  "white-transparent-300": $color-white-transparent-300,
+  "white-transparent-400": $color-white-transparent-400,
+  "white-transparent-500": $color-white-transparent-500,
+  "white-transparent-600": $color-white-transparent-600,
+  "white-transparent-700": $color-white-transparent-700,
+  "white-transparent-800": $color-white-transparent-800,
+  "white-transparent-900": $color-white-transparent-900,
+  "white-transparent-950": $color-white-transparent-950
+);
+
+
+/*
+----------------------------------------
+Theme color map
+----------------------------------------
+*/
+$project-colors: (
+  "primary": (
+    "lightest": color($theme-color-primary-lightest, set-theme),
+    "lighter": color($theme-color-primary-lighter, set-theme),
+    "light": color($theme-color-primary-light, set-theme),
+    "default": color($theme-color-primary, set-theme),
+    "dark": color($theme-color-primary-dark, set-theme),
+    "darker": color($theme-color-primary-darker, set-theme),
+    "darkest": color($theme-color-primary-darkest, set-theme)
+  )
+);
+
+$project-state-colors: (
+  "error": (
+    "light": color($theme-color-error-light, set-theme),
+    "default": color($theme-color-error, set-theme),
+  ),
+  "warning": (
+    "light": color($theme-color-warning-light, set-theme),
+    "default": color($theme-color-warning, set-theme),
+  ),
+  "success": (
+    "light": color($theme-color-success-light, set-theme),
+    "default": color($theme-color-success, set-theme),
+  ),
+  "info": (
+    "light": color($theme-color-info-light, set-theme),
+    "default": color($theme-color-info, set-theme),
+  ),
+  "disabled": (
+    "light": color($theme-color-disabled-light, set-theme),
+    "default": color($theme-color-disabled, set-theme),
+  )
+);
+
+$all-project-colors: map-collect($project-colors, $project-state-colors);
+
+/*
+----------------------------------------
+Theme color shortcodes
+----------------------------------------
+*/
+
+$tokens-color-theme: (
+  "ink": color($theme-color-ink, set-theme, no-warn),
+  "ink-light": color($theme-color-ink-light, set-theme, no-warn),
+  "primary-lightest": color($theme-color-primary-lightest, set-theme, no-warn),
+  "primary-lighter": color($theme-color-primary-lighter, set-theme, no-warn),
+  "primary-light": color($theme-color-primary-light, set-theme, no-warn),
+  "primary": color($theme-color-primary, set-theme, no-warn),
+  "primary-dark": color($theme-color-primary-dark, set-theme, no-warn),
+  "primary-darker": color($theme-color-primary-darker, set-theme, no-warn),
+  "primary-darkest": color($theme-color-primary-darkest, set-theme, no-warn),
+);
+
+$tokens-color-state: (
+  "error-light": color($theme-color-error-light, set-theme, no-warn),
+  "error": color($theme-color-error, set-theme, no-warn),
+  "warning-light": color($theme-color-warning-light, set-theme, no-warn),
+  "warning": color($theme-color-warning, set-theme, no-warn),
+  "success-light": color($theme-color-success-light, set-theme, no-warn),
+  "success": color($theme-color-success, set-theme, no-warn),
+  "info-light": color($theme-color-info-light, set-theme, no-warn),
+  "info": color($theme-color-info, set-theme, no-warn),
+  "disabled-light": color($theme-color-disabled-light, set-theme, no-warn),
+  "disabled": color($theme-color-disabled, set-theme, no-warn),
+  "disabled-dark": color($theme-color-disabled-dark, set-theme, no-warn),
+);
+
+$project-color-shortcodes: map-collect(
+    $tokens-color-theme,
+    $tokens-color-state
+);
+
+$all-color-shortcodes: map-collect(
+    $system-color-shortcodes,
+    $project-color-shortcodes
+);

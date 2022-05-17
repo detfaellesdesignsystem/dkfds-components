@@ -1,0 +1,17 @@
+params:
+- name: heading
+  type: string
+  required: true
+  description: Heading of the cookie message
+- name: message
+  type: string
+  required: true
+  description: Body text of the cookie message
+- name: accept
+  type: string
+  required: true
+  description: Text on accept button
+- name: decline
+  type: string
+  required: true
+  description: Text on decline button

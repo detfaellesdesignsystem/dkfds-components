@@ -1,0 +1,37 @@
+params:
+- name: button
+  type: object
+  required: true
+  description: Text on button.
+  - name: label
+    type: string
+    required: true
+    description: Text on button.
+  - name: srOnly
+    type: boolean
+    required: false
+    description: Hide text on button except for screenreaders.
+  - name: icon
+    type: string
+    required: true
+    description: Icon to use on button.
+- name: id
+  type: string
+  required: true
+  description: Id of the overflow menu.
+- name: items
+  type: array
+  required: true
+  description: List of items for the menu.
+  - name: selected
+    type: boolean
+    required: false
+    description: Selected item on true.
+  - name: id
+    type: string
+    required: true
+    description: Button id of the item.
+  - name: text
+    type: string
+    required: true
+    description: Button text of the item.

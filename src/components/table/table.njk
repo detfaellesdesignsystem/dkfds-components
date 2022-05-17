@@ -1,44 +1,49 @@
 
 
 {% from "components/buttons/buttons.njk" import button as button %}
-{% macro table(data) %}
+{% macro table(params) %}
 
 {%- set unique = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50] | random -%}
 {%- set ariacontrols = "" -%}
-{%- for row in data.tbody -%}
-    {%- set ariacontrols = ariacontrols + " " + data.id+"-check-"+unique+"-"+loop.index -%}
+{%- for row in params.tbody -%}
+    {%- set ariacontrols = ariacontrols + " " + params.id+"-check-"+unique+"-"+loop.index -%}
 {%- endfor -%}
 <div class="table--responsive-scroll">
-    <table class="table table--selectable" id="{{data.id}}">
+    <table class="table table--selectable" id="{{params.id}}">
         <thead>
             <tr>
-            {%- if data.selectable -%}
-            <th>{{checkbox(data.id+"-check-"+unique+"-all", "Vælg alle rækker", false, false, ariacontrols)}}</th>
+            {%- if params.selectable -%}
+            <th>
+            <input id="{{params.id}}-check-{{unique}}-all" type="checkbox" class="form-checkbox" aria-controls="{{ariacontrols}}">
+            <label for="{{params.id}}-check-{{unique}}-all" aria-label="Vælg alle rækker"><span class="sr-only">Vælg alle rækker</span></label>
+            </th>
             {%- endif -%}
-            {% for th in data.thead %}
+            {% for th in params.thead %}
                 <th>{{th}}</th>
             {% endfor %}
             </tr>
         </thead>
         
         <tbody>
-            {% for row in data.tbody %}
+            {% for row in params.tbody %}
             <tr>
-                {%- if data.selectable -%}
-                <td>{{checkbox(data.id+"-check-"+unique+"-"+loop.index, "Vælg række", data.id+"-check[]", row[0])}}</td>
+                {%- if params.selectable -%}
+                <td><input id="{{params.id}}-check-{{unique}}-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0]}}">
+                    <label for="{{params.id}}-check-{{unique}}-{{loop.index}}" aria-label="Vælg række"><span class="sr-only">Vælg række</span></label>
+                </td>
                 {%- endif -%}
                 {% for td in row %}
-                <td>{{td}}</td>
+                <td>{{td | safe}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    {% if data.actions %}
+    {% if params.actions %}
     <div class="table-actions">
         <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
-        {% for action in data.actions %}
-            {{ button(action.text, action.class, action.attribute, action.icon, action.sronly) }}
+        {% for action in params.actions %}
+            {{ button(action) }}
         {% endfor %}
     </div>
     {%- endif -%}

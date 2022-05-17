@@ -4,12 +4,12 @@
 //
 
 $backgroundcolors: (
-  normal: $background-normal, //WHITE
-  alternative: $background-alternative, //GRAY
-  modal: $background-modal //BLACK
+  normal: 'white',
+  alternative: 'gray-100',
+  modal: $modal-overlay-background-color
 ) !default;
 
 
 @each $name, $color in $backgroundcolors { 
-  .bg-#{$name}         { background: $color !important; background-color: $color !important;}
+  .bg-#{$name}         { background: color($color) !important; background-color: color($color) !important;}
 }

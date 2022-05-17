@@ -1,24 +1,24 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-{% macro datoinput(label, hint, day, month, year, tooltip, tooltipTitle, datepicker, error, dayValue, monthValue, yearValue, id, formClass) %}
-<div class="form-group {% if error %} form-error {% endif %} {{ formClass }}">
-  <fieldset aria-describedby="{{id.hint | default('example-date-field-hint')}} {% if error %}{{id.error | default('example-date-field-error')}}{% endif %}">
-    <legend class="form-label">{{label}}{% if tooltip %}<button class="js-tooltip button-unstyled" data-tooltip="{{tooltipTitle}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
-    <span class="form-hint" id="{{id.hint | default('example-date-field-hint')}}">{{hint}}</span>
-    <span class="form-error-message {% if not error %} d-none{% endif %}" id="{{ id.error | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{error}}</span>
+{% macro datoinput(params) %}
+<div class="form-group {% if params.errorMessage %} form-error {% endif %} {{ params.classes }}">
+  <fieldset aria-describedby="{{params.id.helptext | default('example-date-field-hint')}} {% if params.errorMessage %}{{params.id.errorMessage | default('example-date-field-error')}}{% endif %}">
+    <legend class="form-label">{{params.labels.legend}}{% if params.tooltip %}<button type="button" class="js-tooltip button-unstyled ml-3" data-tooltip="{{params.tooltip}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
+    <span class="form-hint" id="{{params.id.helptext | default('example-date-field-hint')}}">{{params.helptext}}</span>
+    {% if params.errorMessage %}<span class="form-error-message {% if not params.errorMessage %} d-none{% endif %}" id="{{ params.id.errorMessage | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
     <div class="date-group js-calendar-group mt-3">
       <div class="form-group form-group-day">
-        <label class="form-label" for="{{ id.day | default('date-day') }}">{{day}}</label>
-        <input class="form-input js-calendar-day-input" id="{{ id.day | default('date-day') }}" value="{{dayValue}}" type="tel" data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indskriv dag på måneden som tal"  aria-describedby="{{id.hint | default('example-date-field-hint')}}"/>
+        <label class="form-label" for="{{ params.id.day | default('date-day') }}">{{params.labels.day}}</label>
+        <input class="form-input js-calendar-day-input" id="{{ params.id.day | default('date-day') }}" value="{{params.values.day}}" type="tel" data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indskriv dag på måneden som tal"  aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
       </div>
       <div class="form-group form-group-month">
-        <label class="form-label" for="{{ id.month | default('date-month') }}">{{month}}</label>
-        <input class="form-input js-calendar-month-input" id="{{ id.month | default('date-month') }}" value="{{monthValue}}" type="tel" data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$"  data-input-regex="^[0-9]{0,2}$" title="Indskriv månedens nummer"  aria-describedby="{{id.hint | default('example-date-field-hint')}}"/>
+        <label class="form-label" for="{{ params.id.month | default('date-month') }}">{{params.labels.month}}</label>
+        <input class="form-input js-calendar-month-input" id="{{ params.id.month | default('date-month') }}" value="{{params.values.month}}" type="tel" data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$"  data-input-regex="^[0-9]{0,2}$" title="Indskriv månedens nummer"  aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
       </div>
       <div class="form-group form-group-year ">
-        <label class="form-label" for="{{ id.year | default('date-year') }}">{{year}}</label>
-        <input class="form-input js-calendar-year-input" id="{{ id.year | default('date-year') }}" value="{{yearValue}}" type="tel" data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal" aria-describedby="{{id.hint | default('example-date-field-hint')}}"/>
+        <label class="form-label" for="{{ params.id.year | default('date-year') }}">{{params.labels.year}}</label>
+        <input class="form-input js-calendar-year-input" id="{{ params.id.year | default('date-year') }}" value="{{params.values.year}}" type="tel" data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal" aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
       </div>
-      {% if datepicker %}
+      {% if params.datepicker %}
        <button class="button-unstyled button-open-calendar js-calendar-datepicker">
         <span class="sr-only">Åben kalenderen</span>
         <svg class="icon-svg" aria-hidden="true" focusable="false" tabindex="-1"><use xlink:href="#insert-invitation"></use></svg>

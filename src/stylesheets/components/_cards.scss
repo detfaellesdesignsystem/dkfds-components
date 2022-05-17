@@ -1,28 +1,28 @@
 .card {
   position: relative;
-  border-radius: map-get($spacers, 0);
-  box-shadow: $cards-shadow;
-  border: $cards-border;
+  border-radius: units(0);
+  box-shadow: shadow($cards-shadow);
+  border: border($cards-border);
   overflow: hidden;
-  background: $cards-background-color;
+  background: color($cards-background-color);
 
   //small card
   &-small {
     > :last-of-type {
-      padding-bottom:map-get($spacers, 5);
+      padding-bottom:units(5);
     }
   }
   //medium card
   &-medium {
     //The last
     > :last-of-type {
-      padding-bottom:map-get($spacers, 5);
+      padding-bottom:units(5);
     }
   }
   //large card
   &-large {
     > :last-of-type {
-      padding-bottom:map-get($spacers, 5);
+      padding-bottom:units(5);
     }
   }
 
@@ -48,10 +48,10 @@
 
   p {
     max-width: 60ch;
-    margin-top:map-get($spacers, 4);
-    margin-bottom: map-get($spacers, 0);
+    margin-top:units(4);
+    margin-bottom: units(0);
     &:first-child {
-      margin-top:map-get($spacers, 0);
+      margin-top:units(0);
     }
   }
   h1, .h1,
@@ -59,56 +59,56 @@
   h3, .h3,
   h4, .h4,
   h5, .h5 {
-    margin: map-get($spacers, 0);
+    margin: units(0);
   }
 }
 //card-header
 .card-header {
-  background-color: $cards-header-background-color;
-  padding: map-get($spacers, 4) map-get($spacers, 5);
+  background-color: color($cards-header-background-color);
+  padding: units(4) units(5);
   .header-title {
     @include body-copy-text;
-    font-weight: $font-weight-semibold;
-    color: $cards-heading-color;
-    margin:map-get($spacers, 0);
+    font-weight: font-weight("semibold");
+    color: color($cards-heading-color);
+    margin:units(0);
 
     &.large-text {
       @include h1;
-      color: $cards-heading-large-color;
+      color: color($cards-heading-large-color);
     }
   }
   .sub-header {
     @include body-copy-text;
-    margin-top:  map-get($spacers, 0);
-    margin-bottom: map-get($spacers, 0);
-    color: $cards-sub-heading-color;
+    margin-top:  units(0);
+    margin-bottom: units(0);
+    color: color($cards-sub-heading-color);
   }
 }
 .card-text {
-  background-color: $cards-text-background-color;
-  padding: map-get($spacers, 4) map-get($spacers, 5);
+  background-color: color($cards-text-background-color);
+  padding: units(4) units(5);
   .text {
     @include body-copy-text;
-    margin-top: map-get($spacers, 4);
-    color: $cards-text-color;
-    margin-bottom: map-get($spacers, 0);
+    margin-top: units(4);
+    color: color($cards-text-color);
+    margin-bottom: units(0);
   }
 }
 
 //card-content
 .card-content {
   @include body-copy-text;
-  padding: map-get($spacers, 0);
-  color: $cards-text-color;
-  background-color: $cards-content-background-color;
+  padding: units(0);
+  color: color($cards-text-color);
+  background-color: color($cards-content-background-color);
   ul {
-    margin-bottom:map-get($spacers, 0);
+    margin-bottom:units(0);
   }
   div:first-child {
-    margin-top:map-get($spacers, 0);
+    margin-top:units(0);
   }
   .content-text {
-    margin-top:map-get($spacers, 4);
+    margin-top:units(4);
   }
   .content {
     text-align: center;
@@ -118,26 +118,26 @@
 //card-action
 .card-action {
   @include body-copy-text;
-  padding: map-get($spacers, 4) map-get($spacers, 5);
-  color: $cards-text-color;
-  margin-bottom: map-get($spacers, 0);
-  background-color: $cards-action-background-color;
+  padding: units(4) units(5);
+  color: color($cards-text-color);
+  margin-bottom: units(0);
+  background-color: color($cards-action-background-color);
 
   div:first-child {
-    margin-top:map-get($spacers, 0);
+    margin-top:units(0);
   }
 
   &:last-child {
-    border-bottom: map-get($spacers, 0);
+    border-bottom: units(0);
   }
   .action-buttons {
     button {
-      margin-right: map-get($spacers, 4);
-      margin-top:map-get($spacers, 3);
+      margin-right: units(4);
+      margin-top:units(3);
 
       @include media-breakpoint-up(md) {
-        margin-right: map-get($spacers, 4);
-        margin-top:map-get($spacers, 3);
+        margin-right: units(4);
+        margin-top:units(3);
       }
     }
     .button + .button{
@@ -150,71 +150,71 @@
     }
   }
   .action-links {
-    margin-top:map-get($spacers, 4);
+    margin-top:units(4);
     ul {
       @include unstyled-list();
-      padding-left: map-get($spacers, 0);
+      padding-left: units(0);
       li {
-        margin-top:map-get($spacers, 3) !important;
+        margin-top:units(3) !important;
       }
     }
   }
   .action-functionlinks {
-    margin-top:map-get($spacers, 4);
+    margin-top:units(4);
     text-align: right;
     .function-link {
-      margin-left: map-get($spacers, 4);
+      margin-left: units(4);
     }
   }
 }
 
 //If text comes after header
 .card-header + .card-text{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If content comes after header
 .card-header + .card-content {
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If action comes after header
 .card-header + .card-action{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If header comes after header
 .card-header + .card-header{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If header comes after text
 .card-text + .card-header {
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If content comes after text
 .card-text + .card-content {
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If action comes after text
 .card-text + .card-action{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If text comes after text
 .card-text + .card-text{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If text comes after action
 .card-action + .card-text{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If header comes after action
 .card-action + .card-header{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If content comes after action
 .card-action + .card-content{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 //If action comes after action
 .card-action + .card-action{
-  padding-top:map-get($spacers, 0);
+  padding-top:units(0);
 }
 .card {
   > .list-group:first-child {

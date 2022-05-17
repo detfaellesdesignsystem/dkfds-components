@@ -13,7 +13,7 @@ $z-index-nav:     9000;
     background-image: url($image-path+'/'+$header-portal-logo);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center left;
     display: inline-block;
     height: 60px;
     width: 200px;
@@ -42,6 +42,7 @@ $z-index-nav:     9000;
 
   .button-menu-open {
     width: auto;
+    white-space: nowrap;
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
     }
@@ -51,7 +52,9 @@ $z-index-nav:     9000;
     margin-left: auto;
     display: flex;
     align-items: center;
-    margin-right: map-get($spacers, 4);
+    margin-right: units(4);
+    margin-top: 0px;
+    margin-bottom: 0;
     .icon-svg{
       margin: 0 8px 0 0;
     }
@@ -65,15 +68,15 @@ $z-index-nav:     9000;
   }
 
   .portal-header{
-    background-color: $header-portal-background-color;
-    border-bottom: $header-portal-border;
+    background-color: color($header-portal-background-color);
+    border-bottom: border($header-portal-border);
     width: 100%;
     &.portal-header-compact{
-      font-size: $small-text;
-      line-height: $small-text-line-height;
+      font-size: font-size($typography-small-text-font-size);
+      line-height: units($typography-small-text-line-height, 'rem');
       p {
-        font-size: $small-text;
-        line-height: $small-text-line-height;
+        font-size: font-size($typography-small-text-font-size);
+        line-height: units($typography-small-text-line-height, 'rem');
       }
       .portal-info .user{
         max-width: none;
@@ -81,19 +84,21 @@ $z-index-nav:     9000;
 
 
       .portal-header-inner{
-        padding-top: map-get($spacers, 2);
-        padding-bottom: calc(#{map-get($spacers, 2)} - 1px);
+        padding-top: units(2);
+        padding-bottom: calc(#{units(2)} - 1px);
       }
 
       .logo{
         max-height: 24px;
         width: $header-portal-compact-logo-width;
+        margin-top: units(3);
+        margin-bottom: units(3);
       }
     }
     .portal-header-inner{
       width: 100%;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      padding-top: calc(#{units(4)} - 1px);
+      padding-bottom: calc(#{units(4)} - 1px);
       display: flex;
       align-items: center;
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -109,7 +114,7 @@ $z-index-nav:     9000;
         align-items: center;
 
         & > *{
-          margin-left: map-get($spacers, 4);
+          margin-left: units(4);
         }
       }
       .user{
@@ -123,46 +128,46 @@ $z-index-nav:     9000;
   }
 
   .solution-header{
-    border-bottom: $header-border-bottom;
-    background-color: $header-solution-background-color;
+    border-bottom: border($header-border-bottom);
+    background-color: color($header-solution-background-color);
 
     @include media-breakpoint-up(lg) {
-      border-bottom: $header-solution-border;
+      border-bottom: border($header-solution-border);
     }
 
     width: 100%;
     &.header-end{
-      border-bottom: $header-border-bottom;
+      border-bottom: border($header-border-bottom);
     }
 
     .solution-header-inner{
       display: flex;
       align-items: center;
       flex-direction: row;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+      padding-top: calc(#{units(4)} - 1px);
+      padding-bottom: calc(#{units(4)} - 1px);
     }
 
     .solution-heading{
       a, h1, .g1{
-        font-size: 2.8rem;
-        line-height: 3.2rem;
-        font-weight: $font-weight-semibold;
-        color: $header-solution-text-color;
+        font-size:font-size($header-solution-text-size);
+        line-height: units($header-solution-line-height, 'rem');
+        font-weight: font-weight("semibold");
+        color: color($header-solution-text-color);
         text-decoration: none;
         display: inline-block;
-        @include media-breakpoint-down(sm) {
-          font-size: 2.2rem;
-          line-height: 2.4rem;
+        @include media-breakpoint-up(md) {
+          font-size: font-size($header-solution-text-size-desktop);
+          line-height: units($header-solution-line-height-desktop, 'rem');
         }
       }
       p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
-        color: $header-solution-text-color;
+        color: color($header-solution-text-color);
       }
       .function-link{
-        color: $header-solution-text-color;
+        color: color($header-solution-text-color);
         &:hover, &:focus, &:visited{
-          color: $header-solution-text-color;
+          color: color($header-solution-text-color);
         }
       }
     }
@@ -177,7 +182,7 @@ $z-index-nav:     9000;
     }
   }
   .authority-name{
-    color: $header-solution-authority-name;
+    color: color($header-solution-authority-name);
   }
   .button-contact{
     display: inline-flex;
@@ -188,15 +193,14 @@ $z-index-nav:     9000;
   }
 
   .portal-info-mobile{
-    padding: map-get($spacers, 5) map-get($spacers, 4);
-    border-bottom: $inner-border;
-    text-align: right;
+    padding: units(5) units(4);
+    border-bottom: border(20);
+    text-align: left;
     p{
-      margin-bottom: map-get($spacers, 3);
+      margin-bottom: units(3);
     }
     .button-signin, .button-signout{
       margin-top: 8px;
-      width: auto;
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       display: none;
@@ -204,20 +208,18 @@ $z-index-nav:     9000;
   }
 
   .solution-info-mobile{
-    padding: map-get($spacers, 5) map-get($spacers, 4);
-    text-align: right;
-    background-color: $header-solution-info-mobile-background-color;
+    padding: units(5) units(4);
     p{
-      margin-bottom: map-get($spacers, 3);
-      color: $header-solution-info-mobile-text-color;
+      margin-bottom: units(3);
+      color: color($header-solution-info-mobile-text-color);
       &:last-child{
         margin-bottom: 0;
       }
     }
     .function-link{
-      color: $header-solution-info-mobile-text-color;
+      color: color($header-solution-info-mobile-text-color);
       &:hover, &:focus, &:visited{
-        color: $header-solution-info-mobile-text-color;
+        color: color($header-solution-info-mobile-text-color);
       }
     }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -227,7 +229,7 @@ $z-index-nav:     9000;
 
 
   .nav {
-    $sliding-panel-width: 282px;
+    $sliding-panel-width: 85%;
     @keyframes slidein-left {
       from {
         transform: translateX($sliding-panel-width);
@@ -242,12 +244,12 @@ $z-index-nav:     9000;
     right: 0;
     bottom: 0;
     left: auto;
-    background-color: $header-navigation-background-color;
+    background-color: color($header-navigation-background-color);
     display: none;
     flex-direction: column;
     overflow-y: auto;
     padding: 0;
-    padding-top: map-get($spacers, 4);
+    padding-top: units(4);
     width: $sliding-panel-width;
     z-index: $z-index-nav;
 
@@ -271,13 +273,14 @@ $z-index-nav:     9000;
   }
 
   .nav-actions{
-    margin-top: map-get($spacers, 3);
+    margin-top: units(3);
+    padding: 0 units(4);
     &:first-child{
       margin-top: 0;
     }
 
     & > li{
-      margin-top: map-get($spacers, 3);
+      margin-top: units(3);
       &:first-child{
         margin-top: 0;
       }
@@ -291,13 +294,14 @@ $z-index-nav:     9000;
       justify-content: flex-end;
       flex-wrap: wrap;
       margin-right: -4px;
+      padding: 0;
       & > li, & > li:first-child{
-        margin: calc(#{map-get($spacers, 3)} - 2px) 4px;
+        margin: calc(#{units(3)} - 2px) 4px;
       }
     }
   }
 
-  .function-link:not(.icon-link) {
+  .function-link:not(.icon-link):not(.button-menu-close):not(.button-menu-open) {
     @include media-breakpoint-down(#{$nav-responsive-breakpoint}) {
       display: block;
       margin-top: 8px;
@@ -310,7 +314,7 @@ $z-index-nav:     9000;
   }
   .function-link + .function-link{
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      margin-left: map-get($spacers, 4);
+      margin-left: units(4);
 
     }
   }
@@ -322,7 +326,7 @@ $z-index-nav:     9000;
   right: 0;
   bottom: 0;
   left: 0;
-  background: $color-black;
+  background: color('black');
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   visibility: hidden;

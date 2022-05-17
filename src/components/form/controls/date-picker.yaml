@@ -1,0 +1,62 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the input field.
+- name: tooltip
+  type: string
+  required: false
+  description: Tooltip text.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext object.
+- name: label
+  type: object
+  required: true
+  description: Label object.
+- name: minDate
+  type: string
+  required: false
+  description: Sets dateinterval minium date in format YYYY-MM-DD.
+- name: maxDate
+  type: string
+  required: false
+  description: Sets dateinterval minium date in format YYYY-MM-DD.
+- name: defaultDate
+  type: string
+  required: false
+  description: First focused date is per default todays date. Set default date to change the first focused date in format YYYY-MM-DD.
+- name: errorMessage
+  type: string
+  required: false
+  description: Error message object
+- name: success
+  type: boolean
+  required: false
+  description: Sets field as successfull.
+- name: value
+  type: string
+  required: false
+  description: Date value.
+- name: name
+  type: string
+  required: true
+  description: Name of the input element.
+- name: type
+  type: string
+  required: false
+  description: Type of input. Defaults to text.
+- name: classes
+  type: string
+  required: false
+  description: Additional classes for the form-group
+- name: required
+  type: boolean
+  required: false
+  description: Is field required? False if not. Default is true.
+- name: disabled
+  type: boolean
+  required: false
+  description: Is field disabled? Set to true if it is disabled. Default is false.
+  

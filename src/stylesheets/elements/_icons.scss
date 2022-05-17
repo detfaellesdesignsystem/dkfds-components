@@ -4,10 +4,6 @@ $icons: (
     "add",
     "add-a-photo",
     "agriculture",
-    "alert-outline",
-    "angle-arrow-down-white",
-    "angle-arrow-down",
-    "angle-arrow-up",
     "apps",
     "arrow-left",
     "arrow-right",
@@ -21,64 +17,47 @@ $icons: (
     "assessment",
     "assignment",
     "attach-file",
-    "book-open",
     "bookmarks",
     "bookmark-border",
     "cached",
     "calculator",
-    "calendar",
     "card-account-details",
     "card-text",
-    "cash-multiple",
     "chat",
-    "check-circle-outline",
-    "check",
     "check-circle",
-    "chevron-double-left",
-    "chevron-double-right",
     "chevron-left",
     "chevron-right",
     "chevron-left",
     "chevron-right",
-    "close-circle-outline",
-    "close-circle",
     "close",
     "construction",
     "contact-support",
-    "content-save",
     "content-copy",
     "coronavirus",
     "create-new-folder",
     "credit-card",
     "database",
-    "delete-outline",
     "delete",
     "desktop-windows",
     "domain",
     "done",
-    "dots-vertical",
-    "download",
     "download-done",
     "drive-eta",
     "email",
     "engineering",
-    "error",
     "expand-less",
     "expand-more",
     "expand-more-white",
     "face",
     "feedback",
-    "file-document-box",
     "file-excel",
     "file-image",
-    "file-pdf-outline",
     "file-pdf",
     "file-word",
-    "file",
     "file-download",
+    "file-upload",
     "first-page",
     "flag",
-    "folder-multiple",
     "folder",
     "folder-open",
     "format-list-checks",
@@ -105,7 +84,6 @@ $icons: (
     "grade",
     "groups",
     "headphones",
-    "help-circle-outline",
     "help",
     "highlight-off",
     "home",
@@ -124,15 +102,8 @@ $icons: (
     "location-on",
     "lock",
     "lock-open",
-    "magnify",
     "map",
-    "menu-down",
-    "menu-left",
-    "menu-right",
-    "menu-up",
     "menu",
-    "message",
-    "minus",
     "mode",
     "more-horiz",
     "more-vert",
@@ -145,7 +116,6 @@ $icons: (
     "outlined-flag",
     "palette",
     "payments",
-    "pencil",
     "people-alt",
     "person",
     "person-add-alt-1",
@@ -154,9 +124,7 @@ $icons: (
     "photo-camera",
     "playlist-add",
     "playlist-add-check",
-    "plus",
     "print",
-    "printer",
     "query-builder",
     "refresh",
     "remove",
@@ -170,38 +138,37 @@ $icons: (
     "settings",
     "share",
     "shopping-cart",
-    "sort-acending",
+    "sort-table-ascending",
+    "sort-table-descending",
+    "sort-ascending",
     "sort-descending",
-    "sort-none",
     "sort",
     "sort-by-alpha",
     "subdirectory-arrow-left",
     "subdirectory-arrow-right",
-    "success",
     "support-agent",
+    "trash-can",
     "text-format",
     "tune",
-    "upload",
     "vertical-split",
     "videocam",
     "view-headline",
     "visibility",
     "visibility-off",
-    "warning",
     "zoom-in",
     "zoom-out"
 ) !default;
 
 .icon{
-    height: $body-text-line-height;
-    width: $body-text-line-height;
+    height: units($typography-body-text-line-height, 'rem');
+    width: units($typography-body-text-line-height, 'rem');
     background-repeat: no-repeat;
     display: inline-block;
     background-size: 100%;
 }
 .icon-svg {
-    height: $body-text-line-height;
-    width: $body-text-line-height;
+    height: units($typography-body-text-line-height, 'rem');
+    width: units($typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor; //svg inherit color
@@ -216,11 +183,11 @@ $icons: (
 }
 
 .icon-svg-large {
-    height: $display-1-heading-size;
-    width: $display-1-heading-size;
+    height: font-size($typography-display-1-heading-font-size);
+    width: font-size($typography-display-1-heading-font-size);
     vertical-align: middle;
     &--inherit-color{
-        fill: currentColor; //svg inherit color
+        fill: currentColor;
     }
 }
 

@@ -1,8 +1,9 @@
+@use 'sass:math';
 $aspect-height: 9;
 $aspect-width: 16;
 
 @mixin embed-container ($height, $width) {
-  padding-bottom: percentage($height/$width);
+  padding-bottom: percentage(math.div($height,$width));
 }
 
 .embed-container {

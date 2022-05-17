@@ -1,14 +1,17 @@
-
-$overflow-menu-arrow-size: 8px;
-$overflow-menu-dropdown-distance: 8px;
-
 .overflow-menu + h1{
     margin-top: 0;
 }
 
 .overflow-menu {
-    display: inline-block; //inlinblock so the .overflow-menu-inner is position underneath .button-overflow-menu
+    display: block;
     position: relative;
+    width: 100%;
+
+    
+    @include media-breakpoint-up(md) {
+        width: auto;
+        display: inline-block;
+    }
 
     .button-overflow-menu{
         @include button-unstyled;
@@ -17,8 +20,9 @@ $overflow-menu-dropdown-distance: 8px;
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: $color-black;
-
+        color: color($overflow-menu-button-text-color);
+        position: relative;
+        cursor: pointer;
         &:hover{
             text-decoration: underline;
         }
@@ -38,12 +42,12 @@ $overflow-menu-dropdown-distance: 8px;
             bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
         }
         &:after {
-            border-bottom-color: #fff;
+            border-bottom-color: color($overflow-menu-content-background-color);
             border-width: calc(#{$overflow-menu-arrow-size} - 1px);
             margin-left: calc((#{$overflow-menu-arrow-size} - 1px)*-1);
         }
         &:before {
-            border-bottom-color: $color-gray-medium-light;
+            border-bottom-color: border-color($overflow-menu-content-border);
             border-width: $overflow-menu-arrow-size;
             margin-left: calc(#{$overflow-menu-arrow-size} *-1);
         }
@@ -60,23 +64,26 @@ $overflow-menu-dropdown-distance: 8px;
         .button-overflow-menu{
             padding: 0;
             &:hover{
-                background-color: $color-gray-pale;
+                background-color: color($overflow-menu-button-icon-only-hover-background-color);
             }
         }
     }
 
     .overflow-menu-inner {
-
         position: absolute;
+        width: 100%;
         z-index: 2;
-        width: auto;
-        border: $outer-border;
-        box-shadow: $box-shadow-moderately;
-        background: #fff;
-        padding-top: map-get($spacers, 3);
-        padding-bottom: map-get($spacers, 3);
+        border: border($overflow-menu-content-border);
+        box-shadow: shadow($overflow-menu-content-shadow);
+        background: color($overflow-menu-content-background-color);
+        padding-top: units(3);
+        padding-bottom: units(3);
         top: calc(100% + #{$overflow-menu-dropdown-distance});
         min-width: 28rem;
+
+        @include media-breakpoint-up(md) {
+            width: auto;
+        }
 
         &[aria-hidden="true"]{
             display: none;
@@ -85,19 +92,22 @@ $overflow-menu-dropdown-distance: 8px;
 
     .overflow-list{
         @include unstyled-list;
-        font-size: $body-text;
-        line-height: $body-text-line-height;
-        color: $color-text;
+        font-size: font-size($overflow-menu-content-font-size);
+        line-height: units($overflow-menu-content-line-height, 'rem');
+        color: color($overflow-menu-content-text-color);
 
         button{
             @include button-unstyled;
+            line-height: units(5, 'rem');
+            cursor: pointer;
         }
         a{
             @include body-copy-text;
             display: block;
             text-decoration: none;
+            line-height: units(5, 'rem');
             &:hover, &:visited, &:focus{
-                color: $color-text;
+                color: color($overflow-menu-content-text-color);
             }
         }
 
@@ -105,7 +115,7 @@ $overflow-menu-dropdown-distance: 8px;
             padding: 8px 16px;
             width: 100%;
             &:hover{
-                background-color: $color-gray-pale;
+                background-color: color($overflow-menu-content-link-hover-background-color);
             }
         }
     }
@@ -131,9 +141,11 @@ $overflow-menu-dropdown-distance: 8px;
 
     &--open-right {
         .overflow-menu-inner{
-            left: calc(50% - 19px);
-            &:after {
-                left: 13px;
+            @include media-breakpoint-up(md) {
+                left: calc(50% - 19px);
+                &:after {
+                    left: 13px;
+                }
             }
         }
     }
@@ -152,21 +164,7 @@ $overflow-menu-dropdown-distance: 8px;
             }
         }
     }
-    .button-overflow-menu.js-dropdown--responsive-collapse{
-        //behaves like a collapse on mobile, no positon absolute and width 100%
-        @include media-breakpoint-down(md) {
-            &:before, &:after{
-                display: none; //hide arrow
-            }
-            &  ~ .overflow-menu-inner {
-                width: 100%;
-                position: static;
-                border: none;
-                box-shadow: none;
-                min-width: inherit;
-            }
-		}
-    }
+
     &.overflow-menu--md-no-responsive{
         //overflow content always visible on large screens.
         //does not look like a dropdown.
@@ -187,7 +185,7 @@ $overflow-menu-dropdown-distance: 8px;
                 border: none;
                 min-width: auto;
             }
-		    }
+		}
     }
   &.overflow-menu--lg-no-responsive{
     //overflow content always visible on large screens.
@@ -215,21 +213,22 @@ $overflow-menu-dropdown-distance: 8px;
   &--sort{
     .button-overflow-menu{
         text-decoration: underline;
+        line-height: units(5, 'rem');
         .selected-value{
             text-decoration: none;
             display: inline-block;
-            margin-left: map-get($spacers, 2);
-            font-weight: $font-weight-semibold;
+            margin-left: units(2);
+            font-weight: font-weight("semibold");
         }
         svg {
-            margin-right: map-get($spacers, 2);
+            margin-right: units(2);
         }
     }
     .overflow-menu-inner .overflow-list li[aria-selected="true"] button{
-        font-weight: $font-weight-semibold;
+        font-weight: font-weight("semibold");
         @include add-background-svg('done');
         background-repeat: no-repeat;
-        background-position: calc(100% - #{map-get($spacers, 4)}) center;
+        background-position: calc(100% - #{units(4)}) center;
     }
   }
 }

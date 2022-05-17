@@ -1,0 +1,9 @@
+params:
+- name: summary
+  type: string
+  required: true
+  description: Button text of the details component.
+- name: content
+  type: string
+  required: true
+  description: Content of the details component. Can contain HTML.

@@ -10,7 +10,7 @@ fieldset ul{
   margin-bottom: 0px;
 }
 fieldset + fieldset{
-  margin-top: map-get($spacers, 5);
+  margin-top: units(5);
 }
 
 legend{
@@ -90,9 +90,4 @@ input, select, textarea {
     }
     width: 100%;
   }
-}
-
-.box-border-l{
-	padding-left: calc(#{map-get($spacers, 4)} - 4px);
-	border-left: 4px solid $color-gray-light;
 }

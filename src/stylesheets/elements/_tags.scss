@@ -4,18 +4,18 @@
   display: inline-block;
   width: auto;
   padding:0;
-  padding-left: map-get($spacers, 3);
-  padding-right:map-get($spacers, 3);
-  margin-right:map-get($spacers, 3);
-  margin-bottom:map-get($spacers, 3);
-  border-radius: $button-border-radius;
+  padding-left: units(3);
+  padding-right:units(3);
+  margin-right:units(3);
+  margin-bottom:units(3);
+  border-radius: $tag-border-radius;
   border: none;
-  font-size: $base-font-size;
-  font-weight: $font-weight-medium;
-  color: $tag-color;
-  background-color: $tag-bg;
+  font-size: font-size($tag-font-size);
+  font-weight: font-weight($tag-font-weight);
+  color: color($tag-text-color);
+  background-color: color($tag-default-background-color);
   @include font-smoothing;
-  line-height: $body-text-line-height;
+  line-height: units($tag-line-height, rem);
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -23,39 +23,38 @@
 
   &.tag-icon {
     padding:0;
-    padding-left:map-get($spacers, 3);
+    padding-left:units(3);
   }
 
   & + .tag {
-    margin-bottom: map-get($spacers, 3);
+    margin-bottom: units(3);
   }
 
   &:hover,
   &.tag-hover {
-    background-color: $tag-hover-bg;
+    background-color: color($tag-hover-background-color);
   }
 
   &:active,
   &.tag-active {
-    background-color: $tag-active-bg;
+    background-color: color($tag-active-background-color);
   }
 
   &.focus,
   &:focus {
-    background-color: $tag-focus-bg;
+    background-color: color($tag-focus-background-color);
   }
 
   &.focus,
   &:focus {
-    border-color: $color-focus;
-    outline-color: $color-focus;
+    @include focus();
     position: relative;
   }
 
   .icon-svg {
     float: right;
     margin: 0px 0px 0px 5px;
-    fill: white;
+    fill: color($tag-icon-color);
   }
 }
 

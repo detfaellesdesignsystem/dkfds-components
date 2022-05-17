@@ -1,3 +1,4 @@
+'use strict';
 let dk = {
   "select_row": "Vælg række",
   "unselect_row": "Fravælg række",
@@ -5,49 +6,52 @@ let dk = {
   "unselect_all_rows": "Fravælg alle rækker"
 }
 
-class TableSelectableRows {
-  constructor (table, strings = dk) {
-    this.table = table;
-    dk = strings;
-  }
+/**
+ * 
+ * @param {HTMLTableElement} table Table Element
+ * @param {JSON} strings Translate labels: {"select_row": "Vælg række", "unselect_row": "Fravælg række", "select_all_rows": "Vælg alle rækker", "unselect_all_rows": "Fravælg alle rækker"}
+ */
+function TableSelectableRows (table, strings = dk){
+  this.table = table;
+  dk = strings;
+}
 
-  /**
-   * Initialize eventlisteners for checkboxes in table
-   */
-  init(){
-    this.groupCheckbox = this.getGroupCheckbox();
-    this.tbodyCheckboxList = this.getCheckboxList();
-    if(this.tbodyCheckboxList.length !== 0){
-      for(let c = 0; c < this.tbodyCheckboxList.length; c++){
-        let checkbox = this.tbodyCheckboxList[c];
-        checkbox.removeEventListener('change', updateGroupCheck);
-        checkbox.addEventListener('change', updateGroupCheck);
-      }
-    }
-    if(this.groupCheckbox !== false){
-      this.groupCheckbox.removeEventListener('change', updateCheckboxList);
-      this.groupCheckbox.addEventListener('change', updateCheckboxList);
+/**
+ * Initialize eventlisteners for checkboxes in table
+ */
+TableSelectableRows.prototype.init = function(){
+  this.groupCheckbox = this.getGroupCheckbox();
+  this.tbodyCheckboxList = this.getCheckboxList();
+  if(this.tbodyCheckboxList.length !== 0){
+    for(let c = 0; c < this.tbodyCheckboxList.length; c++){
+      let checkbox = this.tbodyCheckboxList[c];
+      checkbox.removeEventListener('change', updateGroupCheck);
+      checkbox.addEventListener('change', updateGroupCheck);
     }
   }
+  if(this.groupCheckbox !== false){
+    this.groupCheckbox.removeEventListener('change', updateCheckboxList);
+    this.groupCheckbox.addEventListener('change', updateCheckboxList);
+  }
+}
   
-  /**
-   * Get group checkbox in table header
-   * @returns element on true - false if not found
-   */
-  getGroupCheckbox(){
-    let checkbox = this.table.getElementsByTagName('thead')[0].getElementsByClassName('form-checkbox');
-    if(checkbox.length === 0){
-      return false;
-    }
-    return checkbox[0];
+/**
+ * Get group checkbox in table header
+ * @returns element on true - false if not found
+ */
+TableSelectableRows.prototype.getGroupCheckbox = function(){
+  let checkbox = this.table.getElementsByTagName('thead')[0].getElementsByClassName('form-checkbox');
+  if(checkbox.length === 0){
+    return false;
   }
-  /**
-   * Get table body checkboxes
-   * @returns HTMLCollection
-   */
-  getCheckboxList(){
-    return this.table.getElementsByTagName('tbody')[0].getElementsByClassName('form-checkbox');
-  }
+  return checkbox[0];
+}
+/**
+ * Get table body checkboxes
+ * @returns HTMLCollection
+ */
+TableSelectableRows.prototype.getCheckboxList = function(){
+  return this.table.getElementsByTagName('tbody')[0].getElementsByClassName('form-checkbox');
 }
 
 /**
@@ -137,4 +141,4 @@ function updateGroupCheck(e){
   }
 }
 
-module.exports = TableSelectableRows;
+export default TableSelectableRows;

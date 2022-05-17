@@ -17,9 +17,9 @@
 }
 
 .page-container{
-    padding-top: $spacing-medium;
+    padding-top: units(5, 'rem');
     @include media-breakpoint-up(md) {
-        padding-top: $spacing-x-large;
+        padding-top: units(7, 'rem');
     }
 }
 

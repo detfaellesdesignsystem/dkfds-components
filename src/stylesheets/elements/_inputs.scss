@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 .form-group{
-  margin-top: map-get($spacers, 5); //4
+  margin-top: units(5); //4
   &:first-child{
     margin-top: 0;
   }
@@ -12,9 +14,12 @@
 
 // Hint text
 .form-hint {
-  @include body-copy-text;
   display: block;
-  color: $color-gray-medium-dark;
+  color: color($form-hint-text-color);
+  font-size: font-size($form-hint-font-size);
+  line-height: units($form-hint-line-height, 'rem');
+  letter-spacing: $form-hint-letter-spacing;
+  font-weight: font-weight($form-hint-font-weight);
 }
 .form-label {
   display: inline-block;
@@ -27,25 +32,24 @@
 
 .form-input{
   appearance: none;
-  border: $input-border;
+  border: border($input-border);
   border-radius: $input-border-radius;
-  color: $color-black; // standardize on firefox
+  color: color($input-text-color); // standardize on firefox
   display: block;
-  font-size: $input-font-size;
-  line-height: $input-line-height;
-  padding: calc(8px - #{$input-border-width}) calc(16px - #{$input-border-width});
+  font-size: font-size($input-font-size);
+  line-height: units($input-line-height, 'rem');
+  padding: calc(8px - #{border-width($input-border)}) calc(16px - #{border-width($input-border)});
   width: 100%;
   max-width: 32rem;
-  margin-top: map-get($spacers, 3);
+  margin-top: units(3);
   text-align: left;
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     /* IE10+ CSS styles go here */
-    height: calc(#{$input-line-height} + (8px * 2));
+    height: calc(#{units($input-line-height, 'rem')} + (8px * 2));
   }
 
   &:focus, &.focus{
-    outline: $focus-outline;
-    outline-offset: $focus-spacing;
+    @include focus();
   }
 }
 
@@ -56,6 +60,9 @@ table {
 }
 textarea.form-input{
   height: auto;
+}
+textarea.no-resize{
+  resize: none;
 }
 
 .form-input-wrapper{
@@ -80,17 +87,17 @@ textarea.form-input{
   .form-input-prefix, .form-input-suffix {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: 400;
-    font-size: $input-font-size;
-    line-height: $input-line-height;
+    font-weight: font-weight("normal");
+    font-size: font-size($input-font-size);
+    line-height: units($input-line-height, 'rem');
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;
     min-width: 40px;
-    padding: calc(#{map-get($spacers, 3)} - #{$input-border-width}) calc(#{map-get($spacers, 3)} - #{$input-border-width});
-    margin-top: map-get($spacers, 3);
-    border: $input-border;
-    background-color: $input-prefix-suffix-background-color;
+    padding: calc(#{units(3)} - #{border-width($input-border)}) calc(#{units(3)} - #{border-width($input-border)});
+    margin-top: units(3);
+    border: border($input-border);
+    background-color: color($input-prefix-suffix-background-color);
     text-align: center;
     white-space: nowrap;
     cursor: default;
@@ -116,44 +123,42 @@ textarea.form-input{
 ////////////////
 
 .form-select {
-  border: $outer-border;
-  border-radius: $input-border-radius;
-  color: $color-black; // standardize on firefox
+  background-color: color($select-background-color);
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
+  background-position: calc(100% - 10px);
+  background-repeat: no-repeat;
+  border: border($select-border);
+  border-radius: $select-border-radius;
+  color: color($select-text-color);
   display: block;
-  font-size: $input-font-size;
-  line-height: $input-line-height;
-  height: calc(#{$input-line-height} + (8px * 2));
+  font-size: font-size($select-font-size);
+  line-height: units($select-line-height, 'rem');
+  height: calc(#{units($select-line-height, 'rem')} + (8px * 2));
   max-width: 32rem;
   width: 100%;
-  margin-top:  map-get($spacers, 3);;
+  margin-top: units(3);
   text-align: left;
-  padding: calc(8px - #{$input-border-width}) calc(16px - #{$input-border-width});
+  padding: calc(8px - #{border-width($select-border)}) calc(16px - #{border-width($select-border)});
   padding-right: 32px;
-  //custom arrrow:
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E"); //angle-arrow-down
-  background-repeat: no-repeat;
-  background-position: calc(100% - 10px);
-
-  // Remove dotted outline from select element on focus in Firefox
+  
   &:-moz-focusring {
     color: transparent;
-    text-shadow: 0 0 0 $color-black;
+    text-shadow: 0 0 0 color('black');
   }
 
   &:focus, &.focus{
-    outline: $focus-outline;
-    outline-offset: $focus-spacing;
+    @include focus();
   }
   &::-ms-expand {
     display: none;
   }
 
   &:disabled {
-    background-color: $color-gray-pale;
-    color:$color-gray-medium-light;
+    background-color: color($input-disabled-background-color);
+    color: color($input-disabled-text-color);
     cursor: not-allowed;
   }
   option {
@@ -174,13 +179,17 @@ table {
 //** Input states **//
 //////////////////////
 
+
+$input-top-bottom-padding-feedback: calc(8px - #{$input-border-width-feedback});
+$input-left-right-padding-feedback: calc(16px - #{$input-border-width-feedback});
+
 .form-group.form-error {
-  border-left: 4px solid $color-error;
-  padding-left: calc(#{map-get($spacers, 4)} - 4px);
+  border-left: $form-group-error-border-width solid color($form-group-error-border-color);
+  padding-left: calc(#{units(4)} - 4px);
 
   .form-input,
   .form-select {
-    border: $input-border-width-feedback solid $color-error;
+    border: $input-border-width-feedback solid color($input-border-color-feedback-error);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 
@@ -188,21 +197,21 @@ table {
 .form-error-message {
   @include form-label-text();
   display: block;
-  color: $color-error;
-  margin-top: map-get($spacers, 2);
+  color: color('error');
+  margin-top: units(2);
 }
 
 .form-group.form-success {
   .form-input,
   .form-select {
-    border: $input-border-width-feedback solid $color-success;
+    border: $input-border-width-feedback solid color($input-border-color-feedback-success);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 }
 
 input[type=text]:disabled, textarea:disabled{
-  background: $color-gray-pale;
-  color:$color-gray-medium-light;
+  background-color: color($input-disabled-background-color);
+  color: color($input-disabled-text-color);
   cursor: not-allowed;
 }
 input[readonly][type=text]{
@@ -213,21 +222,20 @@ input[readonly][type=text]{
 }
 input[readonly][type=text], textarea[readonly]{
   background-color: transparent;
-  color:$color-black;
+  color: color($input-text-color);
   border: none;
   cursor: default;
   padding: 0;
-  pointer-events: none;
 }
 
 /////////////////////////////////
 // Custom checkboxes & radios
 /////////////////////////////////
-$checkbox-size: 18px;
-$radio-size: 18px;
-$checkbox-size-large: 34px;
+$checkbox-size: units($input-checkbox-radio-small-size);
+$radio-size: units($input-checkbox-radio-small-size);
+$checkbox-size-large: units($input-checkbox-radio-large-size);
 $checkbox-radio-line-height-large: 4.0rem;
-$radio-size-large: 34px;
+$radio-size-large: units($input-checkbox-radio-large-size);
 
 
 .form-checkbox{
@@ -249,12 +257,12 @@ $radio-size-large: 34px;
 .form-checkbox + label,
 .form-radio + label {
   cursor: pointer;
-  font-weight: $font-weight-normal;
-  line-height: $body-text-line-height;
+  font-weight: font-weight("normal");
+  line-height: units($typography-body-text-line-height, 'rem');
   margin-bottom: 0;
   display: inline-block;
   outline: none;
-  color: $color-black;
+  color: color($input-text-color);
   position: relative;
   padding-left: calc(#{$checkbox-size} + 8px);
   min-height: $checkbox-size;
@@ -270,12 +278,12 @@ $radio-size-large: 34px;
 .form-radio + label::before {
   content: '';
   display: inline-block;
-  background: $color-white;
-  border-radius: $checkbox-border-radius;
-  border: 2px solid $color-text;
+  background: color('white');
+  border-radius: $input-checkbox-border-radius;
+  border: 2px solid color('black');
   height: $checkbox-size;
-  line-height: $body-text-line-height;
-  margin-right: map-get($spacers, 3);
+  line-height: units($typography-body-text-line-height, 'rem');
+  margin-right: units(3);
   width: $checkbox-size;
   position: absolute;
   top: 3px;
@@ -315,7 +323,7 @@ $radio-size-large: 34px;
 }
 .form-radio.radio-large + label{
   padding-top: 8px;
-  padding-left: calc(34px + 8px);
+  padding-left: calc(#{$radio-size-large} + 8px);
   padding-bottom: 8px;
 
   &:before{
@@ -325,7 +333,7 @@ $radio-size-large: 34px;
 }
 
 .form-radio.radio-large + label + .form-hint{
-  padding-left: calc(34px + 8px);
+  padding-left: calc(#{$radio-size-large} + 8px);
 }
 //checked checkbox
 .form-checkbox.checkbox-large{
@@ -340,15 +348,15 @@ $radio-size-large: 34px;
 
 .form-checkbox:checked + label{
   &:before{
-    background-color: $color-text;
+    background-color: color('black');
   }
   &:after{
     content: "";
     height: 7px;
     width: 12px;
     position: absolute;
-    left: 3px;
-    top: 4px;
+    left: 4px;
+    top: 5px;
     box-shadow: -2px 2px 0 0 #fff;
     transform: rotate(-46deg);
   }
@@ -361,7 +369,7 @@ $radio-size-large: 34px;
 .form-checkbox.checkbox-large:checked + label{
   &:after{
     height: 12px;
-    width: 22px;
+    width: 20px;
     left: 6px;
     top: 6px;
     box-shadow: -3px 3px 0 0 #fff;
@@ -375,7 +383,7 @@ $radio-size-large: 34px;
     content: "";
     height: calc(#{$radio-size} - 10px);
     width: calc(#{$radio-size} - 10px);
-    background-color: $color-text;
+    background-color: color('black');
     position: absolute;
     left: 5px;
     top: 8px;
@@ -396,25 +404,25 @@ $radio-size-large: 34px;
 //Disable
 .form-checkbox:disabled + label,
 .form-radio:disabled + label {
-  color: $color-gray-medium-light;
+  color: color($input-disabled-text-color);
   cursor: not-allowed;
   &:before{
-    border-color: $color-gray-light;
-    background-color: $color-gray-pale;
+    border-color: color($input-disabled-text-color);
+    background-color: color($input-disabled-background-color);
   }
 }
 
 //Disable checked
 .form-checkbox:checked[disabled] + label:before {
-  background-color: $color-text;
-  border-color: $color-text;
+  background-color: color('black');
+  border-color: color('black');
   opacity:0.5;
 }
 
 //Disable checked
 .form-radio:checked[disabled] + label:before {
-  background-color: $color-text;
-  border-color: $color-text;
+  background-color: color('black');
+  border-color: color('black');
   opacity:0.5;
 }
 
@@ -422,27 +430,53 @@ $radio-size-large: 34px;
 // checkbox focus
 .form-checkbox:focus + label::before,
 .form-checkbox.focus + label::before{
-  outline: $focus-outline;
-  outline-offset: $focus-spacing;
+  @include focus();
 }
 .form-radio:focus + label::before,
 .form-radio.focus + label::before {
-  box-shadow: 0 0 0 3px $color-focus;
+  @include focus();
 }
 
 // checkbox mixed
 .form-checkbox[aria-checked="mixed"] + label{
   &:before{
-    background-color: $color-text;
+    background-color: color('black');
   }
   &:after{
     content: "";
     height: 2px;
     width: 8px;
-    left: 7px;
-    top: 9px;  
+    left: 8px;
+    top: 10px;  
     position: absolute;
-    box-shadow: -2px 2px 0 0 $color-white;
+    box-shadow: -2px 2px 0 0 color('white');
+  }
+}
+.form-checkbox.checkbox-large[aria-checked="mixed"] + label{
+  
+  &:after{
+    width: 12px;
+    left: 13px;
+    top: 16px;
+    box-shadow: -3px 3px 0 0 color('white');
+  }
+}
+
+.checkbox-content, .radio-content{
+  padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
+  padding-top: map-get($spacers, $input-checkbox-radio-content-padding-top);
+  padding-bottom: units(5);
+	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid color($input-checkbox-radio-content-border-color);
+  margin-left: math.div((map-get($spacers, $input-checkbox-radio-small-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
+  margin-top: units(2);
+  margin-bottom: units(3);
+  
+  &-large{
+    padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)} - (#{map-get($spacers, $input-checkbox-radio-content-border-width)} / 2));
+    margin-left: math.div((map-get($spacers, $input-checkbox-radio-large-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
+  }
+  &[aria-hidden="true"]{
+    display:none;
   }
 }
 
@@ -457,24 +491,16 @@ $radio-size-large: 34px;
 }
 
 [type=range]::-webkit-slider-runnable-track {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
+  background: color($input-range-track-default-background-color);
+  border: border($input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
 }
 
 [type=range]::-moz-range-track {
-  background: $color-primary;
-  border: 1px solid $color-gray-medium-dark;
-  cursor: pointer;
-  height: 1.2rem;
-  width: 100%;
-}
-
-[type=range]::-ms-track {
-  background: transparent;
-  color: transparent;
+  background: color($input-range-track-default-background-color);
+  border: border($input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
@@ -482,43 +508,22 @@ $radio-size-large: 34px;
 
 [type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: 1px solid $color-gray-medium-dark;
+  border: border($input-range-thumb-default-border);
   height: 2.2rem;
   border-radius: 1.5rem;
-  background: $color-gray-pale;
+  background: color($input-range-thumb-default-background-color);
   cursor: pointer;
   margin-top: -.65rem;
   width: 2.2rem;
 }
 
 [type=range]::-moz-range-thumb {
-  background: $color-gray-pale;
-  border: 1px solid $color-gray-medium-dark;
+  background: color($input-range-thumb-default-background-color);
+  border: border($input-range-thumb-default-border);
   border-radius: 1.5rem;
   cursor: pointer;
   height: 2.2rem;
   width: 2.2rem;
-}
-
-[type=range]::-ms-thumb {
-  background: $color-gray-pale;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 1.5rem;
-  cursor: pointer;
-  height: 2.2rem;
-  width: 2.2rem;
-}
-
-[type=range]::-ms-fill-lower {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 2rem;
-}
-
-[type=range]::-ms-fill-upper {
-  background: $color-gray-light;
-  border: 1px solid $color-gray-medium-dark;
-  border-radius: 2rem;
 }
 
 /////////////////////////
@@ -529,7 +534,7 @@ $radio-size-large: 34px;
   align-items: flex-end;
   label {
     margin-top: 0;
-    font-weight: $font-weight-normal;
+    font-weight: font-weight("normal");
   }
 
   input[type=number]::-webkit-inner-spin-button,
@@ -541,20 +546,20 @@ $radio-size-large: 34px;
   .form-group-day,
   .form-group-month,
   .form-group-year {
-    margin-right: map-get($spacers, 4);
+    margin-right: units(4);
     margin-top: 0;
   }
 
   .form-group-day,
   .form-group-month{
-    width: calc(2px + #{map-get($spacers, 4)} + #{map-get($spacers, 4)} + 2ch );
+    width: calc(2px + #{units(4)} + #{units(4)} + 2ch );
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
       width: 6.4ex;
     }
   }
 
   .form-group-year {
-    width: calc(2px + #{map-get($spacers, 4)} + #{map-get($spacers, 4)} + 4ch );
+    width: calc(2px + #{units(4)} + #{units(4)} + 4ch );
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
       width: 9ex;
     }
@@ -576,7 +581,7 @@ input::-webkit-inner-spin-button {
 }
 
 .form-label + input[type=file]{
-  margin-top: map-get($spacers, 3);
+  margin-top: units(3);
 }
 
 input[type=file]{

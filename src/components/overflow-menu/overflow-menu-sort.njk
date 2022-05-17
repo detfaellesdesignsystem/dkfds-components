@@ -1,11 +1,12 @@
- {% macro overflowmenu(data) %}
-    <div class="overflow-menu overflow-menu--sort overflow-menu--open-right" id="{{ data.id }}">
-        <button class="button-overflow-menu" data-js-target="{{ data.id }}-panel" aria-haspopup="true" aria-expanded="false">
-            {% if data.icon %}<svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ data.icon }}"></use></svg>{% endif %}{{ data.label }}<span class="selected-value"></span>
+ {% macro overflowmenu(params) %}
+ {% set icon = params.button.icon | default('sort-default') %}
+    <div class="overflow-menu overflow-menu--sort overflow-menu--open-right" id="{{ params.id }}">
+        <button class="button-overflow-menu" data-js-target="{{ params.id }}-panel" aria-haspopup="true" aria-expanded="false">
+           <svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ icon }}"></use></svg>{{ params.button.label }}<span class="selected-value"></span>
         </button>
-        <div class="overflow-menu-inner" id="{{ data.id }}-panel" aria-hidden="true">
+        <div class="overflow-menu-inner" id="{{ params.id }}-panel" aria-hidden="true">
             <ul class='overflow-list' role="menu">
-                {%- for item in data.items -%}
+                {%- for item in params.items -%}
                     <li role="menuitem"{% if item.selected %} aria-selected="true"{% endif %}><button id="{{item.id}}">{{item.text}}</button></li>
                 {%- endfor -%}
             </ul>

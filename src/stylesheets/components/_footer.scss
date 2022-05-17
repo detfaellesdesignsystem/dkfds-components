@@ -10,29 +10,29 @@ footer {
 
   //generel for footer
   .footer {
-    border-top: $footer-border;
-    background-color: $footer-background-color;
-    padding-top: calc(#{map-get($spacers, 5)} - 1px);
-    padding-bottom: map-get($spacers, 4);
+    border-top: border($footer-border);
+    background-color: color($footer-background-color);
+    padding-top: calc(#{units(5)} - 1px);
+    padding-bottom: units(4);
     margin-top: 8rem;
-    color: $footer-text-color;
+    color: color($footer-text-color);
     @include media-breakpoint-up(md) {
-      padding-bottom: calc(#{map-get($spacers, 9)} + #{map-get($spacers, 4)});
+      padding-bottom: calc(#{units(9)} + #{units(4)});
     }
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: $footer-text-color;
+      color: color($footer-text-color);
     }
 
     .function-link {
-      color: $footer-text-color;
+      color: color($footer-text-color);
       &:hover, &:focus, &:visited{
-        color: $footer-text-color;
+        color: color($footer-text-color);
       }
     }
 
     .footer-col {
       &:not(:first-child) {
-        margin-top: map-get($spacers, 5);
+        margin-top: units(5);
       }
       @include media-breakpoint-up(md) {
         &:not(:first-child) {
@@ -53,12 +53,12 @@ footer {
 
     ul{
       &:not(:last-child) {
-        margin-bottom: map-get($spacers, 5);
+        margin-bottom: units(5);
       }
 
       &.footer-links {
         li {
-          margin-top:map-get($spacers, 3);
+          margin-top:units(3);
         }
       }
     }
@@ -68,8 +68,8 @@ footer {
         &:after {
           @include media-breakpoint-up(md) {
             content: "\00b7" !important;
-            margin-left: map-get($spacers, 3);
-            margin-right: map-get($spacers, 3);
+            margin-left: units(3);
+            margin-right: units(3);
           }
         }
       }
@@ -77,7 +77,7 @@ footer {
   }
   //footer-theme
   .footer-theme {
-    padding-top: map-get($spacers, 4);
-    padding-bottom: map-get($spacers, 3);
+    padding-top: units(4);
+    padding-bottom: units(3);
   }
 }

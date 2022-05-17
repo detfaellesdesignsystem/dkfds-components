@@ -1,0 +1,41 @@
+params:
+- name: role
+  type: string
+  required: false
+  description: role of the alert.
+- name: classes
+  type: string
+  required: false
+  description: Classes of the alert.
+- name: heading
+  type: string
+  required: false
+  description: Title of the alert.
+- name: content
+  type: string
+  required: false
+  description: Content of the alert.
+- name: ariaLabel
+  type: string
+  required: false
+  description: aria-label on the alert.
+- name: closeButton
+  type: boolean
+  required: false
+  description: Show close button on true.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes of the alert.
+- name: contentContainer
+  type: boolean
+  required: false
+  description: Excludes alert-text container on content.
+- name: paragraph
+  type: boolean
+  required: false
+  description: Sets paragraph width on true.
+- name: icon
+  type: boolean
+  required: false
+  description: Adds icon on true.

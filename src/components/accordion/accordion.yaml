@@ -1,0 +1,62 @@
+params:
+- name: id
+  type: string
+  required: false
+  description: The ID of the button.
+- name: openCloseButton
+  type: boolean
+  required: false
+  description: Show open/close all button.
+- name: heading_level
+  type: string
+  required: false
+  description: Heading level of the button. If false, no heading around the button. Otherwise default is h3.
+- name: multiselectable
+  type: boolean
+  required: false
+  description: Default is true. If true, more than one accordion can be open at the time. On false, only one accordion will be open. 
+- name: idPrefix
+  type: string
+  required: true
+  description: String for ID attributes. Is prepended to the ids in every accordion in list.
+- name: items
+  type: array
+  required: true
+  description: Array of accordions.
+    - name: title
+      type: string
+      required: true
+      description: Text in accordion button.
+    - name: errorMessage
+      type: string
+      required: false
+      description: Error message located in content.
+    - name: expanded
+      type: boolean
+      required: false
+      description: Expands accordion on true. Default is false.
+    - name: id
+      type: string
+      required: true
+      description: Id of the content container
+    - name: icon
+      type: string
+      required: false
+      description: Name of icon to be shown in button.
+    - name: icontext
+      type: string
+      required: false
+      description: Text placed next to icon
+    - name: icontext
+      type: string
+      required: false
+      description: Text placed next to icon
+    - name: content
+      type: string
+      required: true
+      description: Content for the accordion. Can contain HTML.
+      
+
+
+
+  

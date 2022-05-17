@@ -1,0 +1,74 @@
+params:
+params:
+- name: id
+  type: string
+  required: true
+  description: The ID of the textarea.
+- name: label
+  type: object
+  required: true
+  description: The label attached to the textarea.
+  - name: text
+    type: string
+    required: true
+    description: Text for the label.
+  - name: for
+    type: string
+    required: true
+    description: Id of the textarea.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the label.
+  - name: requiredLabel
+    type: boolean
+    required: false
+    description: Show label saying the textarea is required and most textareas in form aren't required.
+  - name: optionalLabel
+    type: boolean
+    required: false
+    description: Show label saying the textarea is not required and most textareas in form are required.
+  - name: tooltip
+    type: string
+    required: false
+    description: Additional text to show in a tooltip next to the label
+- name: name
+  type: string
+  required: true
+  description: The name of the textarea, which is submitted with the form data.
+- name: value
+  type: string
+  required: false
+  description: Optional initial value of the textarea.
+- name: helptext
+  type: string
+  required: false
+  description: Text under label meant to help the user enter the correct value.
+- name: rows
+  type: string
+  required: false
+  description: Height of the textarea.
+- name: placeholder
+  type: string
+  required: false
+  description: Placeholder text in the textarea
+- name: disabled
+  type: boolean
+  required: false
+  description: true for disabled textarea. Defaults to false.
+- name: readonly
+  type: boolean
+  required: false
+  description: true for read only textarea. Defaults to false.
+- name: required
+  type: boolean
+  required: false
+  description: Enter true for required textarea. Enter false for optional textarea. Defaults to true.
+- name: errorMessage
+  type: string
+  required: false
+  description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
+- name: classes
+  type: string
+  required: false
+  description: Classes to add to the textarea.

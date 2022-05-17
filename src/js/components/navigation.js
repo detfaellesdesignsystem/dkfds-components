@@ -1,7 +1,6 @@
 'use strict';
 const forEach = require('array-foreach');
 const select = require('../utils/select');
-const dropdown = require('./dropdown');
 
 const NAV = `.nav`;
 const NAV_LINKS = `${NAV} a`;
@@ -14,8 +13,92 @@ const TOGGLES = [ NAV, OVERLAY ].join(', ');
 const ACTIVE_CLASS = 'mobile_nav-active';
 const VISIBLE_CLASS = 'is-visible';
 
+/**
+ * Add mobile menu functionality
+ */
+class Navigation {
+  /**
+   * Set events
+   */
+  init () {
+    window.addEventListener('resize', mobileMenu, false);
+    mobileMenu();
+  }
+
+  /**
+   * Remove events
+   */
+  teardown () {
+    window.removeEventListener('resize', mobileMenu, false);
+  }
+}
+
+/**
+ * Add functionality to mobile menu
+ */
+const mobileMenu = function() {
+  let mobile = false;
+  let openers = document.querySelectorAll(OPENERS);
+  for(let o = 0; o < openers.length; o++) {
+    if(window.getComputedStyle(openers[o], null).display !== 'none') {
+      openers[o].addEventListener('click', toggleNav);
+      mobile = true;
+    }
+  }
+
+  // if mobile
+  if(mobile){
+    let closers = document.querySelectorAll(CLOSERS);
+    for(let c = 0; c < closers.length; c++) {
+      closers[ c ].addEventListener('click', toggleNav);
+    }
+
+    let navLinks = document.querySelectorAll(NAV_LINKS);
+    for(let n = 0; n < navLinks.length; n++) {
+      navLinks[ n ].addEventListener('click', function(){
+        // A navigation link has been clicked! We want to collapse any
+        // hierarchical navigation UI it's a part of, so that the user
+        // can focus on whatever they've just selected.
+
+        // Some navigation links are inside dropdowns; when they're
+        // clicked, we want to collapse those dropdowns.
+
+
+        // If the mobile navigation menu is active, we want to hide it.
+        if (isActive()) {
+          toggleNav.call(this, false);
+        }
+      });
+    }
+
+    const trapContainers = document.querySelectorAll(NAV);
+    for(let i = 0; i < trapContainers.length; i++){
+      focusTrap = _focusTrap(trapContainers[i]);
+    }
+
+  }
+
+  const closer = document.body.querySelector(CLOSE_BUTTON);
+
+  if (isActive() && closer && closer.getBoundingClientRect().width === 0) {
+    // The mobile nav is active, but the close box isn't visible, which
+    // means the user's viewport has been resized so that it is no longer
+    // in mobile mode. Let's make the page state consistent by
+    // deactivating the mobile nav.
+    toggleNav.call(closer, false);
+  }
+};
+
+/**
+ * Check if mobile menu is active
+ * @returns true if mobile menu is active and false if not active
+ */
 const isActive = () => document.body.classList.contains(ACTIVE_CLASS);
 
+/**
+ * Trap focus in mobile menu if active
+ * @param {HTMLElement} trapContainer 
+ */
 const _focusTrap = (trapContainer) => {
 
   // Find all focusable children
@@ -112,76 +195,4 @@ const toggleNav = function (active) {
   return active;
 };
 
-const resize = () => {
-
-  let mobile = false;
-  let openers = document.querySelectorAll(OPENERS);
-  for(let o = 0; o < openers.length; o++) {
-    if(window.getComputedStyle(openers[o], null).display !== 'none') {
-      openers[o].addEventListener('click', toggleNav);
-      mobile = true;
-    }
-  }
-
-  if(mobile){
-    let closers = document.querySelectorAll(CLOSERS);
-    for(let c = 0; c < closers.length; c++) {
-      closers[ c ].addEventListener('click', toggleNav);
-    }
-
-    let navLinks = document.querySelectorAll(NAV_LINKS);
-    for(let n = 0; n < navLinks.length; n++) {
-      navLinks[ n ].addEventListener('click', function(){
-        // A navigation link has been clicked! We want to collapse any
-        // hierarchical navigation UI it's a part of, so that the user
-        // can focus on whatever they've just selected.
-
-        // Some navigation links are inside dropdowns; when they're
-        // clicked, we want to collapse those dropdowns.
-
-
-        // If the mobile navigation menu is active, we want to hide it.
-        if (isActive()) {
-          toggleNav.call(this, false);
-        }
-      });
-    }
-
-    const trapContainers = document.querySelectorAll(NAV);
-    for(let i = 0; i < trapContainers.length; i++){
-      focusTrap = _focusTrap(trapContainers[i]);
-    }
-
-  }
-
-  const closer = document.body.querySelector(CLOSE_BUTTON);
-
-  if (isActive() && closer && closer.getBoundingClientRect().width === 0) {
-    // The mobile nav is active, but the close box isn't visible, which
-    // means the user's viewport has been resized so that it is no longer
-    // in mobile mode. Let's make the page state consistent by
-    // deactivating the mobile nav.
-    toggleNav.call(closer, false);
-  }
-};
-
-class Navigation {
-  constructor (){
-    this.init();
-
-    window.addEventListener('resize', resize, false);
-
-
-  }
-
-  init () {
-
-    resize();
-  }
-
-  teardown () {
-    window.removeEventListener('resize', resize, false);
-  }
-}
-
-module.exports = Navigation;
+export default Navigation;

@@ -1,14 +1,13 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/form/controls/label.njk" import label as label %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
 
-{% macro datepicker(params) %}<div class="form-group{% if success %} form-success{% endif %}{% if error %} form-error{% endif %}">
-      {% if params.label != "" %}<label class="form-label {{params.classlabel}}" for="{{params.id}}">
-        {{params.label}}{% if params.optionallabel %}<span class="weight-normal"> {{params.optionallabel}}</span>{% endif %}{% if params.tooltip %}<a href="javascript:void(0)" class="js-tooltip" data-tooltip="{{params.tooltipTitle}}"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg></a>{% endif %}
-        </label>{% endif %}
-      {% if params.hint %}<span class="form-hint" id="{{params.id}}-hint">
-      {{params.hint}}
-      </span>{% endif %}
-      {% if params.error %}<span class="form-error-message" id="{{params.id}}-error">
-      <span class="sr-only">Fejl:</span> {{params.error}}
-      </span>{% endif %}
-     <div class="date-picker" {% if params.min_date %}data-min-date="{{params.min_date}}" {%endif%}{% if params.max_date %}data-max-date="{{params.max_date}}" {%endif%}{% if params.default_date %}data-default-date="{{params.default_date}}" {%endif%}><input class="form-input {{params.class}}" {% if params.optionallabel == nil %}required {% endif %} id="{{params.id}}" value="{{params.value}}" name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.error %}aria-invalid="true" {% endif %}{% if params.error or params.hint %}aria-describedby="{% if params.hint%}{{params.id}}-hint{% endif %} {% if params.error %}{{params.id}}-error{% endif %}"{% endif %}  {% if params.readonly %} readonly {% endif %}></div>
-  </div>{% endmacro %}
+{% macro datepicker(params) %}
+{% set required = params.required | default(true) %}
+<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}">
+  {{label(params.label)}}
+  {{helptext(params.helptext)}}
+  {{errorMessage(params.errorMessage)}}
+  <div class="date-picker" {% if params.minDate %}data-min-date="{{params.minDate}}" {%endif%}{% if params.maxDate %}data-max-date="{{params.maxDate}}" {%endif%}{% if params.defaultDate %}data-default-date="{{params.defaultDate}}" {%endif%}><input class="form-input {{params.classes}}" {% if required == true %}required {% endif %} id="{{params.id}}" value="{{params.value}}" name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.helptext %}aria-describedby="{% if params.helptext%}{{params.helptext.id}}{% endif %} {% if params.errorMessage %}{{params.errorMessage.id}}{% endif %}"{% endif %}></div>
+</div>{% endmacro %}

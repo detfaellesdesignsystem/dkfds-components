@@ -19,18 +19,18 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label {
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
-  content: 'Fra';
+  content: $toggle-text-off;
   position: absolute;
   top: 4px;
   left: 4px;
   bottom: 0;
   border-radius: 50%;
-  background-color: $color-white;
+  background-color: color($toggle-button-background-color);
   width: 29px;
   height: 29px;
-  color: $color-black;
-  font-size: 13px;
-  font-weight: 500;
+  color: color('black');
+  font-size: font-size('2xs');
+  font-weight: font-weight("medium");
   padding-top: 5px;
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;
@@ -38,7 +38,7 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
   transition: all 0.15s ease-out;
   z-index: 10;
   text-align: center;
-  box-shadow:  $box-shadow-slightly;
+  box-shadow: shadow($toggle-shadow);
 }
 
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label{
@@ -48,20 +48,20 @@ input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:before,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:before{
-  color: $color-gray-medium-light;
+  color: color($input-disabled-text-color);
 }
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color: #999999;
+  background-color: color($input-disabled-text-color);
 }
 
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:after,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:hover:after,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color: $color-primary;
+  background-color: color($toggle-button-on-default-background-color);
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
@@ -75,7 +75,7 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
   border-radius: 20px;
   line-height: 1;
   text-align: center;
-  background-color: #999999;
+  background-color: color($toggle-default-background-color);
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;
   -o-transition: all 0.15s ease-out;
@@ -83,42 +83,31 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:hover:after{
-  background-color: $color-gray-medium-dark;
+  background-color: color($toggle-hover-background-color);
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:active:after{
-  background-color: $color-gray-dark;
+  background-color: color($toggle-active-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:after {
-  background-color: $color-primary;
+  background-color: color($toggle-button-on-default-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:hover:after {
-  background-color: $color-primary-medium;
+  background-color: color($toggle-button-on-hover-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:active:after {
-  background-color: $color-primary-dark;
+  background-color: color($toggle-button-on-active-background-color);
 }
 
 input[type='checkbox'].form-toggle:focus ~ .form-toggle-label:after {
-  outline: $focus-outline;
-  outline-offset: $focus-spacing;
+  @include focus();
 }
 
 /* checked state */
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
-  content: 'Til';
+  content: $toggle-text-on;
   left: 26px;
-}
-
-/* blue switch variation */
-.switch-alternative input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
-  content: '\2714';   /* "✔" character */
-  text-indent: 10px;
-}
-
-.switch-alternative input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:before {
-  background-color: #3399cc;
 }

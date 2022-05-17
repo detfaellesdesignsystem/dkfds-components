@@ -1,0 +1,9 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the helptext element.
+- name: text
+  type: string
+  required: true
+  description: Helptext

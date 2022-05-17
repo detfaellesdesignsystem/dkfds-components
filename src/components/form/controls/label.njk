@@ -1,0 +1,8 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% macro label(params) %}
+{%- if params.text -%}
+<label class="form-label{% if params.classes %} {{params.classes}}{% endif %}" for="{{params.for}}">
+{{params.text}}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}{% if params.tooltip %}<button class="button-unstyled js-tooltip" data-tooltip="{{params.tooltip}}" data-tooltip-trigger="click">{{icon_svg({"name": "help"})}}<span class="sr-only">Hvad betyder det?</span></button>{% endif %}
+</label>
+{%- endif -%}
+{% endmacro %}

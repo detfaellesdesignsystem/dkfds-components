@@ -1,0 +1,28 @@
+params:
+- name: text
+  type: string
+  required: true
+  description: Label text.
+- name: classes
+  type: string
+  required: true
+  description: Classes of the label.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: True if the input is optional. Appends optional label.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Appends required label.
+- name: for
+  type: string
+  required: true
+  description: Id of the input element.
+- name: Tooltip
+  type: string
+  required: false
+  description: Tooltip text.
+  
+
+

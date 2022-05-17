@@ -1,56 +1,71 @@
 'use strict';
-class CheckboxToggleContent{
-    constructor(el){
-        this.jsToggleTrigger = '.js-checkbox-toggle-content';
-        this.jsToggleTarget = 'data-aria-controls';
-        this.eventClose = document.createEvent('Event');
-        this.eventClose.initEvent('fds.collapse.close', true, true);
-        this.eventOpen = document.createEvent('Event');
-        this.eventOpen.initEvent('fds.collapse.open', true, true);
-        this.targetEl = null;
-        this.checkboxEl = null;
+import '../polyfills/Function/prototype/bind';
 
-        this.init(el);
-    }
+const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
 
-    init(el){
-        this.checkboxEl = el;
-        var that = this;
-        this.checkboxEl.addEventListener('change', function (event){
-            that.toggle(that.checkboxEl);
-        });
-        this.toggle(this.checkboxEl);
-    }
+/**
+ * Adds click functionality to checkbox collapse component
+ * @param {HTMLInputElement} checkboxElement 
+ */
+function CheckboxToggleContent(checkboxElement){
+    this.checkboxElement = checkboxElement;
+    this.targetElement = null;
+}
 
-    toggle(triggerEl){
-        var targetAttr = triggerEl.getAttribute(this.jsToggleTarget)
-        var targetEl = document.getElementById(targetAttr);
-        if(targetEl === null || targetEl === undefined){
-            throw new Error(`Could not find panel element. Verify value of attribute `+ this.jsToggleTarget);
-        }
-        if(triggerEl.checked){
-            this.open(triggerEl, targetEl);
-        }else{
-            this.close(triggerEl, targetEl);
-        }
-    }
+/**
+ * Set events on checkbox state change
+ */
+CheckboxToggleContent.prototype.init = function(){
+    this.checkboxElement.addEventListener('change', this.toggle.bind(this));
+    this.toggle();
+}
 
-    open(triggerEl, targetEl){
-        if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('data-aria-expanded', 'true');
-            targetEl.classList.remove('collapsed');
-            targetEl.setAttribute('aria-hidden', 'false');
-            triggerEl.dispatchEvent(this.eventOpen);
-        }
+/**
+ * Toggle checkbox content
+ */
+CheckboxToggleContent.prototype.toggle = function(){
+    var $module = this;
+    var targetAttr = this.checkboxElement.getAttribute(TOGGLE_TARGET_ATTRIBUTE)
+    var targetEl = document.getElementById(targetAttr);
+    if(targetEl === null || targetEl === undefined){
+        throw new Error(`Could not find panel element. Verify value of attribute `+ TOGGLE_TARGET_ATTRIBUTE);
     }
-    close(triggerEl, targetEl){
-        if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
-            triggerEl.setAttribute('data-aria-expanded', 'false');
-            targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
-            triggerEl.dispatchEvent(this.eventClose);
-        }
+    if(this.checkboxElement.checked){
+        $module.expand(this.checkboxElement, targetEl);
+    }else{
+        $module.collapse(this.checkboxElement, targetEl);
     }
 }
 
-module.exports = CheckboxToggleContent;
+/**
+ * Expand content
+ * @param {HTMLInputElement} checkboxElement Checkbox input element 
+ * @param {HTMLElement} contentElement Content container element 
+ */
+CheckboxToggleContent.prototype.expand = function(checkboxElement, contentElement){
+    if(checkboxElement !== null && checkboxElement !== undefined && contentElement !== null && contentElement !== undefined){
+        checkboxElement.setAttribute('data-aria-expanded', 'true');
+        contentElement.classList.remove('collapsed');
+        contentElement.setAttribute('aria-hidden', 'false');
+        let eventOpen = new Event('fds.collapse.expanded');
+        checkboxElement.dispatchEvent(eventOpen);
+    }
+}
+
+/**
+ * Collapse content
+ * @param {HTMLInputElement} checkboxElement Checkbox input element 
+ * @param {HTMLElement} contentElement Content container element 
+ */
+CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
+    if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
+        triggerEl.setAttribute('data-aria-expanded', 'false');
+        targetEl.classList.add('collapsed');
+        targetEl.setAttribute('aria-hidden', 'true');
+        
+        let eventClose = new Event('fds.collapse.collapsed');
+        triggerEl.dispatchEvent(eventClose);
+    }
+}
+
+export default CheckboxToggleContent;

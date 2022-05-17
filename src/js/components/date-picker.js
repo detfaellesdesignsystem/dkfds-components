@@ -1,4 +1,4 @@
-const keymap = require("receptor/keymap");
+import {keymap} from 'receptor';
 const behavior = require("../utils/behavior");
 const select = require("../utils/select");
 const { prefix: PREFIX } = require("../config");
@@ -475,7 +475,7 @@ const isDatesYearOutsideMinOrMax = (date, minDate, maxDate) => {
 };
 
 /**
- * Parse a date with format M-D-YY
+ * Parse a date with format D-M-YY
  *
  * @param {string} dateString the date string to parse
  * @param {string} dateFormat the format of the date string
@@ -607,11 +607,8 @@ const changeElementValue = (el, value = "") => {
   const elementToChange = el;
   elementToChange.value = value;
 
-  const event = new CustomEvent("change", {
-    bubbles: true,
-    cancelable: true,
-    detail: { value },
-  });
+
+  var event = new Event('change');
   elementToChange.dispatchEvent(event);
 };
 
@@ -719,7 +716,7 @@ const enable = (el) => {
 // #region Validation
 
 /**
- * Validate the value in the input as a valid date of format M/D/YYYY
+ * Validate the value in the input as a valid date of format D/M/YYYY
  *
  * @param {HTMLElement} el An element within the date picker component
  */

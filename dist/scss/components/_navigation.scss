@@ -1,270 +1,363 @@
 // Header navigation ------------- //
 
-@mixin nav-border {
-  border-bottom: 0.4rem solid $color-primary;
-  padding-bottom: 0.6rem;
+@mixin nav-current-border {
+  border-bottom: $navigation-link-default-border-width solid color($navigation-link-current-border-color);
+}
+@mixin nav-hover-border {
+  border-bottom: $navigation-link-default-border-width solid color($navigation-link-hover-border-color);
+}
+@mixin nav-focus-border {
+  border-bottom: $navigation-link-default-border-width solid color($navigation-link-focus-border-color);
+}
+@mixin nav-link-border {
+  border-bottom: $navigation-link-default-border-width solid color($navigation-link-default-border-color);
 }
 
-@mixin nav-border-thick {
-  border-bottom: 0.7rem solid $color-primary;
-  padding-bottom: 0.9rem;
-}
-
-@mixin nav-current {
-  border-bottom: $navigation-link-default-border-width solid $navigation-link-current-border-color;
-}
-@mixin nav-hover {
-  border-bottom: $navigation-link-default-border-width solid $navigation-link-hover-border-color;
-}
-@mixin nav-focus {
-  border-bottom: $navigation-link-default-border-width solid $navigation-link-focus-border-color;
-}
 @mixin nav-link {
-  border-bottom: $navigation-link-default-border-width solid $navigation-link-default-border-color;
+ 
+}
+
+.mobile_nav-active {
+  overflow: hidden;
+}
+
+.mobile_nav-active{
+  .nav{
+      .nav-actions{
+        //overflow menu (the ones not in nav-primary)
+        .overflow-menu{
+          width: 100%;
+          .button-overflow-menu{
+            width: 100%;
+            justify-content: flex-start;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: units(4);
+            padding-bottom: units(4);
+            &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
+              display: none;
+            }
+          }
+          .overflow-menu-inner{
+            position: static;
+            border: none;
+            box-shadow:  none;
+            min-width: inherit;
+            margin-top: 0;
+            padding-top: 0px;
+            .overflow-list{
+              padding-left: units(4);
+            }
+            a, button{
+              text-align: left;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: units(3);
+              padding-bottom: units(3);
+              &:hover{
+                background-color: transparent;
+              }
+            }
+          }
+        }
+      }
+  }
 }
 
 .navbar {
   width: 100%;
-  //padding-left: map-get($spacers, 4);
-  //padding-right: map-get($spacers, 4);
-  padding-top: map-get($spacers, 5);
-  padding-bottom: map-get($spacers, 5);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-bottom: $inner-border;
-  }
   display: flex;
   flex-direction: column;
-
+  padding-top: units(4);
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     padding: 0;
-    border: 0;
     flex-direction: row;
   }
-}
-.navbar-primary{
 
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-bottom: $outer-border;
+  .helptext{
+    color: color($navigation-link-information-text-color);
+    font-weight: font-weight("normal");
   }
-  padding-top: 0;
+
+  .navbar-inner{
+    border-bottom: border(20);
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      border-bottom: none;
+    }
+  }
 }
+
+
+
 .navbar-context-actions{
+  padding-bottom: units(4);
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: map-get($spacers, 4);
+    padding-top: units(4);
+    padding-bottom: 0;
   }
 }
 
-// Primary navigation ------------- //
+// // Primary navigation ------------- //
 
 .nav-primary {
+  padding-top: 0;
   @include unstyled-list;
   display: flex;
   flex-direction: column;
   margin-top: 8px;
-
+  border-top: border(20);
+  + .nav-actions{
+    border-top: border(20);
+    margin-top: 0;
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      border-top: none;
+    }
+  }
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-top: none;
     flex-direction: row;
     flex-shrink: 0;
     flex-wrap: wrap;
     margin-top: 0;
     margin-left: -12px;
+    border-bottom: none;
   }
-
-  & > li:first-of-type {
-    border-top: $inner-border;
-  }
-
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    & > li:first-of-type {
-      border-top: none;
+  ul{
+    margin-left: units(4);
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      margin-left: 0;
     }
   }
 
+  .nav-link {    
+    text-decoration: none;
+    color: color($navigation-link-default-color);
+    background-color: color($navigation-link-default-background-color);
+    display: block;
+    padding:calc(units(4) - 1px) 0 units(4); 
+    span{
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        display: block;
+        @include nav-link-border;
+      }
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        padding-bottom: 9px;
+      }
+    }
+  }
+
+  li{
+    margin-top: 0;
+    padding-left: 0px;
+    border-bottom: border(20);
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      border-bottom: none;
+    }
+    &:last-of-type{
+      border-bottom: none;
+    }
+     li li {
+      .overflow-menu{
+        .buttton-overflow-menu{
+          padding-top: calc(units(305) - 1px);
+          padding-bottom: units(305);
+        }
+      }
+      .nav-link{
+        padding-top: calc(units(305) - 1px);
+        padding-bottom: units(305);
+      }
+    }
+  }
+
+  // level 1
   > li {
-    border-bottom: $inner-border;
+    & > .overflow-menu {
+      & > button.button-overflow-menu{
+        padding-left: units(4);
+      }
+      & > .overflow-menu-inner > .overflow-list{
+        margin-left: units(6);
+      } 
+    }
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
       border-bottom: 0;
+      padding-right: 0;
+      padding-left: 0;
+      & > .overflow-menu > button.button-overflow-menu{
+        padding-left: 0;
+      }
     }
-    > a {
-      text-decoration: none;
-      color: $navigation-link-default-color;
-      background-color: $navigation-link-default-background-color;
-      font-size: $base-font-size;
-      line-height: $base-line-height;
-      display: block;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: calc(#{map-get($spacers, 4)} - 1px);
+    > .nav-link {
+      font-size: font-size($typography-base-font-size);
+      line-height: units($typography-base-line-height, 'rem');
       white-space: nowrap;
+      padding-left: units(4);
 
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-bottom: 0px;
+        padding-left: 0;
       }
       &:hover {
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-color: $navigation-link-hover-background-color;
-          color: $navigation-link-hover-color;
+          background-color: color($navigation-link-hover-background-color);
+          color: color($navigation-link-hover-color);
           span{
-            @include nav-hover;
+            @include nav-hover-border;
           }
         }
       }
       &:focus{
         position: relative;
         z-index: 100;
-        background-color: $navigation-link-focus-background-color;
-        color: $navigation-link-focus-color;
+        background-color: color($navigation-link-focus-background-color);
+        color: color($navigation-link-focus-color);
         span{
-          @include nav-focus;
+          @include nav-focus-border;
         }
       }
     }
-    & > a, & > button, & .button-overflow-menu{
+    & > .nav-link, & > button, & .button-overflow-menu{
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         padding-left: 12px;
         padding-right: 12px;
         span{        
-          @include nav-link;
+          @include nav-link-border;
+          padding-bottom: calc(#{units(3)} + 1px);
         }
         &:hover span{
-          @include nav-hover;
+          @include nav-hover-border;
         }
         &:focus span{
-          @include nav-focus;
+          @include nav-focus-border;
         }
       }
     }
   }
-  .nav-link {
-    > &:hover {
-      @media (max-width: $nav-responsive-breakpoint) {
-        background-color: $color-gray-pale;
-      }
-      span {
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            @include nav-hover;
-        }
-      }
-    }
-    span{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        display: block;
-        @include nav-link;
-      }
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 9px;
-      }
-    }
+  .active > a, .overflow-menu .overflow-menu-inner .overflow-list > li.active > a{
+    font-weight: font-weight("semibold");
   }
-
   .current {
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      > a, > a:hover, .button-overflow-menu, .button-overflow-menu:hover{
-        background-color: $navigation-link-current-background-color;
-        color: $navigation-link-current-color;
+      > a, .button-overflow-menu{
+        background-color: color($navigation-link-current-background-color);
+        color: color($navigation-link-current-color);
         span {
-          @include nav-current;
+          @include nav-current-border;
+        }
+        &:hover, &:focus, &:hover, &:visited{
+          background-color: color($navigation-link-current-background-color);
+          color: color($navigation-link-current-color);
+          span {
+            @include nav-current-border;
+          }
+        }
+      }
+      .overflow-menu{
+        .button-overflow-menu{
+          font-weight: font-weight("semibold");
+          color: color($navigation-link-current-color);
+          background-color: color($navigation-link-current-background-color);
+          
+          span{
+            @include nav-current-border;
+          }
+
+          &:focus,
+          &:active {
+            color: color($navigation-link-current-color);
+            background-color: color($navigation-link-current-background-color);
+            position: relative;
+            z-index: 2;
+            span {
+              @include nav-current-border;
+            }
+          }
+          &:hover{
+            color: color($navigation-link-current-color);
+            background-color: color($navigation-link-current-background-color);
+            span{
+              @include nav-current-border;
+            }
+          }
+
+          &[aria-expanded=true] {
+            background-color: color($navigation-overflow-menu-open-background-color-desktop);
+            color: color($navigation-overflow-menu-open-text-color);
+            
+            span{
+              @include nav-current-border;
+            }
+
+            &:hover, &:focus, &:active {
+              background-color: color($navigation-overflow-menu-open-background-color-desktop);
+              color: color($navigation-overflow-menu-open-text-color);
+              span{
+                @include nav-current-border;
+              }
+            }
+          }
         }
       }
     }
-  }
-
-  .current > a, .current .button-overflow-menu{
-    font-weight: $font-weight-medium;
-    color: $navigation-link-current-color;
-  }
-}
-
-.nav-secondary{
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    display: flex;
-    align-items: center;
-  }
-  .nav-secondary-heading{
-    margin-bottom: map-get($spacers, 4);
-    font-size: 17px;
-    font-weight: $font-weight-bold;
-    margin-bottom: 0;
-    + ul{
+    & > a, & > .overflow-menu > .button-overflow-menu{
+      color: color($navigation-link-current-color);
+      
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        margin-left: map-get($spacers, 4);
+        font-weight: font-weight("medium");
       }
     }
   }
-}
 
-.nav{
+  /*region: nav-primary overflow menu */
   .overflow-menu{
-    display: block; //IE 11 fix
-  }
-  @media (max-width: $nav-responsive-breakpoint) {
-    //overflow menu (the ones not in nav-primary)
-    .overflow-menu{
-      width: 100%;
-      .button-overflow-menu{
-        width: 100%;
-        justify-content: flex-start;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        &:after, &:before{
-          display: none !important;
-        }
-      }
-      .overflow-menu-inner{
-        position: static;
-        border: none;
-        box-shadow:  none;
-        .overflow-list{
-          padding-left: 16px;
-        }
-        a, button{
-          text-align: left;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 16px;
-          padding-bottom: 16px;
-        }
-      }
+    display: block;
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      display: inline-block;
     }
-  }
-}
-
-// Overflow menu(dropdown) in primary navigation.
-.nav-primary{
-  .overflow-menu{
     .button-overflow-menu{
-      color: $navigation-link-default-color;
-      font-size: $base-font-size;
-      line-height: $base-line-height;
+      color: color($navigation-link-default-color);
       display: block;
-      padding-top: calc(#{map-get($spacers, 4)} - 1px);
-      padding-bottom: 0;
-      white-space: nowrap;
+      font-size: font-size($typography-base-font-size);
+      font-weight: font-weight("normal");
+      line-height: units($typography-base-line-height, 'rem');
+      padding-top: calc(units(4) - 1px);
+      padding-bottom: units(4);
+      padding-left: 0px;
+      padding-right: units(7);
+      white-space: normal;
       width: 100%;
+      
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        width: unset;
+       padding-bottom: 0;
+       width: unset;
+       padding-right: units(305);
+       padding-left: units(305);
+      }
+      &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
+        display: none;
       }
       span{
         padding-right: 24px;
-        padding-bottom: 9px;
         display: block;
       }
           
       &:focus,
       &:active {
-        outline: $focus-outline;
-        color: $navigation-link-focus-color;
+        @include focus-outline();
+        color: color($navigation-link-focus-color);
+        z-index: 2;
+        position: relative;
       }
       &:hover{
         text-decoration: none;
-        color: $navigation-link-hover-color;
+        color: color($navigation-link-hover-color);
+        background-color: transparent;
       }
-
 
       &[aria-expanded=false] {
         @include add-background-svg($navigation-overflow-menu-collapsed-icon);
-        background-position: right 16px center;
+        background-position: right units(4) top units(4);
         background-size: 24px;
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -275,15 +368,15 @@
 
       &[aria-expanded=true] {
         @include add-background-svg($navigation-overflow-menu-expanded-icon);
-        background-position: right 16px center;
+        background-position: right units(4) top units(4);
         background-size: 24px;
-        background-color: $navigation-overflow-menu-open-background-color;
+        background-color: color($navigation-overflow-menu-open-background-color);
 
         @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
           @include add-background-svg($navigation-overflow-menu-expanded-icon-desktop);
           background-position: right 1rem center;
-          background-color: $navigation-overflow-menu-open-background-color-desktop;
-          color: $navigation-overflow-menu-open-text-color;
+          background-color: color($navigation-overflow-menu-open-background-color-desktop);
+          color: color($navigation-overflow-menu-open-text-color);
           position: relative;
           z-index: 2;
           &:before, &:after{
@@ -293,45 +386,93 @@
         }
       }
     }
-
     .overflow-menu-inner {
       @include unstyled-list;
-      font-size: $body-text;
-      line-height: $body-text-line-height;
-      color: $color-text;
-      background-color: $navigation-overflow-menu-open-background-color;
-      padding-left: 16px;
-      border-top: $inner-border;
+      background-color: color($navigation-overflow-menu-open-background-color);
+      border: none;
+      border-top: border(20);
+      box-shadow: none;
+      color: color('ink');
+      font-size: font-size($typography-body-text-font-size);
+      line-height: units($typography-body-text-line-height, 'rem');
+      min-width: inherit;
+      padding-left: 0;
       padding-top: 0;
       padding-bottom: 0;
+      position: static;
+      width: 100%;
 
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
         width: 30rem;
-        border: $outer-border;
+        border: border(10);
         border-top: 0;
         padding-left: 0;
         position: absolute;
         z-index: 1;
-        padding-top: map-get($spacers, 3);
-        padding-bottom: map-get($spacers, 3);
-        background-color: $navigation-overflow-menu-open-background-color-desktop;
+        padding-top: units(3);
+        padding-bottom: units(3);
+        background-color: color($navigation-overflow-menu-open-background-color-desktop);
         top: 100%;
       }
+      
+      a{
+          @include body-copy-text;
+          display: block;
+          text-decoration: none;
+          &:hover, &:visited, &:focus{
+            color: color($navigation-link-default-color);
+            background-color: transparent;
+            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+              color: color($navigation-overflow-menu-open-text-color);
+              text-decoration: underline;
+            }
+          }
+          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+            @include small-text();
+            color: color($navigation-overflow-menu-open-text-color);
+            padding: units(3) units(4);
+          }
+      }
 
+      button:not(.button-overflow-menu){
+        @include button-unstyled;
+      }
+    }
+  }
+  /*endregion*/
+
+
+  .overflow-menu{
+    .overflow-menu-inner {
       .overflow-list{
-        a{
-          font-size: $small-text;
-          line-height: $small-text-line-height;
+        list-style-type: none;
+        margin-left: units(4);
+        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+          margin-left: 0;
         }
-        .overflow-list {
-          margin-left: map-get($spacers, 4);
+        li:before{
+          display: none;
+        }
+        a {
+          text-decoration: none;
+          color: color($navigation-link-default-color);
+          background-color: color($navigation-link-default-background-color);
+          display: block;
+          padding: calc(units(4) - 1px) 0 units(4);
+          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+            background-color: transparent;
+            color: color($navigation-overflow-menu-open-text-color);
+            padding: units(3) units(4);
+            &:hover{          
+              text-decoration: underline;
+            }
+          }
+        }
+        .overflow-list, .overflow-list {
+          margin-left: units(4);
           li {
             a {
-              border-top: 0;
-              padding: 8px 0 8px 0;
-            }
-            &:first-of-type a {
-              padding: 0px 0 8px 0;
+              padding: calc(units(305) - 1px) 0 units(305);
             }
             @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
               &:last-of-type a {
@@ -340,147 +481,64 @@
             }
           }
         }
-        .sidenav-sub_list{
-          margin-left: map-get($spacers, 4);
-        }
-
-      }
-
-      button{
-          @include button-unstyled;
-      }
-      a{
-          @include body-copy-text;
-          display: block;
-          text-decoration: none;
-          &:hover, &:visited, &:focus{
-            color: $navigation-link-default-color;
-            background-color: transparent;
-            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              color: $navigation-overflow-menu-open-text-color;
-              text-decoration: underline;
-            }
-          }
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            color: $navigation-overflow-menu-open-text-color;
-          }
-      }
-
-      .active > a{
-        font-weight: $font-weight-semibold;
-        color: $navigation-link-default-color;
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          color: $navigation-overflow-menu-open-text-color;
-        }
-      }
-
-      button, a{
-        padding: 15px 0 15px 0;
-        border-top: $inner-border;
-        width: 100%;
-
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          padding: 8px 16px;
-          margin: 0;
-          border: none;
-        }
-        &:focus{
-          background-color: transparent;
-        }
-      }
-      li:first-child button, li:first-child a{
-        border-top: 0;
       }
     }
   }
+}
+
+.nav-secondary{
+  padding: 0 units(4);
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    li.current{
-      .overflow-menu{
-        .button-overflow-menu{
-          font-weight: $font-weight-semibold;
-          color: $navigation-link-current-color;
-          background-color: $navigation-link-current-background-color;
-          
-          span{
-            @include nav-current;
-          }
-
-          &:focus,
-          &:active {
-            color: $navigation-link-current-color;
-            background-color: $navigation-link-current-background-color;
-            span {
-              @include nav-current;
-            }
-          }
-          &:hover{
-            color: $navigation-link-current-color;
-            background-color: $navigation-link-current-background-color;
-            span{
-              @include nav-current;
-            }
-          }
-
-          &[aria-expanded=true] {
-            background-color: $navigation-overflow-menu-open-background-color-desktop;
-            color: $navigation-overflow-menu-open-text-color;
-            
-            span{
-              @include nav-current;
-            }
-
-            &:hover, &:focus, &:active {
-              background-color: $navigation-overflow-menu-open-background-color-desktop;
-              color: $navigation-overflow-menu-open-text-color;
-              span{
-                @include nav-current;
-              }
-            }
-          }
-        }
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  .nav-actions{
+    padding: 0;
+  }
+  + .nav-actions{
+    padding: 0 units(4) units(4);
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    padding: 0 0 0 units(4);
+    }
+  }
+  .nav-secondary-heading{
+    font-weight: font-weight("bold");
+    margin-bottom: units(1);
+    + ul{
+      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+        margin-left: units(4);
       }
     }
   }
 }
 
-.mobile_nav-active {
-  overflow: hidden;
+.navbar-primary{
+  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    border-bottom: border(10);
+  }
 }
 
-// Navbar inner
+.navbar:last-of-type{
+  .nav-actions{
+    border-bottom: none;
+  }
+}
+
+// // Navbar inner
 .navbar-inner {
   display: flex;
   flex-direction: column;
+  &.container {
+    padding-left: 0;
+    padding-right: 0;
+    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+      padding-left: units(4);
+      padding-right: units(4);
+    }
+  }
   @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
     flex-direction: row;
     justify-content: space-between;
-  }
-}
-
-.nav-info-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-
-  li {
-    display: inline-block;
-    font-size: 1.4rem;
-    margin: 0;
-    text-align: right;
-
-    &.clear {
-      display: block;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    a {
-      text-decoration: none;
-    }
   }
 }
