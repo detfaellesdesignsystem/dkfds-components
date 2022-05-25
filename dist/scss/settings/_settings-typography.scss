@@ -1,79 +1,212 @@
-$base-font-size:    1.6rem !default;
-$base-line-height:  2.4rem !default;
+/*
+----------------------------------------
+Typography settings
+----------------------------------------
+*/
 
-$font-name: 'IBM Plex Sans'!default;
-$text-max-width:                66ch !default; //equivalent to 75 characters with spaces (ish).
+/*
+----------------------------------------
+Root font size
+----------------------------------------
+Setting $theme-respect-user-font-size to
+true sets the root font size to 100% and
+uses ems for media queries
+----------------------------------------
+$theme-root-font-size only applies when
+$theme-respect-user-font-size is set to
+false.
 
-$h1-font-size:                3.9rem !default;
-$h1-line-height:              4.8rem !default;
+This will set the root font size
+as a specific px value and use px values
+for media queries.
 
-$h2-font-size:                3.1rem !default;
-$h2-line-height:              4.0rem !default;
+Accepts true or false
+----------------------------------------
+*/
 
-$h3-font-size:                2.5rem !default;
-$h3-line-height:              3.2rem !default;
+$theme-respect-user-font-size: true !default;
 
-$h4-font-size:                2.0rem !default;
-$h4-line-height:              2.8rem !default;
+// $theme-root-font-size only applies when
+// $theme-respect-user-font-size is set to
+// false.
 
-$h5-font-size:                1.6rem !default;
-$h5-line-height:              2.4rem !default;
+// This will set the root font size
+// as a specific px value and use px values
+// for media queries.
 
-$h6-font-size:                1.3rem !default;
-$h6-line-height:              2.0rem !default;
+// Accepts values in px
 
-$display-1-heading-size:       2.5rem !default;
-$display-1-heading-line-height: 3.8rem !default;
-$display-1-heading-letter-spacing: -0.2px !default;
+$theme-root-font-size: 10px !default;
 
-$display-2-heading-size: 2.1rem !default;
-$display-2-heading-line-height: 3.2rem !default;
-$display-2-heading-letter-spacing: -0.2px !default;
+/*
+----------------------------------------
+Type scale
+----------------------------------------
+Define your project's type scale using
+values from the USWDS system type scale
 
-$body-text:                   1.6rem !default;
-$body-text-line-height:       2.4rem !default;
-$body-text-letter-spacing:    -0.1px !default;
+1-20
+----------------------------------------
+*/
 
-$article-font-size:              1.8rem !default;
-$article-line-height:            2.8rem !default;
-$article-letter-spacing:         -0.15px !default;
+$typography-font-size-2xs: 1.3rem !default;
+$typography-font-size-xs: 1.4rem !default;
+$typography-font-size-sm: 1.6rem !default;
+$typography-font-size-md: 1.8rem !default;
+$typography-font-size-lg: 2.0rem !default;
+$typography-font-size-xl: 2.1rem !default;
+$typography-font-size-2xl: 2.2rem !default;
+$typography-font-size-3xl: 2.5rem !default;
+$typography-font-size-4xl: 2.8rem !default;
+$typography-font-size-5xl: 3.1rem !default;
+$typography-font-size-6xl: 3.9rem !default;
 
+// General
+$typography-base-font-size: "sm" !default;
+$typography-base-line-height: 5 !default;
+$typography-font-family: 'IBM Plex Sans', 'system' !default;
+$typography-text-max-width: 66ch !default;
 
-$lead-font-size:              2.1rem !default;
-$lead-line-height:            3.2rem !default;
-$lead-letter-spacing:         -0.15px !default;
-
-$font-weight-normal:          400 !default;
-$font-weight-medium:          500 !default;
-$font-weight-semibold:        600 !default;
-$font-weight-bold:            700 !default;
-$font-style-normal:           normal !default;
-$font-style-italic:           italic !default;
-
-$font-family:                'IBM Plex Sans', 'system' !default;
-
-///// New
-$typography-body-text-size: $body-text !default;
-$typography-body-text-line-height: $body-text-line-height !default;
-$typography-body-text-letter-spacing: $body-text-letter-spacing !default;
-$typography-body-text-font-weight: $font-weight-normal !default;
+// Body text
+$typography-body-text-font-size: $typography-base-font-size !default;
+$typography-body-text-line-height: $typography-base-line-height !default;
+$typography-body-text-letter-spacing: -0.1px !default;
+$typography-body-text-font-weight: "normal" !default;
 $typography-body-text-color: 'ink' !default;
 $typography-body-text-secondary-color: 'ink-light' !default;
 
+// Caption text
 $typography-caption-text-color: 'ink' !default;
-$typography-caption-font-size: 1.3rem !default;
-$typography-caption-line-height: 2.0rem !default;
+$typography-caption-font-size: "2xs" !default;
+$typography-caption-line-height: 405 !default;
 $typography-caption-letter-spacing: 0.4px !default;
 
+// Subheading
 $typography-subheading-text-color: 'gray-500' !default;
-$typography-subheading-font-size: 1.3rem !default;
-$typography-subheading-line-height: 1.6rem !default;
+$typography-subheading-font-size: "2xs" !default;
+$typography-subheading-line-height: 4 !default;
 $typography-subheading-letter-spacing: 1px !default;
 
-$typography-form-label-font-size: 1.6rem !default;
-$typography-form-label-line-height: 2.4rem !default;
+// Form label
+$typography-form-label-font-size: "sm" !default;
+$typography-form-label-line-height: 5 !default;
 $typography-form-label-text-color: 'ink' !default;
 
-$typography-small-text-font-size: 1.4rem !default;
-$typography-small-text-letter-spacing:   0.2px !default;
-$typography-small-text-line-height:      2rem !default;
+// Small text
+$typography-small-text-font-size: "xs" !default;
+$typography-small-text-letter-spacing: 0.2px !default;
+$typography-small-text-line-height: 405 !default;
+
+// Font weight settings
+$typography-font-weight-thin: false !default;
+$typography-font-weight-extralight: false !default;
+$typography-font-weight-light: false !default;
+$typography-font-weight-normal: 400 !default;
+$typography-font-weight-medium: 500 !default;
+$typography-font-weight-semibold: 600 !default;
+$typography-font-weight-bold: 700 !default;
+$typography-font-weight-heavy: false !default;
+
+// Display text
+$typography-display-1-heading-font-size: "3xl" !default;
+$typography-display-1-heading-line-height: 605 !default;
+$typography-display-1-heading-letter-spacing: -0.2px !default;
+
+$typography-display-2-heading-font-size: "xl" !default;
+$typography-display-2-heading-line-height: 6 !default;
+$typography-display-2-heading-letter-spacing: -0.2px !default;
+
+// Article
+$typography-article-font-size: "md" !default;
+$typography-article-line-height: 505 !default;
+$typography-article-letter-spacing: -0.15px !default;
+
+// Lead text
+$typography-lead-font-size: "xl" !default;
+$typography-lead-line-height: 6 !default;
+$typography-lead-letter-spacing: -0.15px !default;
+
+// H1
+$typography-h1-font-size: (
+    "default": "3xl",
+    "md": "5xl",
+    "lg": "6xl"
+) !default;
+$typography-h1-line-height: (
+    "default": 6,
+    "md": 7,
+    "lg": 8 
+) !default;
+$typography-h1-letter-spacing: (
+    "default": -0.3px,
+    "md": -0.4px,
+    "lg": -0.5px 
+) !default;
+
+// H2
+$typography-h2-font-size: (
+    "default": "2xl",
+    "md": "3xl",
+    "lg": "5xl"
+) !default;
+$typography-h2-line-height: (
+    "default": 505,
+    "md": 6,
+    "lg": 7
+) !default;
+$typography-h2-letter-spacing: (
+    "default": -0.2px,
+    "md": -0.3px,
+    "lg": -0.4px
+) !default;
+
+// H3
+$typography-h3-font-size: (
+    "default": "md",
+    "md": "lg",
+    "lg": "3xl"
+) !default;
+$typography-h3-line-height: (
+    "default": 5,
+    "md": 505,
+    "lg": 6
+) !default;
+$typography-h3-letter-spacing: (
+    "default": -0.1px,
+    "md": -0.2px,
+    "lg": -0.3px
+) !default;
+
+// H4
+$typography-h4-font-size: (
+    "default": "sm",
+    "lg": "lg"
+) !default;
+$typography-h4-line-height: (
+    "default": 5,
+    "lg": 505
+) !default;
+$typography-h4-letter-spacing: (
+    "default": normal,
+    "md": -0.15px,
+    "lg": -0.2px
+) !default;
+
+// H5
+$typography-h5-font-size: (
+    "default": "xs",
+    "lg": "sm"
+) !default;
+$typography-h5-line-height: (
+    "default": 405,
+    "lg": 5
+) !default;
+$typography-h5-letter-spacing: (
+    "default": -0.1px,
+    "md": normal
+) !default;
+
+// H6
+$typography-h6-font-size: "2xs" !default;
+$typography-h6-line-height: 405 !default;
+$typography-h6-letter-spacing: -0.25px !default;

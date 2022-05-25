@@ -1,8 +1,76 @@
+@use 'sass:math';
 /*
 ========================================
 Functions
 ----------------------------------------
 */
+
+// The following vars need to be set
+// here, before the rest of the system
+// variables are set
+
+$root-font-size: if($theme-respect-user-font-size, 62.5%, $theme-root-font-size);
+
+$root-font-size-equiv: if(
+  $theme-respect-user-font-size,
+  10px,
+  $theme-root-font-size
+);
+
+/*
+========================================
+General-purpose functions
+----------------------------------------
+*/
+
+/*
+----------------------------------------
+divide()
+----------------------------------------
+Divides one number by another, to a
+specified precision.
+----------------------------------------
+*/
+
+@function divide($dividend, $divisor, $precision: 10, $depth: 0) {
+  @if ($dividend < 0 and $divisor < 0) {
+    $dividend: -1 * $dividend;
+    $divisor: -1 * $divisor;
+  }
+
+  @if ($dividend < 0) {
+    @return -1 * divide(-1 * $dividend, $divisor, $precision, $depth);
+  }
+
+  @if ($divisor < 0) {
+    @return -1 * divide($dividend, $divisor * -1, $precision, $depth);
+  }
+
+  @if ($divisor == 0) {
+    @error 'Illegal division by zero';
+  }
+
+  $result: if(unit($dividend) == unit($divisor), 0, $dividend * 0);
+  @while $dividend - $divisor >= 0 {
+    $result: $result + 1;
+    $dividend: $dividend - $divisor;
+  }
+
+  @if $dividend > 0 {
+    @if $depth < $precision {
+      $result: $result +
+        divide($dividend * 10, $divisor, $precision, $depth + 1) *
+        0.1;
+    } @else if $depth == $precision {
+      $next-digit: divide($dividend * 10, $divisor, $precision, $depth + 1);
+      @if $next-digit >= 5 {
+        $result: $result + 1;
+      }
+    }
+  }
+
+  @return $result;
+}
 
 /*
 ----------------------------------------
@@ -22,6 +90,9 @@ source: https://gist.github.com/bigglesrocks/d75091700f8f2be5abfe
 
   @return $collection;
 }
+
+$system-properties: map-collect($system-border, $system-font-size, $system-font-weight, $system-shadow);
+
   
 /*
 ----------------------------------------
@@ -124,8 +195,8 @@ Converts a value in px to a value in rem
   @if not $pixels {
     @return false;
   }
-  $px-to-rem: ($pixels / $root-font-size-equiv) * 1rem;
-  $px-to-rem: round($px-to-rem * 100) / 100;
+  $px-to-rem: divide($pixels, $root-font-size-equiv) * 1rem;
+  $px-to-rem: divide(round($px-to-rem * 100), 100);
 
   @return $px-to-rem;
 }
@@ -321,7 +392,7 @@ Derive a color from a color shortcode
         @error '`#{$value}` is a color that does not exist '
           + 'or is set to false.';
       }
-      @return #{$our-color};
+      @return $our-color;
     }
   
     $theme-color-shortcodes: ();
@@ -342,7 +413,7 @@ Derive a color from a color shortcode
         @error '`#{$value}` is a color that does not exist '
           + 'or is set to false.';
       }
-      @return #{$our-color};
+      @return $our-color;
     }
   
   
@@ -354,7 +425,7 @@ Derive a color from a color shortcode
           @error '`#{$value}` is a color that does not exist '
             + 'or is set to false.';
         }
-        @return #{$our-color};
+        @return $our-color;
       }
     }
   
@@ -445,6 +516,55 @@ Gets a valid FDS border color
   @return color(map-get($border-map, 'color'));
 }
 
+/*
+----------------------------------------
+font-size()
+----------------------------------------
+Gets a valid FDS font-size - not in use?
+----------------------------------------
+*/
+
+@function font-size($value) {
+  $value: smart-quote($value);
+  
+  $our-standard-values: map-get($system-properties, font-size);
+
+  @if  map-has-key($our-standard-values, $value) {
+    @return map-get($our-standard-values, $value);
+  }
+  
+  @if map-has-key($project-custom-font-size, $value) {
+    @return map-get($project-custom-font-size, $value);
+  }
+
+@error '`#{$value}` is not a valid FDS font size token.';
+}
+
+/*
+----------------------------------------
+font-weight()
+----------------------------------------
+Gets a valid FDS font weight
+----------------------------------------
+*/
+
+@function font-weight($value, $error: true) {
+  $value: smart-quote($value);
+  
+  $our-standard-values: map-get($system-properties, font-weight);
+
+  @if not map-has-key($our-standard-values, $value) {
+      @return error-not-token($value, "font-weight", $our-standard-values);
+  }
+  $our-value: map-get($our-standard-values, $value);
+  @if $error{
+    @if $our-value == false{
+      @error '`#{$value}` is a font weight that does not exist '
+      + 'or is set to false.';
+    }
+  }
+  @return $our-value;
+}
 
 /*
 ----------------------------------------

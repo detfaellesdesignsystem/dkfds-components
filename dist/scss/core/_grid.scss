@@ -8,8 +8,6 @@
   @include grid-container-max-widths();
 }
 
-// USWD changed: responsive containers removed.
-// Added: different width containers based on w-percent-x utility class.  
 .container[class*='w-']{
   max-width: inherit !important; //undo max-width
 }
@@ -35,7 +33,7 @@
     border-top: border(20);
     padding-top: units(4);
     padding-bottom: units(4);
-    line-height: 2.4rem;
+    line-height: units(5, 'rem');
     &:last-of-type{
       border-bottom: border(20);
     }

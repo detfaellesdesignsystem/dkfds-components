@@ -32,17 +32,13 @@ $theme-color-info-light:            'blue-100' !default;
 $theme-color-text-positive:         'green-700' !default;
 $theme-color-text-negative:         'red-700' !default;
 
-$theme-color-positive:              'green-700' !default; // ??
-$theme-color-negative:              'red-700' !default; // ??
-
 // Link colors
 $theme-color-link:                  'blue-800' !default;
 $theme-color-link-hover:            'blue-900' !default;
 $theme-color-link-focus:            'blue-800' !default;
 $theme-color-link-visited:          'purple-700' !default;
 
-// Disabled colors - CHECK VALUES!!!!
-$theme-color-disabled-family: "gray" !default; 
+// Disabled colors
 $theme-color-disabled-light: 'gray-400' !default;
 $theme-color-disabled: "gray-600" !default;
 $theme-color-disabled-dark: false !default;

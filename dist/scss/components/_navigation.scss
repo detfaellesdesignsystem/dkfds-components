@@ -76,7 +76,7 @@
 
   .helptext{
     color: color($navigation-link-information-text-color);
-    font-weight: $font-weight-normal;
+    font-weight: font-weight("normal");
   }
 
   .navbar-inner{
@@ -189,8 +189,8 @@
       }
     }
     > .nav-link {
-      font-size: $base-font-size;
-      line-height: $base-line-height;
+      font-size: font-size($typography-base-font-size);
+      line-height: units($typography-base-line-height, 'rem');
       white-space: nowrap;
       padding-left: units(4);
 
@@ -235,7 +235,7 @@
     }
   }
   .active > a, .overflow-menu .overflow-menu-inner .overflow-list > li.active > a{
-    font-weight: $font-weight-semibold;
+    font-weight: font-weight("semibold");
   }
   .current {
     @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
@@ -255,7 +255,7 @@
       }
       .overflow-menu{
         .button-overflow-menu{
-          font-weight: $font-weight-semibold;
+          font-weight: font-weight("semibold");
           color: color($navigation-link-current-color);
           background-color: color($navigation-link-current-background-color);
           
@@ -304,7 +304,7 @@
       color: color($navigation-link-current-color);
       
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        font-weight: $font-weight-medium;
+        font-weight: font-weight("medium");
       }
     }
   }
@@ -318,9 +318,9 @@
     .button-overflow-menu{
       color: color($navigation-link-default-color);
       display: block;
-      font-size: $base-font-size;
-      font-weight: $font-weight-normal;
-      line-height: $base-line-height;
+      font-size: font-size($typography-base-font-size);
+      font-weight: font-weight("normal");
+      line-height: units($typography-base-line-height, 'rem');
       padding-top: calc(units(4) - 1px);
       padding-bottom: units(4);
       padding-left: 0px;
@@ -393,8 +393,8 @@
       border-top: border(20);
       box-shadow: none;
       color: color('ink');
-      font-size: $body-text;
-      line-height: $body-text-line-height;
+      font-size: font-size($typography-body-text-font-size);
+      line-height: units($typography-body-text-line-height, 'rem');
       min-width: inherit;
       padding-left: 0;
       padding-top: 0;
@@ -503,7 +503,7 @@
     }
   }
   .nav-secondary-heading{
-    font-weight: $font-weight-bold;
+    font-weight: font-weight("bold");
     margin-bottom: units(1);
     + ul{
       @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {

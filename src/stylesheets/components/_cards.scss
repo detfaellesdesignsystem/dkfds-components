@@ -68,7 +68,7 @@
   padding: units(4) units(5);
   .header-title {
     @include body-copy-text;
-    font-weight: $font-weight-semibold;
+    font-weight: font-weight("semibold");
     color: color($cards-heading-color);
     margin:units(0);
 

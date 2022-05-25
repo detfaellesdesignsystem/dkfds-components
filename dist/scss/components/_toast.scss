@@ -64,6 +64,7 @@ $toast-icon-backgrounds: (
     .toast-message{
         padding: units(4);
         position: relative;
+        width: 100%;
         .toast-close{
             @include button-unstyled;
             position: absolute;

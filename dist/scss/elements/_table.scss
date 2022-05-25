@@ -21,7 +21,7 @@
       content: attr(data-title);
       text-align: left;
       display: block;
-      font-weight: $table-head-font-weight;
+      font-weight: font-weight($table-head-font-weight);
     }
   }
 
@@ -39,11 +39,11 @@
 }
 .table {
     margin: 0;
-    line-height: $table-text-line-height;
+    line-height: units($table-text-line-height, 'rem');
     border: border($table-border);
     width: calc(100% - 2px);
     color: color($table-text-color);
-    font-size: $table-font-size;
+    font-size: font-size($table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
@@ -96,7 +96,7 @@
     thead {
         background-color: color($table-head-background-color);
         th{
-            font-weight: $table-head-font-weight;
+            font-weight: font-weight($table-head-font-weight);
             text-align: left;
             border-bottom: border($table-row-border);
             &.table-header-no-wrap{
@@ -109,7 +109,7 @@
     }
     tbody{
       th{
-          font-weight: $table-head-font-weight;
+          font-weight: font-weight($table-head-font-weight);
       }
       tr {
         background-color: transparent;

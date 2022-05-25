@@ -46,7 +46,7 @@
 
         a, a:hover, a:visited, a:active, a:focus {
           padding-left: 0;
-          font-weight: $font-weight-semibold;
+          font-weight: font-weight("semibold");
           color: color($language-switcher-active-text-color);
           text-decoration: none;
           border-left: 0;
