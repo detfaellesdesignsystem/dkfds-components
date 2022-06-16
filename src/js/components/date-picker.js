@@ -1051,7 +1051,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_PREVIOUS_MONTH_CLASS}"
-            aria-label="Navigér en måned tilbage"
+            aria-label="Navigér én måned tilbage"
             ${prevButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1077,7 +1077,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_NEXT_YEAR_CLASS}"
-            aria-label="NNavigér ét år frem"
+            aria-label="Navigér ét år frem"
             ${nextButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
