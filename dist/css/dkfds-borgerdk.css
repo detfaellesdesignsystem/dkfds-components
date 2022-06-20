@@ -12121,18 +12121,16 @@ a.skipnav{
   max-width:none;
   outline-offset:0;
 }
-@media (min-width: 576px){
-  a.skipnav:focus{
-    outline:4px solid #747474;
-    background-color:white;
-    left:0;
-    position:absolute;
-    top:0;
-    transition:all 0.2s ease-in-out;
-    padding:1rem 8px;
-    margin-top:calc(16px - 1px);
-    margin-left:8px;
-  }
+a.skipnav:focus{
+  outline:4px solid #747474;
+  background-color:white;
+  left:0;
+  position:absolute;
+  top:0;
+  transition:all 0.2s ease-in-out;
+  padding:1rem 8px;
+  margin-top:calc(16px - 1px);
+  margin-left:8px;
 }
 
 #main-content:focus{
