@@ -7625,12 +7625,12 @@ figure{
   background-image:url("../img/svg-icons/account-circle.svg");
 }
 
-.icon-add:not(a){
-  background-image:url("../img/svg-icons/add.svg");
-}
-
 .icon-add-a-photo:not(a){
   background-image:url("../img/svg-icons/add-a-photo.svg");
+}
+
+.icon-add:not(a){
+  background-image:url("../img/svg-icons/add.svg");
 }
 
 .icon-agriculture:not(a){
@@ -7639,14 +7639,6 @@ figure{
 
 .icon-apps:not(a){
   background-image:url("../img/svg-icons/apps.svg");
-}
-
-.icon-arrow-left:not(a){
-  background-image:url("../img/svg-icons/arrow-left.svg");
-}
-
-.icon-arrow-right:not(a){
-  background-image:url("../img/svg-icons/arrow-right.svg");
 }
 
 .icon-arrow-back:not(a){
@@ -7669,6 +7661,10 @@ figure{
   background-image:url("../img/svg-icons/arrow-forward.svg");
 }
 
+.icon-arrow-left:not(a){
+  background-image:url("../img/svg-icons/arrow-left.svg");
+}
+
 .icon-arrow-right:not(a){
   background-image:url("../img/svg-icons/arrow-right.svg");
 }
@@ -7689,12 +7685,12 @@ figure{
   background-image:url("../img/svg-icons/attach-file.svg");
 }
 
-.icon-bookmarks:not(a){
-  background-image:url("../img/svg-icons/bookmarks.svg");
-}
-
 .icon-bookmark-border:not(a){
   background-image:url("../img/svg-icons/bookmark-border.svg");
+}
+
+.icon-bookmarks:not(a){
+  background-image:url("../img/svg-icons/bookmarks.svg");
 }
 
 .icon-cached:not(a){
@@ -7717,16 +7713,20 @@ figure{
   background-image:url("../img/svg-icons/chat.svg");
 }
 
+.icon-check-circle-white:not(a){
+  background-image:url("../img/svg-icons/check-circle-white.svg");
+}
+
 .icon-check-circle:not(a){
   background-image:url("../img/svg-icons/check-circle.svg");
 }
 
-.icon-chevron-left:not(a){
-  background-image:url("../img/svg-icons/chevron-left.svg");
+.icon-chevron-double-left:not(a){
+  background-image:url("../img/svg-icons/chevron-double-left.svg");
 }
 
-.icon-chevron-right:not(a){
-  background-image:url("../img/svg-icons/chevron-right.svg");
+.icon-chevron-double-right:not(a){
+  background-image:url("../img/svg-icons/chevron-double-right.svg");
 }
 
 .icon-chevron-left:not(a){
@@ -7805,12 +7805,12 @@ figure{
   background-image:url("../img/svg-icons/expand-less.svg");
 }
 
-.icon-expand-more:not(a){
-  background-image:url("../img/svg-icons/expand-more.svg");
-}
-
 .icon-expand-more-white:not(a){
   background-image:url("../img/svg-icons/expand-more-white.svg");
+}
+
+.icon-expand-more:not(a){
+  background-image:url("../img/svg-icons/expand-more.svg");
 }
 
 .icon-face:not(a){
@@ -7819,6 +7819,10 @@ figure{
 
 .icon-feedback:not(a){
   background-image:url("../img/svg-icons/feedback.svg");
+}
+
+.icon-file-download:not(a){
+  background-image:url("../img/svg-icons/file-download.svg");
 }
 
 .icon-file-excel:not(a){
@@ -7833,16 +7837,12 @@ figure{
   background-image:url("../img/svg-icons/file-pdf.svg");
 }
 
-.icon-file-word:not(a){
-  background-image:url("../img/svg-icons/file-word.svg");
-}
-
-.icon-file-download:not(a){
-  background-image:url("../img/svg-icons/file-download.svg");
-}
-
 .icon-file-upload:not(a){
   background-image:url("../img/svg-icons/file-upload.svg");
+}
+
+.icon-file-word:not(a){
+  background-image:url("../img/svg-icons/file-word.svg");
 }
 
 .icon-first-page:not(a){
@@ -7853,16 +7853,12 @@ figure{
   background-image:url("../img/svg-icons/flag.svg");
 }
 
-.icon-folder:not(a){
-  background-image:url("../img/svg-icons/folder.svg");
-}
-
 .icon-folder-open:not(a){
   background-image:url("../img/svg-icons/folder-open.svg");
 }
 
-.icon-format-list-checks:not(a){
-  background-image:url("../img/svg-icons/format-list-checks.svg");
+.icon-folder:not(a){
+  background-image:url("../img/svg-icons/folder.svg");
 }
 
 .icon-format-align-center:not(a){
@@ -7913,6 +7909,10 @@ figure{
   background-image:url("../img/svg-icons/format-list-bulleted.svg");
 }
 
+.icon-format-list-checks:not(a){
+  background-image:url("../img/svg-icons/format-list-checks.svg");
+}
+
 .icon-format-list-numbered:not(a){
   background-image:url("../img/svg-icons/format-list-numbered.svg");
 }
@@ -7933,12 +7933,12 @@ figure{
   background-image:url("../img/svg-icons/forward.svg");
 }
 
-.icon-fullscreen:not(a){
-  background-image:url("../img/svg-icons/fullscreen.svg");
-}
-
 .icon-fullscreen-exit:not(a){
   background-image:url("../img/svg-icons/fullscreen-exit.svg");
+}
+
+.icon-fullscreen:not(a){
+  background-image:url("../img/svg-icons/fullscreen.svg");
 }
 
 .icon-grade-outline:not(a){
@@ -7959,6 +7959,10 @@ figure{
 
 .icon-help:not(a){
   background-image:url("../img/svg-icons/help.svg");
+}
+
+.icon-highlight-off-white:not(a){
+  background-image:url("../img/svg-icons/highlight-off-white.svg");
 }
 
 .icon-highlight-off:not(a){
@@ -8021,12 +8025,12 @@ figure{
   background-image:url("../img/svg-icons/location-on.svg");
 }
 
-.icon-lock:not(a){
-  background-image:url("../img/svg-icons/lock.svg");
-}
-
 .icon-lock-open:not(a){
   background-image:url("../img/svg-icons/lock-open.svg");
+}
+
+.icon-lock:not(a){
+  background-image:url("../img/svg-icons/lock.svg");
 }
 
 .icon-map:not(a){
@@ -8065,10 +8069,6 @@ figure{
   background-image:url("../img/svg-icons/open-in-new.svg");
 }
 
-.icon-open-in-new:not(a){
-  background-image:url("../img/svg-icons/open-in-new.svg");
-}
-
 .icon-open-with:not(a){
   background-image:url("../img/svg-icons/open-with.svg");
 }
@@ -8089,16 +8089,16 @@ figure{
   background-image:url("../img/svg-icons/people-alt.svg");
 }
 
-.icon-person:not(a){
-  background-image:url("../img/svg-icons/person.svg");
-}
-
 .icon-person-add-alt-1:not(a){
   background-image:url("../img/svg-icons/person-add-alt-1.svg");
 }
 
 .icon-person-remove:not(a){
   background-image:url("../img/svg-icons/person-remove.svg");
+}
+
+.icon-person:not(a){
+  background-image:url("../img/svg-icons/person.svg");
 }
 
 .icon-phone-iphone:not(a){
@@ -8109,12 +8109,12 @@ figure{
   background-image:url("../img/svg-icons/photo-camera.svg");
 }
 
-.icon-playlist-add:not(a){
-  background-image:url("../img/svg-icons/playlist-add.svg");
-}
-
 .icon-playlist-add-check:not(a){
   background-image:url("../img/svg-icons/playlist-add-check.svg");
+}
+
+.icon-playlist-add:not(a){
+  background-image:url("../img/svg-icons/playlist-add.svg");
 }
 
 .icon-print:not(a){
@@ -8173,6 +8173,22 @@ figure{
   background-image:url("../img/svg-icons/shopping-cart.svg");
 }
 
+.icon-sort-ascending:not(a){
+  background-image:url("../img/svg-icons/sort-ascending.svg");
+}
+
+.icon-sort-by-alpha:not(a){
+  background-image:url("../img/svg-icons/sort-by-alpha.svg");
+}
+
+.icon-sort-default:not(a){
+  background-image:url("../img/svg-icons/sort-default.svg");
+}
+
+.icon-sort-descending:not(a){
+  background-image:url("../img/svg-icons/sort-descending.svg");
+}
+
 .icon-sort-table-ascending:not(a){
   background-image:url("../img/svg-icons/sort-table-ascending.svg");
 }
@@ -8181,20 +8197,12 @@ figure{
   background-image:url("../img/svg-icons/sort-table-descending.svg");
 }
 
-.icon-sort-ascending:not(a){
-  background-image:url("../img/svg-icons/sort-ascending.svg");
-}
-
-.icon-sort-descending:not(a){
-  background-image:url("../img/svg-icons/sort-descending.svg");
+.icon-sort-table-none:not(a){
+  background-image:url("../img/svg-icons/sort-table-none.svg");
 }
 
 .icon-sort:not(a){
   background-image:url("../img/svg-icons/sort.svg");
-}
-
-.icon-sort-by-alpha:not(a){
-  background-image:url("../img/svg-icons/sort-by-alpha.svg");
 }
 
 .icon-subdirectory-arrow-left:not(a){
@@ -8209,12 +8217,12 @@ figure{
   background-image:url("../img/svg-icons/support-agent.svg");
 }
 
-.icon-trash-can:not(a){
-  background-image:url("../img/svg-icons/trash-can.svg");
-}
-
 .icon-text-format:not(a){
   background-image:url("../img/svg-icons/text-format.svg");
+}
+
+.icon-trash-can:not(a){
+  background-image:url("../img/svg-icons/trash-can.svg");
 }
 
 .icon-tune:not(a){
@@ -8233,12 +8241,12 @@ figure{
   background-image:url("../img/svg-icons/view-headline.svg");
 }
 
-.icon-visibility:not(a){
-  background-image:url("../img/svg-icons/visibility.svg");
-}
-
 .icon-visibility-off:not(a){
   background-image:url("../img/svg-icons/visibility-off.svg");
+}
+
+.icon-visibility:not(a){
+  background-image:url("../img/svg-icons/visibility.svg");
 }
 
 .icon-zoom-in:not(a){
