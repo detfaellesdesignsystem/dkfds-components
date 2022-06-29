@@ -11,6 +11,6 @@
   }) | indent(2) | trim }}
      {% if params.helptext %}<span class="form-hint" id="input-hint-message-{{params.id}}">{{params.helptext}}</span>{% endif %}
      {% if params.errorMessage %}<span class="form-error-message" id="form-error-message-{{params.id}}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
-     <textarea class="form-input {{params.classes}}"{% if params.rows %} rows="{{ params.rows }}"{% endif %}{% if params.placeholder %} placeholder="{{params.placeholder}}"{% endif %}{% if params.required %} required{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.readonly %} readonly{% endif %} id="{{params.id}}" name="{{params.name}}" {% if params.errorMessage or params.helptext %}aria-describedby="{% if params.errorMessage %}form-error-message-{{params.id}}{% endif %} {% if params.helptext %}input-hint-message-{{params.id}}"{% endif %}{% endif %}>{{params.value}}</textarea>
+     <textarea class="form-input {{params.classes}}" {% if params.rows %} rows="{{ params.rows }}"{% endif %} {% if params.placeholder %} placeholder="{{params.placeholder}}"{% endif %} {% if params.required %} required{% endif %} {% if params.disabled %} disabled{% endif %} {% if params.readonly %} readonly{% endif %} id="{{params.id}}" name="{{params.name}}" {% if params.errorMessage or params.helptext %}aria-describedby="{% if params.errorMessage %}form-error-message-{{params.id}}{% endif %} {% if params.helptext %}input-hint-message-{{params.id}}{% endif %}" {% endif %}>{{params.value}}</textarea>
   </div>
 {% endmacro %}
