@@ -1289,7 +1289,7 @@ a:disabled:focus, a.disabled:focus{
 h1, .h1{
   font-size:2.5rem;
   line-height:3.2rem;
-  letter-spacing:-0.3px;
+  letter-spacing:normal;
   font-weight:700;
   color:#1a1a1a;
   text-transform:none;
@@ -1317,19 +1317,19 @@ h1, .h1{
 }
 @media (min-width: 768px){
   h1, .h1{
-    letter-spacing:-0.4px;
+    letter-spacing:normal;
   }
 }
 @media (min-width: 992px){
   h1, .h1{
-    letter-spacing:-0.5px;
+    letter-spacing:normal;
   }
 }
 
 h2, .h2{
   font-size:2.2rem;
   line-height:2.8rem;
-  letter-spacing:-0.2px;
+  letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   text-transform:none;
@@ -1356,19 +1356,19 @@ h2, .h2{
 }
 @media (min-width: 768px){
   h2, .h2{
-    letter-spacing:-0.3px;
+    letter-spacing:normal;
   }
 }
 @media (min-width: 992px){
   h2, .h2{
-    letter-spacing:-0.4px;
+    letter-spacing:normal;
   }
 }
 
 h3, .h3{
   font-size:1.8rem;
   line-height:2.4rem;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   text-transform:none;
@@ -1395,12 +1395,12 @@ h3, .h3{
 }
 @media (min-width: 768px){
   h3, .h3{
-    letter-spacing:-0.2px;
+    letter-spacing:normal;
   }
 }
 @media (min-width: 992px){
   h3, .h3{
-    letter-spacing:-0.3px;
+    letter-spacing:normal;
   }
 }
 
@@ -1424,19 +1424,19 @@ h4, .h4{
 }
 @media (min-width: 768px){
   h4, .h4{
-    letter-spacing:-0.15px;
+    letter-spacing:normal;
   }
 }
 @media (min-width: 992px){
   h4, .h4{
-    letter-spacing:-0.2px;
+    letter-spacing:normal;
   }
 }
 
 h5, .h5{
   font-size:1.4rem;
   line-height:2rem;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   text-transform:none;
@@ -1460,7 +1460,7 @@ h5, .h5{
 h6, .h6{
   font-size:1.3rem;
   line-height:2rem;
-  letter-spacing:-0.25px;
+  letter-spacing:normal;
   font-weight:500;
   color:#1a1a1a;
 }
@@ -1471,7 +1471,7 @@ p, .body-text, .body-copy-text{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
 }
 
 figcaption, .figcaption{
@@ -1503,7 +1503,7 @@ figcaption p, .figcaption p{
   line-height:3.2rem;
   max-width:66ch;
   color:#1a1a1a;
-  letter-spacing:-0.15px;
+  letter-spacing:normal;
 }
 
 .article{
@@ -1512,7 +1512,7 @@ figcaption p, .figcaption p{
   line-height:2.8rem;
   max-width:66ch;
   color:#1a1a1a;
-  letter-spacing:-0.15px;
+  letter-spacing:normal;
 }
 
 small, .small-text{
@@ -1628,7 +1628,7 @@ button.function-link, button.accordion-bulk-button{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   cursor:pointer;
   display:inline-block;
 }
@@ -1793,7 +1793,7 @@ a:not(.button){
   line-height:3.6rem;
   margin-bottom:0;
   color:#1a1a1a;
-  letter-spacing:-0.2px;
+  letter-spacing:normal;
 }
 .displayheading-2{
   font-weight:500;
@@ -1801,7 +1801,7 @@ a:not(.button){
   line-height:3.2rem;
   margin-bottom:0;
   color:#1a1a1a;
-  letter-spacing:-0.2px;
+  letter-spacing:normal;
 }
 
 .text-positive{
@@ -8278,7 +8278,7 @@ figure{
   color:#747474;
   font-size:1.6rem;
   line-height:2.4rem;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   font-weight:400;
 }
 
@@ -8841,7 +8841,7 @@ ol li{
 .article ul > li, .article ol > li{
   font-size:1.8rem;
   line-height:2.8rem;
-  letter-spacing:-0.15px;
+  letter-spacing:normal;
 }
 
 .unstyled-list{
@@ -11398,7 +11398,7 @@ body.modal-open{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   display:block;
   text-decoration:none;
 }
@@ -12193,7 +12193,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   margin:0;
@@ -12201,7 +12201,7 @@ a.skipnav:focus{
 .card-header .header-title.large-text{
   font-size:2.5rem;
   line-height:3.2rem;
-  letter-spacing:-0.3px;
+  letter-spacing:normal;
   font-weight:700;
   color:#1a1a1a;
   text-transform:none;
@@ -12230,12 +12230,12 @@ a.skipnav:focus{
 }
 @media (min-width: 768px){
   .card-header .header-title.large-text{
-    letter-spacing:-0.4px;
+    letter-spacing:normal;
   }
 }
 @media (min-width: 992px){
   .card-header .header-title.large-text{
-    letter-spacing:-0.5px;
+    letter-spacing:normal;
   }
 }
 .card-header .sub-header{
@@ -12244,7 +12244,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   margin-top:0;
   margin-bottom:0;
   color:#747474;
@@ -12260,7 +12260,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   margin-top:16px;
   color:#454545;
   margin-bottom:0;
@@ -12272,7 +12272,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   padding:0;
   color:#454545;
   background-color:white;
@@ -12296,7 +12296,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   padding:16px 24px;
   color:#454545;
   margin-bottom:0;
@@ -12549,7 +12549,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   display:block;
   text-decoration:none;
   line-height:2.4rem;
@@ -12826,7 +12826,7 @@ a.skipnav:focus{
   font-weight:400;
   color:#1a1a1a;
   text-transform:none;
-  letter-spacing:-0.1px;
+  letter-spacing:normal;
   font-size:1.6rem;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background-color:white;
