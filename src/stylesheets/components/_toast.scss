@@ -18,6 +18,7 @@ $toast-icon-backgrounds: (
     error: $toast-error-color,
     info: $toast-info-color
 );
+
 .toast-container{
     position: fixed;
     right: 0px;
@@ -32,6 +33,7 @@ $toast-icon-backgrounds: (
         bottom: auto;
     }
 }
+
 .toast{
     width: 100%;
     max-width: 100%;
@@ -86,6 +88,7 @@ $toast-icon-backgrounds: (
         }
     }
 }
+
 @each $name, $bgcolor in $toast-backgrounds {
     .toast-#{$name} {
         background-color: color($bgcolor);
