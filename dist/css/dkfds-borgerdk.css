@@ -9788,6 +9788,26 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin-top:16px;
 }
 
+.button.back-to-top-button{
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  width:auto;
+  background-color:white;
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  left:auto;
+  top:auto;
+  z-index:6000;
+}
+.button.back-to-top-button.button-tertiary{
+  background-color:white;
+}
+@media (max-width: 991px){
+  .button.back-to-top-button .icon-svg{
+    margin-right:0;
+  }
+}
+
 .breadcrumbs{
   color:#1a1a1a;
   font-size:1.4rem;
