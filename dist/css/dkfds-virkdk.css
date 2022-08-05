@@ -8471,6 +8471,17 @@ input[readonly][type=text], textarea[readonly]{
   padding:0;
 }
 
+.form-limit .form-limit-error{
+  border:2px solid #CC0000;
+  padding:calc(8px - 2px) calc(16px - 2px);
+}
+.form-limit .character-limit{
+  margin-top:4px;
+}
+.form-limit .character-limit.limit-exceeded{
+  color:#CC0000;
+}
+
 .form-checkbox{
   position:absolute;
   width:1px;

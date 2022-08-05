@@ -2,6 +2,7 @@
 import Accordion from './components/accordion';
 import Alert from './components/alert';
 import BackToTop from './components/back-to-top';
+import CharacterLimit from './components/character-limit';
 import CheckboxToggleContent from './components/checkbox-toggle-content';
 import Dropdown from './components/dropdown';
 import DropdownSort from './components/dropdown-sort';
@@ -68,6 +69,17 @@ var init = function (options) {
   const backToTopButtons = scope.getElementsByClassName('back-to-top-button');
   for(let c = 0; c < backToTopButtons.length; c++){
     new BackToTop(backToTopButtons[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Character limit
+  ---------------------
+  */
+  const jsCharacterLimit = scope.getElementsByClassName('form-limit');
+  for(let c = 0; c < jsCharacterLimit.length; c++){
+
+    new CharacterLimit(jsCharacterLimit[ c ]).init();
   }
   
   /*
@@ -195,4 +207,4 @@ var init = function (options) {
   
 };
 
-module.exports = { init, Accordion, Alert, BackToTop, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
+module.exports = { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
