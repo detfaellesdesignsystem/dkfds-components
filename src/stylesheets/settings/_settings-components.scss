@@ -221,6 +221,7 @@ $form-hint-letter-spacing: $typography-body-text-letter-spacing !default;
 $form-hint-font-weight: $typography-body-text-font-weight !default;
 $form-group-error-border-width: 4px !default;
 $form-group-error-border-color: 'error' !default;
+$input-text-character-limit-exceeded-color: 'red-700' !default;
 
 // Input: Range
 $input-range-track-default-background-color: 'gray-300' !default;
