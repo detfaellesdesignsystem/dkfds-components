@@ -90,6 +90,13 @@ CharacterLimit.prototype.updateScreenReaderMessage = function () {
     character_label.innerHTML = count_message;
 }
 
+CharacterLimit.prototype.resetScreenReaderMessage = function () {
+    if (this.input.value !== "") {
+        let sr_message = this.container.getElementsByClassName('character-limit-sr-only')[0];
+        sr_message.innerHTML = '';
+    }
+}
+
 CharacterLimit.prototype.updateMessages = function (e) {
     this.updateVisibleMessage();
     this.updateScreenReaderMessage();
@@ -100,14 +107,23 @@ CharacterLimit.prototype.handleKeyUp = function (e) {
     this.lastKeyUpTimestamp = Date.now();
 }
 
-CharacterLimit.prototype.handleFocus = function (e) {
+CharacterLimit.prototype.handleFocus = function (e) {    
+    // Reset the screen reader message on focus to force an update of the message.
+    // This ensures that a screen reader informs the user of how many characters there is left
+    // on focus and not just what the character limit is.
+    this.resetScreenReaderMessage();
+
     this.intervalID = setInterval(function () {
         // Don't update the Screen Reader message unless it's been awhile
         // since the last key up event. Otherwise, the user will be spammed
         // with audio notifications while typing.
         if (!this.lastKeyUpTimestamp || (Date.now() - 500) >= this.lastKeyUpTimestamp) {
-            // Don't update the messages unless the value of the textarea/text input has changed
-            if (this.oldValue !== this.input.value) {
+            let sr_message = this.container.getElementsByClassName('character-limit-sr-only')[0].innerHTML;
+            let visible_message = this.container.getElementsByClassName('character-limit')[0].innerHTML;     
+
+            // Don't update the messages unless the value of the textarea/text input has changed or if there
+            // is a mismatch between the visible message and the screen reader message.
+            if (this.oldValue !== this.input.value || sr_message !== visible_message) {
                 this.oldValue = this.input.value;
                 this.updateMessages();
             }

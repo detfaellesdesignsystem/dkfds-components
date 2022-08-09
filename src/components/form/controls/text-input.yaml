@@ -94,7 +94,7 @@ params:
   - name: id
     type: string
     required: true
-    description: The ID of the character limit message.
+    description: The ID of the character limit form group.
   - name: limit
     type: int
     required: true
