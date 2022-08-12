@@ -15,7 +15,7 @@
           <p class="user"><span class="username{% if params.compact == null or params.compact == false %} weight-semibold{% endif %}">{{ params.user.name | safe }}</span> {% if params.user.work %}<br />{{ params.user.work}}  {% endif %}</p>
         {% endif %}
          <button class="button {{ params.link.classes | default('button-secondary') }} d-print-none">
-          {{ params.link.text }}
+          {{ params.link.text | default('Log af') }}
         </button>
       </div>
     </div>
@@ -24,7 +24,7 @@
 
 {% macro solution_header(params) %}
   <!--2A: Solution header -->
-  <div class="solution-header {{ params.classes }}">
+  <div class="solution-header {{ params.classes | default('header-end') }}">
     <div class="container solution-header-inner">
       <div class="solution-heading">
         <a href="{{ params.title.href | default('/') }}"  {% if params.title.ariaLabel %}aria-label="{{ params.title.ariaLabel }}"{% endif %} class="{{params.title.classes}}">
