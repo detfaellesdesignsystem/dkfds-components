@@ -7,7 +7,7 @@
       {% set disabled = trin.disabled | default(false) %}
       <li{% if disabled or trin.active %} class="{% if disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
         <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem" {% if trin.active %}aria-current="page"{% endif %}{% if trin.active %} aria-current="page"{% endif %}>
-            <span class="sidenav-number">{{loop.index}}.</span> <span class="sidenav-title">{{trin.text}}</span>
+            <span class="sidenav-number">{{loop.index}}.</span> <span class="sidenav-title">{% if trin.text %}{{trin.text}}{% else %}{{trin.safetext | safe}}{% endif %}</span>
             {% if trin.icon %}
             <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
                 {{ icon_svg(trin.icon) }}

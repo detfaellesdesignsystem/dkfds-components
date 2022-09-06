@@ -1,6 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% from "components/form/controls/label.njk" import label as label %}
-{% macro textinput(params) %}<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}" {% if params.characterLimit %}data-maxlength="{{params.characterLimit.limit}}" id="{{params.characterLimit.id}}"{% endif %}>
+{% macro textinput(params) %}<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}{% if params.formgroup.classes %} {{params.formgroup.classes}}{% endif %}" {% if params.characterLimit %}data-maxlength="{{params.characterLimit.limit}}" id="{{params.characterLimit.id}}"{% endif %}>
 {% set isRequired = params.required | default(true) %}
 {% set hintId = params.id + '-hint' %}
 {% set errorId = params.id + '-error' %}
@@ -8,6 +8,7 @@
     text: params.label.text,
     classes: params.label.classes,
     tooltip: params.label.tooltip,
+    tooltipattr: params.label.tooltipattr,
     for: params.id,
     optionalLabel: params.label.optionalLabel,
     requiredLabel: params.label.requiredLabel

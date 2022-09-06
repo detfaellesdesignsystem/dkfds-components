@@ -3,6 +3,14 @@ params:
   type: string
   required: true
   description: The ID of the input.
+- name: formgroup
+  type: object
+  required: false
+  description: The form group containing the label and the input field.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the form group.
 - name: label
   type: object
   required: true
@@ -13,7 +21,7 @@ params:
     description: Text for the label.
   - name: for
     type: string
-    required: true
+    required: false
     description: Id of the input.
   - name: classes
     type: string
@@ -31,6 +39,10 @@ params:
     type: string
     required: false
     description: Additional text to show in a tooltip next to the label
+  - name: tooltipattr
+    type: string
+    required: false
+    description: Attributes for the tooltip button
 - name: name
   type: string
   required: true

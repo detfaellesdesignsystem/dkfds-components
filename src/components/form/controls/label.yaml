@@ -23,6 +23,10 @@ params:
   type: string
   required: false
   description: Tooltip text.
+- name: tooltipattr
+  type: string
+  required: false
+  description: Attributes for the tooltip button
   
 
 
