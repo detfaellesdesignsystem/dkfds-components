@@ -2,7 +2,7 @@ params:
 - name: topLink
   type: string
   required: true
-  description: The link to activate when the button is pressed.
+  description: The anchor link activated when the button is pressed, for example '#top'.
 - name: buttonText
   type: string
   required: false
