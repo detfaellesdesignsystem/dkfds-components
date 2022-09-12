@@ -34,7 +34,8 @@ function updateBackToTopButton(button) {
         }
     }
     else {
-        let limit = lastKnownWindowHeight*4;
+        let limit = lastKnownWindowHeight * 2; // Defines how far the user must scroll before the button becomes visible
+        
         if (lastKnownScrollPosition >= limit && button.classList.contains('d-none')) {
             button.classList.remove('d-none');
             let eventShow = new Event('fds.backtotop.displayed');
