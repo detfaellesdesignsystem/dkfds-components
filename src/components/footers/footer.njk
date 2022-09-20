@@ -1,7 +1,11 @@
 {% from "components/language-switcher/language-switcher.njk" import languageSwitcher as languageSwitcher %}
+{% from "components/back-to-top/back-to-top.njk" import back_to_top as back_to_top %}
 
 {% macro footer(params) %}
   <footer>
+    {% if params.topButton %}
+      {{ back_to_top(params.topButton) }}
+    {% endif %}
     <div class="footer">
       <div class="container">
           {%- if params.columns -%}

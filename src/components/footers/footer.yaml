@@ -63,4 +63,8 @@ params:
   type: object
   required: false
   description: Language switcher object.
+- name: topButton
+  type: object
+  required: false
+  description: Add a back to top button.
   
