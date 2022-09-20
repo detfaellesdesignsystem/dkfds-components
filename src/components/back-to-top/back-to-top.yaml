@@ -6,4 +6,4 @@ params:
 - name: buttonText
   type: string
   required: false
-  description: The text written on the back-to-top button. Defaults to 'Til toppen'.
+  description: The text written on the back to top button. Defaults to 'Til toppen'.

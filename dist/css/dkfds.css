@@ -9807,10 +9807,17 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   bottom:24px;
   left:auto;
   top:auto;
-  z-index:6000;
+  z-index:1;
 }
 .button.back-to-top-button.button-tertiary{
   background-color:white;
+}
+.button.back-to-top-button.footer-sticky{
+  position:absolute;
+  bottom:auto;
+  top:auto;
+  margin-top:16px;
+  z-index:auto;
 }
 @media (max-width: 991px){
   .button.back-to-top-button .icon-svg{
