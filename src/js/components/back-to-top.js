@@ -4,15 +4,38 @@ function BackToTop(backtotop){
     this.backtotop = backtotop;
 }
 
-BackToTop.prototype.init = function(){
+BackToTop.prototype.init = function() {
     let backtotopbutton = this.backtotop;
 
     updateBackToTopButton(backtotopbutton);
 
+    const observer = new MutationObserver( list => {
+        const evt = new CustomEvent('dom-changed', {detail: list});
+        document.body.dispatchEvent(evt)
+    });
+
+    // Which mutations to observe
+    let config = {
+        attributes            : true,
+        attributeOldValue     : false,
+        characterData         : true,
+        characterDataOldValue : false,
+        childList             : true,
+        subtree               : true
+    };
+
+    // DOM changes
+    observer.observe(document.body, config);
+    document.body.addEventListener('dom-changed', function(e) {
+        updateBackToTopButton(backtotopbutton);
+    });
+
+    // Scroll actions
     window.addEventListener('scroll', function(e) {
         updateBackToTopButton(backtotopbutton);
     });
 
+    // Window resizes
     window.addEventListener('resize', function(e) {
         updateBackToTopButton(backtotopbutton);
     });
@@ -26,8 +49,8 @@ function updateBackToTopButton(button) {
                                   docElem.scrollHeight, docElem.offsetHeight, docElem.getBoundingClientRect().height, docElem.clientHeight);
     
     let limit = heightOfViewport * 2; // The threshold selected to determine whether a back-to-top-button should be displayed
-
-    // If the page is too short, never show the button
+    
+    // Never show the button if the page is too short
     if (limit > heightOfPage) {
         if (!button.classList.contains('d-none')) {
             button.classList.add('d-none');
