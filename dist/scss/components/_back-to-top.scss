@@ -1,0 +1,30 @@
+.button.back-to-top-button {
+    box-shadow: shadow($back-to-top-button-shadow);
+    width: auto;
+    background-color: color($back-to-top-button-background);
+    position: fixed;
+    right: units(5);
+    bottom: units(5);
+    left: auto;
+    top: auto;
+    z-index: 1;
+
+    &.button-tertiary {
+        background-color: color($back-to-top-button-background);
+    }
+
+    &.footer-sticky {
+        position: absolute;
+        bottom: auto;
+        top: auto;
+        margin-top: units(4);
+        z-index: auto;
+    }
+
+    @include media-breakpoint-down(md) {
+        .icon-svg {
+            margin-right: units(0);
+        }
+    }
+}
+

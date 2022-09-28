@@ -1,0 +1,9 @@
+params:
+- name: topLink
+  type: string
+  required: true
+  description: The anchor link activated when the button is pressed, for example '#top'.
+- name: buttonText
+  type: string
+  required: false
+  description: The text written on the back to top button. Defaults to 'Til toppen'.

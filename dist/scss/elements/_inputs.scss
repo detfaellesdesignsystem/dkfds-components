@@ -118,6 +118,7 @@ textarea.no-resize{
   }
 }
 
+
 ////////////////
 //** Select **//
 ////////////////
@@ -227,6 +228,26 @@ input[readonly][type=text], textarea[readonly]{
   cursor: default;
   padding: 0;
 }
+
+/////////////////////////
+//** Character limit **//
+/////////////////////////
+
+.form-limit {
+  .form-limit-error {
+    border: $input-border-width-feedback solid color($input-border-color-feedback-error);
+    padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
+  }
+
+  .character-limit {
+    margin-top: units(2);
+  
+    &.limit-exceeded {
+      color: color($input-text-character-limit-exceeded-color);
+    }
+  }
+}
+
 
 /////////////////////////////////
 // Custom checkboxes & radios

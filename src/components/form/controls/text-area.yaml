@@ -72,3 +72,15 @@ params:
   type: string
   required: false
   description: Classes to add to the textarea.
+- name: characterLimit
+  type: object
+  required: false
+  description: Character limit object.
+  - name: id
+    type: string
+    required: true
+    description: The ID of the character limit form group.
+  - name: limit
+    type: int
+    required: true
+    description: Character limit for the input.

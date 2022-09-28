@@ -9,8 +9,8 @@
     optionalLabel: params.label.optionalLabel,
     requiredLabel: params.label.requiredLabel
   }) | indent(2) | trim }}
-    {% if params.errorMessage %}<span class="form-error-message"><span class="sr-only">Fejl:</span> {{ params.errorMessage }}</span> {% endif %}
-    <select class="{{params.classes}} form-select" name="{{params.name}}" id="{{params.id}}"  {% if params.disabled %}disabled="disabled"{% endif %}{% if params.multiple %} multiple{% endif %}>
+    {% if params.errorMessage %}<span class="form-error-message" id="{{params.id}}-error"><span class="sr-only">Fejl:</span> {{ params.errorMessage }}</span> {% endif %}
+    <select class="{{params.classes}} form-select" name="{{params.name}}" id="{{params.id}}"  {% if params.disabled %}disabled="disabled"{% endif %}{% if params.multiple %} multiple{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.hint or params.characterLimit %}aria-describedby="{% if params.errorMessage %} {{params.id}}-error{% endif %}"{% endif %}>
       {% for option in params.options %}
         <option value="{{option.value}}" {%if option.selected %}selected{% endif %}>{{option.text}}</option>
       {% endfor %}

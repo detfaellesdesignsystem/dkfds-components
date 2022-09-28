@@ -1,6 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% from "components/form/controls/label.njk" import label as label %}
-{% macro textinput(params) %}<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}">
+{% macro textinput(params) %}<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}{% if params.formgroup.classes %} {{params.formgroup.classes}}{% endif %}" {% if params.characterLimit %}data-maxlength="{{params.characterLimit.limit}}" id="{{params.characterLimit.id}}"{% endif %}>
 {% set isRequired = params.required | default(true) %}
 {% set hintId = params.id + '-hint' %}
 {% set errorId = params.id + '-error' %}
@@ -8,6 +8,7 @@
     text: params.label.text,
     classes: params.label.classes,
     tooltip: params.label.tooltip,
+    tooltipattr: params.label.tooltipattr,
     for: params.id,
     optionalLabel: params.label.optionalLabel,
     requiredLabel: params.label.requiredLabel
@@ -22,8 +23,13 @@
        {%- if params.prefix -%}
        <div class="form-input-prefix" aria-hidden="true">{{params.prefix}}</div>
        {%- endif -%}
-      <input class="form-input{% if params.classes %} {{params.classes}}{% endif %}" {% if params.placeholder %} placeholder="{{params.placeholder}}" {% endif %}id="{{params.id}}"{% if params.value %} value="{{params.value}}"{% endif %} name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.hint %}aria-describedby="{% if params.hint %}{{hintId}}{% endif %}{% if params.errorMessage %} {{errorId}}{% endif %}"{% endif %}{% if params.readonly %} readonly{% endif %}{% if isRequired %} required{% endif %}{% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %} />
+      <input class="form-input{% if params.classes %} {{params.classes}}{% endif %}" {% if params.placeholder %} placeholder="{{params.placeholder}}" {% endif %}id="{{params.id}}"{% if params.value %} value="{{params.value}}"{% endif %} name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.hint or params.characterLimit %}aria-describedby="{% if params.hint %}{{hintId}}{% endif %}{% if params.errorMessage %} {{errorId}}{% endif %} {% if params.characterLimit %}{{params.characterLimit.id}}-message{% endif %}"{% endif %}{% if params.readonly %} readonly{% endif %}{% if isRequired %} required{% endif %}{% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %} />
        {%- if params.suffix -%}
        <div class="form-input-suffix" aria-hidden="true">{{params.suffix}}</div>{%- endif -%}
       {% if params.suffix or params.prefix %}</div>{% endif %}
+      {% if params.characterLimit %}
+      <span id="{{params.characterLimit.id}}-message" class="sr-only">Du kan indtaste op til {{params.characterLimit.limit}} tegn</span>
+      <span class="form-hint character-limit" aria-hidden="true">Du har {{params.characterLimit.limit}} tegn tilbage</span>
+      <span class="character-limit-sr-only sr-only" aria-live="polite">Du har {{params.characterLimit.limit}} tegn tilbage</span>
+      {% endif %}
   </div>{% endmacro %}

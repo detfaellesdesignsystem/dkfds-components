@@ -10,19 +10,16 @@ a.skipnav {
   max-width: none;
   outline-offset: 0;
 
-  &:focus {
-    @include media-breakpoint-up(sm) {
-      
-      @include focus-outline();
-      background-color: color($skipnav-background-color);
-      left: 0;
-      position: absolute;
-      top: 0;
-      transition: all 0.2s ease-in-out;
-      padding: 1rem math.div(math.div($grid-gutter-width, 2), 2);
-      margin-top: calc(#{units(4)} - 1px);
-      margin-left: math.div(math.div($grid-gutter-width, 2), 2);
-    }
+  &:focus {      
+    @include focus-outline();
+    background-color: color($skipnav-background-color);
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    padding: 1rem math.div(math.div($grid-gutter-width, 2), 2);
+    margin-top: calc(#{units(4)} - 1px);
+    margin-left: math.div(math.div($grid-gutter-width, 2), 2);
   }
 }
 
