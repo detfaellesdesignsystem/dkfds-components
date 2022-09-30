@@ -10676,6 +10676,7 @@ body.modal-open{
   text-indent:-9999px;
   width:24px;
   height:24px;
+  cursor:pointer;
   background-image:url("../img/svg-icons/close.svg");
   background-repeat:no-repeat;
 }

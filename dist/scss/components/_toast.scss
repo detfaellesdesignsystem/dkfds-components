@@ -75,6 +75,7 @@ $toast-icon-backgrounds: (
             text-indent: -9999px;
             width: 24px;
             height: 24px;
+            cursor: pointer;
             
             background-image: url($icons-folder-path+'/'+'close.svg');
             background-repeat: no-repeat;
