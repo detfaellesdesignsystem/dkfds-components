@@ -11495,24 +11495,26 @@ a.skipnav:focus{
 .overflow-menu .overflow-list a:hover, .overflow-menu .overflow-list a:visited, .overflow-menu .overflow-list a:focus{
   color:#1a1a1a;
 }
-.overflow-menu .overflow-list button, .overflow-menu .overflow-list a{
+.overflow-menu .overflow-list button,
+.overflow-menu .overflow-list a{
   padding:8px 16px;
   width:100%;
 }
-.overflow-menu .overflow-list button:hover, .overflow-menu .overflow-list a:hover{
+.overflow-menu .overflow-list button:hover,
+.overflow-menu .overflow-list a:hover{
   background-color:#F5F5F5;
 }
 .overflow-menu:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list{
   border-top:0;
   border-bottom:0;
 }
-@media (max-width: 991px){
+@media (max-width: 767px){
   .overflow-menu.overflow-menu--md-no-responsive .sidenav-list{
     border-top:0;
     border-bottom:0;
   }
 }
-@media (max-width: 1199px){
+@media (max-width: 991px){
   .overflow-menu.overflow-menu--lg-no-responsive .sidenav-list{
     border-top:0;
     border-bottom:0;
@@ -11532,10 +11534,14 @@ a.skipnav:focus{
 .overflow-menu--open-left .overflow-menu-inner:after{
   right:13px;
 }
-.overflow-menu--open-left .overflow-menu-inner li, .overflow-menu--open-left .overflow-menu-inner a, .overflow-menu--open-left .overflow-menu-inner button{
+.overflow-menu--open-left .overflow-menu-inner li,
+.overflow-menu--open-left .overflow-menu-inner a,
+.overflow-menu--open-left .overflow-menu-inner button{
   text-align:right;
 }
-.overflow-menu--open-left .overflow-menu-inner li .icon-svg, .overflow-menu--open-left .overflow-menu-inner a .icon-svg, .overflow-menu--open-left .overflow-menu-inner button .icon-svg{
+.overflow-menu--open-left .overflow-menu-inner li .icon-svg,
+.overflow-menu--open-left .overflow-menu-inner a .icon-svg,
+.overflow-menu--open-left .overflow-menu-inner button .icon-svg{
   float:right;
   margin-right:4px;
 }
