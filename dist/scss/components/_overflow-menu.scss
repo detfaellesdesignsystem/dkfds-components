@@ -1,4 +1,4 @@
-.overflow-menu + h1{
+.overflow-menu + h1 {
     margin-top: 0;
 }
 
@@ -13,7 +13,7 @@
         display: inline-block;
     }
 
-    .button-overflow-menu{
+    .button-overflow-menu {
         @include button-unstyled;
         min-height: 40px;
         min-width: 40px;
@@ -124,19 +124,19 @@
         border-top: 0;
         border-bottom: 0;
     }
-  &.overflow-menu--md-no-responsive .sidenav-list{
+    &.overflow-menu--md-no-responsive .sidenav-list{
         @include media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
-  &.overflow-menu--lg-no-responsive .sidenav-list{
-    @include media-breakpoint-down(lg) {
-      border-top: 0;
-      border-bottom: 0;
+    &.overflow-menu--lg-no-responsive .sidenav-list{
+        @include media-breakpoint-down(lg) {
+        border-top: 0;
+        border-bottom: 0;
+        }
     }
-  }
 
 
     &--open-right {
@@ -187,48 +187,48 @@
             }
 		}
     }
-  &.overflow-menu--lg-no-responsive{
-    //overflow content always visible on large screens.
-    //does not look like a dropdown.
-    @include media-breakpoint-up(lg) {
-      display: block;
-      &:before, &:after{
-        display: none; //hide arrow
-      }
-      .button-overflow-menu{
-        display: none;
-      }
-      .overflow-menu-inner{
-        display: block !important;
-        width: 100%;
-        max-width: 100%;
-        position: static;
-        box-shadow: none;
-        border: none;
-        min-width: auto;
-      }
+    &.overflow-menu--lg-no-responsive{
+        //overflow content always visible on large screens.
+        //does not look like a dropdown.
+        @include media-breakpoint-up(lg) {
+        display: block;
+        &:before, &:after{
+            display: none; //hide arrow
+        }
+        .button-overflow-menu{
+            display: none;
+        }
+        .overflow-menu-inner{
+            display: block !important;
+            width: 100%;
+            max-width: 100%;
+            position: static;
+            box-shadow: none;
+            border: none;
+            min-width: auto;
+        }
+        }
     }
-  }
 
-  &--sort{
-    .button-overflow-menu{
-        text-decoration: underline;
-        line-height: units(5, 'rem');
-        .selected-value{
-            text-decoration: none;
-            display: inline-block;
-            margin-left: units(2);
+    &--sort{
+        .button-overflow-menu{
+            text-decoration: underline;
+            line-height: units(5, 'rem');
+            .selected-value{
+                text-decoration: none;
+                display: inline-block;
+                margin-left: units(2);
+                font-weight: font-weight("semibold");
+            }
+            svg {
+                margin-right: units(2);
+            }
+        }
+        .overflow-menu-inner .overflow-list li[aria-selected="true"] button{
             font-weight: font-weight("semibold");
-        }
-        svg {
-            margin-right: units(2);
+            @include add-background-svg('done');
+            background-repeat: no-repeat;
+            background-position: calc(100% - #{units(4)}) center;
         }
     }
-    .overflow-menu-inner .overflow-list li[aria-selected="true"] button{
-        font-weight: font-weight("semibold");
-        @include add-background-svg('done');
-        background-repeat: no-repeat;
-        background-position: calc(100% - #{units(4)}) center;
-    }
-  }
 }

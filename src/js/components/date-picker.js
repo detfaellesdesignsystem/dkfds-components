@@ -76,31 +76,67 @@ const CALENDAR_YEAR_PICKER = `.${CALENDAR_YEAR_PICKER_CLASS}`;
 const CALENDAR_MONTH_FOCUSED = `.${CALENDAR_MONTH_FOCUSED_CLASS}`;
 const CALENDAR_YEAR_FOCUSED = `.${CALENDAR_YEAR_FOCUSED_CLASS}`;
 
+let text = {
+  "open_calendar": "Åbn kalender",
+  "aria_label_date": "{dayStr} den {day}. {monthStr} {year}",
+  "previous_year": "Navigér ét år tilbage",
+  "previous_month": "Navigér én måned tilbage",
+  "next_month": "Navigér én måned frem",
+  "next_year": "Navigér ét år frem",
+  "select_month": "Vælg måned",
+  "select_year": "Vælg år",
+  "date_selected": "Dato valgt",
+  "previous_years": "Navigér {years} år tilbage",
+  "next_years": "Navigér {years} år frem",
+  "guide": "Du kan navigere mellem dage ved at bruge højre og venstre piletaster, uger ved at bruge op og ned piletaster, måneder ved at bruge page up og page down-tasterne og år ved at at taste shift og page up eller ned. Home og end-tasten navigerer til start eller slutning af en uge.",
+  "months_displayed": "Vælg en måned",
+  "years_displayed": "Viser år {start} til {end}. Vælg et år.",
+  "january": "januar",
+  "february": "februar",
+  "march": "marts",
+  "april": "april",
+  "may": "maj",
+  "june": "juni",
+  "july": "juli",
+  "august": "august",
+  "september": "september",
+  "october": "oktober",
+  "november": "november",
+  "december": "december",
+  "monday": "mandag",
+  "tuesday": "tirsdag",
+  "wednesday": "onsdag",
+  "thursday": "torsdag",
+  "friday": "fredag",
+  "saturday": "lørdag",
+  "sunday": "søndag"
+}
+
 const VALIDATION_MESSAGE = "Indtast venligst en gyldig dato";
 
-const MONTH_LABELS = [
-  "Januar",
-  "Februar",
-  "Marts",
-  "April",
-  "Maj",
-  "Juni",
-  "Juli",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "December",
+let MONTH_LABELS = [
+  text.january,
+  text.february,
+  text.march,
+  text.april,
+  text.may,
+  text.june,
+  text.july,
+  text.august,
+  text.september,
+  text.october,
+  text.november,
+  text.december
 ];
 
-const DAY_OF_WEEK_LABELS = [
-  "Mandag",
-  "Tirsdag",
-  "Onsdag",
-  "Torsdag",
-  "Fredag",
-  "Lørdag",
-  "Søndag",
+let DAY_OF_WEEK_LABELS = [
+  text.monday,
+  text.tuesday,
+  text.wednesday,
+  text.thursday,
+  text.friday,
+  text.saturday,
+  text.sunday
 ];
 
 const ENTER_KEYCODE = 13;
@@ -861,7 +897,7 @@ const enhanceDatePicker = (el) => {
   calendarWrapper.insertAdjacentHTML(
     "beforeend",
     [
-      `<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="Åbn kalender">&nbsp;</button>`,
+      `<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="${text.open_calendar}">&nbsp;</button>`,
       `<div class="${DATE_PICKER_CALENDAR_CLASS}" role="dialog" aria-modal="true" hidden></div>`,
       `<div class="sr-only ${DATE_PICKER_STATUS_CLASS}" role="status" aria-live="polite"></div>`,
     ].join("")
@@ -1004,6 +1040,7 @@ const renderCalendar = (el, _dateToDisplay) => {
 
     const monthStr = MONTH_LABELS[month];
     const dayStr = DAY_OF_WEEK_LABELS[dayOfWeek];
+    const ariaLabelDate = text.aria_label_date.replace(/{dayStr}/, dayStr).replace(/{day}/, day).replace(/{monthStr}/, monthStr).replace(/{year}/, year);
 
     return `<button
       type="button"
@@ -1013,7 +1050,7 @@ const renderCalendar = (el, _dateToDisplay) => {
       data-month="${month + 1}" 
       data-year="${year}" 
       data-value="${formattedDate}"
-      aria-label="${dayStr} den ${day} ${monthStr} ${year} "
+      aria-label="${ariaLabelDate}"
       aria-selected="${isSelected ? "true" : "false"}"
       ${isDisabled ? `disabled="disabled"` : ""}
     >${day}</button>`;
@@ -1043,7 +1080,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_PREVIOUS_YEAR_CLASS}"
-            aria-label="Navigér ét år tilbage"
+            aria-label="${text.previous_year}"
             ${prevButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1051,25 +1088,25 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_PREVIOUS_MONTH_CLASS}"
-            aria-label="Navigér én måned tilbage"
+            aria-label="${text.previous_month}"
             ${prevButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
         <div class="${CALENDAR_CELL_CLASS} ${CALENDAR_MONTH_LABEL_CLASS}">
           <button 
             type="button"
-            class="${CALENDAR_MONTH_SELECTION_CLASS}" aria-label="${monthLabel}. Vælg måned."
+            class="${CALENDAR_MONTH_SELECTION_CLASS}" aria-label="${monthLabel}. ${text.select_month}."
           >${monthLabel}</button>
           <button 
             type="button"
-            class="${CALENDAR_YEAR_SELECTION_CLASS}" aria-label="${focusedYear}. Vælg år."
+            class="${CALENDAR_YEAR_SELECTION_CLASS}" aria-label="${focusedYear}. ${text.select_year}."
           >${focusedYear}</button>
         </div>
         <div class="${CALENDAR_CELL_CLASS} ${CALENDAR_CELL_CENTER_ITEMS_CLASS}">
           <button 
             type="button"
             class="${CALENDAR_NEXT_MONTH_CLASS}"
-            aria-label="Navigér én måned frem"
+            aria-label="${text.next_month}"
             ${nextButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1077,7 +1114,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_NEXT_YEAR_CLASS}"
-            aria-label="Navigér ét år frem"
+            aria-label="${text.next_year}"
             ${nextButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1103,17 +1140,11 @@ const renderCalendar = (el, _dateToDisplay) => {
   const statuses = [];
 
   if (isSameDay(selectedDate, focusedDate)) {
-    statuses.push("Selected date");
+    statuses.push(text.date_selected);
   }
 
   if (calendarWasHidden) {
-    statuses.push(
-      "Du kan navigere mellem dage ved at bruge højre og venstre piltaster, ",
-      "uger ved at bruge op og ned piltaster, ",
-      "måneder ved ta bruge page up og page down tasterne ",
-      "og år ved at at taste shift og page up eller ned.",
-      "Home og end tasten navigerer til start eller slutning af en uge."
-    );
+    statuses.push(text.guide);
     statusEl.textContent = "";
   } else {
     statuses.push(`${monthLabel} ${focusedYear}`);
@@ -1347,7 +1378,7 @@ const displayMonthSelection = (el, monthToDisplay) => {
   newCalendar.innerHTML = monthsHtml;
   calendarEl.parentNode.replaceChild(newCalendar, calendarEl);
 
-  statusEl.textContent = "Select a month.";
+  statusEl.textContent = text.months_displayed;
 
   return newCalendar;
 };
@@ -1445,6 +1476,9 @@ const displayYearSelection = (el, yearToDisplay) => {
   }
 
   const yearsHtml = listToGridHtml(years, 3);
+  const ariaLabelPreviousYears = text.previous_years.replace(/{years}/, YEAR_CHUNK);
+  const ariaLabelNextYears = text.next_years.replace(/{years}/, YEAR_CHUNK);
+  const announceYears = text.years_displayed.replace(/{start}/, yearToChunk).replace(/{end}/, yearToChunk + YEAR_CHUNK - 1);
 
   const newCalendar = calendarEl.cloneNode();
   newCalendar.innerHTML = `<div tabindex="-1" class="${CALENDAR_YEAR_PICKER_CLASS}">
@@ -1455,7 +1489,7 @@ const displayYearSelection = (el, yearToDisplay) => {
               <button
                 type="button"
                 class="${CALENDAR_PREVIOUS_YEAR_CHUNK_CLASS}" 
-                aria-label="Navigér ${YEAR_CHUNK} år tilbage"
+                aria-label="${ariaLabelPreviousYears}"
                 ${prevYearChunkDisabled ? `disabled="disabled"` : ""}
               >&nbsp;</button>
             </td>
@@ -1470,7 +1504,7 @@ const displayYearSelection = (el, yearToDisplay) => {
               <button
                 type="button"
                 class="${CALENDAR_NEXT_YEAR_CHUNK_CLASS}" 
-                aria-label="Navigér ${YEAR_CHUNK} år frem"
+                aria-label="${ariaLabelNextYears}"
                 ${nextYearChunkDisabled ? `disabled="disabled"` : ""}
               >&nbsp;</button>
             </td>
@@ -1480,9 +1514,7 @@ const displayYearSelection = (el, yearToDisplay) => {
     </div>`;
   calendarEl.parentNode.replaceChild(newCalendar, calendarEl);
 
-  statusEl.textContent = `Showing years ${yearToChunk} to ${
-    yearToChunk + YEAR_CHUNK - 1
-  }. Select a year.`;
+  statusEl.textContent = announceYears;
 
   return newCalendar;
 };
@@ -2147,6 +2179,32 @@ const datePicker = behavior(datePickerEvents, {
         enhanceDatePicker(datePickerEl);
       }
     });
+  },
+  setLanguage(strings) {
+    text = strings;
+    MONTH_LABELS = [
+      text.january,
+      text.february,
+      text.march,
+      text.april,
+      text.may,
+      text.june,
+      text.july,
+      text.august,
+      text.september,
+      text.october,
+      text.november,
+      text.december
+    ];
+    DAY_OF_WEEK_LABELS = [
+      text.monday,
+      text.tuesday,
+      text.wednesday,
+      text.thursday,
+      text.friday,
+      text.saturday,
+      text.sunday
+    ];
   },
   getDatePickerContext,
   disable,
