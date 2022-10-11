@@ -19,22 +19,23 @@ $toast-icon-backgrounds: (
     info: $toast-info-color
 );
 
-.toast-container{
+.toast-container {
     position: fixed;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
+    right: units(4);
+    left: units(4);
+    top: units(4);
+    bottom: auto;
     z-index: 7000;
-    
-    @include media-breakpoint-up(md) {   
+
+    @include media-breakpoint-up(md) {
         right: units(4);
-        top: units(8);
         left: auto;
+        top: units(8);
         bottom: auto;
     }
 }
 
-.toast{
+.toast {
     width: 100%;
     max-width: 100%;
     background-color: color($toast-default-background-color);
@@ -43,17 +44,18 @@ $toast-icon-backgrounds: (
     margin-bottom: units(4);
     box-shadow: shadow($toast-shadow);
 
-    &:not(.show){
+    &:not(.show) {
         opacity: 0;
     }
-    &.hide{
+
+    &.hide {
         display: none;
     }
 
-    @include media-breakpoint-up(md) {    
+    @include media-breakpoint-up(md) {
         width: 464px;
     }
-    
+
     .toast-icon {
         align-items: center;
         display: flex;
@@ -63,11 +65,13 @@ $toast-icon-backgrounds: (
         background-repeat: no-repeat;
         background-position: center center;
     }
-    .toast-message{
+
+    .toast-message {
         padding: units(4);
         position: relative;
         width: 100%;
-        .toast-close{
+
+        .toast-close {
             @include button-unstyled;
             position: absolute;
             top: units(4);
@@ -76,34 +80,39 @@ $toast-icon-backgrounds: (
             width: 24px;
             height: 24px;
             cursor: pointer;
-            
+
             background-image: url($icons-folder-path+'/'+'close.svg');
             background-repeat: no-repeat;
         }
-        p{
+
+        p {
             margin: 0px;
             word-break: break-word;
-            &:first-of-type{
+
+            &:first-of-type {
                 margin-right: units(6);
             }
         }
     }
 }
 
-@each $name, $bgcolor in $toast-backgrounds {
+@each $name,
+$bgcolor in $toast-backgrounds {
     .toast-#{$name} {
         background-color: color($bgcolor);
     }
 }
 
-@each $name, $iconcolor in $toast-icon-backgrounds {
+@each $name,
+$iconcolor in $toast-icon-backgrounds {
     .toast-#{$name} .toast-icon {
         background-color: color($iconcolor);
     }
 }
 
-@each $name, $iconname in $toast-icon-names {
-    .toast-#{$name} .toast-icon{
+@each $name,
+$iconname in $toast-icon-names {
+    .toast-#{$name} .toast-icon {
         background-image: url($icons-folder-path+'/'+$iconname+'.svg');
     }
 }

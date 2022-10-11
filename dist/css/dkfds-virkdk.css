@@ -10611,16 +10611,17 @@ body.modal-open{
 
 .toast-container{
   position:fixed;
-  right:0px;
-  left:0px;
-  bottom:0px;
+  right:16px;
+  left:16px;
+  top:16px;
+  bottom:auto;
   z-index:7000;
 }
 @media (min-width: 768px){
   .toast-container{
     right:16px;
-    top:48px;
     left:auto;
+    top:48px;
     bottom:auto;
   }
 }
