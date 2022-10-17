@@ -7349,7 +7349,7 @@ textarea.no-resize{
 
 .form-select{
   background-color:white;
-  background-image:url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
+  background-image:url("../img/svg-icons/expand-more.svg");
   background-position:calc(100% - 10px);
   background-repeat:no-repeat;
   border:1px solid #747474;
@@ -10611,16 +10611,17 @@ body.modal-open{
 
 .toast-container{
   position:fixed;
-  right:0px;
-  left:0px;
-  bottom:0px;
+  right:16px;
+  left:16px;
+  top:16px;
+  bottom:auto;
   z-index:7000;
 }
 @media (min-width: 768px){
   .toast-container{
     right:16px;
-    top:48px;
     left:auto;
+    top:48px;
     bottom:auto;
   }
 }
@@ -10676,6 +10677,7 @@ body.modal-open{
   text-indent:-9999px;
   width:24px;
   height:24px;
+  cursor:pointer;
   background-image:url("../img/svg-icons/close.svg");
   background-repeat:no-repeat;
 }
@@ -11494,24 +11496,26 @@ a.skipnav:focus{
 .overflow-menu .overflow-list a:hover, .overflow-menu .overflow-list a:visited, .overflow-menu .overflow-list a:focus{
   color:#1a1a1a;
 }
-.overflow-menu .overflow-list button, .overflow-menu .overflow-list a{
+.overflow-menu .overflow-list button,
+.overflow-menu .overflow-list a{
   padding:8px 16px;
   width:100%;
 }
-.overflow-menu .overflow-list button:hover, .overflow-menu .overflow-list a:hover{
+.overflow-menu .overflow-list button:hover,
+.overflow-menu .overflow-list a:hover{
   background-color:#F5F5F5;
 }
 .overflow-menu:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list{
   border-top:0;
   border-bottom:0;
 }
-@media (max-width: 991px){
+@media (max-width: 767px){
   .overflow-menu.overflow-menu--md-no-responsive .sidenav-list{
     border-top:0;
     border-bottom:0;
   }
 }
-@media (max-width: 1199px){
+@media (max-width: 991px){
   .overflow-menu.overflow-menu--lg-no-responsive .sidenav-list{
     border-top:0;
     border-bottom:0;
@@ -11531,10 +11535,14 @@ a.skipnav:focus{
 .overflow-menu--open-left .overflow-menu-inner:after{
   right:13px;
 }
-.overflow-menu--open-left .overflow-menu-inner li, .overflow-menu--open-left .overflow-menu-inner a, .overflow-menu--open-left .overflow-menu-inner button{
+.overflow-menu--open-left .overflow-menu-inner li,
+.overflow-menu--open-left .overflow-menu-inner a,
+.overflow-menu--open-left .overflow-menu-inner button{
   text-align:right;
 }
-.overflow-menu--open-left .overflow-menu-inner li .icon-svg, .overflow-menu--open-left .overflow-menu-inner a .icon-svg, .overflow-menu--open-left .overflow-menu-inner button .icon-svg{
+.overflow-menu--open-left .overflow-menu-inner li .icon-svg,
+.overflow-menu--open-left .overflow-menu-inner a .icon-svg,
+.overflow-menu--open-left .overflow-menu-inner button .icon-svg{
   float:right;
   margin-right:4px;
 }

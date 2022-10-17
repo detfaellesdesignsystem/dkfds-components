@@ -1,4 +1,4 @@
-.overflow-menu + h1{
+.overflow-menu + h1 {
     margin-top: 0;
 }
 
@@ -7,13 +7,13 @@
     position: relative;
     width: 100%;
 
-    
+
     @include media-breakpoint-up(md) {
         width: auto;
         display: inline-block;
     }
 
-    .button-overflow-menu{
+    .button-overflow-menu {
         @include button-unstyled;
         min-height: 40px;
         min-width: 40px;
@@ -23,12 +23,14 @@
         color: color($overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             text-decoration: underline;
         }
 
         //below: arrow with border
-        &:after, &:before {
+        &:after,
+        &:before {
             display: none;
             bottom: 100%;
             left: 50%;
@@ -41,29 +43,36 @@
             z-index: 3;
             bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
         }
+
         &:after {
             border-bottom-color: color($overflow-menu-content-background-color);
             border-width: calc(#{$overflow-menu-arrow-size} - 1px);
             margin-left: calc((#{$overflow-menu-arrow-size} - 1px)*-1);
         }
+
         &:before {
             border-bottom-color: border-color($overflow-menu-content-border);
             border-width: $overflow-menu-arrow-size;
             margin-left: calc(#{$overflow-menu-arrow-size} *-1);
         }
 
-        &[aria-expanded="true"]{
-            &:after, &:before{
+        &[aria-expanded="true"] {
+
+            &:after,
+            &:before {
                 display: block;
             }
         }
 
     }
 
-    &.overflow-menu--hover-bg{ //used when button only contains an icon
-        .button-overflow-menu{
+    //used when button only contains an icon
+    &.overflow-menu--hover-bg {
+
+        .button-overflow-menu {
             padding: 0;
-            &:hover{
+
+            &:hover {
                 background-color: color($overflow-menu-button-icon-only-hover-background-color);
             }
         }
@@ -85,79 +94,92 @@
             width: auto;
         }
 
-        &[aria-hidden="true"]{
+        &[aria-hidden="true"] {
             display: none;
         }
     }
 
-    .overflow-list{
+    .overflow-list {
         @include unstyled-list;
         font-size: font-size($overflow-menu-content-font-size);
         line-height: units($overflow-menu-content-line-height, 'rem');
         color: color($overflow-menu-content-text-color);
 
-        button{
+        button {
             @include button-unstyled;
             line-height: units(5, 'rem');
             cursor: pointer;
         }
-        a{
+
+        a {
             @include body-copy-text;
             display: block;
             text-decoration: none;
             line-height: units(5, 'rem');
-            &:hover, &:visited, &:focus{
+
+            &:hover,
+            &:visited,
+            &:focus {
                 color: color($overflow-menu-content-text-color);
             }
         }
 
-        button, a{
+        button,
+        a {
             padding: 8px 16px;
             width: 100%;
-            &:hover{
+
+            &:hover {
                 background-color: color($overflow-menu-content-link-hover-background-color);
             }
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list{
+    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list {
         border-top: 0;
         border-bottom: 0;
     }
-  &.overflow-menu--md-no-responsive .sidenav-list{
+
+    &.overflow-menu--md-no-responsive .sidenav-list {
+        @include media-breakpoint-down(sm) {
+            border-top: 0;
+            border-bottom: 0;
+        }
+    }
+
+    &.overflow-menu--lg-no-responsive .sidenav-list {
         @include media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
-  &.overflow-menu--lg-no-responsive .sidenav-list{
-    @include media-breakpoint-down(lg) {
-      border-top: 0;
-      border-bottom: 0;
-    }
-  }
-
-
     &--open-right {
-        .overflow-menu-inner{
+        .overflow-menu-inner {
             @include media-breakpoint-up(md) {
                 left: calc(50% - 19px);
+
                 &:after {
                     left: 13px;
                 }
             }
         }
     }
+
     &--open-left {
-        .overflow-menu-inner{
+        .overflow-menu-inner {
             right: calc(50% - 19px);
+
             &:after {
                 right: 13px;
             }
-            li, a, button{
+
+            li,
+            a,
+            button {
                 text-align: right;
-                .icon-svg{
+
+                .icon-svg {
                     float: right;
                     margin-right: 4px;
                 }
@@ -165,18 +187,23 @@
         }
     }
 
-    &.overflow-menu--md-no-responsive{
+    &.overflow-menu--md-no-responsive {
+
         //overflow content always visible on large screens.
         //does not look like a dropdown.
         @include media-breakpoint-up(md) {
             display: block;
-            &:before, &:after{
+
+            &:before,
+            &:after {
                 display: none; //hide arrow
             }
-            .button-overflow-menu{
+
+            .button-overflow-menu {
                 display: none;
             }
-            .overflow-menu-inner{
+
+            .overflow-menu-inner {
                 display: block !important;
                 width: 100%;
                 max-width: 100%;
@@ -185,50 +212,59 @@
                 border: none;
                 min-width: auto;
             }
-		}
+        }
     }
-  &.overflow-menu--lg-no-responsive{
-    //overflow content always visible on large screens.
-    //does not look like a dropdown.
-    @include media-breakpoint-up(lg) {
-      display: block;
-      &:before, &:after{
-        display: none; //hide arrow
-      }
-      .button-overflow-menu{
-        display: none;
-      }
-      .overflow-menu-inner{
-        display: block !important;
-        width: 100%;
-        max-width: 100%;
-        position: static;
-        box-shadow: none;
-        border: none;
-        min-width: auto;
-      }
-    }
-  }
 
-  &--sort{
-    .button-overflow-menu{
-        text-decoration: underline;
-        line-height: units(5, 'rem');
-        .selected-value{
-            text-decoration: none;
-            display: inline-block;
-            margin-left: units(2);
+    &.overflow-menu--lg-no-responsive {
+
+        //overflow content always visible on large screens.
+        //does not look like a dropdown.
+        @include media-breakpoint-up(lg) {
+            display: block;
+
+            &:before,
+            &:after {
+                display: none; //hide arrow
+            }
+
+            .button-overflow-menu {
+                display: none;
+            }
+
+            .overflow-menu-inner {
+                display: block !important;
+                width: 100%;
+                max-width: 100%;
+                position: static;
+                box-shadow: none;
+                border: none;
+                min-width: auto;
+            }
+        }
+    }
+
+    &--sort {
+        .button-overflow-menu {
+            text-decoration: underline;
+            line-height: units(5, 'rem');
+
+            .selected-value {
+                text-decoration: none;
+                display: inline-block;
+                margin-left: units(2);
+                font-weight: font-weight("semibold");
+            }
+
+            svg {
+                margin-right: units(2);
+            }
+        }
+
+        .overflow-menu-inner .overflow-list li[aria-selected="true"] button {
             font-weight: font-weight("semibold");
-        }
-        svg {
-            margin-right: units(2);
+            @include add-background-svg('done');
+            background-repeat: no-repeat;
+            background-position: calc(100% - #{units(4)}) center;
         }
     }
-    .overflow-menu-inner .overflow-list li[aria-selected="true"] button{
-        font-weight: font-weight("semibold");
-        @include add-background-svg('done');
-        background-repeat: no-repeat;
-        background-position: calc(100% - #{units(4)}) center;
-    }
-  }
 }

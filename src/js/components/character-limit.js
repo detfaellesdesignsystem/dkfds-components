@@ -1,21 +1,25 @@
 'use strict';
 
 const MAX_LENGTH = 'data-maxlength';
-const CHARACTERS_REMAINING_MANY_TEXT = "Du har 0 tegn tilbage";
-const CHARACTERS_REMAINING_ONE_TEXT = "Du har 1 tegn tilbage";
-const CHARACTERS_EXCEEDED_MANY_TEXT = "Du har 0 tegn for meget";
-const CHARACTERS_EXCEEDED_ONE_TEXT = "Du har 1 tegn for meget";
+let text = {
+    "character_remaining": "Du har {value} tegn tilbage",
+    "characters_remaining": "Du har {value} tegn tilbage",
+    "character_too_many": "Du har {value} tegn for meget",
+    "characters_too_many": "Du har {value} tegn for meget"
+}
 
 /**
  * Number of characters left
  * @param {HTMLElement} containerElement 
+ * @param {JSON} strings Translate labels: {"character_remaining": "Du har {value} tegn tilbage", "characters_remaining": "Du har {value} tegn tilbage", "character_too_many": "Du har {value} tegn for meget", "characters_too_many": "Du har {value} tegn for meget"}
  */
- function CharacterLimit(containerElement) {
+ function CharacterLimit(containerElement, strings = text) {
     this.container = containerElement;
     this.input = containerElement.getElementsByClassName('form-input')[0];
     this.maxlength = this.container.getAttribute(MAX_LENGTH);
     this.lastKeyUpTimestamp = null;
     this.oldValue = this.input.value;
+    text = strings;
 }
 
 CharacterLimit.prototype.init = function() {
@@ -37,22 +41,21 @@ CharacterLimit.prototype.charactersLeft = function () {
 }
 
 function characterLimitMessage (characters_left) {
-    let regex = /\d+/;
     let count_message = "";
 
     if (characters_left === -1) {
         let exceeded = Math.abs(characters_left);
-        count_message = CHARACTERS_EXCEEDED_ONE_TEXT.replace(regex, exceeded);
+        count_message = text.character_too_many.replace(/{value}/, exceeded);
     }
     else if (characters_left === 1) {
-        count_message = CHARACTERS_REMAINING_ONE_TEXT.replace(regex, characters_left);
+        count_message = text.character_remaining.replace(/{value}/, characters_left);
     }
     else if (characters_left >= 0) {
-        count_message = CHARACTERS_REMAINING_MANY_TEXT.replace(regex, characters_left);
+        count_message = text.characters_remaining.replace(/{value}/, characters_left);
     }
     else {
         let exceeded = Math.abs(characters_left);
-        count_message = CHARACTERS_EXCEEDED_MANY_TEXT.replace(regex, exceeded);
+        count_message = text.characters_too_many.replace(/{value}/, exceeded);
     }
 
     return count_message;
