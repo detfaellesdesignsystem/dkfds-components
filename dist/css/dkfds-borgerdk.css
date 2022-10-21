@@ -11745,10 +11745,10 @@ a.skipnav:focus{
   margin-left:0;
 }
 
-.js-tooltip{
+[data-tooltip]{
   display:inline-block;
 }
-.js-tooltip svg{
+[data-tooltip] svg{
   pointer-events:none;
 }
 

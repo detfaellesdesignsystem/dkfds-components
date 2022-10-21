@@ -5,8 +5,12 @@ params:
   description: Label text.
 - name: classes
   type: string
-  required: true
+  required: false
   description: Classes of the label.
+- name: for
+  type: string
+  required: true
+  description: Id of the input element.
 - name: optionalLabel
   type: boolean
   required: false
@@ -15,18 +19,10 @@ params:
   type: boolean
   required: false
   description: Appends required label.
-- name: for
-  type: string
-  required: true
-  description: Id of the input element.
-- name: Tooltip
+- name: tooltip
   type: string
   required: false
   description: Tooltip text.
-- name: tooltipattr
-  type: string
-  required: false
-  description: Attributes for the tooltip button
   
 
 
