@@ -1,7 +1,0 @@
-{% macro radiobutton(params) %}
-  <div class="form-group-radio">
-    <input id="{{params.id}}" type="radio" name="{{params.name}}" value="{{params.value}}" {% if params.helptext %}aria-labelledby="form-label-{{params.id}} helptext-{{params.id}}"{% endif %}class="form-radio {% if params.large %}radio-large{% endif %} {{params.inputClasses}}" {% if params.disabled %}disabled{% endif %} {% if params.checked %}checked{% endif %} {{params.inputAttributes | safe }} />
-    <label for="{{params.id}}" id="form-label-{{params.id}}" class="{{params.labelClassses}}" {{params.labelAttrirbutes | safe}}>{{params.label}} {% if params.srOnly %}<span class="sr-only">{{params.srOnly}}</span>{% endif %}</label>
-    {% if params.helptext %}<span class="form-hint" id="helptext-{{params.id}}">{{ params.helptext }}</span>{% endif %}
-  </div>
-{% endmacro %}

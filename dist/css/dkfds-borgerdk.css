@@ -7469,7 +7469,6 @@ input[readonly][type=text], textarea[readonly]{
 .form-radio{
   position:absolute;
   cursor:pointer;
-  position:absolute;
   z-index:1;
   margin:0;
   opacity:0;

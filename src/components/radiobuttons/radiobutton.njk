@@ -1,0 +1,36 @@
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/label.njk" import label as label %}
+
+{% macro radiobutton(params) %}
+<div class="form-group-radio">
+    {% if params.label and params.id and params.name and params.value -%}
+    <input 
+        type="radio" 
+        id="{{params.id}}" 
+        name="{{params.name}}" 
+        value="{{params.value}}" 
+        {% if params.helptext %} aria-describedby="{{params.id}}-helptext" {% endif %}
+        class="form-radio{% if params.inputClasses %} {{params.inputClasses}}{% endif %}"
+        {% if params.disabled %} disabled{% endif %}
+        {% if params.checked %} checked{% endif %}
+        {% if params.collapseId %} data-controls="#{{ params.collapseId }}" 
+            {% if params.checked %} data-expanded="true" {% else %} data-expanded="false" {% endif %}
+        {% endif %} 
+        {% if params.inputAttributes %} {{ params.inputAttributes | safe }}{% endif %}>
+    {{ label({
+        "text": params.label,
+        "classes": params.labelClasses,
+        "for": params.id,
+        "id": params.id + "-form-label",
+        "attributes": params.labelAttributes,
+        "srOnly": params.srOnly })
+    }}
+    {%- endif -%}
+    {%- if params.helptext -%}
+    {{- helptext({
+        "text": params.helptext,
+        "id": params.id + "-helptext" })
+    -}}
+    {%- endif -%}
+</div>
+{% endmacro %}

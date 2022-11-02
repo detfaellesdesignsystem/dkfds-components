@@ -1,0 +1,53 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the radio button.
+- name: name
+  type: string
+  required: true
+  description: Name of the radio group. All radio buttons in the same group must have the same name.
+- name: value
+  type: string
+  required: true
+  description: Value sent to the server on submit.
+- name: inputClasses
+  type: string
+  required: false
+  description: Additional classes for the radio button.
+- name: disabled
+  type: boolean
+  required: false
+  description: Set to true to disable the radio button.
+- name: checked
+  type: boolean
+  required: false
+  description: Set to true to mark the radio button as selected.
+- name: collapseId
+  type: string
+  required: false
+  description: If the radio button shows additional content if checked, add the id of the hidden container.
+- name: inputAttributes
+  type: string
+  required: false
+  description: Additional attributes for the radio button.
+- name: label
+  type: string
+  required: true
+  description: Label for the radio button (the text written next to the radio button)
+- name: labelClasses
+  type: string
+  required: false
+  description: Additional classes for the label.
+- name: labelAttributes
+  type: string
+  required: false
+  description: Additional attributes for the label.
+- name: srOnly
+  type: string
+  required: false
+  description: Additional text only accessible for screenreaders. The text is appended to the label text.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext displayed under the radio button label.

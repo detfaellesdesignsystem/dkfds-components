@@ -3,14 +3,22 @@ params:
   type: string
   required: true
   description: Label text.
-- name: classes
-  type: string
-  required: false
-  description: Classes of the label.
 - name: for
   type: string
   required: true
   description: Id of the input element.
+- name: classes
+  type: string
+  required: false
+  description: Classes of the label.
+- name: id
+  type: string
+  required: false
+  description: The ID of the button.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes of the label.
 - name: optionalLabel
   type: boolean
   required: false
@@ -19,10 +27,11 @@ params:
   type: boolean
   required: false
   description: Appends required label.
+- name: srOnly
+  type: string
+  required: false
+  description: Any text meant for screen readers only. 
 - name: tooltip
   type: string
   required: false
   description: Tooltip text.
-  
-
-

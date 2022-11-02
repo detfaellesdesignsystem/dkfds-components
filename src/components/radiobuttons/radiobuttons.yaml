@@ -1,0 +1,88 @@
+- name: id
+  type: string
+  required: false
+  description: The id of the radio group.
+- name: groupname
+  type: string
+  required: true
+  description: The radio group name. Will be used as 'name' for each radio button.
+- name: radiogroupLegend
+  type: string
+  required: false
+  description: The legend (same styling as label) for the entire radio group.
+- name: collapsedItems
+  type: boolean
+  required: false
+  description: Set to 'true' if any radio button in the group shows additional content when checked.
+- name: classes
+  type: string
+  required: false
+  description: Classes for the radio group.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is not required and most inputs in form are required.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is required and most inputs in form aren't required.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext for the entire radio group.
+- name: errorMessage
+  type: string
+  required: false
+  description: Error message for the radio group.
+- name: items
+  type: object
+  required: true
+  description: The radio buttons in the group.
+  - name: id
+    type: string
+    required: true
+    description: Id of the radio button.
+  - name: value
+    type: string
+    required: true
+    description: Value sent to the server on submit.
+  - name: inputClasses
+    type: string
+    required: false
+    description: Additional classes for the radio button.
+  - name: disabled
+    type: boolean
+    required: false
+    description: Set to true to disable the radio button.
+  - name: checked
+    type: boolean
+    required: false
+    description: Set to true to mark the radio button as selected.
+  - name: inputAttributes
+    type: string
+    required: false
+    description: Additional attributes for the radio button.
+  - name: label
+    type: string
+    required: true
+    description: Label for the radio button (the text written next to the radio button)
+  - name: labelClasses
+    type: string
+    required: false
+    description: Additional classes for the label.
+  - name: labelAttributes
+    type: string
+    required: false
+    description: Additional attributes for the label.
+  - name: srOnly
+    type: string
+    required: false
+    description: Additional text only accessible for screenreaders. The text is appended to the label text.
+  - name: helptext
+    type: string
+    required: false
+    description: Helptext displayed under the radio button label.
+  - name: hiddenContent
+    type: string
+    required: false
+    description: Content to be displayed when the radio button is checked. Can contain HTML.

@@ -15,6 +15,10 @@ params:
   type: string
   required: false
   description: Classes to add to the label.
+- name: labelAttributes
+  type: string
+  required: false
+  description: Additional attributes of the label.
 - name: optionalLabel
   type: boolean
   required: false

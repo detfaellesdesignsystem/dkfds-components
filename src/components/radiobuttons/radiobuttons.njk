@@ -1,0 +1,75 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/radiobuttons/radiobutton.njk" import radiobutton as radiobutton %}
+
+{% macro radiobuttons(params) %}
+<div class="form-group{% if params.collapsedItems %} js-radio-toggle-group{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}>
+    {%- if params.items and params.groupname -%}
+    <fieldset{% if params.errorMessage %} aria-describedby="{{ params.id }}-error" {% endif %}>
+        {%- if params.radiogroupLegend -%}
+        <legend class="form-label">{{ params.radiogroupLegend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
+            {%- if params.tooltip -%}
+            {{- button({
+                "variant": "unstyled",
+                "attributes": "type=\"button\"",
+                "srOnly": "Hvad betyder det?",
+                "icon": "help",
+                "tooltip": {
+                    "text": params.tooltip,
+                    "showOnClick": true,
+                    "position": "top"
+                } }) 
+            -}}
+        {%- endif -%}</legend>
+        {% endif %}
+        {%- if params.helptext -%}
+        {{- helptext({ "text": params.helptext, "id": params.id + "-helptext" }) -}}
+        {%- endif -%}
+        {%- if params.errorMessage -%}
+        <span class="form-error-message" id="{{ params.id }}-error"><span class="sr-only">Fejl:</span> {{ params.errorMessage }}</span>
+        {%- endif -%}
+        <ul class="nobullet-list">
+            {%- for item in params.items -%}
+            <li>
+                {%- if item.hiddenContent -%}
+                {{- radiobutton({
+                    "id": item.id,
+                    "name": params.groupname,
+                    "value": item.value,
+                    "inputClasses": item.inputClasses,
+                    "disabled": item.disabled,
+                    "checked": item.checked,
+                    "collapseId": item.id + "-collapse",
+                    "inputAttributes": item.inputAttributes,
+                    "label": item.label,
+                    "labelClasses": item.labelClasses,
+                    "labelAttributes": item.labelAttributes,
+                    "srOnly": item.srOnly,
+                    "helptext": item.helptext })
+                -}}
+                <div id="{{ item.id }}-collapse"{% if item.checked %} aria-hidden="false" {% else %} aria-hidden="true"{% endif %} class="radio-content">
+                    {{ item.hiddenContent | safe }}
+                </div>
+                {%- else -%}
+                {{ radiobutton({
+                    "id": item.id,
+                    "name": params.groupname,
+                    "value": item.value,
+                    "inputClasses": item.inputClasses,
+                    "disabled": item.disabled,
+                    "checked": item.checked,
+                    "inputAttributes": item.inputAttributes,
+                    "label": item.label,
+                    "labelClasses": item.labelClasses,
+                    "labelAttributes": item.labelAttributes,
+                    "srOnly": item.srOnly,
+                    "helptext": item.helptext })
+                }}
+                {%- endif -%}
+            </li>
+            {%- endfor -%}
+        </ul>
+    </fieldset>
+    {%- endif -%}
+</div>
+{% endmacro %}
