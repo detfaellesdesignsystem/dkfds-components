@@ -23,6 +23,10 @@ params:
   type: string
   required: false
   description: Icon of the button.
+- name: iconClasses
+  type: string
+  required: false
+  description: Classes for the icon.
 - name: srOnly
   type: string
   required: false

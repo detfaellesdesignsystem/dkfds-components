@@ -7,6 +7,14 @@ params:
   type: string
   required: false
   description: Id of the table.
+- name: responsive
+  type: boolean
+  required: false
+  description: Valid values are "true-default", "true-sm", "true-md", "true-lg"
+- name: responsiveVariant
+  type: string
+  required: false
+  description: Valid values are "sm", "md", "lg"
 - name: thead
   type: array
   required: true
