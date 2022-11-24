@@ -8575,6 +8575,11 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   }
 }
 
+.table--selectable{
+}
+.table--selectable tbody tr:hover, .table--selectable.table.table--zebra tr:nth-child(even):hover, .table--selectable.table.table--zebra tr:nth-child(odd):hover{
+  background-color:#F5F5F5;
+}
 .table--selectable.table.table--zebra tr.table-row-selected:nth-child(even), .table--selectable.table.table--zebra tr.table-row-selected:nth-child(odd),
 .table--selectable .table-row-selected{
   background-color:#DCDCDC;
@@ -10901,6 +10906,7 @@ body.modal-open{
   display:flex;
 }
 .search .form-input{
+  background-color:white;
   margin-top:0;
   border-top-right-radius:0;
   border-bottom-right-radius:0;

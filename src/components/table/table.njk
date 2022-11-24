@@ -2,7 +2,7 @@
 
 {% macro table(params) %}
 <div class="table--responsive-scroll{% if params.outerClasses %} {{ params.outerClasses }}{% endif %}">
-    <table class="table{% if params.zebra %} table--zebra{% endif %}{% if params.selectable %} table--selectable{% endif %}{% if params.borderless %} table--borderless{% endif %}{% if params.compactClass %} {{ params.compactClass }}{% endif %}{% if params.innerClasses %} {{ params.innerClasses }}{% endif %}{% if params.responsive %} table-{% if params.responsiveVariant %}{{params.responsiveVariant}}{% endif %}-responsive-headers{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
+    <table class="table{% if params.zebra %} table--zebra{% endif %}{% if params.selectable %} table--selectable{% endif %}{% if params.borderless %} table--borderless{% endif %}{% if params.compactClass %} {{ params.compactClass }}{% endif %}{% if params.tableClasses %} {{ params.tableClasses }}{% endif %}{% if params.responsive %} table-{% if params.responsiveVariant %}{{params.responsiveVariant}}{% endif %}-responsive-headers{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
         <thead>
             <tr>
                 {%- if params.selectable -%}
@@ -18,35 +18,39 @@
                 {% set sortingColumn = 0 %}
                 {% if params.sorting.column %}{% set sortingColumn = params.sorting.column %}{% endif %}
                 {% for th in params.thead %}
-                <th{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
-                {{-th.columnName-}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" %}{{ button({
-                    "variant": "unstyled",
-                    "id": th.sortingID,
-                    "attributes": "type=\"button\"",
-                    "srOnly": "Sortér faldende efter " + th.columnName,
-                    "icon": "sort-table-ascending",
-                    "classes": "ml-2",
-                    "iconClasses": "mr-0" }) 
-                }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" %}
-                {{ button({
-                    "variant": "unstyled",
-                    "id": th.sortingID,
-                    "attributes": "type=\"button\"",
-                    "srOnly": "Sortér stigende efter " + th.columnName,
-                    "icon": "sort-table-descending",
-                    "classes": "ml-2",
-                    "iconClasses": "mr-0" }) 
-                }}{% elif th.sorting %}
-                {{ button({
-                    "variant": "unstyled",
-                    "id": th.sortingID,
-                    "attributes": "type=\"button\"",
-                    "srOnly": "Sortér efter " + th.columnName,
-                    "icon": "sort-table-none",
-                    "classes": "ml-2",
-                    "iconClasses": "mr-0" }) 
-                }}{% endif %}
-                </th>
+                    {% if th.td %}
+                        <td{% if th.classes %} class="{{ th.classes }}"{% endif %}></td>
+                    {% else %}
+                        <th{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
+                            {{- th.headerContent | safe -}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" %}{{ button({
+                                "variant": "unstyled",
+                                "id": th.sortingID,
+                                "attributes": "type=\"button\"",
+                                "srOnly": "Sortér faldende efter " + th.headerContent,
+                                "icon": "sort-table-ascending",
+                                "classes": "ml-2",
+                                "iconClasses": "mr-0" }) 
+                            }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" %}
+                            {{ button({
+                                "variant": "unstyled",
+                                "id": th.sortingID,
+                                "attributes": "type=\"button\"",
+                                "srOnly": "Sortér stigende efter " + th.headerContent,
+                                "icon": "sort-table-descending",
+                                "classes": "ml-2",
+                                "iconClasses": "mr-0" }) 
+                            }}{% elif th.sorting %}
+                            {{ button({
+                                "variant": "unstyled",
+                                "id": th.sortingID,
+                                "attributes": "type=\"button\"",
+                                "srOnly": "Sortér efter " + th.headerContent,
+                                "icon": "sort-table-none",
+                                "classes": "ml-2",
+                                "iconClasses": "mr-0" }) 
+                            }}{% endif %}
+                        </th>
+                    {% endif %}
                 {% endfor %}
             </tr>
         </thead>
@@ -54,12 +58,12 @@
             {% for row in params.tbody %}
             <tr>
                 {%- if params.selectable -%}
-                <td><input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0]}}">
+                <td><input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0].content}}">
                     <label for="{{params.id}}-check-{{loop.index}}" aria-label="Vælg række"><span class="sr-only">Vælg række</span></label>
                 </td>
                 {%- endif -%}
                 {% for td in row %}
-                <td>{{td | safe}}</td>
+                <td{% if td.classes %} class="{{ td.classes }}"{% endif %}>{{ td.content | safe}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
