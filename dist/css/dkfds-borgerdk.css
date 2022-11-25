@@ -1137,6 +1137,12 @@ a:disabled:focus, a.disabled:focus{
   outline:none;
   background-color:transparent;
 }
+a.bold-link{
+  font-weight:600;
+}
+a:not(.button, .full-width-image){
+  max-width:66ch;
+}
 
 h1, .h1{
   font-size:2.5rem;
@@ -1530,10 +1536,6 @@ button.function-link, button.accordion-bulk-button{
   color:#1a1a1a;
 }
 
-a.bold-link{
-  font-weight:600;
-}
-
 .icon-link{
   line-height:2.4rem;
 }
@@ -1631,10 +1633,6 @@ ol:not(.accordion):not(.tabnav):not(.accordion-bordered):not(.sidenav-list){
 }
 
 .form-checkbox + label, .form-radio + label{
-  max-width:66ch;
-}
-
-a:not(.button){
   max-width:66ch;
 }
 

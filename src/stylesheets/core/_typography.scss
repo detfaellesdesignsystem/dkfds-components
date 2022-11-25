@@ -43,14 +43,15 @@ a {
     cursor: not-allowed !important;
     color: color('disabled') !important;
     opacity: 0.3;
-    &:focus{
+
+    &:focus {
       outline: none;
       background-color: transparent;
     }
   }
 
-  .background-dark &{
-    &:not(.button){
+  .background-dark & {
+    &:not(.button) {
       color: color('white');
     }
 
@@ -61,11 +62,20 @@ a {
       color: color('disabled-light') !important;
       box-shadow: none !important;
       outline-offset: inherit !important;
-      &:focus{
+
+      &:focus {
         outline: none;
         background-color: transparent;
       }
     }
+  }
+
+  &.bold-link {
+    font-weight: font-weight("semibold");
+  }
+
+  &:not(.button, .full-width-image) {
+    max-width: $typography-text-max-width;
   }
 }
 
@@ -357,10 +367,6 @@ button.function-link{
   }
 }
 
-a.bold-link{
-  font-weight: font-weight("semibold");
-}
-
 .icon-link{
   line-height: units($typography-body-text-line-height, 'rem');
   .icon-svg{
@@ -428,10 +434,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list){
 .form-checkbox+label, .form-radio+label{
   max-width: $typography-text-max-width;
 }
-a:not(.button){
-  max-width: $typography-text-max-width;
-}
-
 
 .displayheading {
   &-1 {
