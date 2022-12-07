@@ -9780,6 +9780,7 @@ body.modal-open{
   right:0;
   bottom:0;
   z-index:9999;
+  margin:16px;
 }
 .fds-modal[aria-hidden=false]{
   display:flex;
