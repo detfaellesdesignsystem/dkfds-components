@@ -22,6 +22,7 @@ body.modal-open{
   right: 0;
   bottom: 0;
   z-index: 9999;
+  margin: units(4);
 
   &[aria-hidden="false"] {
     display: flex;

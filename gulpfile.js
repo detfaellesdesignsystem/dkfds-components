@@ -4,6 +4,7 @@ require("./config/gulp/sass");
 require("./config/gulp/javascript");
 require("./config/gulp/images");
 require("./config/gulp/fonts");
+require("./config/gulp/license");
 require("./config/gulp/build");
 require("./config/gulp/release");
 
