@@ -10992,9 +10992,8 @@ input[type=search]{
   color:#1a1a1a;
 }
 .sidenav-list li a{
-  overflow:hidden;
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
 }
 .sidenav-list li a ul{
   width:100%;
@@ -11014,6 +11013,9 @@ input[type=search]{
 .sidenav-list li a .sidenav-title{
   margin-left:4px;
   white-space:pre-line;
+}
+.sidenav-list li a .sidenav-number{
+  margin-right:4px;
 }
 .sidenav-list li a .sidenav-information{
   color:#747474;
@@ -11136,10 +11138,8 @@ input[type=search]{
   outline-offset:0;
 }
 
-@media (min-width: 768px){
-  .sidebar-col{
-    flex:0 0 300px;
-  }
+.sidebar-col{
+  max-width:300px;
 }
 
 .language-switcher{
@@ -11598,11 +11598,15 @@ a.skipnav:focus{
   padding-top:8px;
   padding-bottom:8px;
   top:calc(100% + 8px);
-  min-width:28rem;
 }
 @media (min-width: 768px){
   .overflow-menu .overflow-menu-inner{
     width:auto;
+  }
+}
+@media (min-width: 576px){
+  .overflow-menu .overflow-menu-inner{
+    min-width:28rem;
   }
 }
 .overflow-menu .overflow-menu-inner[aria-hidden=true]{

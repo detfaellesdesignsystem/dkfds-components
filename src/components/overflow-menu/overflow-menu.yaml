@@ -26,8 +26,12 @@ params:
 - name: id
   type: string
   required: true
-  description: Id of the drop down element.
+  description: Id of the overflow menu.
+- name: classes
+  type: string
+  required: false
+  description: Classes of the overflow menu.
 - name: content
   type: string
   required: true
-  description: Id of the drop down element. Allows HTML.
+  description: Content of the overflow menu. Allows HTML.

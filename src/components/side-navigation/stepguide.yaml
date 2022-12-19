@@ -1,3 +1,23 @@
+# overflow_stepguide
+params:
+- name: id
+  type: string
+  required: true
+  description: ID of the stepguide. Only used in the overflow_stepguide macro.
+- name: mediumHide
+  type: boolean
+  required: false
+  description: If true, hides a responsive stepguide at the md breakpoint instead of the default lg breakpoint. Only used in the overflow_stepguide macro.
+- name: openRight
+  type: boolean
+  required: false
+  description: If false, the stepguide will open to the left instead of to the right. Defaults to 'true'. Only used in the overflow_stepguide macro.
+- name: responsive
+  type: boolean
+  required: false
+  description: If true, creates a responsive stepguide. If false or omitted, the stepguide is always displayed as an overflow menu. Only used in the overflow_stepguide macro.
+
+# overflow_stepguide and stepguide
 params:
 - name: steps
   type: array
@@ -7,10 +27,6 @@ params:
     type: string
     required: true
     description: Link text
-  - name: safetext
-    type: string
-    required: false
-    description: An alternative to 'text' marked with 'safe'
   - name: href
     type: string
     required: true
