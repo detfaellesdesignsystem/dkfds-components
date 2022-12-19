@@ -6738,10 +6738,6 @@ figure{
   background-image:url("../img/svg-icons/database.svg");
 }
 
-.icon-delete:not(a){
-  background-image:url("../img/svg-icons/delete.svg");
-}
-
 .icon-desktop-windows:not(a){
   background-image:url("../img/svg-icons/desktop-windows.svg");
 }
