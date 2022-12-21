@@ -1,4 +1,3 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro datoinput(params) %}
 <div class="form-group {% if params.errorMessage %} form-error {% endif %} {{ params.classes }}">
   <fieldset aria-describedby="{{params.id.helptext | default('example-date-field-hint')}} {% if params.errorMessage %}{{params.id.errorMessage | default('example-date-field-error')}}{% endif %}">

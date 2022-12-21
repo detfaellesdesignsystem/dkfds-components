@@ -1,3 +1,3 @@
-{% macro icon(params) %}
-  <i class="icon icon-{{params.iconName}} {{ params.classes }}" {% if params.ariaLabel %}aria-label ="{{params.ariaLabel}}"{% endif %}></i>
-{% endmacro %}
+{%- macro icon(params) -%}
+  <i class="icon icon-{{params.iconName}}{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaLabel %} aria-label="{{params.ariaLabel}}"{% endif %}></i>
+{%- endmacro -%}

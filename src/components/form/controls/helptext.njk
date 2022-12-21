@@ -1,5 +1,7 @@
 {% macro helptext(params) %}
-{%- if params.text -%}
-<span class="form-hint"{% if params.id %} id="{{ params.id }}"{% endif %}>{{ params.text }}</span>
-{%- endif -%}
+<span class="form-hint" id="{{helptext_id(params.id)}}">{{params.text}}</span>
 {% endmacro %}
+
+{%- macro helptext_id(id) -%}
+{{id}}-hint
+{%- endmacro -%}
