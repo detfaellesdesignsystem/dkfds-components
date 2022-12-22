@@ -58,3 +58,38 @@
     </div>
 </div>
 {% endmacro %}
+
+{% macro mobile_portal_header(params) %}
+<div class="portal-info-mobile">
+    {% if params.user %}
+    <p class="user">
+        {% if params.compact == null or params.compact == false %}
+        <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
+        {% else %}
+        <span class="username">{{ params.user.name | safe }}</span>
+        {% endif %}
+        {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+    </p>
+    {% endif %}
+    {% set buttonVariant = params.button.variant | default('secondary') %}
+    {% set buttonText = params.button.text | default('Log af') %}
+    {{ 
+        button({
+            "variant": buttonVariant,
+            "text": buttonText,
+            "classes": "d-print-none mt-3"
+        }) 
+    }}
+</div>
+{% endmacro %}
+
+{% macro mobile_solution_header(params) %}
+<div class="solution-info-mobile">
+    {% if params.authority.name %}
+    <h2 class="authority-name">{{ params.authority.name }}</h2>
+    {% endif %}
+    {% if params.authority.text %}
+    <p>{{ params.authority.text | safe }}</p>
+    {% endif %}
+</div>
+{% endmacro %}
