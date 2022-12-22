@@ -3,7 +3,7 @@ params:
 - name: compact
   type: string
   required: false
-  description: The ID of the input.
+  description: true if the compact header should be used.
 - name: logolink
   type: object
   required: true
@@ -40,14 +40,14 @@ params:
     type: string
     required: false
     description: Name of company the user is acting on behalf of.
-- name: link
+- name: button
   type: object
   required: false
   description: Log out button object.
-  - name: classes
+  - name: variant
     type: string
     required: false
-    description: Classes of button.
+    description: Button variant.
   - name: text
     type: string
     required: false
@@ -55,10 +55,10 @@ params:
 
 # solution_header
 params:
-- name: classes
-  type: string
+- name: lastHeader
+  type: boolean
   required: false
-  description: Additional classes of the solution header
+  description: true if the solution header is the last row in the header.
 - name: title
   type: object
   required: true
@@ -97,5 +97,5 @@ params:
     description: Name of authority.
   - name: text
     type: string
-    required: false
+    required: true
     description: Text of authority - could be contact info.

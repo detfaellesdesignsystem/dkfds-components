@@ -9762,6 +9762,11 @@ footer .footer-theme{
 }
 .header .authority-name{
   color:#454545;
+  font-weight:600;
+  font-size:1.6rem;
+  line-height:2.4rem;
+  margin-top:0;
+  margin-bottom:0;
 }
 .header .button-contact{
   display:inline-flex;
