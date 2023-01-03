@@ -17,6 +17,7 @@
     "watch": "gulp watch"
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
+  "license": "(MIT AND OFL-1.1 AND Apache-2.0)",
   "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
