@@ -1,4 +1,4 @@
-# portal_header
+# portal_header and mobile_portal_header
 params:
 - name: compact
   type: string
@@ -7,7 +7,7 @@ params:
 - name: logolink
   type: object
   required: true
-  description: Logo object.
+  description: Logo object. Only used in portal_header.
   - name: href
     type: string
     required: true
@@ -19,15 +19,11 @@ params:
   - name: label
     type: string
     required: false
-    description: aria-label on logo.
+    description: Defines the text used for aria-label and when printing.
   - name: classes
     type: string
     required: false
     description: Classes on logo.
-  - name: sronly
-    type: string
-    required: false
-    description: Link text on logo - only read by screenreaders.
 - name: user
   type: object
   required: true
@@ -53,16 +49,16 @@ params:
     required: false
     description: Text on button.
 
-# solution_header
+# solution_header and mobile_solution_header
 params:
 - name: lastHeader
   type: boolean
   required: false
-  description: true if the solution header is the last row in the header.
+  description: true if the solution header is the last row in the header. Only used in solution_header.
 - name: title
   type: object
   required: true
-  description: Title object.
+  description: Title object. Only used in solution_header.
   - name: href
     type: string
     required: true
@@ -79,14 +75,10 @@ params:
     type: string
     required: false
     description: Additional classes on solution title.
-- name: solutionInfo
-  type: object
+- name: hideOnPrint
+  type: boolean
   required: false
-  description: Solution info object
-  - name: hideOnPrint
-    type: boolean
-    required: false
-    description: Hide solution info on print
+  description: Hide solution info on print
 - name: authority
   type: object
   required: true

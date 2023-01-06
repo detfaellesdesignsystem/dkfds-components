@@ -1,0 +1,9 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
+{% macro menu_open_button(params) %}
+<button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="dialog">{{icon_svg({"name":"menu"})}}{{ params.text | default('Menu') }}</button>
+{% endmacro %}
+
+{% macro menu_close_button(params) %}
+<button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
+{% endmacro %}

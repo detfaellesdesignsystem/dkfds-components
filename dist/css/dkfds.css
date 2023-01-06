@@ -12018,6 +12018,7 @@ a.skipnav:focus{
   .header .logo, .header .portal-header .logo{
     height:auto;
     width:auto;
+    background-image:none;
   }
   .header .portal-header{
     overflow:hidden;

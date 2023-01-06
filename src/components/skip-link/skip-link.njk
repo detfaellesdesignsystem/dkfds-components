@@ -1,0 +1,3 @@
+{% macro skiplink(params) %}
+<a class="skipnav" href="{{ params.href | default('#main-content') }}">{{ params.text | default('Gå til sidens indhold') }}</a>
+{% endmacro %}

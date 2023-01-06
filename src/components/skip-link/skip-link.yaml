@@ -1,0 +1,9 @@
+params:
+- name: href
+  type: string
+  required: false
+  description: href for the skip-link. Defaults to '#main-content'.
+- name: text
+  type: string
+  required: false
+  description: Text in the skip-link. Defaults to 'Gå til sidens indhold'.
