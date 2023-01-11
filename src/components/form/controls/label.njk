@@ -2,19 +2,29 @@
 
 {% macro label(params) %}
 {%- if params.text -%}
-<label class="form-label{% if params.classes %} {{params.classes}}{% endif %}" for="{{params.for}}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>{{ params.text }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}{% if params.srOnly %}<span class="sr-only"> {{ params.srOnly }}</span>{% endif %}</label>
+<label 
+    class="form-label{% if params.classes %} {{params.classes}}{% endif %}" 
+    for="{{params.for}}"
+    {% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
+        {{ params.text }}
+        {% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}
+        {% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
+        {% if params.srOnly %}<span class="sr-only"> {{ params.srOnly }}</span>{% endif %}
+</label>
 {% if params.tooltip %}
-{{- button({
-    "variant": "unstyled",
-    "attributes": "type=\"button\"",
-    "srOnly": "Hvad betyder det?",
-    "icon": "help",
-    "tooltip": {
-        "text": params.tooltip,
-        "showOnClick": true,
-        "position": "top"
-    } }) 
--}}
+{{ 
+    button({
+        "variant": "unstyled",
+        "attributes": "type=\"button\"",
+        "srOnly": "Hvad betyder det?",
+        "icon": "help",
+        "tooltip": {
+            "text": params.tooltip,
+            "showOnClick": true,
+            "position": "top"
+        } 
+    }) 
+}}
 {% endif %}
 {%- endif -%}
 {% endmacro %}

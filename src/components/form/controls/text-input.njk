@@ -7,7 +7,14 @@
 {% from "components/form/controls/characterlimit.njk" import characterlimit_id as characterlimit_id %}
 
 {% macro textinput(params) %}
-<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+<div 
+    class="form-group
+        {% if params.errorMessage %} form-error{% endif %}
+        {% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}
+        {% if params.characterLimit %} form-limit{% endif %}"
+    {% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}
+    {% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+
     {{
         label({
             text: params.label,
@@ -19,29 +26,34 @@
             tooltip: params.tooltip
         })
     }}
-    {% if params.hint %}
-    {{
-        helptext({
-            text: params.hint,
-            id: params.id
-        })
-    }}
-    {% endif %}
-    {% if params.errorMessage %}
-    {{
-        errorMessage({
-            text: params.errorMessage,
-            id: params.id
-        })
-    }}
-    {% endif %}
+
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+    {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+
     {%- if params.suffix or params.prefix %}
     <div class="form-input-wrapper{% if params.prefix %} form-input-wrapper--prefix{% endif %}{% if params.suffix %} form-input-wrapper--suffix{% endif %}">
     {% endif -%}
     {%- if params.prefix -%}
     <div class="form-input-prefix" aria-hidden="true">{{params.prefix}}</div>
     {%- endif -%}
-    <input class="form-input{% if params.classes.input %} {{params.classes.input}}{% endif %}" id="{{params.id}}"{% if params.value %} value="{{params.value}}"{% endif %} name="{{params.name}}" type="{{params.type | default('text') }}"{% if params.disabled %} disabled="disabled"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}{% if params.errorMessage or params.hint or params.characterLimit %} aria-describedby="{% if params.hint %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}{% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"{% endif %}{% if params.readonly %} readonly{% endif %}{% if params.required or params.requiredLabel %} required{% endif %}{% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %}{% if params.attributes.input %} {{params.attributes.input | safe}}{% endif %} >
+
+    <input 
+        type="{{params.type | default('text') }}" 
+        id="{{params.id}}" 
+        name="{{params.name}}" 
+        class="form-input{% if params.classes.input %} {{params.classes.input}}{% endif %}"
+        {% if params.value %} value="{{params.value}}"{% endif %}
+        {% if params.disabled %} disabled="disabled"{% endif %}
+        {% if params.errorMessage %} aria-invalid="true"{% endif %}
+        {% if params.errorMessage or params.helptext or params.characterLimit %} aria-describedby="
+            {% if params.helptext %}{{helptext_id(params.id)}} {% endif %}
+            {% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}
+            {% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"
+        {% endif %}
+        {% if params.readonly %} readonly{% endif %}
+        {% if params.required or params.requiredLabel %} required{% endif %}
+        {% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %}
+        {% if params.attributes.input %} {{params.attributes.input | safe}}{% endif %} >
     {%- if params.suffix -%}
     <div class="form-input-suffix" aria-hidden="true">{{params.suffix}}</div>
     {%- endif -%}

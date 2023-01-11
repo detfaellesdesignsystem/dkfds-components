@@ -359,6 +359,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 
 .form-radio.radio-large + label + .form-hint{
   padding-left: calc(#{$radio-size-large} + 8px);
+  margin-top: -8px;
 }
 //checked checkbox
 .form-checkbox.checkbox-large{

@@ -1,7 +1,7 @@
 - name: id
   type: string
   required: false
-  description: The id of the radio group.
+  description: The id of the radio group. Only used for associating 
 - name: groupname
   type: string
   required: true
@@ -17,7 +17,7 @@
 - name: classes
   type: string
   required: false
-  description: Classes for the radio group.
+  description: Classes for the radio group (formgroup element).
 - name: optionalLabel
   type: boolean
   required: false
@@ -34,22 +34,42 @@
   type: string
   required: false
   description: Error message for the radio group.
+- name: tooltip
+  type: string
+  required: false
+  description: Additional text to show in a tooltip next to the legend
 - name: items
   type: object
   required: true
   description: The radio buttons in the group.
-  - name: id
-    type: string
-    required: true
-    description: Id of the radio button.
   - name: value
     type: string
     required: true
     description: Value sent to the server on submit.
-  - name: inputClasses
+  - name: label
     type: string
+    required: true
+    description: Label for the radio button (the text written next to the radio button)
+  - name: isLarge
+    type: boolean
     required: false
-    description: Additional classes for the radio button.
+    description: Choose whether the radio buttons should be small or large. Defaults to true (large).
+  - name: classes
+    type: object
+    required: false
+    description: Classes for the radio button elements.
+    - name: formgroupradio
+      type: string
+      required: false
+      description: Additional classes to add to the div with the form-group-radio class.
+    - name: input
+      type: string
+      required: false
+      description: Classes to add to the input.
+    - name: label
+      type: string
+      required: false
+      description: Classes to add to the label.
   - name: disabled
     type: boolean
     required: false
@@ -58,30 +78,30 @@
     type: boolean
     required: false
     description: Set to true to mark the radio button as selected.
-  - name: inputAttributes
-    type: string
-    required: false
-    description: Additional attributes for the radio button.
-  - name: label
-    type: string
-    required: true
-    description: Label for the radio button (the text written next to the radio button)
-  - name: labelClasses
-    type: string
-    required: false
-    description: Additional classes for the label.
-  - name: labelAttributes
-    type: string
-    required: false
-    description: Additional attributes for the label.
-  - name: srOnly
-    type: string
-    required: false
-    description: Additional text only accessible for screenreaders. The text is appended to the label text.
   - name: helptext
     type: string
     required: false
     description: Helptext displayed under the radio button label.
+  - name: srOnly
+    type: string
+    required: false
+    description: Additional text only accessible for screenreaders. The text is appended to the label text.
+  - name: attributes
+    type: object
+    required: false
+    description: Attributes for the radio button elements.
+    - name: formgroupradio
+      type: string
+      required: false
+      description: Attributes to add to the div with the form-group-radio class.
+    - name: input
+      type: string
+      required: false
+      description: Attributes to add to the input.
+    - name: label
+      type: string
+      required: false
+      description: Attributes to add to the label.
   - name: hiddenContent
     type: string
     required: false

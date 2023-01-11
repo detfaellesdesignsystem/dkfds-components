@@ -15,7 +15,7 @@ params:
   type: string
   required: false
   description: Additional text to show in a tooltip next to the label
-- name: hint
+- name: helptext
   type: string
   required: false
   description: Text under label meant to help the user enter the correct value.

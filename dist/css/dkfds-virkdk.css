@@ -7547,6 +7547,7 @@ input[readonly][type=text], textarea[readonly]{
 
 .form-radio.radio-large + label + .form-hint{
   padding-left:calc(32px + 8px);
+  margin-top:-8px;
 }
 
 .form-checkbox.checkbox-large{
