@@ -7,6 +7,7 @@
 {% from "components/form/controls/characterlimit.njk" import characterlimit_id as characterlimit_id %}
 
 {% macro textinput(params) %}
+{% set isRequired = params.required | default(true) %}
 <div 
     class="form-group
         {% if params.errorMessage %} form-error{% endif %}
@@ -46,12 +47,12 @@
         {% if params.disabled %} disabled="disabled"{% endif %}
         {% if params.errorMessage %} aria-invalid="true"{% endif %}
         {% if params.errorMessage or params.helptext or params.characterLimit %} aria-describedby="
-            {% if params.helptext %}{{helptext_id(params.id)}} {% endif %}
-            {% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}
+            {% if params.helptext %}{{helptext_id(params.id)}}{% endif %}
+            {% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}
             {% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"
         {% endif %}
         {% if params.readonly %} readonly{% endif %}
-        {% if params.required or params.requiredLabel %} required{% endif %}
+        {% if isRequired or params.requiredLabel %} required{% endif %}
         {% if params.autocomplete %} autocomplete="{{params.autocomplete}}"{% endif %}
         {% if params.attributes.input %} {{params.attributes.input | safe}}{% endif %} >
     {%- if params.suffix -%}

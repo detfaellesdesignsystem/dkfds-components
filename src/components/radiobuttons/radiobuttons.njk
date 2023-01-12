@@ -13,9 +13,10 @@
         {% if params.collapsedItems %} js-radio-toggle-group{% endif %}">
         
     {%- if params.items and params.groupname -%}
-    <fieldset
+    <fieldset role="radiogroup"
         {% if params.errorMessage %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}
-        {% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}>
+        {% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}
+        {% if params.errorMessage %} aria-invalid="true"{% endif %}>
         <legend class="form-label">
             {{ params.radiogroupLegend }}
             {% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}
