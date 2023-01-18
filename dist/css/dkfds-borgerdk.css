@@ -9226,6 +9226,12 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-color:transparent;
   color:inherit;
 }
+.date-picker__calendar__previous-year[disabled],
+.date-picker__calendar__previous-month[disabled],
+.date-picker__calendar__next-year[disabled],
+.date-picker__calendar__next-month[disabled]{
+  cursor:default;
+}
 
 .date-picker__calendar__previous-year:not([disabled]){
   background-image:url("../img/svg-icons/chevron-double-left.svg");
