@@ -17,6 +17,9 @@ const DATE_PICKER_CALENDAR_CLASS = `${DATE_PICKER_CLASS}__calendar`;
 const DATE_PICKER_STATUS_CLASS = `${DATE_PICKER_CLASS}__status`;
 const CALENDAR_DATE_CLASS = `${DATE_PICKER_CALENDAR_CLASS}__date`;
 
+const DIALOG_WRAPPER_CLASS = `dialog-wrapper`;
+const DATE_PICKER_DIALOG_WRAPPER = `.${DIALOG_WRAPPER_CLASS}`;
+
 const CALENDAR_DATE_FOCUSED_CLASS = `${CALENDAR_DATE_CLASS}--focused`;
 const CALENDAR_DATE_SELECTED_CLASS = `${CALENDAR_DATE_CLASS}--selected`;
 const CALENDAR_DATE_PREVIOUS_MONTH_CLASS = `${CALENDAR_DATE_CLASS}--previous-month`;
@@ -78,17 +81,23 @@ const CALENDAR_YEAR_FOCUSED = `.${CALENDAR_YEAR_FOCUSED_CLASS}`;
 
 let text = {
   "open_calendar": "Åbn kalender",
+  "choose_a_date": "Vælg en dato",
+  "choose_a_date_between": "Vælg en dato mellem {minDay}. {minMonthStr} {minYear} og {maxDay}. {maxMonthStr} {maxYear}",
+  "choose_a_date_before": "Vælg en dato. Der kan vælges indtil {maxDay}. {maxMonthStr} {maxYear}.",
+  "choose_a_date_after": "Vælg en dato. Der kan vælges fra {minDay}. {minMonthStr} {minYear} og fremad.",
   "aria_label_date": "{dayStr} den {day}. {monthStr} {year}",
+  "current_month_displayed": "Viser {monthLabel} {focusedYear}",
+  "first_possible_date": "Første valgbare dato",
+  "last_possible_date": "Sidste valgbare dato",
   "previous_year": "Navigér ét år tilbage",
   "previous_month": "Navigér én måned tilbage",
   "next_month": "Navigér én måned frem",
   "next_year": "Navigér ét år frem",
   "select_month": "Vælg måned",
   "select_year": "Vælg år",
-  "date_selected": "Dato valgt",
   "previous_years": "Navigér {years} år tilbage",
   "next_years": "Navigér {years} år frem",
-  "guide": "Du kan navigere mellem dage ved at bruge højre og venstre piletaster, uger ved at bruge op og ned piletaster, måneder ved at bruge page up og page down-tasterne og år ved at at taste shift og page up eller ned. Home og end-tasten navigerer til start eller slutning af en uge.",
+  "guide": "Navigerer du med tastatur, kan du skifte dag med højre og venstre piletaster, uger med op og ned piletaster, måneder med page up og page down-tasterne og år med shift-tasten plus page up eller page down. Home og end-tasten navigerer til start eller slutning af en uge.",
   "months_displayed": "Vælg en måned",
   "years_displayed": "Viser år {start} til {end}. Vælg et år.",
   "january": "januar",
@@ -653,6 +662,7 @@ const changeElementValue = (el, value = "") => {
  * @typedef {Object} DatePickerContext
  * @property {HTMLDivElement} calendarEl
  * @property {HTMLElement} datePickerEl
+ * @property {HTMLDivElement} dialogEl
  * @property {HTMLInputElement} internalInputEl
  * @property {HTMLInputElement} externalInputEl
  * @property {HTMLDivElement} statusEl
@@ -689,6 +699,7 @@ const getDatePickerContext = (el) => {
   const toggleBtnEl = datePickerEl.querySelector(DATE_PICKER_BUTTON);
   const statusEl = datePickerEl.querySelector(DATE_PICKER_STATUS);
   const firstYearChunkEl = datePickerEl.querySelector(CALENDAR_YEAR);
+  const dialogEl = datePickerEl.querySelector(DATE_PICKER_DIALOG_WRAPPER);
 
   const inputDate = parseDateString(
     externalInputEl.value,
@@ -711,6 +722,7 @@ const getDatePickerContext = (el) => {
     calendarDate,
     minDate,
     toggleBtnEl,
+    dialogEl,
     selectedDate,
     maxDate,
     firstYearChunkEl,
@@ -721,7 +733,7 @@ const getDatePickerContext = (el) => {
     calendarEl,
     rangeDate,
     defaultDate,
-    statusEl,
+    statusEl
   };
 };
 
@@ -893,13 +905,47 @@ const enhanceDatePicker = (el) => {
   externalInputEl.type = "text";
   externalInputEl.name = "";
 
+  let dialogTitle = text.choose_a_date;
+  const hasMinDate = minDate !== undefined && minDate !== "";
+  const isDefaultMinDate =  minDate !== undefined && minDate !== "" && parseDateString(DEFAULT_MIN_DATE).getTime() === minDate.getTime();
+  const hasMaxDate = maxDate !== undefined && maxDate !== "";
+  
+  if (hasMinDate && !isDefaultMinDate && hasMaxDate) {
+    const minDay = minDate.getDate();
+    const minMonth = minDate.getMonth();
+    const minMonthStr = MONTH_LABELS[minMonth];
+    const minYear = minDate.getFullYear();
+    const maxDay = maxDate.getDate();
+    const maxMonth = maxDate.getMonth();
+    const maxMonthStr = MONTH_LABELS[maxMonth];
+    const maxYear = maxDate.getFullYear();
+    dialogTitle = text.choose_a_date_between.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear).replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
+  }
+  else if (hasMinDate && !isDefaultMinDate && !hasMaxDate) {
+    const minDay = minDate.getDate();
+    const minMonth = minDate.getMonth();
+    const minMonthStr = MONTH_LABELS[minMonth];
+    const minYear = minDate.getFullYear();
+    dialogTitle = text.choose_a_date_after.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear);
+  }
+  else if (hasMaxDate) {
+    const maxDay = maxDate.getDate();
+    const maxMonth = maxDate.getMonth();
+    const maxMonthStr = MONTH_LABELS[maxMonth];
+    const maxYear = maxDate.getFullYear();
+    dialogTitle = text.choose_a_date_before.replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
+  }
+
+  const guideID = externalInputEl.getAttribute("id") + "-guide";
+
   calendarWrapper.appendChild(externalInputEl);
   calendarWrapper.insertAdjacentHTML(
     "beforeend",
     [
       `<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="${text.open_calendar}">&nbsp;</button>`,
-      `<div class="${DATE_PICKER_CALENDAR_CLASS}" role="dialog" aria-modal="true" hidden></div>`,
+      `<div class="${DIALOG_WRAPPER_CLASS}" role="dialog" aria-modal="true" aria-label="${dialogTitle}" aria-describedby="${guideID}"><div role="application"><div class="${DATE_PICKER_CALENDAR_CLASS}" hidden></div></div></div>`,
       `<div class="sr-only ${DATE_PICKER_STATUS_CLASS}" role="status" aria-live="polite"></div>`,
+      `<div class="sr-only" id="${guideID}">${text.guide}</div>`
     ].join("")
   );
 
@@ -947,6 +993,7 @@ const renderCalendar = (el, _dateToDisplay) => {
     maxDate,
     minDate,
     rangeDate,
+    dialogEl
   } = getDatePickerContext(el);
   const todaysDate = today();
   let dateToDisplay = _dateToDisplay || todaysDate;
@@ -980,7 +1027,10 @@ const renderCalendar = (el, _dateToDisplay) => {
     const day = dateToRender.getDate();
     const month = dateToRender.getMonth();
     const year = dateToRender.getFullYear();
-    const dayOfWeek = dateToRender.getDay();
+    let dayOfWeek = dateToRender.getDay() - 1;
+    if (dayOfWeek === -1) {
+      dayOfWeek = 6;
+    }
 
     const formattedDate = formatDate(dateToRender);
 
@@ -1051,7 +1101,7 @@ const renderCalendar = (el, _dateToDisplay) => {
       data-year="${year}" 
       data-value="${formattedDate}"
       aria-label="${ariaLabelDate}"
-      aria-selected="${isSelected ? "true" : "false"}"
+      aria-current="${isSelected ? "date" : "false"}"
       ${isDisabled ? `disabled="disabled"` : ""}
     >${day}</button>`;
   };
@@ -1136,19 +1186,25 @@ const renderCalendar = (el, _dateToDisplay) => {
   calendarEl.parentNode.replaceChild(newCalendar, calendarEl);
 
   datePickerEl.classList.add(DATE_PICKER_ACTIVE_CLASS);
-
+  if (dialogEl.hidden === true) {
+    dialogEl.hidden = false;
+  }
+  
   const statuses = [];
 
-  if (isSameDay(selectedDate, focusedDate)) {
-    statuses.push(text.date_selected);
+  if (calendarWasHidden) {
+    statusEl.textContent = "";
+  } 
+  else if (_dateToDisplay.getTime() === minDate.getTime()) {
+    statuses.push(text.first_possible_date);
+  }
+  else if (maxDate !== undefined && maxDate !== "" && _dateToDisplay.getTime() === maxDate.getTime()) {
+    statuses.push(text.last_possible_date);
+  }
+  else {
+    statuses.push(text.current_month_displayed.replace(/{monthLabel}/, monthLabel).replace(/{focusedYear}/, focusedYear));
   }
 
-  if (calendarWasHidden) {
-    statuses.push(text.guide);
-    statusEl.textContent = "";
-  } else {
-    statuses.push(`${monthLabel} ${focusedYear}`);
-  }
   statusEl.textContent = statuses.join(". ");
 
   return newCalendar;
@@ -1259,11 +1315,12 @@ const hideCalendar = (el) => {
 const selectDate = (calendarDateEl) => {
   if (calendarDateEl.disabled) return;
 
-  const { datePickerEl, externalInputEl } = getDatePickerContext(
+  const { datePickerEl, externalInputEl, dialogEl } = getDatePickerContext(
     calendarDateEl
   );
   setCalendarValue(calendarDateEl, calendarDateEl.dataset.value);
   hideCalendar(datePickerEl);
+  dialogEl.hidden = true;
 
   externalInputEl.focus();
 };
@@ -1276,6 +1333,7 @@ const selectDate = (calendarDateEl) => {
 const toggleCalendar = (el) => {
   if (el.disabled) return;
   const {
+    dialogEl,
     calendarEl,
     inputDate,
     minDate,
@@ -1293,6 +1351,7 @@ const toggleCalendar = (el) => {
     newCalendar.querySelector(CALENDAR_DATE_FOCUSED).focus();
   } else {
     hideCalendar(el);
+    dialogEl.hidden = true;
   }
 };
 
@@ -1608,9 +1667,10 @@ const selectYear = (yearEl) => {
  * @param {KeyboardEvent} event the keydown event
  */
 const handleEscapeFromCalendar = (event) => {
-  const { datePickerEl, externalInputEl } = getDatePickerContext(event.target);
+  const { datePickerEl, externalInputEl, dialogEl } = getDatePickerContext(event.target);
 
   hideCalendar(datePickerEl);
+  dialogEl.hidden = true;
   externalInputEl.focus();
 
   event.preventDefault();
