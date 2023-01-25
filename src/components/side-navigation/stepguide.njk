@@ -2,7 +2,8 @@
 {% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
 
 {% macro stepguide(params) %}
-<nav>
+{% set hasMaxWidth = params.hasMaxWidth | default(true) %}
+<nav{% if hasMaxWidth %} class="sidebar-col"{% endif %}>
     <ul class="sidenav-list" role="menu">
         {% for trin in params.steps %}
         {% set disabled = trin.disabled | default(false) %}
@@ -27,6 +28,7 @@
 {% endmacro %}
 
 {% macro overflow_stepguide(params) %}
+{% set hasMaxWidth = params.hasMaxWidth | default(true) %}
 {% set stepsTotal = params.steps | length %}
 {% set currentStep = 0 %}
 {% for trin in params.steps %}
@@ -39,6 +41,9 @@
 {% if params.mediumHide %}
     {% set breakpointClass = "overflow-menu--md-no-responsive" %}
 {% endif %}
+{% if hasMaxWidth %}
+    {% set breakpointClass = breakpointClass + " sidebar-col" %}
+{% endif %}
 {% if params.responsive %}
 {{ 
     overflowmenu({
@@ -47,6 +52,19 @@
             "icon": "arrow-drop-down"
         },
         "classes": breakpointClass,
+        "id": params.id,
+        "openRight": params.openRight,
+        "content": stepguide(params)
+    }) 
+}}
+{% elif hasMaxWidth %}
+{{ 
+    overflowmenu({
+        "button": {
+            "text": buttonText,
+            "icon": "arrow-drop-down"
+        },
+        "classes": "sidebar-col",
         "id": params.id,
         "openRight": params.openRight,
         "content": stepguide(params)
