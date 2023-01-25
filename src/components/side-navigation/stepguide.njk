@@ -7,7 +7,7 @@
         {% for trin in params.steps %}
         {% set disabled = trin.disabled | default(false) %}
         <li{% if disabled or trin.active %} class="{% if disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
-            <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem" {% if trin.active %}aria-current="page"{% endif %}{% if trin.active %} aria-current="page"{% endif %}>
+            <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem"{% if trin.active %} aria-current="page"{% endif %}>
                 <span class="sidenav-number">{{loop.index}}.</span>
                 <div>
                     <span>{{trin.text}}</span>
