@@ -15,6 +15,7 @@ const DATE_PICKER_EXTERNAL_INPUT_CLASS = `${DATE_PICKER_CLASS}__external-input`;
 const DATE_PICKER_BUTTON_CLASS = `${DATE_PICKER_CLASS}__button`;
 const DATE_PICKER_CALENDAR_CLASS = `${DATE_PICKER_CLASS}__calendar`;
 const DATE_PICKER_STATUS_CLASS = `${DATE_PICKER_CLASS}__status`;
+const DATE_PICKER_GUIDE_CLASS = `${DATE_PICKER_CLASS}__guide`;
 const CALENDAR_DATE_CLASS = `${DATE_PICKER_CALENDAR_CLASS}__date`;
 
 const DIALOG_WRAPPER_CLASS = `dialog-wrapper`;
@@ -60,6 +61,7 @@ const DATE_PICKER_INTERNAL_INPUT = `.${DATE_PICKER_INTERNAL_INPUT_CLASS}`;
 const DATE_PICKER_EXTERNAL_INPUT = `.${DATE_PICKER_EXTERNAL_INPUT_CLASS}`;
 const DATE_PICKER_CALENDAR = `.${DATE_PICKER_CALENDAR_CLASS}`;
 const DATE_PICKER_STATUS = `.${DATE_PICKER_STATUS_CLASS}`;
+const DATE_PICKER_GUIDE = `.${DATE_PICKER_GUIDE_CLASS}`;
 const CALENDAR_DATE = `.${CALENDAR_DATE_CLASS}`;
 const CALENDAR_DATE_FOCUSED = `.${CALENDAR_DATE_FOCUSED_CLASS}`;
 const CALENDAR_DATE_CURRENT_MONTH = `.${CALENDAR_DATE_CURRENT_MONTH_CLASS}`;
@@ -666,6 +668,7 @@ const changeElementValue = (el, value = "") => {
  * @property {HTMLInputElement} internalInputEl
  * @property {HTMLInputElement} externalInputEl
  * @property {HTMLDivElement} statusEl
+ * @property {HTMLDivElement} guideEl
  * @property {HTMLDivElement} firstYearChunkEl
  * @property {Date} calendarDate
  * @property {Date} minDate
@@ -698,6 +701,7 @@ const getDatePickerContext = (el) => {
   const calendarEl = datePickerEl.querySelector(DATE_PICKER_CALENDAR);
   const toggleBtnEl = datePickerEl.querySelector(DATE_PICKER_BUTTON);
   const statusEl = datePickerEl.querySelector(DATE_PICKER_STATUS);
+  const guideEl = datePickerEl.querySelector(DATE_PICKER_GUIDE);
   const firstYearChunkEl = datePickerEl.querySelector(CALENDAR_YEAR);
   const dialogEl = datePickerEl.querySelector(DATE_PICKER_DIALOG_WRAPPER);
 
@@ -733,7 +737,8 @@ const getDatePickerContext = (el) => {
     calendarEl,
     rangeDate,
     defaultDate,
-    statusEl
+    statusEl,
+    guideEl
   };
 };
 
@@ -943,9 +948,9 @@ const enhanceDatePicker = (el) => {
     "beforeend",
     [
       `<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="${text.open_calendar}">&nbsp;</button>`,
-      `<div class="${DIALOG_WRAPPER_CLASS}" role="dialog" aria-modal="true" aria-label="${dialogTitle}" aria-describedby="${guideID}"><div role="application"><div class="${DATE_PICKER_CALENDAR_CLASS}" hidden></div></div></div>`,
+      `<div class="${DIALOG_WRAPPER_CLASS}" role="dialog" aria-modal="true" aria-label="${dialogTitle}" aria-describedby="${guideID}" hidden><div role="application"><div class="${DATE_PICKER_CALENDAR_CLASS}" hidden></div></div></div>`,
       `<div class="sr-only ${DATE_PICKER_STATUS_CLASS}" role="status" aria-live="polite"></div>`,
-      `<div class="sr-only" id="${guideID}">${text.guide}</div>`
+      `<div class="sr-only ${DATE_PICKER_GUIDE_CLASS}" id="${guideID}" hidden>${text.guide}</div>`
     ].join("")
   );
 
@@ -993,7 +998,8 @@ const renderCalendar = (el, _dateToDisplay) => {
     maxDate,
     minDate,
     rangeDate,
-    dialogEl
+    dialogEl,
+    guideEl
   } = getDatePickerContext(el);
   const todaysDate = today();
   let dateToDisplay = _dateToDisplay || todaysDate;
@@ -1188,6 +1194,9 @@ const renderCalendar = (el, _dateToDisplay) => {
   datePickerEl.classList.add(DATE_PICKER_ACTIVE_CLASS);
   if (dialogEl.hidden === true) {
     dialogEl.hidden = false;
+    if (guideEl.hidden) {
+      guideEl.hidden = false;
+    }
   }
   
   const statuses = [];
@@ -1315,12 +1324,13 @@ const hideCalendar = (el) => {
 const selectDate = (calendarDateEl) => {
   if (calendarDateEl.disabled) return;
 
-  const { datePickerEl, externalInputEl, dialogEl } = getDatePickerContext(
+  const { datePickerEl, externalInputEl, dialogEl, guideEl } = getDatePickerContext(
     calendarDateEl
   );
   setCalendarValue(calendarDateEl, calendarDateEl.dataset.value);
   hideCalendar(datePickerEl);
   dialogEl.hidden = true;
+  guideEl.hidden = true;
 
   externalInputEl.focus();
 };
@@ -1339,6 +1349,7 @@ const toggleCalendar = (el) => {
     minDate,
     maxDate,
     defaultDate,
+    guideEl
   } = getDatePickerContext(el);
 
   if (calendarEl.hidden) {
@@ -1352,6 +1363,7 @@ const toggleCalendar = (el) => {
   } else {
     hideCalendar(el);
     dialogEl.hidden = true;
+    guideEl.hidden = true;
   }
 };
 
@@ -1667,10 +1679,11 @@ const selectYear = (yearEl) => {
  * @param {KeyboardEvent} event the keydown event
  */
 const handleEscapeFromCalendar = (event) => {
-  const { datePickerEl, externalInputEl, dialogEl } = getDatePickerContext(event.target);
+  const { datePickerEl, externalInputEl, dialogEl, guideEl } = getDatePickerContext(event.target);
 
   hideCalendar(datePickerEl);
   dialogEl.hidden = true;
+  guideEl.hidden = true;
   externalInputEl.focus();
 
   event.preventDefault();
