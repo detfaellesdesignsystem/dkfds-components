@@ -12,7 +12,7 @@
                     {%- endfor -%}
                     <th>
                         <input id="{{params.id}}-check-all" type="checkbox" class="form-checkbox" aria-controls="{{ariacontrols}}">
-                        <label for="{{params.id}}-check-all" aria-label="Vælg alle rækker"></label>
+                        <label for="{{params.id}}-check-all"><span class="sr-only">Vælg alle rækker</span></label>
                     </th>
                 {%- endif -%}
                 {% set sortingColumn = 0 %}
@@ -59,7 +59,7 @@
             <tr>
                 {%- if params.selectable -%}
                 <td><input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0].content}}">
-                    <label for="{{params.id}}-check-{{loop.index}}" aria-label="Vælg række"><span class="sr-only">Vælg række</span></label>
+                    <label for="{{params.id}}-check-{{loop.index}}"><span class="sr-only">Vælg række</span></label>
                 </td>
                 {%- endif -%}
                 {% for td in row %}
