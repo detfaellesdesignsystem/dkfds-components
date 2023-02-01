@@ -11772,7 +11772,7 @@ a.skipnav:focus{
 .overflow-menu--sort .button-overflow-menu svg{
   margin-right:4px;
 }
-.overflow-menu--sort .overflow-menu-inner .overflow-list li[aria-selected=true] button{
+.overflow-menu--sort .overflow-menu-inner .overflow-list li[aria-current=true] button{
   font-weight:600;
   background-image:url("../img/svg-icons/done.svg");
   background-repeat:no-repeat;

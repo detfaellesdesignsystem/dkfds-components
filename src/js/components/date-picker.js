@@ -1432,7 +1432,7 @@ const displayMonthSelection = (el, monthToDisplay) => {
         class="${classes.join(" ")}" 
         data-value="${index}"
         data-label="${month}"
-        aria-selected="${isSelected ? "true" : "false"}"
+        aria-current="${isSelected ? "true" : "false"}"
         ${isDisabled ? `disabled="disabled"` : ""}
       >${month}</button>`;
   });
@@ -1539,7 +1539,7 @@ const displayYearSelection = (el, yearToDisplay) => {
         tabindex="${tabindex}"
         class="${classes.join(" ")}" 
         data-value="${yearIndex}"
-        aria-selected="${isSelected ? "true" : "false"}"
+        aria-current="${isSelected ? "true" : "false"}"
         ${isDisabled ? `disabled="disabled"` : ""}
       >${yearIndex}</button>`
     );
