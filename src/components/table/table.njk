@@ -18,39 +18,35 @@
                 {% set sortingColumn = 0 %}
                 {% if params.sorting.column %}{% set sortingColumn = params.sorting.column %}{% endif %}
                 {% for th in params.thead %}
-                    {% if th.td %}
-                        <td{% if th.classes %} class="{{ th.classes }}"{% endif %}></td>
-                    {% else %}
-                        <th{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
-                            {{- th.headerContent | safe -}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" %}{{ button({
-                                "variant": "unstyled",
-                                "id": th.sortingID,
-                                "attributes": "type=\"button\"",
-                                "srOnly": "Sortér faldende efter " + th.headerContent,
-                                "icon": "sort-table-ascending",
-                                "classes": "ml-2",
-                                "iconClasses": "mr-0" }) 
-                            }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" %}
-                            {{ button({
-                                "variant": "unstyled",
-                                "id": th.sortingID,
-                                "attributes": "type=\"button\"",
-                                "srOnly": "Sortér stigende efter " + th.headerContent,
-                                "icon": "sort-table-descending",
-                                "classes": "ml-2",
-                                "iconClasses": "mr-0" }) 
-                            }}{% elif th.sorting %}
-                            {{ button({
-                                "variant": "unstyled",
-                                "id": th.sortingID,
-                                "attributes": "type=\"button\"",
-                                "srOnly": "Sortér efter " + th.headerContent,
-                                "icon": "sort-table-none",
-                                "classes": "ml-2",
-                                "iconClasses": "mr-0" }) 
-                            }}{% endif %}
-                        </th>
-                    {% endif %}
+                    <th scope="col"{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
+                        {{- th.headerContent | safe -}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" %}{{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér faldende efter " + th.headerContent,
+                            "icon": "sort-table-ascending",
+                            "classes": "ml-2",
+                            "iconClasses": "mr-0" }) 
+                        }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" %}
+                        {{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér stigende efter " + th.headerContent,
+                            "icon": "sort-table-descending",
+                            "classes": "ml-2",
+                            "iconClasses": "mr-0" }) 
+                        }}{% elif th.sorting %}
+                        {{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér efter " + th.headerContent,
+                            "icon": "sort-table-none",
+                            "classes": "ml-2",
+                            "iconClasses": "mr-0" }) 
+                        }}{% endif %}
+                    </th>
                 {% endfor %}
             </tr>
         </thead>
