@@ -11772,7 +11772,7 @@ a.skipnav:focus{
 .overflow-menu--sort .button-overflow-menu svg{
   margin-right:4px;
 }
-.overflow-menu--sort .overflow-menu-inner .overflow-list li[aria-current=true] button{
+.overflow-menu--sort .overflow-menu-inner .overflow-list li button[aria-current=true]{
   font-weight:600;
   background-image:url("../img/svg-icons/done.svg");
   background-repeat:no-repeat;
@@ -11918,10 +11918,10 @@ a.skipnav:focus{
   margin-left:0;
 }
 
-[data-tooltip]{
+.js-tooltip{
   display:inline-block;
 }
-[data-tooltip] svg{
+.js-tooltip svg{
   pointer-events:none;
 }
 

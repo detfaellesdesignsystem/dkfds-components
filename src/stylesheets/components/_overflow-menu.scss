@@ -263,7 +263,7 @@
             }
         }
 
-        .overflow-menu-inner .overflow-list li[aria-current="true"] button {
+        .overflow-menu-inner .overflow-list li button[aria-current="true"] {
             font-weight: font-weight("semibold");
             @include add-background-svg('done');
             background-repeat: no-repeat;

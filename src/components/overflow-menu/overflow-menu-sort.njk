@@ -7,7 +7,7 @@
         <div class="overflow-menu-inner" id="{{ params.id }}-panel" aria-hidden="true">
             <ul class='overflow-list' role="menu">
                 {%- for item in params.items -%}
-                    <li role="menuitem"{% if item.selected %} aria-current="true"{% endif %}><button id="{{item.id}}">{{item.text}}</button></li>
+                    <li role="menuitem"><button id="{{item.id}}"{% if item.selected %} aria-current="true"{% endif %}>{{item.text}}</button></li>
                 {%- endfor -%}
             </ul>
         </div>

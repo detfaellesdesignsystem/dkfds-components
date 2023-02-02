@@ -195,7 +195,7 @@ function positionAt(parent, tooltip, pos) {
 
 
 function closeAllTooltips(event, force = false) {
-    if (force || (!event.target.hasAttribute('data-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content'))) {
+    if (force || (!event.target.classList.contains('js-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content'))) {
         var elements = document.querySelectorAll('.tooltip-popper');
         for (var i = 0; i < elements.length; i++) {
             let trigger = document.querySelector('[aria-describedby=' + elements[i].getAttribute('id') + ']');
