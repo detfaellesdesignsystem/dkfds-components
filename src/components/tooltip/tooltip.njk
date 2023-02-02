@@ -1,0 +1,3 @@
+{%- macro tooltip(params) -%}
+data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger="click"{% endif %}{% if params.position %} data-tooltip-position="{{ params.position }}"{% endif %}
+{%- endmacro -%}

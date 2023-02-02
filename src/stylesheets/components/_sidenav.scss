@@ -39,9 +39,8 @@
     }
 
     a {
-      overflow:hidden;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
 
       ul {
         width:100%
@@ -60,9 +59,15 @@
         text-align: center;
         float: right;
       }
-      .sidenav-title{
+
+      /* 'sidenav-title' used before 9.0.0 to style title text in stepguide - to be removed at some point as breaking change */
+      .sidenav-title {
         margin-left: units(2);
         white-space: pre-line;
+      }
+
+      .sidenav-number {
+        margin-right: units(2);
       }
 
       .sidenav-information {
@@ -198,8 +203,6 @@
 
 }
 
-.sidebar-col{
-  @include media-breakpoint-up(md) {
-    flex: 0 0 300px; //300 = 3 columns width
-  }
+.sidebar-col {
+  max-width: 300px;
 }

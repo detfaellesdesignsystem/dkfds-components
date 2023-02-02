@@ -1,21 +1,22 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro modal(params) %}
 {% set forcedAction = params.forcedAction | default(false) %}
-	<div class="fds-modal" id="{{ params.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{ params.headingID | default('modal-id-1-title') }}"{% if forcedAction %}data-modal-forced-action{% endif %}>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="{{ params.headingId | default('modal-id-1-title') }}">
-          {{ params.heading | default('Modal title') }}
-        </h2>
-        {% if not forcedAction %}<button class="modal-close function-link" data-modal-close><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#close"></use></svg>Luk</button>{% endif %}
-      </div>
-      <div class="modal-body">
-        {{ params.content | safe }}
-      </div>
-      {% if  params.actions %}
-      <div class="modal-footer">
-        {{ params.actions | safe }}
-      </div>
-      {% endif %}
+<div class="fds-modal" id="{{ params.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{params.id}}-heading"{% if forcedAction %} data-modal-forced-action{% endif %}>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title" id="{{params.id}}-heading">
+        {{ params.heading | default('Modal title') }}
+      </h2>
+      {% if not forcedAction %}<button class="modal-close function-link" data-modal-close>{{ icon_svg({"name": "close"}) }}Luk</button>{% endif %}
     </div>
-	</div>
+    <div class="modal-body">
+      {{ params.content | safe }}
+    </div>
+    {% if  params.actions %}
+    <div class="modal-footer">
+      {{ params.actions | safe }}
+    </div>
+    {% endif %}
+  </div>
+</div>
 {% endmacro %}

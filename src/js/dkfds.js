@@ -170,7 +170,7 @@ var init = function (options) {
   Responsive tables
   ---------------------
   */
-  const jsSelectorTable = scope.querySelectorAll('table:not(.dataTable)');
+  const jsSelectorTable = scope.querySelectorAll('table.table--responsive-headers');
   for(let c = 0; c < jsSelectorTable.length; c++){
     new ResponsiveTable(jsSelectorTable[ c ]);
   }

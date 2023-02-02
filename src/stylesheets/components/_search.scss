@@ -2,6 +2,7 @@
   display: flex;
   
   .form-input{
+    background-color: color($search-background-color);
     margin-top: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;

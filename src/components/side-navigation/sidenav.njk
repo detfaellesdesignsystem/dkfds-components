@@ -1,11 +1,12 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {% macro nav_list(params) %}
-{% for item in params.links %}<li{% if item.current or item.active or item.isAnchorLinks %} class="{% if item.current %}current{% endif %} {% if item.active %}{% if item.current %} {% endif %}active{% endif %} {% if item.isAnchorLinks %}{% if item.current or item.active %} {% endif %}has-anchor-links{% endif %}"{% endif %} role="none">
-  <a href="{{ item.href | default('#')}}" role="menuitem" {% if item.current %}aria-current="true"{% endif %} {% if item.active %}aria-current="page"{% endif %}>
-    {% if item.iconbefore %}<span class="sidenav-icon-before">{{ icon_svg({"name": item.iconbefore}) }} </span>{% endif %}{{ item.text }}{% if item.information %} <span class="sidenav-information">{{item.information}}</span>{% endif %}
-  </a>
-  {% if item.current and item.links %}<ul class="{{ params.subclass }}" role="menu">{{ nav_list({"links":item.links, "subclass": params.subclass}) }}</ul>{% endif %}
-  {% if item.active and item.links %}<ul class="{{ params.subclass }}" role="menu">{{ nav_list({"links":item.links, "subclass": params.subclass}) }}</ul>{% endif %}
-</li>{% endfor %}
+{% for item in params.links %}
+  <li{% if item.current or item.active or item.isAnchorLinks %} class="{% if item.current %}current{% endif %} {% if item.active %}{% if item.current %} {% endif %}active{% endif %} {% if item.isAnchorLinks %}{% if item.current or item.active %} {% endif %}has-anchor-links{% endif %}"{% endif %}>
+    <a href="{{ item.href | default('#')}}" {% if item.active %} aria-current="page"{% endif %}>
+      {% if item.iconbefore %}<span class="sidenav-icon-before">{{ icon_svg({"name": item.iconbefore}) }} </span>{% endif %}<div>{{ item.text }}{% if item.information %} <span class="sidenav-information">{{item.information}}</span>{% endif %}</div>
+    </a>
+    {% if item.current and item.links %}<ul class="{{ params.subclass }}">{{ nav_list({"links":item.links, "subclass": params.subclass}) }}</ul>{% endif %}
+    {% if item.active and item.links %}<ul class="{{ params.subclass }}">{{ nav_list({"links":item.links, "subclass": params.subclass}) }}</ul>{% endif %}
+  </li>{% endfor %}
 {% endmacro %}

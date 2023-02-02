@@ -6,7 +6,6 @@
     "node": ">= 4"
   },
   "main": "dist/js/dkfds.min.js",
-  "jsnext:main": "src/js/start.js",
   "scripts": {
     "build": "gulp build",
     "build:css": "gulp sass",
