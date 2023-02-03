@@ -1,7 +1,7 @@
-.badge{
-  padding:0;
+.badge {
+  padding: 0;
   padding-left: units(3);
-  padding-right:units(3);
+  padding-right: units(3);
   border: none;
   font-weight: font-weight($badge-font-weight);
   color: color($badge-default-text-color);
@@ -9,27 +9,33 @@
   @include font-smoothing;
   text-align: center;
   display: inline-block;
+
   &.badge-large {
     font-size: font-size($badge-large-font-size);
     line-height: units($badge-large-line-height, 'rem');
   }
+
   &.badge-small {
     font-size: font-size($badge-small-font-size);
     line-height: units($badge-small-line-height, 'rem');
   }
-  &.badge-info{
+
+  &.badge-info {
     color: color($badge-info-text-color);
     background-color: color($badge-info-background-color);
   }
-  &.badge-success{
+
+  &.badge-success {
     color: color($badge-success-text-color);
     background-color: color($badge-success-background-color);
   }
-  &.badge-warning{
+
+  &.badge-warning {
     color: color($badge-warning-text-color);
     background-color: color($badge-warning-background-color);
   }
-  &.badge-error{
+
+  &.badge-error {
     color: color($badge-error-text-color);
     background-color: color($badge-error-background-color);
   }

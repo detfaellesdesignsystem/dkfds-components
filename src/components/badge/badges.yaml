@@ -1,9 +1,25 @@
 params:
-- name: classes
-  type: string
-  required: true
-  description: Classes of the badge.
 - name: text
   type: string
   required: true
   description: Text of the badge
+- name: classes
+  type: string
+  required: false
+  description: Classes of the badge
+- name: strong
+  type: boolean
+  required: false
+  description: Set to true, if the text of the badge should be wrapped in a <strong> tag.
+- name: variant
+  type: object
+  required: false
+  description: Choose the badge's variant.
+  - name: size
+    type: string
+    required: false
+    description: Valid entries are "large" and "small". Defaults to "large".
+  - name: status
+    type: string
+    required: false
+    description: Valid entries are "none", "info", "success", "warning", and "error". Defaults to "none".

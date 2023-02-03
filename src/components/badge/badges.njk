@@ -1,3 +1,5 @@
 {%- macro badge(params) -%}
-    <span class="badge {{params.classes}}">{{ params.text }}</span>
+{%- set variantSize = params.variant.size | default("large") -%}
+{%- set variantStatus = params.variant.status | default("none") -%}
+{% if params.strong %}<strong{% else %}<span{% endif %} class="badge badge-{{variantSize}}{% if variantStatus !== 'none' %} badge-{{variantStatus}}{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">{{ params.text }}{% if params.strong %}</strong>{% else %}</span>{% endif %}
 {%- endmacro -%}
