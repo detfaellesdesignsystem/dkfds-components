@@ -1,5 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-<div class="container">
+{% from "components/alerts/alerts.njk" import alert as alert %}
+
 {% macro accordion(params) %}
 {% set bulk = params.openCloseButton | default(false) %}
 {% set multiselectable = params.multiselectable | default(true) %}
@@ -7,34 +8,45 @@
 <ul class="accordion{% if multiselectable %} accordion-multiselectable{% endif %}">
   {%- for item in params.items -%}
   <li>
-    {%- if params.headingLevel !== false -%}
-    <{{params.headingLevel | default('h3') }}>
-    {%- endif -%}
-    <button class="accordion-button{% if item.errorMessage %} accordion-error {% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.errorMessage %} aria-describedby="{{ params.idPrefix }}{{ item.id }}" {% endif %} aria-controls="{{ params.idPrefix }}{{ item.id }}">
+    {% if params.headingLevel !== false %}<{{params.headingLevel | default('h3') }}>{% endif %}
+    <button class="accordion-button{% if item.errorMessage %} accordion-error {% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.errorMessage %} aria-describedby="{{ item.id }}-error" {% endif %} aria-controls="{{ item.id }}">
       {{ item.title }}
-      {%- if item.icon %}
-        <span class="accordion-icon">
-          <span class="icon_text">{{ item.icontext }}</span>  {{ icon_svg({"name": item.icon})}}
-        </span>
-      {% endif -%}
-    </button>
-    {%-  if params.headingLevel !== false -%}
-    </{{params.headingLevel | default('h3') }}>
+      {% if item.variant === "success" %}<span class="accordion-icon">
+        <span class="icon_text">Succes</span>
+        {{ icon_svg({"name": "check-circle"}) }}
+      </span>
+      {% elif item.variant === "warning" %}<span class="accordion-icon">
+        <span class="icon_text">Advarsel</span>
+        {{ icon_svg({"name": "report-problem"}) }}
+      </span>
+      {% elif item.variant === "error" %}<span class="accordion-icon">
+        <span class="icon_text">Fejl</span>
+        {{ icon_svg({"name": "highlight-off"}) }}
+      </span>
+      {% elif item.variant === "info" %}<span class="accordion-icon">
+        <span class="icon_text">Information</span>
+        {{ icon_svg({"name": "info"}) }}
+      </span>
+      {% elif item.variant === "custom" %}<span class="accordion-icon">
+        <span class="icon_text">{{item.custom.text}}</span>
+        {{ icon_svg({"name": item.custom.icon}) }}
+      </span>
+      {% endif %}</button>
+    {%  if params.headingLevel !== false %}</{{params.headingLevel | default('h3') }}>{%- endif -%}
+    {%- set ariahidden = "true" -%}
+    {%- if item.expanded %}
+      {%- set ariahidden = "false" -%}
+    {%- else -%}
+      {%- set ariahidden = "true" -%}
     {%- endif -%}
-       {%- set ariahidden = "true" -%}
-      {%- if item.expanded %}
-        {% set ariahidden = "false" %}
-      {% else -%}
-        {% set ariahidden = "true" %}
-      {% endif -%}
-    <div id="{{ params.idPrefix }}{{ item.id }}"{% if ariahidden %}aria-hidden="{{ariahidden}}"{% endif %} class="accordion-content">
+    <div id="{{ item.id }}"{% if ariahidden %} aria-hidden="{{ariahidden}}"{% endif %} class="accordion-content">
     {%- if item.errorMessage %}
       <div class="alert alert-error" role="alert">
-             <div class="alert-body">
-                 <p class="alert-text">{{item.errorMessage}}</p>
-             </div>
-         </div>
-     {% endif -%}
+        <div class="alert-body" id="{{ item.id }}-error">
+          <p class="alert-text">{{item.errorMessage}}</p>
+        </div>
+      </div>
+    {% endif -%}
       {{ item.content | safe }}
     </div>
   </li>
