@@ -40,13 +40,16 @@
       {%- set ariahidden = "true" -%}
     {%- endif -%}
     <div id="{{ item.id }}"{% if ariahidden %} aria-hidden="{{ariahidden}}"{% endif %} class="accordion-content">
-    {%- if item.errorMessage %}
-      <div class="alert alert-error" role="alert">
-        <div class="alert-body" id="{{ item.id }}-error">
-          <p class="alert-text">{{item.errorMessage}}</p>
-        </div>
-      </div>
-    {% endif -%}
+      {%- if item.errorMessage %}
+      {%- set alertId = "id='" + item.id + "-error'" -%}
+      {{ 
+        alert({
+          "variant": "error",
+          "content": item.errorMessage,
+          "attributes": alertId
+        }) 
+      }}
+      {% endif -%}
       {{ item.content | safe }}
     </div>
   </li>
