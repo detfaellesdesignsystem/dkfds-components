@@ -1,0 +1,37 @@
+params:
+- name: headingLevel
+  type: string
+  required: false
+  description: Heading level of the labels. Default is h3.
+- name: classes
+  type: object
+  required: true
+  description: Classes for the structured list elements.
+  - name: label
+    type: string
+    required: true
+    description: Classes to add around all labels/headings. Must include a col-class.
+  - name: value
+    type: string
+    required: true
+    description: Classes to add around all values. Must include a col-class.
+  - name: edit
+    type: string
+    required: false
+    description: Classes to add around all edit links. If omitted, no edit links will be displayed. Should include a col-class and the class "align-text-md-right".
+- name: items
+  type: object
+  required: true
+  description: The radio buttons in the group.
+  - name: label
+    type: string
+    required: true
+    description: Label/heading for a row.
+  - name: value
+    type: string
+    required: true
+    description: The row value.
+  - name: href
+    type: string
+    required: false
+    description: Link to the page, where the user can edit the row content.

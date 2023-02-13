@@ -1,0 +1,17 @@
+{%- macro structured_list(params) -%}
+{% for row in params.items %}
+<div class="row row-bordered no-gutters">
+    <div class="{{params.classes.label}}">
+        <{{ params.headingLevel | default('h3') }} class="structured-heading">{{ row.label | safe }}</{{ params.headingLevel | default('h3') }}>
+    </div>
+    <div class="{{params.classes.value}}">
+        {{ row.value | safe }}
+    </div>
+    {% if params.classes.edit %}
+    <div class="{{params.classes.edit}}">
+        {% if row.href %}<a href="{{ row.href }}">Redigér<span class="sr-only"> {{row.label | lower }}</span></a>{% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{%- endmacro -%}

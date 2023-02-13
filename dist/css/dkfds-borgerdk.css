@@ -11780,6 +11780,14 @@ a.skipnav:focus{
   background-position:calc(100% - 16px) center;
 }
 
+.structured-heading{
+  margin-top:0px;
+  margin-bottom:0px;
+  font-weight:600;
+  font-size:1.6rem;
+  line-height:2.4rem;
+}
+
 @media (min-width: 768px){
   .tabnav{
     margin:0;
