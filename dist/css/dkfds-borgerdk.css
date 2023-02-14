@@ -10999,6 +10999,9 @@ input[type=search]{
   text-decoration:none;
   color:#1a1a1a;
 }
+.sidenav-list li.sidenav-error{
+  background-color:#ffe0e0;
+}
 .sidenav-list li a{
   display:flex;
   flex-wrap:nowrap;

@@ -55,3 +55,7 @@ params:
     type: boolean
     required: false
     description: Is step disabled?
+  - name: error
+    type: boolean
+    required: false
+    description: Used to mark errors in the step.

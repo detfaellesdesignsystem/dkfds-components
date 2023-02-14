@@ -38,6 +38,10 @@
       color: color($sidenav-link-active-color);
     }
 
+    &.sidenav-error {
+      background-color: color($sidenav-error-background-color);
+    }
+
     a {
       display: flex;
       flex-wrap: nowrap;

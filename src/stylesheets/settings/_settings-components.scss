@@ -43,7 +43,7 @@ $alert-heading-lineheight: 5 !default;
 $alert-heading-color: $alert-text-color !default;
 $alert-close-text-color: $alert-text-color !default;
 
-//Back-to-top
+// Back-to-top
 $back-to-top-button-shadow: 'medium' !default;
 $back-to-top-button-background: 'white' !default;
 
@@ -335,6 +335,7 @@ $sidenav-link-disabled-color: 'disabled' !default;
 $sidenav-link-hover-background-color: 'gray-100' !default;
 $sidenav-link-default-background-color: 'white' !default;
 $sidenav-link-current-background-color: 'gray-100' !default;
+$sidenav-error-background-color: $theme-color-error-light !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
 $sidenav-list-level1-border: 20 !default;
