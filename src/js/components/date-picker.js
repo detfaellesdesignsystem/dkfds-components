@@ -155,7 +155,11 @@ const ENTER_KEYCODE = 13;
 const YEAR_CHUNK = 12;
 
 const DEFAULT_MIN_DATE = "0000-01-01";
-const DEFAULT_EXTERNAL_DATE_FORMAT = "DD/MM/YYYY";
+const DATE_FORMAT_OPTION_1 = "DD/MM/YYYY";
+const DATE_FORMAT_OPTION_2 = "DD-MM-YYYY";
+const DATE_FORMAT_OPTION_3 = "DD.MM.YYYY";
+const DATE_FORMAT_OPTION_4 = "DD MM YYYY";
+const DATE_FORMAT_OPTION_5 = "DD/MM-YYYY";
 const INTERNAL_DATE_FORMAT = "YYYY-MM-DD";
 
 const NOT_DISABLED_SELECTOR = ":not([disabled])";
@@ -454,7 +458,7 @@ const isSameMonth = (dateA, dateB) => {
  * Check if dates are the same date
  *
  * @param {Date} dateA the date to compare
- * @param {Date} dateA the date to compare
+ * @param {Date} dateB the date to compare
  * @returns {boolean} are dates the same date
  */
 const isSameDay = (dateA, dateB) => {
@@ -542,8 +546,8 @@ const parseDateString = (
 
   if (dateString) {
     let monthStr, dayStr, yearStr;
-    if (dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT) {
-      [dayStr, monthStr, yearStr] = dateString.split("/");
+    if (dateFormat === DATE_FORMAT_OPTION_1 || dateFormat === DATE_FORMAT_OPTION_2 || dateFormat === DATE_FORMAT_OPTION_3 || dateFormat === DATE_FORMAT_OPTION_4 || dateFormat === DATE_FORMAT_OPTION_5) {
+      [dayStr, monthStr, yearStr] = dateString.split(/-|\.|\/|\s/);
     } else {
       [yearStr, monthStr, dayStr] = dateString.split("-");
     }
@@ -596,7 +600,7 @@ const parseDateString = (
 };
 
 /**
- * Format a date to format MM-DD-YYYY
+ * Format a date to format DD-MM-YYYY
  *
  * @param {Date} date the date to format
  * @param {string} dateFormat the format of the date string
@@ -611,8 +615,21 @@ const formatDate = (date, dateFormat = INTERNAL_DATE_FORMAT) => {
   const day = date.getDate();
   const year = date.getFullYear();
 
-  if (dateFormat === DEFAULT_EXTERNAL_DATE_FORMAT) {
+  if (dateFormat === DATE_FORMAT_OPTION_1) {
     return [padZeros(day, 2), padZeros(month, 2), padZeros(year, 4)].join("/");
+  }
+  else if (dateFormat === DATE_FORMAT_OPTION_2) {
+    return [padZeros(day, 2), padZeros(month, 2), padZeros(year, 4)].join("-");
+  }
+  else if (dateFormat === DATE_FORMAT_OPTION_3) {
+    return [padZeros(day, 2), padZeros(month, 2), padZeros(year, 4)].join(".");
+  }
+  else if (dateFormat === DATE_FORMAT_OPTION_4) {
+    return [padZeros(day, 2), padZeros(month, 2), padZeros(year, 4)].join(" ");
+  }
+  else if (dateFormat === DATE_FORMAT_OPTION_5) {
+    let tempDayMonth = [padZeros(day, 2), padZeros(month, 2)].join("/");
+    return [tempDayMonth, padZeros(year, 4)].join("-");
   }
 
   return [padZeros(year, 4), padZeros(month, 2), padZeros(day, 2)].join("-");
@@ -705,9 +722,31 @@ const getDatePickerContext = (el) => {
   const firstYearChunkEl = datePickerEl.querySelector(CALENDAR_YEAR);
   const dialogEl = datePickerEl.querySelector(DATE_PICKER_DIALOG_WRAPPER);
 
+  // Set date format
+  let selectedDateFormat = DATE_FORMAT_OPTION_1;
+  if (datePickerEl.hasAttribute("data-dateformat")) {
+    switch (datePickerEl.dataset.dateformat) {
+      case DATE_FORMAT_OPTION_1:
+        selectedDateFormat = DATE_FORMAT_OPTION_1;
+        break;
+      case DATE_FORMAT_OPTION_2:
+        selectedDateFormat = DATE_FORMAT_OPTION_2;
+        break;
+      case DATE_FORMAT_OPTION_3:
+        selectedDateFormat = DATE_FORMAT_OPTION_3;
+        break;
+      case DATE_FORMAT_OPTION_4:
+        selectedDateFormat = DATE_FORMAT_OPTION_4;
+        break;
+      case DATE_FORMAT_OPTION_5:
+        selectedDateFormat = DATE_FORMAT_OPTION_5;
+    }
+  }
+  const dateFormatOption = selectedDateFormat; 
+
   const inputDate = parseDateString(
     externalInputEl.value,
-    DEFAULT_EXTERNAL_DATE_FORMAT,
+    dateFormatOption,
     true
   );
   const selectedDate = parseDateString(internalInputEl.value);
@@ -738,7 +777,8 @@ const getDatePickerContext = (el) => {
     rangeDate,
     defaultDate,
     statusEl,
-    guideEl
+    guideEl,
+    dateFormatOption
   };
 };
 
@@ -782,7 +822,7 @@ const isDateInputInvalid = (el) => {
   if (dateString) {
     isInvalid = true;
 
-    const dateStringParts = dateString.split("/");
+    const dateStringParts = dateString.split(/-|\.|\/|\s/);
     const [day, month, year] = dateStringParts.map((str) => {
       let value;
       const parsed = parseInt(str, 10);
@@ -856,13 +896,15 @@ const setCalendarValue = (el, dateString) => {
   const parsedDate = parseDateString(dateString);
 
   if (parsedDate) {
-    const formattedDate = formatDate(parsedDate, DEFAULT_EXTERNAL_DATE_FORMAT);
-
+    
     const {
       datePickerEl,
       internalInputEl,
       externalInputEl,
+      dateFormatOption
     } = getDatePickerContext(el);
+
+    const formattedDate = formatDate(parsedDate, dateFormatOption);
 
     changeElementValue(internalInputEl, dateString);
     changeElementValue(externalInputEl, formattedDate);
@@ -885,7 +927,6 @@ const enhanceDatePicker = (el) => {
   if (!internalInputEl) {
     throw new Error(`${DATE_PICKER} is missing inner input`);
   }
-
 
   const minDate = parseDateString(
     datePickerEl.dataset.minDate || internalInputEl.getAttribute("min")

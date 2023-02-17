@@ -87,3 +87,7 @@ params:
   type: string
   required: false
   description: First focused date is per default todays date. Set default date to change the first focused date in format YYYY-MM-DD.
+- name: format
+  type: string
+  required: false
+  description: Changes the date format. Valid entries are "DD/MM/YYYY", "DD-MM-YYYY", "DD.MM.YYYY", "DD MM YYYY", and "DD/MM-YYYY". Defaults to "DD/MM/YYYY".
