@@ -6,7 +6,6 @@ require("./config/gulp/images");
 require("./config/gulp/fonts");
 require("./config/gulp/license");
 require("./config/gulp/build");
-require("./config/gulp/release");
 
 var gulp = require("gulp");
 var dutil = require("./config/gulp/doc-util");
@@ -57,11 +56,6 @@ gulp.task("default", function(done) {
   dutil.logCommand(
     "gulp fonts",
     "This task will copy all the font files into distribution directories."
-  );
-
-  dutil.logCommand(
-    "gulp release",
-    "This task will run `gulp build` and prepare a release directory."
   );
 
   done();
