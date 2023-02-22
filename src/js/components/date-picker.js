@@ -2327,7 +2327,7 @@ const datePicker = behavior(datePickerEvents, {
   setCalendarValue,
   validateDateInput,
   renderCalendar,
-  updateCalendarIfVisible,
+  updateCalendarIfVisible
 });
 
 // #endregion Date Picker Event Delegation Registration / Component

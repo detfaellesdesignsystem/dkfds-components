@@ -6,7 +6,7 @@ const TEXT_CHARACTERLIMIT = {
     "characters_remaining": "Du har {value} tegn tilbage",
     "character_too_many": "Du har {value} tegn for meget",
     "characters_too_many": "Du har {value} tegn for meget"
-}
+};
 
 /**
  * Show number of characters left in a field
@@ -71,6 +71,7 @@ const TEXT_CHARACTERLIMIT = {
         if (!this.maxlength) {
             throw new Error(`Character limit is missing attribute ${MAX_LENGTH}`);
         }
+
         this.input.addEventListener('keyup', function() {
             handleKeyUp();
         });
@@ -81,20 +82,18 @@ const TEXT_CHARACTERLIMIT = {
             handleBlur();
         });
 
-        let thisFormLimit = this;
-        
         /* If the browser supports the pageshow event, use it to update the character limit
         message and sr-message once a page has loaded. Second best, use the DOMContentLoaded event. 
         This ensures that if the user navigates to another page in the browser and goes back, the 
         message and sr-message will show/tell the correct amount of characters left. */
         if ('onpageshow' in window) {
-            window.addEventListener('pageshow', function() {
-                thisFormLimit.updateMessages();
+            window.addEventListener('pageshow', () => {
+                this.updateMessages();
             });
         } 
         else {
-            window.addEventListener('DOMContentLoaded', function() {
-                thisFormLimit.updateMessages();
+            window.addEventListener('DOMContentLoaded', () => {
+                this.updateMessages();
             });
         }
     };

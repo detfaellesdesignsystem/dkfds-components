@@ -30,7 +30,7 @@ function insertHeaderAsAttributes(tableEl) {
                 if (cellEls.length === headerCellEls.length) {
                     Array.from(headerCellEls).forEach((headerCellEl, i) => {
                         // Grab header cell text and use it body cell data title.
-                        if (!cellEls[i].hasAttribute('data-title') && headerCellEl.tagName === "TH" && !headerCellEl.classList.contains("actions-header")) {
+                        if (!cellEls[i].hasAttribute('data-title') && headerCellEl.tagName === "TH" && !headerCellEl.classList.contains("sr-header")) {
                             cellEls[i].setAttribute('data-title', headerCellEl.textContent);
                         }
                     });
