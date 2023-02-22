@@ -7,7 +7,7 @@ const EXPANDED = 'aria-expanded';
 const MULTISELECTABLE = 'aria-multiselectable';
 const MULTISELECTABLE_CLASS = 'accordion-multiselectable';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
-let text = {
+const TEXT_ACCORDION = {
   "open_all": "Åbn alle",
   "close_all": "Luk alle"
 }
@@ -17,12 +17,12 @@ let text = {
  * @param {HTMLElement} $accordion the accordion ul element
  * @param {JSON} strings Translate labels: {"open_all": "Åbn alle", "close_all": "Luk alle"}
  */
-function Accordion($accordion, strings = text) {
+function Accordion($accordion, strings = TEXT_ACCORDION) {
   if(!$accordion){
     throw new Error(`Missing accordion group element`);
   }
   this.accordion = $accordion;
-  text = strings;
+  this.text = strings;
 }
 
 /**
@@ -76,9 +76,9 @@ Accordion.prototype.bulkEvent = function(){
   
   $module.bulkFunctionButton.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, !expand);
   if(!expand === true){
-    $module.bulkFunctionButton.innerText = text.open_all;
+    $module.bulkFunctionButton.innerText = this.text.open_all;
   } else{
-    $module.bulkFunctionButton.innerText = text.close_all;
+    $module.bulkFunctionButton.innerText = this.text.close_all;
   }
 }
 
@@ -141,9 +141,9 @@ Accordion.prototype.eventOnClick = function ($button, e) {
         
         bulkFunction.setAttribute(BULK_FUNCTION_ACTION_ATTRIBUTE, newStatus);
         if(newStatus === true){
-          bulkFunction.innerText = text.open_all;
+          bulkFunction.innerText = this.text.open_all;
         } else{
-          bulkFunction.innerText = text.close_all;
+          bulkFunction.innerText = this.text.close_all;
         }
       }
     }
