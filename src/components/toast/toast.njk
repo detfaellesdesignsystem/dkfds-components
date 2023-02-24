@@ -1,12 +1,10 @@
 {% macro toast(params) %}
-<div class="toast toast-{{params.variant}}{% if params.show %} show{% endif %}" id="{{params.id}}" aria-atomic="true">
+<div class="toast toast-{{params.variant}}{% if params.show %} show{% endif %}" aria-atomic="true">
     <div class="toast-icon"></div>
     <div class="toast-message">
-        {% if params.heading %}<p><strong><span class="sr-only">{{params.srVariant}}: </span>{{params.heading}}</strong></p>{% endif %}
+        {% if params.heading %}<p><span class="sr-only">{{params.srVariant}}: </span><strong id="{{params.id}}-heading">{{params.heading}}</strong></p>{% endif %}
         {% if params.content %}<p>{{params.content}}</p>{% endif %}
-        <button class="toast-close">
-            Luk{% if params.heading %}<span class="sr-only"> beskeden: {{params.heading}}</span>{% endif %}
-        </button>
+        <button class="toast-close"{% if params.heading %} aria-describedby="{{params.id}}-heading"{% endif %}>Luk</button>
     </div>
 </div>
 {% endmacro %}
