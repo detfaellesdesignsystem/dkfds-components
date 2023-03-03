@@ -3,13 +3,13 @@
 {% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
 {% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
 {% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
-{% from "components/radiobuttons/radiobutton.njk" import radiobutton as radiobutton %}
+{% from "components/checkboxes/checkbox.njk" import checkbox as checkbox %}
 
-{% macro radiobuttons(params) %}
-<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}{% if params.collapsedItems %} js-radio-toggle-group{% endif %}">
+{% macro checkboxes(params) %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">
     {%- if params.items and params.groupname -%}
-    <fieldset role="radiogroup"{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
-        <legend class="form-label">{{ params.radiogroupLegend }}
+    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}"{% endif %}>
+        <legend class="form-label">{{ params.checkboxLegend }}
             {%- if params.tooltip -%}
             {{ 
                 button({
@@ -31,23 +31,25 @@
         {% set isLarge = params.isLarge | default(true) %}
         {%- for item in params.items -%}
         {{ 
-            radiobutton({
+            checkbox({
                 "id": params.id + "-option" + loop.index,
+                "isStandalone": false,
                 "name": params.groupname,
                 "value": item.value,
                 "label": item.label,
                 "isLarge": isLarge,
                 "classes": {
-                    "formgroupradio": item.classes.formgroupradio,
+                    "formgroup": item.classes.formgroup,
                     "input": item.classes.input,
                     "label": item.classes.label
                 },
                 "attributes": {
-                    "formgroupradio": item.attributes.formgroupradio,
+                    "formgroup": item.attributes.formgroup,
                     "input": item.attributes.input,
                     "label": item.attributes.label
                 },
                 "disabled": item.disabled,
+                "required": item.required,
                 "checked": item.checked,
                 "srOnly": item.srOnly,
                 "helptext": item.helptext,

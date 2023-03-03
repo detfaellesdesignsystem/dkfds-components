@@ -7,7 +7,7 @@
   }
 }
 
-.form-group-radio{
+.form-group-radio, .form-group-checkbox {
   margin-top: map-get($spacers, 3);
   position: relative;
 }
@@ -329,6 +329,7 @@ $radio-size-large: units($input-checkbox-radio-large-size);
 
 .form-checkbox.checkbox-large + label + .form-hint{
   padding-left: calc(#{$checkbox-size-large} + 8px);
+  margin-top: -8px;
 }
 
 //extra for radio outline

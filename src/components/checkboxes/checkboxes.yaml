@@ -1,23 +1,23 @@
 - name: id
   type: string
   required: false
-  description: The id of the radio group.
+  description: The id of the checkbox group.
 - name: groupname
   type: string
   required: true
-  description: The radio group name. Will be used as 'name' for each radio button.
-- name: radiogroupLegend
+  description: The checkbox group name. Will be used as 'name' for each checkbox.
+- name: checkboxLegend
   type: string
   required: false
-  description: The legend (same styling as label) for the entire radio group.
+  description: The legend (same styling as label) for the entire checkbox group.
 - name: collapsedItems
   type: boolean
   required: false
-  description: Set to 'true' if any radio button in the group shows additional content when checked.
+  description: Set to 'true' if any checkbox in the group shows additional content when checked.
 - name: classes
   type: string
   required: false
-  description: Classes for the radio group (formgroup element).
+  description: Classes for the checkbox group (formgroup element).
 - name: optionalLabel
   type: boolean
   required: false
@@ -29,11 +29,11 @@
 - name: helptext
   type: string
   required: false
-  description: Helptext for the entire radio group.
+  description: Helptext for the entire checkbox group.
 - name: errorMessage
   type: string
   required: false
-  description: Error message for the radio group.
+  description: Error message for the checkbox group.
 - name: tooltip
   type: string
   required: false
@@ -41,11 +41,11 @@
 - name: isLarge
   type: boolean
   required: false
-  description: Choose whether the radio buttons should be small or large. Defaults to true (large).
+  description: Choose whether the checboxes should be small or large. Defaults to true (large).
 - name: items
   type: object
   required: true
-  description: The radio buttons in the group.
+  description: The checkboxes in the group.
   - name: value
     type: string
     required: true
@@ -53,15 +53,15 @@
   - name: label
     type: string
     required: true
-    description: Label for the radio button (the text written next to the radio button)
+    description: Label for the checkbox (the text written next to the checkbox)
   - name: classes
     type: object
     required: false
-    description: Classes for the radio button elements.
-    - name: formgroupradio
+    description: Classes for the checkbox elements.
+    - name: formgroup
       type: string
       required: false
-      description: Additional classes to add to the div with the form-group-radio class.
+      description: Additional classes to add to the div with the form-group class.
     - name: input
       type: string
       required: false
@@ -73,27 +73,27 @@
   - name: disabled
     type: boolean
     required: false
-    description: Set to true to disable the radio button.
+    description: Set to true to disable the checkbox.
   - name: checked
     type: boolean
     required: false
-    description: Set to true to mark the radio button as selected.
+    description: Set to true to mark the checkbox as selected.
   - name: helptext
     type: string
     required: false
-    description: Helptext displayed under the radio button label.
+    description: Helptext displayed under the checkbox label.
   - name: srOnly
     type: string
     required: false
-    description: Additional text only accessible for screenreaders. The text is appended to the label text.
+    description: Additional text only for screenreaders. The text is appended to the label text.
   - name: attributes
     type: object
     required: false
-    description: Attributes for the radio button elements.
-    - name: formgroupradio
+    description: Attributes for the checkbox elements.
+    - name: formgroup
       type: string
       required: false
-      description: Attributes to add to the div with the form-group-radio class.
+      description: Attributes to add to the div with the form-group class.
     - name: input
       type: string
       required: false
@@ -105,4 +105,4 @@
   - name: hiddenContent
     type: string
     required: false
-    description: Content to be displayed when the radio button is checked. Can contain HTML.
+    description: Content to be displayed when the checkbox is checked. Can contain HTML.
