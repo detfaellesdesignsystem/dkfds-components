@@ -1,9 +1,0 @@
-params:
-- name: classes
-  type: string
-  required: false
-  description: Classes of label/badge.
-- name: Text
-  type: string
-  required: true
-  description: text of label/badge.

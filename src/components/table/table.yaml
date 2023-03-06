@@ -1,12 +1,32 @@
 params:
-- name: outerClasses
+- name: id
   type: string
   required: false
-  description: Classes to add to the div surrounding the table.
-- name: tableClasses
-  type: string
+  description: Id of the table.
+- name: classes
+  type: object
   required: false
-  description: Classes to add to the table.
+  description: Classes for the table elements.
+  - name: outer
+    type: string
+    required: false
+    description: Classes to add to the div surrounding the table.
+  - name: inner
+    type: string
+    required: false
+    description: Classes to add to the table.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the table elements.
+  - name: outer
+    type: string
+    required: false
+    description: Attributes to add to the div surrounding the table.
+  - name: inner
+    type: string
+    required: false
+    description: Attributes to add to the table.
 - name: zebra
   type: boolean
   required: false
@@ -15,10 +35,6 @@ params:
   type: boolean
   required: false
   description: Set to true if the table should not have a border.
-- name: compactClass
-  type: string
-  required: false
-  description: Change the table line height. Valid values are "table--compact" and "table--extracompact". Omit for default line height.
 - name: selectable
   type: boolean
   required: false
@@ -27,18 +43,18 @@ params:
   type: boolean
   required: false
   description: Set to true if the table should be responsive.
-- name: responsiveVariant
-  type: string
+- name: variant
+  type: object
   required: false
-  description: Select at which breakpoint the responsive table should change. Valid values are "sm", "md" or "lg".
-- name: id
-  type: string
-  required: false
-  description: Id of the table.
-- name: attributes
-  type: string
-  required: false
-  description: Attributes of the table.
+  description: Choose the table variant.
+  - name: cellPadding
+    type: string
+    required: false
+    description: Valid entries are "normal", "compact" and "extracompact". Defaults to "normal".
+  - name: responsive
+    type: string
+    required: false
+    description: Select at which breakpoint the responsive table should change. Valid values are "sm", "md" or "lg". Defaults to "sm".
 - name: sorting
   type: object
   required: false
@@ -59,14 +75,29 @@ params:
     type: string
     required: true
     description: Text on action button.
-  - name: classes
+  - name: variant
     type: string
     required: true
-    description: Classes of action button.
+    description: Variant of button.
   - name: icon
     type: string
     required: false
     description: Icon name of action button.
+- name: tbody
+  type: array
+  required: true
+  description: List of table rows.
+  - type: array
+    required: true
+    description: List of cell values.
+    - name: content
+      type: string
+      required: true
+      description: Cell content.
+    - name: classes
+      type: string
+      required: true
+      description: Classes to add to the cell.
 - name: thead
   type: array
   required: true
@@ -87,22 +118,4 @@ params:
     type: string
     required: false
     description: Adds an ID to a header's sorting button.
-  - name: td
-    type: boolean
-    required: false
-    description: Use <td> tag instead of <th>.
-- name: tbody
-  type: array
-  required: true
-  description: List of table rows.
-  - type: array
-    required: true
-    description: List of cell values.
-    - name: content
-      type: string
-      required: true
-      description: Cell content.
-    - name: classes
-      type: string
-      required: true
-      description: Classes to add to the cell.
+

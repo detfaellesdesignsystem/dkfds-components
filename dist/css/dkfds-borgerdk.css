@@ -8571,8 +8571,6 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
   }
 }
 
-.table--selectable{
-}
 .table--selectable tbody tr:hover, .table--selectable.table.table--zebra tr:nth-child(even):hover, .table--selectable.table.table--zebra tr:nth-child(odd):hover{
   background-color:#F5F5F5;
 }

@@ -390,14 +390,6 @@
         background-color: color($table-selectable-hover-background-color);
     }
 
-    /* &.table.table--zebra tr:nth-child(even):hover {
-        background-color: color($table-row-odd-background-color);
-    }
-
-    &.table.table--zebra tr:nth-child(odd):hover {
-        background-color: color($table-row-even-background-color);
-    } */
-
     &.table.table--zebra tr.table-row-selected:nth-child(even),
     &.table.table--zebra tr.table-row-selected:nth-child(odd),
     .table-row-selected {
