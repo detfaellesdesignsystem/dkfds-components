@@ -40,6 +40,19 @@
 
     &.sidenav-error {
       background-color: color($sidenav-error-background-color);
+
+      &.current {
+        background-color: color($sidenav-error-background-color);
+      }
+
+      &:hover {
+        background-color: color($sidenav-error-background-color);
+      }
+
+      .sidenav-information {
+        color: color($sidenav-link-current-extra-information-text-color);
+        font-weight: font-weight("normal");
+      }
     }
 
     a {
@@ -162,6 +175,7 @@
   
   li.disabled {
     cursor: not-allowed;
+
     a {
       cursor: not-allowed;
       color: color($sidenav-link-disabled-color);
@@ -174,8 +188,25 @@
       }
     }
 
-    &.active, &.active a{color: color($sidenav-link-active-color); background-color: transparent;}
-    &:hover , &.active a:hover{color: color($sidenav-link-active-color); background-color: color($sidenav-link-default-background-color);}
+    &.active,
+    &.active a {
+      color: color($sidenav-link-active-color);
+      background-color: transparent;
+    }
+
+    &:hover,
+    &.active a:hover {
+      color: color($sidenav-link-active-color);
+      background-color: color($sidenav-link-default-background-color);
+    }
+
+    &.sidenav-error {
+      background-color: color($sidenav-error-background-color);
+
+      &.active a:hover {
+        background-color: color($sidenav-error-background-color);
+      }
+    }
   }
 }
 

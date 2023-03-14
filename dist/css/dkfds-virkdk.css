@@ -11069,6 +11069,16 @@ input[type=search]{
 .sidenav-list li.sidenav-error{
   background-color:#ffe0e0;
 }
+.sidenav-list li.sidenav-error.current{
+  background-color:#ffe0e0;
+}
+.sidenav-list li.sidenav-error:hover{
+  background-color:#ffe0e0;
+}
+.sidenav-list li.sidenav-error .sidenav-information{
+  color:#454545;
+  font-weight:400;
+}
 .sidenav-list li a{
   display:flex;
   flex-wrap:nowrap;
@@ -11184,6 +11194,12 @@ input[type=search]{
 .sidenav-list li.disabled:hover, .sidenav-list li.disabled.active a:hover{
   color:#1a1a1a;
   background-color:white;
+}
+.sidenav-list li.disabled.sidenav-error{
+  background-color:#ffe0e0;
+}
+.sidenav-list li.disabled.sidenav-error.active a:hover{
+  background-color:#ffe0e0;
 }
 
 .sidenav-sub_list{

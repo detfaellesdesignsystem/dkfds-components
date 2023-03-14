@@ -4,18 +4,10 @@ params:
   type: string
   required: true
   description: ID of the stepguide. Only used in the overflow_stepguide macro.
-- name: mediumHide
+- name: breakpoint
   type: boolean
   required: false
-  description: If true, hides a responsive stepguide at the md breakpoint instead of the default lg breakpoint. Only used in the overflow_stepguide macro.
-- name: openRight
-  type: boolean
-  required: false
-  description: If false, the stepguide will open to the left instead of to the right. Defaults to 'true'. Only used in the overflow_stepguide macro.
-- name: responsive
-  type: boolean
-  required: false
-  description: If true, creates a responsive stepguide. If false or omitted, the stepguide is always displayed as an overflow menu. Only used in the overflow_stepguide macro.
+  description: If set, hides a responsive stepguide at the breakpoint. If omitted, the stepguide is always hidden. Only used in the overflow_stepguide macro. Valid values are "md" or "lg".
 
 # overflow_stepguide and stepguide
 params:
@@ -39,7 +31,7 @@ params:
     type: boolean
     required: false
     description: Is link active page?
-  - name: information
+  - name: helptext
     type: string
     required: false
     description: Additional text information on link
@@ -47,10 +39,6 @@ params:
     type: string
     required: false
     description: Icon object.
-  - name: iconclass
-    type: string
-    required: false
-    description: additional classes on sidenav-icon element.
   - name: disabled
     type: boolean
     required: false

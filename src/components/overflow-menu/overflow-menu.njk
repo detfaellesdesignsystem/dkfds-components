@@ -9,7 +9,7 @@
         {{ icon_svg({"name": icon}) }}
     </button>
     <div class="overflow-menu-inner" id="{{ params.id }}" aria-hidden="true">
-        {{ params.content | safe }}
+        {{- params.content | safe -}}
     </div>
 </div>
 {% endmacro %}

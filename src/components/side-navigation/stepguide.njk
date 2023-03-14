@@ -5,22 +5,19 @@
 {% set hasMaxWidth = params.hasMaxWidth | default(true) %}
 <nav{% if hasMaxWidth %} class="sidebar-col"{% endif %}>
     <ul class="sidenav-list" role="menu">
-        {% for trin in params.steps %}
-        {% set disabled = trin.disabled | default(false) %}
+        {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
         <li{% if disabled or trin.active or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.active %}active current {% endif %}{% if trin.error %}sidenav-error{% endif %}"{% endif %} role="none">
             <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem"{% if trin.active %} aria-current="page"{% endif %}>
                 <span class="sidenav-number">{{loop.index}}.</span>
                 <div>
                     <span>{{trin.text}}</span>
-                    {% if trin.information %}
-                    <span class="sidenav-information">{{trin.information}}</span>
-                    {% endif %}
+                    {% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}
                 </div>
-                {% if trin.icon %}
-                <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
+                {%- if trin.icon %}
+                <span class="sidenav-icon">
                     {{ icon_svg(trin.icon) }}
                 </span>
-                {% endif %}
+                {% endif -%}
             </a>
         </li>{% endfor %}
     </ul>
@@ -37,36 +34,22 @@
     {% endif %}
 {% endfor %}
 {% set buttonText = "Trin " + currentStep + " af " + stepsTotal %}
-{% set breakpointClass = "overflow-menu--lg-no-responsive" %}
-{% if params.mediumHide %}
-    {% set breakpointClass = "overflow-menu--md-no-responsive" %}
+{% set menuClasses = "" %}
+{% if params.breakpoint %}
+    {% set menuClasses = "overflow-menu--" + params.breakpoint + "-no-responsive " %}
 {% endif %}
 {% if hasMaxWidth %}
-    {% set breakpointClass = breakpointClass + " sidebar-col" %}
+    {% set menuClasses = menuClasses + "sidebar-col" %}
 {% endif %}
-{% if params.responsive %}
+{% if menuClasses !== "" %}
 {{ 
     overflowmenu({
         "button": {
             "text": buttonText,
             "icon": "arrow-drop-down"
         },
-        "classes": breakpointClass,
+        "classes": menuClasses,
         "id": params.id,
-        "openRight": params.openRight,
-        "content": stepguide(params)
-    }) 
-}}
-{% elif hasMaxWidth %}
-{{ 
-    overflowmenu({
-        "button": {
-            "text": buttonText,
-            "icon": "arrow-drop-down"
-        },
-        "classes": "sidebar-col",
-        "id": params.id,
-        "openRight": params.openRight,
         "content": stepguide(params)
     }) 
 }}
@@ -78,7 +61,6 @@
             "icon": "arrow-drop-down"
         },
         "id": params.id,
-        "openRight": params.openRight,
         "content": stepguide(params)
     }) 
 }}

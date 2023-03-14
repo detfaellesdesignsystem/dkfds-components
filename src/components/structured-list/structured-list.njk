@@ -5,7 +5,7 @@
             {% for row in params.items %}<tr>
                 <th scope="row"{% if params.classes.label %} class="{{params.classes.label}}"{% endif %}>{{ row.label | safe }}</th>
                 <td{% if params.classes.value %} class="{{params.classes.value}}"{% endif %}>{{ row.value | safe }}</td>
-                {% if params.edit %}<td class="d-print-none{% if params.classes.href %} {{params.classes.href}}{% endif %}">{% if row.href %}<a href="{{ row.href }}">Redigér<span class="sr-only"> {{row.label | lower }}</span></a>{% endif %}</td>{% endif %}
+                {% if params.edit %}<td class="d-print-none{% if params.classes.href %} {{params.classes.href}}{% endif %}">{% if row.href %}<a href="{{ row.href }}">Redigér<span class="sr-only"> {{row.label | lower }}</span></a>{% endif %}</td>{%- endif -%}
             </tr>{% endfor %}
         </tbody>
     </table>

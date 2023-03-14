@@ -51,10 +51,10 @@ params:
     type: string
     required: false
     description: Valid entries are "normal", "compact" and "extracompact". Defaults to "normal".
-  - name: responsive
+  - name: breakpoint
     type: string
     required: false
-    description: Select at which breakpoint the responsive table should change. Valid values are "sm", "md" or "lg". Defaults to "sm".
+    description: Select the breakpoint where the responsive table should change. Valid values are "sm", "md" or "lg".
 - name: sorting
   type: object
   required: false
