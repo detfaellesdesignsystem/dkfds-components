@@ -1,5 +1,5 @@
 params:
-- name: topLink
+- name: href
   type: string
   required: true
   description: The anchor link activated when the button is pressed, for example '#top'.
@@ -7,3 +7,7 @@ params:
   type: string
   required: false
   description: The text written on the back to top button. Defaults to 'Til toppen'.
+- name: srText
+  type: string
+  required: false
+  description: The text read aloud by screenreaders. Defaults to 'Til toppen af siden'.
