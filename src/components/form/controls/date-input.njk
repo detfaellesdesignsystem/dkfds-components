@@ -6,12 +6,16 @@
 {% from "components/form/controls/text-input.njk" import textinput as textinput %}
 
 {% macro datoinput(params) %}
-<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">
-    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
-        <legend class="form-label">{{ params.legend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
-        {%- if params.tooltip -%}
-        {{- 
-            button({
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
+    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}>
+        <legend class="form-label">
+            {{ params.legend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
+        {% if params.tooltip %}{{ button({
                 "variant": "unstyled",
                 "attributes": "type=\"button\"",
                 "srOnly": "Hvad betyder det?",
@@ -21,9 +25,7 @@
                     "showOnClick": true,
                     "position": "top"
                 } 
-            }) 
-        -}}
-        {% endif %}</legend>
+            }) }}{% endif %}</legend>
         {% if params.helptext -%}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage -%}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
         <div class="date-group js-calendar-group mt-3">
@@ -38,7 +40,7 @@
                         "input": "js-calendar-day-input"
                     },
                     "value": params.values.day,
-                    "required": params.required,
+                    "required": isRequired,
                     "type": "tel",
                     "attributes": {
                         "input": 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"'
@@ -57,7 +59,7 @@
                         "input": "js-calendar-month-input"
                     },
                     "value": params.values.month,
-                    "required": params.required,
+                    "required": isRequired,
                     "type": "tel",
                     "attributes": {
                         "input": 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"'
@@ -76,7 +78,7 @@
                         "input": "js-calendar-year-input"
                     },
                     "value": params.values.year,
-                    "required": params.required,
+                    "required": isRequired,
                     "type": "tel",
                     "attributes": {
                         "input": 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"'

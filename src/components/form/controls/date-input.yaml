@@ -15,6 +15,34 @@ params:
   type: string
   required: false
   description: Helptext.
+- name: disabled
+  type: boolean
+  required: false
+  description: true for disabled input. Defaults to false.
+- name: errorMessage
+  type: string
+  required: false
+  description: Error message text
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is optional - use only when most inputs in form are required.
+- name: required
+  type: boolean
+  required: false
+  description: Enter true for required input (all three input fields will be required). Enter false for optional input. Defaults to true.
+- name: classes
+  type: string
+  required: false
+  description: Additional classes for the form-group.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes for the form-group.
 - name: labels
   type: object
   required: false
@@ -31,10 +59,6 @@ params:
     type: string
     required: false
     description: Year label text. Defaults to "År".
-- name: errorMessage
-  type: string
-  required: false
-  description: Error message text
 - name: values
   type: object
   required: false
@@ -51,19 +75,4 @@ params:
     type: string
     required: false
     description: Value for the year input.
-- name: classes
-  type: string
-  required: false
-  description: Additional classes for the form-group.
-- name: requiredLabel
-  type: boolean
-  required: false
-  description: Show label saying the input is required - use only when most inputs in form are optional.
-- name: optionalLabel
-  type: boolean
-  required: false
-  description: Show label saying the input is optional - use only when most inputs in form are required.
-- name: required
-  type: boolean
-  required: false
-  description: Enter true for required input (all three input fields will be required). Enter false for optional input. Defaults to true.
+
