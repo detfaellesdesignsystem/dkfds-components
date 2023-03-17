@@ -7,28 +7,26 @@
 {% from "components/form/controls/characterlimit.njk" import characterlimit_id as characterlimit_id %}
 
 {% macro textarea(params) %}
-    <div class="form-group{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
-        {{
-            label({
-                text: params.label,
-                classes: params.classes.label,
-                for: params.id,
-                attributes: params.attributes.label,
-                optionalLabel: params.optionalLabel,
-                requiredLabel: params.requiredLabel,
-                tooltip: params.tooltip
-            })
-        }}
-        {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
-        {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
-        <textarea class="form-input{% if params.classes.textarea %} {{params.classes.textarea}}{% endif %}" id="{{params.id}}" name="{{params.name}}"{% if params.rows %} rows="{{ params.rows }}"{% endif %}{% if params.required %} required{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.readonly %} readonly{% endif %}{% if params.errorMessage or params.helptext or params.characterLimit %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}{% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"{% endif %}{% if params.attributes.textarea %} {{params.attributes.textarea | safe}}{% endif %}>{{params.value}}</textarea>
-        {% if params.characterLimit %}
-        {{
-            characterlimit({
-                characterLimit: params.characterLimit,
-                id: params.id
-            })
-        }}
-        {% endif %}
-    </div>
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+    {{
+        label({
+            text: params.label,
+            classes: params.classes.label,
+            for: params.id,
+            attributes: params.attributes.label,
+            optionalLabel: params.optionalLabel,
+            requiredLabel: params.requiredLabel,
+            tooltip: params.tooltip
+        })
+    }}
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+    {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+    <textarea class="form-input{% if params.classes.textarea %} {{params.classes.textarea}}{% endif %}" id="{{params.id}}" name="{{params.name}}"{% if params.rows %} rows="{{ params.rows }}"{% endif %}{% if isRequired %} required{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.readonly %} readonly{% endif %}{% if params.errorMessage or params.helptext or params.characterLimit %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}{% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"{% endif %}{% if params.attributes.textarea %} {{params.attributes.textarea | safe}}{% endif %}>{{params.value}}</textarea>
+    {% if params.characterLimit %}{{ characterlimit({ characterLimit: params.characterLimit, id: params.id }) }}{% endif %}
+</div>
 {% endmacro %}
