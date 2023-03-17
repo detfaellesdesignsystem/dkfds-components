@@ -18,14 +18,10 @@
   type: string
   required: false
   description: Classes for the radio group (formgroup element).
-- name: optionalLabel
-  type: boolean
+- name: attributes
+  type: string
   required: false
-  description: Show label saying the input is not required and most inputs in form are required.
-- name: requiredLabel
-  type: boolean
-  required: false
-  description: Show label saying the input is required and most inputs in form aren't required.
+  description: Attributes for the radio group (formgroup element).
 - name: helptext
   type: string
   required: false

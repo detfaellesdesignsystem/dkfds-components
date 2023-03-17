@@ -6,13 +6,12 @@
 {% from "components/radiobuttons/radiobutton.njk" import radiobutton as radiobutton %}
 
 {% macro radiobuttons(params) %}
-<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}{% if params.collapsedItems %} js-radio-toggle-group{% endif %}">
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}{% if params.collapsedItems %} js-radio-toggle-group{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
     {%- if params.items and params.groupname -%}
     <fieldset role="radiogroup"{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
-        <legend class="form-label">{{ params.radiogroupLegend }}
-            {%- if params.tooltip -%}
-            {{ 
-                button({
+        <legend class="form-label">
+            {{ params.radiogroupLegend }}
+            {% if params.tooltip %}{{ button({
                     "variant": "unstyled",
                     "attributes": "type=\"button\"",
                     "srOnly": "Hvad betyder det?",
@@ -21,16 +20,10 @@
                         "text": params.tooltip,
                         "showOnClick": true,
                         "position": "top"
-                    } 
-                }) 
-            }}
-            {%- endif -%}
-        </legend>
+                    } }) }}{% endif %}</legend>
         {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
-        {% set isLarge = params.isLarge | default(true) %}
-        {%- for item in params.items -%}
-        {{ 
+        {% set isLarge = params.isLarge | default(true) %}{%- for item in params.items -%}{{ 
             radiobutton({
                 "id": params.id + "-option" + loop.index,
                 "name": params.groupname,
@@ -53,8 +46,7 @@
                 "helptext": item.helptext,
                 "hiddenContent": item.hiddenContent 
             })
-        }}
-        {%- endfor -%}
+        }}{%- endfor -%}
     </fieldset>
     {%- endif -%}
 </div>
