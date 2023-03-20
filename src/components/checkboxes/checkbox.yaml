@@ -6,7 +6,7 @@ params:
 - name: name
   type: string
   required: true
-  description: Name of the checkbox group. All checkboxes in the same group must have the same name.
+  description: Name of the checkbox.
 - name: value
   type: string
   required: true
@@ -18,7 +18,7 @@ params:
 - name: isLarge
   type: boolean
   required: false
-  description: Choose whether the checkboxes should be small or large. Defaults to true (large).
+  description: Choose whether the checkbox should be small or large. Defaults to true (large).
 - name: classes
   type: object
   required: false
@@ -71,3 +71,19 @@ params:
   type: string
   required: false
   description: Content to be displayed when the checkbox is checked. Can contain HTML.
+- name: required
+  type: boolean
+  required: false
+  description: Enter true for a required checkbox. Enter false for optional. Defaults to false.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is optional - use only when most inputs in form are required.
+- name: isStandalone
+  type: boolean
+  required: false
+  description: Set to true when you only have a single checkbox without a fieldset.

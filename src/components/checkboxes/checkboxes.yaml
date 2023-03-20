@@ -10,22 +10,10 @@
   type: string
   required: false
   description: The legend (same styling as label) for the entire checkbox group.
-- name: collapsedItems
-  type: boolean
-  required: false
-  description: Set to 'true' if any checkbox in the group shows additional content when checked.
 - name: classes
   type: string
   required: false
   description: Classes for the checkbox group (formgroup element).
-- name: optionalLabel
-  type: boolean
-  required: false
-  description: Show label saying the input is not required and most inputs in form are required.
-- name: requiredLabel
-  type: boolean
-  required: false
-  description: Show label saying the input is required and most inputs in form aren't required.
 - name: helptext
   type: string
   required: false
@@ -70,22 +58,6 @@
       type: string
       required: false
       description: Classes to add to the label.
-  - name: disabled
-    type: boolean
-    required: false
-    description: Set to true to disable the checkbox.
-  - name: checked
-    type: boolean
-    required: false
-    description: Set to true to mark the checkbox as selected.
-  - name: helptext
-    type: string
-    required: false
-    description: Helptext displayed under the checkbox label.
-  - name: srOnly
-    type: string
-    required: false
-    description: Additional text only for screenreaders. The text is appended to the label text.
   - name: attributes
     type: object
     required: false
@@ -102,6 +74,26 @@
       type: string
       required: false
       description: Attributes to add to the label.
+  - name: disabled
+    type: boolean
+    required: false
+    description: Set to true to disable the checkbox.
+  - name: required
+    type: boolean
+    required: false
+    description: Enter true for a required checkbox. Enter false for optional. Defaults to false.
+  - name: checked
+    type: boolean
+    required: false
+    description: Set to true to mark the checkbox as selected.
+  - name: helptext
+    type: string
+    required: false
+    description: Helptext displayed under the checkbox label.
+  - name: srOnly
+    type: string
+    required: false
+    description: Additional text only for screenreaders. The text is appended to the label text.
   - name: hiddenContent
     type: string
     required: false

@@ -9,9 +9,9 @@
 <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">
     {%- if params.items and params.groupname -%}
     <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}"{% endif %}>
-        <legend class="form-label">{{ params.checkboxLegend }}
-            {%- if params.tooltip -%}
-            {{ 
+        <legend class="form-label">
+            {{ params.checkboxLegend }}
+            {% if params.tooltip %}{{ 
                 button({
                     "variant": "unstyled",
                     "attributes": "type=\"button\"",
@@ -23,14 +23,11 @@
                         "position": "top"
                     } 
                 }) 
-            }}
-            {%- endif -%}
-        </legend>
+            }}{% endif %}</legend>
         {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
         {% set isLarge = params.isLarge | default(true) %}
-        {%- for item in params.items -%}
-        {{ 
+        {%- for item in params.items -%}{{ 
             checkbox({
                 "id": params.id + "-option" + loop.index,
                 "isStandalone": false,
@@ -55,8 +52,7 @@
                 "helptext": item.helptext,
                 "hiddenContent": item.hiddenContent 
             })
-        }}
-        {%- endfor -%}
+        }}{%- endfor -%}
     </fieldset>
     {%- endif -%}
 </div>
