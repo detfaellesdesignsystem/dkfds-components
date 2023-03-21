@@ -3,10 +3,14 @@ params:
   type: boolean
   required: false
   description: Show open/close all button.
+- name: id
+  type: string
+  required: true
+  description: Used to generate IDs for all accordions in the accordion group. 
 - name: headingLevel
   type: string
   required: false
-  description: Heading level of the button. If false, no heading around the button. Otherwise default is h3.
+  description: Heading level of the button. Default is h3.
 - name: multiselectable
   type: boolean
   required: false
@@ -27,10 +31,6 @@ params:
     type: boolean
     required: false
     description: Expands accordion on true. Default is false.
-  - name: id
-    type: string
-    required: true
-    description: Id of the content container
   - name: content
     type: string
     required: true

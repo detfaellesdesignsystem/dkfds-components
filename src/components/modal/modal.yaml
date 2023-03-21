@@ -11,10 +11,6 @@ params:
   type: string
   required: true
   description: Heading of the modal.
-- name: headingId
-  type: string
-  required: true
-  description: Id of the heading element.
 - name: content
   type: string
   required: true

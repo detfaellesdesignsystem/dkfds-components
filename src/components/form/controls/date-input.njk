@@ -12,7 +12,7 @@
 {% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
 {% if params.disabled === true %}{% set isRequired = false %}{% endif %}
 <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
-    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}>
+    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}>
         <legend class="form-label">
             {{ params.legend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
         {% if params.tooltip %}{{ button({
