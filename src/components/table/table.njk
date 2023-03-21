@@ -23,8 +23,10 @@
                             "attributes": "type=\"button\"",
                             "srOnly": "Sortér efter " + th.headerContent,
                             "icon": "sort-table-ascending",
-                            "classes": "ml-2",
-                            "iconClasses": "mr-0" }) 
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
                         }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" and th.sorting %}
                         {{ button({
                             "variant": "unstyled",
@@ -32,8 +34,10 @@
                             "attributes": "type=\"button\"",
                             "srOnly": "Sortér efter " + th.headerContent,
                             "icon": "sort-table-descending",
-                            "classes": "ml-2",
-                            "iconClasses": "mr-0" }) 
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
                         }}{% elif th.sorting %}
                         {{ button({
                             "variant": "unstyled",
@@ -41,8 +45,10 @@
                             "attributes": "type=\"button\"",
                             "srOnly": "Sortér efter " + th.headerContent,
                             "icon": "sort-table-none",
-                            "classes": "ml-2",
-                            "iconClasses": "mr-0" }) 
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
                         }}{% endif %}</th>
                 {% endfor %}</tr>
         </thead>

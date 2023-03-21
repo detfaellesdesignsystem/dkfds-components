@@ -8,9 +8,17 @@ params:
   required: false
   description: The text of the button.
 - name: classes
-  type: string
+  type: object
   required: false
-  description: The classes of the button.
+  description: Classes for the datepicker elements.
+  - name: button
+    type: string
+    required: false
+    description: Classes for the button.
+  - name: icon
+    type: string
+    required: false
+    description: Classes for the icon.
 - name: id
   type: string
   required: false
@@ -23,10 +31,6 @@ params:
   type: string
   required: false
   description: Icon of the button.
-- name: iconClasses
-  type: string
-  required: false
-  description: Classes for the icon.
 - name: srOnly
   type: string
   required: false
