@@ -1,8 +1,8 @@
 params:
-- name: type
+- name: variant
   type: string
   required: false
-  description: Type of toast. Options are success, warning, error, info
+  description: Toast variant. Valid entries are "info", "success", "warning", and "error".
 - name: id
   type: string
   required: false
@@ -11,7 +11,15 @@ params:
   type: string
   required: false
   description: Heading of the toast.
+- name: srVariant
+  type: string
+  required: false
+  description: Screenreader announcement of the toast variant. The announcement is not limited to the wording of the variant types, for example you can use "information" or "completed" instead of "info" or "success".
 - name: content
   type: string
   required: false
   description: Message of the toast.
+- name: show
+  type: boolean
+  required: false
+  description: Whether to show or hide the toast.

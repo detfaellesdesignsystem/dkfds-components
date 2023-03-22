@@ -1,5 +1,5 @@
 params:
-- name: inputId
+- name: id
   type: string
   required: true
   description: ID for the input.
@@ -11,15 +11,19 @@ params:
   type: string
   required: true
   description: Name for the input.
-- name: buttonId
-  type: string
+- name: searchbutton
+  type: object
   required: false
-  description: ID for the search button.
-- name: buttonType
-  type: string
-  required: false
-  description: Type for the search button. Must be either "submit" or "button".
-- name: useIcon
-  type: boolean
-  required: false
-  description: Determines whether to use a search button with text or an icon.
+  description: Search button next to the input field.
+  - name: id
+    type: string
+    required: false
+    description: ID for the search button.
+  - name: type
+    type: string
+    required: false
+    description: Type for the search button. Must be either "submit" or "button".
+  - name: iconOnly
+    type: boolean
+    required: false
+    description: Determines whether to use a search button with text or an icon.
