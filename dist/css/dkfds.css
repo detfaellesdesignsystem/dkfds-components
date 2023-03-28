@@ -6218,7 +6218,7 @@ a.button{
   cursor:not-allowed;
 }
 .button.button-tertiary:disabled:hover, .button.button-tertiary.disabled:hover{
-  border-color:transparent !important;
+  border-color:#747474 !important;
   background-color:transparent !important;
   color:#1a1a1a;
   font-weight:400 !important;
