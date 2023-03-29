@@ -39,3 +39,7 @@ params:
   type: boolean
   required: false
   description: Adds icon on true.
+- name: alertRole
+  type: boolean
+  required: false
+  description: Adds the role 'alert' to the alert.

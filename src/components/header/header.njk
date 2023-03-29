@@ -46,7 +46,7 @@
         {% if params.authority %}
         <div class="solution-info{% if params.hideOnPrint %} d-print-none{% endif %}">
             {% if params.authority.name %}
-            <h2 class="authority-name">{{ params.authority.name }}</h2>
+            <p><strong class="authority-name">{{ params.authority.name }}</strong></p>
             {% endif %}
             {% if params.authority.text %}
             <p>{{ params.authority.text | safe }}</p>
@@ -84,7 +84,7 @@
 {% macro mobile_solution_header(params) %}
 <div class="solution-info-mobile">
     {% if params.authority.name %}
-    <h2 class="authority-name">{{ params.authority.name }}</h2>
+    <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
     {% endif %}
     {% if params.authority.text %}
     <p>{{ params.authority.text | safe }}</p>
