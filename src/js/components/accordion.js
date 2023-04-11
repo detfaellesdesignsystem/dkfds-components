@@ -4,8 +4,6 @@ const toggle = require('../utils/toggle');
 const isElementInViewport = require('../utils/is-in-viewport');
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
-const MULTISELECTABLE = 'aria-multiselectable';
-const MULTISELECTABLE_CLASS = 'accordion-multiselectable';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
 const TEXT_ACCORDION = {
     "open_all": "Åbn alle",
@@ -125,9 +123,7 @@ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
         button.dispatchEvent(eventClose);
     }
 
-    let multiselectable = false;
-    if (accordion !== null && (accordion.getAttribute(MULTISELECTABLE) === 'true' || accordion.classList.contains(MULTISELECTABLE_CLASS))) {
-        multiselectable = true;
+    if (accordion !== null) {
         let bulkFunction = accordion.previousElementSibling;
         if (bulkFunction !== null && bulkFunction.classList.contains('accordion-bulk-button')) {
             let buttons = accordion.querySelectorAll(BUTTON);
@@ -145,21 +141,6 @@ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
                 } else {
                     bulkFunction.innerText = this.text.close_all;
                 }
-            }
-        }
-    }
-
-    if (expanded && !multiselectable) {
-        let buttons = [button];
-        if (accordion !== null) {
-            buttons = accordion.querySelectorAll(BUTTON);
-        }
-        for (let i = 0; i < buttons.length; i++) {
-            let currentButtton = buttons[i];
-            if (currentButtton !== button && currentButtton.getAttribute('aria-expanded' === true)) {
-                toggle(currentButtton, false);
-                let eventClose = new Event('fds.accordion.close');
-                currentButtton.dispatchEvent(eventClose);
             }
         }
     }

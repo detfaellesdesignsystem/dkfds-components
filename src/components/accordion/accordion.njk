@@ -3,10 +3,9 @@
 
 {% macro accordion(params) %}
 {% set bulk = params.openCloseButton | default(false) %}
-{% set multiselectable = params.multiselectable | default(true) %}
 {% if bulk %}<div>
   <button class="accordion-bulk-button" data-accordion-bulk-expand="true">Åbn alle</button>{% endif %}
-<ul class="accordion{% if multiselectable %} accordion-multiselectable{% endif %}">
+<ul class="accordion">
   {%- for item in params.items -%}
   {%- set itemID = params.id + loop.index -%}
   <li>

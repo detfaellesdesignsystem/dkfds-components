@@ -11,10 +11,6 @@ params:
   type: string
   required: false
   description: Heading level of the button. Default is h3.
-- name: multiselectable
-  type: boolean
-  required: false
-  description: Default is true. If true, more than one accordion can be open at the time. On false, only one accordion will be open. 
 - name: items
   type: array
   required: true
