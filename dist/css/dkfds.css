@@ -12154,8 +12154,6 @@ a.skipnav:focus{
   footer .footer .inline-list > li + li{
     margin-left:16px;
   }
-}
-@media print{
   .card{
     box-shadow:none;
   }
@@ -12170,8 +12168,6 @@ a.skipnav:focus{
   body.modal-active > footer{
     display:none;
   }
-}
-@media print{
   body .modal .modal__overlay{
     display:block;
     position:relative;
@@ -12275,19 +12271,13 @@ a.skipnav:focus{
   .form-radio.radio-large:checked + label:after{
     border:8px solid #1a1a1a;
   }
-}
-@media print{
   .form-radio:checked + label:after{
     border:4px solid #1a1a1a;
   }
-}
-@media print{
   .form-checkbox:checked + label:before{
     background-color:transparent;
     border:10px solid #1a1a1a;
   }
-}
-@media print{
   .form-checkbox.checkbox-large:checked + label:before{
     border:16px solid #1a1a1a;
   }
