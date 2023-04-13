@@ -6288,6 +6288,7 @@ a.button{
   -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
+  width:auto;
 }
 .button-unstyled:hover, .button-unstyled:focus{
   background-color:transparent;
