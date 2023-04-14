@@ -1,6 +1,8 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro back_to_top(params) %}
-<a class="back-to-top-button button button-tertiary d-print-none" href="{{ params.topLink }}">{{ icon_svg({"name": "arrow-upward"}) }}
-    <span class="d-none d-md-inline-block">{{ params.buttonText | default('Til toppen') }}</span>
+<a class="back-to-top-button button button-tertiary d-print-none" href="{{ params.href }}">
+    {{ icon_svg({"name": "arrow-upward"}) }}
+    <span class="sr-only">{{ params.srText | default('Til toppen af siden') }}</span>
+    <span class="d-none d-md-inline-block" aria-hidden="true">{{ params.buttonText | default('Til toppen') }}</span>
 </a>
 {% endmacro %}

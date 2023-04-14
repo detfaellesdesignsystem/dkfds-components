@@ -160,7 +160,7 @@ a.button{
       cursor: not-allowed;
 
       &:hover {
-        border-color: color($button-tertiary-default-background-color) !important;
+        border-color: color($button-tertiary-default-border-color) !important;
         background-color: color($button-tertiary-default-background-color) !important;
         color: color($button-tertiary-default-color);
         font-weight: font-weight("normal") !important;
@@ -256,6 +256,7 @@ a.button{
 
 .button-unstyled {
   @include button-unstyled;
+  width: auto;
 }
 
 .button + .button{

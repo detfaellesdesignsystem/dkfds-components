@@ -1,283 +1,459 @@
-
 @mixin responsive-table() {
-  display: block;
-  thead {
-    display: none;
-  }
-  tbody, tr {
     display: block;
-  }
-  tr {
-    border-bottom: border($table-row-border);
-    &:last-child {
-      border-bottom: 0;
-    }
-  }
-  tr td, tr th {
-    display: block;
-    border: none !important;
 
-    &[data-title]:not([data-title=""]):before {
-      content: attr(data-title);
-      text-align: left;
-      display: block;
-      font-weight: font-weight($table-head-font-weight);
+    thead {
+        display: none;
     }
-  }
 
-  &.table--borderless tbody tr {
-    &:first-child {
-      border-top: border($table-row-border);
+    tbody,
+    tr {
+        display: block;
     }
-    &:last-child {
-      border-bottom: border($table-row-border);
+
+    tr {
+        border-bottom: border($table-row-border);
+
+        &:last-child {
+            border-bottom: none;
+        }
     }
-    td:first-child, th:first-child {
-      padding-left: 16px;
+
+    td,
+    th {
+        display: block;
+        border: none;
+        padding-left: calc(units(4) - 1px); //1px for the border
+        padding-right: calc(units(4) - 1px); //1px for the border
+        padding-top: units(4);
+        padding-bottom: units(4);
+
+        &:last-child {
+            padding-bottom: calc(units(4) - 1px); //1px for the border
+        }
+
+        &[data-title]:not([data-title=""]):before {
+            content: attr(data-title);
+            text-align: left;
+            display: block;
+            font-weight: font-weight($table-head-font-weight);
+        }
     }
-  }
+
+    &.table--compact {
+
+        th,
+        td {
+            padding-top: units(3);
+            padding-bottom: units(3);
+
+            &:last-child {
+                padding-bottom: calc(units(3) - 1px); //1px for the border
+            }
+        }
+    }
+
+    &.table--extracompact {
+
+        th,
+        td {
+            padding-top: 1px;
+            padding-bottom: 1px;
+
+            &:last-child {
+                padding-bottom: 0px;
+            }
+        }
+    }
+
+    &.table--borderless, &.structured-list {
+
+        td,
+        th {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        tr {
+            &:first-child {
+
+                td,
+                th {
+                    &:first-child {
+                        border-top: border($table-row-border);
+                    }
+                }
+            }
+
+            &:last-child {
+
+                td,
+                th {
+                    border-bottom: none;
+
+                    &:last-child {
+                        border-bottom: border($table-row-border);
+                    }
+                }
+            }
+        }
+    }
+
+    &.table--zebra.table--borderless {
+
+        td,
+        th {
+            padding-left: units(4);
+            padding-right: units(4);
+        }
+    }
+
+    &.structured-list {
+        
+        tbody tr {
+            &:first-child td {
+                border-top: none;
+            }
+
+            th {
+                padding-bottom: 0;
+            }
+
+            td:first-of-type {
+                padding-top: 0;
+            }
+        }
+    }
 }
+
 .table {
     margin: 0;
     line-height: units($table-text-line-height, 'rem');
     border: border($table-border);
-    width: calc(100% - 2px);
+    width: 100%;
     color: color($table-text-color);
     font-size: font-size($table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
-    &.table--compact {
-      th,td {
-        padding-top: calc(#{units(3)} - 1px);
-        padding-bottom: #{units(3)};
-      }
-
-      tbody tr:last-child th, tbody tr:last-child td {
-        padding-bottom: calc(#{units(3)} - 1px);
-      }
-
-    }
-
-    &.table--extracompact {
-      th,td, tr:last-child td, tr:last-child th {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-      
-    }
-
-    td, th {
-        padding: calc(#{units(4)} - 1px); //16px -1px (for the border)
-        padding-bottom: #{units(4)}; //16px -1px (for the border)
-        background-color: inherit;
+    td,
+    th {
+        padding-left: units(4);
+        padding-top: units(4);
+        padding-right: calc(units(4) - 1px); //1px for the border
+        padding-bottom: calc(units(4) - 1px); //1px for the border
         border-right: border($table-cell-border);
+        border-bottom: border($table-row-border);
+        background-color: inherit;
         vertical-align: top;
         text-align: left;
-        border-bottom: border($table-row-border);
 
-        &:last-child{
+        &:last-child {
             border-right: none;
         }
-      &.break-word{
-        word-break: break-all;
-      }
-      &.vertical-align-middle{
-        vertical-align: middle;
-      }
-      &.vertical-align-top{
-        vertical-align: top;
-      }
-      &.vertical-align-bottom{
-        vertical-align: bottom;
-      }
+
+        &.break-word {
+            word-break: break-all;
+        }
+
+        &.vertical-align-middle {
+            vertical-align: middle;
+        }
+
+        &.vertical-align-top {
+            vertical-align: top;
+        }
+
+        &.vertical-align-bottom {
+            vertical-align: bottom;
+        }
     }
 
     thead {
         background-color: color($table-head-background-color);
-        th{
+
+        th {
             font-weight: font-weight($table-head-font-weight);
-            text-align: left;
-            border-bottom: border($table-row-border);
-            &.table-header-no-wrap{
-              white-space: nowrap;
+            padding-top: calc(units(4) - 1px); //1px for the border
+
+            &:first-child {
+                padding-left: calc(units(4) - 1px); //1px for the border
             }
-            button, .button{
-              width: auto;
+
+            &.table-header-no-wrap {
+                white-space: nowrap;
+            }
+
+            button,
+            .button {
+                width: auto;
             }
         }
-    }
-    tbody{
-      th{
-          font-weight: font-weight($table-head-font-weight);
-      }
-      tr {
-        background-color: transparent;
-        &:last-child{
-          td, th{
-            padding-bottom: calc(#{units(4)} - 1px);
-          }
-          & > td, & > th{
-              border-bottom: none;
-          }
-        }
-      }
     }
 
-    //no border
-    &.table--borderless {
+    tbody {
+        th {
+            font-weight: font-weight($table-head-font-weight);
+        }
+
         tr {
-            &:last-child{
-                border-bottom: border($table-row-border);
+            background-color: transparent;
+
+            td,
+            th {
+                &:first-child {
+                    padding-left: calc(units(4) - 1px); //1px for the border
+                }
+            }
+
+            &:last-child {
+
+                td,
+                th {
+                    border-bottom: none;
+                }
             }
         }
-        border: 0;
-        width: 100%;
-        td, th {
-          padding-left: #{units(4)}; //16px -1px (for the border)
-          padding-right: #{units(4)}; //16px -1px (for the border)
-        }
-        thead {
-            background-color: transparent;
-            th{
-                background-color: transparent;
-                border-top-color: transparent;
-                border-left: 0;
-                border-right: 0;
-                border-bottom: border($table-row-border);
+    }
 
-                &:first-child{
+    &.table--compact {
+
+        th,
+        td {
+            padding-top: units(3);
+            padding-bottom: calc(units(3) - 1px); //1px for the border
+        }
+
+        thead th {
+            padding-top: calc(units(3) - 1px); //1px for the border
+        }
+    }
+
+    &.table--extracompact {
+
+        th,
+        td {
+            padding-top: 1px;
+            padding-bottom: 0;
+        }
+
+        thead th {
+            padding-top: 0;
+        }
+    }
+
+    //No border
+    &.table--borderless, &.structured-list {
+        border: none;
+
+        td,
+        th {
+            padding-right: units(4);
+            border-right: none;
+        }
+
+        thead,
+        tbody {
+
+            tr td,
+            tr th {
+                &:first-child {
                     padding-left: 0;
                 }
-                &:last-child{
+
+                &:last-child {
                     padding-right: 0;
-
                 }
             }
         }
-        tbody{
-            tr{
-                td, th {
-                    border-bottom: border($table-row-border);
-                    border-left: 0;
-                    border-right: 0;
-                    &:first-child{
-                        padding-left: 0;
-                    }
-                    &:last-child{
-                        padding-right: 0;
-                    }
-                }
-            }
-        }
-    }
 
-    //No call borders right (row arrear as one single line)
-    &.table--lines {
         thead {
-            th{
-                border-right-color: transparent;
+            background-color: transparent;
+
+            th {
+                padding-top: units(4);
             }
         }
 
-        tbody{
-            td, th{
-                border-right: transparent;
+        tbody tr:last-child {
+
+            td,
+            th {
+                border-bottom: border($table-row-border);
+            }
+        }
+
+        &.table--compact {
+
+            thead th {
+                padding-top: units(3);
+            }
+        }
+
+        &.table--extracompact {
+
+            thead th {
+                padding-top: 1px;
             }
         }
     }
 
-
-    //zebra lines
+    //Zebra lines
     &.table--zebra {
-        thead {
-          th{
-              border-right-color: transparent;
-          }
+
+        td,
+        th {
+            border-right: 0;
+            padding-right: units(4);
+
+            &:last-child {
+                padding-right: calc(units(4) - 1px); //1px for the border
+            }
         }
+
         tr:nth-child(even) {
             background-color: color($table-row-even-background-color);
         }
 
-        tbody{
-            td, th{
-                border-right: transparent;
+        tbody {
+            tr:nth-child(odd) {
+                background-color: color($table-row-odd-background-color);
             }
-            
-          tr:nth-child(odd) {
-            background-color: color($table-row-odd-background-color);
-          }
+        }
+    }
+
+    //Zebra lines and no border
+    &.table--zebra.table--borderless {
+
+        td,
+        th {
+            border: 0;
+            padding: units(4);
         }
 
-        &.table--borderless {
-            thead{
-                background-color: color($table-row-even-background-color);
-            }
-            td,th {
-                border-color: transparent;
-                &:first-child{
-                    border-left-color: transparent;
-                    border-right-color: transparent;
+        thead,
+        tbody {
+
+            tr td,
+            tr th {
+                &:first-child {
+                    padding-left: units(4);
                 }
-                &:last-child{
-                    border-left-color: transparent;
-                    border-right-color: transparent;
+
+                &:last-child {
+                    padding-right: units(4);
                 }
             }
-          tr:last-child th,
-          tr:last-child td{
-                border-bottom-color: transparent
+        }
+
+        thead {
+            background-color: color($table-row-even-background-color);
+        }
+
+        tbody tr:last-child {
+
+            td,
+            th {
+                border-bottom: none;
+            }
+        }
+
+        &.table--compact {
+
+            td,
+            th {
+                padding-bottom: units(3);
+                padding-top: units(3);
+            }
+        }
+
+        &.table--extracompact {
+
+            td,
+            th {
+                padding-bottom: 1px;
+                padding-top: 1px;
+            }
+        }
+    }
+
+    &.structured-list {
+        tbody tr:first-child {
+
+            td,
+            th {
+                border-top: border($table-row-border);
+            }
+        }
+
+        &.table--zebra {
+            tbody tr:first-child {
+
+                td,
+                th {
+                    border-top: none;
+                }
             }
         }
     }
 
     @media screen {
-      //make row into a "card" on phone
-      &.table--responsive-headers {
-        @include media-breakpoint-down(sm) {
-          @include responsive-table();
-        }
-      }
-      
-      @each $breakpoint in map-keys($grid-breakpoints) {
-        @if $breakpoint != xs {
-          @include media-breakpoint-down($breakpoint) {
-            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-            &.table#{$infix}-responsive-headers{
-              @include responsive-table();
+
+        //Make row into a "card" on phone
+        &.table--responsive-headers {
+            @include media-breakpoint-down(sm) {
+                @include responsive-table();
             }
-          }
         }
-      }
+
+        @each $breakpoint in map-keys($grid-breakpoints) {
+            @if $breakpoint !=xs and $breakpoint !=xl {
+                @include media-breakpoint-down($breakpoint) {
+                    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+                    &.table#{$infix}-responsive-headers {
+                        @include responsive-table();
+                    }
+                }
+            }
+        }
     }
 }
-.table--selectable{
-  width: 100%;
-  tbody tr:hover{
-    background-color: color($table-selectable-hover-background-color);
-  }
-  &.table.table--zebra tr.table-row-selected:nth-child(even), &.table.table--zebra tr.table-row-selected:nth-child(even):hover,
-  .table-row-selected, .table-row-selected:hover{
-    background-color: color($table-selectable-selected-background-color);
-  }
-}
 
-.table-actions{
-  border-right: border($table-border);
-  border-bottom: border($table-border);
-  border-left: border($table-border);
-  overflow: hidden;
-  padding: #{units(4)} calc(#{units(4)} - 1px) calc(#{units(4)} - 1px) calc(#{units(4)} - 1px);
+.table--selectable {
 
-  .table-selected-number{
-    margin-top: 0px;
-    &.no-selected{
-      color: color($table-selectable-help-text-color);
+    tbody tr:hover,
+    &.table.table--zebra tr:nth-child(even):hover,
+    &.table.table--zebra tr:nth-child(odd):hover {
+        background-color: color($table-selectable-hover-background-color);
     }
-  }
-  
+
+    &.table.table--zebra tr.table-row-selected:nth-child(even),
+    &.table.table--zebra tr.table-row-selected:nth-child(odd),
+    .table-row-selected {
+        background-color: color($table-selectable-selected-background-color);
+    }
 }
-.table--responsive-scroll{
+
+.table-actions {
+    border-right: border($table-border);
+    border-bottom: border($table-border);
+    border-left: border($table-border);
+    overflow: hidden;
+    padding: units(4) calc(units(4) - 1px) calc(units(4) - 1px) calc(units(4) - 1px);
+
+    .table-selected-number {
+        margin-top: 0px;
+
+        &.no-selected {
+            color: color($table-selectable-help-text-color);
+        }
+    }
+
+}
+
+.table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
+    padding: $theme-focus-offset+$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -($theme-focus-offset+$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }

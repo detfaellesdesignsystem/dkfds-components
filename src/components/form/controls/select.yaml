@@ -2,55 +2,67 @@ params:
 - name: id
   type: string
   required: true
-  description: The ID of the input.
-- name: label
-  type: object
-  required: true
-  description: The label attached to the input.
-  - name: text
-    type: string
-    required: true
-    description: Text for the label.
-  - name: for
-    type: string
-    required: true
-    description: Id of the input.
-  - name: classes
-    type: string
-    required: false
-    description: Classes to add to the label.
-  - name: requiredLabel
-    type: boolean
-    required: false
-    description: Show label saying the input is required and most inputs in form aren't required.
-  - name: optionalLabel
-    type: boolean
-    required: false
-    description: Show label saying the input is not required and most inputs in form are required.
-  - name: tooltip
-    type: string
-    required: false
-    description: Additional text to show in a tooltip next to the label
+  description: The ID of the select.
 - name: name
   type: string
   required: true
-  description: The name of the input, which is submitted with the form data.
-- name: options
-  type: array
+  description: The name of the select, which is submitted with the form data.
+- name: label
+  type: string
   required: true
-  description: Array of options
-  - name: value
+  description: The label attached to the select.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the select is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the select is optional - use only when most inputs in form are required.
+- name: tooltip
+  type: string
+  required: false
+  description: Additional text to show in a tooltip next to the label
+- name: helptext
+  type: string
+  required: false
+  description: Text under label meant to help the user enter the correct value.
+- name: errorMessage
+  type: string
+  required: false
+  description: Display an error message for the select.
+- name: classes
+  type: object
+  required: false
+  description: Classes for the select elements.
+  - name: formgroup
     type: string
     required: false
-    description: Value of the option.
-  - name: text
+    description: Classes to add to the form group.
+  - name: label
     type: string
-    required: true
-    description: Text of the option.
-  - name: selected
-    type: boolean
     required: false
-    description: True of option is selected
+    description: Classes to add to the label.
+  - name: select
+    type: string
+    required: false
+    description: Classes to add to the select.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the select elements.
+  - name: formgroup
+    type: string
+    required: false
+    description: Attributes to add to the form group.
+  - name: label
+    type: string
+    required: false
+    description: Attributes to add to the label.
+  - name: select
+    type: string
+    required: false
+    description: Attributes to add to the select.
 - name: disabled
   type: boolean
   required: false
@@ -59,15 +71,19 @@ params:
   type: boolean
   required: false
   description: Enter true for required input. Enter false for optional input. Defaults to true.
-- name: errorMessage
-  type: string
-  required: false
-  description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the input.
-- name: multiple
-  type: boolean
-  required: false
-  description: Allows for multiple options to be selected.
+- name: options
+  type: array
+  required: true
+  description: Array of options
+- - name: value
+    type: string
+    required: true
+    description: Value of the option.
+  - name: text
+    type: string
+    required: true
+    description: Text of the option.
+  - name: isSelected
+    type: boolean
+    required: false
+    description: True of option is selected

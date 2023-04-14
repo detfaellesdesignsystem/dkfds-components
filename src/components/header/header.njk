@@ -1,46 +1,93 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/header/menu-buttons.njk" import menu_open_button as menu_open_button %}
+
 
 {% macro portal_header(params) %}
-  <!--1A: Portal header -->
-  <div class="portal-header {% if params.compact == true %}portal-header-compact{% endif %}">
+<div class="portal-header{% if params.compact %} portal-header-compact{% endif %}">
     <div class="container portal-header-inner">
-      <a href="{{ params.logolink.href | default('/') }}" {% if params.logolink.title %}title="{{ params.logolink.title}}"{% endif %} {% if params.logolink.label %}aria-label="{{ params.logolink.label }}"{% endif %} class="logo {{params.logolink.classes}}">
-        {% if params.logolink.sronly %}<span class="sr-only">{{ params.logolink.sronly}}</span>{% endif %}
-      </a>
-      <button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="menu" title="Åben mobil menu"><svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#menu"></use></svg>Menu</button>
-
-      <!-- 1B: Portal header: info + actions-->
-      <div class="portal-info">
-        {% if params.user %}
-          <p class="user"><span class="username{% if params.compact == null or params.compact == false %} weight-semibold{% endif %}">{{ params.user.name | safe }}</span> {% if params.user.work %}<br />{{ params.user.work}}  {% endif %}</p>
-        {% endif %}
-         <button class="button {{ params.link.classes | default('button-secondary') }} d-print-none">
-          {{ params.link.text | default('Log af') }}
-        </button>
-      </div>
+        <a href="{{ params.logolink.href | default('/') }}"{% if params.logolink.title %} title="{{ params.logolink.title}}"{% endif %}{% if params.logolink.label %} aria-label="{{ params.logolink.label }}"{% endif %} class="logo {{params.logolink.classes}}">
+            <span class="d-none d-print-block">{{ params.logolink.label }}</span>
+        </a>
+        {{- menu_open_button() }}
+        <div class="portal-info">
+            {%- if params.user %}
+            <p class="user">
+                {% if params.compact == null or params.compact == false %}
+                <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
+                {% else %}
+                <span class="username">{{ params.user.name | safe }}</span>
+                {% endif %}
+                {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+            </p>
+            {% endif %}
+            {% set buttonVariant = params.button.variant | default('secondary') %}
+            {% set buttonText = params.button.text | default('Log af') %}
+            {{- 
+                button({
+                    "variant": buttonVariant,
+                    "text": buttonText,
+                    "classes": { "button": "d-print-none" }
+                }) 
+            }}
+        </div>
     </div>
-  </div>
+</div>
 {% endmacro %}
 
 {% macro solution_header(params) %}
-  <!--2A: Solution header -->
-  <div class="solution-header {{ params.classes | default('header-end') }}">
+<div class="solution-header{% if params.lastHeader %} header-end{% endif %}">
     <div class="container solution-header-inner">
-      <div class="solution-heading">
-        <a href="{{ params.title.href | default('/') }}"  {% if params.title.ariaLabel %}aria-label="{{ params.title.ariaLabel }}"{% endif %} class="{{params.title.classes}}">
-          {{ params.title.text }}
-        </a>
-      </div>
+        <div class="solution-heading">
+            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>
+                {{ params.title.text }}
+            </a>
+        </div>
 
-      <!--2B: Solution header: Authority name + text-->
-      <div class="solution-info {% if params.solutionInfo.hideOnPrint %}d-print-none{% endif %}"> <!-- nav-secondary -->
-        {% if params.authority.name %}
-          <p class="h5 authority-name"> {{ params.authority.name }}</p>
+        {% if params.authority %}
+        <div class="solution-info{% if params.hideOnPrint %} d-print-none{% endif %}">
+            {% if params.authority.name %}
+            <p><strong class="authority-name">{{ params.authority.name }}</strong></p>
+            {% endif %}
+            {% if params.authority.text %}
+            <p>{{ params.authority.text | safe }}</p>
+            {% endif %}
+        </div>
         {% endif %}
-        {% if params.authority.text %}
-          <p>{{ params.authority.text | safe }}</p>
-        {% endif %}
-      </div>
     </div>
-  </div>
+</div>
+{% endmacro %}
+
+{% macro mobile_portal_header(params) %}
+<div class="portal-info-mobile">
+    {% if params.user %}
+    <p class="user">
+        {% if params.compact == null or params.compact == false %}
+        <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
+        {% else %}
+        <span class="username">{{ params.user.name | safe }}</span>
+        {% endif %}
+        {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+    </p>
+    {% endif %}
+    {% set buttonVariant = params.button.variant | default('secondary') %}
+    {% set buttonText = params.button.text | default('Log af') %}
+    {{ 
+        button({
+            "variant": buttonVariant,
+            "text": buttonText,
+            "classes": { "button": "d-print-none mt-3" }
+        }) 
+    }}
+</div>
+{% endmacro %}
+
+{% macro mobile_solution_header(params) %}
+<div class="solution-info-mobile">
+    {% if params.authority.name %}
+    <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
+    {% endif %}
+    {% if params.authority.text %}
+    <p>{{ params.authority.text | safe }}</p>
+    {% endif %}
+</div>
 {% endmacro %}

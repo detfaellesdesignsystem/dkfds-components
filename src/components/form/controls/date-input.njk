@@ -1,30 +1,91 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
+{% from "components/form/controls/text-input.njk" import textinput as textinput %}
+
 {% macro datoinput(params) %}
-<div class="form-group {% if params.errorMessage %} form-error {% endif %} {{ params.classes }}">
-  <fieldset aria-describedby="{{params.id.helptext | default('example-date-field-hint')}} {% if params.errorMessage %}{{params.id.errorMessage | default('example-date-field-error')}}{% endif %}">
-    <legend class="form-label">{{params.labels.legend}}{% if params.tooltip %}<button type="button" class="js-tooltip button-unstyled ml-3" data-tooltip="{{params.tooltip}}" data-tooltip-trigger="click"><svg class="icon-svg" focusable="false" aria-hidden="true" ><use xlink:href="#help"></use></svg><span class="sr-only">Hvad betyder det?</span></button>{% endif %}</legend>
-    <span class="form-hint" id="{{params.id.helptext | default('example-date-field-hint')}}">{{params.helptext}}</span>
-    {% if params.errorMessage %}<span class="form-error-message {% if not params.errorMessage %} d-none{% endif %}" id="{{ params.id.errorMessage | default('example-date-field-error') }}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
-    <div class="date-group js-calendar-group mt-3">
-      <div class="form-group form-group-day">
-        <label class="form-label" for="{{ params.id.day | default('date-day') }}">{{params.labels.day}}</label>
-        <input class="form-input js-calendar-day-input" id="{{ params.id.day | default('date-day') }}" value="{{params.values.day}}" type="tel" data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indskriv dag på måneden som tal"  aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
-      </div>
-      <div class="form-group form-group-month">
-        <label class="form-label" for="{{ params.id.month | default('date-month') }}">{{params.labels.month}}</label>
-        <input class="form-input js-calendar-month-input" id="{{ params.id.month | default('date-month') }}" value="{{params.values.month}}" type="tel" data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$"  data-input-regex="^[0-9]{0,2}$" title="Indskriv månedens nummer"  aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
-      </div>
-      <div class="form-group form-group-year ">
-        <label class="form-label" for="{{ params.id.year | default('date-year') }}">{{params.labels.year}}</label>
-        <input class="form-input js-calendar-year-input" id="{{ params.id.year | default('date-year') }}" value="{{params.values.year}}" type="tel" data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indskriv årstal" aria-describedby="{{params.id.helptext | default('example-date-field-hint')}}"/>
-      </div>
-      {% if params.datepicker %}
-       <button class="button-unstyled button-open-calendar js-calendar-datepicker">
-        <span class="sr-only">Åben kalenderen</span>
-        <svg class="icon-svg" aria-hidden="true" focusable="false" tabindex="-1"><use xlink:href="#insert-invitation"></use></svg>
-       </button>
-      {% endif %}
-    </div>
-  </fieldset>
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
+    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}>
+        <legend class="form-label">
+            {{ params.legend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
+        {% if params.tooltip %}{{ button({
+                "variant": "unstyled",
+                "attributes": "type=\"button\"",
+                "srOnly": "Hvad betyder det?",
+                "icon": "help",
+                "tooltip": {
+                    "text": params.tooltip,
+                    "showOnClick": true,
+                    "position": "top"
+                } 
+            }) }}{% endif %}</legend>
+        {% if params.helptext -%}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+        {% if params.errorMessage -%}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+        <div class="date-group js-calendar-group mt-3">
+            {% set dayId = params.id + "-day" %}
+            {% set dayLabel = params.labels.day | default("Dag") %}
+            {{
+                textinput({
+                    "id": dayId,
+                    "label": dayLabel,
+                    "classes": { 
+                        "formgroup": "form-group-day",
+                        "input": "js-calendar-day-input"
+                    },
+                    "value": params.values.day,
+                    "required": isRequired,
+                    "type": "tel",
+                    "attributes": {
+                        "input": 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"'
+                    }
+                })
+            }}
+
+            {% set monthId = params.id + "-month" %}
+            {% set monthLabel = params.labels.month | default("Måned") %}
+            {{
+                textinput({
+                    "id": monthId,
+                    "label": monthLabel,
+                    "classes": { 
+                        "formgroup": "form-group-month",
+                        "input": "js-calendar-month-input"
+                    },
+                    "value": params.values.month,
+                    "required": isRequired,
+                    "type": "tel",
+                    "attributes": {
+                        "input": 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"'
+                    }
+                })
+            }}
+
+            {% set yearId = params.id + "-year" %}
+            {% set yearLabel = params.labels.year | default("År") %}
+            {{
+                textinput({
+                    "id": yearId,
+                    "label": yearLabel,
+                    "classes": { 
+                        "formgroup": "form-group-year",
+                        "input": "js-calendar-year-input"
+                    },
+                    "value": params.values.year,
+                    "required": isRequired,
+                    "type": "tel",
+                    "attributes": {
+                        "input": 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"'
+                    }
+                })
+            }}
+        </div>
+    </fieldset>
 </div>
 {% endmacro %}

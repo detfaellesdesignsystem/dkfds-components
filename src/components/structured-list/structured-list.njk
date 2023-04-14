@@ -1,0 +1,13 @@
+{%- macro structured_list(params) -%}
+<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}">
+    <table class="table structured-list{% if params.breakpoint %} table-{{params.breakpoint}}-responsive-headers{% endif %}{% if params.classes.table %} {{params.classes.table}}{% endif %}">
+        <tbody>
+            {% for row in params.items %}<tr>
+                <th scope="row"{% if params.classes.label %} class="{{params.classes.label}}"{% endif %}>{{ row.label | safe }}</th>
+                <td{% if params.classes.value %} class="{{params.classes.value}}"{% endif %}>{{ row.value | safe }}</td>
+                {% if params.edit %}<td class="d-print-none{% if params.classes.href %} {{params.classes.href}}{% endif %}">{% if row.href %}<a href="{{ row.href }}">Redigér<span class="sr-only"> {{row.label | lower }}</span></a>{% endif %}</td>{%- endif -%}
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+</div>
+{%- endmacro -%}

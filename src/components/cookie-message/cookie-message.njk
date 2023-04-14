@@ -1,9 +1,13 @@
 {% macro cookie_message(params) %}
-<div class="cookie-container" role="complementary" aria-labelledby="cookie-message-heading1" aria-describedby="cookie-message-text">
+<div class="cookie-container" role="complementary" aria-labelledby="cookie-message-heading" aria-describedby="cookie-message-text">
   <div class="cookie-message">
     <div class="cookie-text">
-      <div class="h3 mt-0 mb-3" id="cookie-message-heading1">{{ params.heading | safe }}</div>
-      <p class="mt-0" id="cookie-message-text">{{ params.message | safe }}</p>
+      <h2 class="h3 mt-0 mb-3" id="cookie-message-heading">
+        {{ params.heading | safe }}
+      </h2>
+      <p class="mt-0" id="cookie-message-text">
+        {{ params.message | safe }}
+      </p>
     </div>
     <div class="cookie-actions">
       <ul class="inline-list">

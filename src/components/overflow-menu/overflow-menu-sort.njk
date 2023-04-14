@@ -1,13 +1,17 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+ 
  {% macro overflowmenu(params) %}
  {% set icon = params.button.icon | default('sort-default') %}
     <div class="overflow-menu overflow-menu--sort overflow-menu--open-right" id="{{ params.id }}">
         <button class="button-overflow-menu" data-js-target="{{ params.id }}-panel" aria-haspopup="true" aria-expanded="false">
-           <svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ icon }}"></use></svg>{{ params.button.label }}<span class="selected-value"></span>
+            {{ icon_svg({"name": icon}) }}{{ params.button.label }}<span class="selected-value"></span>
         </button>
         <div class="overflow-menu-inner" id="{{ params.id }}-panel" aria-hidden="true">
             <ul class='overflow-list' role="menu">
                 {%- for item in params.items -%}
-                    <li role="menuitem"{% if item.selected %} aria-selected="true"{% endif %}><button id="{{item.id}}">{{item.text}}</button></li>
+                    <li role="menuitem">
+                        <button id="{{item.id}}"{% if item.selected %} aria-current="true"{% endif %}>{{item.text}}</button>
+                    </li>
                 {%- endfor -%}
             </ul>
         </div>

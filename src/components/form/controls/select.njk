@@ -1,19 +1,31 @@
 {% from "components/form/controls/label.njk" import label as label %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
+
 {% macro select(params) %}
-  <div class="form-group {% if params.errorMessage %}form-error{% endif %}">
-     {{label({
-    text: params.label.text,
-    classes: params.label.classes,
-    tooltip: params.label.tooltip,
-    for: params.id,
-    optionalLabel: params.label.optionalLabel,
-    requiredLabel: params.label.requiredLabel
-  }) | indent(2) | trim }}
-    {% if params.errorMessage %}<span class="form-error-message" id="{{params.id}}-error"><span class="sr-only">Fejl:</span> {{ params.errorMessage }}</span> {% endif %}
-    <select class="{{params.classes}} form-select" name="{{params.name}}" id="{{params.id}}"  {% if params.disabled %}disabled="disabled"{% endif %}{% if params.multiple %} multiple{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.hint or params.characterLimit %}aria-describedby="{% if params.errorMessage %} {{params.id}}-error{% endif %}"{% endif %}>
-      {% for option in params.options %}
-        <option value="{{option.value}}" {%if option.selected %}selected{% endif %}>{{option.text}}</option>
-      {% endfor %}
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}"{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+    {{
+        label({
+            text: params.label,
+            classes: params.classes.label,
+            for: params.id,
+            attributes: params.attributes.label,
+            optionalLabel: params.optionalLabel,
+            requiredLabel: params.requiredLabel,
+            tooltip: params.tooltip
+        })
+    }}
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+    {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+    <select class="form-select{% if params.classes.select %} {{params.classes.select}}{% endif %}" name="{{params.name}}" id="{{params.id}}"{% if params.disabled %} disabled="disabled"{% endif %}{% if params.errorMessage %} aria-invalid="true" {% endif %}{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}"{% endif %}{% if isRequired %} required{% endif %}{% if params.attributes.select %} {{params.attributes.select | safe}}{% endif %}>
+    {% for option in params.options %}<option value="{{option.value}}"{% if option.isSelected %} selected{% endif %}>{{option.text}}</option>{% endfor %}
     </select>
-  </div>
+</div>
 {% endmacro %}

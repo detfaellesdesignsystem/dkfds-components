@@ -1,1 +1,4 @@
-{% macro icon_svg(params) %}<svg class="icon-svg{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaLabel %} aria-label="{{params.ariaLabel}}"{% endif %}{%if params.focusable %} focusable="{{params.focusable}}"{% endif %} aria-hidden="{{params.ariahidden|default('true') }}"{% if params.tabindex %} tabindex="-1"{% endif %}><use xlink:href="#{{params.name}}"></use></svg>{% endmacro %}
+{%- macro icon_svg(params) -%}
+{%- set isAriaHidden = params.ariaHidden | default(true) -%}
+<svg class="icon-svg{% if params.classes %} {{ params.classes }}{% endif %}"{% if params.ariaLabel %} aria-label="{{params.ariaLabel}}"{% endif %} focusable="{{params.focusable|default('false')}}"{% if isAriaHidden %} aria-hidden="true"{% endif %}{% if params.tabindex %} tabindex="-1"{% endif %}><use xlink:href="#{{params.name}}"></use></svg>
+{%- endmacro -%}

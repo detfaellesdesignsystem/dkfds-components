@@ -1,18 +1,20 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
 {% macro alert(params) %}
-<div class="alert{% if params.classes %} {{ params.classes }}{% endif %}{% if params.paragraph %} alert--paragraph{% endif %}{% if params.icon %} alert--show-icon{% endif %}{% if params.closeButton %} has-close{% endif %}"{% if params.role %} role="{{params.role}}" aria-atomic="true"{% endif %}{% if params.ariaLabel %} aria-label ="{{ params.ariaLabel }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
+<div class="alert alert-{{ params.variant }}{% if params.classes %} {{ params.classes }}{% endif %}{% if params.paragraph %} alert--paragraph{% endif %}{% if params.icon %} alert--show-icon{% endif %}{% if params.closeButton %} has-close{% endif %}"{% if params.variant === "warning" or params.variant === "error" or params.alertRole %} role="alert"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
   <div class="alert-body">
     {%- if params.heading -%}
-    <p class="alert-heading{% if params.closeButton %} pr-7{% endif %}">{{ params.heading | safe }}</p>
+    <{{params.headingLevel | default('h3') }} class="alert-heading{% if params.closeButton %} pr-7{% endif %}">{{ params.heading | safe }}</{{params.headingLevel | default('h3') }}>
     {%- endif -%}
-
     {%- if params.contentContainer == false -%}
     {{ params.content | safe }}
     {%- else -%}
     <p class="alert-text">{{ params.content | safe }}</p>
     {%- endif -%}
-
     {%- if params.closeButton -%}
-    <button type="button" class="alert-close"><svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#close"></use></svg>Luk</button>
+    <button type="button" class="alert-close">
+      {{ icon_svg({"name": "close"}) }}Luk
+    </button>
     {%- endif -%}
   </div>
 </div>

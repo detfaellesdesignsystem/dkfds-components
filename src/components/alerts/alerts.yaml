@@ -1,12 +1,16 @@
 params:
-- name: role
+- name: variant
   type: string
-  required: false
-  description: role of the alert.
+  required: true
+  description: Choose the alert's variant. Valid entries are "info", "success", "warning", and "error".
 - name: classes
   type: string
   required: false
   description: Classes of the alert.
+- name: headingLevel
+  type: string
+  required: false
+  description: Heading level of the button. Default is "h3". "strong" is also valid.
 - name: heading
   type: string
   required: false
@@ -15,10 +19,6 @@ params:
   type: string
   required: false
   description: Content of the alert.
-- name: ariaLabel
-  type: string
-  required: false
-  description: aria-label on the alert.
 - name: closeButton
   type: boolean
   required: false
@@ -30,7 +30,7 @@ params:
 - name: contentContainer
   type: boolean
   required: false
-  description: Excludes alert-text container on content.
+  description: Determines whether an alert-text container should be used for the content. Defaults to true.
 - name: paragraph
   type: boolean
   required: false
@@ -39,3 +39,7 @@ params:
   type: boolean
   required: false
   description: Adds icon on true.
+- name: alertRole
+  type: boolean
+  required: false
+  description: Adds the role 'alert' to the alert.

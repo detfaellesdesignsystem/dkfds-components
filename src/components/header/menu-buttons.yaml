@@ -1,0 +1,17 @@
+# menu_open_button
+params:
+- name: text
+  type: string
+  required: false
+  description: Text on the manu button. Defaults to 'Menu'.
+
+# menu_close_button
+params:
+- name: text
+  type: string
+  required: false
+  description: Text on the manu button. Defaults to 'Luk'.
+- name: arialabel
+  type: string
+  required: false
+  description: Text for screen readers on the manu button. Defaults to 'Luk menu'.

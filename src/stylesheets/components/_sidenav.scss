@@ -38,10 +38,26 @@
       color: color($sidenav-link-active-color);
     }
 
+    &.sidenav-error {
+      background-color: color($sidenav-error-background-color);
+
+      &.current {
+        background-color: color($sidenav-error-background-color);
+      }
+
+      &:hover {
+        background-color: color($sidenav-error-background-color);
+      }
+
+      .sidenav-information {
+        color: color($sidenav-link-current-extra-information-text-color);
+        font-weight: font-weight("normal");
+      }
+    }
+
     a {
-      overflow:hidden;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
 
       ul {
         width:100%
@@ -60,9 +76,15 @@
         text-align: center;
         float: right;
       }
-      .sidenav-title{
+
+      /* 'sidenav-title' used before 9.0.0 to style title text in stepguide - to be removed at some point as breaking change */
+      .sidenav-title {
         margin-left: units(2);
         white-space: pre-line;
+      }
+
+      .sidenav-number {
+        margin-right: units(2);
       }
 
       .sidenav-information {
@@ -153,6 +175,7 @@
   
   li.disabled {
     cursor: not-allowed;
+
     a {
       cursor: not-allowed;
       color: color($sidenav-link-disabled-color);
@@ -165,8 +188,25 @@
       }
     }
 
-    &.active, &.active a{color: color($sidenav-link-active-color); background-color: transparent;}
-    &:hover , &.active a:hover{color: color($sidenav-link-active-color); background-color: color($sidenav-link-default-background-color);}
+    &.active,
+    &.active a {
+      color: color($sidenav-link-active-color);
+      background-color: transparent;
+    }
+
+    &:hover,
+    &.active a:hover {
+      color: color($sidenav-link-active-color);
+      background-color: color($sidenav-link-default-background-color);
+    }
+
+    &.sidenav-error {
+      background-color: color($sidenav-error-background-color);
+
+      &.active a:hover {
+        background-color: color($sidenav-error-background-color);
+      }
+    }
   }
 }
 
@@ -198,8 +238,6 @@
 
 }
 
-.sidebar-col{
-  @include media-breakpoint-up(md) {
-    flex: 0 0 300px; //300 = 3 columns width
-  }
+.sidebar-col {
+  max-width: 300px;
 }

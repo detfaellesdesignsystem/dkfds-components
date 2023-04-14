@@ -183,6 +183,11 @@ $z-index-nav:     9000;
   }
   .authority-name{
     color: color($header-solution-authority-name);
+    font-weight: font-weight("semibold");
+    font-size: font-size($header-solution-authority-name-font-size);
+    line-height: 2.4rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .button-contact{
     display: inline-flex;

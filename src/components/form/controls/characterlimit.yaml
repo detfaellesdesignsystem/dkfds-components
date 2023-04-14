@@ -1,0 +1,9 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the character limit message.
+- name: characterLimit
+  type: int
+  required: true
+  description: Character limit for the input.

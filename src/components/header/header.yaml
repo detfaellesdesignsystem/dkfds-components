@@ -1,13 +1,13 @@
-# portal_header
+# portal_header and mobile_portal_header
 params:
 - name: compact
   type: string
   required: false
-  description: The ID of the input.
+  description: true if the compact header should be used.
 - name: logolink
   type: object
   required: true
-  description: Logo object.
+  description: Logo object. Only used in portal_header.
   - name: href
     type: string
     required: true
@@ -19,15 +19,11 @@ params:
   - name: label
     type: string
     required: false
-    description: aria-label on logo.
+    description: Defines the text used for aria-label and when printing.
   - name: classes
     type: string
     required: false
     description: Classes on logo.
-  - name: sronly
-    type: string
-    required: false
-    description: Link text on logo - only read by screenreaders.
 - name: user
   type: object
   required: true
@@ -40,29 +36,29 @@ params:
     type: string
     required: false
     description: Name of company the user is acting on behalf of.
-- name: link
+- name: button
   type: object
   required: false
   description: Log out button object.
-  - name: classes
+  - name: variant
     type: string
     required: false
-    description: Classes of button.
+    description: Button variant.
   - name: text
     type: string
     required: false
     description: Text on button.
 
-# solution_header
+# solution_header and mobile_solution_header
 params:
-- name: classes
-  type: string
+- name: lastHeader
+  type: boolean
   required: false
-  description: Additional classes of the solution header
+  description: true if the solution header is the last row in the header. Only used in solution_header.
 - name: title
   type: object
   required: true
-  description: Title object.
+  description: Title object. Only used in solution_header.
   - name: href
     type: string
     required: true
@@ -79,14 +75,10 @@ params:
     type: string
     required: false
     description: Additional classes on solution title.
-- name: solutionInfo
-  type: object
+- name: hideOnPrint
+  type: boolean
   required: false
-  description: Solution info object
-  - name: hideOnPrint
-    type: boolean
-    required: false
-    description: Hide solution info on print
+  description: Hide solution info on print
 - name: authority
   type: object
   required: true
@@ -97,5 +89,5 @@ params:
     description: Name of authority.
   - name: text
     type: string
-    required: false
+    required: true
     description: Text of authority - could be contact info.

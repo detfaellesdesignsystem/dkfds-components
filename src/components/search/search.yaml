@@ -1,0 +1,29 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: ID for the input.
+- name: classes
+  type: string
+  required: false
+  description: Classes for the input.
+- name: name
+  type: string
+  required: true
+  description: Name for the input.
+- name: searchbutton
+  type: object
+  required: false
+  description: Search button next to the input field.
+  - name: id
+    type: string
+    required: false
+    description: ID for the search button.
+  - name: type
+    type: string
+    required: false
+    description: Type for the search button. Must be either "submit" or "button".
+  - name: iconOnly
+    type: boolean
+    required: false
+    description: Determines whether to use a search button with text or an icon.

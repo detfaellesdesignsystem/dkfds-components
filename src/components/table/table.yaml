@@ -1,29 +1,72 @@
 params:
-- name: selectable
-  type: boolean
-  required: false
-  description: Set to true if rows are selectable.
 - name: id
   type: string
   required: false
   description: Id of the table.
-- name: thead
-  type: array
-  required: true
-  description: List of table headers.
-  - type: string
+- name: classes
+  type: object
+  required: false
+  description: Classes for the table elements.
+  - name: outer
+    type: string
+    required: false
+    description: Classes to add to the div surrounding the table.
+  - name: inner
+    type: string
+    required: false
+    description: Classes to add to the table.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the table elements.
+  - name: outer
+    type: string
+    required: false
+    description: Attributes to add to the div surrounding the table.
+  - name: inner
+    type: string
+    required: false
+    description: Attributes to add to the table.
+- name: zebra
+  type: boolean
+  required: false
+  description: Set to true if rows should alternate in color.
+- name: borderless
+  type: boolean
+  required: false
+  description: Set to true if the table should not have a border.
+- name: selectable
+  type: boolean
+  required: false
+  description: Set to true if rows are selectable.
+- name: responsive
+  type: boolean
+  required: false
+  description: Set to true if the table should be responsive.
+- name: variant
+  type: object
+  required: false
+  description: Choose the table variant.
+  - name: cellPadding
+    type: string
+    required: false
+    description: Valid entries are "normal", "compact" and "extracompact". Defaults to "normal".
+  - name: breakpoint
+    type: string
+    required: false
+    description: Select the breakpoint where the responsive table should change. Valid values are "sm", "md" or "lg".
+- name: sorting
+  type: object
+  required: false
+  description: If the table has sorting options in one or more headers and if the table should be sorted by one of these columns as default, define column and direction.
+  - name: column
+    type: int
     required: true
-    description: Table header
-- name: tbody
-  type: array
-  required: true
-  description: List of table rows.
-  - type: array
+    description: Column to sort by. For example, to sort by the second column in the table, use the value "2".
+  - name: direction
+    type: string
     required: true
-    description: List of cell values.
-    - type: string
-      required: true
-      description: Cell value
+    description: Sorting direction. Valid values are "ascending" and "descending".
 - name: actions
   type: array
   required: false
@@ -32,11 +75,47 @@ params:
     type: string
     required: true
     description: Text on action button.
-  - name: classes
+  - name: variant
     type: string
     required: true
-    description: Classes of action button.
+    description: Variant of button.
   - name: icon
     type: string
     required: false
     description: Icon name of action button.
+- name: tbody
+  type: array
+  required: true
+  description: List of table rows.
+  - type: array
+    required: true
+    description: List of cell values.
+    - name: content
+      type: string
+      required: true
+      description: Cell content.
+    - name: classes
+      type: string
+      required: true
+      description: Classes to add to the cell.
+- name: thead
+  type: array
+  required: true
+  description: List of table headers.
+  - name: headerContent
+    type: string
+    required: true
+    description: Header name.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the header.
+  - name: sorting
+    type: boolean
+    required: false
+    description: Set to true if it should be possible to sort table rows by the column.
+  - name: sortingID
+    type: string
+    required: false
+    description: Adds an ID to a header's sorting button.
+

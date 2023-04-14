@@ -1,57 +1,76 @@
 params:
-params:
 - name: id
   type: string
   required: true
   description: The ID of the textarea.
-- name: label
-  type: object
-  required: true
-  description: The label attached to the textarea.
-  - name: text
-    type: string
-    required: true
-    description: Text for the label.
-  - name: for
-    type: string
-    required: true
-    description: Id of the textarea.
-  - name: classes
-    type: string
-    required: false
-    description: Classes to add to the label.
-  - name: requiredLabel
-    type: boolean
-    required: false
-    description: Show label saying the textarea is required and most textareas in form aren't required.
-  - name: optionalLabel
-    type: boolean
-    required: false
-    description: Show label saying the textarea is not required and most textareas in form are required.
-  - name: tooltip
-    type: string
-    required: false
-    description: Additional text to show in a tooltip next to the label
 - name: name
   type: string
   required: true
   description: The name of the textarea, which is submitted with the form data.
-- name: value
+- name: label
+  type: string
+  required: true
+  description: Text for the label.
+- name: tooltip
   type: string
   required: false
-  description: Optional initial value of the textarea.
+  description: Additional text to show in a tooltip next to the label
 - name: helptext
   type: string
   required: false
   description: Text under label meant to help the user enter the correct value.
-- name: rows
+- name: errorMessage
   type: string
   required: false
-  description: Height of the textarea.
-- name: placeholder
+  description: Display an error message for the textarea.
+- name: characterLimit
+  type: int
+  required: false
+  description: Character limit for the textarea.
+- name: classes
+  type: object
+  required: false
+  description: Classes for the textarea elements.
+  - name: formgroup
+    type: string
+    required: false
+    description: Classes to add to the form group.
+  - name: label
+    type: string
+    required: false
+    description: Classes to add to the label.
+  - name: textarea
+    type: string
+    required: false
+    description: Classes to add to the textarea.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the textarea elements.
+  - name: formgroup
+    type: string
+    required: false
+    description: Attributes to add to the form group.
+  - name: label
+    type: string
+    required: false
+    description: Attributes to add to the label.
+  - name: textarea
+    type: string
+    required: false
+    description: Attributes to add to the textarea.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the textarea is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the textarea is optional - use only when most inputs in form are required.
+- name: value
   type: string
   required: false
-  description: Placeholder text in the textarea
+  description: Optional initial value of the textarea.
 - name: disabled
   type: boolean
   required: false
@@ -64,23 +83,7 @@ params:
   type: boolean
   required: false
   description: Enter true for required textarea. Enter false for optional textarea. Defaults to true.
-- name: errorMessage
+- name: rows
   type: string
   required: false
-  description: Options for the error message component. The error message component will not display if you use a falsy value for `errorMessage`, for example `false` or `null`.
-- name: classes
-  type: string
-  required: false
-  description: Classes to add to the textarea.
-- name: characterLimit
-  type: object
-  required: false
-  description: Character limit object.
-  - name: id
-    type: string
-    required: true
-    description: The ID of the character limit form group.
-  - name: limit
-    type: int
-    required: true
-    description: Character limit for the input.
+  description: Height of the textarea.

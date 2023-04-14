@@ -1,20 +1,28 @@
 params:
+- name: variant
+  type: string
+  required: true
+  description: The button variant. Valid entries are "primary", "secondary", "tertiary", "quaternary", and "unstyled".
+- name: text
+  type: string
+  required: false
+  description: The text of the button.
+- name: classes
+  type: object
+  required: false
+  description: Classes for the datepicker elements.
+  - name: button
+    type: string
+    required: false
+    description: Classes for the button.
+  - name: icon
+    type: string
+    required: false
+    description: Classes for the icon.
 - name: id
   type: string
   required: false
   description: The ID of the button.
-- name: text
-  type: string
-  required: true
-  description: The text of the button.
-- name: classes
-  type: string
-  required: true
-  description: The classes of the button.
-- name: srOnly
-  type: string
-  required: false
-  description: The sr-only text of the button.
 - name: attributes
   type: string
   required: false
@@ -23,3 +31,11 @@ params:
   type: string
   required: false
   description: Icon of the button.
+- name: srOnly
+  type: string
+  required: false
+  description: Any text meant for screen readers only. 
+- name: tooltip
+  type: object
+  required: false
+  description: Tooltip object to be added to the button.

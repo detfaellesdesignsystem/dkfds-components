@@ -37,7 +37,7 @@ var regexMask = function (event) {
   var regexStr = this.getAttribute('data-input-regex');
 
   if(event.type !== undefined && event.type === 'paste'){
-    console.log('paste');
+    //console.log('paste');
   } else{
     var element = null;
     if(event.target !== undefined){

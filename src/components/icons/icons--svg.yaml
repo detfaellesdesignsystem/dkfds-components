@@ -12,9 +12,9 @@ params:
   required: false
   description: Aria-label of the svg
 - name: focusable
-  type: boolean
+  type: string
   required: false
-  description: If defined, sets focusable to value.
+  description: If defined, sets focusable to value. Valid entries are "true" and "false".
 - name: ariaHidden
   type: boolean
   required: false

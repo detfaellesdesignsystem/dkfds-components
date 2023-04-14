@@ -88,10 +88,13 @@
         padding-top: units(3);
         padding-bottom: units(3);
         top: calc(100% + #{$overflow-menu-dropdown-distance});
-        min-width: 28rem;
 
         @include media-breakpoint-up(md) {
             width: auto;
+        }
+
+        @include media-breakpoint-up(sm) {
+            min-width: 28rem;
         }
 
         &[aria-hidden="true"] {
@@ -260,7 +263,7 @@
             }
         }
 
-        .overflow-menu-inner .overflow-list li[aria-selected="true"] button {
+        .overflow-menu-inner .overflow-list li button[aria-current="true"] {
             font-weight: font-weight("semibold");
             @include add-background-svg('done');
             background-repeat: no-repeat;

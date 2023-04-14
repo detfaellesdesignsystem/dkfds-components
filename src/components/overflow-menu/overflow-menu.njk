@@ -1,13 +1,15 @@
- {% macro overflowmenu(params) %}
- {% set openRight = params.openRight | default(true) %}
- {% set icon = params.button.icon | default('more-vert') %}
-    <div class="overflow-menu {% if openRight %} overflow-menu--open-right{% else %} overflow-menu--open-left{% endif %}">
-        <button class="button-overflow-menu js-dropdown {% if params.doResponsiveCollapse %} js-dropdown--responsive-collapse {% endif %}" data-js-target="{{ params.id }}" aria-haspopup="true" aria-expanded="false">
-            {% if params.button.srOnly %}<span class="sr-only">{% endif %}{{ params.button.text }}{% if params.button.srOnly %}</span>{% endif %}
-            {% if icon %}<svg class="icon-svg" aria-hidden="true" focusable="false"><use xlink:href="#{{ icon }}"></use></svg>{% endif %}
-        </button>
-        <div class="overflow-menu-inner" id="{{ params.id }}" aria-hidden="true">
-            {{ params.content | safe }}
-        </div>
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+ 
+{% macro overflowmenu(params) %}
+{% set openRight = params.openRight | default(true) %}
+{% set icon = params.button.icon | default('more-vert') %}
+<div class="overflow-menu{% if openRight %} overflow-menu--open-right{% else %} overflow-menu--open-left{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}">
+    <button class="button-overflow-menu js-dropdown{% if params.doResponsiveCollapse %} js-dropdown--responsive-collapse{% endif %}" data-js-target="{{ params.id }}" aria-haspopup="true" aria-expanded="false">
+        {% if params.button.srOnly %}<span class="sr-only">{% endif %}{{ params.button.text }}{% if params.button.srOnly %}</span>{% endif %}
+        {{ icon_svg({"name": icon}) }}
+    </button>
+    <div class="overflow-menu-inner" id="{{ params.id }}" aria-hidden="true">
+        {{- params.content | safe -}}
     </div>
+</div>
 {% endmacro %}

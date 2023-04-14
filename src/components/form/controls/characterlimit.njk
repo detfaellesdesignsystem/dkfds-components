@@ -1,0 +1,9 @@
+{%- macro characterlimit(params) -%}
+<span id="{{characterlimit_id(params.id)}}" class="sr-only">Du kan indtaste op til {{params.characterLimit}} tegn</span>
+<span class="form-hint character-limit" aria-hidden="true">Du har {{params.characterLimit}} tegn tilbage</span>
+<span class="character-limit-sr-only sr-only" aria-live="polite">Du har {{params.characterLimit}} tegn tilbage</span>
+{%- endmacro -%}
+
+{%- macro characterlimit_id(id) -%}
+{{id}}-limit-message
+{%- endmacro -%}

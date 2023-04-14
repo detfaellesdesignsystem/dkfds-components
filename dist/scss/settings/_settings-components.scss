@@ -43,7 +43,7 @@ $alert-heading-lineheight: 5 !default;
 $alert-heading-color: $alert-text-color !default;
 $alert-close-text-color: $alert-text-color !default;
 
-//Back-to-top
+// Back-to-top
 $back-to-top-button-shadow: 'medium' !default;
 $back-to-top-button-background: 'white' !default;
 
@@ -130,6 +130,7 @@ $button-quaternary-focus-color: $button-quaternary-default-color !default;
 $button-search-text-color: 'ink' !default;
 $button-search-default-background-color: 'white' !default;
 $button-search-hover-background-color: 'gray-200' !default;
+$search-background-color: 'white';
 
 // Breadcrumbs
 $breadcrumbs-font-size: $typography-small-text-font-size !default;
@@ -254,6 +255,7 @@ $header-solution-line-height: 5 !default;
 $header-solution-text-size-desktop: '4xl' !default;
 $header-solution-line-height-desktop: 6 !default;
 $header-solution-authority-name: 'gray-600' !default;
+$header-solution-authority-name-font-size: $typography-base-font-size !default;
 $header-solution-info-mobile-text-color: 'black' !default;
 $header-navigation-background-color: 'white' !default;
 
@@ -333,6 +335,7 @@ $sidenav-link-disabled-color: 'disabled' !default;
 $sidenav-link-hover-background-color: 'gray-100' !default;
 $sidenav-link-default-background-color: 'white' !default;
 $sidenav-link-current-background-color: 'gray-100' !default;
+$sidenav-error-background-color: $theme-color-error-light !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
 $sidenav-list-level1-border: 20 !default;

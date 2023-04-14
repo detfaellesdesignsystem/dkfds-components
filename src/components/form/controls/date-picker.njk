@@ -1,13 +1,30 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% from "components/form/controls/label.njk" import label as label %}
 {% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
 {% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
 
 {% macro datepicker(params) %}
-{% set required = params.required | default(true) %}
-<div class="form-group{% if params.success %} form-success{% endif %}{% if params.errorMessage %} form-error{% endif %}">
-  {{label(params.label)}}
-  {{helptext(params.helptext)}}
-  {{errorMessage(params.errorMessage)}}
-  <div class="date-picker" {% if params.minDate %}data-min-date="{{params.minDate}}" {%endif%}{% if params.maxDate %}data-max-date="{{params.maxDate}}" {%endif%}{% if params.defaultDate %}data-default-date="{{params.defaultDate}}" {%endif%}><input class="form-input {{params.classes}}" {% if required == true %}required {% endif %} id="{{params.id}}" value="{{params.value}}" name="{{params.name}}" type="{{params.type | default('text') }}" {% if params.disabled %}disabled="disabled"{% endif %} {% if params.errorMessage %}aria-invalid="true" {% endif %}{% if params.errorMessage or params.helptext %}aria-describedby="{% if params.helptext%}{{params.helptext.id}}{% endif %} {% if params.errorMessage %}{{params.errorMessage.id}}{% endif %}"{% endif %}></div>
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}"{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+    {{
+        label({
+            text: params.label,
+            classes: params.classes.label,
+            for: params.id,
+            attributes: params.attributes.label,
+            optionalLabel: params.optionalLabel,
+            requiredLabel: params.requiredLabel,
+            tooltip: params.tooltip
+        })
+    }}
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+    {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+    <div class="date-picker"{% if params.minDate %} data-min-date="{{params.minDate}}"{% endif %}{% if params.maxDate %} data-max-date="{{params.maxDate}}"{% endif %}{% if params.defaultDate %} data-default-date="{{params.defaultDate}}"{% endif %}{% if params.format %} data-dateformat="{{params.format}}"{% endif %}>
+        <input type="text" id="{{params.id}}" name="{{params.name}}" class="form-input{% if params.classes.input %} {{params.classes.input}}{% endif %}"{% if params.value %} value="{{params.value}}"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}"{% endif %}{% if isRequired %} required{% endif %}{% if params.attributes.input %} {{params.attributes.input | safe}}{% endif %}>
+    </div>
 </div>{% endmacro %}

@@ -2,43 +2,39 @@
 {% from "components/back-to-top/back-to-top.njk" import back_to_top as back_to_top %}
 
 {% macro footer(params) %}
-  <footer>
-    {% if params.topButton %}
-      {{ back_to_top(params.topButton) }}
-    {% endif %}
-    <div class="footer">
-      <div class="container">
-          {%- if params.columns -%}
-          <div class="row">
-          {%- for column in params.columns -%}
-          <div class="col-12 col-sm-12 col-md-{{ column.columnSize }} footer-col {{ column.classes }}">
-            <section>
-              <div class="{%- if column.textAlignRight %} align-text-right  {% else %} align-text-left {% endif -%}">
-                {{ column.content | safe }}
-                {% for list in column.lists %}
-                  <ul class=" {{ list.classes|default('unstyled-list') }} {%- if list.inline %} inline-list {% endif -%} ">
-                    {% for item in list.items %}
+    <footer>
+        {% if params.topButton %}{{ back_to_top(params.topButton) }}{% endif %}
+        <div class="footer">
+            <div class="container">
+                {%- if params.columns -%}
+                <div class="row">
+                    {%- for column in params.columns -%}
+                    <div class="col-12 col-sm-12 col-md-{{ column.columnSize }} footer-col {{ column.classes }}">
+                        <section>
+                        <div class="{%- if column.textAlignRight %} align-text-right  {% else %} align-text-left {% endif -%}">
+                            {{ column.content | safe }}
+                            {% for list in column.lists %}
+                            <ul class=" {{ list.classes|default('unstyled-list') }} {%- if list.inline %} inline-list {% endif -%} ">
+                                {% for item in list.items %}
+                                <li class="{% if item.hideOnPrint %}d-print-none{% endif %}">{{item.content | safe}}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endfor %}
+                        </div>
+                        </section>
+                    </div>
+                    {% endfor -%}
+                </div>
+                {%- endif -%}
+                {%- if params.list -%}
+                <ul class="{% if params.columns %}mt-4 {% endif %}align-text-left unstyled-list inline-list">
+                    {%- for item in params.list.items -%}
                     <li class="{% if item.hideOnPrint %}d-print-none{% endif %}">{{item.content | safe}}</li>
-                    {% endfor %}
-                  </ul>
-                {% endfor %}
-              </div>
-            </section>
-          </div>
-          {% endfor -%}
+                    {% endfor -%}
+                </ul>
+                {%- endif -%}
+            </div>
         </div>
-          {%- endif -%}
-          {%- if params.list -%}
-            <ul class="{% if params.columns %}mt-4 {% endif %}align-text-left unstyled-list inline-list">
-              {%- for item in params.list.items -%}
-              <li class="{% if item.hideOnPrint %}d-print-none{% endif %}">{{item.content | safe}}</li>
-              {% endfor -%}
-            </ul>
-          {%- endif -%}
-      </div>
-    </div>
-    {% if params.languageSwitcher %}
-      {{ languageSwitcher(params.languageSwitcher) }}
-    {% endif %}
-  </footer>
+        {% if params.languageSwitcher %}{{ languageSwitcher(params.languageSwitcher) }}{% endif %}
+    </footer>
 {% endmacro %}

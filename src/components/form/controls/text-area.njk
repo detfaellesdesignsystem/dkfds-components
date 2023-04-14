@@ -1,21 +1,32 @@
 {% from "components/form/controls/label.njk" import label as label %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
+{% from "components/form/controls/characterlimit.njk" import characterlimit as characterlimit %}
+{% from "components/form/controls/characterlimit.njk" import characterlimit_id as characterlimit_id %}
+
 {% macro textarea(params) %}
-  <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}" {% if params.characterLimit %}data-maxlength="{{params.characterLimit.limit}}" id="{{params.characterLimit.id}}"{% endif %}>
-     {{label({
-    text: params.label.text,
-    classes: params.label.classes,
-    tooltip: params.label.tooltip,
-    for: params.id,
-    optionalLabel: params.label.optionalLabel,
-    requiredLabel: params.label.requiredLabel
-  }) | indent(2) | trim }}
-     {% if params.helptext %}<span class="form-hint" id="input-hint-message-{{params.id}}">{{params.helptext}}</span>{% endif %}
-     {% if params.errorMessage %}<span class="form-error-message" id="form-error-message-{{params.id}}"><span class="sr-only">Fejl:</span> {{params.errorMessage}}</span>{% endif %}
-     <textarea class="form-input {{params.classes}}" {% if params.rows %} rows="{{ params.rows }}"{% endif %} {% if params.placeholder %} placeholder="{{params.placeholder}}"{% endif %} {% if params.required %} required{% endif %} {% if params.disabled %} disabled{% endif %} {% if params.readonly %} readonly{% endif %} id="{{params.id}}" name="{{params.name}}" {% if params.errorMessage or params.helptext or params.characterLimit %}aria-describedby="{% if params.errorMessage %}form-error-message-{{params.id}}{% endif %} {% if params.helptext %}input-hint-message-{{params.id}}{% endif %} {% if params.characterLimit %}{{params.characterLimit.id}}-message{% endif %}" {% endif %}>{{params.value}}</textarea>
-     {% if params.characterLimit %}
-     <span id="{{params.characterLimit.id}}-message" class="sr-only">Du kan indtaste op til {{params.characterLimit.limit}} tegn</span>
-     <span class="form-hint character-limit" aria-hidden="true">Du har {{params.characterLimit.limit}} tegn tilbage</span>
-     <span class="character-limit-sr-only sr-only" aria-live="polite">Du har {{params.characterLimit.limit}} tegn tilbage</span>
-     {% endif %}
-  </div>
+{% set isRequired = true %}
+{% if params.required === false %}{% set isRequired = false %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="form-group{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
+    {{
+        label({
+            text: params.label,
+            classes: params.classes.label,
+            for: params.id,
+            attributes: params.attributes.label,
+            optionalLabel: params.optionalLabel,
+            requiredLabel: params.requiredLabel,
+            tooltip: params.tooltip
+        })
+    }}
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+    {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+    <textarea class="form-input{% if params.classes.textarea %} {{params.classes.textarea}}{% endif %}" id="{{params.id}}" name="{{params.name}}"{% if params.rows %} rows="{{ params.rows }}"{% endif %}{% if isRequired %} required{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.readonly %} readonly{% endif %}{% if params.errorMessage or params.helptext or params.characterLimit %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}{% if params.characterLimit %}{{characterlimit_id(params.id)}}{% endif %}"{% endif %}{% if params.attributes.textarea %} {{params.attributes.textarea | safe}}{% endif %}>{{params.value}}</textarea>
+    {% if params.characterLimit %}{{ characterlimit({ characterLimit: params.characterLimit, id: params.id }) }}{% endif %}
+</div>
 {% endmacro %}

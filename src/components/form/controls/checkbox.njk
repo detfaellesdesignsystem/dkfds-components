@@ -1,4 +1,0 @@
-{% macro checkbox(params) %}
-  <input id="{{params.id}}" type="checkbox"{% if params.name %} name="{{params.name}}"{% endif %}{%if params.value %} value="{{params.value}}"{% endif %} class="form-checkbox{% if params.large %} checkbox-large{% endif %} {{params.classes}}"  {% if params.disabled %}disabled{% endif %} {% if params.checked %}checked{% endif %} {{params.inputAttributes | safe }} />
-  <label for="{{params.id}}" class="{{params.labelClasses}}" {{params.labelAttributes | safe }} >{{params.label | safe }}</label>
-{% endmacro %}

@@ -1,28 +1,12 @@
 params:
 - name: id
-  type: object
+  type: string
   required: true
-  description: Ids of the elements.
-  - name: helptext
-    type: string
-    required: true
-    description: Id of the helptext element.
-  - name: errorMessage
-    type: string
-    required: true
-    description: Id of the error element.
-  - name: day
-    type: string
-    required: true
-    description: Id of the day input.
-  - name: month
-    type: string
-    required: true
-    description: Id of the month input.
-  - name: year
-    type: string
-    required: true
-    description: Id of the year input.
+  description: ID used to generate all id's used in the fieldset.
+- name: legend
+  type: string
+  required: true
+  description: The legend for the entire fieldset.
 - name: tooltip
   type: string
   required: false
@@ -31,34 +15,50 @@ params:
   type: string
   required: false
   description: Helptext.
-- name: labels
-  type: object
-  required: true
-  description: Labels for the inputs.
-  - name: legend
-    type: string
-    required: true
-    description: Legend label text.
-  - name: day
-    type: string
-    required: true
-    description: Day label text.
-  - name: month
-    type: string
-    required: true
-    description: Month label text.
-  - name: year
-    type: string
-    required: true
-    description: Year label text.
-- name: datepicker
+- name: disabled
   type: boolean
   required: false
-  description: Enables datepicker on true.
+  description: true for disabled input. Defaults to false.
 - name: errorMessage
   type: string
   required: false
   description: Error message text
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is optional - use only when most inputs in form are required.
+- name: required
+  type: boolean
+  required: false
+  description: Enter true for required input (all three input fields will be required). Enter false for optional input. Defaults to true.
+- name: classes
+  type: string
+  required: false
+  description: Additional classes for the form-group.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes for the form-group.
+- name: labels
+  type: object
+  required: false
+  description: Labels for the inputs.
+  - name: day
+    type: string
+    required: false
+    description: Day label text. Defaults to "Dag".
+  - name: month
+    type: string
+    required: false
+    description: Month label text. Defaults to "Måned".
+  - name: year
+    type: string
+    required: false
+    description: Year label text. Defaults to "År".
 - name: values
   type: object
   required: false
@@ -75,7 +75,4 @@ params:
     type: string
     required: false
     description: Value for the year input.
-- name: classes
-  type: string
-  required: false
-  description: Additional classes for the form-group
+

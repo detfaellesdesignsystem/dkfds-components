@@ -1,0 +1,49 @@
+params:
+- name: breakpoint
+  type: string
+  required: false
+  description: The breakpoint where the list should change view to fit smaller screens. Valid values are "sm", "md" or "lg". Can be omitted.
+- name: edit
+  type: string
+  required: false
+  description: Set to 'true' if there are any edit options in the list.
+- name: classes
+  type: object
+  required: true
+  description: Classes for the structured list elements.
+  - name: outer
+    type: string
+    required: false
+    description: Classes to add to the outer div element before the table element.
+  - name: table
+    type: string
+    required: false
+    description: Classes to add to the table element.
+  - name: label
+    type: string
+    required: false
+    description: Classes to add to the labels/headings.
+  - name: value
+    type: string
+    required: false
+    description: Classes to add to the values.
+  - name: edit
+    type: string
+    required: false
+    description: Classes to add to the edit links. If omitted, no edit link will be displayed.
+- name: items
+  type: object
+  required: true
+  description: The rows in the structured list.
+  - name: label
+    type: string
+    required: true
+    description: Label/heading for a row.
+  - name: value
+    type: string
+    required: true
+    description: The row value.
+  - name: href
+    type: string
+    required: false
+    description: Link to the page, where the user can edit the row content.

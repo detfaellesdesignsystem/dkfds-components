@@ -3,30 +3,31 @@ params:
   type: string
   required: true
   description: Label text.
-- name: classes
-  type: string
-  required: true
-  description: Classes of the label.
-- name: optionalLabel
-  type: boolean
-  required: false
-  description: True if the input is optional. Appends optional label.
-- name: requiredLabel
-  type: boolean
-  required: false
-  description: Appends required label.
 - name: for
   type: string
   required: true
   description: Id of the input element.
-- name: Tooltip
+- name: classes
+  type: string
+  required: false
+  description: Classes of the label.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes of the label.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Appends the text 'optional'.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Appends the text 'required'.
+- name: srOnly
+  type: string
+  required: false
+  description: Any text meant for screen readers only. 
+- name: tooltip
   type: string
   required: false
   description: Tooltip text.
-- name: tooltipattr
-  type: string
-  required: false
-  description: Attributes for the tooltip button
-  
-
-

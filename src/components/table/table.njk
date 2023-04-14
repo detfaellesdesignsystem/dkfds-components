@@ -1,56 +1,73 @@
-
-
 {% from "components/buttons/buttons.njk" import button as button %}
-{% macro table(params) %}
 
-{%- set unique = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50] | random -%}
-{%- set ariacontrols = "" -%}
-{%- for row in params.tbody -%}
-    {%- set ariacontrols = ariacontrols + " " + params.id+"-check-"+unique+"-"+loop.index -%}
-{%- endfor -%}
-<div class="table--responsive-scroll">
-    <table class="table table--selectable" id="{{params.id}}">
+{% macro table(params) %}
+<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}"{% if params.attributes.outer %} {{ params.attributes.outer | safe }}{% endif %}>
+    <table class="table{% if params.zebra %} table--zebra{% endif %}{% if params.selectable %} table--selectable{% endif %}{% if params.borderless %} table--borderless{% endif %}{% if params.variant.cellPadding %}{% if params.variant.cellPadding === 'compact' %} table--compact{% elif params.variant.cellPadding === 'extracompact' %} table--extracompact{% endif %}{% endif %}{% if params.classes.inner %} {{ params.classes.inner }}{% endif %}{% if params.responsive or params.variant.breakpoint %} table-{% if params.variant.breakpoint %}{{params.variant.breakpoint}}{% endif %}-responsive-headers{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes.inner %} {{ params.attributes.inner | safe }}{% endif %}>
         <thead>
-            <tr>
-            {%- if params.selectable -%}
-            <th>
-            <input id="{{params.id}}-check-{{unique}}-all" type="checkbox" class="form-checkbox" aria-controls="{{ariacontrols}}">
-            <label for="{{params.id}}-check-{{unique}}-all" aria-label="Vælg alle rækker"><span class="sr-only">Vælg alle rækker</span></label>
-            </th>
-            {%- endif -%}
-            {% for th in params.thead %}
-                <th>{{th}}</th>
-            {% endfor %}
-            </tr>
+            <tr>{%- if params.selectable -%}
+                    {%- set ariacontrols = "" -%}
+                    {%- for row in params.tbody -%}
+                        {%- set ariacontrols = ariacontrols + " " + params.id + "-check-"+ loop.index -%}
+                    {%- endfor -%}
+                    <th>
+                        <input id="{{params.id}}-check-all" type="checkbox" class="form-checkbox" aria-controls="{{ariacontrols}}">
+                        <label for="{{params.id}}-check-all"><span class="sr-only">Vælg alle rækker</span></label>
+                    </th>
+                {%- endif -%}
+                {%- set sortingColumn = 0 -%}
+                {%- if params.sorting.column -%}{%- set sortingColumn = params.sorting.column -%}{%- endif -%}
+                {%- for th in params.thead -%}<th scope="col"{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction and th.sorting %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
+                        {{- th.headerContent | safe -}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" and th.sorting %}{{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér efter " + th.headerContent,
+                            "icon": "sort-table-ascending",
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
+                        }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" and th.sorting %}
+                        {{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér efter " + th.headerContent,
+                            "icon": "sort-table-descending",
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
+                        }}{% elif th.sorting %}
+                        {{ button({
+                            "variant": "unstyled",
+                            "id": th.sortingID,
+                            "attributes": "type=\"button\"",
+                            "srOnly": "Sortér efter " + th.headerContent,
+                            "icon": "sort-table-none",
+                            "classes": {
+                                "button": "ml-2",
+                                "icon": "mr-0"
+                            } }) 
+                        }}{% endif %}</th>
+                {% endfor %}</tr>
         </thead>
-        
-        <tbody>
-            {% for row in params.tbody %}
-            <tr>
+        <tbody{% if params.sorting %} aria-live="polite"{% endif %}>
+            {% for row in params.tbody %}<tr>
                 {%- if params.selectable -%}
-                <td><input id="{{params.id}}-check-{{unique}}-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0]}}">
-                    <label for="{{params.id}}-check-{{unique}}-{{loop.index}}" aria-label="Vælg række"><span class="sr-only">Vælg række</span></label>
+                <td><input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0].content}}">
+                    <label for="{{params.id}}-check-{{loop.index}}"><span class="sr-only">Vælg række</span></label>
                 </td>
                 {%- endif -%}
-                {% for td in row %}
-                <td>{{td | safe}}</td>
-                {% endfor %}
+                {% for td in row %}<td{% if td.classes %} class="{{ td.classes }}"{% endif %}>{{ td.content | safe}}</td>{% endfor %}
             </tr>
-            {% endfor %}
-        </tbody>
+            {% endfor %}</tbody>
     </table>
-    {% if params.actions %}
+    {% if params.actions and params.selectable %}
     <div class="table-actions">
         <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
-        {% for action in params.actions %}
-            {{ button(action) }}
-        {% endfor %}
+        {% for action in params.actions %}{{ button(action) }}{% endfor %}
     </div>
     {%- endif -%}
 </div>
-{% endmacro %}
-
-{% macro checkbox(id, label, name, value, controls) %}
-  <input id="{{id}}" type="checkbox"{% if name %}name="{{name}}"{% endif %} class="form-checkbox"{% if value %}value="{{value}}"{% endif %}{% if controls %} aria-controls="{{controls | trim}}"{% endif %} />
-  <label for="{{id}}" aria-label="{{label}}"></label>
 {% endmacro %}

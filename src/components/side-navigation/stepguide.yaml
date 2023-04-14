@@ -1,4 +1,20 @@
+# overflow_stepguide
 params:
+- name: id
+  type: string
+  required: true
+  description: ID of the stepguide. Only used in the overflow_stepguide macro.
+- name: breakpoint
+  type: boolean
+  required: false
+  description: If set, hides a responsive stepguide at the breakpoint. If omitted, the stepguide is always hidden. Only used in the overflow_stepguide macro. Valid values are "md" or "lg".
+
+# overflow_stepguide and stepguide
+params:
+- name: hasMaxWidth
+  type: boolean
+  required: false
+  description: Sets a max width of 300 px. Defaults to true.
 - name: steps
   type: array
   required: true
@@ -7,10 +23,6 @@ params:
     type: string
     required: true
     description: Link text
-  - name: safetext
-    type: string
-    required: false
-    description: An alternative to 'text' marked with 'safe'
   - name: href
     type: string
     required: true
@@ -19,7 +31,7 @@ params:
     type: boolean
     required: false
     description: Is link active page?
-  - name: information
+  - name: helptext
     type: string
     required: false
     description: Additional text information on link
@@ -27,11 +39,11 @@ params:
     type: string
     required: false
     description: Icon object.
-  - name: iconclass
-    type: string
-    required: false
-    description: additional classes on sidenav-icon element.
   - name: disabled
     type: boolean
     required: false
     description: Is step disabled?
+  - name: error
+    type: boolean
+    required: false
+    description: Used to mark errors in the step.

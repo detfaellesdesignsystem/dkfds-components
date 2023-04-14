@@ -1,11 +1,18 @@
+{% from "components/tooltip/tooltip.njk" import tooltip as tooltip %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
 {%- macro button(params) -%}
-<button class="button button-{{params.classes}}" {{ params.attributes | safe}}>
-  {% if params.icon %}{{icon_svg({"name": params.icon})}}
-  {% endif %}
-  {%- if params.text -%}
-  {{ params.text }}
-  {%- endif -%}
-  {% if params.srOnly %}<span class="sr-only">{{ params.srOnly }}</span>{% endif %}
+{%- if params.variant -%}
+<button class="button button-{{ params.variant }}{% if params.tooltip %} js-tooltip{% endif %}{% if params.classes.button %} {{ params.classes.button }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}{% if params.tooltip %} {{ tooltip(params.tooltip) }}{% endif %}>
+    {%- if params.icon %}
+    {{ icon_svg({"name": params.icon, "classes": params.classes.icon}) }}
+    {%- endif -%}
+    {% if params.text %}
+    {{ params.text }}
+    {% endif -%}
+    {% if params.srOnly %}
+    <span class="sr-only">{{ params.srOnly }}</span>
+    {% endif -%}
 </button>
+{%- endif -%}
 {%- endmacro -%}

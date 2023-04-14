@@ -1,0 +1,11 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
+{% macro search(params) %}
+<div class="form-group search">
+    <label for="{{ params.id }}" class="sr-only">Søg efter indhold</label>
+    <input class="form-input{% if params.classes %} {{ params.classes }}{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="search">
+    <button class="button button-search"{% if params.searchbutton.id %} id="{{ params.searchbutton.id }}"{% endif %}{% if params.searchbutton.type %} type="{{ params.searchbutton.type }}"{% endif %}>
+        {% if params.searchbutton.iconOnly %}{{ icon_svg({"name": 'search', "classes": 'm-0'})}}<span class="sr-only">Søg</span>{% else %}Søg{% endif %}
+    </button>
+</div>
+{% endmacro %}

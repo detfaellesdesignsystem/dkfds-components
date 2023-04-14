@@ -1,23 +1,68 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
 
 {% macro stepguide(params) %}
-<nav>
-  <ul class="sidenav-list" role="menu">
-    {% for trin in params.steps %}
-      {% set disabled = trin.disabled | default(false) %}
-      <li{% if disabled or trin.active %} class="{% if disabled %}disabled{% endif %} {% if trin.active %}active current{% endif %}"{% endif %} role="none">
-        <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem" {% if trin.active %}aria-current="page"{% endif %}{% if trin.active %} aria-current="page"{% endif %}>
-            <span class="sidenav-number">{{loop.index}}.</span> <span class="sidenav-title">{% if trin.text %}{{trin.text}}{% else %}{{trin.safetext | safe}}{% endif %}</span>
-            {% if trin.icon %}
-            <span class="sidenav-icon{%if trin.iconclass %} {{ trin.iconclass }}{% endif %}">
-                {{ icon_svg(trin.icon) }}
-            </span>
-            {% endif %}
-            {% if trin.information %}
-                <span class="sidenav-information">{{trin.information}}</span>
-            {% endif %}
-        </a>
-      </li>{% endfor %}
-  </ul>
+{% set hasMaxWidth = params.hasMaxWidth | default(true) %}
+<nav{% if hasMaxWidth %} class="sidebar-col"{% endif %}>
+    <ul class="sidenav-list" role="menu">
+        {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
+        <li{% if disabled or trin.active or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.active %}active current {% endif %}{% if trin.error %}sidenav-error{% endif %}"{% endif %} role="none">
+            <a {% if not disabled %}href="{{trin.href}}" {% endif %}role="menuitem"{% if trin.active %} aria-current="page"{% endif %}>
+                <span class="sidenav-number">{{loop.index}}.</span>
+                <div>
+                    <span>{{trin.text}}</span>
+                    {% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}
+                </div>
+                {%- if trin.icon %}
+                <span class="sidenav-icon">
+                    {{ icon_svg(trin.icon) }}
+                </span>
+                {% endif -%}
+            </a>
+        </li>{% endfor %}
+    </ul>
 </nav>
+{% endmacro %}
+
+{% macro overflow_stepguide(params) %}
+{% set hasMaxWidth = params.hasMaxWidth | default(true) %}
+{% set stepsTotal = params.steps | length %}
+{% set currentStep = 0 %}
+{% for trin in params.steps %}
+    {% if trin.active %}
+        {% set currentStep = loop.index %}
+    {% endif %}
+{% endfor %}
+{% set buttonText = "Trin " + currentStep + " af " + stepsTotal %}
+{% set menuClasses = "" %}
+{% if params.breakpoint %}
+    {% set menuClasses = "overflow-menu--" + params.breakpoint + "-no-responsive " %}
+{% endif %}
+{% if hasMaxWidth %}
+    {% set menuClasses = menuClasses + "sidebar-col" %}
+{% endif %}
+{% if menuClasses !== "" %}
+{{ 
+    overflowmenu({
+        "button": {
+            "text": buttonText,
+            "icon": "arrow-drop-down"
+        },
+        "classes": menuClasses,
+        "id": params.id,
+        "content": stepguide(params)
+    }) 
+}}
+{% else %}
+{{ 
+    overflowmenu({
+        "button": {
+            "text": buttonText,
+            "icon": "arrow-drop-down"
+        },
+        "id": params.id,
+        "content": stepguide(params)
+    }) 
+}}
+{% endif %}
 {% endmacro %}
