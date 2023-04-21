@@ -1,16 +1,23 @@
 // Buttons
 
 a.button {
-    padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
+    display: inline-flex;
+    padding-top: units(1);
+    padding-left: calc(units(4) - $button-border-width);
+    padding-right: calc(units(4) - $button-border-width);
+    padding-bottom: 1px;
     line-height: units($button-line-height, 'rem');
 }
 
 .button {
     appearance: none;
-    display: inline-block;
+    display: inline-flex;
     width: 100%;
-    max-height: units(7);
-    padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});
+    min-height: units(7);
+    padding-top: units(1);
+    padding-left: calc(units(4) - $button-border-width);
+    padding-right: calc(units(4) - $button-border-width);
+    padding-bottom: 1px;
     border-radius: $button-border-radius;
     border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
     border-style: solid;
@@ -21,6 +28,7 @@ a.button {
     @include font-smoothing;
     line-height: units($button-line-height, 'rem');
     text-align: center;
+    align-items: center;
     justify-content: center;
     text-decoration: none;
     user-select: text;
@@ -220,9 +228,8 @@ a.button {
         }
 
         .icon-svg {
-            margin-right: 0;
-            margin-bottom: -2px;
-            margin-top: -4px;
+            margin-right: units(2);
+            min-width: units($button-line-height, 'rem');
         }
     }
 
@@ -233,9 +240,9 @@ a.button {
     }
 
     .icon-svg {
-        margin-right: 4px;
+        margin-right: units(3);
         fill: currentColor;
-        margin-top: -0.2em;
+        min-width: units($button-line-height, 'rem');
     }
 }
 

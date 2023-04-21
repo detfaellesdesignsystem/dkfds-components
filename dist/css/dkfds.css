@@ -6083,18 +6083,25 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 }
 
 a.button{
-  padding:8px calc(16px - 2px) calc(8px - 2px);
-  line-height:2rem;
+  display:inline-flex;
+  padding-top:2px;
+  padding-left:14px;
+  padding-right:14px;
+  padding-bottom:1px;
+  line-height:2.4rem;
 }
 
 .button{
   -webkit-appearance:none;
      -moz-appearance:none;
           appearance:none;
-  display:inline-block;
+  display:inline-flex;
   width:100%;
-  max-height:40px;
-  padding:8px calc(16px - 2px) calc(8px - 2px);
+  min-height:40px;
+  padding-top:2px;
+  padding-left:14px;
+  padding-right:14px;
+  padding-bottom:1px;
   border-radius:4px;
   border-width:2px 2px 4px 2px;
   border-style:solid;
@@ -6104,8 +6111,9 @@ a.button{
   color:white;
   -moz-osx-font-smoothing:grayscale;
   -webkit-font-smoothing:antialiased;
-  line-height:2rem;
+  line-height:2.4rem;
   text-align:center;
+  align-items:center;
   justify-content:center;
   text-decoration:none;
   -webkit-user-select:text;
@@ -6262,9 +6270,8 @@ a.button{
   box-shadow:none !important;
 }
 .button.button-quaternary .icon-svg{
-  margin-right:0;
-  margin-bottom:-2px;
-  margin-top:-4px;
+  margin-right:4px;
+  min-width:2.4rem;
 }
 .button.button-small{
   padding:calc(2px) calc(16px - 2px) 0px;
@@ -6272,9 +6279,9 @@ a.button{
   min-height:24px;
 }
 .button .icon-svg{
-  margin-right:4px;
+  margin-right:8px;
   fill:currentColor;
-  margin-top:-0.2em;
+  min-width:2.4rem;
 }
 
 .button-unstyled{
@@ -10746,7 +10753,6 @@ body.modal-open{
   -webkit-appearance:none;
      -moz-appearance:none;
           appearance:none;
-  display:inline-block;
   background-color:transparent;
   border-style:none;
   color:#1a1a1a;
@@ -10755,6 +10761,8 @@ body.modal-open{
   width:auto;
   padding-left:8px;
   padding-right:8px;
+  padding-top:0px;
+  padding-bottom:0px;
 }
 .pagination .button.button-arrow.hidden{
   visibility:hidden;
