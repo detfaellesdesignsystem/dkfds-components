@@ -38,7 +38,7 @@ Modal.prototype.hide = function (){
     modalElement.dispatchEvent(eventClose);
 
     let $backdrop = document.querySelector('#modal-backdrop');
-    $backdrop.parentNode.removeChild($backdrop);
+    $backdrop?.parentNode.removeChild($backdrop);
 
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.removeEventListener('keydown', trapFocus, true);
