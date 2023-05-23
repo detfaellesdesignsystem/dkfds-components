@@ -9080,7 +9080,8 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   padding-top:calc(32px - 1px);
   padding-bottom:calc(40px - 1px);
   position:relative;
-  overflow:hidden;
+  max-height:75vh;
+  overflow-y:auto;
 }
 .cookie-container .cookie-message p, .cookie-container .cookie-message h1, .cookie-container .cookie-message h2, .cookie-container .cookie-message h3, .cookie-container .cookie-message h4, .cookie-container .cookie-message h5, .cookie-container .cookie-message h6, .cookie-container .cookie-message .h1, .cookie-container .cookie-message .h2, .cookie-container .cookie-message .h3, .cookie-container .cookie-message .h4, .cookie-container .cookie-message .h5, .cookie-container .cookie-message .h6{
   color:#1a1a1a;
