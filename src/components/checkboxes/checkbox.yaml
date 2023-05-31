@@ -83,7 +83,3 @@ params:
   type: boolean
   required: false
   description: Show label saying the input is optional - use only when most inputs in form are required.
-- name: isStandalone
-  type: boolean
-  required: false
-  description: Set to true when you only have a single checkbox without a fieldset.

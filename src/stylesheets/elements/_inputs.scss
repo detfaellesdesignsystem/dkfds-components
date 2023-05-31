@@ -7,11 +7,6 @@
   }
 }
 
-.form-group-radio, .form-group-checkbox {
-  margin-top: map-get($spacers, 3);
-  position: relative;
-}
-
 // Hint text
 .form-hint {
   display: block;
@@ -255,257 +250,252 @@ input[readonly][type=text], textarea[readonly]{
 
 
 /////////////////////////////////
-// Custom checkboxes & radios
+// Custom checkboxes & radio buttons
 /////////////////////////////////
-$checkbox-size: units($input-checkbox-radio-small-size);
-$radio-size: units($input-checkbox-radio-small-size);
-$checkbox-size-large: units($input-checkbox-radio-large-size);
-$checkbox-radio-line-height-large: 4.0rem;
-$radio-size-large: units($input-checkbox-radio-large-size);
 
+/* Variables for readability */
+$checkbox-radio-size: units($input-checkbox-radio-size);
+$label-distance: units($input-checkbox-radio-label-distance);
+$checkmark-size: units($input-checkbox-checkmark-size);
+$content-border-width: units(2);
 
-.form-checkbox{
-  // The actual input element is only visible to screen readers, because
-  // all visual styling is done via the label.
-  @include sr-only();
+/* Radio/checkbox element including label, button, helptext and hidden content */
+.form-group-checkbox,
+.form-group-radio {
+    margin-top: units(4);
+    position: relative; // Needed for the nested input buttons using absolute position
+
+    &:first-of-type {
+        margin-top: 0;
+    }
 }
+
+legend, .form-error-message, .form-hint {
+    & + .form-group-checkbox:first-of-type,
+    & + .form-group-radio:first-of-type {
+        margin-top: units(4);
+    }
+}
+
+/* Hide the original radio and checkbox button */
+.form-checkbox,
 .form-radio {
-  position: absolute;
-  cursor: pointer;
-  z-index: 1;
-  margin: 0;
-  opacity: 0;
-  left: 0px;
-  top: 3px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 1;
+    margin: 0;
+    opacity: 0;
+    height: $checkbox-radio-size;
+    width: $checkbox-radio-size;
 }
 
+/* Radio and checkbox label/text */
 .form-checkbox + label,
 .form-radio + label {
-  cursor: pointer;
-  font-weight: font-weight("normal");
-  line-height: units($typography-body-text-line-height, 'rem');
-  margin-bottom: 0;
-  display: inline-block;
-  outline: none;
-  color: color($input-text-color);
-  position: relative;
-  padding-left: calc(#{$checkbox-size} + 8px);
-  min-height: $checkbox-size;
+    cursor: pointer;
+    font-weight: font-weight($input-checkbox-radio-label-font-weight);
+    line-height: units($input-checkbox-radio-size, 'rem');
+    display: inline-block;
+    outline: none;
+    color: color($input-checkbox-radio-label-color);
+    padding-left: calc($checkbox-radio-size + $label-distance);
 }
 
-.form-checkbox + label + .form-hint,
-.form-radio + label + .form-hint{
-  padding-left: calc(#{$checkbox-size} + 8px);
-}
-
-//Outline for checkbox and radio
+/* Unchecked radio and checkbox button */
 .form-checkbox + label::before,
 .form-radio + label::before {
-  content: '';
-  display: inline-block;
-  background: color('white');
-  border-radius: $input-checkbox-border-radius;
-  border: 2px solid color('black');
-  height: $checkbox-size;
-  line-height: units($typography-body-text-line-height, 'rem');
-  margin-right: units(3);
-  width: $checkbox-size;
-  position: absolute;
-  top: 3px;
-  left: 0;
-}
-//outline large
-.form-checkbox.checkbox-large + label {
-  padding-top: 8px;
-  padding-left: calc(#{$checkbox-size-large} + 8px);
-  padding-bottom: 8px;
-  min-height: $checkbox-size-large;
-
-  &:before{
-    height: $checkbox-size-large;
-    width: $checkbox-size-large;
-  }
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    display: inherit;
+    background-color: color($input-checkbox-radio-unchecked-background-color);
+    border: 2px solid color($input-checkbox-radio-unchecked-border-color);
+    margin-right: $label-distance;
+    height: $checkbox-radio-size;
+    width: $checkbox-radio-size;
+    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
 }
 
-.form-checkbox.checkbox-large + label + .form-hint{
-  padding-left: calc(#{$checkbox-size-large} + 8px);
-  margin-top: -8px;
+/* Unchecked checkbox button border radius */
+.form-checkbox + label::before {
+    border-radius: 2px;
 }
 
-//extra for radio outline
-.form-radio{
-  height: $radio-size;
-  width: $radio-size;
-
-  &.radio-large{
-    height: $radio-size-large;
-    width: $radio-size-large;
-  }
-}
+/* Unchecked radio button border radius */
 .form-radio + label::before {
-  border-radius: 100%;
-  height: $radio-size;
-  width: $radio-size;
-}
-.form-radio.radio-large + label{
-  padding-top: 8px;
-  padding-left: calc(#{$radio-size-large} + 8px);
-  padding-bottom: 8px;
-
-  &:before{
-    height: $radio-size-large;
-    width: $radio-size-large;
-  }
-}
-
-.form-radio.radio-large + label + .form-hint{
-  padding-left: calc(#{$radio-size-large} + 8px);
-  margin-top: -8px;
-}
-//checked checkbox
-.form-checkbox.checkbox-large{
-  width: $checkbox-size;
-  height: $checkbox-size;
-
-  &.checkbox-large{
-    width: $checkbox-size-large;
-    height: $checkbox-size-large;
-  }
-}
-
-.form-checkbox:checked + label{
-  &:before{
-    background-color: color('black');
-  }
-  &:after{
-    content: "";
-    height: 7px;
-    width: 12px;
-    position: absolute;
-    left: 4px;
-    top: 5px;
-    box-shadow: -2px 2px 0 0 #fff;
-    transform: rotate(-46deg);
-  }
-}
-//checkmark large
-.form-checkbox.checkbox-large{
-  width: 22px;
-  height: 22px;
-}
-.form-checkbox.checkbox-large:checked + label{
-  &:after{
-    height: 12px;
-    width: 20px;
-    left: 6px;
-    top: 6px;
-    box-shadow: -3px 3px 0 0 #fff;
-  }
-}
-
-//checked radio
-.form-radio:checked + label{
-  position: relative;
-  &:after{
-    content: "";
-    height: calc(#{$radio-size} - 10px);
-    width: calc(#{$radio-size} - 10px);
-    background-color: color('black');
-    position: absolute;
-    left: 5px;
-    top: 8px;
     border-radius: 100%;
-  }
-}
-//checked radio large
-.form-radio.radio-large:checked + label{
-  &:after{
-    content: "";
-    height: calc(#{$radio-size-large} - 16px);
-    width: calc(#{$radio-size-large} - 16px);
-    left: 8px;
-    top: 11px;
-  }
 }
 
-//Disable
-.form-checkbox:disabled + label,
-.form-radio:disabled + label {
-  color: color($input-disabled-text-color);
-  cursor: not-allowed;
-  &:before{
-    border-color: color($input-disabled-text-color);
-    background-color: color($input-disabled-background-color);
-  }
+/* Checked checkbox */
+.form-checkbox:checked + label,
+.form-checkbox[aria-checked="mixed"] + label {
+
+    /* Checkbox button background */
+    &::before {
+        background-color: color($input-checkbox-checked-background-color);
+        border: 2px solid color($input-checkbox-checked-border-color);
+    }
+
+    /* Checkbox button checkmark */
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inherit;
+        background-color: color($input-checkbox-checkmark-color);
+        -webkit-mask-size: $checkmark-size $checkmark-size;
+        mask-size: $checkmark-size $checkmark-size;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        width: $checkbox-radio-size;
+        height: $checkbox-radio-size;
+        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+    }
 }
 
-//Disable checked
-.form-checkbox:checked[disabled] + label:before {
-  background-color: color('black');
-  border-color: color('black');
-  opacity:0.5;
+/* 'Normal' checkbox checkmark */
+.form-checkbox:checked + label::after {
+    -webkit-mask-image: url($icons-folder-path+'/done.svg');
+    mask-image: url($icons-folder-path+'/done.svg');
 }
 
-//Disable checked
-.form-radio:checked[disabled] + label:before {
-  background-color: color('black');
-  border-color: color('black');
-  opacity:0.5;
+/* 'Mixed' checkbox checkmark */
+.form-checkbox[aria-checked="mixed"] + label::after {
+    -webkit-mask-image: url($icons-folder-path+'/remove.svg');
+    mask-image: url($icons-folder-path+'/remove.svg');
 }
 
+/* Checked radio */
+.form-radio:checked + label {
 
-// checkbox focus
+    /* Radio button background */
+    &::before {
+        background-color: color($input-radio-checked-background-color);
+        border: 2px solid color($input-radio-checked-border-color);
+    }
+
+    /* Radio button 'dot' */
+    &::after {
+        content: "";
+        position: absolute;
+        display: inherit;
+        height: units($input-radio-dot-size);
+        width: units($input-radio-dot-size);
+        left: calc(($checkbox-radio-size - units($input-radio-dot-size)) / 2);
+        top: calc(($checkbox-radio-size - units($input-radio-dot-size)) / 2);
+        background-color: color($input-radio-dot-color);
+        border-radius: 100%;
+        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+    }
+}
+
+/* Focus */
 .form-checkbox:focus + label::before,
-.form-checkbox.focus + label::before{
-  @include focus();
-}
+.form-checkbox.focus + label::before,
 .form-radio:focus + label::before,
 .form-radio.focus + label::before {
-  @include focus();
+    @include focus();
 }
 
-// checkbox mixed
-.form-checkbox[aria-checked="mixed"] + label{
-  &:before{
-    background-color: color('black');
-  }
-  &:after{
-    content: "";
-    height: 2px;
-    width: 8px;
-    left: 8px;
-    top: 10px;  
-    position: absolute;
-    box-shadow: -2px 2px 0 0 color('white');
-  }
-}
-.form-checkbox.checkbox-large[aria-checked="mixed"] + label{
-  
-  &:after{
-    width: 12px;
-    left: 13px;
-    top: 16px;
-    box-shadow: -3px 3px 0 0 color('white');
-  }
+/* Helptext */
+.form-checkbox + label + .form-hint,
+.form-radio + label + .form-hint {
+    padding-left: calc($checkbox-radio-size + $label-distance);
 }
 
-.checkbox-content, .radio-content{
-  padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)});
-  padding-top: map-get($spacers, $input-checkbox-radio-content-padding-top);
-  padding-bottom: units(5);
-	border-left: map-get($spacers, $input-checkbox-radio-content-border-width) solid color($input-checkbox-radio-content-border-color);
-  margin-left: math.div((map-get($spacers, $input-checkbox-radio-small-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
-  margin-top: units(2);
-  margin-bottom: units(3);
-  
-  &-large{
-    padding-left: calc(#{map-get($spacers, $input-checkbox-radio-content-large-padding-left)} - #{map-get($spacers, $input-checkbox-radio-content-border-width)} - (#{map-get($spacers, $input-checkbox-radio-content-border-width)} / 2));
-    margin-left: math.div((map-get($spacers, $input-checkbox-radio-large-size) - map-get($spacers, $input-checkbox-radio-content-border-width)), 2);
-  }
-  &[aria-hidden="true"]{
-    display:none;
-  }
+/* Hidden content */
+.checkbox-content,
+.radio-content {
+    border-left: $content-border-width solid color($input-checkbox-radio-content-border-color);
+    margin-left: calc(($checkbox-radio-size - $content-border-width) / 2);
+    padding-left: calc(($checkbox-radio-size + (2 * $label-distance) - $content-border-width) / 2);
+    padding-top: units(4);
+    margin-top: units(3);
+    padding-bottom: units(505);
+    
+    &[aria-hidden="true"] {
+        display: none;
+    }
 }
+
+/* Special styling when radio/checkboxes are used to select table rows */
+th, 
+td {
+    .form-group-checkbox,
+    .form-group-radio {
+        margin-top: 0;
+        width: $checkbox-radio-size;
+        height: $checkbox-radio-size;
+
+        .form-checkbox,
+        .form-radio {
+
+            & + label {
+                padding-left: 0;
+        
+                &::before {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Disabled */
+.form-checkbox:disabled,
+.form-radio:disabled {
+    cursor: not-allowed;
+}
+
+/* Disabled label and button */
+.form-checkbox:disabled + label,
+.form-radio:disabled + label {
+    cursor: not-allowed;
+    color: color($input-checkbox-radio-disabled-label-color);
+
+    &::before {
+        background-color: color($input-checkbox-radio-disabled-unchecked-background-color);
+        border: 2px solid color($input-checkbox-radio-disabled-unchecked-border-color);
+    }
+}
+
+/* Disabled checked checkbox */
+.form-checkbox:disabled:checked + label,
+.form-checkbox:disabled[aria-checked="mixed"] + label {
+
+    &::before {
+        background-color: color($input-checkbox-disabled-checked-background-color);
+        border: 2px solid color($input-checkbox-disabled-checked-border-color);
+    }
+
+    &::after {
+        background-color: color($input-checkbox-disabled-checkmark-color);
+    }
+}
+
+/* Disabled checked radio */
+.form-radio:disabled:checked + label {
+
+    &::before {
+        background-color: color($input-radio-disabled-checked-background-color);
+        border: 2px solid color($input-radio-disabled-checked-border-color);
+    }
+
+    &::after {
+        background-color: color($input-radio-disabled-dot-color);
+    }
+}
+
+
+
 
 /////////////////////////
 // Range inputs

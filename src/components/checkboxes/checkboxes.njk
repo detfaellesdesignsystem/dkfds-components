@@ -30,7 +30,6 @@
         {%- for item in params.items -%}{{ 
             checkbox({
                 "id": params.id + "-option" + loop.index,
-                "isStandalone": false,
                 "name": params.groupname,
                 "value": item.value,
                 "label": item.label,

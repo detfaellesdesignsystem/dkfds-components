@@ -200,18 +200,10 @@ $input-border: 10 !default;
 $input-font-size: $typography-body-text-font-size !default;
 $input-line-height: $typography-body-text-line-height !default;
 $input-text-color: 'ink' !default;
-$checkbox-border-radius: 2px !default;
-$input-checkbox-border-radius: $checkbox-border-radius !default;
-$input-checkbox-radio-small-size: 405 !default;
-$input-checkbox-radio-large-size: 6 !default;
-$input-checkbox-radio-content-padding-top: 4 !default;
-$input-checkbox-radio-content-padding-bottom: 4 !default;
-$input-checkbox-radio-content-padding-left: 405 !default;
-$input-checkbox-radio-content-large-padding-left: 505 !default;
-$input-checkbox-radio-content-border-width: 2 !default;
-$input-checkbox-radio-content-border-color: 'gray-300' !default;
+
 $input-disabled-background-color: 'gray-100' !default;
 $input-disabled-text-color: 'disabled-light' !default;
+
 $input-border-width-feedback: 2px !default;
 $input-border-color-feedback-error: 'error' !default;
 $input-border-color-feedback-success: 'error' !default;
@@ -223,6 +215,35 @@ $form-hint-font-weight: $typography-body-text-font-weight !default;
 $form-group-error-border-width: 4px !default;
 $form-group-error-border-color: 'error' !default;
 $input-text-character-limit-exceeded-color: 'red-700' !default;
+
+// Radio buttons and checkboxes
+$input-checkbox-radio-size: 5 !default;
+$input-checkbox-radio-label-distance: 3 !default;
+$input-checkbox-radio-label-color: 'ink' !default;
+$input-checkbox-radio-label-font-weight: 'normal' !default;
+$input-checkbox-radio-unchecked-background-color: 'white' !default;
+$input-checkbox-radio-unchecked-border-color: 'black' !default;
+$input-checkbox-radio-content-border-color: 'gray-300' !default;
+
+$input-checkbox-checkmark-color: 'white' !default;
+$input-checkbox-checkmark-size: 5 !default;
+$input-checkbox-checked-background-color: 'black' !default;
+$input-checkbox-checked-border-color: 'black' !default;
+
+$input-radio-dot-color: 'black' !default;
+$input-radio-dot-size: 305 !default;
+$input-radio-checked-background-color: 'white' !default;
+$input-radio-checked-border-color: 'black' !default;
+
+$input-checkbox-radio-disabled-label-color: 'gray-500' !default;
+$input-checkbox-radio-disabled-unchecked-background-color: 'gray-100' !default;
+$input-checkbox-radio-disabled-unchecked-border-color: 'gray-400' !default;
+$input-checkbox-disabled-checked-background-color: 'gray-400' !default;
+$input-checkbox-disabled-checked-border-color: 'gray-400' !default;
+$input-checkbox-disabled-checkmark-color: 'gray-100' !default;
+$input-radio-disabled-checked-background-color: 'gray-100' !default;
+$input-radio-disabled-checked-border-color: 'gray-400' !default;
+$input-radio-disabled-dot-color: 'gray-400' !default;
 
 // Input: Range
 $input-range-track-default-background-color: 'gray-300' !default;
