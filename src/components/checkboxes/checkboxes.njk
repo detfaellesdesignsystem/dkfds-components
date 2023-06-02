@@ -26,14 +26,12 @@
             }}{% endif %}</legend>
         {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
-        {% set isLarge = params.isLarge | default(true) %}
         {%- for item in params.items -%}{{ 
             checkbox({
                 "id": params.id + "-option" + loop.index,
                 "name": params.groupname,
                 "value": item.value,
                 "label": item.label,
-                "isLarge": isLarge,
                 "classes": {
                     "formgroup": item.classes.formgroup,
                     "input": item.classes.input,

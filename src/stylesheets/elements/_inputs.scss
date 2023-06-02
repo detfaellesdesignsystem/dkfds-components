@@ -258,11 +258,13 @@ $checkbox-radio-size: units($input-checkbox-radio-size);
 $label-distance: units($input-checkbox-radio-label-distance);
 $checkmark-size: units($input-checkbox-checkmark-size);
 $content-border-width: units(2);
+$expand-hit-area: units(2);
+$button-distance: units(3);
 
 /* Radio/checkbox element including label, button, helptext and hidden content */
 .form-group-checkbox,
 .form-group-radio {
-    margin-top: units(4);
+    margin-top: $button-distance;
     position: relative; // Needed for the nested input buttons using absolute position
 
     &:first-of-type {
@@ -273,7 +275,7 @@ $content-border-width: units(2);
 legend, .form-error-message, .form-hint {
     & + .form-group-checkbox:first-of-type,
     & + .form-group-radio:first-of-type {
-        margin-top: units(4);
+        margin-top: $button-distance;
     }
 }
 
@@ -287,6 +289,7 @@ legend, .form-error-message, .form-hint {
     cursor: pointer;
     z-index: 1;
     margin: 0;
+    margin-top: $expand-hit-area;
     opacity: 0;
     height: $checkbox-radio-size;
     width: $checkbox-radio-size;
@@ -302,6 +305,8 @@ legend, .form-error-message, .form-hint {
     outline: none;
     color: color($input-checkbox-radio-label-color);
     padding-left: calc($checkbox-radio-size + $label-distance);
+    padding-top: $expand-hit-area;
+    padding-bottom: $expand-hit-area;
 }
 
 /* Unchecked radio and checkbox button */
@@ -318,7 +323,7 @@ legend, .form-error-message, .form-hint {
     margin-right: $label-distance;
     height: $checkbox-radio-size;
     width: $checkbox-radio-size;
-    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
 }
 
 /* Unchecked checkbox button border radius */
@@ -357,7 +362,7 @@ legend, .form-error-message, .form-hint {
         mask-position: center;
         width: $checkbox-radio-size;
         height: $checkbox-radio-size;
-        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
     }
 }
 
@@ -393,7 +398,7 @@ legend, .form-error-message, .form-hint {
         top: calc(($checkbox-radio-size - units($input-radio-dot-size)) / 2);
         background-color: color($input-radio-dot-color);
         border-radius: 100%;
-        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
     }
 }
 
@@ -409,6 +414,7 @@ legend, .form-error-message, .form-hint {
 .form-checkbox + label + .form-hint,
 .form-radio + label + .form-hint {
     padding-left: calc($checkbox-radio-size + $label-distance);
+    margin-top: -$expand-hit-area;
 }
 
 /* Hidden content */
@@ -418,7 +424,8 @@ legend, .form-error-message, .form-hint {
     margin-left: calc(($checkbox-radio-size - $content-border-width) / 2);
     padding-left: calc(($checkbox-radio-size + (2 * $label-distance) - $content-border-width) / 2);
     padding-top: units(4);
-    margin-top: units(3);
+    margin-top: units(2);
+    margin-bottom: units(305);
     padding-bottom: units(505);
     
     &[aria-hidden="true"] {
@@ -437,12 +444,18 @@ td {
 
         .form-checkbox,
         .form-radio {
+            margin-top: 0;
 
             & + label {
                 padding-left: 0;
         
                 &::before {
                     margin-right: 0;
+                    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+                }
+
+                &::after {
+                    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
                 }
             }
         }

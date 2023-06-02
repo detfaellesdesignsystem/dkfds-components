@@ -15,10 +15,6 @@ params:
   type: string
   required: true
   description: Label for the checkbox (the text written next to the checkbox)
-- name: isLarge
-  type: boolean
-  required: false
-  description: Choose whether the checkbox should be small or large. Defaults to true (large).
 - name: classes
   type: object
   required: false
