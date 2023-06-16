@@ -8,7 +8,7 @@ const gulpStylelint = require("gulp-stylelint");
 const postcss = require("gulp-postcss");
 const replace = require("gulp-replace");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
+//const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const changed = require("gulp-changed");
 const dutil = require("./doc-util");
@@ -17,7 +17,8 @@ var pkg         = require('../../package.json');
 const task = "sass";
 const normalizeCssFilter = filter("**/normalize.css", { restore: true });
 
-sass.compiler = require("sass");
+//sass.compiler = require("sass");
+const sass = require('gulp-sass')(require('sass'));
 
 const IGNORE_STRING = "This file is ignored";
 const ignoreStylelintIgnoreWarnings = lintResults =>
