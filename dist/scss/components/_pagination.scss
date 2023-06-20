@@ -28,7 +28,6 @@
         &.button-arrow {
             font-size: font-size($pagination-button-arrow-font-size);
             appearance: none;
-            display: inline-block;
             background-color: color($pagination-button-arrow-background-color);
             border-style: none;
             color: color($pagination-button-arrow-color);
@@ -37,6 +36,8 @@
             width: auto;
             padding-left: units(3);
             padding-right: units(3);
+            padding-top: 0px;
+            padding-bottom: 0px;
 
             &.hidden {
                 visibility: hidden;

@@ -17,7 +17,8 @@
     padding-top: calc(#{units(6)} - 1px);
     padding-bottom: calc(#{units(7)} - 1px);
     position: relative;
-    overflow: hidden;
+    max-height: 75vh;
+    overflow-y: auto;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
       color: color($cookie-message-text-color);
