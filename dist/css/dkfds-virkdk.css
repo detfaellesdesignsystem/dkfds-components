@@ -7419,7 +7419,14 @@ table .form-select{
   padding:calc(8px - 2px) calc(16px - 2px);
 }
 
-input[type=text]:disabled, textarea:disabled{
+input[type=text]:disabled,
+input[type=email]:disabled,
+input[type=number]:disabled,
+input[type=password]:disabled,
+input[type=search]:disabled,
+input[type=tel]:disabled,
+input[type=url]:disabled,
+textarea:disabled{
   background-color:#F5F5F5;
   color:#999999;
   cursor:not-allowed;
