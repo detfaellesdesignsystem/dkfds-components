@@ -215,11 +215,21 @@ $input-left-right-padding-feedback: calc(16px - #{$input-border-width-feedback})
   }
 }
 
-input[type=text]:disabled, textarea:disabled{
-  background-color: color($input-disabled-background-color);
-  color: color($input-disabled-text-color);
-  cursor: not-allowed;
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=url],
+textarea {
+  &:disabled {
+    background-color: color($input-disabled-background-color);
+    color: color($input-disabled-text-color);
+    cursor: not-allowed;
+  }
 }
+
 input[readonly][type=text]{
   margin-top: 0px;
   padding-top: 0px;
