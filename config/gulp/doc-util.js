@@ -1,7 +1,6 @@
 var pkg         = require('../../package.json');
 const log = require("fancy-log");
 const colors = require("ansi-colors");
-const notifier = require("node-notifier");
 
 const shellPrefix = "$";
 
@@ -107,16 +106,6 @@ function drawFlag () {
   );
 }
 
-function notify(title, message, wait) {
-  notifier.notify({
-    title,
-    message,
-    icon: 'src/img/favicons/favicon-192.png',
-    wait,
-    timeout: false
-  });
-}
-
 module.exports = {
   pkg: {
     name: pkg.name,
@@ -145,11 +134,9 @@ module.exports = {
 
   logError(name, message) {
     log(colors.red(name), colors.yellow(message));
-    notify(`${this.dirName} gulp ${name}`, message, true);
   },
 
   logMessage(name, message) {
     //log(colors.cyan(name), colors.green(message));
-    //notify(`${this.dirName} gulp ${name}`, message, false);
   }
 };

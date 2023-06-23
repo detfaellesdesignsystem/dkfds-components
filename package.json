@@ -40,7 +40,6 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^13.0.0",
     "gulp-uglify": "^3.0.0",
-    "node-notifier": "^6.0.0",
     "normalize.css": "^8.0.1",
     "object-assign": "^4.1.1",
     "postcss-csso": "^4.0.0",
