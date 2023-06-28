@@ -1,6 +1,6 @@
 'use strict';
 const forEach = require('array-foreach');
-const select = require('../utils/select');
+const select = require('../utils/select').default;
 
 const NAV = `.nav`;
 const NAV_LINKS = `${NAV} a`;

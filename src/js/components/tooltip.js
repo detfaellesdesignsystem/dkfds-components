@@ -250,4 +250,4 @@ function removeTooltip(trigger) {
     trigger.classList.remove('tooltip-focus');
 }
 
-module.exports = Tooltip;
+export default Tooltip;

@@ -7,7 +7,7 @@
  * @param {string} selector - Selector to be found.
  * @return {HTMLElement} - Nearest parent element matching selector.
  */
-module.exports = function closest (el, selector) {
+export default function closest (el, selector) {
   var matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
   while (el) {

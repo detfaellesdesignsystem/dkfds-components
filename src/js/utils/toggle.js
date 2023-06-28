@@ -3,7 +3,7 @@ const EXPANDED = 'aria-expanded';
 const CONTROLS = 'aria-controls';
 const HIDDEN = 'aria-hidden';
 
-module.exports = (button, expanded) => {
+export default (button, expanded) => {
 
   if (typeof expanded !== 'boolean') {
     expanded = button.getAttribute(EXPANDED) === 'false';

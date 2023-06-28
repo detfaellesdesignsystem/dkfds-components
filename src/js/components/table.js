@@ -1,4 +1,4 @@
-const select = require('../utils/select');
+const select = require('../utils/select').default;
 
 /**
  * Set data-title on cells, where the attribute is missing

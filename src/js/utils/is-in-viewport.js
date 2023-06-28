@@ -11,4 +11,4 @@ function isElementInViewport (el, win=window,
   );
 }
 
-module.exports = isElementInViewport;
+export default isElementInViewport;

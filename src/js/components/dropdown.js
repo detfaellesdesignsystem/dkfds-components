@@ -1,5 +1,5 @@
 'use strict';
-const breakpoints = require('../utils/breakpoints');
+const breakpoints = require('../utils/breakpoints').default;
 const BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
