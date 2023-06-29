@@ -9,6 +9,3 @@ require("./number-is-nan");
 
 // polyfills CustomEvent
 require("./custom-event");
-
-require('core-js/fn/object/assign');
-require('core-js/fn/array/from');
