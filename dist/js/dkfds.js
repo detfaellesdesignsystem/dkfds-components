@@ -1375,46 +1375,6 @@ __webpack_require__(2923)(String, 'String', function (iterated) {
 
 /***/ }),
 
-/***/ 2924:
-/***/ (() => {
-
-// element-closest | CC0-1.0 | github.com/jonathantneal/closest
-
-(function (ElementProto) {
-	if (typeof ElementProto.matches !== 'function') {
-		ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
-			var element = this;
-			var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
-			var index = 0;
-
-			while (elements[index] && elements[index] !== element) {
-				++index;
-			}
-
-			return Boolean(elements[index]);
-		};
-	}
-
-	if (typeof ElementProto.closest !== 'function') {
-		ElementProto.closest = function closest(selector) {
-			var element = this;
-
-			while (element && element.nodeType === 1) {
-				if (element.matches(selector)) {
-					return element;
-				}
-
-				element = element.parentNode;
-			}
-
-			return null;
-		};
-	}
-})(window.Element.prototype);
-
-
-/***/ }),
-
 /***/ 1764:
 /***/ ((module, exports, __webpack_require__) => {
 
@@ -1543,6 +1503,44 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 
 /***/ }),
 
+/***/ 2670:
+/***/ ((module) => {
+
+"use strict";
+
+
+var proto = typeof Element !== 'undefined' ? Element.prototype : {};
+var vendor = proto.matches
+  || proto.matchesSelector
+  || proto.webkitMatchesSelector
+  || proto.mozMatchesSelector
+  || proto.msMatchesSelector
+  || proto.oMatchesSelector;
+
+module.exports = match;
+
+/**
+ * Match `el` to `selector`.
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @return {Boolean}
+ * @api public
+ */
+
+function match(el, selector) {
+  if (!el || el.nodeType !== 1) return false;
+  if (vendor) return vendor.call(el, selector);
+  var nodes = el.parentNode.querySelectorAll(selector);
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i] == el) return true;
+  }
+  return false;
+}
+
+
+/***/ }),
+
 /***/ 7418:
 /***/ ((module) => {
 
@@ -1641,7 +1639,248 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ 6647:
+/***/ 5220:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const assign = __webpack_require__(7418);
+const delegate = __webpack_require__(8956);
+const delegateAll = __webpack_require__(6070);
+
+const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
+const SPACE = ' ';
+
+const getListeners = function(type, handler) {
+  var match = type.match(DELEGATE_PATTERN);
+  var selector;
+  if (match) {
+    type = match[1];
+    selector = match[2];
+  }
+
+  var options;
+  if (typeof handler === 'object') {
+    options = {
+      capture: popKey(handler, 'capture'),
+      passive: popKey(handler, 'passive')
+    };
+  }
+
+  var listener = {
+    selector: selector,
+    delegate: (typeof handler === 'object')
+      ? delegateAll(handler)
+      : selector
+        ? delegate(selector, handler)
+        : handler,
+    options: options
+  };
+
+  if (type.indexOf(SPACE) > -1) {
+    return type.split(SPACE).map(function(_type) {
+      return assign({type: _type}, listener);
+    });
+  } else {
+    listener.type = type;
+    return [listener];
+  }
+};
+
+var popKey = function(obj, key) {
+  var value = obj[key];
+  delete obj[key];
+  return value;
+};
+
+module.exports = function behavior(events, props) {
+  const listeners = Object.keys(events)
+    .reduce(function(memo, type) {
+      var listeners = getListeners(type, events[type]);
+      return memo.concat(listeners);
+    }, []);
+
+  return assign({
+    add: function addBehavior(element) {
+      listeners.forEach(function(listener) {
+        element.addEventListener(
+          listener.type,
+          listener.delegate,
+          listener.options
+        );
+      });
+    },
+    remove: function removeBehavior(element) {
+      listeners.forEach(function(listener) {
+        element.removeEventListener(
+          listener.type,
+          listener.delegate,
+          listener.options
+        );
+      });
+    }
+  }, props);
+};
+
+
+/***/ }),
+
+/***/ 8525:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const matches = __webpack_require__(2670);
+
+module.exports = function(element, selector) {
+  do {
+    if (matches(element, selector)) {
+      return element;
+    }
+  } while ((element = element.parentNode) && element.nodeType === 1);
+};
+
+
+
+/***/ }),
+
+/***/ 3787:
+/***/ ((module) => {
+
+module.exports = function compose(functions) {
+  return function(e) {
+    return functions.some(function(fn) {
+      return fn.call(this, e) === false;
+    }, this);
+  };
+};
+
+
+/***/ }),
+
+/***/ 8956:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const closest = __webpack_require__(8525);
+
+module.exports = function delegate(selector, fn) {
+  return function delegation(event) {
+    var target = closest(event.target, selector);
+    if (target) {
+      return fn.call(target, event);
+    }
+  }
+};
+
+
+/***/ }),
+
+/***/ 6070:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const delegate = __webpack_require__(8956);
+const compose = __webpack_require__(3787);
+
+const SPLAT = '*';
+
+module.exports = function delegateAll(selectors) {
+  const keys = Object.keys(selectors)
+
+  // XXX optimization: if there is only one handler and it applies to
+  // all elements (the "*" CSS selector), then just return that
+  // handler
+  if (keys.length === 1 && keys[0] === SPLAT) {
+    return selectors[SPLAT];
+  }
+
+  const delegates = keys.reduce(function(memo, selector) {
+    memo.push(delegate(selector, selectors[selector]));
+    return memo;
+  }, []);
+  return compose(delegates);
+};
+
+
+/***/ }),
+
+/***/ 9435:
+/***/ ((module) => {
+
+module.exports = function ignore(element, fn) {
+  return function ignorance(e) {
+    if (element !== e.target && !element.contains(e.target)) {
+      return fn.call(this, e);
+    }
+  };
+};
+
+
+/***/ }),
+
+/***/ 3425:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+module.exports = {
+  behavior: __webpack_require__(5220),
+  delegate: __webpack_require__(8956),
+  delegateAll: __webpack_require__(6070),
+  ignore: __webpack_require__(9435),
+  keymap: __webpack_require__(6715),
+};
+
+
+/***/ }),
+
+/***/ 6715:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(1764);
+
+// these are the only relevant modifiers supported on all platforms,
+// according to MDN:
+// <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState>
+const MODIFIERS = {
+  'Alt':      'altKey',
+  'Control':  'ctrlKey',
+  'Ctrl':     'ctrlKey',
+  'Shift':    'shiftKey'
+};
+
+const MODIFIER_SEPARATOR = '+';
+
+const getEventKey = function(event, hasModifiers) {
+  var key = event.key;
+  if (hasModifiers) {
+    for (var modifier in MODIFIERS) {
+      if (event[MODIFIERS[modifier]] === true) {
+        key = [modifier, key].join(MODIFIER_SEPARATOR);
+      }
+    }
+  }
+  return key;
+};
+
+module.exports = function keymap(keys) {
+  const hasModifiers = Object.keys(keys).some(function(key) {
+    return key.indexOf(MODIFIER_SEPARATOR) > -1;
+  });
+  return function(event) {
+    var key = getEventKey(event, hasModifiers);
+    return [key, key.toLowerCase()]
+      .reduce(function(result, _key) {
+        if (_key in keys) {
+          result = keys[key].call(this, event);
+        }
+        return result;
+      }, undefined);
+  };
+};
+
+module.exports.MODIFIERS = MODIFIERS;
+
+
+/***/ }),
+
+/***/ 3561:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1651,174 +1890,14 @@ __webpack_require__.d(__webpack_exports__, {
   Z: () => (/* binding */ date_picker)
 });
 
-// EXTERNAL MODULE: ./node_modules/keyboardevent-key-polyfill/index.js
-var keyboardevent_key_polyfill = __webpack_require__(1764);
-;// CONCATENATED MODULE: ./node_modules/receptor/src/keymap.js
-
-
-// these are the only relevant modifiers supported on all platforms,
-// according to MDN:
-// <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState>
-const MODIFIERS = {
-  Alt: 'altKey',
-  Control: 'ctrlKey',
-  Ctrl: 'ctrlKey',
-  Shift: 'shiftKey'
-}
-
-const MODIFIER_SEPARATOR = '+'
-
-function getEventKey(event, hasModifiers) {
-  let key = event.key
-  if (hasModifiers) {
-    for (const modifier in MODIFIERS) {
-      if (event[MODIFIERS[modifier]] === true) {
-        key = [modifier, key].join(MODIFIER_SEPARATOR)
-      }
-    }
-  }
-  return key
-}
-
-function keymap(keys) {
-  const hasModifiers = Object.keys(keys).some(key => {
-    return key.indexOf(MODIFIER_SEPARATOR) > -1
-  })
-  return function keymapper(event) {
-    const key = getEventKey(event, hasModifiers)
-    return [key, key.toLowerCase()].reduce((result, _key) => {
-      if (_key in keys) {
-        return keys[key].call(this, event)
-      }
-      return result
-    })
-  }
-}
-
-
-
+// EXTERNAL MODULE: ./node_modules/receptor/lib/index.js
+var lib = __webpack_require__(3425);
 // EXTERNAL MODULE: ./node_modules/object-assign/index.js
 var object_assign = __webpack_require__(7418);
 var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
-// EXTERNAL MODULE: ./node_modules/element-closest/element-closest.js
-var element_closest = __webpack_require__(2924);
-;// CONCATENATED MODULE: ./node_modules/receptor/src/delegate.js
-// polyfill Element.prototype.closest
-
-
-function delegate(selector, fn) {
-  return event => {
-    const target = event.target.closest(selector)
-    if (target) {
-      return fn.call(target, event)
-    }
-  }
-}
-
-;// CONCATENATED MODULE: ./node_modules/receptor/src/compose.js
-function compose(functions) {
-  return function(e) {
-    return functions.some(fn => {
-      return fn.call(this, e) === false
-    })
-  }
-}
-
-;// CONCATENATED MODULE: ./node_modules/receptor/src/delegateAll.js
-
-
-
-const SPLAT = '*'
-
-function delegateAll(selectors) {
-  const keys = Object.keys(selectors)
-
-  // XXX optimization: if there is only one handler and it applies to
-  // all elements (the "*" CSS selector), then just return that
-  // handler
-  if (keys.length === 1 && keys[0] === SPLAT) {
-    return selectors[SPLAT]
-  }
-
-  const delegates = keys.reduce(function(memo, selector) {
-    memo.push(delegate(selector, selectors[selector]))
-    return memo
-  }, [])
-  return compose(delegates)
-}
-
-;// CONCATENATED MODULE: ./node_modules/receptor/src/behavior.js
-
-
-
-
-const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/
-const SPACE = ' '
-
-const getListeners = (type, handler) => {
-  const match = type.match(DELEGATE_PATTERN)
-  let selector
-  if (match) {
-    type = match[1]
-    selector = match[2]
-  }
-
-  let options
-  if (typeof handler === 'object') {
-    options = {
-      capture: popKey(handler, 'capture'),
-      passive: popKey(handler, 'passive')
-    }
-  }
-
-  const listener = {
-    selector,
-    options,
-    delegate: typeof handler === 'object' ? delegateAll(handler) : selector ? delegate(selector, handler) : handler
-  }
-
-  if (type.indexOf(SPACE) > -1) {
-    return type.split(SPACE).map(_type => {
-      return object_assign_default()({type: _type}, listener)
-    })
-  } else {
-    listener.type = type
-    return [listener]
-  }
-}
-
-const popKey = (obj, key) => {
-  const value = obj[key]
-  delete obj[key]
-  return value
-}
-
-function behavior(events, props) {
-  const listeners = Object.keys(events).reduce((memo, type) => {
-    const listeners = getListeners(type, events[type])
-    return memo.concat(listeners)
-  }, [])
-
-  return object_assign_default()(
-    {
-      add: element => {
-        for (const listener of listeners) {
-          element.addEventListener(listener.type, listener.delegate, listener.options)
-        }
-      },
-      remove: element => {
-        for (const listener of listeners) {
-          element.removeEventListener(listener.type, listener.delegate, listener.options)
-        }
-      }
-    },
-    props
-  )
-}
-
 ;// CONCATENATED MODULE: ./src/js/utils/behavior.js
 
-
+const receptor = __webpack_require__(3425);
 
 /**
  * @name sequence
@@ -1842,8 +1921,8 @@ const sequence = (...seq) =>
  * @param {object?} props
  * @return {receptor.behavior}
  */
-/* harmony default export */ const utils_behavior = ((events, props) =>
-  behavior(
+/* harmony default export */ const behavior = ((events, props) =>
+  receptor.behavior(
     events,
     object_assign_default()(
       {
@@ -4061,7 +4140,7 @@ const datePickerEvents = {
         validateDateInput(this);
       }
     },
-    [CALENDAR_DATE]: keymap({
+    [CALENDAR_DATE]: (0,lib.keymap)({
       Up: handleUpFromDate,
       ArrowUp: handleUpFromDate,
       Down: handleDownFromDate,
@@ -4077,11 +4156,11 @@ const datePickerEvents = {
       "Shift+PageDown": handleShiftPageDownFromDate,
       "Shift+PageUp": handleShiftPageUpFromDate,
     }),
-    [CALENDAR_DATE_PICKER]: keymap({
+    [CALENDAR_DATE_PICKER]: (0,lib.keymap)({
       Tab: datePickerTabEventHandler.tabAhead,
       "Shift+Tab": datePickerTabEventHandler.tabBack,
     }),
-    [CALENDAR_MONTH]: keymap({
+    [CALENDAR_MONTH]: (0,lib.keymap)({
       Up: handleUpFromMonth,
       ArrowUp: handleUpFromMonth,
       Down: handleDownFromMonth,
@@ -4095,11 +4174,11 @@ const datePickerEvents = {
       PageDown: handlePageDownFromMonth,
       PageUp: handlePageUpFromMonth,
     }),
-    [CALENDAR_MONTH_PICKER]: keymap({
+    [CALENDAR_MONTH_PICKER]: (0,lib.keymap)({
       Tab: monthPickerTabEventHandler.tabAhead,
       "Shift+Tab": monthPickerTabEventHandler.tabBack,
     }),
-    [CALENDAR_YEAR]: keymap({
+    [CALENDAR_YEAR]: (0,lib.keymap)({
       Up: handleUpFromYear,
       ArrowUp: handleUpFromYear,
       Down: handleDownFromYear,
@@ -4113,7 +4192,7 @@ const datePickerEvents = {
       PageDown: handlePageDownFromYear,
       PageUp: handlePageUpFromYear,
     }),
-    [CALENDAR_YEAR_PICKER]: keymap({
+    [CALENDAR_YEAR_PICKER]: (0,lib.keymap)({
       Tab: yearPickerTabEventHandler.tabAhead,
       "Shift+Tab": yearPickerTabEventHandler.tabBack,
     }),
@@ -4121,7 +4200,7 @@ const datePickerEvents = {
       this.dataset.keydownKeyCode = event.keyCode;
     },
     [DATE_PICKER](event) {
-      const keyMap = keymap({
+      const keyMap = (0,lib.keymap)({
         Escape: handleEscapeFromCalendar,
       });
 
@@ -4160,7 +4239,7 @@ if (!is_ios_device()) {
   };
 }
 
-const datePicker = utils_behavior(datePickerEvents, {
+const datePicker = behavior(datePickerEvents, {
   init(root) {
     (0,utils_select/* default */.Z)(DATE_PICKER, root).forEach((datePickerEl) => {
       if(!datePickerEl.classList.contains(DATE_PICKER_INITIALIZED_CLASS)){
@@ -7167,7 +7246,7 @@ function removeTooltip(trigger) {
 
 
 
-const datePicker = (__webpack_require__(6647)/* ["default"] */ .Z);
+const datePicker = (__webpack_require__(3561)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.

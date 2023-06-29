@@ -1,5 +1,5 @@
 import assign from "object-assign";
-import behavior from "receptor/src/behavior";
+const receptor = require("receptor");
 
 /**
  * @name sequence
@@ -24,7 +24,7 @@ const sequence = (...seq) =>
  * @return {receptor.behavior}
  */
 export default (events, props) =>
-  behavior(
+  receptor.behavior(
     events,
     assign(
       {

@@ -1,4 +1,4 @@
-import keymap from "receptor/src/keymap";
+import {keymap} from 'receptor';
 import behavior from "../utils/behavior";
 import select from "../utils/select";
 import activeElement from "../utils/active-element";
