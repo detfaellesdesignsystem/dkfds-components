@@ -6,11 +6,15 @@ const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
+const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
+
 /* 
 About the config:
 
-dependencies: ['copyFilesAndCreateJavaScript'], --> copyFilesAndCreateJavaScript cleans the dist directory so all other configs need to run after this
-stats: 'minimal' --> only output when errors or new compilation happen, more details: https://webpack.js.org/configuration/stats/
+dependencies: ['copyFilesAndCreateJavaScript']
+    copyFilesAndCreateJavaScript cleans the dist directory so all other configs need to run after this
+stats: 'minimal'
+    only output when errors or new compilation happen, more details: https://webpack.js.org/configuration/stats/
 */
 
 const copyFilesAndCreateJavaScript = {
@@ -30,6 +34,8 @@ const copyFilesAndCreateJavaScript = {
             ],
         }),
         new ESLintPlugin({
+            emitError: USE_LINTER,
+            emitWarning: USE_LINTER,
             failOnError: false,
             failOnWarning: false,
             fix: false

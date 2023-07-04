@@ -1,5 +1,4 @@
 'use strict';
-import '../polyfills/Function/prototype/bind';
 const toggle = require('../utils/toggle').default;
 const isElementInViewport = require('../utils/is-in-viewport').default;
 const BUTTON = `.accordion-button[aria-controls]`;

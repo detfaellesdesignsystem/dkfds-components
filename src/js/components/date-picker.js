@@ -542,7 +542,7 @@ const parseDateString = (
   let day;
   let year;
   let parsed;
-
+  
   if (dateString) {
     let monthStr, dayStr, yearStr;
     if (dateFormat === DATE_FORMAT_OPTION_1 || dateFormat === DATE_FORMAT_OPTION_2 || dateFormat === DATE_FORMAT_OPTION_3 || dateFormat === DATE_FORMAT_OPTION_4 || dateFormat === DATE_FORMAT_OPTION_5) {
@@ -560,7 +560,7 @@ const parseDateString = (
           if (yearStr.length < 3) {
             const currentYear = today().getFullYear();
             const currentYearStub =
-              currentYear - (currentYear % 10 ** yearStr.length);
+              currentYear - (currentYear % Math.pow(10, yearStr.length));
             year = currentYearStub + parsed;
           }
         }

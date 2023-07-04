@@ -1409,7 +1409,7 @@ const parseDateString = (
   let day;
   let year;
   let parsed;
-
+  
   if (dateString) {
     let monthStr, dayStr, yearStr;
     if (dateFormat === DATE_FORMAT_OPTION_1 || dateFormat === DATE_FORMAT_OPTION_2 || dateFormat === DATE_FORMAT_OPTION_3 || dateFormat === DATE_FORMAT_OPTION_4 || dateFormat === DATE_FORMAT_OPTION_5) {
@@ -1427,7 +1427,7 @@ const parseDateString = (
           if (yearStr.length < 3) {
             const currentYear = today().getFullYear();
             const currentYearStub =
-              currentYear - (currentYear % 10 ** yearStr.length);
+              currentYear - (currentYear % Math.pow(10, yearStr.length));
             year = currentYearStub + parsed;
           }
         }
@@ -3203,99 +3203,6 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 427:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-(function(undefined) {
-
-// Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
-var detect = (
-  // In IE8, defineProperty could only act on DOM elements, so full support
-  // for the feature requires the ability to set a property on an arbitrary object
-  'defineProperty' in Object && (function() {
-  	try {
-  		var a = {};
-  		Object.defineProperty(a, 'test', {value:42});
-  		return true;
-  	} catch(e) {
-  		return false
-  	}
-  }())
-)
-
-if (detect) return
-
-// Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Object.defineProperty&flags=always
-(function (nativeDefineProperty) {
-
-	var supportsAccessors = Object.prototype.hasOwnProperty('__defineGetter__');
-	var ERR_ACCESSORS_NOT_SUPPORTED = 'Getters & setters cannot be defined on this javascript engine';
-	var ERR_VALUE_ACCESSORS = 'A property cannot both have accessors and be writable or have a value';
-
-	Object.defineProperty = function defineProperty(object, property, descriptor) {
-
-		// Where native support exists, assume it
-		if (nativeDefineProperty && (object === window || object === document || object === Element.prototype || object instanceof Element)) {
-			return nativeDefineProperty(object, property, descriptor);
-		}
-
-		if (object === null || !(object instanceof Object || typeof object === 'object')) {
-			throw new TypeError('Object.defineProperty called on non-object');
-		}
-
-		if (!(descriptor instanceof Object)) {
-			throw new TypeError('Property description must be an object');
-		}
-
-		var propertyString = String(property);
-		var hasValueOrWritable = 'value' in descriptor || 'writable' in descriptor;
-		var getterType = 'get' in descriptor && typeof descriptor.get;
-		var setterType = 'set' in descriptor && typeof descriptor.set;
-
-		// handle descriptor.get
-		if (getterType) {
-			if (getterType !== 'function') {
-				throw new TypeError('Getter must be a function');
-			}
-			if (!supportsAccessors) {
-				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
-			}
-			if (hasValueOrWritable) {
-				throw new TypeError(ERR_VALUE_ACCESSORS);
-			}
-			Object.__defineGetter__.call(object, propertyString, descriptor.get);
-		} else {
-			object[propertyString] = descriptor.value;
-		}
-
-		// handle descriptor.set
-		if (setterType) {
-			if (setterType !== 'function') {
-				throw new TypeError('Setter must be a function');
-			}
-			if (!supportsAccessors) {
-				throw new TypeError(ERR_ACCESSORS_NOT_SUPPORTED);
-			}
-			if (hasValueOrWritable) {
-				throw new TypeError(ERR_VALUE_ACCESSORS);
-			}
-			Object.__defineSetter__.call(object, propertyString, descriptor.set);
-		}
-
-		// OK to define value unconditionally - if a getter has been specified as well, an error would be thrown above
-		if ('value' in descriptor) {
-			object[propertyString] = descriptor.value;
-		}
-
-		return object;
-	};
-}(Object.defineProperty));
-})
-.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof __webpack_require__.g && __webpack_require__.g || {});
-
-
-/***/ }),
-
 /***/ 11:
 /***/ (() => {
 
@@ -3357,8 +3264,10 @@ if (!(HIDDEN in elproto)) {
 
 "use strict";
 
+
 // polyfills HTMLElement.prototype.classList and DOMTokenList
 __webpack_require__(241);
+
 // polyfills HTMLElement.prototype.hidden
 __webpack_require__(762);
 
@@ -3553,18 +3462,6 @@ const HIDDEN = 'aria-hidden';
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -3612,171 +3509,7 @@ __webpack_require__.d(__webpack_exports__, {
   init: () => (/* binding */ init)
 });
 
-// EXTERNAL MODULE: ./src/js/polyfills/Object/defineProperty.js
-var defineProperty = __webpack_require__(427);
-;// CONCATENATED MODULE: ./src/js/polyfills/Function/prototype/bind.js
-
-
-(function(undefined) {
-  // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
-  var detect = 'bind' in Function.prototype
-
-  if (detect) return
-
-  // Polyfill from https://cdn.polyfill.io/v2/polyfill.js?features=Function.prototype.bind&flags=always
-  Object.defineProperty(Function.prototype, 'bind', {
-      value: function bind(that) { // .length is 1
-          // add necessary es5-shim utilities
-          var $Array = Array;
-          var $Object = Object;
-          var ObjectPrototype = $Object.prototype;
-          var ArrayPrototype = $Array.prototype;
-          var Empty = function Empty() {};
-          var to_string = ObjectPrototype.toString;
-          var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
-          var isCallable; /* inlined from https://npmjs.com/is-callable */ var fnToStr = Function.prototype.toString, tryFunctionObject = function tryFunctionObject(value) { try { fnToStr.call(value); return true; } catch (e) { return false; } }, fnClass = '[object Function]', genClass = '[object GeneratorFunction]'; isCallable = function isCallable(value) { if (typeof value !== 'function') { return false; } if (hasToStringTag) { return tryFunctionObject(value); } var strClass = to_string.call(value); return strClass === fnClass || strClass === genClass; };
-          var array_slice = ArrayPrototype.slice;
-          var array_concat = ArrayPrototype.concat;
-          var array_push = ArrayPrototype.push;
-          var max = Math.max;
-          // /add necessary es5-shim utilities
-
-          // 1. Let Target be the this value.
-          var target = this;
-          // 2. If IsCallable(Target) is false, throw a TypeError exception.
-          if (!isCallable(target)) {
-              throw new TypeError('Function.prototype.bind called on incompatible ' + target);
-          }
-          // 3. Let A be a new (possibly empty) internal list of all of the
-          //   argument values provided after thisArg (arg1, arg2 etc), in order.
-          // XXX slicedArgs will stand in for "A" if used
-          var args = array_slice.call(arguments, 1); // for normal call
-          // 4. Let F be a new native ECMAScript object.
-          // 11. Set the [[Prototype]] internal property of F to the standard
-          //   built-in Function prototype object as specified in 15.3.3.1.
-          // 12. Set the [[Call]] internal property of F as described in
-          //   15.3.4.5.1.
-          // 13. Set the [[Construct]] internal property of F as described in
-          //   15.3.4.5.2.
-          // 14. Set the [[HasInstance]] internal property of F as described in
-          //   15.3.4.5.3.
-          var bound;
-          var binder = function () {
-
-              if (this instanceof bound) {
-                  // 15.3.4.5.2 [[Construct]]
-                  // When the [[Construct]] internal method of a function object,
-                  // F that was created using the bind function is called with a
-                  // list of arguments ExtraArgs, the following steps are taken:
-                  // 1. Let target be the value of F's [[TargetFunction]]
-                  //   internal property.
-                  // 2. If target has no [[Construct]] internal method, a
-                  //   TypeError exception is thrown.
-                  // 3. Let boundArgs be the value of F's [[BoundArgs]] internal
-                  //   property.
-                  // 4. Let args be a new list containing the same values as the
-                  //   list boundArgs in the same order followed by the same
-                  //   values as the list ExtraArgs in the same order.
-                  // 5. Return the result of calling the [[Construct]] internal
-                  //   method of target providing args as the arguments.
-
-                  var result = target.apply(
-                      this,
-                      array_concat.call(args, array_slice.call(arguments))
-                  );
-                  if ($Object(result) === result) {
-                      return result;
-                  }
-                  return this;
-
-              } else {
-                  // 15.3.4.5.1 [[Call]]
-                  // When the [[Call]] internal method of a function object, F,
-                  // which was created using the bind function is called with a
-                  // this value and a list of arguments ExtraArgs, the following
-                  // steps are taken:
-                  // 1. Let boundArgs be the value of F's [[BoundArgs]] internal
-                  //   property.
-                  // 2. Let boundThis be the value of F's [[BoundThis]] internal
-                  //   property.
-                  // 3. Let target be the value of F's [[TargetFunction]] internal
-                  //   property.
-                  // 4. Let args be a new list containing the same values as the
-                  //   list boundArgs in the same order followed by the same
-                  //   values as the list ExtraArgs in the same order.
-                  // 5. Return the result of calling the [[Call]] internal method
-                  //   of target providing boundThis as the this value and
-                  //   providing args as the arguments.
-
-                  // equiv: target.call(this, ...boundArgs, ...args)
-                  return target.apply(
-                      that,
-                      array_concat.call(args, array_slice.call(arguments))
-                  );
-
-              }
-
-          };
-
-          // 15. If the [[Class]] internal property of Target is "Function", then
-          //     a. Let L be the length property of Target minus the length of A.
-          //     b. Set the length own property of F to either 0 or L, whichever is
-          //       larger.
-          // 16. Else set the length own property of F to 0.
-
-          var boundLength = max(0, target.length - args.length);
-
-          // 17. Set the attributes of the length own property of F to the values
-          //   specified in 15.3.5.1.
-          var boundArgs = [];
-          for (var i = 0; i < boundLength; i++) {
-              array_push.call(boundArgs, '$' + i);
-          }
-
-          // XXX Build a dynamic function with desired amount of arguments is the only
-          // way to set the length property of a function.
-          // In environments where Content Security Policies enabled (Chrome extensions,
-          // for ex.) all use of eval or Function costructor throws an exception.
-          // However in all of these environments Function.prototype.bind exists
-          // and so this code will never be executed.
-          bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this, arguments); }')(binder);
-
-          if (target.prototype) {
-              Empty.prototype = target.prototype;
-              bound.prototype = new Empty();
-              // Clean up dangling references.
-              Empty.prototype = null;
-          }
-
-          // TODO
-          // 18. Set the [[Extensible]] internal property of F to true.
-
-          // TODO
-          // 19. Let thrower be the [[ThrowTypeError]] function Object (13.2.3).
-          // 20. Call the [[DefineOwnProperty]] internal method of F with
-          //   arguments "caller", PropertyDescriptor {[[Get]]: thrower, [[Set]]:
-          //   thrower, [[Enumerable]]: false, [[Configurable]]: false}, and
-          //   false.
-          // 21. Call the [[DefineOwnProperty]] internal method of F with
-          //   arguments "arguments", PropertyDescriptor {[[Get]]: thrower,
-          //   [[Set]]: thrower, [[Enumerable]]: false, [[Configurable]]: false},
-          //   and false.
-
-          // TODO
-          // NOTE Function objects created using Function.prototype.bind do not
-          // have a prototype property or the [[Code]], [[FormalParameters]], and
-          // [[Scope]] internal properties.
-          // XXX can't delete prototype in pure-js.
-
-          // 22. Return F.
-          return bound;
-      }
-  });
-})
-.call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof __webpack_require__.g && __webpack_require__.g || {});
-
 ;// CONCATENATED MODULE: ./src/js/components/accordion.js
-
 
 const toggle = (__webpack_require__(95)/* ["default"] */ .Z);
 const isElementInViewport = (__webpack_require__(843)/* ["default"] */ .Z);
@@ -3955,43 +3688,43 @@ Alert.prototype.show = function(){
 ;// CONCATENATED MODULE: ./src/js/components/back-to-top.js
 
 
-function BackToTop(backtotop){
+function BackToTop(backtotop) {
     this.backtotop = backtotop;
 }
 
-BackToTop.prototype.init = function() {
+BackToTop.prototype.init = function () {
     let backtotopbutton = this.backtotop;
 
     updateBackToTopButton(backtotopbutton);
 
-    const observer = new MutationObserver( list => {
-        const evt = new CustomEvent('dom-changed', {detail: list});
+    const observer = new MutationObserver(list => {
+        const evt = new CustomEvent('dom-changed', { detail: list });
         document.body.dispatchEvent(evt)
     });
 
     // Which mutations to observe
     let config = {
-        attributes            : true,
-        attributeOldValue     : false,
-        characterData         : true,
-        characterDataOldValue : false,
-        childList             : true,
-        subtree               : true
+        attributes: true,
+        attributeOldValue: false,
+        characterData: true,
+        characterDataOldValue: false,
+        childList: true,
+        subtree: true
     };
 
     // DOM changes
     observer.observe(document.body, config);
-    document.body.addEventListener('dom-changed', function(e) {
+    document.body.addEventListener('dom-changed', function (e) {
         updateBackToTopButton(backtotopbutton);
     });
 
     // Scroll actions
-    window.addEventListener('scroll', function(e) {
+    window.addEventListener('scroll', function (e) {
         updateBackToTopButton(backtotopbutton);
     });
 
     // Window resizes
-    window.addEventListener('resize', function(e) {
+    window.addEventListener('resize', function (e) {
         updateBackToTopButton(backtotopbutton);
     });
 }
@@ -4000,11 +3733,11 @@ function updateBackToTopButton(button) {
     let docBody = document.body;
     let docElem = document.documentElement;
     let heightOfViewport = Math.max(docElem.clientHeight || 0, window.innerHeight || 0);
-    let heightOfPage = Math.max(docBody.scrollHeight, docBody.offsetHeight, docBody.getBoundingClientRect().height, 
-                                  docElem.scrollHeight, docElem.offsetHeight, docElem.getBoundingClientRect().height, docElem.clientHeight);
-    
+    let heightOfPage = Math.max(docBody.scrollHeight, docBody.offsetHeight, docBody.getBoundingClientRect().height,
+        docElem.scrollHeight, docElem.offsetHeight, docElem.getBoundingClientRect().height, docElem.clientHeight);
+
     let limit = heightOfViewport * 2; // The threshold selected to determine whether a back-to-top-button should be displayed
-    
+
     // Never show the button if the page is too short
     if (limit > heightOfPage) {
         if (!button.classList.contains('d-none')) {
@@ -4018,47 +3751,70 @@ function updateBackToTopButton(button) {
         }
 
         let lastKnownScrollPosition = window.scrollY;
-        let footer = document.getElementsByTagName("footer")[0]; // If there are several footers, the code only applies to the first footer
+        let footerVisible = isFooterVisible(document.getElementsByTagName("footer")[0]);
 
         // Show the button, if the user has scrolled too far down
         if (lastKnownScrollPosition >= limit) {
-            if (!isFooterVisible(footer) && button.classList.contains('footer-sticky')) {
-                button.classList.remove('footer-sticky');
-            }
-            else if (isFooterVisible(footer) && !button.classList.contains('footer-sticky')) {
+            // If the footer is visible, place the button on top of the footer
+            if (footerVisible && !button.classList.contains('footer-sticky')) {
                 button.classList.add('footer-sticky');
             }
+            // If the footer is not visible, place the button in the lower right corner
+            else if (!footerVisible && button.classList.contains('footer-sticky')) {
+                button.classList.remove('footer-sticky');
+            }
         }
-        // If there's a sidenav, we might want to show the button anyway
+        // If the page has a sidenav, the threshold is always ignored when the bottom of the sidenav is no longer visible
         else {
-            let sidenav = document.querySelector('.sidenav-list'); // Finds side navigations (left menus) and step guides
+            let maybeShowButton = false;
 
-            if (sidenav && sidenav.offsetParent !== null) {
-                // Only react to sidenavs, which are always visible (i.e. not opened from overflow-menu buttons)
-                if (!(sidenav.closest(".overflow-menu-inner")?.previousElementSibling?.getAttribute('aria-expanded') === "true" &&
-                sidenav.closest(".overflow-menu-inner")?.previousElementSibling?.offsetParent !== null)) {
-                    
-                    let rect = sidenav.getBoundingClientRect();
-                    if (rect.bottom < 0) {
-                        if (!isFooterVisible(footer) && button.classList.contains('footer-sticky')) {
-                            button.classList.remove('footer-sticky');
-                        }
-                        else if (isFooterVisible(footer) && !button.classList.contains('footer-sticky')) {
-                            button.classList.add('footer-sticky');
+            // Check whether the page has a sidenav (left menu or step guide)
+            let sidenav = document.querySelector('.sidenav-list');
+            if (sidenav) {
+                // Ensure that the sidenav hasn't been hidden, e.g. due to a window resize
+                let sidenavParentNotHidden = (sidenav.offsetParent !== null);
+                if (sidenavParentNotHidden) {
+                    // If the sidenav is responsive, ensure that it is not collapsed
+                    let sidenavContainer = sidenav.closest(".overflow-menu-inner");
+                    if (sidenavContainer) {
+                        if (sidenavContainer.getAttribute('aria-hidden') === "false") {
+                            // Check that the sidenav was not opened from an overflow menu
+                            let overflowMenu = sidenavContainer.previousElementSibling;
+                            if (overflowMenu) {
+                                let overflowMenuParentNotHidden = overflowMenu.offsetParent === null;
+                                if (overflowMenuParentNotHidden) {
+                                    maybeShowButton = true;
+                                }
+                            }
                         }
                     }
                     else {
-                        if (!button.classList.contains('footer-sticky')) {
-                            button.classList.add('footer-sticky');
-                        }
+                        maybeShowButton = true;
                     }
-
                 }
             }
-            // There's no sidenav and we know the user hasn't reached the scroll limit: Ensure the button is hidden
-            else {
+
+            if (!maybeShowButton) {
                 if (!button.classList.contains('footer-sticky')) {
                     button.classList.add('footer-sticky');
+                }
+            }
+            else {
+                let rect = sidenav.getBoundingClientRect();
+                // If the sidenav isn't visible, check where to place the button
+                if (rect.bottom < 0) {
+                    if (!footerVisible && button.classList.contains('footer-sticky')) {
+                        button.classList.remove('footer-sticky');
+                    }
+                    else if (footerVisible && !button.classList.contains('footer-sticky')) {
+                        button.classList.add('footer-sticky');
+                    }
+                }
+                // If the sidenav is visible and the scroll threshold hasn't been met, place the button at the footer
+                else {
+                    if (!button.classList.contains('footer-sticky')) {
+                        button.classList.add('footer-sticky');
+                    }
                 }
             }
         }
@@ -4067,19 +3823,25 @@ function updateBackToTopButton(button) {
 }
 
 function isFooterVisible(footerElement) {
-    if (footerElement?.querySelector('.footer')) {
-        let rect = footerElement.querySelector('.footer').getBoundingClientRect();
-
-        // Footer is visible or partly visible
-        if ((rect.top < window.innerHeight || rect.top < document.documentElement.clientHeight)) {
-            return true;
+    if (footerElement) {
+        if (footerElement.querySelector('.footer')) {
+            let rect = footerElement.querySelector('.footer').getBoundingClientRect();
+            if ((rect.top < window.innerHeight || rect.top < document.documentElement.clientHeight)) {
+                // Footer is (partly) visible
+                return true;
+            }
+            else {
+                // Footer is not visible
+                return false;
+            }
         }
-        // Footer is hidden
         else {
+            // Footer class is missing
             return false;
         }
     }
     else {
+        // Footer element is missing
         return false;
     }
 }
@@ -4252,7 +4014,6 @@ CharacterLimit.prototype.updateMessages = function () {
 
 /* harmony default export */ const character_limit = (CharacterLimit);
 ;// CONCATENATED MODULE: ./src/js/components/checkbox-toggle-content.js
-
 
 
 const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
@@ -4640,7 +4401,6 @@ let getTringuideBreakpoint = function (button){
 
 
 
-
 /**
  * Add functionality to sorting variant of Overflow menu component
  * @param {HTMLElement} container .overflow-menu element
@@ -4961,8 +4721,10 @@ Modal.prototype.hide = function (){
     modalElement.dispatchEvent(eventClose);
 
     let $backdrop = document.querySelector('#modal-backdrop');
-    $backdrop?.parentNode.removeChild($backdrop);
-
+    if ($backdrop) {
+      $backdrop.parentNode.removeChild($backdrop);
+    }
+    
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.removeEventListener('keydown', trapFocus, true);
 
@@ -5071,7 +4833,7 @@ let handleEscape = function (event) {
       }
     }
   }
-};
+}
 
 function hasForcedAction (modal){
   if(modal.getAttribute('data-modal-forced-action') === null){

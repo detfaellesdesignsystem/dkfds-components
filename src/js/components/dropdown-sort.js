@@ -1,6 +1,5 @@
 'use strict';
 import Dropdown from './dropdown';
-import '../polyfills/Function/prototype/bind';
 
 /**
  * Add functionality to sorting variant of Overflow menu component
