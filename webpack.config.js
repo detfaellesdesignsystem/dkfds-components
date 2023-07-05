@@ -8,6 +8,11 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
 
+console.log("[" + String(new Date().getHours()).padStart(2, '0') + 
+                ":" + String(new Date().getMinutes()).padStart(2, '0') + 
+                ":" + String(new Date().getSeconds()).padStart(2, '0') + "] " + 
+                "Creating files for dist folder...\n");
+
 const copyFilesAndCreateJavaScript = {
     name: 'copyFilesAndCreateJavaScript',
     mode: 'production',
@@ -120,8 +125,14 @@ const createCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
-                                            stage: false // Disable polyfills, https://www.npmjs.com/package/postcss-preset-env#user-content-stage
-                                        },
+                                            stage: 2,
+                                            // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
+                                            features: { 
+                                                "cascade-layers": false,
+                                                "text-decoration-shorthand": false,
+                                                "unset-value": false
+                                            },
+                                        }
                                     ],
                                 ],
                             },
@@ -232,7 +243,13 @@ const createMinifiedCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
-                                            stage: false // Disable polyfills, https://www.npmjs.com/package/postcss-preset-env#user-content-stage
+                                            stage: 2,
+                                            // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
+                                            features: { 
+                                                "cascade-layers": false,
+                                                "text-decoration-shorthand": false,
+                                                "unset-value": false
+                                            },
                                         },
                                     ],
                                 ],

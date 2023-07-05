@@ -1140,7 +1140,7 @@ a:disabled:focus, a.disabled:focus{
 a.bold-link{
   font-weight:600;
 }
-a:not(.button, .full-width-image){
+a:not(.button):not(.full-width-image){
   max-width:66ch;
 }
 
@@ -8730,6 +8730,7 @@ hr{
   right:1.6rem;
   height:2.4rem;
   line-height:2.4rem;
+  position:static;
   position:initial;
   text-align:left;
   transform:none;
