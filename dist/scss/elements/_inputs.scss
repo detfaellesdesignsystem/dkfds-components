@@ -28,7 +28,7 @@
 ////////////////////
 
 .form-input{
-  appearance: none;
+  @include appearance-none;
   border: border($input-border);
   border-radius: $input-border-radius;
   color: color($input-text-color); // standardize on firefox
@@ -138,9 +138,7 @@ textarea.no-resize{
     text-align: left;
     padding: calc(8px - #{border-width($select-border)}) calc(16px - #{border-width($select-border)});
     padding-right: 32px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    @include appearance-none;
 
     &:-moz-focusring {
         color: transparent;
@@ -524,7 +522,7 @@ td {
 // Range inputs
 /////////////////////////
 [type=range] {
-  appearance: none;
+  @include appearance-none;
   border: none;
   padding-left: 0;
   width: 100%;
@@ -547,7 +545,7 @@ td {
 }
 
 [type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  @include appearance-none;
   border: border($input-range-thumb-default-border);
   height: 2.2rem;
   border-radius: 1.5rem;
@@ -579,7 +577,7 @@ td {
 
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+    @include appearance-none;
     margin: 0;
   }
 
@@ -617,7 +615,7 @@ input[type='number'] {
 //Below fix bug where date-inputs to number-wheels in chrome.
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
+  @include appearance-none;
 }
 
 .form-label + input[type=file]{

@@ -27,7 +27,7 @@
     .button {
         &.button-arrow {
             font-size: font-size($pagination-button-arrow-font-size);
-            appearance: none;
+            @include appearance-none;
             background-color: color($pagination-button-arrow-background-color);
             border-style: none;
             color: color($pagination-button-arrow-color);
@@ -102,7 +102,7 @@
             margin-right: units(3);
 
             .current-page {
-                appearance: none;
+                @include appearance-none;
                 display: inline-block;
                 width: 100%;
                 padding: units(3) calc(#{units(4)} - #{$button-border-width}) calc(#{units(3)} - #{$button-border-width});

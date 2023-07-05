@@ -1,0 +1,10 @@
+# https://github.com/browserslist/browserslist#readme
+
+Chrome >= 87
+Edge >= 108
+Firefox >= 78
+Safari >= 14
+last 2 iOS versions
+last 2 ChromeAndroid versions
+last 2 Samsung versions
+> 1% and not dead

@@ -77,12 +77,6 @@
         float: right;
       }
 
-      /* 'sidenav-title' used before 9.0.0 to style title text in stepguide - to be removed at some point as breaking change */
-      .sidenav-title {
-        margin-left: units(2);
-        white-space: pre-line;
-      }
-
       .sidenav-number {
         margin-right: units(2);
       }

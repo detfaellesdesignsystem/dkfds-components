@@ -1,6 +1,6 @@
 // Tags
 .tag{
-  appearance: none;
+  @include appearance-none;
   display: inline-block;
   width: auto;
   padding:0;

@@ -1,0 +1,17 @@
+{
+    "plugins": [
+        "stylelint-no-unsupported-browser-features"
+    ],
+    "rules": {
+        "plugin/no-unsupported-browser-features": [
+            null,
+            {
+                "severity": "warning",
+                "ignore": ["css3-cursors"]
+            }
+        ],
+        "no-descending-specificity": null,
+        "declaration-block-no-duplicate-custom-properties": true,
+        "declaration-block-no-duplicate-properties": true
+    }
+}

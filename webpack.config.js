@@ -8,15 +8,6 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
 
-/* 
-About the config:
-
-dependencies: ['copyFilesAndCreateJavaScript']
-    copyFilesAndCreateJavaScript cleans the dist directory so all other configs need to run after this
-stats: 'minimal'
-    only output when errors or new compilation happen, more details: https://webpack.js.org/configuration/stats/
-*/
-
 const copyFilesAndCreateJavaScript = {
     name: 'copyFilesAndCreateJavaScript',
     mode: 'production',
@@ -129,7 +120,7 @@ const createCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
-                                            browsers: '> 1% and last 2 versions and not dead' // https://github.com/browserslist/browserslist#queries
+                                            stage: false // Disable polyfills, https://www.npmjs.com/package/postcss-preset-env#user-content-stage
                                         },
                                     ],
                                 ],
@@ -157,24 +148,39 @@ const createCSS = {
                     preset: [
                         "default",
                         {
+                            autoprefixer: false,
                             cssDeclarationSorter: false,
-                            convertValues: false,
-                            discardComments: true,
-                            normalizeWhitespace: false,
-                            minifySelectors: false,
-                            minifyParams: false,
-                            mergeRules: false,
-                            minifyFontValues: false,
-                            mergeLonghand: false,
                             calc: false,
                             colormin: false,
+                            convertValues: false,
+                            discardComments: true, // Remove comments from CSS files
                             discardDuplicates: false,
                             discardEmpty: false,
-                            orderedValues: false,
-                            reduceInitial: false,
-                            uniqueSelectors: false,
+                            discardOverridden: false,
+                            discardUnused: false,
+                            mergeIdents: false,
+                            mergeLonghand: false,
+                            mergeRules: false,
+                            minifyFontValues: false,
+                            minifyGradients: false,
+                            minifyParams: false,
+                            minifySelectors: false,
+                            normalizeCharset: false,
+                            normalizeDisplayValues: false,
                             normalizePositions: false,
-                            normalizeUrl: false
+                            normalizeRepeatStyle: false,
+                            normalizeString: false,
+                            normalizeTimingFunctions: false,
+                            normalizeUnicode: false,
+                            normalizeUrl: false,
+                            normalizeWhitespace: false,
+                            orderedValues: false,
+                            reduceIdents: false,
+                            reduceInitial: false,
+                            reduceTransforms: false,
+                            svgo: false,
+                            uniqueSelectors: false,
+                            zindex: false
                         },
                     ],
                 },
@@ -215,7 +221,7 @@ const createMinifiedCSS = {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 2, // Import postcss-loader and sass-loader
-                            url: false
+                            url: false        // Prevent parsing of urls
                         }
                     },
                     {
@@ -226,7 +232,7 @@ const createMinifiedCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
-                                            browsers: '> 1% and last 2 versions and not dead' // https://github.com/browserslist/browserslist#queries
+                                            stage: false // Disable polyfills, https://www.npmjs.com/package/postcss-preset-env#user-content-stage
                                         },
                                     ],
                                 ],

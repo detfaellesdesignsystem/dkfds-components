@@ -10,7 +10,7 @@ a.button {
 }
 
 .button {
-    appearance: none;
+    @include appearance-none;
     display: inline-flex;
     width: 100%;
     min-height: units(7);

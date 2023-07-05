@@ -27,8 +27,7 @@
 }
 
 // Extra specificity to override rules set in reset.css.
-input[type=search] { /* stylelint-disable-line selector-no-qualifying-type */
+input[type=search] {
   box-sizing: border-box;
-  appearance: none;
-  -webkit-appearance: none; //Fixes border-radius bug on iPhone X Safari. 
+  @include appearance-none;
 }

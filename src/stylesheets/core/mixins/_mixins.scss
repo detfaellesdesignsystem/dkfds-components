@@ -83,6 +83,13 @@
   -webkit-font-smoothing: antialiased;
 }
 
+// Appearance
+@mixin appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 
 /*
 ----------------------------------------
