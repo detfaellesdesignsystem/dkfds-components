@@ -297,10 +297,10 @@ legend, .form-error-message, .form-hint {
     cursor: pointer;
     z-index: 1;
     margin: 0;
-    margin-top: $expand-hit-area;
     opacity: 0;
     height: $checkbox-radio-size;
     width: $checkbox-radio-size;
+    margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
 }
 
 /* Radio and checkbox label/text */
@@ -345,45 +345,23 @@ legend, .form-error-message, .form-hint {
 }
 
 /* Checked checkbox */
-.form-checkbox:checked + label,
-.form-checkbox[aria-checked="mixed"] + label {
-
-    /* Checkbox button background */
-    &::before {
-        background-color: color($input-checkbox-checked-background-color);
-        border: 2px solid color($input-checkbox-checked-border-color);
-    }
-
-    /* Checkbox button checkmark */
-    &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: inherit;
-        background-color: color($input-checkbox-checkmark-color);
-        -webkit-mask-size: $checkmark-size $checkmark-size;
-        mask-size: $checkmark-size $checkmark-size;
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-position: center;
-        mask-position: center;
-        width: $checkbox-radio-size;
-        height: $checkbox-radio-size;
-        margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
-    }
+.form-checkbox:checked + label::before,
+.form-checkbox[aria-checked="mixed"] + label::before {
+    background-color: color($input-checkbox-checked-background-color);
+    border: 2px solid color($input-checkbox-checked-border-color);
+    background-size: $checkmark-size;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* 'Normal' checkbox checkmark */
-.form-checkbox:checked + label::after {
-    -webkit-mask-image: url($icons-folder-path+'/done.svg');
-    mask-image: url($icons-folder-path+'/done.svg');
+.form-checkbox:checked + label::before {
+    background-image: url($icons-folder-path+'/done-white.svg');
 }
 
 /* 'Mixed' checkbox checkmark */
-.form-checkbox[aria-checked="mixed"] + label::after {
-    -webkit-mask-image: url($icons-folder-path+'/remove.svg');
-    mask-image: url($icons-folder-path+'/remove.svg');
+.form-checkbox[aria-checked="mixed"] + label::before {
+    background-image: url($icons-folder-path+'/remove-white.svg');
 }
 
 /* Checked radio */

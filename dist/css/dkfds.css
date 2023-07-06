@@ -7477,10 +7477,10 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
   cursor:pointer;
   z-index:1;
   margin:0;
-  margin-top:4px;
   opacity:0;
   height:24px;
   width:24px;
+  margin-top:calc(1.2rem - 12px + 4px);
 }
 .form-checkbox + label,
 .form-radio + label{
@@ -7515,39 +7515,19 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 .form-radio + label::before{
   border-radius:100%;
 }
-.form-checkbox:checked + label,
-.form-checkbox[aria-checked=mixed] + label{
-}
 .form-checkbox:checked + label::before,
 .form-checkbox[aria-checked=mixed] + label::before{
   background-color:#1a1a1a;
   border:2px solid #1a1a1a;
+  background-size:24px;
+  background-repeat:no-repeat;
+  background-position:center;
 }
-.form-checkbox:checked + label::after,
-.form-checkbox[aria-checked=mixed] + label::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  display:inherit;
-  background-color:white;
-  -webkit-mask-size:24px 24px;
-  mask-size:24px 24px;
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-  -webkit-mask-position:center;
-  mask-position:center;
-  width:24px;
-  height:24px;
-  margin-top:calc(1.2rem - 12px + 4px);
+.form-checkbox:checked + label::before{
+  background-image:url("../img/svg-icons/done-white.svg");
 }
-.form-checkbox:checked + label::after{
-  -webkit-mask-image:url("../img/svg-icons/done.svg");
-  mask-image:url("../img/svg-icons/done.svg");
-}
-.form-checkbox[aria-checked=mixed] + label::after{
-  -webkit-mask-image:url("../img/svg-icons/remove.svg");
-  mask-image:url("../img/svg-icons/remove.svg");
+.form-checkbox[aria-checked=mixed] + label::before{
+  background-image:url("../img/svg-icons/remove-white.svg");
 }
 .form-radio:checked + label{
 }
