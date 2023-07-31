@@ -47,7 +47,7 @@ const copyFilesAndCreateJavaScript = {
         library: {
             name: 'DKFDS',
             type: 'umd',
-            umdNamedDefine: true,
+            umdNamedDefine: false,
         },
     },
     stats: 'minimal',
@@ -81,7 +81,7 @@ const createMinifiedJavaScript = {
         library: {
             name: 'DKFDS',
             type: 'umd',
-            umdNamedDefine: true,
+            umdNamedDefine: false,
         },
     },
     stats: 'minimal',
