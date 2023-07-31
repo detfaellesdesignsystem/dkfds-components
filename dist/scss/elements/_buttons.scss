@@ -33,6 +33,7 @@ a.button {
     text-decoration: none;
     user-select: text;
     cursor: pointer;
+    vertical-align: middle;
 
     & + button {
         margin-top: units(3);

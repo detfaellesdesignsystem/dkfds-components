@@ -6120,6 +6120,7 @@ a.button{
      -moz-user-select:text;
           user-select:text;
   cursor:pointer;
+  vertical-align:middle;
 }
 .button + button{
   margin-top:8px;
