@@ -6119,6 +6119,7 @@ a.button{
   -webkit-user-select:text;
           user-select:text;
   cursor:pointer;
+  vertical-align:middle;
 }
 .button + button{
   margin-top:8px;
@@ -8710,7 +8711,6 @@ hr{
   right:1.6rem;
   height:2.4rem;
   line-height:2.4rem;
-  position:static;
   position:initial;
   text-align:left;
   transform:none;
