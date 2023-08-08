@@ -107,8 +107,8 @@ button.accordion-bulk-button{
     margin-bottom: units(3, 'rem');
     width: 100%;
     > h1, > h2, > h3, > h4, > h5, > h6{
-      margin-top: 0px;
-      margin-bottom: 0px;
+      margin-top: 0;
+      margin-bottom: 0;
       letter-spacing: normal;
       max-width: none;
     }

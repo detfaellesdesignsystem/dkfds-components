@@ -41,22 +41,22 @@
       color: color($tavnav-button-text-color);
       text-align: center;
       text-decoration: none;
-      padding: 0px;
+      padding: 0;
       background-color: transparent;
-      border-radius: 0px;
+      border-radius: 0;
       line-height: normal;
       padding-top: units(3);
       padding-bottom: units(3);
       padding-left: units(5);
       padding-right: units(5);
-      margin: 0 units(2) units(2) 0px;
+      margin: 0 units(2) units(2) 0;
       text-decoration: underline;
       border-top: units(2) solid color('white');
 
       &[aria-selected=false]{
         background-color: color($tavnav-button-default-background-color);
         background-image: none;
-        border-radius: 0px;
+        border-radius: 0;
       }
 
       &:hover {
@@ -77,9 +77,9 @@
         padding-left: calc(#{units(5)} - 1px);
         padding-right: calc(#{units(5)} - 1px);
         border-bottom: 1px solid color($tabnav-background-color);
-        border-radius: 0px;
+        border-radius: 0;
         text-decoration: none;
-        margin: 0 units(2) -1px 0px;
+        margin: 0 units(2) -1px 0;
         padding-bottom: calc(#{units(3)} + 2px);
         position: relative;
         z-index: 350;

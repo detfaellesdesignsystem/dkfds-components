@@ -1,9 +1,9 @@
 .cookie-container{
   color: color($cookie-message-text-color);
   position: fixed;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
+  bottom: 0;
+  right: 0;
+  left: 0;
   z-index: 9500;
   margin-bottom: units(3);
   margin-left: units(3);

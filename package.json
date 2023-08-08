@@ -8,8 +8,8 @@
   "main": "dist/js/dkfds.min.js",
   "scripts": {
     "build": "webpack",
-    "check-css": "npx stylelint \"dist/css/dkfds.css\"",
-    "check-all-css": "npx stylelint \"dist/css/dkfds-borgerdk.css\" \"dist/css/dkfds-virkdk.css\" \"dist/css/dkfds.css\""
+    "lint-css": "npx stylelint \"dist/css/dkfds.css\"",
+    "lint-all-css": "npx stylelint \"dist/css/dkfds-borgerdk.css\" \"dist/css/dkfds-virkdk.css\" \"dist/css/dkfds.css\""
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "license": "(MIT AND OFL-1.1 AND Apache-2.0)",

@@ -142,7 +142,7 @@
     }
     .button + .button{
       @include media-breakpoint-up(sm) {
-        margin-left: 0px;
+        margin-left: 0;
         &:first-child{
           margin-left: 0;
         }
@@ -214,18 +214,18 @@
 }
 //If action comes after action
 .card-action + .card-action{
-  padding-top:units(0);
+  padding-top: 0;
 }
 .card {
   > .list-group:first-child {
       .list-group-item:first-child {
-          border-radius: 0px;
+          border-radius: 0;
       }
   }
 
   > .list-group:last-child {
       .list-group-item:last-child {
-          border-radius: 0px;
+          border-radius: 0;
       }
   }
 }
