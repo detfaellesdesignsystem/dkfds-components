@@ -81,6 +81,7 @@
     .overflow-menu-inner {
         position: absolute;
         width: 100%;
+        max-width: 30rem;
         z-index: 2;
         border: border($overflow-menu-content-border);
         box-shadow: shadow($overflow-menu-content-shadow);
@@ -138,19 +139,19 @@
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list {
+    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidemenu {
         border-top: 0;
         border-bottom: 0;
     }
 
-    &.overflow-menu--md-no-responsive .sidenav-list {
+    &.overflow-menu--md-no-responsive .sidemenu {
         @include media-breakpoint-down(sm) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
-    &.overflow-menu--lg-no-responsive .sidenav-list {
+    &.overflow-menu--lg-no-responsive .sidemenu {
         @include media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;

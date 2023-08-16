@@ -11,10 +11,6 @@ params:
 
 # overflow_stepguide and stepguide
 params:
-- name: hasMaxWidth
-  type: boolean
-  required: false
-  description: Sets a max width of 300 px. Defaults to true.
 - name: steps
   type: array
   required: true

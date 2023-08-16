@@ -346,23 +346,18 @@ $pagination-current-page-border-color: 'gray-600' !default;
 $pagination-current-page-color: 'white' !default;
 
 // Side navigation
-$sidenav-border: 10 !default;
-$sidenav-link-default-color: 'ink' !default;
-$sidenav-link-hover-color: $sidenav-link-default-color !default;
-$sidenav-link-active-color: $sidenav-link-default-color !default; 
-$sidenav-link-current-color: $sidenav-link-default-color !default;
-$sidenav-link-disabled-color: 'disabled' !default;
-$sidenav-link-hover-background-color: 'gray-100' !default;
-$sidenav-link-default-background-color: 'white' !default;
+$sidenav-border-active-color: 'primary' !default;
+$sidenav-border-top-bottom-color: 'gray-500' !default;
+$sidenav-link-border-color: 'gray-300' !default;
+$sidenav-sublink-border-color: 'gray-200' !default;
+$sidenav-link-background-color: 'white' !default;
+$sidenav-link-background-color-hover: 'gray-100' !default;
 $sidenav-link-current-background-color: 'gray-100' !default;
-$sidenav-error-background-color: $theme-color-error-light !default;
+$sidenav-link-font-color: 'black' !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
-$sidenav-list-level1-border: 20 !default;
-$sidenav-list-level2-border: 30 !default;
-$sidenav-active-border-width: 4px !default;
-$sidenav-active-border-color: 'primary' !default;
-$sidenav-link-line-height: $typography-base-line-height !default;
+$sidenav-error-background-color: $theme-color-error-light !default;
+
 $nav-responsive-breakpoint: lg !default;
 
 // Table
