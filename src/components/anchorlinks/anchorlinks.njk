@@ -1,0 +1,9 @@
+{% macro anchorlinks(params) %}
+<nav class="anchorbox">
+    <h2 class="anchortitle">Indhold på siden</h2>
+    <ul class="anchorlist">
+        {% for item in params.links %}<li><a href="{{ item.href | default('#')}}">{{ item.text }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+{% endmacro %}
