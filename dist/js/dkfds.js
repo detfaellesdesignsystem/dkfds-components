@@ -4225,7 +4225,7 @@ let closeAll = function (event = null){
   let changed = false;
   const body = document.querySelector('body');
 
-  let overflowMenuEl = document.getElementsByClassName('overflow-menu');
+  let overflowMenuEl = document.querySelectorAll(".overflow-menu, .submenu");
   for (let oi = 0; oi < overflowMenuEl.length; oi++) {
     let currentOverflowMenuEL = overflowMenuEl[ oi ];
     let triggerEl = currentOverflowMenuEL.querySelector(dropdown_BUTTON+'[aria-expanded="true"]');
@@ -4849,7 +4849,7 @@ function hasForcedAction (modal){
 const forEach = __webpack_require__(84);
 const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
-const NAV = `.nav`;
+const NAV = `.nav-container`;
 const NAV_LINKS = `${NAV} a`;
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;

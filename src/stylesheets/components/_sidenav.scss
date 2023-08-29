@@ -1,12 +1,13 @@
+@import "mixins/nav-mixins";
+
 $sidemenu-border-left-thickness: units(2);
-$sidemenu-link-padding-left: units(4);
 $sidemenu-link-padding-right: units(4);
-$sidemenu-sublink-padding-left: units(7);
-$sidemenu-subsublink-padding-left: 64px;
 $sidemenu-icon-size: 2.4rem;
 
 ul.sidemenu {
     @include unstyled-list();
+    @include nav-link-leftdist($sidemenu-border-left-thickness, $sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include nav-link-border($sidenav-link-border-color, $sidenav-sublink-border-color);
     border-bottom: 1px solid color($sidenav-border-top-bottom-color);
     border-top: 1px solid color($sidenav-border-top-bottom-color);
     max-width: none;
@@ -22,26 +23,16 @@ ul.sidemenu {
         font-size: font-size('sm');
     }
 
-    & > li {
-        border-top: 1px solid color($sidenav-link-border-color);
-
-        &:first-child {
-            border-top: none;
-        }
-    }
-
     ul li,
     ul ul li {
-        border-top: 1px solid color($sidenav-sublink-border-color);
         font-size: font-size('xs');
     }
 
     .nav-link, 
     .nav-step {
-        padding-left: $sidemenu-link-padding-left;
-        padding-right: $sidemenu-link-padding-right;
         padding-top: units(2);
         padding-bottom: units(2);
+        padding-right: units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -123,63 +114,10 @@ ul.sidemenu {
         }
     }
 
-    ul .nav-link {
-        padding-left: $sidemenu-sublink-padding-left;
-        margin-left: -$sidemenu-border-left-thickness;
-        width: calc(100% + $sidemenu-border-left-thickness);
-
-        &:hover {
-            /* Ensure that the hover background color doesn't overwrite the list's border */
-            border-left: $sidemenu-border-left-thickness solid color($sidenav-border-active-color);
-            padding-left: calc($sidemenu-sublink-padding-left - $sidemenu-border-left-thickness);
-        }
-    }
-
-    ul ul .nav-link {
-        padding-left: $sidemenu-subsublink-padding-left;
-
-        &:hover {
-            padding-left: calc($sidemenu-subsublink-padding-left - $sidemenu-border-left-thickness);
-        }
-    }
-
     li.active {
-        border-left: $sidemenu-border-left-thickness solid color($sidenav-border-active-color);
 
         & > :first-child {
             font-weight: font-weight("bold");
-            padding-left: $sidemenu-link-padding-left;
-            margin-left: -$sidemenu-border-left-thickness;
-            width: calc(100% + $sidemenu-border-left-thickness);
-
-            &:hover {
-                border-left: $sidemenu-border-left-thickness solid color($sidenav-border-active-color);
-                padding-left: calc($sidemenu-link-padding-left - $sidemenu-border-left-thickness);
-            }
-        }
-    }
-
-    li.active li.active {
-        border-left: none;
-
-        & > :first-child {
-            padding-left: $sidemenu-sublink-padding-left;
-
-            &:hover {
-                padding-left: calc($sidemenu-sublink-padding-left - $sidemenu-border-left-thickness);
-            }
-        }
-    }
-
-    li.active li.active li.active {
-        border-left: none;
-
-        & > :first-child {
-            padding-left: $sidemenu-subsublink-padding-left;
-
-            &:hover {
-                padding-left: calc($sidemenu-subsublink-padding-left - $sidemenu-border-left-thickness);
-            }
         }
     }
 
@@ -222,8 +160,6 @@ ul.sidemenu {
 
             &:hover {
                 background-color: transparent;
-                border-left: 0;
-                padding-left: $sidemenu-link-padding-left;
                 cursor: not-allowed;
             }
         }

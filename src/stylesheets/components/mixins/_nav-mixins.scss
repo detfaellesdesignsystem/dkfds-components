@@ -1,0 +1,77 @@
+/* Use inside nav ul element to set left and right padding */
+@mixin nav-link-leftdist($li-border-width, $li-border-color, $firstlevel-dist, $secondlevel-dist, $thirdlevel-dist, $fourthlevel-dist) {
+    li {
+        &.active {
+            border-left: $li-border-width solid color($li-border-color);
+
+            .nav-link,
+            .nav-step {
+                margin-left: -$li-border-width;
+                width: calc(100% + $li-border-width);
+            }
+
+            .nav-link:hover,
+            .nav-step:hover {
+                /* Ensure that the hover background color doesn't overwrite the list's border */
+                border-left: $li-border-width solid color($li-border-color);
+                padding-left: $firstlevel-dist - $li-border-width;
+            }
+
+            li .nav-link:hover,
+            li .nav-step:hover {
+                padding-left: $secondlevel-dist - $li-border-width;
+            }
+
+            li li .nav-link:hover,
+            li li .nav-step:hover {
+                padding-left: $thirdlevel-dist - $li-border-width;
+            }
+
+            li li li .nav-link:hover,
+            li li li .nav-step:hover {
+                padding-left: $fourthlevel-dist - $li-border-width;
+            }
+
+            li {
+                border-left: 0;
+            }
+        }
+    }
+
+    .nav-link,
+    .nav-step {
+        padding-left: $firstlevel-dist;
+    }
+
+    ul .nav-link,
+    ul .nav-step {
+        padding-left: $secondlevel-dist;
+    }
+
+    ul ul .nav-link,
+    ul ul .nav-step {
+        padding-left: $thirdlevel-dist;
+    }
+
+    ul ul ul .nav-link,
+    ul ul ul .nav-step {
+        padding-left: $fourthlevel-dist;
+    }
+}
+
+@mixin nav-link-border($bordercolor, $subbordercolor) {
+
+    & > li {
+        border-top: 1px solid color($bordercolor);
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
+    ul li,
+    ul ul li {
+        border-top: 1px solid color($subbordercolor);
+    }
+
+}

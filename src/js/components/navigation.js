@@ -2,7 +2,7 @@
 const forEach = require('array-foreach');
 const select = require('../utils/select').default;
 
-const NAV = `.nav`;
+const NAV = `.nav-container`;
 const NAV_LINKS = `${NAV} a`;
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;

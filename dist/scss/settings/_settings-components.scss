@@ -260,7 +260,9 @@ $select-line-height: $input-line-height !default;
 $select-icon: "expand-more.svg" !default;
 
 // Header
-$header-border-bottom: 10 !default;
+$header-border-bottom-color: 'gray-500' !default;
+
+$solution-header-border-bottom: 10 !default;
 $header-portal-background-color: 'white' !default;
 $header-portal-border: 20 !default;
 $header-portal-logo: 'logo-header-placeholder.png' !default;
@@ -278,6 +280,20 @@ $header-solution-authority-name: 'gray-600' !default;
 $header-solution-authority-name-font-size: $typography-base-font-size !default;
 $header-solution-info-mobile-text-color: 'black' !default;
 $header-navigation-background-color: 'white' !default;
+
+// Navigation
+$nav-responsive-breakpoint: lg !default;
+$navigation-border-desktop-top-color: 'gray-300' !default;
+$navigation-border-top-bottom-color: 'gray-300' !default;
+$navigation-link-current-border-color: 'primary' !default;
+$navigation-link-border-color: 'gray-300' !default;
+$navigation-sublink-border-color: 'gray-200' !default;
+$navigation-link-default-color: 'black' !default;
+$navigation-link-helptext-color: 'gray-500' !default;
+$navigation-link-current-helptext-color: 'gray-600' !default;
+$navigation-link-background-color: 'white' !default;
+$navigation-link-background-color-hover: 'gray-100' !default;
+$navigation-link-current-background-color: 'gray-100' !default;
 
 // HR - horizontal ruler
 $hr-border: 20 !default;
@@ -300,29 +316,6 @@ $modal-footer-background-color: $modal-background-color !default;
 $modal-footer-text-color: $modal-text-color !default;
 $modal-body-background-color: $modal-background-color !default;
 $modal-body-text-color: $modal-text-color !default;
-
-// Navigation
-$navigation-link-default-color: 'black' !default;
-$navigation-link-information-text-color: 'ink-light' !default;
-$navigation-link-hover-color: $navigation-link-default-color !default;
-$navigation-link-focus-color: $navigation-link-default-color !default;
-$navigation-link-current-color: $navigation-link-default-color !default;
-$navigation-link-default-border-width: 7px !default;
-$navigation-link-default-border-color: 'transparent' !default;
-$navigation-link-hover-border-color: $navigation-link-default-border-color!default;
-$navigation-link-focus-border-color: $navigation-link-default-border-color !default;
-$navigation-link-current-border-color: 'primary' !default;
-$navigation-link-default-background-color: 'transparent' !default;
-$navigation-link-hover-background-color: $navigation-link-default-background-color!default;
-$navigation-link-focus-background-color: $navigation-link-default-background-color !default;
-$navigation-link-current-background-color: $navigation-link-default-background-color !default;
-$navigation-overflow-menu-open-background-color: 'white' !default;
-$navigation-overflow-menu-open-background-color-desktop: 'gray-600' !default;
-$navigation-overflow-menu-open-text-color: 'white' !default;
-$navigation-overflow-menu-collapsed-icon: "add" !default;
-$navigation-overflow-menu-collapsed-icon-desktop: "expand-more";
-$navigation-overflow-menu-expanded-icon: "remove";
-$navigation-overflow-menu-expanded-icon-desktop: "expand-more-white";
 
 // Overflow Menu
 $overflow-menu-arrow-size: 8px;
@@ -357,8 +350,6 @@ $sidenav-link-font-color: 'black' !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
 $sidenav-error-background-color: $theme-color-error-light !default;
-
-$nav-responsive-breakpoint: lg !default;
 
 // Table
 $table-head-background-color: 'gray-100' !default;

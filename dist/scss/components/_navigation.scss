@@ -1,544 +1,223 @@
-// Header navigation ------------- //
+@import "mixins/nav-mixins";
 
-@mixin nav-current-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-current-border-color);
-}
-@mixin nav-hover-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-hover-border-color);
-}
-@mixin nav-focus-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-focus-border-color);
-}
-@mixin nav-link-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-default-border-color);
-}
-
-@mixin nav-link {
- 
-}
+$navigation-row-link-padding-left-right: units(305);
+$navigation-desktop-border-bottom-thickness: units(2);
 
 .mobile_nav-active {
-  overflow: hidden;
+    overflow: hidden;
 }
 
-.mobile_nav-active{
-  .nav{
-      .nav-actions{
-        //overflow menu (the ones not in nav-primary)
-        .overflow-menu{
-          width: 100%;
-          .button-overflow-menu{
-            width: 100%;
-            justify-content: flex-start;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: units(4);
-            padding-bottom: units(4);
-            &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
-              display: none;
+ul.mainmenu {
+    @include unstyled-list;
+    @include nav-link-leftdist(units(3), $navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include nav-link-border($navigation-link-border-color, $navigation-sublink-border-color);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    border-bottom: 1px solid color($navigation-border-top-bottom-color);
+    border-top: 1px solid color($navigation-border-top-bottom-color);
+
+    @include media-breakpoint-up($nav-responsive-breakpoint) {
+        flex-direction: row;
+        border-bottom: 0;
+        border-top: 0;
+        margin-left: -$navigation-row-link-padding-left-right;
+    }
+
+    ul {
+        @include unstyled-list();
+        width: 100%;
+        max-width: none !important; /* Override ul styling in typography.scss */
+    }
+
+    li {
+        background-color: color($navigation-link-background-color);
+
+        @include media-breakpoint-up($nav-responsive-breakpoint) {
+            border-top: 0;
+
+            &.active {
+                border-left: 0;
+                
+                .nav-link {
+                    margin-left: 0;
+                    width: unset;
+
+                    &:hover {
+                        border-left: 0;
+                        padding-left: $navigation-row-link-padding-left-right;
+                    }
+
+                    span {
+                        border-bottom: $navigation-desktop-border-bottom-thickness solid color($navigation-link-current-border-color);
+                        font-weight: font-weight("bold");
+                    }
+                }
             }
-          }
-          .overflow-menu-inner{
-            position: static;
-            border: none;
-            box-shadow:  none;
-            min-width: inherit;
-            margin-top: 0;
-            padding-top: 0px;
-            .overflow-list{
-              padding-left: units(4);
-            }
-            a, button{
-              text-align: left;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: units(3);
-              padding-bottom: units(3);
-              &:hover{
-                background-color: transparent;
-              }
-            }
-          }
         }
-      }
-  }
-}
 
-.navbar {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding: 0;
-    flex-direction: row;
-  }
-
-  .helptext{
-    color: color($navigation-link-information-text-color);
-    font-weight: font-weight("normal");
-  }
-
-  .navbar-inner{
-    border-bottom: border(20);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: none;
-    }
-  }
-}
-
-
-
-.navbar-context-actions{
-  padding-bottom: units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: units(4);
-    padding-bottom: 0;
-  }
-}
-
-// // Primary navigation ------------- //
-
-.nav-primary {
-  padding-top: 0;
-  @include unstyled-list;
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-  border-top: border(20);
-  + .nav-actions{
-    border-top: border(20);
-    margin-top: 0;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-top: none;
-    }
-  }
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-top: none;
-    flex-direction: row;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    margin-top: 0;
-    margin-left: -12px;
-    border-bottom: none;
-  }
-  ul{
-    margin-left: units(4);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      margin-left: 0;
-    }
-  }
-
-  .nav-link {    
-    text-decoration: none;
-    color: color($navigation-link-default-color);
-    background-color: color($navigation-link-default-background-color);
-    display: block;
-    padding:calc(units(4) - 1px) 0 units(4); 
-    span{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        display: block;
-        @include nav-link-border;
-      }
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 9px;
-      }
-    }
-  }
-
-  li{
-    margin-top: 0;
-    padding-left: 0px;
-    border-bottom: border(20);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: none;
-    }
-    &:last-of-type{
-      border-bottom: none;
-    }
-     li li {
-      .overflow-menu{
-        .buttton-overflow-menu{
-          padding-top: calc(units(305) - 1px);
-          padding-bottom: units(305);
+        &.active > a:first-child,
+        &.active > .submenu > button:first-child {
+            font-weight: font-weight("bold");
         }
-      }
-      .nav-link{
-        padding-top: calc(units(305) - 1px);
-        padding-bottom: units(305);
-      }
-    }
-  }
 
-  // level 1
-  > li {
-    & > .overflow-menu {
-      & > button.button-overflow-menu{
-        padding-left: units(4);
-      }
-      & > .overflow-menu-inner > .overflow-list{
-        margin-left: units(6);
-      } 
-    }
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: 0;
-      padding-right: 0;
-      padding-left: 0;
-      & > .overflow-menu > button.button-overflow-menu{
-        padding-left: units(305);
-      }
-    }
-    > .nav-link {
-      font-size: font-size($typography-base-font-size);
-      line-height: units($typography-base-line-height, 'rem');
-      white-space: nowrap;
-      padding-left: units(4);
-
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 0px;
-        padding-left: 0;
-      }
-      &:hover {
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-color: color($navigation-link-hover-background-color);
-          color: color($navigation-link-hover-color);
-          span{
-            @include nav-hover-border;
-          }
-        }
-      }
-      &:focus{
-        position: relative;
-        z-index: 100;
-        background-color: color($navigation-link-focus-background-color);
-        color: color($navigation-link-focus-color);
-        span{
-          @include nav-focus-border;
-        }
-      }
-    }
-    & > .nav-link, & > button, & .button-overflow-menu{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-left: 12px;
-        padding-right: 12px;
-        span{        
-          @include nav-link-border;
-          padding-bottom: calc(#{units(3)} + 1px);
-        }
-        &:hover span{
-          @include nav-hover-border;
-        }
-        &:focus span{
-          @include nav-focus-border;
-        }
-      }
-    }
-  }
-  .active > a, .overflow-menu .overflow-menu-inner .overflow-list > li.active > a{
-    font-weight: font-weight("semibold");
-  }
-  .current {
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      > a, .button-overflow-menu{
-        background-color: color($navigation-link-current-background-color);
-        color: color($navigation-link-current-color);
-        span {
-          @include nav-current-border;
-        }
-        &:hover, &:focus, &:hover, &:visited{
-          background-color: color($navigation-link-current-background-color);
-          color: color($navigation-link-current-color);
-          span {
-            @include nav-current-border;
-          }
-        }
-      }
-      .overflow-menu{
-        .button-overflow-menu{
-          font-weight: font-weight("semibold");
-          color: color($navigation-link-current-color);
-          background-color: color($navigation-link-current-background-color);
-          
-          span{
-            @include nav-current-border;
-          }
-
-          &:focus,
-          &:active {
-            color: color($navigation-link-current-color);
+        &.current {
             background-color: color($navigation-link-current-background-color);
+
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                background-color: color($navigation-link-background-color);
+            }
+
+            .helptext {
+                color: color($navigation-link-current-helptext-color);
+                font-weight: font-weight("normal");
+            }
+        }
+
+    }
+
+    .nav-link {
+        padding-top: units(4);
+        padding-bottom: units(4);
+        padding-right: units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
+        text-decoration: none;
+        color: color($navigation-link-default-color);
+        font-size: font-size('sm');
+        background-color: color('transparent');
+        display: block;
+        line-height: units(5, 'rem');
+        white-space: normal;
+        width: 100%;
+        max-width: unset;
+        cursor: pointer;
+
+        @include media-breakpoint-up($nav-responsive-breakpoint) {
+            padding-left: $navigation-row-link-padding-left-right;
+            padding-right: $navigation-row-link-padding-left-right;
+            padding-bottom: 0;
+            width: unset;
+        }
+
+        &:hover {
+            background-color: color($navigation-link-background-color-hover);
+
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                padding-left: $navigation-row-link-padding-left-right;
+                border-left: 0;
+                background-color: color($navigation-link-background-color); /* Don't use hover color on desktop */
+            }
+            
+            span {
+                @include media-breakpoint-up($nav-responsive-breakpoint) {
+                    border-bottom: $navigation-desktop-border-bottom-thickness solid color($navigation-link-current-border-color);
+                }
+            }
+
+            .helptext {
+                color: color($navigation-link-current-helptext-color);
+                font-weight: font-weight("normal");
+            }
+        }
+
+        &:focus {
+            outline-offset: -4px;
             position: relative;
             z-index: 2;
-            span {
-              @include nav-current-border;
-            }
-          }
-          &:hover{
-            color: color($navigation-link-current-color);
-            background-color: color($navigation-link-current-background-color);
-            span{
-              @include nav-current-border;
-            }
-          }
 
-          &[aria-expanded=true] {
-            background-color: color($navigation-overflow-menu-open-background-color-desktop);
-            color: color($navigation-overflow-menu-open-text-color);
-            
-            span{
-              @include nav-current-border;
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                outline-offset: 0;
             }
-
-            &:hover, &:focus, &:active {
-              background-color: color($navigation-overflow-menu-open-background-color-desktop);
-              color: color($navigation-overflow-menu-open-text-color);
-              span{
-                @include nav-current-border;
-              }
-            }
-          }
         }
-      }
-    }
-    & > a, & > .overflow-menu > .button-overflow-menu{
-      color: color($navigation-link-current-color);
-      
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        font-weight: font-weight("medium");
-      }
-    }
-  }
 
-  /*region: nav-primary overflow menu */
-  .overflow-menu{
-    display: block;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      display: inline-block;
+        span {
+            display: inline-block;
+            width: 100%;
+            overflow-wrap: break-word;
+
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                display: block;
+                border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
+                padding-bottom: units(305);
+                font-weight: font-weight("normal");
+                white-space: nowrap;
+            }
+        }
+
+        .helptext {
+            color: color($navigation-link-helptext-color);
+            width: auto;
+            font-weight: font-weight("normal");
+        }
     }
-    .button-overflow-menu{
-      color: color($navigation-link-default-color);
-      display: block;
-      font-size: font-size($typography-base-font-size);
-      font-weight: font-weight("normal");
-      line-height: units($typography-base-line-height, 'rem');
-      padding-top: calc(units(4) - 1px);
-      padding-bottom: units(4);
-      padding-left: 0px;
-      padding-right: units(7);
-      white-space: normal;
-      width: 100%;
-      
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-       padding-bottom: 0;
-       width: unset;
-       padding-right: units(305);
-       padding-left: units(305);
-      }
-      &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
-        display: none;
-      }
-      span{
-        padding-right: 24px;
+
+    /* Overflow/dropdown menus */
+    .submenu {
         display: block;
-      }
-          
-      &:focus,
-      &:active {
-        @include focus-outline();
-        color: color($navigation-link-focus-color);
-        z-index: 2;
         position: relative;
-      }
-      &:hover{
-        text-decoration: none;
-        color: color($navigation-link-hover-color);
-        background-color: transparent;
-      }
+        width: 100%;
 
-      &[aria-expanded=false] {
-        @include add-background-svg($navigation-overflow-menu-collapsed-icon);
-        background-position: right units(4) top units(4);
-        background-size: 24px;
-
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          @include add-background-svg($navigation-overflow-menu-collapsed-icon-desktop);
-          background-position: right 1rem center; 
+        @include media-breakpoint-up($nav-responsive-breakpoint) {
+            display: inline-block;
         }
-      }
 
-      &[aria-expanded=true] {
-        @include add-background-svg($navigation-overflow-menu-expanded-icon);
-        background-position: right units(4) top units(4);
-        background-size: 24px;
-        background-color: color($navigation-overflow-menu-open-background-color);
+        /* Overflow button */
+        .button-overflow-menu {
+            text-align: left;
+            text-decoration: none;
+            border: 0;
 
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          @include add-background-svg($navigation-overflow-menu-expanded-icon-desktop);
-          background-position: right 1rem center;
-          background-color: color($navigation-overflow-menu-open-background-color-desktop);
-          color: color($navigation-overflow-menu-open-text-color);
-          position: relative;
-          z-index: 2;
-          &:before, &:after{
-            display: none;
-          }
-         
-        }
-      }
-    }
-    .overflow-menu-inner {
-      @include unstyled-list;
-      background-color: color($navigation-overflow-menu-open-background-color);
-      border: none;
-      border-top: border(20);
-      box-shadow: none;
-      color: color('ink');
-      font-size: font-size($typography-body-text-font-size);
-      line-height: units($typography-body-text-line-height, 'rem');
-      min-width: inherit;
-      padding-left: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      position: static;
-      width: 100%;
-
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        width: 30rem;
-        border: border(10);
-        border-top: 0;
-        padding-left: 0;
-        position: absolute;
-        z-index: 1;
-        padding-top: units(3);
-        padding-bottom: units(3);
-        background-color: color($navigation-overflow-menu-open-background-color-desktop);
-        top: 100%;
-      }
-      
-      a{
-          @include body-copy-text;
-          display: block;
-          text-decoration: none;
-          &:hover, &:visited, &:focus{
-            color: color($navigation-link-default-color);
-            background-color: transparent;
-            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              color: color($navigation-overflow-menu-open-text-color);
-              text-decoration: underline;
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                position: relative;
             }
-          }
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            @include small-text();
-            color: color($navigation-overflow-menu-open-text-color);
-            padding: units(3) units(4);
-          }
-      }
 
-      button:not(.button-overflow-menu){
-        @include button-unstyled;
-      }
-    }
-  }
-  /*endregion*/
+            span {
+                background-position-x: right;
+                background-position-y: center;
+                background-size: 2.4rem;
+                padding-right: calc(2.4rem + 4px);
 
-
-  .overflow-menu{
-    .overflow-menu-inner {
-      .overflow-list{
-        list-style-type: none;
-        margin-left: units(4);
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          margin-left: 0;
-        }
-        li:before{
-          display: none;
-        }
-        a {
-          text-decoration: none;
-          color: color($navigation-link-default-color);
-          background-color: color($navigation-link-default-background-color);
-          display: block;
-          padding: calc(units(4) - 1px) 0 units(4);
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            background-color: transparent;
-            color: color($navigation-overflow-menu-open-text-color);
-            padding: units(3) units(4);
-            &:hover{          
-              text-decoration: underline;
+                @include media-breakpoint-up($nav-responsive-breakpoint) {
+                    background-position-y: top;
+                    white-space: nowrap;
+                }
             }
-          }
-        }
-        .overflow-list, .overflow-list {
-          margin-left: units(4);
-          li {
-            a {
-              padding: calc(units(305) - 1px) 0 units(305);
+
+            &[aria-expanded="false"] span {
+                @include add-background-svg("add");
+
+                @include media-breakpoint-up($nav-responsive-breakpoint) {
+                    @include add-background-svg("expand-more");
+                }
             }
-            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              &:last-of-type a {
-                padding: 8px 0 32px 0;
-              }
+
+            &[aria-expanded="true"] span {
+                @include add-background-svg("remove");
+
+                @include media-breakpoint-up($nav-responsive-breakpoint) {
+                    @include add-background-svg("expand-less");
+                }
             }
-          }
+
         }
-      }
-    }
-  }
-}
 
-.nav-secondary{
-  padding: 0 units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    display: flex;
-    align-items: center;
-    padding: 0;
-  }
-  .nav-actions{
-    padding: 0;
-  }
-  + .nav-actions{
-    padding: 0 units(4) units(4);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding: 0 0 0 units(4);
-    }
-  }
-  .nav-secondary-heading{
-    font-weight: font-weight("bold");
-    margin-bottom: units(1);
-    + ul{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        margin-left: units(4);
-      }
-    }
-  }
-}
+        /* Overflow content */
+        .overflow-menu-inner {
+            position: static;
+            border: 0;
+            width: 100%;
 
-.navbar-primary{
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-bottom: border(10);
-  }
-}
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                position: absolute;
+                z-index: 1;
+                top: 100%;
+                width: 30rem;
+            }
 
-.navbar:last-of-type{
-  .nav-actions{
-    border-bottom: none;
-  }
-}
+            &[aria-hidden="true"] {
+                display: none;
+            }
+        }
 
-// // Navbar inner
-.navbar-inner {
-  display: flex;
-  flex-direction: column;
-  &.container {
-    padding-left: 0;
-    padding-right: 0;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      padding-left: units(4);
-      padding-right: units(4);
     }
-  }
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }

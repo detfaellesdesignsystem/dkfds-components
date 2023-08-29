@@ -137,7 +137,7 @@ let closeAll = function (event = null){
   let changed = false;
   const body = document.querySelector('body');
 
-  let overflowMenuEl = document.getElementsByClassName('overflow-menu');
+  let overflowMenuEl = document.querySelectorAll(".overflow-menu, .submenu");
   for (let oi = 0; oi < overflowMenuEl.length; oi++) {
     let currentOverflowMenuEL = overflowMenuEl[ oi ];
     let triggerEl = currentOverflowMenuEL.querySelector(BUTTON+'[aria-expanded="true"]');
