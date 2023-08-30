@@ -10400,6 +10400,42 @@ ul.mainmenu .submenu .overflow-menu-inner{
     z-index:1;
     top:100%;
     width:30rem;
+    border:1px solid #747474;
+    background-color:white;
+    padding:12px;
+    margin-left:-12px;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li{
+    border-top:0;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li .nav-link{
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:12px;
+    padding-right:12px;
+    background-color:transparent;
+    max-width:100%;
+    width:100%;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li .nav-link:hover{
+    padding-left:12px;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li .nav-link:hover span{
+    text-decoration:underline;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li .nav-link span{
+    border-bottom:none;
+    font-weight:400;
+    padding-bottom:0;
+    white-space:normal;
+    display:inline-block;
+    width:100%;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li .button-overflow-menu span{
+    background-position-y:center;
+  }
+  ul.mainmenu .submenu .overflow-menu-inner li.current .nav-link span{
+    font-weight:700;
   }
 }
 ul.mainmenu .submenu .overflow-menu-inner[aria-hidden=true]{

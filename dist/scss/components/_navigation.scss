@@ -212,6 +212,49 @@ ul.mainmenu {
                 z-index: 1;
                 top: 100%;
                 width: 30rem;
+                border: 1px solid color('gray-500');
+                background-color: color('white');
+                padding: $navigation-row-link-padding-left-right;
+                margin-left: -$navigation-row-link-padding-left-right;
+
+                li {
+                    border-top: 0;
+
+                    .nav-link {
+                        padding-top: units(3);
+                        padding-bottom: units(3);
+                        padding-left: $navigation-row-link-padding-left-right;
+                        padding-right: $navigation-row-link-padding-left-right;
+                        background-color: color('transparent');
+                        max-width: 100%;
+                        width: 100%;
+    
+                        &:hover {
+                            padding-left: $navigation-row-link-padding-left-right;
+    
+                            span {
+                                text-decoration: underline;
+                            }
+                        }
+    
+                        span {
+                            border-bottom: none;
+                            font-weight: font-weight("normal");
+                            padding-bottom: 0;
+                            white-space: normal;
+                            display: inline-block;
+                            width: 100%;
+                        }
+                    }
+
+                    .button-overflow-menu span {
+                        background-position-y: center;
+                    }
+
+                    &.current .nav-link span{
+                        font-weight: font-weight("bold");
+                    }
+                }
             }
 
             &[aria-hidden="true"] {
