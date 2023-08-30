@@ -8711,6 +8711,7 @@ hr{
   right:1.6rem;
   height:2.4rem;
   line-height:2.4rem;
+  position:static;
   position:initial;
   text-align:left;
   transform:none;
@@ -10320,7 +10321,7 @@ ul.mainmenu .nav-link:focus{
 ul.mainmenu .nav-link span{
   display:inline-block;
   width:100%;
-  overflow-wrap:break-word;
+  word-wrap:break-word;
 }
 @media (min-width: 992px){
   ul.mainmenu .nav-link span{
@@ -10842,14 +10843,14 @@ ul.sidemenu .nav-link div{
 ul.sidemenu .nav-link span{
   display:inline-block;
   width:100%;
-  overflow-wrap:break-word;
+  word-wrap:break-word;
 }
 ul.sidemenu .nav-step > div{
   display:flex;
   width:100%;
 }
 ul.sidemenu .nav-step div div{
-  overflow-wrap:break-word;
+  word-wrap:break-word;
   max-width:calc(100% - 2.4rem - 16px);
   width:100%;
 }
