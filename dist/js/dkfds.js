@@ -4837,13 +4837,14 @@ function hasForcedAction (modal){
 const forEach = __webpack_require__(84);
 const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
-const NAV = `.nav-container`;
-const NAV_LINKS = `${NAV} a`;
+const NAV_DESKTOP = `.navigation-header`;
+const NAV_MOBILE = `.navigation-header-mobile`;
+const NAV_LINKS = `.navigation-header-inner a`;
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;
 const OVERLAY = `.overlay`;
 const CLOSERS = `${CLOSE_BUTTON}, .overlay`;
-const TOGGLES = [ NAV, OVERLAY ].join(', ');
+const TOGGLES = [ NAV_DESKTOP, NAV_MOBILE, OVERLAY ].join(', ');
 
 const ACTIVE_CLASS = 'mobile_nav-active';
 const VISIBLE_CLASS = 'is-visible';
@@ -4906,7 +4907,7 @@ const mobileMenu = function() {
       });
     }
 
-    const trapContainers = document.querySelectorAll(NAV);
+    const trapContainers = document.querySelectorAll(".navigation-header, .navigation-header-mobile");
     for(let i = 0; i < trapContainers.length; i++){
       focusTrap = _focusTrap(trapContainers[i]);
     }

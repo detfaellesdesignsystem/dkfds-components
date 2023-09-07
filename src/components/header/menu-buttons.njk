@@ -5,5 +5,8 @@
 {% endmacro %}
 
 {% macro menu_close_button(params) %}
-<button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
+<div class="menu-top">
+    <h2 class="menu-heading">Menu</h2>
+    <button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
+</div>
 {% endmacro %}

@@ -3,30 +3,28 @@
 
 
 {% macro portal_header(params) %}
-<div class="portal-header{% if params.compact %} portal-header-compact{% endif %}">
-    <div class="container portal-header-inner">
-        <a href="{{ params.logolink.href | default('/') }}"{% if params.logolink.title %} title="{{ params.logolink.title}}"{% endif %}{% if params.logolink.label %} aria-label="{{ params.logolink.label }}"{% endif %} class="logo {{params.logolink.classes}}">
-            <span class="d-none d-print-block">{{ params.logolink.label }}</span>
+<div class="portal-header">
+    <div class="portal-header-inner container">
+        <a href="{{ params.logolink.href | default('/') }}"{% if params.logolink.title %} title="{{ params.logolink.title}}"{% endif %}{% if params.logolink.label %} aria-label="{{ params.logolink.label }}"{% endif %} class="logo{% if params.logolink.classes %} {{ params.logolink.classes }}{% endif %}">
+            <span>{{ params.logolink.label }}</span>
         </a>
         {{- menu_open_button() }}
         <div class="portal-info">
             {%- if params.user %}
             <p class="user">
-                {% if params.compact == null or params.compact == false %}
-                <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
-                {% else %}
-                <span class="username">{{ params.user.name | safe }}</span>
-                {% endif %}
-                {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+            {%- if params.user.name and params.user.info %}
+                {{ params.user.name }}, {{ params.user.info }}
+            {%- elif params.user.name %}
+                {{ params.user.name }}
+            {%- endif %}
             </p>
             {% endif %}
-            {% set buttonVariant = params.button.variant | default('secondary') %}
             {% set buttonText = params.button.text | default('Log af') %}
             {{- 
                 button({
-                    "variant": buttonVariant,
+                    "variant": "tertiary",
                     "text": buttonText,
-                    "classes": { "button": "d-print-none" }
+                    "classes": { "button": "button-logout d-print-none" }
                 }) 
             }}
         </div>
@@ -35,14 +33,14 @@
 {% endmacro %}
 
 {% macro solution_header(params) %}
-<div class="solution-header{% if params.lastHeader %} header-end{% endif %}">
-    <div class="container solution-header-inner">
+<div class="solution-header">
+    <div class="solution-header-inner container">
         <div class="solution-heading">
-            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>
-                {{ params.title.text }}
-            </a>
+            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>{{ params.title.text }}</a>
         </div>
-
+        {% if params.menu %}
+        {{- menu_open_button() }}
+        {% endif %}
         {% if params.authority %}
         <div class="solution-info{% if params.hideOnPrint %} d-print-none{% endif %}">
             {% if params.authority.name %}
@@ -58,24 +56,23 @@
 {% endmacro %}
 
 {% macro mobile_portal_header(params) %}
-<div class="portal-info-mobile">
+<div class="portal-header-mobile">
     {% if params.user %}
     <p class="user">
-        {% if params.compact == null or params.compact == false %}
-        <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
-        {% else %}
-        <span class="username">{{ params.user.name | safe }}</span>
-        {% endif %}
-        {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+    {% if params.user.name and params.user.info %}
+        <span>{{ params.user.name }}</span>
+        <span>{{ params.user.info }}</span>
+    {% elif params.user.name %}
+        {{ params.user.name }}
+    {% endif %}
     </p>
     {% endif %}
-    {% set buttonVariant = params.button.variant | default('secondary') %}
     {% set buttonText = params.button.text | default('Log af') %}
     {{ 
         button({
-            "variant": buttonVariant,
+            "variant": "tertiary",
             "text": buttonText,
-            "classes": { "button": "d-print-none mt-3" }
+            "classes": { "button": "button-logout d-print-none mt-3" }
         }) 
     }}
 </div>

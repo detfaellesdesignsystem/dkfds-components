@@ -260,7 +260,12 @@ $select-line-height: $input-line-height !default;
 $select-icon: "expand-more.svg" !default;
 
 // Header
-$header-border-bottom-color: 'gray-500' !default;
+$header-border-color: 'gray-300' !default;
+$header-last-border-color: 'gray-500' !default;
+$header-portal-mobile-border-color: 'gray-400' !default;
+$header-solution-mobile-background-color: 'white' !default;
+$header-navigation-top-mobile-background-color: 'white' !default;
+$header-log-on-off-button-background-color: 'white' !default;
 
 $solution-header-border-bottom: 10 !default;
 $header-portal-background-color: 'white' !default;
