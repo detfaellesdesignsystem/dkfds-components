@@ -257,11 +257,11 @@ input[readonly][type=text], textarea[readonly]{
 }
 
 
-/////////////////////////////////
-// Custom checkboxes & radio buttons
-/////////////////////////////////
+///////////////////////////////////////
+// Custom checkboxes & radio buttons //
+///////////////////////////////////////
 
-/* Variables for readability */
+// Variables for readability
 $checkbox-radio-size: units($input-checkbox-radio-size);
 $label-distance: units($input-checkbox-radio-label-distance);
 $checkmark-size: units($input-checkbox-checkmark-size);
@@ -269,7 +269,7 @@ $content-border-width: units(2);
 $expand-hit-area: units(2);
 $button-distance: units(3);
 
-/* Radio/checkbox element including label, button, helptext and hidden content */
+// Radio/checkbox element including label, button, helptext and hidden content
 .form-group-checkbox,
 .form-group-radio {
     margin-top: $button-distance;
@@ -287,7 +287,7 @@ legend, .form-error-message, .form-hint {
     }
 }
 
-/* Hide the original radio and checkbox button */
+// Hide the original radio and checkbox button
 .form-checkbox,
 .form-radio {
     position: absolute;
@@ -303,7 +303,7 @@ legend, .form-error-message, .form-hint {
     margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
 }
 
-/* Radio and checkbox label/text */
+// Radio and checkbox label/text
 .form-checkbox + label,
 .form-radio + label {
     cursor: pointer;
@@ -317,7 +317,7 @@ legend, .form-error-message, .form-hint {
     padding-bottom: $expand-hit-area;
 }
 
-/* Unchecked radio and checkbox button */
+// Unchecked radio and checkbox button
 .form-checkbox + label::before,
 .form-radio + label::before {
     content: '';
@@ -334,17 +334,17 @@ legend, .form-error-message, .form-hint {
     margin-top: calc((units($input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
 }
 
-/* Unchecked checkbox button border radius */
+// Unchecked checkbox button border radius
 .form-checkbox + label::before {
     border-radius: 2px;
 }
 
-/* Unchecked radio button border radius */
+// Unchecked radio button border radius
 .form-radio + label::before {
     border-radius: 100%;
 }
 
-/* Checked checkbox */
+// Checked checkbox
 .form-checkbox:checked + label::before,
 .form-checkbox[aria-checked="mixed"] + label::before {
     background-color: color($input-checkbox-checked-background-color);
@@ -354,26 +354,26 @@ legend, .form-error-message, .form-hint {
     background-position: center;
 }
 
-/* 'Normal' checkbox checkmark */
+// 'Normal' checkbox checkmark
 .form-checkbox:checked + label::before {
-    background-image: url($icons-folder-path+'/done-white.svg');
+    background-image: url($icons-folder-path+'/'+$input-checkbox-checked-image+'.svg');
 }
 
-/* 'Mixed' checkbox checkmark */
+// 'Mixed' checkbox checkmark
 .form-checkbox[aria-checked="mixed"] + label::before {
-    background-image: url($icons-folder-path+'/remove-white.svg');
+    background-image: url($icons-folder-path+'/'+$input-checkbox-mixed-image+'.svg');
 }
 
-/* Checked radio */
+// Checked radio
 .form-radio:checked + label {
 
-    /* Radio button background */
+    // Radio button background
     &::before {
         background-color: color($input-radio-checked-background-color);
         border: 2px solid color($input-radio-checked-border-color);
     }
 
-    /* Radio button 'dot' */
+    // Radio button 'dot'
     &::after {
         content: "";
         position: absolute;
@@ -388,7 +388,7 @@ legend, .form-error-message, .form-hint {
     }
 }
 
-/* Focus */
+// Focus
 .form-checkbox:focus + label::before,
 .form-checkbox.focus + label::before,
 .form-radio:focus + label::before,
@@ -396,14 +396,14 @@ legend, .form-error-message, .form-hint {
     @include focus();
 }
 
-/* Helptext */
+// Helptext
 .form-checkbox + label + .form-hint,
 .form-radio + label + .form-hint {
     padding-left: calc($checkbox-radio-size + $label-distance);
     margin-top: -$expand-hit-area;
 }
 
-/* Hidden content */
+// Hidden content
 .checkbox-content,
 .radio-content {
     border-left: $content-border-width solid color($input-checkbox-radio-content-border-color);
@@ -419,7 +419,7 @@ legend, .form-error-message, .form-hint {
     }
 }
 
-/* Special styling when radio/checkboxes are used to select table rows */
+// Special styling when radio/checkboxes are used to select table rows
 th, 
 td {
     .form-group-checkbox,
@@ -448,13 +448,13 @@ td {
     }
 }
 
-/* Disabled */
+// Disabled
 .form-checkbox:disabled,
 .form-radio:disabled {
     cursor: not-allowed;
 }
 
-/* Disabled label and button */
+// Disabled label and button
 .form-checkbox:disabled + label,
 .form-radio:disabled + label {
     cursor: not-allowed;
@@ -466,7 +466,7 @@ td {
     }
 }
 
-/* Disabled checked checkbox */
+// Disabled checked checkbox
 .form-checkbox:disabled:checked + label,
 .form-checkbox:disabled[aria-checked="mixed"] + label {
 
@@ -480,7 +480,7 @@ td {
     }
 }
 
-/* Disabled checked radio */
+// Disabled checked radio
 .form-radio:disabled:checked + label {
 
     &::before {

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @media print {
     html {
         font-family: Georgia, "Times New Roman", Serif;
@@ -190,24 +192,34 @@
         }
     }
 
-    .form-radio.radio-large:checked + label:after {
-        border: units(3) solid color('black');
+    // Checkboxes
+
+    // Checked checkbox
+    .form-checkbox:checked+label::before,
+    .form-checkbox[aria-checked="mixed"]+label::before {
+        background-color: color($input-checkbox-checked-background-color-print);
+        background-image: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: units($input-checkbox-radio-size, 'rem');
+        line-height: units($input-checkbox-radio-size, 'rem');
+        font-weight: font-weight("bold");
     }
 
-    .form-radio:checked + label:after {
-        border: units(2) solid color('black');
+    // 'Normal' checkbox checkmark
+    .form-checkbox:checked+label::before {
+        content: "\2713";
     }
 
-    .form-checkbox:checked + label {
-        &:before {
-            background-color: transparent;
-            border: 10px solid color('black');
-        }
+    // 'Mixed' checkbox checkmark
+    .form-checkbox[aria-checked="mixed"]+label::before {
+        content: "\002d";
     }
 
-    .form-checkbox.checkbox-large:checked + label {
-        &:before {
-            border: units(4) solid color('black');
-        }
+    // Checked radio - radio button 'dot'
+    .form-radio:checked + label::after {
+        background-color: color('transparent');
+        border: math.div(units($input-radio-dot-size), 2) solid color($input-radio-dot-color);
     }
 }
