@@ -34,7 +34,7 @@
     .header {
 
         .logo,
-        .portal-header .logo {
+        .portal-info .logo {
             height: auto;
             width: auto;
             background-image: none;
@@ -44,10 +44,10 @@
             }
         }
 
-        .portal-header {
+        .portal-info {
             overflow: hidden;
 
-            .portal-header-inner {
+            .portal-info-inner {
                 display: block;
             }
 
@@ -57,8 +57,8 @@
             }
         }
 
-        .solution-header {
-            .solution-header-inner {
+        .solution-info {
+            .solution-info-inner {
                 display: block;
                 overflow: hidden;
             }
@@ -67,7 +67,7 @@
                 display: inline-block;
             }
 
-            .solution-info {
+            .additional-info {
                 display: block;
                 float: right;
                 margin-left: 0;

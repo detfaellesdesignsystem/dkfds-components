@@ -31,12 +31,7 @@ $z-index-nav:     9000;
         }
     }
 
-    .button-login,
-    .button-logout {
-        background-color: color($header-log-on-off-button-background-color);
-    }
-
-    .portal-header {
+    .portal-info {
         background-color: color($header-portal-background-color);
         width: 100%;
 
@@ -58,7 +53,7 @@ $z-index-nav:     9000;
             }
         }
 
-        .portal-header-inner {
+        .portal-info-inner {
             width: 100%;
             min-height: units(8);
             padding-top: units(2);
@@ -71,7 +66,7 @@ $z-index-nav:     9000;
             }
         }
 
-        .portal-info {
+        .portal-user {
             display: none;
 
             @include media-breakpoint-up($nav-responsive-breakpoint) {
@@ -89,7 +84,7 @@ $z-index-nav:     9000;
         }
     }
 
-    .portal-header-mobile {
+    .portal-info-mobile {
         padding: units(5) units(4);
         text-align: left;
         background-color: color($header-portal-background-color);
@@ -107,11 +102,11 @@ $z-index-nav:     9000;
         }
     }
 
-    .solution-header {
+    .solution-info {
         background-color: color($header-solution-background-color);
         width: 100%;
 
-        .solution-header-inner {
+        .solution-info-inner {
             display: flex;
             align-items: center;
             flex-direction: row;
@@ -150,7 +145,7 @@ $z-index-nav:     9000;
             }
         }
 
-        .solution-info {
+        .additional-info {
             display: none;
 
             @include media-breakpoint-up($nav-responsive-breakpoint) {
@@ -208,10 +203,42 @@ $z-index-nav:     9000;
         }
     }
 
-    .navigation-header,
-    .navigation-header-mobile {
-        $sliding-panel-width: 85%;
+    
+    .navigation-menu {
+        display: none;
 
+        @include media-breakpoint-up($nav-responsive-breakpoint) {
+            border-left: none;
+            display: block;
+            overflow-y: visible;
+            position: static;
+            padding: 0;
+            width: 100%;
+            background-color: color($header-navigation-background-color);
+        }
+
+        .navigation-menu-inner {
+            padding-left: 0;
+            padding-right: 0;
+
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                padding-left: calc($grid-gutter-width / 2);
+                padding-right: calc($grid-gutter-width / 2);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+
+            
+        }
+    }
+
+    .mobile-drawer {
+        display: none;
+        $sliding-panel-width: 85%;
+        
         @keyframes slidein-left {
             from {
                 transform: translateX($sliding-panel-width);
@@ -228,81 +255,49 @@ $z-index-nav:     9000;
         bottom: 0;
         left: auto;
         background-color: color($header-portal-background-color);
-        display: none;
         flex-direction: column;
         overflow-y: auto;
         padding: 0;
         width: $sliding-panel-width;
         z-index: $z-index-nav;
 
-        @include media-breakpoint-up($nav-responsive-breakpoint) {
-            border-left: none;
-            display: block;
-            overflow-y: visible;
-            position: static;
-            padding: 0;
-            width: 100%;
-            background-color: color($header-navigation-background-color);
-        }
-
         &.is-visible {
-            animation: slidein-left 0.3s ease-in-out;
             display: block;
-        }
-
-        .navigation-header-inner {
-            padding-left: 0;
-            padding-right: 0;
-
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
-                padding-left: calc($grid-gutter-width / 2);
-                padding-right: calc($grid-gutter-width / 2);
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-direction: row;
-            }
-
-            .menu-top {
-                background-color: color($header-navigation-top-mobile-background-color);
-                padding-left: units(4);
-                padding-right: units(4);
-                padding-top: units(3);
-                padding-bottom: units(3);
-                display: flex;
-                align-items: center;
-                min-height: units(8);
-
-                @include media-breakpoint-up($nav-responsive-breakpoint) {
-                    display: none;
-                }
-
-                .menu-heading {
-                    font-size: font-size('lg');
-                }
-
-                .button-menu-close {
-                    width: unset;
-                    margin-left: auto;
-            
-                    .icon-svg {
-                        margin: 0 8px 0 0;
-                    }
-            
-                    span {
-                        position: relative;
-                        top: 1px;
-                    }
-                }
-            
-            }
+            animation: slidein-left 0.3s ease-in-out;
         }
     }
 
-    .navigation-header-mobile {
+
+    .menu-top {
+        background-color: color($header-navigation-top-mobile-background-color);
+        padding-left: units(4);
+        padding-right: units(4);
+        padding-top: units(3);
+        padding-bottom: units(3);
+        display: flex;
+        align-items: center;
+        min-height: units(8);
+
         @include media-breakpoint-up($nav-responsive-breakpoint) {
             display: none;
+        }
+
+        .menu-heading {
+            font-size: font-size('lg');
+        }
+
+        .button-menu-close {
+            width: unset;
+            margin-left: auto;
+    
+            .icon-svg {
+                margin: 0 8px 0 0;
+            }
+    
+            span {
+                position: relative;
+                top: 1px;
+            }
         }
     }
 }
@@ -312,16 +307,16 @@ $z-index-nav:     9000;
 .header {
     border-bottom: 1px solid color($header-last-border-color);
 
-    .portal-header + .solution-header {
+    .portal-info + .solution-info {
         border-top: 1px solid color($header-border-color);
     }
 
-    .portal-header-mobile {
+    .portal-info-mobile {
         border-top: 1px solid color($header-portal-mobile-border-color);
     }
 
     @include media-breakpoint-up($nav-responsive-breakpoint) {
-        .solution-header ~ .navigation-header {
+        .solution-info ~ .navigation-menu {
             border-top: 1px solid color($header-border-color);
         }
     }
