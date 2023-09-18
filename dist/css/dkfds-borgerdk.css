@@ -7283,7 +7283,7 @@ figure{
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
   .form-input{
-    height:calc(2.4rem + (8px * 2));
+    height:calc(2.4rem + 16px);
   }
 }
 .form-input:focus, .form-input.focus{
@@ -7361,7 +7361,7 @@ textarea.no-resize{
   display:block;
   font-size:1.6rem;
   line-height:2.4rem;
-  height:calc(2.4rem + (8px * 2));
+  height:calc(2.4rem + 16px);
   max-width:32rem;
   width:100%;
   margin-top:8px;
@@ -7690,7 +7690,7 @@ input[readonly][type=text], textarea[readonly]{
   margin-bottom:8px;
 }
 .checkbox-content-large, .radio-content-large{
-  padding-left:calc(28px - 4px - (4px / 2));
+  padding-left:calc(28px - 4px - 4px / 2);
   margin-left:14px;
 }
 .checkbox-content[aria-hidden=true], .radio-content[aria-hidden=true]{
@@ -7763,7 +7763,7 @@ input[readonly][type=text], textarea[readonly]{
 }
 .date-group .form-group-day,
 .date-group .form-group-month{
-  width:calc(2px + 16px + 16px + 2ch );
+  width:calc(2px + 16px + 16px + 2ch);
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
   .date-group .form-group-day,
@@ -7772,7 +7772,7 @@ input[readonly][type=text], textarea[readonly]{
   }
 }
 .date-group .form-group-year{
-  width:calc(2px + 16px + 16px + 4ch );
+  width:calc(2px + 16px + 16px + 4ch);
 }
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
   .date-group .form-group-year{
@@ -11689,7 +11689,7 @@ a.skipnav:focus{
 .overflow-menu .button-overflow-menu:before{
   border-bottom-color:#747474;
   border-width:8px;
-  margin-left:calc(8px *-1);
+  margin-left:calc(8px * -1);
 }
 .overflow-menu .button-overflow-menu[aria-expanded=true]:after, .overflow-menu .button-overflow-menu[aria-expanded=true]:before{
   display:block;
