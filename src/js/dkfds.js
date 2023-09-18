@@ -10,6 +10,7 @@ import ErrorSummary from './components/error-summary';
 import InputRegexMask from './components/regex-input-mask';
 import Modal from './components/modal';
 import Navigation from './components/navigation';
+import MenuDropdown from './components/navigation-drawer-overflow';
 import RadioToggleGroup from './components/radio-toggle-content';
 import ResponsiveTable from './components/table';
 import Tabnav from  './components/tabnav';
@@ -154,7 +155,17 @@ var init = function (options) {
   ---------------------
   */
   new Navigation().init();
-   
+
+  /*
+  ---------------------
+  Navigation Drawer Overflow Menus
+  ---------------------
+  */
+  const jsSelectorMenuDropdown = scope.getElementsByClassName('js-menudropdown');
+  for(let c = 0; c < jsSelectorMenuDropdown.length; c++){
+    new MenuDropdown(jsSelectorMenuDropdown[ c ]).init();
+  }
+
   /*
   ---------------------
   Radiobutton group collapse
@@ -207,4 +218,4 @@ var init = function (options) {
   
 };
 
-export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip };
+export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, MenuDropdown, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip };

@@ -3,13 +3,13 @@ const forEach = require('array-foreach');
 const select = require('../utils/select').default;
 
 //const NAV_DESKTOP = `.navigation-header`;
-const NAV_DRAWER = `.mobile-drawer`;
-//const NAV_LINKS = `.navigation-header-inner a`;
+const MOBILE_DRAWER = `.mobile-drawer`;
+const NAV_LINKS = `.navigation-menu-mobile a`;
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;
 const OVERLAY = `.overlay`;
 const CLOSERS = `${CLOSE_BUTTON}, .overlay`;
-const TOGGLES = [NAV_DRAWER, OVERLAY].join(', ');
+const TOGGLES = [MOBILE_DRAWER, OVERLAY].join(', ');
 
 const ACTIVE_CLASS = 'mobile_nav-active';
 const VISIBLE_CLASS = 'is-visible';
@@ -58,26 +58,17 @@ const mobileMenu = function () {
             closers[c].addEventListener('click', toggleNav);
         }
 
-        /* 
         let navLinks = document.querySelectorAll(NAV_LINKS);
         for (let n = 0; n < navLinks.length; n++) {
             navLinks[n].addEventListener('click', function () {
-                // A navigation link has been clicked! We want to collapse any
-                // hierarchical navigation UI it's a part of, so that the user
-                // can focus on whatever they've just selected.
-
-                // Some navigation links are inside dropdowns; when they're
-                // clicked, we want to collapse those dropdowns.
-
-
-                // If the mobile navigation menu is active, we want to hide it.
+                // If a navigation link is clicked inside the mobile menu, ensure that the menu gets hidden
                 if (isActive()) {
                     toggleNav.call(this, false);
                 }
             });
-        } */
+        }
 
-        const trapContainers = document.querySelectorAll(NAV_DRAWER);
+        const trapContainers = document.querySelectorAll(MOBILE_DRAWER);
         for (let i = 0; i < trapContainers.length; i++) {
             focusTrap = _focusTrap(trapContainers[i]);
         }

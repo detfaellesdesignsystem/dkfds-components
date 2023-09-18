@@ -10351,16 +10351,19 @@ ul.mainmenu .submenu{
     display:inline-block;
   }
 }
+ul.mainmenu .submenu .button-mobile-menu,
 ul.mainmenu .submenu .button-overflow-menu{
   text-align:left;
   text-decoration:none;
   border:0;
 }
 @media (min-width: 992px){
+  ul.mainmenu .submenu .button-mobile-menu,
   ul.mainmenu .submenu .button-overflow-menu{
     position:relative;
   }
 }
+ul.mainmenu .submenu .button-mobile-menu span,
 ul.mainmenu .submenu .button-overflow-menu span{
   background-position-x:right;
   background-position-y:center;
@@ -10368,26 +10371,31 @@ ul.mainmenu .submenu .button-overflow-menu span{
   padding-right:calc(2.4rem + 4px);
 }
 @media (min-width: 992px){
+  ul.mainmenu .submenu .button-mobile-menu span,
   ul.mainmenu .submenu .button-overflow-menu span{
     background-position-y:top;
     white-space:nowrap;
   }
 }
+ul.mainmenu .submenu .button-mobile-menu[aria-expanded=false] span,
 ul.mainmenu .submenu .button-overflow-menu[aria-expanded=false] span{
   background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
 }
 @media (min-width: 992px){
+  ul.mainmenu .submenu .button-mobile-menu[aria-expanded=false] span,
   ul.mainmenu .submenu .button-overflow-menu[aria-expanded=false] span{
     background-image:url("../img/svg-icons/expand-more.svg");
     background-repeat:no-repeat;
   }
 }
+ul.mainmenu .submenu .button-mobile-menu[aria-expanded=true] span,
 ul.mainmenu .submenu .button-overflow-menu[aria-expanded=true] span{
   background-image:url("../img/svg-icons/remove.svg");
   background-repeat:no-repeat;
 }
 @media (min-width: 992px){
+  ul.mainmenu .submenu .button-mobile-menu[aria-expanded=true] span,
   ul.mainmenu .submenu .button-overflow-menu[aria-expanded=true] span{
     background-image:url("../img/svg-icons/expand-less.svg");
     background-repeat:no-repeat;
@@ -10435,6 +10443,7 @@ ul.mainmenu .submenu .overflow-menu-inner{
     display:inline-block;
     width:100%;
   }
+  ul.mainmenu .submenu .overflow-menu-inner li .button-mobile-menu span,
   ul.mainmenu .submenu .overflow-menu-inner li .button-overflow-menu span{
     background-position-y:center;
   }

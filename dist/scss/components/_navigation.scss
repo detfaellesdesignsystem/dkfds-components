@@ -162,6 +162,7 @@ ul.mainmenu {
         }
 
         /* Overflow button */
+        .button-mobile-menu,
         .button-overflow-menu {
             text-align: left;
             text-decoration: none;
@@ -247,6 +248,7 @@ ul.mainmenu {
                         }
                     }
 
+                    .button-mobile-menu span,
                     .button-overflow-menu span {
                         background-position-y: center;
                     }

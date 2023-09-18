@@ -3485,6 +3485,7 @@ __webpack_require__.d(__webpack_exports__, {
   DropdownSort: function() { return /* reexport */ dropdown_sort; },
   ErrorSummary: function() { return /* reexport */ error_summary; },
   InputRegexMask: function() { return /* reexport */ regex_input_mask; },
+  MenuDropdown: function() { return /* reexport */ navigation_drawer_overflow; },
   Modal: function() { return /* reexport */ modal; },
   Navigation: function() { return /* reexport */ navigation; },
   RadioToggleGroup: function() { return /* reexport */ radio_toggle_content; },
@@ -4838,13 +4839,13 @@ const forEach = __webpack_require__(84);
 const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
 //const NAV_DESKTOP = `.navigation-header`;
-const NAV_DRAWER = `.mobile-drawer`;
-//const NAV_LINKS = `.navigation-header-inner a`;
+const MOBILE_DRAWER = `.mobile-drawer`;
+const NAV_LINKS = `.navigation-menu-mobile a`;
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;
 const OVERLAY = `.overlay`;
 const CLOSERS = `${CLOSE_BUTTON}, .overlay`;
-const TOGGLES = [NAV_DRAWER, OVERLAY].join(', ');
+const TOGGLES = [MOBILE_DRAWER, OVERLAY].join(', ');
 
 const ACTIVE_CLASS = 'mobile_nav-active';
 const VISIBLE_CLASS = 'is-visible';
@@ -4893,26 +4894,17 @@ const mobileMenu = function () {
             closers[c].addEventListener('click', toggleNav);
         }
 
-        /* 
         let navLinks = document.querySelectorAll(NAV_LINKS);
         for (let n = 0; n < navLinks.length; n++) {
             navLinks[n].addEventListener('click', function () {
-                // A navigation link has been clicked! We want to collapse any
-                // hierarchical navigation UI it's a part of, so that the user
-                // can focus on whatever they've just selected.
-
-                // Some navigation links are inside dropdowns; when they're
-                // clicked, we want to collapse those dropdowns.
-
-
-                // If the mobile navigation menu is active, we want to hide it.
+                // If a navigation link is clicked inside the mobile menu, ensure that the menu gets hidden
                 if (isActive()) {
                     toggleNav.call(this, false);
                 }
             });
-        } */
+        }
 
-        const trapContainers = document.querySelectorAll(NAV_DRAWER);
+        const trapContainers = document.querySelectorAll(MOBILE_DRAWER);
         for (let i = 0; i < trapContainers.length; i++) {
             focusTrap = _focusTrap(trapContainers[i]);
         }
@@ -5038,6 +5030,93 @@ const toggleNav = function (active) {
 };
 
 /* harmony default export */ var navigation = (Navigation);
+;// CONCATENATED MODULE: ./src/js/components/navigation-drawer-overflow.js
+
+const navigation_drawer_overflow_TARGET = 'data-js-target';
+
+/**
+ * Add functionality to overflow buttons in mobile menu
+ * @param {HTMLButtonElement} buttonElement Mobile menu button
+ */
+function MenuDropdown (buttonElement) {
+  this.buttonElement = buttonElement;
+  this.targetEl = null;
+
+  if(this.buttonElement === null ||this.buttonElement === undefined){
+    throw new Error(`Could not find button for overflow menu component.`);
+  }
+  let targetAttr = this.buttonElement.getAttribute(navigation_drawer_overflow_TARGET);
+  if(targetAttr === null || targetAttr === undefined){
+    throw new Error('Attribute could not be found on overflow menu component: ' + navigation_drawer_overflow_TARGET);
+  }
+  let targetEl = document.getElementById(targetAttr.replace('#', ''));
+  if(targetEl === null || targetEl === undefined){
+    throw new Error('Panel for overflow menu component could not be found.');
+  }
+  this.targetEl = targetEl;
+}
+
+/**
+ * Set click events
+ */
+MenuDropdown.prototype.init = function (){
+  if(this.buttonElement !== null && this.buttonElement !== undefined && this.targetEl !== null && this.targetEl !== undefined){
+
+    //Clicked on dropdown open button --> toggle it
+    this.buttonElement.removeEventListener('click', navigation_drawer_overflow_toggleDropdown);
+    this.buttonElement.addEventListener('click', navigation_drawer_overflow_toggleDropdown);
+  }
+}
+
+/**
+ * Hide overflow menu
+ */
+MenuDropdown.prototype.hide = function(){
+  navigation_drawer_overflow_toggle(this.buttonElement);
+}
+
+/**
+ * Show overflow menu
+ */
+MenuDropdown.prototype.show = function(){
+  navigation_drawer_overflow_toggle(this.buttonElement);
+}
+
+let navigation_drawer_overflow_toggleDropdown = function (event, forceClose = false) {
+  event.stopPropagation();
+  event.preventDefault();
+
+  navigation_drawer_overflow_toggle(this, forceClose);
+};
+
+let navigation_drawer_overflow_toggle = function(button, forceClose = false){
+  let triggerEl = button;
+  let targetEl = null;
+  if(triggerEl !== null && triggerEl !== undefined){
+    let targetAttr = triggerEl.getAttribute(navigation_drawer_overflow_TARGET);
+    if(targetAttr !== null && targetAttr !== undefined){
+      targetEl = document.getElementById(targetAttr.replace('#', ''));
+    }
+  }
+  if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
+    if(triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
+      //close
+      triggerEl.setAttribute('aria-expanded', 'false');
+      targetEl.setAttribute('aria-hidden', 'true');      
+      let eventClose = new Event('fds.menudropdown.close');
+      triggerEl.dispatchEvent(eventClose);
+    }else{
+      //open
+      triggerEl.setAttribute('aria-expanded', 'true');
+      targetEl.setAttribute('aria-hidden', 'false');
+      let eventOpen = new Event('fds.menudropdown.open');
+      triggerEl.dispatchEvent(eventOpen);
+    }
+
+  }
+}
+
+/* harmony default export */ var navigation_drawer_overflow = (MenuDropdown);
 ;// CONCATENATED MODULE: ./src/js/components/radio-toggle-content.js
 
 const TOGGLE_ATTRIBUTE = 'data-controls';
@@ -5913,6 +5992,7 @@ function removeTooltip(trigger) {
 
 
 
+
 const datePicker = (__webpack_require__(561)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -6051,7 +6131,17 @@ var init = function (options) {
   ---------------------
   */
   new navigation().init();
-   
+
+  /*
+  ---------------------
+  Navigation Drawer Overflow Menus
+  ---------------------
+  */
+  const jsSelectorMenuDropdown = scope.getElementsByClassName('js-menudropdown');
+  for(let c = 0; c < jsSelectorMenuDropdown.length; c++){
+    new navigation_drawer_overflow(jsSelectorMenuDropdown[ c ]).init();
+  }
+
   /*
   ---------------------
   Radiobutton group collapse
