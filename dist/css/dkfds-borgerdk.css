@@ -7447,7 +7447,7 @@ textarea:disabled{
 }
 
 input[readonly][type=text]{
-  margin-top:0px;
+  margin-top:4px;
   padding-top:0px;
   padding-bottom:0px;
   height:auto;
@@ -7459,6 +7459,7 @@ input[readonly][type=text], textarea[readonly]{
   border:none;
   cursor:default;
   padding:0;
+  font-size:2rem;
 }
 
 .form-limit .form-limit-error{
