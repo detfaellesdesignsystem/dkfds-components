@@ -53,6 +53,11 @@
   &:focus, &.focus{
     @include focus();
   }
+
+  &::placeholder {
+    color: color($input-placeholder-color);
+    font-style: italic;
+  }
 }
 
 table {

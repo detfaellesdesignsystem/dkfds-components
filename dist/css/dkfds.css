@@ -7290,6 +7290,14 @@ figure{
   outline:4px solid #747474;
   outline-offset:1px;
 }
+.form-input::-moz-placeholder{
+  color:#747474;
+  font-style:italic;
+}
+.form-input::placeholder{
+  color:#747474;
+  font-style:italic;
+}
 
 table .form-input{
   margin-top:0;
