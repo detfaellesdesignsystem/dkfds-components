@@ -1476,6 +1476,7 @@ button.function-link, button.accordion-bulk-button{
   background:none;
   padding:0px;
   text-decoration:underline;
+  text-align:left;
 }
 
 .function-link, button.accordion-bulk-button{
