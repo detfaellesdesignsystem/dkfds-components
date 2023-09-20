@@ -48,6 +48,11 @@
   &:focus, &.focus{
     @include focus();
   }
+
+  &::placeholder {
+    color: color($input-placeholder-color);
+    font-style: italic;
+  }
 }
 
 table {
@@ -224,7 +229,7 @@ textarea {
 }
 
 input[readonly][type=text]{
-  margin-top: 0px;
+  margin-top: units(2);
   padding-top: 0px;
   padding-bottom: 0px;
   height: auto;
@@ -235,6 +240,7 @@ input[readonly][type=text], textarea[readonly]{
   border: none;
   cursor: default;
   padding: 0;
+  font-size: font-size("lg");
 }
 
 /////////////////////////

@@ -1476,6 +1476,7 @@ button.function-link, button.accordion-bulk-button{
   background:none;
   padding:0px;
   text-decoration:underline;
+  text-align:left;
 }
 
 .function-link, button.accordion-bulk-button{
@@ -7283,6 +7284,10 @@ figure{
   outline:4px solid #747474;
   outline-offset:1px;
 }
+.form-input::placeholder{
+  color:#747474;
+  font-style:italic;
+}
 
 table .form-input{
   margin-top:0;
@@ -7432,7 +7437,7 @@ textarea:disabled{
 }
 
 input[readonly][type=text]{
-  margin-top:0px;
+  margin-top:4px;
   padding-top:0px;
   padding-bottom:0px;
   height:auto;
@@ -7444,6 +7449,7 @@ input[readonly][type=text], textarea[readonly]{
   border:none;
   cursor:default;
   padding:0;
+  font-size:2rem;
 }
 
 .form-limit .form-limit-error{
