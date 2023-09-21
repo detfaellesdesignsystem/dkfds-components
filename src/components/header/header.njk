@@ -94,51 +94,34 @@
 <nav class="navigation-menu">
     <div class="navigation-menu-inner container">
         <ul class="mainmenu">
-            <li>
-                <a href="#" class="nav-link">
-                    <span>Første menupunkt</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <span>Andet menupunkt</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <span>Tredje menupunkt</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <span>Fjerde menupunkt</span>
-                </a>
-            </li>
-            <li class="active">
+            {% set menuID = params.id | default('desktopmenu') %}
+            {%- for item in params.links -%}
+            <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                {% if item.links -%}
+                {% set submenuID = menuID + "-" + loop.index %}
                 <div class="submenu">
-                    <button class="nav-link button-overflow-menu js-dropdown" data-js-target="headeroverflow1" aria-haspopup="true" aria-expanded="false">
-                        <span>Femte menupunkt</span>
+                    <button class="nav-link button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-haspopup="true" aria-expanded="false">
+                        <span>{{ item.text }}</span>
                     </button>
-                    <div class="overflow-menu-inner collapsed" id="headeroverflow1" aria-hidden="true">
+                    <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
                         <ul class="overflow-list">
-                            <li class="active current">
-                                <a href="#" class="nav-link" aria-current="page"><span>Subsektion med en meget
-                                        lang titel som går i flere linier</span></a>
+                            {%- for subitem in item.links -%}
+                            <li{% if subitem.active or subitem.current %} class="{% if subitem.active or subitem.current %}active{% endif %}{% if subitem.current %} current{% endif %}"{% endif %}>
+                                <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current %} aria-current="page"{% endif %}>
+                                    <span>{{ subitem.text }}</span>
+                                </a>
                             </li>
-                            <li>
-                                <a href="#" class="nav-link"><span>Subsektiontitel</span></a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link"><span>Subsektiontitel</span></a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link"><span>Subsektiontitel som
-                                        også er forholdsvis lang</span></a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
+                {% else -%}
+                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                    <span>{{ item.text }}</span>
+                </a>
+                {%- endif %}
             </li>
+            {% endfor -%}
         </ul>
     </div>
 </nav>
@@ -147,56 +130,49 @@
 {% macro mobile_navigation_menu(params) %}
 <nav class="navigation-menu-mobile">
     <ul class="mainmenu">
-        <li>
-            <a href="#" class="nav-link">
-                <span>Første menupunkt</span>
+        {% set menuID = params.id | default('mobilemenu') %}
+        {%- for item in params.links -%}
+        <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+            {% if item.links -%}
+            {% set submenuID = menuID + "-" + loop.index %}
+            {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links) }}
+            {% else -%}
+            <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                <span>{{ item.text }}</span>
             </a>
+            {%- endif %}
         </li>
-        <li>
-            <a href="#" class="nav-link">
-                <span>Andet menupunkt</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link">
-                <span>Tredje menupunkt</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link">
-                <span>Fjerde menupunkt</span>
-            </a>
-        </li>
-        <li class="active">
-            <div class="submenu">
-                <button class="nav-link button-mobile-menu js-menudropdown" data-js-target="headeroverflow1-mobile" aria-haspopup="true" aria-expanded="false">
-                    <span>Femte menupunkt</span>
-                </button>
-                <div class="overflow-menu-inner" id="headeroverflow1-mobile" aria-hidden="true">
-                    <ul class="overflow-list">
-                        <li class="active current">
-                            <a href="#" class="nav-link" aria-current="page"><span>Subsektion med en meget
-                                    lang titel som går i flere linier</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link"><span>Subsektiontitel</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link"><span>Subsektiontitel</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link"><span>Subsektiontitel som
-                                    også er forholdsvis lang</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </li>
+        {% endfor -%}
     </ul>
 </nav>
 {% endmacro %}
 
-{% macro menu_top(params) %}
+{% macro mobile_navigation_submenu(text, id, active, current, links) %}
+<div class="submenu">
+    <button class="nav-link button-mobile-menu js-menudropdown" data-js-target="{{ id }}" aria-haspopup="true"{% if active or current %} aria-expanded="true"{% else %} aria-expanded="false"{% endif %}>
+        <span>{{ text }}</span>
+    </button>
+    <div class="overflow-menu-inner" id="{{ id }}"{% if active or current %} aria-hidden="false"{% else %} aria-hidden="true"{% endif %}>
+        <ul class="overflow-list">
+            {% set submenuID = id %}
+            {%- for item in links -%}
+            <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                {%- if item.links %}
+                {% set subsubmenuID = submenuID + "-" + loop.index %}
+                {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links) }}
+                {% else %}
+                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                    <span>{{ item.text }}</span>
+                </a>
+                {% endif -%}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro menu_top() %}
 <div class="menu-top">
     <h2 class="menu-heading">Menu</h2>
     <button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
