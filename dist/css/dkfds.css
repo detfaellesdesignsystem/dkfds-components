@@ -6758,6 +6758,10 @@ figure{
   background-image:url("../img/svg-icons/done.svg");
 }
 
+.icon-done-white:not(a){
+  background-image:url("../img/svg-icons/done-white.svg");
+}
+
 .icon-download-done:not(a){
   background-image:url("../img/svg-icons/download-done.svg");
 }
@@ -7104,6 +7108,10 @@ figure{
 
 .icon-remove:not(a){
   background-image:url("../img/svg-icons/remove.svg");
+}
+
+.icon-remove-white:not(a){
+  background-image:url("../img/svg-icons/remove-white.svg");
 }
 
 .icon-reply:not(a){
