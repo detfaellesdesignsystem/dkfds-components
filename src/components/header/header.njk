@@ -1,7 +1,10 @@
 {% from "components/buttons/buttons.njk" import button as button %}
-{% from "components/header/menu-buttons.njk" import menu_open_button as menu_open_button %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/search/search.njk" import search as search %}
 
+{% macro menu_open_button(params) %}
+<button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="dialog">{{icon_svg({"name":"menu"})}}{{ params.text | default('Menu') }}</button>
+{% endmacro %}
 
 {% macro portal_info(params) %}
 <div class="portal-info">
@@ -91,40 +94,52 @@
 {% endmacro %}
 
 {% macro navigation_menu(params) %}
-<nav class="navigation-menu">
+<div class="navigation-menu{% if params.search %} contains-search{% endif %}">
     <div class="navigation-menu-inner container">
-        <ul class="mainmenu">
-            {% set menuID = params.id | default('desktopmenu') %}
-            {%- for item in params.links -%}
-            <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
-                {% if item.links -%}
-                {% set submenuID = menuID + "-" + loop.index %}
-                <div class="submenu">
-                    <button class="nav-link button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-haspopup="true" aria-expanded="false">
-                        <span>{{ item.text }}</span>
-                    </button>
-                    <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
-                        <ul class="overflow-list">
-                            {%- for subitem in item.links -%}
-                            <li{% if subitem.active or subitem.current %} class="{% if subitem.active or subitem.current %}active{% endif %}{% if subitem.current %} current{% endif %}"{% endif %}>
-                                <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current %} aria-current="page"{% endif %}>
-                                    <span>{{ subitem.text }}</span>
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
+        {% if params.links %}
+        <nav class="nav">
+            <ul class="mainmenu">
+                {% set menuID = params.id | default('desktopmenu') %}
+                {%- for item in params.links -%}
+                <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                    {% if item.links -%}
+                    {% set submenuID = menuID + "-" + loop.index %}
+                    <div class="submenu">
+                        <button class="nav-link button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-haspopup="true" aria-expanded="false">
+                            <span>{{ item.text }}</span>
+                        </button>
+                        <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
+                            <ul class="overflow-list">
+                                {%- for subitem in item.links -%}
+                                <li{% if subitem.active or subitem.current %} class="{% if subitem.active or subitem.current %}active{% endif %}{% if subitem.current %} current{% endif %}"{% endif %}>
+                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current %} aria-current="page"{% endif %}>
+                                        <span>{{ subitem.text }}</span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                {% else -%}
-                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
-                    <span>{{ item.text }}</span>
-                </a>
-                {%- endif %}
-            </li>
-            {% endfor -%}
-        </ul>
+                    {% else -%}
+                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                        <span>{{ item.text }}</span>
+                    </a>
+                    {%- endif %}
+                </li>
+                {% endfor -%}
+            </ul>
+        </nav>
+        {% endif %}
+        {% if params.search %}
+        {{ 
+            search({
+                "id": params.search.id,
+                "name": params.search.name
+            }) 
+        }}
+        {% endif %}
     </div>
-</nav>
+</div>
 {% endmacro %}
 
 {% macro mobile_navigation_menu(params) %}
@@ -174,7 +189,7 @@
 
 {% macro menu_top() %}
 <div class="menu-top">
-    <h2 class="menu-heading">Menu</h2>
+    <h2 id="menu-heading" class="menu-heading">Menu</h2>
     <button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
 </div>
 {% endmacro %}
