@@ -1,6 +1,6 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro pagination(params) %}
-<nav class="pagination"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.ariaLabel %} aria-label="{{ params.ariaLabel }}"{% endif %}>
+<nav class="pagination" aria-label="{{ params.ariaLabel | default('Paginering') }}"{% if params.id %} id="{{ params.id }}"{% endif %}>
     <a href="#" class="button button-arrow button-first{% if params.currentPage == 1 %} hidden{% endif %}">{{ icon_svg({"name": "first-page"}) }}<span class="sr-only">Første side</span></a>
     <a href="#" class="button button-arrow button-previous{% if params.currentPage == 1 %} hidden{% endif %}" aria-label="Forrige side">
         {{ icon_svg({"name": "chevron-left"}) }}<span class="pagination-nav-link">{{ params.previousName | default('Forrige') }}</span>

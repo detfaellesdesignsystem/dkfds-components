@@ -1,5 +1,5 @@
 {% macro anchorlinks(params) %}
-<nav class="anchorbox">
+<nav class="anchorbox" aria-label="Ankerlinks">
     <h2 class="anchortitle">Indhold på siden</h2>
     <ul class="anchorlist">
         {% for item in params.links %}<li><a href="{{ item.href | default('#')}}">{{ item.text }}</a></li>

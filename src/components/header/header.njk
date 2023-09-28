@@ -97,7 +97,7 @@
 <div class="navigation-menu{% if params.search %} contains-search{% endif %}">
     <div class="navigation-menu-inner container">
         {% if params.links %}
-        <nav class="nav">
+        <nav class="nav" aria-label="Hovedmenu">
             <ul class="mainmenu">
                 {% set menuID = params.id | default('desktopmenu') %}
                 {%- for item in params.links -%}
@@ -143,7 +143,7 @@
 {% endmacro %}
 
 {% macro mobile_navigation_menu(params) %}
-<nav class="navigation-menu-mobile">
+<nav class="navigation-menu-mobile" aria-label="{{ params.ariaLabelMobile | default('Hovedmenu') }}">
     <ul class="mainmenu">
         {% set menuID = params.id | default('mobilemenu') %}
         {%- for item in params.links -%}

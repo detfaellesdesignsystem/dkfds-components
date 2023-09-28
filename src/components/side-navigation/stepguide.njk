@@ -2,7 +2,7 @@
 {% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
 
 {% macro stepguide(params) %}
-<nav{% if params.classes.nav %} class="{{params.classes.nav}}"{% endif %}>
+<nav aria-label="Trinindikator"{% if params.classes.nav %} class="{{params.classes.nav}}"{% endif %}>
     <ul class="sidemenu">
         {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
         <li{% if disabled or trin.active or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.active %}active current {% endif %}{% if trin.error %}sidenav-error{% endif %}"{% endif %} role="none">
