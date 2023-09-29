@@ -1,10 +1,8 @@
-// Header variables ---------- //
-// z-indexes - TODO refactor to a site-wide z-index management approach
-$z-index-header:  7000;
+// Header variables
 $z-index-overlay: 8000;
 $z-index-nav:     9000;
 
-// Header ------------- //
+// Header
 
 .header {
     width: 100%;
@@ -34,6 +32,10 @@ $z-index-nav:     9000;
     .portal-info {
         background-color: color($header-portal-background-color);
         width: 100%;
+
+        .log-on, .log-off {
+            flex-shrink: 0;
+        }
 
         .logo {
             background-image: url($image-path+'/'+$header-portal-logo);
@@ -73,11 +75,13 @@ $z-index-nav:     9000;
                 margin-left: auto;
                 display: flex;
                 align-items: center;
+                justify-content: flex-end;
                 max-width: 70%;
 
                 .user {
                     text-align: right;
                     margin-right: units(4);
+                    overflow-wrap: break-word;
                 }
             }
 
@@ -85,7 +89,7 @@ $z-index-nav:     9000;
     }
 
     .portal-info-mobile {
-        padding: units(5) units(4);
+        padding: units(5);
         text-align: left;
         background-color: color($header-portal-background-color);
 
@@ -95,6 +99,7 @@ $z-index-nav:     9000;
 
         .user span {
             display: block;
+            overflow-wrap: break-word;
         }
 
         @include media-breakpoint-up($nav-responsive-breakpoint) {
@@ -116,7 +121,13 @@ $z-index-nav:     9000;
         }
 
         .solution-heading {
+            max-width: 100%;
+            overflow-wrap: break-word;
 
+            @include media-breakpoint-up($nav-responsive-breakpoint) {
+                max-width: 70%;
+            }
+            
             a, h1, .h1 {
                 font-size: font-size($header-solution-text-size);
                 line-height: units($header-solution-line-height, 'rem');
@@ -124,6 +135,7 @@ $z-index-nav:     9000;
                 color: color($header-solution-text-color);
                 text-decoration: none;
                 display: inline-block;
+                max-width: 100%;
 
                 @include media-breakpoint-up(md) {
                     font-size: font-size($header-solution-text-size-desktop);
@@ -152,8 +164,9 @@ $z-index-nav:     9000;
             @include media-breakpoint-up($nav-responsive-breakpoint) {
                 margin-left: auto;
                 text-align: right;
-                max-width: 60%;
                 display: block;
+                max-width: 30%;
+                overflow-wrap: break-word;
             }
         }
     }
@@ -177,8 +190,9 @@ $z-index-nav:     9000;
     }
 
     .solution-info-mobile {
-        padding: units(5) units(4);
+        padding: units(5);
         background-color: color($header-solution-mobile-background-color);
+        overflow-wrap: break-word;
 
         p {
             margin-bottom: units(3);
@@ -309,8 +323,8 @@ $z-index-nav:     9000;
 
     .menu-top {
         background-color: color($header-navigation-top-mobile-background-color);
-        padding-left: units(4);
-        padding-right: units(4);
+        padding-left: units(5);
+        padding-right: units(5);
         padding-top: units(3);
         padding-bottom: units(3);
         display: flex;
@@ -341,7 +355,7 @@ $z-index-nav:     9000;
     }
 }
 
-/* Header borders */
+// Header borders
 
 .header {
     border-bottom: 1px solid color($header-last-border-color);
@@ -352,6 +366,14 @@ $z-index-nav:     9000;
 
     .portal-info-mobile {
         border-top: 1px solid color($header-portal-mobile-border-color);
+    }
+
+    .menu-top + .solution-info-mobile {
+        border-top: 1px solid color($header-border-color);
+    }
+
+    .solution-info-mobile:last-child {
+        border-bottom: 1px solid color($header-portal-mobile-border-color);
     }
 
     @include media-breakpoint-up($nav-responsive-breakpoint) {
@@ -365,8 +387,7 @@ $z-index-nav:     9000;
     }
 }
 
-
-/* Overlay */
+// Overlay
 
 .overlay {
     position: fixed;

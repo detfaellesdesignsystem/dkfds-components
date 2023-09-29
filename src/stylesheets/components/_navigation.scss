@@ -80,7 +80,7 @@ ul.mainmenu {
     .nav-link {
         padding-top: units(4);
         padding-bottom: units(4);
-        padding-right: units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
+        padding-right: units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
         text-decoration: none;
         color: color($navigation-link-default-color);
         font-size: font-size('sm');
