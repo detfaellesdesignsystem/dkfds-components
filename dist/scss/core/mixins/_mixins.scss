@@ -1,3 +1,5 @@
+@use "../font-size" as *;
+
 // Focus state mixin
 
 @mixin focus-outline {
@@ -105,7 +107,7 @@ Sets styles within breakpoints
         @if $style == line-height{
           #{$style}: units($value, 'rem');
         }@else if $style == font-size{
-          #{$style}: font-size($value);
+          #{$style}: get-font-size($value);
         }@else{
           #{$style}: $value;
         }
@@ -114,7 +116,7 @@ Sets styles within breakpoints
           @if $style == line-height{
             #{$style}: units($value, 'rem');
           }@else if $style == font-size{
-            #{$style}: font-size($value);
+            #{$style}: get-font-size($value);
           }@else{
             #{$style}: $value;
           }
@@ -125,7 +127,7 @@ Sets styles within breakpoints
     @if $style == line-height{
       #{$style}: units($map, 'rem');
     }@else if $style == font-size{
-      #{$style}: font-size($map);
+      #{$style}: get-font-size($map);
     }@else{
       #{$style}: $map;
     }

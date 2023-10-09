@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 @import "mixins/nav-mixins";
 
 $navigation-row-link-padding-left-right: units(305);
@@ -83,7 +85,7 @@ ul.mainmenu {
         padding-right: units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
         text-decoration: none;
         color: color($navigation-link-default-color);
-        font-size: font-size('sm');
+        font-size: get-font-size('sm');
         background-color: color('transparent');
         display: block;
         line-height: units(5, 'rem');

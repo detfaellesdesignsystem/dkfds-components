@@ -1,10 +1,12 @@
+@use "../core/font-size" as *;
+
 html {
   font-family: $typography-font-family;
   font-size: $root-font-size;
 }
 
 body {
-  font-size: font-size($typography-base-font-size);
+  font-size: get-font-size($typography-base-font-size);
 }
 
 p {
@@ -128,7 +130,7 @@ a {
   color: color('black');
 }
 @mixin body-copy-text {
-  font-size: font-size($typography-body-text-font-size);
+  font-size: get-font-size($typography-body-text-font-size);
   line-height: units($typography-body-text-line-height, 'rem');
   font-weight: font-weight($typography-body-text-font-weight);
   color: color($typography-body-text-color);
@@ -136,13 +138,13 @@ a {
   letter-spacing: $typography-body-text-letter-spacing;
 }
 @mixin caption {
-  font-size: font-size($typography-caption-font-size);
+  font-size: get-font-size($typography-caption-font-size);
   line-height: units($typography-caption-line-height, 'rem');
   color: color($typography-caption-text-color);
   letter-spacing: $typography-caption-letter-spacing;
 }
 @mixin subheading {
-  font-size: font-size($typography-subheading-font-size);
+  font-size: get-font-size($typography-subheading-font-size);
   line-height: units($typography-subheading-line-height, 'rem');
   color: color($typography-subheading-text-color);
   letter-spacing: $typography-subheading-letter-spacing;
@@ -151,14 +153,14 @@ a {
 }
 
 @mixin form-label-text {
-  font-size: font-size($typography-form-label-font-size);
+  font-size: get-font-size($typography-form-label-font-size);
   line-height: units($typography-form-label-line-height, 'rem');
   font-weight: font-weight("semibold");
   color: color($typography-form-label-text-color);
   text-transform: none;
 }
 @mixin small-text {
-  font-size: font-size($typography-small-text-font-size);
+  font-size: get-font-size($typography-small-text-font-size);
   line-height: units($typography-small-text-line-height, 'rem');
   font-weight: font-weight("normal");
   letter-spacing: $typography-small-text-letter-spacing;
@@ -209,7 +211,7 @@ figcaption, .figcaption{
 }
 
 .font-lead {
-  font-size: font-size($typography-lead-font-size);
+  font-size: get-font-size($typography-lead-font-size);
   font-weight: font-weight("normal");
   line-height: units($typography-lead-line-height, 'rem');
   max-width: $typography-text-max-width;
@@ -217,7 +219,7 @@ figcaption, .figcaption{
   letter-spacing: $typography-lead-letter-spacing;
 }
 .article{
-  font-size: font-size($typography-article-font-size);
+  font-size: get-font-size($typography-article-font-size);
   font-weight: font-weight("normal");
   line-height: units($typography-article-line-height, 'rem');
   max-width: $typography-text-max-width;
@@ -438,7 +440,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 .displayheading {
   &-1 {
     font-weight: font-weight("medium");
-    font-size: font-size($typography-display-1-heading-font-size);
+    font-size: get-font-size($typography-display-1-heading-font-size);
     line-height: units($typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
     color: color('black');
@@ -446,7 +448,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   }
   &-2 {
     font-weight: font-weight("medium");
-    font-size: font-size($typography-display-2-heading-font-size);
+    font-size: get-font-size($typography-display-2-heading-font-size);
     line-height: units($typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
     color: color('black');

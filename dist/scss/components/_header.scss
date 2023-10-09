@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 // Header variables
 $z-index-overlay: 8000;
 $z-index-nav:     9000;
@@ -129,7 +131,7 @@ $z-index-nav:     9000;
             }
             
             a, h1, .h1 {
-                font-size: font-size($header-solution-text-size);
+                font-size: get-font-size($header-solution-text-size);
                 line-height: units($header-solution-line-height, 'rem');
                 font-weight: font-weight("semibold");
                 color: color($header-solution-text-color);
@@ -138,7 +140,7 @@ $z-index-nav:     9000;
                 max-width: 100%;
 
                 @include media-breakpoint-up(md) {
-                    font-size: font-size($header-solution-text-size-desktop);
+                    font-size: get-font-size($header-solution-text-size-desktop);
                     line-height: units($header-solution-line-height-desktop, 'rem');
                 }
             }
@@ -174,7 +176,7 @@ $z-index-nav:     9000;
     .authority-name {
         color: color($header-solution-authority-name);
         font-weight: font-weight("semibold");
-        font-size: font-size($header-solution-authority-name-font-size);
+        font-size: get-font-size($header-solution-authority-name-font-size);
         line-height: 2.4rem;
         margin-top: 0;
         margin-bottom: 0;
@@ -336,7 +338,7 @@ $z-index-nav:     9000;
         }
 
         .menu-heading {
-            font-size: font-size('lg');
+            font-size: get-font-size('lg');
         }
 
         .button-menu-close {

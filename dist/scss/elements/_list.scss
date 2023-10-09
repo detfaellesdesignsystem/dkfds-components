@@ -1,3 +1,4 @@
+@use "../core/font-size" as *;
 
  //Ul lists
 
@@ -5,7 +6,7 @@
    padding-left: 0;
    list-style-type: none;
    color: color($typography-body-text-color);
-   font-size: font-size($typography-body-text-font-size);
+   font-size: get-font-size($typography-body-text-font-size);
    line-height: units($typography-body-text-line-height, 'rem');
    > li {
      margin-top:units(3);
@@ -18,7 +19,7 @@
        position: absolute;
        left: 0px;
        top: -1px;
-       font-size: font-size('lg');
+       font-size: get-font-size('lg');
      }
    }
  }
@@ -33,7 +34,7 @@ ol {
 
 .article{
   ul > li, ol > li{
-    font-size: font-size($typography-article-font-size);
+    font-size: get-font-size($typography-article-font-size);
     line-height: units($typography-article-line-height, 'rem');
     letter-spacing: $typography-article-letter-spacing;
   }

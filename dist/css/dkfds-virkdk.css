@@ -6082,7 +6082,6 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
 .section + .section{
   margin-top:24px;
 }
-
 a.button{
   display:inline-flex;
   padding-top:2px;
@@ -6324,7 +6323,6 @@ a.button{
 .button-column .button:first-child{
   margin-top:0;
 }
-
 .tag{
   -webkit-appearance:none;
   -moz-appearance:none;
@@ -6494,7 +6492,6 @@ input[type=checkbox].form-toggle:checked ~ .form-toggle-label:before{
   content:"Til";
   left:26px;
 }
-
 .badge{
   padding:0;
   padding-left:8px;
@@ -6559,7 +6556,6 @@ figure{
   margin-left:0;
   margin-right:0;
 }
-
 .icon{
   height:2.4rem;
   width:2.4rem;
@@ -7241,7 +7237,6 @@ figure{
 .hide-base-svg{
   display:none;
 }
-
 .form-group{
   margin-top:24px;
 }
@@ -7793,7 +7788,6 @@ input::-webkit-inner-spin-button{
 input[type=file]{
   display:block;
 }
-
 ul{
   padding-left:0;
   list-style-type:none;
@@ -8092,7 +8086,6 @@ input.input-char-27, select.input-char-27, textarea.input-char-27{
 input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-char-27::-ms-clear{
   display:none;
 }
-
 .table{
   margin:0;
   line-height:2.4rem;
@@ -8974,7 +8967,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert + .alert{
   margin-top:16px;
 }
-
 .anchorbox{
   margin-bottom:40px;
   margin-top:40px;
@@ -9026,7 +9018,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
     margin-right:0;
   }
 }
-
 .breadcrumbs{
   color:#1a1a1a;
   font-size:1.4rem;
@@ -9693,7 +9684,6 @@ footer .footer-theme{
   padding-top:16px;
   padding-bottom:8px;
 }
-
 .header{
   width:100%;
 }
@@ -10536,7 +10526,6 @@ ul.mainmenu .submenu .overflow-menu-inner{
 ul.mainmenu .submenu .overflow-menu-inner[aria-hidden=true]{
   display:none;
 }
-
 .pagination{
   display:flex;
   justify-content:center;
@@ -11414,7 +11403,6 @@ a.skipnav:focus{
 .card-center{
   text-align:center;
 }
-
 .overflow-menu + h1{
   margin-top:0;
 }
@@ -11811,7 +11799,6 @@ a.skipnav:focus{
   margin-top:8px;
   margin-left:0;
 }
-
 .js-tooltip{
   display:inline-block;
 }

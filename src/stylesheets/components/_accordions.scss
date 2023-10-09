@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 /*
 ----------------------------------------
 Accordion
@@ -17,7 +19,7 @@ Accordion
   line-height: units($typography-body-text-line-height, 'rem');
   padding: units(4, 'rem') units(4, 'rem') units(4, 'rem') units(9, 'rem');
   width: 100%;
-  font-size: font-size($typography-body-text-font-size);
+  font-size: get-font-size($typography-body-text-font-size);
   position: relative;
   transition: none;
   border-radius: $accordion-button-border-radius;

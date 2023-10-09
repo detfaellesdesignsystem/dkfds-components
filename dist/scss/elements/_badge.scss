@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 .badge {
   padding: 0;
   padding-left: units(3);
@@ -11,12 +13,12 @@
   display: inline-block;
 
   &.badge-large {
-    font-size: font-size($badge-large-font-size);
+    font-size: get-font-size($badge-large-font-size);
     line-height: units($badge-large-line-height, 'rem');
   }
 
   &.badge-small {
-    font-size: font-size($badge-small-font-size);
+    font-size: get-font-size($badge-small-font-size);
     line-height: units($badge-small-line-height, 'rem');
   }
 

@@ -1,6 +1,8 @@
+@use "../core/font-size" as *;
+
 .breadcrumbs {
   color: color($breadcrumbs-text-color);
-  font-size: font-size($breadcrumbs-font-size);
+  font-size: get-font-size($breadcrumbs-font-size);
 }
 
 .breadcrumbs__list {

@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 .js-tooltip {
     display: inline-block;
 
@@ -19,7 +21,7 @@
 }
 .tooltip{
   @include body-copy-text;
-  font-size: font-size('sm');
+  font-size: get-font-size('sm');
   box-shadow: shadow($tooltip-shadow);
   background-color: color($tooltip-background-color);
   border: border($tooltip-border);

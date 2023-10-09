@@ -91,7 +91,7 @@ source: https://gist.github.com/bigglesrocks/d75091700f8f2be5abfe
   @return $collection;
 }
 
-$system-properties: map-collect($system-border, $system-font-size, $system-font-weight, $system-shadow);
+$system-properties: map-collect($system-border, $system-font-weight, $system-shadow);
 
   
 /*
@@ -514,30 +514,6 @@ Gets a valid FDS border color
   }
   $border-map: map-get($our-standard-values, $value);
   @return color(map-get($border-map, 'color'));
-}
-
-/*
-----------------------------------------
-font-size()
-----------------------------------------
-Gets a valid FDS font-size - not in use?
-----------------------------------------
-*/
-
-@function font-size($value) {
-  $value: smart-quote($value);
-  
-  $our-standard-values: map-get($system-properties, font-size);
-
-  @if  map-has-key($our-standard-values, $value) {
-    @return map-get($our-standard-values, $value);
-  }
-  
-  @if map-has-key($project-custom-font-size, $value) {
-    @return map-get($project-custom-font-size, $value);
-  }
-
-@error '`#{$value}` is not a valid FDS font size token.';
 }
 
 /*

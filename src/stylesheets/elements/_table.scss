@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 @mixin responsive-table() {
     display: block;
 
@@ -131,7 +133,7 @@
     border: border($table-border);
     width: 100%;
     color: color($table-text-color);
-    font-size: font-size($table-font-size);
+    font-size: get-font-size($table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 

@@ -21,27 +21,6 @@ $system-border: (
   )
 );
 
-
-//----------------
-// Font size
-// ----------------
-$system-font-size: (
-  font-size: (
-    "2xs": $typography-font-size-2xs,
-    "xs": $typography-font-size-xs,
-    "sm": $typography-font-size-sm,
-    "md": $typography-font-size-md,
-    "lg": $typography-font-size-lg,
-    "xl": $typography-font-size-xl,
-    "2xl": $typography-font-size-2xl,
-    "3xl": $typography-font-size-3xl,
-    "4xl": $typography-font-size-4xl,
-    "5xl": $typography-font-size-5xl,
-    "6xl": $typography-font-size-6xl
-  )
-);
-$project-custom-font-size: () !default;
-
 //----------------
 // Font weight
 // ----------------

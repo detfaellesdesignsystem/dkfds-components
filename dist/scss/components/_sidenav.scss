@@ -1,3 +1,4 @@
+@use "../core/font-size" as *;
 @import "mixins/nav-mixins";
 
 $sidemenu-border-left-thickness: units(2);
@@ -20,12 +21,12 @@ ul.sidemenu {
 
     li {
         background-color: color($sidenav-link-background-color);
-        font-size: font-size('sm');
+        font-size: get-font-size('sm');
     }
 
     ul li,
     ul ul li {
-        font-size: font-size('xs');
+        font-size: get-font-size('xs');
     }
 
     .nav-link, 

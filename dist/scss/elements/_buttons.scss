@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 // Buttons
 
 a.button {
@@ -22,7 +24,7 @@ a.button {
     border-width: $button-border-width $button-border-width $button-border-bottom-width $button-border-width;
     border-style: solid;
     border-color: color($button-primary-default-border-color);
-    font-size: font-size('md');
+    font-size: get-font-size('md');
     font-weight: font-weight("medium");
     color: color($button-primary-default-color);
     @include font-smoothing;
@@ -236,7 +238,7 @@ a.button {
 
     &.button-small {
         padding: calc(#{units(1)}) calc(#{units(4)} - #{$button-border-width}) 0px;
-        font-size: font-size($typography-small-text-font-size);
+        font-size: get-font-size($typography-small-text-font-size);
         min-height: 24px;
     }
 

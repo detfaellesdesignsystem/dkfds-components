@@ -1,10 +1,12 @@
+@use "../core/font-size" as *;
+
 .anchorbox {
     margin-bottom: units(7);
     margin-top: units(7);
 }
 
 .anchortitle {
-    font-size: font-size("2xs");
+    font-size: get-font-size("2xs");
     font-weight: font-weight("medium");
     margin-bottom: units(3);
     line-height: units($typography-base-line-height, 'rem');

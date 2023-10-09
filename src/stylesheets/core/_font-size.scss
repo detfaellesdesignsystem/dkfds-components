@@ -1,0 +1,32 @@
+@use "sass:map" as map;
+
+$fds-font-sizes: (
+    "2xs": 1.3rem,
+    "xs": 1.4rem,
+    "sm": 1.6rem,
+    "md": 1.8rem,
+    "lg": 2.0rem,
+    "xl": 2.1rem,
+    "2xl": 2.2rem,
+    "3xl": 2.5rem,
+    "4xl": 2.8rem,
+    "5xl": 3.1rem,
+    "6xl": 3.9rem
+);
+
+/*
+----------------------------------------
+font-size()
+----------------------------------------
+Gets a valid FDS font-size
+----------------------------------------
+*/
+
+@function get-font-size($value) {
+
+    @if map.has-key($fds-font-sizes, $value) {
+        @return map.get($fds-font-sizes, $value);
+    }
+
+    @error '#{$value} is not a valid FDS font size token.';
+}

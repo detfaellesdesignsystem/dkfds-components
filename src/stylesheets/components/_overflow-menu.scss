@@ -1,3 +1,5 @@
+@use "../core/font-size" as *;
+
 .overflow-menu + h1 {
     margin-top: 0;
 }
@@ -105,7 +107,7 @@
 
     .overflow-list {
         @include unstyled-list;
-        font-size: font-size($overflow-menu-content-font-size);
+        font-size: get-font-size($overflow-menu-content-font-size);
         line-height: units($overflow-menu-content-line-height, 'rem');
         color: color($overflow-menu-content-text-color);
 
