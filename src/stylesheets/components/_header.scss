@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 // Header variables
 $z-index-overlay: 8000;
@@ -133,7 +134,7 @@ $z-index-nav:     9000;
             a, h1, .h1 {
                 font-size: get-font-size($header-solution-text-size);
                 line-height: units($header-solution-line-height, 'rem');
-                font-weight: font-weight("semibold");
+                font-weight: get-font-weight("semibold");
                 color: color($header-solution-text-color);
                 text-decoration: none;
                 display: inline-block;
@@ -175,7 +176,7 @@ $z-index-nav:     9000;
 
     .authority-name {
         color: color($header-solution-authority-name);
-        font-weight: font-weight("semibold");
+        font-weight: get-font-weight("semibold");
         font-size: get-font-size($header-solution-authority-name-font-size);
         line-height: 2.4rem;
         margin-top: 0;

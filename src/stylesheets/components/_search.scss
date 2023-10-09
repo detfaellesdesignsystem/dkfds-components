@@ -1,3 +1,5 @@
+@use "../core/font-weight" as *;
+
 .search {
   display: flex;
   
@@ -18,7 +20,7 @@
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     color: color($button-search-text-color);
-    font-weight: font-weight("normal");
+    font-weight: get-font-weight("normal");
     width: inherit; //not 100& width on mobile
     &:hover{
       background-color: color($button-search-hover-background-color);

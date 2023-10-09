@@ -1,0 +1,23 @@
+@use "sass:map" as map;
+
+$fds-font-weights: (
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700
+);
+
+
+// ----------------------------------------
+// Get a valid FDS font-weight
+// ----------------------------------------
+
+@function get-font-weight($value) {
+
+    @if map.has-key($fds-font-weights, $value) {
+        @return map.get($fds-font-weights, $value);
+    }
+
+    @error '#{$value} is not a valid FDS font-weight token.';
+
+}

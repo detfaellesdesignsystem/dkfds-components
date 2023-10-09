@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 /* hide the default checkbox */
 input[type='checkbox'].form-toggle {
@@ -32,7 +33,7 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
   height: 29px;
   color: color('black');
   font-size: get-font-size('2xs');
-  font-weight: font-weight("medium");
+  font-weight: get-font-weight("medium");
   padding-top: 5px;
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;

@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 @import "mixins/nav-mixins";
 
@@ -53,7 +54,7 @@ ul.mainmenu {
 
                     span {
                         border-bottom: $navigation-desktop-border-bottom-thickness solid color($navigation-link-current-border-color);
-                        font-weight: font-weight("bold");
+                        font-weight: get-font-weight("bold");
                     }
                 }
             }
@@ -61,7 +62,7 @@ ul.mainmenu {
 
         &.active > a:first-child,
         &.active > .submenu > button:first-child {
-            font-weight: font-weight("bold");
+            font-weight: get-font-weight("bold");
         }
 
         &.current {
@@ -73,7 +74,7 @@ ul.mainmenu {
 
             .helptext {
                 color: color($navigation-link-current-helptext-color);
-                font-weight: font-weight("normal");
+                font-weight: get-font-weight("normal");
             }
         }
 
@@ -118,7 +119,7 @@ ul.mainmenu {
 
             .helptext {
                 color: color($navigation-link-current-helptext-color);
-                font-weight: font-weight("normal");
+                font-weight: get-font-weight("normal");
             }
         }
 
@@ -141,7 +142,7 @@ ul.mainmenu {
                 display: block;
                 border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
                 padding-bottom: units(305);
-                font-weight: font-weight("normal");
+                font-weight: get-font-weight("normal");
                 white-space: nowrap;
             }
         }
@@ -149,7 +150,7 @@ ul.mainmenu {
         .helptext {
             color: color($navigation-link-helptext-color);
             width: auto;
-            font-weight: font-weight("normal");
+            font-weight: get-font-weight("normal");
         }
     }
 
@@ -242,7 +243,7 @@ ul.mainmenu {
     
                         span {
                             border-bottom: none;
-                            font-weight: font-weight("normal");
+                            font-weight: get-font-weight("normal");
                             padding-bottom: 0;
                             white-space: normal;
                             display: inline-block;
@@ -256,7 +257,7 @@ ul.mainmenu {
                     }
 
                     &.current .nav-link span{
-                        font-weight: font-weight("bold");
+                        font-weight: get-font-weight("bold");
                     }
                 }
             }

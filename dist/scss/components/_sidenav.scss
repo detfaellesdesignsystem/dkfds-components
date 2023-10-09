@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 @import "mixins/nav-mixins";
 
 $sidemenu-border-left-thickness: units(2);
@@ -46,7 +47,7 @@ ul.sidemenu {
         text-decoration: none;
         min-height: calc(units(7) - 1px); /* Minus 1px due to the border on the li element */
         cursor: pointer;
-        font-weight: font-weight("normal");
+        font-weight: get-font-weight("normal");
         line-height: units(5, 'rem');
 
         &:focus {
@@ -68,7 +69,7 @@ ul.sidemenu {
             margin: 0;
             display: block;
             width: 100%;
-            font-weight: font-weight("normal");
+            font-weight: get-font-weight("normal");
         }
     }
 
@@ -118,7 +119,7 @@ ul.sidemenu {
     li.active {
 
         & > :first-child {
-            font-weight: font-weight("bold");
+            font-weight: get-font-weight("bold");
         }
     }
 
@@ -127,7 +128,7 @@ ul.sidemenu {
 
         & > .nav-link,
         & > .nav-step {
-            font-weight: font-weight("bold");
+            font-weight: get-font-weight("bold");
 
             .sidenav-information {
                 color: color($sidenav-link-current-extra-information-text-color);

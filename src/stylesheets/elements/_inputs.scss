@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 .form-group{
   margin-top: units(5); //4
@@ -15,7 +16,7 @@
   font-size: get-font-size($form-hint-font-size);
   line-height: units($form-hint-line-height, 'rem');
   letter-spacing: $form-hint-letter-spacing;
-  font-weight: font-weight($form-hint-font-weight);
+  font-weight: get-font-weight($form-hint-font-weight);
 }
 .form-label {
   display: inline-block;
@@ -90,7 +91,7 @@ textarea.no-resize{
   .form-input-prefix, .form-input-suffix {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: font-weight("normal");
+    font-weight: get-font-weight("normal");
     font-size: get-font-size($input-font-size);
     line-height: units($input-line-height, 'rem');
     -webkit-box-sizing: border-box;
@@ -314,7 +315,7 @@ legend, .form-error-message, .form-hint {
 .form-checkbox + label,
 .form-radio + label {
     cursor: pointer;
-    font-weight: font-weight($input-checkbox-radio-label-font-weight);
+    font-weight: get-font-weight($input-checkbox-radio-label-font-weight);
     line-height: units($input-checkbox-radio-size, 'rem');
     display: inline-block;
     outline: none;
@@ -557,7 +558,7 @@ td {
   align-items: flex-end;
   label {
     margin-top: 0;
-    font-weight: font-weight("normal");
+    font-weight: get-font-weight("normal");
   }
 
   input[type=number]::-webkit-inner-spin-button,

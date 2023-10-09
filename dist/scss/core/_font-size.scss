@@ -14,13 +14,10 @@ $fds-font-sizes: (
     "6xl": 3.9rem
 );
 
-/*
-----------------------------------------
-font-size()
-----------------------------------------
-Gets a valid FDS font-size
-----------------------------------------
-*/
+
+// ----------------------------------------
+// Get a valid FDS font-size
+// ----------------------------------------
 
 @function get-font-size($value) {
 
@@ -28,5 +25,6 @@ Gets a valid FDS font-size
         @return map.get($fds-font-sizes, $value);
     }
 
-    @error '#{$value} is not a valid FDS font size token.';
+    @error '#{$value} is not a valid FDS font-size token.';
+    
 }

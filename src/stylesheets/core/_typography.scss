@@ -1,4 +1,5 @@
-@use "../core/font-size" as *;
+@use "font-size" as *;
+@use "font-weight" as *;
 
 html {
   font-family: $typography-font-family;
@@ -72,7 +73,7 @@ a {
   }
 
   &.bold-link {
-    font-weight: font-weight("semibold");
+    font-weight: get-font-weight("semibold");
   }
 
   &:not(.button, .full-width-image) {
@@ -84,7 +85,7 @@ a {
   @include responsive-style($typography-h1-font-size, font-size);
   @include responsive-style($typography-h1-line-height, line-height);
   @include responsive-style($typography-h1-letter-spacing, letter-spacing);
-  font-weight: font-weight("bold");
+  font-weight: get-font-weight("bold");
   color: color('black');
   text-transform: none;
   word-break: break-word;
@@ -93,7 +94,7 @@ a {
   @include responsive-style($typography-h2-font-size, font-size);
   @include responsive-style($typography-h2-line-height, line-height);
   @include responsive-style($typography-h2-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   color: color('black');
   text-transform: none;
 }
@@ -101,7 +102,7 @@ a {
   @include responsive-style($typography-h3-font-size, font-size);
   @include responsive-style($typography-h3-line-height, line-height);
   @include responsive-style($typography-h3-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   color: color('black');
   text-transform: none;
 }
@@ -109,7 +110,7 @@ a {
   @include responsive-style($typography-h4-font-size, font-size);
   @include responsive-style($typography-h4-line-height, line-height);
   @include responsive-style($typography-h4-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   color: color('black');
   text-transform: none;
 }
@@ -117,7 +118,7 @@ a {
   @include responsive-style($typography-h5-font-size, font-size);
   @include responsive-style($typography-h5-line-height, line-height);
   @include responsive-style($typography-h5-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   color: color('black');
   text-transform: none;
 }
@@ -126,13 +127,13 @@ a {
   @include responsive-style($typography-h6-font-size, font-size);
   @include responsive-style($typography-h6-line-height, line-height);
   @include responsive-style($typography-h6-letter-spacing, letter-spacing);
-  font-weight: font-weight("medium");
+  font-weight: get-font-weight("medium");
   color: color('black');
 }
 @mixin body-copy-text {
   font-size: get-font-size($typography-body-text-font-size);
   line-height: units($typography-body-text-line-height, 'rem');
-  font-weight: font-weight($typography-body-text-font-weight);
+  font-weight: get-font-weight($typography-body-text-font-weight);
   color: color($typography-body-text-color);
   text-transform: none;
   letter-spacing: $typography-body-text-letter-spacing;
@@ -155,14 +156,14 @@ a {
 @mixin form-label-text {
   font-size: get-font-size($typography-form-label-font-size);
   line-height: units($typography-form-label-line-height, 'rem');
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   color: color($typography-form-label-text-color);
   text-transform: none;
 }
 @mixin small-text {
   font-size: get-font-size($typography-small-text-font-size);
   line-height: units($typography-small-text-line-height, 'rem');
-  font-weight: font-weight("normal");
+  font-weight: get-font-weight("normal");
   letter-spacing: $typography-small-text-letter-spacing;
 }
 
@@ -212,7 +213,7 @@ figcaption, .figcaption{
 
 .font-lead {
   font-size: get-font-size($typography-lead-font-size);
-  font-weight: font-weight("normal");
+  font-weight: get-font-weight("normal");
   line-height: units($typography-lead-line-height, 'rem');
   max-width: $typography-text-max-width;
   color: color('ink');
@@ -220,7 +221,7 @@ figcaption, .figcaption{
 }
 .article{
   font-size: get-font-size($typography-article-font-size);
-  font-weight: font-weight("normal");
+  font-weight: get-font-weight("normal");
   line-height: units($typography-article-line-height, 'rem');
   max-width: $typography-text-max-width;
   color: color('ink');
@@ -231,11 +232,11 @@ small, .small-text {
 }
 
 .weight-normal {
-  font-weight: font-weight("normal");
+  font-weight: get-font-weight("normal");
 }
 
 .weight-semibold {
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
 }
 .facit {
   border-bottom: border(10);
@@ -243,7 +244,7 @@ small, .small-text {
   border-bottom-width: 4px;
 }
 strong, b, .bold {
-  font-weight: font-weight("bold");
+  font-weight: get-font-weight("bold");
 }
 
 .italic, em {
@@ -439,7 +440,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 
 .displayheading {
   &-1 {
-    font-weight: font-weight("medium");
+    font-weight: get-font-weight("medium");
     font-size: get-font-size($typography-display-1-heading-font-size);
     line-height: units($typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
@@ -447,7 +448,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
     letter-spacing: $typography-display-1-heading-letter-spacing;
   }
   &-2 {
-    font-weight: font-weight("medium");
+    font-weight: get-font-weight("medium");
     font-size: get-font-size($typography-display-2-heading-font-size);
     line-height: units($typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
@@ -477,7 +478,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 .field-group-title {
-  font-weight: font-weight("normal");
+  font-weight: get-font-weight("normal");
 
   ~ hr {
     border: 2px solid color('black');

@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 .overflow-menu + h1 {
     margin-top: 0;
@@ -258,7 +259,7 @@
                 text-decoration: none;
                 display: inline-block;
                 margin-left: units(2);
-                font-weight: font-weight("semibold");
+                font-weight: get-font-weight("semibold");
             }
 
             svg {
@@ -267,7 +268,7 @@
         }
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
-            font-weight: font-weight("semibold");
+            font-weight: get-font-weight("semibold");
             @include add-background-svg('done');
             background-repeat: no-repeat;
             background-position: calc(100% - #{units(4)}) center;

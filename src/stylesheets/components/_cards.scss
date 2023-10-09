@@ -1,3 +1,5 @@
+@use "../core/font-weight" as *;
+
 .card {
   position: relative;
   border-radius: units(0);
@@ -68,7 +70,7 @@
   padding: units(4) units(5);
   .header-title {
     @include body-copy-text;
-    font-weight: font-weight("semibold");
+    font-weight: get-font-weight("semibold");
     color: color($cards-heading-color);
     margin:units(0);
 

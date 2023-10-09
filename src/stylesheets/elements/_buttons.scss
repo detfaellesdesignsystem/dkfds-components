@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 // Buttons
 
@@ -25,7 +26,7 @@ a.button {
     border-style: solid;
     border-color: color($button-primary-default-border-color);
     font-size: get-font-size('md');
-    font-weight: font-weight("medium");
+    font-weight: get-font-weight("medium");
     color: color($button-primary-default-color);
     @include font-smoothing;
     line-height: units($button-line-height, 'rem');
@@ -144,7 +145,7 @@ a.button {
         border-color: color($button-tertiary-default-border-color);
         background-color: color($button-tertiary-default-background-color);
         color: color($button-tertiary-default-color);
-        font-weight: font-weight("normal");
+        font-weight: get-font-weight("normal");
 
         &:hover,
         &.button-hover {
@@ -177,7 +178,7 @@ a.button {
                 border-color: color($button-tertiary-default-border-color) !important;
                 background-color: color($button-tertiary-default-background-color) !important;
                 color: color($button-tertiary-default-color);
-                font-weight: font-weight("normal") !important;
+                font-weight: get-font-weight("normal") !important;
                 opacity: $button-disabled-opacity;
                 box-shadow: none !important;
             }
@@ -190,7 +191,7 @@ a.button {
         background-color: color($button-quaternary-default-background-color);
         border-color: transparent;
         text-decoration: none;
-        font-weight: font-weight("normal");
+        font-weight: get-font-weight("normal");
         padding-left: calc(8px - #{$button-border-width});
 
         &:hover,
@@ -224,7 +225,7 @@ a.button {
             &:hover {
                 color: color($button-quaternary-default-color) !important;
                 background-color: color($button-quaternary-default-background-color) !important;
-                font-weight: font-weight("normal") !important;
+                font-weight: get-font-weight("normal") !important;
                 opacity: $button-disabled-opacity !important;
                 box-shadow: none !important;
             }
@@ -253,7 +254,7 @@ a.button {
     background-color: transparent;
     border: 0;
     border-radius: 0;
-    font-weight: font-weight("normal");
+    font-weight: get-font-weight("normal");
     margin: 0;
     padding: 0;
     text-align: left;

@@ -1,3 +1,5 @@
+@use "../core/font-weight" as *;
+
 .language-switcher{
   border-top: border($language-switcher-border);
   background-color: color($language-switcher-background-color);
@@ -46,7 +48,7 @@
 
         a, a:hover, a:visited, a:active, a:focus {
           padding-left: 0;
-          font-weight: font-weight("semibold");
+          font-weight: get-font-weight("semibold");
           color: color($language-switcher-active-text-color);
           text-decoration: none;
           border-left: 0;

@@ -22,22 +22,6 @@ $system-border: (
 );
 
 //----------------
-// Font weight
-// ----------------
-$system-font-weight: (
-  font-weight: (
-    "thin": $typography-font-weight-thin,
-    "extralight": $typography-font-weight-extralight,
-    "light": $typography-font-weight-light,
-    "normal": $typography-font-weight-normal,
-    "medium": $typography-font-weight-medium,
-    "semibold": $typography-font-weight-semibold,
-    "bold": $typography-font-weight-bold,
-    "heavy": $typography-font-weight-heavy
-  )
-);
-
-//----------------
 // Shadow
 // ----------------
 $system-shadow: (

@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 @mixin responsive-table() {
     display: block;
@@ -37,7 +38,7 @@
             content: attr(data-title);
             text-align: left;
             display: block;
-            font-weight: font-weight($table-head-font-weight);
+            font-weight: get-font-weight($table-head-font-weight);
         }
     }
 
@@ -174,7 +175,7 @@
         background-color: color($table-head-background-color);
 
         th {
-            font-weight: font-weight($table-head-font-weight);
+            font-weight: get-font-weight($table-head-font-weight);
             padding-top: calc(units(4) - 1px); //1px for the border
 
             &:first-child {
@@ -194,7 +195,7 @@
 
     tbody {
         th {
-            font-weight: font-weight($table-head-font-weight);
+            font-weight: get-font-weight($table-head-font-weight);
         }
 
         tr {

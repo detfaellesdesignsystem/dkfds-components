@@ -1,4 +1,5 @@
 @use "../core/font-size" as *;
+@use "../core/font-weight" as *;
 
 // Tags
 .tag{
@@ -13,7 +14,7 @@
   border-radius: $tag-border-radius;
   border: none;
   font-size: get-font-size($tag-font-size);
-  font-weight: font-weight($tag-font-weight);
+  font-weight: get-font-weight($tag-font-weight);
   color: color($tag-text-color);
   background-color: color($tag-default-background-color);
   @include font-smoothing;

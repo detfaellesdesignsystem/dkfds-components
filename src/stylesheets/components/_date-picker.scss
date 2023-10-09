@@ -1,3 +1,5 @@
+@use "../core/font-weight" as *;
+
 // Date Picker
 .date-picker{
   max-width: 25rem;
@@ -69,7 +71,7 @@
   }
 
   th {
-    font-weight: font-weight("normal");
+    font-weight: get-font-weight("normal");
   }
 
   td {
@@ -224,7 +226,7 @@
   &--range-date {
     background-color: color($datepicker-date-selected-background-color);
     color: color($datepicker-date-selected-text-color);
-    font-weight: font-weight("semibold");
+    font-weight: get-font-weight("semibold");
 
     &:not([disabled]) {
       background-color: color($datepicker-date-selected-background-color);
@@ -279,7 +281,7 @@
   padding: 8px 4px;
   width: 100%;
   text-align: center;
-  font-weight: font-weight("semibold");
+  font-weight: get-font-weight("semibold");
   cursor: pointer;
 
   @include media-breakpoint-up(md) {
@@ -318,7 +320,7 @@
 
   &--selected {
     color: color($datepicker-month-selected-text-color);
-    font-weight: font-weight("semibold");
+    font-weight: get-font-weight("semibold");
 
     &:not([disabled]) {
 
@@ -378,7 +380,7 @@
 
   &--selected {
     color: color($datepicker-year-selected-text-color);
-    font-weight: font-weight("semibold");
+    font-weight: get-font-weight("semibold");
 
     &:not([disabled]) {
 
