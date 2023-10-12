@@ -1,0 +1,167 @@
+@use "sass:map" as map;
+
+$fds-color-gray: (
+    "gray-100": #F5F5F5,
+    "gray-200": #DCDCDC,
+    "gray-300": #BFBFBF,
+    "gray-400": #999999,
+    "gray-500": #747474,
+    "gray-600": #454545,
+    "gray-900": #1a1a1a
+);
+
+$fds-color-green: (
+    "green-100": #eeffe2, // light success color
+    "green-700": #358000, // success color
+);
+
+$fds-color-orange: (
+    "orange-100": #ffeecc,
+    "orange-700": #febb30
+);
+
+$fds-color-red: (
+    "red-100": #ffe0e0,
+    "red-700": #CC0000
+);
+
+$fds-color-blue: (
+    "blue-100": #e2f2fb, // info light
+    "blue-700": #1B86C3, // info
+    "blue-800": #004D99, // link
+    "blue-900": #000040  // link hover
+);
+
+$fds-color-purple: (
+    "purple-700": #800080
+);
+
+$fds-color-data-violet: (
+    "data-violet-100": #FCFBFD,
+    "data-violet-200": #EFEDF5,
+    "data-violet-300": #DADAEB,
+    "data-violet-400": #BCBDDC,
+    "data-violet-500": #9E9AC8,
+    "data-violet-600": #807DBA,
+    "data-violet-700": #6A51A3,
+    "data-violet-800": #54278F,
+    "data-violet-900": #3F007D
+);
+
+$fds-color-data-pink-violet: (
+    "data-pink-violet-100": #FFF7F3,
+    "data-pink-violet-200": #FDE0DD,
+    "data-pink-violet-300": #FCC5C0,
+    "data-pink-violet-400": #FA9FB5,
+    "data-pink-violet-500": #F768A1,
+    "data-pink-violet-600": #DD3497,
+    "data-pink-violet-700": #AE017E,
+    "data-pink-violet-800": #7A0177,
+    "data-pink-violet-900": #49006A
+);
+
+$fds-color-data-orange: (
+    "data-orange-100": #FFF5EB,
+    "data-orange-200": #FEE6CE,
+    "data-orange-300": #FDD0A2,
+    "data-orange-400": #FDAE6B,
+    "data-orange-500": #FD8D3C,
+    "data-orange-600": #F16913,
+    "data-orange-700": #D94801,
+    "data-orange-800": #A63603,
+    "data-orange-900": #7F2704
+);
+
+$fds-color-data-yellow-red: (
+    "data-yellow-red-100": #FFFFCC,
+    "data-yellow-red-200": #FFEDA0,
+    "data-yellow-red-300": #FED976,
+    "data-yellow-red-400": #FEB24C,
+    "data-yellow-red-500": #FD8D3C,
+    "data-yellow-red-600": #FC4E2A,
+    "data-yellow-red-700": #E31A1C,
+    "data-yellow-red-800": #BD0026,
+    "data-yellow-red-900": #800026
+);
+
+$fds-color-data-blue: (
+    "data-blue-100": #F7FBFF,
+    "data-blue-200": #DEEBF7,
+    "data-blue-300": #C6DBEF,
+    "data-blue-400": #9ECAE1,
+    "data-blue-500": #6BAED6,
+    "data-blue-600": #4292C6,
+    "data-blue-700": #2171B5,
+    "data-blue-800": #08519C,
+    "data-blue-900": #08306B
+);
+
+$fds-color-data-green-blue: (
+    "data-green-blue-100": #F7FCF0,
+    "data-green-blue-200": #E0F3DB,
+    "data-green-blue-300": #CCEBC5,
+    "data-green-blue-400": #A8DDB5,
+    "data-green-blue-500": #7BCCC4,
+    "data-green-blue-600": #4EB3D3,
+    "data-green-blue-700": #2B8CBE,
+    "data-green-blue-800": #0868AC,
+    "data-green-blue-900": #084081
+);
+
+$fds-color-data-green: (
+    "data-green-100": #F7FCF5,
+    "data-green-200": #E5F5E0,
+    "data-green-300": #C7E9C0,
+    "data-green-400": #A1D99B,
+    "data-green-500": #74C476,
+    "data-green-600": #41AB5D,
+    "data-green-700": #238B45,
+    "data-green-800": #006D2C,
+    "data-green-900": #00441B
+);
+
+$fds-color-black-transparent: (
+    "black-transparent-100": rgba(0, 0, 0, 0.01),
+    "black-transparent-200": rgba(0, 0, 0, 0.1),
+    "black-transparent-300": rgba(0, 0, 0, 0.2),
+    "black-transparent-400": rgba(0, 0, 0, 0.3),
+    "black-transparent-500": rgba(0, 0, 0, 0.4),
+    "black-transparent-600": rgba(0, 0, 0, 0.5),
+    "black-transparent-700": rgba(0, 0, 0, 0.6),
+    "black-transparent-800": rgba(0, 0, 0, 0.7),
+    "black-transparent-900": rgba(0, 0, 0, 0.8),
+    "black-transparent-950": rgba(0, 0, 0, 0.9)
+);
+
+$fds-color-white-transparent: (
+    "white-transparent-100": rgba(255, 255, 255, 0.01),
+    "white-transparent-200": rgba(255, 255, 255, 0.1),
+    "white-transparent-300": rgba(255, 255, 255, 0.2),
+    "white-transparent-400": rgba(255, 255, 255, 0.3),
+    "white-transparent-500": rgba(255, 255, 255, 0.4),
+    "white-transparent-600": rgba(255, 255, 255, 0.5),
+    "white-transparent-700": rgba(255, 255, 255, 0.6),
+    "white-transparent-800": rgba(255, 255, 255, 0.7),
+    "white-transparent-900": rgba(255, 255, 255, 0.8),
+    "white-transparent-950": rgba(255, 255, 255, 0.9)
+);
+
+$fds-core-colors: (
+    "transparent": transparent,
+    "black": map.get($fds-color-gray, "gray-900"),
+    "white": white
+);
+
+$fds-color-maps: $fds-color-gray, $fds-color-green, $fds-color-orange, $fds-color-red, $fds-color-blue, $fds-color-purple, $fds-color-data-violet, $fds-color-data-pink-violet, $fds-color-data-orange, $fds-color-data-yellow-red, $fds-color-data-blue, $fds-color-data-green-blue, $fds-color-data-green, $fds-color-black-transparent, $fds-color-white-transparent, $fds-core-colors;
+
+@function merge-fds-color-maps() {
+    $all-fds-colors: ();
+  
+    @each $map in $fds-color-maps {
+        $all-fds-colors: map.merge($all-fds-colors, $map);
+    }
+
+    @return $all-fds-colors;
+}
+
+$fds-colors: merge-fds-color-maps();

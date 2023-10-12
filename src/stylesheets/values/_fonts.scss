@@ -1,12 +1,14 @@
 @use "sass:map" as map;
 @use "font-weight" as *;
+@use "variables" as *;
+@use "paths" as *;
 
 $font-system: 'system' !default;
 @if not $theme-use-custom-font {
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-weight: get-font-weight("bold");
+    font-weight: font-weight("bold");
     src: url($font-path + "complete/woff2/IBMPlexSans-Bold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Bold.woff") format("woff");
     font-display: swap;
   }
@@ -14,7 +16,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: italic;
-    font-weight: get-font-weight("bold");
+    font-weight: font-weight("bold");
     src: url($font-path + "complete/woff2/IBMPlexSans-BoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-BoldItalic.woff") format("woff");
     font-display: swap;
   }
@@ -23,7 +25,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: normal;
-      font-weight: get-font-weight("extralight");
+      font-weight: font-weight("extralight");
       src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLight.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLight.woff") format("woff");
       font-display: swap;
     }
@@ -31,7 +33,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: italic;
-      font-weight: get-font-weight("extralight");
+      font-weight: font-weight("extralight");
       src: url($font-path + "complete/woff2/IBMPlexSans-ExtraLightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ExtraLightItalic.woff") format("woff");
       font-display: swap;
     }
@@ -40,7 +42,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: italic;
-    font-weight: get-font-weight("normal");
+    font-weight: font-weight("normal");
     src: url($font-path + "complete/woff2/IBMPlexSans-Italic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Italic.woff") format("woff");
     font-display: swap;
   }
@@ -49,7 +51,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: normal;
-      font-weight: get-font-weight("light");
+      font-weight: font-weight("light");
       src: url($font-path + "complete/woff2/IBMPlexSans-Light.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Light.woff") format("woff");
       font-display: swap;
     }
@@ -57,7 +59,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: italic;
-      font-weight: get-font-weight("light");
+      font-weight: font-weight("light");
       src: url($font-path + "complete/woff2/IBMPlexSans-LightItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-LightItalic.woff") format("woff");
       font-display: swap;
     }
@@ -66,7 +68,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-weight: get-font-weight("medium");
+    font-weight: font-weight("medium");
     src: url($font-path + "complete/woff2/IBMPlexSans-Medium.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Medium.woff") format("woff");
     font-display: swap;
   }
@@ -74,7 +76,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: italic;
-    font-weight: get-font-weight("medium");
+    font-weight: font-weight("medium");
     src: url($font-path + "complete/woff2/IBMPlexSans-MediumItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-MediumItalic.woff") format("woff");
     font-display: swap;
   }
@@ -82,7 +84,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-weight: get-font-weight("normal");
+    font-weight: font-weight("normal");
     src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot'); /* IE9 Compat Modes */
     src: url($font-path + 'complete/eot/IBMPlexSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
     url($font-path + 'complete/woff/IBMPlexSans-Regular.woff') format('woff'), /* Modern Browsers */
@@ -94,7 +96,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-weight: get-font-weight("semibold");
+    font-weight: font-weight("semibold");
     src: url($font-path + "complete/woff2/IBMPlexSans-SemiBold.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBold.woff") format("woff");
     font-display: swap;
   }
@@ -102,7 +104,7 @@ $font-system: 'system' !default;
   @font-face {
     font-family: 'IBM Plex Sans';
     font-style: italic;
-    font-weight: get-font-weight("semibold");
+    font-weight: font-weight("semibold");
     src: url($font-path + "complete/woff2/IBMPlexSans-SemiBoldItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-SemiBoldItalic.woff") format("woff");
     font-display: swap;
   }
@@ -111,7 +113,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: normal;
-      font-weight: get-font-weight("thin");
+      font-weight: font-weight("thin");
       src: url($font-path + "complete/woff2/IBMPlexSans-Thin.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-Thin.woff") format("woff");
       font-display: swap;
     }
@@ -119,7 +121,7 @@ $font-system: 'system' !default;
     @font-face {
       font-family: 'IBM Plex Sans';
       font-style: italic;
-      font-weight: get-font-weight("thin");
+      font-weight: font-weight("thin");
       src: url($font-path + "complete/woff2/IBMPlexSans-ThinItalic.woff2") format("woff2"), url($font-path + "complete/woff/IBMPlexSans-ThinItalic.woff") format("woff");
       font-display: swap;
     }
@@ -136,7 +138,7 @@ $font-system: 'system' !default;
     local("DroidSans"), //Android - Cupcake (1.5) to Honeycomb (3.2.6)
     local("Tahoma"); //Windows - XP
     font-style: normal;
-    font-weight: get-font-weight("normal");
+    font-weight: font-weight("normal");
     font-display: swap;
   }
 }

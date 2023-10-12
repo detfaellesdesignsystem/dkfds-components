@@ -1,5 +1,7 @@
+@use "../values/fds-values" as fds;
+
 hr{
-    border-top: border($hr-border); //inner border color
+    border-top: fds.border(fds.$hr-border); //inner border color
     display: block;
     border-bottom-width: 0;
 }

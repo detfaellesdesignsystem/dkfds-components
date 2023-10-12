@@ -149,17 +149,6 @@ template{
 [hidden]{
   display:none;
 }
-.sr-only{
-  position:absolute;
-  width:1px;
-  height:1px;
-  padding:0;
-  margin:-1px;
-  overflow:hidden;
-  clip:rect(0, 0, 0, 0);
-  border:0;
-  left:-999em;
-}
 @font-face{
   font-family:"IBM Plex Sans";
   font-style:normal;
@@ -223,6 +212,17 @@ template{
   font-style:normal;
   font-weight:400;
   font-display:swap;
+}
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0, 0, 0, 0);
+  border:0;
+  left:-999em;
 }
 html{
   box-sizing:border-box;
@@ -9653,10 +9653,10 @@ footer .footer{
 footer .footer p, footer .footer h1, footer .footer h2, footer .footer h3, footer .footer h4, footer .footer h5, footer .footer h6, footer .footer .h1, footer .footer .h2, footer .footer .h3, footer .footer .h4, footer .footer .h5, footer .footer .h6{
   color:#1a1a1a;
 }
-footer .footer .function-link, footer .footer button.accordion-bulk-button{
+footer .footer .function-link{
   color:#1a1a1a;
 }
-footer .footer .function-link:hover, footer .footer button.accordion-bulk-button:hover, footer .footer .function-link:focus, footer .footer button.accordion-bulk-button:focus, footer .footer .function-link:visited, footer .footer button.accordion-bulk-button:visited{
+footer .footer .function-link:hover, footer .footer .function-link:focus, footer .footer .function-link:visited{
   color:#1a1a1a;
 }
 footer .footer .footer-col:not(:first-child){
@@ -9828,10 +9828,10 @@ footer .footer-theme{
 .header .solution-info .solution-heading p, .header .solution-info .solution-heading h2, .header .solution-info .solution-heading h3, .header .solution-info .solution-heading h4, .header .solution-info .solution-heading h5, .header .solution-info .solution-heading .h2, .header .solution-info .solution-heading .h3, .header .solution-info .solution-heading .h4, .header .solution-info .solution-heading .h5{
   color:#1a1a1a;
 }
-.header .solution-info .solution-heading .function-link, .header .solution-info .solution-heading button.accordion-bulk-button{
+.header .solution-info .solution-heading .function-link{
   color:#1a1a1a;
 }
-.header .solution-info .solution-heading .function-link:hover, .header .solution-info .solution-heading button.accordion-bulk-button:hover, .header .solution-info .solution-heading .function-link:focus, .header .solution-info .solution-heading button.accordion-bulk-button:focus, .header .solution-info .solution-heading .function-link:visited, .header .solution-info .solution-heading button.accordion-bulk-button:visited{
+.header .solution-info .solution-heading .function-link:hover, .header .solution-info .solution-heading .function-link:focus, .header .solution-info .solution-heading .function-link:visited{
   color:#1a1a1a;
 }
 .header .solution-info .additional-info{
@@ -9873,10 +9873,10 @@ footer .footer-theme{
 .header .solution-info-mobile p:last-child{
   margin-bottom:0;
 }
-.header .solution-info-mobile .function-link, .header .solution-info-mobile button.accordion-bulk-button{
+.header .solution-info-mobile .function-link{
   color:#1a1a1a;
 }
-.header .solution-info-mobile .function-link:hover, .header .solution-info-mobile button.accordion-bulk-button:hover, .header .solution-info-mobile .function-link:focus, .header .solution-info-mobile button.accordion-bulk-button:focus, .header .solution-info-mobile .function-link:visited, .header .solution-info-mobile button.accordion-bulk-button:visited{
+.header .solution-info-mobile .function-link:hover, .header .solution-info-mobile .function-link:focus, .header .solution-info-mobile .function-link:visited{
   color:#1a1a1a;
 }
 @media (min-width: 992px){
@@ -10831,6 +10831,7 @@ input[type=search]{
   -moz-appearance:none;
   appearance:none;
 }
+
 ul.sidemenu{
   margin:0;
   list-style-type:none;
@@ -11352,7 +11353,7 @@ a.skipnav:focus{
   margin-top:16px;
   text-align:right;
 }
-.card-action .action-functionlinks .function-link, .card-action .action-functionlinks button.accordion-bulk-button{
+.card-action .action-functionlinks .function-link{
   margin-left:16px;
 }
 

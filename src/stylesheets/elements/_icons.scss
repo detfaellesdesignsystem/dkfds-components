@@ -1,4 +1,4 @@
-@use "../core/font-size" as *;
+@use "../values/fds-values" as fds;
 
 $icons: (
     "accessibility-new",
@@ -165,15 +165,15 @@ $icons: (
 ) !default;
 
 .icon{
-    height: units($typography-body-text-line-height, 'rem');
-    width: units($typography-body-text-line-height, 'rem');
+    height: fds.units(fds.$typography-body-text-line-height, 'rem');
+    width: fds.units(fds.$typography-body-text-line-height, 'rem');
     background-repeat: no-repeat;
     display: inline-block;
     background-size: 100%;
 }
 .icon-svg {
-    height: units($typography-body-text-line-height, 'rem');
-    width: units($typography-body-text-line-height, 'rem');
+    height: fds.units(fds.$typography-body-text-line-height, 'rem');
+    width: fds.units(fds.$typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor; //svg inherit color
@@ -188,8 +188,8 @@ $icons: (
 }
 
 .icon-svg-large {
-    height: get-font-size($typography-display-1-heading-font-size);
-    width: get-font-size($typography-display-1-heading-font-size);
+    height: fds.font-size(fds.$typography-display-1-heading-font-size);
+    width: fds.font-size(fds.$typography-display-1-heading-font-size);
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor;
@@ -198,7 +198,7 @@ $icons: (
 
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
-        background-image: url($icons-folder-path+'/'+$icon+".svg");
+        background-image: url(fds.$icons-folder-path+'/'+$icon+".svg");
     }
 }
 

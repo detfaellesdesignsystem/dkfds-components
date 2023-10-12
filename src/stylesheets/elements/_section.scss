@@ -1,3 +1,5 @@
+@use "../values/fds-values" as fds;
+
 .section + .section{
-    margin-top: units(5)
+    margin-top: fds.units(5)
 }

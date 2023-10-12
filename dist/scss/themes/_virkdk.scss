@@ -3,7 +3,7 @@
 Virk theme
 ----------------------------------------
 */
-$theme-colors: (
+/* $theme-colors: (
     "virk": (
         100: #0059B3,
         200: #004993,
@@ -17,5 +17,16 @@ $theme-color-primary-darker: 'virk-300';
 $header-portal-logo: 'logo_virk.svg';
 $header-portal-logo-height: 4.8rem;
 $header-portal-logo-width: 7.8rem;
-$header-portal-compact-logo-width: 3.8rem;
+$header-portal-compact-logo-width: 3.8rem; */
 
+@use '../values/colors/theme-colors' with (
+    $theme-color-primary:               #0059B3,
+    $theme-color-primary-dark:          #004993,
+    $theme-color-primary-darker:        #003972
+);
+@use '../values/variables' with (
+    $header-portal-logo:                'logo_virk.svg',
+    $header-portal-logo-height:         4.8rem,
+    $header-portal-logo-width:          7.8rem,
+    $header-portal-compact-logo-width:  3.8rem
+);

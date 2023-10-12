@@ -1,5 +1,5 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/breakpoints" as breakpoints;
 
 @mixin responsive-table() {
     display: block;
@@ -14,7 +14,7 @@
     }
 
     tr {
-        border-bottom: border($table-row-border);
+        border-bottom: fds.border(fds.$table-row-border);
 
         &:last-child {
             border-bottom: none;
@@ -25,20 +25,20 @@
     th {
         display: block;
         border: none;
-        padding-left: calc(units(4) - 1px); //1px for the border
-        padding-right: calc(units(4) - 1px); //1px for the border
-        padding-top: units(4);
-        padding-bottom: units(4);
+        padding-left: calc(fds.units(4) - 1px); //1px for the border
+        padding-right: calc(fds.units(4) - 1px); //1px for the border
+        padding-top: fds.units(4);
+        padding-bottom: fds.units(4);
 
         &:last-child {
-            padding-bottom: calc(units(4) - 1px); //1px for the border
+            padding-bottom: calc(fds.units(4) - 1px); //1px for the border
         }
 
         &[data-title]:not([data-title=""]):before {
             content: attr(data-title);
             text-align: left;
             display: block;
-            font-weight: get-font-weight($table-head-font-weight);
+            font-weight: fds.font-weight(fds.$table-head-font-weight);
         }
     }
 
@@ -46,11 +46,11 @@
 
         th,
         td {
-            padding-top: units(3);
-            padding-bottom: units(3);
+            padding-top: fds.units(3);
+            padding-bottom: fds.units(3);
 
             &:last-child {
-                padding-bottom: calc(units(3) - 1px); //1px for the border
+                padding-bottom: calc(fds.units(3) - 1px); //1px for the border
             }
         }
     }
@@ -82,7 +82,7 @@
                 td,
                 th {
                     &:first-child {
-                        border-top: border($table-row-border);
+                        border-top: fds.border(fds.$table-row-border);
                     }
                 }
             }
@@ -94,7 +94,7 @@
                     border-bottom: none;
 
                     &:last-child {
-                        border-bottom: border($table-row-border);
+                        border-bottom: fds.border(fds.$table-row-border);
                     }
                 }
             }
@@ -105,8 +105,8 @@
 
         td,
         th {
-            padding-left: units(4);
-            padding-right: units(4);
+            padding-left: fds.units(4);
+            padding-right: fds.units(4);
         }
     }
 
@@ -130,22 +130,22 @@
 
 .table {
     margin: 0;
-    line-height: units($table-text-line-height, 'rem');
-    border: border($table-border);
+    line-height: fds.units(fds.$table-text-line-height, 'rem');
+    border: fds.border(fds.$table-border);
     width: 100%;
-    color: color($table-text-color);
-    font-size: get-font-size($table-font-size);
+    color: fds.color(fds.$table-text-color);
+    font-size: fds.font-size(fds.$table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
     td,
     th {
-        padding-left: units(4);
-        padding-top: units(4);
-        padding-right: calc(units(4) - 1px); //1px for the border
-        padding-bottom: calc(units(4) - 1px); //1px for the border
-        border-right: border($table-cell-border);
-        border-bottom: border($table-row-border);
+        padding-left: fds.units(4);
+        padding-top: fds.units(4);
+        padding-right: calc(fds.units(4) - 1px); //1px for the border
+        padding-bottom: calc(fds.units(4) - 1px); //1px for the border
+        border-right: fds.border(fds.$table-cell-border);
+        border-bottom: fds.border(fds.$table-row-border);
         background-color: inherit;
         vertical-align: top;
         text-align: left;
@@ -172,14 +172,14 @@
     }
 
     thead {
-        background-color: color($table-head-background-color);
+        background-color: fds.color(fds.$table-head-background-color);
 
         th {
-            font-weight: get-font-weight($table-head-font-weight);
-            padding-top: calc(units(4) - 1px); //1px for the border
+            font-weight: fds.font-weight(fds.$table-head-font-weight);
+            padding-top: calc(fds.units(4) - 1px); //1px for the border
 
             &:first-child {
-                padding-left: calc(units(4) - 1px); //1px for the border
+                padding-left: calc(fds.units(4) - 1px); //1px for the border
             }
 
             &.table-header-no-wrap {
@@ -195,7 +195,7 @@
 
     tbody {
         th {
-            font-weight: get-font-weight($table-head-font-weight);
+            font-weight: fds.font-weight(fds.$table-head-font-weight);
         }
 
         tr {
@@ -204,7 +204,7 @@
             td,
             th {
                 &:first-child {
-                    padding-left: calc(units(4) - 1px); //1px for the border
+                    padding-left: calc(fds.units(4) - 1px); //1px for the border
                 }
             }
 
@@ -222,12 +222,12 @@
 
         th,
         td {
-            padding-top: units(3);
-            padding-bottom: calc(units(3) - 1px); //1px for the border
+            padding-top: fds.units(3);
+            padding-bottom: calc(fds.units(3) - 1px); //1px for the border
         }
 
         thead th {
-            padding-top: calc(units(3) - 1px); //1px for the border
+            padding-top: calc(fds.units(3) - 1px); //1px for the border
         }
     }
 
@@ -250,7 +250,7 @@
 
         td,
         th {
-            padding-right: units(4);
+            padding-right: fds.units(4);
             border-right: none;
         }
 
@@ -273,7 +273,7 @@
             background-color: transparent;
 
             th {
-                padding-top: units(4);
+                padding-top: fds.units(4);
             }
         }
 
@@ -281,14 +281,14 @@
 
             td,
             th {
-                border-bottom: border($table-row-border);
+                border-bottom: fds.border(fds.$table-row-border);
             }
         }
 
         &.table--compact {
 
             thead th {
-                padding-top: units(3);
+                padding-top: fds.units(3);
             }
         }
 
@@ -306,20 +306,20 @@
         td,
         th {
             border-right: 0;
-            padding-right: units(4);
+            padding-right: fds.units(4);
 
             &:last-child {
-                padding-right: calc(units(4) - 1px); //1px for the border
+                padding-right: calc(fds.units(4) - 1px); //1px for the border
             }
         }
 
         tr:nth-child(even) {
-            background-color: color($table-row-even-background-color);
+            background-color: fds.color(fds.$table-row-even-background-color);
         }
 
         tbody {
             tr:nth-child(odd) {
-                background-color: color($table-row-odd-background-color);
+                background-color: fds.color(fds.$table-row-odd-background-color);
             }
         }
     }
@@ -330,7 +330,7 @@
         td,
         th {
             border: 0;
-            padding: units(4);
+            padding: fds.units(4);
         }
 
         thead,
@@ -339,17 +339,17 @@
             tr td,
             tr th {
                 &:first-child {
-                    padding-left: units(4);
+                    padding-left: fds.units(4);
                 }
 
                 &:last-child {
-                    padding-right: units(4);
+                    padding-right: fds.units(4);
                 }
             }
         }
 
         thead {
-            background-color: color($table-row-even-background-color);
+            background-color: fds.color(fds.$table-row-even-background-color);
         }
 
         tbody tr:last-child {
@@ -364,8 +364,8 @@
 
             td,
             th {
-                padding-bottom: units(3);
-                padding-top: units(3);
+                padding-bottom: fds.units(3);
+                padding-top: fds.units(3);
             }
         }
 
@@ -384,7 +384,7 @@
 
             td,
             th {
-                border-top: border($table-row-border);
+                border-top: fds.border(fds.$table-row-border);
             }
         }
 
@@ -403,15 +403,15 @@
 
         //Make row into a "card" on phone
         &.table--responsive-headers {
-            @include media-breakpoint-down(sm) {
+            @include breakpoints.media-breakpoint-down(sm) {
                 @include responsive-table();
             }
         }
 
-        @each $breakpoint in map-keys($grid-breakpoints) {
+        @each $breakpoint in map-keys(fds.$grid-breakpoints) {
             @if $breakpoint !=xs and $breakpoint !=xl {
-                @include media-breakpoint-down($breakpoint) {
-                    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+                @include breakpoints.media-breakpoint-down($breakpoint) {
+                    $infix: breakpoints.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
                         @include responsive-table();
@@ -427,28 +427,28 @@
     tbody tr:hover,
     &.table.table--zebra tr:nth-child(even):hover,
     &.table.table--zebra tr:nth-child(odd):hover {
-        background-color: color($table-selectable-hover-background-color);
+        background-color: fds.color(fds.$table-selectable-hover-background-color);
     }
 
     &.table.table--zebra tr.table-row-selected:nth-child(even),
     &.table.table--zebra tr.table-row-selected:nth-child(odd),
     .table-row-selected {
-        background-color: color($table-selectable-selected-background-color);
+        background-color: fds.color(fds.$table-selectable-selected-background-color);
     }
 }
 
 .table-actions {
-    border-right: border($table-border);
-    border-bottom: border($table-border);
-    border-left: border($table-border);
+    border-right: fds.border(fds.$table-border);
+    border-bottom: fds.border(fds.$table-border);
+    border-left: fds.border(fds.$table-border);
     overflow: hidden;
-    padding: units(4) calc(units(4) - 1px) calc(units(4) - 1px) calc(units(4) - 1px);
+    padding: fds.units(4) calc(fds.units(4) - 1px) calc(fds.units(4) - 1px) calc(fds.units(4) - 1px);
 
     .table-selected-number {
         margin-top: 0px;
 
         &.no-selected {
-            color: color($table-selectable-help-text-color);
+            color: fds.color(fds.$table-selectable-help-text-color);
         }
     }
 
@@ -457,6 +457,6 @@
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
-    padding: $theme-focus-offset+$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
-    margin: -($theme-focus-offset+$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
+    padding: fds.$theme-focus-offset+fds.$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -(fds.$theme-focus-offset+fds.$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }

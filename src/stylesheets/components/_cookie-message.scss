@@ -1,42 +1,46 @@
+@use "../values/fds-values" as fds;
+@use "../mixins/grid-mixins" as grid;
+@use "../mixins/breakpoints" as breakpoints;
+
 .cookie-container{
-  color: color($cookie-message-text-color);
+  color: fds.color(fds.$cookie-message-text-color);
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 9500;
-  margin-bottom: units(3);
-  margin-left: units(3);
-  margin-right: units(3);
+  margin-bottom: fds.units(3);
+  margin-left: fds.units(3);
+  margin-right: fds.units(3);
 
   .cookie-message{
-    @include grid-container();
-    background-color: color($cookie-message-background-color);
-    border: border($cookie-message-border);
-    box-shadow: shadow($cookie-message-shadow);
-    padding-top: calc(#{units(6)} - 1px);
-    padding-bottom: calc(#{units(7)} - 1px);
+    @include grid.grid-container();
+    background-color: fds.color(fds.$cookie-message-background-color);
+    border: fds.border(fds.$cookie-message-border);
+    box-shadow: fds.shadow(fds.$cookie-message-shadow);
+    padding-top: calc(#{fds.units(6)} - 1px);
+    padding-bottom: calc(#{fds.units(7)} - 1px);
     position: relative;
     max-height: 75vh;
     overflow-y: auto;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: color($cookie-message-text-color);
+      color: fds.color(fds.$cookie-message-text-color);
     }
 
 
-    @include media-breakpoint-up(xl) {
-      max-width: calc(#{map-get($container-max-widths, xl)} + #{units(7)} + #{units(7)});
+    @include breakpoints.media-breakpoint-up(xl) {
+      max-width: calc(#{map-get(fds.$container-max-widths, xl)} + #{fds.units(7)} + #{fds.units(7)});
     }
 
     .cookie-text, .cookie-actions{
-      @include media-breakpoint-up(xl) {
-        padding-left: units(7);
-        padding-right: units(7);
+      @include breakpoints.media-breakpoint-up(xl) {
+        padding-left: fds.units(7);
+        padding-right: fds.units(7);
       }
     }
     .cookie-actions{
-      margin-top: units(4);
+      margin-top: fds.units(4);
     }
   }
 }

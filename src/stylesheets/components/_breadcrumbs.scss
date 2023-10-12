@@ -1,8 +1,8 @@
-@use "../core/font-size" as *;
+@use "../values/fds-values" as fds;
 
 .breadcrumbs {
-  color: color($breadcrumbs-text-color);
-  font-size: get-font-size($breadcrumbs-font-size);
+  color: fds.color(fds.$breadcrumbs-text-color);
+  font-size: fds.font-size(fds.$breadcrumbs-font-size);
 }
 
 .breadcrumbs__list {
@@ -22,9 +22,9 @@
   list-style-type: none;
   position: relative;
   margin-top: 0;
-  margin-bottom: units(1);
-  margin-left: units(3);
-  padding-left: units(3) + $breadcrumbs-chevron-altitude-calculated;
+  margin-bottom: fds.units(1);
+  margin-left: fds.units(3);
+  padding-left: fds.units(3) + fds.$breadcrumbs-chevron-altitude-calculated;
   float: left;
 
   &:before {
@@ -35,14 +35,14 @@
     bottom: 0;
     // Offset by the difference between the width of the non-rotated square
     // and its width when rotated
-    left: (($breadcrumbs-chevron-altitude-calculated * -2) + $breadcrumbs-chevron-size + $breadcrumbs-chevron-border-width);
-    width: $breadcrumbs-chevron-size;
-    height: $breadcrumbs-chevron-size;
+    left: ((fds.$breadcrumbs-chevron-altitude-calculated * -2) + fds.$breadcrumbs-chevron-size + fds.$breadcrumbs-chevron-border-width);
+    width: fds.$breadcrumbs-chevron-size;
+    height: fds.$breadcrumbs-chevron-size;
     margin: auto 0;
     transform: rotate(45deg);
     border: solid;
-    border-width: $breadcrumbs-chevron-border-width $breadcrumbs-chevron-border-width 0 0;
-    border-color: color($breadcrumbs-chevron-border-colour);
+    border-width: fds.$breadcrumbs-chevron-border-width fds.$breadcrumbs-chevron-border-width 0 0;
+    border-color: fds.color(fds.$breadcrumbs-chevron-border-colour);
   }
 
   &:first-child {
@@ -57,8 +57,8 @@
 }
 
 .breadcrumbs__link {
-  color: color($breadcrumbs-text-color);
+  color: fds.color(fds.$breadcrumbs-text-color);
   &:visited, &:hover, &:active{
-    color: color($breadcrumbs-text-color);
+    color: fds.color(fds.$breadcrumbs-text-color);
   }
 }

@@ -1,3 +1,5 @@
+@use "../values/fds-values" as fds;
+
 fieldset {
   position: relative;
   border: none;
@@ -10,7 +12,7 @@ fieldset ul{
   margin-bottom: 0px;
 }
 fieldset + fieldset{
-  margin-top: units(5);
+  margin-top: fds.units(5);
 }
 
 legend{

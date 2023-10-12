@@ -19,7 +19,7 @@ $fds-font-sizes: (
 // Get a valid FDS font-size
 // ----------------------------------------
 
-@function get-font-size($value) {
+@function font-size($value) {
 
     @if map.has-key($fds-font-sizes, $value) {
         @return map.get($fds-font-sizes, $value);

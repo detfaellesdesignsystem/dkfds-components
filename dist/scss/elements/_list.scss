@@ -1,83 +1,85 @@
-@use "../core/font-size" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
  //Ul lists
 
  ul {
    padding-left: 0;
    list-style-type: none;
-   color: color($typography-body-text-color);
-   font-size: get-font-size($typography-body-text-font-size);
-   line-height: units($typography-body-text-line-height, 'rem');
+   color: fds.color(fds.$typography-body-text-color);
+   font-size: fds.font-size(fds.$typography-body-text-font-size);
+   line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
    > li {
-     margin-top:units(3);
+     margin-top:fds.units(3);
      list-style-type: none;
      position: relative;
-     padding-left: units(4);
-     line-height: units($typography-body-text-line-height, 'rem');
+     padding-left: fds.units(4);
+     line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";
        position: absolute;
        left: 0px;
        top: -1px;
-       font-size: get-font-size('lg');
+       font-size: fds.font-size('lg');
      }
    }
  }
 //Ol lists
 ol {
-  padding-left: units(505);
+  padding-left: fds.units(505);
   li{
-    margin-top: units(3);
-    line-height: units(5, 'rem');
+    margin-top: fds.units(3);
+    line-height: fds.units(5, 'rem');
   }
 }
 
 .article{
   ul > li, ol > li{
-    font-size: get-font-size($typography-article-font-size);
-    line-height: units($typography-article-line-height, 'rem');
-    letter-spacing: $typography-article-letter-spacing;
+    font-size: fds.font-size(fds.$typography-article-font-size);
+    line-height: fds.units(fds.$typography-article-line-height, 'rem');
+    letter-spacing: fds.$typography-article-letter-spacing;
   }
 }
 
 // Unstyled lists
 .unstyled-list {
-  @include unstyled-list;
+  @include mixins.unstyled-list;
 }
 
 .bordered-list{
-  @include unstyled-list;
-  border-top: border(20);
+  @include mixins.unstyled-list;
+  border-top: fds.border(20);
   li{
-    padding: units(3) 0px;
-    border-bottom: border(20);
+    padding: fds.units(3) 0px;
+    border-bottom: fds.border(20);
   }
 }
 
  // No bullet lists
  .nobullet-list {
-   @include nobullet-list;
+   @include mixins.nobullet-list;
  }
 
  // No indententation list
  .noindent-list {
-   @include noindent-list;
+   @include mixins.noindent-list;
  }
 
 
 .inline-list {
-  @include unstyled-list;
+  @include mixins.unstyled-list;
   > li {
     display: block;
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
       display: inline-block;
     }
   }
 
   li + li{
-    margin-top: units(305);
-    @include media-breakpoint-up(md) {
+    margin-top: fds.units(305);
+    @include breakpoints.media-breakpoint-up(md) {
       margin-top: 0;
     }
   }

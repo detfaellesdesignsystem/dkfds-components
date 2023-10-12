@@ -1,24 +1,24 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/mixins" as mixins;
 
 // Tags
 .tag{
-  @include appearance-none;
+  @include mixins.appearance-none;
   display: inline-block;
   width: auto;
   padding:0;
-  padding-left: units(3);
-  padding-right:units(3);
-  margin-right:units(3);
-  margin-bottom:units(3);
-  border-radius: $tag-border-radius;
+  padding-left: fds.units(3);
+  padding-right:fds.units(3);
+  margin-right:fds.units(3);
+  margin-bottom:fds.units(3);
+  border-radius: fds.$tag-border-radius;
   border: none;
-  font-size: get-font-size($tag-font-size);
-  font-weight: get-font-weight($tag-font-weight);
-  color: color($tag-text-color);
-  background-color: color($tag-default-background-color);
-  @include font-smoothing;
-  line-height: units($tag-line-height, rem);
+  font-size: fds.font-size(fds.$tag-font-size);
+  font-weight: fds.font-weight(fds.$tag-font-weight);
+  color: fds.color(fds.$tag-text-color);
+  background-color: fds.color(fds.$tag-default-background-color);
+  @include mixins.font-smoothing;
+  line-height: fds.units(fds.$tag-line-height, "rem");
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -26,38 +26,38 @@
 
   &.tag-icon {
     padding:0;
-    padding-left:units(3);
+    padding-left:fds.units(3);
   }
 
   & + .tag {
-    margin-bottom: units(3);
+    margin-bottom: fds.units(3);
   }
 
   &:hover,
   &.tag-hover {
-    background-color: color($tag-hover-background-color);
+    background-color: fds.color(fds.$tag-hover-background-color);
   }
 
   &:active,
   &.tag-active {
-    background-color: color($tag-active-background-color);
+    background-color: fds.color(fds.$tag-active-background-color);
   }
 
   &.focus,
   &:focus {
-    background-color: color($tag-focus-background-color);
+    background-color: fds.color(fds.$tag-focus-background-color);
   }
 
   &.focus,
   &:focus {
-    @include focus();
+    @include mixins.focus();
     position: relative;
   }
 
   .icon-svg {
     float: right;
     margin: 0px 0px 0px 5px;
-    fill: color($tag-icon-color);
+    fill: fds.color(fds.$tag-icon-color);
   }
 }
 

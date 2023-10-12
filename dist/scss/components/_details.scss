@@ -1,6 +1,9 @@
+@use "../values/fds-values" as fds;
+@use "../mixins/mixins" as mixins;
+
 .details{
   display: block;
-  margin-bottom: units(6);
+  margin-bottom: fds.units(6);
 
   .details-summary::marker, .details-summary::-webkit-details-marker {
     display: none;
@@ -8,9 +11,9 @@
 
   &[open] {
     .details-summary {
-      margin-bottom: units(3);
+      margin-bottom: fds.units(3);
       &:before {
-        background-image: url($icons-folder-path+'/'+$details-button-open-icon);
+        background-image: url(fds.$icons-folder-path+'/'+fds.$details-button-open-icon);
         background-position: -10px -8px;
       }
     }
@@ -25,17 +28,17 @@
     &:before {
       content: "";
       display: inline-block;
-      background-image: url($icons-folder-path+'/'+$details-button-closed-icon);
+      background-image: url(fds.$icons-folder-path+'/'+fds.$details-button-closed-icon);
       background-position: -14px -8px;
       background-repeat: no-repeat;
       background-size: 3.4rem;;
       width: 1.6rem;
       height: 1.6rem;
-      margin-right: units(2);
+      margin-right: fds.units(2);
     }
 
     &:focus{
-      @include focus();
+      @include mixins.focus();
     }
     .details-summary-text {
       text-decoration: underline;
@@ -43,8 +46,8 @@
   }
 
   .details-text {
-    padding: units(4);
-    border-left: $details-panel-border-width solid color($details-panel-border-color);
+    padding: fds.units(4);
+    border-left: fds.$details-panel-border-width solid fds.color(fds.$details-panel-border-color);
     box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;

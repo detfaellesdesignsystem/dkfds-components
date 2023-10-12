@@ -1,30 +1,33 @@
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/typography-mixins" as typo;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 .card {
   position: relative;
-  border-radius: units(0);
-  box-shadow: shadow($cards-shadow);
-  border: border($cards-border);
+  border-radius: fds.units(0);
+  box-shadow: fds.shadow(fds.$cards-shadow);
+  border: fds.border(fds.$cards-border);
   overflow: hidden;
-  background: color($cards-background-color);
+  background: fds.color(fds.$cards-background-color);
 
   //small card
   &-small {
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:fds.units(5);
     }
   }
   //medium card
   &-medium {
     //The last
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:fds.units(5);
     }
   }
   //large card
   &-large {
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:fds.units(5);
     }
   }
 
@@ -50,10 +53,10 @@
 
   p {
     max-width: 60ch;
-    margin-top:units(4);
-    margin-bottom: units(0);
+    margin-top:fds.units(4);
+    margin-bottom: fds.units(0);
     &:first-child {
-      margin-top:units(0);
+      margin-top:fds.units(0);
     }
   }
   h1, .h1,
@@ -61,56 +64,56 @@
   h3, .h3,
   h4, .h4,
   h5, .h5 {
-    margin: units(0);
+    margin: fds.units(0);
   }
 }
 //card-header
 .card-header {
-  background-color: color($cards-header-background-color);
-  padding: units(4) units(5);
+  background-color: fds.color(fds.$cards-header-background-color);
+  padding: fds.units(4) fds.units(5);
   .header-title {
-    @include body-copy-text;
-    font-weight: get-font-weight("semibold");
-    color: color($cards-heading-color);
-    margin:units(0);
+    @include typo.body-copy-text;
+    font-weight: fds.font-weight("semibold");
+    color: fds.color(fds.$cards-heading-color);
+    margin:fds.units(0);
 
     &.large-text {
-      @include h1;
-      color: color($cards-heading-large-color);
+      @include typo.h1;
+      color: fds.color(fds.$cards-heading-large-color);
     }
   }
   .sub-header {
-    @include body-copy-text;
-    margin-top:  units(0);
-    margin-bottom: units(0);
-    color: color($cards-sub-heading-color);
+    @include typo.body-copy-text;
+    margin-top:  fds.units(0);
+    margin-bottom: fds.units(0);
+    color: fds.color(fds.$cards-sub-heading-color);
   }
 }
 .card-text {
-  background-color: color($cards-text-background-color);
-  padding: units(4) units(5);
+  background-color: fds.color(fds.$cards-text-background-color);
+  padding: fds.units(4) fds.units(5);
   .text {
-    @include body-copy-text;
-    margin-top: units(4);
-    color: color($cards-text-color);
-    margin-bottom: units(0);
+    @include typo.body-copy-text;
+    margin-top: fds.units(4);
+    color: fds.color(fds.$cards-text-color);
+    margin-bottom: fds.units(0);
   }
 }
 
 //card-content
 .card-content {
-  @include body-copy-text;
-  padding: units(0);
-  color: color($cards-text-color);
-  background-color: color($cards-content-background-color);
+  @include typo.body-copy-text;
+  padding: fds.units(0);
+  color: fds.color(fds.$cards-text-color);
+  background-color: fds.color(fds.$cards-content-background-color);
   ul {
-    margin-bottom:units(0);
+    margin-bottom:fds.units(0);
   }
   div:first-child {
-    margin-top:units(0);
+    margin-top:fds.units(0);
   }
   .content-text {
-    margin-top:units(4);
+    margin-top:fds.units(4);
   }
   .content {
     text-align: center;
@@ -119,31 +122,31 @@
 
 //card-action
 .card-action {
-  @include body-copy-text;
-  padding: units(4) units(5);
-  color: color($cards-text-color);
-  margin-bottom: units(0);
-  background-color: color($cards-action-background-color);
+  @include typo.body-copy-text;
+  padding: fds.units(4) fds.units(5);
+  color: fds.color(fds.$cards-text-color);
+  margin-bottom: fds.units(0);
+  background-color: fds.color(fds.$cards-action-background-color);
 
   div:first-child {
-    margin-top:units(0);
+    margin-top:fds.units(0);
   }
 
   &:last-child {
-    border-bottom: units(0);
+    border-bottom: fds.units(0);
   }
   .action-buttons {
     button {
-      margin-right: units(4);
-      margin-top:units(3);
+      margin-right: fds.units(4);
+      margin-top:fds.units(3);
 
-      @include media-breakpoint-up(md) {
-        margin-right: units(4);
-        margin-top:units(3);
+      @include breakpoints.media-breakpoint-up(md) {
+        margin-right: fds.units(4);
+        margin-top:fds.units(3);
       }
     }
     .button + .button{
-      @include media-breakpoint-up(sm) {
+      @include breakpoints.media-breakpoint-up(sm) {
         margin-left: 0;
         &:first-child{
           margin-left: 0;
@@ -152,67 +155,67 @@
     }
   }
   .action-links {
-    margin-top:units(4);
+    margin-top:fds.units(4);
     ul {
-      @include unstyled-list();
-      padding-left: units(0);
+      @include mixins.unstyled-list();
+      padding-left: fds.units(0);
       li {
-        margin-top:units(3) !important;
+        margin-top:fds.units(3) !important;
       }
     }
   }
   .action-functionlinks {
-    margin-top:units(4);
+    margin-top:fds.units(4);
     text-align: right;
     .function-link {
-      margin-left: units(4);
+      margin-left: fds.units(4);
     }
   }
 }
 
 //If text comes after header
 .card-header + .card-text{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If content comes after header
 .card-header + .card-content {
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If action comes after header
 .card-header + .card-action{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If header comes after header
 .card-header + .card-header{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If header comes after text
 .card-text + .card-header {
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If content comes after text
 .card-text + .card-content {
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If action comes after text
 .card-text + .card-action{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If text comes after text
 .card-text + .card-text{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If text comes after action
 .card-action + .card-text{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If header comes after action
 .card-action + .card-header{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If content comes after action
 .card-action + .card-content{
-  padding-top:units(0);
+  padding-top:fds.units(0);
 }
 //If action comes after action
 .card-action + .card-action{

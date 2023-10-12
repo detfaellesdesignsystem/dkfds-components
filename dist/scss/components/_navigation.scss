@@ -1,27 +1,28 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "mixins/nav-mixins" as nav-mixins;
+@use "../mixins/mixins" as mixins;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/add-background-svg" as svg;
 
-@import "mixins/nav-mixins";
-
-$navigation-row-link-padding-left-right: units(305);
-$navigation-desktop-border-bottom-thickness: units(2);
+$navigation-row-link-padding-left-right: fds.units(305);
+$navigation-desktop-border-bottom-thickness: fds.units(2);
 
 .mobile_nav-active {
     overflow: hidden;
 }
 
 ul.mainmenu {
-    @include unstyled-list;
-    @include nav-link-leftdist(units(3), $navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include nav-link-border($navigation-link-border-color, $navigation-sublink-border-color);
+    @include mixins.unstyled-list;
+    @include nav-mixins.nav-link-leftdist(fds.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include nav-mixins.nav-link-border(fds.$navigation-link-border-color, fds.$navigation-sublink-border-color);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     max-width: 100%;
-    border-bottom: 1px solid color($navigation-border-top-bottom-color);
-    border-top: 1px solid color($navigation-border-top-bottom-color);
+    border-bottom: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
+    border-top: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
 
-    @include media-breakpoint-up($nav-responsive-breakpoint) {
+    @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
         flex-direction: row;
         border-bottom: 0;
         border-top: 0;
@@ -29,15 +30,15 @@ ul.mainmenu {
     }
 
     ul {
-        @include unstyled-list();
+        @include mixins.unstyled-list();
         width: 100%;
         max-width: none !important; /* Override ul styling in typography.scss */
     }
 
     li {
-        background-color: color($navigation-link-background-color);
+        background-color: fds.color(fds.$navigation-link-background-color);
 
-        @include media-breakpoint-up($nav-responsive-breakpoint) {
+        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             border-top: 0;
 
             &.active {
@@ -53,8 +54,8 @@ ul.mainmenu {
                     }
 
                     span {
-                        border-bottom: $navigation-desktop-border-bottom-thickness solid color($navigation-link-current-border-color);
-                        font-weight: get-font-weight("bold");
+                        border-bottom: $navigation-desktop-border-bottom-thickness solid fds.color(fds.$navigation-link-current-border-color);
+                        font-weight: fds.font-weight("bold");
                     }
                 }
             }
@@ -62,40 +63,40 @@ ul.mainmenu {
 
         &.active > a:first-child,
         &.active > .submenu > button:first-child {
-            font-weight: get-font-weight("bold");
+            font-weight: fds.font-weight("bold");
         }
 
         &.current {
-            background-color: color($navigation-link-current-background-color);
+            background-color: fds.color(fds.$navigation-link-current-background-color);
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
-                background-color: color($navigation-link-background-color);
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                background-color: fds.color(fds.$navigation-link-background-color);
             }
 
             .helptext {
-                color: color($navigation-link-current-helptext-color);
-                font-weight: get-font-weight("normal");
+                color: fds.color(fds.$navigation-link-current-helptext-color);
+                font-weight: fds.font-weight("normal");
             }
         }
 
     }
 
     .nav-link {
-        padding-top: units(4);
-        padding-bottom: units(4);
-        padding-right: units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
+        padding-top: fds.units(4);
+        padding-bottom: fds.units(4);
+        padding-right: fds.units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
         text-decoration: none;
-        color: color($navigation-link-default-color);
-        font-size: get-font-size('sm');
-        background-color: color('transparent');
+        color: fds.color(fds.$navigation-link-default-color);
+        font-size: fds.font-size('sm');
+        background-color: fds.color('transparent');
         display: block;
-        line-height: units(5, 'rem');
+        line-height: fds.units(5, 'rem');
         white-space: normal;
         width: 100%;
         max-width: unset;
         cursor: pointer;
 
-        @include media-breakpoint-up($nav-responsive-breakpoint) {
+        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             padding-left: $navigation-row-link-padding-left-right;
             padding-right: $navigation-row-link-padding-left-right;
             padding-bottom: 0;
@@ -103,23 +104,23 @@ ul.mainmenu {
         }
 
         &:hover {
-            background-color: color($navigation-link-background-color-hover);
+            background-color: fds.color(fds.$navigation-link-background-color-hover);
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 padding-left: $navigation-row-link-padding-left-right;
                 border-left: 0;
-                background-color: color($navigation-link-background-color); /* Don't use hover color on desktop */
+                background-color: fds.color(fds.$navigation-link-background-color); /* Don't use hover color on desktop */
             }
             
             span {
-                @include media-breakpoint-up($nav-responsive-breakpoint) {
-                    border-bottom: $navigation-desktop-border-bottom-thickness solid color($navigation-link-current-border-color);
+                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    border-bottom: $navigation-desktop-border-bottom-thickness solid fds.color(fds.$navigation-link-current-border-color);
                 }
             }
 
             .helptext {
-                color: color($navigation-link-current-helptext-color);
-                font-weight: get-font-weight("normal");
+                color: fds.color(fds.$navigation-link-current-helptext-color);
+                font-weight: fds.font-weight("normal");
             }
         }
 
@@ -128,7 +129,7 @@ ul.mainmenu {
             position: relative;
             z-index: 2;
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 outline-offset: 0;
             }
         }
@@ -138,19 +139,19 @@ ul.mainmenu {
             width: 100%;
             overflow-wrap: break-word;
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 display: block;
                 border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
-                padding-bottom: units(305);
-                font-weight: get-font-weight("normal");
+                padding-bottom: fds.units(305);
+                font-weight: fds.font-weight("normal");
                 white-space: nowrap;
             }
         }
 
         .helptext {
-            color: color($navigation-link-helptext-color);
+            color: fds.color(fds.$navigation-link-helptext-color);
             width: auto;
-            font-weight: get-font-weight("normal");
+            font-weight: fds.font-weight("normal");
         }
     }
 
@@ -160,7 +161,7 @@ ul.mainmenu {
         position: relative;
         width: 100%;
 
-        @include media-breakpoint-up($nav-responsive-breakpoint) {
+        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: inline-block;
         }
 
@@ -171,7 +172,7 @@ ul.mainmenu {
             text-decoration: none;
             border: 0;
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 position: relative;
             }
 
@@ -181,25 +182,25 @@ ul.mainmenu {
                 background-size: 2.4rem;
                 padding-right: calc(2.4rem + 4px);
 
-                @include media-breakpoint-up($nav-responsive-breakpoint) {
+                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                     background-position-y: top;
                     white-space: nowrap;
                 }
             }
 
             &[aria-expanded="false"] span {
-                @include add-background-svg("add");
+                @include svg.add-background-svg("add");
 
-                @include media-breakpoint-up($nav-responsive-breakpoint) {
-                    @include add-background-svg("expand-more");
+                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include svg.add-background-svg("expand-more");
                 }
             }
 
             &[aria-expanded="true"] span {
-                @include add-background-svg("remove");
+                @include svg.add-background-svg("remove");
 
-                @include media-breakpoint-up($nav-responsive-breakpoint) {
-                    @include add-background-svg("expand-less");
+                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include svg.add-background-svg("expand-less");
                 }
             }
 
@@ -211,13 +212,13 @@ ul.mainmenu {
             border: 0;
             width: 100%;
 
-            @include media-breakpoint-up($nav-responsive-breakpoint) {
+            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 position: absolute;
                 z-index: 1;
                 top: 100%;
                 width: 30rem;
-                border: 1px solid color('gray-500');
-                background-color: color('white');
+                border: 1px solid fds.color('gray-500');
+                background-color: fds.color('white');
                 padding: $navigation-row-link-padding-left-right;
                 margin-left: -$navigation-row-link-padding-left-right;
 
@@ -225,11 +226,11 @@ ul.mainmenu {
                     border-top: 0;
 
                     .nav-link {
-                        padding-top: units(3);
-                        padding-bottom: units(3);
+                        padding-top: fds.units(3);
+                        padding-bottom: fds.units(3);
                         padding-left: $navigation-row-link-padding-left-right;
                         padding-right: $navigation-row-link-padding-left-right;
-                        background-color: color('transparent');
+                        background-color: fds.color('transparent');
                         max-width: 100%;
                         width: 100%;
     
@@ -243,7 +244,7 @@ ul.mainmenu {
     
                         span {
                             border-bottom: none;
-                            font-weight: get-font-weight("normal");
+                            font-weight: fds.font-weight("normal");
                             padding-bottom: 0;
                             white-space: normal;
                             display: inline-block;
@@ -257,7 +258,7 @@ ul.mainmenu {
                     }
 
                     &.current .nav-link span{
-                        font-weight: get-font-weight("bold");
+                        font-weight: fds.font-weight("bold");
                     }
                 }
             }

@@ -1,4 +1,8 @@
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../elements/buttons" as buttons;
+@use "../mixins/add-background-svg" as svg;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 // Date Picker
 .date-picker{
@@ -24,8 +28,8 @@
   width: calc(100% - 16px - 16px);
 }
 .date-picker__button {
-  @include button-unstyled;
-  @include add-background-svg($datepicker-button-icon);
+  @include buttons.button-unstyled;
+  @include svg.add-background-svg(fds.$datepicker-button-icon);
   align-self: stretch;
   background-color: transparent;
   background-position: center;
@@ -44,13 +48,13 @@
 // Date Picker - Calendar View
 
 .date-picker__calendar {
-  border: border($datepicker-border);
-  background-color: color($datepicker-background-color);
+  border: fds.border(fds.$datepicker-border);
+  background-color: fds.color(fds.$datepicker-background-color);
   box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
   position: absolute;
   width: 100%;
-  @include media-breakpoint-up(md) {
+  @include breakpoints.media-breakpoint-up(md) {
     width: 344px;
   }
   z-index: 100;
@@ -67,11 +71,11 @@
   width: 100%;
 
   thead{
-    border-bottom: border($datepicker-table-border);
+    border-bottom: fds.border(fds.$datepicker-table-border);
   }
 
   th {
-    font-weight: get-font-weight("normal");
+    font-weight: fds.font-weight("normal");
   }
 
   td {
@@ -98,8 +102,8 @@
   display: flex;
   text-align: center;
   width: 100%;
-  background-color: color($datepicker-header-background-color);
-  border-bottom: border($datepicker-table-border);
+  background-color: fds.color(fds.$datepicker-header-background-color);
+  border-bottom: fds.border(fds.$datepicker-table-border);
 
   button:focus{
     z-index: 10;
@@ -108,8 +112,8 @@
 }
 
 .date-picker__calendar__cell {
-  background-color: color($datepicker-header-background-color);
-  color: color($datepicker-header-text-color);
+  background-color: fds.color(fds.$datepicker-header-background-color);
+  color: fds.color(fds.$datepicker-header-text-color);
   flex: 1;
 }
 
@@ -125,7 +129,7 @@
 .date-picker__calendar__previous-month,
 .date-picker__calendar__next-year,
 .date-picker__calendar__next-month {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   background-position: center;
   height: 30px;
   padding: 20px 10px;
@@ -137,19 +141,19 @@
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
-  @include add-background-svg($datepicker-icon-previous-year);
+  @include svg.add-background-svg(fds.$datepicker-icon-previous-year);
 }
 
 .date-picker__calendar__previous-month:not([disabled]) {
-  @include add-background-svg($datepicker-icon-previous-month);
+  @include svg.add-background-svg(fds.$datepicker-icon-previous-month);
 }
 
 .date-picker__calendar__next-year:not([disabled]) {
-  @include add-background-svg($datepicker-icon-next-year);
+  @include svg.add-background-svg(fds.$datepicker-icon-next-year);
 }
 
 .date-picker__calendar__next-month:not([disabled]) {
-  @include add-background-svg($datepicker-icon-next-month);
+  @include svg.add-background-svg(fds.$datepicker-icon-next-month);
 }
 
 .date-picker__calendar__day-of-week {
@@ -157,7 +161,7 @@
 }
 
 .date-picker__calendar__date {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   text-align: right;
   width: 100%;
   padding: 10px 8px 10px 0;
@@ -165,7 +169,7 @@
   cursor: pointer;
 
   
-  @include media-breakpoint-up(md) {
+  @include breakpoints.media-breakpoint-up(md) {
     padding: 10px 12px 10px 0;
   }
 
@@ -175,7 +179,7 @@
     bottom: 0;
     left: -1px;
     right: 0;
-    border: border(20);
+    border: fds.border(20);
     content: "";
     display: block;
     pointer-events:none;
@@ -191,14 +195,14 @@
     z-index: 100;
     
     &:after {
-      border: border(10);
+      border: fds.border(10);
     }
   }
 
   &:focus {
     outline: none;
     &:before {
-      @include focus();
+      @include mixins.focus();
       position: absolute;
       top: -1px;
       bottom: 0;
@@ -213,24 +217,24 @@
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
-    color: color($datepicker-previous-next-month-text-color);
+    color: fds.color(fds.$datepicker-previous-next-month-text-color);
     text-indent: -99999px;
-    background-color: color($datepicker-previous-next-month-background-color);
+    background-color: fds.color(fds.$datepicker-previous-next-month-background-color);
 
     &:hover {
-      background-color: color($datepicker-previous-next-month-background-color-hover);
+      background-color: fds.color(fds.$datepicker-previous-next-month-background-color-hover);
     }
   }
 
   &--selected,
   &--range-date {
-    background-color: color($datepicker-date-selected-background-color);
-    color: color($datepicker-date-selected-text-color);
-    font-weight: get-font-weight("semibold");
+    background-color: fds.color(fds.$datepicker-date-selected-background-color);
+    color: fds.color(fds.$datepicker-date-selected-text-color);
+    font-weight: fds.font-weight("semibold");
 
     &:not([disabled]) {
-      background-color: color($datepicker-date-selected-background-color);
-      color: color($datepicker-date-selected-text-color);
+      background-color: fds.color(fds.$datepicker-date-selected-background-color);
+      color: fds.color(fds.$datepicker-date-selected-text-color);
     }
   }
 
@@ -246,23 +250,23 @@
   }
 
   &--within-range {
-    background-color: color($datepicker-date-within-range-background-color);
-    color: color($datepicker-date-within-range-text-color);
+    background-color: fds.color(fds.$datepicker-date-within-range-background-color);
+    color: fds.color(fds.$datepicker-date-within-range-text-color);
 
     &:not([disabled]) {
-      background-color: color($datepicker-date-within-range-background-color);
-      color: color($datepicker-date-within-range-text-color);
+      background-color: fds.color(fds.$datepicker-date-within-range-background-color);
+      color: fds.color(fds.$datepicker-date-within-range-text-color);
 
       &:hover {
-        background-color: color($datepicker-date-within-range-background-color);
+        background-color: fds.color(fds.$datepicker-date-within-range-background-color);
       }
 
       &:focus {
-        background-color: color($datepicker-date-within-range-background-color);
+        background-color: fds.color(fds.$datepicker-date-within-range-background-color);
       }
 
       &:active {
-        background-color: color($datepicker-date-within-range-background-color);
+        background-color: fds.color(fds.$datepicker-date-within-range-background-color);
       }
     }
   }
@@ -276,15 +280,15 @@
 
 .date-picker__calendar__year-selection,
 .date-picker__calendar__month-selection {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   display: inline-block;
   padding: 8px 4px;
   width: 100%;
   text-align: center;
-  font-weight: get-font-weight("semibold");
+  font-weight: fds.font-weight("semibold");
   cursor: pointer;
 
-  @include media-breakpoint-up(md) {
+  @include breakpoints.media-breakpoint-up(md) {
     height: 100%;
     width: auto;
     text-align: left;
@@ -298,7 +302,7 @@
 }
 
 .date-picker__calendar__month {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   padding: 10px 0;
   width: 100%;
   display: block;
@@ -306,7 +310,7 @@
   cursor: pointer;
 
   &--focused {
-    @include focus-outline();
+    @include mixins.focus-outline();
     outline-offset: 2px;
     position: relative;
     z-index: 100;
@@ -319,17 +323,17 @@
   }
 
   &--selected {
-    color: color($datepicker-month-selected-text-color);
-    font-weight: get-font-weight("semibold");
+    color: fds.color(fds.$datepicker-month-selected-text-color);
+    font-weight: fds.font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: color($datepicker-month-selected-text-color);
+        color: fds.color(fds.$datepicker-month-selected-text-color);
       }
 
       &:focus {
-        color: color($datepicker-month-selected-text-color);
+        color: fds.color(fds.$datepicker-month-selected-text-color);
       }
     }
   }
@@ -343,7 +347,7 @@
 
 .date-picker__calendar__previous-year-chunk,
 .date-picker__calendar__next-year-chunk {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   background-position: center;
   margin: auto;
   padding: 0px 8px;
@@ -351,15 +355,15 @@
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
-  @include add-background-svg("chevron-left");
+  @include svg.add-background-svg("chevron-left");
 }
 
 .date-picker__calendar__next-year-chunk:not([disabled]) {
-  @include add-background-svg("chevron-right");
+  @include svg.add-background-svg("chevron-right");
 }
 
 .date-picker__calendar__year {
-  @include button-unstyled;
+  @include buttons.button-unstyled;
   padding: 10px 0;
   width: 100%;
   display: block;
@@ -367,7 +371,7 @@
   cursor: pointer;
 
   &--focused {
-    @include focus();
+    @include mixins.focus();
     position: relative;
     z-index: 100;
   }
@@ -379,17 +383,17 @@
   }
 
   &--selected {
-    color: color($datepicker-year-selected-text-color);
-    font-weight: get-font-weight("semibold");
+    color: fds.color(fds.$datepicker-year-selected-text-color);
+    font-weight: fds.font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: color($datepicker-year-selected-text-color);
+        color: fds.color(fds.$datepicker-year-selected-text-color);
       }
 
       &:focus {
-        color: color($datepicker-year-selected-text-color);
+        color: fds.color(fds.$datepicker-year-selected-text-color);
       }
     }
   }

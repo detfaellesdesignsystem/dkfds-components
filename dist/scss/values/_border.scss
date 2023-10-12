@@ -1,0 +1,85 @@
+@use "sass:map" as map;
+@use "color" as *;
+
+$fds-border: (
+    10: (
+        'width': 1px,
+        'style': solid,
+        'color': color('gray-500')
+    ),
+    20: (
+        'width': 1px,
+        'style': solid,
+        'color': color('gray-300')
+    ),
+    30: (
+        'width': 1px,
+        'style': solid,
+        'color': color('gray-200')
+    )
+);
+
+
+// ----------------------------------------
+// Get a valid FDS border
+// ----------------------------------------
+
+@function border($value) {
+
+    @if map.has-key($fds-border, $value) {
+        $border-map: map.get($fds-border, $value);
+        $border-width: map.get($border-map, 'width');
+        $border-style: map.get($border-map, 'style');
+        $border-color: map.get($border-map, 'color');
+        @return $border-width $border-style $border-color;
+    }
+
+    @error '#{$value} is not a valid FDS border token.';
+
+}
+
+
+// ----------------------------------------
+// Get a valid FDS border-width
+// ----------------------------------------
+
+@function border-width($value) {
+
+    @if map.has-key($fds-border, $value) {
+        $border-map: map.get($fds-border, $value);
+        @return map.get($border-map, 'width');
+    }
+
+    @error '#{$value} is not a valid FDS border token.';
+
+}
+
+// ----------------------------------------
+// Get a valid FDS border-style
+// ----------------------------------------
+
+@function border-style($value) {
+
+    @if map.has-key($fds-border, $value) {
+        $border-map: map.get($fds-border, $value);
+        @return map.get($border-map, 'style');
+    }
+
+    @error '#{$value} is not a valid FDS border token.';
+
+}
+
+// ----------------------------------------
+// Get a valid FDS border-color
+// ----------------------------------------
+
+@function border-color($value) {
+
+    @if map.has-key($fds-border, $value) {
+        $border-map: map.get($fds-border, $value);
+        @return map.get($border-map, 'color');
+    }
+
+    @error '#{$value} is not a valid FDS border token.';
+
+}

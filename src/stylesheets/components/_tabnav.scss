@@ -1,8 +1,12 @@
+@use "../values/fds-values" as fds;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
+@use "accordions";
 
 .tabnav {
   @extend .accordion;
-  @include media-breakpoint-up(md) {
-    @include unstyled-list;
+  @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.unstyled-list;
     list-style-type: none;
     padding: 0;
     position: relative;
@@ -14,73 +18,73 @@
 
     @extend .accordion-button;
     text-decoration: none;
-    margin-top: units(3);
+    margin-top: fds.units(3);
     margin-bottom: 0;
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
       border: none;
     }
 
     &[aria-selected=true]{
-      background-color: color($accordion-button-open-background-color);
-      border-radius: $accordion-button-open-border-radius;
+      background-color: fds.color(fds.$accordion-button-open-background-color);
+      border-radius: fds.$accordion-button-open-border-radius;
     }
 
     &[aria-selected=false]{
-      background-image: url($icons-folder-path+'/'+$accordion-button-open-icon);
+      background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
       background-repeat: no-repeat;
-      background-size: units($accordion-button-icon-size, 'rem');
-      border-radius: $accordion-button-border-radius;
+      background-size: fds.units(fds.$accordion-button-icon-size, 'rem');
+      border-radius: fds.$accordion-button-border-radius;
       &:focus{
-        background-color: color($tavnav-button-default-background-color);
+        background-color: fds.color(fds.$tavnav-button-default-background-color);
       }
     }
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
       display: inline-block;
       width: auto;
-      color: color($tavnav-button-text-color);
+      color: fds.color(fds.$tavnav-button-text-color);
       text-align: center;
       text-decoration: none;
       padding: 0;
       background-color: transparent;
       border-radius: 0;
       line-height: normal;
-      padding-top: units(3);
-      padding-bottom: units(3);
-      padding-left: units(5);
-      padding-right: units(5);
-      margin: 0 units(2) units(2) 0;
+      padding-top: fds.units(3);
+      padding-bottom: fds.units(3);
+      padding-left: fds.units(5);
+      padding-right: fds.units(5);
+      margin: 0 fds.units(2) fds.units(2) 0;
       text-decoration: underline;
-      border-top: units(2) solid color('white');
+      border-top: fds.units(2) solid fds.color('white');
 
       &[aria-selected=false]{
-        background-color: color($tavnav-button-default-background-color);
+        background-color: fds.color(fds.$tavnav-button-default-background-color);
         background-image: none;
         border-radius: 0;
       }
 
       &:hover {
-          background-color: color($tavnav-button-hover-background-color);
+          background-color: fds.color(fds.$tavnav-button-hover-background-color);
       }
 
       &:focus{
         outline: none;
         span{
-          @include focus-outline();
+          @include mixins.focus-outline();
         }
       }
 
       &[aria-selected=true] {
-        background-color: color($tabnav-background-color);
+        background-color: fds.color(fds.$tabnav-background-color);
         background-image: none;
-        border: border($tabnav-border);
-        padding-left: calc(#{units(5)} - 1px);
-        padding-right: calc(#{units(5)} - 1px);
-        border-bottom: 1px solid color($tabnav-background-color);
+        border: fds.border(fds.$tabnav-border);
+        padding-left: calc(#{fds.units(5)} - 1px);
+        padding-right: calc(#{fds.units(5)} - 1px);
+        border-bottom: 1px solid fds.color(fds.$tabnav-background-color);
         border-radius: 0;
         text-decoration: none;
-        margin: 0 units(2) -1px 0;
-        padding-bottom: calc(#{units(3)} + 2px);
+        margin: 0 fds.units(2) -1px 0;
+        padding-bottom: calc(#{fds.units(3)} + 2px);
         position: relative;
         z-index: 350;
         span:not(.sr-only) {
@@ -91,26 +95,26 @@
     }
   }
 
-  @include media-breakpoint-up(md) {
+  @include breakpoints.media-breakpoint-up(md) {
     > button:last-of-type{
-      margin-right: units(3);
+      margin-right: fds.units(3);
     }
   }
 
   &-panel{
     @extend .accordion-content;
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
       display: none;
-      border: border($tabnav-border);
+      border: fds.border(fds.$tabnav-border);
       border-radius: 0;
       overflow: hidden;
-      margin-bottom: calc(#{units(4)});
+      margin-bottom: calc(#{fds.units(4)});
       background-color: transparent;
       position: relative;
       z-index: 300;
 
       &:focus{
-        @include focus();
+        @include mixins.focus();
       }
     }
     &[aria-hidden=false]{

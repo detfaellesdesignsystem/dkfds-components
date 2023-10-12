@@ -12,7 +12,7 @@ $fds-font-weights: (
 // Get a valid FDS font-weight
 // ----------------------------------------
 
-@function get-font-weight($value) {
+@function font-weight($value) {
 
     @if map.has-key($fds-font-weights, $value) {
         @return map.get($fds-font-weights, $value);

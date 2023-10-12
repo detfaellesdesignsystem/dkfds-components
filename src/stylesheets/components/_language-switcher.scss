@@ -1,30 +1,32 @@
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/mixins" as mixins;
+@use "../mixins/breakpoints" as breakpoints;
 
 .language-switcher{
-  border-top: border($language-switcher-border);
-  background-color: color($language-switcher-background-color);
-  padding-top: #{units(5)};
-  @include media-breakpoint-up(md) {
-    margin-top: -#{units(5)};
-    padding-top: #{units(4)};
+  border-top: fds.border(fds.$language-switcher-border);
+  background-color: fds.color(fds.$language-switcher-background-color);
+  padding-top: #{fds.units(5)};
+  @include breakpoints.media-breakpoint-up(md) {
+    margin-top: -#{fds.units(5)};
+    padding-top: #{fds.units(4)};
   }
 
     ul{
-      @include unstyled-list;
+      @include mixins.unstyled-list;
       max-width: none !important;
     > li{
-      margin-bottom: units(305);
-      padding-left: units(6);
+      margin-bottom: fds.units(305);
+      padding-left: fds.units(6);
 
 
-      @include media-breakpoint-up(md) {
+      @include breakpoints.media-breakpoint-up(md) {
         display: inline-block;
         padding-left: 0;
         &::after {
           display: inline-block;
           content: "|";
-          margin-left: calc(#{units(4)} - 1px);
-          margin-right: #{units(4)};
+          margin-left: calc(#{fds.units(4)} - 1px);
+          margin-right: #{fds.units(4)};
         }
         &:last-of-type::after{
           content: "";
@@ -32,13 +34,13 @@
       }
 
       a, a:hover, a:visited, a:active, a:focus{
-        color: color($language-switcher-text-color);
+        color: fds.color(fds.$language-switcher-text-color);
         display: inline-block;
 
 
         svg{
-          margin-top: -#{units(2)};
-          margin-right: #{units(3)};
+          margin-top: -#{fds.units(2)};
+          margin-right: #{fds.units(3)};
           display: inline-block;
         }
       }
@@ -48,8 +50,8 @@
 
         a, a:hover, a:visited, a:active, a:focus {
           padding-left: 0;
-          font-weight: get-font-weight("semibold");
-          color: color($language-switcher-active-text-color);
+          font-weight: fds.font-weight("semibold");
+          color: fds.color(fds.$language-switcher-active-text-color);
           text-decoration: none;
           border-left: 0;
         }

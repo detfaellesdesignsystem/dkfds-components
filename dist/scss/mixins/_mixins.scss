@@ -1,12 +1,13 @@
-@use "../font-size" as *;
+@use "../values/fds-values" as fds;
+@use "breakpoints" as breakpoints;
 
 // Focus state mixin
 
 @mixin focus-outline {
-  outline: $theme-focus-width $theme-focus-style color($theme-focus-color);
+  outline: fds.$theme-focus-width fds.$theme-focus-style fds.color(fds.$theme-focus-color);
 }
 @mixin focus-offset {
-  outline-offset: $theme-focus-offset;
+  outline-offset: fds.$theme-focus-offset;
 }
 
 @mixin focus {
@@ -105,18 +106,18 @@ Sets styles within breakpoints
     @each $breakpoint, $value in $map{
       @if $breakpoint == "default" {
         @if $style == line-height{
-          #{$style}: units($value, 'rem');
+          #{$style}: fds.units($value, 'rem');
         }@else if $style == font-size{
-          #{$style}: get-font-size($value);
+          #{$style}: fds.font-size($value);
         }@else{
           #{$style}: $value;
         }
       } @else{
-        @include media-breakpoint-up($breakpoint) {
+        @include breakpoints.media-breakpoint-up($breakpoint) {
           @if $style == line-height{
-            #{$style}: units($value, 'rem');
+            #{$style}: fds.units($value, 'rem');
           }@else if $style == font-size{
-            #{$style}: get-font-size($value);
+            #{$style}: fds.font-size($value);
           }@else{
             #{$style}: $value;
           }
@@ -125,9 +126,9 @@ Sets styles within breakpoints
     }
   } @else{
     @if $style == line-height{
-      #{$style}: units($map, 'rem');
+      #{$style}: fds.units($map, 'rem');
     }@else if $style == font-size{
-      #{$style}: get-font-size($map);
+      #{$style}: fds.font-size($map);
     }@else{
       #{$style}: $map;
     }

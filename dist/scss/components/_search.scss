@@ -1,10 +1,11 @@
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/mixins" as mixins;
 
 .search {
   display: flex;
   
   .form-input{
-    background-color: color($search-background-color);
+    background-color: fds.color(fds.$search-background-color);
     margin-top: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -14,16 +15,16 @@
   }
 
   .button-search{
-    background-color: color($button-search-default-background-color);
-    border: border($input-border);
+    background-color: fds.color(fds.$button-search-default-background-color);
+    border: fds.border(fds.$input-border);
     border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    color: color($button-search-text-color);
-    font-weight: get-font-weight("normal");
+    color: fds.color(fds.$button-search-text-color);
+    font-weight: fds.font-weight("normal");
     width: inherit; //not 100& width on mobile
     &:hover{
-      background-color: color($button-search-hover-background-color);
+      background-color: fds.color(fds.$button-search-hover-background-color);
     }
   }
 }
@@ -31,5 +32,5 @@
 // Extra specificity to override rules set in reset.css.
 input[type=search] {
   box-sizing: border-box;
-  @include appearance-none;
+  @include mixins.appearance-none;
 }

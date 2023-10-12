@@ -1,40 +1,40 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
-@import "mixins/nav-mixins";
+@use "../values/fds-values" as fds;
+@use "mixins/nav-mixins" as nav-mixins;
+@use "../mixins/mixins" as mixins;
 
-$sidemenu-border-left-thickness: units(2);
-$sidemenu-link-padding-right: units(4);
+$sidemenu-border-left-thickness: fds.units(2);
+$sidemenu-link-padding-right: fds.units(4);
 $sidemenu-icon-size: 2.4rem;
 
 ul.sidemenu {
-    @include unstyled-list();
-    @include nav-link-leftdist($sidemenu-border-left-thickness, $sidenav-border-active-color, 16px, 40px, 64px, 88px);
-    @include nav-link-border($sidenav-link-border-color, $sidenav-sublink-border-color);
-    border-bottom: 1px solid color($sidenav-border-top-bottom-color);
-    border-top: 1px solid color($sidenav-border-top-bottom-color);
+    @include mixins.unstyled-list();
+    @include nav-mixins.nav-link-leftdist($sidemenu-border-left-thickness, fds.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include nav-mixins.nav-link-border(fds.$sidenav-link-border-color, fds.$sidenav-sublink-border-color);
+    border-bottom: 1px solid fds.color(fds.$sidenav-border-top-bottom-color);
+    border-top: 1px solid fds.color(fds.$sidenav-border-top-bottom-color);
     max-width: none;
 
     ul {
-        @include unstyled-list();
+        @include mixins.unstyled-list();
         width: 100%;
         max-width: none !important; /* Override ul styling in typography.scss */
     }
 
     li {
-        background-color: color($sidenav-link-background-color);
-        font-size: get-font-size('sm');
+        background-color: fds.color(fds.$sidenav-link-background-color);
+        font-size: fds.font-size('sm');
     }
 
     ul li,
     ul ul li {
-        font-size: get-font-size('xs');
+        font-size: fds.font-size('xs');
     }
 
     .nav-link, 
     .nav-step {
-        padding-top: units(2);
-        padding-bottom: units(2);
-        padding-right: units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
+        padding-top: fds.units(2);
+        padding-bottom: fds.units(2);
+        padding-right: fds.units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -42,13 +42,13 @@ ul.sidemenu {
         width: 100%;
         max-width: none;
         border: none;
-        color: color($sidenav-link-font-color);
+        color: fds.color(fds.$sidenav-link-font-color);
         background-color: transparent;
         text-decoration: none;
-        min-height: calc(units(7) - 1px); /* Minus 1px due to the border on the li element */
+        min-height: calc(fds.units(7) - 1px); /* Minus 1px due to the border on the li element */
         cursor: pointer;
-        font-weight: get-font-weight("normal");
-        line-height: units(5, 'rem');
+        font-weight: fds.font-weight("normal");
+        line-height: fds.units(5, 'rem');
 
         &:focus {
             outline-offset: 0;
@@ -57,19 +57,19 @@ ul.sidemenu {
         }
 
         &:hover {
-            background-color: color($sidenav-link-background-color-hover);
+            background-color: fds.color(fds.$sidenav-link-background-color-hover);
 
             .sidenav-information {
-                color: color($sidenav-link-current-extra-information-text-color);
+                color: fds.color(fds.$sidenav-link-current-extra-information-text-color);
             }
         }
 
         .sidenav-information {
-            color: color($sidenav-link-default-extra-information-text-color);
+            color: fds.color(fds.$sidenav-link-default-extra-information-text-color);
             margin: 0;
             display: block;
             width: 100%;
-            font-weight: get-font-weight("normal");
+            font-weight: fds.font-weight("normal");
         }
     }
 
@@ -98,7 +98,7 @@ ul.sidemenu {
         }
 
         .sidenav-number {
-            margin-right: units(2);
+            margin-right: fds.units(2);
         }
 
         .sidenav-information {
@@ -119,37 +119,37 @@ ul.sidemenu {
     li.active {
 
         & > :first-child {
-            font-weight: get-font-weight("bold");
+            font-weight: fds.font-weight("bold");
         }
     }
 
     li.current {
-        background-color: color($sidenav-link-current-background-color);
+        background-color: fds.color(fds.$sidenav-link-current-background-color);
 
         & > .nav-link,
         & > .nav-step {
-            font-weight: get-font-weight("bold");
+            font-weight: fds.font-weight("bold");
 
             .sidenav-information {
-                color: color($sidenav-link-current-extra-information-text-color);
+                color: fds.color(fds.$sidenav-link-current-extra-information-text-color);
             }
         }
     }
 
     li.sidenav-error {
-        background-color: color($sidenav-error-background-color);
+        background-color: fds.color(fds.$sidenav-error-background-color);
 
         &.current {
-            background-color: color($sidenav-error-background-color);
+            background-color: fds.color(fds.$sidenav-error-background-color);
         }
 
         .nav-link:hover,
         .nav-step:hover {
-            background-color: color($sidenav-error-background-color);
+            background-color: fds.color(fds.$sidenav-error-background-color);
         }
 
         .sidenav-information {
-            color: color($sidenav-link-current-extra-information-text-color);
+            color: fds.color(fds.$sidenav-link-current-extra-information-text-color);
         }
     }
 
@@ -171,7 +171,7 @@ ul.sidemenu {
         }
 
         &.sidenav-error {
-            background-color: color($sidenav-error-background-color);
+            background-color: fds.color(fds.$sidenav-error-background-color);
         }
     }
 }

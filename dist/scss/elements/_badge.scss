@@ -1,45 +1,45 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/mixins" as mixins;
 
 .badge {
   padding: 0;
-  padding-left: units(3);
-  padding-right: units(3);
+  padding-left: fds.units(3);
+  padding-right: fds.units(3);
   border: none;
-  font-weight: get-font-weight($badge-font-weight);
-  color: color($badge-default-text-color);
-  background: color($badge-default-background-color);
-  @include font-smoothing;
+  font-weight: fds.font-weight(fds.$badge-font-weight);
+  color: fds.color(fds.$badge-default-text-color);
+  background: fds.color(fds.$badge-default-background-color);
+  @include mixins.font-smoothing;
   text-align: center;
   display: inline-block;
 
   &.badge-large {
-    font-size: get-font-size($badge-large-font-size);
-    line-height: units($badge-large-line-height, 'rem');
+    font-size: fds.font-size(fds.$badge-large-font-size);
+    line-height: fds.units(fds.$badge-large-line-height, 'rem');
   }
 
   &.badge-small {
-    font-size: get-font-size($badge-small-font-size);
-    line-height: units($badge-small-line-height, 'rem');
+    font-size: fds.font-size(fds.$badge-small-font-size);
+    line-height: fds.units(fds.$badge-small-line-height, 'rem');
   }
 
   &.badge-info {
-    color: color($badge-info-text-color);
-    background-color: color($badge-info-background-color);
+    color: fds.color(fds.$badge-info-text-color);
+    background-color: fds.color(fds.$badge-info-background-color);
   }
 
   &.badge-success {
-    color: color($badge-success-text-color);
-    background-color: color($badge-success-background-color);
+    color: fds.color(fds.$badge-success-text-color);
+    background-color: fds.color(fds.$badge-success-background-color);
   }
 
   &.badge-warning {
-    color: color($badge-warning-text-color);
-    background-color: color($badge-warning-background-color);
+    color: fds.color(fds.$badge-warning-text-color);
+    background-color: fds.color(fds.$badge-warning-background-color);
   }
 
   &.badge-error {
-    color: color($badge-error-text-color);
-    background-color: color($badge-error-background-color);
+    color: fds.color(fds.$badge-error-text-color);
+    background-color: fds.color(fds.$badge-error-background-color);
   }
 }

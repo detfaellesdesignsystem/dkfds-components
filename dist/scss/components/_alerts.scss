@@ -1,4 +1,7 @@
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../elements/buttons" as buttons;
+@use "../mixins/typography-mixins" as typo;
+@use "../mixins/mixins" as mixins;
 
 /*
 ----------------------------------------
@@ -9,55 +12,55 @@ $custom-alerts: () !default;
 $custom-alerts-bar: () !default;
 
 $alerts: (
-  success: $alert-success-background-color,
-  warning: $alert-warning-background-color,
-  error: $alert-error-background-color,
-  info: $alert-info-background-color
+  success: fds.$alert-success-background-color,
+  warning: fds.$alert-warning-background-color,
+  error: fds.$alert-error-background-color,
+  info: fds.$alert-info-background-color
 );
 
 $alerts-bar: (
-  success: $alert-success-border-color,
-  warning: $alert-warning-border-color,
-  error: $alert-error-border-color,
-  info: $alert-info-border-color
+  success: fds.$alert-success-border-color,
+  warning: fds.$alert-warning-border-color,
+  error: fds.$alert-error-border-color,
+  info: fds.$alert-info-border-color
 );
 
 $alerts: map-merge($alerts, $custom-alerts);
 $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
 
 .alert {
-  background-color: color($alert-background-color);
+  background-color: fds.color(fds.$alert-background-color);
   background-position: 16px 16px;
   background-repeat: no-repeat;
   background-size: 24px;
-  padding-bottom: units($alert-padding);
-  padding-left: units($alert-padding);
-  padding-right: units($alert-padding);
-  padding-top: units($alert-padding);
+  padding-bottom: fds.units(fds.$alert-padding);
+  padding-left: fds.units(fds.$alert-padding);
+  padding-right: fds.units(fds.$alert-padding);
+  padding-top: fds.units(fds.$alert-padding);
   position: relative;
-  margin-top: units(4);
-  margin-bottom: units(4);
+  margin-top: fds.units(4);
+  margin-bottom: fds.units(4);
 
-  border-left: units($alert-border-size) solid color($alert-border-color);
+  border-left: fds.units(fds.$alert-border-size) solid fds.color(fds.$alert-border-color);
 
   &:first-child {
     margin-top:0;
   }
 
   &.alert--paragraph {
-    max-width: $typography-text-max-width;
+    max-width: fds.$typography-text-max-width;
   }
   .alert-close{
-    @include button-unstyled();
+    @include buttons.button-unstyled();
     cursor:pointer;
     position: absolute;
-    top: units(4);
-    right: units(4);
-    @include small-text;
-    color: color($alert-close-text-color);
+    top: fds.units(4);
+    right: fds.units(4);
+    @include typo.small-text;
+    color: fds.color(fds.$alert-close-text-color);
     text-decoration: underline;
     .icon-svg{
-      margin-right: units(2);
+      margin-right: fds.units(2);
       width: 1.6rem;
       height: 1.6rem;
       fill: currentColor;
@@ -65,12 +68,12 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   }
 
   .alert-heading {
-    @include responsive-style($alert-heading-fontsize, font-size);
-    @include responsive-style($alert-heading-lineheight, line-height);
+    @include mixins.responsive-style(fds.$alert-heading-fontsize, font-size);
+    @include mixins.responsive-style(fds.$alert-heading-lineheight, line-height);
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: get-font-weight("semibold");
-    color: color($alert-heading-color);
+    font-weight: fds.font-weight("semibold");
+    color: fds.color(fds.$alert-heading-color);
     -ms-word-wrap: break-word;
     word-wrap: break-word;
   }
@@ -78,18 +81,18 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
   .alert-text {
     margin-bottom: 0;
     margin-top: 0;
-    color: color($alert-text-color);
-    max-width: $typography-text-max-width;
+    color: fds.color(fds.$alert-text-color);
+    max-width: fds.$typography-text-max-width;
     a, a:link, a:active, a:visited, a:hover{
-      color: color($alert-text-color);
+      color: fds.color(fds.$alert-text-color);
     }
   }
 }
 
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
-    background-color: color($bgcolor);
-    border-color: color(map-get($alerts-bar, $name));
+    background-color: fds.color($bgcolor);
+    border-color: fds.color(map-get($alerts-bar, $name));
 
     &.alert--show-icon{
       $alert-icon: $name;
@@ -104,12 +107,12 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
       @if $name == warning {
         $alert-icon: 'report-problem';
       }
-      background-image: url($icons-folder-path+'/'+$alert-icon+'.svg');
-      padding-left: calc(#{units($alert-padding)} + #{$alert-icon-size} + 8px);
+      background-image: url(fds.$icons-folder-path+'/'+$alert-icon+'.svg');
+      padding-left: calc(#{fds.units(fds.$alert-padding)} + #{fds.$alert-icon-size} + 8px);
     }
   }
 }
 
 .alert + .alert{
-  margin-top: units(4);
+  margin-top: fds.units(4);
 }

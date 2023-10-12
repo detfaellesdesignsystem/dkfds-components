@@ -1,29 +1,32 @@
+@use "../values/fds-values" as fds;
+@use "../mixins/breakpoints" as breakpoints;
+
 .button.back-to-top-button {
-    box-shadow: shadow($back-to-top-button-shadow);
+    box-shadow: fds.shadow(fds.$back-to-top-button-shadow);
     width: auto;
-    background-color: color($back-to-top-button-background);
+    background-color: fds.color(fds.$back-to-top-button-background);
     position: fixed;
-    right: units(5);
-    bottom: units(5);
+    right: fds.units(5);
+    bottom: fds.units(5);
     left: auto;
     top: auto;
     z-index: 1;
 
     &.button-tertiary {
-        background-color: color($back-to-top-button-background);
+        background-color: fds.color(fds.$back-to-top-button-background);
     }
 
     &.footer-sticky {
         position: absolute;
         bottom: auto;
         top: auto;
-        margin-top: units(4);
+        margin-top: fds.units(4);
         z-index: auto;
     }
 
-    @include media-breakpoint-down(md) {
+    @include breakpoints.media-breakpoint-down(md) {
         .icon-svg {
-            margin-right: units(0);
+            margin-right: fds.units(0);
         }
     }
 }

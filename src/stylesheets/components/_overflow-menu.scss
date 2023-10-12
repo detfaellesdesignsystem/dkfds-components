@@ -1,5 +1,9 @@
-@use "../core/font-size" as *;
-@use "../core/font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/breakpoints" as breakpoints;
+@use "../elements/buttons" as buttons;
+@use "../mixins/mixins" as mixins;
+@use "../mixins/typography-mixins" as typo;
+@use "../mixins/add-background-svg" as svg;
 
 .overflow-menu + h1 {
     margin-top: 0;
@@ -11,19 +15,19 @@
     width: 100%;
 
 
-    @include media-breakpoint-up(md) {
+    @include breakpoints.media-breakpoint-up(md) {
         width: auto;
         display: inline-block;
     }
 
     .button-overflow-menu {
-        @include button-unstyled;
+        @include buttons.button-unstyled;
         min-height: 40px;
         min-width: 40px;
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: color($overflow-menu-button-text-color);
+        color: fds.color(fds.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
 
@@ -44,19 +48,19 @@
             position: absolute;
             pointer-events: none;
             z-index: 3;
-            bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
+            bottom: calc(#{fds.$overflow-menu-dropdown-distance} * -1 - 1px);
         }
 
         &:after {
-            border-bottom-color: color($overflow-menu-content-background-color);
-            border-width: calc(#{$overflow-menu-arrow-size} - 1px);
-            margin-left: calc((#{$overflow-menu-arrow-size} - 1px)*-1);
+            border-bottom-color: fds.color(fds.$overflow-menu-content-background-color);
+            border-width: calc(#{fds.$overflow-menu-arrow-size} - 1px);
+            margin-left: calc((#{fds.$overflow-menu-arrow-size} - 1px)*-1);
         }
 
         &:before {
-            border-bottom-color: border-color($overflow-menu-content-border);
-            border-width: $overflow-menu-arrow-size;
-            margin-left: calc(#{$overflow-menu-arrow-size} *-1);
+            border-bottom-color: fds.border-color(fds.$overflow-menu-content-border);
+            border-width: fds.$overflow-menu-arrow-size;
+            margin-left: calc(#{fds.$overflow-menu-arrow-size} *-1);
         }
 
         &[aria-expanded="true"] {
@@ -76,7 +80,7 @@
             padding: 0;
 
             &:hover {
-                background-color: color($overflow-menu-button-icon-only-hover-background-color);
+                background-color: fds.color(fds.$overflow-menu-button-icon-only-hover-background-color);
             }
         }
     }
@@ -86,18 +90,18 @@
         width: 100%;
         max-width: 30rem;
         z-index: 2;
-        border: border($overflow-menu-content-border);
-        box-shadow: shadow($overflow-menu-content-shadow);
-        background: color($overflow-menu-content-background-color);
-        padding-top: units(3);
-        padding-bottom: units(3);
-        top: calc(100% + #{$overflow-menu-dropdown-distance});
+        border: fds.border(fds.$overflow-menu-content-border);
+        box-shadow: fds.shadow(fds.$overflow-menu-content-shadow);
+        background: fds.color(fds.$overflow-menu-content-background-color);
+        padding-top: fds.units(3);
+        padding-bottom: fds.units(3);
+        top: calc(100% + #{fds.$overflow-menu-dropdown-distance});
 
-        @include media-breakpoint-up(md) {
+        @include breakpoints.media-breakpoint-up(md) {
             width: auto;
         }
 
-        @include media-breakpoint-up(sm) {
+        @include breakpoints.media-breakpoint-up(sm) {
             min-width: 28rem;
         }
 
@@ -107,27 +111,27 @@
     }
 
     .overflow-list {
-        @include unstyled-list;
-        font-size: get-font-size($overflow-menu-content-font-size);
-        line-height: units($overflow-menu-content-line-height, 'rem');
-        color: color($overflow-menu-content-text-color);
+        @include mixins.unstyled-list;
+        font-size: fds.font-size(fds.$overflow-menu-content-font-size);
+        line-height: fds.units(fds.$overflow-menu-content-line-height, 'rem');
+        color: fds.color(fds.$overflow-menu-content-text-color);
 
         button {
-            @include button-unstyled;
-            line-height: units(5, 'rem');
+            @include buttons.button-unstyled;
+            line-height: fds.units(5, 'rem');
             cursor: pointer;
         }
 
         a {
-            @include body-copy-text;
+            @include typo.body-copy-text;
             display: block;
             text-decoration: none;
-            line-height: units(5, 'rem');
+            line-height: fds.units(5, 'rem');
 
             &:hover,
             &:visited,
             &:focus {
-                color: color($overflow-menu-content-text-color);
+                color: fds.color(fds.$overflow-menu-content-text-color);
             }
         }
 
@@ -137,7 +141,7 @@
             width: 100%;
 
             &:hover {
-                background-color: color($overflow-menu-content-link-hover-background-color);
+                background-color: fds.color(fds.$overflow-menu-content-link-hover-background-color);
             }
         }
     }
@@ -148,14 +152,14 @@
     }
 
     &.overflow-menu--md-no-responsive .sidemenu {
-        @include media-breakpoint-down(sm) {
+        @include breakpoints.media-breakpoint-down(sm) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
     &.overflow-menu--lg-no-responsive .sidemenu {
-        @include media-breakpoint-down(md) {
+        @include breakpoints.media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
@@ -163,7 +167,7 @@
 
     &--open-right {
         .overflow-menu-inner {
-            @include media-breakpoint-up(md) {
+            @include breakpoints.media-breakpoint-up(md) {
                 left: calc(50% - 19px);
 
                 &:after {
@@ -198,7 +202,7 @@
 
         //overflow content always visible on large screens.
         //does not look like a dropdown.
-        @include media-breakpoint-up(md) {
+        @include breakpoints.media-breakpoint-up(md) {
             display: block;
 
             &:before,
@@ -226,7 +230,7 @@
 
         //overflow content always visible on large screens.
         //does not look like a dropdown.
-        @include media-breakpoint-up(lg) {
+        @include breakpoints.media-breakpoint-up(lg) {
             display: block;
 
             &:before,
@@ -253,25 +257,25 @@
     &--sort {
         .button-overflow-menu {
             text-decoration: underline;
-            line-height: units(5, 'rem');
+            line-height: fds.units(5, 'rem');
 
             .selected-value {
                 text-decoration: none;
                 display: inline-block;
-                margin-left: units(2);
-                font-weight: get-font-weight("semibold");
+                margin-left: fds.units(2);
+                font-weight: fds.font-weight("semibold");
             }
 
             svg {
-                margin-right: units(2);
+                margin-right: fds.units(2);
             }
         }
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
-            font-weight: get-font-weight("semibold");
-            @include add-background-svg('done');
+            font-weight: fds.font-weight("semibold");
+            @include svg.add-background-svg('done');
             background-repeat: no-repeat;
-            background-position: calc(100% - #{units(4)}) center;
+            background-position: calc(100% - #{fds.units(4)}) center;
         }
     }
 }

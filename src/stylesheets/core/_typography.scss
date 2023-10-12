@@ -1,27 +1,30 @@
-@use "font-size" as *;
-@use "font-weight" as *;
+@use "../values/fds-values" as fds;
+@use "../values/colors/theme-colors" as theme;
+@use "../mixins/mixins" as mixins;
+@use "../mixins/typography-mixins" as typo;
+@use "../mixins/breakpoints" as breakpoints;
 
 html {
-  font-family: $typography-font-family;
-  font-size: $root-font-size;
+  font-family: fds.$typography-font-family;
+  font-size: fds.$root-font-size;
 }
 
 body {
-  font-size: get-font-size($typography-base-font-size);
+  font-size: fds.font-size(fds.$typography-base-font-size);
 }
 
 p {
-  line-height: units($typography-base-line-height, 'rem');
-  margin-bottom: units(3, 'rem');
-  margin-top: units(4, 'rem');
+  line-height: fds.units(fds.$typography-base-line-height, 'rem');
+  margin-bottom: fds.units(3, 'rem');
+  margin-top: fds.units(4, 'rem');
 }
 
 a {
-  color: color($theme-color-link);
+  color: fds.color(theme.$theme-color-link);
 
   &:hover,
   &.link-hover {
-    color: color($theme-color-link-hover);
+    color: fds.color(theme.$theme-color-link-hover);
 
     &:disabled,
     .disabled {
@@ -32,19 +35,19 @@ a {
 
   &:focus,
   &.link-focus {
-    color: color($theme-color-link-focus);
-    @include focus();
+    color: fds.color(theme.$theme-color-link-focus);
+    @include mixins.focus();
   }
 
   &:visited,
   &.link-visited {
-    color: color($theme-color-link-visited);
+    color: fds.color(theme.$theme-color-link-visited);
   }
 
   &:disabled,
   &.disabled {
     cursor: not-allowed !important;
-    color: color('disabled') !important;
+    color: fds.color('disabled') !important;
     opacity: 0.3;
 
     &:focus {
@@ -55,14 +58,14 @@ a {
 
   .background-dark & {
     &:not(.button) {
-      color: color('white');
+      color: fds.color('white');
     }
 
     &:disabled,
     &.disabled {
       box-shadow: none !important;
       cursor: not-allowed !important;
-      color: color('disabled-light') !important;
+      color: fds.color('disabled-light') !important;
       outline-offset: inherit !important;
 
       &:focus {
@@ -73,178 +76,84 @@ a {
   }
 
   &.bold-link {
-    font-weight: get-font-weight("semibold");
+    font-weight: fds.font-weight("semibold");
   }
 
   &:not(.button, .full-width-image) {
-    max-width: $typography-text-max-width;
+    max-width: fds.$typography-text-max-width;
   }
-}
-
-@mixin h1{
-  @include responsive-style($typography-h1-font-size, font-size);
-  @include responsive-style($typography-h1-line-height, line-height);
-  @include responsive-style($typography-h1-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("bold");
-  color: color('black');
-  text-transform: none;
-  word-break: break-word;
-}
-@mixin h2 {
-  @include responsive-style($typography-h2-font-size, font-size);
-  @include responsive-style($typography-h2-line-height, line-height);
-  @include responsive-style($typography-h2-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h3 {
-  @include responsive-style($typography-h3-font-size, font-size);
-  @include responsive-style($typography-h3-line-height, line-height);
-  @include responsive-style($typography-h3-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h4{
-  @include responsive-style($typography-h4-font-size, font-size);
-  @include responsive-style($typography-h4-line-height, line-height);
-  @include responsive-style($typography-h4-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h5 {
-  @include responsive-style($typography-h5-font-size, font-size);
-  @include responsive-style($typography-h5-line-height, line-height);
-  @include responsive-style($typography-h5-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-
-@mixin h6 {
-  @include responsive-style($typography-h6-font-size, font-size);
-  @include responsive-style($typography-h6-line-height, line-height);
-  @include responsive-style($typography-h6-letter-spacing, letter-spacing);
-  font-weight: get-font-weight("medium");
-  color: color('black');
-}
-@mixin body-copy-text {
-  font-size: get-font-size($typography-body-text-font-size);
-  line-height: units($typography-body-text-line-height, 'rem');
-  font-weight: get-font-weight($typography-body-text-font-weight);
-  color: color($typography-body-text-color);
-  text-transform: none;
-  letter-spacing: $typography-body-text-letter-spacing;
-}
-@mixin caption {
-  font-size: get-font-size($typography-caption-font-size);
-  line-height: units($typography-caption-line-height, 'rem');
-  color: color($typography-caption-text-color);
-  letter-spacing: $typography-caption-letter-spacing;
-}
-@mixin subheading {
-  font-size: get-font-size($typography-subheading-font-size);
-  line-height: units($typography-subheading-line-height, 'rem');
-  color: color($typography-subheading-text-color);
-  letter-spacing: $typography-subheading-letter-spacing;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-@mixin form-label-text {
-  font-size: get-font-size($typography-form-label-font-size);
-  line-height: units($typography-form-label-line-height, 'rem');
-  font-weight: get-font-weight("semibold");
-  color: color($typography-form-label-text-color);
-  text-transform: none;
-}
-@mixin small-text {
-  font-size: get-font-size($typography-small-text-font-size);
-  line-height: units($typography-small-text-line-height, 'rem');
-  font-weight: get-font-weight("normal");
-  letter-spacing: $typography-small-text-letter-spacing;
-}
-
-@mixin color-text-positive {
-  color: color($theme-color-text-positive);
-}
-
-@mixin color-text-negative {
-  color:color($theme-color-text-negative);
 }
 
 h1, .h1 {
-  @include h1;
+  @include typo.h1;
 }
 h2, .h2{
-  @include h2;
+  @include typo.h2;
 }
 
 h3, .h3 {
-  @include h3;
+  @include typo.h3;
 }
 
 h4, .h4{
-  @include h4;
+  @include typo.h4;
 }
 
 h5, .h5{
-  @include h5;
+  @include typo.h5;
 }
 
 h6, .h6{
-  @include h6;
+  @include typo.h6;
 }
 
 p, .body-text, .body-copy-text{
-  @include body-copy-text;
+  @include typo.body-copy-text;
 }
 figcaption, .figcaption{
-  @include caption;
+  @include typo.caption;
   p{
-    @include caption;
+    @include typo.caption;
   }
 }
 .subheading{
-  @include subheading;
+  @include typo.subheading;
 }
 
 .font-lead {
-  font-size: get-font-size($typography-lead-font-size);
-  font-weight: get-font-weight("normal");
-  line-height: units($typography-lead-line-height, 'rem');
-  max-width: $typography-text-max-width;
-  color: color('ink');
-  letter-spacing: $typography-lead-letter-spacing;
+  font-size: fds.font-size(fds.$typography-lead-font-size);
+  font-weight: fds.font-weight("normal");
+  line-height: fds.units(fds.$typography-lead-line-height, 'rem');
+  max-width: fds.$typography-text-max-width;
+  color: fds.color('ink');
+  letter-spacing: fds.$typography-lead-letter-spacing;
 }
 .article{
-  font-size: get-font-size($typography-article-font-size);
-  font-weight: get-font-weight("normal");
-  line-height: units($typography-article-line-height, 'rem');
-  max-width: $typography-text-max-width;
-  color: color('ink');
-  letter-spacing: $typography-article-letter-spacing;
+  font-size: fds.font-size(fds.$typography-article-font-size);
+  font-weight: fds.font-weight("normal");
+  line-height: fds.units(fds.$typography-article-line-height, 'rem');
+  max-width: fds.$typography-text-max-width;
+  color: fds.color('ink');
+  letter-spacing: fds.$typography-article-letter-spacing;
 }
 small, .small-text {
-  @include small-text();
+  @include typo.small-text();
 }
 
 .weight-normal {
-  font-weight: get-font-weight("normal");
+  font-weight: fds.font-weight("normal");
 }
 
 .weight-semibold {
-  font-weight: get-font-weight("semibold");
+  font-weight: fds.font-weight("semibold");
 }
 .facit {
-  border-bottom: border(10);
+  border-bottom: fds.border(10);
   border-bottom-style: double;
   border-bottom-width: 4px;
 }
 strong, b, .bold {
-  font-weight: get-font-weight("bold");
+  font-weight: fds.font-weight("bold");
 }
 
 .italic, em {
@@ -253,7 +162,7 @@ strong, b, .bold {
 
 
 .form-label {
-  @include form-label-text;
+  @include typo.form-label-text;
 }
 
 
@@ -267,43 +176,43 @@ h6:focus, .h6:focus {
 }
 
 h1, .h1{
-  margin-bottom: units(4, 'rem');
+  margin-bottom: fds.units(4, 'rem');
   margin-top: 0rem;
 }
 
 h2, .h2 {
-  margin-top: units(6, 'rem');
-  margin-bottom: units(4, 'rem');
-  @include media-breakpoint-up(md) {
-    margin-top: units(7, 'rem');
+  margin-top: fds.units(6, 'rem');
+  margin-bottom: fds.units(4, 'rem');
+  @include breakpoints.media-breakpoint-up(md) {
+    margin-top: fds.units(7, 'rem');
   }
 }
 h3, .h3{
-  margin-top: units(6, 'rem');
-  margin-bottom: units(4, 'rem');
-  @include media-breakpoint-up(md) {
-    margin-top: units(7, 'rem');
+  margin-top: fds.units(6, 'rem');
+  margin-bottom: fds.units(4, 'rem');
+  @include breakpoints.media-breakpoint-up(md) {
+    margin-top: fds.units(7, 'rem');
   }
 }
 h4, .h4{
-  margin-top: units(5, 'rem');
-  margin-bottom:  units(4, 'rem');
+  margin-top: fds.units(5, 'rem');
+  margin-bottom:  fds.units(4, 'rem');
 }
 h5, .h5{
-  margin-top: units(5, 'rem');
+  margin-top: fds.units(5, 'rem');
   margin-bottom: 0;
 }
 h6, .h6{
-  margin-top: units(5, 'rem');
+  margin-top: fds.units(5, 'rem');
   margin-bottom: 0;
 }
 .font-lead{
-  margin-top: units(5, 'rem');
-  margin-bottom:  units(4, 'rem');
+  margin-top: fds.units(5, 'rem');
+  margin-bottom:  fds.units(4, 'rem');
 }
 p, .body-text{
-  margin-top: units(4, 'rem');
-  margin-bottom: units(4, 'rem');
+  margin-top: fds.units(4, 'rem');
+  margin-bottom: fds.units(4, 'rem');
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
@@ -320,14 +229,14 @@ button.function-link{
 }
 .function-link{
   border: none;
-  @include body-copy-text;
+  @include typo.body-copy-text;
   cursor: pointer;
   display: inline-block;
   &:hover, &:visited, &:focus{
-    color: color('ink');
+    color: fds.color('ink');
   }
   .icon-svg{
-    margin-right: units(2);
+    margin-right: fds.units(2);
     fill: currentColor;
   }
 
@@ -337,14 +246,14 @@ button.function-link{
 }
 
 .back-link{
-  border-bottom: border(10);
-  color: color('black');
+  border-bottom: fds.border(10);
+  color: fds.color('black');
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: units(5);
-  @include media-breakpoint-up(lg) {
-    margin-bottom: units(6);
+  margin-bottom: fds.units(5);
+  @include breakpoints.media-breakpoint-up(lg) {
+    margin-bottom: fds.units(6);
   }
   line-height: 2.4rem;
   padding-left: 14px;
@@ -366,14 +275,14 @@ button.function-link{
     margin: auto;
   }
   &:active, &:focus, &:hover, &:visited{
-    color: color('black');
+    color: fds.color('black');
   }
 }
 
 .icon-link{
-  line-height: units($typography-body-text-line-height, 'rem');
+  line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
   .icon-svg{
-    margin-left: units(2);
+    margin-left: fds.units(2);
     width: 1.6rem;
     height: 1.6rem;
     fill: currentColor;
@@ -420,68 +329,68 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6{
-  max-width: $typography-text-max-width;
+  max-width: fds.$typography-text-max-width;
 }
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tabnav):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
-  max-width: $typography-text-max-width;
+  max-width: fds.$typography-text-max-width;
 }
 .font-lead{
-  max-width: $typography-text-max-width;
+  max-width: fds.$typography-text-max-width;
 }
 
 .form-label, .form-hint, .form-error-message{
-  max-width: $typography-text-max-width;
+  max-width: fds.$typography-text-max-width;
 }
 .form-checkbox+label, .form-radio+label{
-  max-width: $typography-text-max-width;
+  max-width: fds.$typography-text-max-width;
 }
 
 .displayheading {
   &-1 {
-    font-weight: get-font-weight("medium");
-    font-size: get-font-size($typography-display-1-heading-font-size);
-    line-height: units($typography-display-1-heading-line-height, 'rem');
+    font-weight: fds.font-weight("medium");
+    font-size: fds.font-size(fds.$typography-display-1-heading-font-size);
+    line-height: fds.units(fds.$typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: color('black');
-    letter-spacing: $typography-display-1-heading-letter-spacing;
+    color: fds.color('black');
+    letter-spacing: fds.$typography-display-1-heading-letter-spacing;
   }
   &-2 {
-    font-weight: get-font-weight("medium");
-    font-size: get-font-size($typography-display-2-heading-font-size);
-    line-height: units($typography-display-2-heading-line-height, 'rem');
+    font-weight: fds.font-weight("medium");
+    font-size: fds.font-size(fds.$typography-display-2-heading-font-size);
+    line-height: fds.units(fds.$typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: color('black');
-    letter-spacing: $typography-display-2-heading-letter-spacing;
+    color: fds.color('black');
+    letter-spacing: fds.$typography-display-2-heading-letter-spacing;
   }
 }
 
 .text-positive {
-  @include color-text-positive();
+  @include typo.color-text-positive();
 }
 
 .text-negative {
-  @include color-text-negative();
+  @include typo.color-text-negative();
 }
 
 .color-text-black {
-  color: color('black');
+  color: fds.color('black');
 }
 
 .background-dark {
-  background-color: color('black');
+  background-color: fds.color('black');
 
   p, span{
-    color: color('white');
+    color: fds.color('white');
   }
 }
 
 .field-group-title {
-  font-weight: get-font-weight("normal");
+  font-weight: fds.font-weight("normal");
 
   ~ hr {
-    border: 2px solid color('black');
+    border: 2px solid fds.color('black');
   }
 }
 

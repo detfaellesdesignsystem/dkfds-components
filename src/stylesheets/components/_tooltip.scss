@@ -1,4 +1,5 @@
-@use "../core/font-size" as *;
+@use "../values/fds-values" as fds;
+@use "../mixins/typography-mixins" as typo;
 
 .js-tooltip {
     display: inline-block;
@@ -12,19 +13,19 @@
     cursor: pointer;
 }
 .tooltip-link{
-  border-bottom: $tooltip-link-border-width $tooltip-link-border-style color($tooltip-link-border-color);
+  border-bottom: fds.$tooltip-link-border-width fds.$tooltip-link-border-style fds.color(fds.$tooltip-link-border-color);
   display: inline;
   text-decoration: none;
   &:link, &:active, &:hover, &:visited, &:focus{
-    color: color($tooltip-link-color);
+    color: fds.color(fds.$tooltip-link-color);
   }
 }
 .tooltip{
-  @include body-copy-text;
-  font-size: get-font-size('sm');
-  box-shadow: shadow($tooltip-shadow);
-  background-color: color($tooltip-background-color);
-  border: border($tooltip-border);
+  @include typo.body-copy-text;
+  font-size: fds.font-size('sm');
+  box-shadow: fds.shadow(fds.$tooltip-shadow);
+  background-color: fds.color(fds.$tooltip-background-color);
+  border: fds.border(fds.$tooltip-border);
   border-radius: 4px;
   padding: .3rem .6rem;
 }
@@ -38,7 +39,7 @@
   position: absolute;
 }
 .tooltip-popper .tooltip-arrow.down{
-    border-top:8px solid border-color($tooltip-border);
+    border-top:8px solid fds.border-color(fds.$tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     bottom: -7px;
@@ -46,7 +47,7 @@
 
     &:after{
         content: '';
-        border-top: 7px solid color($tooltip-background-color);
+        border-top: 7px solid fds.color(fds.$tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;
@@ -56,14 +57,14 @@
     }
 }
 .tooltip-popper .tooltip-arrow.up{
-    border-bottom:8px solid border-color($tooltip-border);
+    border-bottom:8px solid fds.border-color(fds.$tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     top: -7px;
     left: calc(50% - 8px);
     &:after{
         content: '';
-        border-bottom: 7px solid color($tooltip-background-color);
+        border-bottom: 7px solid fds.color(fds.$tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;

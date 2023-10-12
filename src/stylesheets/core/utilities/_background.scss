@@ -1,3 +1,5 @@
+@use "../../values/fds-values" as fds;
+
 //
 // Generates utility classes to control width in percent. 
 // Example: .w-percent-100 .w-percent-md-30
@@ -6,10 +8,10 @@
 $backgroundcolors: (
   normal: 'white',
   alternative: 'gray-100',
-  modal: $modal-overlay-background-color
+  modal: fds.$modal-overlay-background-color
 ) !default;
 
 
 @each $name, $color in $backgroundcolors { 
-  .bg-#{$name}         { background: color($color) !important; background-color: color($color) !important;}
+  .bg-#{$name}         { background: fds.color($color) !important; background-color: fds.color($color) !important;}
 }
