@@ -1,5 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "mixins/nav-mixins" as nav-mixins;
 @use "../mixins/mixins" as mixins;
 
 $sidemenu-border-left-thickness: fds.units(2);
@@ -8,8 +7,8 @@ $sidemenu-icon-size: 2.4rem;
 
 ul.sidemenu {
     @include mixins.unstyled-list();
-    @include nav-mixins.nav-link-leftdist($sidemenu-border-left-thickness, fds.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
-    @include nav-mixins.nav-link-border(fds.$sidenav-link-border-color, fds.$sidenav-sublink-border-color);
+    @include mixins.nav-link-leftdist($sidemenu-border-left-thickness, fds.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include mixins.nav-link-border(fds.$sidenav-link-border-color, fds.$sidenav-sublink-border-color);
     border-bottom: 1px solid fds.color(fds.$sidenav-border-top-bottom-color);
     border-top: 1px solid fds.color(fds.$sidenav-border-top-bottom-color);
     max-width: none;

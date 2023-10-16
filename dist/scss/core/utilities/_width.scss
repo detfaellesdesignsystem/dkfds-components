@@ -1,5 +1,5 @@
 @use "../../values/fds-values" as fds;
-@use "../../mixins/breakpoints" as breakpoints;
+@use "../../mixins/mixins" as mixins;
 
 //
 // Generates utility classes to control width in percent. 
@@ -20,9 +20,9 @@ $percent-widths: (
 ) !default;
 
 @each $breakpoint in map-keys(fds.$grid-breakpoints) {
-  @include breakpoints.media-breakpoint-up($breakpoint) {
+  @include mixins.media-breakpoint-up($breakpoint) {
     @each $name, $size in $percent-widths { 
-      $infix: breakpoints.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+      $infix: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
       .w-percent#{$infix}-#{$name}         { width: $size !important;}
     }
   }

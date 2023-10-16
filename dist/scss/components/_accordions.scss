@@ -1,6 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
-@use "../elements/buttons" as buttons;
 @use "../mixins/mixins" as mixins;
 @use "../core/typography";
 
@@ -10,7 +8,7 @@ Accordion
 ----------------------------------------
 */
 .accordion-button {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   background-color: fds.color(fds.$accordion-button-background-color-default);
   background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-closed-icon);
   background-position: left fds.units(4, 'rem') center;
@@ -56,7 +54,7 @@ Accordion
     transform: none;
     display: block;
     top: 0.8rem;
-   @include breakpoints.media-breakpoint-up(md) {
+   @include mixins.media-breakpoint-up(md) {
       text-align: center;
       position: absolute;
       transform: translateY(-50%);

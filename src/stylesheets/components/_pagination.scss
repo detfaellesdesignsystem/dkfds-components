@@ -1,5 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
 @use "../mixins/mixins" as mixins;
 
 .pagination {
@@ -12,7 +11,7 @@
     .pagination__dropdown {
         display: none;
 
-        @include breakpoints.media-breakpoint-down(sm) {
+        @include mixins.media-breakpoint-down(sm) {
             display: inline-flex;
         }
     }
@@ -23,7 +22,7 @@
         flex-flow: row nowrap;
         justify-content: center;
 
-        @include breakpoints.media-breakpoint-down(sm) {
+        @include mixins.media-breakpoint-down(sm) {
             display: none;
         }
     }
@@ -52,14 +51,14 @@
             }
 
             .pagination-nav-link {
-                @include breakpoints.media-breakpoint-down(sm) {
+                @include mixins.media-breakpoint-down(sm) {
                     display: none;
                 }
             }
         }
 
         &.button-first, &.button-last {
-            @include breakpoints.media-breakpoint-up(md) {
+            @include mixins.media-breakpoint-up(md) {
                 display: none;
             }
         }
@@ -68,7 +67,7 @@
             .icon-svg {
                 margin-right: fds.units(2);
 
-                @include breakpoints.media-breakpoint-down(sm) {
+                @include mixins.media-breakpoint-down(sm) {
                     margin-right: fds.units(0);
                 }
             }
@@ -78,7 +77,7 @@
             .icon-svg {
                 margin-left: fds.units(2);
 
-                @include breakpoints.media-breakpoint-down(sm) {
+                @include mixins.media-breakpoint-down(sm) {
                     margin-left: fds.units(0);
                 }
             }
@@ -92,7 +91,7 @@
         margin-left: fds.units(3);
         margin-right: fds.units(3);
 
-        @include breakpoints.media-breakpoint-up(md) {
+        @include mixins.media-breakpoint-up(md) {
             display: none;
         }
     }

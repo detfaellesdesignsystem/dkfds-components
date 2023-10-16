@@ -1,6 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../elements/buttons" as buttons;
-@use "../mixins/typography-mixins" as typo;
 @use "../mixins/mixins" as mixins;
 
 /*
@@ -51,12 +49,12 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
     max-width: fds.$typography-text-max-width;
   }
   .alert-close{
-    @include buttons.button-unstyled();
+    @include mixins.button-unstyled();
     cursor:pointer;
     position: absolute;
     top: fds.units(4);
     right: fds.units(4);
-    @include typo.small-text;
+    @include mixins.small-text;
     color: fds.color(fds.$alert-close-text-color);
     text-decoration: underline;
     .icon-svg{

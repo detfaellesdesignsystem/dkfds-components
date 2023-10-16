@@ -1,5 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 body.modal-open{
   overflow: hidden;
@@ -46,7 +46,7 @@ body.modal-open{
 
   .modal-header {
     padding: 16px 24px 0px 24px;
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       padding: fds.units(7) fds.units(7) fds.units(3) fds.units(7);
     }
     display: flex;
@@ -54,7 +54,7 @@ body.modal-open{
     align-items: center;
     background-color: fds.color(fds.$modal-header-background-color);
     color: fds.color(fds.$modal-header-text-color);
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       padding-right: 48px;
     }
 
@@ -65,7 +65,7 @@ body.modal-open{
   .modal-title {
     margin: fds.units(5) fds.units(8) fds.units(3) 0;
     
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       margin: 0 fds.units(8) 0 0;
     }
   }
@@ -74,7 +74,7 @@ body.modal-open{
     background-color: fds.color(fds.$modal-body-background-color);
     color: fds.color(fds.$modal-body-text-color);
     padding: 0px 24px;
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       padding: fds.units(3) fds.units(7) fds.units(3) fds.units(7);
     }
     & > *:first-child{
@@ -88,12 +88,12 @@ body.modal-open{
 
   .modal-footer{
     padding: 0px fds.units(5) fds.units(5) ;
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       padding: fds.units(3) fds.units(7) fds.units(7) fds.units(7);
     }
     background-color: fds.color(fds.$modal-footer-background-color);
     color: fds.color(fds.$modal-footer-text-color);
-    @include breakpoints.media-breakpoint-up(lg) {
+    @include mixins.media-breakpoint-up(lg) {
       display: flex;
     }
     .button {
@@ -112,7 +112,7 @@ body.modal-open{
     right: 8px;
     width: inherit;
     color: fds.color(fds.$modal-header-close-color);
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       top:fds.units(5);
       right: fds.units(6);
     }

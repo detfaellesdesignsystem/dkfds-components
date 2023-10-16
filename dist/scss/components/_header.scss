@@ -1,5 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 // Header variables
 $z-index-overlay: 8000;
@@ -13,7 +13,7 @@ $z-index-nav:     9000;
     .button {
         width: 100%;
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             width: auto;
         }
     }
@@ -27,7 +27,7 @@ $z-index-nav:     9000;
         width: auto;
         white-space: nowrap;
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: none;
         }
     }
@@ -49,7 +49,7 @@ $z-index-nav:     9000;
             height: 24px;
             width: 100%;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 max-width: 30%;
             }
 
@@ -66,7 +66,7 @@ $z-index-nav:     9000;
             display: flex;
             align-items: center;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 flex-direction: row;
             }
         }
@@ -74,7 +74,7 @@ $z-index-nav:     9000;
         .portal-user {
             display: none;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 margin-left: auto;
                 display: flex;
                 align-items: center;
@@ -105,7 +105,7 @@ $z-index-nav:     9000;
             overflow-wrap: break-word;
         }
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: none;
         }
     }
@@ -127,7 +127,7 @@ $z-index-nav:     9000;
             max-width: 100%;
             overflow-wrap: break-word;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 max-width: 70%;
             }
             
@@ -140,7 +140,7 @@ $z-index-nav:     9000;
                 display: inline-block;
                 max-width: 100%;
 
-                @include breakpoints.media-breakpoint-up(md) {
+                @include mixins.media-breakpoint-up(md) {
                     font-size: fds.font-size(fds.$header-solution-text-size-desktop);
                     line-height: fds.units(fds.$header-solution-line-height-desktop, 'rem');
                 }
@@ -164,7 +164,7 @@ $z-index-nav:     9000;
         .additional-info {
             display: none;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 margin-left: auto;
                 text-align: right;
                 display: block;
@@ -216,7 +216,7 @@ $z-index-nav:     9000;
             }
         }
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: none;
         }
     }
@@ -225,7 +225,7 @@ $z-index-nav:     9000;
     .navigation-menu {
         display: none;
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             border-left: none;
             display: block;
             overflow-y: visible;
@@ -239,7 +239,7 @@ $z-index-nav:     9000;
             padding-left: 0;
             padding-right: 0;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 padding-left: calc(fds.$grid-gutter-width / 2);
                 padding-right: calc(fds.$grid-gutter-width / 2);
                 width: 100%;
@@ -253,7 +253,7 @@ $z-index-nav:     9000;
                 display: none;
                 flex: 1 1 auto;
 
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                     display: block;
                 }
             }
@@ -264,7 +264,7 @@ $z-index-nav:     9000;
                 padding-top: fds.units(4);
                 padding-bottom: fds.units(4);
 
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                     padding-top: fds.units(3);
                     padding-bottom: fds.units(3);
                     margin-left: auto;
@@ -273,7 +273,7 @@ $z-index-nav:     9000;
                 .form-input {
                     max-width: 100%;
 
-                    @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                         max-width: 24rem;
                         min-width: 24rem;
                     }
@@ -334,7 +334,7 @@ $z-index-nav:     9000;
         align-items: center;
         min-height: fds.units(8);
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: none;
         }
 
@@ -379,7 +379,7 @@ $z-index-nav:     9000;
         border-bottom: 1px solid fds.color(fds.$header-portal-mobile-border-color);
     }
 
-    @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
         .solution-info ~ .navigation-menu {
             border-top: 1px solid fds.color(fds.$header-border-color);
         }

@@ -1,8 +1,6 @@
 @use "../values/fds-values" as fds;
 @use "../values/colors/theme-colors" as theme;
 @use "../mixins/mixins" as mixins;
-@use "../mixins/typography-mixins" as typo;
-@use "../mixins/breakpoints" as breakpoints;
 
 html {
   font-family: fds.$typography-font-family;
@@ -85,39 +83,39 @@ a {
 }
 
 h1, .h1 {
-  @include typo.h1;
+  @include mixins.h1;
 }
 h2, .h2{
-  @include typo.h2;
+  @include mixins.h2;
 }
 
 h3, .h3 {
-  @include typo.h3;
+  @include mixins.h3;
 }
 
 h4, .h4{
-  @include typo.h4;
+  @include mixins.h4;
 }
 
 h5, .h5{
-  @include typo.h5;
+  @include mixins.h5;
 }
 
 h6, .h6{
-  @include typo.h6;
+  @include mixins.h6;
 }
 
 p, .body-text, .body-copy-text{
-  @include typo.body-copy-text;
+  @include mixins.body-copy-text;
 }
 figcaption, .figcaption{
-  @include typo.caption;
+  @include mixins.caption;
   p{
-    @include typo.caption;
+    @include mixins.caption;
   }
 }
 .subheading{
-  @include typo.subheading;
+  @include mixins.subheading;
 }
 
 .font-lead {
@@ -137,7 +135,7 @@ figcaption, .figcaption{
   letter-spacing: fds.$typography-article-letter-spacing;
 }
 small, .small-text {
-  @include typo.small-text();
+  @include mixins.small-text();
 }
 
 .weight-normal {
@@ -162,7 +160,7 @@ strong, b, .bold {
 
 
 .form-label {
-  @include typo.form-label-text;
+  @include mixins.form-label-text;
 }
 
 
@@ -183,14 +181,14 @@ h1, .h1{
 h2, .h2 {
   margin-top: fds.units(6, 'rem');
   margin-bottom: fds.units(4, 'rem');
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     margin-top: fds.units(7, 'rem');
   }
 }
 h3, .h3{
   margin-top: fds.units(6, 'rem');
   margin-bottom: fds.units(4, 'rem');
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     margin-top: fds.units(7, 'rem');
   }
 }
@@ -229,7 +227,7 @@ button.function-link{
 }
 .function-link{
   border: none;
-  @include typo.body-copy-text;
+  @include mixins.body-copy-text;
   cursor: pointer;
   display: inline-block;
   &:hover, &:visited, &:focus{
@@ -252,7 +250,7 @@ button.function-link{
   display: inline-block;
   position: relative;
   margin-bottom: fds.units(5);
-  @include breakpoints.media-breakpoint-up(lg) {
+  @include mixins.media-breakpoint-up(lg) {
     margin-bottom: fds.units(6);
   }
   line-height: 2.4rem;
@@ -367,11 +365,11 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 .text-positive {
-  @include typo.color-text-positive();
+  @include mixins.color-text-positive();
 }
 
 .text-negative {
-  @include typo.color-text-negative();
+  @include mixins.color-text-negative();
 }
 
 .color-text-black {

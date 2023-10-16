@@ -1,12 +1,11 @@
 @use "../values/fds-values" as fds;
 @use "../mixins/mixins" as mixins;
-@use "../mixins/breakpoints" as breakpoints;
 
 .language-switcher{
   border-top: fds.border(fds.$language-switcher-border);
   background-color: fds.color(fds.$language-switcher-background-color);
   padding-top: #{fds.units(5)};
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     margin-top: -#{fds.units(5)};
     padding-top: #{fds.units(4)};
   }
@@ -19,7 +18,7 @@
       padding-left: fds.units(6);
 
 
-      @include breakpoints.media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         display: inline-block;
         padding-left: 0;
         &::after {

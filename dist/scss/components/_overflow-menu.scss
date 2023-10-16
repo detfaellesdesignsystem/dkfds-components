@@ -1,9 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
-@use "../elements/buttons" as buttons;
 @use "../mixins/mixins" as mixins;
-@use "../mixins/typography-mixins" as typo;
-@use "../mixins/add-background-svg" as svg;
 
 .overflow-menu + h1 {
     margin-top: 0;
@@ -15,13 +11,13 @@
     width: 100%;
 
 
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         width: auto;
         display: inline-block;
     }
 
     .button-overflow-menu {
-        @include buttons.button-unstyled;
+        @include mixins.button-unstyled;
         min-height: 40px;
         min-width: 40px;
         padding: 8px 0;
@@ -97,11 +93,11 @@
         padding-bottom: fds.units(3);
         top: calc(100% + #{fds.$overflow-menu-dropdown-distance});
 
-        @include breakpoints.media-breakpoint-up(md) {
+        @include mixins.media-breakpoint-up(md) {
             width: auto;
         }
 
-        @include breakpoints.media-breakpoint-up(sm) {
+        @include mixins.media-breakpoint-up(sm) {
             min-width: 28rem;
         }
 
@@ -117,13 +113,13 @@
         color: fds.color(fds.$overflow-menu-content-text-color);
 
         button {
-            @include buttons.button-unstyled;
+            @include mixins.button-unstyled;
             line-height: fds.units(5, 'rem');
             cursor: pointer;
         }
 
         a {
-            @include typo.body-copy-text;
+            @include mixins.body-copy-text;
             display: block;
             text-decoration: none;
             line-height: fds.units(5, 'rem');
@@ -152,14 +148,14 @@
     }
 
     &.overflow-menu--md-no-responsive .sidemenu {
-        @include breakpoints.media-breakpoint-down(sm) {
+        @include mixins.media-breakpoint-down(sm) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
     &.overflow-menu--lg-no-responsive .sidemenu {
-        @include breakpoints.media-breakpoint-down(md) {
+        @include mixins.media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
@@ -167,7 +163,7 @@
 
     &--open-right {
         .overflow-menu-inner {
-            @include breakpoints.media-breakpoint-up(md) {
+            @include mixins.media-breakpoint-up(md) {
                 left: calc(50% - 19px);
 
                 &:after {
@@ -202,7 +198,7 @@
 
         //overflow content always visible on large screens.
         //does not look like a dropdown.
-        @include breakpoints.media-breakpoint-up(md) {
+        @include mixins.media-breakpoint-up(md) {
             display: block;
 
             &:before,
@@ -230,7 +226,7 @@
 
         //overflow content always visible on large screens.
         //does not look like a dropdown.
-        @include breakpoints.media-breakpoint-up(lg) {
+        @include mixins.media-breakpoint-up(lg) {
             display: block;
 
             &:before,
@@ -273,7 +269,7 @@
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
             font-weight: fds.font-weight("semibold");
-            @include svg.add-background-svg('done');
+            @include mixins.add-background-svg('done');
             background-repeat: no-repeat;
             background-position: calc(100% - #{fds.units(4)}) center;
         }

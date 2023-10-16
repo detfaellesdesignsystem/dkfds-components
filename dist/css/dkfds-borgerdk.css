@@ -10212,6 +10212,7 @@ body.modal-open{
 .fds-modal[aria-hidden=true] .modal-content{
   animation:modalslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
+
 .mobile_nav-active{
   overflow:hidden;
 }

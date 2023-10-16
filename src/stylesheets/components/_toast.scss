@@ -1,6 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
-@use "../elements/buttons" as buttons;
+@use "../mixins/mixins" as mixins;
 
 $toast-backgrounds: (
     success: fds.$toast-success-background-color,
@@ -31,7 +30,7 @@ $toast-icon-backgrounds: (
     bottom: auto;
     z-index: 7000;
 
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         right: fds.units(4);
         left: auto;
         top: fds.units(8);
@@ -56,7 +55,7 @@ $toast-icon-backgrounds: (
         display: none;
     }
 
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         width: 464px;
     }
 
@@ -76,7 +75,7 @@ $toast-icon-backgrounds: (
         width: 100%;
 
         .toast-close {
-            @include buttons.button-unstyled;
+            @include mixins.button-unstyled;
             position: absolute;
             top: fds.units(4);
             right: fds.units(4);

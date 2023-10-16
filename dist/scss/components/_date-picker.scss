@@ -1,7 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../elements/buttons" as buttons;
-@use "../mixins/add-background-svg" as svg;
-@use "../mixins/breakpoints" as breakpoints;
 @use "../mixins/mixins" as mixins;
 
 // Date Picker
@@ -28,8 +25,8 @@
   width: calc(100% - 16px - 16px);
 }
 .date-picker__button {
-  @include buttons.button-unstyled;
-  @include svg.add-background-svg(fds.$datepicker-button-icon);
+  @include mixins.button-unstyled;
+  @include mixins.add-background-svg(fds.$datepicker-button-icon);
   align-self: stretch;
   background-color: transparent;
   background-position: center;
@@ -54,7 +51,7 @@
   left: 0;
   position: absolute;
   width: 100%;
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     width: 344px;
   }
   z-index: 100;
@@ -129,7 +126,7 @@
 .date-picker__calendar__previous-month,
 .date-picker__calendar__next-year,
 .date-picker__calendar__next-month {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   background-position: center;
   height: 30px;
   padding: 20px 10px;
@@ -141,19 +138,19 @@
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
-  @include svg.add-background-svg(fds.$datepicker-icon-previous-year);
+  @include mixins.add-background-svg(fds.$datepicker-icon-previous-year);
 }
 
 .date-picker__calendar__previous-month:not([disabled]) {
-  @include svg.add-background-svg(fds.$datepicker-icon-previous-month);
+  @include mixins.add-background-svg(fds.$datepicker-icon-previous-month);
 }
 
 .date-picker__calendar__next-year:not([disabled]) {
-  @include svg.add-background-svg(fds.$datepicker-icon-next-year);
+  @include mixins.add-background-svg(fds.$datepicker-icon-next-year);
 }
 
 .date-picker__calendar__next-month:not([disabled]) {
-  @include svg.add-background-svg(fds.$datepicker-icon-next-month);
+  @include mixins.add-background-svg(fds.$datepicker-icon-next-month);
 }
 
 .date-picker__calendar__day-of-week {
@@ -161,7 +158,7 @@
 }
 
 .date-picker__calendar__date {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   text-align: right;
   width: 100%;
   padding: 10px 8px 10px 0;
@@ -169,7 +166,7 @@
   cursor: pointer;
 
   
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     padding: 10px 12px 10px 0;
   }
 
@@ -280,7 +277,7 @@
 
 .date-picker__calendar__year-selection,
 .date-picker__calendar__month-selection {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   display: inline-block;
   padding: 8px 4px;
   width: 100%;
@@ -288,7 +285,7 @@
   font-weight: fds.font-weight("semibold");
   cursor: pointer;
 
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     height: 100%;
     width: auto;
     text-align: left;
@@ -302,7 +299,7 @@
 }
 
 .date-picker__calendar__month {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   padding: 10px 0;
   width: 100%;
   display: block;
@@ -347,7 +344,7 @@
 
 .date-picker__calendar__previous-year-chunk,
 .date-picker__calendar__next-year-chunk {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   background-position: center;
   margin: auto;
   padding: 0px 8px;
@@ -355,15 +352,15 @@
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
-  @include svg.add-background-svg("chevron-left");
+  @include mixins.add-background-svg("chevron-left");
 }
 
 .date-picker__calendar__next-year-chunk:not([disabled]) {
-  @include svg.add-background-svg("chevron-right");
+  @include mixins.add-background-svg("chevron-right");
 }
 
 .date-picker__calendar__year {
-  @include buttons.button-unstyled;
+  @include mixins.button-unstyled;
   padding: 10px 0;
   width: 100%;
   display: block;

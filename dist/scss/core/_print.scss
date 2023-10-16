@@ -1,6 +1,6 @@
 @use "sass:math";
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 @media print {
     html {
@@ -75,7 +75,7 @@
                 margin-left: 0;
                 text-align: right;
 
-                @include breakpoints.media-breakpoint-up(#{fds.$nav-responsive-breakpoint}) {
+                @include mixins.media-breakpoint-up(#{fds.$nav-responsive-breakpoint}) {
                     margin-left: 0;
                 }
             }
@@ -137,7 +137,7 @@
         }
 
         .modal__footer {
-            @include breakpoints.media-breakpoint-up(lg) {
+            @include mixins.media-breakpoint-up(lg) {
                 display: block;
             }
         }
@@ -149,7 +149,7 @@
     .table.table-md-responsive-headers:not(.d-print-table),
     .table.table-lg-responsive-headers:not(.d-print-table),
     .table.table-xl-responsive-headers:not(.d-print-table) {
-        @include breakpoints.media-breakpoint-down(sm) {
+        @include mixins.media-breakpoint-down(sm) {
             display: block;
 
             thead {

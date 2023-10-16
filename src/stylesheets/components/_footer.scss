@@ -1,5 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 footer {
 
@@ -19,7 +19,7 @@ footer {
     padding-bottom: fds.units(4);
     margin-top: 8rem;
     color: fds.color(fds.$footer-text-color);
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       padding-bottom: calc(#{fds.units(9)} + #{fds.units(4)});
     }
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
@@ -37,7 +37,7 @@ footer {
       &:not(:first-child) {
         margin-top: fds.units(5);
       }
-      @include breakpoints.media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         &:not(:first-child) {
           margin-top: 0;
         }
@@ -69,7 +69,7 @@ footer {
     .inline-list {
     > li:not(:last-child) {
         &:after {
-          @include breakpoints.media-breakpoint-up(md) {
+          @include mixins.media-breakpoint-up(md) {
             content: "\00b7" !important;
             margin-left: fds.units(3);
             margin-right: fds.units(3);

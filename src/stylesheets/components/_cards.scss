@@ -1,6 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/typography-mixins" as typo;
-@use "../mixins/breakpoints" as breakpoints;
 @use "../mixins/mixins" as mixins;
 
 .card {
@@ -72,18 +70,18 @@
   background-color: fds.color(fds.$cards-header-background-color);
   padding: fds.units(4) fds.units(5);
   .header-title {
-    @include typo.body-copy-text;
+    @include mixins.body-copy-text;
     font-weight: fds.font-weight("semibold");
     color: fds.color(fds.$cards-heading-color);
     margin:fds.units(0);
 
     &.large-text {
-      @include typo.h1;
+      @include mixins.h1;
       color: fds.color(fds.$cards-heading-large-color);
     }
   }
   .sub-header {
-    @include typo.body-copy-text;
+    @include mixins.body-copy-text;
     margin-top:  fds.units(0);
     margin-bottom: fds.units(0);
     color: fds.color(fds.$cards-sub-heading-color);
@@ -93,7 +91,7 @@
   background-color: fds.color(fds.$cards-text-background-color);
   padding: fds.units(4) fds.units(5);
   .text {
-    @include typo.body-copy-text;
+    @include mixins.body-copy-text;
     margin-top: fds.units(4);
     color: fds.color(fds.$cards-text-color);
     margin-bottom: fds.units(0);
@@ -102,7 +100,7 @@
 
 //card-content
 .card-content {
-  @include typo.body-copy-text;
+  @include mixins.body-copy-text;
   padding: fds.units(0);
   color: fds.color(fds.$cards-text-color);
   background-color: fds.color(fds.$cards-content-background-color);
@@ -122,7 +120,7 @@
 
 //card-action
 .card-action {
-  @include typo.body-copy-text;
+  @include mixins.body-copy-text;
   padding: fds.units(4) fds.units(5);
   color: fds.color(fds.$cards-text-color);
   margin-bottom: fds.units(0);
@@ -140,13 +138,13 @@
       margin-right: fds.units(4);
       margin-top:fds.units(3);
 
-      @include breakpoints.media-breakpoint-up(md) {
+      @include mixins.media-breakpoint-up(md) {
         margin-right: fds.units(4);
         margin-top:fds.units(3);
       }
     }
     .button + .button{
-      @include breakpoints.media-breakpoint-up(sm) {
+      @include mixins.media-breakpoint-up(sm) {
         margin-left: 0;
         &:first-child{
           margin-left: 0;

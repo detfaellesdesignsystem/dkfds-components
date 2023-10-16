@@ -1,11 +1,10 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
 @use "../mixins/mixins" as mixins;
 @use "accordions";
 
 .tabnav {
   @extend .accordion;
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     @include mixins.unstyled-list;
     list-style-type: none;
     padding: 0;
@@ -20,7 +19,7 @@
     text-decoration: none;
     margin-top: fds.units(3);
     margin-bottom: 0;
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       border: none;
     }
 
@@ -39,7 +38,7 @@
       }
     }
 
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       display: inline-block;
       width: auto;
       color: fds.color(fds.$tavnav-button-text-color);
@@ -95,7 +94,7 @@
     }
   }
 
-  @include breakpoints.media-breakpoint-up(md) {
+  @include mixins.media-breakpoint-up(md) {
     > button:last-of-type{
       margin-right: fds.units(3);
     }
@@ -103,7 +102,7 @@
 
   &-panel{
     @extend .accordion-content;
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       display: none;
       border: fds.border(fds.$tabnav-border);
       border-radius: 0;

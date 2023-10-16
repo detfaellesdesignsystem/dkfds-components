@@ -1,8 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "mixins/nav-mixins" as nav-mixins;
 @use "../mixins/mixins" as mixins;
-@use "../mixins/breakpoints" as breakpoints;
-@use "../mixins/add-background-svg" as svg;
 
 $navigation-row-link-padding-left-right: fds.units(305);
 $navigation-desktop-border-bottom-thickness: fds.units(2);
@@ -13,8 +10,8 @@ $navigation-desktop-border-bottom-thickness: fds.units(2);
 
 ul.mainmenu {
     @include mixins.unstyled-list;
-    @include nav-mixins.nav-link-leftdist(fds.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include nav-mixins.nav-link-border(fds.$navigation-link-border-color, fds.$navigation-sublink-border-color);
+    @include mixins.nav-link-leftdist(fds.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include mixins.nav-link-border(fds.$navigation-link-border-color, fds.$navigation-sublink-border-color);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -22,7 +19,7 @@ ul.mainmenu {
     border-bottom: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
     border-top: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
 
-    @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
         flex-direction: row;
         border-bottom: 0;
         border-top: 0;
@@ -38,7 +35,7 @@ ul.mainmenu {
     li {
         background-color: fds.color(fds.$navigation-link-background-color);
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             border-top: 0;
 
             &.active {
@@ -69,7 +66,7 @@ ul.mainmenu {
         &.current {
             background-color: fds.color(fds.$navigation-link-current-background-color);
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 background-color: fds.color(fds.$navigation-link-background-color);
             }
 
@@ -96,7 +93,7 @@ ul.mainmenu {
         max-width: unset;
         cursor: pointer;
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             padding-left: $navigation-row-link-padding-left-right;
             padding-right: $navigation-row-link-padding-left-right;
             padding-bottom: 0;
@@ -106,14 +103,14 @@ ul.mainmenu {
         &:hover {
             background-color: fds.color(fds.$navigation-link-background-color-hover);
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 padding-left: $navigation-row-link-padding-left-right;
                 border-left: 0;
                 background-color: fds.color(fds.$navigation-link-background-color); /* Don't use hover color on desktop */
             }
             
             span {
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                     border-bottom: $navigation-desktop-border-bottom-thickness solid fds.color(fds.$navigation-link-current-border-color);
                 }
             }
@@ -129,7 +126,7 @@ ul.mainmenu {
             position: relative;
             z-index: 2;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 outline-offset: 0;
             }
         }
@@ -139,7 +136,7 @@ ul.mainmenu {
             width: 100%;
             overflow-wrap: break-word;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 display: block;
                 border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
                 padding-bottom: fds.units(305);
@@ -161,7 +158,7 @@ ul.mainmenu {
         position: relative;
         width: 100%;
 
-        @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: inline-block;
         }
 
@@ -172,7 +169,7 @@ ul.mainmenu {
             text-decoration: none;
             border: 0;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 position: relative;
             }
 
@@ -182,25 +179,25 @@ ul.mainmenu {
                 background-size: 2.4rem;
                 padding-right: calc(2.4rem + 4px);
 
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                     background-position-y: top;
                     white-space: nowrap;
                 }
             }
 
             &[aria-expanded="false"] span {
-                @include svg.add-background-svg("add");
+                @include mixins.add-background-svg("add");
 
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                    @include svg.add-background-svg("expand-more");
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include mixins.add-background-svg("expand-more");
                 }
             }
 
             &[aria-expanded="true"] span {
-                @include svg.add-background-svg("remove");
+                @include mixins.add-background-svg("remove");
 
-                @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                    @include svg.add-background-svg("expand-less");
+                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include mixins.add-background-svg("expand-less");
                 }
             }
 
@@ -212,7 +209,7 @@ ul.mainmenu {
             border: 0;
             width: 100%;
 
-            @include breakpoints.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 position: absolute;
                 z-index: 1;
                 top: 100%;

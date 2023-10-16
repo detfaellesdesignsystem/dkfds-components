@@ -1,7 +1,6 @@
 @use 'sass:math';
 @use "../values/fds-values" as fds;
 @use "../mixins/mixins" as mixins;
-@use "../mixins/typography-mixins" as typo;
 
 .form-group{
   margin-top: fds.units(5); //4
@@ -21,7 +20,7 @@
 }
 .form-label {
   display: inline-block;
-  @include typo.form-label-text();
+  @include mixins.form-label-text();
 }
 
 
@@ -202,7 +201,7 @@ $input-left-right-padding-feedback: calc(16px - #{fds.$input-border-width-feedba
 
 }
 .form-error-message {
-  @include typo.form-label-text();
+  @include mixins.form-label-text();
   display: block;
   color: fds.color('error');
   margin-top: fds.units(2);

@@ -1,5 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/typography-mixins" as typo;
+@use "../mixins/mixins" as mixins;
 
 .js-tooltip {
     display: inline-block;
@@ -21,7 +21,7 @@
   }
 }
 .tooltip{
-  @include typo.body-copy-text;
+  @include mixins.body-copy-text;
   font-size: fds.font-size('sm');
   box-shadow: fds.shadow(fds.$tooltip-shadow);
   background-color: fds.color(fds.$tooltip-background-color);

@@ -1,11 +1,11 @@
-@use "../values/fds-values" as fds;
-@use "mixins" as mixins;
-@use "../values/colors/theme-colors" as theme;
+@use "../../values/fds-values" as fds;
+@use "base-mixins" as base;
+@use "../../values/colors/theme-colors" as theme;
 
 @mixin h1 {
-    @include mixins.responsive-style(fds.$typography-h1-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h1-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h1-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h1-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h1-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h1-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("bold");
     color: fds.color('black');
     text-transform: none;
@@ -13,45 +13,45 @@
 }
 
 @mixin h2 {
-    @include mixins.responsive-style(fds.$typography-h2-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h2-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h2-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h2-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h2-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h2-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("semibold");
     color: fds.color('black');
     text-transform: none;
 }
 
 @mixin h3 {
-    @include mixins.responsive-style(fds.$typography-h3-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h3-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h3-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h3-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h3-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h3-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("semibold");
     color: fds.color('black');
     text-transform: none;
 }
 
 @mixin h4 {
-    @include mixins.responsive-style(fds.$typography-h4-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h4-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h4-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h4-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h4-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h4-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("semibold");
     color: fds.color('black');
     text-transform: none;
 }
 
 @mixin h5 {
-    @include mixins.responsive-style(fds.$typography-h5-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h5-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h5-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h5-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h5-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h5-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("semibold");
     color: fds.color('black');
     text-transform: none;
 }
 
 @mixin h6 {
-    @include mixins.responsive-style(fds.$typography-h6-font-size, font-size);
-    @include mixins.responsive-style(fds.$typography-h6-line-height, line-height);
-    @include mixins.responsive-style(fds.$typography-h6-letter-spacing, letter-spacing);
+    @include base.responsive-style(fds.$typography-h6-font-size, font-size);
+    @include base.responsive-style(fds.$typography-h6-line-height, line-height);
+    @include base.responsive-style(fds.$typography-h6-letter-spacing, letter-spacing);
     font-weight: fds.font-weight("medium");
     color: fds.color('black');
 }

@@ -1,5 +1,4 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
 @use "../mixins/mixins" as mixins;
 
 // Buttons
@@ -43,7 +42,7 @@ a.button {
         margin-top: fds.units(3);
     }
 
-    @include breakpoints.media-breakpoint-up(sm) {
+    @include mixins.media-breakpoint-up(sm) {
         width: auto;
 
         & + button {
@@ -251,32 +250,13 @@ a.button {
     }
 }
 
-@mixin button-unstyled {
-    background-color: transparent;
-    border: 0;
-    border-radius: 0;
-    font-weight: fds.font-weight("normal");
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    -webkit-font-smoothing: auto;
-    color: inherit;
-    min-height: auto;
-
-    &:hover,
-    &:focus {
-        background-color: transparent;
-        color: inherit;
-    }
-}
-
 .button-unstyled {
-    @include button-unstyled;
+    @include mixins.button-unstyled;
     width: auto;
 }
 
 .button + .button {
-    @include breakpoints.media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         margin-left: 8px;
 
         &:first-child {

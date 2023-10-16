@@ -1,12 +1,11 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
-@use "../mixins/grid-mixins" as grid;
+@use "../mixins/mixins" as mixins;
 
 
 // basic container
 .container {
-  @include grid.grid-container();
-  @include grid.grid-container-max-widths();
+  @include mixins.grid-container();
+  @include mixins.grid-container-max-widths();
 }
 
 .container[class*='w-']{
@@ -16,7 +15,7 @@
 
 // basic row...
 .row {
-  @include grid.grid-row();
+  @include mixins.grid-row();
 
   // row with no column gaps.
   &.no-gutters {
@@ -51,7 +50,7 @@
 }
 
 @each $breakpoint in map-keys(fds.$grid-breakpoints) {
-  $mq-key: breakpoints.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+  $mq-key: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
 
   // Allow columns to stretch full width below their breakpoints
   @for $i from 1 through fds.$grid-columns {
@@ -64,7 +63,7 @@
     @extend %grid-column;
   }
 
-  @include breakpoints.media-breakpoint-up($breakpoint, fds.$grid-breakpoints) {
+  @include mixins.media-breakpoint-up($breakpoint, fds.$grid-breakpoints) {
     // Provide basic `.col-{bp}` classes for equal-width flexbox columns
     .col#{$mq-key} {
       flex-basis: 0;
@@ -79,7 +78,7 @@
 
     @for $i from 1 through fds.$grid-columns {
       .col#{$mq-key}-#{$i} {
-        @include grid.grid-col($i, fds.$grid-columns);
+        @include mixins.grid-col($i, fds.$grid-columns);
       }
     }
 
@@ -100,18 +99,18 @@
 @for $i from 0 through (fds.$grid-columns - 1) { //-1 to prevent offset-12
   @if not ($i == 0) { // Avoid emitting useless .offset-0
     .offset-#{$i} {
-      @include grid.grid-offset($i, fds.$grid-columns);
+      @include mixins.grid-offset($i, fds.$grid-columns);
     }
   }
 }
 // responsive offsets
 @each $breakpoint in map-keys(fds.$grid-breakpoints) {
-  $mq-key: breakpoints.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
-  @include breakpoints.media-breakpoint-up($breakpoint, fds.$grid-breakpoints) {
+  $mq-key: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+  @include mixins.media-breakpoint-up($breakpoint, fds.$grid-breakpoints) {
     @for $i from 0 through (fds.$grid-columns - 1) { //-1 to prevent offset-12
       @if not ($mq-key == "" and $i == 0) { // Avoid emitting useless .offset-0
         .offset#{$mq-key}-#{$i} {
-          @include grid.grid-offset($i, fds.$grid-columns);
+          @include mixins.grid-offset($i, fds.$grid-columns);
         }
       }
     }

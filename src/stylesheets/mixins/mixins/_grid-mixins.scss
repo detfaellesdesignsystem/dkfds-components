@@ -1,6 +1,6 @@
 @use 'sass:math';
-@use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../../values/fds-values" as fds;
+@use "breakpoints" as breakpoints;
 
 /// Grid system
 //

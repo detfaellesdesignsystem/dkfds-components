@@ -1,6 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/grid-mixins" as grid;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 .cookie-container{
   color: fds.color(fds.$cookie-message-text-color);
@@ -14,7 +13,7 @@
   margin-right: fds.units(3);
 
   .cookie-message{
-    @include grid.grid-container();
+    @include mixins.grid-container();
     background-color: fds.color(fds.$cookie-message-background-color);
     border: fds.border(fds.$cookie-message-border);
     box-shadow: fds.shadow(fds.$cookie-message-shadow);
@@ -29,12 +28,12 @@
     }
 
 
-    @include breakpoints.media-breakpoint-up(xl) {
+    @include mixins.media-breakpoint-up(xl) {
       max-width: calc(#{map-get(fds.$container-max-widths, xl)} + #{fds.units(7)} + #{fds.units(7)});
     }
 
     .cookie-text, .cookie-actions{
-      @include breakpoints.media-breakpoint-up(xl) {
+      @include mixins.media-breakpoint-up(xl) {
         padding-left: fds.units(7);
         padding-right: fds.units(7);
       }

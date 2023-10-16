@@ -1,5 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
+@use "../mixins/mixins" as mixins;
 
 .button.back-to-top-button {
     box-shadow: fds.shadow(fds.$back-to-top-button-shadow);
@@ -24,7 +24,7 @@
         z-index: auto;
     }
 
-    @include breakpoints.media-breakpoint-down(md) {
+    @include mixins.media-breakpoint-down(md) {
         .icon-svg {
             margin-right: fds.units(0);
         }

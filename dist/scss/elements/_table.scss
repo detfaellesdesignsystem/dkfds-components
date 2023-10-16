@@ -1,132 +1,5 @@
 @use "../values/fds-values" as fds;
-@use "../mixins/breakpoints" as breakpoints;
-
-@mixin responsive-table() {
-    display: block;
-
-    thead {
-        display: none;
-    }
-
-    tbody,
-    tr {
-        display: block;
-    }
-
-    tr {
-        border-bottom: fds.border(fds.$table-row-border);
-
-        &:last-child {
-            border-bottom: none;
-        }
-    }
-
-    td,
-    th {
-        display: block;
-        border: none;
-        padding-left: calc(fds.units(4) - 1px); //1px for the border
-        padding-right: calc(fds.units(4) - 1px); //1px for the border
-        padding-top: fds.units(4);
-        padding-bottom: fds.units(4);
-
-        &:last-child {
-            padding-bottom: calc(fds.units(4) - 1px); //1px for the border
-        }
-
-        &[data-title]:not([data-title=""]):before {
-            content: attr(data-title);
-            text-align: left;
-            display: block;
-            font-weight: fds.font-weight(fds.$table-head-font-weight);
-        }
-    }
-
-    &.table--compact {
-
-        th,
-        td {
-            padding-top: fds.units(3);
-            padding-bottom: fds.units(3);
-
-            &:last-child {
-                padding-bottom: calc(fds.units(3) - 1px); //1px for the border
-            }
-        }
-    }
-
-    &.table--extracompact {
-
-        th,
-        td {
-            padding-top: 1px;
-            padding-bottom: 1px;
-
-            &:last-child {
-                padding-bottom: 0px;
-            }
-        }
-    }
-
-    &.table--borderless, &.structured-list {
-
-        td,
-        th {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        tr {
-            &:first-child {
-
-                td,
-                th {
-                    &:first-child {
-                        border-top: fds.border(fds.$table-row-border);
-                    }
-                }
-            }
-
-            &:last-child {
-
-                td,
-                th {
-                    border-bottom: none;
-
-                    &:last-child {
-                        border-bottom: fds.border(fds.$table-row-border);
-                    }
-                }
-            }
-        }
-    }
-
-    &.table--zebra.table--borderless {
-
-        td,
-        th {
-            padding-left: fds.units(4);
-            padding-right: fds.units(4);
-        }
-    }
-
-    &.structured-list {
-        
-        tbody tr {
-            &:first-child td {
-                border-top: none;
-            }
-
-            th {
-                padding-bottom: 0;
-            }
-
-            td:first-of-type {
-                padding-top: 0;
-            }
-        }
-    }
-}
+@use "../mixins/mixins" as mixins;
 
 .table {
     margin: 0;
@@ -403,18 +276,18 @@
 
         //Make row into a "card" on phone
         &.table--responsive-headers {
-            @include breakpoints.media-breakpoint-down(sm) {
-                @include responsive-table();
+            @include mixins.media-breakpoint-down(sm) {
+                @include mixins.responsive-table();
             }
         }
 
         @each $breakpoint in map-keys(fds.$grid-breakpoints) {
             @if $breakpoint !=xs and $breakpoint !=xl {
-                @include breakpoints.media-breakpoint-down($breakpoint) {
-                    $infix: breakpoints.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+                @include mixins.media-breakpoint-down($breakpoint) {
+                    $infix: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
-                        @include responsive-table();
+                        @include mixins.responsive-table();
                     }
                 }
             }
