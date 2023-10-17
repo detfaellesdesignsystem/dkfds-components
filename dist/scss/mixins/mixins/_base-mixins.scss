@@ -34,7 +34,7 @@
 // Focus state mixin
 
 @mixin focus-outline {
-    outline: fds.$theme-focus-width fds.$theme-focus-style func.color(fds.$theme-focus-color);
+    outline: fds.$theme-focus-width fds.$theme-focus-style func.color("focus");
 }
 
 @mixin focus-offset {

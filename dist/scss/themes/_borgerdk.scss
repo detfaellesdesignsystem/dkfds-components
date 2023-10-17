@@ -2,7 +2,7 @@
 // Borger.dk theme
 // ----------------------------------------
 
-@use '../values/colors/theme-colors' with (
+@use '../variables/theme-colors' with (
     $theme-color-primary:               #44831E,
     $theme-color-primary-dark:          #3C5C22,
     $theme-color-primary-darker:        #233614

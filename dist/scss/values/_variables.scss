@@ -1,5 +1,3 @@
-@use "colors/theme-colors" as theme;
-
 //----------------
 // Grid
 // ----------------
@@ -114,7 +112,6 @@ Focus styles
 ----------------------------------------
 */
 
-$theme-focus-color: 'gray-500' !default;
 $theme-focus-offset: 1px !default;
 $theme-focus-style: solid !default;
 $theme-focus-width: 4px !default;
@@ -293,16 +290,16 @@ $accordion-button-open-border-radius: $theme-border-radius $theme-border-radius 
 $accordion-button-color-default: 'black' !default;
 $accordion-button-color-hover: 'black' !default;
 $accordion-button-error-border-width: 2px !default;
-$accordion-button-error-border-color: theme.$theme-color-error !default;
+$accordion-button-error-border-color: "error" !default;
 $accordion-content-border: 10 !default;
 $accordion-content-border-radius: 0 0 $theme-border-radius $theme-border-radius !default;
 $accordion-content-background-color: 'white' !default;
 $accordion-content-color: 'black' !default;
 
 // Alert
-$alert-success-background-color: theme.$theme-color-success-light !default;
-$alert-warning-background-color: theme.$theme-color-warning-light !default;
-$alert-error-background-color: theme.$theme-color-error-light !default;
+$alert-success-background-color: "success-light" !default;
+$alert-warning-background-color: "warning-light" !default;
+$alert-error-background-color: "error-light" !default;
 $alert-info-background-color: 'info-light' !default;
 $alert-success-border-color: 'success' !default;
 $alert-warning-border-color: 'warning' !default;
@@ -336,9 +333,9 @@ $badge-success-text-color: 'black' !default;
 $badge-warning-text-color: 'black' !default;
 $badge-error-text-color: 'black' !default;
 $badge-info-background-color: 'info-light' !default;
-$badge-success-background-color: theme.$theme-color-success-light !default;
-$badge-warning-background-color: theme.$theme-color-warning-light !default;
-$badge-error-background-color: theme.$theme-color-error-light !default;
+$badge-success-background-color: "success-light" !default;
+$badge-warning-background-color: "warning-light" !default;
+$badge-error-background-color: "error-light" !default;
 
 // Button
 $button-border-width: 2px !default;
@@ -633,7 +630,7 @@ $sidenav-link-current-background-color: 'gray-100' !default;
 $sidenav-link-font-color: 'black' !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
-$sidenav-error-background-color: theme.$theme-color-error-light !default;
+$sidenav-error-background-color: "error-light" !default;
 
 // Table
 $table-head-background-color: 'gray-100' !default;

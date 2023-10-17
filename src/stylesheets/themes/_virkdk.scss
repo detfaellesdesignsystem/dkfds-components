@@ -2,7 +2,7 @@
 // Virk theme
 // ----------------------------------------
 
-@use '../values/colors/theme-colors' with (
+@use '../variables/theme-colors' with (
     $theme-color-primary:               #0059B3,
     $theme-color-primary-dark:          #004993,
     $theme-color-primary-darker:        #003972

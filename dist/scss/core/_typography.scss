@@ -1,6 +1,5 @@
 @use "../values/fds-values" as fds;
 @use "../functions/functions" as func;
-@use "../values/colors/theme-colors" as theme;
 @use "../mixins/mixins" as mixins;
 
 html {
@@ -19,11 +18,11 @@ p {
 }
 
 a {
-  color: func.color(theme.$theme-color-link);
+  color: func.color("link");
 
   &:hover,
   &.link-hover {
-    color: func.color(theme.$theme-color-link-hover);
+    color: func.color("link-hover");
 
     &:disabled,
     .disabled {
@@ -34,13 +33,13 @@ a {
 
   &:focus,
   &.link-focus {
-    color: func.color(theme.$theme-color-link-focus);
+    color: func.color("link-focus");
     @include mixins.focus();
   }
 
   &:visited,
   &.link-visited {
-    color: func.color(theme.$theme-color-link-visited);
+    color: func.color("link-visited");
   }
 
   &:disabled,
@@ -366,11 +365,11 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 .text-positive {
-  @include mixins.color-text-positive();
+  color: func.color("text-positive");
 }
 
 .text-negative {
-  @include mixins.color-text-negative();
+  color: func.color("text-negative");
 }
 
 .color-text-black {
