@@ -1,6 +1,7 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 
-$spinner-color: fds.color(fds.$spinner-animation-color);
+$spinner-color: func.color(fds.$spinner-animation-color);
 .spinner {
     margin: 50px auto;
     font-size: 10px;

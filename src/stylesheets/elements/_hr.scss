@@ -1,7 +1,8 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 
 hr{
-    border-top: fds.border(fds.$hr-border); //inner border color
+    border-top: func.border(fds.$hr-border); //inner border color
     display: block;
     border-bottom-width: 0;
 }

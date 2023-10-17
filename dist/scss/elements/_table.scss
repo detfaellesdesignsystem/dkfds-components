@@ -1,24 +1,25 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .table {
     margin: 0;
-    line-height: fds.units(fds.$table-text-line-height, 'rem');
-    border: fds.border(fds.$table-border);
+    line-height: func.units(fds.$table-text-line-height, 'rem');
+    border: func.border(fds.$table-border);
     width: 100%;
-    color: fds.color(fds.$table-text-color);
-    font-size: fds.font-size(fds.$table-font-size);
+    color: func.color(fds.$table-text-color);
+    font-size: func.font-size(fds.$table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
     td,
     th {
-        padding-left: fds.units(4);
-        padding-top: fds.units(4);
-        padding-right: calc(fds.units(4) - 1px); //1px for the border
-        padding-bottom: calc(fds.units(4) - 1px); //1px for the border
-        border-right: fds.border(fds.$table-cell-border);
-        border-bottom: fds.border(fds.$table-row-border);
+        padding-left: func.units(4);
+        padding-top: func.units(4);
+        padding-right: calc(func.units(4) - 1px); //1px for the border
+        padding-bottom: calc(func.units(4) - 1px); //1px for the border
+        border-right: func.border(fds.$table-cell-border);
+        border-bottom: func.border(fds.$table-row-border);
         background-color: inherit;
         vertical-align: top;
         text-align: left;
@@ -45,14 +46,14 @@
     }
 
     thead {
-        background-color: fds.color(fds.$table-head-background-color);
+        background-color: func.color(fds.$table-head-background-color);
 
         th {
-            font-weight: fds.font-weight(fds.$table-head-font-weight);
-            padding-top: calc(fds.units(4) - 1px); //1px for the border
+            font-weight: func.font-weight(fds.$table-head-font-weight);
+            padding-top: calc(func.units(4) - 1px); //1px for the border
 
             &:first-child {
-                padding-left: calc(fds.units(4) - 1px); //1px for the border
+                padding-left: calc(func.units(4) - 1px); //1px for the border
             }
 
             &.table-header-no-wrap {
@@ -68,7 +69,7 @@
 
     tbody {
         th {
-            font-weight: fds.font-weight(fds.$table-head-font-weight);
+            font-weight: func.font-weight(fds.$table-head-font-weight);
         }
 
         tr {
@@ -77,7 +78,7 @@
             td,
             th {
                 &:first-child {
-                    padding-left: calc(fds.units(4) - 1px); //1px for the border
+                    padding-left: calc(func.units(4) - 1px); //1px for the border
                 }
             }
 
@@ -95,12 +96,12 @@
 
         th,
         td {
-            padding-top: fds.units(3);
-            padding-bottom: calc(fds.units(3) - 1px); //1px for the border
+            padding-top: func.units(3);
+            padding-bottom: calc(func.units(3) - 1px); //1px for the border
         }
 
         thead th {
-            padding-top: calc(fds.units(3) - 1px); //1px for the border
+            padding-top: calc(func.units(3) - 1px); //1px for the border
         }
     }
 
@@ -123,7 +124,7 @@
 
         td,
         th {
-            padding-right: fds.units(4);
+            padding-right: func.units(4);
             border-right: none;
         }
 
@@ -146,7 +147,7 @@
             background-color: transparent;
 
             th {
-                padding-top: fds.units(4);
+                padding-top: func.units(4);
             }
         }
 
@@ -154,14 +155,14 @@
 
             td,
             th {
-                border-bottom: fds.border(fds.$table-row-border);
+                border-bottom: func.border(fds.$table-row-border);
             }
         }
 
         &.table--compact {
 
             thead th {
-                padding-top: fds.units(3);
+                padding-top: func.units(3);
             }
         }
 
@@ -179,20 +180,20 @@
         td,
         th {
             border-right: 0;
-            padding-right: fds.units(4);
+            padding-right: func.units(4);
 
             &:last-child {
-                padding-right: calc(fds.units(4) - 1px); //1px for the border
+                padding-right: calc(func.units(4) - 1px); //1px for the border
             }
         }
 
         tr:nth-child(even) {
-            background-color: fds.color(fds.$table-row-even-background-color);
+            background-color: func.color(fds.$table-row-even-background-color);
         }
 
         tbody {
             tr:nth-child(odd) {
-                background-color: fds.color(fds.$table-row-odd-background-color);
+                background-color: func.color(fds.$table-row-odd-background-color);
             }
         }
     }
@@ -203,7 +204,7 @@
         td,
         th {
             border: 0;
-            padding: fds.units(4);
+            padding: func.units(4);
         }
 
         thead,
@@ -212,17 +213,17 @@
             tr td,
             tr th {
                 &:first-child {
-                    padding-left: fds.units(4);
+                    padding-left: func.units(4);
                 }
 
                 &:last-child {
-                    padding-right: fds.units(4);
+                    padding-right: func.units(4);
                 }
             }
         }
 
         thead {
-            background-color: fds.color(fds.$table-row-even-background-color);
+            background-color: func.color(fds.$table-row-even-background-color);
         }
 
         tbody tr:last-child {
@@ -237,8 +238,8 @@
 
             td,
             th {
-                padding-bottom: fds.units(3);
-                padding-top: fds.units(3);
+                padding-bottom: func.units(3);
+                padding-top: func.units(3);
             }
         }
 
@@ -257,7 +258,7 @@
 
             td,
             th {
-                border-top: fds.border(fds.$table-row-border);
+                border-top: func.border(fds.$table-row-border);
             }
         }
 
@@ -300,28 +301,28 @@
     tbody tr:hover,
     &.table.table--zebra tr:nth-child(even):hover,
     &.table.table--zebra tr:nth-child(odd):hover {
-        background-color: fds.color(fds.$table-selectable-hover-background-color);
+        background-color: func.color(fds.$table-selectable-hover-background-color);
     }
 
     &.table.table--zebra tr.table-row-selected:nth-child(even),
     &.table.table--zebra tr.table-row-selected:nth-child(odd),
     .table-row-selected {
-        background-color: fds.color(fds.$table-selectable-selected-background-color);
+        background-color: func.color(fds.$table-selectable-selected-background-color);
     }
 }
 
 .table-actions {
-    border-right: fds.border(fds.$table-border);
-    border-bottom: fds.border(fds.$table-border);
-    border-left: fds.border(fds.$table-border);
+    border-right: func.border(fds.$table-border);
+    border-bottom: func.border(fds.$table-border);
+    border-left: func.border(fds.$table-border);
     overflow: hidden;
-    padding: fds.units(4) calc(fds.units(4) - 1px) calc(fds.units(4) - 1px) calc(fds.units(4) - 1px);
+    padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
 
     .table-selected-number {
         margin-top: 0px;
 
         &.no-selected {
-            color: fds.color(fds.$table-selectable-help-text-color);
+            color: func.color(fds.$table-selectable-help-text-color);
         }
     }
 

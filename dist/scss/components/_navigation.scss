@@ -1,8 +1,9 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-$navigation-row-link-padding-left-right: fds.units(305);
-$navigation-desktop-border-bottom-thickness: fds.units(2);
+$navigation-row-link-padding-left-right: func.units(305);
+$navigation-desktop-border-bottom-thickness: func.units(2);
 
 .mobile_nav-active {
     overflow: hidden;
@@ -10,14 +11,14 @@ $navigation-desktop-border-bottom-thickness: fds.units(2);
 
 ul.mainmenu {
     @include mixins.unstyled-list;
-    @include mixins.nav-link-leftdist(fds.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include mixins.nav-link-leftdist(func.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
     @include mixins.nav-link-border(fds.$navigation-link-border-color, fds.$navigation-sublink-border-color);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     max-width: 100%;
-    border-bottom: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
-    border-top: 1px solid fds.color(fds.$navigation-border-top-bottom-color);
+    border-bottom: 1px solid func.color(fds.$navigation-border-top-bottom-color);
+    border-top: 1px solid func.color(fds.$navigation-border-top-bottom-color);
 
     @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
         flex-direction: row;
@@ -33,7 +34,7 @@ ul.mainmenu {
     }
 
     li {
-        background-color: fds.color(fds.$navigation-link-background-color);
+        background-color: func.color(fds.$navigation-link-background-color);
 
         @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             border-top: 0;
@@ -51,8 +52,8 @@ ul.mainmenu {
                     }
 
                     span {
-                        border-bottom: $navigation-desktop-border-bottom-thickness solid fds.color(fds.$navigation-link-current-border-color);
-                        font-weight: fds.font-weight("bold");
+                        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(fds.$navigation-link-current-border-color);
+                        font-weight: func.font-weight("bold");
                     }
                 }
             }
@@ -60,34 +61,34 @@ ul.mainmenu {
 
         &.active > a:first-child,
         &.active > .submenu > button:first-child {
-            font-weight: fds.font-weight("bold");
+            font-weight: func.font-weight("bold");
         }
 
         &.current {
-            background-color: fds.color(fds.$navigation-link-current-background-color);
+            background-color: func.color(fds.$navigation-link-current-background-color);
 
             @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                background-color: fds.color(fds.$navigation-link-background-color);
+                background-color: func.color(fds.$navigation-link-background-color);
             }
 
             .helptext {
-                color: fds.color(fds.$navigation-link-current-helptext-color);
-                font-weight: fds.font-weight("normal");
+                color: func.color(fds.$navigation-link-current-helptext-color);
+                font-weight: func.font-weight("normal");
             }
         }
 
     }
 
     .nav-link {
-        padding-top: fds.units(4);
-        padding-bottom: fds.units(4);
-        padding-right: fds.units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
+        padding-top: func.units(4);
+        padding-bottom: func.units(4);
+        padding-right: func.units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
         text-decoration: none;
-        color: fds.color(fds.$navigation-link-default-color);
-        font-size: fds.font-size('sm');
-        background-color: fds.color('transparent');
+        color: func.color(fds.$navigation-link-default-color);
+        font-size: func.font-size('sm');
+        background-color: func.color('transparent');
         display: block;
-        line-height: fds.units(5, 'rem');
+        line-height: func.units(5, 'rem');
         white-space: normal;
         width: 100%;
         max-width: unset;
@@ -101,23 +102,23 @@ ul.mainmenu {
         }
 
         &:hover {
-            background-color: fds.color(fds.$navigation-link-background-color-hover);
+            background-color: func.color(fds.$navigation-link-background-color-hover);
 
             @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 padding-left: $navigation-row-link-padding-left-right;
                 border-left: 0;
-                background-color: fds.color(fds.$navigation-link-background-color); /* Don't use hover color on desktop */
+                background-color: func.color(fds.$navigation-link-background-color); /* Don't use hover color on desktop */
             }
             
             span {
                 @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                    border-bottom: $navigation-desktop-border-bottom-thickness solid fds.color(fds.$navigation-link-current-border-color);
+                    border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(fds.$navigation-link-current-border-color);
                 }
             }
 
             .helptext {
-                color: fds.color(fds.$navigation-link-current-helptext-color);
-                font-weight: fds.font-weight("normal");
+                color: func.color(fds.$navigation-link-current-helptext-color);
+                font-weight: func.font-weight("normal");
             }
         }
 
@@ -139,16 +140,16 @@ ul.mainmenu {
             @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
                 display: block;
                 border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
-                padding-bottom: fds.units(305);
-                font-weight: fds.font-weight("normal");
+                padding-bottom: func.units(305);
+                font-weight: func.font-weight("normal");
                 white-space: nowrap;
             }
         }
 
         .helptext {
-            color: fds.color(fds.$navigation-link-helptext-color);
+            color: func.color(fds.$navigation-link-helptext-color);
             width: auto;
-            font-weight: fds.font-weight("normal");
+            font-weight: func.font-weight("normal");
         }
     }
 
@@ -214,8 +215,8 @@ ul.mainmenu {
                 z-index: 1;
                 top: 100%;
                 width: 30rem;
-                border: 1px solid fds.color('gray-500');
-                background-color: fds.color('white');
+                border: 1px solid func.color('gray-500');
+                background-color: func.color('white');
                 padding: $navigation-row-link-padding-left-right;
                 margin-left: -$navigation-row-link-padding-left-right;
 
@@ -223,11 +224,11 @@ ul.mainmenu {
                     border-top: 0;
 
                     .nav-link {
-                        padding-top: fds.units(3);
-                        padding-bottom: fds.units(3);
+                        padding-top: func.units(3);
+                        padding-bottom: func.units(3);
                         padding-left: $navigation-row-link-padding-left-right;
                         padding-right: $navigation-row-link-padding-left-right;
-                        background-color: fds.color('transparent');
+                        background-color: func.color('transparent');
                         max-width: 100%;
                         width: 100%;
     
@@ -241,7 +242,7 @@ ul.mainmenu {
     
                         span {
                             border-bottom: none;
-                            font-weight: fds.font-weight("normal");
+                            font-weight: func.font-weight("normal");
                             padding-bottom: 0;
                             white-space: normal;
                             display: inline-block;
@@ -255,7 +256,7 @@ ul.mainmenu {
                     }
 
                     &.current .nav-link span{
-                        font-weight: fds.font-weight("bold");
+                        font-weight: func.font-weight("bold");
                     }
                 }
             }

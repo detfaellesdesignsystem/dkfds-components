@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 @use "../core/typography";
 
@@ -9,27 +10,27 @@ Accordion
 */
 .accordion-button {
   @include mixins.button-unstyled;
-  background-color: fds.color(fds.$accordion-button-background-color-default);
+  background-color: func.color(fds.$accordion-button-background-color-default);
   background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-closed-icon);
-  background-position: left fds.units(4, 'rem') center;
+  background-position: left func.units(4, 'rem') center;
   background-repeat: no-repeat;
-  background-size: fds.units(fds.$accordion-button-icon-size, 'rem');
-  color: fds.color(fds.$accordion-button-color-default);
+  background-size: func.units(fds.$accordion-button-icon-size, 'rem');
+  color: func.color(fds.$accordion-button-color-default);
   cursor: pointer;
   display: inline-block;
   margin: 0;
-  line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
-  padding: fds.units(4, 'rem') fds.units(4, 'rem') fds.units(4, 'rem') fds.units(9, 'rem');
+  line-height: func.units(fds.$typography-body-text-line-height, 'rem');
+  padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem');
   width: 100%;
-  font-size: fds.font-size(fds.$typography-body-text-font-size);
+  font-size: func.font-size(fds.$typography-body-text-font-size);
   position: relative;
   transition: none;
   border-radius: fds.$accordion-button-border-radius;
-  border: fds.border(fds.$accordion-content-border);
+  border: func.border(fds.$accordion-content-border);
 
   &:hover {
-    background-color: fds.color(fds.$accordion-button-background-color-hover);
-    color: fds.color(fds.$accordion-button-color-hover);
+    background-color: func.color(fds.$accordion-button-background-color-hover);
+    color: func.color(fds.$accordion-button-color-hover);
   }
 
   h1, .h1,
@@ -41,14 +42,14 @@ Accordion
     margin: 0;
   }
   .icon_text {
-    font-weight: fds.font-weight("semibold");
-    margin-right: fds.units(3);
+    font-weight: func.font-weight("semibold");
+    margin-right: func.units(3);
     float: left;
   }
   .accordion-icon {
-    right: fds.units(4, 'rem');
-    height: fds.units(5, 'rem');
-    line-height: fds.units(5, 'rem');
+    right: func.units(4, 'rem');
+    height: func.units(5, 'rem');
+    line-height: func.units(5, 'rem');
     position: initial;
     text-align: left;
     transform: none;
@@ -63,11 +64,11 @@ Accordion
    }
 
     .icon-svg {
-      fill: fds.color(fds.$accordion-button-color-default);
+      fill: func.color(fds.$accordion-button-color-default);
       float: left;
     }
     &:hover .icon-svg{
-      fill: fds.color(fds.$accordion-button-color-hover);
+      fill: func.color(fds.$accordion-button-color-hover);
     }
   }
 }
@@ -77,8 +78,8 @@ button.accordion-bulk-button{
   
   background-repeat: no-repeat;
   background-position: left top;
-  padding-left:fds.units(505);
-  margin-bottom: fds.units(4);
+  padding-left:func.units(505);
+  margin-bottom: func.units(4);
   
   &[data-accordion-bulk-expand="true"] {
     background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
@@ -104,11 +105,11 @@ button.accordion-bulk-button{
   }
 
   + .accordion {
-    margin-top: fds.units(3, 'rem');
+    margin-top: func.units(3, 'rem');
   }
   > li {
     list-style: none;
-    margin-bottom: fds.units(3, 'rem');
+    margin-bottom: func.units(3, 'rem');
     width: 100%;
     > h1, > h2, > h3, > h4, > h5, > h6{
       margin-top: 0;
@@ -120,16 +121,16 @@ button.accordion-bulk-button{
 }
 
 .accordion-content {
-  background-color: fds.color(fds.$accordion-content-background-color);
-  color: fds.color(fds.$accordion-content-color);
+  background-color: func.color(fds.$accordion-content-background-color);
+  color: func.color(fds.$accordion-content-color);
   overflow: auto;
-  padding: fds.units(4, 'rem');
-  border-bottom: fds.border(fds.$accordion-content-border);
-  border-left: fds.border(fds.$accordion-content-border);
-  border-right: fds.border(fds.$accordion-content-border);
+  padding: func.units(4, 'rem');
+  border-bottom: func.border(fds.$accordion-content-border);
+  border-left: func.border(fds.$accordion-content-border);
+  border-right: func.border(fds.$accordion-content-border);
   border-radius: fds.$accordion-content-border-radius;
   p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
-    color: fds.color(fds.$accordion-content-color);
+    color: func.color(fds.$accordion-content-color);
   }
 
   > *:first-child {
@@ -149,18 +150,18 @@ button.accordion-bulk-button{
   }
 }
 .accordion-button.accordion-error {
-  border: fds.$accordion-button-error-border-width solid fds.color(fds.$accordion-button-error-border-color);
+  border: fds.$accordion-button-error-border-width solid func.color(fds.$accordion-button-error-border-color);
 }
 .accordion-button[aria-expanded=true] {
-  background-color: fds.color(fds.$accordion-button-open-background-color);
+  background-color: func.color(fds.$accordion-button-open-background-color);
   border-radius: fds.$accordion-button-open-border-radius;
   &:not(.accordion-error){
-    border-bottom: fds.border(fds.$accordion-button-open-border);
+    border-bottom: func.border(fds.$accordion-button-open-border);
   }
 }
 .accordion-button[aria-expanded=false] {
   background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
   background-repeat: no-repeat;
-  background-size: fds.units(fds.$accordion-button-icon-size, 'rem');
+  background-size: func.units(fds.$accordion-button-icon-size, 'rem');
   border-radius: fds.$accordion-button-border-radius;
 }

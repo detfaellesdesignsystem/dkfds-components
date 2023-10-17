@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .page-header{
@@ -20,9 +21,9 @@
 }
 
 .page-container{
-    padding-top: fds.units(5, 'rem');
+    padding-top: func.units(5, 'rem');
     @include mixins.media-breakpoint-up(md) {
-        padding-top: fds.units(7, 'rem');
+        padding-top: func.units(7, 'rem');
     }
 }
 

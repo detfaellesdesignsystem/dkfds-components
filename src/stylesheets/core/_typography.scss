@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../values/colors/theme-colors" as theme;
 @use "../mixins/mixins" as mixins;
 
@@ -8,21 +9,21 @@ html {
 }
 
 body {
-  font-size: fds.font-size(fds.$typography-base-font-size);
+  font-size: func.font-size(fds.$typography-base-font-size);
 }
 
 p {
-  line-height: fds.units(fds.$typography-base-line-height, 'rem');
-  margin-bottom: fds.units(3, 'rem');
-  margin-top: fds.units(4, 'rem');
+  line-height: func.units(fds.$typography-base-line-height, 'rem');
+  margin-bottom: func.units(3, 'rem');
+  margin-top: func.units(4, 'rem');
 }
 
 a {
-  color: fds.color(theme.$theme-color-link);
+  color: func.color(theme.$theme-color-link);
 
   &:hover,
   &.link-hover {
-    color: fds.color(theme.$theme-color-link-hover);
+    color: func.color(theme.$theme-color-link-hover);
 
     &:disabled,
     .disabled {
@@ -33,19 +34,19 @@ a {
 
   &:focus,
   &.link-focus {
-    color: fds.color(theme.$theme-color-link-focus);
+    color: func.color(theme.$theme-color-link-focus);
     @include mixins.focus();
   }
 
   &:visited,
   &.link-visited {
-    color: fds.color(theme.$theme-color-link-visited);
+    color: func.color(theme.$theme-color-link-visited);
   }
 
   &:disabled,
   &.disabled {
     cursor: not-allowed !important;
-    color: fds.color('disabled') !important;
+    color: func.color('disabled') !important;
     opacity: 0.3;
 
     &:focus {
@@ -56,14 +57,14 @@ a {
 
   .background-dark & {
     &:not(.button) {
-      color: fds.color('white');
+      color: func.color('white');
     }
 
     &:disabled,
     &.disabled {
       box-shadow: none !important;
       cursor: not-allowed !important;
-      color: fds.color('disabled-light') !important;
+      color: func.color('disabled-light') !important;
       outline-offset: inherit !important;
 
       &:focus {
@@ -74,7 +75,7 @@ a {
   }
 
   &.bold-link {
-    font-weight: fds.font-weight("semibold");
+    font-weight: func.font-weight("semibold");
   }
 
   &:not(.button, .full-width-image) {
@@ -119,19 +120,19 @@ figcaption, .figcaption{
 }
 
 .font-lead {
-  font-size: fds.font-size(fds.$typography-lead-font-size);
-  font-weight: fds.font-weight("normal");
-  line-height: fds.units(fds.$typography-lead-line-height, 'rem');
+  font-size: func.font-size(fds.$typography-lead-font-size);
+  font-weight: func.font-weight("normal");
+  line-height: func.units(fds.$typography-lead-line-height, 'rem');
   max-width: fds.$typography-text-max-width;
-  color: fds.color('ink');
+  color: func.color('ink');
   letter-spacing: fds.$typography-lead-letter-spacing;
 }
 .article{
-  font-size: fds.font-size(fds.$typography-article-font-size);
-  font-weight: fds.font-weight("normal");
-  line-height: fds.units(fds.$typography-article-line-height, 'rem');
+  font-size: func.font-size(fds.$typography-article-font-size);
+  font-weight: func.font-weight("normal");
+  line-height: func.units(fds.$typography-article-line-height, 'rem');
   max-width: fds.$typography-text-max-width;
-  color: fds.color('ink');
+  color: func.color('ink');
   letter-spacing: fds.$typography-article-letter-spacing;
 }
 small, .small-text {
@@ -139,19 +140,19 @@ small, .small-text {
 }
 
 .weight-normal {
-  font-weight: fds.font-weight("normal");
+  font-weight: func.font-weight("normal");
 }
 
 .weight-semibold {
-  font-weight: fds.font-weight("semibold");
+  font-weight: func.font-weight("semibold");
 }
 .facit {
-  border-bottom: fds.border(10);
+  border-bottom: func.border(10);
   border-bottom-style: double;
   border-bottom-width: 4px;
 }
 strong, b, .bold {
-  font-weight: fds.font-weight("bold");
+  font-weight: func.font-weight("bold");
 }
 
 .italic, em {
@@ -174,43 +175,43 @@ h6:focus, .h6:focus {
 }
 
 h1, .h1{
-  margin-bottom: fds.units(4, 'rem');
+  margin-bottom: func.units(4, 'rem');
   margin-top: 0rem;
 }
 
 h2, .h2 {
-  margin-top: fds.units(6, 'rem');
-  margin-bottom: fds.units(4, 'rem');
+  margin-top: func.units(6, 'rem');
+  margin-bottom: func.units(4, 'rem');
   @include mixins.media-breakpoint-up(md) {
-    margin-top: fds.units(7, 'rem');
+    margin-top: func.units(7, 'rem');
   }
 }
 h3, .h3{
-  margin-top: fds.units(6, 'rem');
-  margin-bottom: fds.units(4, 'rem');
+  margin-top: func.units(6, 'rem');
+  margin-bottom: func.units(4, 'rem');
   @include mixins.media-breakpoint-up(md) {
-    margin-top: fds.units(7, 'rem');
+    margin-top: func.units(7, 'rem');
   }
 }
 h4, .h4{
-  margin-top: fds.units(5, 'rem');
-  margin-bottom:  fds.units(4, 'rem');
+  margin-top: func.units(5, 'rem');
+  margin-bottom:  func.units(4, 'rem');
 }
 h5, .h5{
-  margin-top: fds.units(5, 'rem');
+  margin-top: func.units(5, 'rem');
   margin-bottom: 0;
 }
 h6, .h6{
-  margin-top: fds.units(5, 'rem');
+  margin-top: func.units(5, 'rem');
   margin-bottom: 0;
 }
 .font-lead{
-  margin-top: fds.units(5, 'rem');
-  margin-bottom:  fds.units(4, 'rem');
+  margin-top: func.units(5, 'rem');
+  margin-bottom:  func.units(4, 'rem');
 }
 p, .body-text{
-  margin-top: fds.units(4, 'rem');
-  margin-bottom: fds.units(4, 'rem');
+  margin-top: func.units(4, 'rem');
+  margin-bottom: func.units(4, 'rem');
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
@@ -231,10 +232,10 @@ button.function-link{
   cursor: pointer;
   display: inline-block;
   &:hover, &:visited, &:focus{
-    color: fds.color('ink');
+    color: func.color('ink');
   }
   .icon-svg{
-    margin-right: fds.units(2);
+    margin-right: func.units(2);
     fill: currentColor;
   }
 
@@ -244,14 +245,14 @@ button.function-link{
 }
 
 .back-link{
-  border-bottom: fds.border(10);
-  color: fds.color('black');
+  border-bottom: func.border(10);
+  color: func.color('black');
   text-decoration: none;
   display: inline-block;
   position: relative;
-  margin-bottom: fds.units(5);
+  margin-bottom: func.units(5);
   @include mixins.media-breakpoint-up(lg) {
-    margin-bottom: fds.units(6);
+    margin-bottom: func.units(6);
   }
   line-height: 2.4rem;
   padding-left: 14px;
@@ -273,14 +274,14 @@ button.function-link{
     margin: auto;
   }
   &:active, &:focus, &:hover, &:visited{
-    color: fds.color('black');
+    color: func.color('black');
   }
 }
 
 .icon-link{
-  line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
+  line-height: func.units(fds.$typography-body-text-line-height, 'rem');
   .icon-svg{
-    margin-left: fds.units(2);
+    margin-left: func.units(2);
     width: 1.6rem;
     height: 1.6rem;
     fill: currentColor;
@@ -347,19 +348,19 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 
 .displayheading {
   &-1 {
-    font-weight: fds.font-weight("medium");
-    font-size: fds.font-size(fds.$typography-display-1-heading-font-size);
-    line-height: fds.units(fds.$typography-display-1-heading-line-height, 'rem');
+    font-weight: func.font-weight("medium");
+    font-size: func.font-size(fds.$typography-display-1-heading-font-size);
+    line-height: func.units(fds.$typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: fds.color('black');
+    color: func.color('black');
     letter-spacing: fds.$typography-display-1-heading-letter-spacing;
   }
   &-2 {
-    font-weight: fds.font-weight("medium");
-    font-size: fds.font-size(fds.$typography-display-2-heading-font-size);
-    line-height: fds.units(fds.$typography-display-2-heading-line-height, 'rem');
+    font-weight: func.font-weight("medium");
+    font-size: func.font-size(fds.$typography-display-2-heading-font-size);
+    line-height: func.units(fds.$typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: fds.color('black');
+    color: func.color('black');
     letter-spacing: fds.$typography-display-2-heading-letter-spacing;
   }
 }
@@ -373,22 +374,22 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 .color-text-black {
-  color: fds.color('black');
+  color: func.color('black');
 }
 
 .background-dark {
-  background-color: fds.color('black');
+  background-color: func.color('black');
 
   p, span{
-    color: fds.color('white');
+    color: func.color('white');
   }
 }
 
 .field-group-title {
-  font-weight: fds.font-weight("normal");
+  font-weight: func.font-weight("normal");
 
   ~ hr {
-    border: 2px solid fds.color('black');
+    border: 2px solid func.color('black');
   }
 }
 

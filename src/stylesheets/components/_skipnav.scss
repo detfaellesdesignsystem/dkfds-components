@@ -1,9 +1,10 @@
 @use 'sass:math';
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 a.skipnav {
-  color: fds.color(fds.$skipnav-text-color);
+  color: func.color(fds.$skipnav-text-color);
   left: 0;
   padding: 1rem 1.5rem;
   position: absolute;
@@ -15,13 +16,13 @@ a.skipnav {
 
   &:focus {      
     @include mixins.focus-outline();
-    background-color: fds.color(fds.$skipnav-background-color);
+    background-color: func.color(fds.$skipnav-background-color);
     left: 0;
     position: absolute;
     top: 0;
     transition: all 0.2s ease-in-out;
     padding: 1rem math.div(math.div(fds.$grid-gutter-width, 2), 2);
-    margin-top: calc(#{fds.units(4)} - 1px);
+    margin-top: calc(#{func.units(4)} - 1px);
     margin-left: math.div(math.div(fds.$grid-gutter-width, 2), 2);
   }
 }

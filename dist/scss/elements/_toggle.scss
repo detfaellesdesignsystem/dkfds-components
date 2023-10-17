@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 /* hide the default checkbox */
@@ -28,12 +29,12 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
   left: 4px;
   bottom: 0;
   border-radius: 50%;
-  background-color: fds.color(fds.$toggle-button-background-color);
+  background-color: func.color(fds.$toggle-button-background-color);
   width: 29px;
   height: 29px;
-  color: fds.color('black');
-  font-size: fds.font-size('2xs');
-  font-weight: fds.font-weight("medium");
+  color: func.color('black');
+  font-size: func.font-size('2xs');
+  font-weight: func.font-weight("medium");
   padding-top: 5px;
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;
@@ -41,7 +42,7 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:before {
   transition: all 0.15s ease-out;
   z-index: 10;
   text-align: center;
-  box-shadow: fds.shadow(fds.$toggle-shadow);
+  box-shadow: func.shadow(fds.$toggle-shadow);
 }
 
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label{
@@ -51,20 +52,20 @@ input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:before,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:before{
-  color: fds.color(fds.$input-disabled-text-color);
+  color: func.color(fds.$input-disabled-text-color);
 }
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color: fds.color(fds.$input-disabled-text-color);
+  background-color: func.color(fds.$input-disabled-text-color);
 }
 
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:after,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:hover:after,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color: fds.color(fds.$toggle-button-on-default-background-color);
+  background-color: func.color(fds.$toggle-button-on-default-background-color);
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
@@ -78,7 +79,7 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
   border-radius: 20px;
   line-height: 1;
   text-align: center;
-  background-color: fds.color(fds.$toggle-default-background-color);
+  background-color: func.color(fds.$toggle-default-background-color);
   -webkit-transition: all 0.15s ease-out;
   -moz-transition: all 0.15s ease-out;
   -o-transition: all 0.15s ease-out;
@@ -86,23 +87,23 @@ input[type='checkbox'].form-toggle ~ .form-toggle-label:after {
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:hover:after{
-  background-color: fds.color(fds.$toggle-hover-background-color);
+  background-color: func.color(fds.$toggle-hover-background-color);
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label:active:after{
-  background-color: fds.color(fds.$toggle-active-background-color);
+  background-color: func.color(fds.$toggle-active-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:after {
-  background-color: fds.color(fds.$toggle-button-on-default-background-color);
+  background-color: func.color(fds.$toggle-button-on-default-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:hover:after {
-  background-color: fds.color(fds.$toggle-button-on-hover-background-color);
+  background-color: func.color(fds.$toggle-button-on-hover-background-color);
 }
 
 input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:active:after {
-  background-color: fds.color(fds.$toggle-button-on-active-background-color);
+  background-color: func.color(fds.$toggle-button-on-active-background-color);
 }
 
 input[type='checkbox'].form-toggle:focus ~ .form-toggle-label:after {

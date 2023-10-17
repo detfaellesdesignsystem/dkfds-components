@@ -1,5 +1,6 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 
 .section + .section{
-    margin-top: fds.units(5)
+    margin-top: func.units(5)
 }

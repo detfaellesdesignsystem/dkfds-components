@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
  //Ul lists
@@ -6,37 +7,37 @@
  ul {
    padding-left: 0;
    list-style-type: none;
-   color: fds.color(fds.$typography-body-text-color);
-   font-size: fds.font-size(fds.$typography-body-text-font-size);
-   line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
+   color: func.color(fds.$typography-body-text-color);
+   font-size: func.font-size(fds.$typography-body-text-font-size);
+   line-height: func.units(fds.$typography-body-text-line-height, 'rem');
    > li {
-     margin-top:fds.units(3);
+     margin-top:func.units(3);
      list-style-type: none;
      position: relative;
-     padding-left: fds.units(4);
-     line-height: fds.units(fds.$typography-body-text-line-height, 'rem');
+     padding-left: func.units(4);
+     line-height: func.units(fds.$typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";
        position: absolute;
        left: 0px;
        top: -1px;
-       font-size: fds.font-size('lg');
+       font-size: func.font-size('lg');
      }
    }
  }
 //Ol lists
 ol {
-  padding-left: fds.units(505);
+  padding-left: func.units(505);
   li{
-    margin-top: fds.units(3);
-    line-height: fds.units(5, 'rem');
+    margin-top: func.units(3);
+    line-height: func.units(5, 'rem');
   }
 }
 
 .article{
   ul > li, ol > li{
-    font-size: fds.font-size(fds.$typography-article-font-size);
-    line-height: fds.units(fds.$typography-article-line-height, 'rem');
+    font-size: func.font-size(fds.$typography-article-font-size);
+    line-height: func.units(fds.$typography-article-line-height, 'rem');
     letter-spacing: fds.$typography-article-letter-spacing;
   }
 }
@@ -48,10 +49,10 @@ ol {
 
 .bordered-list{
   @include mixins.unstyled-list;
-  border-top: fds.border(20);
+  border-top: func.border(20);
   li{
-    padding: fds.units(3) 0px;
-    border-bottom: fds.border(20);
+    padding: func.units(3) 0px;
+    border-bottom: func.border(20);
   }
 }
 
@@ -77,7 +78,7 @@ ol {
   }
 
   li + li{
-    margin-top: fds.units(305);
+    margin-top: func.units(305);
     @include mixins.media-breakpoint-up(md) {
       margin-top: 0;
     }

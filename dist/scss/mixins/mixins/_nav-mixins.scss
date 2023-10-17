@@ -1,10 +1,11 @@
 @use "../../values/fds-values" as fds;
+@use "../../functions/functions" as func;
 
 /* Use inside nav ul element to set left and right padding */
 @mixin nav-link-leftdist($li-border-width, $li-border-color, $firstlevel-dist, $secondlevel-dist, $thirdlevel-dist, $fourthlevel-dist) {
     li {
         &.active {
-            border-left: $li-border-width solid fds.color($li-border-color);
+            border-left: $li-border-width solid func.color($li-border-color);
 
             .nav-link,
             .nav-step {
@@ -15,7 +16,7 @@
             .nav-link:hover,
             .nav-step:hover {
                 /* Ensure that the hover background color doesn't overwrite the list's border */
-                border-left: $li-border-width solid fds.color($li-border-color);
+                border-left: $li-border-width solid func.color($li-border-color);
                 padding-left: $firstlevel-dist - $li-border-width;
             }
 
@@ -64,7 +65,7 @@
 @mixin nav-link-border($bordercolor, $subbordercolor) {
 
     & > li {
-        border-top: 1px solid fds.color($bordercolor);
+        border-top: 1px solid func.color($bordercolor);
 
         &:first-child {
             border-top: 0;
@@ -73,7 +74,7 @@
 
     ul li,
     ul ul li {
-        border-top: 1px solid fds.color($subbordercolor);
+        border-top: 1px solid func.color($subbordercolor);
     }
 
 }

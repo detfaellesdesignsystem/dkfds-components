@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .overflow-menu + h1 {
@@ -23,7 +24,7 @@
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: fds.color(fds.$overflow-menu-button-text-color);
+        color: func.color(fds.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
 
@@ -48,13 +49,13 @@
         }
 
         &:after {
-            border-bottom-color: fds.color(fds.$overflow-menu-content-background-color);
+            border-bottom-color: func.color(fds.$overflow-menu-content-background-color);
             border-width: calc(#{fds.$overflow-menu-arrow-size} - 1px);
             margin-left: calc((#{fds.$overflow-menu-arrow-size} - 1px)*-1);
         }
 
         &:before {
-            border-bottom-color: fds.border-color(fds.$overflow-menu-content-border);
+            border-bottom-color: func.border-color(fds.$overflow-menu-content-border);
             border-width: fds.$overflow-menu-arrow-size;
             margin-left: calc(#{fds.$overflow-menu-arrow-size} *-1);
         }
@@ -76,7 +77,7 @@
             padding: 0;
 
             &:hover {
-                background-color: fds.color(fds.$overflow-menu-button-icon-only-hover-background-color);
+                background-color: func.color(fds.$overflow-menu-button-icon-only-hover-background-color);
             }
         }
     }
@@ -86,11 +87,11 @@
         width: 100%;
         max-width: 30rem;
         z-index: 2;
-        border: fds.border(fds.$overflow-menu-content-border);
-        box-shadow: fds.shadow(fds.$overflow-menu-content-shadow);
-        background: fds.color(fds.$overflow-menu-content-background-color);
-        padding-top: fds.units(3);
-        padding-bottom: fds.units(3);
+        border: func.border(fds.$overflow-menu-content-border);
+        box-shadow: func.shadow(fds.$overflow-menu-content-shadow);
+        background: func.color(fds.$overflow-menu-content-background-color);
+        padding-top: func.units(3);
+        padding-bottom: func.units(3);
         top: calc(100% + #{fds.$overflow-menu-dropdown-distance});
 
         @include mixins.media-breakpoint-up(md) {
@@ -108,13 +109,13 @@
 
     .overflow-list {
         @include mixins.unstyled-list;
-        font-size: fds.font-size(fds.$overflow-menu-content-font-size);
-        line-height: fds.units(fds.$overflow-menu-content-line-height, 'rem');
-        color: fds.color(fds.$overflow-menu-content-text-color);
+        font-size: func.font-size(fds.$overflow-menu-content-font-size);
+        line-height: func.units(fds.$overflow-menu-content-line-height, 'rem');
+        color: func.color(fds.$overflow-menu-content-text-color);
 
         button {
             @include mixins.button-unstyled;
-            line-height: fds.units(5, 'rem');
+            line-height: func.units(5, 'rem');
             cursor: pointer;
         }
 
@@ -122,12 +123,12 @@
             @include mixins.body-copy-text;
             display: block;
             text-decoration: none;
-            line-height: fds.units(5, 'rem');
+            line-height: func.units(5, 'rem');
 
             &:hover,
             &:visited,
             &:focus {
-                color: fds.color(fds.$overflow-menu-content-text-color);
+                color: func.color(fds.$overflow-menu-content-text-color);
             }
         }
 
@@ -137,7 +138,7 @@
             width: 100%;
 
             &:hover {
-                background-color: fds.color(fds.$overflow-menu-content-link-hover-background-color);
+                background-color: func.color(fds.$overflow-menu-content-link-hover-background-color);
             }
         }
     }
@@ -253,25 +254,25 @@
     &--sort {
         .button-overflow-menu {
             text-decoration: underline;
-            line-height: fds.units(5, 'rem');
+            line-height: func.units(5, 'rem');
 
             .selected-value {
                 text-decoration: none;
                 display: inline-block;
-                margin-left: fds.units(2);
-                font-weight: fds.font-weight("semibold");
+                margin-left: func.units(2);
+                font-weight: func.font-weight("semibold");
             }
 
             svg {
-                margin-right: fds.units(2);
+                margin-right: func.units(2);
             }
         }
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
-            font-weight: fds.font-weight("semibold");
+            font-weight: func.font-weight("semibold");
             @include mixins.add-background-svg('done');
             background-repeat: no-repeat;
-            background-position: calc(100% - #{fds.units(4)}) center;
+            background-position: calc(100% - #{func.units(4)}) center;
         }
     }
 }

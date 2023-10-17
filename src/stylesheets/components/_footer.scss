@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 footer {
@@ -13,29 +14,29 @@ footer {
 
   //generel for footer
   .footer {
-    border-top: fds.border(fds.$footer-border);
-    background-color: fds.color(fds.$footer-background-color);
-    padding-top: calc(#{fds.units(5)} - 1px);
-    padding-bottom: fds.units(4);
+    border-top: func.border(fds.$footer-border);
+    background-color: func.color(fds.$footer-background-color);
+    padding-top: calc(#{func.units(5)} - 1px);
+    padding-bottom: func.units(4);
     margin-top: 8rem;
-    color: fds.color(fds.$footer-text-color);
+    color: func.color(fds.$footer-text-color);
     @include mixins.media-breakpoint-up(md) {
-      padding-bottom: calc(#{fds.units(9)} + #{fds.units(4)});
+      padding-bottom: calc(#{func.units(9)} + #{func.units(4)});
     }
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: fds.color(fds.$footer-text-color);
+      color: func.color(fds.$footer-text-color);
     }
 
     .function-link {
-      color: fds.color(fds.$footer-text-color);
+      color: func.color(fds.$footer-text-color);
       &:hover, &:focus, &:visited{
-        color: fds.color(fds.$footer-text-color);
+        color: func.color(fds.$footer-text-color);
       }
     }
 
     .footer-col {
       &:not(:first-child) {
-        margin-top: fds.units(5);
+        margin-top: func.units(5);
       }
       @include mixins.media-breakpoint-up(md) {
         &:not(:first-child) {
@@ -56,12 +57,12 @@ footer {
 
     ul{
       &:not(:last-child) {
-        margin-bottom: fds.units(5);
+        margin-bottom: func.units(5);
       }
 
       &.footer-links {
         li {
-          margin-top:fds.units(3);
+          margin-top:func.units(3);
         }
       }
     }
@@ -71,8 +72,8 @@ footer {
         &:after {
           @include mixins.media-breakpoint-up(md) {
             content: "\00b7" !important;
-            margin-left: fds.units(3);
-            margin-right: fds.units(3);
+            margin-left: func.units(3);
+            margin-right: func.units(3);
           }
         }
       }
@@ -80,7 +81,7 @@ footer {
   }
   //footer-theme
   .footer-theme {
-    padding-top: fds.units(4);
-    padding-bottom: fds.units(3);
+    padding-top: func.units(4);
+    padding-bottom: func.units(3);
   }
 }

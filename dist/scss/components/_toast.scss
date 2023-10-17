@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 $toast-backgrounds: (
@@ -24,16 +25,16 @@ $toast-icon-backgrounds: (
 
 .toast-container {
     position: fixed;
-    right: fds.units(4);
-    left: fds.units(4);
-    top: fds.units(4);
+    right: func.units(4);
+    left: func.units(4);
+    top: func.units(4);
     bottom: auto;
     z-index: 7000;
 
     @include mixins.media-breakpoint-up(md) {
-        right: fds.units(4);
+        right: func.units(4);
         left: auto;
-        top: fds.units(8);
+        top: func.units(8);
         bottom: auto;
     }
 }
@@ -41,11 +42,11 @@ $toast-icon-backgrounds: (
 .toast {
     width: 100%;
     max-width: 100%;
-    background-color: fds.color(fds.$toast-default-background-color);
+    background-color: func.color(fds.$toast-default-background-color);
     display: flex;
     transition: opacity .15s linear;
-    margin-bottom: fds.units(4);
-    box-shadow: fds.shadow(fds.$toast-shadow);
+    margin-bottom: func.units(4);
+    box-shadow: func.shadow(fds.$toast-shadow);
 
     &:not(.show) {
         opacity: 0;
@@ -62,23 +63,23 @@ $toast-icon-backgrounds: (
     .toast-icon {
         align-items: center;
         display: flex;
-        padding-left: calc(#{fds.units(4)} + #{fds.units(5)});
-        padding-right: fds.units(4);
-        background-size: fds.units(505);
+        padding-left: calc(#{func.units(4)} + #{func.units(5)});
+        padding-right: func.units(4);
+        background-size: func.units(505);
         background-repeat: no-repeat;
         background-position: center center;
     }
 
     .toast-message {
-        padding: fds.units(4);
+        padding: func.units(4);
         position: relative;
         width: 100%;
 
         .toast-close {
             @include mixins.button-unstyled;
             position: absolute;
-            top: fds.units(4);
-            right: fds.units(4);
+            top: func.units(4);
+            right: func.units(4);
             text-indent: -9999px;
             width: 24px;
             height: 24px;
@@ -93,7 +94,7 @@ $toast-icon-backgrounds: (
             word-break: break-word;
 
             &:first-of-type {
-                margin-right: fds.units(6);
+                margin-right: func.units(6);
             }
         }
     }
@@ -102,14 +103,14 @@ $toast-icon-backgrounds: (
 @each $name,
 $bgcolor in $toast-backgrounds {
     .toast-#{$name} {
-        background-color: fds.color($bgcolor);
+        background-color: func.color($bgcolor);
     }
 }
 
 @each $name,
 $iconcolor in $toast-icon-backgrounds {
     .toast-#{$name} .toast-icon {
-        background-color: fds.color($iconcolor);
+        background-color: func.color($iconcolor);
     }
 }
 

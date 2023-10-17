@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 
 fieldset {
   position: relative;
@@ -12,7 +13,7 @@ fieldset ul{
   margin-bottom: 0px;
 }
 fieldset + fieldset{
-  margin-top: fds.units(5);
+  margin-top: func.units(5);
 }
 
 legend{

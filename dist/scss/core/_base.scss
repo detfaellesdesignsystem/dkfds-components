@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 html {
@@ -13,8 +14,8 @@ html {
 }
 
 body {
-  background-color: fds.color('white');
-  color: fds.color('black');
+  background-color: func.color('white');
+  color: func.color('black');
   overflow-x: hidden;
 }
 

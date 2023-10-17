@@ -1,45 +1,46 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .cookie-container{
-  color: fds.color(fds.$cookie-message-text-color);
+  color: func.color(fds.$cookie-message-text-color);
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 9500;
-  margin-bottom: fds.units(3);
-  margin-left: fds.units(3);
-  margin-right: fds.units(3);
+  margin-bottom: func.units(3);
+  margin-left: func.units(3);
+  margin-right: func.units(3);
 
   .cookie-message{
     @include mixins.grid-container();
-    background-color: fds.color(fds.$cookie-message-background-color);
-    border: fds.border(fds.$cookie-message-border);
-    box-shadow: fds.shadow(fds.$cookie-message-shadow);
-    padding-top: calc(#{fds.units(6)} - 1px);
-    padding-bottom: calc(#{fds.units(7)} - 1px);
+    background-color: func.color(fds.$cookie-message-background-color);
+    border: func.border(fds.$cookie-message-border);
+    box-shadow: func.shadow(fds.$cookie-message-shadow);
+    padding-top: calc(#{func.units(6)} - 1px);
+    padding-bottom: calc(#{func.units(7)} - 1px);
     position: relative;
     max-height: 75vh;
     overflow-y: auto;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: fds.color(fds.$cookie-message-text-color);
+      color: func.color(fds.$cookie-message-text-color);
     }
 
 
     @include mixins.media-breakpoint-up(xl) {
-      max-width: calc(#{map-get(fds.$container-max-widths, xl)} + #{fds.units(7)} + #{fds.units(7)});
+      max-width: calc(#{map-get(fds.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
     }
 
     .cookie-text, .cookie-actions{
       @include mixins.media-breakpoint-up(xl) {
-        padding-left: fds.units(7);
-        padding-right: fds.units(7);
+        padding-left: func.units(7);
+        padding-right: func.units(7);
       }
     }
     .cookie-actions{
-      margin-top: fds.units(4);
+      margin-top: func.units(4);
     }
   }
 }

@@ -1,4 +1,5 @@
 @use "../../values/fds-values" as fds;
+@use "../../functions/functions" as func;
 
 //
 // Generates utility classes to control width in percent. 
@@ -13,5 +14,5 @@ $backgroundcolors: (
 
 
 @each $name, $color in $backgroundcolors { 
-  .bg-#{$name}         { background: fds.color($color) !important; background-color: fds.color($color) !important;}
+  .bg-#{$name}         { background: func.color($color) !important; background-color: func.color($color) !important;}
 }

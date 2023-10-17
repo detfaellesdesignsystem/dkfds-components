@@ -1,8 +1,9 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 
 .breadcrumbs {
-  color: fds.color(fds.$breadcrumbs-text-color);
-  font-size: fds.font-size(fds.$breadcrumbs-font-size);
+  color: func.color(fds.$breadcrumbs-text-color);
+  font-size: func.font-size(fds.$breadcrumbs-font-size);
 }
 
 .breadcrumbs__list {
@@ -22,9 +23,9 @@
   list-style-type: none;
   position: relative;
   margin-top: 0;
-  margin-bottom: fds.units(1);
-  margin-left: fds.units(3);
-  padding-left: fds.units(3) + fds.$breadcrumbs-chevron-altitude-calculated;
+  margin-bottom: func.units(1);
+  margin-left: func.units(3);
+  padding-left: func.units(3) + fds.$breadcrumbs-chevron-altitude-calculated;
   float: left;
 
   &:before {
@@ -42,7 +43,7 @@
     transform: rotate(45deg);
     border: solid;
     border-width: fds.$breadcrumbs-chevron-border-width fds.$breadcrumbs-chevron-border-width 0 0;
-    border-color: fds.color(fds.$breadcrumbs-chevron-border-colour);
+    border-color: func.color(fds.$breadcrumbs-chevron-border-colour);
   }
 
   &:first-child {
@@ -57,8 +58,8 @@
 }
 
 .breadcrumbs__link {
-  color: fds.color(fds.$breadcrumbs-text-color);
+  color: func.color(fds.$breadcrumbs-text-color);
   &:visited, &:hover, &:active{
-    color: fds.color(fds.$breadcrumbs-text-color);
+    color: func.color(fds.$breadcrumbs-text-color);
   }
 }

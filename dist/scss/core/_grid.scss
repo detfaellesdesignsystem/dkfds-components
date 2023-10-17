@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 
@@ -30,12 +31,12 @@
   }  
 
   &.row-bordered{
-    border-top: fds.border(20);
-    padding-top: fds.units(4);
-    padding-bottom: fds.units(4);
-    line-height: fds.units(5, 'rem');
+    border-top: func.border(20);
+    padding-top: func.units(4);
+    padding-bottom: func.units(4);
+    line-height: func.units(5, 'rem');
     &:last-of-type{
-      border-bottom: fds.border(20);
+      border-bottom: func.border(20);
     }
   }
 }

@@ -1,12 +1,13 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: fds.units(5);
-    margin-bottom: fds.units(5);
+    margin-top: func.units(5);
+    margin-bottom: func.units(5);
 
     .pagination__dropdown {
         display: none;
@@ -29,16 +30,16 @@
 
     .button {
         &.button-arrow {
-            font-size: fds.font-size(fds.$pagination-button-arrow-font-size);
+            font-size: func.font-size(fds.$pagination-button-arrow-font-size);
             @include mixins.appearance-none;
-            background-color: fds.color(fds.$pagination-button-arrow-background-color);
+            background-color: func.color(fds.$pagination-button-arrow-background-color);
             border-style: none;
-            color: fds.color(fds.$pagination-button-arrow-color);
+            color: func.color(fds.$pagination-button-arrow-color);
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
-            padding-left: fds.units(3);
-            padding-right: fds.units(3);
+            padding-left: func.units(3);
+            padding-right: func.units(3);
             padding-top: 0px;
             padding-bottom: 0px;
 
@@ -47,7 +48,7 @@
             }
 
             .icon-svg {
-                margin-right: fds.units(0);
+                margin-right: func.units(0);
             }
 
             .pagination-nav-link {
@@ -65,20 +66,20 @@
 
         &.button-previous {
             .icon-svg {
-                margin-right: fds.units(2);
+                margin-right: func.units(2);
 
                 @include mixins.media-breakpoint-down(sm) {
-                    margin-right: fds.units(0);
+                    margin-right: func.units(0);
                 }
             }
         }
 
         &.button-next {
             .icon-svg {
-                margin-left: fds.units(2);
+                margin-left: func.units(2);
 
                 @include mixins.media-breakpoint-down(sm) {
-                    margin-left: fds.units(0);
+                    margin-left: func.units(0);
                 }
             }
         }
@@ -88,8 +89,8 @@
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
-        margin-left: fds.units(3);
-        margin-right: fds.units(3);
+        margin-left: func.units(3);
+        margin-right: func.units(3);
 
         @include mixins.media-breakpoint-up(md) {
             display: none;
@@ -101,18 +102,18 @@
         width: auto;
 
         .pagination-item {
-            margin-left: fds.units(3);
-            margin-right: fds.units(3);
+            margin-left: func.units(3);
+            margin-right: func.units(3);
 
             .current-page {
                 @include mixins.appearance-none;
                 display: inline-block;
                 width: 100%;
-                padding: fds.units(3) calc(#{fds.units(4)} - #{fds.$button-border-width}) calc(#{fds.units(3)} - #{fds.$button-border-width});
+                padding: func.units(3) calc(#{func.units(4)} - #{fds.$button-border-width}) calc(#{func.units(3)} - #{fds.$button-border-width});
                 border-radius: fds.$button-border-radius;
                 border-width: fds.$button-border-width fds.$button-border-width fds.$button-border-bottom-width fds.$button-border-width;
                 border-style: solid;
-                font-weight: fds.font-weight("medium");
+                font-weight: func.font-weight("medium");
                 @include mixins.font-smoothing;
                 line-height: 2rem;
                 text-align: center;
@@ -120,10 +121,10 @@
                 text-decoration: none;
                 user-select: text;
 
-                font-size: fds.font-size('md');
-                color: fds.color(fds.$pagination-current-page-color);
-                background-color: fds.color(fds.$pagination-current-page-background-color);
-                border-color: fds.color(fds.$pagination-current-page-border-color);
+                font-size: func.font-size('md');
+                color: func.color(fds.$pagination-current-page-color);
+                background-color: func.color(fds.$pagination-current-page-background-color);
+                border-color: func.color(fds.$pagination-current-page-border-color);
             }
         }
     }

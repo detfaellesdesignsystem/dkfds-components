@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 // Header variables
@@ -33,7 +34,7 @@ $z-index-nav:     9000;
     }
 
     .portal-info {
-        background-color: fds.color(fds.$header-portal-background-color);
+        background-color: func.color(fds.$header-portal-background-color);
         width: 100%;
 
         .log-on, .log-off {
@@ -60,9 +61,9 @@ $z-index-nav:     9000;
 
         .portal-info-inner {
             width: 100%;
-            min-height: fds.units(8);
-            padding-top: fds.units(2);
-            padding-bottom: fds.units(2);
+            min-height: func.units(8);
+            padding-top: func.units(2);
+            padding-bottom: func.units(2);
             display: flex;
             align-items: center;
 
@@ -83,7 +84,7 @@ $z-index-nav:     9000;
 
                 .user {
                     text-align: right;
-                    margin-right: fds.units(4);
+                    margin-right: func.units(4);
                     overflow-wrap: break-word;
                 }
             }
@@ -92,12 +93,12 @@ $z-index-nav:     9000;
     }
 
     .portal-info-mobile {
-        padding: fds.units(5);
+        padding: func.units(5);
         text-align: left;
-        background-color: fds.color(fds.$header-portal-background-color);
+        background-color: func.color(fds.$header-portal-background-color);
 
         p {
-            margin-bottom: fds.units(3);
+            margin-bottom: func.units(3);
         }
 
         .user span {
@@ -111,7 +112,7 @@ $z-index-nav:     9000;
     }
 
     .solution-info {
-        background-color: fds.color(fds.$header-solution-background-color);
+        background-color: func.color(fds.$header-solution-background-color);
         width: 100%;
 
         .solution-info-inner {
@@ -119,8 +120,8 @@ $z-index-nav:     9000;
             align-items: center;
             flex-direction: row;
             justify-content: space-between;
-            padding-top: calc(#{fds.units(4)} - 1px);
-            padding-bottom: calc(#{fds.units(4)} - 1px);
+            padding-top: calc(#{func.units(4)} - 1px);
+            padding-bottom: calc(#{func.units(4)} - 1px);
         }
 
         .solution-heading {
@@ -132,31 +133,31 @@ $z-index-nav:     9000;
             }
             
             a, h1, .h1 {
-                font-size: fds.font-size(fds.$header-solution-text-size);
-                line-height: fds.units(fds.$header-solution-line-height, 'rem');
-                font-weight: fds.font-weight("semibold");
-                color: fds.color(fds.$header-solution-text-color);
+                font-size: func.font-size(fds.$header-solution-text-size);
+                line-height: func.units(fds.$header-solution-line-height, 'rem');
+                font-weight: func.font-weight("semibold");
+                color: func.color(fds.$header-solution-text-color);
                 text-decoration: none;
                 display: inline-block;
                 max-width: 100%;
 
                 @include mixins.media-breakpoint-up(md) {
-                    font-size: fds.font-size(fds.$header-solution-text-size-desktop);
-                    line-height: fds.units(fds.$header-solution-line-height-desktop, 'rem');
+                    font-size: func.font-size(fds.$header-solution-text-size-desktop);
+                    line-height: func.units(fds.$header-solution-line-height-desktop, 'rem');
                 }
             }
 
             p, h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
-                color: fds.color(fds.$header-solution-text-color);
+                color: func.color(fds.$header-solution-text-color);
             }
 
             .function-link {
-                color: fds.color(fds.$header-solution-text-color);
+                color: func.color(fds.$header-solution-text-color);
 
                 &:hover,
                 &:focus,
                 &:visited {
-                    color: fds.color(fds.$header-solution-text-color);
+                    color: func.color(fds.$header-solution-text-color);
                 }
             }
         }
@@ -175,9 +176,9 @@ $z-index-nav:     9000;
     }
 
     .authority-name {
-        color: fds.color(fds.$header-solution-authority-name);
-        font-weight: fds.font-weight("semibold");
-        font-size: fds.font-size(fds.$header-solution-authority-name-font-size);
+        color: func.color(fds.$header-solution-authority-name);
+        font-weight: func.font-weight("semibold");
+        font-size: func.font-size(fds.$header-solution-authority-name-font-size);
         line-height: 2.4rem;
         margin-top: 0;
         margin-bottom: 0;
@@ -193,13 +194,13 @@ $z-index-nav:     9000;
     }
 
     .solution-info-mobile {
-        padding: fds.units(5);
-        background-color: fds.color(fds.$header-solution-mobile-background-color);
+        padding: func.units(5);
+        background-color: func.color(fds.$header-solution-mobile-background-color);
         overflow-wrap: break-word;
 
         p {
-            margin-bottom: fds.units(3);
-            color: fds.color(fds.$header-solution-info-mobile-text-color);
+            margin-bottom: func.units(3);
+            color: func.color(fds.$header-solution-info-mobile-text-color);
 
             &:last-child {
                 margin-bottom: 0;
@@ -207,12 +208,12 @@ $z-index-nav:     9000;
         }
 
         .function-link {
-            color: fds.color(fds.$header-solution-info-mobile-text-color);
+            color: func.color(fds.$header-solution-info-mobile-text-color);
 
             &:hover,
             &:focus,
             &:visited {
-                color: fds.color(fds.$header-solution-info-mobile-text-color);
+                color: func.color(fds.$header-solution-info-mobile-text-color);
             }
         }
 
@@ -232,7 +233,7 @@ $z-index-nav:     9000;
             position: static;
             padding: 0;
             width: 100%;
-            background-color: fds.color(fds.$header-navigation-background-color);
+            background-color: func.color(fds.$header-navigation-background-color);
         }
 
         .navigation-menu-inner {
@@ -261,12 +262,12 @@ $z-index-nav:     9000;
             .form-group.search {
                 margin-top: 0;
                 flex: 0 0 auto;
-                padding-top: fds.units(4);
-                padding-bottom: fds.units(4);
+                padding-top: func.units(4);
+                padding-bottom: func.units(4);
 
                 @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                    padding-top: fds.units(3);
-                    padding-bottom: fds.units(3);
+                    padding-top: func.units(3);
+                    padding-bottom: func.units(3);
                     margin-left: auto;
                 }
 
@@ -310,7 +311,7 @@ $z-index-nav:     9000;
         right: 0;
         bottom: 0;
         left: auto;
-        background-color: fds.color(fds.$header-portal-background-color);
+        background-color: func.color(fds.$header-portal-background-color);
         flex-direction: column;
         overflow-y: auto;
         padding: 0;
@@ -325,21 +326,21 @@ $z-index-nav:     9000;
 
 
     .menu-top {
-        background-color: fds.color(fds.$header-navigation-top-mobile-background-color);
-        padding-left: fds.units(5);
-        padding-right: fds.units(5);
-        padding-top: fds.units(3);
-        padding-bottom: fds.units(3);
+        background-color: func.color(fds.$header-navigation-top-mobile-background-color);
+        padding-left: func.units(5);
+        padding-right: func.units(5);
+        padding-top: func.units(3);
+        padding-bottom: func.units(3);
         display: flex;
         align-items: center;
-        min-height: fds.units(8);
+        min-height: func.units(8);
 
         @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
             display: none;
         }
 
         .menu-heading {
-            font-size: fds.font-size('lg');
+            font-size: func.font-size('lg');
         }
 
         .button-menu-close {
@@ -361,32 +362,32 @@ $z-index-nav:     9000;
 // Header borders
 
 .header {
-    border-bottom: 1px solid fds.color(fds.$header-last-border-color);
+    border-bottom: 1px solid func.color(fds.$header-last-border-color);
 
     .portal-info + .solution-info {
-        border-top: 1px solid fds.color(fds.$header-border-color);
+        border-top: 1px solid func.color(fds.$header-border-color);
     }
 
     .portal-info-mobile {
-        border-top: 1px solid fds.color(fds.$header-portal-mobile-border-color);
+        border-top: 1px solid func.color(fds.$header-portal-mobile-border-color);
     }
 
     .menu-top + .solution-info-mobile {
-        border-top: 1px solid fds.color(fds.$header-border-color);
+        border-top: 1px solid func.color(fds.$header-border-color);
     }
 
     .solution-info-mobile:last-child {
-        border-bottom: 1px solid fds.color(fds.$header-portal-mobile-border-color);
+        border-bottom: 1px solid func.color(fds.$header-portal-mobile-border-color);
     }
 
     @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
         .solution-info ~ .navigation-menu {
-            border-top: 1px solid fds.color(fds.$header-border-color);
+            border-top: 1px solid func.color(fds.$header-border-color);
         }
     }
 
     .solution-info ~ .navigation-menu.contains-search {
-        border-top: 1px solid fds.color(fds.$header-border-color);
+        border-top: 1px solid func.color(fds.$header-border-color);
     }
 }
 
@@ -398,7 +399,7 @@ $z-index-nav:     9000;
     right: 0;
     bottom: 0;
     left: 0;
-    background: fds.color('black');
+    background: func.color('black');
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     visibility: hidden;

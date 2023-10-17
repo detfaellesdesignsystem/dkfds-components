@@ -1,4 +1,5 @@
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 // Tags
@@ -7,18 +8,18 @@
   display: inline-block;
   width: auto;
   padding:0;
-  padding-left: fds.units(3);
-  padding-right:fds.units(3);
-  margin-right:fds.units(3);
-  margin-bottom:fds.units(3);
+  padding-left: func.units(3);
+  padding-right:func.units(3);
+  margin-right:func.units(3);
+  margin-bottom:func.units(3);
   border-radius: fds.$tag-border-radius;
   border: none;
-  font-size: fds.font-size(fds.$tag-font-size);
-  font-weight: fds.font-weight(fds.$tag-font-weight);
-  color: fds.color(fds.$tag-text-color);
-  background-color: fds.color(fds.$tag-default-background-color);
+  font-size: func.font-size(fds.$tag-font-size);
+  font-weight: func.font-weight(fds.$tag-font-weight);
+  color: func.color(fds.$tag-text-color);
+  background-color: func.color(fds.$tag-default-background-color);
   @include mixins.font-smoothing;
-  line-height: fds.units(fds.$tag-line-height, "rem");
+  line-height: func.units(fds.$tag-line-height, "rem");
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -26,26 +27,26 @@
 
   &.tag-icon {
     padding:0;
-    padding-left:fds.units(3);
+    padding-left:func.units(3);
   }
 
   & + .tag {
-    margin-bottom: fds.units(3);
+    margin-bottom: func.units(3);
   }
 
   &:hover,
   &.tag-hover {
-    background-color: fds.color(fds.$tag-hover-background-color);
+    background-color: func.color(fds.$tag-hover-background-color);
   }
 
   &:active,
   &.tag-active {
-    background-color: fds.color(fds.$tag-active-background-color);
+    background-color: func.color(fds.$tag-active-background-color);
   }
 
   &.focus,
   &:focus {
-    background-color: fds.color(fds.$tag-focus-background-color);
+    background-color: func.color(fds.$tag-focus-background-color);
   }
 
   &.focus,
@@ -57,7 +58,7 @@
   .icon-svg {
     float: right;
     margin: 0px 0px 0px 5px;
-    fill: fds.color(fds.$tag-icon-color);
+    fill: func.color(fds.$tag-icon-color);
   }
 }
 

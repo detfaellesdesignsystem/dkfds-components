@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "../values/fds-values" as fds;
+@use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 @media print {
@@ -85,14 +86,14 @@
     // footer
     footer {
         .footer {
-            margin-top: fds.units(6);
+            margin-top: func.units(6);
             padding-bottom: 0;
 
             .inline-list > li {
                 display: inline-block;
 
                 + li {
-                    margin-left: fds.units(4);
+                    margin-left: func.units(4);
                 }
             }
         }
@@ -157,7 +158,7 @@
             }
 
             tr {
-                border-bottom: fds.border(20);
+                border-bottom: func.border(20);
 
                 &:last-child {
                     border-bottom: 0;
@@ -173,17 +174,17 @@
                     content: attr(data-title);
                     text-align: left;
                     display: block;
-                    font-weight: fds.font-weight("semibold");
+                    font-weight: func.font-weight("semibold");
                 }
             }
 
             &.table--borderless tbody tr {
                 &:first-child {
-                    border-top: fds.border(fds.$table-row-border);
+                    border-top: func.border(fds.$table-row-border);
                 }
 
                 &:last-child {
-                    border-bottom: fds.border(fds.$table-row-border);
+                    border-bottom: func.border(fds.$table-row-border);
                 }
 
                 td:first-child,
@@ -199,14 +200,14 @@
     // Checked checkbox
     .form-checkbox:checked+label::before,
     .form-checkbox[aria-checked="mixed"]+label::before {
-        background-color: fds.color(fds.$input-checkbox-checked-background-color-print);
+        background-color: func.color(fds.$input-checkbox-checked-background-color-print);
         background-image: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: fds.units(fds.$input-checkbox-radio-size, 'rem');
-        line-height: fds.units(fds.$input-checkbox-radio-size, 'rem');
-        font-weight: fds.font-weight("bold");
+        font-size: func.units(fds.$input-checkbox-radio-size, 'rem');
+        line-height: func.units(fds.$input-checkbox-radio-size, 'rem');
+        font-weight: func.font-weight("bold");
     }
 
     // 'Normal' checkbox checkmark
@@ -221,7 +222,7 @@
 
     // Checked radio - radio button 'dot'
     .form-radio:checked + label::after {
-        background-color: fds.color('transparent');
-        border: math.div(fds.units(fds.$input-radio-dot-size), 2) solid fds.color(fds.$input-radio-dot-color);
+        background-color: func.color('transparent');
+        border: math.div(func.units(fds.$input-radio-dot-size), 2) solid func.color(fds.$input-radio-dot-color);
     }
 }

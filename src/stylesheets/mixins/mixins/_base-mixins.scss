@@ -1,5 +1,6 @@
 @use 'sass:math' as math;
 @use "../../values/fds-values" as fds;
+@use "../../functions/functions" as func;
 @use "breakpoints" as breakpoints;
 
 @mixin add-background-svg($image-name) {
@@ -15,7 +16,7 @@
     background-color: transparent;
     border: 0;
     border-radius: 0;
-    font-weight: fds.font-weight("normal");
+    font-weight: func.font-weight("normal");
     margin: 0;
     padding: 0;
     text-align: left;
@@ -33,7 +34,7 @@
 // Focus state mixin
 
 @mixin focus-outline {
-    outline: fds.$theme-focus-width fds.$theme-focus-style fds.color(fds.$theme-focus-color);
+    outline: fds.$theme-focus-width fds.$theme-focus-style func.color(fds.$theme-focus-color);
 }
 
 @mixin focus-offset {
@@ -141,11 +142,11 @@ Sets styles within breakpoints
         @each $breakpoint, $value in $map {
             @if $breakpoint =="default" {
                 @if $style ==line-height {
-                    #{$style}: fds.units($value, 'rem');
+                    #{$style}: func.units($value, 'rem');
                 }
 
                 @else if $style ==font-size {
-                    #{$style}: fds.font-size($value);
+                    #{$style}: func.font-size($value);
                 }
 
                 @else {
@@ -156,11 +157,11 @@ Sets styles within breakpoints
             @else {
                 @include breakpoints.media-breakpoint-up($breakpoint) {
                     @if $style ==line-height {
-                        #{$style}: fds.units($value, 'rem');
+                        #{$style}: func.units($value, 'rem');
                     }
 
                     @else if $style ==font-size {
-                        #{$style}: fds.font-size($value);
+                        #{$style}: func.font-size($value);
                     }
 
                     @else {
@@ -173,11 +174,11 @@ Sets styles within breakpoints
 
     @else {
         @if $style ==line-height {
-            #{$style}: fds.units($map, 'rem');
+            #{$style}: func.units($map, 'rem');
         }
 
         @else if $style ==font-size {
-            #{$style}: fds.font-size($map);
+            #{$style}: func.font-size($map);
         }
 
         @else {
