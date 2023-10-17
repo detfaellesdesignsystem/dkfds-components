@@ -8,7 +8,11 @@
 @function font-weight($value) {
 
     @if map.has-key(font-weight.$fds-font-weights, $value) {
-        @return map.get(font-weight.$fds-font-weights, $value);
+        $map-value: map.get(font-weight.$fds-font-weights, $value);
+        
+        @if $map-value != false {
+            @return $map-value;
+        }
     }
 
     @error '#{$value} is not a valid FDS font-weight token.';
