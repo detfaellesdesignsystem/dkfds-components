@@ -1,4 +1,4 @@
-@use "../../values/values" as fds;
+@use "../../values/values" as vals;
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
@@ -10,7 +10,7 @@
     $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
     @each $prop, $abbrev in (margin: m, padding: p) {
-      @each $size, $length in fds.$spacers {
+      @each $size, $length in vals.$spacers {
 
         .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
         .#{$abbrev}t#{$infix}-#{$size},

@@ -34,9 +34,12 @@ $fds-color-maps:
     @return $all-fds-colors;
 }
 $fds-colors: -merge-fds-color-maps();
-    
+
+// ------------------------------------------------------------------
 // If the theme colors use color names instead of HEX values,
 // e.g. 'gray-900', replace the color name with a HEX value
+// ------------------------------------------------------------------
+
 @function -convert-theme-colors() {
     $converted-colors: ();
   
@@ -52,5 +55,10 @@ $fds-colors: -merge-fds-color-maps();
 
     @return $converted-colors;
 }
+
+// ------------------------------------------------------------------
+// Collect all fds colors and theme colors in a single map with 
+// (key, value) as ("color name", "HEX value")
+// ------------------------------------------------------------------
 
 $all-colors: map.merge($fds-colors, -convert-theme-colors());

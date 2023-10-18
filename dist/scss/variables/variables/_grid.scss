@@ -1,0 +1,31 @@
+//----------------
+// Grid
+// ----------------
+
+// Common grid breakpoints variables
+$grid-xs:                     0 !default;
+$grid-sm:                     576px !default;
+$grid-md:                     768px !default;
+$grid-lg:                     992px !default;
+$grid-xl:                     1200px !default;
+
+// Grid breakpoints..
+$grid-breakpoints: (
+  xs: $grid-xs,
+  sm: $grid-sm,
+  md: $grid-md,
+  lg: $grid-lg,
+  xl: $grid-xl
+) !default;
+
+// Define the maximum width of `.container` for different screen sizes.
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1200px
+) !default;
+
+$grid-columns:                  12 !default;
+$grid-gutter-width:             32px !default; //16px on each side of the columns
+

@@ -1,245 +1,4 @@
-//----------------
-// Grid
-// ----------------
-
-// Common grid breakpoints variables
-$grid-xs:                     0 !default;
-$grid-sm:                     576px !default;
-$grid-md:                     768px !default;
-$grid-lg:                     992px !default;
-$grid-xl:                     1200px !default;
-
-// Grid breakpoints..
-$grid-breakpoints: (
-  xs: $grid-xs,
-  sm: $grid-sm,
-  md: $grid-md,
-  lg: $grid-lg,
-  xl: $grid-xl
-) !default;
-
-// Define the maximum width of `.container` for different screen sizes.
-$container-max-widths: (
-  sm: 100%,
-  md: 100%,
-  lg: 100%,
-  xl: 1200px
-) !default;
-
-$grid-columns:                  12 !default;
-$grid-gutter-width:             32px !default; //16px on each side of the columns
-
-
-/*
-----------------------------------------
-Typography settings
-----------------------------------------
-*/
-
-/*
-----------------------------------------
-Root font size
-----------------------------------------
-Setting $theme-respect-user-font-size to
-true sets the root font size to 100% and
-uses ems for media queries
-----------------------------------------
-$theme-root-font-size only applies when
-$theme-respect-user-font-size is set to
-false.
-
-This will set the root font size
-as a specific px value and use px values
-for media queries.
-
-Accepts true or false
-----------------------------------------
-*/
-
-$theme-respect-user-font-size: true !default;
-
-// $theme-root-font-size only applies when $theme-respect-user-font-size is set to
-// false. This will set the root font size as a specific px value and use px values
-// for media queries.
-
-// Accepts values in px
-
-$theme-root-font-size: 10px !default;
-
-$root-font-size:       if($theme-respect-user-font-size, 62.5%, $theme-root-font-size);
-$root-font-size-equiv: if($theme-respect-user-font-size, 10px, $theme-root-font-size);
-
-
-/*
-----------------------------------------
-Focus styles
-----------------------------------------
-*/
-
-$theme-focus-offset: 1px !default;
-$theme-focus-style: solid !default;
-$theme-focus-width: 4px !default;
-
-$theme-border-radius: 3px !default;
-
-
-/*
-----------------------------------------
-Type scale
-----------------------------------------
-Define your project's type scale using
-values from the USWDS system type scale
-
-1-20
-----------------------------------------
-*/
-
-// General
-$typography-base-font-size: "sm" !default;
-$typography-base-line-height: 5 !default;
-$typography-font-family: 'IBM Plex Sans', 'system' !default;
-$typography-text-max-width: 66ch !default;
-
-// Body text
-$typography-body-text-font-size: $typography-base-font-size !default;
-$typography-body-text-line-height: $typography-base-line-height !default;
-$typography-body-text-letter-spacing: normal !default;
-$typography-body-text-font-weight: "normal" !default;
-$typography-body-text-color: 'ink' !default;
-$typography-body-text-secondary-color: 'ink-light' !default;
-
-// Caption text
-$typography-caption-text-color: 'ink' !default;
-$typography-caption-font-size: "2xs" !default;
-$typography-caption-line-height: 405 !default;
-$typography-caption-letter-spacing: 0.4px !default;
-
-// Subheading
-$typography-subheading-text-color: 'gray-500' !default;
-$typography-subheading-font-size: "2xs" !default;
-$typography-subheading-line-height: 4 !default;
-$typography-subheading-letter-spacing: 1px !default;
-
-// Form label
-$typography-form-label-font-size: "sm" !default;
-$typography-form-label-line-height: 5 !default;
-$typography-form-label-text-color: 'ink' !default;
-
-// Small text
-$typography-small-text-font-size: "xs" !default;
-$typography-small-text-letter-spacing: 0.2px !default;
-$typography-small-text-line-height: 405 !default;
-
-// Display text
-$typography-display-1-heading-font-size: "3xl" !default;
-$typography-display-1-heading-line-height: 605 !default;
-$typography-display-1-heading-letter-spacing: normal !default;
-
-$typography-display-2-heading-font-size: "xl" !default;
-$typography-display-2-heading-line-height: 6 !default;
-$typography-display-2-heading-letter-spacing: normal !default;
-
-// Article
-$typography-article-font-size: "md" !default;
-$typography-article-line-height: 505 !default;
-$typography-article-letter-spacing: normal !default;
-
-// Lead text
-$typography-lead-font-size: "xl" !default;
-$typography-lead-line-height: 6 !default;
-$typography-lead-letter-spacing: normal !default;
-
-// H1
-$typography-h1-font-size: (
-    "default": "3xl",
-    "md": "5xl",
-    "lg": "6xl"
-) !default;
-$typography-h1-line-height: (
-    "default": 6,
-    "md": 7,
-    "lg": 8 
-) !default;
-$typography-h1-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal 
-) !default;
-
-// H2
-$typography-h2-font-size: (
-    "default": "2xl",
-    "md": "3xl",
-    "lg": "5xl"
-) !default;
-$typography-h2-line-height: (
-    "default": 505,
-    "md": 6,
-    "lg": 7
-) !default;
-$typography-h2-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
-) !default;
-
-// H3
-$typography-h3-font-size: (
-    "default": "md",
-    "md": "lg",
-    "lg": "3xl"
-) !default;
-$typography-h3-line-height: (
-    "default": 5,
-    "md": 505,
-    "lg": 6
-) !default;
-$typography-h3-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
-) !default;
-
-// H4
-$typography-h4-font-size: (
-    "default": "sm",
-    "lg": "lg"
-) !default;
-$typography-h4-line-height: (
-    "default": 5,
-    "lg": 505
-) !default;
-$typography-h4-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
-) !default;
-
-// H5
-$typography-h5-font-size: (
-    "default": "xs",
-    "lg": "sm"
-) !default;
-$typography-h5-line-height: (
-    "default": 405,
-    "lg": 5
-) !default;
-$typography-h5-letter-spacing: (
-    "default": normal,
-    "md": normal
-) !default;
-
-// H6
-$typography-h6-font-size: "2xs" !default;
-$typography-h6-line-height: 405 !default;
-$typography-h6-letter-spacing: normal !default;
-
-
-/*
-----------------------------------------
-Component settings
-----------------------------------------
-*/
+@use "typography" as typo-vars;
 
 // Accordion
 $accordion-button-background-color-default: 'gray-100' !default;
@@ -249,14 +8,11 @@ $accordion-button-open-background-color: 'gray-200' !default;
 $accordion-button-icon-size: 5 !default;
 $accordion-button-open-icon: "add.svg" !default;
 $accordion-button-closed-icon: "remove.svg" !default;
-$accordion-button-border-radius: $theme-border-radius !default;
-$accordion-button-open-border-radius: $theme-border-radius $theme-border-radius 0 0  !default;
 $accordion-button-color-default: 'black' !default;
 $accordion-button-color-hover: 'black' !default;
 $accordion-button-error-border-width: 2px !default;
 $accordion-button-error-border-color: "error" !default;
 $accordion-content-border: 10 !default;
-$accordion-content-border-radius: 0 0 $theme-border-radius $theme-border-radius !default;
 $accordion-content-background-color: 'white' !default;
 $accordion-content-color: 'black' !default;
 
@@ -275,7 +31,7 @@ $alert-padding: 4 !default;
 $alert-border-size: 3 !default;
 $alert-icon-size: 24px !default;
 $alert-text-color: 'black' !default;
-$alert-heading-fontsize: $typography-base-font-size !default;
+$alert-heading-fontsize: typo-vars.$typography-base-font-size !default;
 $alert-heading-lineheight: 5 !default;
 $alert-heading-color: $alert-text-color !default;
 $alert-close-text-color: $alert-text-color !default;
@@ -288,10 +44,10 @@ $back-to-top-button-background: 'white' !default;
 $badge-font-weight: "semibold" !default;
 $badge-default-text-color: 'white' !default;
 $badge-default-background-color: 'black' !default;
-$badge-small-font-size: $typography-small-text-font-size !default;
-$badge-small-line-height: $typography-small-text-line-height !default;
-$badge-large-font-size: $typography-body-text-font-size !default;
-$badge-large-line-height: $typography-body-text-line-height !default;
+$badge-small-font-size: typo-vars.$typography-small-text-font-size !default;
+$badge-small-line-height: typo-vars.$typography-small-text-line-height !default;
+$badge-large-font-size: typo-vars.$typography-body-text-font-size !default;
+$badge-large-line-height: typo-vars.$typography-body-text-line-height !default;
 $badge-info-text-color: 'black' !default;
 $badge-success-text-color: 'black' !default;
 $badge-warning-text-color: 'black' !default;
@@ -370,7 +126,7 @@ $button-search-hover-background-color: 'gray-200' !default;
 $search-background-color: 'white';
 
 // Breadcrumbs
-$breadcrumbs-font-size: $typography-small-text-font-size !default;
+$breadcrumbs-font-size: typo-vars.$typography-small-text-font-size !default;
 $breadcrumbs-text-color: 'black' !default;
 $breadcrumbs-chevron-size: 7px !default;
 $breadcrumbs-chevron-border-width: 1px !default;
@@ -434,8 +190,8 @@ $footer-logo: 'logo-placeholder.png' !default;
 $input-border-radius: 4px !default;
 $input-prefix-suffix-background-color: 'gray-100' !default;
 $input-border: 10 !default;
-$input-font-size: $typography-body-text-font-size !default;
-$input-line-height: $typography-body-text-line-height !default;
+$input-font-size: typo-vars.$typography-body-text-font-size !default;
+$input-line-height: typo-vars.$typography-body-text-line-height !default;
 $input-text-color: 'ink' !default;
 $input-placeholder-color: 'gray-500' !default;
 $input-disabled-background-color: 'gray-100' !default;
@@ -445,10 +201,10 @@ $input-border-width-feedback: 2px !default;
 $input-border-color-feedback-error: 'error' !default;
 $input-border-color-feedback-success: 'error' !default;
 $form-hint-text-color: 'ink-light' !default;
-$form-hint-font-size: $typography-body-text-font-size !default;
-$form-hint-line-height: $typography-body-text-line-height !default;
-$form-hint-letter-spacing: $typography-body-text-letter-spacing !default;
-$form-hint-font-weight: $typography-body-text-font-weight !default;
+$form-hint-font-size: typo-vars.$typography-body-text-font-size !default;
+$form-hint-line-height: typo-vars.$typography-body-text-line-height !default;
+$form-hint-letter-spacing: typo-vars.$typography-body-text-letter-spacing !default;
+$form-hint-font-weight: typo-vars.$typography-body-text-font-weight !default;
 $form-group-error-border-width: 4px !default;
 $form-group-error-border-color: 'error' !default;
 $input-text-character-limit-exceeded-color: 'red-700' !default;
@@ -522,12 +278,11 @@ $header-solution-line-height: 5 !default;
 $header-solution-text-size-desktop: '4xl' !default;
 $header-solution-line-height-desktop: 6 !default;
 $header-solution-authority-name: 'gray-600' !default;
-$header-solution-authority-name-font-size: $typography-base-font-size !default;
+$header-solution-authority-name-font-size: typo-vars.$typography-base-font-size !default;
 $header-solution-info-mobile-text-color: 'black' !default;
 $header-navigation-background-color: 'white' !default;
 
 // Navigation
-$nav-responsive-breakpoint: lg !default;
 $navigation-border-desktop-top-color: 'gray-300' !default;
 $navigation-border-top-bottom-color: 'gray-300' !default;
 $navigation-link-current-border-color: 'primary' !default;
@@ -570,13 +325,13 @@ $overflow-menu-button-icon-only-hover-background-color: 'gray-100' !default;
 $overflow-menu-content-shadow: 'medium' !default;
 $overflow-menu-content-background-color: 'white' !default;
 $overflow-menu-content-border: 10 !default;
-$overflow-menu-content-font-size: $typography-body-text-font-size !default;
-$overflow-menu-content-line-height: $typography-body-text-line-height !default;
+$overflow-menu-content-font-size: typo-vars.$typography-body-text-font-size !default;
+$overflow-menu-content-line-height: typo-vars.$typography-body-text-line-height !default;
 $overflow-menu-content-text-color: 'ink' !default;
 $overflow-menu-content-link-hover-background-color: 'gray-100' !default;
 
 // Pagination
-$pagination-button-arrow-font-size: $typography-body-text-font-size !default;
+$pagination-button-arrow-font-size: typo-vars.$typography-body-text-font-size !default;
 $pagination-button-arrow-background-color: 'transparent' !default;
 $pagination-button-arrow-color: 'black' !default;
 $pagination-current-page-background-color: 'gray-600' !default;
@@ -602,9 +357,9 @@ $table-head-font-weight: "semibold" !default;
 $table-border: 10 !default;
 $table-row-border: 20 !default;
 $table-cell-border: $table-row-border !default;
-$table-font-size: $typography-body-text-font-size !default;
-$table-text-line-height: $typography-body-text-line-height !default;
-$table-text-color: $typography-body-text-color !default;
+$table-font-size: typo-vars.$typography-body-text-font-size !default;
+$table-text-line-height: typo-vars.$typography-body-text-line-height !default;
+$table-text-color: typo-vars.$typography-body-text-color !default;
 $table-row-even-background-color: 'gray-100' !default;
 $table-row-odd-background-color: 'white' !default;
 $table-selectable-hover-background-color: 'gray-100' !default;
@@ -620,14 +375,14 @@ $tavnav-button-text-color: 'black' !default;
 
 // Tags
 $tag-border-radius: $button-border-radius !default;
-$tag-font-size: $typography-body-text-font-size !default;
+$tag-font-size: typo-vars.$typography-body-text-font-size !default;
 $tag-font-weight: "medium" !default;
 $tag-text-color: 'white' !default;
 $tag-default-background-color: 'gray-600' !default;
 $tag-hover-background-color: 'gray-500' !default;
 $tag-active-background-color: 'black' !default;
 $tag-focus-background-color: 'gray-600' !default;
-$tag-line-height: $typography-body-text-line-height !default;
+$tag-line-height: typo-vars.$typography-body-text-line-height !default;
 $tag-icon-color: $tag-text-color !default;
 
 // Toast
@@ -662,7 +417,7 @@ $toggle-button-on-active-background-color: 'primary-darker' !default;
 $tooltip-background-color: 'white' !default;
 $tooltip-shadow: 'medium' !default;
 $tooltip-border: 10 !default;
-$tooltip-link-color: $typography-body-text-color !default;
+$tooltip-link-color: typo-vars.$typography-body-text-color !default;
 $tooltip-link-border-width: 1px !default;
 $tooltip-link-border-style: dotted !default;
 $tooltip-link-border-color: $tooltip-link-color !default;

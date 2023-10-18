@@ -25,7 +25,7 @@ Accordion
   font-size: func.font-size(vars.$typography-body-text-font-size);
   position: relative;
   transition: none;
-  border-radius: vars.$accordion-button-border-radius;
+  border-radius: vars.$interactive-element-border-radius;
   border: func.border(vars.$accordion-content-border);
 
   &:hover {
@@ -128,7 +128,7 @@ button.accordion-bulk-button{
   border-bottom: func.border(vars.$accordion-content-border);
   border-left: func.border(vars.$accordion-content-border);
   border-right: func.border(vars.$accordion-content-border);
-  border-radius: vars.$accordion-content-border-radius;
+  border-radius: 0 0 vars.$interactive-element-border-radius vars.$interactive-element-border-radius;
   p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
     color: func.color(vars.$accordion-content-color);
   }
@@ -154,7 +154,7 @@ button.accordion-bulk-button{
 }
 .accordion-button[aria-expanded=true] {
   background-color: func.color(vars.$accordion-button-open-background-color);
-  border-radius: vars.$accordion-button-open-border-radius;
+  border-radius: vars.$interactive-element-border-radius vars.$interactive-element-border-radius 0 0;
   &:not(.accordion-error){
     border-bottom: func.border(vars.$accordion-button-open-border);
   }
@@ -163,5 +163,5 @@ button.accordion-bulk-button{
   background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
   background-repeat: no-repeat;
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
-  border-radius: vars.$accordion-button-border-radius;
+  border-radius: vars.$interactive-element-border-radius;
 }

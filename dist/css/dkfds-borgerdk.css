@@ -8708,7 +8708,7 @@ hr{
   font-size:1.6rem;
   position:relative;
   transition:none;
-  border-radius:3px;
+  border-radius:4px;
   border:1px solid #747474;
 }
 .accordion-button:hover, .tabnav > button:hover, .accordion-button:focus, .tabnav > button:focus{
@@ -8827,7 +8827,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   border-bottom:1px solid #747474;
   border-left:1px solid #747474;
   border-right:1px solid #747474;
-  border-radius:0 0 3px 3px;
+  border-radius:0 0 4px 4px;
 }
 .accordion-content p, .tabnav-panel p, .accordion-content h1, .tabnav-panel h1, .accordion-content h2, .tabnav-panel h2, .accordion-content h3, .tabnav-panel h3, .accordion-content h4, .tabnav-panel h4, .accordion-content h5, .tabnav-panel h5, .accordion-content .h1, .tabnav-panel .h1, .accordion-content .h2, .tabnav-panel .h2, .accordion-content .h3, .tabnav-panel .h3, .accordion-content .h4, .tabnav-panel .h4, .accordion-content .h5, .tabnav-panel .h5{
   color:#1a1a1a;
@@ -8851,7 +8851,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 
 .accordion-button[aria-expanded=true], .tabnav > button[aria-expanded=true]{
   background-color:#DCDCDC;
-  border-radius:3px 3px 0 0;
+  border-radius:4px 4px 0 0;
 }
 .accordion-button[aria-expanded=true]:not(.accordion-error), .tabnav > button[aria-expanded=true]:not(.accordion-error){
   border-bottom:1px solid #BFBFBF;
@@ -8861,7 +8861,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
-  border-radius:3px;
+  border-radius:4px;
 }
 .alert{
   background-color:#F5F5F5;
@@ -11710,13 +11710,13 @@ a.skipnav:focus{
 }
 .tabnav > button[aria-selected=true]{
   background-color:#DCDCDC;
-  border-radius:3px 3px 0 0;
+  border-radius:4px 4px 0 0;
 }
 .tabnav > button[aria-selected=false]{
   background-image:url("../img/svg-icons/add.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
-  border-radius:3px;
+  border-radius:4px;
 }
 .tabnav > button[aria-selected=false]:focus{
   background-color:#F5F5F5;

@@ -26,14 +26,14 @@
 
     &[aria-selected=true]{
       background-color: func.color(vars.$accordion-button-open-background-color);
-      border-radius: vars.$accordion-button-open-border-radius;
+      border-radius: vars.$interactive-element-border-radius vars.$interactive-element-border-radius 0 0;
     }
 
     &[aria-selected=false]{
       background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
       background-repeat: no-repeat;
       background-size: func.units(vars.$accordion-button-icon-size, 'rem');
-      border-radius: vars.$accordion-button-border-radius;
+      border-radius: vars.$interactive-element-border-radius;
       &:focus{
         background-color: func.color(vars.$tavnav-button-default-background-color);
       }
