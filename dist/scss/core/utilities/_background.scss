@@ -1,4 +1,4 @@
-@use "../../values/fds-values" as fds;
+@use "../../variables/variables" as vars;
 @use "../../functions/functions" as func;
 
 //
@@ -9,7 +9,7 @@
 $backgroundcolors: (
   normal: 'white',
   alternative: 'gray-100',
-  modal: fds.$modal-overlay-background-color
+  modal: vars.$modal-overlay-background-color
 ) !default;
 
 

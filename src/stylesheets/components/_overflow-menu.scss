@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -24,7 +24,7 @@
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: func.color(fds.$overflow-menu-button-text-color);
+        color: func.color(vars.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
 
@@ -45,19 +45,19 @@
             position: absolute;
             pointer-events: none;
             z-index: 3;
-            bottom: calc(#{fds.$overflow-menu-dropdown-distance} * -1 - 1px);
+            bottom: calc(#{vars.$overflow-menu-dropdown-distance} * -1 - 1px);
         }
 
         &:after {
-            border-bottom-color: func.color(fds.$overflow-menu-content-background-color);
-            border-width: calc(#{fds.$overflow-menu-arrow-size} - 1px);
-            margin-left: calc((#{fds.$overflow-menu-arrow-size} - 1px)*-1);
+            border-bottom-color: func.color(vars.$overflow-menu-content-background-color);
+            border-width: calc(#{vars.$overflow-menu-arrow-size} - 1px);
+            margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px)*-1);
         }
 
         &:before {
-            border-bottom-color: func.border-color(fds.$overflow-menu-content-border);
-            border-width: fds.$overflow-menu-arrow-size;
-            margin-left: calc(#{fds.$overflow-menu-arrow-size} *-1);
+            border-bottom-color: func.border-color(vars.$overflow-menu-content-border);
+            border-width: vars.$overflow-menu-arrow-size;
+            margin-left: calc(#{vars.$overflow-menu-arrow-size} *-1);
         }
 
         &[aria-expanded="true"] {
@@ -77,7 +77,7 @@
             padding: 0;
 
             &:hover {
-                background-color: func.color(fds.$overflow-menu-button-icon-only-hover-background-color);
+                background-color: func.color(vars.$overflow-menu-button-icon-only-hover-background-color);
             }
         }
     }
@@ -87,12 +87,12 @@
         width: 100%;
         max-width: 30rem;
         z-index: 2;
-        border: func.border(fds.$overflow-menu-content-border);
-        box-shadow: func.shadow(fds.$overflow-menu-content-shadow);
-        background: func.color(fds.$overflow-menu-content-background-color);
+        border: func.border(vars.$overflow-menu-content-border);
+        box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
+        background: func.color(vars.$overflow-menu-content-background-color);
         padding-top: func.units(3);
         padding-bottom: func.units(3);
-        top: calc(100% + #{fds.$overflow-menu-dropdown-distance});
+        top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
 
         @include mixins.media-breakpoint-up(md) {
             width: auto;
@@ -109,9 +109,9 @@
 
     .overflow-list {
         @include mixins.unstyled-list;
-        font-size: func.font-size(fds.$overflow-menu-content-font-size);
-        line-height: func.units(fds.$overflow-menu-content-line-height, 'rem');
-        color: func.color(fds.$overflow-menu-content-text-color);
+        font-size: func.font-size(vars.$overflow-menu-content-font-size);
+        line-height: func.units(vars.$overflow-menu-content-line-height, 'rem');
+        color: func.color(vars.$overflow-menu-content-text-color);
 
         button {
             @include mixins.button-unstyled;
@@ -128,7 +128,7 @@
             &:hover,
             &:visited,
             &:focus {
-                color: func.color(fds.$overflow-menu-content-text-color);
+                color: func.color(vars.$overflow-menu-content-text-color);
             }
         }
 
@@ -138,7 +138,7 @@
             width: 100%;
 
             &:hover {
-                background-color: func.color(fds.$overflow-menu-content-link-hover-background-color);
+                background-color: func.color(vars.$overflow-menu-content-link-hover-background-color);
             }
         }
     }

@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -27,7 +27,7 @@
 }
 .date-picker__button {
   @include mixins.button-unstyled;
-  @include mixins.add-background-svg(fds.$datepicker-button-icon);
+  @include mixins.add-background-svg(vars.$datepicker-button-icon);
   align-self: stretch;
   background-color: transparent;
   background-position: center;
@@ -46,8 +46,8 @@
 // Date Picker - Calendar View
 
 .date-picker__calendar {
-  border: func.border(fds.$datepicker-border);
-  background-color: func.color(fds.$datepicker-background-color);
+  border: func.border(vars.$datepicker-border);
+  background-color: func.color(vars.$datepicker-background-color);
   box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
   left: 0;
   position: absolute;
@@ -69,7 +69,7 @@
   width: 100%;
 
   thead{
-    border-bottom: func.border(fds.$datepicker-table-border);
+    border-bottom: func.border(vars.$datepicker-table-border);
   }
 
   th {
@@ -100,8 +100,8 @@
   display: flex;
   text-align: center;
   width: 100%;
-  background-color: func.color(fds.$datepicker-header-background-color);
-  border-bottom: func.border(fds.$datepicker-table-border);
+  background-color: func.color(vars.$datepicker-header-background-color);
+  border-bottom: func.border(vars.$datepicker-table-border);
 
   button:focus{
     z-index: 10;
@@ -110,8 +110,8 @@
 }
 
 .date-picker__calendar__cell {
-  background-color: func.color(fds.$datepicker-header-background-color);
-  color: func.color(fds.$datepicker-header-text-color);
+  background-color: func.color(vars.$datepicker-header-background-color);
+  color: func.color(vars.$datepicker-header-text-color);
   flex: 1;
 }
 
@@ -139,19 +139,19 @@
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
-  @include mixins.add-background-svg(fds.$datepicker-icon-previous-year);
+  @include mixins.add-background-svg(vars.$datepicker-icon-previous-year);
 }
 
 .date-picker__calendar__previous-month:not([disabled]) {
-  @include mixins.add-background-svg(fds.$datepicker-icon-previous-month);
+  @include mixins.add-background-svg(vars.$datepicker-icon-previous-month);
 }
 
 .date-picker__calendar__next-year:not([disabled]) {
-  @include mixins.add-background-svg(fds.$datepicker-icon-next-year);
+  @include mixins.add-background-svg(vars.$datepicker-icon-next-year);
 }
 
 .date-picker__calendar__next-month:not([disabled]) {
-  @include mixins.add-background-svg(fds.$datepicker-icon-next-month);
+  @include mixins.add-background-svg(vars.$datepicker-icon-next-month);
 }
 
 .date-picker__calendar__day-of-week {
@@ -215,24 +215,24 @@
 
   &--next-month:not([disabled]),
   &--previous-month:not([disabled]) {
-    color: func.color(fds.$datepicker-previous-next-month-text-color);
+    color: func.color(vars.$datepicker-previous-next-month-text-color);
     text-indent: -99999px;
-    background-color: func.color(fds.$datepicker-previous-next-month-background-color);
+    background-color: func.color(vars.$datepicker-previous-next-month-background-color);
 
     &:hover {
-      background-color: func.color(fds.$datepicker-previous-next-month-background-color-hover);
+      background-color: func.color(vars.$datepicker-previous-next-month-background-color-hover);
     }
   }
 
   &--selected,
   &--range-date {
-    background-color: func.color(fds.$datepicker-date-selected-background-color);
-    color: func.color(fds.$datepicker-date-selected-text-color);
+    background-color: func.color(vars.$datepicker-date-selected-background-color);
+    color: func.color(vars.$datepicker-date-selected-text-color);
     font-weight: func.font-weight("semibold");
 
     &:not([disabled]) {
-      background-color: func.color(fds.$datepicker-date-selected-background-color);
-      color: func.color(fds.$datepicker-date-selected-text-color);
+      background-color: func.color(vars.$datepicker-date-selected-background-color);
+      color: func.color(vars.$datepicker-date-selected-text-color);
     }
   }
 
@@ -248,23 +248,23 @@
   }
 
   &--within-range {
-    background-color: func.color(fds.$datepicker-date-within-range-background-color);
-    color: func.color(fds.$datepicker-date-within-range-text-color);
+    background-color: func.color(vars.$datepicker-date-within-range-background-color);
+    color: func.color(vars.$datepicker-date-within-range-text-color);
 
     &:not([disabled]) {
-      background-color: func.color(fds.$datepicker-date-within-range-background-color);
-      color: func.color(fds.$datepicker-date-within-range-text-color);
+      background-color: func.color(vars.$datepicker-date-within-range-background-color);
+      color: func.color(vars.$datepicker-date-within-range-text-color);
 
       &:hover {
-        background-color: func.color(fds.$datepicker-date-within-range-background-color);
+        background-color: func.color(vars.$datepicker-date-within-range-background-color);
       }
 
       &:focus {
-        background-color: func.color(fds.$datepicker-date-within-range-background-color);
+        background-color: func.color(vars.$datepicker-date-within-range-background-color);
       }
 
       &:active {
-        background-color: func.color(fds.$datepicker-date-within-range-background-color);
+        background-color: func.color(vars.$datepicker-date-within-range-background-color);
       }
     }
   }
@@ -321,17 +321,17 @@
   }
 
   &--selected {
-    color: func.color(fds.$datepicker-month-selected-text-color);
+    color: func.color(vars.$datepicker-month-selected-text-color);
     font-weight: func.font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: func.color(fds.$datepicker-month-selected-text-color);
+        color: func.color(vars.$datepicker-month-selected-text-color);
       }
 
       &:focus {
-        color: func.color(fds.$datepicker-month-selected-text-color);
+        color: func.color(vars.$datepicker-month-selected-text-color);
       }
     }
   }
@@ -381,17 +381,17 @@
   }
 
   &--selected {
-    color: func.color(fds.$datepicker-year-selected-text-color);
+    color: func.color(vars.$datepicker-year-selected-text-color);
     font-weight: func.font-weight("semibold");
 
     &:not([disabled]) {
 
       &:hover {
-        color: func.color(fds.$datepicker-year-selected-text-color);
+        color: func.color(vars.$datepicker-year-selected-text-color);
       }
 
       &:focus {
-        color: func.color(fds.$datepicker-year-selected-text-color);
+        color: func.color(vars.$datepicker-year-selected-text-color);
       }
     }
   }

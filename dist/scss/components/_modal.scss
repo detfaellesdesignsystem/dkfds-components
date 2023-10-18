@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -11,7 +11,7 @@ body.modal-open{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: func.color(fds.$modal-overlay-background-color);
+  background-color: func.color(vars.$modal-overlay-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,8 +37,8 @@ body.modal-open{
     max-height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: func.color(fds.$modal-background-color);
-    box-shadow: func.shadow(fds.$modal-shadow);
+    background-color: func.color(vars.$modal-background-color);
+    box-shadow: func.shadow(vars.$modal-shadow);
     max-width: 800px;
     width: 100%;
     position: relative;
@@ -53,14 +53,14 @@ body.modal-open{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: func.color(fds.$modal-header-background-color);
-    color: func.color(fds.$modal-header-text-color);
+    background-color: func.color(vars.$modal-header-background-color);
+    color: func.color(vars.$modal-header-text-color);
     @include mixins.media-breakpoint-up(md) {
       padding-right: 48px;
     }
 
     h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: func.color(fds.$modal-header-text-color);
+      color: func.color(vars.$modal-header-text-color);
     }
   }
   .modal-title {
@@ -72,8 +72,8 @@ body.modal-open{
   }
 
   .modal-body {
-    background-color: func.color(fds.$modal-body-background-color);
-    color: func.color(fds.$modal-body-text-color);
+    background-color: func.color(vars.$modal-body-background-color);
+    color: func.color(vars.$modal-body-text-color);
     padding: 0px 24px;
     @include mixins.media-breakpoint-up(md) {
       padding: func.units(3) func.units(7) func.units(3) func.units(7);
@@ -83,7 +83,7 @@ body.modal-open{
     }
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: func.color(fds.$modal-body-text-color);
+      color: func.color(vars.$modal-body-text-color);
     }
   }
 
@@ -92,8 +92,8 @@ body.modal-open{
     @include mixins.media-breakpoint-up(md) {
       padding: func.units(3) func.units(7) func.units(7) func.units(7);
     }
-    background-color: func.color(fds.$modal-footer-background-color);
-    color: func.color(fds.$modal-footer-text-color);
+    background-color: func.color(vars.$modal-footer-background-color);
+    color: func.color(vars.$modal-footer-text-color);
     @include mixins.media-breakpoint-up(lg) {
       display: flex;
     }
@@ -103,7 +103,7 @@ body.modal-open{
     }
     
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: func.color(fds.$modal-footer-text-color);
+      color: func.color(vars.$modal-footer-text-color);
     }
   }
 
@@ -112,14 +112,14 @@ body.modal-open{
     top: 8px;
     right: 8px;
     width: inherit;
-    color: func.color(fds.$modal-header-close-color);
+    color: func.color(vars.$modal-header-close-color);
     @include mixins.media-breakpoint-up(md) {
       top:func.units(5);
       right: func.units(6);
     }
 
     &:hover, &:visited, &:focus{
-      color: func.color(fds.$modal-header-close-color);
+      color: func.color(vars.$modal-header-close-color);
     }
   }
 

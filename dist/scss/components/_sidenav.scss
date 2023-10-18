@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -8,10 +8,10 @@ $sidemenu-icon-size: 2.4rem;
 
 ul.sidemenu {
     @include mixins.unstyled-list();
-    @include mixins.nav-link-leftdist($sidemenu-border-left-thickness, fds.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
-    @include mixins.nav-link-border(fds.$sidenav-link-border-color, fds.$sidenav-sublink-border-color);
-    border-bottom: 1px solid func.color(fds.$sidenav-border-top-bottom-color);
-    border-top: 1px solid func.color(fds.$sidenav-border-top-bottom-color);
+    @include mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
+    border-bottom: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
+    border-top: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     max-width: none;
 
     ul {
@@ -21,7 +21,7 @@ ul.sidemenu {
     }
 
     li {
-        background-color: func.color(fds.$sidenav-link-background-color);
+        background-color: func.color(vars.$sidenav-link-background-color);
         font-size: func.font-size('sm');
     }
 
@@ -42,7 +42,7 @@ ul.sidemenu {
         width: 100%;
         max-width: none;
         border: none;
-        color: func.color(fds.$sidenav-link-font-color);
+        color: func.color(vars.$sidenav-link-font-color);
         background-color: transparent;
         text-decoration: none;
         min-height: calc(func.units(7) - 1px); /* Minus 1px due to the border on the li element */
@@ -57,15 +57,15 @@ ul.sidemenu {
         }
 
         &:hover {
-            background-color: func.color(fds.$sidenav-link-background-color-hover);
+            background-color: func.color(vars.$sidenav-link-background-color-hover);
 
             .sidenav-information {
-                color: func.color(fds.$sidenav-link-current-extra-information-text-color);
+                color: func.color(vars.$sidenav-link-current-extra-information-text-color);
             }
         }
 
         .sidenav-information {
-            color: func.color(fds.$sidenav-link-default-extra-information-text-color);
+            color: func.color(vars.$sidenav-link-default-extra-information-text-color);
             margin: 0;
             display: block;
             width: 100%;
@@ -124,32 +124,32 @@ ul.sidemenu {
     }
 
     li.current {
-        background-color: func.color(fds.$sidenav-link-current-background-color);
+        background-color: func.color(vars.$sidenav-link-current-background-color);
 
         & > .nav-link,
         & > .nav-step {
             font-weight: func.font-weight("bold");
 
             .sidenav-information {
-                color: func.color(fds.$sidenav-link-current-extra-information-text-color);
+                color: func.color(vars.$sidenav-link-current-extra-information-text-color);
             }
         }
     }
 
     li.sidenav-error {
-        background-color: func.color(fds.$sidenav-error-background-color);
+        background-color: func.color(vars.$sidenav-error-background-color);
 
         &.current {
-            background-color: func.color(fds.$sidenav-error-background-color);
+            background-color: func.color(vars.$sidenav-error-background-color);
         }
 
         .nav-link:hover,
         .nav-step:hover {
-            background-color: func.color(fds.$sidenav-error-background-color);
+            background-color: func.color(vars.$sidenav-error-background-color);
         }
 
         .sidenav-information {
-            color: func.color(fds.$sidenav-link-current-extra-information-text-color);
+            color: func.color(vars.$sidenav-link-current-extra-information-text-color);
         }
     }
 
@@ -171,7 +171,7 @@ ul.sidemenu {
         }
 
         &.sidenav-error {
-            background-color: func.color(fds.$sidenav-error-background-color);
+            background-color: func.color(vars.$sidenav-error-background-color);
         }
     }
 }

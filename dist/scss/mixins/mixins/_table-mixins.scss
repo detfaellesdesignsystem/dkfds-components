@@ -1,4 +1,4 @@
-@use "../../values/fds-values" as fds;
+@use "../../variables/variables" as vars;
 @use "../../functions/functions" as func;
 
 @mixin responsive-table() {
@@ -14,7 +14,7 @@
     }
 
     tr {
-        border-bottom: func.border(fds.$table-row-border);
+        border-bottom: func.border(vars.$table-row-border);
 
         &:last-child {
             border-bottom: none;
@@ -38,7 +38,7 @@
             content: attr(data-title);
             text-align: left;
             display: block;
-            font-weight: func.font-weight(fds.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
         }
     }
 
@@ -82,7 +82,7 @@
                 td,
                 th {
                     &:first-child {
-                        border-top: func.border(fds.$table-row-border);
+                        border-top: func.border(vars.$table-row-border);
                     }
                 }
             }
@@ -94,7 +94,7 @@
                     border-bottom: none;
 
                     &:last-child {
-                        border-bottom: func.border(fds.$table-row-border);
+                        border-bottom: func.border(vars.$table-row-border);
                     }
                 }
             }

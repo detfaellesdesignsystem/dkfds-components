@@ -1,10 +1,10 @@
 @use 'sass:math' as math;
-@use "../../values/fds-values" as fds;
+@use "../../variables/variables" as vars;
 @use "../../functions/functions" as func;
 @use "breakpoints" as breakpoints;
 
 @mixin add-background-svg($image-name) {
-    background-image: url("#{fds.$icons-folder-path}/#{$image-name}.svg");
+    background-image: url("#{vars.$icons-folder-path}/#{$image-name}.svg");
     background-repeat: no-repeat;
 }
 
@@ -34,11 +34,11 @@
 // Focus state mixin
 
 @mixin focus-outline {
-    outline: fds.$theme-focus-width fds.$theme-focus-style func.color("focus");
+    outline: vars.$theme-focus-width vars.$theme-focus-style func.color("focus");
 }
 
 @mixin focus-offset {
-    outline-offset: fds.$theme-focus-offset;
+    outline-offset: vars.$theme-focus-offset;
 }
 
 @mixin focus {

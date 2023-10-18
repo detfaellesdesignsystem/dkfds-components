@@ -1,9 +1,9 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .cookie-container{
-  color: func.color(fds.$cookie-message-text-color);
+  color: func.color(vars.$cookie-message-text-color);
   position: fixed;
   bottom: 0;
   right: 0;
@@ -15,9 +15,9 @@
 
   .cookie-message{
     @include mixins.grid-container();
-    background-color: func.color(fds.$cookie-message-background-color);
-    border: func.border(fds.$cookie-message-border);
-    box-shadow: func.shadow(fds.$cookie-message-shadow);
+    background-color: func.color(vars.$cookie-message-background-color);
+    border: func.border(vars.$cookie-message-border);
+    box-shadow: func.shadow(vars.$cookie-message-shadow);
     padding-top: calc(#{func.units(6)} - 1px);
     padding-bottom: calc(#{func.units(7)} - 1px);
     position: relative;
@@ -25,12 +25,12 @@
     overflow-y: auto;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: func.color(fds.$cookie-message-text-color);
+      color: func.color(vars.$cookie-message-text-color);
     }
 
 
     @include mixins.media-breakpoint-up(xl) {
-      max-width: calc(#{map-get(fds.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
+      max-width: calc(#{map-get(vars.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
     }
 
     .cookie-text, .cookie-actions{

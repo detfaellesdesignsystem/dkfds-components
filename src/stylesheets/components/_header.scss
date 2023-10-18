@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -14,7 +14,7 @@ $z-index-nav:     9000;
     .button {
         width: 100%;
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             width: auto;
         }
     }
@@ -28,13 +28,13 @@ $z-index-nav:     9000;
         width: auto;
         white-space: nowrap;
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             display: none;
         }
     }
 
     .portal-info {
-        background-color: func.color(fds.$header-portal-background-color);
+        background-color: func.color(vars.$header-portal-background-color);
         width: 100%;
 
         .log-on, .log-off {
@@ -42,7 +42,7 @@ $z-index-nav:     9000;
         }
 
         .logo {
-            background-image: url(fds.$image-path+'/'+fds.$header-portal-logo);
+            background-image: url(vars.$image-path+'/'+vars.$header-portal-logo);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center left;
@@ -50,7 +50,7 @@ $z-index-nav:     9000;
             height: 24px;
             width: 100%;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 max-width: 30%;
             }
 
@@ -67,7 +67,7 @@ $z-index-nav:     9000;
             display: flex;
             align-items: center;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 flex-direction: row;
             }
         }
@@ -75,7 +75,7 @@ $z-index-nav:     9000;
         .portal-user {
             display: none;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 margin-left: auto;
                 display: flex;
                 align-items: center;
@@ -95,7 +95,7 @@ $z-index-nav:     9000;
     .portal-info-mobile {
         padding: func.units(5);
         text-align: left;
-        background-color: func.color(fds.$header-portal-background-color);
+        background-color: func.color(vars.$header-portal-background-color);
 
         p {
             margin-bottom: func.units(3);
@@ -106,13 +106,13 @@ $z-index-nav:     9000;
             overflow-wrap: break-word;
         }
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             display: none;
         }
     }
 
     .solution-info {
-        background-color: func.color(fds.$header-solution-background-color);
+        background-color: func.color(vars.$header-solution-background-color);
         width: 100%;
 
         .solution-info-inner {
@@ -128,36 +128,36 @@ $z-index-nav:     9000;
             max-width: 100%;
             overflow-wrap: break-word;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 max-width: 70%;
             }
             
             a, h1, .h1 {
-                font-size: func.font-size(fds.$header-solution-text-size);
-                line-height: func.units(fds.$header-solution-line-height, 'rem');
+                font-size: func.font-size(vars.$header-solution-text-size);
+                line-height: func.units(vars.$header-solution-line-height, 'rem');
                 font-weight: func.font-weight("semibold");
-                color: func.color(fds.$header-solution-text-color);
+                color: func.color(vars.$header-solution-text-color);
                 text-decoration: none;
                 display: inline-block;
                 max-width: 100%;
 
                 @include mixins.media-breakpoint-up(md) {
-                    font-size: func.font-size(fds.$header-solution-text-size-desktop);
-                    line-height: func.units(fds.$header-solution-line-height-desktop, 'rem');
+                    font-size: func.font-size(vars.$header-solution-text-size-desktop);
+                    line-height: func.units(vars.$header-solution-line-height-desktop, 'rem');
                 }
             }
 
             p, h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
-                color: func.color(fds.$header-solution-text-color);
+                color: func.color(vars.$header-solution-text-color);
             }
 
             .function-link {
-                color: func.color(fds.$header-solution-text-color);
+                color: func.color(vars.$header-solution-text-color);
 
                 &:hover,
                 &:focus,
                 &:visited {
-                    color: func.color(fds.$header-solution-text-color);
+                    color: func.color(vars.$header-solution-text-color);
                 }
             }
         }
@@ -165,7 +165,7 @@ $z-index-nav:     9000;
         .additional-info {
             display: none;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 margin-left: auto;
                 text-align: right;
                 display: block;
@@ -176,9 +176,9 @@ $z-index-nav:     9000;
     }
 
     .authority-name {
-        color: func.color(fds.$header-solution-authority-name);
+        color: func.color(vars.$header-solution-authority-name);
         font-weight: func.font-weight("semibold");
-        font-size: func.font-size(fds.$header-solution-authority-name-font-size);
+        font-size: func.font-size(vars.$header-solution-authority-name-font-size);
         line-height: 2.4rem;
         margin-top: 0;
         margin-bottom: 0;
@@ -195,12 +195,12 @@ $z-index-nav:     9000;
 
     .solution-info-mobile {
         padding: func.units(5);
-        background-color: func.color(fds.$header-solution-mobile-background-color);
+        background-color: func.color(vars.$header-solution-mobile-background-color);
         overflow-wrap: break-word;
 
         p {
             margin-bottom: func.units(3);
-            color: func.color(fds.$header-solution-info-mobile-text-color);
+            color: func.color(vars.$header-solution-info-mobile-text-color);
 
             &:last-child {
                 margin-bottom: 0;
@@ -208,16 +208,16 @@ $z-index-nav:     9000;
         }
 
         .function-link {
-            color: func.color(fds.$header-solution-info-mobile-text-color);
+            color: func.color(vars.$header-solution-info-mobile-text-color);
 
             &:hover,
             &:focus,
             &:visited {
-                color: func.color(fds.$header-solution-info-mobile-text-color);
+                color: func.color(vars.$header-solution-info-mobile-text-color);
             }
         }
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             display: none;
         }
     }
@@ -226,23 +226,23 @@ $z-index-nav:     9000;
     .navigation-menu {
         display: none;
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             border-left: none;
             display: block;
             overflow-y: visible;
             position: static;
             padding: 0;
             width: 100%;
-            background-color: func.color(fds.$header-navigation-background-color);
+            background-color: func.color(vars.$header-navigation-background-color);
         }
 
         .navigation-menu-inner {
             padding-left: 0;
             padding-right: 0;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                padding-left: calc(fds.$grid-gutter-width / 2);
-                padding-right: calc(fds.$grid-gutter-width / 2);
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+                padding-left: calc(vars.$grid-gutter-width / 2);
+                padding-right: calc(vars.$grid-gutter-width / 2);
                 width: 100%;
                 display: flex;
                 align-items: center;
@@ -254,7 +254,7 @@ $z-index-nav:     9000;
                 display: none;
                 flex: 1 1 auto;
 
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     display: block;
                 }
             }
@@ -265,7 +265,7 @@ $z-index-nav:     9000;
                 padding-top: func.units(4);
                 padding-bottom: func.units(4);
 
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     padding-top: func.units(3);
                     padding-bottom: func.units(3);
                     margin-left: auto;
@@ -274,7 +274,7 @@ $z-index-nav:     9000;
                 .form-input {
                     max-width: 100%;
 
-                    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                         max-width: 24rem;
                         min-width: 24rem;
                     }
@@ -286,8 +286,8 @@ $z-index-nav:     9000;
             display: block;
 
             .navigation-menu-inner {
-                padding-left: calc(fds.$grid-gutter-width / 2);
-                padding-right: calc(fds.$grid-gutter-width / 2);
+                padding-left: calc(vars.$grid-gutter-width / 2);
+                padding-right: calc(vars.$grid-gutter-width / 2);
             }
         }
     }
@@ -311,7 +311,7 @@ $z-index-nav:     9000;
         right: 0;
         bottom: 0;
         left: auto;
-        background-color: func.color(fds.$header-portal-background-color);
+        background-color: func.color(vars.$header-portal-background-color);
         flex-direction: column;
         overflow-y: auto;
         padding: 0;
@@ -326,7 +326,7 @@ $z-index-nav:     9000;
 
 
     .menu-top {
-        background-color: func.color(fds.$header-navigation-top-mobile-background-color);
+        background-color: func.color(vars.$header-navigation-top-mobile-background-color);
         padding-left: func.units(5);
         padding-right: func.units(5);
         padding-top: func.units(3);
@@ -335,7 +335,7 @@ $z-index-nav:     9000;
         align-items: center;
         min-height: func.units(8);
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             display: none;
         }
 
@@ -362,32 +362,32 @@ $z-index-nav:     9000;
 // Header borders
 
 .header {
-    border-bottom: 1px solid func.color(fds.$header-last-border-color);
+    border-bottom: 1px solid func.color(vars.$header-last-border-color);
 
     .portal-info + .solution-info {
-        border-top: 1px solid func.color(fds.$header-border-color);
+        border-top: 1px solid func.color(vars.$header-border-color);
     }
 
     .portal-info-mobile {
-        border-top: 1px solid func.color(fds.$header-portal-mobile-border-color);
+        border-top: 1px solid func.color(vars.$header-portal-mobile-border-color);
     }
 
     .menu-top + .solution-info-mobile {
-        border-top: 1px solid func.color(fds.$header-border-color);
+        border-top: 1px solid func.color(vars.$header-border-color);
     }
 
     .solution-info-mobile:last-child {
-        border-bottom: 1px solid func.color(fds.$header-portal-mobile-border-color);
+        border-bottom: 1px solid func.color(vars.$header-portal-mobile-border-color);
     }
 
-    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
         .solution-info ~ .navigation-menu {
-            border-top: 1px solid func.color(fds.$header-border-color);
+            border-top: 1px solid func.color(vars.$header-border-color);
         }
     }
 
     .solution-info ~ .navigation-menu.contains-search {
-        border-top: 1px solid func.color(fds.$header-border-color);
+        border-top: 1px solid func.color(vars.$header-border-color);
     }
 }
 

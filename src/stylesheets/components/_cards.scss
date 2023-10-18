@@ -1,14 +1,14 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .card {
   position: relative;
   border-radius: func.units(0);
-  box-shadow: func.shadow(fds.$cards-shadow);
-  border: func.border(fds.$cards-border);
+  box-shadow: func.shadow(vars.$cards-shadow);
+  border: func.border(vars.$cards-border);
   overflow: hidden;
-  background: func.color(fds.$cards-background-color);
+  background: func.color(vars.$cards-background-color);
 
   //small card
   &-small {
@@ -68,33 +68,33 @@
 }
 //card-header
 .card-header {
-  background-color: func.color(fds.$cards-header-background-color);
+  background-color: func.color(vars.$cards-header-background-color);
   padding: func.units(4) func.units(5);
   .header-title {
     @include mixins.body-copy-text;
     font-weight: func.font-weight("semibold");
-    color: func.color(fds.$cards-heading-color);
+    color: func.color(vars.$cards-heading-color);
     margin:func.units(0);
 
     &.large-text {
       @include mixins.h1;
-      color: func.color(fds.$cards-heading-large-color);
+      color: func.color(vars.$cards-heading-large-color);
     }
   }
   .sub-header {
     @include mixins.body-copy-text;
     margin-top:  func.units(0);
     margin-bottom: func.units(0);
-    color: func.color(fds.$cards-sub-heading-color);
+    color: func.color(vars.$cards-sub-heading-color);
   }
 }
 .card-text {
-  background-color: func.color(fds.$cards-text-background-color);
+  background-color: func.color(vars.$cards-text-background-color);
   padding: func.units(4) func.units(5);
   .text {
     @include mixins.body-copy-text;
     margin-top: func.units(4);
-    color: func.color(fds.$cards-text-color);
+    color: func.color(vars.$cards-text-color);
     margin-bottom: func.units(0);
   }
 }
@@ -103,8 +103,8 @@
 .card-content {
   @include mixins.body-copy-text;
   padding: func.units(0);
-  color: func.color(fds.$cards-text-color);
-  background-color: func.color(fds.$cards-content-background-color);
+  color: func.color(vars.$cards-text-color);
+  background-color: func.color(vars.$cards-content-background-color);
   ul {
     margin-bottom:func.units(0);
   }
@@ -123,9 +123,9 @@
 .card-action {
   @include mixins.body-copy-text;
   padding: func.units(4) func.units(5);
-  color: func.color(fds.$cards-text-color);
+  color: func.color(vars.$cards-text-color);
   margin-bottom: func.units(0);
-  background-color: func.color(fds.$cards-action-background-color);
+  background-color: func.color(vars.$cards-action-background-color);
 
   div:first-child {
     margin-top:func.units(0);

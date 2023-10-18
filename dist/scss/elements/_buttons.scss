@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -7,10 +7,10 @@
 a.button {
     display: inline-flex;
     padding-top: func.units(1);
-    padding-left: calc(func.units(4) - fds.$button-border-width);
-    padding-right: calc(func.units(4) - fds.$button-border-width);
+    padding-left: calc(func.units(4) - vars.$button-border-width);
+    padding-right: calc(func.units(4) - vars.$button-border-width);
     padding-bottom: 1px;
-    line-height: func.units(fds.$button-line-height, 'rem');
+    line-height: func.units(vars.$button-line-height, 'rem');
 }
 
 .button {
@@ -19,18 +19,18 @@ a.button {
     width: 100%;
     min-height: func.units(7);
     padding-top: func.units(1);
-    padding-left: calc(func.units(4) - fds.$button-border-width);
-    padding-right: calc(func.units(4) - fds.$button-border-width);
+    padding-left: calc(func.units(4) - vars.$button-border-width);
+    padding-right: calc(func.units(4) - vars.$button-border-width);
     padding-bottom: 1px;
-    border-radius: fds.$button-border-radius;
-    border-width: fds.$button-border-width fds.$button-border-width fds.$button-border-bottom-width fds.$button-border-width;
+    border-radius: vars.$button-border-radius;
+    border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
     border-style: solid;
-    border-color: func.color(fds.$button-primary-default-border-color);
+    border-color: func.color(vars.$button-primary-default-border-color);
     font-size: func.font-size('md');
     font-weight: func.font-weight("medium");
-    color: func.color(fds.$button-primary-default-color);
+    color: func.color(vars.$button-primary-default-color);
     @include mixins.font-smoothing;
-    line-height: func.units(fds.$button-line-height, 'rem');
+    line-height: func.units(vars.$button-line-height, 'rem');
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -54,44 +54,44 @@ a.button {
     &.focus,
     &:focus {
         @include mixins.focus();
-        color: func.color(fds.$button-primary-focus-color);
+        color: func.color(vars.$button-primary-focus-color);
     }
 
     //############ Primary ###############
     &.button-primary {
-        color: func.color(fds.$button-primary-default-color);
-        background-color: func.color(fds.$button-primary-default-background-color);
-        border-color: func.color(fds.$button-primary-default-border-color);
+        color: func.color(vars.$button-primary-default-color);
+        background-color: func.color(vars.$button-primary-default-background-color);
+        border-color: func.color(vars.$button-primary-default-border-color);
 
         &:hover,
         &.button-hover {
-            background-color: func.color(fds.$button-primary-hover-background-color);
-            border-color: func.color(fds.$button-primary-hover-border-color);
+            background-color: func.color(vars.$button-primary-hover-background-color);
+            border-color: func.color(vars.$button-primary-hover-border-color);
         }
 
         &.focus,
         &:focus {
-            background-color: func.color(fds.$button-primary-focus-background-color);
-            border-color: func.color(fds.$button-primary-focus-border-color);
+            background-color: func.color(vars.$button-primary-focus-background-color);
+            border-color: func.color(vars.$button-primary-focus-border-color);
         }
 
         &:active,
         &.button-active {
-            background-color: func.color(fds.$button-primary-active-background-color);
-            border-color: func.color(fds.$button-primary-active-border-color);
+            background-color: func.color(vars.$button-primary-active-background-color);
+            border-color: func.color(vars.$button-primary-active-border-color);
         }
 
         &:disabled,
         &.disabled {
-            opacity: fds.$button-disabled-opacity;
+            opacity: vars.$button-disabled-opacity;
             box-shadow: none !important;
             cursor: not-allowed;
 
             &:hover {
-                color: func.color(fds.$button-primary-hover-color) !important;
-                background-color: func.color(fds.$button-primary-default-background-color) !important;
-                border-color: func.color(fds.$button-primary-default-border-color) !important;
-                opacity: fds.$button-disabled-opacity !important;
+                color: func.color(vars.$button-primary-hover-color) !important;
+                background-color: func.color(vars.$button-primary-default-background-color) !important;
+                border-color: func.color(vars.$button-primary-default-border-color) !important;
+                opacity: vars.$button-disabled-opacity !important;
                 box-shadow: none !important;
             }
         }
@@ -99,43 +99,43 @@ a.button {
 
     //############ Secondary ##############
     &.button-secondary {
-        color: func.color(fds.$button-secondary-default-color);
-        background-color: func.color(fds.$button-secondary-default-background-color);
-        border-color: func.color(fds.$button-secondary-default-border-color);
+        color: func.color(vars.$button-secondary-default-color);
+        background-color: func.color(vars.$button-secondary-default-background-color);
+        border-color: func.color(vars.$button-secondary-default-border-color);
 
         &:hover,
         &.button-hover {
-            color: func.color(fds.$button-secondary-hover-color);
-            background-color: func.color(fds.$button-secondary-hover-background-color);
-            border-color: func.color(fds.$button-secondary-hover-border-color);
+            color: func.color(vars.$button-secondary-hover-color);
+            background-color: func.color(vars.$button-secondary-hover-background-color);
+            border-color: func.color(vars.$button-secondary-hover-border-color);
         }
 
         &.focus,
         &:focus {
-            color: func.color(fds.$button-secondary-focus-color);
-            background-color: func.color(fds.$button-secondary-focus-background-color);
-            border-color: func.color(fds.$button-secondary-focus-border-color);
+            color: func.color(vars.$button-secondary-focus-color);
+            background-color: func.color(vars.$button-secondary-focus-background-color);
+            border-color: func.color(vars.$button-secondary-focus-border-color);
         }
 
         &:active,
         &.button-active {
-            color: func.color(fds.$button-secondary-active-color);
-            background-color: func.color(fds.$button-secondary-active-background-color);
-            border-color: func.color(fds.$button-secondary-active-border-color);
+            color: func.color(vars.$button-secondary-active-color);
+            background-color: func.color(vars.$button-secondary-active-background-color);
+            border-color: func.color(vars.$button-secondary-active-border-color);
         }
 
         &:disabled,
         &.disabled {
-            opacity: fds.$button-disabled-opacity;
+            opacity: vars.$button-disabled-opacity;
             box-shadow: none !important;
             cursor: not-allowed;
-            border-color: func.color(fds.$button-secondary-disabled-border-color) !important;
+            border-color: func.color(vars.$button-secondary-disabled-border-color) !important;
 
             &:hover {
-                color: func.color(fds.$button-secondary-default-color) !important;
-                background-color: func.color(fds.$button-secondary-default-background-color) !important;
-                border-color: func.color(fds.$button-secondary-disabled-border-color) !important;
-                opacity: fds.$button-disabled-opacity !important;
+                color: func.color(vars.$button-secondary-default-color) !important;
+                background-color: func.color(vars.$button-secondary-default-background-color) !important;
+                border-color: func.color(vars.$button-secondary-disabled-border-color) !important;
+                opacity: vars.$button-disabled-opacity !important;
                 box-shadow: none !important;
             }
         }
@@ -143,44 +143,44 @@ a.button {
 
     //############### tertiary ############
     &.button-tertiary {
-        border-color: func.color(fds.$button-tertiary-default-border-color);
-        background-color: func.color(fds.$button-tertiary-default-background-color);
-        color: func.color(fds.$button-tertiary-default-color);
+        border-color: func.color(vars.$button-tertiary-default-border-color);
+        background-color: func.color(vars.$button-tertiary-default-background-color);
+        color: func.color(vars.$button-tertiary-default-color);
         font-weight: func.font-weight("normal");
 
         &:hover,
         &.button-hover {
-            border-color: func.color(fds.$button-tertiary-hover-border-color);
-            background-color: func.color(fds.$button-tertiary-hover-background-color);
-            color: func.color(fds.$button-tertiary-hover-color);
+            border-color: func.color(vars.$button-tertiary-hover-border-color);
+            background-color: func.color(vars.$button-tertiary-hover-background-color);
+            color: func.color(vars.$button-tertiary-hover-color);
         }
 
         &.focus,
         &:focus {
-            border-color: func.color(fds.$button-tertiary-focus-border-color);
-            background-color: func.color(fds.$button-tertiary-focus-background-color);
-            color: func.color(fds.$button-tertiary-focus-color);
+            border-color: func.color(vars.$button-tertiary-focus-border-color);
+            background-color: func.color(vars.$button-tertiary-focus-background-color);
+            color: func.color(vars.$button-tertiary-focus-color);
         }
 
         &:active,
         &.button-active {
-            border-color: func.color(fds.$button-tertiary-active-border-color);
-            background-color: func.color(fds.$button-tertiary-active-background-color);
-            color: func.color(fds.$button-tertiary-active-color);
+            border-color: func.color(vars.$button-tertiary-active-border-color);
+            background-color: func.color(vars.$button-tertiary-active-background-color);
+            color: func.color(vars.$button-tertiary-active-color);
         }
 
         &:disabled,
         &.disabled {
-            opacity: fds.$button-disabled-opacity;
+            opacity: vars.$button-disabled-opacity;
             box-shadow: none !important;
             cursor: not-allowed;
 
             &:hover {
-                border-color: func.color(fds.$button-tertiary-default-border-color) !important;
-                background-color: func.color(fds.$button-tertiary-default-background-color) !important;
-                color: func.color(fds.$button-tertiary-default-color);
+                border-color: func.color(vars.$button-tertiary-default-border-color) !important;
+                background-color: func.color(vars.$button-tertiary-default-background-color) !important;
+                color: func.color(vars.$button-tertiary-default-color);
                 font-weight: func.font-weight("normal") !important;
-                opacity: fds.$button-disabled-opacity;
+                opacity: vars.$button-disabled-opacity;
                 box-shadow: none !important;
             }
         }
@@ -188,66 +188,66 @@ a.button {
 
     //############ Button quaternary - button styled as a link #################
     &.button-quaternary {
-        color: func.color(fds.$button-quaternary-default-color);
-        background-color: func.color(fds.$button-quaternary-default-background-color);
+        color: func.color(vars.$button-quaternary-default-color);
+        background-color: func.color(vars.$button-quaternary-default-background-color);
         border-color: transparent;
         text-decoration: none;
         font-weight: func.font-weight("normal");
-        padding-left: calc(8px - #{fds.$button-border-width});
+        padding-left: calc(8px - #{vars.$button-border-width});
 
         &:hover,
         &.button-hover {
-            background-color: func.color(fds.$button-quaternary-hover-background-color);
+            background-color: func.color(vars.$button-quaternary-hover-background-color);
             box-shadow: none;
             border-bottom-color: transparent;
         }
 
         &.focus,
         &:focus {
-            color: func.color(fds.$button-quaternary-default-color);
+            color: func.color(vars.$button-quaternary-default-color);
             box-shadow: none;
             border-bottom-color: transparent;
-            background-color: func.color(fds.$button-quaternary-focus-background-color);
+            background-color: func.color(vars.$button-quaternary-focus-background-color);
         }
 
         &:active,
         &.button-active {
-            background-color: func.color(fds.$button-quaternary-active-background-color);
+            background-color: func.color(vars.$button-quaternary-active-background-color);
             box-shadow: none;
             border-bottom-color: transparent;
         }
 
         &:disabled,
         &.disabled {
-            opacity: fds.$button-disabled-opacity;
+            opacity: vars.$button-disabled-opacity;
             box-shadow: none !important;
             cursor: not-allowed;
 
             &:hover {
-                color: func.color(fds.$button-quaternary-default-color) !important;
-                background-color: func.color(fds.$button-quaternary-default-background-color) !important;
+                color: func.color(vars.$button-quaternary-default-color) !important;
+                background-color: func.color(vars.$button-quaternary-default-background-color) !important;
                 font-weight: func.font-weight("normal") !important;
-                opacity: fds.$button-disabled-opacity !important;
+                opacity: vars.$button-disabled-opacity !important;
                 box-shadow: none !important;
             }
         }
 
         .icon-svg {
             margin-right: func.units(2);
-            min-width: func.units(fds.$button-line-height, 'rem');
+            min-width: func.units(vars.$button-line-height, 'rem');
         }
     }
 
     &.button-small {
-        padding: calc(#{func.units(1)}) calc(#{func.units(4)} - #{fds.$button-border-width}) 0px;
-        font-size: func.font-size(fds.$typography-small-text-font-size);
+        padding: calc(#{func.units(1)}) calc(#{func.units(4)} - #{vars.$button-border-width}) 0px;
+        font-size: func.font-size(vars.$typography-small-text-font-size);
         min-height: 24px;
     }
 
     .icon-svg {
         margin-right: func.units(3);
         fill: currentColor;
-        min-width: func.units(fds.$button-line-height, 'rem');
+        min-width: func.units(vars.$button-line-height, 'rem');
     }
 }
 

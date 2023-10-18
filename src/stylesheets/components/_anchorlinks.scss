@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -11,7 +11,7 @@
     font-size: func.font-size("2xs");
     font-weight: func.font-weight("medium");
     margin-bottom: func.units(3);
-    line-height: func.units(fds.$typography-base-line-height, 'rem');
+    line-height: func.units(vars.$typography-base-line-height, 'rem');
 }
 
 .anchorlist {

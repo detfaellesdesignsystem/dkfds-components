@@ -1,4 +1,4 @@
-@use "../variables/theme-colors" as vars-theme;
+@use "../../variables/variables/theme-colors" as vars-theme;
 
 $fds-shadows: (
     "light": (

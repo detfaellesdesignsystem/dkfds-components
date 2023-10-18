@@ -1,18 +1,18 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 html {
-  font-family: fds.$typography-font-family;
-  font-size: fds.$root-font-size;
+  font-family: vars.$typography-font-family;
+  font-size: vars.$root-font-size;
 }
 
 body {
-  font-size: func.font-size(fds.$typography-base-font-size);
+  font-size: func.font-size(vars.$typography-base-font-size);
 }
 
 p {
-  line-height: func.units(fds.$typography-base-line-height, 'rem');
+  line-height: func.units(vars.$typography-base-line-height, 'rem');
   margin-bottom: func.units(3, 'rem');
   margin-top: func.units(4, 'rem');
 }
@@ -78,7 +78,7 @@ a {
   }
 
   &:not(.button, .full-width-image) {
-    max-width: fds.$typography-text-max-width;
+    max-width: vars.$typography-text-max-width;
   }
 }
 
@@ -119,20 +119,20 @@ figcaption, .figcaption{
 }
 
 .font-lead {
-  font-size: func.font-size(fds.$typography-lead-font-size);
+  font-size: func.font-size(vars.$typography-lead-font-size);
   font-weight: func.font-weight("normal");
-  line-height: func.units(fds.$typography-lead-line-height, 'rem');
-  max-width: fds.$typography-text-max-width;
+  line-height: func.units(vars.$typography-lead-line-height, 'rem');
+  max-width: vars.$typography-text-max-width;
   color: func.color('ink');
-  letter-spacing: fds.$typography-lead-letter-spacing;
+  letter-spacing: vars.$typography-lead-letter-spacing;
 }
 .article{
-  font-size: func.font-size(fds.$typography-article-font-size);
+  font-size: func.font-size(vars.$typography-article-font-size);
   font-weight: func.font-weight("normal");
-  line-height: func.units(fds.$typography-article-line-height, 'rem');
-  max-width: fds.$typography-text-max-width;
+  line-height: func.units(vars.$typography-article-line-height, 'rem');
+  max-width: vars.$typography-text-max-width;
   color: func.color('ink');
-  letter-spacing: fds.$typography-article-letter-spacing;
+  letter-spacing: vars.$typography-article-letter-spacing;
 }
 small, .small-text {
   @include mixins.small-text();
@@ -278,7 +278,7 @@ button.function-link{
 }
 
 .icon-link{
-  line-height: func.units(fds.$typography-body-text-line-height, 'rem');
+  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   .icon-svg{
     margin-left: func.units(2);
     width: 1.6rem;
@@ -327,40 +327,40 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6{
-  max-width: fds.$typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tabnav):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
-  max-width: fds.$typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 .font-lead{
-  max-width: fds.$typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 
 .form-label, .form-hint, .form-error-message{
-  max-width: fds.$typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 .form-checkbox+label, .form-radio+label{
-  max-width: fds.$typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 
 .displayheading {
   &-1 {
     font-weight: func.font-weight("medium");
-    font-size: func.font-size(fds.$typography-display-1-heading-font-size);
-    line-height: func.units(fds.$typography-display-1-heading-line-height, 'rem');
+    font-size: func.font-size(vars.$typography-display-1-heading-font-size);
+    line-height: func.units(vars.$typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
     color: func.color('black');
-    letter-spacing: fds.$typography-display-1-heading-letter-spacing;
+    letter-spacing: vars.$typography-display-1-heading-letter-spacing;
   }
   &-2 {
     font-weight: func.font-weight("medium");
-    font-size: func.font-size(fds.$typography-display-2-heading-font-size);
-    line-height: func.units(fds.$typography-display-2-heading-line-height, 'rem');
+    font-size: func.font-size(vars.$typography-display-2-heading-font-size);
+    line-height: func.units(vars.$typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
     color: func.color('black');
-    letter-spacing: fds.$typography-display-2-heading-letter-spacing;
+    letter-spacing: vars.$typography-display-2-heading-letter-spacing;
   }
 }
 

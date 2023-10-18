@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -30,11 +30,11 @@
 
     .button {
         &.button-arrow {
-            font-size: func.font-size(fds.$pagination-button-arrow-font-size);
+            font-size: func.font-size(vars.$pagination-button-arrow-font-size);
             @include mixins.appearance-none;
-            background-color: func.color(fds.$pagination-button-arrow-background-color);
+            background-color: func.color(vars.$pagination-button-arrow-background-color);
             border-style: none;
-            color: func.color(fds.$pagination-button-arrow-color);
+            color: func.color(vars.$pagination-button-arrow-color);
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
@@ -109,9 +109,9 @@
                 @include mixins.appearance-none;
                 display: inline-block;
                 width: 100%;
-                padding: func.units(3) calc(#{func.units(4)} - #{fds.$button-border-width}) calc(#{func.units(3)} - #{fds.$button-border-width});
-                border-radius: fds.$button-border-radius;
-                border-width: fds.$button-border-width fds.$button-border-width fds.$button-border-bottom-width fds.$button-border-width;
+                padding: func.units(3) calc(#{func.units(4)} - #{vars.$button-border-width}) calc(#{func.units(3)} - #{vars.$button-border-width});
+                border-radius: vars.$button-border-radius;
+                border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
                 border-style: solid;
                 font-weight: func.font-weight("medium");
                 @include mixins.font-smoothing;
@@ -122,9 +122,9 @@
                 user-select: text;
 
                 font-size: func.font-size('md');
-                color: func.color(fds.$pagination-current-page-color);
-                background-color: func.color(fds.$pagination-current-page-background-color);
-                border-color: func.color(fds.$pagination-current-page-border-color);
+                color: func.color(vars.$pagination-current-page-color);
+                background-color: func.color(vars.$pagination-current-page-background-color);
+                border-color: func.color(vars.$pagination-current-page-border-color);
             }
         }
     }

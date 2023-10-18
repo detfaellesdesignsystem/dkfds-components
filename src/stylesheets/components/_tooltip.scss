@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -14,19 +14,19 @@
     cursor: pointer;
 }
 .tooltip-link{
-  border-bottom: fds.$tooltip-link-border-width fds.$tooltip-link-border-style func.color(fds.$tooltip-link-border-color);
+  border-bottom: vars.$tooltip-link-border-width vars.$tooltip-link-border-style func.color(vars.$tooltip-link-border-color);
   display: inline;
   text-decoration: none;
   &:link, &:active, &:hover, &:visited, &:focus{
-    color: func.color(fds.$tooltip-link-color);
+    color: func.color(vars.$tooltip-link-color);
   }
 }
 .tooltip{
   @include mixins.body-copy-text;
   font-size: func.font-size('sm');
-  box-shadow: func.shadow(fds.$tooltip-shadow);
-  background-color: func.color(fds.$tooltip-background-color);
-  border: func.border(fds.$tooltip-border);
+  box-shadow: func.shadow(vars.$tooltip-shadow);
+  background-color: func.color(vars.$tooltip-background-color);
+  border: func.border(vars.$tooltip-border);
   border-radius: 4px;
   padding: .3rem .6rem;
 }
@@ -40,7 +40,7 @@
   position: absolute;
 }
 .tooltip-popper .tooltip-arrow.down{
-    border-top:8px solid func.border-color(fds.$tooltip-border);
+    border-top:8px solid func.border-color(vars.$tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     bottom: -7px;
@@ -48,7 +48,7 @@
 
     &:after{
         content: '';
-        border-top: 7px solid func.color(fds.$tooltip-background-color);
+        border-top: 7px solid func.color(vars.$tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;
@@ -58,14 +58,14 @@
     }
 }
 .tooltip-popper .tooltip-arrow.up{
-    border-bottom:8px solid func.border-color(fds.$tooltip-border);
+    border-bottom:8px solid func.border-color(vars.$tooltip-border);
     border-right:8px solid transparent;
     border-left:8px solid transparent;
     top: -7px;
     left: calc(50% - 8px);
     &:after{
         content: '';
-        border-bottom: 7px solid func.color(fds.$tooltip-background-color);
+        border-bottom: 7px solid func.color(vars.$tooltip-background-color);
         border-right: 7px solid transparent;
         border-left: 7px solid transparent;
         display: block;

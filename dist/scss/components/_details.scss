@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -14,7 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &:before {
-        background-image: url(fds.$icons-folder-path+'/'+fds.$details-button-open-icon);
+        background-image: url(vars.$icons-folder-path+'/'+vars.$details-button-open-icon);
         background-position: -10px -8px;
       }
     }
@@ -29,7 +29,7 @@
     &:before {
       content: "";
       display: inline-block;
-      background-image: url(fds.$icons-folder-path+'/'+fds.$details-button-closed-icon);
+      background-image: url(vars.$icons-folder-path+'/'+vars.$details-button-closed-icon);
       background-position: -14px -8px;
       background-repeat: no-repeat;
       background-size: 3.4rem;;
@@ -48,7 +48,7 @@
 
   .details-text {
     padding: func.units(4);
-    border-left: fds.$details-panel-border-width solid func.color(fds.$details-panel-border-color);
+    border-left: vars.$details-panel-border-width solid func.color(vars.$details-panel-border-color);
     box-sizing: border-box;
     &[aria-hidden=true]{
       display: none;

@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -6,7 +6,7 @@
   display: flex;
   
   .form-input{
-    background-color: func.color(fds.$search-background-color);
+    background-color: func.color(vars.$search-background-color);
     margin-top: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -16,16 +16,16 @@
   }
 
   .button-search{
-    background-color: func.color(fds.$button-search-default-background-color);
-    border: func.border(fds.$input-border);
+    background-color: func.color(vars.$button-search-default-background-color);
+    border: func.border(vars.$input-border);
     border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    color: func.color(fds.$button-search-text-color);
+    color: func.color(vars.$button-search-text-color);
     font-weight: func.font-weight("normal");
     width: inherit; //not 100& width on mobile
     &:hover{
-      background-color: func.color(fds.$button-search-hover-background-color);
+      background-color: func.color(vars.$button-search-hover-background-color);
     }
   }
 }

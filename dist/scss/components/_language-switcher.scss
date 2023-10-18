@@ -1,10 +1,10 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .language-switcher{
-  border-top: func.border(fds.$language-switcher-border);
-  background-color: func.color(fds.$language-switcher-background-color);
+  border-top: func.border(vars.$language-switcher-border);
+  background-color: func.color(vars.$language-switcher-background-color);
   padding-top: #{func.units(5)};
   @include mixins.media-breakpoint-up(md) {
     margin-top: -#{func.units(5)};
@@ -34,7 +34,7 @@
       }
 
       a, a:hover, a:visited, a:active, a:focus{
-        color: func.color(fds.$language-switcher-text-color);
+        color: func.color(vars.$language-switcher-text-color);
         display: inline-block;
 
 
@@ -51,7 +51,7 @@
         a, a:hover, a:visited, a:active, a:focus {
           padding-left: 0;
           font-weight: func.font-weight("semibold");
-          color: func.color(fds.$language-switcher-active-text-color);
+          color: func.color(vars.$language-switcher-active-text-color);
           text-decoration: none;
           border-left: 0;
         }

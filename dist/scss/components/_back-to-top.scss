@@ -1,11 +1,11 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .button.back-to-top-button {
-    box-shadow: func.shadow(fds.$back-to-top-button-shadow);
+    box-shadow: func.shadow(vars.$back-to-top-button-shadow);
     width: auto;
-    background-color: func.color(fds.$back-to-top-button-background);
+    background-color: func.color(vars.$back-to-top-button-background);
     position: fixed;
     right: func.units(5);
     bottom: func.units(5);
@@ -14,7 +14,7 @@
     z-index: 1;
 
     &.button-tertiary {
-        background-color: func.color(fds.$back-to-top-button-background);
+        background-color: func.color(vars.$back-to-top-button-background);
     }
 
     &.footer-sticky {

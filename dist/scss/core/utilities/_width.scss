@@ -1,4 +1,4 @@
-@use "../../values/fds-values" as fds;
+@use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
 //
@@ -19,10 +19,10 @@ $percent-widths: (
   100: 100%,
 ) !default;
 
-@each $breakpoint in map-keys(fds.$grid-breakpoints) {
+@each $breakpoint in map-keys(vars.$grid-breakpoints) {
   @include mixins.media-breakpoint-up($breakpoint) {
     @each $name, $size in $percent-widths { 
-      $infix: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+      $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
       .w-percent#{$infix}-#{$name}         { width: $size !important;}
     }
   }

@@ -1,26 +1,26 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 $toast-backgrounds: (
-    success: fds.$toast-success-background-color,
-    warning: fds.$toast-warning-background-color,
-    error: fds.$toast-error-background-color,
-    info: fds.$toast-info-background-color
+    success: vars.$toast-success-background-color,
+    warning: vars.$toast-warning-background-color,
+    error: vars.$toast-error-background-color,
+    info: vars.$toast-info-background-color
 );
 
 $toast-icon-names: (
-    success: fds.$toast-success-icon,
-    warning: fds.$toast-warning-icon,
-    error: fds.$toast-error-icon,
-    info: fds.$toast-info-icon
+    success: vars.$toast-success-icon,
+    warning: vars.$toast-warning-icon,
+    error: vars.$toast-error-icon,
+    info: vars.$toast-info-icon
 );
 
 $toast-icon-backgrounds: (
-    success: fds.$toast-success-color,
-    warning: fds.$toast-warning-color,
-    error: fds.$toast-error-color,
-    info: fds.$toast-info-color
+    success: vars.$toast-success-color,
+    warning: vars.$toast-warning-color,
+    error: vars.$toast-error-color,
+    info: vars.$toast-info-color
 );
 
 .toast-container {
@@ -42,11 +42,11 @@ $toast-icon-backgrounds: (
 .toast {
     width: 100%;
     max-width: 100%;
-    background-color: func.color(fds.$toast-default-background-color);
+    background-color: func.color(vars.$toast-default-background-color);
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: func.units(4);
-    box-shadow: func.shadow(fds.$toast-shadow);
+    box-shadow: func.shadow(vars.$toast-shadow);
 
     &:not(.show) {
         opacity: 0;
@@ -85,7 +85,7 @@ $toast-icon-backgrounds: (
             height: 24px;
             cursor: pointer;
 
-            background-image: url(fds.$icons-folder-path+'/'+'close.svg');
+            background-image: url(vars.$icons-folder-path+'/'+'close.svg');
             background-repeat: no-repeat;
         }
 
@@ -117,6 +117,6 @@ $iconcolor in $toast-icon-backgrounds {
 @each $name,
 $iconname in $toast-icon-names {
     .toast-#{$name} .toast-icon {
-        background-image: url(fds.$icons-folder-path+'/'+$iconname+'.svg');
+        background-image: url(vars.$icons-folder-path+'/'+$iconname+'.svg');
     }
 }

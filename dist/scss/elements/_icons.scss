@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 
 $icons: (
@@ -166,15 +166,15 @@ $icons: (
 ) !default;
 
 .icon{
-    height: func.units(fds.$typography-body-text-line-height, 'rem');
-    width: func.units(fds.$typography-body-text-line-height, 'rem');
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
     background-repeat: no-repeat;
     display: inline-block;
     background-size: 100%;
 }
 .icon-svg {
-    height: func.units(fds.$typography-body-text-line-height, 'rem');
-    width: func.units(fds.$typography-body-text-line-height, 'rem');
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor; //svg inherit color
@@ -189,8 +189,8 @@ $icons: (
 }
 
 .icon-svg-large {
-    height: func.font-size(fds.$typography-display-1-heading-font-size);
-    width: func.font-size(fds.$typography-display-1-heading-font-size);
+    height: func.font-size(vars.$typography-display-1-heading-font-size);
+    width: func.font-size(vars.$typography-display-1-heading-font-size);
     vertical-align: middle;
     &--inherit-color{
         fill: currentColor;
@@ -199,7 +199,7 @@ $icons: (
 
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
-        background-image: url(fds.$icons-folder-path+'/'+$icon+".svg");
+        background-image: url(vars.$icons-folder-path+'/'+$icon+".svg");
     }
 }
 

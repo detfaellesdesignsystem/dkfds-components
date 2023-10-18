@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 @use "accordions";
@@ -25,24 +25,24 @@
     }
 
     &[aria-selected=true]{
-      background-color: func.color(fds.$accordion-button-open-background-color);
-      border-radius: fds.$accordion-button-open-border-radius;
+      background-color: func.color(vars.$accordion-button-open-background-color);
+      border-radius: vars.$accordion-button-open-border-radius;
     }
 
     &[aria-selected=false]{
-      background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
+      background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
       background-repeat: no-repeat;
-      background-size: func.units(fds.$accordion-button-icon-size, 'rem');
-      border-radius: fds.$accordion-button-border-radius;
+      background-size: func.units(vars.$accordion-button-icon-size, 'rem');
+      border-radius: vars.$accordion-button-border-radius;
       &:focus{
-        background-color: func.color(fds.$tavnav-button-default-background-color);
+        background-color: func.color(vars.$tavnav-button-default-background-color);
       }
     }
 
     @include mixins.media-breakpoint-up(md) {
       display: inline-block;
       width: auto;
-      color: func.color(fds.$tavnav-button-text-color);
+      color: func.color(vars.$tavnav-button-text-color);
       text-align: center;
       text-decoration: none;
       padding: 0;
@@ -58,13 +58,13 @@
       border-top: func.units(2) solid func.color('white');
 
       &[aria-selected=false]{
-        background-color: func.color(fds.$tavnav-button-default-background-color);
+        background-color: func.color(vars.$tavnav-button-default-background-color);
         background-image: none;
         border-radius: 0;
       }
 
       &:hover {
-          background-color: func.color(fds.$tavnav-button-hover-background-color);
+          background-color: func.color(vars.$tavnav-button-hover-background-color);
       }
 
       &:focus{
@@ -75,12 +75,12 @@
       }
 
       &[aria-selected=true] {
-        background-color: func.color(fds.$tabnav-background-color);
+        background-color: func.color(vars.$tabnav-background-color);
         background-image: none;
-        border: func.border(fds.$tabnav-border);
+        border: func.border(vars.$tabnav-border);
         padding-left: calc(#{func.units(5)} - 1px);
         padding-right: calc(#{func.units(5)} - 1px);
-        border-bottom: 1px solid func.color(fds.$tabnav-background-color);
+        border-bottom: 1px solid func.color(vars.$tabnav-background-color);
         border-radius: 0;
         text-decoration: none;
         margin: 0 func.units(2) -1px 0;
@@ -105,7 +105,7 @@
     @extend .accordion-content;
     @include mixins.media-breakpoint-up(md) {
       display: none;
-      border: func.border(fds.$tabnav-border);
+      border: func.border(vars.$tabnav-border);
       border-radius: 0;
       overflow: hidden;
       margin-bottom: calc(#{func.units(4)});

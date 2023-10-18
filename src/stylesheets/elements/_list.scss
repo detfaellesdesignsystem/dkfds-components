@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -7,15 +7,15 @@
  ul {
    padding-left: 0;
    list-style-type: none;
-   color: func.color(fds.$typography-body-text-color);
-   font-size: func.font-size(fds.$typography-body-text-font-size);
-   line-height: func.units(fds.$typography-body-text-line-height, 'rem');
+   color: func.color(vars.$typography-body-text-color);
+   font-size: func.font-size(vars.$typography-body-text-font-size);
+   line-height: func.units(vars.$typography-body-text-line-height, 'rem');
    > li {
      margin-top:func.units(3);
      list-style-type: none;
      position: relative;
      padding-left: func.units(4);
-     line-height: func.units(fds.$typography-body-text-line-height, 'rem');
+     line-height: func.units(vars.$typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";
        position: absolute;
@@ -36,9 +36,9 @@ ol {
 
 .article{
   ul > li, ol > li{
-    font-size: func.font-size(fds.$typography-article-font-size);
-    line-height: func.units(fds.$typography-article-line-height, 'rem');
-    letter-spacing: fds.$typography-article-letter-spacing;
+    font-size: func.font-size(vars.$typography-article-font-size);
+    line-height: func.units(vars.$typography-article-line-height, 'rem');
+    letter-spacing: vars.$typography-article-letter-spacing;
   }
 }
 

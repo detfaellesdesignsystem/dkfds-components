@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -14,23 +14,23 @@ footer {
 
   //generel for footer
   .footer {
-    border-top: func.border(fds.$footer-border);
-    background-color: func.color(fds.$footer-background-color);
+    border-top: func.border(vars.$footer-border);
+    background-color: func.color(vars.$footer-background-color);
     padding-top: calc(#{func.units(5)} - 1px);
     padding-bottom: func.units(4);
     margin-top: 8rem;
-    color: func.color(fds.$footer-text-color);
+    color: func.color(vars.$footer-text-color);
     @include mixins.media-breakpoint-up(md) {
       padding-bottom: calc(#{func.units(9)} + #{func.units(4)});
     }
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: func.color(fds.$footer-text-color);
+      color: func.color(vars.$footer-text-color);
     }
 
     .function-link {
-      color: func.color(fds.$footer-text-color);
+      color: func.color(vars.$footer-text-color);
       &:hover, &:focus, &:visited{
-        color: func.color(fds.$footer-text-color);
+        color: func.color(vars.$footer-text-color);
       }
     }
 
@@ -46,7 +46,7 @@ footer {
     }
 
     .logo{
-      background-image: url(fds.$image-path+'/'+fds.$footer-logo);
+      background-image: url(vars.$image-path+'/'+vars.$footer-logo);
       background-size: contain;
       background-repeat: no-repeat;
       display: inline-block;

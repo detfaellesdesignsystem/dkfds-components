@@ -1,14 +1,14 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
 .table {
     margin: 0;
-    line-height: func.units(fds.$table-text-line-height, 'rem');
-    border: func.border(fds.$table-border);
+    line-height: func.units(vars.$table-text-line-height, 'rem');
+    border: func.border(vars.$table-border);
     width: 100%;
-    color: func.color(fds.$table-text-color);
-    font-size: func.font-size(fds.$table-font-size);
+    color: func.color(vars.$table-text-color);
+    font-size: func.font-size(vars.$table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
@@ -18,8 +18,8 @@
         padding-top: func.units(4);
         padding-right: calc(func.units(4) - 1px); //1px for the border
         padding-bottom: calc(func.units(4) - 1px); //1px for the border
-        border-right: func.border(fds.$table-cell-border);
-        border-bottom: func.border(fds.$table-row-border);
+        border-right: func.border(vars.$table-cell-border);
+        border-bottom: func.border(vars.$table-row-border);
         background-color: inherit;
         vertical-align: top;
         text-align: left;
@@ -46,10 +46,10 @@
     }
 
     thead {
-        background-color: func.color(fds.$table-head-background-color);
+        background-color: func.color(vars.$table-head-background-color);
 
         th {
-            font-weight: func.font-weight(fds.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
             padding-top: calc(func.units(4) - 1px); //1px for the border
 
             &:first-child {
@@ -69,7 +69,7 @@
 
     tbody {
         th {
-            font-weight: func.font-weight(fds.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
         }
 
         tr {
@@ -155,7 +155,7 @@
 
             td,
             th {
-                border-bottom: func.border(fds.$table-row-border);
+                border-bottom: func.border(vars.$table-row-border);
             }
         }
 
@@ -188,12 +188,12 @@
         }
 
         tr:nth-child(even) {
-            background-color: func.color(fds.$table-row-even-background-color);
+            background-color: func.color(vars.$table-row-even-background-color);
         }
 
         tbody {
             tr:nth-child(odd) {
-                background-color: func.color(fds.$table-row-odd-background-color);
+                background-color: func.color(vars.$table-row-odd-background-color);
             }
         }
     }
@@ -223,7 +223,7 @@
         }
 
         thead {
-            background-color: func.color(fds.$table-row-even-background-color);
+            background-color: func.color(vars.$table-row-even-background-color);
         }
 
         tbody tr:last-child {
@@ -258,7 +258,7 @@
 
             td,
             th {
-                border-top: func.border(fds.$table-row-border);
+                border-top: func.border(vars.$table-row-border);
             }
         }
 
@@ -282,10 +282,10 @@
             }
         }
 
-        @each $breakpoint in map-keys(fds.$grid-breakpoints) {
+        @each $breakpoint in map-keys(vars.$grid-breakpoints) {
             @if $breakpoint !=xs and $breakpoint !=xl {
                 @include mixins.media-breakpoint-down($breakpoint) {
-                    $infix: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+                    $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
                         @include mixins.responsive-table();
@@ -301,20 +301,20 @@
     tbody tr:hover,
     &.table.table--zebra tr:nth-child(even):hover,
     &.table.table--zebra tr:nth-child(odd):hover {
-        background-color: func.color(fds.$table-selectable-hover-background-color);
+        background-color: func.color(vars.$table-selectable-hover-background-color);
     }
 
     &.table.table--zebra tr.table-row-selected:nth-child(even),
     &.table.table--zebra tr.table-row-selected:nth-child(odd),
     .table-row-selected {
-        background-color: func.color(fds.$table-selectable-selected-background-color);
+        background-color: func.color(vars.$table-selectable-selected-background-color);
     }
 }
 
 .table-actions {
-    border-right: func.border(fds.$table-border);
-    border-bottom: func.border(fds.$table-border);
-    border-left: func.border(fds.$table-border);
+    border-right: func.border(vars.$table-border);
+    border-bottom: func.border(vars.$table-border);
+    border-left: func.border(vars.$table-border);
     overflow: hidden;
     padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
 
@@ -322,7 +322,7 @@
         margin-top: 0px;
 
         &.no-selected {
-            color: func.color(fds.$table-selectable-help-text-color);
+            color: func.color(vars.$table-selectable-help-text-color);
         }
     }
 
@@ -331,6 +331,6 @@
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
-    padding: fds.$theme-focus-offset+fds.$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
-    margin: -(fds.$theme-focus-offset+fds.$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
+    padding: vars.$theme-focus-offset+vars.$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -(vars.$theme-focus-offset+vars.$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }

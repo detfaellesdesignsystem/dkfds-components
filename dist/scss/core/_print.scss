@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -76,7 +76,7 @@
                 margin-left: 0;
                 text-align: right;
 
-                @include mixins.media-breakpoint-up(#{fds.$nav-responsive-breakpoint}) {
+                @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
                     margin-left: 0;
                 }
             }
@@ -180,11 +180,11 @@
 
             &.table--borderless tbody tr {
                 &:first-child {
-                    border-top: func.border(fds.$table-row-border);
+                    border-top: func.border(vars.$table-row-border);
                 }
 
                 &:last-child {
-                    border-bottom: func.border(fds.$table-row-border);
+                    border-bottom: func.border(vars.$table-row-border);
                 }
 
                 td:first-child,
@@ -200,13 +200,13 @@
     // Checked checkbox
     .form-checkbox:checked+label::before,
     .form-checkbox[aria-checked="mixed"]+label::before {
-        background-color: func.color(fds.$input-checkbox-checked-background-color-print);
+        background-color: func.color(vars.$input-checkbox-checked-background-color-print);
         background-image: none;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: func.units(fds.$input-checkbox-radio-size, 'rem');
-        line-height: func.units(fds.$input-checkbox-radio-size, 'rem');
+        font-size: func.units(vars.$input-checkbox-radio-size, 'rem');
+        line-height: func.units(vars.$input-checkbox-radio-size, 'rem');
         font-weight: func.font-weight("bold");
     }
 
@@ -223,6 +223,6 @@
     // Checked radio - radio button 'dot'
     .form-radio:checked + label::after {
         background-color: func.color('transparent');
-        border: math.div(func.units(fds.$input-radio-dot-size), 2) solid func.color(fds.$input-radio-dot-color);
+        border: math.div(func.units(vars.$input-radio-dot-size), 2) solid func.color(vars.$input-radio-dot-color);
     }
 }

@@ -1,12 +1,12 @@
-@use "../../values/fds-values" as fds;
+@use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
 // Additional flex alignment options.
 // https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_flex.scss
 
-@each $breakpoint in map-keys(fds.$grid-breakpoints) {
+@each $breakpoint in map-keys(vars.$grid-breakpoints) {
   @include mixins.media-breakpoint-up($breakpoint) {
-    $infix: mixins.breakpoint-infix($breakpoint, fds.$grid-breakpoints);
+    $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
     .flex#{$infix}-row            { flex-direction: row !important; }
     .flex#{$infix}-column         { flex-direction: column !important; }

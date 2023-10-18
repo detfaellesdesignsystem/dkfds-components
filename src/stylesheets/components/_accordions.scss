@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 @use "../core/typography";
@@ -10,27 +10,27 @@ Accordion
 */
 .accordion-button {
   @include mixins.button-unstyled;
-  background-color: func.color(fds.$accordion-button-background-color-default);
-  background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-closed-icon);
+  background-color: func.color(vars.$accordion-button-background-color-default);
+  background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-closed-icon);
   background-position: left func.units(4, 'rem') center;
   background-repeat: no-repeat;
-  background-size: func.units(fds.$accordion-button-icon-size, 'rem');
-  color: func.color(fds.$accordion-button-color-default);
+  background-size: func.units(vars.$accordion-button-icon-size, 'rem');
+  color: func.color(vars.$accordion-button-color-default);
   cursor: pointer;
   display: inline-block;
   margin: 0;
-  line-height: func.units(fds.$typography-body-text-line-height, 'rem');
+  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem');
   width: 100%;
-  font-size: func.font-size(fds.$typography-body-text-font-size);
+  font-size: func.font-size(vars.$typography-body-text-font-size);
   position: relative;
   transition: none;
-  border-radius: fds.$accordion-button-border-radius;
-  border: func.border(fds.$accordion-content-border);
+  border-radius: vars.$accordion-button-border-radius;
+  border: func.border(vars.$accordion-content-border);
 
   &:hover {
-    background-color: func.color(fds.$accordion-button-background-color-hover);
-    color: func.color(fds.$accordion-button-color-hover);
+    background-color: func.color(vars.$accordion-button-background-color-hover);
+    color: func.color(vars.$accordion-button-color-hover);
   }
 
   h1, .h1,
@@ -64,11 +64,11 @@ Accordion
    }
 
     .icon-svg {
-      fill: func.color(fds.$accordion-button-color-default);
+      fill: func.color(vars.$accordion-button-color-default);
       float: left;
     }
     &:hover .icon-svg{
-      fill: func.color(fds.$accordion-button-color-hover);
+      fill: func.color(vars.$accordion-button-color-hover);
     }
   }
 }
@@ -82,10 +82,10 @@ button.accordion-bulk-button{
   margin-bottom: func.units(4);
   
   &[data-accordion-bulk-expand="true"] {
-    background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
+    background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-closed-icon);
+    background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-closed-icon);
   }
 }
 
@@ -121,16 +121,16 @@ button.accordion-bulk-button{
 }
 
 .accordion-content {
-  background-color: func.color(fds.$accordion-content-background-color);
-  color: func.color(fds.$accordion-content-color);
+  background-color: func.color(vars.$accordion-content-background-color);
+  color: func.color(vars.$accordion-content-color);
   overflow: auto;
   padding: func.units(4, 'rem');
-  border-bottom: func.border(fds.$accordion-content-border);
-  border-left: func.border(fds.$accordion-content-border);
-  border-right: func.border(fds.$accordion-content-border);
-  border-radius: fds.$accordion-content-border-radius;
+  border-bottom: func.border(vars.$accordion-content-border);
+  border-left: func.border(vars.$accordion-content-border);
+  border-right: func.border(vars.$accordion-content-border);
+  border-radius: vars.$accordion-content-border-radius;
   p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
-    color: func.color(fds.$accordion-content-color);
+    color: func.color(vars.$accordion-content-color);
   }
 
   > *:first-child {
@@ -150,18 +150,18 @@ button.accordion-bulk-button{
   }
 }
 .accordion-button.accordion-error {
-  border: fds.$accordion-button-error-border-width solid func.color(fds.$accordion-button-error-border-color);
+  border: vars.$accordion-button-error-border-width solid func.color(vars.$accordion-button-error-border-color);
 }
 .accordion-button[aria-expanded=true] {
-  background-color: func.color(fds.$accordion-button-open-background-color);
-  border-radius: fds.$accordion-button-open-border-radius;
+  background-color: func.color(vars.$accordion-button-open-background-color);
+  border-radius: vars.$accordion-button-open-border-radius;
   &:not(.accordion-error){
-    border-bottom: func.border(fds.$accordion-button-open-border);
+    border-bottom: func.border(vars.$accordion-button-open-border);
   }
 }
 .accordion-button[aria-expanded=false] {
-  background-image: url(fds.$icons-folder-path+'/'+fds.$accordion-button-open-icon);
+  background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
   background-repeat: no-repeat;
-  background-size: func.units(fds.$accordion-button-icon-size, 'rem');
-  border-radius: fds.$accordion-button-border-radius;
+  background-size: func.units(vars.$accordion-button-icon-size, 'rem');
+  border-radius: vars.$accordion-button-border-radius;
 }

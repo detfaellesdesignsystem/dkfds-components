@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -11,16 +11,16 @@ $navigation-desktop-border-bottom-thickness: func.units(2);
 
 ul.mainmenu {
     @include mixins.unstyled-list;
-    @include mixins.nav-link-leftdist(func.units(3), fds.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include mixins.nav-link-border(fds.$navigation-link-border-color, fds.$navigation-sublink-border-color);
+    @include mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     max-width: 100%;
-    border-bottom: 1px solid func.color(fds.$navigation-border-top-bottom-color);
-    border-top: 1px solid func.color(fds.$navigation-border-top-bottom-color);
+    border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
+    border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
 
-    @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
         flex-direction: row;
         border-bottom: 0;
         border-top: 0;
@@ -34,9 +34,9 @@ ul.mainmenu {
     }
 
     li {
-        background-color: func.color(fds.$navigation-link-background-color);
+        background-color: func.color(vars.$navigation-link-background-color);
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             border-top: 0;
 
             &.active {
@@ -52,7 +52,7 @@ ul.mainmenu {
                     }
 
                     span {
-                        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(fds.$navigation-link-current-border-color);
+                        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
                         font-weight: func.font-weight("bold");
                     }
                 }
@@ -65,14 +65,14 @@ ul.mainmenu {
         }
 
         &.current {
-            background-color: func.color(fds.$navigation-link-current-background-color);
+            background-color: func.color(vars.$navigation-link-current-background-color);
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                background-color: func.color(fds.$navigation-link-background-color);
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+                background-color: func.color(vars.$navigation-link-background-color);
             }
 
             .helptext {
-                color: func.color(fds.$navigation-link-current-helptext-color);
+                color: func.color(vars.$navigation-link-current-helptext-color);
                 font-weight: func.font-weight("normal");
             }
         }
@@ -84,7 +84,7 @@ ul.mainmenu {
         padding-bottom: func.units(4);
         padding-right: func.units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
         text-decoration: none;
-        color: func.color(fds.$navigation-link-default-color);
+        color: func.color(vars.$navigation-link-default-color);
         font-size: func.font-size('sm');
         background-color: func.color('transparent');
         display: block;
@@ -94,7 +94,7 @@ ul.mainmenu {
         max-width: unset;
         cursor: pointer;
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             padding-left: $navigation-row-link-padding-left-right;
             padding-right: $navigation-row-link-padding-left-right;
             padding-bottom: 0;
@@ -102,22 +102,22 @@ ul.mainmenu {
         }
 
         &:hover {
-            background-color: func.color(fds.$navigation-link-background-color-hover);
+            background-color: func.color(vars.$navigation-link-background-color-hover);
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 padding-left: $navigation-row-link-padding-left-right;
                 border-left: 0;
-                background-color: func.color(fds.$navigation-link-background-color); /* Don't use hover color on desktop */
+                background-color: func.color(vars.$navigation-link-background-color); /* Don't use hover color on desktop */
             }
             
             span {
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
-                    border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(fds.$navigation-link-current-border-color);
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+                    border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
                 }
             }
 
             .helptext {
-                color: func.color(fds.$navigation-link-current-helptext-color);
+                color: func.color(vars.$navigation-link-current-helptext-color);
                 font-weight: func.font-weight("normal");
             }
         }
@@ -127,7 +127,7 @@ ul.mainmenu {
             position: relative;
             z-index: 2;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 outline-offset: 0;
             }
         }
@@ -137,7 +137,7 @@ ul.mainmenu {
             width: 100%;
             overflow-wrap: break-word;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 display: block;
                 border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
                 padding-bottom: func.units(305);
@@ -147,7 +147,7 @@ ul.mainmenu {
         }
 
         .helptext {
-            color: func.color(fds.$navigation-link-helptext-color);
+            color: func.color(vars.$navigation-link-helptext-color);
             width: auto;
             font-weight: func.font-weight("normal");
         }
@@ -159,7 +159,7 @@ ul.mainmenu {
         position: relative;
         width: 100%;
 
-        @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
             display: inline-block;
         }
 
@@ -170,7 +170,7 @@ ul.mainmenu {
             text-decoration: none;
             border: 0;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 position: relative;
             }
 
@@ -180,7 +180,7 @@ ul.mainmenu {
                 background-size: 2.4rem;
                 padding-right: calc(2.4rem + 4px);
 
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     background-position-y: top;
                     white-space: nowrap;
                 }
@@ -189,7 +189,7 @@ ul.mainmenu {
             &[aria-expanded="false"] span {
                 @include mixins.add-background-svg("add");
 
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     @include mixins.add-background-svg("expand-more");
                 }
             }
@@ -197,7 +197,7 @@ ul.mainmenu {
             &[aria-expanded="true"] span {
                 @include mixins.add-background-svg("remove");
 
-                @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     @include mixins.add-background-svg("expand-less");
                 }
             }
@@ -210,7 +210,7 @@ ul.mainmenu {
             border: 0;
             width: 100%;
 
-            @include mixins.media-breakpoint-up(fds.$nav-responsive-breakpoint) {
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 position: absolute;
                 z-index: 1;
                 top: 100%;

@@ -58,30 +58,16 @@ Accepts true or false
 
 $theme-respect-user-font-size: true !default;
 
-// $theme-root-font-size only applies when
-// $theme-respect-user-font-size is set to
-// false.
-
-// This will set the root font size
-// as a specific px value and use px values
+// $theme-root-font-size only applies when $theme-respect-user-font-size is set to
+// false. This will set the root font size as a specific px value and use px values
 // for media queries.
 
 // Accepts values in px
 
 $theme-root-font-size: 10px !default;
 
-
-// The following vars need to be set
-// here, before the rest of the system
-// variables are set
-
-$root-font-size: if($theme-respect-user-font-size, 62.5%, $theme-root-font-size);
-
-$root-font-size-equiv: if(
-  $theme-respect-user-font-size,
-  10px,
-  $theme-root-font-size
-);
+$root-font-size:       if($theme-respect-user-font-size, 62.5%, $theme-root-font-size);
+$root-font-size-equiv: if($theme-respect-user-font-size, 10px, $theme-root-font-size);
 
 
 /*

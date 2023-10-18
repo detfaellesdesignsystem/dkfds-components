@@ -1,4 +1,4 @@
-@use "../values/fds-values" as fds;
+@use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
@@ -7,40 +7,40 @@
   padding-left: func.units(3);
   padding-right: func.units(3);
   border: none;
-  font-weight: func.font-weight(fds.$badge-font-weight);
-  color: func.color(fds.$badge-default-text-color);
-  background: func.color(fds.$badge-default-background-color);
+  font-weight: func.font-weight(vars.$badge-font-weight);
+  color: func.color(vars.$badge-default-text-color);
+  background: func.color(vars.$badge-default-background-color);
   @include mixins.font-smoothing;
   text-align: center;
   display: inline-block;
 
   &.badge-large {
-    font-size: func.font-size(fds.$badge-large-font-size);
-    line-height: func.units(fds.$badge-large-line-height, 'rem');
+    font-size: func.font-size(vars.$badge-large-font-size);
+    line-height: func.units(vars.$badge-large-line-height, 'rem');
   }
 
   &.badge-small {
-    font-size: func.font-size(fds.$badge-small-font-size);
-    line-height: func.units(fds.$badge-small-line-height, 'rem');
+    font-size: func.font-size(vars.$badge-small-font-size);
+    line-height: func.units(vars.$badge-small-line-height, 'rem');
   }
 
   &.badge-info {
-    color: func.color(fds.$badge-info-text-color);
-    background-color: func.color(fds.$badge-info-background-color);
+    color: func.color(vars.$badge-info-text-color);
+    background-color: func.color(vars.$badge-info-background-color);
   }
 
   &.badge-success {
-    color: func.color(fds.$badge-success-text-color);
-    background-color: func.color(fds.$badge-success-background-color);
+    color: func.color(vars.$badge-success-text-color);
+    background-color: func.color(vars.$badge-success-background-color);
   }
 
   &.badge-warning {
-    color: func.color(fds.$badge-warning-text-color);
-    background-color: func.color(fds.$badge-warning-background-color);
+    color: func.color(vars.$badge-warning-text-color);
+    background-color: func.color(vars.$badge-warning-background-color);
   }
 
   &.badge-error {
-    color: func.color(fds.$badge-error-text-color);
-    background-color: func.color(fds.$badge-error-background-color);
+    color: func.color(vars.$badge-error-text-color);
+    background-color: func.color(vars.$badge-error-background-color);
   }
 }
