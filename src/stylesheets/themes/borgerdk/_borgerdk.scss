@@ -2,12 +2,13 @@
 // Borger.dk theme
 // ----------------------------------------
 
-@use '../variables/variables/theme-colors' with (
-    $theme-color-primary:               #44831E,
-    $theme-color-primary-dark:          #3C5C22,
-    $theme-color-primary-darker:        #233614
+@use "variables" as *;
+@use '../../variables/variables/theme-colors' with (
+    $theme-color-primary:               $borger-primary,
+    $theme-color-primary-dark:          $borger-primary-dark,
+    $theme-color-primary-darker:        $borger-primary-darker
 );
-@use '../variables/variables/components' with (
+@use '../../variables/variables/components' with (
     $header-portal-background-color:    #f1f1f1,
     $header-portal-logo:                'logo-borgerdk.svg',
     $header-portal-logo-height:         4.8rem,
