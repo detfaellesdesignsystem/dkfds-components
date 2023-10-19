@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
@@ -24,8 +25,8 @@ $alerts-bar: (
   info: vars.$alert-info-border-color
 );
 
-$alerts: map-merge($alerts, $custom-alerts);
-$alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
+$alerts: map.merge($alerts, $custom-alerts);
+$alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
 
 .alert {
   background-color: func.color(vars.$alert-background-color);
@@ -91,7 +92,7 @@ $alerts-bar: map-merge($alerts-bar, $custom-alerts-bar);
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
     background-color: func.color($bgcolor);
-    border-color: func.color(map-get($alerts-bar, $name));
+    border-color: func.color(map.get($alerts-bar, $name));
 
     &.alert--show-icon{
       $alert-icon: $name;

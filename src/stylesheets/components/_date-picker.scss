@@ -139,19 +139,19 @@
 }
 
 .date-picker__calendar__previous-year:not([disabled]) {
-  @include mixins.add-background-svg(vars.$datepicker-icon-previous-year);
+  @include mixins.add-background-svg('chevron-double-left');
 }
 
 .date-picker__calendar__previous-month:not([disabled]) {
-  @include mixins.add-background-svg(vars.$datepicker-icon-previous-month);
+  @include mixins.add-background-svg('chevron-left');
 }
 
 .date-picker__calendar__next-year:not([disabled]) {
-  @include mixins.add-background-svg(vars.$datepicker-icon-next-year);
+  @include mixins.add-background-svg('chevron-double-right');
 }
 
 .date-picker__calendar__next-month:not([disabled]) {
-  @include mixins.add-background-svg(vars.$datepicker-icon-next-month);
+  @include mixins.add-background-svg('chevron-right');
 }
 
 .date-picker__calendar__day-of-week {

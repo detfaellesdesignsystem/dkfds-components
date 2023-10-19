@@ -30,8 +30,7 @@
     }
 
     &[aria-selected=false]{
-      background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
-      background-repeat: no-repeat;
+      @include mixins.add-background-svg('add');
       background-size: func.units(vars.$accordion-button-icon-size, 'rem');
       border-radius: vars.$interactive-element-border-radius;
       &:focus{

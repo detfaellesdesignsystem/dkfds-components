@@ -84,9 +84,7 @@ $toast-icon-backgrounds: (
             width: 24px;
             height: 24px;
             cursor: pointer;
-
-            background-image: url(vars.$icons-folder-path+'/'+'close.svg');
-            background-repeat: no-repeat;
+            @include mixins.add-background-svg('close');
         }
 
         p {

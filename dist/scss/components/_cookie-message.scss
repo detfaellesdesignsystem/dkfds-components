@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
@@ -30,7 +31,7 @@
 
 
     @include mixins.media-breakpoint-up(xl) {
-      max-width: calc(#{map-get(vars.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
+      max-width: calc(#{map.get(vars.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
     }
 
     .cookie-text, .cookie-actions{

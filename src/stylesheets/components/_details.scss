@@ -14,7 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &:before {
-        background-image: url(vars.$icons-folder-path+'/'+vars.$details-button-open-icon);
+        background-image: url(vars.$icons-folder-path+'/arrow-drop-down.svg');
         background-position: -10px -8px;
       }
     }
@@ -29,9 +29,8 @@
     &:before {
       content: "";
       display: inline-block;
-      background-image: url(vars.$icons-folder-path+'/'+vars.$details-button-closed-icon);
+      @include mixins.add-background-svg('arrow-right');
       background-position: -14px -8px;
-      background-repeat: no-repeat;
       background-size: 3.4rem;;
       width: 1.6rem;
       height: 1.6rem;

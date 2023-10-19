@@ -130,9 +130,8 @@ textarea.no-resize{
 
 .form-select {
     background-color: func.color(vars.$select-background-color);
-    background-image: url(vars.$icons-folder-path+'/'+vars.$select-icon);
+    @include mixins.add-background-svg('expand-more');
     background-position: calc(100% - 10px);
-    background-repeat: no-repeat;
     border: func.border(vars.$select-border);
     border-radius: vars.$select-border-radius;
     color: func.color(vars.$select-text-color);

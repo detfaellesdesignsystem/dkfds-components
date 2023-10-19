@@ -2,429 +2,420 @@
 
 // Accordion
 $accordion-button-background-color-default: 'gray-100' !default;
-$accordion-button-background-color-hover: 'gray-200' !default;
-$accordion-button-open-border: 20 !default;
-$accordion-button-open-background-color: 'gray-200' !default; 
-$accordion-button-icon-size: 5 !default;
-$accordion-button-open-icon: "add.svg" !default;
-$accordion-button-closed-icon: "remove.svg" !default;
-$accordion-button-color-default: 'black' !default;
-$accordion-button-color-hover: 'black' !default;
-$accordion-button-error-border-width: 2px !default;
-$accordion-button-error-border-color: "error" !default;
-$accordion-content-border: 10 !default;
-$accordion-content-background-color: 'white' !default;
-$accordion-content-color: 'black' !default;
+$accordion-button-background-color-hover:   'gray-200' !default;
+$accordion-button-open-border:              20 !default;
+$accordion-button-open-background-color:    'gray-200' !default; 
+$accordion-button-icon-size:                5 !default;
+$accordion-button-color-default:            'black' !default;
+$accordion-button-color-hover:              'black' !default;
+$accordion-button-error-border-width:       2px !default;
+$accordion-button-error-border-color:       "error" !default;
+$accordion-content-border:                  10 !default;
+$accordion-content-background-color:        'white' !default;
+$accordion-content-color:                   'black' !default;
 
 // Alert
-$alert-success-background-color: "success-light" !default;
-$alert-warning-background-color: "warning-light" !default;
-$alert-error-background-color: "error-light" !default;
-$alert-info-background-color: 'info-light' !default;
-$alert-success-border-color: 'success' !default;
-$alert-warning-border-color: 'warning' !default;
-$alert-error-border-color: 'error' !default;
-$alert-info-border-color: 'info' !default;
-$alert-border-color: "gray-400" !default;
-$alert-background-color: 'gray-100' !default;
-$alert-padding: 4 !default;
-$alert-border-size: 3 !default;
-$alert-icon-size: 24px !default;
-$alert-text-color: 'black' !default;
-$alert-heading-fontsize: typo-vars.$typography-base-font-size !default;
-$alert-heading-lineheight: 5 !default;
-$alert-heading-color: $alert-text-color !default;
-$alert-close-text-color: $alert-text-color !default;
+$alert-success-background-color:    "success-light" !default;
+$alert-warning-background-color:    "warning-light" !default;
+$alert-error-background-color:      "error-light" !default;
+$alert-info-background-color:       'info-light' !default;
+$alert-success-border-color:        'success' !default;
+$alert-warning-border-color:        'warning' !default;
+$alert-error-border-color:          'error' !default;
+$alert-info-border-color:           'info' !default;
+$alert-border-color:                "gray-400" !default;
+$alert-background-color:            'gray-100' !default;
+$alert-padding:                     4 !default;
+$alert-border-size:                 3 !default;
+$alert-icon-size:                   24px !default;
+$alert-text-color:                  'black' !default;
+$alert-heading-fontsize:            typo-vars.$typography-base-font-size !default;
+$alert-heading-lineheight:          5 !default;
+$alert-heading-color:               $alert-text-color !default;
+$alert-close-text-color:            $alert-text-color !default;
 
 // Back-to-top
-$back-to-top-button-shadow: 'medium' !default;
+$back-to-top-button-shadow:     'medium' !default;
 $back-to-top-button-background: 'white' !default;
 
 // Badge
-$badge-font-weight: "semibold" !default;
-$badge-default-text-color: 'white' !default;
-$badge-default-background-color: 'black' !default;
-$badge-small-font-size: typo-vars.$typography-small-text-font-size !default;
-$badge-small-line-height: typo-vars.$typography-small-text-line-height !default;
-$badge-large-font-size: typo-vars.$typography-body-text-font-size !default;
-$badge-large-line-height: typo-vars.$typography-body-text-line-height !default;
-$badge-info-text-color: 'black' !default;
-$badge-success-text-color: 'black' !default;
-$badge-warning-text-color: 'black' !default;
-$badge-error-text-color: 'black' !default;
-$badge-info-background-color: 'info-light' !default;
-$badge-success-background-color: "success-light" !default;
-$badge-warning-background-color: "warning-light" !default;
-$badge-error-background-color: "error-light" !default;
+$badge-font-weight:                 "semibold" !default;
+$badge-default-text-color:          'white' !default;
+$badge-default-background-color:    'black' !default;
+$badge-small-font-size:             typo-vars.$typography-small-text-font-size !default;
+$badge-small-line-height:           typo-vars.$typography-small-text-line-height !default;
+$badge-large-font-size:             typo-vars.$typography-body-text-font-size !default;
+$badge-large-line-height:           typo-vars.$typography-body-text-line-height !default;
+$badge-info-text-color:             'black' !default;
+$badge-success-text-color:          'black' !default;
+$badge-warning-text-color:          'black' !default;
+$badge-error-text-color:            'black' !default;
+$badge-info-background-color:       'info-light' !default;
+$badge-success-background-color:    "success-light" !default;
+$badge-warning-background-color:    "warning-light" !default;
+$badge-error-background-color:      "error-light" !default;
 
 // Button
-$button-border-width: 2px !default;
-$button-border-bottom-width: 4px !default;
-$button-disabled-opacity: 0.3 !default;
-$button-border-radius: 4px !default;
-$button-line-height: 5 !default;
+$button-border-width:           2px !default;
+$button-border-bottom-width:    4px !default;
+$button-disabled-opacity:       0.3 !default;
+$button-border-radius:          4px !default;
+$button-line-height:            5 !default;
 
 // Button: Primary
-$button-primary-default-border-color: 'primary-dark' !default;
-$button-primary-hover-border-color: 'primary-darker' !default;
-$button-primary-active-border-color: 'primary-darker' !default;
-$button-primary-focus-border-color: $button-primary-default-border-color !default;
-$button-primary-disabled-border-color: 'primary-dark' !default;
-$button-primary-default-background-color: 'primary' !default;
-$button-primary-hover-background-color: 'primary-dark' !default;
-$button-primary-active-background-color: 'primary-darker' !default;
-$button-primary-focus-background-color: 'primary' !default;
-$button-primary-default-color: 'white' !default;
-$button-primary-hover-color: $button-primary-default-color !default;
-$button-primary-active-color: $button-primary-default-color !default;
-$button-primary-focus-color: $button-primary-default-color !default;
+$button-primary-default-border-color:       'primary-dark' !default;
+$button-primary-hover-border-color:         'primary-darker' !default;
+$button-primary-active-border-color:        'primary-darker' !default;
+$button-primary-focus-border-color:         $button-primary-default-border-color !default;
+$button-primary-disabled-border-color:      'primary-dark' !default;
+$button-primary-default-background-color:   'primary' !default;
+$button-primary-hover-background-color:     'primary-dark' !default;
+$button-primary-active-background-color:    'primary-darker' !default;
+$button-primary-focus-background-color:     'primary' !default;
+$button-primary-default-color:              'white' !default;
+$button-primary-hover-color:                $button-primary-default-color !default;
+$button-primary-active-color:               $button-primary-default-color !default;
+$button-primary-focus-color:                $button-primary-default-color !default;
 
 // Button: Secondary
-$button-secondary-default-border-color: 'gray-500' !default;
-$button-secondary-hover-border-color: 'gray-600' !default;
-$button-secondary-active-border-color: 'black' !default;
-$button-secondary-focus-border-color: $button-secondary-default-border-color !default;
-$button-secondary-disabled-border-color: 'gray-300' !default;
+$button-secondary-default-border-color:     'gray-500' !default;
+$button-secondary-hover-border-color:       'gray-600' !default;
+$button-secondary-active-border-color:      'black' !default;
+$button-secondary-focus-border-color:       $button-secondary-default-border-color !default;
+$button-secondary-disabled-border-color:    'gray-300' !default;
 $button-secondary-default-background-color: 'gray-100' !default;
-$button-secondary-hover-background-color: 'gray-200' !default;
-$button-secondary-active-background-color: 'gray-300' !default;
-$button-secondary-focus-background-color: 'gray-100' !default;
-$button-secondary-default-color: 'black' !default;
-$button-secondary-hover-color: $button-secondary-default-color !default;
-$button-secondary-active-color: $button-secondary-default-color !default;
-$button-secondary-focus-color: $button-secondary-default-color !default;
+$button-secondary-hover-background-color:   'gray-200' !default;
+$button-secondary-active-background-color:  'gray-300' !default;
+$button-secondary-focus-background-color:   'gray-100' !default;
+$button-secondary-default-color:            'black' !default;
+$button-secondary-hover-color:              $button-secondary-default-color !default;
+$button-secondary-active-color:             $button-secondary-default-color !default;
+$button-secondary-focus-color:              $button-secondary-default-color !default;
 
 // Button: Tertiary
-$button-tertiary-default-border-color: 'gray-500' !default;
-$button-tertiary-hover-border-color: 'gray-600' !default;
-$button-tertiary-active-border-color: 'black' !default;
-$button-tertiary-focus-border-color: 'gray-500' !default;
-$button-tertiary-disabled-border-color: 'gray-300' !default;
-$button-tertiary-default-background-color: 'transparent' !default;
-$button-tertiary-hover-background-color: $button-tertiary-default-background-color !default;
-$button-tertiary-active-background-color: $button-tertiary-default-background-color !default;
-$button-tertiary-focus-background-color: $button-tertiary-default-background-color !default;
-$button-tertiary-default-color: 'black' !default;
-$button-tertiary-hover-color: $button-tertiary-default-color !default;
-$button-tertiary-active-color: $button-tertiary-default-color !default;
-$button-tertiary-focus-color: $button-tertiary-default-color !default;
+$button-tertiary-default-border-color:      'gray-500' !default;
+$button-tertiary-hover-border-color:        'gray-600' !default;
+$button-tertiary-active-border-color:       'black' !default;
+$button-tertiary-focus-border-color:        'gray-500' !default;
+$button-tertiary-disabled-border-color:     'gray-300' !default;
+$button-tertiary-default-background-color:  'transparent' !default;
+$button-tertiary-hover-background-color:    $button-tertiary-default-background-color !default;
+$button-tertiary-active-background-color:   $button-tertiary-default-background-color !default;
+$button-tertiary-focus-background-color:    $button-tertiary-default-background-color !default;
+$button-tertiary-default-color:             'black' !default;
+$button-tertiary-hover-color:               $button-tertiary-default-color !default;
+$button-tertiary-active-color:              $button-tertiary-default-color !default;
+$button-tertiary-focus-color:               $button-tertiary-default-color !default;
 
 // Button: Quaternary
-$button-quaternary-default-background-color: 'transparent' !default;
-$button-quaternary-hover-background-color: 'gray-200' !default;
-$button-quaternary-active-background-color: 'gray-300' !default;
-$button-quaternary-focus-background-color: $button-quaternary-default-background-color !default;
-$button-quaternary-default-color: 'gray-600' !default;
-$button-quaternary-hover-color: $button-quaternary-default-color !default;
-$button-quaternary-active-color: $button-quaternary-default-color !default;
-$button-quaternary-focus-color: $button-quaternary-default-color !default;
+$button-quaternary-default-background-color:    'transparent' !default;
+$button-quaternary-hover-background-color:      'gray-200' !default;
+$button-quaternary-active-background-color:     'gray-300' !default;
+$button-quaternary-focus-background-color:      $button-quaternary-default-background-color !default;
+$button-quaternary-default-color:               'gray-600' !default;
+$button-quaternary-hover-color:                 $button-quaternary-default-color !default;
+$button-quaternary-active-color:                $button-quaternary-default-color !default;
+$button-quaternary-focus-color:                 $button-quaternary-default-color !default;
 
 // Search field
-$button-search-text-color: 'ink' !default;
-$button-search-default-background-color: 'white' !default;
-$button-search-hover-background-color: 'gray-200' !default;
-$search-background-color: 'white';
+$button-search-text-color:                  'ink' !default;
+$button-search-default-background-color:    'white' !default;
+$button-search-hover-background-color:      'gray-200' !default;
+$search-background-color:                   'white';
 
 // Breadcrumbs
-$breadcrumbs-font-size: typo-vars.$typography-small-text-font-size !default;
-$breadcrumbs-text-color: 'black' !default;
-$breadcrumbs-chevron-size: 7px !default;
-$breadcrumbs-chevron-border-width: 1px !default;
-$breadcrumbs-chevron-border-colour: 'ink-light' !default;
-$breadcrumbs-chevron-altitude-calculated: 5.655px !default;
+$breadcrumbs-font-size:                     typo-vars.$typography-small-text-font-size !default;
+$breadcrumbs-text-color:                    'black' !default;
+$breadcrumbs-chevron-size:                  7px !default;
+$breadcrumbs-chevron-border-width:          1px !default;
+$breadcrumbs-chevron-border-colour:         'ink-light' !default;
+$breadcrumbs-chevron-altitude-calculated:   5.655px !default;
 
 // Cards
-$cards-shadow: 'light' !default;
-$cards-border: 10 !default;
-$cards-background-color: 'white' !default;
-$cards-header-background-color: $cards-background-color !default;
-$cards-text-background-color: $cards-background-color !default;
-$cards-content-background-color: $cards-background-color !default;
-$cards-action-background-color: $cards-background-color !default;
-$cards-text-color: 'gray-600' !default;
-$cards-heading-color: 'black' !default;
-$cards-heading-large-color: 'gray-600' !default;
-$cards-sub-heading-color: 'ink-light' !default;
+$cards-shadow:                      'light' !default;
+$cards-border:                      10 !default;
+$cards-background-color:            'white' !default;
+$cards-header-background-color:     $cards-background-color !default;
+$cards-text-background-color:       $cards-background-color !default;
+$cards-content-background-color:    $cards-background-color !default;
+$cards-action-background-color:     $cards-background-color !default;
+$cards-text-color:                  'gray-600' !default;
+$cards-heading-color:               'black' !default;
+$cards-heading-large-color:         'gray-600' !default;
+$cards-sub-heading-color:           'ink-light' !default;
 
 // Cookie Message
-$cookie-message-background-color: 'white' !default;
-$cookie-message-border: 10 !default;
-$cookie-message-shadow: 'heavy' !default;
-$cookie-message-text-color: 'black' !default;
+$cookie-message-background-color:   'white' !default;
+$cookie-message-border:             10 !default;
+$cookie-message-shadow:             'heavy' !default;
+$cookie-message-text-color:         'black' !default;
 
 // Datepicker
-$datepicker-background-color: 'white' !default;
-$datepicker-header-background-color: 'gray-100' !default;
-$datepicker-header-text-color: 'black' !default;
-$datepicker-icon-previous-year: "chevron-double-left" !default;
-$datepicker-icon-next-year: "chevron-double-right" !default;
-$datepicker-icon-previous-month: "chevron-left" !default;
-$datepicker-icon-next-month: "chevron-right" !default;
-$datepicker-button-icon: "insert-invitation" !default;
-$datepicker-previous-next-month-background-color: 'gray-100' !default;
+$datepicker-background-color:                           'white' !default;
+$datepicker-header-background-color:                    'gray-100' !default;
+$datepicker-header-text-color:                          'black' !default;
+$datepicker-button-icon:                                "insert-invitation" !default;
+$datepicker-previous-next-month-background-color:       'gray-100' !default;
 $datepicker-previous-next-month-background-color-hover: 'gray-200' !default;
-$datepicker-previous-next-month-text-color: 'black' !default;
-$datepicker-border: 10 !default;
-$datepicker-table-border: 20 !default;
-$datepicker-date-selected-background-color: 'gray-600' !default;
-$datepicker-date-selected-text-color: 'white' !default;
-$datepicker-date-within-range-background-color: 'gray-500' !default;
-$datepicker-date-within-range-text-color: 'white' !default;
+$datepicker-previous-next-month-text-color:             'black' !default;
+$datepicker-border:                                     10 !default;
+$datepicker-table-border:                               20 !default;
+$datepicker-date-selected-background-color:             'gray-600' !default;
+$datepicker-date-selected-text-color:                   'white' !default;
+$datepicker-date-within-range-background-color:         'gray-500' !default;
+$datepicker-date-within-range-text-color:               'white' !default;
 
-$datepicker-month-selected-text-color: 'ink' !default;
-$datepicker-year-selected-text-color: 'ink' !default;
+$datepicker-month-selected-text-color:                  'ink' !default;
+$datepicker-year-selected-text-color:                   'ink' !default;
 
 // Detail
-$details-button-closed-icon: "arrow-right.svg" !default;
-$details-button-open-icon: "arrow-drop-down.svg" !default;
-$details-panel-border-width: 4px;
-$details-panel-border-color: 'gray-300' !default;
+$details-panel-border-width:    4px;
+$details-panel-border-color:    'gray-300' !default;
 
 // Footer
-$footer-border: 10 !default;
-$footer-background-color: 'white' !default;
-$footer-text-color: 'black' !default;
-$footer-logo: 'logo-placeholder.png' !default;
+$footer-border:             10 !default;
+$footer-background-color:   'white' !default;
+$footer-text-color:         'black' !default;
+$footer-logo:               'logo-placeholder.png' !default;
 
 // Form input
-$input-border-radius: 4px !default;
-$input-prefix-suffix-background-color: 'gray-100' !default;
-$input-border: 10 !default;
-$input-font-size: typo-vars.$typography-body-text-font-size !default;
-$input-line-height: typo-vars.$typography-body-text-line-height !default;
-$input-text-color: 'ink' !default;
-$input-placeholder-color: 'gray-500' !default;
-$input-disabled-background-color: 'gray-100' !default;
-$input-disabled-text-color: 'disabled-light' !default;
+$input-border-radius:                   4px !default;
+$input-prefix-suffix-background-color:  'gray-100' !default;
+$input-border:                          10 !default;
+$input-font-size:                       typo-vars.$typography-body-text-font-size !default;
+$input-line-height:                     typo-vars.$typography-body-text-line-height !default;
+$input-text-color:                      'ink' !default;
+$input-placeholder-color:               'gray-500' !default;
+$input-disabled-background-color:       'gray-100' !default;
+$input-disabled-text-color:             'disabled-light' !default;
 
-$input-border-width-feedback: 2px !default;
-$input-border-color-feedback-error: 'error' !default;
-$input-border-color-feedback-success: 'error' !default;
-$form-hint-text-color: 'ink-light' !default;
-$form-hint-font-size: typo-vars.$typography-body-text-font-size !default;
-$form-hint-line-height: typo-vars.$typography-body-text-line-height !default;
-$form-hint-letter-spacing: typo-vars.$typography-body-text-letter-spacing !default;
-$form-hint-font-weight: typo-vars.$typography-body-text-font-weight !default;
-$form-group-error-border-width: 4px !default;
-$form-group-error-border-color: 'error' !default;
+$input-border-width-feedback:               2px !default;
+$input-border-color-feedback-error:         'error' !default;
+$input-border-color-feedback-success:       'error' !default;
+$form-hint-text-color:                      'ink-light' !default;
+$form-hint-font-size:                       typo-vars.$typography-body-text-font-size !default;
+$form-hint-line-height:                     typo-vars.$typography-body-text-line-height !default;
+$form-hint-letter-spacing:                  typo-vars.$typography-body-text-letter-spacing !default;
+$form-hint-font-weight:                     typo-vars.$typography-body-text-font-weight !default;
+$form-group-error-border-width:             4px !default;
+$form-group-error-border-color:             'error' !default;
 $input-text-character-limit-exceeded-color: 'red-700' !default;
 
 // Radio buttons and checkboxes
-$input-checkbox-radio-size: 5 !default;
-$input-checkbox-radio-label-distance: 3 !default;
-$input-checkbox-radio-label-color: 'ink' !default;
-$input-checkbox-radio-label-font-weight: 'normal' !default;
-$input-checkbox-radio-unchecked-background-color: 'white' !default;
-$input-checkbox-radio-unchecked-border-color: 'black' !default;
-$input-checkbox-radio-content-border-color: 'gray-300' !default;
+$input-checkbox-radio-size:                         5 !default;
+$input-checkbox-radio-label-distance:               3 !default;
+$input-checkbox-radio-label-color:                  'ink' !default;
+$input-checkbox-radio-label-font-weight:            'normal' !default;
+$input-checkbox-radio-unchecked-background-color:   'white' !default;
+$input-checkbox-radio-unchecked-border-color:       'black' !default;
+$input-checkbox-radio-content-border-color:         'gray-300' !default;
 
-$input-checkbox-checkmark-size: 5 !default;
-$input-checkbox-checked-background-color: 'black' !default;
+$input-checkbox-checkmark-size:                 5 !default;
+$input-checkbox-checked-background-color:       'black' !default;
 $input-checkbox-checked-background-color-print: 'white' !default;
-$input-checkbox-checked-border-color: 'black' !default;
-$input-checkbox-checked-image: 'done-white' !default;
-$input-checkbox-mixed-image: 'remove-white' !default;
+$input-checkbox-checked-border-color:           'black' !default;
+$input-checkbox-checked-image:                  'done-white' !default;
+$input-checkbox-mixed-image:                    'remove-white' !default;
 
-$input-radio-dot-color: 'black' !default;
-$input-radio-dot-size: 305 !default;
-$input-radio-checked-background-color: 'white' !default;
-$input-radio-checked-border-color: 'black' !default;
+$input-radio-dot-color:                 'black' !default;
+$input-radio-dot-size:                  305 !default;
+$input-radio-checked-background-color:  'white' !default;
+$input-radio-checked-border-color:      'black' !default;
 
-$input-checkbox-radio-disabled-label-color: 'gray-500' !default;
-$input-checkbox-radio-disabled-unchecked-background-color: 'gray-100' !default;
-$input-checkbox-radio-disabled-unchecked-border-color: 'gray-400' !default;
-$input-checkbox-disabled-checked-background-color: 'gray-400' !default;
-$input-checkbox-disabled-checked-border-color: 'gray-400' !default;
-$input-checkbox-disabled-checkmark-color: 'gray-100' !default;
-$input-radio-disabled-checked-background-color: 'gray-100' !default;
-$input-radio-disabled-checked-border-color: 'gray-400' !default;
-$input-radio-disabled-dot-color: 'gray-400' !default;
+$input-checkbox-radio-disabled-label-color:                 'gray-500' !default;
+$input-checkbox-radio-disabled-unchecked-background-color:  'gray-100' !default;
+$input-checkbox-radio-disabled-unchecked-border-color:      'gray-400' !default;
+$input-checkbox-disabled-checked-background-color:          'gray-400' !default;
+$input-checkbox-disabled-checked-border-color:              'gray-400' !default;
+$input-checkbox-disabled-checkmark-color:                   'gray-100' !default;
+$input-radio-disabled-checked-background-color:             'gray-100' !default;
+$input-radio-disabled-checked-border-color:                 'gray-400' !default;
+$input-radio-disabled-dot-color:                            'gray-400' !default;
 
 // Input: Range
-$input-range-track-default-background-color: 'gray-300' !default;
-$input-range-track-default-border: $input-border !default;
-$input-range-thumb-default-border: $input-border !default;
-$input-range-thumb-default-background-color: 'gray-100' !default;
+$input-range-track-default-background-color:    'gray-300' !default;
+$input-range-track-default-border:              $input-border !default;
+$input-range-thumb-default-border:              $input-border !default;
+$input-range-thumb-default-background-color:    'gray-100' !default;
 
 // Select
-$select-background-color: 'white';
-$select-border: $input-border !default;
-$select-border-radius: $input-border-radius !default;
-$select-text-color: $input-text-color !default;
-$select-font-size: $input-font-size !default;
-$select-line-height: $input-line-height !default;
-$select-icon: "expand-more.svg" !default;
+$select-background-color:   'white';
+$select-border:             $input-border !default;
+$select-border-radius:      $input-border-radius !default;
+$select-text-color:         $input-text-color !default;
+$select-font-size:          $input-font-size !default;
+$select-line-height:        $input-line-height !default;
 
 // Header
-$header-border-color: 'gray-300' !default;
-$header-last-border-color: 'gray-500' !default;
-$header-portal-mobile-border-color: 'gray-400' !default;
-$header-solution-mobile-background-color: 'white' !default;
+$header-border-color:                           'gray-300' !default;
+$header-last-border-color:                      'gray-500' !default;
+$header-portal-mobile-border-color:             'gray-400' !default;
+$header-solution-mobile-background-color:       'white' !default;
 $header-navigation-top-mobile-background-color: 'white' !default;
-$header-log-on-off-button-background-color: 'white' !default;
+$header-log-on-off-button-background-color:     'white' !default;
 
-$solution-header-border-bottom: 10 !default;
-$header-portal-background-color: 'white' !default;
-$header-portal-border: 20 !default;
-$header-portal-logo: 'logo-header-placeholder.png' !default;
-$header-portal-logo-width: 200px !default;
-$header-portal-logo-height: 60px !default;
-$header-portal-compact-logo-width: auto !default;
-$header-solution-border: 20 !default;
-$header-solution-background-color: 'white' !default;
-$header-solution-text-color: 'black' !default;
-$header-solution-text-size: 'lg' !default;
-$header-solution-line-height: 5 !default;
-$header-solution-text-size-desktop: '4xl' !default;
-$header-solution-line-height-desktop: 6 !default;
-$header-solution-authority-name: 'gray-600' !default;
-$header-solution-authority-name-font-size: typo-vars.$typography-base-font-size !default;
-$header-solution-info-mobile-text-color: 'black' !default;
-$header-navigation-background-color: 'white' !default;
+$solution-header-border-bottom:             10 !default;
+$header-portal-background-color:            'white' !default;
+$header-portal-border:                      20 !default;
+$header-portal-logo:                        'logo-header-placeholder.png' !default;
+$header-portal-logo-width:                  200px !default;
+$header-portal-logo-height:                 60px !default;
+$header-portal-compact-logo-width:          auto !default;
+$header-solution-border:                    20 !default;
+$header-solution-background-color:          'white' !default;
+$header-solution-text-color:                'black' !default;
+$header-solution-text-size:                 'lg' !default;
+$header-solution-line-height:               5 !default;
+$header-solution-text-size-desktop:         '4xl' !default;
+$header-solution-line-height-desktop:       6 !default;
+$header-solution-authority-name:            'gray-600' !default;
+$header-solution-authority-name-font-size:  typo-vars.$typography-base-font-size !default;
+$header-solution-info-mobile-text-color:    'black' !default;
+$header-navigation-background-color:        'white' !default;
 
 // Navigation
-$navigation-border-desktop-top-color: 'gray-300' !default;
-$navigation-border-top-bottom-color: 'gray-300' !default;
-$navigation-link-current-border-color: 'primary' !default;
-$navigation-link-border-color: 'gray-300' !default;
-$navigation-sublink-border-color: 'gray-200' !default;
-$navigation-link-default-color: 'black' !default;
-$navigation-link-helptext-color: 'gray-500' !default;
-$navigation-link-current-helptext-color: 'gray-600' !default;
-$navigation-link-background-color: 'white' !default;
-$navigation-link-background-color-hover: 'gray-100' !default;
-$navigation-link-current-background-color: 'gray-100' !default;
+$navigation-border-desktop-top-color:       'gray-300' !default;
+$navigation-border-top-bottom-color:        'gray-300' !default;
+$navigation-link-current-border-color:      'primary' !default;
+$navigation-link-border-color:              'gray-300' !default;
+$navigation-sublink-border-color:           'gray-200' !default;
+$navigation-link-default-color:             'black' !default;
+$navigation-link-helptext-color:            'gray-500' !default;
+$navigation-link-current-helptext-color:    'gray-600' !default;
+$navigation-link-background-color:          'white' !default;
+$navigation-link-background-color-hover:    'gray-100' !default;
+$navigation-link-current-background-color:  'gray-100' !default;
 
 // HR - horizontal ruler
 $hr-border: 20 !default;
 
 // Language switcher
-$language-switcher-border: 30 !default;
-$language-switcher-text-color: 'black' !default;
-$language-switcher-active-text-color: 'gray-600' !default;
-$language-switcher-background-color: 'white' !default;
+$language-switcher-border:              30 !default;
+$language-switcher-text-color:          'black' !default;
+$language-switcher-active-text-color:   'gray-600' !default;
+$language-switcher-background-color:    'white' !default;
 
 // Modal
-$modal-overlay-background-color: 'black-transparent-500' !default;
-$modal-background-color: 'white' !default;
-$modal-text-color: 'black' !default;
-$modal-shadow: 'heavy' !default;
-$modal-header-background-color: $modal-background-color !default;
-$modal-header-text-color: $modal-text-color !default;
-$modal-header-close-color: $modal-header-text-color !default;
-$modal-footer-background-color: $modal-background-color !default;
-$modal-footer-text-color: $modal-text-color !default;
-$modal-body-background-color: $modal-background-color !default;
-$modal-body-text-color: $modal-text-color !default;
+$modal-overlay-background-color:    'black-transparent-500' !default;
+$modal-background-color:            'white' !default;
+$modal-text-color:                  'black' !default;
+$modal-shadow:                      'heavy' !default;
+$modal-header-background-color:     $modal-background-color !default;
+$modal-header-text-color:           $modal-text-color !default;
+$modal-header-close-color:          $modal-header-text-color !default;
+$modal-footer-background-color:     $modal-background-color !default;
+$modal-footer-text-color:           $modal-text-color !default;
+$modal-body-background-color:       $modal-background-color !default;
+$modal-body-text-color:             $modal-text-color !default;
 
 // Overflow Menu
-$overflow-menu-arrow-size: 8px;
-$overflow-menu-dropdown-distance: 8px;
-$overflow-menu-button-text-color: 'ink' !default;
+$overflow-menu-arrow-size:                              8px;
+$overflow-menu-dropdown-distance:                       8px;
+$overflow-menu-button-text-color:                       'ink' !default;
 $overflow-menu-button-icon-only-hover-background-color: 'gray-100' !default;
-$overflow-menu-content-shadow: 'medium' !default;
-$overflow-menu-content-background-color: 'white' !default;
-$overflow-menu-content-border: 10 !default;
-$overflow-menu-content-font-size: typo-vars.$typography-body-text-font-size !default;
-$overflow-menu-content-line-height: typo-vars.$typography-body-text-line-height !default;
-$overflow-menu-content-text-color: 'ink' !default;
-$overflow-menu-content-link-hover-background-color: 'gray-100' !default;
+$overflow-menu-content-shadow:                          'medium' !default;
+$overflow-menu-content-background-color:                'white' !default;
+$overflow-menu-content-border:                          10 !default;
+$overflow-menu-content-font-size:                       typo-vars.$typography-body-text-font-size !default;
+$overflow-menu-content-line-height:                     typo-vars.$typography-body-text-line-height !default;
+$overflow-menu-content-text-color:                      'ink' !default;
+$overflow-menu-content-link-hover-background-color:     'gray-100' !default;
 
 // Pagination
-$pagination-button-arrow-font-size: typo-vars.$typography-body-text-font-size !default;
-$pagination-button-arrow-background-color: 'transparent' !default;
-$pagination-button-arrow-color: 'black' !default;
-$pagination-current-page-background-color: 'gray-600' !default;
-$pagination-current-page-border-color: 'gray-600' !default;
-$pagination-current-page-color: 'white' !default;
+$pagination-button-arrow-font-size:         typo-vars.$typography-body-text-font-size !default;
+$pagination-button-arrow-background-color:  'transparent' !default;
+$pagination-button-arrow-color:             'black' !default;
+$pagination-current-page-background-color:  'gray-600' !default;
+$pagination-current-page-border-color:      'gray-600' !default;
+$pagination-current-page-color:             'white' !default;
 
 // Side navigation
-$sidenav-border-active-color: 'primary' !default;
-$sidenav-border-top-bottom-color: 'gray-500' !default;
-$sidenav-link-border-color: 'gray-300' !default;
-$sidenav-sublink-border-color: 'gray-200' !default;
-$sidenav-link-background-color: 'white' !default;
-$sidenav-link-background-color-hover: 'gray-100' !default;
-$sidenav-link-current-background-color: 'gray-100' !default;
-$sidenav-link-font-color: 'black' !default;
+$sidenav-border-active-color:                       'primary' !default;
+$sidenav-border-top-bottom-color:                   'gray-500' !default;
+$sidenav-link-border-color:                         'gray-300' !default;
+$sidenav-sublink-border-color:                      'gray-200' !default;
+$sidenav-link-background-color:                     'white' !default;
+$sidenav-link-background-color-hover:               'gray-100' !default;
+$sidenav-link-current-background-color:             'gray-100' !default;
+$sidenav-link-font-color:                           'black' !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;
 $sidenav-link-current-extra-information-text-color: 'gray-600' !default;
-$sidenav-error-background-color: "error-light" !default;
+$sidenav-error-background-color:                    "error-light" !default;
 
 // Table
-$table-head-background-color: 'gray-100' !default;
-$table-head-font-weight: "semibold" !default;
-$table-border: 10 !default;
-$table-row-border: 20 !default;
-$table-cell-border: $table-row-border !default;
-$table-font-size: typo-vars.$typography-body-text-font-size !default;
-$table-text-line-height: typo-vars.$typography-body-text-line-height !default;
-$table-text-color: typo-vars.$typography-body-text-color !default;
-$table-row-even-background-color: 'gray-100' !default;
-$table-row-odd-background-color: 'white' !default;
-$table-selectable-hover-background-color: 'gray-100' !default;
-$table-selectable-selected-background-color: 'gray-200' !default;
-$table-selectable-help-text-color: 'ink-light' !default;
+$table-head-background-color:                   'gray-100' !default;
+$table-head-font-weight:                        "semibold" !default;
+$table-border:                                  10 !default;
+$table-row-border:                              20 !default;
+$table-cell-border:                             $table-row-border !default;
+$table-font-size:                               typo-vars.$typography-body-text-font-size !default;
+$table-text-line-height:                        typo-vars.$typography-body-text-line-height !default;
+$table-text-color:                              typo-vars.$typography-body-text-color !default;
+$table-row-even-background-color:               'gray-100' !default;
+$table-row-odd-background-color:                'white' !default;
+$table-selectable-hover-background-color:       'gray-100' !default;
+$table-selectable-selected-background-color:    'gray-200' !default;
+$table-selectable-help-text-color:              'ink-light' !default;
 
 // Tabs
-$tabnav-border: 10 !default;
-$tabnav-background-color: 'white' !default;
-$tavnav-button-default-background-color: 'gray-100' !default;
-$tavnav-button-hover-background-color: 'gray-200' !default;
-$tavnav-button-text-color: 'black' !default;
+$tabnav-border:                             10 !default;
+$tabnav-background-color:                   'white' !default;
+$tavnav-button-default-background-color:    'gray-100' !default;
+$tavnav-button-hover-background-color:      'gray-200' !default;
+$tavnav-button-text-color:                  'black' !default;
 
 // Tags
-$tag-border-radius: $button-border-radius !default;
-$tag-font-size: typo-vars.$typography-body-text-font-size !default;
-$tag-font-weight: "medium" !default;
-$tag-text-color: 'white' !default;
-$tag-default-background-color: 'gray-600' !default;
-$tag-hover-background-color: 'gray-500' !default;
-$tag-active-background-color: 'black' !default;
-$tag-focus-background-color: 'gray-600' !default;
-$tag-line-height: typo-vars.$typography-body-text-line-height !default;
-$tag-icon-color: $tag-text-color !default;
+$tag-border-radius:             $button-border-radius !default;
+$tag-font-size:                 typo-vars.$typography-body-text-font-size !default;
+$tag-font-weight:               "medium" !default;
+$tag-text-color:                'white' !default;
+$tag-default-background-color:  'gray-600' !default;
+$tag-hover-background-color:    'gray-500' !default;
+$tag-active-background-color:   'black' !default;
+$tag-focus-background-color:    'gray-600' !default;
+$tag-line-height:               typo-vars.$typography-body-text-line-height !default;
+$tag-icon-color:                $tag-text-color !default;
 
 // Toast
-$toast-default-background-color: 'white' !default;
-$toast-info-background-color: 'info-light' !default;
-$toast-success-background-color: 'success-light' !default;
-$toast-warning-background-color: 'warning-light' !default;
-$toast-error-background-color: 'error-light' !default;
-$toast-info-icon: 'info-white' !default;
-$toast-success-icon: 'check-circle-white' !default;
-$toast-warning-icon: 'report-problem' !default;
-$toast-error-icon: 'highlight-off-white' !default;
-$toast-info-color: 'info' !default;
-$toast-success-color: 'success' !default;
-$toast-warning-color: 'warning' !default;
-$toast-error-color: 'error' !default;
-$toast-shadow: 'medium' !default;
+$toast-default-background-color:    'white' !default;
+$toast-info-background-color:       'info-light' !default;
+$toast-success-background-color:    'success-light' !default;
+$toast-warning-background-color:    'warning-light' !default;
+$toast-error-background-color:      'error-light' !default;
+$toast-info-icon:                   'info-white' !default;
+$toast-success-icon:                'check-circle-white' !default;
+$toast-warning-icon:                'report-problem' !default;
+$toast-error-icon:                  'highlight-off-white' !default;
+$toast-info-color:                  'info' !default;
+$toast-success-color:               'success' !default;
+$toast-warning-color:               'warning' !default;
+$toast-error-color:                 'error' !default;
+$toast-shadow:                      'medium' !default;
 
 // Toggle
-$toggle-default-background-color: 'gray-400' !default;
-$toggle-hover-background-color: 'gray-500' !default;
-$toggle-active-background-color: 'gray-600' !default;
-$toggle-text-on: "Til" !default;
-$toggle-text-off: "Fra" !default;
-$toggle-shadow: 'light' !default;
-$toggle-button-background-color: 'white' !default;
+$toggle-default-background-color:           'gray-400' !default;
+$toggle-hover-background-color:             'gray-500' !default;
+$toggle-active-background-color:            'gray-600' !default;
+$toggle-text-on:                            "Til" !default;
+$toggle-text-off:                           "Fra" !default;
+$toggle-shadow:                             'light' !default;
+$toggle-button-background-color:            'white' !default;
 $toggle-button-on-default-background-color: 'primary' !default;
-$toggle-button-on-hover-background-color: 'primary-dark' !default;
-$toggle-button-on-active-background-color: 'primary-darker' !default;
+$toggle-button-on-hover-background-color:   'primary-dark' !default;
+$toggle-button-on-active-background-color:  'primary-darker' !default;
 
 // Tooltip
-$tooltip-background-color: 'white' !default;
-$tooltip-shadow: 'medium' !default;
-$tooltip-border: 10 !default;
-$tooltip-link-color: typo-vars.$typography-body-text-color !default;
+$tooltip-background-color:  'white' !default;
+$tooltip-shadow:            'medium' !default;
+$tooltip-border:            10 !default;
+$tooltip-link-color:        typo-vars.$typography-body-text-color !default;
 $tooltip-link-border-width: 1px !default;
 $tooltip-link-border-style: dotted !default;
 $tooltip-link-border-color: $tooltip-link-color !default;
 
 // Skipnav
-$skipnav-background-color: 'white' !default;
-$skipnav-text-color: 'ink' !default;
+$skipnav-background-color:  'white' !default;
+$skipnav-text-color:        'ink' !default;
 
 // Spinner
 $spinner-animation-color: 'gray-600' !default;

@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
@@ -19,7 +20,7 @@ $percent-widths: (
   100: 100%,
 ) !default;
 
-@each $breakpoint in map-keys(vars.$grid-breakpoints) {
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
   @include mixins.media-breakpoint-up($breakpoint) {
     @each $name, $size in $percent-widths { 
       $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);

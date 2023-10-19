@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
@@ -282,7 +283,7 @@
             }
         }
 
-        @each $breakpoint in map-keys(vars.$grid-breakpoints) {
+        @each $breakpoint in map.keys(vars.$grid-breakpoints) {
             @if $breakpoint !=xs and $breakpoint !=xl {
                 @include mixins.media-breakpoint-down($breakpoint) {
                     $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);

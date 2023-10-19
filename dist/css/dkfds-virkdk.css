@@ -7359,8 +7359,8 @@ textarea.no-resize{
 .form-select{
   background-color:white;
   background-image:url("../img/svg-icons/expand-more.svg");
-  background-position:calc(100% - 10px);
   background-repeat:no-repeat;
+  background-position:calc(100% - 10px);
   border:1px solid #747474;
   border-radius:4px;
   color:#1a1a1a;
@@ -8695,8 +8695,8 @@ hr{
   min-height:auto;
   background-color:#F5F5F5;
   background-image:url("../img/svg-icons/remove.svg");
-  background-position:left 1.6rem center;
   background-repeat:no-repeat;
+  background-position:left 1.6rem center;
   background-size:2.4rem;
   color:#1a1a1a;
   cursor:pointer;
@@ -9152,8 +9152,8 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   content:"";
   display:inline-block;
   background-image:url("../img/svg-icons/arrow-right.svg");
-  background-position:-14px -8px;
   background-repeat:no-repeat;
+  background-position:-14px -8px;
   background-size:3.4rem;
   width:1.6rem;
   height:1.6rem;
@@ -11671,7 +11671,6 @@ a.skipnav:focus{
 .overflow-menu--sort .overflow-menu-inner .overflow-list li button[aria-current=true]{
   font-weight:600;
   background-image:url("../img/svg-icons/done.svg");
-  background-repeat:no-repeat;
   background-repeat:no-repeat;
   background-position:calc(100% - 16px) center;
 }

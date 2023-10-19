@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
@@ -50,7 +51,7 @@
   padding-left: (vars.$grid-gutter-width * 0.5);
 }
 
-@each $breakpoint in map-keys(vars.$grid-breakpoints) {
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
   $mq-key: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
   // Allow columns to stretch full width below their breakpoints
@@ -105,7 +106,7 @@
   }
 }
 // responsive offsets
-@each $breakpoint in map-keys(vars.$grid-breakpoints) {
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
   $mq-key: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
   @include mixins.media-breakpoint-up($breakpoint, vars.$grid-breakpoints) {
     @for $i from 0 through (vars.$grid-columns - 1) { //-1 to prevent offset-12

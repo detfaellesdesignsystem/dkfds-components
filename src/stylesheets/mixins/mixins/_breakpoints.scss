@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../../variables/variables" as vars;
 
 // Breakpoint viewport sizes and media queries.
@@ -16,7 +17,7 @@
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
 //    md
-@function breakpoint-next($name, $breakpoints: vars.$grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+@function breakpoint-next($name, $breakpoints: vars.$grid-breakpoints, $breakpoint-names: map.keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
   @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
@@ -26,7 +27,7 @@
 //    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    576px
 @function breakpoint-min($name, $breakpoints: vars.$grid-breakpoints) {
-  $min: map-get($breakpoints, $name);
+  $min: map.get($breakpoints, $name);
   @return if($min != 0, $min, null);
 }
 

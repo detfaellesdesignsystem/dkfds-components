@@ -11,9 +11,8 @@ Accordion
 .accordion-button {
   @include mixins.button-unstyled;
   background-color: func.color(vars.$accordion-button-background-color-default);
-  background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-closed-icon);
+  @include mixins.add-background-svg('remove');
   background-position: left func.units(4, 'rem') center;
-  background-repeat: no-repeat;
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   color: func.color(vars.$accordion-button-color-default);
   cursor: pointer;
@@ -82,10 +81,10 @@ button.accordion-bulk-button{
   margin-bottom: func.units(4);
   
   &[data-accordion-bulk-expand="true"] {
-    background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
+    background-image: url(vars.$icons-folder-path+'/add.svg');
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-closed-icon);
+    background-image: url(vars.$icons-folder-path+'/remove.svg');
   }
 }
 
@@ -160,8 +159,7 @@ button.accordion-bulk-button{
   }
 }
 .accordion-button[aria-expanded=false] {
-  background-image: url(vars.$icons-folder-path+'/'+vars.$accordion-button-open-icon);
-  background-repeat: no-repeat;
+  @include mixins.add-background-svg('add');
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   border-radius: vars.$interactive-element-border-radius;
 }

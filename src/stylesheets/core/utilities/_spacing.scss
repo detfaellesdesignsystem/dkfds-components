@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../../values/values" as vals;
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
@@ -5,7 +6,7 @@
 // Margin and padding utilities
 // https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_spacing.scss
 
-@each $breakpoint in map-keys(vars.$grid-breakpoints) {
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
   @include mixins.media-breakpoint-up($breakpoint) {
     $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
