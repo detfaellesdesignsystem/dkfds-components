@@ -6436,14 +6436,14 @@ input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:before,
 input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:hover:before,
 input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:active:before,
 input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:before{
-  color:#999999;
+  color:#747474;
 }
 
 input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:after,
 input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:hover:after,
 input[type=checkbox].form-toggle:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color:#999999;
+  background-color:#747474;
 }
 
 input[type=checkbox].form-toggle:checked:disabled ~ .form-toggle-label:after,
@@ -7265,6 +7265,9 @@ figure{
   color:#1a1a1a;
   text-transform:none;
 }
+.form-label.disabled{
+  color:#747474;
+}
 
 .form-input{
   -webkit-appearance:none;
@@ -7393,8 +7396,8 @@ textarea.no-resize{
   display:none;
 }
 .form-select:disabled{
-  background-color:#F5F5F5;
-  color:#999999;
+  background-color:transparent;
+  color:#747474;
   cursor:not-allowed;
 }
 @-moz-document url-prefix(){
@@ -7442,25 +7445,17 @@ input[type=search]:disabled,
 input[type=tel]:disabled,
 input[type=url]:disabled,
 textarea:disabled{
-  background-color:#F5F5F5;
-  color:#999999;
+  background-color:transparent;
+  border-color:#DCDCDC;
+  color:#747474;
   cursor:not-allowed;
 }
 
-input[readonly][type=text]{
-  margin-top:4px;
-  padding-top:0px;
-  padding-bottom:0px;
-  height:auto;
-}
-
 input[readonly][type=text], textarea[readonly]{
-  background-color:transparent;
+  background-color:#F5F5F5;
   color:#1a1a1a;
-  border:none;
+  border:1px solid #DCDCDC;
   cursor:default;
-  padding:0;
-  font-size:2rem;
 }
 
 .form-limit .form-limit-error{
@@ -7637,13 +7632,13 @@ input[readonly][type=text], textarea[readonly]{
 
 .form-checkbox:disabled + label,
 .form-radio:disabled + label{
-  color:#999999;
+  color:#747474;
   cursor:not-allowed;
 }
 .form-checkbox:disabled + label:before,
 .form-radio:disabled + label:before{
-  border-color:#999999;
-  background-color:#F5F5F5;
+  border-color:#747474;
+  background-color:transparent;
 }
 
 .form-checkbox:checked[disabled] + label:before{
