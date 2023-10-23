@@ -364,6 +364,16 @@ $tavnav-button-default-background-color:    'gray-100' !default;
 $tavnav-button-hover-background-color:      'gray-200' !default;
 $tavnav-button-text-color:                  'black' !default;
 
+// Tabsheets
+$tabsheet-text-color:                       'gray-900' !default;
+$tabsheet-active-background-color:          'white' !default;
+$tabsheet-border:                           10 !default;
+$tabsheet-default-border-color:             'gray-300' !default;
+$tabsheet-border-radius:                    4px !default;
+$tabsheet-border-bottom-color:              'primary' !default;
+$tabsheet-inactive-background-color:        'gray-100' !default;
+$tabsheet-hover-background-color:           'gray-200' !default;
+
 // Tags
 $tag-border-radius:             $button-border-radius !default;
 $tag-font-size:                 typo-vars.$typography-body-text-font-size !default;
