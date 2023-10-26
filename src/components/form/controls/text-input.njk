@@ -13,7 +13,7 @@
 {% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
 {% if params.disabled === true %}{% set isRequired = false %}{% endif %}
 {% set labelClasses = "" %}
-{% if params.classes.label === true %}{% set labelClasses = params.classes.label %}{% endif %}
+{% if params.classes.label %}{% set labelClasses = params.classes.label %}{% endif %}
 {% if params.disabled === true %}{% set labelClasses = labelClasses + " disabled" %}{% endif %}
 <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}{% if params.characterLimit %} form-limit{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
     {{
