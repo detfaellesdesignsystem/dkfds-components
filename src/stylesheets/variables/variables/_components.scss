@@ -186,8 +186,9 @@ $input-font-size:                       typo-vars.$typography-body-text-font-siz
 $input-line-height:                     typo-vars.$typography-body-text-line-height !default;
 $input-text-color:                      'ink' !default;
 $input-placeholder-color:               'gray-500' !default;
-$input-disabled-background-color:       'gray-100' !default;
-$input-disabled-text-color:             'disabled-light' !default;
+$input-disabled-background-color:       'transparent' !default;
+$input-disabled-border-color:           'gray-200' !default;
+$input-disabled-text-color:             'gray-500' !default;
 
 $input-border-width-feedback:               2px !default;
 $input-border-color-feedback-error:         'error' !default;

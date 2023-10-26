@@ -75,4 +75,20 @@ params:
     type: string
     required: false
     description: Value for the year input.
+- name: autocomplete
+  type: object
+  required: false
+  description: autocomplete object containing values for each input.
+  - name: day
+    type: string
+    required: false
+    description: autocomplete for the day input.
+  - name: month
+    type: string
+    required: false
+    description: autocomplete for the month input.
+  - name: year
+    type: string
+    required: false
+    description: autocomplete for the year input.
 

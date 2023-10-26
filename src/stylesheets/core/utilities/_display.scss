@@ -10,6 +10,7 @@
     @include mixins.media-breakpoint-up($breakpoint) {
       $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
       .d#{$infix}-none         { display: none !important; }
+      .d#{$infix}-inline       { display: inline !important; }
       .d#{$infix}-inline-block { display: inline-block !important; }
       .d#{$infix}-block        { display: block !important; }
       .d#{$infix}-flex         { display: flex !important; }
