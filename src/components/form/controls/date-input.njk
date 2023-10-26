@@ -32,7 +32,6 @@
             {% set dayId = params.id + "-day" %}
             {% set dayLabel = params.labels.day | default("Dag") %}
             {% set dayAttributes = 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"' %}
-            {% if params.autocomplete.day -%}{% set dayAttributes = dayAttributes + ' autocomplete="' + params.autocomplete.day + '"' %}{% endif %}
             {{
                 textinput({
                     "id": dayId,
@@ -46,14 +45,14 @@
                     "type": "tel",
                     "attributes": {
                         "input": dayAttributes
-                    }
+                    },
+                    "autocomplete": params.autocomplete.day
                 })
             }}
 
             {% set monthId = params.id + "-month" %}
             {% set monthLabel = params.labels.month | default("Måned") %}
             {% set monthAttributes = 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"' %}
-            {% if params.autocomplete.month -%}{% set monthAttributes = monthAttributes + ' autocomplete="' + params.autocomplete.month + '"' %}{% endif %}
             {{
                 textinput({
                     "id": monthId,
@@ -67,14 +66,14 @@
                     "type": "tel",
                     "attributes": {
                         "input": monthAttributes
-                    }
+                    },
+                    "autocomplete": params.autocomplete.month
                 })
             }}
 
             {% set yearId = params.id + "-year" %}
             {% set yearLabel = params.labels.year | default("År") %}
             {% set yearAttributes = 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"' %}
-            {% if params.autocomplete.year -%}{% set yearAttributes = yearAttributes + ' autocomplete="' + params.autocomplete.year + '"' %}{% endif %}
             {{
                 textinput({
                     "id": yearId,
@@ -88,7 +87,8 @@
                     "type": "tel",
                     "attributes": {
                         "input": yearAttributes
-                    }
+                    },
+                    "autocomplete": params.autocomplete.year
                 })
             }}
         </div>
