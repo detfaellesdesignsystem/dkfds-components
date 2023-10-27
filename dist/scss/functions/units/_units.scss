@@ -8,20 +8,20 @@
 // ------------------------------------------------------------------
 
 @function -divide($dividend, $divisor, $precision: 10, $depth: 0) {
-    @if ($dividend < 0 and $divisor < 0) {
+    @if $dividend < 0 and $divisor < 0 {
         $dividend: -1 * $dividend;
         $divisor: -1 * $divisor;
     }
 
-    @if ($dividend < 0) {
+    @if $dividend < 0 {
         @return -1 * -divide(-1 * $dividend, $divisor, $precision, $depth);
     }
 
-    @if ($divisor < 0) {
+    @if $divisor < 0 {
         @return -1 * -divide($dividend, $divisor * -1, $precision, $depth);
     }
 
-    @if ($divisor == 0) {
+    @if $divisor == 0 {
         @error 'Illegal division by zero';
     }
 

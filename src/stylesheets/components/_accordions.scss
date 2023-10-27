@@ -16,20 +16,25 @@ Accordion
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   color: func.color(vars.$accordion-button-color-default);
   cursor: pointer;
-  display: inline-block;
   margin: 0;
+  display: block;
   line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem');
   width: 100%;
   font-size: func.font-size(vars.$typography-body-text-font-size);
   position: relative;
-  transition: none;
   border-radius: vars.$interactive-element-border-radius;
   border: func.border(vars.$accordion-content-border);
 
   &:hover {
     background-color: func.color(vars.$accordion-button-background-color-hover);
     color: func.color(vars.$accordion-button-color-hover);
+  }
+
+  @include mixins.media-breakpoint-up(md) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   h1, .h1,
@@ -43,28 +48,30 @@ Accordion
   .icon_text {
     font-weight: func.font-weight("semibold");
     margin-right: func.units(3);
-    float: left;
+    overflow-wrap: break-word;
+    max-width: calc(100% - func.units(3) - func.units(5)); // Icon margin and icon size;
+  }
+  .accordion-title {
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
   .accordion-icon {
-    right: func.units(4, 'rem');
-    height: func.units(5, 'rem');
     line-height: func.units(5, 'rem');
     position: initial;
     text-align: left;
-    transform: none;
     display: block;
     top: 0.8rem;
    @include mixins.media-breakpoint-up(md) {
-      text-align: center;
-      position: absolute;
-      transform: translateY(-50%);
-      top: 50%;
+      text-align: end;
       display: flex;
+      align-items: center;
+      max-width: 30%;
+      margin-left: func.units(4);
    }
 
     .icon-svg {
       fill: func.color(vars.$accordion-button-color-default);
-      float: left;
+      flex-shrink: 0;
     }
     &:hover .icon-svg{
       fill: func.color(vars.$accordion-button-color-hover);

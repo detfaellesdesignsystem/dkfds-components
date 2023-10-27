@@ -9,6 +9,7 @@
   "scripts": {
     "build": "webpack",
     "lint-css": "npx stylelint \"dist/css/dkfds.css\"",
+    "lint-scss": "npx stylelint \"src/stylesheets/**\" --config stylelint-scss.json",
     "lint-all-css": "npx stylelint \"dist/css/dkfds-borgerdk.css\" \"dist/css/dkfds-virkdk.css\" \"dist/css/dkfds.css\"",
     "css-only": "sass --no-source-map --style=expanded src/stylesheets/dkfds.scss:css-only/dkfds.css src/stylesheets/dkfds-virkdk.scss:css-only/dkfds-virkdk.css src/stylesheets/dkfds-borgerdk.scss:css-only/dkfds-borgerdk.css"
   },
@@ -32,6 +33,7 @@
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-no-unsupported-browser-features": "^7.0.0",
     "terser-webpack-plugin": "^5.3.9",
     "webpack": "^5.89.0",
