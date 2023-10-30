@@ -151,21 +151,21 @@ button.accordion-bulk-button{
       display: none;
   }
 
-  &[aria-hidden=true] {
+  &[aria-hidden="true"] {
     display: none;
   }
 }
 .accordion-button.accordion-error {
   border: vars.$accordion-button-error-border-width solid func.color(vars.$accordion-button-error-border-color);
 }
-.accordion-button[aria-expanded=true] {
+.accordion-button[aria-expanded="true"] {
   background-color: func.color(vars.$accordion-button-open-background-color);
   border-radius: vars.$interactive-element-border-radius vars.$interactive-element-border-radius 0 0;
   &:not(.accordion-error){
     border-bottom: func.border(vars.$accordion-button-open-border);
   }
 }
-.accordion-button[aria-expanded=false] {
+.accordion-button[aria-expanded="false"] {
   @include mixins.add-background-svg('add');
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   border-radius: vars.$interactive-element-border-radius;

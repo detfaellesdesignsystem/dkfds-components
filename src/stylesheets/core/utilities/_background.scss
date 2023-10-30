@@ -12,5 +12,8 @@ $backgroundcolors: (
 
 
 @each $name, $color in $backgroundcolors { 
-  .bg-#{$name}         { background: func.color($color) !important; background-color: func.color($color) !important;}
+  .bg-#{$name} { 
+    background: func.color($color) !important; 
+    background-color: func.color($color) !important;
+  }
 }

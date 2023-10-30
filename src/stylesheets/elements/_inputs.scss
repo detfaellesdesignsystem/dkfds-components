@@ -151,7 +151,7 @@ textarea.no-resize{
     @include mixins.appearance-none;
 
     &:-moz-focusring {
-        color: transparent;
+        color: func.color('transparent');
         text-shadow: 0 0 0 func.color('black');
     }
 
@@ -218,13 +218,13 @@ $input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedb
   }
 }
 
-input[type=text],
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-input[type=tel],
-input[type=url],
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
 textarea {
   &:disabled {
     background-color: func.color(vars.$input-disabled-background-color);
@@ -234,7 +234,7 @@ textarea {
   }
 }
 
-input[readonly][type=text], textarea[readonly]{
+input[readonly][type="text"], textarea[readonly]{
   background-color: func.color('gray-100');
   color: func.color(vars.$input-text-color);
   border: 1px solid func.color('gray-200');
@@ -503,14 +503,14 @@ td {
 // -----------------
 // Range inputs
 // -----------------
-[type=range] {
+[type="range"] {
   @include mixins.appearance-none;
   border: none;
   padding-left: 0;
   width: 100%;
 }
 
-[type=range]::-webkit-slider-runnable-track {
+[type="range"]::-webkit-slider-runnable-track {
   background: func.color(vars.$input-range-track-default-background-color);
   border: func.border(vars.$input-range-track-default-border);
   cursor: pointer;
@@ -518,7 +518,7 @@ td {
   width: 100%;
 }
 
-[type=range]::-moz-range-track {
+[type="range"]::-moz-range-track {
   background: func.color(vars.$input-range-track-default-background-color);
   border: func.border(vars.$input-range-track-default-border);
   cursor: pointer;
@@ -526,7 +526,7 @@ td {
   width: 100%;
 }
 
-[type=range]::-webkit-slider-thumb {
+[type="range"]::-webkit-slider-thumb {
   @include mixins.appearance-none;
   border: func.border(vars.$input-range-thumb-default-border);
   height: 2.2rem;
@@ -537,7 +537,7 @@ td {
   width: 2.2rem;
 }
 
-[type=range]::-moz-range-thumb {
+[type="range"]::-moz-range-thumb {
   background: func.color(vars.$input-range-thumb-default-background-color);
   border: func.border(vars.$input-range-thumb-default-border);
   border-radius: 1.5rem;
@@ -557,8 +557,8 @@ td {
     font-weight: func.font-weight("normal");
   }
 
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     @include mixins.appearance-none;
     margin: 0;
   }
@@ -600,10 +600,10 @@ input::-webkit-inner-spin-button {
   @include mixins.appearance-none;
 }
 
-.form-label + input[type=file]{
+.form-label + input[type="file"]{
   margin-top: func.units(3);
 }
 
-input[type=file]{
+input[type="file"]{
   display: block;
 }
