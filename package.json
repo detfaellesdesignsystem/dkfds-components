@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack",
     "lint-css": "npx stylelint \"dist/css/dkfds.css\"",
-    "lint-scss": "npx stylelint \"src/stylesheets/**\" --config stylelint-scss.json",
+    "lint-scss": "npx stylelint \"src/stylesheets/**\" --config stylelint-scss.json --formatter verbose",
     "lint-all-css": "npx stylelint \"dist/css/dkfds-borgerdk.css\" \"dist/css/dkfds-virkdk.css\" \"dist/css/dkfds.css\"",
     "css-only": "sass --no-source-map --style=expanded src/stylesheets/dkfds.scss:css-only/dkfds.css src/stylesheets/dkfds-virkdk.scss:css-only/dkfds-virkdk.css src/stylesheets/dkfds-borgerdk.scss:css-only/dkfds-borgerdk.css"
   },

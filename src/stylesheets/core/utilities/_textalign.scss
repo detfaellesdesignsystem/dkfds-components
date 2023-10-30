@@ -2,10 +2,8 @@
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
-//
 // Generates utility classes to control text alignment
 // Example: .align-text-left .align-text-md-left
-//
 
 @each $breakpoint in map.keys(vars.$grid-breakpoints) {
   @include mixins.media-breakpoint-up($breakpoint) {

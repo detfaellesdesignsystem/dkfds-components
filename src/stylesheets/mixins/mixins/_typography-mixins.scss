@@ -10,14 +10,14 @@ Sets styles within breakpoints
 ----------------------------------------
 */
 @mixin responsive-style($map, $style) {
-    @if type-of($map)=='map' {
+    @if type-of($map) == 'map' {
         @each $breakpoint, $value in $map {
-            @if $breakpoint =="default" {
-                @if $style ==line-height {
+            @if $breakpoint == "default" {
+                @if $style == line-height {
                     #{$style}: func.units($value, 'rem');
                 }
 
-                @else if $style ==font-size {
+                @else if $style == font-size {
                     #{$style}: func.font-size($value);
                 }
 
@@ -28,11 +28,11 @@ Sets styles within breakpoints
 
             @else {
                 @include breakpoints.media-breakpoint-up($breakpoint) {
-                    @if $style ==line-height {
+                    @if $style == line-height {
                         #{$style}: func.units($value, 'rem');
                     }
 
-                    @else if $style ==font-size {
+                    @else if $style == font-size {
                         #{$style}: func.font-size($value);
                     }
 
@@ -45,11 +45,11 @@ Sets styles within breakpoints
     }
 
     @else {
-        @if $style ==line-height {
+        @if $style == line-height {
             #{$style}: func.units($map, 'rem');
         }
 
-        @else if $style ==font-size {
+        @else if $style == font-size {
             #{$style}: func.font-size($map);
         }
 
@@ -134,8 +134,8 @@ Sets styles within breakpoints
     line-height: func.units(vars.$typography-subheading-line-height, 'rem');
     color: func.color(vars.$typography-subheading-text-color);
     letter-spacing: vars.$typography-subheading-letter-spacing;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @mixin form-label-text {

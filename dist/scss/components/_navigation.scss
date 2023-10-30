@@ -28,7 +28,7 @@ ul.mainmenu {
     }
 
     ul {
-        @include mixins.unstyled-list();
+        @include mixins.unstyled-list;
         width: 100%;
         max-width: none !important; /* Override ul styling in typography.scss */
     }

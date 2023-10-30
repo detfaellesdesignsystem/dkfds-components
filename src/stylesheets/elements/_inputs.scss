@@ -4,7 +4,7 @@
 @use "../mixins/mixins" as mixins;
 
 .form-group{
-  margin-top: func.units(5); //4
+  margin-top: func.units(5); // 4
   &:first-child{
     margin-top: 0;
   }
@@ -21,7 +21,7 @@
 }
 .form-label {
   display: inline-block;
-  @include mixins.form-label-text();
+  @include mixins.form-label-text;
   &.disabled {
     color: func.color(vars.$input-disabled-text-color);
   }
@@ -29,9 +29,9 @@
 
 
 
-////////////////////
-//** Text input **//
-////////////////////
+// -----------------
+//   Text input
+// -----------------
 
 .form-input{
   @include mixins.appearance-none;
@@ -52,7 +52,7 @@
   }
 
   &:focus, &.focus{
-    @include mixins.focus();
+    @include mixins.focus;
   }
 
   &::placeholder {
@@ -127,9 +127,9 @@ textarea.no-resize{
 }
 
 
-////////////////
-//** Select **//
-////////////////
+// -----------------
+//   Select
+// -----------------
 
 .form-select {
     background-color: func.color(vars.$select-background-color);
@@ -157,7 +157,7 @@ textarea.no-resize{
 
     &:focus,
     &.focus {
-        @include mixins.focus();
+        @include mixins.focus;
     }
 
     &::-ms-expand {
@@ -184,9 +184,9 @@ table {
   }
 }
 
-//////////////////////
-//** Input states **//
-//////////////////////
+// -----------------
+//   Input states
+// -----------------
 
 
 $input-top-bottom-padding-feedback: calc(8px - #{vars.$input-border-width-feedback});
@@ -204,7 +204,7 @@ $input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedb
 
 }
 .form-error-message {
-  @include mixins.form-label-text();
+  @include mixins.form-label-text;
   display: block;
   color: func.color('error');
   margin-top: func.units(2);
@@ -241,9 +241,9 @@ input[readonly][type=text], textarea[readonly]{
   cursor: default;
 }
 
-/////////////////////////
-//** Character limit **//
-/////////////////////////
+// -----------------
+//   Character limit
+// -----------------
 
 .form-limit {
   .form-limit-error {
@@ -261,9 +261,9 @@ input[readonly][type=text], textarea[readonly]{
 }
 
 
-///////////////////////////////////////
-// Custom checkboxes & radio buttons //
-///////////////////////////////////////
+// -----------------
+// Custom checkboxes & radio buttons
+// -----------------
 
 // Variables for readability
 $checkbox-radio-size: func.units(vars.$input-checkbox-radio-size);
@@ -360,12 +360,12 @@ legend, .form-error-message, .form-hint {
 
 // 'Normal' checkbox checkmark
 .form-checkbox:checked + label::before {
-    background-image: url(vars.$icons-folder-path+'/'+vars.$input-checkbox-checked-image+'.svg');
+    background-image: url(vars.$icons-folder-path + '/' + vars.$input-checkbox-checked-image + '.svg');
 }
 
 // 'Mixed' checkbox checkmark
 .form-checkbox[aria-checked="mixed"] + label::before {
-    background-image: url(vars.$icons-folder-path+'/'+vars.$input-checkbox-mixed-image+'.svg');
+    background-image: url(vars.$icons-folder-path + '/' + vars.$input-checkbox-mixed-image + '.svg');
 }
 
 // Checked radio
@@ -397,7 +397,7 @@ legend, .form-error-message, .form-hint {
 .form-checkbox.focus + label::before,
 .form-radio:focus + label::before,
 .form-radio.focus + label::before {
-    @include mixins.focus();
+    @include mixins.focus;
 }
 
 // Helptext
@@ -500,9 +500,9 @@ td {
 
 
 
-/////////////////////////
+// -----------------
 // Range inputs
-/////////////////////////
+// -----------------
 [type=range] {
   @include mixins.appearance-none;
   border: none;
@@ -546,9 +546,9 @@ td {
   width: 2.2rem;
 }
 
-/////////////////////////
-//Date input
-/////////////////////////
+// -----------------
+// Date input
+// -----------------
 .date-group {
   display: flex;
   align-items: flex-end;
@@ -594,7 +594,7 @@ td {
 input[type='number'] {
   -moz-appearance:textfield !important;
 }
-//Below fix bug where date-inputs to number-wheels in chrome.
+// Below fix bug where date-inputs to number-wheels in chrome.
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   @include mixins.appearance-none;

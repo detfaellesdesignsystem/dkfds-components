@@ -43,7 +43,6 @@
       width: auto;
       color: func.color(vars.$tavnav-button-text-color);
       text-align: center;
-      text-decoration: none;
       padding: 0;
       background-color: transparent;
       border-radius: 0;
@@ -69,7 +68,7 @@
       &:focus{
         outline: none;
         span{
-          @include mixins.focus-outline();
+          @include mixins.focus-outline;
         }
       }
 
@@ -113,7 +112,7 @@
       z-index: 300;
 
       &:focus{
-        @include mixins.focus();
+        @include mixins.focus;
       }
     }
     &[aria-hidden=false]{

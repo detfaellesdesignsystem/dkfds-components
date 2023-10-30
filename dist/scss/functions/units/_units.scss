@@ -27,7 +27,7 @@
 
     $result: if(math.unit($dividend) == math.unit($divisor), 0, $dividend * 0);
 
-    @while $dividend - $divisor >=0 {
+    @while $dividend - $divisor >= 0 {
         $result: $result + 1;
         $dividend: $dividend - $divisor;
     }
@@ -57,7 +57,7 @@
 @function -px-to-rem($pixels) {
 
     $px-to-rem: -divide($pixels, vars.$root-font-size-equiv) * 1rem;
-    $px-to-rem: -divide(round($px-to-rem * 100), 100);
+    $px-to-rem: -divide(math.round($px-to-rem * 100), 100);
 
     @return $px-to-rem;
 }
@@ -73,7 +73,7 @@
 
         $result-in-pixels: map.get(units.$spacers, $value);
 
-        @if $unit =='rem' {
+        @if $unit == 'rem' {
             @return -px-to-rem($result-in-pixels);
         }
 

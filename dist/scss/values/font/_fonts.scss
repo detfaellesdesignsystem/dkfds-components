@@ -135,14 +135,14 @@
 
 @font-face {
   font-family: system;
-  src:  local(".SFNSText-Light"),             //Mac OS X - El Captain
-  local(".HelveticaNeueDeskInterface-Light"), //Mac OS X - Yosemite
-  local(".LucidaGrandeUI"),                   //Mac OS X - Mavericks
-  local("Ubuntu Light"),                      //Ubuntu
-  local("Segoe UI Light"),                    //Windows - Vista
-  local("Roboto-Light"),                      //Android - Ice Cream Sandwich (4.0)+
-  local("DroidSans"),                         //Android - Cupcake (1.5) to Honeycomb (3.2.6)
-  local("Tahoma");                            //Windows - XP
+  src:  local(".SFNSText-Light"),                   // Mac OS X - El Captain
+        local(".HelveticaNeueDeskInterface-Light"), // Mac OS X - Yosemite
+        local(".LucidaGrandeUI"),                   // Mac OS X - Mavericks
+        local("Ubuntu Light"),                      // Ubuntu
+        local("Segoe UI Light"),                    // Windows - Vista
+        local("Roboto-Light"),                      // Android - Ice Cream Sandwich (4.0)+
+        local("DroidSans"),                         // Android - Cupcake (1.5) to Honeycomb (3.2.6)
+        local("Tahoma");                            // Windows - XP
   font-style: normal;
   font-weight: func.font-weight("normal");
   font-display: swap;

@@ -2,9 +2,7 @@
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
-//
 // Utilities for common `display` values
-//
 
 @each $breakpoint in map.keys(vars.$grid-breakpoints) {
     @include mixins.media-breakpoint-up($breakpoint) {

@@ -177,7 +177,7 @@ $icons: (
     width: func.units(vars.$typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
-        fill: currentColor; //svg inherit color
+        fill: currentColor; // svg inherit color
     }
     &:focus{
       outline: none;
@@ -199,10 +199,10 @@ $icons: (
 
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
-        background-image: url(vars.$icons-folder-path+'/'+$icon+".svg");
+        background-image: url(vars.$icons-folder-path + '/' + $icon + ".svg");
     }
 }
 
-.hide-base-svg{ //hide inline svgs
+.hide-base-svg{ // hide inline svgs
     display: none;
 }

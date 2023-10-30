@@ -2,10 +2,8 @@
 @use "../../variables/variables" as vars;
 @use "../../mixins/mixins" as mixins;
 
-//
 // Generates utility classes to control width in percent. 
 // Example: .w-percent-100 .w-percent-md-30
-//
 
 $percent-widths: (
   10: 10%,

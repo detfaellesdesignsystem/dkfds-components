@@ -121,29 +121,29 @@ $fds-color-data-green: (
 );
 
 $fds-color-black-transparent: (
-    "black-transparent-100": rgba(0, 0, 0, 0.01),
-    "black-transparent-200": rgba(0, 0, 0, 0.1),
-    "black-transparent-300": rgba(0, 0, 0, 0.2),
-    "black-transparent-400": rgba(0, 0, 0, 0.3),
-    "black-transparent-500": rgba(0, 0, 0, 0.4),
-    "black-transparent-600": rgba(0, 0, 0, 0.5),
-    "black-transparent-700": rgba(0, 0, 0, 0.6),
-    "black-transparent-800": rgba(0, 0, 0, 0.7),
-    "black-transparent-900": rgba(0, 0, 0, 0.8),
-    "black-transparent-950": rgba(0, 0, 0, 0.9)
+    "black-transparent-100": rgb(0 0 0 / 0.01),
+    "black-transparent-200": rgb(0 0 0 / 0.1),
+    "black-transparent-300": rgb(0 0 0 / 0.2),
+    "black-transparent-400": rgb(0 0 0 / 0.3),
+    "black-transparent-500": rgb(0 0 0 / 0.4),
+    "black-transparent-600": rgb(0 0 0 / 0.5),
+    "black-transparent-700": rgb(0 0 0 / 0.6),
+    "black-transparent-800": rgb(0 0 0 / 0.7),
+    "black-transparent-900": rgb(0 0 0 / 0.8),
+    "black-transparent-950": rgb(0 0 0 / 0.9)
 );
 
 $fds-color-white-transparent: (
-    "white-transparent-100": rgba(255, 255, 255, 0.01),
-    "white-transparent-200": rgba(255, 255, 255, 0.1),
-    "white-transparent-300": rgba(255, 255, 255, 0.2),
-    "white-transparent-400": rgba(255, 255, 255, 0.3),
-    "white-transparent-500": rgba(255, 255, 255, 0.4),
-    "white-transparent-600": rgba(255, 255, 255, 0.5),
-    "white-transparent-700": rgba(255, 255, 255, 0.6),
-    "white-transparent-800": rgba(255, 255, 255, 0.7),
-    "white-transparent-900": rgba(255, 255, 255, 0.8),
-    "white-transparent-950": rgba(255, 255, 255, 0.9)
+    "white-transparent-100": rgb(255 255 255 / 0.01),
+    "white-transparent-200": rgb(255 255 255 / 0.1),
+    "white-transparent-300": rgb(255 255 255 / 0.2),
+    "white-transparent-400": rgb(255 255 255 / 0.3),
+    "white-transparent-500": rgb(255 255 255 / 0.4),
+    "white-transparent-600": rgb(255 255 255 / 0.5),
+    "white-transparent-700": rgb(255 255 255 / 0.6),
+    "white-transparent-800": rgb(255 255 255 / 0.7),
+    "white-transparent-900": rgb(255 255 255 / 0.8),
+    "white-transparent-950": rgb(255 255 255 / 0.9)
 );
 
 $fds-core-colors: (

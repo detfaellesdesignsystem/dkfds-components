@@ -15,7 +15,7 @@ a.skipnav {
   outline-offset: 0;
 
   &:focus {      
-    @include mixins.focus-outline();
+    @include mixins.focus-outline;
     background-color: func.color(vars.$skipnav-background-color);
     left: 0;
     position: absolute;
@@ -28,5 +28,5 @@ a.skipnav {
 }
 
 #main-content:focus{
-  @include mixins.focus-outline();
+  @include mixins.focus-outline;
 }

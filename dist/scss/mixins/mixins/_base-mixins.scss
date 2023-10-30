@@ -8,7 +8,7 @@
 }
 
 @mixin embed-container($height, $width) {
-    padding-bottom: percentage(math.div($height,$width));
+    padding-bottom: math.percentage(math.div($height,$width));
 }
 
 @mixin button-unstyled {
@@ -39,8 +39,8 @@
 }
 
 @mixin focus {
-    @include focus-outline();
-    @include focus-offset();
+    @include focus-outline;
+    @include focus-offset;
 }
 
 // Screen reader only helper
@@ -66,7 +66,7 @@
 }
 
 .sr-only {
-    @include sr-only();
+    @include sr-only;
 }
 
 // Unstyled list helper
@@ -108,7 +108,7 @@
         padding-left: calc(8px + 6px);
 
         &::before {
-            left: 0px;
+            left: 0;
         }
     }
 }

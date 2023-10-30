@@ -4,7 +4,7 @@
 
 /* hide the default checkbox */
 input[type='checkbox'].form-toggle {
-  @include mixins.sr-only();
+  @include mixins.sr-only;
 }
 
 input[type='checkbox'].form-toggle ~ .form-toggle-label {
@@ -107,7 +107,7 @@ input[type='checkbox'].form-toggle:checked ~ .form-toggle-label:active:after {
 }
 
 input[type='checkbox'].form-toggle:focus ~ .form-toggle-label:after {
-  @include mixins.focus();
+  @include mixins.focus;
 }
 
 /* checked state */

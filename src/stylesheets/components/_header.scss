@@ -42,7 +42,7 @@ $z-index-nav:     9000;
         }
 
         .logo {
-            background-image: url(vars.$image-path+'/'+vars.$header-portal-logo);
+            background-image: url(vars.$image-path + '/' + vars.$header-portal-logo);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center left;

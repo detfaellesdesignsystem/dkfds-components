@@ -51,13 +51,13 @@
 
   &.focus,
   &:focus {
-    @include mixins.focus();
+    @include mixins.focus;
     position: relative;
   }
 
   .icon-svg {
     float: right;
-    margin: 0px 0px 0px 5px;
+    margin: 0 0 0 5px;
     fill: func.color(vars.$tag-icon-color);
   }
 }
