@@ -24,12 +24,12 @@
       border: none;
     }
 
-    &[aria-selected=true]{
+    &[aria-selected="true"]{
       background-color: func.color(vars.$accordion-button-open-background-color);
       border-radius: vars.$interactive-element-border-radius vars.$interactive-element-border-radius 0 0;
     }
 
-    &[aria-selected=false]{
+    &[aria-selected="false"]{
       @include mixins.add-background-svg('add');
       background-size: func.units(vars.$accordion-button-icon-size, 'rem');
       border-radius: vars.$interactive-element-border-radius;
@@ -43,7 +43,6 @@
       width: auto;
       color: func.color(vars.$tavnav-button-text-color);
       text-align: center;
-      text-decoration: none;
       padding: 0;
       background-color: transparent;
       border-radius: 0;
@@ -56,7 +55,7 @@
       text-decoration: underline;
       border-top: func.units(2) solid func.color('white');
 
-      &[aria-selected=false]{
+      &[aria-selected="false"]{
         background-color: func.color(vars.$tavnav-button-default-background-color);
         background-image: none;
         border-radius: 0;
@@ -69,11 +68,11 @@
       &:focus{
         outline: none;
         span{
-          @include mixins.focus-outline();
+          @include mixins.focus-outline;
         }
       }
 
-      &[aria-selected=true] {
+      &[aria-selected="true"] {
         background-color: func.color(vars.$tabnav-background-color);
         background-image: none;
         border: func.border(vars.$tabnav-border);
@@ -113,10 +112,10 @@
       z-index: 300;
 
       &:focus{
-        @include mixins.focus();
+        @include mixins.focus;
       }
     }
-    &[aria-hidden=false]{
+    &[aria-hidden="false"]{
       display: block;
       order: 1000;
       width: 100%;

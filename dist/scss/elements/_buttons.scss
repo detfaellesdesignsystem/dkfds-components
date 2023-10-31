@@ -53,11 +53,11 @@ a.button {
 
     &.focus,
     &:focus {
-        @include mixins.focus();
+        @include mixins.focus;
         color: func.color(vars.$button-primary-focus-color);
     }
 
-    //############ Primary ###############
+    // ############ Primary ###############
     &.button-primary {
         color: func.color(vars.$button-primary-default-color);
         background-color: func.color(vars.$button-primary-default-background-color);
@@ -97,7 +97,7 @@ a.button {
         }
     }
 
-    //############ Secondary ##############
+    // ############ Secondary ##############
     &.button-secondary {
         color: func.color(vars.$button-secondary-default-color);
         background-color: func.color(vars.$button-secondary-default-background-color);
@@ -141,7 +141,7 @@ a.button {
         }
     }
 
-    //############### tertiary ############
+    // ############### tertiary ############
     &.button-tertiary {
         border-color: func.color(vars.$button-tertiary-default-border-color);
         background-color: func.color(vars.$button-tertiary-default-background-color);
@@ -186,7 +186,7 @@ a.button {
         }
     }
 
-    //############ Button quaternary - button styled as a link #################
+    // ############ Button quaternary - button styled as a link #################
     &.button-quaternary {
         color: func.color(vars.$button-quaternary-default-color);
         background-color: func.color(vars.$button-quaternary-default-background-color);
@@ -239,7 +239,7 @@ a.button {
     }
 
     &.button-small {
-        padding: calc(#{func.units(1)}) calc(#{func.units(4)} - #{vars.$button-border-width}) 0px;
+        padding: calc(#{func.units(1)}) calc(#{func.units(4)} - #{vars.$button-border-width}) 0;
         font-size: func.font-size(vars.$typography-small-text-font-size);
         min-height: 24px;
     }

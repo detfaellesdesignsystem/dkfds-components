@@ -48,7 +48,7 @@
 .date-picker__calendar {
   border: func.border(vars.$datepicker-border);
   background-color: func.color(vars.$datepicker-background-color);
-  box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
+  box-shadow: 0 5px 15px -5px rgb(0 0 0 / 0.5);
   left: 0;
   position: absolute;
   width: 100%;
@@ -56,7 +56,7 @@
     width: 344px;
   }
   z-index: 100;
-  margin-top: 4px;
+  margin-top: func.units(2);
 }
 
 // Date Picker - Table
@@ -200,7 +200,7 @@
   &:focus {
     outline: none;
     &:before {
-      @include mixins.focus();
+      @include mixins.focus;
       position: absolute;
       top: -1px;
       bottom: 0;
@@ -308,7 +308,7 @@
   cursor: pointer;
 
   &--focused {
-    @include mixins.focus-outline();
+    @include mixins.focus-outline;
     outline-offset: 2px;
     position: relative;
     z-index: 100;
@@ -348,7 +348,7 @@
   @include mixins.button-unstyled;
   background-position: center;
   margin: auto;
-  padding: 0px 8px;
+  padding: 0 8px;
   cursor: pointer;
 }
 
@@ -369,7 +369,7 @@
   cursor: pointer;
 
   &--focused {
-    @include mixins.focus();
+    @include mixins.focus;
     position: relative;
     z-index: 100;
   }

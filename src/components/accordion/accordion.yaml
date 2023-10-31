@@ -11,6 +11,10 @@ params:
   type: string
   required: false
   description: Heading level of the button. Default is h3.
+- name: classes
+  type: string
+  required: false
+  description: Classes for the accordion list.
 - name: items
   type: array
   required: true
@@ -19,6 +23,22 @@ params:
     type: string
     required: true
     description: Text in accordion button.
+  - name: classes
+    type: object
+    required: false
+    description: Classes for the accordion elements.
+    - name: button
+      type: string
+      required: false
+      description: Classes to add to the accordion button.
+    - name: title
+      type: string
+      required: false
+      description: Classes to add to the accordion title.
+    - name: icon
+      type: string
+      required: false
+      description: Classes to add to the accordion icon text.
   - name: errorMessage
     type: string
     required: false

@@ -51,7 +51,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
     max-width: vars.$typography-text-max-width;
   }
   .alert-close{
-    @include mixins.button-unstyled();
+    @include mixins.button-unstyled;
     cursor:pointer;
     position: absolute;
     top: func.units(4);
@@ -107,7 +107,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
       @if $name == warning {
         $alert-icon: 'report-problem';
       }
-      background-image: url(vars.$icons-folder-path+'/'+$alert-icon+'.svg');
+      background-image: url(vars.$icons-folder-path + '/' + $alert-icon + '.svg');
       padding-left: calc(#{func.units(vars.$alert-padding)} + #{vars.$alert-icon-size} + 8px);
     }
   }

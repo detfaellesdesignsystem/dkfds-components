@@ -34,7 +34,7 @@ a {
   &:focus,
   &.link-focus {
     color: func.color("link-focus");
-    @include mixins.focus();
+    @include mixins.focus;
   }
 
   &:visited,
@@ -135,7 +135,7 @@ figcaption, .figcaption{
   letter-spacing: vars.$typography-article-letter-spacing;
 }
 small, .small-text {
-  @include mixins.small-text();
+  @include mixins.small-text;
 }
 
 .weight-normal {
@@ -175,7 +175,7 @@ h6:focus, .h6:focus {
 
 h1, .h1{
   margin-bottom: func.units(4, 'rem');
-  margin-top: 0rem;
+  margin-top: 0;
 }
 
 h2, .h2 {
@@ -214,14 +214,14 @@ p, .body-text{
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
-    margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
+    margin-top: 0; // if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
   }
 }
 
-//a function link, does not look like a link
+// a function link, does not look like a link
 button.function-link{
   background: none;
-  padding: 0px;
+  padding: 0;
   text-decoration: underline;
   text-align: left;
 }
@@ -287,7 +287,7 @@ button.function-link{
   }
 }
 
- //styling for link in heading
+// styling for link in heading
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -320,7 +320,7 @@ dfn {
   font-style: normal;
 }
 
-//max-width of 66ch for text
+// max-width of 66ch for text
 h1, .h1,
 h2, .h2,
 h3, .h3,
@@ -393,8 +393,8 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
-  text-rendering: optimizeLegibility; //Vigtig — den er vidst default i Webkit nu, men den har effekt på andre engines
-  -webkit-font-smoothing: none; //Fikser for tyk typografi i Webkit-baserede browsers)
+  text-rendering: optimizeLegibility; // Vigtig — den er vidst default i Webkit nu, men den har effekt på andre engines
+  -webkit-font-smoothing: none; // Fikser for tyk typografi i Webkit-baserede browsers
   -webkit-font-smoothing: subpixel-antialiased;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: "kern";

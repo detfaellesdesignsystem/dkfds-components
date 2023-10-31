@@ -2,7 +2,7 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
- //Ul lists
+ // Ul lists
 
  ul {
    padding-left: 0;
@@ -19,13 +19,13 @@
      &::before {
        content: "\2022";
        position: absolute;
-       left: 0px;
+       left: 0;
        top: -1px;
        font-size: func.font-size('lg');
      }
    }
  }
-//Ol lists
+// Ol lists
 ol {
   padding-left: func.units(505);
   li{
@@ -51,7 +51,7 @@ ol {
   @include mixins.unstyled-list;
   border-top: func.border(20);
   li{
-    padding: func.units(3) 0px;
+    padding: func.units(3) 0;
     border-bottom: func.border(20);
   }
 }

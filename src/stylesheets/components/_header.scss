@@ -42,7 +42,7 @@ $z-index-nav:     9000;
         }
 
         .logo {
-            background-image: url(vars.$image-path+'/'+vars.$header-portal-logo);
+            background-image: url(vars.$image-path + '/' + vars.$header-portal-logo);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center left;
@@ -348,7 +348,7 @@ $z-index-nav:     9000;
             margin-left: auto;
     
             .icon-svg {
-                margin: 0 8px 0 0;
+                margin: 0 func.units(3) 0 0;
             }
     
             span {

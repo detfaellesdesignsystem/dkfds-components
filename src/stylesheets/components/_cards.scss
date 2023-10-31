@@ -10,20 +10,20 @@
   overflow: hidden;
   background: func.color(vars.$cards-background-color);
 
-  //small card
+  // small card
   &-small {
     > :last-of-type {
       padding-bottom:func.units(5);
     }
   }
-  //medium card
+  // medium card
   &-medium {
-    //The last
+    // The last
     > :last-of-type {
       padding-bottom:func.units(5);
     }
   }
-  //large card
+  // large card
   &-large {
     > :last-of-type {
       padding-bottom:func.units(5);
@@ -66,7 +66,7 @@
     margin: func.units(0);
   }
 }
-//card-header
+// card-header
 .card-header {
   background-color: func.color(vars.$cards-header-background-color);
   padding: func.units(4) func.units(5);
@@ -99,7 +99,7 @@
   }
 }
 
-//card-content
+// card-content
 .card-content {
   @include mixins.body-copy-text;
   padding: func.units(0);
@@ -119,7 +119,7 @@
   }
 }
 
-//card-action
+// card-action
 .card-action {
   @include mixins.body-copy-text;
   padding: func.units(4) func.units(5);
@@ -156,7 +156,7 @@
   .action-links {
     margin-top:func.units(4);
     ul {
-      @include mixins.unstyled-list();
+      @include mixins.unstyled-list;
       padding-left: func.units(0);
       li {
         margin-top:func.units(3) !important;
@@ -172,51 +172,51 @@
   }
 }
 
-//If text comes after header
+// If text comes after header
 .card-header + .card-text{
   padding-top:func.units(0);
 }
-//If content comes after header
+// If content comes after header
 .card-header + .card-content {
   padding-top:func.units(0);
 }
-//If action comes after header
+// If action comes after header
 .card-header + .card-action{
   padding-top:func.units(0);
 }
-//If header comes after header
+// If header comes after header
 .card-header + .card-header{
   padding-top:func.units(0);
 }
-//If header comes after text
+// If header comes after text
 .card-text + .card-header {
   padding-top:func.units(0);
 }
-//If content comes after text
+// If content comes after text
 .card-text + .card-content {
   padding-top:func.units(0);
 }
-//If action comes after text
+// If action comes after text
 .card-text + .card-action{
   padding-top:func.units(0);
 }
-//If text comes after text
+// If text comes after text
 .card-text + .card-text{
   padding-top:func.units(0);
 }
-//If text comes after action
+// If text comes after action
 .card-action + .card-text{
   padding-top:func.units(0);
 }
-//If header comes after action
+// If header comes after action
 .card-action + .card-header{
   padding-top:func.units(0);
 }
-//If content comes after action
+// If content comes after action
 .card-action + .card-content{
   padding-top:func.units(0);
 }
-//If action comes after action
+// If action comes after action
 .card-action + .card-action{
   padding-top: 0;
 }

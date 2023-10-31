@@ -14,7 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &:before {
-        background-image: url(vars.$icons-folder-path+'/arrow-drop-down.svg');
+        background-image: url(vars.$icons-folder-path + '/arrow-drop-down.svg');
         background-position: -10px -8px;
       }
     }
@@ -38,7 +38,7 @@
     }
 
     &:focus{
-      @include mixins.focus();
+      @include mixins.focus;
     }
     .details-summary-text {
       text-decoration: underline;
@@ -49,7 +49,7 @@
     padding: func.units(4);
     border-left: vars.$details-panel-border-width solid func.color(vars.$details-panel-border-color);
     box-sizing: border-box;
-    &[aria-hidden=true]{
+    &[aria-hidden="true"]{
       display: none;
     }
     p{

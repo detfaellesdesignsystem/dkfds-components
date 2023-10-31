@@ -6,18 +6,18 @@
 
 // basic container
 .container {
-  @include mixins.grid-container();
-  @include mixins.grid-container-max-widths();
+  @include mixins.grid-container;
+  @include mixins.grid-container-max-widths;
 }
 
 .container[class*='w-']{
-  max-width: inherit !important; //undo max-width
+  max-width: inherit !important; // undo max-width
 }
 
 
 // basic row...
 .row {
-  @include mixins.grid-row();
+  @include mixins.grid-row;
 
   // row with no column gaps.
   &.no-gutters {
@@ -98,7 +98,7 @@
 
 
 // basic offsets
-@for $i from 0 through (vars.$grid-columns - 1) { //-1 to prevent offset-12
+@for $i from 0 through (vars.$grid-columns - 1) { // -1 to prevent offset-12
   @if not ($i == 0) { // Avoid emitting useless .offset-0
     .offset-#{$i} {
       @include mixins.grid-offset($i, vars.$grid-columns);
@@ -109,7 +109,7 @@
 @each $breakpoint in map.keys(vars.$grid-breakpoints) {
   $mq-key: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
   @include mixins.media-breakpoint-up($breakpoint, vars.$grid-breakpoints) {
-    @for $i from 0 through (vars.$grid-columns - 1) { //-1 to prevent offset-12
+    @for $i from 0 through (vars.$grid-columns - 1) { // -1 to prevent offset-12
       @if not ($mq-key == "" and $i == 0) { // Avoid emitting useless .offset-0
         .offset#{$mq-key}-#{$i} {
           @include mixins.grid-offset($i, vars.$grid-columns);

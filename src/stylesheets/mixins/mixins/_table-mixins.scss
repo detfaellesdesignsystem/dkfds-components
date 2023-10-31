@@ -25,13 +25,13 @@
     th {
         display: block;
         border: none;
-        padding-left: calc(func.units(4) - 1px); //1px for the border
-        padding-right: calc(func.units(4) - 1px); //1px for the border
+        padding-left: calc(func.units(4) - 1px); // 1px for the border
+        padding-right: calc(func.units(4) - 1px); // 1px for the border
         padding-top: func.units(4);
         padding-bottom: func.units(4);
 
         &:last-child {
-            padding-bottom: calc(func.units(4) - 1px); //1px for the border
+            padding-bottom: calc(func.units(4) - 1px); // 1px for the border
         }
 
         &[data-title]:not([data-title=""]):before {
@@ -50,7 +50,7 @@
             padding-bottom: func.units(3);
 
             &:last-child {
-                padding-bottom: calc(func.units(3) - 1px); //1px for the border
+                padding-bottom: calc(func.units(3) - 1px); // 1px for the border
             }
         }
     }
@@ -63,7 +63,7 @@
             padding-bottom: 1px;
 
             &:last-child {
-                padding-bottom: 0px;
+                padding-bottom: 0;
             }
         }
     }

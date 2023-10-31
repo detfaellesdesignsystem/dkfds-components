@@ -15,7 +15,7 @@
   margin-right: func.units(3);
 
   .cookie-message{
-    @include mixins.grid-container();
+    @include mixins.grid-container;
     background-color: func.color(vars.$cookie-message-background-color);
     border: func.border(vars.$cookie-message-border);
     box-shadow: func.shadow(vars.$cookie-message-shadow);

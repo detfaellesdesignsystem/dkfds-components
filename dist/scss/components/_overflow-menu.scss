@@ -32,11 +32,10 @@
             text-decoration: underline;
         }
 
-        //below: arrow with border
+        // below: arrow with border
         &:after,
         &:before {
             display: none;
-            bottom: 100%;
             left: 50%;
             border: solid transparent;
             content: " ";
@@ -45,19 +44,19 @@
             position: absolute;
             pointer-events: none;
             z-index: 3;
-            bottom: calc(#{vars.$overflow-menu-dropdown-distance} * -1 - 1px);
+            bottom: calc((vars.$overflow-menu-dropdown-distance * -1) - 1px);
         }
 
         &:after {
             border-bottom-color: func.color(vars.$overflow-menu-content-background-color);
             border-width: calc(#{vars.$overflow-menu-arrow-size} - 1px);
-            margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px)*-1);
+            margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px) * -1);
         }
 
         &:before {
             border-bottom-color: func.border-color(vars.$overflow-menu-content-border);
             border-width: vars.$overflow-menu-arrow-size;
-            margin-left: calc(#{vars.$overflow-menu-arrow-size} *-1);
+            margin-left: calc(#{vars.$overflow-menu-arrow-size} * -1);
         }
 
         &[aria-expanded="true"] {
@@ -70,7 +69,7 @@
 
     }
 
-    //used when button only contains an icon
+    // used when button only contains an icon
     &.overflow-menu--hover-bg {
 
         .button-overflow-menu {
@@ -197,14 +196,14 @@
 
     &.overflow-menu--md-no-responsive {
 
-        //overflow content always visible on large screens.
-        //does not look like a dropdown.
+        // overflow content always visible on large screens.
+        // does not look like a dropdown.
         @include mixins.media-breakpoint-up(md) {
             display: block;
 
             &:before,
             &:after {
-                display: none; //hide arrow
+                display: none; // hide arrow
             }
 
             .button-overflow-menu {
@@ -225,14 +224,14 @@
 
     &.overflow-menu--lg-no-responsive {
 
-        //overflow content always visible on large screens.
-        //does not look like a dropdown.
+        // overflow content always visible on large screens.
+        // does not look like a dropdown.
         @include mixins.media-breakpoint-up(lg) {
             display: block;
 
             &:before,
             &:after {
-                display: none; //hide arrow
+                display: none; // hide arrow
             }
 
             .button-overflow-menu {

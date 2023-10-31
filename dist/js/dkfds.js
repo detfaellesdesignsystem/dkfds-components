@@ -4220,7 +4220,7 @@ let closeAll = function (event = null){
     let triggerEl = currentOverflowMenuEL.querySelector(dropdown_BUTTON+'[aria-expanded="true"]');
     if(triggerEl !== null){
       changed = true;
-      let targetEl = currentOverflowMenuEL.querySelector('#'+triggerEl.getAttribute(TARGET).replace('#', ''));
+      let targetEl = document.getElementById(triggerEl.getAttribute(TARGET).replace('#', ''));
 
         if (targetEl !== null && triggerEl !== null) {
           if(doResponsiveCollapse(triggerEl)){

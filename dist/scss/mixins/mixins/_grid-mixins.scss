@@ -1,9 +1,8 @@
-@use 'sass:math';
+@use 'sass:math' as math;
 @use "../../variables/variables" as vars;
 @use "breakpoints" as breakpoints;
 
-/// Grid system
-//
+// Grid system
 // Generate semantic grid columns with these mixins.
 
 @mixin grid-container() {
@@ -32,14 +31,14 @@
 }
 
 @mixin grid-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage(math.div($size, $columns));
+  flex: 0 0 math.percentage(math.div($size, $columns));
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
-  max-width: percentage(math.div($size, $columns));
+  max-width: math.percentage(math.div($size, $columns));
 }
 
 @mixin grid-offset($size, $columns: $grid-columns) {
   $num: math.div($size, $columns);
-  margin-left: if($num == 0, 0, percentage($num));
+  margin-left: if($num == 0, 0, math.percentage($num));
 }

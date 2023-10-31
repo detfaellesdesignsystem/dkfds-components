@@ -5,8 +5,8 @@
 
 @media print {
     html {
-        font-family: Georgia, "Times New Roman", Serif;
-        font-size: 48%;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48%; /* stylelint-disable-line declaration-property-value-allowed-list */
     }
 
     body {
@@ -129,8 +129,8 @@
         }
 
         .bg-modal {
-            background-color: transparent !important;
             background: transparent !important;
+            background-color: transparent !important;
         }
 
         .modal__header {

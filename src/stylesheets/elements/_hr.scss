@@ -2,7 +2,7 @@
 @use "../functions/functions" as func;
 
 hr{
-    border-top: func.border(vars.$hr-border); //inner border color
+    border-top: func.border(vars.$hr-border); // inner border color
     display: block;
     border-bottom-width: 0;
 }

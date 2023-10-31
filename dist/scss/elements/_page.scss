@@ -1,17 +1,6 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-.page-header{
-
-}
-.page-content{
-
-}
-.page-footer{
-
-}
-
-
 .page-header + .page-content{
     margin-top: 40px;
 }
@@ -26,7 +15,7 @@
     }
 }
 
-//sticky footer
+// sticky footer
 body {
     display: flex;
     min-height: 100vh;

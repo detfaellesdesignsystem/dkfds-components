@@ -17,8 +17,8 @@
     th {
         padding-left: func.units(4);
         padding-top: func.units(4);
-        padding-right: calc(func.units(4) - 1px); //1px for the border
-        padding-bottom: calc(func.units(4) - 1px); //1px for the border
+        padding-right: calc(func.units(4) - 1px); // 1px for the border
+        padding-bottom: calc(func.units(4) - 1px); // 1px for the border
         border-right: func.border(vars.$table-cell-border);
         border-bottom: func.border(vars.$table-row-border);
         background-color: inherit;
@@ -51,10 +51,10 @@
 
         th {
             font-weight: func.font-weight(vars.$table-head-font-weight);
-            padding-top: calc(func.units(4) - 1px); //1px for the border
+            padding-top: calc(func.units(4) - 1px); // 1px for the border
 
             &:first-child {
-                padding-left: calc(func.units(4) - 1px); //1px for the border
+                padding-left: calc(func.units(4) - 1px); // 1px for the border
             }
 
             &.table-header-no-wrap {
@@ -79,7 +79,7 @@
             td,
             th {
                 &:first-child {
-                    padding-left: calc(func.units(4) - 1px); //1px for the border
+                    padding-left: calc(func.units(4) - 1px); // 1px for the border
                 }
             }
 
@@ -98,11 +98,11 @@
         th,
         td {
             padding-top: func.units(3);
-            padding-bottom: calc(func.units(3) - 1px); //1px for the border
+            padding-bottom: calc(func.units(3) - 1px); // 1px for the border
         }
 
         thead th {
-            padding-top: calc(func.units(3) - 1px); //1px for the border
+            padding-top: calc(func.units(3) - 1px); // 1px for the border
         }
     }
 
@@ -119,7 +119,7 @@
         }
     }
 
-    //No border
+    // No border
     &.table--borderless, &.structured-list {
         border: none;
 
@@ -175,7 +175,7 @@
         }
     }
 
-    //Zebra lines
+    // Zebra lines
     &.table--zebra {
 
         td,
@@ -184,7 +184,7 @@
             padding-right: func.units(4);
 
             &:last-child {
-                padding-right: calc(func.units(4) - 1px); //1px for the border
+                padding-right: calc(func.units(4) - 1px); // 1px for the border
             }
         }
 
@@ -199,7 +199,7 @@
         }
     }
 
-    //Zebra lines and no border
+    // Zebra lines and no border
     &.table--zebra.table--borderless {
 
         td,
@@ -276,20 +276,20 @@
 
     @media screen {
 
-        //Make row into a "card" on phone
+        // Make row into a "card" on phone
         &.table--responsive-headers {
             @include mixins.media-breakpoint-down(sm) {
-                @include mixins.responsive-table();
+                @include mixins.responsive-table;
             }
         }
 
         @each $breakpoint in map.keys(vars.$grid-breakpoints) {
-            @if $breakpoint !=xs and $breakpoint !=xl {
+            @if $breakpoint != xs and $breakpoint != xl {
                 @include mixins.media-breakpoint-down($breakpoint) {
                     $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
-                        @include mixins.responsive-table();
+                        @include mixins.responsive-table;
                     }
                 }
             }
@@ -320,7 +320,7 @@
     padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
 
     .table-selected-number {
-        margin-top: 0px;
+        margin-top: 0;
 
         &.no-selected {
             color: func.color(vars.$table-selectable-help-text-color);
@@ -332,6 +332,6 @@
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
-    padding: vars.$theme-focus-offset+vars.$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
-    margin: -(vars.$theme-focus-offset+vars.$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
+    padding: vars.$theme-focus-offset + vars.$theme-focus-width; // Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -(vars.$theme-focus-offset + vars.$theme-focus-width); // Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }

@@ -12,7 +12,7 @@ footer {
   }
 
 
-  //generel for footer
+  // generel for footer
   .footer {
     border-top: func.border(vars.$footer-border);
     background-color: func.color(vars.$footer-background-color);
@@ -46,7 +46,7 @@ footer {
     }
 
     .logo{
-      background-image: url(vars.$image-path+'/'+vars.$footer-logo);
+      background-image: url(vars.$image-path + '/' + vars.$footer-logo);
       background-size: contain;
       background-repeat: no-repeat;
       display: inline-block;
@@ -79,7 +79,7 @@ footer {
       }
     }
   }
-  //footer-theme
+  // footer-theme
   .footer-theme {
     padding-top: func.units(4);
     padding-bottom: func.units(3);

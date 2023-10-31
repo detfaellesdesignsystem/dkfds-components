@@ -88,7 +88,7 @@ $toast-icon-backgrounds: (
         }
 
         p {
-            margin: 0px;
+            margin: 0;
             word-break: break-word;
 
             &:first-of-type {
@@ -115,6 +115,6 @@ $iconcolor in $toast-icon-backgrounds {
 @each $name,
 $iconname in $toast-icon-names {
     .toast-#{$name} .toast-icon {
-        background-image: url(vars.$icons-folder-path+'/'+$iconname+'.svg');
+        background-image: url(vars.$icons-folder-path + '/' + $iconname + '.svg');
     }
 }
