@@ -2,66 +2,196 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-.language-switcher{
-  border-top: func.border(vars.$language-switcher-border);
-  background-color: func.color(vars.$language-switcher-background-color);
-  padding-top: #{func.units(5)};
-  @include mixins.media-breakpoint-up(md) {
-    margin-top: -#{func.units(5)};
-    padding-top: #{func.units(4)};
-  }
+.language-switcher {
+    border-top: func.border(vars.$language-switcher-border);
+    background-color: func.color(vars.$language-switcher-background-color);
+    padding-top: #{func.units(5)};
 
-    ul{
-      @include mixins.unstyled-list;
-      max-width: none !important;
-    > li{
-      margin-bottom: func.units(305);
-      padding-left: func.units(6);
-
-
-      @include mixins.media-breakpoint-up(md) {
-        display: inline-block;
-        padding-left: 0;
-        &::after {
-          display: inline-block;
-          content: "|";
-          margin-left: calc(#{func.units(4)} - 1px);
-          margin-right: #{func.units(4)};
-        }
-        &:last-of-type::after{
-          content: "";
-        }
-      }
-
-      a, a:hover, a:visited, a:active, a:focus{
-        color: func.color(vars.$language-switcher-text-color);
-        display: inline-block;
-
-
-        svg{
-          margin-top: -#{func.units(2)};
-          margin-right: #{func.units(3)};
-          display: inline-block;
-        }
-      }
-
-      &:first-of-type{
-        padding-left: 0;
-
-        a, a:hover, a:visited, a:active, a:focus {
-          padding-left: 0;
-          font-weight: func.font-weight("semibold");
-          color: func.color(vars.$language-switcher-active-text-color);
-          text-decoration: none;
-          border-left: 0;
-        }
-      }
-
-      &:last-of-type {
-        a, a:hover, a:visited, a:active, a:focus {
-          padding-right: 0;
-        }
-      }
+    @include mixins.media-breakpoint-up(md) {
+        margin-top: -#{func.units(5)};
+        padding-top: #{func.units(4)};
     }
-  }
+
+    ul {
+        @include mixins.unstyled-list;
+        max-width: none !important;
+
+        > li {
+            margin-bottom: func.units(305);
+            padding-left: func.units(6);
+
+
+            @include mixins.media-breakpoint-up(md) {
+                display: inline-block;
+                padding-left: 0;
+
+                &::after {
+                    display: inline-block;
+                    content: "|";
+                    margin-left: calc(#{func.units(4)} - 1px);
+                    margin-right: #{func.units(4)};
+                }
+
+                &:last-of-type::after {
+                    content: "";
+                }
+            }
+
+            a,
+            a:hover,
+            a:visited,
+            a:active,
+            a:focus {
+                color: func.color(vars.$language-switcher-text-color);
+                display: inline-block;
+
+
+                svg {
+                    margin-top: -#{func.units(2)};
+                    margin-right: #{func.units(3)};
+                    display: inline-block;
+                }
+            }
+
+            &:first-of-type {
+                padding-left: 0;
+
+                a,
+                a:hover,
+                a:visited,
+                a:active,
+                a:focus {
+                    padding-left: 0;
+                    font-weight: func.font-weight("semibold");
+                    color: func.color(vars.$language-switcher-active-text-color);
+                    text-decoration: none;
+                    border-left: 0;
+                }
+            }
+
+            &:last-of-type {
+
+                a,
+                a:hover,
+                a:visited,
+                a:active,
+                a:focus {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.language-switcher-header {
+    background-color: func.color(vars.$header-portal-background-color);
+    display: none;
+
+    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .select-language-button {
+            font-size: func.font-size("xs");
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            text-decoration: underline;
+            padding-top: 0;
+            padding-bottom: 0;
+            min-height: 0;
+            margin-top: func.units(3);
+            margin-bottom: func.units(2);
+
+            // Don't show an arrow under the button
+            &::after,
+            &::before,
+            &[aria-expanded="true"]::after,
+            &[aria-expanded="true"]::before {
+                display: none;
+            }
+
+            .icon-svg {
+                width: func.units(4, 'rem');
+                height: func.units(4, 'rem');
+                margin-right: func.units(2);
+                fill: func.color("ink");
+            }
+        }
+
+        .select-language-list {
+            background-color: func.color(vars.$header-portal-background-color);
+            top: calc(100% + func.units(1));
+        }
+    }
+}
+
+.language-switcher-mobile {
+    border-top: 1px solid func.color(vars.$header-portal-mobile-border-color);
+    background-color: func.color(vars.$header-portal-background-color);
+    padding: func.units(5);
+
+    h3 {
+        font-size: func.font-size("sm");
+        margin-bottom: func.units(4);
+    }
+
+    ul {
+        @include mixins.unstyled-list;
+        max-width: none !important;
+
+        > li {
+            margin-bottom: func.units(305);
+            padding-left: func.units(6);
+
+            a,
+            a:hover,
+            a:visited,
+            a:active,
+            a:focus {
+                color: func.color(vars.$language-switcher-text-color);
+                display: inline-block;
+
+                svg {
+                    margin-top: -(func.units(2));
+                    margin-right: func.units(3);
+                    display: inline-block;
+                }
+            }
+
+            &:first-of-type {
+                padding-left: 0;
+
+                a,
+                a:hover,
+                a:visited,
+                a:active,
+                a:focus {
+                    padding-left: 0;
+                    font-weight: func.font-weight("semibold");
+                    color: func.color(vars.$language-switcher-active-text-color);
+                    text-decoration: none;
+                    border-left: 0;
+                }
+            }
+
+            &:last-of-type {
+                margin-bottom: func.units(2);
+
+                a,
+                a:hover,
+                a:visited,
+                a:active,
+                a:focus {
+                    padding-right: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
 }

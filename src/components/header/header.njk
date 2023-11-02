@@ -23,14 +23,7 @@
             {%- endif %}
             </p>
             {% endif %}
-            {% set buttonText = params.button.text | default('Log af') %}
-            {{- 
-                button({
-                    "variant": "secondary",
-                    "text": buttonText,
-                    "classes": { "button": "d-print-none log-off" }
-                }) 
-            }}
+            <button class="function-link d-print-none log-off">{{icon_svg({"name":"lock"})}}{{ params.button.text | default('Log af') }}</button>
         </div>
     </div>
 </div>
@@ -38,6 +31,7 @@
 
 {% macro mobile_portal_info(params) %}
 <div class="portal-info-mobile">
+    <h3 class="sr-only">Bruger</h3>
     {% if params.user %}
     <p class="user">
     {% if params.user.name and params.user.info %}
@@ -48,14 +42,9 @@
     {% endif %}
     </p>
     {% endif %}
-    {% set buttonText = params.button.text | default('Log af') %}
-    {{ 
-        button({
-            "variant": "secondary",
-            "text": buttonText,
-            "classes": { "button": "d-print-none mt-3" }
-        }) 
-    }}
+    <p>
+        <button class="function-link d-print-none log-off">{{icon_svg({"name":"lock"})}}{{ params.button.text | default('Log af') }}</button>
+    </p>
 </div>
 {% endmacro %}
 
@@ -84,6 +73,7 @@
 
 {% macro mobile_solution_info(params) %}
 <div class="solution-info-mobile">
+    <h3 class="sr-only">Myndighed</h3>
     {% if params.authority.name %}
     <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
     {% endif %}

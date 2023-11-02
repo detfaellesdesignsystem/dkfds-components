@@ -39,6 +39,8 @@ $z-index-nav:     9000;
 
         .log-on, .log-off {
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
         }
 
         .logo {
@@ -84,7 +86,7 @@ $z-index-nav:     9000;
 
                 .user {
                     text-align: right;
-                    margin-right: func.units(4);
+                    margin-right: func.units(5);
                     overflow-wrap: break-word;
                 }
             }
@@ -104,6 +106,11 @@ $z-index-nav:     9000;
         .user span {
             display: block;
             overflow-wrap: break-word;
+            line-height: 2;
+        }
+
+        .log-on, .log-off {
+            margin-top: func.units(2);
         }
 
         @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {

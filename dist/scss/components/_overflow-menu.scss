@@ -135,9 +135,14 @@
         a {
             padding: 8px 16px;
             width: 100%;
+            position: relative;
 
             &:hover {
                 background-color: func.color(vars.$overflow-menu-content-link-hover-background-color);
+            }
+
+            &:focus {
+                z-index: 1;
             }
         }
     }
