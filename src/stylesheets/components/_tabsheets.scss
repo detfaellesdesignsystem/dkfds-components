@@ -1,45 +1,67 @@
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
 
-.tab {
-    display: inline-flex;
-    margin-top: func.units(2);
-    margin-bottom: func.units(3);
-    margin-right: func.units(4);
-    margin-left: func.units(0);
-    padding-top: func.units(3);
-    padding-bottom: func.units(3);
-    padding-left: func.units(4);
-    padding-right: func.units(4);
-    text-decoration: none;
-    color: func.color(vars.$tabsheet-text-color);
-    background-color: func.color(vars.$tabsheet-inactive-background-color);
-    border: func.border(vars.$tabsheet-border);
-    border-color: func.color(vars.$tabsheet-default-border-color);
-    border-radius: vars.$tabsheet-border-radius;
+.tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: func.units(905);
+    margin-bottom: func.units(2);
+    border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
 
-    &.active-tab {
-        font-weight: func.font-weight("bold");
-        background-color: func.color(vars.$tabsheet-active-background-color);
-        border-bottom: func.units(2) solid func.color(vars.$tabsheet-border-bottom-color);
+    ul {
+        @include mixins.unstyled-list;
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 100% !important;
     }
 
-    &:hover {
+    ul>li {
+        max-width: 100%;
+    }
+
+    .tab {
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    margin-bottom: func.units(4);
+    margin-right: func.units(4);
+    margin-left: func.units(0);
+    padding-top: func.units(305);
+    padding-bottom: func.units(305);
+    padding-left: func.units(5);
+    padding-right: func.units(5);
+    color: func.color(vars.$tabsheet-inactive-text-color);
+    background-color: func.color(vars.$tabsheet-inactive-background-color);
+    border-radius: func.units(5);
+
+    &:visited {
+        color: func.color(vars.$tabsheet-inactive-text-color);
+    }
+
+    span {
+        max-width: calc(100% - 2.4rem - func.units(3));
+        overflow-wrap: break-word;
+    }
+
+    &.active-tab {
+        color: func.color(vars.$tabsheet-active-text-color);
+        font-weight: func.font-weight("bold");
+        text-decoration: none;
+        background-color: func.color(vars.$tabsheet-active-background-color);
+
+        .icon-svg {
+            fill: func.color(vars.$tabsheet-active-icon-color);
+        }
+    }
+
+    &:not(.active-tab):hover {
         background-color: func.color(vars.$tabsheet-hover-background-color);
     }
 
     .icon-svg {
         margin-right: func.units(3);
+        flex-shrink: 0;
+    } 
     }
-}
-
-a.tab {
-    &:visited {
-        color: func.color(vars.$tabsheet-text-color);
-    }
-}
-
-.tab-container {
-    margin-top: func.units(6);
-    border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
 }
