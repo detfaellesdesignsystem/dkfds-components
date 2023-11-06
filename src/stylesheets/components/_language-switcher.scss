@@ -125,8 +125,47 @@
         }
 
         .select-language-list {
+            $icon-size: func.units(4, 'rem');
+            $icon-list-margin-right: func.units(3);
+            $icon-selected-margin-right: func.units(2);
+            $inner-padding: func.units(4);
+            $border-width: 1px;
+
             background-color: func.color(vars.$header-portal-background-color);
             top: calc(100% + func.units(1));
+            left: calc(0px - $border-width - $inner-padding - ($icon-list-margin-right - $icon-selected-margin-right));
+            min-width: 0;
+
+            ul > li {
+                padding-left: calc($icon-size + $icon-list-margin-right);
+                font-weight: func.font-weight("normal");
+                text-decoration: underline;
+
+                &:first-of-type {
+                    padding-left: 0;
+                    font-weight: func.font-weight("semibold");
+                    text-decoration: none;
+
+                    a {
+                        @include mixins.add-background-svg('done');
+                        background-position: left 16px center;
+                        background-size: $icon-size;
+                        padding-left: calc($inner-padding + $icon-size + $icon-list-margin-right);
+                    }
+                }
+
+                a, 
+                button {
+                    display: flex;
+                    align-items: center;
+                    line-height: 1.5;
+                    font-weight: inherit;
+                    
+                    &:hover {
+                        background-color: func.color("transparent");
+                    }
+                }
+            }
         }
     }
 }

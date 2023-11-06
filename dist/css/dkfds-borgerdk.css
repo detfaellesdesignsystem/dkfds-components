@@ -11192,6 +11192,36 @@ ul.sidemenu li.disabled.sidenav-error{
 .language-switcher-header .container .select-language-list{
   background-color:#f1f1f1;
   top:calc(100% + 2px);
+  left:-21px;
+  min-width:0;
+}
+.language-switcher-header .container .select-language-list ul > li{
+  padding-left:calc(1.6rem + 8px);
+  font-weight:400;
+  text-decoration:underline;
+}
+.language-switcher-header .container .select-language-list ul > li:first-of-type{
+  padding-left:0;
+  font-weight:600;
+  text-decoration:none;
+}
+.language-switcher-header .container .select-language-list ul > li:first-of-type a{
+  background-image:url("../img/svg-icons/done.svg");
+  background-repeat:no-repeat;
+  background-position:left 16px center;
+  background-size:1.6rem;
+  padding-left:calc(16px + 1.6rem + 8px);
+}
+.language-switcher-header .container .select-language-list ul > li a,
+.language-switcher-header .container .select-language-list ul > li button{
+  display:flex;
+  align-items:center;
+  line-height:1.5;
+  font-weight:inherit;
+}
+.language-switcher-header .container .select-language-list ul > li a:hover,
+.language-switcher-header .container .select-language-list ul > li button:hover{
+  background-color:transparent;
 }
 
 .language-switcher-mobile{

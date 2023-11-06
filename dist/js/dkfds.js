@@ -4288,30 +4288,21 @@ let dropdown_toggle = function(button, forceClose = false){
       targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
-      let targetOffset = offset(targetEl);
 
+      let targetOffset = offset(targetEl);
       if(targetOffset.left < 0){
         targetEl.style.left = '0px';
         targetEl.style.right = 'auto';
+
+        if(parseInt(window.getComputedStyle(targetEl).marginLeft) < 0) {
+          targetEl.style.marginLeft = 0;
+        }
       }
+      
       let right = targetOffset.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
+      if(right > document.body.clientWidth){
         targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
-      }
-
-      let offsetAgain = offset(targetEl);
-
-      if(offsetAgain.left < 0){
-
-        targetEl.style.left = '0px';
-        targetEl.style.right = 'auto';
-      }
-      right = offsetAgain.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
-
-        targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
+        targetEl.style.right = '-4px'; // Focus outline
       }
     }
 
