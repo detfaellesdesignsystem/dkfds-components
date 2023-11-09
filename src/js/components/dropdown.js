@@ -202,7 +202,7 @@ let toggle = function(button, forceClose = false){
       triggerEl.dispatchEvent(eventClose);
     }else{
       
-      if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+      if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
         closeAll();
       }
       //open
@@ -243,8 +243,8 @@ let hasParent = function (child, parentTagName){
 };
 
 let outsideClose = function (evt){
-  if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
-    if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
+  if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
+    if(document.querySelector('body.mobile-nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
       let openDropdowns = document.querySelectorAll(BUTTON+'[aria-expanded=true]');
       for (let i = 0; i < openDropdowns.length; i++) {
         let triggerEl = openDropdowns[i];

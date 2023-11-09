@@ -5,266 +5,128 @@
 $navigation-row-link-padding-left-right: func.units(305);
 $navigation-desktop-border-bottom-thickness: func.units(2);
 
-.mobile_nav-active {
-    overflow: hidden;
+$-left-right-padding: func.units(305);
+
+%-mainmenu-item {
+    display: block;
+    padding: func.units(4) $-left-right-padding 0 $-left-right-padding;
+    text-decoration: none;
+    background-color: func.color(vars.$navigation-link-background-color);
+    color: func.color(vars.$navigation-link-default-color);
+    border: 0;
+    line-height: 1.5;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    max-width: unset;
+
+    span {
+        display: block;
+        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+        padding-bottom: func.units(305);
+    }
+
+    &:hover {
+        span {
+            border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
+        }
+    }
+
+    &:focus {
+        position: relative;
+        z-index: 2;
+    }
 }
 
-ul.mainmenu {
+%-icon-properties {
+    $icon-size: func.units(5, 'rem');
+
+    span {
+        background-position-x: right;
+        background-size: $icon-size;
+        padding-right: calc($icon-size + func.units(2));
+    }
+}
+
+// --------------------------
+// Main menu on desktop
+// --------------------------
+
+.navigation-menu ul.mainmenu {
     @include mixins.unstyled-list;
-    @include mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    max-width: 100%;
-    border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
-    border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
-
-    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-        flex-direction: row;
-        border-bottom: 0;
-        border-top: 0;
-        margin-left: -$navigation-row-link-padding-left-right;
-    }
-
-    ul {
-        @include mixins.unstyled-list;
-        width: 100%;
-        max-width: none !important; /* Override ul styling in typography.scss */
-    }
-
-    li {
-        background-color: func.color(vars.$navigation-link-background-color);
-
-        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-            border-top: 0;
-
-            &.active {
-                border-left: 0;
-                
-                .nav-link {
-                    margin-left: 0;
-                    width: unset;
-
-                    &:hover {
-                        border-left: 0;
-                        padding-left: $navigation-row-link-padding-left-right;
-                    }
-
-                    span {
-                        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
-                        font-weight: func.font-weight("bold");
-                    }
-                }
-            }
-        }
-
-        &.active > a:first-child,
-        &.active > .submenu > button:first-child {
-            font-weight: func.font-weight("bold");
-        }
-
-        &.current {
-            background-color: func.color(vars.$navigation-link-current-background-color);
-
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                background-color: func.color(vars.$navigation-link-background-color);
-            }
-
-            .helptext {
-                color: func.color(vars.$navigation-link-current-helptext-color);
-                font-weight: func.font-weight("normal");
-            }
-        }
-
-    }
+    flex-flow: row nowrap;
+    margin-left: -$-left-right-padding;
 
     .nav-link {
-        padding-top: func.units(4);
-        padding-bottom: func.units(4);
-        padding-right: func.units(5); /* padding-left handled by mixin 'nav-link-leftdist' */
-        text-decoration: none;
-        color: func.color(vars.$navigation-link-default-color);
-        font-size: func.font-size('sm');
-        background-color: func.color('transparent');
-        display: block;
-        line-height: func.units(5, 'rem');
-        white-space: normal;
-        width: 100%;
-        max-width: unset;
-        cursor: pointer;
+        @extend %-mainmenu-item;
+    }
 
-        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-            padding-left: $navigation-row-link-padding-left-right;
-            padding-right: $navigation-row-link-padding-left-right;
-            padding-bottom: 0;
-            width: unset;
-        }
-
-        &:hover {
-            background-color: func.color(vars.$navigation-link-background-color-hover);
-
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                padding-left: $navigation-row-link-padding-left-right;
-                border-left: 0;
-                background-color: func.color(vars.$navigation-link-background-color); /* Don't use hover color on desktop */
-            }
-            
-            span {
-                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                    border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
-                }
-            }
-
-            .helptext {
-                color: func.color(vars.$navigation-link-current-helptext-color);
-                font-weight: func.font-weight("normal");
-            }
-        }
-
-        &:focus {
-            outline-offset: -4px;
-            position: relative;
-            z-index: 2;
-
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                outline-offset: 0;
-            }
-        }
+    .more-button {
+        @extend %-mainmenu-item;
+        @extend %-icon-properties;
 
         span {
-            display: inline-block;
-            width: 100%;
-            overflow-wrap: break-word;
-
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                display: block;
-                border-bottom: $navigation-desktop-border-bottom-thickness solid transparent;
-                padding-bottom: func.units(305);
-                font-weight: func.font-weight("normal");
-                white-space: nowrap;
-            }
-        }
-
-        .helptext {
-            color: func.color(vars.$navigation-link-helptext-color);
-            width: auto;
-            font-weight: func.font-weight("normal");
+            @include mixins.add-background-svg("more-vert");
         }
     }
 
-    /* Overflow/dropdown menus */
-    .submenu {
-        display: block;
-        position: relative;
-        width: 100%;
+    li.active {
+        span {
+            border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
+            font-weight: func.font-weight("bold");
+        }
+    }
 
-        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-            display: inline-block;
+    .button-overflow-menu {
+        @extend %-mainmenu-item;
+        @extend %-icon-properties;
+
+        &[aria-expanded="false"] span {
+            @include mixins.add-background-svg("expand-more");
         }
 
-        /* Overflow button */
-        .button-mobile-menu,
-        .button-overflow-menu {
-            text-align: left;
-            text-decoration: none;
-            border: 0;
-
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                position: relative;
-            }
-
-            span {
-                background-position-x: right;
-                background-position-y: center;
-                background-size: 2.4rem;
-                padding-right: calc(2.4rem + 4px);
-
-                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                    background-position-y: top;
-                    white-space: nowrap;
-                }
-            }
-
-            &[aria-expanded="false"] span {
-                @include mixins.add-background-svg("add");
-
-                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                    @include mixins.add-background-svg("expand-more");
-                }
-            }
-
-            &[aria-expanded="true"] span {
-                @include mixins.add-background-svg("remove");
-
-                @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                    @include mixins.add-background-svg("expand-less");
-                }
-            }
-
+        &[aria-expanded="true"] span {
+            @include mixins.add-background-svg("expand-less");
         }
+    }
 
-        /* Overflow content */
-        .overflow-menu-inner {
-            position: static;
-            border: 0;
-            width: 100%;
+    .overflow-menu-inner {
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        width: 30rem;
+        border: 1px solid func.color('gray-500');
+        background-color: func.color('white');
+        padding: $navigation-row-link-padding-left-right;
+        margin-left: -$navigation-row-link-padding-left-right;
 
-            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
-                position: absolute;
-                z-index: 1;
-                top: 100%;
-                width: 30rem;
-                border: 1px solid func.color('gray-500');
-                background-color: func.color('white');
-                padding: $navigation-row-link-padding-left-right;
-                margin-left: -$navigation-row-link-padding-left-right;
+        ul {
+            @include mixins.unstyled-list;
 
-                li {
-                    border-top: 0;
+            .nav-link {
+                padding-top: func.units(3);
+                padding-bottom: func.units(3);
+                white-space: normal;
+                max-width: 100%;
+                overflow-wrap: break-word;
 
-                    .nav-link {
-                        padding-top: func.units(3);
-                        padding-bottom: func.units(3);
-                        padding-left: $navigation-row-link-padding-left-right;
-                        padding-right: $navigation-row-link-padding-left-right;
-                        background-color: func.color('transparent');
-                        max-width: 100%;
-                        width: 100%;
-    
-                        &:hover {
-                            padding-left: $navigation-row-link-padding-left-right;
-    
-                            span {
-                                text-decoration: underline;
-                            }
-                        }
-    
-                        span {
-                            border-bottom: none;
-                            font-weight: func.font-weight("normal");
-                            padding-bottom: 0;
-                            white-space: normal;
-                            display: inline-block;
-                            width: 100%;
-                        }
-                    }
+                span {
+                    border-bottom: none;
+                    font-weight: func.font-weight("normal");
+                    padding-bottom: 0;
+                }
 
-                    .button-mobile-menu span,
-                    .button-overflow-menu span {
-                        background-position-y: center;
-                    }
-
-                    &.current .nav-link span{
-                        font-weight: func.font-weight("bold");
+                &:hover {
+                    span {
+                        text-decoration: underline;
                     }
                 }
             }
 
-            &[aria-hidden="true"] {
-                display: none;
+            li.current .nav-link span {
+                font-weight: func.font-weight("bold");
             }
         }
-
     }
 }
