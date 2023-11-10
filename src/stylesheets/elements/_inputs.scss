@@ -60,6 +60,8 @@
   &::placeholder {
     color: color($input-placeholder-color);
     font-style: italic;
+    opacity: 1;
+    font-weight: font-weight("normal");
   }
 }
 

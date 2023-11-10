@@ -7313,10 +7313,14 @@ figure{
 .form-input::-moz-placeholder{
   color:#747474;
   font-style:italic;
+  opacity:1;
+  font-weight:400;
 }
 .form-input::placeholder{
   color:#747474;
   font-style:italic;
+  opacity:1;
+  font-weight:400;
 }
 
 table .form-input{
