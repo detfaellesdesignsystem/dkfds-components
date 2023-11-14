@@ -3496,7 +3496,6 @@ __webpack_require__.d(__webpack_exports__, {
   Dropdown: () => (/* reexport */ dropdown),
   DropdownSort: () => (/* reexport */ dropdown_sort),
   ErrorSummary: () => (/* reexport */ error_summary),
-  InputRegexMask: () => (/* reexport */ regex_input_mask),
   MenuDropdown: () => (/* reexport */ navigation_drawer_overflow),
   Modal: () => (/* reexport */ modal),
   Navigation: () => (/* reexport */ navigation),
@@ -4603,75 +4602,6 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 /* harmony default export */ const error_summary = (ErrorSummary);
-;// CONCATENATED MODULE: ./src/js/components/regex-input-mask.js
-
-const modifierState = {
-  shift: false,
-  alt: false,
-  ctrl: false,
-  command: false
-};
-/*
-* Prevents the user from inputting based on a regex.
-* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
-* Usecase: number input for date-component.
-* Example - number only: <input type="text" data-input-regex="^\d*$">
-*/
-class InputRegexMask {
-  constructor (element){
-    element.addEventListener('paste', regexMask);
-    element.addEventListener('keydown', regexMask);
-  }
-}
-var regexMask = function (event) {
-  if(modifierState.ctrl || modifierState.command) {
-    return;
-  }
-  var newChar = null;
-  if(typeof event.key !== 'undefined'){
-    if(event.key.length === 1){
-      newChar = event.key;
-    }
-  } else {
-    if(!event.charCode){
-      newChar = String.fromCharCode(event.keyCode);
-    } else {
-      newChar = String.fromCharCode(event.charCode);
-    }
-  }
-
-  var regexStr = this.getAttribute('data-input-regex');
-
-  if(event.type !== undefined && event.type === 'paste'){
-    //console.log('paste');
-  } else{
-    var element = null;
-    if(event.target !== undefined){
-      element = event.target;
-    }
-    if(newChar !== null && element !== null) {
-      if(newChar.length > 0){
-        let newValue = this.value;
-        if(element.type === 'number'){
-          newValue = this.value;//Note input[type=number] does not have .selectionStart/End (Chrome).
-        }else{
-          newValue = this.value.slice(0, element.selectionStart) + this.value.slice(element.selectionEnd) + newChar; //removes the numbers selected by the user, then adds new char.
-        }
-
-        var r = new RegExp(regexStr);
-        if(r.exec(newValue) === null){
-          if (event.preventDefault) {
-            event.preventDefault();
-          } else {
-            event.returnValue = false;
-          }
-        }
-      }
-    }
-  }
-};
-
-/* harmony default export */ const regex_input_mask = (InputRegexMask);
 ;// CONCATENATED MODULE: ./src/js/components/modal.js
 
 /**
@@ -6087,7 +6017,6 @@ function removeTooltip(trigger) {
 
 
 
-
 const datePicker = (__webpack_require__(561)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -6199,16 +6128,6 @@ var init = function (options) {
   */
   var $errorSummary = scope.querySelector('[data-module="error-summary"]');
   new error_summary($errorSummary).init();
-
-  /*
-  ---------------------
-  Input Regex - used on date fields
-  ---------------------
-  */
-  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
-  for(let c = 0; c < jsSelectorRegex.length; c++){
-    new regex_input_mask(jsSelectorRegex[ c ]);
-  }
 
   /*
   ---------------------
