@@ -2,12 +2,35 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
+
+.layout-example-contained nav.tab-container {
+    margin-top: func.units(0);
+}
+
+nav.tab-container {
+    border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
+    margin-top: func.units(7);
+}
+
+.component-example>.tab-container {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: func.units(0);
+    padding-top: func.units(3);
+    padding-bottom: func.units(3);
+}
+
 .tab-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: func.units(905);
+    overflow: hidden;
+    position: relative;
     margin-bottom: func.units(2);
-    border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
+    padding-top: func.units(4);
+    padding-left: func.units(3);
+    padding-right: func.units(3);
 
     ul {
         @include mixins.unstyled-list;
@@ -20,7 +43,7 @@
         max-width: 100%;
     }
 
-    .tab {
+    .tab-item {
     display: flex;
     max-width: 100%;
     align-items: center;
@@ -33,18 +56,25 @@
     padding-right: func.units(5);
     color: func.color(vars.$tabsheet-inactive-text-color);
     background-color: func.color(vars.$tabsheet-inactive-background-color);
+    border: none;
     border-radius: func.units(5);
+    text-decoration: underline;
 
     &:visited {
         color: func.color(vars.$tabsheet-inactive-text-color);
     }
 
     span {
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .icon-svg + span {
         max-width: calc(100% - 2.4rem - func.units(3));
         overflow-wrap: break-word;
     }
 
-    &.active-tab {
+    &[aria-current="page"]{
         color: func.color(vars.$tabsheet-active-text-color);
         font-weight: func.font-weight("bold");
         text-decoration: none;
@@ -55,7 +85,18 @@
         }
     }
 
-    &:not(.active-tab):hover {
+    &[aria-selected="true"]{
+        color: func.color(vars.$tabsheet-active-text-color);
+        font-weight: func.font-weight("bold");
+        text-decoration: none;
+        background-color: func.color(vars.$tabsheet-active-background-color);
+
+        .icon-svg {
+            fill: func.color(vars.$tabsheet-active-icon-color);
+        }
+    }
+
+    &:not([aria-current="page"], [aria-selected="true"]):hover {
         background-color: func.color(vars.$tabsheet-hover-background-color);
     }
 
@@ -63,5 +104,36 @@
         margin-right: func.units(3);
         flex-shrink: 0;
     } 
+    }
+
+    .tab-panel {
+        display: none;
+        position: relative;
+        border: func.border(vars.$tabsheet-border);
+        border-radius: 0;
+        max-width: 100%;
+
+        &[aria-hidden="false"]{
+            display: block;
+            max-width: 100%;
+        }
+
+        p,h2 {
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        h2 {
+            margin-left: func.units(5);
+            margin-top: func.units(5);
+            margin-right: func.units(5);
+        }
+
+        p {
+            margin-left: func.units(5);
+            margin-bottom: func.units(5);
+            margin-top: func.units(6);
+            margin-right: func.units(5);
+        }
     }
 }

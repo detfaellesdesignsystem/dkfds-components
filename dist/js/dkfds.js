@@ -3491,7 +3491,7 @@ __webpack_require__.d(__webpack_exports__, {
   RadioToggleGroup: function() { return /* reexport */ radio_toggle_content; },
   ResponsiveTable: function() { return /* reexport */ table; },
   TableSelectableRows: function() { return /* reexport */ selectable_table; },
-  Tabnav: function() { return /* reexport */ tabnav; },
+  Tabs: function() { return /* reexport */ tabs; },
   Toast: function() { return /* reexport */ toast; },
   Tooltip: function() { return /* reexport */ tooltip; },
   datePicker: function() { return /* binding */ datePicker; },
@@ -5245,72 +5245,63 @@ function insertHeaderAsAttributes(tableEl) {
 
 /* harmony default export */ var table = (ResponsiveTable);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tabnav.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tabs.js
 
-let tabnav_breakpoints = {
-  'xs': 0,
-  'sm': 576,
-  'md': 768,
-  'lg': 992,
-  'xl': 1200
-};
 
 // For easy reference
 var keys = {
   end: 35,
   home: 36,
   left: 37,
-  up: 38,
   right: 39,
-  down: 40,
-  delete: 46
 };
 
 // Add or substract depending on key pressed
 var direction = {
   37: -1,
-  38: -1,
   39: 1,
-  40: 1
 };
 
 /**
- * Add functionality to tabnav component
- * @param {HTMLElement} tabnav Tabnav container
+ * Adds functionality to tab container component without URL change
+ * @param {HTMLElement} tabContainer Tab container
  */
-function Tabnav (tabnav) {
-  this.tabnav = tabnav;
-  this.tabs = this.tabnav.querySelectorAll('button.tabnav-item');
+function Tabs(tabContainer) {
+  if(!tabContainer) {
+    throw new Error(`Missing tab container element`);
+  }
+  this.tabContainer = tabContainer;
+  this.tabs = this.tabContainer.querySelectorAll('.tab-item');
 }
 
 /**
  * Set event on component
  */
-Tabnav.prototype.init = function(){
-  if(this.tabs.length === 0){
-    throw new Error(`Tabnav HTML seems to be missing tabnav-item. Add tabnav items to ensure each panel has a button in the tabnavs navigation.`);
+Tabs.prototype.init = function () {
+  if (this.tabs.length === 0) {
+    throw new Error(`tabContainer element seems to be missing a child tab-item. There needs to be atleast one tab of class tab-item to set an active tab`);
   }
 
   // if no hash is set on load, set active tab
   if (!setActiveHashTab()) {
     // set first tab as active
-    let tab = this.tabs[ 0 ];
+    let tab = this.tabs[0];
 
-    // check no other tabs as been set at default
-    let alreadyActive = getActiveTabs(this.tabnav);
-    if (alreadyActive.length === 0) {
-      tab = alreadyActive[ 0 ];
+    // check no other tabs has been set at default. If so set tab to the first active tab found
+    let alreadyActive = getActiveTabs(this.tabContainer);
+    if (alreadyActive.length !== 0) {
+      tab = alreadyActive[0];
     }
-
+    
     // activate and deactivate tabs
     this.activateTab(tab, false);
   }
   let $module = this;
   // add eventlisteners on buttons
-  for(let t = 0; t < this.tabs.length; t ++){
-    this.tabs[ t ].addEventListener('click', function(){$module.activateTab(this, false)});
-    this.tabs[ t ].addEventListener('keydown', keydownEventListener);
-    this.tabs[ t ].addEventListener('keyup', keyupEventListener);
+  for (let t = 0; t < this.tabs.length; t++) {
+    this.tabs[t].addEventListener('click', function () { $module.activateTab(this, false) });
+    this.tabs[t].addEventListener('keydown', keydownEventListener);
+    this.tabs[t].addEventListener('keyup', keyupEventListener);
   }
 }
 
@@ -5319,132 +5310,75 @@ Tabnav.prototype.init = function(){
  * @param {HTMLButtonElement} tab button element
  * @param {boolean} setFocus True if tab button should be focused
  */
- Tabnav.prototype.activateTab = function(tab, setFocus) {
+Tabs.prototype.activateTab = function (tab, setFocus) {
   let tabs = getAllTabsInList(tab);
 
-  // close all tabs except selected
-  for (let i = 0; i < this.tabs.length; i++) {
-    if (tabs[ i ] === tab) {
-      continue;
+  if (tab.getAttribute('aria-selected') !== null) {
+
+    // close all tabs except selected
+    for (let i = 0; i < this.tabs.length; i++) {
+      if (tabs[i] === tab) {
+        continue;
+      }
+
+      tabs[i].setAttribute('aria-selected', 'false');
+      tabs[i].setAttribute('tabindex', '-1');
+      let tabpanelID = tabs[i].getAttribute('aria-controls');
+      let tabpanel = document.getElementById(tabpanelID)
+      if (tabpanel === null) {
+        throw new Error(`Could not find tabpanel from ID.`);
+      }
+      tabpanel.setAttribute('aria-hidden', 'true');
     }
 
-    if (tabs[ i ].getAttribute('aria-selected') === 'true') {
-      let eventClose = new Event('fds.tabnav.close');
-      tabs[ i ].dispatchEvent(eventClose);
+    // Set selected tab to active
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    let tabpanelID = tab.getAttribute('aria-controls');
+    let tabpanel = document.getElementById(tabpanelID);
+    if (tabpanel === null) {
+      throw new Error(`Could not find tabpanel to set active.`);
     }
+    tabpanel.setAttribute('aria-hidden', 'false');
 
-    tabs[ i ].setAttribute('tabindex', '-1');
-    tabs[ i ].setAttribute('aria-selected', 'false');
-    let tabpanelID = tabs[ i ].getAttribute('aria-controls');
-    let tabpanel = document.getElementById(tabpanelID)
-    if(tabpanel === null){
-      throw new Error(`Could not find tabpanel.`);
+    // Set focus when required
+    if (setFocus) {
+      tab.focus();
     }
-    tabpanel.setAttribute('aria-hidden', 'true');
   }
-  
-  // Set selected tab to active
-  let tabpanelID = tab.getAttribute('aria-controls');
-  let tabpanel = document.getElementById(tabpanelID);
-  if(tabpanel === null){
-    throw new Error(`Could not find accordion panel.`);
-  }
-
-  tab.setAttribute('aria-selected', 'true');
-  tabpanel.setAttribute('aria-hidden', 'false');
-  tab.removeAttribute('tabindex');
-
-  // Set focus when required
-  if (setFocus) {
-    tab.focus();
-  }
-
-  let eventChanged = new Event('fds.tabnav.changed');
-  tab.parentNode.dispatchEvent(eventChanged);
-
-  let eventOpen = new Event('fds.tabnav.open');
-  tab.dispatchEvent(eventOpen);
 }
 
 /**
- * Add keydown events to tabnav component
+ * Add keydown events to tabContainer component
  * @param {KeyboardEvent} event 
  */
-function keydownEventListener (event) {
+function keydownEventListener(event) {
   let key = event.keyCode;
-
   switch (key) {
     case keys.end:
       event.preventDefault();
       // Activate last tab
-      focusLastTab(event.target);
+      switchTabOnKeyPress(event);
       break;
     case keys.home:
       event.preventDefault();
       // Activate first tab
-      focusFirstTab(event.target);
-      break;
-    // Up and down are in keydown
-    // because we need to prevent page scroll >:)
-    case keys.up:
-    case keys.down:
-      determineOrientation(event);
+      switchTabOnKeyPress(event);
       break;
   }
 }
 
 /**
- * Add keyup events to tabnav component
+ * Add keyup events to tabContainer component
  * @param {KeyboardEvent} event 
  */
-function keyupEventListener (event) {
+function keyupEventListener(event) {
   let key = event.keyCode;
-
   switch (key) {
     case keys.left:
     case keys.right:
-      determineOrientation(event);
+      switchTabOnKeyPress(event);
       break;
-    case keys.delete:
-      break;
-    case keys.enter:
-    case keys.space:
-      new Tabnav(event.target.parentNode).activateTab(event.target, true);
-      break;
-  }
-}
-
-/**
- * When a tablist aria-orientation is set to vertical,
- * only up and down arrow should function.
- * In all other cases only left and right arrow function.
- */
-function determineOrientation (event) {
-  let key = event.keyCode;
-
-  let w=window,
-    d=document,
-    e=d.documentElement,
-    g=d.getElementsByTagName('body')[ 0 ],
-    x=w.innerWidth||e.clientWidth||g.clientWidth,
-    y=w.innerHeight||e.clientHeight||g.clientHeight;
-
-  let vertical = x < tabnav_breakpoints.md;
-  let proceed = false;
-
-  if (vertical) {
-    if (key === keys.up || key === keys.down) {
-      event.preventDefault();
-      proceed = true;
-    }
-  }
-  else {
-    if (key === keys.left || key === keys.right) {
-      proceed = true;
-    }
-  }
-  if (proceed) {
-    switchTabOnArrowPress(event);
   }
 }
 
@@ -5452,33 +5386,42 @@ function determineOrientation (event) {
  * Either focus the next, previous, first, or last tab
  * depending on key pressed
  */
-function switchTabOnArrowPress (event) {
-  var pressed = event.keyCode;
-  if (direction[ pressed ]) {
-    let target = event.target;
-    let tabs = getAllTabsInList(target);
+function switchTabOnKeyPress(event) {
+  let pressed = event.keyCode;
+  let target = event.target;
+  let greatGrandparentNode = target.parentNode.parentNode.parentNode;
+  let tabs = getAllTabsInList(target);
+  if (direction[pressed]) {
     let index = getIndexOfElementInList(target, tabs);
     if (index !== -1) {
-      if (tabs[ index + direction[ pressed ] ]) {
-        tabs[ index + direction[ pressed ] ].focus();
+      if (tabs[index + direction[pressed]]) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[index + direction[pressed]], true);
       }
-      else if (pressed === keys.left || pressed === keys.up) {
-        focusLastTab(target);
+      else if (pressed === keys.left) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
       }
-      else if (pressed === keys.right || pressed == keys.down) {
-        focusFirstTab(target);
+      else if (pressed === keys.right) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
       }
     }
+  } else if (pressed === keys.home) {
+      new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
+  } else if (pressed === keys.end) {
+      new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
   }
 }
 
 /**
  * Get all active tabs in list
- * @param tabnav parent .tabnav element
+ * @param tabContainer parent .tab-container element
  * @returns returns list of active tabs if any
  */
-function getActiveTabs (tabnav) {
-  return tabnav.querySelectorAll('button.tabnav-item[aria-selected=true]');
+function getActiveTabs(tabContainer) {
+  if (tabContainer.querySelector('button.tab-item') !== null) {
+    return tabContainer.querySelectorAll('.tab-item[aria-selected=true]');
+  } else {
+    throw new Error(`tabContainer HTML seems to be missing a tab-item in the tab-container.`);
+  }
 }
 
 /**
@@ -5486,12 +5429,13 @@ function getActiveTabs (tabnav) {
  * @param tab Button tab element
  * @returns {*} return array of tabs
  */
-function getAllTabsInList (tab) {
-  let parentNode = tab.parentNode;
-  if (parentNode.classList.contains('tabnav')) {
-    return parentNode.querySelectorAll('button.tabnav-item');
+function getAllTabsInList(tab) {
+  let greatGrandparentNode = tab.parentNode.parentNode.parentNode;
+  if (greatGrandparentNode.classList.contains('tab-container')) {
+    return greatGrandparentNode.querySelectorAll('.tab-item');
+  } else {
+    return [];
   }
-  return [];
 }
 
 /**
@@ -5500,10 +5444,10 @@ function getAllTabsInList (tab) {
  * @param {HTMLCollection} list 
  * @returns {index}
  */
-function getIndexOfElementInList (element, list){
+function getIndexOfElementInList(element, list) {
   let index = -1;
-  for (let i = 0; i < list.length; i++ ){
-    if(list[ i ] === element){
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] === element) {
       index = i;
       break;
     }
@@ -5516,36 +5460,20 @@ function getIndexOfElementInList (element, list){
  * Checks if there is a tab hash in the url and activates the tab accordingly
  * @returns {boolean} returns true if tab has been set - returns false if no tab has been set to active
  */
-function setActiveHashTab () {
+function setActiveHashTab() {
   let hash = location.hash.replace('#', '');
-  if (hash !== '') {
-    let tab = document.querySelector('button.tabnav-item[aria-controls="#' + hash + '"]');
+  if (hash !== '' && hash !== "tab-component") {
+    let selector = '.tab-item[aria-controls="' + hash + '"]';
+    let tab = document.querySelector(selector);
     if (tab !== null) {
-      activateTab(tab, false);
+      new Tabs(tab.parentNode.parentNode.parentNode).activateTab(tab, false);
       return true;
     }
   }
   return false;
 }
 
-/**
- * Get first tab by tab in list
- * @param {HTMLButtonElement} tab 
- */
-function focusFirstTab (tab) {
-  getAllTabsInList(tab)[ 0 ].focus();
-}
-
-/**
- * Get last tab by tab in list
- * @param {HTMLButtonElement} tab 
- */
-function focusLastTab (tab) {
-  let tabs = getAllTabsInList(tab);
-  tabs[ tabs.length - 1 ].focus();
-}
-
-/* harmony default export */ var tabnav = (Tabnav);
+/* harmony default export */ var tabs = (Tabs);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/selectable-table.js
 
 
@@ -6174,12 +6102,12 @@ var init = function (options) {
 
   /*
   ---------------------
-  Tabnav
+  Tabs
   ---------------------
   */
-  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
-  for(let c = 0; c < jsSelectorTabnav.length; c++){
-    new tabnav(jsSelectorTabnav[ c ]).init();
+  const jsSelectorTabs = scope.querySelectorAll('div.tab-container');
+  for(let c = 0; c < jsSelectorTabs.length; c++){
+    new tabs(jsSelectorTabs[ c ]).init();
   }
 
   /*

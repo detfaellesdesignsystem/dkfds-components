@@ -13,7 +13,7 @@ import Navigation from './components/navigation';
 import MenuDropdown from './components/navigation-drawer-overflow';
 import RadioToggleGroup from './components/radio-toggle-content';
 import ResponsiveTable from './components/table';
-import Tabnav from  './components/tabnav';
+import Tabs from  './components/tabs';
 import TableSelectableRows from './components/selectable-table';
 import Toast from './components/toast';
 import Tooltip from './components/tooltip';
@@ -198,12 +198,12 @@ var init = function (options) {
 
   /*
   ---------------------
-  Tabnav
+  Tabs
   ---------------------
   */
-  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
-  for(let c = 0; c < jsSelectorTabnav.length; c++){
-    new Tabnav(jsSelectorTabnav[ c ]).init();
+  const jsSelectorTabs = scope.querySelectorAll('div.tab-container');
+  for(let c = 0; c < jsSelectorTabs.length; c++){
+    new Tabs(jsSelectorTabs[ c ]).init();
   }
 
   /*
@@ -218,4 +218,4 @@ var init = function (options) {
   
 };
 
-export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, MenuDropdown, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip };
+export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, MenuDropdown, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabs, Toast, Tooltip };
