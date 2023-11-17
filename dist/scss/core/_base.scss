@@ -2,29 +2,53 @@
 @use "../mixins/mixins" as mixins;
 
 html {
-  box-sizing: border-box;
-  line-height: normal;
+    box-sizing: border-box;
+    line-height: 1.5; // WCAG 2.1, 1.4.12
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
-  background-color: func.color('white');
-  color: func.color('black');
-  overflow-x: hidden;
+    overflow-x: hidden;
+    margin: 0;
 }
 
-// for IE < 11, see:
-// <http://caniuse.com/#feat=hidden>
 [hidden] {
-  display: none !important; 
+    display: none !important;
 }
 
-a:focus, button:focus, input:focus, select:focus, textarea:focus, 
+a:focus,
+button:focus,
+input:focus,
+pre:focus,
+select:focus,
+textarea:focus,
 .focus {
-  @include mixins.focus;
+    @include mixins.focus;
+}
+
+hr {
+    overflow: hidden;
+    height: 0;
+    border-style: solid;
+    border-width: 1px 0 0;
+    color: inherit;
+    display: block;
+}
+
+pre {
+    font-family: monospace, monospace;
+    font-size: inherit;
+    overflow: auto; // Ensure text can be read on small screens
+}
+
+::-webkit-search-decoration {
+    -webkit-appearance: none;
 }

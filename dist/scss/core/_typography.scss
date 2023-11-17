@@ -9,6 +9,8 @@ html {
 
 body {
   font-size: func.font-size(vars.$typography-base-font-size);
+  background-color: func.color('white');
+  color: func.color('black');
 }
 
 p {
@@ -215,31 +217,6 @@ p, .body-text{
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
     margin-top: 0; // if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
-  }
-}
-
-// a function link, does not look like a link
-button.function-link{
-  background: none;
-  padding: 0;
-  text-decoration: underline;
-  text-align: left;
-}
-.function-link{
-  border: none;
-  @include mixins.body-copy-text;
-  cursor: pointer;
-  display: inline-block;
-  &:hover, &:visited, &:focus{
-    color: func.color('ink');
-  }
-  .icon-svg{
-    margin-right: func.units(2);
-    fill: currentColor;
-  }
-
-  &.link-right {
-    text-align: right;
   }
 }
 

@@ -28,7 +28,7 @@
             }) }}{% endif %}</legend>
         {% if params.helptext -%}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage -%}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
-        <div class="date-group js-calendar-group mt-3">
+        <div class="date-group mt-3">
             {% set dayId = params.id + "-day" %}
             {% set dayLabel = params.labels.day | default("Dag") %}
             {{
