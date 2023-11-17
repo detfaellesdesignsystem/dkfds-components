@@ -11,7 +11,7 @@ const OVERLAY = `.overlay`;
 const CLOSERS = `${CLOSE_BUTTON}, .overlay`;
 const TOGGLES = [MOBILE_DRAWER, OVERLAY].join(', ');
 
-const ACTIVE_CLASS = 'mobile_nav-active';
+const ACTIVE_CLASS = 'mobile-nav-active';
 const VISIBLE_CLASS = 'is-visible';
 
 /**
@@ -24,6 +24,19 @@ class Navigation {
     init() {
         window.addEventListener('resize', mobileMenu, false);
         mobileMenu();
+
+        if (document.getElementsByClassName('mainmenu').length > 0) {
+            /* Add an invisible more button to the main menu navigation on desktop */
+            let moreButton = document.createElement('li');
+            moreButton.classList.add('more-option');
+            moreButton.classList.add('d-none');
+            moreButton.innerHTML = '<button class="more-button"><span>Mere</span></button>';
+            let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
+            mainMenu.append(moreButton);
+            /* Determine when the more button should be visible */
+            window.addEventListener('resize', moreMenu, false);
+            moreMenu();
+        }
     }
 
     /**
@@ -31,7 +44,86 @@ class Navigation {
      */
     teardown() {
         window.removeEventListener('resize', mobileMenu, false);
+
+        if (document.getElementsByClassName('mainmenu').length > 0) {
+            document.querySelectorAll('.navigation-menu .more-option')[0].remove;
+            window.removeEventListener('resize', moreMenu, false);
+        }
     }
+}
+
+const moreMenu = function () {
+    /* Get relevant information about widths for later checks and calculations */
+    let mainMenuItems = document.querySelectorAll('.navigation-menu .mainmenu > li');
+    let containerPadding = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingLeft) + 
+                           parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingRight);
+    let mainMenuNegativeMargin = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .mainmenu')[0]).marginLeft);
+    let containerWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]) - containerPadding - mainMenuNegativeMargin; 
+    let moreOption = document.querySelectorAll('.navigation-menu .more-option')[0];
+    let searchWidth = 0;
+    let widths = [];
+    if (document.querySelectorAll('.navigation-menu.contains-search').length > 0) {
+        searchWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .search')[0]);
+    }
+    let totalWidth = searchWidth;
+    for (let i = 0; i < mainMenuItems.length; i++) {
+        let w = getVisibleWidth(mainMenuItems[i]);
+        widths.push(w);
+        /* The 'more button' should have its width added to the 'widths' array but not included in the 'totalWidth' */
+        if (i < mainMenuItems.length - 1) {
+            totalWidth = totalWidth + w;
+        }
+    }
+
+    /* Hide 'more button' if there's room for all main menu items */
+    if (totalWidth < containerWidth) {
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            mainMenuItems[i].classList.remove('d-none');
+        }
+        moreOption.classList.add('d-none');
+    }
+    /* If there's not enough room, calculate which main menu items to show */
+    else {
+        let previousItemWidths = 0;
+        let itemCount = -1;
+        /* Find the amount of buttons to show */
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            let moreButtonWidth = widths[mainMenuItems.length-1];
+            let currentItemWidth = widths[i];
+            if ((previousItemWidths + currentItemWidth + moreButtonWidth + searchWidth) >= containerWidth) {
+                /* There's not enough room for the next main menu item - stop item counting */
+                break;
+            }
+            else {
+                previousItemWidths = previousItemWidths + widths[i];
+                itemCount = i;
+            }
+        }
+        /* Ensure each main menu item gets the correct display property */
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            if (i <= itemCount) {
+                mainMenuItems[i].classList.remove('d-none');
+            }
+            else {
+                mainMenuItems[i].classList.add('d-none');
+            }
+        }
+        moreOption.classList.remove('d-none');
+    }
+}
+
+/* Get the width of an element, even if the element isn't visible */
+const getVisibleWidth = function (element) {
+    let width = 0;
+    if (element.classList.contains('d-none')) {
+        element.classList.remove('d-none');
+        width = element.getBoundingClientRect().width;
+        element.classList.add('d-none')
+    }
+    else {
+        width = element.getBoundingClientRect().width;
+    }
+    return Math.round(width);
 }
 
 /**

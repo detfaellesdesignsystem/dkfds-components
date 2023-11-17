@@ -7,30 +7,35 @@
             border-left: $li-border-width solid func.color($li-border-color);
 
             .nav-link,
-            .nav-step {
+            .nav-step,
+            .button-mobile-menu {
                 margin-left: -$li-border-width;
                 width: calc(100% + $li-border-width);
             }
 
             .nav-link:hover,
-            .nav-step:hover {
+            .nav-step:hover,
+            .button-mobile-menu:hover {
                 /* Ensure that the hover background color doesn't overwrite the list's border */
                 border-left: $li-border-width solid func.color($li-border-color);
                 padding-left: $firstlevel-dist - $li-border-width;
             }
 
             li .nav-link:hover,
-            li .nav-step:hover {
+            li .nav-step:hover,
+            li .button-mobile-menu:hover {
                 padding-left: $secondlevel-dist - $li-border-width;
             }
 
             li li .nav-link:hover,
-            li li .nav-step:hover {
+            li li .nav-step:hover,
+            li li .button-mobile-menu:hover {
                 padding-left: $thirdlevel-dist - $li-border-width;
             }
 
             li li li .nav-link:hover,
-            li li li .nav-step:hover {
+            li li li .nav-step:hover,
+            li li li .button-mobile-menu:hover {
                 padding-left: $fourthlevel-dist - $li-border-width;
             }
 
@@ -41,22 +46,26 @@
     }
 
     .nav-link,
-    .nav-step {
+    .nav-step,
+    .button-mobile-menu {
         padding-left: $firstlevel-dist;
     }
 
     ul .nav-link,
-    ul .nav-step {
+    ul .nav-step,
+    ul .button-mobile-menu {
         padding-left: $secondlevel-dist;
     }
 
     ul ul .nav-link,
-    ul ul .nav-step {
+    ul ul .nav-step,
+    ul ul .button-mobile-menu {
         padding-left: $thirdlevel-dist;
     }
 
     ul ul ul .nav-link,
-    ul ul ul .nav-step {
+    ul ul ul .nav-step,
+    ul ul ul .button-mobile-menu {
         padding-left: $fourthlevel-dist;
     }
 }

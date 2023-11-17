@@ -3484,7 +3484,6 @@ __webpack_require__.d(__webpack_exports__, {
   Dropdown: function() { return /* reexport */ dropdown; },
   DropdownSort: function() { return /* reexport */ dropdown_sort; },
   ErrorSummary: function() { return /* reexport */ error_summary; },
-  InputRegexMask: function() { return /* reexport */ regex_input_mask; },
   MenuDropdown: function() { return /* reexport */ navigation_drawer_overflow; },
   Modal: function() { return /* reexport */ modal; },
   Navigation: function() { return /* reexport */ navigation; },
@@ -4279,7 +4278,7 @@ let dropdown_toggle = function(button, forceClose = false){
       triggerEl.dispatchEvent(eventClose);
     }else{
       
-      if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+      if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
         closeAll();
       }
       //open
@@ -4288,30 +4287,21 @@ let dropdown_toggle = function(button, forceClose = false){
       targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
-      let targetOffset = offset(targetEl);
 
+      let targetOffset = offset(targetEl);
       if(targetOffset.left < 0){
         targetEl.style.left = '0px';
         targetEl.style.right = 'auto';
+
+        if(parseInt(window.getComputedStyle(targetEl).marginLeft) < 0) {
+          targetEl.style.marginLeft = 0;
+        }
       }
+      
       let right = targetOffset.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
+      if(right > document.body.clientWidth){
         targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
-      }
-
-      let offsetAgain = offset(targetEl);
-
-      if(offsetAgain.left < 0){
-
-        targetEl.style.left = '0px';
-        targetEl.style.right = 'auto';
-      }
-      right = offsetAgain.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
-
-        targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
+        targetEl.style.right = '-4px'; // Focus outline
       }
     }
 
@@ -4329,8 +4319,8 @@ let hasParent = function (child, parentTagName){
 };
 
 let outsideClose = function (evt){
-  if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
-    if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
+  if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
+    if(document.querySelector('body.mobile-nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
       let openDropdowns = document.querySelectorAll(dropdown_BUTTON+'[aria-expanded=true]');
       for (let i = 0; i < openDropdowns.length; i++) {
         let triggerEl = openDropdowns[i];
@@ -4600,75 +4590,6 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 /* harmony default export */ var error_summary = (ErrorSummary);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/regex-input-mask.js
-
-const modifierState = {
-  shift: false,
-  alt: false,
-  ctrl: false,
-  command: false
-};
-/*
-* Prevents the user from inputting based on a regex.
-* Does not work the same way af <input pattern="">, this pattern is only used for validation, not to prevent input.
-* Usecase: number input for date-component.
-* Example - number only: <input type="text" data-input-regex="^\d*$">
-*/
-class InputRegexMask {
-  constructor (element){
-    element.addEventListener('paste', regexMask);
-    element.addEventListener('keydown', regexMask);
-  }
-}
-var regexMask = function (event) {
-  if(modifierState.ctrl || modifierState.command) {
-    return;
-  }
-  var newChar = null;
-  if(typeof event.key !== 'undefined'){
-    if(event.key.length === 1){
-      newChar = event.key;
-    }
-  } else {
-    if(!event.charCode){
-      newChar = String.fromCharCode(event.keyCode);
-    } else {
-      newChar = String.fromCharCode(event.charCode);
-    }
-  }
-
-  var regexStr = this.getAttribute('data-input-regex');
-
-  if(event.type !== undefined && event.type === 'paste'){
-    //console.log('paste');
-  } else{
-    var element = null;
-    if(event.target !== undefined){
-      element = event.target;
-    }
-    if(newChar !== null && element !== null) {
-      if(newChar.length > 0){
-        let newValue = this.value;
-        if(element.type === 'number'){
-          newValue = this.value;//Note input[type=number] does not have .selectionStart/End (Chrome).
-        }else{
-          newValue = this.value.slice(0, element.selectionStart) + this.value.slice(element.selectionEnd) + newChar; //removes the numbers selected by the user, then adds new char.
-        }
-
-        var r = new RegExp(regexStr);
-        if(r.exec(newValue) === null){
-          if (event.preventDefault) {
-            event.preventDefault();
-          } else {
-            event.returnValue = false;
-          }
-        }
-      }
-    }
-  }
-};
-
-/* harmony default export */ var regex_input_mask = (InputRegexMask);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/modal.js
 
 /**
@@ -4847,7 +4768,7 @@ const OVERLAY = `.overlay`;
 const CLOSERS = `${CLOSE_BUTTON}, .overlay`;
 const TOGGLES = [MOBILE_DRAWER, OVERLAY].join(', ');
 
-const ACTIVE_CLASS = 'mobile_nav-active';
+const ACTIVE_CLASS = 'mobile-nav-active';
 const VISIBLE_CLASS = 'is-visible';
 
 /**
@@ -4860,6 +4781,19 @@ class Navigation {
     init() {
         window.addEventListener('resize', mobileMenu, false);
         mobileMenu();
+
+        if (document.getElementsByClassName('mainmenu').length > 0) {
+            /* Add an invisible more button to the main menu navigation on desktop */
+            let moreButton = document.createElement('li');
+            moreButton.classList.add('more-option');
+            moreButton.classList.add('d-none');
+            moreButton.innerHTML = '<button class="more-button"><span>Mere</span></button>';
+            let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
+            mainMenu.append(moreButton);
+            /* Determine when the more button should be visible */
+            window.addEventListener('resize', moreMenu, false);
+            moreMenu();
+        }
     }
 
     /**
@@ -4867,7 +4801,86 @@ class Navigation {
      */
     teardown() {
         window.removeEventListener('resize', mobileMenu, false);
+
+        if (document.getElementsByClassName('mainmenu').length > 0) {
+            document.querySelectorAll('.navigation-menu .more-option')[0].remove;
+            window.removeEventListener('resize', moreMenu, false);
+        }
     }
+}
+
+const moreMenu = function () {
+    /* Get relevant information about widths for later checks and calculations */
+    let mainMenuItems = document.querySelectorAll('.navigation-menu .mainmenu > li');
+    let containerPadding = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingLeft) + 
+                           parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingRight);
+    let mainMenuNegativeMargin = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .mainmenu')[0]).marginLeft);
+    let containerWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]) - containerPadding - mainMenuNegativeMargin; 
+    let moreOption = document.querySelectorAll('.navigation-menu .more-option')[0];
+    let searchWidth = 0;
+    let widths = [];
+    if (document.querySelectorAll('.navigation-menu.contains-search').length > 0) {
+        searchWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .search')[0]);
+    }
+    let totalWidth = searchWidth;
+    for (let i = 0; i < mainMenuItems.length; i++) {
+        let w = getVisibleWidth(mainMenuItems[i]);
+        widths.push(w);
+        /* The 'more button' should have its width added to the 'widths' array but not included in the 'totalWidth' */
+        if (i < mainMenuItems.length - 1) {
+            totalWidth = totalWidth + w;
+        }
+    }
+
+    /* Hide 'more button' if there's room for all main menu items */
+    if (totalWidth < containerWidth) {
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            mainMenuItems[i].classList.remove('d-none');
+        }
+        moreOption.classList.add('d-none');
+    }
+    /* If there's not enough room, calculate which main menu items to show */
+    else {
+        let previousItemWidths = 0;
+        let itemCount = -1;
+        /* Find the amount of buttons to show */
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            let moreButtonWidth = widths[mainMenuItems.length-1];
+            let currentItemWidth = widths[i];
+            if ((previousItemWidths + currentItemWidth + moreButtonWidth + searchWidth) >= containerWidth) {
+                /* There's not enough room for the next main menu item - stop item counting */
+                break;
+            }
+            else {
+                previousItemWidths = previousItemWidths + widths[i];
+                itemCount = i;
+            }
+        }
+        /* Ensure each main menu item gets the correct display property */
+        for (let i = 0; i < mainMenuItems.length - 1; i++) {
+            if (i <= itemCount) {
+                mainMenuItems[i].classList.remove('d-none');
+            }
+            else {
+                mainMenuItems[i].classList.add('d-none');
+            }
+        }
+        moreOption.classList.remove('d-none');
+    }
+}
+
+/* Get the width of an element, even if the element isn't visible */
+const getVisibleWidth = function (element) {
+    let width = 0;
+    if (element.classList.contains('d-none')) {
+        element.classList.remove('d-none');
+        width = element.getBoundingClientRect().width;
+        element.classList.add('d-none')
+    }
+    else {
+        width = element.getBoundingClientRect().width;
+    }
+    return Math.round(width);
 }
 
 /**
@@ -5920,7 +5933,6 @@ function removeTooltip(trigger) {
 
 
 
-
 const datePicker = (__webpack_require__(326)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
@@ -6035,16 +6047,6 @@ var init = function (options) {
 
   /*
   ---------------------
-  Input Regex - used on date fields
-  ---------------------
-  */
-  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
-  for(let c = 0; c < jsSelectorRegex.length; c++){
-    new regex_input_mask(jsSelectorRegex[ c ]);
-  }
-
-  /*
-  ---------------------
   Modal
   ---------------------
   */
@@ -6121,6 +6123,7 @@ var init = function (options) {
   }
   
 };
+
 
 
 }();

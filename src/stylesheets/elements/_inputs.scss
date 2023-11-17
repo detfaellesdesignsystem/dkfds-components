@@ -58,6 +58,8 @@
   &::placeholder {
     color: func.color(vars.$input-placeholder-color);
     font-style: italic;
+    opacity: 1;
+    font-weight: func.font-weight("normal");
   }
 }
 

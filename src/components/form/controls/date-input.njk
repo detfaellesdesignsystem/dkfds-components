@@ -28,66 +28,54 @@
             }) }}{% endif %}</legend>
         {% if params.helptext -%}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage -%}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
-        <div class="date-group js-calendar-group mt-3">
+        <div class="date-group mt-3">
             {% set dayId = params.id + "-day" %}
             {% set dayLabel = params.labels.day | default("Dag") %}
-            {% set dayAttributes = 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"' %}
             {{
                 textinput({
                     "id": dayId,
+                    "name": params.name.day,
                     "label": dayLabel,
                     "classes": { 
-                        "formgroup": "form-group-day",
-                        "input": "js-calendar-day-input"
+                        "formgroup": "form-group-day"
                     },
                     "value": params.values.day,
                     "required": isRequired,
-                    "type": "tel",
-                    "attributes": {
-                        "input": dayAttributes
-                    },
+                    "type": "number",
                     "autocomplete": params.autocomplete.day
                 })
             }}
 
             {% set monthId = params.id + "-month" %}
             {% set monthLabel = params.labels.month | default("Måned") %}
-            {% set monthAttributes = 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"' %}
             {{
                 textinput({
                     "id": monthId,
+                    "name": params.name.month,
                     "label": monthLabel,
                     "classes": { 
-                        "formgroup": "form-group-month",
-                        "input": "js-calendar-month-input"
+                        "formgroup": "form-group-month"
                     },
                     "value": params.values.month,
                     "required": isRequired,
-                    "type": "tel",
-                    "attributes": {
-                        "input": monthAttributes
-                    },
+                    "type": "number",
                     "autocomplete": params.autocomplete.month
                 })
             }}
 
             {% set yearId = params.id + "-year" %}
             {% set yearLabel = params.labels.year | default("År") %}
-            {% set yearAttributes = 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"' %}
             {{
                 textinput({
                     "id": yearId,
+                    "name": params.name.year,
                     "label": yearLabel,
                     "classes": { 
-                        "formgroup": "form-group-year",
-                        "input": "js-calendar-year-input"
+                        "formgroup": "form-group-year"
                     },
                     "value": params.values.year,
                     "required": isRequired,
-                    "type": "tel",
-                    "attributes": {
-                        "input": yearAttributes
-                    },
+                    "type": "number",
                     "autocomplete": params.autocomplete.year
                 })
             }}
