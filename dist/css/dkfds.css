@@ -8774,16 +8774,15 @@ button.function-link, button.accordion-bulk-button{
 .accordion-button .icon_text{
   font-weight:600;
   margin-right:8px;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
   max-width:calc(100% - 8px - 24px);
 }
 .accordion-button .accordion-title{
   max-width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .accordion-button .accordion-icon{
   line-height:2.4rem;
-  position:static;
   position:initial;
   text-align:left;
   display:block;
@@ -9812,7 +9811,7 @@ footer .footer-theme{
   .header .portal-info .portal-user .user{
     text-align:right;
     margin-right:24px;
-    word-wrap:break-word;
+    overflow-wrap:break-word;
   }
 }
 .header .portal-info-mobile{
@@ -9825,7 +9824,7 @@ footer .footer-theme{
 }
 .header .portal-info-mobile .user span{
   display:block;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
   line-height:1.5;
 }
 .header .portal-info-mobile .log-on, .header .portal-info-mobile .log-off{
@@ -9850,7 +9849,7 @@ footer .footer-theme{
 }
 .header .solution-info .solution-heading{
   max-width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 @media (min-width: 992px){
   .header .solution-info .solution-heading{
@@ -9890,7 +9889,7 @@ footer .footer-theme{
     text-align:right;
     display:block;
     max-width:30%;
-    word-wrap:break-word;
+    overflow-wrap:break-word;
   }
 }
 .header .authority-name{
@@ -9911,7 +9910,7 @@ footer .footer-theme{
 .header .solution-info-mobile{
   padding:24px;
   background-color:white;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .header .solution-info-mobile p{
   margin-bottom:8px;
@@ -10296,7 +10295,7 @@ body.mobile-nav-active{
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu span, .navigation-menu-mobile ul.mainmenu li .nav-link span{
   display:inline-block;
   width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu .helptext, .navigation-menu-mobile ul.mainmenu li .nav-link .helptext{
   color:#747474;
@@ -10533,7 +10532,7 @@ body.mobile-nav-active{
   padding-bottom:8px;
   white-space:normal;
   max-width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .nav-link span{
   border-bottom:none;
@@ -10994,14 +10993,14 @@ ul.sidemenu .nav-link div{
 ul.sidemenu .nav-link span{
   display:inline-block;
   width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 ul.sidemenu .nav-step > div{
   display:flex;
   width:100%;
 }
 ul.sidemenu .nav-step div div{
-  word-wrap:break-word;
+  overflow-wrap:break-word;
   max-width:calc(100% - 2.4rem - 16px);
   width:100%;
 }
@@ -12020,11 +12019,11 @@ nav.tab-container{
 }
 .tab-container .tab-item span{
   max-width:100%;
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .tab-container .tab-item .icon-svg + span{
   max-width:calc(100% - 2.4rem - 8px);
-  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 .tab-container .tab-item[aria-current=page]{
   color:white;
@@ -12063,7 +12062,7 @@ nav.tab-container{
   max-width:100%;
 }
 .tab-container .tab-panel p, .tab-container .tab-panel h2{
-  word-wrap:break-word;
+  overflow-wrap:break-word;
   max-width:100%;
 }
 .tab-container .tab-panel h2{

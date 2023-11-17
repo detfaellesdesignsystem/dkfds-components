@@ -7,12 +7,12 @@
 		exports["DKFDS"] = factory();
 	else
 		root["DKFDS"] = factory();
-})(self, function() {
-return /******/ (function() { // webpackBootstrap
+})(globalThis, () => {
+return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 834:
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 /**
@@ -42,7 +42,7 @@ module.exports = function forEach (ary, callback, thisArg) {
 /***/ }),
 
 /***/ 159:
-/***/ (function() {
+/***/ (() => {
 
 /*
  * classList.js: Cross-browser full element.classList implementation.
@@ -289,7 +289,7 @@ if (objCtr.defineProperty) {
 /***/ }),
 
 /***/ 936:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
 
@@ -417,7 +417,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 /***/ }),
 
 /***/ 255:
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -455,7 +455,7 @@ function match(el, selector) {
 /***/ }),
 
 /***/ 84:
-/***/ (function(module) {
+/***/ ((module) => {
 
 "use strict";
 /*
@@ -553,7 +553,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ }),
 
 /***/ 842:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const assign = __webpack_require__(84);
 const delegate = __webpack_require__(670);
@@ -637,7 +637,7 @@ module.exports = function behavior(events, props) {
 /***/ }),
 
 /***/ 373:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const matches = __webpack_require__(255);
 
@@ -654,7 +654,7 @@ module.exports = function(element, selector) {
 /***/ }),
 
 /***/ 341:
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = function compose(functions) {
   return function(e) {
@@ -668,7 +668,7 @@ module.exports = function compose(functions) {
 /***/ }),
 
 /***/ 670:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const closest = __webpack_require__(373);
 
@@ -685,7 +685,7 @@ module.exports = function delegate(selector, fn) {
 /***/ }),
 
 /***/ 286:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const delegate = __webpack_require__(670);
 const compose = __webpack_require__(341);
@@ -713,7 +713,7 @@ module.exports = function delegateAll(selectors) {
 /***/ }),
 
 /***/ 51:
-/***/ (function(module) {
+/***/ ((module) => {
 
 module.exports = function ignore(element, fn) {
   return function ignorance(e) {
@@ -727,7 +727,7 @@ module.exports = function ignore(element, fn) {
 /***/ }),
 
 /***/ 298:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -744,7 +744,7 @@ module.exports = {
 /***/ }),
 
 /***/ 793:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(936);
 
@@ -794,13 +794,13 @@ module.exports.MODIFIERS = MODIFIERS;
 /***/ }),
 
 /***/ 326:
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Z: function() { return /* binding */ date_picker; }
+  Z: () => (/* binding */ date_picker)
 });
 
 // EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/node_modules/receptor/lib/index.js
@@ -834,7 +834,7 @@ const sequence = (...seq) =>
  * @param {object?} props
  * @return {receptor.behavior}
  */
-/* harmony default export */ var behavior = ((events, props) =>
+/* harmony default export */ const behavior = ((events, props) =>
   receptor.behavior(
     events,
     object_assign_default()(
@@ -849,7 +849,7 @@ const sequence = (...seq) =>
 // EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/select.js
 var utils_select = __webpack_require__(526);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/active-element.js
-/* harmony default export */ var active_element = ((htmlDocument = document) => htmlDocument.activeElement);
+/* harmony default export */ const active_element = ((htmlDocument = document) => htmlDocument.activeElement);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
@@ -862,7 +862,7 @@ function isIosDevice() {
   );
 }
 
-/* harmony default export */ var is_ios_device = (isIosDevice);
+/* harmony default export */ const is_ios_device = (isIosDevice);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/date-picker.js
 
@@ -3198,13 +3198,13 @@ const datePicker = behavior(datePickerEvents, {
 
 // #endregion Date Picker Event Delegation Registration / Component
 
-/* harmony default export */ var date_picker = (datePicker);
+/* harmony default export */ const date_picker = (datePicker);
 
 
 /***/ }),
 
 /***/ 945:
-/***/ (function() {
+/***/ (() => {
 
 /* eslint-disable consistent-return */
 /* eslint-disable func-names */
@@ -3234,7 +3234,7 @@ const datePicker = behavior(datePickerEvents, {
 /***/ }),
 
 /***/ 601:
-/***/ (function() {
+/***/ (() => {
 
 "use strict";
 
@@ -3260,7 +3260,7 @@ if (!(HIDDEN in elproto)) {
 /***/ }),
 
 /***/ 668:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3280,7 +3280,7 @@ __webpack_require__(945);
 /***/ }),
 
 /***/ 905:
-/***/ (function() {
+/***/ (() => {
 
 Number.isNaN =
   Number.isNaN ||
@@ -3293,9 +3293,12 @@ Number.isNaN =
 /***/ }),
 
 /***/ 242:
-/***/ (function(__unused_webpack_module, __webpack_exports__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 
 let breakpoints = {
   'xs': 0,
@@ -3305,15 +3308,18 @@ let breakpoints = {
   'xl': 1200
 };
 
-/* harmony default export */ __webpack_exports__.Z = (breakpoints);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (breakpoints);
 
 
 /***/ }),
 
 /***/ 865:
-/***/ (function(__unused_webpack_module, __webpack_exports__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 // https://stackoverflow.com/a/7557433
 function isElementInViewport (el, win=window,
                               docEl=document.documentElement) {
@@ -3327,15 +3333,18 @@ function isElementInViewport (el, win=window,
   );
 }
 
-/* harmony default export */ __webpack_exports__.Z = (isElementInViewport);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isElementInViewport);
 
 
 /***/ }),
 
 /***/ 526:
-/***/ (function(__unused_webpack_module, __webpack_exports__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /**
  * @name isElement
  * @desc returns whether or not the given argument is a DOM element.
@@ -3353,7 +3362,7 @@ const isElement = (value) =>
  *   in. If not provided, it defaults to the document.
  * @return {HTMLElement[]} - An array of DOM nodes or an empty array.
  */
-/* harmony default export */ __webpack_exports__.Z = ((selector, context) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((selector, context) => {
   if (typeof selector !== "string") {
     return [];
   }
@@ -3370,15 +3379,18 @@ const isElement = (value) =>
 /***/ }),
 
 /***/ 903:
-/***/ (function(__unused_webpack_module, __webpack_exports__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 
 const EXPANDED = 'aria-expanded';
 const CONTROLS = 'aria-controls';
 const HIDDEN = 'aria-hidden';
 
-/* harmony default export */ __webpack_exports__.Z = ((button, expanded) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((button, expanded) => {
 
   if (typeof expanded !== 'boolean') {
     expanded = button.getAttribute(EXPANDED) === 'false';
@@ -3427,74 +3439,74 @@ const HIDDEN = 'aria-hidden';
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Accordion: function() { return /* reexport */ accordion; },
-  Alert: function() { return /* reexport */ components_alert; },
-  BackToTop: function() { return /* reexport */ back_to_top; },
-  CharacterLimit: function() { return /* reexport */ character_limit; },
-  CheckboxToggleContent: function() { return /* reexport */ checkbox_toggle_content; },
-  Dropdown: function() { return /* reexport */ dropdown; },
-  DropdownSort: function() { return /* reexport */ dropdown_sort; },
-  ErrorSummary: function() { return /* reexport */ error_summary; },
-  MenuDropdown: function() { return /* reexport */ navigation_drawer_overflow; },
-  Modal: function() { return /* reexport */ modal; },
-  Navigation: function() { return /* reexport */ navigation; },
-  RadioToggleGroup: function() { return /* reexport */ radio_toggle_content; },
-  ResponsiveTable: function() { return /* reexport */ table; },
-  TableSelectableRows: function() { return /* reexport */ selectable_table; },
-  Tabs: function() { return /* reexport */ tabs; },
-  Toast: function() { return /* reexport */ toast; },
-  Tooltip: function() { return /* reexport */ tooltip; },
-  datePicker: function() { return /* binding */ datePicker; },
-  init: function() { return /* binding */ init; }
+  Accordion: () => (/* reexport */ accordion),
+  Alert: () => (/* reexport */ components_alert),
+  BackToTop: () => (/* reexport */ back_to_top),
+  CharacterLimit: () => (/* reexport */ character_limit),
+  CheckboxToggleContent: () => (/* reexport */ checkbox_toggle_content),
+  Dropdown: () => (/* reexport */ dropdown),
+  DropdownSort: () => (/* reexport */ dropdown_sort),
+  ErrorSummary: () => (/* reexport */ error_summary),
+  MenuDropdown: () => (/* reexport */ navigation_drawer_overflow),
+  Modal: () => (/* reexport */ modal),
+  Navigation: () => (/* reexport */ navigation),
+  RadioToggleGroup: () => (/* reexport */ radio_toggle_content),
+  ResponsiveTable: () => (/* reexport */ table),
+  TableSelectableRows: () => (/* reexport */ selectable_table),
+  Tabs: () => (/* reexport */ tabs),
+  Toast: () => (/* reexport */ toast),
+  Tooltip: () => (/* reexport */ tooltip),
+  datePicker: () => (/* binding */ datePicker),
+  init: () => (/* binding */ init)
 });
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/accordion.js
@@ -3645,7 +3657,7 @@ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
     }
 };
 
-/* harmony default export */ var accordion = (Accordion);
+/* harmony default export */ const accordion = (Accordion);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/alert.js
 
 function Alert(alert){
@@ -3672,7 +3684,7 @@ Alert.prototype.show = function(){
     this.alert.dispatchEvent(eventShow);
 };
 
-/* harmony default export */ var components_alert = (Alert);
+/* harmony default export */ const components_alert = (Alert);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/back-to-top.js
 
 
@@ -3834,7 +3846,7 @@ function isFooterVisible(footerElement) {
     }
 }
 
-/* harmony default export */ var back_to_top = (BackToTop);
+/* harmony default export */ const back_to_top = (BackToTop);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/character-limit.js
 
 
@@ -4000,7 +4012,7 @@ CharacterLimit.prototype.updateMessages = function () {
     updateScreenReaderMessage(this);
 }
 
-/* harmony default export */ var character_limit = (CharacterLimit);
+/* harmony default export */ const character_limit = (CharacterLimit);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/checkbox-toggle-content.js
 
 
@@ -4071,7 +4083,7 @@ CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
     }
 }
 
-/* harmony default export */ var checkbox_toggle_content = (CheckboxToggleContent);
+/* harmony default export */ const checkbox_toggle_content = (CheckboxToggleContent);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown.js
 
@@ -4375,7 +4387,7 @@ let getTringuideBreakpoint = function (button){
   }
 };
 
-/* harmony default export */ var dropdown = (Dropdown);
+/* harmony default export */ const dropdown = (Dropdown);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown-sort.js
 
 
@@ -4437,7 +4449,7 @@ DropdownSort.prototype.onOptionClick = function(e){
     overflowMenu.hide();
 }
 
-/* harmony default export */ var dropdown_sort = (DropdownSort);
+/* harmony default export */ const dropdown_sort = (DropdownSort);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/error-summary.js
 
@@ -4589,7 +4601,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
     $input.closest('label')
 }
 
-/* harmony default export */ var error_summary = (ErrorSummary);
+/* harmony default export */ const error_summary = (ErrorSummary);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/modal.js
 
 /**
@@ -4752,7 +4764,7 @@ function hasForcedAction (modal){
   return true;
 }
 
-/* harmony default export */ var modal = (Modal);
+/* harmony default export */ const modal = (Modal);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation.js
 
@@ -5042,7 +5054,7 @@ const toggleNav = function (active) {
     return active;
 };
 
-/* harmony default export */ var navigation = (Navigation);
+/* harmony default export */ const navigation = (Navigation);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation-drawer-overflow.js
 
 const navigation_drawer_overflow_TARGET = 'data-js-target';
@@ -5129,7 +5141,7 @@ let navigation_drawer_overflow_toggle = function(button, forceClose = false){
   }
 }
 
-/* harmony default export */ var navigation_drawer_overflow = (MenuDropdown);
+/* harmony default export */ const navigation_drawer_overflow = (MenuDropdown);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/radio-toggle-content.js
 
 const TOGGLE_ATTRIBUTE = 'data-controls';
@@ -5212,7 +5224,7 @@ RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement
     }
 }
 
-/* harmony default export */ var radio_toggle_content = (RadioToggleGroup);
+/* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/table.js
 const table_select = (__webpack_require__(526)/* ["default"] */ .Z);
 
@@ -5256,7 +5268,7 @@ function insertHeaderAsAttributes(tableEl) {
     }
 }
 
-/* harmony default export */ var table = (ResponsiveTable);
+/* harmony default export */ const table = (ResponsiveTable);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tabs.js
 
@@ -5486,7 +5498,7 @@ function setActiveHashTab() {
   return false;
 }
 
-/* harmony default export */ var tabs = (Tabs);
+/* harmony default export */ const tabs = (Tabs);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/selectable-table.js
 
 
@@ -5614,7 +5626,7 @@ function updateGroupCheck(e){
   }
 }
 
-/* harmony default export */ var selectable_table = (TableSelectableRows);
+/* harmony default export */ const selectable_table = (TableSelectableRows);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/toast.js
 
 /**
@@ -5658,7 +5670,7 @@ function showToast(){
     }
 }
 
-/* harmony default export */ var toast = (Toast);
+/* harmony default export */ const toast = (Toast);
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tooltip.js
 
 /**
@@ -5912,7 +5924,7 @@ function removeTooltip(trigger) {
     trigger.classList.remove('tooltip-focus');
 }
 
-/* harmony default export */ var tooltip = (Tooltip);
+/* harmony default export */ const tooltip = (Tooltip);
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/dkfds.js
 
@@ -6126,7 +6138,8 @@ var init = function (options) {
 
 
 
-}();
+})();
+
 /******/ 	return __webpack_exports__;
 /******/ })()
 ;
