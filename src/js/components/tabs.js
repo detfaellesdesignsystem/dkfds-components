@@ -73,6 +73,11 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
         continue;
       }
 
+      if (tabs[i].getAttribute('aria-selected') === 'true') {
+        let eventClose = new Event('fds.tab.close');
+        tabs[i].dispatchEvent(eventClose);
+      }
+
       tabs[i].setAttribute('aria-selected', 'false');
       tabs[i].setAttribute('tabindex', '-1');
       let tabpanelID = tabs[i].getAttribute('aria-controls');
@@ -80,7 +85,7 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
       if (tabpanel === null) {
         throw new Error(`Could not find tabpanel from ID.`);
       }
-      tabpanel.setAttribute('aria-hidden', 'true');
+      tabpanel.setAttribute('hidden', true);
     }
 
     // Set selected tab to active
@@ -91,12 +96,18 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
     if (tabpanel === null) {
       throw new Error(`Could not find tabpanel to set active.`);
     }
-    tabpanel.setAttribute('aria-hidden', 'false');
+    tabpanel.removeAttribute('hidden');
 
     // Set focus when required
     if (setFocus) {
       tab.focus();
     }
+
+    let eventChanged = new Event('fds.tab.changed');
+    tab.parentNode.parentNode.parentNode.dispatchEvent(eventChanged);
+
+    let eventOpen = new Event('fds.tab.open');
+    tab.dispatchEvent(eventOpen);
   }
 }
 

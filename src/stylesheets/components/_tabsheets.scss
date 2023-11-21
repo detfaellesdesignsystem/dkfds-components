@@ -113,7 +113,7 @@ nav.tab-container {
         border-radius: 0;
         max-width: 100%;
 
-        &[aria-hidden="false"]{
+        &:not([hidden="true"]){
             display: block;
             max-width: 100%;
         }

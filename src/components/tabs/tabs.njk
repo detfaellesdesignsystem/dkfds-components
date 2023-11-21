@@ -2,25 +2,19 @@
 {% macro tabButtons(params) %}
 <div class="tab-container" role="tablist" aria-label="List of tabs">
   <ul>
-    {% for item in params.items %}
+    {%- for item in params.items -%}
     <li>
       <button class="tab-item" role="tab" aria-controls="{{item.panel.id}}" aria-selected="{{ item.active | default('false') }}" id="{{item.button.id}}">{% if item.button.icon %}{{ icon_svg({"name": item.button.icon}) }}{% endif %}<span>{{ item.button.text }}</span>
       </button>
     </li>
-    {% endfor %}
-    {% for item in params.items %}
-      {%- set ariahidden = "true" -%}
-      {%- if item.active %}
-        {% set ariahidden = "false" %}
-      {% else -%}
-        {% set ariahidden = "true" %}
-      {% endif -%}
+    {%- endfor -%}
+    {%- for item in params.items -%}
     <li>
-      <section class="tab-panel" role="tabpanel" tabindex="0" id="{{item.panel.id}}" aria-labelledby="{{item.button.id}}" aria-hidden="{{ariahidden}}">
+      <section class="tab-panel" role="tabpanel" tabindex="0" id="{{item.panel.id}}" aria-labelledby="{{item.button.id}}"{% if item.active %}{% else %} hidden{% endif %}>
           {{ item.panel.content | safe }}
         </section>
     </li>
-    {% endfor %}
+    {%- endfor -%}
   </ul>
 </div>
 {% endmacro %}
@@ -28,11 +22,11 @@
 {% macro tabUrls(params) %}
 <nav class="tab-container" id="tab-component">
   <ul>
-  {% for item in params.items %}
+  {%- for item in params.items -%}
     <li>
       <a href="{{item.anchorlink.href}}" class="tab-item" {% if item.current %}aria-current="page"{% endif %}>{% if item.anchorlink.icon %}{{ icon_svg({"name": item.anchorlink.icon}) }}{% endif %}<span>{{ item.anchorlink.name }}</span></a>
     </li>
-  {% endfor %}
+  {%- endfor -%}
   </ul>
 </nav>
 {% endmacro %}

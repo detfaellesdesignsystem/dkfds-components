@@ -12057,7 +12057,7 @@ nav.tab-container{
   border-radius:0;
   max-width:100%;
 }
-.tab-container .tab-panel[aria-hidden=false]{
+.tab-container .tab-panel:not([hidden=true]){
   display:block;
   max-width:100%;
 }
