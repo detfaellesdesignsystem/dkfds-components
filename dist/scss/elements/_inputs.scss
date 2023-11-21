@@ -593,15 +593,6 @@ td {
   }
 }
 
-input[type='number'] {
-  -moz-appearance:textfield !important;
-}
-// Below fix bug where date-inputs to number-wheels in chrome.
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  @include mixins.appearance-none;
-}
-
 .form-label + input[type="file"]{
   margin-top: func.units(3);
 }
@@ -609,3 +600,4 @@ input::-webkit-inner-spin-button {
 input[type="file"]{
   display: block;
 }
+
