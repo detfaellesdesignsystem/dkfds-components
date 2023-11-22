@@ -1,0 +1,55 @@
+params:
+- name: items
+  type: array
+  required: true
+  description: The ID of the input.
+  - name: button
+    type: object
+    required: true
+    description: The ID of the input.
+    - name: id
+      type: string
+      required: true
+      description: The ID of the button element.
+    - name: text
+      type: string
+      required: true
+      description: The text of the button element.
+    - name: icon
+      type: string
+      required: false
+      description: The icon of the button element.
+  - name: panel
+    type: object
+    required: true
+    description: The ID of the input.
+    - name: id
+      type: string
+      required: true
+      description: The ID of the panel element.
+    - name: content
+      type: string
+      required: true
+      description: The content of the panel element.
+  - name: active
+    type: boolean
+    required: false
+    description: Tab is active when true.
+
+params:
+- name: items
+  type: array
+  required: true
+  description: The ID of the input.
+  - name: anchorlink
+    type: object
+    required: true
+    description: The ID of the input
+    - name: href
+      type: string
+      required: true
+      description: The url of the anchorlink element.
+    - name: text
+      type: string
+      required: true
+      description: The text of the anchorlink element.

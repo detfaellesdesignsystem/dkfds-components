@@ -24,7 +24,7 @@
   <ul>
   {%- for item in params.items -%}
     <li>
-      <a href="{{item.anchorlink.href}}" class="tab-item" {% if item.current %}aria-current="page"{% endif %}>{% if item.anchorlink.icon %}{{ icon_svg({"name": item.anchorlink.icon}) }}{% endif %}<span>{{ item.anchorlink.name }}</span></a>
+      <a href="{{item.anchorlink.href}}" class="tab-item" {% if item.current %}aria-current="page"{% endif %}>{% if item.anchorlink.icon %}{{ icon_svg({"name": item.anchorlink.icon}) }}{% endif %}<span>{{ item.anchorlink.text }}</span></a>
     </li>
   {%- endfor -%}
   </ul>
