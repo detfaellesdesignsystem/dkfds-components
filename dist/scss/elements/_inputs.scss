@@ -26,6 +26,7 @@
   @include form-label-text();
   &.disabled {
     color: color($input-disabled-text-color);
+    font-weight: font-weight('medium');
   }
 }
 
