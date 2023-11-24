@@ -24,6 +24,10 @@
 .form-label {
   display: inline-block;
   @include form-label-text();
+  &.disabled {
+    color: color($input-disabled-text-color);
+    font-weight: font-weight('medium');
+  }
 }
 
 
@@ -52,6 +56,13 @@
 
   &:focus, &.focus{
     @include focus();
+  }
+
+  &::placeholder {
+    color: color($input-placeholder-color);
+    font-style: italic;
+    opacity: 1;
+    font-weight: font-weight("normal");
   }
 }
 
@@ -225,23 +236,17 @@ input[type=url],
 textarea {
   &:disabled {
     background-color: color($input-disabled-background-color);
+    border-color: color($input-disabled-border-color);
     color: color($input-disabled-text-color);
     cursor: not-allowed;
   }
 }
 
-input[readonly][type=text]{
-  margin-top: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  height: auto;
-}
 input[readonly][type=text], textarea[readonly]{
-  background-color: transparent;
+  background-color: color('gray-100');
   color: color($input-text-color);
-  border: none;
+  border: 1px solid color('gray-200');
   cursor: default;
-  padding: 0;
 }
 
 /////////////////////////

@@ -31,6 +31,7 @@
         <div class="date-group js-calendar-group mt-3">
             {% set dayId = params.id + "-day" %}
             {% set dayLabel = params.labels.day | default("Dag") %}
+            {% set dayAttributes = 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"' %}
             {{
                 textinput({
                     "id": dayId,
@@ -43,13 +44,15 @@
                     "required": isRequired,
                     "type": "tel",
                     "attributes": {
-                        "input": 'data-min="1" data-max="31" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast dag på måneden som tal"'
-                    }
+                        "input": dayAttributes
+                    },
+                    "autocomplete": params.autocomplete.day
                 })
             }}
 
             {% set monthId = params.id + "-month" %}
             {% set monthLabel = params.labels.month | default("Måned") %}
+            {% set monthAttributes = 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"' %}
             {{
                 textinput({
                     "id": monthId,
@@ -62,13 +65,15 @@
                     "required": isRequired,
                     "type": "tel",
                     "attributes": {
-                        "input": 'data-min="1" data-max="12" maxlength="2" pattern="^[0-9]{0,2}$" data-input-regex="^[0-9]{0,2}$" title="Indtast månedens nummer"'
-                    }
+                        "input": monthAttributes
+                    },
+                    "autocomplete": params.autocomplete.month
                 })
             }}
 
             {% set yearId = params.id + "-year" %}
             {% set yearLabel = params.labels.year | default("År") %}
+            {% set yearAttributes = 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"' %}
             {{
                 textinput({
                     "id": yearId,
@@ -81,8 +86,9 @@
                     "required": isRequired,
                     "type": "tel",
                     "attributes": {
-                        "input": 'data-min="1900" data-max="3000" maxlength="4" pattern="^[0-9]{0,4}$" data-input-regex="^[0-9]{0,4}$" title="Indtast årstal"'
-                    }
+                        "input": yearAttributes
+                    },
+                    "autocomplete": params.autocomplete.year
                 })
             }}
         </div>
