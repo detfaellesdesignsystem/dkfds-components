@@ -24,6 +24,7 @@
   @include mixins.form-label-text;
   &.disabled {
     color: func.color(vars.$input-disabled-text-color);
+    font-weight: func.font-weight('medium');
   }
 }
 

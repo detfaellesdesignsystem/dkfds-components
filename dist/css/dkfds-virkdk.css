@@ -7250,6 +7250,7 @@ figure{
 }
 .form-label.disabled{
   color:#747474;
+  font-weight:500;
 }
 
 .form-input{
