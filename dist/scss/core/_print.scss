@@ -195,6 +195,31 @@
         }
     }
 
+    // tabs
+    .tab-container {
+
+        .tab-item{
+            color: func.color(vars.$tabsheet-inactive-text-color);
+            background-color: transparent !important;
+            border: func.border(vars.$tabsheet-border); 
+
+            &[aria-selected="true"],
+            &[aria-current="page"] {
+                color: func.color(vars.$tabsheet-active-text-color-print);
+                border: 4px solid func.color(vars.$tabsheet-default-border-color); 
+
+                .icon-svg {
+                    fill: func.color(vars.$tabsheet-icon-color-print);
+                }
+            }
+        }
+        
+        .tab-item:not([aria-selected="true"]):not([aria-current="page"]) {
+            padding-top: 14px !important;
+            padding-bottom: 14px !important;
+        }
+    }
+
     // Checkboxes
 
     // Checked checkbox

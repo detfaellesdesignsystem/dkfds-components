@@ -12268,6 +12268,22 @@ nav.tab-container{
   }
 }
 @media print{
+  .tab-container .tab-item{
+    color:#1a1a1a;
+    background-color:transparent !important;
+    border:1px solid #747474;
+  }
+  .tab-container .tab-item[aria-selected=true], .tab-container .tab-item[aria-current=page]{
+    color:#1a1a1a;
+    border:4px solid #747474;
+  }
+  .tab-container .tab-item[aria-selected=true] .icon-svg, .tab-container .tab-item[aria-current=page] .icon-svg{
+    fill:#1a1a1a;
+  }
+  .tab-container .tab-item:not([aria-selected=true]):not([aria-current=page]){
+    padding-top:14px !important;
+    padding-bottom:14px !important;
+  }
   .form-checkbox:checked + label::before,
   .form-checkbox[aria-checked=mixed] + label::before{
     background-color:white;

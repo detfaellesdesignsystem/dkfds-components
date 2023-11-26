@@ -53,3 +53,11 @@ params:
       type: string
       required: true
       description: The text of the anchorlink element.
+    - name: icon
+      type: string
+      requiredd: false
+      description: The icon of the anchorlink element.
+  - name: current
+    type: boolean
+    required: false
+    description: Tab is current when true.
