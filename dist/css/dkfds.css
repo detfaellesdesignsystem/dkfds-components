@@ -12022,7 +12022,7 @@ nav.tab-container{
   overflow-wrap:break-word;
 }
 .tab-container .tab-item .icon-svg + span{
-  max-width:calc(100% - 2.4rem - 8px);
+  max-width:calc(100% - 1.5rem - 8px);
   overflow-wrap:break-word;
 }
 .tab-container .tab-item[aria-current=page]{

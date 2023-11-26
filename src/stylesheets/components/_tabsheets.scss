@@ -2,6 +2,8 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
+$tabs-icon-right-padding: func.units(3);
+$tabs-icon-size: 1.5rem;
 
 .layout-example-contained nav.tab-container {
     margin-top: func.units(0);
@@ -70,7 +72,7 @@ nav.tab-container {
     }
 
     .icon-svg + span {
-        max-width: calc(100% - 2.4rem - func.units(3));
+        max-width: calc(100% - $tabs-icon-size - $tabs-icon-right-padding);
         overflow-wrap: break-word;
     }
 
