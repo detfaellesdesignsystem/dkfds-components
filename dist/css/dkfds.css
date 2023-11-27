@@ -1076,8 +1076,8 @@ a:not(.button):not(.full-width-image){
 }
 
 h1, .h1{
-  font-size:2.5rem;
-  line-height:3.2rem;
+  font-size:3.2rem;
+  line-height:1.25;
   letter-spacing:normal;
   font-weight:700;
   color:#1a1a1a;
@@ -1086,22 +1086,22 @@ h1, .h1{
 }
 @media (min-width: 768px){
   h1, .h1{
-    font-size:3.1rem;
+    font-size:4rem;
   }
 }
 @media (min-width: 992px){
   h1, .h1{
-    font-size:3.9rem;
+    font-size:4.8rem;
   }
 }
 @media (min-width: 768px){
   h1, .h1{
-    line-height:4rem;
+    line-height:1.2;
   }
 }
 @media (min-width: 992px){
   h1, .h1{
-    line-height:4.8rem;
+    line-height:1.17;
   }
 }
 @media (min-width: 768px){
@@ -1116,8 +1116,8 @@ h1, .h1{
 }
 
 h2, .h2{
-  font-size:2.2rem;
-  line-height:2.8rem;
+  font-size:2.4rem;
+  line-height:1.33;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -1125,22 +1125,22 @@ h2, .h2{
 }
 @media (min-width: 768px){
   h2, .h2{
-    font-size:2.5rem;
+    font-size:2.8rem;
   }
 }
 @media (min-width: 992px){
   h2, .h2{
-    font-size:3.1rem;
+    font-size:3.2rem;
   }
 }
 @media (min-width: 768px){
   h2, .h2{
-    line-height:3.2rem;
+    line-height:1.29;
   }
 }
 @media (min-width: 992px){
   h2, .h2{
-    line-height:4rem;
+    line-height:1.25;
   }
 }
 @media (min-width: 768px){
@@ -1155,8 +1155,8 @@ h2, .h2{
 }
 
 h3, .h3{
-  font-size:1.8rem;
-  line-height:2.4rem;
+  font-size:2.2rem;
+  line-height:1.36;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -1164,22 +1164,22 @@ h3, .h3{
 }
 @media (min-width: 768px){
   h3, .h3{
-    font-size:2rem;
+    font-size:2.4rem;
   }
 }
 @media (min-width: 992px){
   h3, .h3{
-    font-size:2.5rem;
+    font-size:2.4rem;
   }
 }
 @media (min-width: 768px){
   h3, .h3{
-    line-height:2.8rem;
+    line-height:1.33;
   }
 }
 @media (min-width: 992px){
   h3, .h3{
-    line-height:3.2rem;
+    line-height:1.33;
   }
 }
 @media (min-width: 768px){
@@ -1194,21 +1194,31 @@ h3, .h3{
 }
 
 h4, .h4{
-  font-size:1.6rem;
-  line-height:2.4rem;
+  font-size:1.8rem;
+  line-height:1.33;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   text-transform:none;
 }
-@media (min-width: 992px){
+@media (min-width: 768px){
   h4, .h4{
     font-size:2rem;
   }
 }
 @media (min-width: 992px){
   h4, .h4{
-    line-height:2.8rem;
+    font-size:2rem;
+  }
+}
+@media (min-width: 768px){
+  h4, .h4{
+    line-height:1.4;
+  }
+}
+@media (min-width: 992px){
+  h4, .h4{
+    line-height:1.4;
   }
 }
 @media (min-width: 768px){
@@ -1223,32 +1233,17 @@ h4, .h4{
 }
 
 h5, .h5{
-  font-size:1.4rem;
-  line-height:2rem;
+  font-size:1.6rem;
+  line-height:1.5;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
   text-transform:none;
 }
-@media (min-width: 992px){
-  h5, .h5{
-    font-size:1.6rem;
-  }
-}
-@media (min-width: 992px){
-  h5, .h5{
-    line-height:2.4rem;
-  }
-}
-@media (min-width: 768px){
-  h5, .h5{
-    letter-spacing:normal;
-  }
-}
 
 h6, .h6{
-  font-size:1.3rem;
-  line-height:2rem;
+  font-size:1.2rem;
+  line-height:1.67;
   letter-spacing:normal;
   font-weight:500;
   color:#1a1a1a;
@@ -1264,20 +1259,20 @@ p, .body-text, .body-copy-text{
 }
 
 figcaption, .figcaption{
-  font-size:1.3rem;
+  font-size:1.4rem;
   line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
 figcaption p, .figcaption p{
-  font-size:1.3rem;
+  font-size:1.4rem;
   line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
 
 .subheading{
-  font-size:1.3rem;
+  font-size:1.4rem;
   line-height:1.6rem;
   color:#747474;
   letter-spacing:1px;
@@ -1286,7 +1281,7 @@ figcaption p, .figcaption p{
 }
 
 .font-lead{
-  font-size:2.1rem;
+  font-size:2rem;
   font-weight:400;
   line-height:3.2rem;
   max-width:66ch;
@@ -1541,7 +1536,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 
 .displayheading-1{
   font-weight:500;
-  font-size:2.5rem;
+  font-size:2.4rem;
   line-height:3.6rem;
   margin-bottom:0;
   color:#1a1a1a;
@@ -6399,7 +6394,7 @@ input[type=checkbox].form-toggle ~ .form-toggle-label:before{
   width:29px;
   height:29px;
   color:#1a1a1a;
-  font-size:1.3rem;
+  font-size:1.2rem;
   font-weight:500;
   padding-top:5px;
   transition:all 0.15s ease-out;
@@ -6568,8 +6563,8 @@ figure{
 }
 
 .icon-svg-large{
-  height:2.5rem;
-  width:2.5rem;
+  height:2.4rem;
+  width:2.4rem;
   vertical-align:middle;
 }
 .icon-svg-large--inherit-color{
@@ -8917,7 +8912,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .alert .alert-heading{
   font-size:1.6rem;
-  line-height:2.4rem;
+  line-height:1.5;
   margin-top:0;
   margin-bottom:0;
   font-weight:600;
@@ -8981,7 +8976,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .anchortitle{
-  font-size:1.3rem;
+  font-size:1.2rem;
   font-weight:500;
   margin-bottom:8px;
   line-height:2.4rem;
@@ -11329,8 +11324,8 @@ a.skipnav:focus{
   margin:0;
 }
 .card-header .header-title.large-text{
-  font-size:2.5rem;
-  line-height:3.2rem;
+  font-size:3.2rem;
+  line-height:1.25;
   letter-spacing:normal;
   font-weight:700;
   color:#1a1a1a;
@@ -11340,22 +11335,22 @@ a.skipnav:focus{
 }
 @media (min-width: 768px){
   .card-header .header-title.large-text{
-    font-size:3.1rem;
+    font-size:4rem;
   }
 }
 @media (min-width: 992px){
   .card-header .header-title.large-text{
-    font-size:3.9rem;
+    font-size:4.8rem;
   }
 }
 @media (min-width: 768px){
   .card-header .header-title.large-text{
-    line-height:4rem;
+    line-height:1.2;
   }
 }
 @media (min-width: 992px){
   .card-header .header-title.large-text{
-    line-height:4.8rem;
+    line-height:1.17;
   }
 }
 @media (min-width: 768px){

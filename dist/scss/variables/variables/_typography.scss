@@ -29,13 +29,13 @@ $typography-body-text-secondary-color: 'ink-light' !default;
 
 // Caption text
 $typography-caption-text-color: 'ink' !default;
-$typography-caption-font-size: "2xs" !default;
+$typography-caption-font-size: "xs" !default;
 $typography-caption-line-height: 405 !default;
 $typography-caption-letter-spacing: 0.4px !default;
 
 // Subheading
 $typography-subheading-text-color: 'gray-500' !default;
-$typography-subheading-font-size: "2xs" !default;
+$typography-subheading-font-size: "xs" !default;
 $typography-subheading-line-height: 4 !default;
 $typography-subheading-letter-spacing: 1px !default;
 
@@ -64,20 +64,20 @@ $typography-article-line-height: 505 !default;
 $typography-article-letter-spacing: normal !default;
 
 // Lead text
-$typography-lead-font-size: "xl" !default;
+$typography-lead-font-size: "lg" !default;
 $typography-lead-line-height: 6 !default;
 $typography-lead-letter-spacing: normal !default;
 
 // H1
 $typography-h1-font-size: (
-    "default": "3xl",
-    "md": "5xl",
-    "lg": "6xl"
+    "default": "5xl",
+    "md": "6xl",
+    "lg": "7xl"
 ) !default;
 $typography-h1-line-height: (
-    "default": 6,
-    "md": 7,
-    "lg": 8 
+    "default": 1.25,
+    "md": 1.2,
+    "lg": 1.17 
 ) !default;
 $typography-h1-letter-spacing: (
     "default": normal,
@@ -87,14 +87,14 @@ $typography-h1-letter-spacing: (
 
 // H2
 $typography-h2-font-size: (
-    "default": "2xl",
-    "md": "3xl",
+    "default": "3xl",
+    "md": "4xl",
     "lg": "5xl"
 ) !default;
 $typography-h2-line-height: (
-    "default": 505,
-    "md": 6,
-    "lg": 7
+    "default": 1.33,
+    "md": 1.29,
+    "lg": 1.25
 ) !default;
 $typography-h2-letter-spacing: (
     "default": normal,
@@ -104,14 +104,14 @@ $typography-h2-letter-spacing: (
 
 // H3
 $typography-h3-font-size: (
-    "default": "md",
-    "md": "lg",
+    "default": "2xl",
+    "md": "3xl",
     "lg": "3xl"
 ) !default;
 $typography-h3-line-height: (
-    "default": 5,
-    "md": 505,
-    "lg": 6
+    "default": 1.36,
+    "md": 1.33,
+    "lg": 1.33
 ) !default;
 $typography-h3-letter-spacing: (
     "default": normal,
@@ -121,12 +121,14 @@ $typography-h3-letter-spacing: (
 
 // H4
 $typography-h4-font-size: (
-    "default": "sm",
+    "default": "md",
+    "md": "lg",
     "lg": "lg"
 ) !default;
 $typography-h4-line-height: (
-    "default": 5,
-    "lg": 505
+    "default": 1.33,
+    "md": 1.4,
+    "lg": 1.4
 ) !default;
 $typography-h4-letter-spacing: (
     "default": normal,
@@ -134,21 +136,12 @@ $typography-h4-letter-spacing: (
     "lg": normal
 ) !default;
 
-// H5
-$typography-h5-font-size: (
-    "default": "xs",
-    "lg": "sm"
-) !default;
-$typography-h5-line-height: (
-    "default": 405,
-    "lg": 5
-) !default;
-$typography-h5-letter-spacing: (
-    "default": normal,
-    "md": normal
-) !default;
+// H5 - same values used for default, md, and lg
+$typography-h5-font-size: "sm" !default;
+$typography-h5-line-height: 1.5 !default;
+$typography-h5-letter-spacing: normal !default;
 
-// H6
+// H6 - same values used for default, md, and lg
 $typography-h6-font-size: "2xs" !default;
-$typography-h6-line-height: 405 !default;
+$typography-h6-line-height: 1.67 !default;
 $typography-h6-letter-spacing: normal !default;
