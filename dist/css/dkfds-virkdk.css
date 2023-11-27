@@ -8113,6 +8113,10 @@ input.input-char-27::-ms-clear, select.input-char-27::-ms-clear, textarea.input-
 .table thead th button,
 .table thead th .button{
   width:auto;
+  font-weight:600;
+  font-family:inherit;
+  font-size:inherit;
+  display:flex;
 }
 .table tbody th{
   font-weight:600;

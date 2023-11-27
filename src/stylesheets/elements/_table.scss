@@ -64,6 +64,10 @@
             button,
             .button {
                 width: auto;
+                font-weight: func.font-weight('semibold');
+                font-family: inherit;
+                font-size: inherit;
+                display: flex;
             }
         }
     }
