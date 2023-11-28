@@ -14,7 +14,7 @@ Sets styles within breakpoints
         @each $breakpoint, $value in $map {
             @if $breakpoint == "default" {
                 @if $style == line-height {
-                    #{$style}: func.units($value, 'rem');
+                    #{$style}: $value;
                 }
 
                 @else if $style == font-size {
@@ -29,7 +29,7 @@ Sets styles within breakpoints
             @else {
                 @include breakpoints.media-breakpoint-up($breakpoint) {
                     @if $style == line-height {
-                        #{$style}: func.units($value, 'rem');
+                        #{$style}: $value;
                     }
 
                     @else if $style == font-size {
@@ -46,7 +46,7 @@ Sets styles within breakpoints
 
     @else {
         @if $style == line-height {
-            #{$style}: func.units($map, 'rem');
+            #{$style}: $map;
         }
 
         @else if $style == font-size {

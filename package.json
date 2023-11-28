@@ -1,6 +1,6 @@
 {
   "name": "dkfds",
-  "version": "9.0.2",
+  "version": "9.1.0",
   "description": "Det Fælles Designsystem er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
   "engines": {
     "node": ">= 4"
@@ -24,7 +24,6 @@
     "eslint": "^8.52.0",
     "eslint-webpack-plugin": "^4.0.1",
     "mini-css-extract-plugin": "^2.7.6",
-    "normalize.css": "^8.0.1",
     "object-assign": "^4.1.1",
     "postcss": "^8.4.31",
     "postcss-loader": "^7.3.3",

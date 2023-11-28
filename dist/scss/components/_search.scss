@@ -29,9 +29,3 @@
     }
   }
 }
-
-// Extra specificity to override rules set in reset.css.
-input[type="search"] {
-  box-sizing: border-box;
-  @include mixins.appearance-none;
-}

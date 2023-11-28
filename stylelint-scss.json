@@ -1,5 +1,4 @@
 {
-    "ignoreFiles": ["**/vendors/_normalize.scss"],
     "extends": "stylelint-config-standard-scss",
     "rules": {
         "alpha-value-notation": "number",
