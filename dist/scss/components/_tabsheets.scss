@@ -2,16 +2,20 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-$tabs-icon-right-padding: func.units(3);
-$tabs-icon-size: 1.5rem;
+$tabs-icon-right-padding: 7.9px; // This value is used to avoid a round error during zoom where text wraps onto a new line.
+$tabs-icon-size: 2.4rem;
 
 .layout-example-contained nav.tab-container {
     margin-top: func.units(0);
 }
 
 nav.tab-container {
-    border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
     margin-top: func.units(7);
+
+    ul {
+        border-bottom: 1px solid func.color(vars.$tabsheet-default-border-color);
+        width: 100%;
+    }
 }
 
 .component-example>.tab-container {
@@ -30,6 +34,7 @@ nav.tab-container {
     overflow: hidden;
     position: relative;
     margin-bottom: func.units(2);
+    margin-left: -(func.units(3));
     padding-top: func.units(4);
     padding-left: func.units(3);
     padding-right: func.units(3);

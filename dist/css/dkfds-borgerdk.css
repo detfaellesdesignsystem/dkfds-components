@@ -11953,8 +11953,11 @@ a.skipnav:focus{
 }
 
 nav.tab-container{
-  border-bottom:1px solid #747474;
   margin-top:40px;
+}
+nav.tab-container ul{
+  border-bottom:1px solid #747474;
+  width:100%;
 }
 
 .component-example > .tab-container{
@@ -11973,6 +11976,7 @@ nav.tab-container{
   overflow:hidden;
   position:relative;
   margin-bottom:4px;
+  margin-left:-8px;
   padding-top:16px;
   padding-left:8px;
   padding-right:8px;
@@ -12022,7 +12026,7 @@ nav.tab-container{
   overflow-wrap:break-word;
 }
 .tab-container .tab-item .icon-svg + span{
-  max-width:calc(100% - 1.5rem - 8px);
+  max-width:calc(100% - 2.4rem - 7.9px);
   overflow-wrap:break-word;
 }
 .tab-container .tab-item[aria-current=page]{
