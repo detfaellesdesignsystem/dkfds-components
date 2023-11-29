@@ -170,7 +170,7 @@
                 display: block;
                 border: none !important;
 
-                &[data-title]:not([data-title=""]):before {
+                &[data-title]:not([data-title=""])::before {
                     content: attr(data-title);
                     text-align: left;
                     display: block;
@@ -224,5 +224,24 @@
     .form-radio:checked + label::after {
         background-color: func.color('transparent');
         border: math.div(func.units(vars.$input-radio-dot-size), 2) solid func.color(vars.$input-radio-dot-color);
+    }
+
+    // Toggle switch
+    .toggle-element .toggle-button[aria-checked='true'] {
+        &::before {
+            content: "\2713";
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: none;
+            line-height: 1;
+            color: func.color('black');
+            border-color: func.color('black');
+        }
+
+        &::after {
+            border-color: func.color('black');
+        }
     }
 }

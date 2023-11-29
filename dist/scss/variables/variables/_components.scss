@@ -141,7 +141,7 @@ $cards-content-background-color:    $cards-background-color !default;
 $cards-action-background-color:     $cards-background-color !default;
 $cards-text-color:                  'gray-600' !default;
 $cards-heading-color:               'black' !default;
-$cards-heading-large-color:         'gray-600' !default;
+$cards-heading-large-color:         'black' !default;
 $cards-sub-heading-color:           'ink-light' !default;
 
 // Cookie Message
@@ -393,17 +393,18 @@ $toast-warning-color:               'warning' !default;
 $toast-error-color:                 'error' !default;
 $toast-shadow:                      'medium' !default;
 
-// Toggle
-$toggle-default-background-color:           'gray-400' !default;
-$toggle-hover-background-color:             'gray-500' !default;
-$toggle-active-background-color:            'gray-600' !default;
-$toggle-text-on:                            "Til" !default;
-$toggle-text-off:                           "Fra" !default;
-$toggle-shadow:                             'light' !default;
-$toggle-button-background-color:            'white' !default;
-$toggle-button-on-default-background-color: 'primary' !default;
-$toggle-button-on-hover-background-color:   'primary-dark' !default;
-$toggle-button-on-active-background-color:  'primary-darker' !default;
+// Toggle switch
+$toggle-dot-background-color:       'white' !default;
+$toggle-off-dot-border-color:       'gray-500' !default;
+$toggle-on-dot-border-color:        'primary' !default;
+$toggle-on-dot-border-color-hover:  'primary-dark' !default;
+$toggle-off-background-color:       'gray-100' !default;
+$toggle-off-background-color-hover: 'gray-200' !default;
+$toggle-off-border-color:           'gray-500' !default;
+$toggle-on-background-color:        'primary' !default;
+$toggle-on-background-color-hover:  'primary-dark' !default;
+$toggle-on-border-color:            'primary' !default;
+$toggle-on-border-color-hover:      'primary-dark' !default;
 
 // Tooltip
 $tooltip-background-color:  'white' !default;

@@ -28,7 +28,7 @@
   padding-left: func.units(3) + vars.$breadcrumbs-chevron-altitude-calculated;
   float: left;
 
-  &:before {
+  &::before {
     content: "";
     display: block;
     position: absolute;
@@ -50,7 +50,7 @@
     margin-left: 0;
     padding-left: 0;
 
-    &:before {
+    &::before {
       content: none;
       display: none;
     }

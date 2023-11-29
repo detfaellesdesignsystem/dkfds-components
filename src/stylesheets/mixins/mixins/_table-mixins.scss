@@ -34,7 +34,7 @@
             padding-bottom: calc(func.units(4) - 1px); // 1px for the border
         }
 
-        &[data-title]:not([data-title=""]):before {
+        &[data-title]:not([data-title=""])::before {
             content: attr(data-title);
             text-align: left;
             display: block;

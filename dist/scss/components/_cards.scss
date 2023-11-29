@@ -77,7 +77,7 @@
     margin:func.units(0);
 
     &.large-text {
-      @include mixins.h1;
+      @include mixins.h2;
       color: func.color(vars.$cards-heading-large-color);
     }
   }

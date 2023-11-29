@@ -199,7 +199,7 @@
 
   &:focus {
     outline: none;
-    &:before {
+    &::before {
       @include mixins.focus;
       position: absolute;
       top: -1px;

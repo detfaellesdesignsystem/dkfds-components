@@ -34,7 +34,7 @@
 
         // below: arrow with border
         &:after,
-        &:before {
+        &::before {
             display: none;
             left: 50%;
             border: solid transparent;
@@ -53,7 +53,7 @@
             margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px) * -1);
         }
 
-        &:before {
+        &::before {
             border-bottom-color: func.border-color(vars.$overflow-menu-content-border);
             border-width: vars.$overflow-menu-arrow-size;
             margin-left: calc(#{vars.$overflow-menu-arrow-size} * -1);
@@ -62,7 +62,7 @@
         &[aria-expanded="true"] {
 
             &:after,
-            &:before {
+            &::before {
                 display: block;
             }
         }
@@ -206,7 +206,7 @@
         @include mixins.media-breakpoint-up(md) {
             display: block;
 
-            &:before,
+            &::before,
             &:after {
                 display: none; // hide arrow
             }
@@ -234,7 +234,7 @@
         @include mixins.media-breakpoint-up(lg) {
             display: block;
 
-            &:before,
+            &::before,
             &:after {
                 display: none; // hide arrow
             }

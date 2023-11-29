@@ -1,0 +1,114 @@
+@use '../variables/variables' as vars;
+@use '../functions/functions' as func;
+@use "../mixins/mixins" as mixins;
+
+$-button-width: func.units(9);
+$-toggle-dot-diameter: func.units(505);
+$-left-offset: func.units(1);
+
+.toggle-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: func.units(4);
+
+    .toggle-label {
+        display: inline-block;
+        cursor: pointer;
+        overflow-wrap: break-word;
+        width: 100%;
+        max-width: calc(100% - $-button-width);
+        padding-right: func.units(4);
+
+        &.disabled {
+            cursor: default;
+        }
+    }
+
+    .toggle-button {
+        position: relative;
+        display: inline-block;
+        padding: 0;
+        font-size: 0;
+        line-height: 0;
+        background-color: transparent;
+        border-radius: func.units(4);
+        cursor: pointer;
+    
+        &::before {
+            content: '';
+            position: absolute;
+            top: func.units(1);
+            left: $-left-offset;
+            border-radius: 50%;
+            border: 1px solid func.color(vars.$toggle-off-dot-border-color);
+            background-image: none;
+            background-color: func.color(vars.$toggle-dot-background-color);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: func.units(4);
+            width: $-toggle-dot-diameter;
+            height: $-toggle-dot-diameter;
+            -webkit-transition: all 0.15s ease-out;
+            -moz-transition: all 0.15s ease-out;
+            -o-transition: all 0.15s ease-out;
+            transition: all 0.15s ease-out;
+            z-index: 10;
+        }
+
+        &[aria-checked='true']::before {
+            left: $-button-width - $-toggle-dot-diameter - $-left-offset;
+            border: 1px solid func.color(vars.$toggle-on-dot-border-color);
+            background-image: url(vars.$icons-folder-path + '/done.svg');
+        }
+    
+        &::after {
+            content: '';
+            position: relative;
+            display: inline-block;
+            width: $-button-width;
+            height: func.units(6);
+            border-radius: func.units(4);
+            background-color: func.color(vars.$toggle-off-background-color);
+            border: 1px solid func.color(vars.$toggle-off-border-color);
+            -webkit-transition: all 0.15s ease-out;
+            -moz-transition: all 0.15s ease-out;
+            -o-transition: all 0.15s ease-out;
+            transition: all 0.15s ease-out;
+        }
+
+        &[aria-checked='true']::after {
+            background-color: func.color(vars.$toggle-on-background-color);
+            border: 1px solid func.color(vars.$toggle-on-border-color);
+        }
+
+        &:hover {
+            &::after {
+                background-color: func.color(vars.$toggle-off-background-color-hover);
+            }
+
+            &[aria-checked='true']::after {
+                background-color: func.color(vars.$toggle-on-background-color-hover);
+                border: 1px solid func.color(vars.$toggle-on-border-color-hover);
+            }
+
+            &[aria-checked='true']::before {
+                border: 1px solid func.color(vars.$toggle-on-dot-border-color-hover);
+            }
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+
+            &:hover::after {
+                background-color: func.color(vars.$toggle-off-background-color);
+            }
+
+            &:hover[aria-checked='true']::after {
+                background-color: func.color(vars.$toggle-on-background-color);
+                border: 1px solid func.color(vars.$toggle-on-border-color);
+            }
+        }
+    }
+}

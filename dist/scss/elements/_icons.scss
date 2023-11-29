@@ -188,15 +188,6 @@ $icons: (
   width: 1em;
 }
 
-.icon-svg-large {
-    height: func.font-size(vars.$typography-display-1-heading-font-size);
-    width: func.font-size(vars.$typography-display-1-heading-font-size);
-    vertical-align: middle;
-    &--inherit-color{
-        fill: currentColor;
-    }
-}
-
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
         background-image: url(vars.$icons-folder-path + '/' + $icon + ".svg");
