@@ -4768,6 +4768,7 @@ function hasForcedAction (modal){
 
 ;// CONCATENATED MODULE: ./src/js/components/navigation.js
 
+
 const forEach = __webpack_require__(84);
 const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
@@ -4796,12 +4797,7 @@ class Navigation {
 
         if (document.getElementsByClassName('mainmenu').length > 0) {
             /* Add an invisible more button to the main menu navigation on desktop */
-            let moreButton = document.createElement('li');
-            moreButton.classList.add('more-option');
-            moreButton.classList.add('d-none');
-            moreButton.innerHTML = '<button class="more-button"><span>Mere</span></button>';
-            let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
-            mainMenu.append(moreButton);
+            createMoreMenu();
             /* Determine when the more button should be visible */
             window.addEventListener('resize', moreMenu, false);
             moreMenu();
@@ -4819,6 +4815,33 @@ class Navigation {
             window.removeEventListener('resize', moreMenu, false);
         }
     }
+}
+
+const createMoreMenu = function () {
+    let moreMenu = document.createElement('li');
+    moreMenu.classList.add('more-option');
+    moreMenu.classList.add('d-none');
+    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-haspopup="true" aria-expanded="false"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+    let moreMenuList = moreMenu.getElementsByClassName('overflow-list')[0];
+    let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
+    let mainMenuItems = document.querySelectorAll('.navigation-menu .mainmenu > li');
+    for (let i = 0; i < mainMenuItems.length; i++) {
+        if (mainMenuItems[i].getElementsByClassName('submenu').length > 0) {
+            let subMenu = document.createElement('li');
+            let subMenuText = mainMenuItems[i].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
+            subMenu.innerHTML = '<ul><li><span class="d-inline-block pr-305 pl-305 small-text">' + subMenuText + '</span></li></ul>';
+            let subElements = mainMenuItems[i].getElementsByTagName('LI');
+            for (let j = 0; j < subElements.length; j++) {
+                subMenu.getElementsByTagName('UL')[0].append(subElements[j].cloneNode(true));
+            }
+            moreMenuList.append(subMenu);
+        }
+        else {
+            moreMenuList.append(mainMenuItems[i].cloneNode(true));
+        }
+    }
+    mainMenu.append(moreMenu);
+    new dropdown(document.getElementsByClassName('more-button')[0]).init();
 }
 
 const moreMenu = function () {
@@ -4844,10 +4867,13 @@ const moreMenu = function () {
         }
     }
 
+    let moreMenuItems = document.querySelectorAll('.navigation-menu .mainmenu .more-option .submenu .overflow-list > li');
+
     /* Hide 'more button' if there's room for all main menu items */
     if (totalWidth < containerWidth) {
         for (let i = 0; i < mainMenuItems.length - 1; i++) {
             mainMenuItems[i].classList.remove('d-none');
+            moreMenuItems[i].classList.add('d-none');
         }
         moreOption.classList.add('d-none');
     }
@@ -4872,9 +4898,11 @@ const moreMenu = function () {
         for (let i = 0; i < mainMenuItems.length - 1; i++) {
             if (i <= itemCount) {
                 mainMenuItems[i].classList.remove('d-none');
+                moreMenuItems[i].classList.add('d-none');
             }
             else {
                 mainMenuItems[i].classList.add('d-none');
+                moreMenuItems[i].classList.remove('d-none');
             }
         }
         moreOption.classList.remove('d-none');

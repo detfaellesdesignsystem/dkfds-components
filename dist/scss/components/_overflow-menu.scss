@@ -112,6 +112,14 @@
         line-height: func.units(vars.$overflow-menu-content-line-height, 'rem');
         color: func.color(vars.$overflow-menu-content-text-color);
 
+        & > li {
+            border-bottom: 1px solid func.color('gray-200');
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+
         button {
             @include mixins.button-unstyled;
             line-height: func.units(5, 'rem');

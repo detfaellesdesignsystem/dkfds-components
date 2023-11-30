@@ -10277,7 +10277,7 @@ body.mobile-nav-active{
   padding-right:0 !important;
 }
 
-.navigation-menu ul.mainmenu .button-overflow-menu, .navigation-menu ul.mainmenu .more-button, .navigation-menu ul.mainmenu .nav-link{
+.navigation-menu ul.mainmenu .button-overflow-menu, .navigation-menu ul.mainmenu .button-overflow-menu.more-button, .navigation-menu ul.mainmenu .nav-link{
   display:block;
   padding:16px 12px 0 12px;
   text-decoration:none;
@@ -10290,20 +10290,20 @@ body.mobile-nav-active{
   white-space:nowrap;
   max-width:unset;
 }
-.navigation-menu ul.mainmenu .button-overflow-menu span, .navigation-menu ul.mainmenu .more-button span, .navigation-menu ul.mainmenu .nav-link span{
+.navigation-menu ul.mainmenu .button-overflow-menu span, .navigation-menu ul.mainmenu .button-overflow-menu.more-button span, .navigation-menu ul.mainmenu .nav-link span{
   display:block;
   border-bottom:4px solid transparent;
   padding-bottom:12px;
 }
-.navigation-menu ul.mainmenu .button-overflow-menu:hover span, .navigation-menu ul.mainmenu .more-button:hover span, .navigation-menu ul.mainmenu .nav-link:hover span{
+.navigation-menu ul.mainmenu .button-overflow-menu:hover span, .navigation-menu ul.mainmenu .nav-link:hover span{
   border-bottom:4px solid #44831E;
 }
-.navigation-menu ul.mainmenu .button-overflow-menu:focus, .navigation-menu ul.mainmenu .more-button:focus, .navigation-menu ul.mainmenu .nav-link:focus{
+.navigation-menu ul.mainmenu .button-overflow-menu:focus, .navigation-menu ul.mainmenu .nav-link:focus{
   position:relative;
   z-index:2;
 }
 
-.navigation-menu ul.mainmenu .button-overflow-menu span, .navigation-menu ul.mainmenu .more-button span{
+.navigation-menu ul.mainmenu .button-overflow-menu span, .navigation-menu ul.mainmenu .button-overflow-menu.more-button span{
   background-position-x:right;
   background-size:2.4rem;
   padding-right:calc(2.4rem + 4px);
@@ -10326,9 +10326,12 @@ body.mobile-nav-active{
   content:"" !important;
   padding-right:0 !important;
 }
-.navigation-menu ul.mainmenu .more-button span{
+.navigation-menu ul.mainmenu .button-overflow-menu.more-button[aria-expanded=false] span, .navigation-menu ul.mainmenu .button-overflow-menu.more-button[aria-expanded=true] span{
   background-image:url("../img/svg-icons/more-vert.svg");
   background-repeat:no-repeat;
+}
+.navigation-menu ul.mainmenu .button-overflow-menu.more-button:hover span{
+  border-bottom:4px solid transparent;
 }
 .navigation-menu ul.mainmenu li.active span{
   border-bottom:4px solid #44831E;
@@ -10365,6 +10368,15 @@ body.mobile-nav-active{
 .navigation-menu ul.mainmenu .overflow-menu-inner ul > li::before{
   content:"" !important;
   padding-right:0 !important;
+}
+.navigation-menu ul.mainmenu .overflow-menu-inner ul > li{
+  border-bottom:1px solid #DCDCDC;
+}
+.navigation-menu ul.mainmenu .overflow-menu-inner ul > li:last-child{
+  border-bottom:0;
+}
+.navigation-menu ul.mainmenu .overflow-menu-inner ul > li li{
+  border-bottom:0;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .nav-link{
   padding-top:8px;
@@ -11536,6 +11548,12 @@ a.skipnav:focus{
 .overflow-menu .overflow-list > li::before{
   content:"" !important;
   padding-right:0 !important;
+}
+.overflow-menu .overflow-list > li{
+  border-bottom:1px solid #DCDCDC;
+}
+.overflow-menu .overflow-list > li:last-child{
+  border-bottom:0;
 }
 .overflow-menu .overflow-list button{
   background-color:transparent;

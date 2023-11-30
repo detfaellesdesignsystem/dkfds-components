@@ -62,12 +62,19 @@ $-left-right-padding: func.units(305);
         @extend %-mainmenu-item;
     }
 
-    .more-button {
+    .button-overflow-menu.more-button {
         @extend %-mainmenu-item;
         @extend %-icon-properties;
 
-        span {
+        &[aria-expanded='false'] span,
+        &[aria-expanded='true'] span {
             @include mixins.add-background-svg("more-vert");
+        }
+
+        &:hover {
+            span {
+                border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+            }
         }
     }
 
@@ -103,6 +110,18 @@ $-left-right-padding: func.units(305);
 
         ul {
             @include mixins.unstyled-list;
+
+            & > li {
+                border-bottom: 1px solid func.color('gray-200');
+    
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                li {
+                    border-bottom: 0;
+                }
+            }
 
             .nav-link {
                 padding-top: func.units(3);
