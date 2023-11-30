@@ -34,7 +34,7 @@ $-left-right-padding: func.units(305);
 
     &:focus {
         position: relative;
-        z-index: 2;
+        z-index: vars.$zindex-nav-focus;
     }
 }
 
@@ -93,7 +93,7 @@ $-left-right-padding: func.units(305);
 
     .overflow-menu-inner {
         position: absolute;
-        z-index: 1;
+        z-index: vars.$zindex-nav-overflow-menu;
         top: 100%;
         width: 30rem;
         border: 1px solid func.color('gray-500');

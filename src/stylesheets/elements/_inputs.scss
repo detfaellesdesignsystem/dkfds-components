@@ -84,7 +84,7 @@ textarea.no-resize{
     flex: 0 1 auto;
     &:focus{
       position: relative;
-      z-index: 1;
+      z-index: vars.$zindex-focus;
     }
   }
   .form-input-prefix + .form-input, &.form-input-wrapper--prefix .form-input{
@@ -302,7 +302,7 @@ legend, .form-error-message, .form-hint {
     top: 0;
     box-sizing: border-box;
     cursor: pointer;
-    z-index: 1;
+    z-index: vars.$zindex-radio-checkbox;
     margin: 0;
     opacity: 0;
     height: $checkbox-radio-size;

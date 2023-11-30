@@ -17,7 +17,7 @@
 }
 .date-picker--active, .date-picker--initialized {
   .date-picker__calendar {
-    z-index: 400;
+    z-index: vars.$zindex-datepicker-1;
   }
 }
 
@@ -55,7 +55,7 @@
   @include mixins.media-breakpoint-up(md) {
     width: 344px;
   }
-  z-index: 100;
+  z-index: vars.$zindex-datepicker-2;
   margin-top: func.units(2);
 }
 
@@ -104,7 +104,7 @@
   border-bottom: func.border(vars.$datepicker-table-border);
 
   button:focus{
-    z-index: 10;
+    z-index: vars.$zindex-datepicker-3;
     position: relative;
   }
 }
@@ -190,7 +190,7 @@
 
   &--focused{
     position: relative;
-    z-index: 100;
+    z-index: vars.$zindex-datepicker-2;
     
     &:after {
       border: func.border(10);
@@ -311,7 +311,7 @@
     @include mixins.focus-outline;
     outline-offset: 2px;
     position: relative;
-    z-index: 100;
+    z-index: vars.$zindex-datepicker-2;
   }
 
 
@@ -371,7 +371,7 @@
   &--focused {
     @include mixins.focus;
     position: relative;
-    z-index: 100;
+    z-index: vars.$zindex-datepicker-2;
   }
   
 

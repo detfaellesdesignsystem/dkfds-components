@@ -29,7 +29,7 @@ $toast-icon-backgrounds: (
     left: func.units(4);
     top: func.units(4);
     bottom: auto;
-    z-index: 7000;
+    z-index: vars.$zindex-toast-container;
 
     @include mixins.media-breakpoint-up(md) {
         right: func.units(4);
