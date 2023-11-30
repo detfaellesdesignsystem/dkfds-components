@@ -264,6 +264,16 @@ $z-index-nav:     9000;
                 @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                     display: block;
                 }
+
+                // Remove search padding when both nav and search is in in the header.
+                // Otherwise, Firefox will calculate different heights when zooming in.
+                & + .form-group.search,
+                & + .search-form .form-group.search {
+                    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                }
             }
 
             .form-group.search {

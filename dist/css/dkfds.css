@@ -9801,6 +9801,12 @@ footer .footer-theme{
     display:block;
   }
 }
+@media (min-width: 992px){
+  .header .navigation-menu .navigation-menu-inner .nav + .form-group.search, .header .navigation-menu .navigation-menu-inner .nav + .search-form .form-group.search{
+    padding-top:0;
+    padding-bottom:0;
+  }
+}
 .header .navigation-menu .navigation-menu-inner .form-group.search{
   margin-top:0;
   flex:0 0 auto;
