@@ -89,8 +89,6 @@
         border: func.border(vars.$overflow-menu-content-border);
         box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
         background: func.color(vars.$overflow-menu-content-background-color);
-        padding-top: func.units(3);
-        padding-bottom: func.units(3);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
 
         @include mixins.media-breakpoint-up(md) {

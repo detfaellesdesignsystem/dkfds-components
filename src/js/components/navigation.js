@@ -136,8 +136,11 @@ const updateMoreMenu = function () {
                 if (mainMenuItems[j].getElementsByClassName('submenu').length > 0) {
                     /* The menu items contains subitems */
                     let subMenu = document.createElement('li');
+                    if (mainMenuItems[j].getElementsByClassName('active').length > 0) {
+                        subMenu.classList.add('active');
+                    }
                     let subMenuText = mainMenuItems[j].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
-                    subMenu.innerHTML = '<ul><li><span class="d-inline-block pr-305 pl-305 small-text">' + subMenuText + '</span></li></ul>';
+                    subMenu.innerHTML = '<ul aria-label="' + subMenuText + '"><span class="sub-title" aria-hidden="true">' + subMenuText + '</span></ul>';
                     let subElements = mainMenuItems[j].getElementsByTagName('LI');
                     for (let k = 0; k < subElements.length; k++) {
                         subMenu.getElementsByTagName('UL')[0].append(subElements[k].cloneNode(true));
