@@ -4768,6 +4768,7 @@ function hasForcedAction (modal){
 
 ;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation.js
 
+
 const forEach = __webpack_require__(834);
 const navigation_select = (__webpack_require__(526)/* ["default"] */ .Z);
 
@@ -4796,15 +4797,44 @@ class Navigation {
 
         if (document.getElementsByClassName('mainmenu').length > 0) {
             /* Add an invisible more button to the main menu navigation on desktop */
-            let moreButton = document.createElement('li');
-            moreButton.classList.add('more-option');
-            moreButton.classList.add('d-none');
-            moreButton.innerHTML = '<button class="more-button"><span>Mere</span></button>';
-            let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
-            mainMenu.append(moreButton);
-            /* Determine when the more button should be visible */
-            window.addEventListener('resize', moreMenu, false);
-            moreMenu();
+            createMoreMenu();
+
+            /* Sometimes, it's possible to correctly calculate the width of the menu items
+               very early during page load - if it fails, all widths are the same. If possible,
+               update the more menu as soon as possible for a better user experience. */
+            let widths = [];
+            let mainMenuItems = document.querySelectorAll('.navigation-menu .mainmenu > li');
+            for (let i = 0; i < mainMenuItems.length - 1; i++) {
+                let w = getVisibleWidth(mainMenuItems[i]);
+                widths.push(w);
+            }
+            let allWidthsEqual = (new Set(widths).size === 1); // The same value can't appear twice in a Set. If the size is 1, all widths in the array were equal.
+            if (!allWidthsEqual) {
+                updateMoreMenu();
+            }
+
+            /* Update more menu on window resize */
+            window.addEventListener('resize', updateMoreMenu, false);
+
+            // Observe DOM changes to the main menu
+            let config = {
+                attributes: false,
+                attributeOldValue: false,
+                characterData: false,
+                characterDataOldValue: false,
+                childList: true,
+                subtree: false
+            };
+            const callback = function (mutationsList, observer) {
+                updateMoreMenu();
+            };
+            const observer = new MutationObserver(callback);
+            observer.observe(document.querySelector('.navigation-menu .mainmenu'), config);
+            
+            /* Ensure the more menu is correctly displayed when all resources have loaded */
+            window.onload = (event) => {
+                updateMoreMenu();
+            };
         }
     }
 
@@ -4816,68 +4846,88 @@ class Navigation {
 
         if (document.getElementsByClassName('mainmenu').length > 0) {
             document.querySelectorAll('.navigation-menu .more-option')[0].remove;
-            window.removeEventListener('resize', moreMenu, false);
+            window.removeEventListener('resize', updateMoreMenu, false);
         }
     }
 }
 
-const moreMenu = function () {
-    /* Get relevant information about widths for later checks and calculations */
+const createMoreMenu = function () {
+    let mainMenu = document.querySelectorAll('.navigation-menu .mainmenu')[0];
+    let moreMenu = document.createElement('li');
+    moreMenu.classList.add('more-option');
+    moreMenu.classList.add('d-none');
+    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-haspopup="true" aria-expanded="false"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+    mainMenu.append(moreMenu);
+    new dropdown(document.getElementsByClassName('more-button')[0]).init();
+}
+
+const updateMoreMenu = function () {
     let mainMenuItems = document.querySelectorAll('.navigation-menu .mainmenu > li');
-    let containerPadding = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingLeft) + 
-                           parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingRight);
-    let mainMenuNegativeMargin = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .mainmenu')[0]).marginLeft);
-    let containerWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]) - containerPadding - mainMenuNegativeMargin; 
-    let moreOption = document.querySelectorAll('.navigation-menu .more-option')[0];
+    let moreMenu = mainMenuItems[mainMenuItems.length - 1];
+    let moreMenuList = document.querySelectorAll('.navigation-menu .more-option .overflow-list')[0];
+
+    /* Calculate available space for main menu items */
+    let menuWidth = Math.floor(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0].getBoundingClientRect().width);
     let searchWidth = 0;
-    let widths = [];
+    let paddingMoreMenu = 0;
     if (document.querySelectorAll('.navigation-menu.contains-search').length > 0) {
         searchWidth = getVisibleWidth(document.querySelectorAll('.navigation-menu .search')[0]);
     }
-    let totalWidth = searchWidth;
-    for (let i = 0; i < mainMenuItems.length; i++) {
-        let w = getVisibleWidth(mainMenuItems[i]);
-        widths.push(w);
-        /* The 'more button' should have its width added to the 'widths' array but not included in the 'totalWidth' */
-        if (i < mainMenuItems.length - 1) {
-            totalWidth = totalWidth + w;
+    else {
+        paddingMoreMenu = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .more-option .more-button')[0]).paddingRight);
+    }
+    let containerPadding = parseInt(window.getComputedStyle(document.querySelectorAll('.navigation-menu .navigation-menu-inner')[0]).paddingRight);
+    let availableSpace = menuWidth - searchWidth - containerPadding + paddingMoreMenu;
+
+    /* Find the max amount of main menu items, it is possible to show */
+    let widthNeeded = 0;
+    for (let i = 0; i < mainMenuItems.length - 1; i++) {
+        widthNeeded = widthNeeded + getVisibleWidth(mainMenuItems[i]);
+        if (widthNeeded >= availableSpace) {
+            break;
         }
     }
 
-    /* Hide 'more button' if there's room for all main menu items */
-    if (totalWidth < containerWidth) {
-        for (let i = 0; i < mainMenuItems.length - 1; i++) {
-            mainMenuItems[i].classList.remove('d-none');
+    if (widthNeeded < availableSpace) {
+        /* More menu not needed */
+        for (let l = 0; l < mainMenuItems.length - 1; l++) {
+            mainMenuItems[l].classList.remove('d-none');
         }
-        moreOption.classList.add('d-none');
+        moreMenu.classList.add('d-none');
     }
-    /* If there's not enough room, calculate which main menu items to show */
     else {
-        let previousItemWidths = 0;
-        let itemCount = -1;
-        /* Find the amount of buttons to show */
-        for (let i = 0; i < mainMenuItems.length - 1; i++) {
-            let moreButtonWidth = widths[mainMenuItems.length-1];
-            let currentItemWidth = widths[i];
-            if ((previousItemWidths + currentItemWidth + moreButtonWidth + searchWidth) >= containerWidth) {
-                /* There's not enough room for the next main menu item - stop item counting */
-                break;
+        let widthNeededWithMoreMenu = getVisibleWidth(moreMenu);
+        moreMenuList.innerHTML = "";
+        for (let j = 0; j < mainMenuItems.length - 1; j++) {
+            widthNeededWithMoreMenu = widthNeededWithMoreMenu + getVisibleWidth(mainMenuItems[j]);
+            if (widthNeededWithMoreMenu >= availableSpace) {
+                mainMenuItems[j].classList.remove('d-none'); // Make visible temporarily for cloning to the more menu
+                if (mainMenuItems[j].getElementsByClassName('submenu').length > 0) {
+                    /* The menu items contains subitems */
+                    let subMenu = document.createElement('li');
+                    if (mainMenuItems[j].getElementsByClassName('active').length > 0) {
+                        subMenu.classList.add('active');
+                    }
+                    let subMenuText = mainMenuItems[j].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
+                    subMenu.innerHTML = '<ul aria-label="' + subMenuText + '"><span class="sub-title" aria-hidden="true">' + subMenuText + '</span></ul>';
+                    let subElements = mainMenuItems[j].getElementsByTagName('LI');
+                    for (let k = 0; k < subElements.length; k++) {
+                        subMenu.getElementsByTagName('UL')[0].append(subElements[k].cloneNode(true));
+                    }
+                    moreMenuList.append(subMenu);
+                }
+                else {
+                    /* No subitems - cloning can be done without any issues */
+                    moreMenuList.append(mainMenuItems[j].cloneNode(true));
+                }
+                mainMenuItems[j].classList.add('d-none'); // Hide once cloning is done
             }
             else {
-                previousItemWidths = previousItemWidths + widths[i];
-                itemCount = i;
+                /* There's room for the main menu item - ensure it is visible */
+                mainMenuItems[j].classList.remove('d-none');
             }
         }
-        /* Ensure each main menu item gets the correct display property */
-        for (let i = 0; i < mainMenuItems.length - 1; i++) {
-            if (i <= itemCount) {
-                mainMenuItems[i].classList.remove('d-none');
-            }
-            else {
-                mainMenuItems[i].classList.add('d-none');
-            }
-        }
-        moreOption.classList.remove('d-none');
+        moreMenu.classList.remove('d-none');
     }
 }
 
@@ -4892,7 +4942,7 @@ const getVisibleWidth = function (element) {
     else {
         width = element.getBoundingClientRect().width;
     }
-    return Math.round(width);
+    return Math.ceil(width);
 }
 
 /**

@@ -34,7 +34,7 @@ $-left-right-padding: func.units(305);
 
     &:focus {
         position: relative;
-        z-index: 2;
+        z-index: vars.$zindex-nav-focus;
     }
 }
 
@@ -62,12 +62,19 @@ $-left-right-padding: func.units(305);
         @extend %-mainmenu-item;
     }
 
-    .more-button {
+    .button-overflow-menu.more-button {
         @extend %-mainmenu-item;
         @extend %-icon-properties;
 
-        span {
+        &[aria-expanded='false'] span,
+        &[aria-expanded='true'] span {
             @include mixins.add-background-svg("more-vert");
+        }
+
+        &:hover {
+            span {
+                border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+            }
         }
     }
 
@@ -75,6 +82,17 @@ $-left-right-padding: func.units(305);
         span {
             border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
             font-weight: func.font-weight("bold");
+        }
+    }
+
+    li.more-option {
+        ul {
+            @include mixins.nav-link-leftdist(func.units(2), vars.$navigation-link-current-border-color, func.units(4), func.units(7), func.units(7), func.units(7));
+
+            & > li {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
 
@@ -93,16 +111,34 @@ $-left-right-padding: func.units(305);
 
     .overflow-menu-inner {
         position: absolute;
-        z-index: 1;
+        z-index: vars.$zindex-nav-overflow-menu;
         top: 100%;
         width: 30rem;
         border: 1px solid func.color('gray-500');
         background-color: func.color('white');
-        padding: $navigation-row-link-padding-left-right;
         margin-left: -$navigation-row-link-padding-left-right;
 
         ul {
             @include mixins.unstyled-list;
+            
+
+            & > li {
+                border-bottom: 1px solid func.color('gray-200');
+                padding-left: $navigation-row-link-padding-left-right;
+                padding-right: $navigation-row-link-padding-left-right;
+
+                &.current {
+                    background-color: func.color(vars.$navigation-link-current-background-color);
+                }
+    
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                li {
+                    border-bottom: 0;
+                }
+            }
 
             .nav-link {
                 padding-top: func.units(3);
@@ -110,6 +146,7 @@ $-left-right-padding: func.units(305);
                 white-space: normal;
                 max-width: 100%;
                 overflow-wrap: break-word;
+                background-color: transparent;
 
                 span {
                     border-bottom: none;
@@ -124,8 +161,27 @@ $-left-right-padding: func.units(305);
                 }
             }
 
+
+
+            ul li:last-child .nav-link {
+                padding-bottom: func.units(4);
+            }
+
             li.current .nav-link span {
                 font-weight: func.font-weight("bold");
+            }
+
+            .sub-title {
+                @include mixins.h6;
+                color: func.color('gray-500');
+                border-bottom: 0;
+                padding-left: func.units(4);
+                padding-top: func.units(305);
+                display: inline-block;
+            }
+
+            .active .sub-title {
+                padding-left: func.units(305);
             }
         }
     }

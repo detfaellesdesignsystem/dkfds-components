@@ -15,7 +15,7 @@ body.modal-open{
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 8888;
+  z-index: vars.$zindex-modal-backdrop;
   padding: 16px;
 }
 .fds-modal {
@@ -25,7 +25,7 @@ body.modal-open{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
+  z-index: vars.$zindex-modal;
   margin: func.units(4);
 
   &[aria-hidden="false"] {

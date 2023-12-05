@@ -18,7 +18,6 @@
 @use 'elements/section';
 @use 'elements/buttons';
 @use 'elements/tags';
-@use 'elements/toggle';
 @use 'elements/badge';
 @use 'elements/embed';
 @use 'elements/figure';
@@ -55,6 +54,7 @@
 @use 'components/skipnav';
 @use 'components/cards';
 @use 'components/overflow-menu';
+@use 'components/toggleswitch';
 @use 'components/page-navigation';
 @use 'components/tooltip';
 @use 'components/tabsheets';

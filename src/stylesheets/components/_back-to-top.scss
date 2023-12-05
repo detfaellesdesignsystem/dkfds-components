@@ -11,7 +11,7 @@
     bottom: func.units(5);
     left: auto;
     top: auto;
-    z-index: 1;
+    z-index: vars.$zindex-back-to-top;
 
     &.button-tertiary {
         background-color: func.color(vars.$back-to-top-button-background);

@@ -34,7 +34,7 @@
 
         // below: arrow with border
         &:after,
-        &:before {
+        &::before {
             display: none;
             left: 50%;
             border: solid transparent;
@@ -43,7 +43,7 @@
             width: 0;
             position: absolute;
             pointer-events: none;
-            z-index: 3;
+            z-index: vars.$zindex-overflow-arrow;
             bottom: calc((vars.$overflow-menu-dropdown-distance * -1) - 1px);
         }
 
@@ -53,7 +53,7 @@
             margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px) * -1);
         }
 
-        &:before {
+        &::before {
             border-bottom-color: func.border-color(vars.$overflow-menu-content-border);
             border-width: vars.$overflow-menu-arrow-size;
             margin-left: calc(#{vars.$overflow-menu-arrow-size} * -1);
@@ -62,7 +62,7 @@
         &[aria-expanded="true"] {
 
             &:after,
-            &:before {
+            &::before {
                 display: block;
             }
         }
@@ -85,12 +85,10 @@
         position: absolute;
         width: 100%;
         max-width: 30rem;
-        z-index: 2;
+        z-index: vars.$zindex-overflow;
         border: func.border(vars.$overflow-menu-content-border);
         box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
         background: func.color(vars.$overflow-menu-content-background-color);
-        padding-top: func.units(3);
-        padding-bottom: func.units(3);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
 
         @include mixins.media-breakpoint-up(md) {
@@ -111,6 +109,14 @@
         font-size: func.font-size(vars.$overflow-menu-content-font-size);
         line-height: func.units(vars.$overflow-menu-content-line-height, 'rem');
         color: func.color(vars.$overflow-menu-content-text-color);
+
+        & > li {
+            border-bottom: 1px solid func.color('gray-200');
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
 
         button {
             @include mixins.button-unstyled;
@@ -142,7 +148,7 @@
             }
 
             &:focus {
-                z-index: 1;
+                z-index: vars.$zindex-focus;
             }
         }
     }
@@ -206,7 +212,7 @@
         @include mixins.media-breakpoint-up(md) {
             display: block;
 
-            &:before,
+            &::before,
             &:after {
                 display: none; // hide arrow
             }
@@ -234,7 +240,7 @@
         @include mixins.media-breakpoint-up(lg) {
             display: block;
 
-            &:before,
+            &::before,
             &:after {
                 display: none; // hide arrow
             }

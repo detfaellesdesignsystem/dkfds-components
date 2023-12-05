@@ -9,7 +9,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 9500;
+  z-index: vars.$zindex-cookie-message;
   margin-bottom: func.units(3);
   margin-left: func.units(3);
   margin-right: func.units(3);

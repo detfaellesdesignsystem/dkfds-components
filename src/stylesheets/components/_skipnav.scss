@@ -10,7 +10,7 @@ a.skipnav {
   position: absolute;
   top: -4.2rem;
   transition: all 0.2s ease-in-out;
-  z-index: 8000;
+  z-index: vars.$zindex-skip;
   max-width: none;
   outline-offset: 0;
 
