@@ -12280,21 +12280,35 @@ nav.tab-container ul{
   }
 }
 @media print{
-  .tab-container .tab-item{
+  .tab-container a.tab-item{
     color:#1a1a1a;
-    background-color:transparent !important;
+    background-color:transparent;
     border:1px solid #747474;
   }
-  .tab-container .tab-item[aria-selected=true], .tab-container .tab-item[aria-current=page]{
+  .tab-container a.tab-item[aria-current=page]{
+    background-color:transparent;
     color:#1a1a1a;
     border:4px solid #747474;
   }
-  .tab-container .tab-item[aria-selected=true] .icon-svg, .tab-container .tab-item[aria-current=page] .icon-svg{
+  .tab-container a.tab-item[aria-current=page] .icon-svg{
+    fill:#1a1a1a;
+  }
+  .tab-container button.tab-item{
+    color:#1a1a1a;
+    background-color:transparent;
+    border:1px solid #747474;
+  }
+  .tab-container button.tab-item[aria-selected=true]{
+    background-color:transparent;
+    color:#1a1a1a;
+    border:4px solid #747474;
+  }
+  .tab-container button.tab-item[aria-selected=true] .icon-svg{
     fill:#1a1a1a;
   }
   .tab-container .tab-item:not([aria-selected=true]):not([aria-current=page]){
-    padding-top:14px !important;
-    padding-bottom:14px !important;
+    padding-top:14px;
+    padding-bottom:14px;
   }
   .form-checkbox:checked + label::before,
   .form-checkbox[aria-checked=mixed] + label::before{
