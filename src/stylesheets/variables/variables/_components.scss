@@ -358,12 +358,17 @@ $table-selectable-hover-background-color:       'gray-100' !default;
 $table-selectable-selected-background-color:    'gray-200' !default;
 $table-selectable-help-text-color:              'ink-light' !default;
 
-// Tabs
-$tabnav-border:                             10 !default;
-$tabnav-background-color:                   'white' !default;
-$tavnav-button-default-background-color:    'gray-100' !default;
-$tavnav-button-hover-background-color:      'gray-200' !default;
-$tavnav-button-text-color:                  'black' !default;
+// Tabsheets
+$tabsheet-inactive-text-color:              'black' !default;
+$tabsheet-inactive-background-color:        'gray-100' !default;
+$tabsheet-active-text-color:                'white' !default;
+$tabsheet-active-text-color-print:          'black' !default;
+$tabsheet-active-background-color:          'gray-600' !default;
+$tabsheet-active-icon-color:                'white' !default;
+$tabsheet-icon-color-print:                 'black' !default;
+$tabsheet-default-border-color:             'gray-500' !default;
+$tabsheet-hover-background-color:           'gray-200' !default;
+$tabsheet-border:                           10 !default;
 
 // Tags
 $tag-border-radius:             $button-border-radius !default;

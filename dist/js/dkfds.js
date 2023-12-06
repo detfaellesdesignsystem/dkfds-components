@@ -11,7 +11,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 84:
+/***/ 834:
 /***/ ((module) => {
 
 "use strict";
@@ -41,7 +41,7 @@ module.exports = function forEach (ary, callback, thisArg) {
 
 /***/ }),
 
-/***/ 241:
+/***/ 159:
 /***/ (() => {
 
 /*
@@ -288,7 +288,7 @@ if (objCtr.defineProperty) {
 
 /***/ }),
 
-/***/ 764:
+/***/ 936:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
@@ -416,7 +416,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 
 /***/ }),
 
-/***/ 670:
+/***/ 255:
 /***/ ((module) => {
 
 "use strict";
@@ -454,7 +454,7 @@ function match(el, selector) {
 
 /***/ }),
 
-/***/ 418:
+/***/ 84:
 /***/ ((module) => {
 
 "use strict";
@@ -552,12 +552,12 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ 220:
+/***/ 842:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const assign = __webpack_require__(418);
-const delegate = __webpack_require__(956);
-const delegateAll = __webpack_require__(70);
+const assign = __webpack_require__(84);
+const delegate = __webpack_require__(670);
+const delegateAll = __webpack_require__(286);
 
 const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
 const SPACE = ' ';
@@ -636,10 +636,10 @@ module.exports = function behavior(events, props) {
 
 /***/ }),
 
-/***/ 525:
+/***/ 373:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const matches = __webpack_require__(670);
+const matches = __webpack_require__(255);
 
 module.exports = function(element, selector) {
   do {
@@ -653,7 +653,7 @@ module.exports = function(element, selector) {
 
 /***/ }),
 
-/***/ 787:
+/***/ 341:
 /***/ ((module) => {
 
 module.exports = function compose(functions) {
@@ -667,10 +667,10 @@ module.exports = function compose(functions) {
 
 /***/ }),
 
-/***/ 956:
+/***/ 670:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const closest = __webpack_require__(525);
+const closest = __webpack_require__(373);
 
 module.exports = function delegate(selector, fn) {
   return function delegation(event) {
@@ -684,11 +684,11 @@ module.exports = function delegate(selector, fn) {
 
 /***/ }),
 
-/***/ 70:
+/***/ 286:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const delegate = __webpack_require__(956);
-const compose = __webpack_require__(787);
+const delegate = __webpack_require__(670);
+const compose = __webpack_require__(341);
 
 const SPLAT = '*';
 
@@ -712,7 +712,7 @@ module.exports = function delegateAll(selectors) {
 
 /***/ }),
 
-/***/ 435:
+/***/ 51:
 /***/ ((module) => {
 
 module.exports = function ignore(element, fn) {
@@ -726,27 +726,27 @@ module.exports = function ignore(element, fn) {
 
 /***/ }),
 
-/***/ 425:
+/***/ 298:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  behavior: __webpack_require__(220),
-  delegate: __webpack_require__(956),
-  delegateAll: __webpack_require__(70),
-  ignore: __webpack_require__(435),
-  keymap: __webpack_require__(715),
+  behavior: __webpack_require__(842),
+  delegate: __webpack_require__(670),
+  delegateAll: __webpack_require__(286),
+  ignore: __webpack_require__(51),
+  keymap: __webpack_require__(793),
 };
 
 
 /***/ }),
 
-/***/ 715:
+/***/ 793:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-__webpack_require__(764);
+__webpack_require__(936);
 
 // these are the only relevant modifiers supported on all platforms,
 // according to MDN:
@@ -793,7 +793,7 @@ module.exports.MODIFIERS = MODIFIERS;
 
 /***/ }),
 
-/***/ 561:
+/***/ 326:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -803,14 +803,14 @@ __webpack_require__.d(__webpack_exports__, {
   Z: () => (/* binding */ date_picker)
 });
 
-// EXTERNAL MODULE: ./node_modules/receptor/lib/index.js
-var lib = __webpack_require__(425);
-// EXTERNAL MODULE: ./node_modules/object-assign/index.js
-var object_assign = __webpack_require__(418);
+// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/node_modules/receptor/lib/index.js
+var lib = __webpack_require__(298);
+// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/node_modules/object-assign/index.js
+var object_assign = __webpack_require__(84);
 var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
-;// CONCATENATED MODULE: ./src/js/utils/behavior.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/behavior.js
 
-const receptor = __webpack_require__(425);
+const receptor = __webpack_require__(298);
 
 /**
  * @name sequence
@@ -846,12 +846,12 @@ const sequence = (...seq) =>
     )
   ));
 
-// EXTERNAL MODULE: ./src/js/utils/select.js
-var utils_select = __webpack_require__(231);
-;// CONCATENATED MODULE: ./src/js/utils/active-element.js
+// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/select.js
+var utils_select = __webpack_require__(526);
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/active-element.js
 /* harmony default export */ const active_element = ((htmlDocument = document) => htmlDocument.activeElement);
 
-;// CONCATENATED MODULE: ./src/js/utils/is-ios-device.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 function isIosDevice() {
   return (
@@ -864,7 +864,7 @@ function isIosDevice() {
 
 /* harmony default export */ const is_ios_device = (isIosDevice);
 
-;// CONCATENATED MODULE: ./src/js/components/date-picker.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/date-picker.js
 
 
 
@@ -3203,7 +3203,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 11:
+/***/ 945:
 /***/ (() => {
 
 /* eslint-disable consistent-return */
@@ -3233,7 +3233,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 762:
+/***/ 601:
 /***/ (() => {
 
 "use strict";
@@ -3259,27 +3259,27 @@ if (!(HIDDEN in elproto)) {
 
 /***/ }),
 
-/***/ 742:
+/***/ 668:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 // polyfills HTMLElement.prototype.classList and DOMTokenList
-__webpack_require__(241);
+__webpack_require__(159);
 
 // polyfills HTMLElement.prototype.hidden
-__webpack_require__(762);
+__webpack_require__(601);
 
 // polyfills Number.isNaN()
-__webpack_require__(737);
+__webpack_require__(905);
 
 // polyfills CustomEvent
-__webpack_require__(11);
+__webpack_require__(945);
 
 /***/ }),
 
-/***/ 737:
+/***/ 905:
 /***/ (() => {
 
 Number.isNaN =
@@ -3292,7 +3292,7 @@ Number.isNaN =
 
 /***/ }),
 
-/***/ 660:
+/***/ 242:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3313,7 +3313,7 @@ let breakpoints = {
 
 /***/ }),
 
-/***/ 843:
+/***/ 865:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3338,7 +3338,7 @@ function isElementInViewport (el, win=window,
 
 /***/ }),
 
-/***/ 231:
+/***/ 526:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3378,7 +3378,7 @@ const isElement = (value) =>
 
 /***/ }),
 
-/***/ 95:
+/***/ 903:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3502,17 +3502,17 @@ __webpack_require__.d(__webpack_exports__, {
   RadioToggleGroup: () => (/* reexport */ radio_toggle_content),
   ResponsiveTable: () => (/* reexport */ table),
   TableSelectableRows: () => (/* reexport */ selectable_table),
-  Tabnav: () => (/* reexport */ tabnav),
+  Tabs: () => (/* reexport */ tabs),
   Toast: () => (/* reexport */ toast),
   Tooltip: () => (/* reexport */ tooltip),
   datePicker: () => (/* binding */ datePicker),
   init: () => (/* binding */ init)
 });
 
-;// CONCATENATED MODULE: ./src/js/components/accordion.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/accordion.js
 
-const toggle = (__webpack_require__(95)/* ["default"] */ .Z);
-const isElementInViewport = (__webpack_require__(843)/* ["default"] */ .Z);
+const toggle = (__webpack_require__(903)/* ["default"] */ .Z);
+const isElementInViewport = (__webpack_require__(865)/* ["default"] */ .Z);
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
@@ -3658,7 +3658,7 @@ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
 };
 
 /* harmony default export */ const accordion = (Accordion);
-;// CONCATENATED MODULE: ./src/js/components/alert.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/alert.js
 
 function Alert(alert){
     this.alert = alert;
@@ -3685,7 +3685,7 @@ Alert.prototype.show = function(){
 };
 
 /* harmony default export */ const components_alert = (Alert);
-;// CONCATENATED MODULE: ./src/js/components/back-to-top.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/back-to-top.js
 
 
 function BackToTop(backtotop) {
@@ -3847,7 +3847,7 @@ function isFooterVisible(footerElement) {
 }
 
 /* harmony default export */ const back_to_top = (BackToTop);
-;// CONCATENATED MODULE: ./src/js/components/character-limit.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/character-limit.js
 
 
 const MAX_LENGTH = 'data-maxlength';
@@ -4013,7 +4013,7 @@ CharacterLimit.prototype.updateMessages = function () {
 }
 
 /* harmony default export */ const character_limit = (CharacterLimit);
-;// CONCATENATED MODULE: ./src/js/components/checkbox-toggle-content.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/checkbox-toggle-content.js
 
 
 const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
@@ -4085,9 +4085,9 @@ CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
 
 /* harmony default export */ const checkbox_toggle_content = (CheckboxToggleContent);
 
-;// CONCATENATED MODULE: ./src/js/components/dropdown.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown.js
 
-const breakpoints = (__webpack_require__(660)/* ["default"] */ .Z);
+const breakpoints = (__webpack_require__(242)/* ["default"] */ .Z);
 const dropdown_BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
@@ -4388,7 +4388,7 @@ let getTringuideBreakpoint = function (button){
 };
 
 /* harmony default export */ const dropdown = (Dropdown);
-;// CONCATENATED MODULE: ./src/js/components/dropdown-sort.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown-sort.js
 
 
 
@@ -4451,7 +4451,7 @@ DropdownSort.prototype.onOptionClick = function(e){
 
 /* harmony default export */ const dropdown_sort = (DropdownSort);
 
-;// CONCATENATED MODULE: ./src/js/components/error-summary.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/error-summary.js
 
 /**
  * Handle focus on input elements upon clicking link in error message
@@ -4602,7 +4602,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 /* harmony default export */ const error_summary = (ErrorSummary);
-;// CONCATENATED MODULE: ./src/js/components/modal.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/modal.js
 
 /**
  * Adds click functionality to modal
@@ -4766,11 +4766,11 @@ function hasForcedAction (modal){
 
 /* harmony default export */ const modal = (Modal);
 
-;// CONCATENATED MODULE: ./src/js/components/navigation.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation.js
 
 
-const forEach = __webpack_require__(84);
-const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
+const forEach = __webpack_require__(834);
+const navigation_select = (__webpack_require__(526)/* ["default"] */ .Z);
 
 //const NAV_DESKTOP = `.navigation-header`;
 const MOBILE_DRAWER = `.mobile-drawer`;
@@ -5105,7 +5105,7 @@ const toggleNav = function (active) {
 };
 
 /* harmony default export */ const navigation = (Navigation);
-;// CONCATENATED MODULE: ./src/js/components/navigation-drawer-overflow.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation-drawer-overflow.js
 
 const navigation_drawer_overflow_TARGET = 'data-js-target';
 
@@ -5192,7 +5192,7 @@ let navigation_drawer_overflow_toggle = function(button, forceClose = false){
 }
 
 /* harmony default export */ const navigation_drawer_overflow = (MenuDropdown);
-;// CONCATENATED MODULE: ./src/js/components/radio-toggle-content.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/radio-toggle-content.js
 
 const TOGGLE_ATTRIBUTE = 'data-controls';
 
@@ -5275,8 +5275,8 @@ RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement
 }
 
 /* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
-;// CONCATENATED MODULE: ./src/js/components/table.js
-const table_select = (__webpack_require__(231)/* ["default"] */ .Z);
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/table.js
+const table_select = (__webpack_require__(526)/* ["default"] */ .Z);
 
 /**
  * Set data-title on cells, where the attribute is missing
@@ -5320,72 +5320,63 @@ function insertHeaderAsAttributes(tableEl) {
 
 /* harmony default export */ const table = (ResponsiveTable);
 
-;// CONCATENATED MODULE: ./src/js/components/tabnav.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tabs.js
 
-let tabnav_breakpoints = {
-  'xs': 0,
-  'sm': 576,
-  'md': 768,
-  'lg': 992,
-  'xl': 1200
-};
 
 // For easy reference
 var keys = {
   end: 35,
   home: 36,
   left: 37,
-  up: 38,
   right: 39,
-  down: 40,
-  delete: 46
 };
 
 // Add or substract depending on key pressed
 var direction = {
   37: -1,
-  38: -1,
   39: 1,
-  40: 1
 };
 
 /**
- * Add functionality to tabnav component
- * @param {HTMLElement} tabnav Tabnav container
+ * Adds functionality to tab container component without URL change
+ * @param {HTMLElement} tabContainer Tab container
  */
-function Tabnav (tabnav) {
-  this.tabnav = tabnav;
-  this.tabs = this.tabnav.querySelectorAll('button.tabnav-item');
+function Tabs(tabContainer) {
+  if(!tabContainer) {
+    throw new Error(`Missing tab container element`);
+  }
+  this.tabContainer = tabContainer;
+  this.tabs = this.tabContainer.querySelectorAll('.tab-item');
 }
 
 /**
  * Set event on component
  */
-Tabnav.prototype.init = function(){
-  if(this.tabs.length === 0){
-    throw new Error(`Tabnav HTML seems to be missing tabnav-item. Add tabnav items to ensure each panel has a button in the tabnavs navigation.`);
+Tabs.prototype.init = function () {
+  if (this.tabs.length === 0) {
+    throw new Error(`tabContainer element seems to be missing a child tab-item. There needs to be atleast one tab of class tab-item to set an active tab`);
   }
 
   // if no hash is set on load, set active tab
   if (!setActiveHashTab()) {
     // set first tab as active
-    let tab = this.tabs[ 0 ];
+    let tab = this.tabs[0];
 
-    // check no other tabs as been set at default
-    let alreadyActive = getActiveTabs(this.tabnav);
-    if (alreadyActive.length === 0) {
-      tab = alreadyActive[ 0 ];
+    // check no other tabs has been set at default. If so set tab to the first active tab found
+    let alreadyActive = getActiveTabs(this.tabContainer);
+    if (alreadyActive.length !== 0) {
+      tab = alreadyActive[0];
     }
-
+    
     // activate and deactivate tabs
     this.activateTab(tab, false);
   }
   let $module = this;
   // add eventlisteners on buttons
-  for(let t = 0; t < this.tabs.length; t ++){
-    this.tabs[ t ].addEventListener('click', function(){$module.activateTab(this, false)});
-    this.tabs[ t ].addEventListener('keydown', keydownEventListener);
-    this.tabs[ t ].addEventListener('keyup', keyupEventListener);
+  for (let t = 0; t < this.tabs.length; t++) {
+    this.tabs[t].addEventListener('click', function () { $module.activateTab(this, false) });
+    this.tabs[t].addEventListener('keydown', keydownEventListener);
+    this.tabs[t].addEventListener('keyup', keyupEventListener);
   }
 }
 
@@ -5394,132 +5385,86 @@ Tabnav.prototype.init = function(){
  * @param {HTMLButtonElement} tab button element
  * @param {boolean} setFocus True if tab button should be focused
  */
- Tabnav.prototype.activateTab = function(tab, setFocus) {
+Tabs.prototype.activateTab = function (tab, setFocus) {
   let tabs = getAllTabsInList(tab);
 
-  // close all tabs except selected
-  for (let i = 0; i < this.tabs.length; i++) {
-    if (tabs[ i ] === tab) {
-      continue;
+  if (tab.getAttribute('aria-selected') !== null) {
+
+    // close all tabs except selected
+    for (let i = 0; i < this.tabs.length; i++) {
+      if (tabs[i] === tab) {
+        continue;
+      }
+
+      if (tabs[i].getAttribute('aria-selected') === 'true') {
+        let eventClose = new Event('fds.tab.close');
+        tabs[i].dispatchEvent(eventClose);
+      }
+
+      tabs[i].setAttribute('aria-selected', 'false');
+      tabs[i].setAttribute('tabindex', '-1');
+      let tabpanelID = tabs[i].getAttribute('aria-controls');
+      let tabpanel = document.getElementById(tabpanelID)
+      if (tabpanel === null) {
+        throw new Error(`Could not find tabpanel from ID.`);
+      }
+      tabpanel.setAttribute('hidden', true);
     }
 
-    if (tabs[ i ].getAttribute('aria-selected') === 'true') {
-      let eventClose = new Event('fds.tabnav.close');
-      tabs[ i ].dispatchEvent(eventClose);
+    // Set selected tab to active
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    let tabpanelID = tab.getAttribute('aria-controls');
+    let tabpanel = document.getElementById(tabpanelID);
+    if (tabpanel === null) {
+      throw new Error(`Could not find tabpanel to set active.`);
+    }
+    tabpanel.removeAttribute('hidden');
+
+    // Set focus when required
+    if (setFocus) {
+      tab.focus();
     }
 
-    tabs[ i ].setAttribute('tabindex', '-1');
-    tabs[ i ].setAttribute('aria-selected', 'false');
-    let tabpanelID = tabs[ i ].getAttribute('aria-controls');
-    let tabpanel = document.getElementById(tabpanelID)
-    if(tabpanel === null){
-      throw new Error(`Could not find tabpanel.`);
-    }
-    tabpanel.setAttribute('aria-hidden', 'true');
+    let eventChanged = new Event('fds.tab.changed');
+    tab.parentNode.parentNode.parentNode.dispatchEvent(eventChanged);
+
+    let eventOpen = new Event('fds.tab.open');
+    tab.dispatchEvent(eventOpen);
   }
-  
-  // Set selected tab to active
-  let tabpanelID = tab.getAttribute('aria-controls');
-  let tabpanel = document.getElementById(tabpanelID);
-  if(tabpanel === null){
-    throw new Error(`Could not find accordion panel.`);
-  }
-
-  tab.setAttribute('aria-selected', 'true');
-  tabpanel.setAttribute('aria-hidden', 'false');
-  tab.removeAttribute('tabindex');
-
-  // Set focus when required
-  if (setFocus) {
-    tab.focus();
-  }
-
-  let eventChanged = new Event('fds.tabnav.changed');
-  tab.parentNode.dispatchEvent(eventChanged);
-
-  let eventOpen = new Event('fds.tabnav.open');
-  tab.dispatchEvent(eventOpen);
 }
 
 /**
- * Add keydown events to tabnav component
+ * Add keydown events to tabContainer component
  * @param {KeyboardEvent} event 
  */
-function keydownEventListener (event) {
+function keydownEventListener(event) {
   let key = event.keyCode;
-
   switch (key) {
     case keys.end:
       event.preventDefault();
       // Activate last tab
-      focusLastTab(event.target);
+      switchTabOnKeyPress(event);
       break;
     case keys.home:
       event.preventDefault();
       // Activate first tab
-      focusFirstTab(event.target);
-      break;
-    // Up and down are in keydown
-    // because we need to prevent page scroll >:)
-    case keys.up:
-    case keys.down:
-      determineOrientation(event);
+      switchTabOnKeyPress(event);
       break;
   }
 }
 
 /**
- * Add keyup events to tabnav component
+ * Add keyup events to tabContainer component
  * @param {KeyboardEvent} event 
  */
-function keyupEventListener (event) {
+function keyupEventListener(event) {
   let key = event.keyCode;
-
   switch (key) {
     case keys.left:
     case keys.right:
-      determineOrientation(event);
+      switchTabOnKeyPress(event);
       break;
-    case keys.delete:
-      break;
-    case keys.enter:
-    case keys.space:
-      new Tabnav(event.target.parentNode).activateTab(event.target, true);
-      break;
-  }
-}
-
-/**
- * When a tablist aria-orientation is set to vertical,
- * only up and down arrow should function.
- * In all other cases only left and right arrow function.
- */
-function determineOrientation (event) {
-  let key = event.keyCode;
-
-  let w=window,
-    d=document,
-    e=d.documentElement,
-    g=d.getElementsByTagName('body')[ 0 ],
-    x=w.innerWidth||e.clientWidth||g.clientWidth,
-    y=w.innerHeight||e.clientHeight||g.clientHeight;
-
-  let vertical = x < tabnav_breakpoints.md;
-  let proceed = false;
-
-  if (vertical) {
-    if (key === keys.up || key === keys.down) {
-      event.preventDefault();
-      proceed = true;
-    }
-  }
-  else {
-    if (key === keys.left || key === keys.right) {
-      proceed = true;
-    }
-  }
-  if (proceed) {
-    switchTabOnArrowPress(event);
   }
 }
 
@@ -5527,33 +5472,42 @@ function determineOrientation (event) {
  * Either focus the next, previous, first, or last tab
  * depending on key pressed
  */
-function switchTabOnArrowPress (event) {
-  var pressed = event.keyCode;
-  if (direction[ pressed ]) {
-    let target = event.target;
-    let tabs = getAllTabsInList(target);
+function switchTabOnKeyPress(event) {
+  let pressed = event.keyCode;
+  let target = event.target;
+  let greatGrandparentNode = target.parentNode.parentNode.parentNode;
+  let tabs = getAllTabsInList(target);
+  if (direction[pressed]) {
     let index = getIndexOfElementInList(target, tabs);
     if (index !== -1) {
-      if (tabs[ index + direction[ pressed ] ]) {
-        tabs[ index + direction[ pressed ] ].focus();
+      if (tabs[index + direction[pressed]]) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[index + direction[pressed]], true);
       }
-      else if (pressed === keys.left || pressed === keys.up) {
-        focusLastTab(target);
+      else if (pressed === keys.left) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
       }
-      else if (pressed === keys.right || pressed == keys.down) {
-        focusFirstTab(target);
+      else if (pressed === keys.right) {
+        new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
       }
     }
+  } else if (pressed === keys.home) {
+      new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
+  } else if (pressed === keys.end) {
+      new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
   }
 }
 
 /**
  * Get all active tabs in list
- * @param tabnav parent .tabnav element
+ * @param tabContainer parent .tab-container element
  * @returns returns list of active tabs if any
  */
-function getActiveTabs (tabnav) {
-  return tabnav.querySelectorAll('button.tabnav-item[aria-selected=true]');
+function getActiveTabs(tabContainer) {
+  if (tabContainer.querySelector('button.tab-item') !== null) {
+    return tabContainer.querySelectorAll('.tab-item[aria-selected=true]');
+  } else {
+    throw new Error(`tabContainer HTML seems to be missing a tab-item in the tab-container.`);
+  }
 }
 
 /**
@@ -5561,12 +5515,13 @@ function getActiveTabs (tabnav) {
  * @param tab Button tab element
  * @returns {*} return array of tabs
  */
-function getAllTabsInList (tab) {
-  let parentNode = tab.parentNode;
-  if (parentNode.classList.contains('tabnav')) {
-    return parentNode.querySelectorAll('button.tabnav-item');
+function getAllTabsInList(tab) {
+  let greatGrandparentNode = tab.parentNode.parentNode.parentNode;
+  if (greatGrandparentNode.classList.contains('tab-container')) {
+    return greatGrandparentNode.querySelectorAll('.tab-item');
+  } else {
+    return [];
   }
-  return [];
 }
 
 /**
@@ -5575,10 +5530,10 @@ function getAllTabsInList (tab) {
  * @param {HTMLCollection} list 
  * @returns {index}
  */
-function getIndexOfElementInList (element, list){
+function getIndexOfElementInList(element, list) {
   let index = -1;
-  for (let i = 0; i < list.length; i++ ){
-    if(list[ i ] === element){
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] === element) {
       index = i;
       break;
     }
@@ -5591,37 +5546,21 @@ function getIndexOfElementInList (element, list){
  * Checks if there is a tab hash in the url and activates the tab accordingly
  * @returns {boolean} returns true if tab has been set - returns false if no tab has been set to active
  */
-function setActiveHashTab () {
+function setActiveHashTab() {
   let hash = location.hash.replace('#', '');
-  if (hash !== '') {
-    let tab = document.querySelector('button.tabnav-item[aria-controls="#' + hash + '"]');
+  if (hash !== '' && hash !== "tab-component") {
+    let selector = '.tab-item[aria-controls="' + hash + '"]';
+    let tab = document.querySelector(selector);
     if (tab !== null) {
-      activateTab(tab, false);
+      new Tabs(tab.parentNode.parentNode.parentNode).activateTab(tab, false);
       return true;
     }
   }
   return false;
 }
 
-/**
- * Get first tab by tab in list
- * @param {HTMLButtonElement} tab 
- */
-function focusFirstTab (tab) {
-  getAllTabsInList(tab)[ 0 ].focus();
-}
-
-/**
- * Get last tab by tab in list
- * @param {HTMLButtonElement} tab 
- */
-function focusLastTab (tab) {
-  let tabs = getAllTabsInList(tab);
-  tabs[ tabs.length - 1 ].focus();
-}
-
-/* harmony default export */ const tabnav = (Tabnav);
-;// CONCATENATED MODULE: ./src/js/components/selectable-table.js
+/* harmony default export */ const tabs = (Tabs);
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/selectable-table.js
 
 
 /**
@@ -5749,7 +5688,7 @@ function updateGroupCheck(e){
 }
 
 /* harmony default export */ const selectable_table = (TableSelectableRows);
-;// CONCATENATED MODULE: ./src/js/components/toast.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/toast.js
 
 /**
  * Show/hide toast component
@@ -5793,7 +5732,7 @@ function showToast(){
 }
 
 /* harmony default export */ const toast = (Toast);
-;// CONCATENATED MODULE: ./src/js/components/tooltip.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tooltip.js
 
 /**
  * Set tooltip on element
@@ -6048,7 +5987,7 @@ function removeTooltip(trigger) {
 
 /* harmony default export */ const tooltip = (Tooltip);
 
-;// CONCATENATED MODULE: ./src/js/dkfds.js
+;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/dkfds.js
 
 
 
@@ -6067,12 +6006,12 @@ function removeTooltip(trigger) {
 
 
 
-const datePicker = (__webpack_require__(561)/* ["default"] */ .Z);
+const datePicker = (__webpack_require__(326)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
  */
-__webpack_require__(742);
+__webpack_require__(668);
 
 /**
  * Init all components
@@ -6238,12 +6177,12 @@ var init = function (options) {
 
   /*
   ---------------------
-  Tabnav
+  Tabs
   ---------------------
   */
-  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
-  for(let c = 0; c < jsSelectorTabnav.length; c++){
-    new tabnav(jsSelectorTabnav[ c ]).init();
+  const jsSelectorTabs = scope.querySelectorAll('div.tab-container');
+  for(let c = 0; c < jsSelectorTabs.length; c++){
+    new tabs(jsSelectorTabs[ c ]).init();
   }
 
   /*
@@ -6257,6 +6196,7 @@ var init = function (options) {
   }
   
 };
+
 
 
 })();

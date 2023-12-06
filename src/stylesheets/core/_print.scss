@@ -195,6 +195,47 @@
         }
     }
 
+    // tabs
+    .tab-container {
+
+        a.tab-item {
+            color: func.color(vars.$tabsheet-inactive-text-color);
+            background-color: transparent;
+            border: func.border(vars.$tabsheet-border); 
+
+            &[aria-current="page"] {
+                background-color: transparent;
+                color: func.color(vars.$tabsheet-active-text-color-print);
+                border: 4px solid func.color(vars.$tabsheet-default-border-color); 
+
+                .icon-svg {
+                    fill: func.color(vars.$tabsheet-icon-color-print);
+                }
+            }
+        }
+
+        button.tab-item {
+            color: func.color(vars.$tabsheet-inactive-text-color);
+            background-color: transparent;
+            border: func.border(vars.$tabsheet-border); 
+            
+            &[aria-selected="true"] {
+                background-color: transparent;
+                color: func.color(vars.$tabsheet-active-text-color-print);
+                border: 4px solid func.color(vars.$tabsheet-default-border-color); 
+
+                .icon-svg {
+                    fill: func.color(vars.$tabsheet-icon-color-print);
+                }
+            }
+        }
+        
+        .tab-item:not([aria-selected="true"]):not([aria-current="page"]) {
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+    }
+
     // Checkboxes
 
     // Checked checkbox
