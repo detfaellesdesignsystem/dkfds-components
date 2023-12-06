@@ -11,7 +11,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 834:
+/***/ 84:
 /***/ ((module) => {
 
 "use strict";
@@ -41,7 +41,7 @@ module.exports = function forEach (ary, callback, thisArg) {
 
 /***/ }),
 
-/***/ 159:
+/***/ 241:
 /***/ (() => {
 
 /*
@@ -288,7 +288,7 @@ if (objCtr.defineProperty) {
 
 /***/ }),
 
-/***/ 936:
+/***/ 764:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
@@ -416,7 +416,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 
 /***/ }),
 
-/***/ 255:
+/***/ 670:
 /***/ ((module) => {
 
 "use strict";
@@ -454,7 +454,7 @@ function match(el, selector) {
 
 /***/ }),
 
-/***/ 84:
+/***/ 418:
 /***/ ((module) => {
 
 "use strict";
@@ -552,12 +552,12 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ 842:
+/***/ 220:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const assign = __webpack_require__(84);
-const delegate = __webpack_require__(670);
-const delegateAll = __webpack_require__(286);
+const assign = __webpack_require__(418);
+const delegate = __webpack_require__(956);
+const delegateAll = __webpack_require__(70);
 
 const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
 const SPACE = ' ';
@@ -636,10 +636,10 @@ module.exports = function behavior(events, props) {
 
 /***/ }),
 
-/***/ 373:
+/***/ 525:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const matches = __webpack_require__(255);
+const matches = __webpack_require__(670);
 
 module.exports = function(element, selector) {
   do {
@@ -653,7 +653,7 @@ module.exports = function(element, selector) {
 
 /***/ }),
 
-/***/ 341:
+/***/ 787:
 /***/ ((module) => {
 
 module.exports = function compose(functions) {
@@ -667,10 +667,10 @@ module.exports = function compose(functions) {
 
 /***/ }),
 
-/***/ 670:
+/***/ 956:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const closest = __webpack_require__(373);
+const closest = __webpack_require__(525);
 
 module.exports = function delegate(selector, fn) {
   return function delegation(event) {
@@ -684,11 +684,11 @@ module.exports = function delegate(selector, fn) {
 
 /***/ }),
 
-/***/ 286:
+/***/ 70:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const delegate = __webpack_require__(670);
-const compose = __webpack_require__(341);
+const delegate = __webpack_require__(956);
+const compose = __webpack_require__(787);
 
 const SPLAT = '*';
 
@@ -712,7 +712,7 @@ module.exports = function delegateAll(selectors) {
 
 /***/ }),
 
-/***/ 51:
+/***/ 435:
 /***/ ((module) => {
 
 module.exports = function ignore(element, fn) {
@@ -726,27 +726,27 @@ module.exports = function ignore(element, fn) {
 
 /***/ }),
 
-/***/ 298:
+/***/ 425:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  behavior: __webpack_require__(842),
-  delegate: __webpack_require__(670),
-  delegateAll: __webpack_require__(286),
-  ignore: __webpack_require__(51),
-  keymap: __webpack_require__(793),
+  behavior: __webpack_require__(220),
+  delegate: __webpack_require__(956),
+  delegateAll: __webpack_require__(70),
+  ignore: __webpack_require__(435),
+  keymap: __webpack_require__(715),
 };
 
 
 /***/ }),
 
-/***/ 793:
+/***/ 715:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-__webpack_require__(936);
+__webpack_require__(764);
 
 // these are the only relevant modifiers supported on all platforms,
 // according to MDN:
@@ -793,7 +793,7 @@ module.exports.MODIFIERS = MODIFIERS;
 
 /***/ }),
 
-/***/ 326:
+/***/ 561:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -803,14 +803,14 @@ __webpack_require__.d(__webpack_exports__, {
   Z: () => (/* binding */ date_picker)
 });
 
-// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/node_modules/receptor/lib/index.js
-var lib = __webpack_require__(298);
-// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/node_modules/object-assign/index.js
-var object_assign = __webpack_require__(84);
+// EXTERNAL MODULE: ./node_modules/receptor/lib/index.js
+var lib = __webpack_require__(425);
+// EXTERNAL MODULE: ./node_modules/object-assign/index.js
+var object_assign = __webpack_require__(418);
 var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/behavior.js
+;// CONCATENATED MODULE: ./src/js/utils/behavior.js
 
-const receptor = __webpack_require__(298);
+const receptor = __webpack_require__(425);
 
 /**
  * @name sequence
@@ -846,12 +846,12 @@ const sequence = (...seq) =>
     )
   ));
 
-// EXTERNAL MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/select.js
-var utils_select = __webpack_require__(526);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/active-element.js
+// EXTERNAL MODULE: ./src/js/utils/select.js
+var utils_select = __webpack_require__(231);
+;// CONCATENATED MODULE: ./src/js/utils/active-element.js
 /* harmony default export */ const active_element = ((htmlDocument = document) => htmlDocument.activeElement);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/utils/is-ios-device.js
+;// CONCATENATED MODULE: ./src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 function isIosDevice() {
   return (
@@ -864,7 +864,7 @@ function isIosDevice() {
 
 /* harmony default export */ const is_ios_device = (isIosDevice);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/date-picker.js
+;// CONCATENATED MODULE: ./src/js/components/date-picker.js
 
 
 
@@ -3203,7 +3203,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 945:
+/***/ 11:
 /***/ (() => {
 
 /* eslint-disable consistent-return */
@@ -3233,7 +3233,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 601:
+/***/ 762:
 /***/ (() => {
 
 "use strict";
@@ -3259,27 +3259,27 @@ if (!(HIDDEN in elproto)) {
 
 /***/ }),
 
-/***/ 668:
+/***/ 742:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 // polyfills HTMLElement.prototype.classList and DOMTokenList
-__webpack_require__(159);
+__webpack_require__(241);
 
 // polyfills HTMLElement.prototype.hidden
-__webpack_require__(601);
+__webpack_require__(762);
 
 // polyfills Number.isNaN()
-__webpack_require__(905);
+__webpack_require__(737);
 
 // polyfills CustomEvent
-__webpack_require__(945);
+__webpack_require__(11);
 
 /***/ }),
 
-/***/ 905:
+/***/ 737:
 /***/ (() => {
 
 Number.isNaN =
@@ -3292,7 +3292,7 @@ Number.isNaN =
 
 /***/ }),
 
-/***/ 242:
+/***/ 660:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3313,7 +3313,7 @@ let breakpoints = {
 
 /***/ }),
 
-/***/ 865:
+/***/ 843:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3338,7 +3338,7 @@ function isElementInViewport (el, win=window,
 
 /***/ }),
 
-/***/ 526:
+/***/ 231:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3378,7 +3378,7 @@ const isElement = (value) =>
 
 /***/ }),
 
-/***/ 903:
+/***/ 95:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3509,10 +3509,10 @@ __webpack_require__.d(__webpack_exports__, {
   init: () => (/* binding */ init)
 });
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/accordion.js
+;// CONCATENATED MODULE: ./src/js/components/accordion.js
 
-const toggle = (__webpack_require__(903)/* ["default"] */ .Z);
-const isElementInViewport = (__webpack_require__(865)/* ["default"] */ .Z);
+const toggle = (__webpack_require__(95)/* ["default"] */ .Z);
+const isElementInViewport = (__webpack_require__(843)/* ["default"] */ .Z);
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
@@ -3658,7 +3658,7 @@ Accordion.prototype.toggleButton = function (button, expanded, bulk = false) {
 };
 
 /* harmony default export */ const accordion = (Accordion);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/alert.js
+;// CONCATENATED MODULE: ./src/js/components/alert.js
 
 function Alert(alert){
     this.alert = alert;
@@ -3685,7 +3685,7 @@ Alert.prototype.show = function(){
 };
 
 /* harmony default export */ const components_alert = (Alert);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/back-to-top.js
+;// CONCATENATED MODULE: ./src/js/components/back-to-top.js
 
 
 function BackToTop(backtotop) {
@@ -3847,7 +3847,7 @@ function isFooterVisible(footerElement) {
 }
 
 /* harmony default export */ const back_to_top = (BackToTop);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/character-limit.js
+;// CONCATENATED MODULE: ./src/js/components/character-limit.js
 
 
 const MAX_LENGTH = 'data-maxlength';
@@ -4013,7 +4013,7 @@ CharacterLimit.prototype.updateMessages = function () {
 }
 
 /* harmony default export */ const character_limit = (CharacterLimit);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/checkbox-toggle-content.js
+;// CONCATENATED MODULE: ./src/js/components/checkbox-toggle-content.js
 
 
 const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
@@ -4085,9 +4085,9 @@ CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
 
 /* harmony default export */ const checkbox_toggle_content = (CheckboxToggleContent);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown.js
+;// CONCATENATED MODULE: ./src/js/components/dropdown.js
 
-const breakpoints = (__webpack_require__(242)/* ["default"] */ .Z);
+const breakpoints = (__webpack_require__(660)/* ["default"] */ .Z);
 const dropdown_BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
@@ -4388,7 +4388,7 @@ let getTringuideBreakpoint = function (button){
 };
 
 /* harmony default export */ const dropdown = (Dropdown);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/dropdown-sort.js
+;// CONCATENATED MODULE: ./src/js/components/dropdown-sort.js
 
 
 
@@ -4451,7 +4451,7 @@ DropdownSort.prototype.onOptionClick = function(e){
 
 /* harmony default export */ const dropdown_sort = (DropdownSort);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/error-summary.js
+;// CONCATENATED MODULE: ./src/js/components/error-summary.js
 
 /**
  * Handle focus on input elements upon clicking link in error message
@@ -4602,7 +4602,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
 }
 
 /* harmony default export */ const error_summary = (ErrorSummary);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/modal.js
+;// CONCATENATED MODULE: ./src/js/components/modal.js
 
 /**
  * Adds click functionality to modal
@@ -4766,11 +4766,11 @@ function hasForcedAction (modal){
 
 /* harmony default export */ const modal = (Modal);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation.js
+;// CONCATENATED MODULE: ./src/js/components/navigation.js
 
 
-const forEach = __webpack_require__(834);
-const navigation_select = (__webpack_require__(526)/* ["default"] */ .Z);
+const forEach = __webpack_require__(84);
+const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
 //const NAV_DESKTOP = `.navigation-header`;
 const MOBILE_DRAWER = `.mobile-drawer`;
@@ -5105,7 +5105,7 @@ const toggleNav = function (active) {
 };
 
 /* harmony default export */ const navigation = (Navigation);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/navigation-drawer-overflow.js
+;// CONCATENATED MODULE: ./src/js/components/navigation-drawer-overflow.js
 
 const navigation_drawer_overflow_TARGET = 'data-js-target';
 
@@ -5192,7 +5192,7 @@ let navigation_drawer_overflow_toggle = function(button, forceClose = false){
 }
 
 /* harmony default export */ const navigation_drawer_overflow = (MenuDropdown);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/radio-toggle-content.js
+;// CONCATENATED MODULE: ./src/js/components/radio-toggle-content.js
 
 const TOGGLE_ATTRIBUTE = 'data-controls';
 
@@ -5275,8 +5275,8 @@ RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement
 }
 
 /* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/table.js
-const table_select = (__webpack_require__(526)/* ["default"] */ .Z);
+;// CONCATENATED MODULE: ./src/js/components/table.js
+const table_select = (__webpack_require__(231)/* ["default"] */ .Z);
 
 /**
  * Set data-title on cells, where the attribute is missing
@@ -5320,7 +5320,7 @@ function insertHeaderAsAttributes(tableEl) {
 
 /* harmony default export */ const table = (ResponsiveTable);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tabs.js
+;// CONCATENATED MODULE: ./src/js/components/tabs.js
 
 
 // For easy reference
@@ -5560,7 +5560,7 @@ function setActiveHashTab() {
 }
 
 /* harmony default export */ const tabs = (Tabs);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/selectable-table.js
+;// CONCATENATED MODULE: ./src/js/components/selectable-table.js
 
 
 /**
@@ -5688,7 +5688,7 @@ function updateGroupCheck(e){
 }
 
 /* harmony default export */ const selectable_table = (TableSelectableRows);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/toast.js
+;// CONCATENATED MODULE: ./src/js/components/toast.js
 
 /**
  * Show/hide toast component
@@ -5732,7 +5732,7 @@ function showToast(){
 }
 
 /* harmony default export */ const toast = (Toast);
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/components/tooltip.js
+;// CONCATENATED MODULE: ./src/js/components/tooltip.js
 
 /**
  * Set tooltip on element
@@ -5987,7 +5987,7 @@ function removeTooltip(trigger) {
 
 /* harmony default export */ const tooltip = (Tooltip);
 
-;// CONCATENATED MODULE: ../../../Projects/FDS/develop/dkfds-components/src/js/dkfds.js
+;// CONCATENATED MODULE: ./src/js/dkfds.js
 
 
 
@@ -6006,12 +6006,12 @@ function removeTooltip(trigger) {
 
 
 
-const datePicker = (__webpack_require__(326)/* ["default"] */ .Z);
+const datePicker = (__webpack_require__(561)/* ["default"] */ .Z);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
  */
-__webpack_require__(668);
+__webpack_require__(742);
 
 /**
  * Init all components
