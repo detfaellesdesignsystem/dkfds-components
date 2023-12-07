@@ -196,43 +196,18 @@
     }
 
     // tabs
-    .tab-container {
+    .tab-container ul.tab-list li .tab-button {
+        background-color: transparent;
+        border: func.border(10); 
 
-        a.tab-item {
-            color: func.color(vars.$tabsheet-inactive-text-color);
-            background-color: transparent;
-            border: func.border(vars.$tabsheet-border); 
+        &[aria-current="page"],
+        &[aria-selected="true"] {
+            color: func.color(vars.$tab-active-text-color-print);
+            border-width: 2px;
 
-            &[aria-current="page"] {
-                background-color: transparent;
-                color: func.color(vars.$tabsheet-active-text-color-print);
-                border: 4px solid func.color(vars.$tabsheet-default-border-color); 
-
-                .icon-svg {
-                    fill: func.color(vars.$tabsheet-icon-color-print);
-                }
+            .icon-svg {
+                fill: func.color(vars.$tab-active-text-color-print);
             }
-        }
-
-        button.tab-item {
-            color: func.color(vars.$tabsheet-inactive-text-color);
-            background-color: transparent;
-            border: func.border(vars.$tabsheet-border); 
-            
-            &[aria-selected="true"] {
-                background-color: transparent;
-                color: func.color(vars.$tabsheet-active-text-color-print);
-                border: 4px solid func.color(vars.$tabsheet-default-border-color); 
-
-                .icon-svg {
-                    fill: func.color(vars.$tabsheet-icon-color-print);
-                }
-            }
-        }
-        
-        .tab-item:not([aria-selected="true"]):not([aria-current="page"]) {
-            padding-top: 14px;
-            padding-bottom: 14px;
         }
     }
 

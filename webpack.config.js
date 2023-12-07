@@ -44,10 +44,10 @@ const copyFilesAndCreateJavaScript = {
         path: path.resolve(__dirname, 'dist'),
         clean: true, // Clean the entire dist directory before emit.
         filename: 'js/[name].js',
+        globalObject: 'this',
         library: {
             name: 'DKFDS',
             type: 'umd',
-            umdNamedDefine: false,
         },
     },
     stats: 'minimal',
@@ -78,10 +78,10 @@ const createMinifiedJavaScript = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].min.js',
+        globalObject: 'this',
         library: {
             name: 'DKFDS',
             type: 'umd',
-            umdNamedDefine: false,
         },
     },
     stats: 'minimal',

@@ -7,7 +7,7 @@
 		exports["DKFDS"] = factory();
 	else
 		root["DKFDS"] = factory();
-})(globalThis, () => {
+})(this, () => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -5346,7 +5346,7 @@ function Tabs(tabContainer) {
     throw new Error(`Missing tab container element`);
   }
   this.tabContainer = tabContainer;
-  this.tabs = this.tabContainer.querySelectorAll('.tab-item');
+  this.tabs = this.tabContainer.querySelectorAll('.tab-button');
 }
 
 /**
@@ -5354,7 +5354,7 @@ function Tabs(tabContainer) {
  */
 Tabs.prototype.init = function () {
   if (this.tabs.length === 0) {
-    throw new Error(`tabContainer element seems to be missing a child tab-item. There needs to be atleast one tab of class tab-item to set an active tab`);
+    throw new Error(`tabContainer element seems to be missing a child tab-button. There needs to be atleast one tab of class tab-button to set an active tab`);
   }
 
   // if no hash is set on load, set active tab
@@ -5408,7 +5408,7 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
       if (tabpanel === null) {
         throw new Error(`Could not find tabpanel from ID.`);
       }
-      tabpanel.setAttribute('hidden', true);
+      tabpanel.setAttribute('hidden', '');
     }
 
     // Set selected tab to active
@@ -5503,10 +5503,10 @@ function switchTabOnKeyPress(event) {
  * @returns returns list of active tabs if any
  */
 function getActiveTabs(tabContainer) {
-  if (tabContainer.querySelector('button.tab-item') !== null) {
-    return tabContainer.querySelectorAll('.tab-item[aria-selected=true]');
+  if (tabContainer.querySelector('button.tab-button') !== null) {
+    return tabContainer.querySelectorAll('.tab-button[aria-selected=true]');
   } else {
-    throw new Error(`tabContainer HTML seems to be missing a tab-item in the tab-container.`);
+    throw new Error(`tabContainer HTML seems to be missing a tab-button in the tab-container.`);
   }
 }
 
@@ -5518,7 +5518,7 @@ function getActiveTabs(tabContainer) {
 function getAllTabsInList(tab) {
   let greatGrandparentNode = tab.parentNode.parentNode.parentNode;
   if (greatGrandparentNode.classList.contains('tab-container')) {
-    return greatGrandparentNode.querySelectorAll('.tab-item');
+    return greatGrandparentNode.querySelectorAll('.tab-button');
   } else {
     return [];
   }
@@ -5549,7 +5549,7 @@ function getIndexOfElementInList(element, list) {
 function setActiveHashTab() {
   let hash = location.hash.replace('#', '');
   if (hash !== '' && hash !== "tab-component") {
-    let selector = '.tab-item[aria-controls="' + hash + '"]';
+    let selector = '.tab-button[aria-controls="' + hash + '"]';
     let tab = document.querySelector(selector);
     if (tab !== null) {
       new Tabs(tab.parentNode.parentNode.parentNode).activateTab(tab, false);
