@@ -11791,6 +11791,7 @@ a.skipnav:focus{
 }
 .toggle-element .toggle-label.disabled{
   cursor:default;
+  color:#747474;
 }
 .toggle-element .toggle-button{
   position:relative;
