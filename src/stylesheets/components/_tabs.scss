@@ -48,10 +48,6 @@ $tabs-icon-size: 2.4rem;
                 border-radius: func.units(5);
                 text-decoration: underline;
         
-                &:visited {
-                    color: func.color(vars.$tab-inactive-text-color);
-                }
-        
                 span {
                     max-width: 100%;
                     overflow-wrap: break-word;
