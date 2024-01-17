@@ -1,28 +1,176 @@
+@use '../functions/functions' as func;
+@use '../mixins/mixins' as mixins;
 
-html {
-  box-sizing: border-box;
-  line-height: normal;
-}
+////////////////////////////////////////////////////////////
+// Core
+////////////////////////////////////////////////////////////
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.5; // WCAG 2.1, 1.4.12
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
 }
 
 body {
-  background-color: color('white');
-  color: color('black');
-  overflow-x: hidden;
+    overflow-x: hidden;
+    margin: 0;
 }
 
-// for IE < 11, see:
-// <http://caniuse.com/#feat=hidden>
 [hidden] {
-  display: none !important; 
+    display: none !important;
 }
 
-a:focus, button:focus, input:focus, select:focus, textarea:focus, 
-.focus {
-  @include focus();
+////////////////////////////////////////////////////////////
+// Details
+////////////////////////////////////////////////////////////
+
+details {
+    display: block;
 }
+
+summary {
+    display: list-item;
+}
+
+////////////////////////////////////////////////////////////
+// Form elements
+////////////////////////////////////////////////////////////
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    @include mixins.appearance-none;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+}
+
+button,
+input { 
+    overflow: visible;
+}
+
+button,
+select { 
+    text-transform: none;
+}
+
+fieldset {
+    position: relative;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    @include mixins.appearance-none; // Fix bug where date-inputs to number-wheels in chrome.
+}
+
+input[type='number'] {
+    -moz-appearance: textfield !important;
+}
+
+legend {
+    padding: 0; 
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button; 
+    font: inherit; 
+}
+
+::-webkit-input-placeholder,
+::placeholder {
+    opacity: 0.54;
+    color: inherit;
+}
+
+////////////////////////////////////////////////////////////
+// Monospace elements
+////////////////////////////////////////////////////////////
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: inherit;
+}
+
+pre {
+    overflow: auto; // Ensure text can be read on small screens
+}
+
+////////////////////////////////////////////////////////////
+// Other
+////////////////////////////////////////////////////////////
+
+abbr[title] {
+    text-decoration: underline dotted;
+}
+
+b,
+strong {
+    font-weight: func.font-weight('bold');
+}
+
+hr {
+    overflow: hidden;
+    height: 0;
+    border-style: solid;
+    border-width: 1px 0 0;
+    color: inherit;
+    display: block;
+}
+
+small {
+    font-size: 80%;
+}
+
+progress {
+    vertical-align: middle;
+}
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+[type="search"] {
+    @include mixins.appearance-none;
+}
+

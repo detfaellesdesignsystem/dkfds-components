@@ -1,10 +1,12 @@
-//
-// Utilities for common `display` values
-//
+@use "sass:map" as map;
+@use "../../variables/variables" as vars;
+@use "../../mixins/mixins" as mixins;
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+// Utilities for common `display` values
+
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
+    @include mixins.media-breakpoint-up($breakpoint) {
+      $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
       .d#{$infix}-none         { display: none !important; }
       .d#{$infix}-inline       { display: inline !important; }
       .d#{$infix}-inline-block { display: inline-block !important; }

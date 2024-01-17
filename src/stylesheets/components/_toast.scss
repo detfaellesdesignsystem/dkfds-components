@@ -1,36 +1,40 @@
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
+
 $toast-backgrounds: (
-    success: $toast-success-background-color,
-    warning: $toast-warning-background-color,
-    error: $toast-error-background-color,
-    info: $toast-info-background-color
+    success: vars.$toast-success-background-color,
+    warning: vars.$toast-warning-background-color,
+    error: vars.$toast-error-background-color,
+    info: vars.$toast-info-background-color
 );
 
 $toast-icon-names: (
-    success: $toast-success-icon,
-    warning: $toast-warning-icon,
-    error: $toast-error-icon,
-    info: $toast-info-icon
+    success: vars.$toast-success-icon,
+    warning: vars.$toast-warning-icon,
+    error: vars.$toast-error-icon,
+    info: vars.$toast-info-icon
 );
 
 $toast-icon-backgrounds: (
-    success: $toast-success-color,
-    warning: $toast-warning-color,
-    error: $toast-error-color,
-    info: $toast-info-color
+    success: vars.$toast-success-color,
+    warning: vars.$toast-warning-color,
+    error: vars.$toast-error-color,
+    info: vars.$toast-info-color
 );
 
 .toast-container {
     position: fixed;
-    right: units(4);
-    left: units(4);
-    top: units(4);
+    right: func.units(4);
+    left: func.units(4);
+    top: func.units(4);
     bottom: auto;
-    z-index: 7000;
+    z-index: vars.$zindex-toast-container;
 
-    @include media-breakpoint-up(md) {
-        right: units(4);
+    @include mixins.media-breakpoint-up(md) {
+        right: func.units(4);
         left: auto;
-        top: units(8);
+        top: func.units(8);
         bottom: auto;
     }
 }
@@ -38,11 +42,11 @@ $toast-icon-backgrounds: (
 .toast {
     width: 100%;
     max-width: 100%;
-    background-color: color($toast-default-background-color);
+    background-color: func.color(vars.$toast-default-background-color);
     display: flex;
     transition: opacity .15s linear;
-    margin-bottom: units(4);
-    box-shadow: shadow($toast-shadow);
+    margin-bottom: func.units(4);
+    box-shadow: func.shadow(vars.$toast-shadow);
 
     &:not(.show) {
         opacity: 0;
@@ -52,45 +56,43 @@ $toast-icon-backgrounds: (
         display: none;
     }
 
-    @include media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         width: 464px;
     }
 
     .toast-icon {
         align-items: center;
         display: flex;
-        padding-left: calc(#{units(4)} + #{units(5)});
-        padding-right: units(4);
-        background-size: units(505);
+        padding-left: calc(#{func.units(4)} + #{func.units(5)});
+        padding-right: func.units(4);
+        background-size: func.units(505);
         background-repeat: no-repeat;
         background-position: center center;
     }
 
     .toast-message {
-        padding: units(4);
+        padding: func.units(4);
         position: relative;
         width: 100%;
 
         .toast-close {
-            @include button-unstyled;
+            @include mixins.button-unstyled;
             position: absolute;
-            top: units(4);
-            right: units(4);
+            top: func.units(4);
+            right: func.units(4);
             text-indent: -9999px;
             width: 24px;
             height: 24px;
             cursor: pointer;
-
-            background-image: url($icons-folder-path+'/'+'close.svg');
-            background-repeat: no-repeat;
+            @include mixins.add-background-svg('close');
         }
 
         p {
-            margin: 0px;
+            margin: 0;
             word-break: break-word;
 
             &:first-of-type {
-                margin-right: units(6);
+                margin-right: func.units(6);
             }
         }
     }
@@ -99,20 +101,20 @@ $toast-icon-backgrounds: (
 @each $name,
 $bgcolor in $toast-backgrounds {
     .toast-#{$name} {
-        background-color: color($bgcolor);
+        background-color: func.color($bgcolor);
     }
 }
 
 @each $name,
 $iconcolor in $toast-icon-backgrounds {
     .toast-#{$name} .toast-icon {
-        background-color: color($iconcolor);
+        background-color: func.color($iconcolor);
     }
 }
 
 @each $name,
 $iconname in $toast-icon-names {
     .toast-#{$name} .toast-icon {
-        background-image: url($icons-folder-path+'/'+$iconname+'.svg');
+        background-image: url(vars.$icons-folder-path + '/' + $iconname + '.svg');
     }
 }

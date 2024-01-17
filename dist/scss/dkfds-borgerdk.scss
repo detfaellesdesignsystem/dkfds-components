@@ -1,4 +1,4 @@
-// borgerdk theme
-@import './lib/normalize';
-@import './themes/borgerdk'; 
-@import 'dkfds-base';
+// Borgerdk theme
+
+@use 'themes/borgerdk/borgerdk';
+@use 'dkfds-base';

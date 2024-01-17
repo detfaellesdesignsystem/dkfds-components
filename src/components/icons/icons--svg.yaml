@@ -23,3 +23,7 @@ params:
   type: boolean
   required: false
   description: Sets tabindex to -1 on true.
+- name: attributes
+  type: string
+  required: false
+  description: Attributes to add to the icon.

@@ -1,21 +1,25 @@
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
+
 // Tags
 .tag{
-  appearance: none;
+  @include mixins.appearance-none;
   display: inline-block;
   width: auto;
   padding:0;
-  padding-left: units(3);
-  padding-right:units(3);
-  margin-right:units(3);
-  margin-bottom:units(3);
-  border-radius: $tag-border-radius;
+  padding-left: func.units(3);
+  padding-right:func.units(3);
+  margin-right:func.units(3);
+  margin-bottom:func.units(3);
+  border-radius: vars.$tag-border-radius;
   border: none;
-  font-size: font-size($tag-font-size);
-  font-weight: font-weight($tag-font-weight);
-  color: color($tag-text-color);
-  background-color: color($tag-default-background-color);
-  @include font-smoothing;
-  line-height: units($tag-line-height, rem);
+  font-size: func.font-size(vars.$tag-font-size);
+  font-weight: func.font-weight(vars.$tag-font-weight);
+  color: func.color(vars.$tag-text-color);
+  background-color: func.color(vars.$tag-default-background-color);
+  @include mixins.font-smoothing;
+  line-height: func.units(vars.$tag-line-height, "rem");
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -23,38 +27,38 @@
 
   &.tag-icon {
     padding:0;
-    padding-left:units(3);
+    padding-left:func.units(3);
   }
 
   & + .tag {
-    margin-bottom: units(3);
+    margin-bottom: func.units(3);
   }
 
   &:hover,
   &.tag-hover {
-    background-color: color($tag-hover-background-color);
+    background-color: func.color(vars.$tag-hover-background-color);
   }
 
   &:active,
   &.tag-active {
-    background-color: color($tag-active-background-color);
+    background-color: func.color(vars.$tag-active-background-color);
   }
 
   &.focus,
   &:focus {
-    background-color: color($tag-focus-background-color);
+    background-color: func.color(vars.$tag-focus-background-color);
   }
 
   &.focus,
   &:focus {
-    @include focus();
+    @include mixins.focus;
     position: relative;
   }
 
   .icon-svg {
     float: right;
-    margin: 0px 0px 0px 5px;
-    fill: color($tag-icon-color);
+    margin: 0 0 0 5px;
+    fill: func.color(vars.$tag-icon-color);
   }
 }
 

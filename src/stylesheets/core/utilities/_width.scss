@@ -1,7 +1,9 @@
-//
+@use "sass:map" as map;
+@use "../../variables/variables" as vars;
+@use "../../mixins/mixins" as mixins;
+
 // Generates utility classes to control width in percent. 
 // Example: .w-percent-100 .w-percent-md-30
-//
 
 $percent-widths: (
   10: 10%,
@@ -16,10 +18,10 @@ $percent-widths: (
   100: 100%,
 ) !default;
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
+@each $breakpoint in map.keys(vars.$grid-breakpoints) {
+  @include mixins.media-breakpoint-up($breakpoint) {
     @each $name, $size in $percent-widths { 
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+      $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
       .w-percent#{$infix}-#{$name}         { width: $size !important;}
     }
   }

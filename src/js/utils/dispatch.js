@@ -1,4 +1,4 @@
-module.exports = (element, eventTypeString, listener, options) => {
+export default (element, eventTypeString, listener, options) => {
   const eventTypes = eventTypeString.split(/\s+/);
 
   const add = () => {

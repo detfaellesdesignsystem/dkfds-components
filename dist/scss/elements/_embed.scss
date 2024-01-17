@@ -1,10 +1,7 @@
-@use 'sass:math';
+@use "../mixins/mixins" as mixins;
+
 $aspect-height: 9;
 $aspect-width: 16;
-
-@mixin embed-container ($height, $width) {
-  padding-bottom: percentage(math.div($height,$width));
-}
 
 .embed-container {
   iframe,
@@ -19,7 +16,7 @@ $aspect-width: 16;
 }
 
 .embed-container {
-  @include embed-container($aspect-height, $aspect-width);
+  @include mixins.embed-container($aspect-height, $aspect-width);
   position: relative;
   height: 0;
   overflow: hidden;

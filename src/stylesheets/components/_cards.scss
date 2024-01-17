@@ -1,28 +1,32 @@
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
+
 .card {
   position: relative;
-  border-radius: units(0);
-  box-shadow: shadow($cards-shadow);
-  border: border($cards-border);
+  border-radius: func.units(0);
+  box-shadow: func.shadow(vars.$cards-shadow);
+  border: func.border(vars.$cards-border);
   overflow: hidden;
-  background: color($cards-background-color);
+  background: func.color(vars.$cards-background-color);
 
-  //small card
+  // small card
   &-small {
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:func.units(5);
     }
   }
-  //medium card
+  // medium card
   &-medium {
-    //The last
+    // The last
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:func.units(5);
     }
   }
-  //large card
+  // large card
   &-large {
     > :last-of-type {
-      padding-bottom:units(5);
+      padding-bottom:func.units(5);
     }
   }
 
@@ -48,10 +52,10 @@
 
   p {
     max-width: 60ch;
-    margin-top:units(4);
-    margin-bottom: units(0);
+    margin-top:func.units(4);
+    margin-bottom: func.units(0);
     &:first-child {
-      margin-top:units(0);
+      margin-top:func.units(0);
     }
   }
   h1, .h1,
@@ -59,90 +63,90 @@
   h3, .h3,
   h4, .h4,
   h5, .h5 {
-    margin: units(0);
+    margin: func.units(0);
   }
 }
-//card-header
+// card-header
 .card-header {
-  background-color: color($cards-header-background-color);
-  padding: units(4) units(5);
+  background-color: func.color(vars.$cards-header-background-color);
+  padding: func.units(4) func.units(5);
   .header-title {
-    @include body-copy-text;
-    font-weight: font-weight("semibold");
-    color: color($cards-heading-color);
-    margin:units(0);
+    @include mixins.body-copy-text;
+    font-weight: func.font-weight("semibold");
+    color: func.color(vars.$cards-heading-color);
+    margin:func.units(0);
 
     &.large-text {
-      @include h1;
-      color: color($cards-heading-large-color);
+      @include mixins.h2;
+      color: func.color(vars.$cards-heading-large-color);
     }
   }
   .sub-header {
-    @include body-copy-text;
-    margin-top:  units(0);
-    margin-bottom: units(0);
-    color: color($cards-sub-heading-color);
+    @include mixins.body-copy-text;
+    margin-top:  func.units(0);
+    margin-bottom: func.units(0);
+    color: func.color(vars.$cards-sub-heading-color);
   }
 }
 .card-text {
-  background-color: color($cards-text-background-color);
-  padding: units(4) units(5);
+  background-color: func.color(vars.$cards-text-background-color);
+  padding: func.units(4) func.units(5);
   .text {
-    @include body-copy-text;
-    margin-top: units(4);
-    color: color($cards-text-color);
-    margin-bottom: units(0);
+    @include mixins.body-copy-text;
+    margin-top: func.units(4);
+    color: func.color(vars.$cards-text-color);
+    margin-bottom: func.units(0);
   }
 }
 
-//card-content
+// card-content
 .card-content {
-  @include body-copy-text;
-  padding: units(0);
-  color: color($cards-text-color);
-  background-color: color($cards-content-background-color);
+  @include mixins.body-copy-text;
+  padding: func.units(0);
+  color: func.color(vars.$cards-text-color);
+  background-color: func.color(vars.$cards-content-background-color);
   ul {
-    margin-bottom:units(0);
+    margin-bottom:func.units(0);
   }
   div:first-child {
-    margin-top:units(0);
+    margin-top:func.units(0);
   }
   .content-text {
-    margin-top:units(4);
+    margin-top:func.units(4);
   }
   .content {
     text-align: center;
   }
 }
 
-//card-action
+// card-action
 .card-action {
-  @include body-copy-text;
-  padding: units(4) units(5);
-  color: color($cards-text-color);
-  margin-bottom: units(0);
-  background-color: color($cards-action-background-color);
+  @include mixins.body-copy-text;
+  padding: func.units(4) func.units(5);
+  color: func.color(vars.$cards-text-color);
+  margin-bottom: func.units(0);
+  background-color: func.color(vars.$cards-action-background-color);
 
   div:first-child {
-    margin-top:units(0);
+    margin-top:func.units(0);
   }
 
   &:last-child {
-    border-bottom: units(0);
+    border-bottom: func.units(0);
   }
   .action-buttons {
     button {
-      margin-right: units(4);
-      margin-top:units(3);
+      margin-right: func.units(4);
+      margin-top:func.units(3);
 
-      @include media-breakpoint-up(md) {
-        margin-right: units(4);
-        margin-top:units(3);
+      @include mixins.media-breakpoint-up(md) {
+        margin-right: func.units(4);
+        margin-top:func.units(3);
       }
     }
     .button + .button{
-      @include media-breakpoint-up(sm) {
-        margin-left: 0px;
+      @include mixins.media-breakpoint-up(sm) {
+        margin-left: 0;
         &:first-child{
           margin-left: 0;
         }
@@ -150,82 +154,82 @@
     }
   }
   .action-links {
-    margin-top:units(4);
+    margin-top:func.units(4);
     ul {
-      @include unstyled-list();
-      padding-left: units(0);
+      @include mixins.unstyled-list;
+      padding-left: func.units(0);
       li {
-        margin-top:units(3) !important;
+        margin-top:func.units(3) !important;
       }
     }
   }
   .action-functionlinks {
-    margin-top:units(4);
+    margin-top:func.units(4);
     text-align: right;
     .function-link {
-      margin-left: units(4);
+      margin-left: func.units(4);
     }
   }
 }
 
-//If text comes after header
+// If text comes after header
 .card-header + .card-text{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If content comes after header
+// If content comes after header
 .card-header + .card-content {
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If action comes after header
+// If action comes after header
 .card-header + .card-action{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If header comes after header
+// If header comes after header
 .card-header + .card-header{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If header comes after text
+// If header comes after text
 .card-text + .card-header {
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If content comes after text
+// If content comes after text
 .card-text + .card-content {
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If action comes after text
+// If action comes after text
 .card-text + .card-action{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If text comes after text
+// If text comes after text
 .card-text + .card-text{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If text comes after action
+// If text comes after action
 .card-action + .card-text{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If header comes after action
+// If header comes after action
 .card-action + .card-header{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If content comes after action
+// If content comes after action
 .card-action + .card-content{
-  padding-top:units(0);
+  padding-top:func.units(0);
 }
-//If action comes after action
+// If action comes after action
 .card-action + .card-action{
-  padding-top:units(0);
+  padding-top: 0;
 }
 .card {
   > .list-group:first-child {
       .list-group-item:first-child {
-          border-radius: 0px;
+          border-radius: 0;
       }
   }
 
   > .list-group:last-child {
       .list-group-item:last-child {
-          border-radius: 0px;
+          border-radius: 0;
       }
   }
 }

@@ -1,148 +1,26 @@
-@mixin responsive-table() {
-    display: block;
-
-    thead {
-        display: none;
-    }
-
-    tbody,
-    tr {
-        display: block;
-    }
-
-    tr {
-        border-bottom: border($table-row-border);
-
-        &:last-child {
-            border-bottom: none;
-        }
-    }
-
-    td,
-    th {
-        display: block;
-        border: none;
-        padding-left: calc(units(4) - 1px); //1px for the border
-        padding-right: calc(units(4) - 1px); //1px for the border
-        padding-top: units(4);
-        padding-bottom: units(4);
-
-        &:last-child {
-            padding-bottom: calc(units(4) - 1px); //1px for the border
-        }
-
-        &[data-title]:not([data-title=""]):before {
-            content: attr(data-title);
-            text-align: left;
-            display: block;
-            font-weight: font-weight($table-head-font-weight);
-        }
-    }
-
-    &.table--compact {
-
-        th,
-        td {
-            padding-top: units(3);
-            padding-bottom: units(3);
-
-            &:last-child {
-                padding-bottom: calc(units(3) - 1px); //1px for the border
-            }
-        }
-    }
-
-    &.table--extracompact {
-
-        th,
-        td {
-            padding-top: 1px;
-            padding-bottom: 1px;
-
-            &:last-child {
-                padding-bottom: 0px;
-            }
-        }
-    }
-
-    &.table--borderless, &.structured-list {
-
-        td,
-        th {
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        tr {
-            &:first-child {
-
-                td,
-                th {
-                    &:first-child {
-                        border-top: border($table-row-border);
-                    }
-                }
-            }
-
-            &:last-child {
-
-                td,
-                th {
-                    border-bottom: none;
-
-                    &:last-child {
-                        border-bottom: border($table-row-border);
-                    }
-                }
-            }
-        }
-    }
-
-    &.table--zebra.table--borderless {
-
-        td,
-        th {
-            padding-left: units(4);
-            padding-right: units(4);
-        }
-    }
-
-    &.structured-list {
-        
-        tbody tr {
-            &:first-child td {
-                border-top: none;
-            }
-
-            th {
-                padding-bottom: 0;
-            }
-
-            td:first-of-type {
-                padding-top: 0;
-            }
-        }
-    }
-}
+@use "sass:map" as map;
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
 
 .table {
     margin: 0;
-    line-height: units($table-text-line-height, 'rem');
-    border: border($table-border);
+    line-height: func.units(vars.$table-text-line-height, 'rem');
+    border: func.border(vars.$table-border);
     width: 100%;
-    color: color($table-text-color);
-    font-size: font-size($table-font-size);
+    color: func.color(vars.$table-text-color);
+    font-size: func.font-size(vars.$table-font-size);
     border-collapse: inherit;
     border-spacing: 0;
 
     td,
     th {
-        padding-left: units(4);
-        padding-top: units(4);
-        padding-right: calc(units(4) - 1px); //1px for the border
-        padding-bottom: calc(units(4) - 1px); //1px for the border
-        border-right: border($table-cell-border);
-        border-bottom: border($table-row-border);
+        padding-left: func.units(4);
+        padding-top: func.units(4);
+        padding-right: calc(func.units(4) - 1px); // 1px for the border
+        padding-bottom: calc(func.units(4) - 1px); // 1px for the border
+        border-right: func.border(vars.$table-cell-border);
+        border-bottom: func.border(vars.$table-row-border);
         background-color: inherit;
         vertical-align: top;
         text-align: left;
@@ -169,14 +47,14 @@
     }
 
     thead {
-        background-color: color($table-head-background-color);
+        background-color: func.color(vars.$table-head-background-color);
 
         th {
-            font-weight: font-weight($table-head-font-weight);
-            padding-top: calc(units(4) - 1px); //1px for the border
+            font-weight: func.font-weight(vars.$table-head-font-weight);
+            padding-top: calc(func.units(4) - 1px); // 1px for the border
 
             &:first-child {
-                padding-left: calc(units(4) - 1px); //1px for the border
+                padding-left: calc(func.units(4) - 1px); // 1px for the border
             }
 
             &.table-header-no-wrap {
@@ -186,13 +64,17 @@
             button,
             .button {
                 width: auto;
+                font-weight: func.font-weight('semibold');
+                font-family: inherit;
+                font-size: inherit;
+                display: flex;
             }
         }
     }
 
     tbody {
         th {
-            font-weight: font-weight($table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
         }
 
         tr {
@@ -201,7 +83,7 @@
             td,
             th {
                 &:first-child {
-                    padding-left: calc(units(4) - 1px); //1px for the border
+                    padding-left: calc(func.units(4) - 1px); // 1px for the border
                 }
             }
 
@@ -219,12 +101,12 @@
 
         th,
         td {
-            padding-top: units(3);
-            padding-bottom: calc(units(3) - 1px); //1px for the border
+            padding-top: func.units(3);
+            padding-bottom: calc(func.units(3) - 1px); // 1px for the border
         }
 
         thead th {
-            padding-top: calc(units(3) - 1px); //1px for the border
+            padding-top: calc(func.units(3) - 1px); // 1px for the border
         }
     }
 
@@ -241,13 +123,13 @@
         }
     }
 
-    //No border
+    // No border
     &.table--borderless, &.structured-list {
         border: none;
 
         td,
         th {
-            padding-right: units(4);
+            padding-right: func.units(4);
             border-right: none;
         }
 
@@ -270,7 +152,7 @@
             background-color: transparent;
 
             th {
-                padding-top: units(4);
+                padding-top: func.units(4);
             }
         }
 
@@ -278,14 +160,14 @@
 
             td,
             th {
-                border-bottom: border($table-row-border);
+                border-bottom: func.border(vars.$table-row-border);
             }
         }
 
         &.table--compact {
 
             thead th {
-                padding-top: units(3);
+                padding-top: func.units(3);
             }
         }
 
@@ -297,37 +179,37 @@
         }
     }
 
-    //Zebra lines
+    // Zebra lines
     &.table--zebra {
 
         td,
         th {
             border-right: 0;
-            padding-right: units(4);
+            padding-right: func.units(4);
 
             &:last-child {
-                padding-right: calc(units(4) - 1px); //1px for the border
+                padding-right: calc(func.units(4) - 1px); // 1px for the border
             }
         }
 
         tr:nth-child(even) {
-            background-color: color($table-row-even-background-color);
+            background-color: func.color(vars.$table-row-even-background-color);
         }
 
         tbody {
             tr:nth-child(odd) {
-                background-color: color($table-row-odd-background-color);
+                background-color: func.color(vars.$table-row-odd-background-color);
             }
         }
     }
 
-    //Zebra lines and no border
+    // Zebra lines and no border
     &.table--zebra.table--borderless {
 
         td,
         th {
             border: 0;
-            padding: units(4);
+            padding: func.units(4);
         }
 
         thead,
@@ -336,17 +218,17 @@
             tr td,
             tr th {
                 &:first-child {
-                    padding-left: units(4);
+                    padding-left: func.units(4);
                 }
 
                 &:last-child {
-                    padding-right: units(4);
+                    padding-right: func.units(4);
                 }
             }
         }
 
         thead {
-            background-color: color($table-row-even-background-color);
+            background-color: func.color(vars.$table-row-even-background-color);
         }
 
         tbody tr:last-child {
@@ -361,8 +243,8 @@
 
             td,
             th {
-                padding-bottom: units(3);
-                padding-top: units(3);
+                padding-bottom: func.units(3);
+                padding-top: func.units(3);
             }
         }
 
@@ -381,7 +263,7 @@
 
             td,
             th {
-                border-top: border($table-row-border);
+                border-top: func.border(vars.$table-row-border);
             }
         }
 
@@ -398,20 +280,20 @@
 
     @media screen {
 
-        //Make row into a "card" on phone
+        // Make row into a "card" on phone
         &.table--responsive-headers {
-            @include media-breakpoint-down(sm) {
-                @include responsive-table();
+            @include mixins.media-breakpoint-down(sm) {
+                @include mixins.responsive-table;
             }
         }
 
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            @if $breakpoint !=xs and $breakpoint !=xl {
-                @include media-breakpoint-down($breakpoint) {
-                    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        @each $breakpoint in map.keys(vars.$grid-breakpoints) {
+            @if $breakpoint != xs and $breakpoint != xl {
+                @include mixins.media-breakpoint-down($breakpoint) {
+                    $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
-                        @include responsive-table();
+                        @include mixins.responsive-table;
                     }
                 }
             }
@@ -424,28 +306,28 @@
     tbody tr:hover,
     &.table.table--zebra tr:nth-child(even):hover,
     &.table.table--zebra tr:nth-child(odd):hover {
-        background-color: color($table-selectable-hover-background-color);
+        background-color: func.color(vars.$table-selectable-hover-background-color);
     }
 
     &.table.table--zebra tr.table-row-selected:nth-child(even),
     &.table.table--zebra tr.table-row-selected:nth-child(odd),
     .table-row-selected {
-        background-color: color($table-selectable-selected-background-color);
+        background-color: func.color(vars.$table-selectable-selected-background-color);
     }
 }
 
 .table-actions {
-    border-right: border($table-border);
-    border-bottom: border($table-border);
-    border-left: border($table-border);
+    border-right: func.border(vars.$table-border);
+    border-bottom: func.border(vars.$table-border);
+    border-left: func.border(vars.$table-border);
     overflow: hidden;
-    padding: units(4) calc(units(4) - 1px) calc(units(4) - 1px) calc(units(4) - 1px);
+    padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
 
     .table-selected-number {
-        margin-top: 0px;
+        margin-top: 0;
 
         &.no-selected {
-            color: color($table-selectable-help-text-color);
+            color: func.color(vars.$table-selectable-help-text-color);
         }
     }
 
@@ -454,6 +336,6 @@
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
-    padding: $theme-focus-offset+$theme-focus-width; //Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
-    margin: -($theme-focus-offset+$theme-focus-width); //Ensure that the padding above doesn't affect alignment of the table with the remaining page
+    padding: vars.$theme-focus-offset + vars.$theme-focus-width; // Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -(vars.$theme-focus-offset + vars.$theme-focus-width); // Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }

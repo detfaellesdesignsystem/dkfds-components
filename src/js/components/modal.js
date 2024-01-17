@@ -38,8 +38,10 @@ Modal.prototype.hide = function (){
     modalElement.dispatchEvent(eventClose);
 
     let $backdrop = document.querySelector('#modal-backdrop');
-    $backdrop?.parentNode.removeChild($backdrop);
-
+    if ($backdrop) {
+      $backdrop.parentNode.removeChild($backdrop);
+    }
+    
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     document.removeEventListener('keydown', trapFocus, true);
 
@@ -148,7 +150,7 @@ let handleEscape = function (event) {
       }
     }
   }
-};
+}
 
 function hasForcedAction (modal){
   if(modal.getAttribute('data-modal-forced-action') === null){

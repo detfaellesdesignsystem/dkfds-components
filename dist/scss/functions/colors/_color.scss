@@ -1,0 +1,23 @@
+@use "sass:map" as map;
+@use "sass:meta" as meta;
+@use "../../values/colors/all-colors" as color;
+
+// ----------------------------------------
+// Get a valid FDS color
+// ----------------------------------------
+
+@function color($value) {
+
+    // Check whether the color is an official FDS color
+    @if map.has-key(color.$all-colors, $value) {
+        @return map.get(color.$all-colors, $value);
+    }
+
+    // Check whether the color is a valid CSS color
+    @if meta.type-of($value) == color {
+        @return $value;
+    }
+
+    @error '#{$value} is not a valid FDS color token.';
+
+}

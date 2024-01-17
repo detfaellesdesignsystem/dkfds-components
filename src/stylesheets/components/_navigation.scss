@@ -1,544 +1,188 @@
-// Header navigation ------------- //
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
 
-@mixin nav-current-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-current-border-color);
-}
-@mixin nav-hover-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-hover-border-color);
-}
-@mixin nav-focus-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-focus-border-color);
-}
-@mixin nav-link-border {
-  border-bottom: $navigation-link-default-border-width solid color($navigation-link-default-border-color);
-}
+$navigation-row-link-padding-left-right: func.units(305);
+$navigation-desktop-border-bottom-thickness: func.units(2);
 
-@mixin nav-link {
- 
-}
+$-left-right-padding: func.units(305);
 
-.mobile_nav-active {
-  overflow: hidden;
-}
-
-.mobile_nav-active{
-  .nav{
-      .nav-actions{
-        //overflow menu (the ones not in nav-primary)
-        .overflow-menu{
-          width: 100%;
-          .button-overflow-menu{
-            width: 100%;
-            justify-content: flex-start;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: units(4);
-            padding-bottom: units(4);
-            &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
-              display: none;
-            }
-          }
-          .overflow-menu-inner{
-            position: static;
-            border: none;
-            box-shadow:  none;
-            min-width: inherit;
-            margin-top: 0;
-            padding-top: 0px;
-            .overflow-list{
-              padding-left: units(4);
-            }
-            a, button{
-              text-align: left;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: units(3);
-              padding-bottom: units(3);
-              &:hover{
-                background-color: transparent;
-              }
-            }
-          }
-        }
-      }
-  }
-}
-
-.navbar {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding: 0;
-    flex-direction: row;
-  }
-
-  .helptext{
-    color: color($navigation-link-information-text-color);
-    font-weight: font-weight("normal");
-  }
-
-  .navbar-inner{
-    border-bottom: border(20);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: none;
-    }
-  }
-}
-
-
-
-.navbar-context-actions{
-  padding-bottom: units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding-top: units(4);
-    padding-bottom: 0;
-  }
-}
-
-// // Primary navigation ------------- //
-
-.nav-primary {
-  padding-top: 0;
-  @include unstyled-list;
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-  border-top: border(20);
-  + .nav-actions{
-    border-top: border(20);
-    margin-top: 0;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-top: none;
-    }
-  }
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-top: none;
-    flex-direction: row;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    margin-top: 0;
-    margin-left: -12px;
-    border-bottom: none;
-  }
-  ul{
-    margin-left: units(4);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      margin-left: 0;
-    }
-  }
-
-  .nav-link {    
+%-mainmenu-item {
+    display: block;
+    padding: func.units(4) $-left-right-padding 0 $-left-right-padding;
     text-decoration: none;
-    color: color($navigation-link-default-color);
-    background-color: color($navigation-link-default-background-color);
-    display: block;
-    padding:calc(units(4) - 1px) 0 units(4); 
-    span{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+    background-color: func.color(vars.$navigation-link-background-color);
+    color: func.color(vars.$navigation-link-default-color);
+    border: 0;
+    line-height: 1.5;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    max-width: unset;
+
+    span {
         display: block;
-        @include nav-link-border;
-      }
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 9px;
-      }
+        border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+        padding-bottom: func.units(305);
     }
-  }
 
-  li{
-    margin-top: 0;
-    padding-left: 0px;
-    border-bottom: border(20);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: none;
-    }
-    &:last-of-type{
-      border-bottom: none;
-    }
-     li li {
-      .overflow-menu{
-        .buttton-overflow-menu{
-          padding-top: calc(units(305) - 1px);
-          padding-bottom: units(305);
-        }
-      }
-      .nav-link{
-        padding-top: calc(units(305) - 1px);
-        padding-bottom: units(305);
-      }
-    }
-  }
-
-  // level 1
-  > li {
-    & > .overflow-menu {
-      & > button.button-overflow-menu{
-        padding-left: units(4);
-      }
-      & > .overflow-menu-inner > .overflow-list{
-        margin-left: units(6);
-      } 
-    }
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      border-bottom: 0;
-      padding-right: 0;
-      padding-left: 0;
-      & > .overflow-menu > button.button-overflow-menu{
-        padding-left: units(305);
-      }
-    }
-    > .nav-link {
-      font-size: font-size($typography-base-font-size);
-      line-height: units($typography-base-line-height, 'rem');
-      white-space: nowrap;
-      padding-left: units(4);
-
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-bottom: 0px;
-        padding-left: 0;
-      }
-      &:hover {
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          background-color: color($navigation-link-hover-background-color);
-          color: color($navigation-link-hover-color);
-          span{
-            @include nav-hover-border;
-          }
-        }
-      }
-      &:focus{
-        position: relative;
-        z-index: 100;
-        background-color: color($navigation-link-focus-background-color);
-        color: color($navigation-link-focus-color);
-        span{
-          @include nav-focus-border;
-        }
-      }
-    }
-    & > .nav-link, & > button, & .button-overflow-menu{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        padding-left: 12px;
-        padding-right: 12px;
-        span{        
-          @include nav-link-border;
-          padding-bottom: calc(#{units(3)} + 1px);
-        }
-        &:hover span{
-          @include nav-hover-border;
-        }
-        &:focus span{
-          @include nav-focus-border;
-        }
-      }
-    }
-  }
-  .active > a, .overflow-menu .overflow-menu-inner .overflow-list > li.active > a{
-    font-weight: font-weight("semibold");
-  }
-  .current {
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      > a, .button-overflow-menu{
-        background-color: color($navigation-link-current-background-color);
-        color: color($navigation-link-current-color);
+    &:hover {
         span {
-          @include nav-current-border;
+            border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
         }
-        &:hover, &:focus, &:hover, &:visited{
-          background-color: color($navigation-link-current-background-color);
-          color: color($navigation-link-current-color);
-          span {
-            @include nav-current-border;
-          }
-        }
-      }
-      .overflow-menu{
-        .button-overflow-menu{
-          font-weight: font-weight("semibold");
-          color: color($navigation-link-current-color);
-          background-color: color($navigation-link-current-background-color);
-          
-          span{
-            @include nav-current-border;
-          }
-
-          &:focus,
-          &:active {
-            color: color($navigation-link-current-color);
-            background-color: color($navigation-link-current-background-color);
-            position: relative;
-            z-index: 2;
-            span {
-              @include nav-current-border;
-            }
-          }
-          &:hover{
-            color: color($navigation-link-current-color);
-            background-color: color($navigation-link-current-background-color);
-            span{
-              @include nav-current-border;
-            }
-          }
-
-          &[aria-expanded=true] {
-            background-color: color($navigation-overflow-menu-open-background-color-desktop);
-            color: color($navigation-overflow-menu-open-text-color);
-            
-            span{
-              @include nav-current-border;
-            }
-
-            &:hover, &:focus, &:active {
-              background-color: color($navigation-overflow-menu-open-background-color-desktop);
-              color: color($navigation-overflow-menu-open-text-color);
-              span{
-                @include nav-current-border;
-              }
-            }
-          }
-        }
-      }
     }
-    & > a, & > .overflow-menu > .button-overflow-menu{
-      color: color($navigation-link-current-color);
-      
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        font-weight: font-weight("medium");
-      }
-    }
-  }
 
-  /*region: nav-primary overflow menu */
-  .overflow-menu{
-    display: block;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      display: inline-block;
-    }
-    .button-overflow-menu{
-      color: color($navigation-link-default-color);
-      display: block;
-      font-size: font-size($typography-base-font-size);
-      font-weight: font-weight("normal");
-      line-height: units($typography-base-line-height, 'rem');
-      padding-top: calc(units(4) - 1px);
-      padding-bottom: units(4);
-      padding-left: 0px;
-      padding-right: units(7);
-      white-space: normal;
-      width: 100%;
-      
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-       padding-bottom: 0;
-       width: unset;
-       padding-right: units(305);
-       padding-left: units(305);
-      }
-      &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
-        display: none;
-      }
-      span{
-        padding-right: 24px;
-        display: block;
-      }
-          
-      &:focus,
-      &:active {
-        @include focus-outline();
-        color: color($navigation-link-focus-color);
-        z-index: 2;
+    &:focus {
         position: relative;
-      }
-      &:hover{
-        text-decoration: none;
-        color: color($navigation-link-hover-color);
-        background-color: transparent;
-      }
-
-      &[aria-expanded=false] {
-        @include add-background-svg($navigation-overflow-menu-collapsed-icon);
-        background-position: right units(4) top units(4);
-        background-size: 24px;
-
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          @include add-background-svg($navigation-overflow-menu-collapsed-icon-desktop);
-          background-position: right 1rem center; 
-        }
-      }
-
-      &[aria-expanded=true] {
-        @include add-background-svg($navigation-overflow-menu-expanded-icon);
-        background-position: right units(4) top units(4);
-        background-size: 24px;
-        background-color: color($navigation-overflow-menu-open-background-color);
-
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          @include add-background-svg($navigation-overflow-menu-expanded-icon-desktop);
-          background-position: right 1rem center;
-          background-color: color($navigation-overflow-menu-open-background-color-desktop);
-          color: color($navigation-overflow-menu-open-text-color);
-          position: relative;
-          z-index: 2;
-          &:before, &:after{
-            display: none;
-          }
-         
-        }
-      }
+        z-index: vars.$zindex-nav-focus;
     }
-    .overflow-menu-inner {
-      @include unstyled-list;
-      background-color: color($navigation-overflow-menu-open-background-color);
-      border: none;
-      border-top: border(20);
-      box-shadow: none;
-      color: color('ink');
-      font-size: font-size($typography-body-text-font-size);
-      line-height: units($typography-body-text-line-height, 'rem');
-      min-width: inherit;
-      padding-left: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      position: static;
-      width: 100%;
-
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        width: 30rem;
-        border: border(10);
-        border-top: 0;
-        padding-left: 0;
-        position: absolute;
-        z-index: 1;
-        padding-top: units(3);
-        padding-bottom: units(3);
-        background-color: color($navigation-overflow-menu-open-background-color-desktop);
-        top: 100%;
-      }
-      
-      a{
-          @include body-copy-text;
-          display: block;
-          text-decoration: none;
-          &:hover, &:visited, &:focus{
-            color: color($navigation-link-default-color);
-            background-color: transparent;
-            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              color: color($navigation-overflow-menu-open-text-color);
-              text-decoration: underline;
-            }
-          }
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            @include small-text();
-            color: color($navigation-overflow-menu-open-text-color);
-            padding: units(3) units(4);
-          }
-      }
-
-      button:not(.button-overflow-menu){
-        @include button-unstyled;
-      }
-    }
-  }
-  /*endregion*/
-
-
-  .overflow-menu{
-    .overflow-menu-inner {
-      .overflow-list{
-        list-style-type: none;
-        margin-left: units(4);
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          margin-left: 0;
-        }
-        li:before{
-          display: none;
-        }
-        a {
-          text-decoration: none;
-          color: color($navigation-link-default-color);
-          background-color: color($navigation-link-default-background-color);
-          display: block;
-          padding: calc(units(4) - 1px) 0 units(4);
-          @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-            background-color: transparent;
-            color: color($navigation-overflow-menu-open-text-color);
-            padding: units(3) units(4);
-            &:hover{          
-              text-decoration: underline;
-            }
-          }
-        }
-        .overflow-list, .overflow-list {
-          margin-left: units(4);
-          li {
-            a {
-              padding: calc(units(305) - 1px) 0 units(305);
-            }
-            @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-              &:last-of-type a {
-                padding: 8px 0 32px 0;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
 
-.nav-secondary{
-  padding: 0 units(4);
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
+%-icon-properties {
+    $icon-size: func.units(5, 'rem');
+
+    span {
+        background-position-x: right;
+        background-size: $icon-size;
+        padding-right: calc($icon-size + func.units(2));
+    }
+}
+
+// --------------------------
+// Main menu on desktop
+// --------------------------
+
+.navigation-menu ul.mainmenu {
+    @include mixins.unstyled-list;
     display: flex;
-    align-items: center;
-    padding: 0;
-  }
-  .nav-actions{
-    padding: 0;
-  }
-  + .nav-actions{
-    padding: 0 units(4) units(4);
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    padding: 0 0 0 units(4);
-    }
-  }
-  .nav-secondary-heading{
-    font-weight: font-weight("bold");
-    margin-bottom: units(1);
-    + ul{
-      @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-        margin-left: units(4);
-      }
-    }
-  }
-}
+    flex-flow: row nowrap;
+    margin-left: -$-left-right-padding;
 
-.navbar-primary{
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    border-bottom: border(10);
-  }
-}
-
-.navbar:last-of-type{
-  .nav-actions{
-    border-bottom: none;
-  }
-}
-
-// // Navbar inner
-.navbar-inner {
-  display: flex;
-  flex-direction: column;
-  &.container {
-    padding-left: 0;
-    padding-right: 0;
-    @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-      padding-left: units(4);
-      padding-right: units(4);
+    .nav-link {
+        @extend %-mainmenu-item;
     }
-  }
-  @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+
+    .button-overflow-menu.more-button {
+        @extend %-mainmenu-item;
+        @extend %-icon-properties;
+
+        &[aria-expanded='false'] span,
+        &[aria-expanded='true'] span {
+            @include mixins.add-background-svg("more-vert");
+        }
+
+        &:hover {
+            span {
+                border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+            }
+        }
+    }
+
+    li.active {
+        span {
+            border-bottom: $navigation-desktop-border-bottom-thickness solid func.color(vars.$navigation-link-current-border-color);
+            font-weight: func.font-weight("bold");
+        }
+    }
+
+    li.more-option {
+        ul {
+            @include mixins.nav-link-leftdist(func.units(2), vars.$navigation-link-current-border-color, func.units(4), func.units(7), func.units(7), func.units(7));
+
+            & > li {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .button-overflow-menu {
+        @extend %-mainmenu-item;
+        @extend %-icon-properties;
+
+        &[aria-expanded="false"] span {
+            @include mixins.add-background-svg("expand-more");
+        }
+
+        &[aria-expanded="true"] span {
+            @include mixins.add-background-svg("expand-less");
+        }
+    }
+
+    .overflow-menu-inner {
+        position: absolute;
+        z-index: vars.$zindex-nav-overflow-menu;
+        top: 100%;
+        width: 30rem;
+        border: 1px solid func.color('gray-500');
+        background-color: func.color('white');
+        margin-left: -$navigation-row-link-padding-left-right;
+
+        ul {
+            @include mixins.unstyled-list;
+            
+
+            & > li {
+                border-bottom: 1px solid func.color('gray-200');
+                padding-left: $navigation-row-link-padding-left-right;
+                padding-right: $navigation-row-link-padding-left-right;
+
+                &.current {
+                    background-color: func.color(vars.$navigation-link-current-background-color);
+                }
+    
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                li {
+                    border-bottom: 0;
+                }
+            }
+
+            .nav-link {
+                padding-top: func.units(3);
+                padding-bottom: func.units(3);
+                white-space: normal;
+                max-width: 100%;
+                overflow-wrap: break-word;
+                background-color: transparent;
+
+                span {
+                    border-bottom: none;
+                    font-weight: func.font-weight("normal");
+                    padding-bottom: 0;
+                }
+
+                &:hover {
+                    span {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+
+
+            ul li:last-child .nav-link {
+                padding-bottom: func.units(4);
+            }
+
+            li.current .nav-link span {
+                font-weight: func.font-weight("bold");
+            }
+
+            .sub-title {
+                @include mixins.h6;
+                color: func.color('gray-500');
+                border-bottom: 0;
+                padding-left: func.units(4);
+                padding-top: func.units(305);
+                display: inline-block;
+            }
+
+            .active .sub-title {
+                padding-left: func.units(305);
+            }
+        }
+    }
 }

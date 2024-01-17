@@ -1,50 +1,64 @@
 {% from "components/buttons/buttons.njk" import button as button %}
-{% from "components/header/menu-buttons.njk" import menu_open_button as menu_open_button %}
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/search/search.njk" import search as search %}
 
+{% macro menu_open_button(params) %}
+<button class="function-link button-menu-open js-menu-open ml-auto d-print-none" aria-haspopup="dialog">{{icon_svg({"name":"menu"})}}{{ params.text | default('Menu') }}</button>
+{% endmacro %}
 
-{% macro portal_header(params) %}
-<div class="portal-header{% if params.compact %} portal-header-compact{% endif %}">
-    <div class="container portal-header-inner">
-        <a href="{{ params.logolink.href | default('/') }}"{% if params.logolink.title %} title="{{ params.logolink.title}}"{% endif %}{% if params.logolink.label %} aria-label="{{ params.logolink.label }}"{% endif %} class="logo {{params.logolink.classes}}">
-            <span class="d-none d-print-block">{{ params.logolink.label }}</span>
+{% macro portal_info(params) %}
+<div class="portal-info">
+    <div class="portal-info-inner container">
+        <a href="{{ params.logolink.href | default('/') }}"{% if params.logolink.title %} title="{{ params.logolink.title}}"{% endif %}{% if params.logolink.label %} aria-label="{{ params.logolink.label }}"{% endif %} class="logo{% if params.logolink.classes %} {{ params.logolink.classes }}{% endif %}">
+            <span>{{ params.logolink.label }}</span>
         </a>
         {{- menu_open_button() }}
-        <div class="portal-info">
+        <div class="portal-user">
             {%- if params.user %}
             <p class="user">
-                {% if params.compact == null or params.compact == false %}
-                <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
-                {% else %}
-                <span class="username">{{ params.user.name | safe }}</span>
-                {% endif %}
-                {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
+            {%- if params.user.name and params.user.info %}
+                {{ params.user.name }}, {{ params.user.info }}
+            {%- elif params.user.name %}
+                {{ params.user.name }}
+            {%- endif %}
             </p>
             {% endif %}
-            {% set buttonVariant = params.button.variant | default('secondary') %}
-            {% set buttonText = params.button.text | default('Log af') %}
-            {{- 
-                button({
-                    "variant": buttonVariant,
-                    "text": buttonText,
-                    "classes": { "button": "d-print-none" }
-                }) 
-            }}
+            <button class="function-link d-print-none log-off">{{icon_svg({"name":"lock"})}}{{ params.button.text | default('Log af') }}</button>
         </div>
     </div>
 </div>
 {% endmacro %}
 
-{% macro solution_header(params) %}
-<div class="solution-header{% if params.lastHeader %} header-end{% endif %}">
-    <div class="container solution-header-inner">
-        <div class="solution-heading">
-            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>
-                {{ params.title.text }}
-            </a>
-        </div>
+{% macro mobile_portal_info(params) %}
+<div class="portal-info-mobile">
+    <h3 class="sr-only">Bruger</h3>
+    {% if params.user %}
+    <p class="user">
+    {% if params.user.name and params.user.info %}
+        <span class="mb-3">{{ params.user.name }}</span>
+        <span>{{ params.user.info }}</span>
+    {% elif params.user.name %}
+        {{ params.user.name }}
+    {% endif %}
+    </p>
+    {% endif %}
+    <p>
+        <button class="function-link d-print-none log-off">{{icon_svg({"name":"lock"})}}{{ params.button.text | default('Log af') }}</button>
+    </p>
+</div>
+{% endmacro %}
 
+{% macro solution_info(params) %}
+<div class="solution-info">
+    <div class="solution-info-inner container">
+        <div class="solution-heading">
+            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>{{ params.title.text }}</a>
+        </div>
+        {% if params.menu %}
+        {{- menu_open_button() }}
+        {% endif %}
         {% if params.authority %}
-        <div class="solution-info{% if params.hideOnPrint %} d-print-none{% endif %}">
+        <div class="additional-info{% if params.hideOnPrint %} d-print-none{% endif %}">
             {% if params.authority.name %}
             <p><strong class="authority-name">{{ params.authority.name }}</strong></p>
             {% endif %}
@@ -57,37 +71,115 @@
 </div>
 {% endmacro %}
 
-{% macro mobile_portal_header(params) %}
-<div class="portal-info-mobile">
-    {% if params.user %}
-    <p class="user">
-        {% if params.compact == null or params.compact == false %}
-        <strong class="username weight-semibold">{{ params.user.name | safe }}</strong>
-        {% else %}
-        <span class="username">{{ params.user.name | safe }}</span>
-        {% endif %}
-        {% if params.user.work %}<br />{{ params.user.work}}{% endif %}
-    </p>
-    {% endif %}
-    {% set buttonVariant = params.button.variant | default('secondary') %}
-    {% set buttonText = params.button.text | default('Log af') %}
-    {{ 
-        button({
-            "variant": buttonVariant,
-            "text": buttonText,
-            "classes": { "button": "d-print-none mt-3" }
-        }) 
-    }}
-</div>
-{% endmacro %}
-
-{% macro mobile_solution_header(params) %}
+{% macro mobile_solution_info(params) %}
 <div class="solution-info-mobile">
+    <h3 class="sr-only">Myndighed</h3>
     {% if params.authority.name %}
     <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
     {% endif %}
     {% if params.authority.text %}
     <p>{{ params.authority.text | safe }}</p>
     {% endif %}
+</div>
+{% endmacro %}
+
+{% macro navigation_menu(params) %}
+<div class="navigation-menu{% if params.search %} contains-search{% endif %}">
+    <div class="navigation-menu-inner container">
+        {% if params.links %}
+        <nav class="nav" aria-label="Hovedmenu">
+            <ul class="mainmenu">
+                {% set menuID = params.id | default('desktopmenu') %}
+                {%- for item in params.links -%}
+                <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                    {% if item.links -%}
+                    {% set submenuID = menuID + "-" + loop.index %}
+                    <div class="submenu">
+                        <button class="button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-haspopup="true" aria-expanded="false">
+                            <span>{{ item.text }}</span>
+                        </button>
+                        <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
+                            <ul class="overflow-list">
+                                {%- for subitem in item.links -%}
+                                <li{% if subitem.active or subitem.current %} class="{% if subitem.active or subitem.current %}active{% endif %}{% if subitem.current %} current{% endif %}"{% endif %}>
+                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current %} aria-current="page"{% endif %}>
+                                        <span>{{ subitem.text }}</span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% else -%}
+                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                        <span>{{ item.text }}</span>
+                    </a>
+                    {%- endif %}
+                </li>
+                {% endfor -%}
+            </ul>
+        </nav>
+        {% endif %}
+        {% if params.search %}
+        {{ 
+            search({
+                "id": params.search.id,
+                "name": params.search.name
+            }) 
+        }}
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{% macro mobile_navigation_menu(params) %}
+<nav class="navigation-menu-mobile" aria-label="{{ params.ariaLabelMobile | default('Hovedmenu') }}">
+    <ul class="mainmenu">
+        {% set menuID = params.id | default('mobilemenu') %}
+        {%- for item in params.links -%}
+        <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+            {% if item.links -%}
+            {% set submenuID = menuID + "-" + loop.index %}
+            {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links, overview=item.overview) }}
+            {% else -%}
+            <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+            </a>
+            {%- endif %}
+        </li>
+        {% endfor -%}
+    </ul>
+</nav>
+{% endmacro %}
+
+{% macro mobile_navigation_submenu(text, id, active, current, links, overview) %}
+<div class="submenu">
+    <button class="button-mobile-menu js-menudropdown" data-js-target="{{ id }}" aria-haspopup="true"{% if active or current %} aria-expanded="true"{% else %} aria-expanded="false"{% endif %}>
+        <span>{{ text }}</span>
+    </button>
+    <div class="overflow-menu-inner" id="{{ id }}"{% if active or current %} aria-hidden="false"{% else %} aria-hidden="true"{% endif %}>
+        <ul class="overflow-list">
+            {% set submenuID = id %}
+            {%- for item in links -%}
+            <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                {%- if item.links %}
+                {% set subsubmenuID = submenuID + "-" + loop.index %}
+                {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links, overview=item.overview) }}
+                {% else %}
+                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                    <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+                </a>
+                {% endif -%}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro menu_top() %}
+<div class="menu-top">
+    <h2 id="menu-heading" class="menu-heading">Menu</h2>
+    <button class="function-link button-menu-close js-menu-close" aria-label="{{ params.arialabel | default('Luk menu') }}">{{icon_svg({"name":"close"})}}{{ params.text | default('Luk') }}</button>
 </div>
 {% endmacro %}

@@ -1,4 +1,4 @@
-// virkdk theme
-@import './lib/normalize';
-@import './themes/virkdk';
-@import 'dkfds-base';
+// Virkdk theme
+
+@use 'themes/virkdk/virkdk';
+@use 'dkfds-base';

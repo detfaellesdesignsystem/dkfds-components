@@ -1,7 +1,6 @@
 'use strict';
-import '../polyfills/Function/prototype/bind';
-const toggle = require('../utils/toggle');
-const isElementInViewport = require('../utils/is-in-viewport');
+const toggle = require('../utils/toggle').default;
+const isElementInViewport = require('../utils/is-in-viewport').default;
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";

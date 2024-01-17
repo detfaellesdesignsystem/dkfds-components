@@ -1,82 +1,85 @@
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
 
- //Ul lists
+ // Ul lists
 
  ul {
    padding-left: 0;
    list-style-type: none;
-   color: color($typography-body-text-color);
-   font-size: font-size($typography-body-text-font-size);
-   line-height: units($typography-body-text-line-height, 'rem');
+   color: func.color(vars.$typography-body-text-color);
+   font-size: func.font-size(vars.$typography-body-text-font-size);
+   line-height: func.units(vars.$typography-body-text-line-height, 'rem');
    > li {
-     margin-top:units(3);
+     margin-top:func.units(3);
      list-style-type: none;
      position: relative;
-     padding-left: units(4);
-     line-height: units($typography-body-text-line-height, 'rem');
+     padding-left: func.units(4);
+     line-height: func.units(vars.$typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";
        position: absolute;
-       left: 0px;
+       left: 0;
        top: -1px;
-       font-size: font-size('lg');
+       font-size: func.font-size('lg');
      }
    }
  }
-//Ol lists
+// Ol lists
 ol {
-  padding-left: units(505);
+  padding-left: func.units(505);
   li{
-    margin-top: units(3);
-    line-height: units(5, 'rem');
+    margin-top: func.units(3);
+    line-height: func.units(5, 'rem');
   }
 }
 
 .article{
   ul > li, ol > li{
-    font-size: font-size($typography-article-font-size);
-    line-height: units($typography-article-line-height, 'rem');
-    letter-spacing: $typography-article-letter-spacing;
+    font-size: func.font-size(vars.$typography-article-font-size);
+    line-height: func.units(vars.$typography-article-line-height, 'rem');
+    letter-spacing: vars.$typography-article-letter-spacing;
   }
 }
 
 // Unstyled lists
 .unstyled-list {
-  @include unstyled-list;
+  @include mixins.unstyled-list;
 }
 
 .bordered-list{
-  @include unstyled-list;
-  border-top: border(20);
+  @include mixins.unstyled-list;
+  border-top: func.border(20);
   li{
-    padding: units(3) 0px;
-    border-bottom: border(20);
+    padding: func.units(3) 0;
+    border-bottom: func.border(20);
   }
 }
 
  // No bullet lists
  .nobullet-list {
-   @include nobullet-list;
+   @include mixins.nobullet-list;
  }
 
  // No indententation list
  .noindent-list {
-   @include noindent-list;
+   @include mixins.noindent-list;
  }
 
 
 .inline-list {
-  @include unstyled-list;
+  @include mixins.unstyled-list;
   > li {
     display: block;
 
-    @include media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
       display: inline-block;
     }
   }
 
   li + li{
-    margin-top: units(305);
-    @include media-breakpoint-up(md) {
+    margin-top: func.units(305);
+    @include mixins.media-breakpoint-up(md) {
       margin-top: 0;
     }
   }

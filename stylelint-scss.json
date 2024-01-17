@@ -1,0 +1,30 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "alpha-value-notation": "number",
+        "at-rule-empty-line-before": null,
+        "at-rule-no-vendor-prefix": null,
+        "color-hex-length": "long",
+        "declaration-empty-line-before": null,
+        "declaration-property-unit-disallowed-list": 
+        {
+            "/margin/": ["em", "px", "rem"]
+        },
+        "declaration-property-value-allowed-list": 
+        {
+            "color": ["/^func.color|inherit/"],
+            "font-size": ["/^func.font-size|inherit|root-font-size/"],
+            "font-weight": ["/^func.font-weight|inherit/"]
+        },
+        "value-keyword-case": ["lower", {"camelCaseSvgKeywords": true}],
+        "scss/at-else-closing-brace-newline-after": null,
+        "scss/at-else-closing-brace-space-after": null,
+        "scss/at-else-empty-line-before": null,
+        "scss/at-extend-no-missing-placeholder": null,
+        "scss/at-if-closing-brace-newline-after": null,
+        "scss/at-if-closing-brace-space-after": null,
+        "scss/dollar-variable-colon-space-after": null,
+        "scss/dollar-variable-empty-line-before": null,
+        "scss/double-slash-comment-empty-line-before": null
+    }
+}

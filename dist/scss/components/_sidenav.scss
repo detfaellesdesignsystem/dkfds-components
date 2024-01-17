@@ -1,243 +1,177 @@
-.sidenav-list {
-  @include unstyled-list();
+@use "../variables/variables" as vars;
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
 
-  ul{
-    @include unstyled-list();
-  }
-  border-bottom: border($sidenav-border);
-  border-top: border($sidenav-border);
+$sidemenu-border-left-thickness: func.units(2);
+$sidemenu-link-padding-right: func.units(4);
+$sidemenu-icon-size: 2.4rem;
 
-  a {
-    display: block;
-    border: none;
-    color: color($sidenav-link-default-color);
-    line-height: units($sidenav-link-line-height, 'rem');
-    padding: $spacer;
-    padding-top: calc(8px - #{border-width($sidenav-list-level1-border)});
-    padding-left: units(4);
-    padding-right: units(4);
-    text-decoration: none;
+ul.sidemenu {
+    @include mixins.unstyled-list;
+    @include mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
+    border-bottom: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
+    border-top: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     max-width: none;
-    &:focus {
-      outline-offset: 0;
-      position: relative;
-      z-index: 1;
-    }
-  }
-  > li.current{
-    > a, > ul > li > a{
-      padding-left: calc(#{units(4)} - #{$sidenav-active-border-width});
-    }
-  }
-  li {
-    &:hover {
-      background-color: color($sidenav-link-hover-background-color);
-    }
-    a:hover {
-      text-decoration: none;
-      color: color($sidenav-link-active-color);
-    }
 
-    &.sidenav-error {
-      background-color: color($sidenav-error-background-color);
-
-      &.current {
-        background-color: color($sidenav-error-background-color);
-      }
-
-      &:hover {
-        background-color: color($sidenav-error-background-color);
-      }
-
-      .sidenav-information {
-        color: color($sidenav-link-current-extra-information-text-color);
-        font-weight: font-weight("normal");
-      }
-    }
-
-    a {
-      display: flex;
-      flex-wrap: nowrap;
-
-      ul {
-        width:100%
-      }
-
-      .sidenav-icon-before {
-        line-height: 23px;
-        text-align: left;
-      }
-
-      .sidenav-icon {
-        margin-left: auto;
-        width: 22px;
-        height: 22px;
-        line-height: 23px;
-        text-align: center;
-        float: right;
-      }
-
-      /* 'sidenav-title' used before 9.0.0 to style title text in stepguide - to be removed at some point as breaking change */
-      .sidenav-title {
-        margin-left: units(2);
-        white-space: pre-line;
-      }
-
-      .sidenav-number {
-        margin-right: units(2);
-      }
-
-      .sidenav-information {
-        color: color($sidenav-link-default-extra-information-text-color);
-        margin: 0;
-        display: block;
+    ul {
+        @include mixins.unstyled-list;
         width: 100%;
-      }
-
-      &:focus{
-        background-color: transparent;
-      }
+        max-width: none !important; /* Override ul styling in typography.scss */
     }
 
-    &.current {
-      > a {
-        font-weight: font-weight("medium");
-      }
-
-      .sidenav-information {
-        color: color($sidenav-link-current-extra-information-text-color);
-        font-weight: font-weight("normal");
-      }
-    }
-    &.active{
-      > a{
-        color: color($sidenav-link-active-color);
-        font-weight: font-weight("medium");
-      }
-    }
-  }
-
-  > li > ul > li > ul > li > a{
-    padding-left: units(5);
-  }
-  > li > ul > li > ul > li > ul > li > a{
-    padding-left: units(6);
-  }
-  > li > ul > li > ul > li > ul > li > ul > li > a{
-    padding-left: units(7);
-  }
-  > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
-    padding-left: units(8);
-  }
-
-  > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{units(3)} * 4);
-  }
-  > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{units(3)} * 4);
-  }
-  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{units(3)} * 5);
-  }
-  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{units(3)} * 6);
-  }
-  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
-    padding-left: calc(#{units(3)} * 7);
-  }
-
-  > li {
-    background-color: transparent;
-    font-size: font-size($typography-base-font-size);
-    border-top: border($sidenav-list-level1-border);
-
-    &.active > a{
-      color: color('black');
+    li {
+        background-color: func.color(vars.$sidenav-link-background-color);
+        font-size: func.font-size('sm');
     }
 
-    &.current{
-      border-left: $sidenav-active-border-width solid color($sidenav-active-border-color);
-      background-color: color($sidenav-link-current-background-color);
+    ul li,
+    ul ul li {
+        font-size: func.font-size('xs');
     }
-    &:first-child {
-      border-top: none;
-    }
-    &:last-child {
-      a {
-        padding-bottom: calc(8px - #{border-width($input-border)});
-      }
-    }
-    li{
-      border-top: border($sidenav-list-level2-border);
-      font-size: font-size($typography-small-text-font-size);
-    }
-  }
-  
-  li.disabled {
-    cursor: not-allowed;
 
-    a {
-      cursor: not-allowed;
-      color: color($sidenav-link-disabled-color);
-
-      &:hover {
+    .nav-link, 
+    .nav-step {
+        padding-top: func.units(2);
+        padding-bottom: func.units(2);
+        padding-right: func.units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        text-align: start;
+        width: 100%;
+        max-width: none;
+        border: none;
+        color: func.color(vars.$sidenav-link-font-color);
         background-color: transparent;
         text-decoration: none;
-        color: color($sidenav-link-disabled-color);
+        min-height: calc(func.units(7) - 1px); /* Minus 1px due to the border on the li element */
+        cursor: pointer;
+        font-weight: func.font-weight("normal");
+        line-height: func.units(5, 'rem');
+
+        &:focus {
+            outline-offset: 0;
+            position: relative;
+            z-index: vars.$zindex-focus;
+        }
+
+        &:hover {
+            background-color: func.color(vars.$sidenav-link-background-color-hover);
+
+            .sidenav-information {
+                color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+            }
+        }
+
+        .sidenav-information {
+            color: func.color(vars.$sidenav-link-default-extra-information-text-color);
+            margin: 0;
+            display: block;
+            width: 100%;
+            font-weight: func.font-weight("normal");
+        }
+    }
+
+    .nav-link {
+        div {
+            width: 100%;
+        }
+
+        span {
+            display: inline-block;
+            width: 100%;
+            overflow-wrap: break-word;
+        }
+    }
+
+    .nav-step {
+        & > div {
+            display: flex;
+            width: 100%;
+        }
+
+        div div {
+            overflow-wrap: break-word;
+            max-width: calc(100% - $sidemenu-icon-size - $sidemenu-link-padding-right);
+            width: 100%;
+        }
+
+        .sidenav-number {
+            margin-right: func.units(2);
+        }
+
+        .sidenav-information {
+            max-width: calc(100% + $sidemenu-icon-size);
+        }
+
+        .sidenav-icon {
+            margin-left: auto;
+            width: $sidemenu-icon-size;
+            height: $sidemenu-icon-size;
+
+            .icon-svg {
+                vertical-align: baseline;
+            }
+        }
+    }
+
+    li.active {
+
+        & > :first-child {
+            font-weight: func.font-weight("bold");
+        }
+    }
+
+    li.current {
+        background-color: func.color(vars.$sidenav-link-current-background-color);
+
+        & > .nav-link,
+        & > .nav-step {
+            font-weight: func.font-weight("bold");
+
+            .sidenav-information {
+                color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+            }
+        }
+    }
+
+    li.sidenav-error {
+        background-color: func.color(vars.$sidenav-error-background-color);
+
+        &.current {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
+
+        .nav-link:hover,
+        .nav-step:hover {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
+
+        .sidenav-information {
+            color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+        }
+    }
+
+    li.disabled {
         cursor: not-allowed;
-      }
+
+        .nav-link,
+        .nav-step {
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
+
+        &.current {
+            background-color: transparent;
+        }
+
+        &.sidenav-error {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
     }
-
-    &.active,
-    &.active a {
-      color: color($sidenav-link-active-color);
-      background-color: transparent;
-    }
-
-    &:hover,
-    &.active a:hover {
-      color: color($sidenav-link-active-color);
-      background-color: color($sidenav-link-default-background-color);
-    }
-
-    &.sidenav-error {
-      background-color: color($sidenav-error-background-color);
-
-      &.active a:hover {
-        background-color: color($sidenav-error-background-color);
-      }
-    }
-  }
-}
-
-.sidenav-sub_list {
-  @include unstyled-list();
-  margin: 0;
-  width: 100%;
-
-  li {
-    border: none;
-    &:last-child {
-      a {
-        padding-bottom: units(3);
-      }
-    }
-  }
-
-  a {
-    padding-top: units(3);
-    line-height: units($typography-base-line-height, 'rem');
-  }
-  li:not(.has-anchor-links) .sidenav-sub_list {
-    a {
-      &:focus {
-        outline-offset: 0;
-      }
-    }
-  }
-
-}
-
-.sidebar-col {
-  max-width: 300px;
 }

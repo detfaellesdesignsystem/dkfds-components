@@ -1,5 +1,4 @@
 'use strict';
-import '../polyfills/Function/prototype/bind';
 
 const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
 

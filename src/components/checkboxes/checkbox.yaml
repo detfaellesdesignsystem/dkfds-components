@@ -15,10 +15,6 @@ params:
   type: string
   required: true
   description: Label for the checkbox (the text written next to the checkbox)
-- name: isLarge
-  type: boolean
-  required: false
-  description: Choose whether the checkbox should be small or large. Defaults to true (large).
 - name: classes
   type: object
   required: false
@@ -83,7 +79,3 @@ params:
   type: boolean
   required: false
   description: Show label saying the input is optional - use only when most inputs in form are required.
-- name: isStandalone
-  type: boolean
-  required: false
-  description: Set to true when you only have a single checkbox without a fieldset.

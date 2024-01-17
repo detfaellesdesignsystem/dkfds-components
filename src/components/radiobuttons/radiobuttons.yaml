@@ -34,10 +34,6 @@
   type: string
   required: false
   description: Additional text to show in a tooltip next to the legend
-- name: isLarge
-  type: boolean
-  required: false
-  description: Choose whether the radio buttons should be small or large. Defaults to true (large).
 - name: items
   type: object
   required: true

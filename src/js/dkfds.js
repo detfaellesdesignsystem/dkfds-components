@@ -7,16 +7,16 @@ import CheckboxToggleContent from './components/checkbox-toggle-content';
 import Dropdown from './components/dropdown';
 import DropdownSort from './components/dropdown-sort';
 import ErrorSummary from './components/error-summary';
-import InputRegexMask from './components/regex-input-mask';
 import Modal from './components/modal';
 import Navigation from './components/navigation';
+import MenuDropdown from './components/navigation-drawer-overflow';
 import RadioToggleGroup from './components/radio-toggle-content';
 import ResponsiveTable from './components/table';
-import Tabnav from  './components/tabnav';
+import Tabs from  './components/tabs';
 import TableSelectableRows from './components/selectable-table';
 import Toast from './components/toast';
 import Tooltip from './components/tooltip';
-const datePicker = require('./components/date-picker');
+const datePicker = require('./components/date-picker').default;
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
@@ -130,16 +130,6 @@ var init = function (options) {
 
   /*
   ---------------------
-  Input Regex - used on date fields
-  ---------------------
-  */
-  const jsSelectorRegex = scope.querySelectorAll('input[data-input-regex]');
-  for(let c = 0; c < jsSelectorRegex.length; c++){
-    new InputRegexMask(jsSelectorRegex[ c ]);
-  }
-
-  /*
-  ---------------------
   Modal
   ---------------------
   */
@@ -154,7 +144,17 @@ var init = function (options) {
   ---------------------
   */
   new Navigation().init();
-   
+
+  /*
+  ---------------------
+  Navigation Drawer Overflow Menus
+  ---------------------
+  */
+  const jsSelectorMenuDropdown = scope.getElementsByClassName('js-menudropdown');
+  for(let c = 0; c < jsSelectorMenuDropdown.length; c++){
+    new MenuDropdown(jsSelectorMenuDropdown[ c ]).init();
+  }
+
   /*
   ---------------------
   Radiobutton group collapse
@@ -187,12 +187,12 @@ var init = function (options) {
 
   /*
   ---------------------
-  Tabnav
+  Tabs
   ---------------------
   */
-  const jsSelectorTabnav = scope.getElementsByClassName('tabnav');
-  for(let c = 0; c < jsSelectorTabnav.length; c++){
-    new Tabnav(jsSelectorTabnav[ c ]).init();
+  const jsSelectorTabs = scope.querySelectorAll('div.tab-container');
+  for(let c = 0; c < jsSelectorTabs.length; c++){
+    new Tabs(jsSelectorTabs[ c ]).init();
   }
 
   /*
@@ -207,4 +207,4 @@ var init = function (options) {
   
 };
 
-module.exports = { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, InputRegexMask, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip};
+export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, Modal, Navigation, MenuDropdown, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabs, Toast, Tooltip };

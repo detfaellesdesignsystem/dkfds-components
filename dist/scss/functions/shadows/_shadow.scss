@@ -1,0 +1,25 @@
+@use "sass:map" as map;
+@use "../colors/color" as func;
+@use "../../values/shadows/shadow" as shadow;
+
+// ----------------------------------------
+// Get a valid FDS shadow
+// ----------------------------------------
+
+@function shadow($value) {
+
+    @if map.has-key(shadow.$fds-shadows, $value) {
+        $shadow-map: map.get(shadow.$fds-shadows, $value);
+
+        $shadow-offset-x: map.get($shadow-map, 'offset-x');
+        $shadow-offset-y: map.get($shadow-map, 'offset-y');
+        $shadow-blur: map.get($shadow-map, 'blur');
+        $shadow-spread: map.get($shadow-map, 'spread');
+        $shadow-color: map.get($shadow-map, 'color');
+
+        @return $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread func.color($shadow-color);
+    }
+
+    @error '#{$value} is not a valid FDS shadow token.';
+
+}
