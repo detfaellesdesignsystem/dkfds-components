@@ -4714,9 +4714,10 @@ Modal.prototype.show = function (e = null) {
         /* Trap the focus inside the modal */
         let bodyChildren = document.querySelectorAll('body > *');
         for (let c = 0; c < bodyChildren.length; c++) {
-            if (bodyChildren[c].tagName !== 'SCRIPT' && !bodyChildren[c].classList.contains('fds-modal-container')) {
-                bodyChildren[c].setAttribute('inert', '');
-                bodyChildren[c].classList.add('fds-modal-inert');
+            let child = bodyChildren[c];
+            if (child.tagName !== 'SCRIPT' && !child.classList.contains('fds-modal-container') && !child.hasAttribute('inert')) {
+                child.setAttribute('inert', '');
+                child.classList.add('fds-modal-inert');
             }
         }
     }
