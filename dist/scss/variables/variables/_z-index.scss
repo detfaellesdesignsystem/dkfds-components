@@ -1,20 +1,21 @@
-$zindex-focus:              1 !default;
-$zindex-radio-checkbox:     1 !default;
-$zindex-nav-overflow-menu:  1 !default;
-$zindex-nav-focus:          2 !default;
-$zindex-toggle:             2 !default;
-$zindex-overflow:           2 !default;
-$zindex-overflow-arrow:     3 !default;
-$zindex-back-to-top:        9 !default;
-$zindex-datepicker-3:      10 !default;
-$zindex-datepicker-2:     100 !default;
-$zindex-datepicker-1:     400 !default;
-$zindex-sticky:          1020 !default; // _position.scss
-$zindex-fixed:           1030 !default; // _position.scss
-$zindex-toast-container: 7000 !default;
-$zindex-overlay:         8000 !default; // _header.scss
-$zindex-skip:            8000 !default;
-$zindex-modal-backdrop:  8888 !default;
-$zindex-nav:             9000 !default; // _header.scss
-$zindex-cookie-message:  9500 !default;
-$zindex-modal:           9999 !default;
+$zindex-focus:                  1 !default;
+$zindex-radio-checkbox:         1 !default;
+$zindex-nav-overflow-menu:      1 !default;
+$zindex-nav-focus:              2 !default;
+$zindex-toggle:                 2 !default;
+$zindex-overflow:               2 !default;
+$zindex-overflow-arrow:         3 !default;
+$zindex-back-to-top:            9 !default;
+$zindex-datepicker-3:          10 !default;
+$zindex-datepicker-2:         100 !default;
+$zindex-datepicker-1:         400 !default;
+$zindex-sticky:              1020 !default; // _position.scss
+$zindex-fixed:               1030 !default; // _position.scss
+$zindex-toast-container:     7000 !default;
+$zindex-overlay:             8000 !default; // _header.scss
+$zindex-skip:                8000 !default;
+$zindex-modal-backdrop:      8888 !default;
+$zindex-nav:                 9000 !default; // _header.scss
+$zindex-cookie-message:      9500 !default;
+$zindex-modal:               9999 !default;
+$zindex-tooltip:            11000 !default;

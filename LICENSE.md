@@ -2,7 +2,7 @@
 
 ### Files licensed under the SIL Open Font License, Version 1.1.
 
-The IBM Plex Sans font files in `src/fonts/IBMPlexSans` licensed under the [SIL Open Font License, Version 1.1](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web), and copyright 2017 IBM Corp. with Reserved Font Name "Plex". All Rights Reserved.
+The IBM Plex Sans font files in `src/fonts/IBMPlexSans` licensed under the [SIL Open Font License, Version 1.1](https://openfontlicense.org/open-font-license-official-text/), and copyright 2017 IBM Corp. with Reserved Font Name "Plex". All Rights Reserved.
 
 ### Files licensed under the Apache 2.0 License
 

@@ -1,3 +1,35 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+
 {%- macro tooltip(params) -%}
 data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger="click"{% endif %}{% if params.position %} data-tooltip-position="{{ params.position }}"{% endif %}
+{%- endmacro -%}
+
+{%- macro tooltipnew(params) -%}
+{% set contentElement = params.contentElement | default('div') %}
+<{{ contentElement }} class="tooltip-wrapper">
+    {{ params.target | safe }}
+    <span class="tooltip{% if params.position %} {{params.position}}{% endif %}{% if params.trigger %} {{params.trigger}}{% endif %}"{% if params.trigger == "onhover" %} role="tooltip"{% endif %} id="{{ params.id }}" aria-hidden="true">{{ params.text }}</span>
+    <span class="tooltip-arrow"></span>
+</{{ contentElement }}>
+{%- endmacro -%}
+
+{%- macro tooltip_helpicon(params) -%}
+{% set target = 
+    button({
+        "variant": "unstyled",
+        "attributes": "type=\"button\"",
+        "classes": { "icon": "mr-0 mt-0", "button": "tooltip-target" },
+        "srOnly": "Hvad betyder det?",
+        "icon": "help"
+    }) 
+%}
+{{ 
+    tooltipnew({
+        "text": params.text,
+        "target": target,
+        "position": params.position,
+        "trigger": "onclick",
+        "id": params.id
+    }) 
+}}
 {%- endmacro -%}

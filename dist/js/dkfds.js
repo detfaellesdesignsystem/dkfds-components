@@ -5683,14 +5683,22 @@ function showToast(){
 /* harmony default export */ const toast = (Toast);
 ;// CONCATENATED MODULE: ./src/js/components/tooltip.js
 
-/**
- * Set tooltip on element
- * @param {HTMLElement} element Element which has tooltip
- */
-function Tooltip(element) {
-    this.element = element;
-    if (this.element.getAttribute('data-tooltip') === null) {
-        throw new Error(`Tooltip text is missing. Add attribute data-tooltip and the content of the tooltip as value.`);
+
+const ARROW_DISTANCE_TO_TARGET = 4;     // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
+const ARROW_HEIGHT = 8;                 // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
+const PAGE_MARGIN = 16;
+
+function Tooltip(wrapper) {
+    if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
+        throw new Error(`Tooltip target is missing. Add class 'tooltip-target' to first element inside tooltip wrapper.`);
+    }
+    else if ((wrapper.getElementsByClassName('tooltip')).length === 0) {
+        throw new Error(`Tooltip element is missing. Add class 'tooltip' to second element inside tooltip wrapper.`);
+    }
+    else {
+        this.wrapper = wrapper;
+        this.target = wrapper.getElementsByClassName('tooltip-target')[0];
+        this.tooltip = wrapper.getElementsByClassName('tooltip')[0];
     }
 }
 
@@ -5698,240 +5706,188 @@ function Tooltip(element) {
  * Set eventlisteners
  */
 Tooltip.prototype.init = function () {
-    let module = this;
-    this.element.addEventListener('mouseenter', function (e) {
-        let trigger = e.target;
-        if (trigger.classList.contains('tooltip-hover') === false && trigger.classList.contains('tooltip-focus') === false) {
-            closeAllTooltips(e);
-            trigger.classList.add("tooltip-hover");
-            setTimeout(function () {
-                if (trigger.classList.contains('tooltip-hover')) {
-                    var element = e.target;
-
-                    if (element.getAttribute('aria-describedby') !== null) return;
-                    addTooltip(element);
-                }
-            }, 300);
-        }
+    let wrapper = this.wrapper;
+    let tooltipTarget = this.target;
+    let tooltipEl = this.tooltip;
+    wrapper.classList.add('hide-tooltip');
+    window.addEventListener('resize', function () {
+        setWidth(tooltipEl);
+        placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+        setLeft(tooltipTarget, tooltipEl);
+        setBottomAndTop(wrapper, tooltipEl);
+        
     });
-
-    this.element.addEventListener('mouseleave', function (e) {
-        let trigger = e.target;
-        if (trigger.classList.contains('tooltip-hover')) {
-            trigger.classList.remove('tooltip-hover');
-            var tooltipId = trigger.getAttribute('aria-describedby');
-            let tooltipElement = document.getElementById(tooltipId);
-            if (tooltipElement !== null) {
-                closeHoverTooltip(trigger);
-            }
-        }
+    document.addEventListener('scroll', function () {
+        setWidth(tooltipEl);
+        placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+        setLeft(tooltipTarget, tooltipEl);
+        setBottomAndTop(wrapper, tooltipEl);
     });
-
-    this.element.addEventListener('keyup', function (event) {
-        var key = event.which || event.keyCode;
-        if (key === 27) {
-            var tooltip = this.getAttribute('aria-describedby');
-            if (tooltip !== null && document.getElementById(tooltip) !== null) {
-                document.body.removeChild(document.getElementById(tooltip));
-            }
-            this.classList.remove('active');
-            this.removeAttribute('aria-describedby');
-        }
-    });
-
-    if (this.element.getAttribute('data-tooltip-trigger') === 'click') {
-        this.element.addEventListener('click', function (e) {
-            var trigger = e.target;
-            closeAllTooltips(e);
-            trigger.classList.add('tooltip-focus');
-            trigger.classList.remove('tooltip-hover');
-            if (trigger.getAttribute('aria-describedby') !== null) return;
-            addTooltip(trigger);
-        });
-    }
-
+    setWidth(tooltipEl);
+    placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+    setLeft(tooltipTarget, tooltipEl);
+    setBottomAndTop(wrapper, tooltipEl);
+    
     document.getElementsByTagName('body')[0].removeEventListener('click', closeAllTooltips);
     document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
-};
 
-/**
- * Close all tooltips
- */
-function tooltip_closeAll() {
-    var elements = document.querySelectorAll('.js-tooltip[aria-describedby]');
-    for (var i = 0; i < elements.length; i++) {
-        var popper = elements[i].getAttribute('aria-describedby');
-        elements[i].removeAttribute('aria-describedby');
-        document.body.removeChild(document.getElementById(popper));
+    document.getElementsByTagName('body')[0].removeEventListener('keyup', closeOnTab);
+    document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
+
+    let trueTooltip = tooltipEl.classList.contains('onhover');
+
+    if (trueTooltip) {
+        tooltipTarget.addEventListener('focus', function () {
+            wrapper.classList.remove('hide-tooltip');
+            setWidth(tooltipEl);
+            placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+            setLeft(tooltipTarget, tooltipEl);
+            setBottomAndTop(wrapper, tooltipEl);
+            tooltipEl.setAttribute("aria-hidden", "false");
+        });
+
+        tooltipTarget.addEventListener('mouseover', function (e) {
+            tooltipTarget.classList.add('js-hover');
+            setTimeout(function () {
+                if (tooltipTarget.classList.contains('js-hover')) {
+                    wrapper.classList.remove('hide-tooltip');
+                    setWidth(tooltipEl);
+                    placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+                    setLeft(tooltipTarget, tooltipEl);
+                    setBottomAndTop(wrapper, tooltipEl);
+                    tooltipEl.setAttribute("aria-hidden", "false");
+                }
+            }, 500);
+        });
+    
+        tooltipTarget.addEventListener('mouseleave', function () {
+            tooltipTarget.classList.remove('js-hover');
+            tooltipEl.setAttribute("aria-hidden", "true");
+            wrapper.classList.add('hide-tooltip');
+        });
     }
-}
-
-function addTooltip(trigger) {
-    var pos = trigger.getAttribute('data-tooltip-position') || 'top';
-
-    var tooltip = createTooltip(trigger, pos);
-
-    document.body.appendChild(tooltip);
-
-    positionAt(trigger, tooltip, pos);
-}
-
-/**
- * Create tooltip element
- * @param {HTMLElement} element Element which the tooltip is attached
- * @param {string} pos Position of tooltip (top | bottom)
- * @returns 
- */
-function createTooltip(element, pos) {
-    var tooltip = document.createElement('div');
-    tooltip.className = 'tooltip-popper';
-    var poppers = document.getElementsByClassName('tooltip-popper');
-    var id = 'tooltip-' + poppers.length + 1;
-    tooltip.setAttribute('id', id);
-    tooltip.setAttribute('role', 'tooltip');
-    tooltip.setAttribute('x-placement', pos);
-    element.setAttribute('aria-describedby', id);
-
-    var tooltipInner = document.createElement('div');
-    tooltipInner.className = 'tooltip';
-
-    var tooltipArrow = document.createElement('div');
-    tooltipArrow.className = 'tooltip-arrow';
-    tooltipInner.appendChild(tooltipArrow);
-
-    var tooltipContent = document.createElement('div');
-    tooltipContent.className = 'tooltip-content';
-    tooltipContent.innerHTML = element.getAttribute('data-tooltip');
-    tooltipInner.appendChild(tooltipContent);
-    tooltip.appendChild(tooltipInner);
-
-    return tooltip;
-}
-
-
-/**
- * Positions the tooltip.
- *
- * @param {object} parent - The trigger of the tooltip.
- * @param {object} tooltip - The tooltip itself.
- * @param {string} posHorizontal - Desired horizontal position of the tooltip relatively to the trigger (left/center/right)
- * @param {string} posVertical - Desired vertical position of the tooltip relatively to the trigger (top/center/bottom)
- *
- */
-function positionAt(parent, tooltip, pos) {
-    let trigger = parent;
-    let arrow = tooltip.getElementsByClassName('tooltip-arrow')[0];
-    let triggerPosition = parent.getBoundingClientRect();
-
-    var parentCoords = parent.getBoundingClientRect(), left, top;
-
-    var tooltipWidth = tooltip.offsetWidth;
-
-    var dist = 12;
-    let arrowDirection = "down";
-    left = parseInt(parentCoords.left) + ((parent.offsetWidth - tooltip.offsetWidth) / 2);
-
-    switch (pos) {
-        case 'bottom':
-            top = parseInt(parentCoords.bottom) + dist;
-            arrowDirection = "up";
-            break;
-
-        default:
-        case 'top':
-            top = parseInt(parentCoords.top) - tooltip.offsetHeight - dist;
-    }
-
-    // if tooltip is out of bounds on left side
-    if (left < 0) {
-        left = dist;
-        let endPositionOnPage = triggerPosition.left + (trigger.offsetWidth / 2);
-        let tooltipArrowHalfWidth = 8;
-        let arrowLeftPosition = endPositionOnPage - dist - tooltipArrowHalfWidth;
-        tooltip.getElementsByClassName('tooltip-arrow')[0].style.left = arrowLeftPosition + 'px';
-    }
-
-    // if tooltip is out of bounds on the bottom of the page
-    if ((top + tooltip.offsetHeight) >= window.innerHeight) {
-        top = parseInt(parentCoords.top) - tooltip.offsetHeight - dist;
-        arrowDirection = "down";
-    }
-
-    // if tooltip is out of bounds on the top of the page
-    if (top < 0) {
-        top = parseInt(parentCoords.bottom) + dist;
-        arrowDirection = "up";
-    }
-
-    if (window.innerWidth < (left + tooltipWidth)) {
-        tooltip.style.right = dist + 'px';
-        let endPositionOnPage = triggerPosition.right - (trigger.offsetWidth / 2);
-        let tooltipArrowHalfWidth = 8;
-        let arrowRightPosition = window.innerWidth - endPositionOnPage - dist - tooltipArrowHalfWidth;
-        tooltip.getElementsByClassName('tooltip-arrow')[0].style.right = arrowRightPosition + 'px';
-        tooltip.getElementsByClassName('tooltip-arrow')[0].style.left = 'auto';
-    } else {
-        tooltip.style.left = left + 'px';
-    }
-    tooltip.style.top = top + pageYOffset + 'px';
-    tooltip.getElementsByClassName('tooltip-arrow')[0].classList.add(arrowDirection);
-}
-
-
-function closeAllTooltips(event, force = false) {
-    if (force || (!event.target.classList.contains('js-tooltip') && !event.target.classList.contains('tooltip') && !event.target.classList.contains('tooltip-content'))) {
-        var elements = document.querySelectorAll('.tooltip-popper');
-        for (var i = 0; i < elements.length; i++) {
-            let trigger = document.querySelector('[aria-describedby=' + elements[i].getAttribute('id') + ']');
-            trigger.removeAttribute('data-tooltip-active');
-            trigger.removeAttribute('aria-describedby');
-            trigger.classList.remove('tooltip-focus');
-            trigger.classList.remove('tooltip-hover');
-            document.body.removeChild(elements[i]);
-        }
-    }
-}
-
-function closeHoverTooltip(trigger) {
-    var tooltipId = trigger.getAttribute('aria-describedby');
-    let tooltipElement = document.getElementById(tooltipId);
-    tooltipElement.removeEventListener('mouseenter', onTooltipHover);
-    tooltipElement.addEventListener('mouseenter', onTooltipHover);
-    setTimeout(function () {
-        let tooltipElement = document.getElementById(tooltipId);
-        if (tooltipElement !== null) {
-            if (!trigger.classList.contains("tooltip-hover")) {
-                removeTooltip(trigger);
+    else {
+        tooltipTarget.addEventListener('click', function () {
+            if (wrapper.classList.contains('hide-tooltip')) {
+                wrapper.classList.remove('hide-tooltip');
+                setWidth(tooltipEl);
+                placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
+                setLeft(tooltipTarget, tooltipEl);
+                setBottomAndTop(wrapper, tooltipEl);
+                tooltipEl.setAttribute("aria-hidden", "false");
             }
-        }
-    }, 300);
-}
-
-function onTooltipHover(e) {
-    let tooltipElement = this;
-
-    let trigger = document.querySelector('[aria-describedby=' + tooltipElement.getAttribute('id') + ']');
-    trigger.classList.add('tooltip-hover');
-
-    tooltipElement.addEventListener('mouseleave', function () {
-        let trigger = document.querySelector('[aria-describedby=' + tooltipElement.getAttribute('id') + ']');
-        if (trigger !== null) {
-            trigger.classList.remove('tooltip-hover');
-            closeHoverTooltip(trigger);
+            else {
+                tooltipEl.setAttribute("aria-hidden", "true");
+                wrapper.classList.add('hide-tooltip');
+            }
+        });
+    }
+    tooltipTarget.addEventListener('keyup', function (e) {
+        let key = e.key;
+        if (key === 'Escape') {
+            tooltipEl.setAttribute("aria-hidden", "true");
+            wrapper.classList.add('hide-tooltip');
         }
     });
+};
+
+function setWidth(tooltipEl) {
+    tooltipEl.style.width = 'max-content';
+    let WCAG_Reflow_criteria = 320; // Width of 320 px defined in WCAG 2.1, Criterion 1.4.10 "Reflow"
+    let accessibleMaxWidth = WCAG_Reflow_criteria - (PAGE_MARGIN * 2);
+    if (parseInt(window.getComputedStyle(tooltipEl).width) > accessibleMaxWidth) {
+        tooltipEl.style.width = accessibleMaxWidth + 'px';
+    }
+    let screenMaxWidth = document.body.clientWidth - (PAGE_MARGIN * 2);
+    if (parseInt(window.getComputedStyle(tooltipEl).width) > screenMaxWidth) {
+        tooltipEl.style.width = screenMaxWidth + 'px';
+    }
 }
 
-function removeTooltip(trigger) {
-    var tooltipId = trigger.getAttribute('aria-describedby');
-    let tooltipElement = document.getElementById(tooltipId);
-
-    if (tooltipId !== null && tooltipElement !== null) {
-        document.body.removeChild(tooltipElement);
+function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
+    let spaceAbove = tooltipTarget.getBoundingClientRect().top;
+    let spaceBelow = window.screen.availHeight - tooltipTarget.getBoundingClientRect().bottom;
+    let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
+    let placement = 'above'; // Default
+    if (tooltipEl.classList.contains('below') && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
+        placement = 'below';
     }
-    trigger.removeAttribute('aria-describedby');
-    trigger.classList.remove('tooltip-hover');
-    trigger.classList.remove('tooltip-focus');
+    if (placement === 'above') {
+        tooltipWrapper.classList.add('place-above');
+        tooltipWrapper.classList.remove('place-below');
+    }
+    else if (placement === 'below') {
+        tooltipWrapper.classList.add('place-below');
+        tooltipWrapper.classList.remove('place-above');
+    }
+}
+
+function setLeft(tooltipTarget, tooltipEl) {
+    // Center the tooltip on the tooltip arrow
+    let left = (parseInt(tooltipTarget.getBoundingClientRect().width) - parseInt(tooltipEl.getBoundingClientRect().width))/2;
+    tooltipEl.style.left = left + 'px';
+    // If the tooltip exceeds the left side of the screen, adjust it
+    if (tooltipEl.getBoundingClientRect().left < PAGE_MARGIN) {
+        let adjustedLeft = 0 - parseInt(tooltipTarget.getBoundingClientRect().left) + PAGE_MARGIN;
+        tooltipEl.style.left = adjustedLeft + 'px';
+    }
+    // If the tooltip exceeds the right side of the screen, adjust it
+    else if (tooltipEl.getBoundingClientRect().right > (document.body.clientWidth - PAGE_MARGIN)) {
+        let adjustedLeft = parseInt(window.getComputedStyle(tooltipEl).left) - (tooltipEl.getBoundingClientRect().right - document.body.clientWidth + PAGE_MARGIN);
+        tooltipEl.style.left = adjustedLeft + 'px';
+    }
+}
+
+function setBottomAndTop(tooltipWrapper, tooltipEl) {
+    let total = 0 - tooltipEl.getBoundingClientRect().height - ARROW_HEIGHT - ARROW_DISTANCE_TO_TARGET + 1;
+    if (tooltipWrapper.classList.contains('place-above')) {
+        tooltipEl.style.top = total + 'px';
+        tooltipEl.style.bottom = 'auto';
+    }
+    else if (tooltipWrapper.classList.contains('place-below')) {
+        tooltipEl.style.bottom = total + 'px';
+        tooltipEl.style.top = 'auto';
+    }
+}
+
+
+
+function closeAllTooltips(event) {
+    let tooltips = document.getElementsByClassName('tooltip-wrapper');
+    for (let t = 0; t < tooltips.length; t++) {
+        let wrapper = tooltips[t];
+        let target = wrapper.getElementsByClassName('tooltip-target')[0];
+        let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+        let clickedOnTarget = target.getBoundingClientRect().left <= event.clientX && 
+                              event.clientX <= target.getBoundingClientRect().right && 
+                              target.getBoundingClientRect().top <= event.clientY && 
+                              event.clientY <= target.getBoundingClientRect().bottom;
+        let clickedOnTooltip = window.getComputedStyle(tooltip).display !== 'none' &&
+                               tooltip.getBoundingClientRect().left <= event.clientX && 
+                               event.clientX <= tooltip.getBoundingClientRect().right && 
+                               tooltip.getBoundingClientRect().top <= event.clientY && 
+                               event.clientY <= tooltip.getBoundingClientRect().bottom;
+        if (!clickedOnTarget && target !== document.activeElement && !clickedOnTooltip) {
+            tooltip.setAttribute("aria-hidden", "true");
+            wrapper.classList.add('hide-tooltip');
+        }
+    }
+}
+
+function closeOnTab(e) {
+    let key = e.key;
+    if (key === 'Tab') {
+        let tooltips = document.getElementsByClassName('tooltip-wrapper');
+        for (let t = 0; t < tooltips.length; t++) {
+            let wrapper = tooltips[t];
+            let target = wrapper.getElementsByClassName('tooltip-target')[0];
+            let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+            if (document.activeElement !== target) {
+                tooltip.setAttribute("aria-hidden", "true");
+                wrapper.classList.add('hide-tooltip');
+            }
+        }
+    }
 }
 
 /* harmony default export */ const tooltip = (Tooltip);
@@ -6139,7 +6095,7 @@ var init = function (options) {
   Tooltip
   ---------------------
   */
-  const jsSelectorTooltip = scope.getElementsByClassName('js-tooltip');
+  const jsSelectorTooltip = scope.getElementsByClassName('tooltip-wrapper');
   for(let c = 0; c < jsSelectorTooltip.length; c++){
     new tooltip(jsSelectorTooltip[ c ]).init();
   }

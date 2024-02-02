@@ -200,7 +200,7 @@ var init = function (options) {
   Tooltip
   ---------------------
   */
-  const jsSelectorTooltip = scope.getElementsByClassName('js-tooltip');
+  const jsSelectorTooltip = scope.getElementsByClassName('tooltip-wrapper');
   for(let c = 0; c < jsSelectorTooltip.length; c++){
     new Tooltip(jsSelectorTooltip[ c ]).init();
   }
