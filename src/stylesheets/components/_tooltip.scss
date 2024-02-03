@@ -81,14 +81,5 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
             display: none;
         }
     }
-
-    .tooltip-text {
-        border-bottom: vars.$tooltip-link-border-width vars.$tooltip-link-border-style func.color(vars.$tooltip-link-border-color);
-        font-style: normal;
-
-        &:focus{
-            @include mixins.focus;
-        }
-    }
 }
 

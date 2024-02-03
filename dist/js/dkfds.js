@@ -5709,17 +5709,16 @@ Tooltip.prototype.init = function () {
 
     hideTooltip(wrapper, tooltipEl);
 
+    // Ensure tooltip remains visible if window size is reduced
     window.addEventListener('resize', function () {
         updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
     });
-    document.addEventListener('scroll', function () {
-        updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
-    });
+
     document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
     document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
-    let trueTooltip = tooltipEl.classList.contains('onhover');
+    let trueTooltip = (wrapper.dataset.trigger === 'hover');
     if (trueTooltip) {
 
         tooltipTarget.addEventListener('focus', function () {
@@ -5768,7 +5767,7 @@ Tooltip.prototype.init = function () {
                 onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
                            tooltipEl.getBoundingClientRect().bottom >= e.clientY;
             }
-            /* Don't remove tooltip, if hover returns to the target which triggered the tooltip */
+            /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
             if (!onTarget) {
                 hideTooltip(wrapper, tooltipEl);
             }
@@ -5776,6 +5775,8 @@ Tooltip.prototype.init = function () {
     }
     /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
     else {
+        wrapper.setAttribute('aria-live', 'assertive');
+        wrapper.setAttribute('aria-atomic', 'false');
         tooltipTarget.addEventListener('click', function () {
             if (wrapper.classList.contains('hide-tooltip')) {
                 showTooltip(wrapper, tooltipEl);
@@ -5862,12 +5863,12 @@ function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
 }
 
 function hideTooltip(tooltipWrapper, tooltipEl) {
-    tooltipEl.setAttribute("aria-hidden", "true");
     tooltipWrapper.classList.add('hide-tooltip');
+    tooltipEl.innerText = "";
 }
 
 function showTooltip(tooltipWrapper, tooltipEl) {
-    tooltipEl.setAttribute("aria-hidden", "false");
+    tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
     tooltipWrapper.classList.remove('hide-tooltip');
 }
 

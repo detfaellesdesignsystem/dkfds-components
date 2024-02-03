@@ -11946,14 +11946,6 @@ a.skipnav:focus{
 .tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow{
   display:none;
 }
-.tooltip-wrapper .tooltip-text{
-  border-bottom:1px dotted #1a1a1a;
-  font-style:normal;
-}
-.tooltip-wrapper .tooltip-text:focus{
-  outline:4px solid #747474;
-  outline-offset:1px;
-}
 
 .tab-container{
   width:100%;
