@@ -6,15 +6,20 @@ const PAGE_MARGIN = 32 * 0.5;           // Must match '$grid-gutter-width' in 's
 
 function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
-        throw new Error(`Tooltip target is missing. Add class 'tooltip-target' to first element inside tooltip wrapper.`);
-    }
-    else if ((wrapper.getElementsByClassName('tooltip')).length === 0) {
-        throw new Error(`Tooltip element is missing. Add class 'tooltip' to second element inside tooltip wrapper.`);
+        throw new Error(`Tooltip target is missing. Add class 'tooltip-target' to element inside tooltip wrapper.`);
     }
     else {
         this.wrapper = wrapper;
         this.target = wrapper.getElementsByClassName('tooltip-target')[0];
-        this.tooltip = wrapper.getElementsByClassName('tooltip')[0];
+        //this.tooltip = wrapper.getElementsByClassName('tooltip')[0];
+
+        this.tooltip = document.createElement('span');
+        this.tooltip.classList.add('tooltip');
+        this.wrapper.append(this.tooltip);
+
+        let arrow = document.createElement('span');
+        arrow.classList.add('tooltip-arrow');
+        this.wrapper.append(arrow);
     }
 }
 
@@ -36,6 +41,8 @@ Tooltip.prototype.init = function () {
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
     let trueTooltip = (wrapper.dataset.trigger === 'hover');
     if (trueTooltip) {
+        tooltipEl.id = wrapper.dataset.tooltipId;
+        tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
 
         tooltipTarget.addEventListener('focus', function () {
             showTooltip(wrapper, tooltipEl);
@@ -130,7 +137,7 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     let spaceBelow = window.screen.availHeight - tooltipTarget.getBoundingClientRect().bottom;
     let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
     let placement = 'above'; // Default
-    if (tooltipEl.classList.contains('below') && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
+    if (tooltipWrapper.dataset.position === 'below' && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
         placement = 'below';
     }
     if (placement === 'above') {

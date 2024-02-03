@@ -6,10 +6,9 @@ data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger
 
 {%- macro tooltipnew(params) -%}
 {% set contentElement = params.contentElement | default('div') %}
-<{{ contentElement }} class="tooltip-wrapper" data-tooltip="{{ params.text }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>
+{% set position = params.position | default('above') %}
+<{{ contentElement }} class="tooltip-wrapper" data-tooltip="{{ params.text }}" data-tooltip-id="{{ params.id }}" data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>
     {{ params.target | safe }}
-    <span class="tooltip{% if params.position %} {{params.position}}{% endif %}"{% if params.trueTooltip %} role="tooltip"{% endif %} id="{{ params.id }}"></span>
-    <span class="tooltip-arrow"></span>
 </{{ contentElement }}>
 {%- endmacro -%}
 
