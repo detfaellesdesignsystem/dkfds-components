@@ -2,7 +2,7 @@
 
 const ARROW_DISTANCE_TO_TARGET = 4;     // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
 const ARROW_HEIGHT = 8;                 // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
-const PAGE_MARGIN = 16;
+const PAGE_MARGIN = 32 * 0.5;           // Must match '$grid-gutter-width' in 'src\stylesheets\variables\variables\_grid.scss'
 
 function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
@@ -18,91 +18,95 @@ function Tooltip(wrapper) {
     }
 }
 
-/**
- * Set eventlisteners
- */
 Tooltip.prototype.init = function () {
     let wrapper = this.wrapper;
     let tooltipTarget = this.target;
     let tooltipEl = this.tooltip;
-    wrapper.classList.add('hide-tooltip');
+
+    hideTooltip(wrapper, tooltipEl);
+
     window.addEventListener('resize', function () {
-        setWidth(tooltipEl);
-        placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-        setLeft(tooltipTarget, tooltipEl);
-        setBottomAndTop(wrapper, tooltipEl);
-        
+        updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
     });
     document.addEventListener('scroll', function () {
-        setWidth(tooltipEl);
-        placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-        setLeft(tooltipTarget, tooltipEl);
-        setBottomAndTop(wrapper, tooltipEl);
+        updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
     });
-    setWidth(tooltipEl);
-    placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-    setLeft(tooltipTarget, tooltipEl);
-    setBottomAndTop(wrapper, tooltipEl);
-    
-    document.getElementsByTagName('body')[0].removeEventListener('click', closeAllTooltips);
     document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
-
-    document.getElementsByTagName('body')[0].removeEventListener('keyup', closeOnTab);
     document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
 
+    /* A "true" tooltip describes the element which triggered it and is triggered on hover */
     let trueTooltip = tooltipEl.classList.contains('onhover');
-
     if (trueTooltip) {
+
         tooltipTarget.addEventListener('focus', function () {
-            wrapper.classList.remove('hide-tooltip');
-            setWidth(tooltipEl);
-            placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-            setLeft(tooltipTarget, tooltipEl);
-            setBottomAndTop(wrapper, tooltipEl);
-            tooltipEl.setAttribute("aria-hidden", "false");
+            showTooltip(wrapper, tooltipEl);
+            updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
         });
 
         tooltipTarget.addEventListener('mouseover', function (e) {
+            /* The tooltip should not appear if the user just briefly moves the cursor 
+               across the component. Use the 'js-hover' class as a flag to check, if
+               the hover action is persistant. */
             tooltipTarget.classList.add('js-hover');
             setTimeout(function () {
                 if (tooltipTarget.classList.contains('js-hover')) {
-                    wrapper.classList.remove('hide-tooltip');
-                    setWidth(tooltipEl);
-                    placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-                    setLeft(tooltipTarget, tooltipEl);
-                    setBottomAndTop(wrapper, tooltipEl);
-                    tooltipEl.setAttribute("aria-hidden", "false");
+                    showTooltip(wrapper, tooltipEl);
+                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
                 }
-            }, 500);
+            }, 300);
         });
     
-        tooltipTarget.addEventListener('mouseleave', function () {
+        tooltipTarget.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
-            tooltipEl.setAttribute("aria-hidden", "true");
-            wrapper.classList.add('hide-tooltip');
+            let onTooltip = false;
+            if (wrapper.classList.contains('place-above')) {
+                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && 
+                            tooltipTarget.getBoundingClientRect().top >= e.clientY;
+            }
+            else if (wrapper.classList.contains('place-below')) {
+                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && 
+                            tooltipTarget.getBoundingClientRect().bottom <= e.clientY;
+            }
+            /* WCAG 1.4.13: It must be possible to hover on the tooltip */
+            if (!onTooltip) {
+                hideTooltip(wrapper, tooltipEl);
+            }
+        });
+
+        tooltipEl.addEventListener('mouseleave', function (e) {
+            tooltipTarget.classList.remove('js-hover');
+            let onTarget = false;
+            if (wrapper.classList.contains('place-above')) {
+                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
+                           tooltipEl.getBoundingClientRect().top <= e.clientY;
+            }
+            else if (wrapper.classList.contains('place-below')) {
+                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
+                           tooltipEl.getBoundingClientRect().bottom >= e.clientY;
+            }
+            /* Don't remove tooltip, if hover returns to the target which triggered the tooltip */
+            if (!onTarget) {
+                hideTooltip(wrapper, tooltipEl);
+            }
         });
     }
+    /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
     else {
         tooltipTarget.addEventListener('click', function () {
             if (wrapper.classList.contains('hide-tooltip')) {
-                wrapper.classList.remove('hide-tooltip');
-                setWidth(tooltipEl);
-                placeAboveOrBelow(wrapper, tooltipTarget, tooltipEl);
-                setLeft(tooltipTarget, tooltipEl);
-                setBottomAndTop(wrapper, tooltipEl);
-                tooltipEl.setAttribute("aria-hidden", "false");
+                showTooltip(wrapper, tooltipEl);
+                updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
             }
             else {
-                tooltipEl.setAttribute("aria-hidden", "true");
-                wrapper.classList.add('hide-tooltip');
+                hideTooltip(wrapper, tooltipEl);
             }
         });
     }
+
     tooltipTarget.addEventListener('keyup', function (e) {
         let key = e.key;
         if (key === 'Escape') {
-            tooltipEl.setAttribute("aria-hidden", "true");
-            wrapper.classList.add('hide-tooltip');
+            hideTooltip(wrapper, tooltipEl);
         }
     });
 };
@@ -166,7 +170,22 @@ function setBottomAndTop(tooltipWrapper, tooltipEl) {
     }
 }
 
+function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
+    setWidth(tooltipEl);
+    placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl);
+    setLeft(tooltipTarget, tooltipEl);
+    setBottomAndTop(tooltipWrapper, tooltipEl);
+}
 
+function hideTooltip(tooltipWrapper, tooltipEl) {
+    tooltipEl.setAttribute("aria-hidden", "true");
+    tooltipWrapper.classList.add('hide-tooltip');
+}
+
+function showTooltip(tooltipWrapper, tooltipEl) {
+    tooltipEl.setAttribute("aria-hidden", "false");
+    tooltipWrapper.classList.remove('hide-tooltip');
+}
 
 function closeAllTooltips(event) {
     let tooltips = document.getElementsByClassName('tooltip-wrapper');
@@ -184,8 +203,7 @@ function closeAllTooltips(event) {
                                tooltip.getBoundingClientRect().top <= event.clientY && 
                                event.clientY <= tooltip.getBoundingClientRect().bottom;
         if (!clickedOnTarget && target !== document.activeElement && !clickedOnTooltip) {
-            tooltip.setAttribute("aria-hidden", "true");
-            wrapper.classList.add('hide-tooltip');
+            hideTooltip(wrapper, tooltip);
         }
     }
 }
@@ -199,8 +217,7 @@ function closeOnTab(e) {
             let target = wrapper.getElementsByClassName('tooltip-target')[0];
             let tooltip = wrapper.getElementsByClassName('tooltip')[0];
             if (document.activeElement !== target) {
-                tooltip.setAttribute("aria-hidden", "true");
-                wrapper.classList.add('hide-tooltip');
+                hideTooltip(wrapper, tooltip);
             }
         }
     }
