@@ -5692,10 +5692,18 @@ function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
         throw new Error(`Tooltip target is missing. Add class 'tooltip-target' to element inside tooltip wrapper.`);
     }
+    else if (!wrapper.hasAttribute('data-tooltip') || wrapper.dataset.tooltip === '') {
+        throw new Error(`Tooltip text missing. Wrapper must have data attribute 'data-tooltip'.`);
+    }
+    else if (wrapper.dataset.trigger !== 'hover' && wrapper.dataset.trigger !== 'click') {
+        throw new Error(`Tooltip wrapper must have data attribute 'data-trigger="hover"' or 'data-trigger="click"'.`);
+    }
+    else if (wrapper.dataset.trigger === 'hover' && (!wrapper.hasAttribute('data-tooltip-id') || wrapper.dataset.tooltipId === '')) {
+        throw new Error(`Tooltip wrapper with 'hover' trigger must have data attribute 'data-tooltip-id'.`);
+    }
     else {
         this.wrapper = wrapper;
         this.target = wrapper.getElementsByClassName('tooltip-target')[0];
-        //this.tooltip = wrapper.getElementsByClassName('tooltip')[0];
 
         this.tooltip = document.createElement('span');
         this.tooltip.classList.add('tooltip');

@@ -11,6 +11,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     height: fit-content;
     line-height: 1;
     display: inline-block;
+    vertical-align: bottom;
 
     .tooltip {
         @include mixins.body-copy-text;

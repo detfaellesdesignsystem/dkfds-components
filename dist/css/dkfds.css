@@ -11885,6 +11885,7 @@ a.skipnav:focus{
   height:fit-content;
   line-height:1;
   display:inline-block;
+  vertical-align:bottom;
 }
 .tooltip-wrapper .tooltip{
   font-size:1.6rem;

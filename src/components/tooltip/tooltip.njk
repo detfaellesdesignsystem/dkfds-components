@@ -1,13 +1,9 @@
 {% from "components/buttons/buttons.njk" import button as button %}
 
 {%- macro tooltip(params) -%}
-data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger="click"{% endif %}{% if params.position %} data-tooltip-position="{{ params.position }}"{% endif %}
-{%- endmacro -%}
-
-{%- macro tooltipnew(params) -%}
 {% set contentElement = params.contentElement | default('div') %}
 {% set position = params.position | default('above') %}
-<{{ contentElement }} class="tooltip-wrapper" data-tooltip="{{ params.text }}" data-tooltip-id="{{ params.id }}" data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>
+<{{ contentElement }} class="tooltip-wrapper" data-tooltip="{{ params.text }}"{% if params.id %} data-tooltip-id="{{ params.id }}"{% endif %} data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>
     {{ params.target | safe }}
 </{{ contentElement }}>
 {%- endmacro -%}
@@ -23,12 +19,13 @@ data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger
     }) 
 %}
 {{ 
-    tooltipnew({
+    tooltip({
         "text": params.text,
         "target": target,
         "position": params.position,
         "trueTooltip": false,
-        "id": params.id
+        "id": params.id,
+        "contentElement": params.contentElement
     }) 
 }}
 {%- endmacro -%}
