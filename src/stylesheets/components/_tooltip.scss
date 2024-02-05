@@ -13,6 +13,22 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     display: inline-block;
     vertical-align: bottom;
 
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: calc($-arrow-height + $-arrow-dist-to-target);
+        display: block;
+    }
+    
+    &.place-above::before {
+        top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+    }
+
+    &.place-below::before {
+        bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+    }
+
     .tooltip {
         @include mixins.body-copy-text;
         font-size: func.font-size('sm');
@@ -79,6 +95,10 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
 
     &.hide-tooltip {
         .tooltip, .tooltip-arrow {
+            display: none;
+        }
+
+        &::before {
             display: none;
         }
     }

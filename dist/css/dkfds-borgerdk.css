@@ -11887,6 +11887,19 @@ a.skipnav:focus{
   display:inline-block;
   vertical-align:bottom;
 }
+.tooltip-wrapper::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:12px;
+  display:block;
+}
+.tooltip-wrapper.place-above::before{
+  top:-12px;
+}
+.tooltip-wrapper.place-below::before{
+  bottom:-12px;
+}
 .tooltip-wrapper .tooltip{
   font-size:1.6rem;
   line-height:2.4rem;
@@ -11945,6 +11958,9 @@ a.skipnav:focus{
   bottom:-12px;
 }
 .tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow{
+  display:none;
+}
+.tooltip-wrapper.hide-tooltip::before{
   display:none;
 }
 

@@ -1,21 +1,22 @@
 'use strict';
 
-const ARROW_DISTANCE_TO_TARGET = 4;     // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
-const ARROW_HEIGHT = 8;                 // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
-const PAGE_MARGIN = 32 * 0.5;           // Must match '$grid-gutter-width' in 'src\stylesheets\variables\variables\_grid.scss'
+const ARROW_DISTANCE_TO_TARGET = 4;             // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
+const ARROW_HEIGHT = 8;                         // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
+const GRID_GUTTER_WIDTH = 32;                   // Must match '$grid-gutter-width' in 'src\stylesheets\variables\variables\_grid.scss'
+const PAGE_MARGIN = GRID_GUTTER_WIDTH * 0.5
 
 function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
-        throw new Error(`Tooltip target is missing. Add class 'tooltip-target' to element inside tooltip wrapper.`);
+        throw new Error(`Missing tooltip target. Add class 'tooltip-target' to element inside tooltip wrapper.`);
     }
     else if (!wrapper.hasAttribute('data-tooltip') || wrapper.dataset.tooltip === '') {
-        throw new Error(`Tooltip text missing. Wrapper must have data attribute 'data-tooltip'.`);
+        throw new Error(`Missing tooltip text. Wrapper must have data attribute 'data-tooltip'.`);
     }
     else if (wrapper.dataset.trigger !== 'hover' && wrapper.dataset.trigger !== 'click') {
-        throw new Error(`Tooltip wrapper must have data attribute 'data-trigger="hover"' or 'data-trigger="click"'.`);
+        throw new Error(`Missing trigger. Tooltip wrapper must have data attribute 'data-trigger="hover"' or 'data-trigger="click"'.`);
     }
     else if (wrapper.dataset.trigger === 'hover' && (!wrapper.hasAttribute('data-tooltip-id') || wrapper.dataset.tooltipId === '')) {
-        throw new Error(`Tooltip wrapper with 'hover' trigger must have data attribute 'data-tooltip-id'.`);
+        throw new Error(`Missing ID. Tooltip wrapper with 'hover' trigger must have data attribute 'data-tooltip-id'.`);
     }
     else {
         this.wrapper = wrapper;
@@ -38,7 +39,7 @@ Tooltip.prototype.init = function () {
 
     hideTooltip(wrapper, tooltipEl);
 
-    // Ensure tooltip remains visible if window size is reduced
+    /* Ensure tooltip remains visible if window size is reduced */
     window.addEventListener('resize', function () {
         updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
     });
@@ -48,6 +49,7 @@ Tooltip.prototype.init = function () {
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
     let trueTooltip = (wrapper.dataset.trigger === 'hover');
+
     if (trueTooltip) {
         tooltipEl.id = wrapper.dataset.tooltipId;
         tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
@@ -92,22 +94,30 @@ Tooltip.prototype.init = function () {
             let onTarget = false;
             if (wrapper.classList.contains('place-above')) {
                 onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
-                           tooltipEl.getBoundingClientRect().top <= e.clientY;
+                           tooltipEl.getBoundingClientRect().bottom <= e.clientY;
             }
             else if (wrapper.classList.contains('place-below')) {
                 onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
-                           tooltipEl.getBoundingClientRect().bottom >= e.clientY;
+                           tooltipEl.getBoundingClientRect().top >= e.clientY;
             }
             /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
             if (!onTarget) {
                 hideTooltip(wrapper, tooltipEl);
             }
         });
+
+        /* If the mouse leaves while in the gap between the target and the tooltip,
+           ensure that the tooltip closes */
+        wrapper.addEventListener('mouseleave', function (e) {
+            tooltipTarget.classList.remove('js-hover');
+            hideTooltip(wrapper, tooltipEl);
+        });
     }
     /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
     else {
         wrapper.setAttribute('aria-live', 'assertive');
         wrapper.setAttribute('aria-atomic', 'false');
+        tooltipEl.setAttribute('aria-atomic', 'true');
         tooltipTarget.addEventListener('click', function () {
             if (wrapper.classList.contains('hide-tooltip')) {
                 showTooltip(wrapper, tooltipEl);
@@ -144,7 +154,7 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     let spaceAbove = tooltipTarget.getBoundingClientRect().top;
     let spaceBelow = window.screen.availHeight - tooltipTarget.getBoundingClientRect().bottom;
     let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
-    let placement = 'above'; // Default
+    let placement = 'above'; // Default placement
     if (tooltipWrapper.dataset.position === 'below' && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
         placement = 'below';
     }
@@ -159,15 +169,15 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
 }
 
 function setLeft(tooltipTarget, tooltipEl) {
-    // Center the tooltip on the tooltip arrow
+    /* Center the tooltip on the tooltip arrow */
     let left = (parseInt(tooltipTarget.getBoundingClientRect().width) - parseInt(tooltipEl.getBoundingClientRect().width))/2;
     tooltipEl.style.left = left + 'px';
-    // If the tooltip exceeds the left side of the screen, adjust it
+    /* If the tooltip exceeds the left side of the screen, adjust it */
     if (tooltipEl.getBoundingClientRect().left < PAGE_MARGIN) {
         let adjustedLeft = 0 - parseInt(tooltipTarget.getBoundingClientRect().left) + PAGE_MARGIN;
         tooltipEl.style.left = adjustedLeft + 'px';
     }
-    // If the tooltip exceeds the right side of the screen, adjust it
+    /* If the tooltip exceeds the right side of the screen, adjust it */
     else if (tooltipEl.getBoundingClientRect().right > (document.body.clientWidth - PAGE_MARGIN)) {
         let adjustedLeft = parseInt(window.getComputedStyle(tooltipEl).left) - (tooltipEl.getBoundingClientRect().right - document.body.clientWidth + PAGE_MARGIN);
         tooltipEl.style.left = adjustedLeft + 'px';
