@@ -8,6 +8,7 @@ import Dropdown from './dropdown';
 function DropdownSort (container){
     this.container = container;
     this.button = container.getElementsByClassName('button-overflow-menu')[0];
+    this.overflowMenu = new Dropdown(this.button);
 
     // if no value is selected, choose first option
     if(!this.container.querySelector('.overflow-list li button[aria-current="true"]')){
@@ -21,7 +22,7 @@ function DropdownSort (container){
  * Add click events on overflow menu and options in menu
  */
 DropdownSort.prototype.init = function(){
-    this.overflowMenu = new Dropdown(this.button).init();
+    this.overflowMenu.init();
 
     let sortingOptions = this.container.querySelectorAll('.overflow-list li button');
     for(let s = 0; s < sortingOptions.length; s++){
@@ -43,7 +44,7 @@ DropdownSort.prototype.updateSelectedValue = function(){
  * @param {PointerEvent} e
  */
 DropdownSort.prototype.onOptionClick = function(e){
-    let li = e.target.parentNode;
+    let li = e.target.closest('li');
     li.parentNode.querySelector('li button[aria-current="true"]').removeAttribute('aria-current');
     li.querySelectorAll('.overflow-list li button')[0].setAttribute('aria-current', 'true');
 
@@ -52,10 +53,7 @@ DropdownSort.prototype.onOptionClick = function(e){
     eventSelected.detail = this.target;
     button.dispatchEvent(eventSelected);
     this.updateSelectedValue();
-
-    // hide menu
-    let overflowMenu = new Dropdown(button);
-    overflowMenu.hide();
+    this.overflowMenu.hide();
 }
 
 export default DropdownSort;

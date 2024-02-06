@@ -20,7 +20,7 @@ function Dropdown (buttonElement) {
   if(targetAttr === null || targetAttr === undefined){
     throw new Error('Attribute could not be found on overflow menu component: '+TARGET);
   }
-  let targetEl = document.getElementById(targetAttr.replace('#', ''));
+  let targetEl = document.getElementById(targetAttr);
   if(targetEl === null || targetEl === undefined){
     throw new Error('Panel for overflow menu component could not be found.');
   }
@@ -184,7 +184,7 @@ let toggle = function(button, forceClose = false){
   if(triggerEl !== null && triggerEl !== undefined){
     let targetAttr = triggerEl.getAttribute(TARGET);
     if(targetAttr !== null && targetAttr !== undefined){
-      targetEl = document.getElementById(targetAttr.replace('#', ''));
+      targetEl = document.getElementById(targetAttr);
     }
   }
   if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
