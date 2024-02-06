@@ -5810,13 +5810,6 @@ Tooltip.prototype.init = function () {
             }
         });
     }
-
-    tooltipTarget.addEventListener('keyup', function (e) {
-        let key = e.key;
-        if (key === 'Escape') {
-            hideTooltip(wrapper, tooltipEl);
-        }
-    });
 };
 
 function setWidth(tooltipEl) {
@@ -5918,15 +5911,24 @@ function closeAllTooltips(event) {
 
 function closeOnTab(e) {
     let key = e.key;
+    let tooltips = document.getElementsByClassName('tooltip-wrapper');
     if (key === 'Tab') {
-        let tooltips = document.getElementsByClassName('tooltip-wrapper');
         for (let t = 0; t < tooltips.length; t++) {
             let wrapper = tooltips[t];
             let target = wrapper.getElementsByClassName('tooltip-target')[0];
             let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+            /* If the user is tabbing to an element, where a tooltip already is open,
+               keep it open */
             if (document.activeElement !== target) {
                 hideTooltip(wrapper, tooltip);
             }
+        }
+    }
+    else if (key === 'Escape') {
+        for (let t = 0; t < tooltips.length; t++) {
+            let wrapper = tooltips[t];
+            let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+            hideTooltip(wrapper, tooltip);
         }
     }
 }

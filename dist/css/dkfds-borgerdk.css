@@ -7366,6 +7366,12 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
   padding-bottom:4px;
 }
 
+.form-checkbox + label + .tooltip-wrapper{
+  margin-top:4px;
+  margin-bottom:4px;
+  margin-left:2px;
+}
+
 .form-checkbox + label::before,
 .form-radio + label::before{
   content:"";

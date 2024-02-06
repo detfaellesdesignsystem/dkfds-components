@@ -324,6 +324,12 @@ legend, .form-error-message, .form-hint {
     padding-bottom: $expand-hit-area;
 }
 
+.form-checkbox + label + .tooltip-wrapper {
+  margin-top: $expand-hit-area;
+  margin-bottom: $expand-hit-area;
+  margin-left: func.units(1);
+}
+
 // Unchecked radio and checkbox button
 .form-checkbox + label::before,
 .form-radio + label::before {

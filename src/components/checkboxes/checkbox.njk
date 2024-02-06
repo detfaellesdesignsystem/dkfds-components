@@ -1,6 +1,7 @@
 {% from "components/form/controls/helptext.njk" import helptext as helptext %}
 {% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
 {% from "components/form/controls/label.njk" import label as label %}
+{% from "components/tooltip/tooltip.njk" import tooltip_helpicon as tooltip_helpicon %}
 
 {% macro checkbox(params) %}
 {% set collapseId = params.id + '-collapse' %}
@@ -22,6 +23,15 @@
             "requiredLabel": params.requiredLabel
         })
     }}
+    {% if params.tooltip %}
+    {{ 
+        tooltip_helpicon({
+            "text": params.tooltip.text,
+            "id": params.tooltip.id,
+            "contentElement": params.tooltip.contentElement
+        }) 
+    }}
+    {%- endif -%}
     {%- endif -%}
     {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
 </div>
