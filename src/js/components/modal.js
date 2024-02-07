@@ -46,14 +46,6 @@ Modal.prototype.hide = function () {
         if (!hasForcedAction(modalElement)) {
             document.removeEventListener('keyup', handleEscape);
         }
-        let dataModalOpener = modalElement.getAttribute('data-modal-opener');
-        if (dataModalOpener !== null) {
-            let opener = document.getElementById(dataModalOpener)
-            if (opener !== null) {
-                opener.focus();
-            }
-            modalElement.removeAttribute('data-modal-opener');
-        }
 
         /* Release the focus from the modal */
         let bodyChildren = document.querySelectorAll('body > *');
@@ -62,6 +54,16 @@ Modal.prototype.hide = function () {
                 bodyChildren[c].removeAttribute('inert');
                 bodyChildren[c].classList.remove('fds-modal-inert');
             }
+        }
+
+        /* Place focus on the element which opened the modal */
+        let dataModalOpener = document.querySelector('[data-modal-opener]');
+        if (dataModalOpener !== null) {
+            let opener = document.getElementById(dataModalOpener.getAttribute('data-modal-opener'));
+            if (opener !== null) {
+                opener.focus();
+            }
+            modalElement.removeAttribute('data-modal-opener');
         }
     }
 };
@@ -76,7 +78,7 @@ Modal.prototype.show = function (e = null) {
             let openerId = e.target.getAttribute('id');
             if (openerId === null) {
                 openerId = 'modal-opener-' + Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
-                e.target.setAttribute('id', openerId)
+                e.target.setAttribute('id', openerId);
             }
             modalElement.setAttribute('data-modal-opener', openerId);
         }

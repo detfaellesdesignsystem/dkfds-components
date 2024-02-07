@@ -53,6 +53,7 @@ Tooltip.prototype.init = function () {
     if (trueTooltip) {
         tooltipEl.id = wrapper.dataset.tooltipId;
         tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
+        tooltipEl.setAttribute('role', 'tooltip');
 
         tooltipTarget.addEventListener('focus', function () {
             showTooltip(wrapper, tooltipEl);
