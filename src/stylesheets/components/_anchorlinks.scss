@@ -8,7 +8,7 @@
 }
 
 .anchortitle {
-    font-size: func.font-size("2xs");
+    font-size: func.font-size("xs");
     font-weight: func.font-weight("medium");
     margin-bottom: func.units(3);
     line-height: func.units(vars.$typography-base-line-height, 'rem');

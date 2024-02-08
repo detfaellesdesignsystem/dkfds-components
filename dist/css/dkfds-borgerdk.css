@@ -1242,7 +1242,7 @@ h5, .h5{
 }
 
 h6, .h6{
-  font-size:1.2rem;
+  font-size:1.4rem;
   line-height:1.67;
   letter-spacing:normal;
   font-weight:500;
@@ -8855,7 +8855,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .anchortitle{
-  font-size:1.2rem;
+  font-size:1.4rem;
   font-weight:500;
   margin-bottom:8px;
   line-height:2.4rem;
@@ -10463,7 +10463,7 @@ body.mobile-nav-active{
   font-weight:700;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .sub-title{
-  font-size:1.2rem;
+  font-size:1.4rem;
   line-height:1.67;
   letter-spacing:normal;
   font-weight:500;
