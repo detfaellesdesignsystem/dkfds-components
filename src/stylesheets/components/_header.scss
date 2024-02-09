@@ -331,6 +331,7 @@
         overflow-y: auto;
         padding: 0;
         width: $sliding-panel-width;
+        max-width: 40rem;
         z-index: vars.$zindex-nav;
 
         &.is-visible {
