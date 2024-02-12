@@ -1517,7 +1517,7 @@ h6, .h6{
 }
 
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu),
+ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   max-width:66ch;
 }
@@ -8531,6 +8531,17 @@ button.function-link, button.accordion-bulk-button{
   padding:0;
   text-decoration:underline;
   text-align:left;
+  display:inline-flex;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+  text-align:left;
+  align-items:center;
+  justify-content:center;
+  -webkit-user-select:text;
+          user-select:text;
+  cursor:pointer;
+  vertical-align:middle;
 }
 
 .function-link, button.accordion-bulk-button{
@@ -8553,6 +8564,26 @@ button.function-link, button.accordion-bulk-button{
 }
 .function-link.link-right, button.link-right.accordion-bulk-button{
   text-align:right;
+}
+
+.function-link-wrapper{
+  list-style-type:none;
+  padding-left:0;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.function-link-wrapper > li{
+  padding-left:0;
+}
+.function-link-wrapper > li::before{
+  content:"" !important;
+  padding-right:0 !important;
+}
+.function-link-wrapper li{
+  margin-left:16px;
+  margin-top:0;
 }
 .accordion-button{
   background-color:transparent;

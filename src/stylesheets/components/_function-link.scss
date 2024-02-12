@@ -7,7 +7,17 @@ button.function-link{
     padding: 0;
     text-decoration: underline;
     text-align: left;
+    display: inline-flex;
+    @include mixins.font-smoothing;
+    line-height: 1.5;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    user-select: text;
+    cursor: pointer;
+    vertical-align: middle;
 }
+
 .function-link{
     border: none;
     @include mixins.body-copy-text;
@@ -25,4 +35,16 @@ button.function-link{
         text-align: right;
     }
 }
-  
+
+.function-link-wrapper {
+    @include mixins.nobullet-list;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    li {
+        margin-left: func.units(4);
+        margin-top: 0;
+    }
+}

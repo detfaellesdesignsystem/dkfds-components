@@ -307,7 +307,7 @@ h6, .h6{
   max-width: vars.$typography-text-max-width;
 }
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu),
+ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   max-width: vars.$typography-text-max-width;
 }
