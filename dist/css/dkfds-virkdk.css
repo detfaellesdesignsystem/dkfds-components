@@ -6857,10 +6857,6 @@ figure{
   background-image:url("../img/svg-icons/location-on.svg");
 }
 
-.icon-lock-open:not(a){
-  background-image:url("../img/svg-icons/lock-open.svg");
-}
-
 .icon-lock:not(a){
   background-image:url("../img/svg-icons/lock.svg");
 }
