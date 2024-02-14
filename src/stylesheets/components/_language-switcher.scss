@@ -22,7 +22,7 @@
 
 
             @include mixins.media-breakpoint-up(md) {
-                display: inline-block;
+                display: inline-flex;
                 padding-left: 0;
 
                 &::after {

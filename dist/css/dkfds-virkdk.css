@@ -11047,7 +11047,7 @@ ul.sidemenu li.disabled.sidenav-error{
 }
 @media (min-width: 768px){
   .language-switcher ul > li{
-    display:inline-block;
+    display:inline-flex;
     padding-left:0;
   }
   .language-switcher ul > li::after{

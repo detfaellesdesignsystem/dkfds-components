@@ -1,12 +1,27 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/tooltip/tooltip.njk" import tooltip as tooltip %}
 
 {% macro languageSwitcher(params) %}
 <div class="language-switcher">
     <div class="container">
         <ul aria-label="{{ params.ariaLabel | default('Vælg sprog') }}">
             {%- for language in params.languages -%}
-            <li><a href="{{ language.href }}" lang="{{language.code}}" {% if language.tooltip %}class="js-tooltip" data-tooltip="{{language.tooltip}}"{% endif %} {% if loop.first %}aria-label="{{ params.firstAriaLabel | default('Valgt sprog: Dansk')}}"{% endif %}>{% if loop.first %}<svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#done"></use></svg>{% endif %}{{language.name}}</a></li>
-            {% endfor -%}
+            {%- set firstAriaLabel = "" -%}
+            {%- set icon = "" -%}
+            {%- set class = "" -%}
+            {%- set tooltipID = ["language-tooltip", "-", loop.index] | join -%}
+            {%- if language.tooltip -%}
+                {% set class = ' class="tooltip-target"' %}
+            {%- endif -%}
+            {%- if loop.first -%}
+                {%- set defaultLang = params.firstAriaLabel | default('Valgt sprog: Dansk') -%}
+                {%- set firstAriaLabel = [' aria-label="', defaultLang, '"'] | join -%}
+                {%- set icon = '<svg class="icon-svg" focusable="false" aria-hidden="true"><use xlink:href="#done"></use></svg>' -%}
+            {%- endif -%}
+            {%- set target = ['<a href="', language.href, '" lang="', language.code, '"', firstAriaLabel, class, '>', icon, language.name, '</a>'] | join | safe -%}
+            {%- if language.tooltip -%}<li>{{ tooltip({ "text": language.tooltip, "target": target, "id": tooltipID, "contentElement": "span", "trueTooltip": true }) }}</li>
+            {%- else -%}<li>{{ target }}</li>{%- endif -%}
+            {%- endfor -%}
         </ul>
     </div>
 </div>
