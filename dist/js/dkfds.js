@@ -11,7 +11,7 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 84:
+/***/ 141:
 /***/ ((module) => {
 
 "use strict";
@@ -41,7 +41,7 @@ module.exports = function forEach (ary, callback, thisArg) {
 
 /***/ }),
 
-/***/ 241:
+/***/ 952:
 /***/ (() => {
 
 /*
@@ -288,7 +288,7 @@ if (objCtr.defineProperty) {
 
 /***/ }),
 
-/***/ 764:
+/***/ 786:
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
@@ -416,7 +416,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 
 /***/ }),
 
-/***/ 670:
+/***/ 840:
 /***/ ((module) => {
 
 "use strict";
@@ -454,7 +454,7 @@ function match(el, selector) {
 
 /***/ }),
 
-/***/ 418:
+/***/ 228:
 /***/ ((module) => {
 
 "use strict";
@@ -552,12 +552,12 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ 220:
+/***/ 87:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const assign = __webpack_require__(418);
-const delegate = __webpack_require__(956);
-const delegateAll = __webpack_require__(70);
+const assign = __webpack_require__(228);
+const delegate = __webpack_require__(746);
+const delegateAll = __webpack_require__(591);
 
 const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
 const SPACE = ' ';
@@ -636,10 +636,10 @@ module.exports = function behavior(events, props) {
 
 /***/ }),
 
-/***/ 525:
+/***/ 678:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const matches = __webpack_require__(670);
+const matches = __webpack_require__(840);
 
 module.exports = function(element, selector) {
   do {
@@ -653,7 +653,7 @@ module.exports = function(element, selector) {
 
 /***/ }),
 
-/***/ 787:
+/***/ 977:
 /***/ ((module) => {
 
 module.exports = function compose(functions) {
@@ -667,10 +667,10 @@ module.exports = function compose(functions) {
 
 /***/ }),
 
-/***/ 956:
+/***/ 746:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const closest = __webpack_require__(525);
+const closest = __webpack_require__(678);
 
 module.exports = function delegate(selector, fn) {
   return function delegation(event) {
@@ -684,11 +684,11 @@ module.exports = function delegate(selector, fn) {
 
 /***/ }),
 
-/***/ 70:
+/***/ 591:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const delegate = __webpack_require__(956);
-const compose = __webpack_require__(787);
+const delegate = __webpack_require__(746);
+const compose = __webpack_require__(977);
 
 const SPLAT = '*';
 
@@ -712,7 +712,7 @@ module.exports = function delegateAll(selectors) {
 
 /***/ }),
 
-/***/ 435:
+/***/ 39:
 /***/ ((module) => {
 
 module.exports = function ignore(element, fn) {
@@ -726,27 +726,27 @@ module.exports = function ignore(element, fn) {
 
 /***/ }),
 
-/***/ 425:
+/***/ 525:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  behavior: __webpack_require__(220),
-  delegate: __webpack_require__(956),
-  delegateAll: __webpack_require__(70),
-  ignore: __webpack_require__(435),
-  keymap: __webpack_require__(715),
+  behavior: __webpack_require__(87),
+  delegate: __webpack_require__(746),
+  delegateAll: __webpack_require__(591),
+  ignore: __webpack_require__(39),
+  keymap: __webpack_require__(402),
 };
 
 
 /***/ }),
 
-/***/ 715:
+/***/ 402:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-__webpack_require__(764);
+__webpack_require__(786);
 
 // these are the only relevant modifiers supported on all platforms,
 // according to MDN:
@@ -793,24 +793,24 @@ module.exports.MODIFIERS = MODIFIERS;
 
 /***/ }),
 
-/***/ 561:
+/***/ 78:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  Z: () => (/* binding */ date_picker)
+  A: () => (/* binding */ date_picker)
 });
 
 // EXTERNAL MODULE: ./node_modules/receptor/lib/index.js
-var lib = __webpack_require__(425);
+var lib = __webpack_require__(525);
 // EXTERNAL MODULE: ./node_modules/object-assign/index.js
-var object_assign = __webpack_require__(418);
+var object_assign = __webpack_require__(228);
 var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
 ;// CONCATENATED MODULE: ./src/js/utils/behavior.js
 
-const receptor = __webpack_require__(425);
+const receptor = __webpack_require__(525);
 
 /**
  * @name sequence
@@ -847,7 +847,7 @@ const sequence = (...seq) =>
   ));
 
 // EXTERNAL MODULE: ./src/js/utils/select.js
-var utils_select = __webpack_require__(231);
+var utils_select = __webpack_require__(250);
 ;// CONCATENATED MODULE: ./src/js/utils/active-element.js
 /* harmony default export */ const active_element = ((htmlDocument = document) => htmlDocument.activeElement);
 
@@ -2944,7 +2944,7 @@ const handleMousemoveFromYear = (yearEl) => {
 const tabHandler = (focusable) => {
   const getFocusableContext = (el) => {
     const { calendarEl } = getDatePickerContext(el);
-    const focusableElements = (0,utils_select/* default */.Z)(focusable, calendarEl);
+    const focusableElements = (0,utils_select/* default */.A)(focusable, calendarEl);
 
     const firstTabIndex = 0;
     const lastTabIndex = focusableElements.length - 1;
@@ -3154,7 +3154,7 @@ if (!is_ios_device()) {
 
 const datePicker = behavior(datePickerEvents, {
   init(root) {
-    (0,utils_select/* default */.Z)(DATE_PICKER, root).forEach((datePickerEl) => {
+    (0,utils_select/* default */.A)(DATE_PICKER, root).forEach((datePickerEl) => {
       if(!datePickerEl.classList.contains(DATE_PICKER_INITIALIZED_CLASS)){
         enhanceDatePicker(datePickerEl);
       }
@@ -3203,7 +3203,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 11:
+/***/ 935:
 /***/ (() => {
 
 /* eslint-disable consistent-return */
@@ -3233,7 +3233,7 @@ const datePicker = behavior(datePickerEvents, {
 
 /***/ }),
 
-/***/ 762:
+/***/ 638:
 /***/ (() => {
 
 "use strict";
@@ -3259,27 +3259,27 @@ if (!(HIDDEN in elproto)) {
 
 /***/ }),
 
-/***/ 742:
+/***/ 757:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 // polyfills HTMLElement.prototype.classList and DOMTokenList
-__webpack_require__(241);
+__webpack_require__(952);
 
 // polyfills HTMLElement.prototype.hidden
-__webpack_require__(762);
+__webpack_require__(638);
 
 // polyfills Number.isNaN()
-__webpack_require__(737);
+__webpack_require__(665);
 
 // polyfills CustomEvent
-__webpack_require__(11);
+__webpack_require__(935);
 
 /***/ }),
 
-/***/ 737:
+/***/ 665:
 /***/ (() => {
 
 Number.isNaN =
@@ -3292,12 +3292,12 @@ Number.isNaN =
 
 /***/ }),
 
-/***/ 660:
+/***/ 880:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 
 let breakpoints = {
@@ -3313,12 +3313,12 @@ let breakpoints = {
 
 /***/ }),
 
-/***/ 843:
+/***/ 51:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // https://stackoverflow.com/a/7557433
 function isElementInViewport (el, win=window,
@@ -3338,12 +3338,12 @@ function isElementInViewport (el, win=window,
 
 /***/ }),
 
-/***/ 231:
+/***/ 250:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /**
  * @name isElement
@@ -3378,12 +3378,12 @@ const isElement = (value) =>
 
 /***/ }),
 
-/***/ 95:
+/***/ 226:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 
 const EXPANDED = 'aria-expanded';
@@ -3511,8 +3511,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 ;// CONCATENATED MODULE: ./src/js/components/accordion.js
 
-const toggle = (__webpack_require__(95)/* ["default"] */ .Z);
-const isElementInViewport = (__webpack_require__(843)/* ["default"] */ .Z);
+const toggle = (__webpack_require__(226)/* ["default"] */ .A);
+const isElementInViewport = (__webpack_require__(51)/* ["default"] */ .A);
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
@@ -4087,7 +4087,7 @@ CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
 
 ;// CONCATENATED MODULE: ./src/js/components/dropdown.js
 
-const breakpoints = (__webpack_require__(660)/* ["default"] */ .Z);
+const breakpoints = (__webpack_require__(880)/* ["default"] */ .A);
 const dropdown_BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
@@ -4751,8 +4751,8 @@ function hasForcedAction(modal) {
 ;// CONCATENATED MODULE: ./src/js/components/navigation.js
 
 
-const forEach = __webpack_require__(84);
-const navigation_select = (__webpack_require__(231)/* ["default"] */ .Z);
+const forEach = __webpack_require__(141);
+const navigation_select = (__webpack_require__(250)/* ["default"] */ .A);
 
 //const NAV_DESKTOP = `.navigation-header`;
 const MOBILE_DRAWER = `.mobile-drawer`;
@@ -5258,7 +5258,7 @@ RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement
 
 /* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
 ;// CONCATENATED MODULE: ./src/js/components/table.js
-const table_select = (__webpack_require__(231)/* ["default"] */ .Z);
+const table_select = (__webpack_require__(250)/* ["default"] */ .A);
 
 /**
  * Set data-title on cells, where the attribute is missing
@@ -5957,12 +5957,12 @@ function closeOnTab(e) {
 
 
 
-const datePicker = (__webpack_require__(561)/* ["default"] */ .Z);
+const datePicker = (__webpack_require__(78)/* ["default"] */ .A);
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
  */
-__webpack_require__(742);
+__webpack_require__(757);
 
 /**
  * Init all components
