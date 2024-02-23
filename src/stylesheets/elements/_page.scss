@@ -2,10 +2,10 @@
 @use "../mixins/mixins" as mixins;
 
 .page-header + .page-content{
-    margin-top: 40px;
+    margin-top: func.units(7);
 }
 .page-content + .page-footer{
-    margin-top: 40px;
+    margin-top: func.units(7);
 }
 
 .page-container{

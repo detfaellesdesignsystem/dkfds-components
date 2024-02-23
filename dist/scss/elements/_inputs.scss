@@ -595,7 +595,7 @@ td {
   }
 
   .button-open-calendar{
-    margin-bottom: 8px;
+    margin-bottom: func.units(3);
     display: inline-flex;
   }
 }

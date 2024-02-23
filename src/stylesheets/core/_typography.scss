@@ -28,7 +28,7 @@ a {
 
     &:disabled,
     .disabled {
-      background-color: transparent !important;
+      background-color: func.color('transparent') !important;
     }
 
   }
@@ -52,7 +52,7 @@ a {
 
     &:focus {
       outline: none;
-      background-color: transparent;
+      background-color: func.color('transparent');
     }
   }
 
@@ -70,7 +70,7 @@ a {
 
       &:focus {
         outline: none;
-        background-color: transparent;
+        background-color: func.color('transparent');
       }
     }
   }
@@ -377,7 +377,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
   font-feature-settings: "kern";
   -webkit-font-feature-settings: "kern";
   -moz-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern=1";
+  -moz-font-feature-settings: "kern=1"; // stylelint-disable-line declaration-block-no-duplicate-properties
 }
 
 .uppercase{

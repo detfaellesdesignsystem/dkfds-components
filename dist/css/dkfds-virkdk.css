@@ -2311,8 +2311,7 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
   font-family:"IBM Plex Sans";
   font-style:normal;
   font-weight:400;
-  src:url("../fonts/IBMPlexSans/complete/eot/IBMPlexSans-Regular.eot");
-  src:url("../fonts/IBMPlexSans/complete/eot/IBMPlexSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-Regular.woff") format("woff"), url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-Regular.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/ttf/IBMPlexSans-Regular.ttf") format("truet ype");
+  src:url("../fonts/IBMPlexSans/complete/eot/IBMPlexSans-Regular.eot"), url("../fonts/IBMPlexSans/complete/woff/IBMPlexSans-Regular.woff") format("woff"), url("../fonts/IBMPlexSans/complete/woff2/IBMPlexSans-Regular.woff2") format("woff2"), url("../fonts/IBMPlexSans/complete/ttf/IBMPlexSans-Regular.ttf") format("truet ype");
   font-display:swap;
 }
 @font-face{
@@ -9122,7 +9121,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   align-self:stretch;
   background-color:transparent;
   background-position:center;
-  margin-top:0.5em;
+  margin-top:8px;
   width:3em;
   display:block;
   cursor:pointer;

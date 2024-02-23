@@ -32,7 +32,7 @@ $-left-offset: func.units(1);
         padding: 0;
         font-size: 0;
         line-height: 0;
-        background-color: transparent;
+        background-color: func.color('transparent');
         border-radius: func.units(4);
         cursor: pointer;
     

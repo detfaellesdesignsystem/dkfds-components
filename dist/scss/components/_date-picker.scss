@@ -29,9 +29,9 @@
   @include mixins.button-unstyled;
   @include mixins.add-background-svg(vars.$datepicker-button-icon);
   align-self: stretch;
-  background-color: transparent;
+  background-color: func.color('transparent');
   background-position: center;
-  margin-top: 0.5em;
+  margin-top: func.units(3);
   width: 3em;
   display: block;
   cursor: pointer;

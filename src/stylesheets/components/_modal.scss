@@ -42,7 +42,7 @@ body.modal-open{
     max-width: 800px;
     width: 100%;
     position: relative;
-    margin: 24px auto;
+    margin: func.units(5) auto;
   }
 
   .modal-header {

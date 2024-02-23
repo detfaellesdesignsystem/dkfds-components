@@ -78,7 +78,7 @@
         }
 
         tr {
-            background-color: transparent;
+            background-color: func.color('transparent');
 
             td,
             th {
@@ -149,7 +149,7 @@
         }
 
         thead {
-            background-color: transparent;
+            background-color: func.color('transparent');
 
             th {
                 padding-top: func.units(4);

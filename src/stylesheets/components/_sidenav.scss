@@ -43,7 +43,7 @@ ul.sidemenu {
         max-width: none;
         border: none;
         color: func.color(vars.$sidenav-link-font-color);
-        background-color: transparent;
+        background-color: func.color('transparent');
         text-decoration: none;
         min-height: calc(func.units(7) - 1px); /* Minus 1px due to the border on the li element */
         cursor: pointer;
@@ -161,13 +161,13 @@ ul.sidemenu {
             cursor: not-allowed;
 
             &:hover {
-                background-color: transparent;
+                background-color: func.color('transparent');
                 cursor: not-allowed;
             }
         }
 
         &.current {
-            background-color: transparent;
+            background-color: func.color('transparent');
         }
 
         &.sidenav-error {

@@ -1,61 +1,31 @@
 {
-    "plugins": [
-        "stylelint-no-unsupported-browser-features"
-    ],
+    "extends": "stylelint-config-standard-scss",
     "rules": {
-        "plugin/no-unsupported-browser-features": [
-            null,
-            {
-                "severity": "warning",
-                "ignore": ["css3-cursors"]
-            }
-        ],
-        "no-descending-specificity": null,
-        "declaration-block-no-duplicate-custom-properties": true,
-        "declaration-block-no-duplicate-properties": null,
-        "font-family-no-duplicate-names": null,
-        "keyframe-block-no-duplicate-selectors": true,
-        "no-duplicate-at-import-rules": true,
-        "no-duplicate-selectors": null,
-        "block-no-empty": true,
-        "comment-no-empty": true,
-        "no-empty-source": true,
-        "color-no-invalid-hex": true,
-        "function-calc-no-unspaced-operator": true,
-        "keyframe-declaration-no-important": true,
-        "media-query-no-invalid": true,
-        "named-grid-areas-no-invalid": true,
-        "no-invalid-double-slash-comments": true,
-        "no-invalid-position-at-import-rule": true,
-        "string-no-newline": true,
-        "no-irregular-whitespace": true,
-        "custom-property-no-missing-var-function": true,
-        "font-family-no-missing-generic-family-keyword": true,
-        "function-linear-gradient-no-nonstandard-direction": true,
-        "declaration-block-no-shorthand-property-overrides": true,
-        "selector-anb-no-unmatchable": true,
-        "annotation-no-unknown": true,
-        "at-rule-no-unknown": true,
-        "declaration-property-value-no-unknown": true,
-        "function-no-unknown": true,
-        "media-feature-name-no-unknown": true,
-        "media-feature-name-value-no-unknown": true,
-        "no-unknown-animations": true,
-        "no-unknown-custom-properties": true,
-        "property-no-unknown": true,
-        "selector-pseudo-class-no-unknown": true,
-        "selector-pseudo-element-no-unknown": true,
-        "selector-type-no-unknown": true,
-        "unit-no-unknown": true,
-        "length-zero-no-unit": true,
-        "property-disallowed-list": ["/^mask/"],
-        "function-name-case": "lower",
-        "selector-type-case": "lower",
+        "alpha-value-notation": "number",
+        "at-rule-empty-line-before": null,
+        "at-rule-no-vendor-prefix": null,
+        "color-hex-length": "long",
+        "declaration-empty-line-before": null,
+        "declaration-property-unit-disallowed-list": 
+        {
+            "/margin/": ["em", "px", "rem"]
+        },
+        "declaration-property-value-allowed-list": 
+        {
+            "background-color": ["/^func.color/", "inherit"],
+            "color": ["/^func.color/", "inherit"],
+            "font-size": ["/^func.font-size/", "/^vars./", "/%$/", "inherit", "0"],
+            "font-weight": ["/^func.font-weight/", "inherit"]
+        },
         "value-keyword-case": ["lower", {"camelCaseSvgKeywords": true}],
-        "comment-empty-line-before": "always",
-        "selector-attribute-quotes": "always",
-        "declaration-block-no-redundant-longhand-properties": true,
-        "shorthand-property-no-redundant-values": true,
-        "comment-whitespace-inside": "always"
+        "scss/at-else-closing-brace-newline-after": null,
+        "scss/at-else-closing-brace-space-after": null,
+        "scss/at-else-empty-line-before": null,
+        "scss/at-extend-no-missing-placeholder": null,
+        "scss/at-if-closing-brace-newline-after": null,
+        "scss/at-if-closing-brace-space-after": null,
+        "scss/dollar-variable-colon-space-after": null,
+        "scss/dollar-variable-empty-line-before": null,
+        "scss/double-slash-comment-empty-line-before": null
     }
 }

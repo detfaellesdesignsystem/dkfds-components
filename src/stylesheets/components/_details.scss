@@ -54,7 +54,7 @@
     }
     p{
       margin-top: 0;
-      margin-bottom: 1.6rem;
+      margin-bottom: func.units(4, 'rem');
     }
 
     & > :last-child{

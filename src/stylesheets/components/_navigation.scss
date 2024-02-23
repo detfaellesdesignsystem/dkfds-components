@@ -146,7 +146,7 @@ $-left-right-padding: func.units(305);
                 white-space: normal;
                 max-width: 100%;
                 overflow-wrap: break-word;
-                background-color: transparent;
+                background-color: func.color('transparent');
 
                 span {
                     border-bottom: none;

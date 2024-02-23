@@ -199,7 +199,7 @@
 
                 .icon-svg {
                     float: right;
-                    margin-right: 4px;
+                    margin-right: func.units(2);
                 }
             }
         }

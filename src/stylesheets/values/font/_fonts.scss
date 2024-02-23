@@ -62,8 +62,7 @@
     font-family: 'IBM Plex Sans';
     font-style: normal;
     font-weight: func.font-weight("normal");
-    src: url(paths.$font-path + 'complete/eot/IBMPlexSans-Regular.eot'); /* IE9 Compat Modes */
-    src: url(paths.$font-path + 'complete/eot/IBMPlexSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    src: url(paths.$font-path + 'complete/eot/IBMPlexSans-Regular.eot'), /* IE9 Compat Modes */
     url(paths.$font-path + 'complete/woff/IBMPlexSans-Regular.woff') format('woff'), /* Modern Browsers */
     url(paths.$font-path + 'complete/woff2/IBMPlexSans-Regular.woff2') format('woff2'), /* Modern Browsers */
     url(paths.$font-path + 'complete/ttf/IBMPlexSans-Regular.ttf')  format('truet ype'); /* Safari, Android, iOS */

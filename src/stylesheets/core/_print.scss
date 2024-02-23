@@ -125,12 +125,12 @@
         .modal__overlay {
             display: block;
             position: relative;
-            background-color: transparent;
+            background-color: func.color('transparent');
         }
 
         .bg-modal {
             background: transparent !important;
-            background-color: transparent !important;
+            background-color: func.color('transparent') !important;
         }
 
         .modal__header {
@@ -197,7 +197,7 @@
 
     // tabs
     .tab-container ul.tab-list li .tab-button {
-        background-color: transparent;
+        background-color: func.color('transparent');
         border: func.border(10); 
 
         &[aria-current="page"],

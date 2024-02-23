@@ -3,7 +3,7 @@
 @use "../mixins/mixins" as mixins;
 
 // Tags
-.tag{
+.tag {
   @include mixins.appearance-none;
   display: inline-block;
   width: auto;
