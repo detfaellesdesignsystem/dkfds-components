@@ -8523,21 +8523,16 @@ hr{
 }
 
 button.function-link, button.accordion-bulk-button{
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
   background:none;
   padding:0;
   text-decoration:underline;
   text-align:left;
-  display:inline-flex;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
   line-height:1.5;
-  text-align:left;
-  align-items:center;
-  justify-content:center;
   -webkit-user-select:text;
           user-select:text;
   cursor:pointer;
-  vertical-align:middle;
 }
 
 .function-link, button.accordion-bulk-button{
@@ -8549,7 +8544,10 @@ button.function-link, button.accordion-bulk-button{
   text-transform:none;
   letter-spacing:normal;
   cursor:pointer;
-  display:inline-block;
+  display:inline-flex;
+  vertical-align:middle;
+  align-items:center;
+  line-height:1.5;
 }
 .function-link:hover, button.accordion-bulk-button:hover, .function-link:visited, button.accordion-bulk-button:visited, .function-link:focus, button.accordion-bulk-button:focus{
   color:#1a1a1a;
@@ -8561,6 +8559,9 @@ button.function-link, button.accordion-bulk-button{
 .function-link.link-right, button.link-right.accordion-bulk-button{
   text-align:right;
 }
+.function-link.icon-link .icon-svg, button.icon-link.accordion-bulk-button .icon-svg{
+  margin-top:2px;
+}
 
 .function-link-wrapper{
   list-style-type:none;
@@ -8569,6 +8570,7 @@ button.function-link, button.accordion-bulk-button{
   flex-direction:row;
   justify-content:flex-end;
   flex-wrap:wrap;
+  align-items:center;
 }
 .function-link-wrapper > li{
   padding-left:0;
@@ -9582,6 +9584,9 @@ footer .footer ul:not(:last-child){
 }
 footer .footer ul.footer-links li{
   margin-top:8px;
+}
+footer .footer .inline-list li strong{
+  vertical-align:middle;
 }
 @media (min-width: 768px){
   footer .footer .inline-list > li:not(:last-child):after{

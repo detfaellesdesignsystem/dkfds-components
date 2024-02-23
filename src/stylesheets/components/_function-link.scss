@@ -2,30 +2,30 @@
 @use "../functions/functions" as func;
 
 // a function link, does not look like a link
-button.function-link{
+button.function-link {
+    @include mixins.font-smoothing;
     background: none;
     padding: 0;
     text-decoration: underline;
     text-align: left;
-    display: inline-flex;
-    @include mixins.font-smoothing;
     line-height: 1.5;
-    text-align: left;
-    align-items: center;
-    justify-content: center;
     user-select: text;
     cursor: pointer;
-    vertical-align: middle;
 }
 
 .function-link{
     border: none;
     @include mixins.body-copy-text;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    line-height: 1.5;
+
     &:hover, &:visited, &:focus{
         color: func.color('ink');
     }
+
     .icon-svg{
         margin-right: func.units(2);
         fill: currentColor;
@@ -33,6 +33,10 @@ button.function-link{
 
     &.link-right {
         text-align: right;
+    }
+
+    &.icon-link .icon-svg {
+        margin-top: func.units(1);
     }
 }
 
@@ -42,6 +46,7 @@ button.function-link{
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: wrap;
+    align-items: center;
 
     li {
         margin-left: func.units(4);

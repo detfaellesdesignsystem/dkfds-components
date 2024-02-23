@@ -68,7 +68,10 @@ footer {
     }
 
     .inline-list {
-    > li:not(:last-child) {
+      li strong {
+        vertical-align: middle;
+      }
+      > li:not(:last-child) {
         &:after {
           @include mixins.media-breakpoint-up(md) {
             content: "\00b7" !important;
