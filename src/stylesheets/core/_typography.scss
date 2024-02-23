@@ -238,7 +238,6 @@ h5, .h5, h6, .h6{
     height: 0;
     border-style: solid;
     border-color: transparent;
-    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
     clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
     border-width: 5px 6px 5px 0;
     border-right-color: inherit;
@@ -369,6 +368,7 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   }
 }
 
+// stylelint-disable
 h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
   text-rendering: optimizeLegibility; // Vigtig — den er vidst default i Webkit nu, men den har effekt på andre engines
   -webkit-font-smoothing: none; // Fikser for tyk typografi i Webkit-baserede browsers
@@ -377,8 +377,9 @@ h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
   font-feature-settings: "kern";
   -webkit-font-feature-settings: "kern";
   -moz-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern=1"; // stylelint-disable-line declaration-block-no-duplicate-properties
+  -moz-font-feature-settings: "kern=1";
 }
+// stylelint-enable
 
 .uppercase{
   text-transform: uppercase;

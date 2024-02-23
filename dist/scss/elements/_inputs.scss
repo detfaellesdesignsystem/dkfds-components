@@ -80,7 +80,6 @@ textarea.no-resize{
   display:flex;
   .form-input{
     -webkit-box-flex: 0;
-    -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     &:focus{
       position: relative;
@@ -101,7 +100,6 @@ textarea.no-resize{
     font-weight: func.font-weight("normal");
     font-size: func.font-size(vars.$input-font-size);
     line-height: func.units(vars.$input-line-height, 'rem');
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;
     min-width: 40px;
@@ -113,7 +111,6 @@ textarea.no-resize{
     white-space: nowrap;
     cursor: default;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     
   }

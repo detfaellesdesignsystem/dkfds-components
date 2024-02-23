@@ -50,9 +50,6 @@ $-left-offset: func.units(1);
             background-size: func.units(4);
             width: $-toggle-dot-diameter;
             height: $-toggle-dot-diameter;
-            -webkit-transition: all 0.15s ease-out;
-            -moz-transition: all 0.15s ease-out;
-            -o-transition: all 0.15s ease-out;
             transition: all 0.15s ease-out;
             z-index: vars.$zindex-toggle;
         }
@@ -72,9 +69,6 @@ $-left-offset: func.units(1);
             border-radius: func.units(4);
             background-color: func.color(vars.$toggle-off-background-color);
             border: 1px solid func.color(vars.$toggle-off-border-color);
-            -webkit-transition: all 0.15s ease-out;
-            -moz-transition: all 0.15s ease-out;
-            -o-transition: all 0.15s ease-out;
             transition: all 0.15s ease-out;
         }
 

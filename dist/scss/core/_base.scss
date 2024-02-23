@@ -13,9 +13,9 @@
 
 html {
     line-height: 1.5; // WCAG 2.1, 1.4.12
-    -webkit-text-size-adjust: 100%;
-       -moz-text-size-adjust: 100%;
-            text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%; // stylelint-disable-line property-no-vendor-prefix
+       -moz-text-size-adjust: 100%; // stylelint-disable-line property-no-vendor-prefix
+            text-size-adjust: 100%; // stylelint-disable-line property-no-vendor-prefix
 }
 
 body {
@@ -90,7 +90,7 @@ input::-webkit-inner-spin-button {
 }
 
 input[type='number'] {
-    -moz-appearance: textfield !important;
+    -moz-appearance: textfield !important; // stylelint-disable-line property-no-vendor-prefix
 }
 
 legend {
@@ -98,15 +98,17 @@ legend {
 }
 
 ::-webkit-file-upload-button {
-    -webkit-appearance: button; 
+    -webkit-appearance: button; // stylelint-disable-line property-no-vendor-prefix
     font: inherit; 
 }
 
+// stylelint-disable selector-no-vendor-prefix
 ::-webkit-input-placeholder,
 ::placeholder {
     opacity: 0.54;
     color: inherit;
 }
+// stylelint-enable
 
 ////////////////////////////////////////////////////////////
 // Monospace elements

@@ -1,10 +1,4 @@
 # https://github.com/browserslist/browserslist#readme
+# Test at https://browsersl.ist/
 
-Chrome >= 87
-Edge >= 108
-Firefox >= 78
-Safari >= 14
-last 2 iOS versions
-last 2 ChromeAndroid versions
-last 2 Samsung versions
-> 1% and not dead
+Chrome >= 120 or Edge >= 120 or Firefox >= 121 or Safari >= 17.2 or last 2 iOS versions or last 2 ChromeAndroid versions or last 2 Samsung versions or > 0.2% or not dead

@@ -124,22 +124,22 @@ body.modal-open{
   }
 
   // Animation Style
-  @keyframes modalfadeIn {
+  @keyframes modal-fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
   }
 
-  @keyframes modalfadeOut {
+  @keyframes modal-fade-out {
     from { opacity: 1; }
     to { opacity: 0; }
   }
 
-  @keyframes modalslideIn {
+  @keyframes modal-slide-in {
     from { transform: translateY(15%); }
     to { transform: translateY(0); }
   }
 
-  @keyframes modalslideOut {
+  @keyframes modal-slide-out {
     from { transform: translateY(0); }
     to { transform: translateY(-10%); }
   }
@@ -148,11 +148,11 @@ body.modal-open{
 
 
   &[aria-hidden="false"] .modal-content {
-    animation: modalslideIn .3s cubic-bezier(0, 0, .2, 1);
+    animation: modal-slide-in .3s cubic-bezier(0, 0, .2, 1);
   }
 
   &[aria-hidden="true"] .modal-content {
-    animation: modalslideOut .3s cubic-bezier(0, 0, .2, 1);
+    animation: modal-slide-out .3s cubic-bezier(0, 0, .2, 1);
   }
 
 }

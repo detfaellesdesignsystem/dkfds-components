@@ -125,6 +125,7 @@ const createCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
+                                            // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
                                             stage: 2,
                                             // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
                                             features: { 
@@ -132,7 +133,11 @@ const createCSS = {
                                                 "text-decoration-shorthand": false,
                                                 "unset-value": false
                                             },
-                                        }
+                                            // Autoprefixer options: https://github.com/postcss/autoprefixer#options
+                                            autoprefixer: { 
+                                                remove: false
+                                            }
+                                        },
                                     ],
                                 ],
                             },
@@ -243,6 +248,7 @@ const createMinifiedCSS = {
                                     [
                                         "postcss-preset-env",
                                         {
+                                            // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
                                             stage: 2,
                                             // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
                                             features: { 
@@ -250,6 +256,10 @@ const createMinifiedCSS = {
                                                 "text-decoration-shorthand": false,
                                                 "unset-value": false
                                             },
+                                            // Autoprefixer options: https://github.com/postcss/autoprefixer#options
+                                            autoprefixer: { 
+                                                remove: false
+                                            }
                                         },
                                     ],
                                 ],

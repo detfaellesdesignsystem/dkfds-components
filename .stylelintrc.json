@@ -3,7 +3,6 @@
     "rules": {
         "alpha-value-notation": "number",
         "at-rule-empty-line-before": null,
-        "at-rule-no-vendor-prefix": null,
         "color-hex-length": "long",
         "declaration-empty-line-before": null,
         "declaration-property-unit-disallowed-list": 
@@ -17,6 +16,9 @@
             "font-size": ["/^func.font-size/", "/^vars./", "/%$/", "inherit", "0"],
             "font-weight": ["/^func.font-weight/", "inherit"]
         },
+        "rule-empty-line-before": null,
+        "selector-class-pattern": ["^([a-z])([a-z]|-|_|[0-9])*$", {"resolveNestedSelectors": true}],
+        "selector-not-notation": "complex",
         "value-keyword-case": ["lower", {"camelCaseSvgKeywords": true}],
         "scss/at-else-closing-brace-newline-after": null,
         "scss/at-else-closing-brace-space-after": null,
