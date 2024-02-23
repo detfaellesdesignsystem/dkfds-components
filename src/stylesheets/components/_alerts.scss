@@ -3,11 +3,9 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-/*
-----------------------------------------
-Alert
-----------------------------------------
-*/
+// ----------------------------------------
+// Alert
+// ----------------------------------------
 $custom-alerts: () !default;
 $custom-alerts-bar: () !default;
 

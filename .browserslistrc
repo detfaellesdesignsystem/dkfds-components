@@ -1,4 +1,4 @@
 # https://github.com/browserslist/browserslist#readme
 # Test at https://browsersl.ist/
 
-Chrome >= 120 or Edge >= 120 or Firefox >= 121 or Safari >= 17.2 or last 2 iOS versions or last 2 ChromeAndroid versions or last 2 Samsung versions or > 0.2% or not dead
+Chrome >= 120 or Edge >= 120 or Firefox >= 121 or Safari >= 17.2 or last 2 iOS versions or last 2 ChromeAndroid versions or last 2 Samsung versions or > 0.2% and not dead

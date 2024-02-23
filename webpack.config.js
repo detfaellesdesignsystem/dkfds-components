@@ -13,6 +13,73 @@ console.log("[" + String(new Date().getHours()).padStart(2, '0') +
                 ":" + String(new Date().getSeconds()).padStart(2, '0') + "] " + 
                 "Creating files for dist folder...\n");
 
+////////////////////////////////////////////////////////////////////////////////
+// Objects and values for webpack setup
+////////////////////////////////////////////////////////////////////////////////
+
+const JS_ENTRY = {
+    "dkfds": './src/js/dkfds.js',
+};
+
+const JS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
+
+const JS_OUTPUT_LIBRARY = {
+    name: 'DKFDS',
+    type: 'umd',
+};
+
+const CSS_ENTRY = {
+    "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
+    "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
+    "dkfds": './src/stylesheets/dkfds.scss',
+};
+
+const CSS_REMOVE_EMPTY_SCRIPTS = 
+    new RemoveEmptyScriptsPlugin(); // There's a bug in webpack/loaders where empty js files are created for each stylesheet - remove those js files
+
+const CSS_LOADER = {
+    loader: 'css-loader',
+    options: {
+        importLoaders: 2, // Import postcss-loader and sass-loader
+        url: false        // Prevent parsing of urls
+    }
+};
+
+const CSS_POSTCSS_LOADER = {
+    loader: "postcss-loader",
+    options: {
+        postcssOptions: {
+            plugins: [
+                [
+                    "postcss-preset-env",
+                    {
+                        // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
+                        stage: 2,
+                        // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
+                        features: { 
+                            "cascade-layers": false,
+                            "text-decoration-shorthand": false,
+                            "unset-value": false
+                        },
+                        // Autoprefixer options: https://github.com/postcss/autoprefixer#options
+                        autoprefixer: { 
+                            remove: false
+                        }
+                    },
+                ],
+            ],
+        },
+    },
+};
+
+const CSS_OUTPUT = {
+    path: path.resolve(__dirname, 'dist'),
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Objects for module.exports
+////////////////////////////////////////////////////////////////////////////////
+
 const copyFilesAndCreateJavaScript = {
     name: 'copyFilesAndCreateJavaScript',
     mode: 'production',
@@ -37,18 +104,13 @@ const copyFilesAndCreateJavaScript = {
             fix: false
         }),
     ],
-    entry: {
-        "dkfds": './src/js/dkfds.js',
-    },
+    entry: JS_ENTRY,
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: JS_OUTPUT_PATH,
         clean: true, // Clean the entire dist directory before emit.
         filename: 'js/[name].js',
         globalObject: 'this',
-        library: {
-            name: 'DKFDS',
-            type: 'umd',
-        },
+        library: JS_OUTPUT_LIBRARY,
     },
     stats: 'minimal',
 };
@@ -72,17 +134,12 @@ const createMinifiedJavaScript = {
         ],
     },
     devtool: "source-map",
-    entry: {
-        "dkfds": './src/js/dkfds.js',
-    },
+    entry: JS_ENTRY,
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: JS_OUTPUT_PATH,
         filename: 'js/[name].min.js',
         globalObject: 'this',
-        library: {
-            name: 'DKFDS',
-            type: 'umd',
-        },
+        library: JS_OUTPUT_LIBRARY,
     },
     stats: 'minimal',
 };
@@ -91,14 +148,9 @@ const createCSS = {
     name: 'createCSS',
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
-    entry: {
-        "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
-        "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
-        "dkfds": './src/stylesheets/dkfds.scss',
-    },
+    entry: CSS_ENTRY,
     plugins: [
-        /* There's a bug in webpack/loaders where empty js files are created for each stylesheet - remove those js files */
-        new RemoveEmptyScriptsPlugin(),
+        CSS_REMOVE_EMPTY_SCRIPTS,
         /* Create stylesheets */
         new MiniCssExtractPlugin({
             filename: 'css/[name].css'
@@ -110,39 +162,8 @@ const createCSS = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2, // Import postcss-loader and sass-loader
-                            url: false        // Prevent parsing of urls
-                        }
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
-                                            stage: 2,
-                                            // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
-                                            features: { 
-                                                "cascade-layers": false,
-                                                "text-decoration-shorthand": false,
-                                                "unset-value": false
-                                            },
-                                            // Autoprefixer options: https://github.com/postcss/autoprefixer#options
-                                            autoprefixer: { 
-                                                remove: false
-                                            }
-                                        },
-                                    ],
-                                ],
-                            },
-                        },
-                    },
+                    CSS_LOADER,
+                    CSS_POSTCSS_LOADER,
                     {
                         loader: "sass-loader",
                         options: {
@@ -203,9 +224,7 @@ const createCSS = {
             }),
         ],
     },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-    },
+    output: CSS_OUTPUT,
     stats: 'minimal',
 };
 
@@ -214,14 +233,9 @@ const createMinifiedCSS = {
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
     devtool: "source-map",
-    entry: {
-        "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
-        "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
-        "dkfds": './src/stylesheets/dkfds.scss',
-    },
+    entry: CSS_ENTRY,
     plugins: [
-        /* There's a bug in webpack/loaders where empty js files are created for each stylesheet - remove those js files */
-        new RemoveEmptyScriptsPlugin(),
+        CSS_REMOVE_EMPTY_SCRIPTS,
         /* Create minified stylesheets */
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
@@ -233,39 +247,8 @@ const createMinifiedCSS = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2, // Import postcss-loader and sass-loader
-                            url: false        // Prevent parsing of urls
-                        }
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    [
-                                        "postcss-preset-env",
-                                        {
-                                            // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
-                                            stage: 2,
-                                            // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
-                                            features: { 
-                                                "cascade-layers": false,
-                                                "text-decoration-shorthand": false,
-                                                "unset-value": false
-                                            },
-                                            // Autoprefixer options: https://github.com/postcss/autoprefixer#options
-                                            autoprefixer: { 
-                                                remove: false
-                                            }
-                                        },
-                                    ],
-                                ],
-                            },
-                        },
-                    },
+                    CSS_LOADER,
+                    CSS_POSTCSS_LOADER,
                     {
                         loader: "sass-loader",
                     },
@@ -279,9 +262,7 @@ const createMinifiedCSS = {
             new CssMinimizerPlugin(),
         ],
     },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-    },
+    output: CSS_OUTPUT,
     stats: 'minimal',
 };
 

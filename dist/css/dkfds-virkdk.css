@@ -10,6 +10,7 @@
   border:0;
   left:-999em;
 }
+
 *,
 *::before,
 *::after{
@@ -8578,6 +8579,7 @@ button.function-link, button.accordion-bulk-button{
   margin-left:16px;
   margin-top:0;
 }
+
 .accordion-button{
   background-color:transparent;
   border:0;
@@ -8761,6 +8763,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   background-size:2.4rem;
   border-radius:4px;
 }
+
 .alert{
   background-color:#F5F5F5;
   background-position:16px 16px;

@@ -3,11 +3,9 @@
 @use "../mixins/mixins" as mixins;
 @use "../components/function-link";
 
-/*
-----------------------------------------
-Accordion
-----------------------------------------
-*/
+// ----------------------------------------
+// Accordion
+// ----------------------------------------
 .accordion-button {
   @include mixins.button-unstyled;
   background-color: func.color(vars.$accordion-button-background-color-default);

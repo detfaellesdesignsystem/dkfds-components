@@ -17,7 +17,7 @@ ul.sidemenu {
     ul {
         @include mixins.unstyled-list;
         width: 100%;
-        max-width: none !important; /* Override ul styling in typography.scss */
+        max-width: none !important; // Override ul styling in typography.scss
     }
 
     li {
@@ -34,7 +34,7 @@ ul.sidemenu {
     .nav-step {
         padding-top: func.units(2);
         padding-bottom: func.units(2);
-        padding-right: func.units(4); /* padding-left handled by mixin 'nav-link-leftdist' */
+        padding-right: func.units(4); // padding-left handled by mixin 'nav-link-leftdist'
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -45,7 +45,7 @@ ul.sidemenu {
         color: func.color(vars.$sidenav-link-font-color);
         background-color: func.color('transparent');
         text-decoration: none;
-        min-height: calc(func.units(7) - 1px); /* Minus 1px due to the border on the li element */
+        min-height: calc(func.units(7) - 1px); // Minus 1px due to the border on the li element
         cursor: pointer;
         font-weight: func.font-weight("normal");
         line-height: func.units(5, 'rem');

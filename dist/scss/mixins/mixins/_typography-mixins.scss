@@ -2,13 +2,11 @@
 @use "../../functions/functions" as func;
 @use "breakpoints" as breakpoints;
 
-/*
-----------------------------------------
-responsive-style
-----------------------------------------
-Sets styles within breakpoints
-----------------------------------------
-*/
+// ----------------------------------------
+// responsive-style
+// ----------------------------------------
+// Sets styles within breakpoints
+// ----------------------------------------
 @mixin responsive-style($map, $style) {
     @if type-of($map) == 'map' {
         @each $breakpoint, $value in $map {
