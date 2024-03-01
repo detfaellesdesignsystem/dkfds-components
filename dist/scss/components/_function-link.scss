@@ -43,9 +43,8 @@ button.function-link {
 .function-link-wrapper {
     @include mixins.nobullet-list;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: flex-end;
-    flex-wrap: wrap;
     align-items: center;
 
     li {

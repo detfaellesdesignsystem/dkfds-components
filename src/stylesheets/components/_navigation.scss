@@ -9,7 +9,7 @@ $-left-right-padding: func.units(305);
 
 %-mainmenu-item {
     display: block;
-    padding: func.units(4) $-left-right-padding 0 $-left-right-padding;
+    padding: func.units(4) $-left-right-padding 0; // top | left and right | bottom
     text-decoration: none;
     background-color: func.color(vars.$navigation-link-background-color);
     color: func.color(vars.$navigation-link-default-color);

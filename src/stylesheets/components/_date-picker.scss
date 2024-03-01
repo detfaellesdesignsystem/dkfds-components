@@ -79,10 +79,10 @@
   td {
     padding: 0;
 
-    &:first-of-type .date-picker__calendar__date:after{
+    &:first-of-type .date-picker__calendar__date::after{
       border-left-width: 0;
     }
-    &:last-of-type .date-picker__calendar__date:after{
+    &:last-of-type .date-picker__calendar__date::after{
       border-right-width: 0;
     }
   }
@@ -171,12 +171,9 @@
     padding: 10px 12px 10px 0;
   }
 
-  &:after {
+  &::after {
     position: absolute;
-    top: -1px;
-    bottom: 0;
-    left: -1px;
-    right: 0;
+    inset: -1px 0 0 -1px;
     border: func.border(20);
     content: "";
     display: block;
@@ -192,7 +189,7 @@
     position: relative;
     z-index: vars.$zindex-datepicker-2;
     
-    &:after {
+    &::after {
       border: func.border(10);
     }
   }
@@ -202,10 +199,7 @@
     &::before {
       @include mixins.focus;
       position: absolute;
-      top: -1px;
-      bottom: 0;
-      left: -1px;
-      right: 0;
+      inset: -1px 0 0 -1px;
       content: "";
       display: block;
       pointer-events:none;

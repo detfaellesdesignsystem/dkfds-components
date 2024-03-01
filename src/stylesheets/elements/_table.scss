@@ -321,7 +321,7 @@
     border-bottom: func.border(vars.$table-border);
     border-left: func.border(vars.$table-border);
     overflow: hidden;
-    padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
+    padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px); // top | left and right | bottom
 
     .table-selected-number {
         margin-top: 0;

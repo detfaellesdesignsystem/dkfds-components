@@ -270,6 +270,8 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6{
+  max-width: vars.$typography-text-max-width;
+
   a, a:hover, a:visited, a:focus{
     text-decoration: underline;
   }
@@ -297,14 +299,6 @@ dfn {
 }
 
 // max-width of 66ch for text
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6{
-  max-width: vars.$typography-text-max-width;
-}
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.mainmenu):not(.inline-list):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){

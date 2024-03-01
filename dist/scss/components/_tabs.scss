@@ -38,10 +38,7 @@ $-tabs-icon-size: 2.4rem;
                 min-height: func.units(8);
                 align-items: center;
                 text-align: center;
-                padding-top: 1px;
-                padding-bottom: 1px;
-                padding-left: func.units(5);
-                padding-right: func.units(5);
+                padding: 1px func.units(5); // top and bottom | left and right
                 color: func.color(vars.$tab-inactive-text-color);
                 background-color: func.color(vars.$tab-inactive-background-color);
                 border: 0;

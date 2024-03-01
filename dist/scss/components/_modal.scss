@@ -7,10 +7,7 @@ body.modal-open{
 }
 .modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: func.color(vars.$modal-overlay-background-color);
   display: flex;
   justify-content: center;
@@ -21,10 +18,7 @@ body.modal-open{
 .fds-modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: vars.$zindex-modal;
   margin: func.units(4);
 
@@ -35,8 +29,7 @@ body.modal-open{
  .modal-content {
     align-self: center;
     max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
     background-color: func.color(vars.$modal-background-color);
     box-shadow: func.shadow(vars.$modal-shadow);
     max-width: 800px;
@@ -48,7 +41,7 @@ body.modal-open{
   .modal-header {
     padding: 16px 24px 0;
     @include mixins.media-breakpoint-up(md) {
-      padding: func.units(7) func.units(7) func.units(3) func.units(7);
+      padding: func.units(7) func.units(7) func.units(3); // top | left and right | bottom
     }
     display: flex;
     justify-content: space-between;
@@ -76,7 +69,7 @@ body.modal-open{
     color: func.color(vars.$modal-body-text-color);
     padding: 0 24px;
     @include mixins.media-breakpoint-up(md) {
-      padding: func.units(3) func.units(7) func.units(3) func.units(7);
+      padding: func.units(3) func.units(7); // top and bottom | left and right
     }
     & > *:first-child{
       margin-top: 0;
@@ -90,7 +83,7 @@ body.modal-open{
   .modal-footer{
     padding: 0 func.units(5) func.units(5) ;
     @include mixins.media-breakpoint-up(md) {
-      padding: func.units(3) func.units(7) func.units(7) func.units(7);
+      padding: func.units(3) func.units(7) func.units(7); // top | left and right | bottom
     }
     background-color: func.color(vars.$modal-footer-background-color);
     color: func.color(vars.$modal-footer-text-color);

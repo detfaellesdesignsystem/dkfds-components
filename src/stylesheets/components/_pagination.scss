@@ -17,17 +17,6 @@
         }
     }
 
-    .pagination__items {
-        align-items: center;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-
-        @include mixins.media-breakpoint-down(sm) {
-            display: none;
-        }
-    }
-
     .button {
         &.button-arrow {
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
@@ -38,10 +27,7 @@
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
-            padding-left: func.units(3);
-            padding-right: func.units(3);
-            padding-top: 0;
-            padding-bottom: 0;
+            padding: 0 func.units(3); // top and bottom | left and right
 
             &.hidden {
                 visibility: hidden;
@@ -100,6 +86,14 @@
     .pagination__items {
         @include mixins.unstyled-list;
         width: auto;
+        align-items: center;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+
+        @include mixins.media-breakpoint-down(sm) {
+            display: none;
+        }
 
         .pagination-item {
             margin-left: func.units(3);

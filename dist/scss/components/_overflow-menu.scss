@@ -33,7 +33,7 @@
         }
 
         // below: arrow with border
-        &:after,
+        &::after,
         &::before {
             display: none;
             left: 50%;
@@ -47,7 +47,7 @@
             bottom: calc((vars.$overflow-menu-dropdown-distance * -1) - 1px);
         }
 
-        &:after {
+        &::after {
             border-bottom-color: func.color(vars.$overflow-menu-content-background-color);
             border-width: calc(#{vars.$overflow-menu-arrow-size} - 1px);
             margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px) * -1);
@@ -61,7 +61,7 @@
 
         &[aria-expanded="true"] {
 
-            &:after,
+            &::after,
             &::before {
                 display: block;
             }
@@ -177,7 +177,7 @@
             @include mixins.media-breakpoint-up(md) {
                 left: calc(50% - 19px);
 
-                &:after {
+                &::after {
                     left: 13px;
                 }
             }
@@ -188,7 +188,7 @@
         .overflow-menu-inner {
             right: calc(50% - 19px);
 
-            &:after {
+            &::after {
                 right: 13px;
             }
 
@@ -213,7 +213,7 @@
             display: block;
 
             &::before,
-            &:after {
+            &::after {
                 display: none; // hide arrow
             }
 
@@ -241,7 +241,7 @@
             display: block;
 
             &::before,
-            &:after {
+            &::after {
                 display: none; // hide arrow
             }
 

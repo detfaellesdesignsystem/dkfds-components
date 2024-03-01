@@ -31,14 +31,10 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
   background-position: 16px 16px;
   background-repeat: no-repeat;
   background-size: 24px;
-  padding-bottom: func.units(vars.$alert-padding);
-  padding-left: func.units(vars.$alert-padding);
-  padding-right: func.units(vars.$alert-padding);
-  padding-top: func.units(vars.$alert-padding);
+  padding: func.units(vars.$alert-padding);
   position: relative;
   margin-top: func.units(4);
   margin-bottom: func.units(4);
-
   border-left: func.units(vars.$alert-border-size) solid func.color(vars.$alert-border-color);
 
   &:first-child {

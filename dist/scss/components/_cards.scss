@@ -1,3 +1,4 @@
+@use "sass:map" as map;
 @use "../variables/variables" as vars;
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
@@ -63,11 +64,23 @@
   h5, .h5 {
     margin: func.units(0);
   }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      border-radius: 0;
+    }
+  }
+
+  > .list-group:last-child {
+      .list-group-item:last-child {
+        border-radius: 0;
+      }
+  }
 }
 // card-header
 .card-header {
   background-color: func.color(vars.$cards-header-background-color);
-  padding: func.units(4) func.units(5);
+  padding: func.units(4) func.units(5); // top and bottom | left and right
   .header-title {
     @include mixins.body-copy-text;
     font-weight: func.font-weight("semibold");
@@ -217,19 +230,6 @@
 // If action comes after action
 .card-action + .card-action{
   padding-top: 0;
-}
-.card {
-  > .list-group:first-child {
-      .list-group-item:first-child {
-          border-radius: 0;
-      }
-  }
-
-  > .list-group:last-child {
-      .list-group-item:last-child {
-          border-radius: 0;
-      }
-  }
 }
 
 .card-center {

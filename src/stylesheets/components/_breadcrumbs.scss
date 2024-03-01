@@ -7,7 +7,7 @@
 }
 
 .breadcrumbs__list {
-  &:after {
+  &::after {
     content: "";
     display: block;
     clear: both;

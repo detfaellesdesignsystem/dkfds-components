@@ -7,10 +7,7 @@
     width: auto;
     background-color: func.color(vars.$back-to-top-button-background);
     position: fixed;
-    right: func.units(5);
-    bottom: func.units(5);
-    left: auto;
-    top: auto;
+    inset: auto func.units(5) func.units(5) auto;
     z-index: vars.$zindex-back-to-top;
 
     &.button-tertiary {

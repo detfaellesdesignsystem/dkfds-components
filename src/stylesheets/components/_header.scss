@@ -322,10 +322,7 @@
         }
 
         position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: auto;
+        inset: 0 0 0 auto;
         background-color: func.color(vars.$header-portal-background-color);
         flex-direction: column;
         overflow-y: auto;
@@ -343,10 +340,7 @@
 
     .menu-top {
         background-color: func.color(vars.$header-navigation-top-mobile-background-color);
-        padding-left: func.units(5);
-        padding-right: func.units(5);
-        padding-top: func.units(3);
-        padding-bottom: func.units(3);
+        padding: func.units(3) func.units(5);
         display: flex;
         align-items: center;
         min-height: func.units(8);
@@ -373,11 +367,9 @@
             }
         }
     }
-}
 
-// Header borders
+    // Header borders
 
-.header {
     border-bottom: 1px solid func.color(vars.$header-last-border-color);
 
     .portal-info + .solution-info {
@@ -411,10 +403,7 @@
 
 .overlay {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     background: func.color('black');
     opacity: 0;
     transition: opacity 0.2s ease-in-out;

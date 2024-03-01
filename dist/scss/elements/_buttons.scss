@@ -6,10 +6,7 @@
 
 a.button {
     display: inline-flex;
-    padding-top: func.units(1);
-    padding-left: calc(func.units(4) - vars.$button-border-width);
-    padding-right: calc(func.units(4) - vars.$button-border-width);
-    padding-bottom: 1px;
+    padding: func.units(1) calc(func.units(4) - vars.$button-border-width) 1px; // top | left and right | bottom
     line-height: func.units(vars.$button-line-height, 'rem');
 }
 
@@ -18,10 +15,7 @@ a.button {
     display: inline-flex;
     width: 100%;
     min-height: func.units(7);
-    padding-top: func.units(1);
-    padding-left: calc(func.units(4) - vars.$button-border-width);
-    padding-right: calc(func.units(4) - vars.$button-border-width);
-    padding-bottom: 1px;
+    padding: func.units(1) calc(func.units(4) - vars.$button-border-width) 1px; // top | left and right | bottom
     border-radius: vars.$button-border-radius;
     border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
     border-style: solid;

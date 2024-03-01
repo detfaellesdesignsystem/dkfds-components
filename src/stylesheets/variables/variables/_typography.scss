@@ -79,11 +79,6 @@ $typography-h1-line-height: (
     "md": 1.2,
     "lg": 1.17 
 ) !default;
-$typography-h1-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal 
-) !default;
 
 // H2
 $typography-h2-font-size: (
@@ -95,11 +90,6 @@ $typography-h2-line-height: (
     "default": 1.33,
     "md": 1.29,
     "lg": 1.25
-) !default;
-$typography-h2-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
 ) !default;
 
 // H3
@@ -113,11 +103,6 @@ $typography-h3-line-height: (
     "md": 1.33,
     "lg": 1.33
 ) !default;
-$typography-h3-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
-) !default;
 
 // H4
 $typography-h4-font-size: (
@@ -130,18 +115,11 @@ $typography-h4-line-height: (
     "md": 1.4,
     "lg": 1.4
 ) !default;
-$typography-h4-letter-spacing: (
-    "default": normal,
-    "md": normal,
-    "lg": normal
-) !default;
 
 // H5 - same values used for default, md, and lg
 $typography-h5-font-size: "sm" !default;
 $typography-h5-line-height: 1.5 !default;
-$typography-h5-letter-spacing: normal !default;
 
 // H6 - same values used for default, md, and lg
 $typography-h6-font-size: "xs" !default;
 $typography-h6-line-height: 1.67 !default;
-$typography-h6-letter-spacing: normal !default;
