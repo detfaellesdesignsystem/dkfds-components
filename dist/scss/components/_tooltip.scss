@@ -10,7 +10,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     width: fit-content;
     height: fit-content;
     line-height: 1;
-    display: inline-block;
+    display: inline-flex; // Display MUST be flex or inline-flex, otherwise screenreaders will read a help button as part of label for text input
     vertical-align: bottom;
 
     &::before {

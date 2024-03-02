@@ -11920,7 +11920,7 @@ a.skipnav:focus{
   height:-moz-fit-content;
   height:fit-content;
   line-height:1;
-  display:inline-block;
+  display:inline-flex;
   vertical-align:bottom;
 }
 .tooltip-wrapper::before{

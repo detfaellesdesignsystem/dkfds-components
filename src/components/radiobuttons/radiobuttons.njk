@@ -9,19 +9,19 @@
 {% macro radiobuttons(params) %}
 <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}{% if params.collapsedItems %} js-radio-toggle-group{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
     {%- if params.items and params.groupname -%}
-    <fieldset role="radiogroup"{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
+    {%- set legendID = params.groupname + "-legend" -%}
+    <fieldset aria-labelledby="{{legendID}}" {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
         {% if params.tooltip %}
-        <legend class="form-label">{{ params.radiogroupLegend }}
-        {{ 
-            tooltip_helpicon({
-                "text": params.tooltip.text,
-                "id": params.tooltip.id,
-                "contentElement": params.tooltip.contentElement
+        <legend class="form-label"><span id="{{legendID}}">{{ params.radiogroupLegend }}</span>
+            {{ 
+                tooltip_helpicon({
+                    "text": params.tooltip.text,
+                    "id": params.tooltip.id,
+                    "contentElement": params.tooltip.contentElement
             }) 
-        }}
-        </legend>
+        }}</legend>
         {% else %}
-        <legend class="form-label">{{ params.radiogroupLegend }}</legend>
+        <legend class="form-label" id="{{legendID}}">{{ params.radiogroupLegend }}</legend>
         {% endif %}
         {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}

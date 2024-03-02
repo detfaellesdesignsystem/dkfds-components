@@ -15,8 +15,8 @@ function Tooltip(wrapper) {
     else if (wrapper.dataset.trigger !== 'hover' && wrapper.dataset.trigger !== 'click') {
         throw new Error(`Missing trigger. Tooltip wrapper must have data attribute 'data-trigger="hover"' or 'data-trigger="click"'.`);
     }
-    else if (wrapper.dataset.trigger === 'hover' && (!wrapper.hasAttribute('data-tooltip-id') || wrapper.dataset.tooltipId === '')) {
-        throw new Error(`Missing ID. Tooltip wrapper with 'hover' trigger must have data attribute 'data-tooltip-id'.`);
+    else if (!wrapper.hasAttribute('data-tooltip-id') || wrapper.dataset.tooltipId === '') {
+        throw new Error(`Missing ID. Tooltip wrapper must have data attribute 'data-tooltip-id'.`);
     }
     else {
         this.wrapper = wrapper;
@@ -28,6 +28,7 @@ function Tooltip(wrapper) {
 
         let arrow = document.createElement('span');
         arrow.classList.add('tooltip-arrow');
+        arrow.setAttribute('aria-hidden', true);
         this.wrapper.append(arrow);
     }
 }
@@ -37,7 +38,7 @@ Tooltip.prototype.init = function () {
     let tooltipTarget = this.target;
     let tooltipEl = this.tooltip;
 
-    hideTooltip(wrapper, tooltipEl);
+    hideTooltip(wrapper, tooltipTarget, tooltipEl);
 
     /* Ensure tooltip remains visible if window size is reduced */
     window.addEventListener('resize', function () {
@@ -49,14 +50,14 @@ Tooltip.prototype.init = function () {
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
     let trueTooltip = (wrapper.dataset.trigger === 'hover');
+    tooltipEl.id = wrapper.dataset.tooltipId;
 
     if (trueTooltip) {
-        tooltipEl.id = wrapper.dataset.tooltipId;
         tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
         tooltipEl.setAttribute('role', 'tooltip');
 
         tooltipTarget.addEventListener('focus', function () {
-            showTooltip(wrapper, tooltipEl);
+            showTooltip(wrapper, tooltipTarget, tooltipEl);
             updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
         });
 
@@ -67,7 +68,7 @@ Tooltip.prototype.init = function () {
             tooltipTarget.classList.add('js-hover');
             setTimeout(function () {
                 if (tooltipTarget.classList.contains('js-hover')) {
-                    showTooltip(wrapper, tooltipEl);
+                    showTooltip(wrapper, tooltipTarget, tooltipEl);
                     updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
                 }
             }, 300);
@@ -86,7 +87,7 @@ Tooltip.prototype.init = function () {
             }
             /* WCAG 1.4.13: It must be possible to hover on the tooltip */
             if (!onTooltip) {
-                hideTooltip(wrapper, tooltipEl);
+                hideTooltip(wrapper, tooltipTarget, tooltipEl);
             }
         });
 
@@ -103,7 +104,7 @@ Tooltip.prototype.init = function () {
             }
             /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
             if (!onTarget) {
-                hideTooltip(wrapper, tooltipEl);
+                hideTooltip(wrapper, tooltipTarget, tooltipEl);
             }
         });
 
@@ -111,7 +112,7 @@ Tooltip.prototype.init = function () {
            ensure that the tooltip closes */
         wrapper.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
-            hideTooltip(wrapper, tooltipEl);
+            hideTooltip(wrapper, tooltipTarget, tooltipEl);
         });
     }
     /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
@@ -119,13 +120,15 @@ Tooltip.prototype.init = function () {
         wrapper.setAttribute('aria-live', 'assertive');
         wrapper.setAttribute('aria-atomic', 'false');
         tooltipEl.setAttribute('aria-atomic', 'true');
+        tooltipTarget.setAttribute('aria-expanded', 'false');
+        tooltipTarget.setAttribute('aria-controls', wrapper.dataset.tooltipId);
         tooltipTarget.addEventListener('click', function () {
             if (wrapper.classList.contains('hide-tooltip')) {
-                showTooltip(wrapper, tooltipEl);
+                showTooltip(wrapper, tooltipTarget, tooltipEl);
                 updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
             }
             else {
-                hideTooltip(wrapper, tooltipEl);
+                hideTooltip(wrapper, tooltipTarget, tooltipEl);
             }
         });
     }
@@ -197,14 +200,20 @@ function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
     setBottomAndTop(tooltipWrapper, tooltipEl);
 }
 
-function hideTooltip(tooltipWrapper, tooltipEl) {
+function hideTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
     tooltipWrapper.classList.add('hide-tooltip');
     tooltipEl.innerText = "";
+    if (tooltipTarget.hasAttribute('aria-expanded')) {
+        tooltipTarget.setAttribute('aria-expanded', 'false');
+    }
 }
 
-function showTooltip(tooltipWrapper, tooltipEl) {
+function showTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
     tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
     tooltipWrapper.classList.remove('hide-tooltip');
+    if (tooltipTarget.hasAttribute('aria-expanded')) {
+        tooltipTarget.setAttribute('aria-expanded', 'true');
+    }
 }
 
 function closeAllTooltips(event) {
@@ -223,7 +232,7 @@ function closeAllTooltips(event) {
                                tooltip.getBoundingClientRect().top <= event.clientY && 
                                event.clientY <= tooltip.getBoundingClientRect().bottom;
         if (!clickedOnTarget && target !== document.activeElement && !clickedOnTooltip) {
-            hideTooltip(wrapper, tooltip);
+            hideTooltip(wrapper, target, tooltip);
         }
     }
 }
@@ -239,15 +248,16 @@ function closeOnTab(e) {
             /* If the user is tabbing to an element, where a tooltip already is open,
                keep it open */
             if (document.activeElement !== target) {
-                hideTooltip(wrapper, tooltip);
+                hideTooltip(wrapper, target, tooltip);
             }
         }
     }
     else if (key === 'Escape') {
         for (let t = 0; t < tooltips.length; t++) {
             let wrapper = tooltips[t];
+            let target = wrapper.getElementsByClassName('tooltip-target')[0];
             let tooltip = wrapper.getElementsByClassName('tooltip')[0];
-            hideTooltip(wrapper, tooltip);
+            hideTooltip(wrapper, target, tooltip);
         }
     }
 }
