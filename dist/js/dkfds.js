@@ -5708,12 +5708,10 @@ function Tooltip(wrapper) {
 
         this.tooltip = document.createElement('span');
         this.tooltip.classList.add('tooltip');
-        this.wrapper.append(this.tooltip);
 
         let arrow = document.createElement('span');
         arrow.classList.add('tooltip-arrow');
         arrow.setAttribute('aria-hidden', true);
-        this.wrapper.append(arrow);
     }
 }
 
@@ -5737,6 +5735,8 @@ Tooltip.prototype.init = function () {
     tooltipEl.id = wrapper.dataset.tooltipId;
 
     if (trueTooltip) {
+        wrapper.append(tooltipEl);
+        appendArrow(wrapper);
         tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
         tooltipEl.setAttribute('role', 'tooltip');
 
@@ -5801,9 +5801,11 @@ Tooltip.prototype.init = function () {
     }
     /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
     else {
-        wrapper.setAttribute('aria-live', 'assertive');
-        wrapper.setAttribute('aria-atomic', 'false');
-        tooltipEl.setAttribute('aria-atomic', 'true');
+        let live_region = document.createElement('span');
+        live_region.setAttribute('aria-live', 'assertive');
+        wrapper.append(live_region);
+        live_region.append(tooltipEl);
+        appendArrow(wrapper);
         tooltipTarget.setAttribute('aria-expanded', 'false');
         tooltipTarget.setAttribute('aria-controls', wrapper.dataset.tooltipId);
         tooltipTarget.addEventListener('click', function () {
@@ -5817,6 +5819,13 @@ Tooltip.prototype.init = function () {
         });
     }
 };
+
+function appendArrow(tooltipWrapper) {
+    let arrow = document.createElement('span');
+    arrow.classList.add('tooltip-arrow');
+    arrow.setAttribute('aria-hidden', true);
+    tooltipWrapper.append(arrow);
+}
 
 function setWidth(tooltipEl) {
     tooltipEl.style.width = 'max-content';
