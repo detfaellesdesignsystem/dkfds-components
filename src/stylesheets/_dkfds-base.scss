@@ -16,27 +16,25 @@
 // Elements -------------- //
 // Styles basic HTML elements
 @use 'elements/section';
-@use 'elements/buttons';
-@use 'elements/tags';
-@use 'elements/badge';
 @use 'elements/embed';
 @use 'elements/figure';
 @use 'elements/icons';
 @use 'elements/inputs';
 @use 'elements/list';
-@use 'elements/spinner';
 @use 'elements/page';
-@use 'elements/collapse';
 @use 'elements/forms';
-@use 'elements/table';
 @use 'elements/hr';
+@use 'elements/page-navigation';
 
 // Components -------------- //
 @use 'components/accordions';
 @use 'components/alerts';
 @use 'components/anchorlinks';
+@use 'components/back-link';
 @use 'components/back-to-top';
+@use 'components/badge';
 @use 'components/breadcrumbs';
+@use 'components/buttons';
 @use 'components/cookie-message';
 @use 'components/details';
 @use 'components/date-picker';
@@ -52,12 +50,14 @@
 @use 'components/sidenav';
 @use 'components/language-switcher';
 @use 'components/skipnav';
+@use 'components/spinner';
 @use 'components/cards';
 @use 'components/overflow-menu';
+@use 'components/table';
 @use 'components/toggleswitch';
-@use 'components/page-navigation';
 @use 'components/tooltip';
 @use 'components/tabs';
+@use 'components/tags';
 
 // Print -------------- //
 @use 'core/print';

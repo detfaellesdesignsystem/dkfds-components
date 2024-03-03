@@ -58,6 +58,10 @@ $-left-right-padding: func.units(305);
     flex-flow: row nowrap;
     margin-left: -$-left-right-padding;
 
+    .collapsed {
+        display: none;
+    }
+
     .nav-link {
         @extend %-mainmenu-item;
     }

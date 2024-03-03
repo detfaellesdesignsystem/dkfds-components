@@ -1,0 +1,15 @@
+@use "../functions/functions" as func;
+@use "../mixins/mixins" as mixins;
+
+.page-navigation{
+    margin-top: func.units(7);
+    display: flex;
+    flex-direction: column;
+    @include mixins.media-breakpoint-up(md) {
+        display: inline-flex;
+    }
+    .button + .button{
+        margin-top: func.units(3);
+        margin-left: 0;
+    }
+}
