@@ -95,8 +95,6 @@ textarea.no-resize{
     border-bottom-right-radius: 0;
   }
   .form-input-prefix, .form-input-suffix {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-weight: func.font-weight("normal");
     font-size: func.font-size(vars.$input-font-size);
     line-height: func.units(vars.$input-line-height, 'rem');

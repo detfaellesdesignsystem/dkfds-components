@@ -1018,6 +1018,11 @@ body{
   font-size:1.6rem;
   background-color:white;
   color:#1a1a1a;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:"kern";
+  font-kerning:normal;
 }
 
 p{
@@ -1497,17 +1502,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 .field-group-title ~ hr{
   border:2px solid #1a1a1a;
-}
-
-h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
-  text-rendering:optimizeLegibility;
-  -webkit-font-smoothing:none;
-  -webkit-font-smoothing:subpixel-antialiased;
-  -webkit-font-smoothing:antialiased;
-  font-feature-settings:"kern";
-  -webkit-font-feature-settings:"kern";
-  -moz-font-feature-settings:"kern";
-  -moz-font-feature-settings:"kern=1";
 }
 
 .uppercase{
@@ -6771,8 +6765,6 @@ textarea.no-resize{
   border-bottom-right-radius:0;
 }
 .form-input-wrapper .form-input-prefix, .form-input-wrapper .form-input-suffix{
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
   font-weight:400;
   font-size:1.6rem;
   line-height:2.4rem;
@@ -7475,8 +7467,6 @@ hr{
 }
 
 button.function-link, button.accordion-bulk-button{
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
   background:none;
   padding:0;
   text-decoration:underline;
@@ -7543,7 +7533,6 @@ button.function-link, button.accordion-bulk-button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   background-color:#F5F5F5;
@@ -7744,7 +7733,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   cursor:pointer;
@@ -7924,8 +7912,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   font-weight:600;
   color:white;
   background:#1a1a1a;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
   text-align:center;
   display:inline-block;
 }
@@ -8031,8 +8017,8 @@ a.button{
   font-size:1.8rem;
   font-weight:500;
   color:white;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:auto;
+  -moz-osx-font-smoothing:auto;
   line-height:2.4rem;
   text-align:center;
   align-items:center;
@@ -8214,7 +8200,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   width:auto;
@@ -8373,7 +8358,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   background-image:url("../img/svg-icons/insert-invitation.svg");
@@ -8473,7 +8457,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   background-position:center;
@@ -8530,7 +8513,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   text-align:right;
@@ -8642,7 +8624,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   display:inline-block;
@@ -8679,7 +8660,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   padding:10px 0;
@@ -8726,7 +8706,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   background-position:center;
@@ -8759,7 +8738,6 @@ a.button{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   padding:10px 0;
@@ -9877,8 +9855,8 @@ body.mobile-nav-active{
   border-width:2px 2px 4px 2px;
   border-style:solid;
   font-weight:500;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:auto;
+  -moz-osx-font-smoothing:auto;
   line-height:2rem;
   text-align:center;
   justify-content:center;
@@ -9950,7 +9928,6 @@ body.mobile-nav-active{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   position:absolute;
@@ -10935,7 +10912,6 @@ a.skipnav:focus{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   min-height:40px;
@@ -11039,7 +11015,6 @@ a.skipnav:focus{
   margin:0;
   padding:0;
   text-align:left;
-  -webkit-font-smoothing:auto;
   color:inherit;
   min-height:auto;
   line-height:2.4rem;
@@ -11969,6 +11944,8 @@ a.skipnav:focus{
   font-weight:700;
   text-decoration:none;
   background-color:#454545;
+  -webkit-font-smoothing:auto;
+  -moz-osx-font-smoothing:auto;
 }
 .tab-container ul.tab-list li .tab-button[aria-current=page] .icon-svg, .tab-container ul.tab-list li .tab-button[aria-selected=true] .icon-svg{
   fill:white;
@@ -12013,8 +11990,6 @@ a.skipnav:focus{
   font-weight:500;
   color:white;
   background-color:#454545;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-font-smoothing:antialiased;
   line-height:2.4rem;
   text-align:center;
   text-decoration:none;

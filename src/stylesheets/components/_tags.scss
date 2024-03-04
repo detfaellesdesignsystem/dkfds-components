@@ -18,7 +18,6 @@
   font-weight: func.font-weight(vars.$tag-font-weight);
   color: func.color(vars.$tag-text-color);
   background-color: func.color(vars.$tag-default-background-color);
-  @include mixins.font-smoothing;
   line-height: func.units(vars.$tag-line-height, "rem");
   text-align: center;
   text-decoration: none;

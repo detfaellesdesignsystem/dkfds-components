@@ -1,6 +1,7 @@
 @use 'sass:math' as math;
 @use "../../variables/variables" as vars;
 @use "../../functions/functions" as func;
+@use "typography-mixins" as typo-mixins;
 
 @mixin add-background-svg($image-name) {
     background-image: url("#{vars.$icons-folder-path}/#{$image-name}.svg");
@@ -19,7 +20,6 @@
     margin: 0;
     padding: 0;
     text-align: left;
-    -webkit-font-smoothing: auto;
     color: inherit;
     min-height: auto;
 
@@ -111,12 +111,6 @@
             left: 0;
         }
     }
-}
-
-// Font smoothing mixin
-@mixin font-smoothing {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
 }
 
 // Appearance

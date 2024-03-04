@@ -3,7 +3,6 @@
 
 // a function link, does not look like a link
 button.function-link {
-    @include mixins.font-smoothing;
     background: none;
     padding: 0;
     text-decoration: underline;

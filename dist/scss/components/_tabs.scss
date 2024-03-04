@@ -60,6 +60,7 @@ $-tabs-icon-size: 2.4rem;
                     font-weight: func.font-weight("bold");
                     text-decoration: none;
                     background-color: func.color(vars.$tab-active-background-color);
+                    @include mixins.no-font-smoothing;
         
                     .icon-svg {
                         fill: func.color(vars.$tab-active-icon-color);

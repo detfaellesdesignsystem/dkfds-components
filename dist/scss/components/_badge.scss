@@ -10,7 +10,6 @@
   font-weight: func.font-weight(vars.$badge-font-weight);
   color: func.color(vars.$badge-default-text-color);
   background: func.color(vars.$badge-default-background-color);
-  @include mixins.font-smoothing;
   text-align: center;
   display: inline-block;
 

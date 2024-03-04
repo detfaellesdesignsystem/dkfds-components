@@ -150,3 +150,13 @@
     font-weight: func.font-weight("normal");
     letter-spacing: vars.$typography-small-text-letter-spacing;
 }
+
+@mixin font-smoothing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin no-font-smoothing {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
