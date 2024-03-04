@@ -411,9 +411,10 @@ $toggle-on-border-color:            'primary' !default;
 $toggle-on-border-color-hover:      'primary-dark' !default;
 
 // Tooltip
-$tooltip-background-color:  'white' !default;
+$tooltip-background-color:  'gray-600' !default;
 $tooltip-shadow:            'medium' !default;
-$tooltip-border:            10 !default;
+$tooltip-arrow-color:       'gray-600' !default;
+$tooltip-color:             'white' !default;
 $tooltip-link-color:        typo-vars.$typography-body-text-color !default;
 $tooltip-link-border-width: 1px !default;
 $tooltip-link-border-style: dotted !default;

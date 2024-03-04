@@ -13,6 +13,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     display: inline-flex; // Display MUST be flex or inline-flex, otherwise screenreaders will read a help button as part of label for text input
     vertical-align: bottom;
 
+    // "Bridge" between tooltip and tooltip target. Allows cursor to move onto tooltip.
     &::before {
         content: '';
         position: absolute;
@@ -20,23 +21,21 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         height: calc($-arrow-height + $-arrow-dist-to-target);
         display: block;
     }
-    
     &.place-above::before {
         top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
-
     &.place-below::before {
         bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
     .tooltip {
-        @include mixins.body-copy-text;
-        font-size: func.font-size('sm');
+        line-height: 1.5;
+        font-size: func.font-size('xs');
+        color: func.color(vars.$tooltip-color);
         box-shadow: func.shadow(vars.$tooltip-shadow);
         background-color: func.color(vars.$tooltip-background-color);
-        border: func.border(vars.$tooltip-border);
         border-radius: 4px;
-        padding: func.units(2) func.units(3);
+        padding: func.units(2) func.units(305);
         position: absolute;
         z-index: vars.$zindex-tooltip;
         display: block;
@@ -54,41 +53,20 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
             position: absolute;
             left: calc(50% - $-arrow-height - 1px);
             top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-            z-index: vars.$zindex-tooltip - 1;
-        }
-
-        &::after {
-            content: '';
-            border-right: $-arrow-height solid transparent;
-            border-left: $-arrow-height solid transparent;
-            display: block;
-            position: absolute;
-            left: calc(50% - $-arrow-height);
-            top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
             z-index: vars.$zindex-tooltip + 1;
         }
     }
 
     &.place-above .tooltip-arrow {
         &::before {
-            border-top: $-arrow-height solid func.border-color(vars.$tooltip-border);
-            top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-        }
-
-        &::after {
-            border-top: calc($-arrow-height - 1px) solid func.color(vars.$tooltip-background-color);
+            border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
             top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
         }
     }
 
     &.place-below .tooltip-arrow {
         &::before {
-            border-bottom: $-arrow-height solid func.border-color(vars.$tooltip-border);
-            bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-        }
-
-        &::after {
-            border-bottom: calc($-arrow-height - 1px) solid func.color(vars.$tooltip-background-color);
+            border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
             bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
         }
     }
