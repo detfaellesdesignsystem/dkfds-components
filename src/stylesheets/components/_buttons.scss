@@ -23,7 +23,6 @@ a.button {
     font-size: func.font-size('md');
     font-weight: func.font-weight("medium");
     color: func.color(vars.$button-primary-default-color);
-    @include mixins.no-font-smoothing;
     line-height: func.units(vars.$button-line-height, 'rem');
     text-align: center;
     align-items: center;

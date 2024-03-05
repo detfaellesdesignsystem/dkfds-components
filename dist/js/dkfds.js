@@ -5739,6 +5739,7 @@ Tooltip.prototype.init = function () {
         appendArrow(wrapper);
         tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
         tooltipEl.setAttribute('role', 'tooltip');
+        tooltipEl.innerText = wrapper.dataset.tooltip;
 
         tooltipTarget.addEventListener('focus', function () {
             showTooltip(wrapper, tooltipTarget, tooltipEl);
@@ -5895,17 +5896,17 @@ function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
 
 function hideTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
     tooltipWrapper.classList.add('hide-tooltip');
-    tooltipEl.innerText = "";
     if (tooltipTarget.hasAttribute('aria-expanded')) {
         tooltipTarget.setAttribute('aria-expanded', 'false');
+        tooltipEl.innerText = "";
     }
 }
 
 function showTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
-    tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
     tooltipWrapper.classList.remove('hide-tooltip');
     if (tooltipTarget.hasAttribute('aria-expanded')) {
         tooltipTarget.setAttribute('aria-expanded', 'true');
+        tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
     }
 }
 
