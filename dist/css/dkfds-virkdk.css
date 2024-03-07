@@ -8128,11 +8128,6 @@ a.button{
   margin-right:4px;
   min-width:2.4rem;
 }
-.button.button-small{
-  padding:calc(2px) calc(16px - 2px) 0;
-  font-size:1.4rem;
-  min-height:24px;
-}
 .button .icon-svg{
   margin-right:8px;
   fill:currentColor;
