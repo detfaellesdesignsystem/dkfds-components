@@ -43,12 +43,6 @@ body.mobile-nav-active {
         width: 100%;
         overflow-wrap: break-word;
     }
-
-    .helptext {
-        color: func.color(vars.$navigation-link-helptext-color);
-        display: inline;
-        font-weight: func.font-weight("normal");
-    }
 }
 
 // --------------------------
@@ -73,8 +67,19 @@ body.mobile-nav-active {
             font-weight: func.font-weight("bold");
         }
 
+        .helptext {
+            color: func.color(vars.$navigation-link-helptext-color);
+            display: inline;
+            font-weight: func.font-weight("normal");
+        }
+
         &.current {
             background-color: func.color(vars.$navigation-link-current-background-color);
+
+            .helptext {
+                color: func.color(vars.$navigation-link-current-helptext-color);
+                font-weight: func.font-weight("normal");
+            }
         }
 
         .nav-link {
@@ -96,11 +101,11 @@ body.mobile-nav-active {
                     padding-right: calc(2.4rem + 4px);
                 }
     
-                &[aria-expanded="false"] span {
+                &[aria-expanded="false"] > span {
                     @include mixins.add-background-svg("add");
                 }
     
-                &[aria-expanded="true"] span {
+                &[aria-expanded="true"] > span {
                     @include mixins.add-background-svg("remove");
                 }
             }

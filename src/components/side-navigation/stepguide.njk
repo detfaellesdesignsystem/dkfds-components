@@ -10,14 +10,12 @@
                 <div>
                     <span class="sidenav-number">{{loop.index}}.</span>
                     <div>
-                        <span>{{trin.text}}</span>
-                        {% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}
+                        <span class="sidenav-maininfo">
+                            <span class="sidenav-title">{{trin.text}}</span>
+                            {%- if trin.icon %}<span class="sidenav-icon">{{ icon_svg(trin.icon) }}</span>{% endif -%}
+                        </span>
+                        <span>{% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}</span>
                     </div>
-                    {%- if trin.icon %}
-                    <span class="sidenav-icon">
-                        {{ icon_svg(trin.icon) }}
-                    </span>
-                    {% endif -%}
                 </div>
             </a>
         </li>{% endfor %}

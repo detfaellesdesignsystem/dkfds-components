@@ -12,6 +12,10 @@
 
     &.button-tertiary {
         background-color: func.color(vars.$back-to-top-button-background);
+
+        &:hover {
+            background-color: func.color(vars.$back-to-top-button-background);
+        }
     }
 
     &.footer-sticky {

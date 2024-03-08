@@ -140,10 +140,11 @@
         <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
             {% if item.links -%}
             {% set submenuID = menuID + "-" + loop.index %}
-            {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links, overview=item.overview) }}
+            {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
             {% else -%}
             <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
                 <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+                {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
             </a>
             {%- endif %}
         </li>
@@ -152,10 +153,17 @@
 </nav>
 {% endmacro %}
 
-{% macro mobile_navigation_submenu(text, id, active, current, links, overview) %}
+{% macro mobile_navigation_submenu(text, id, active, current, links, overview, helptext) %}
 <div class="submenu">
     <button class="button-mobile-menu js-menudropdown" data-js-target="{{ id }}" aria-haspopup="true"{% if active or current %} aria-expanded="true"{% else %} aria-expanded="false"{% endif %}>
-        <span>{{ text }}</span>
+        {% if helptext %}
+            <span>
+                <span>{{ text }}</span>
+                <span class="helptext">{{ helptext }}</span>
+            </span>
+        {% else -%}
+            <span>{{ text }}</span>
+        {% endif -%}
     </button>
     <div class="overflow-menu-inner" id="{{ id }}"{% if active or current %} aria-hidden="false"{% else %} aria-hidden="true"{% endif %}>
         <ul class="overflow-list">
@@ -164,10 +172,11 @@
             <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
                 {%- if item.links %}
                 {% set subsubmenuID = submenuID + "-" + loop.index %}
-                {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links, overview=item.overview) }}
+                {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
                 {% else %}
                 <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
                     <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+                    {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
                 </a>
                 {% endif -%}
             </li>

@@ -4777,7 +4777,7 @@ class Navigation {
         window.addEventListener('resize', mobileMenu, false);
         mobileMenu();
 
-        if (document.getElementsByClassName('mainmenu').length > 0) {
+        if (document.querySelectorAll('.navigation-menu .mainmenu').length > 0) {
             /* Add an invisible more button to the main menu navigation on desktop */
             createMoreMenu();
 

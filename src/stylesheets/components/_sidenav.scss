@@ -95,7 +95,7 @@ ol.sidemenu {
 
         div div {
             overflow-wrap: break-word;
-            max-width: calc(100% - $sidemenu-icon-size - $sidemenu-link-padding-right);
+            max-width: calc(100% - $sidemenu-link-padding-right);
             width: 100%;
         }
 
@@ -103,18 +103,30 @@ ol.sidemenu {
             margin-right: func.units(2);
         }
 
-        .sidenav-information {
-            max-width: calc(100% + $sidemenu-icon-size);
+        .sidenav-maininfo {
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .sidenav-title {
+                display: inline-block;
+                max-width: calc(100% - $sidemenu-icon-size);
+                overflow-wrap: break-word;
+            }
+
+            .sidenav-icon {
+                margin-left: auto;
+                width: $sidemenu-icon-size;
+                height: $sidemenu-icon-size;
+    
+                .icon-svg {
+                    vertical-align: baseline;
+                }
+            }
         }
 
-        .sidenav-icon {
-            margin-left: auto;
-            width: $sidemenu-icon-size;
-            height: $sidemenu-icon-size;
-
-            .icon-svg {
-                vertical-align: baseline;
-            }
+        .sidenav-information {
+            max-width: calc(100% - $sidemenu-icon-size);
         }
     }
 
