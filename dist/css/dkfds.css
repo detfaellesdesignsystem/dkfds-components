@@ -5977,6 +5977,13 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   margin-top:24px;
 }
 
+.embed-container{
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+  overflow:hidden;
+  max-width:100%;
+}
 .embed-container iframe,
 .embed-container object,
 .embed-container embed{
@@ -5985,14 +5992,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   left:0;
   width:100%;
   height:100%;
-}
-
-.embed-container{
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
-  overflow:hidden;
-  max-width:100%;
 }
 
 img{
@@ -7111,49 +7110,6 @@ td .form-group-radio .form-radio + label::after{
   width:2.2rem;
 }
 
-.date-group{
-  display:flex;
-  align-items:flex-end;
-}
-.date-group label{
-  margin-top:0;
-  font-weight:400;
-}
-.date-group input[type=number]::-webkit-inner-spin-button,
-.date-group input[type=number]::-webkit-outer-spin-button{
-  -webkit-appearance:none;
-          appearance:none;
-  margin:0;
-}
-.date-group .form-group-day,
-.date-group .form-group-month,
-.date-group .form-group-year{
-  margin-right:16px;
-  margin-top:0;
-}
-.date-group .form-group-day,
-.date-group .form-group-month{
-  width:calc(2px + 16px + 16px + 2ch);
-}
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
-  .date-group .form-group-day,
-  .date-group .form-group-month{
-    width:6.4ex;
-  }
-}
-.date-group .form-group-year{
-  width:calc(2px + 16px + 16px + 4ch);
-}
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
-  .date-group .form-group-year{
-    width:9ex;
-  }
-}
-.date-group .button-open-calendar{
-  margin-bottom:8px;
-  display:inline-flex;
-}
-
 .form-label + input[type=file]{
   margin-top:8px;
 }
@@ -7292,6 +7248,7 @@ ol li{
 }
 
 .page-container{
+  flex:1 0 auto;
   padding-top:2.4rem;
 }
 @media (min-width: 768px){
@@ -7304,10 +7261,6 @@ body{
   display:flex;
   min-height:100vh;
   flex-direction:column;
-}
-
-.page-container{
-  flex:1 0 auto;
 }
 
 fieldset ul{
@@ -8272,6 +8225,49 @@ a.button{
 }
 .details .details-text > :last-child{
   margin-bottom:0;
+}
+
+.date-group{
+  display:flex;
+  align-items:flex-end;
+}
+.date-group label{
+  margin-top:0;
+  font-weight:400;
+}
+.date-group input[type=number]::-webkit-inner-spin-button,
+.date-group input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+          appearance:none;
+  margin:0;
+}
+.date-group .form-group-day,
+.date-group .form-group-month,
+.date-group .form-group-year{
+  margin-right:16px;
+  margin-top:0;
+}
+.date-group .form-group-day,
+.date-group .form-group-month{
+  width:calc(2px + 16px + 16px + 2ch);
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+  .date-group .form-group-day,
+  .date-group .form-group-month{
+    width:6.4ex;
+  }
+}
+.date-group .form-group-year{
+  width:calc(2px + 16px + 16px + 4ch);
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+  .date-group .form-group-year{
+    width:9ex;
+  }
+}
+.date-group .button-open-calendar{
+  margin-bottom:8px;
+  display:inline-flex;
 }
 
 .date-picker{
@@ -9861,18 +9857,18 @@ body.mobile-nav-active{
 
 .toast-container{
   position:fixed;
-  right:16px;
-  left:16px;
   top:16px;
+  right:16px;
   bottom:auto;
+  left:16px;
   z-index:7000;
 }
 @media (min-width: 768px){
   .toast-container{
-    right:16px;
-    left:auto;
     top:48px;
+    right:16px;
     bottom:auto;
+    left:auto;
   }
 }
 

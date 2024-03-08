@@ -25,17 +25,11 @@ $toast-icon-backgrounds: (
 
 .toast-container {
     position: fixed;
-    right: func.units(4);
-    left: func.units(4);
-    top: func.units(4);
-    bottom: auto;
+    inset: func.units(4) func.units(4) auto; // top | left and right | bottom
     z-index: vars.$zindex-toast-container;
 
     @include mixins.media-breakpoint-up(md) {
-        right: func.units(4);
-        left: auto;
-        top: func.units(8);
-        bottom: auto;
+        inset: func.units(8) func.units(4) auto auto; // top | right | bottom | left
     }
 }
 
