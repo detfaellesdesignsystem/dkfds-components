@@ -10253,6 +10253,7 @@ ol.sidemenu .nav-step .sidenav-maininfo .sidenav-title{
   display:inline-block;
   max-width:calc(100% - 2.4rem);
   overflow-wrap:break-word;
+  text-decoration:underline;
 }
 ul.sidemenu .nav-step .sidenav-maininfo .sidenav-icon,
 ol.sidemenu .nav-step .sidenav-maininfo .sidenav-icon{
@@ -10313,6 +10314,12 @@ ul.sidemenu li.disabled .nav-step,
 ol.sidemenu li.disabled .nav-link,
 ol.sidemenu li.disabled .nav-step{
   cursor:not-allowed;
+}
+ul.sidemenu li.disabled .nav-link .sidenav-title,
+ul.sidemenu li.disabled .nav-step .sidenav-title,
+ol.sidemenu li.disabled .nav-link .sidenav-title,
+ol.sidemenu li.disabled .nav-step .sidenav-title{
+  text-decoration:none;
 }
 ul.sidemenu li.disabled .nav-link:hover,
 ul.sidemenu li.disabled .nav-step:hover,

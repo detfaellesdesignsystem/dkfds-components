@@ -112,6 +112,7 @@ ol.sidemenu {
                 display: inline-block;
                 max-width: calc(100% - $sidemenu-icon-size);
                 overflow-wrap: break-word;
+                text-decoration: underline;
             }
 
             .sidenav-icon {
@@ -173,6 +174,10 @@ ol.sidemenu {
         .nav-link,
         .nav-step {
             cursor: not-allowed;
+
+            .sidenav-title {
+                text-decoration: none;
+            }
 
             &:hover {
                 background-color: func.color('transparent');
