@@ -56,11 +56,12 @@ class Navigation {
                 childList: true,
                 subtree: false
             };
+            const observerTarget = document.querySelector('.navigation-menu .mainmenu');
             const callback = function (mutationsList, observer) {
                 updateMoreMenu();
             };
             const observer = new MutationObserver(callback);
-            observer.observe(document.querySelector('.navigation-menu .mainmenu'), config);
+            observer.observe(observerTarget, config);
             
             /* Ensure the more menu is correctly displayed when all resources have loaded */
             window.onload = (event) => {

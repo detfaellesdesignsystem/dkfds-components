@@ -3697,12 +3697,7 @@ BackToTop.prototype.init = function () {
 
     updateBackToTopButton(backtotopbutton);
 
-    const observer = new MutationObserver(list => {
-        const evt = new CustomEvent('dom-changed', { detail: list });
-        document.body.dispatchEvent(evt)
-    });
-
-    // Which mutations to observe
+    // DOM changes
     let config = {
         attributes: true,
         attributeOldValue: false,
@@ -3711,12 +3706,24 @@ BackToTop.prototype.init = function () {
         childList: true,
         subtree: true
     };
-
-    // DOM changes
-    observer.observe(document.body, config);
-    document.body.addEventListener('dom-changed', function (e) {
-        updateBackToTopButton(backtotopbutton);
-    });
+    const observerTarget = document.body;
+    let header = document.querySelector('header.header');
+    const callback = function (mutationsList, observer) {
+        for (const mutation of mutationsList) {
+            // Don't react to changes in the back-to-top button
+            if (mutation.target !== backtotopbutton) {
+                // Don't react to changes in the header
+                if (header === null) {
+                    updateBackToTopButton(backtotopbutton);
+                }
+                else if (!header.contains(mutation.target)) {
+                    updateBackToTopButton(backtotopbutton);
+                }
+            }
+        }
+    };
+    const observer = new MutationObserver(callback);
+    observer.observe(observerTarget, config);
 
     // Scroll actions
     window.addEventListener('scroll', function (e) {
@@ -3725,6 +3732,11 @@ BackToTop.prototype.init = function () {
 
     // Window resizes
     window.addEventListener('resize', function (e) {
+        updateBackToTopButton(backtotopbutton);
+    });
+
+    // All resources have loaded
+    window.addEventListener('load', function (e) {
         updateBackToTopButton(backtotopbutton);
     });
 }
@@ -3740,15 +3752,11 @@ function updateBackToTopButton(button) {
 
     // Never show the button if the page is too short
     if (limit > heightOfPage) {
-        if (!button.classList.contains('d-none')) {
-            button.classList.add('d-none');
-        }
+        button.classList.add('d-none');
     }
     // If the page is long, calculate when to show the button
     else {
-        if (button.classList.contains('d-none')) {
-            button.classList.remove('d-none');
-        }
+        button.classList.remove('d-none');
 
         let lastKnownScrollPosition = window.scrollY;
         let footerVisible = isFooterVisible(document.getElementsByTagName("footer")[0]);
@@ -3769,7 +3777,7 @@ function updateBackToTopButton(button) {
             let maybeShowButton = false;
 
             // Check whether the page has a sidenav (left menu or step guide)
-            let sidenav = document.querySelector('.sidenav-list');
+            let sidenav = document.querySelector('.sidemenu');
             if (sidenav) {
                 // Ensure that the sidenav hasn't been hidden, e.g. due to a window resize
                 let sidenavParentNotHidden = (sidenav.offsetParent !== null);
@@ -4807,11 +4815,12 @@ class Navigation {
                 childList: true,
                 subtree: false
             };
+            const observerTarget = document.querySelector('.navigation-menu .mainmenu');
             const callback = function (mutationsList, observer) {
                 updateMoreMenu();
             };
             const observer = new MutationObserver(callback);
-            observer.observe(document.querySelector('.navigation-menu .mainmenu'), config);
+            observer.observe(observerTarget, config);
             
             /* Ensure the more menu is correctly displayed when all resources have loaded */
             window.onload = (event) => {
