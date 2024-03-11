@@ -28,6 +28,23 @@ const JS_OUTPUT_LIBRARY = {
     type: 'umd',
 };
 
+const JS_BABEL = {
+    rules: [
+        {
+            test: /\.(?:js|mjs|cjs)$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: [
+                        ['@babel/preset-env', { targets: "Chrome >= 102 or Edge >= 102 or Firefox >= 112 or Safari >= 15.5 or last 2 iOS versions or last 2 ChromeAndroid versions or last 2 Samsung versions or > 0.5% and not dead" }]
+                    ]
+                }
+            }
+        }
+    ]
+};
+
 const CSS_ENTRY = {
     "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
     "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
@@ -83,6 +100,7 @@ const CSS_OUTPUT = {
 const copyFilesAndCreateJavaScript = {
     name: 'copyFilesAndCreateJavaScript',
     mode: 'production',
+    module: JS_BABEL,
     optimization: {
         minimize: false
     },
@@ -119,6 +137,7 @@ const createMinifiedJavaScript = {
     name: 'createMinifiedJavaScript',
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
+    module: JS_BABEL,
     optimization: {
         minimize: true,
         minimizer: [
@@ -265,5 +284,9 @@ const createMinifiedCSS = {
     output: CSS_OUTPUT,
     stats: 'minimal',
 };
+
+////////////////////////////////////////////////////////////////////////////////
+// module.exports
+////////////////////////////////////////////////////////////////////////////////
 
 module.exports = [copyFilesAndCreateJavaScript, createMinifiedJavaScript, createCSS, createMinifiedCSS];

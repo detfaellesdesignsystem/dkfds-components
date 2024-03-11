@@ -5811,7 +5811,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
 }
 
 .position-sticky{
-  position:-webkit-sticky !important;
   position:sticky !important;
 }
 
@@ -5831,9 +5830,8 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu){
   z-index:1030;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)){
+@supports (position: sticky){
   .sticky-top{
-    position:-webkit-sticky;
     position:sticky;
     top:0;
     z-index:1020;
@@ -7496,7 +7494,7 @@ button.function-link, button.accordion-bulk-button{
 }
 @media (min-width: 768px){
   .accordion-button .accordion-icon{
-    text-align:right;
+    text-align:end;
     display:flex;
     align-items:center;
     max-width:30%;
@@ -7784,10 +7782,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   width:auto;
   background-color:white;
   position:fixed;
-  top:auto;
-  right:24px;
-  bottom:24px;
-  left:auto;
+  inset:auto 24px 24px auto;
   z-index:9;
 }
 .button.back-to-top-button.button-tertiary{
@@ -8473,10 +8468,7 @@ a.button{
 }
 .date-picker__calendar__date::after{
   position:absolute;
-  top:-1px;
-  right:0;
-  bottom:0;
-  left:-1px;
+  inset:-1px 0 0 -1px;
   border:1px solid #BFBFBF;
   content:"";
   display:block;
@@ -8500,10 +8492,7 @@ a.button{
   outline:4px solid #747474;
   outline-offset:1px;
   position:absolute;
-  top:-1px;
-  right:0;
-  bottom:0;
-  left:-1px;
+  inset:-1px 0 0 -1px;
   content:"";
   display:block;
   pointer-events:none;
@@ -9094,10 +9083,7 @@ footer .footer-theme{
 .header .mobile-drawer{
   display:none;
   position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:auto;
+  inset:0 0 0 auto;
   background-color:#f1f1f1;
   flex-direction:column;
   overflow-y:auto;
@@ -9167,10 +9153,7 @@ footer .footer-theme{
 
 .overlay{
   position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
+  inset:0;
   background:#1a1a1a;
   opacity:0;
   transition:opacity 0.2s ease-in-out;
@@ -9188,10 +9171,7 @@ body.modal-open{
 
 .modal-backdrop{
   position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
+  inset:0;
   background-color:rgba(0, 0, 0, 0.4);
   display:flex;
   justify-content:center;
@@ -9203,10 +9183,7 @@ body.modal-open{
 .fds-modal{
   display:none;
   position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
+  inset:0;
   z-index:9999;
   margin:16px;
 }
@@ -9216,8 +9193,6 @@ body.modal-open{
 .fds-modal .modal-content{
   align-self:center;
   max-height:100%;
-  overflow-x:hidden;
-  overflow-y:auto;
   overflow:hidden auto;
   background-color:white;
   box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
@@ -9857,18 +9832,12 @@ body.mobile-nav-active{
 
 .toast-container{
   position:fixed;
-  top:16px;
-  right:16px;
-  bottom:auto;
-  left:16px;
+  inset:16px 16px auto;
   z-index:7000;
 }
 @media (min-width: 768px){
   .toast-container{
-    top:48px;
-    right:16px;
-    bottom:auto;
-    left:auto;
+    inset:48px 16px auto auto;
   }
 }
 
@@ -10158,7 +10127,10 @@ ol.sidemenu li{
   background-color:white;
   font-size:1.6rem;
 }
-ul.sidemenu ul li, ul.sidemenu ol li, ul.sidemenu ul ul li, ul.sidemenu ul ol li, ul.sidemenu ol ul li, ul.sidemenu ol ol li, ol.sidemenu ul li, ol.sidemenu ol li, ol.sidemenu ul ul li, ol.sidemenu ul ol li, ol.sidemenu ol ul li, ol.sidemenu ol ol li{
+ul.sidemenu :is(ul, ol) li,
+ul.sidemenu :is(ul, ol) :is(ul, ol) li,
+ol.sidemenu :is(ul, ol) li,
+ol.sidemenu :is(ul, ol) :is(ul, ol) li{
   font-size:1.4rem;
 }
 ul.sidemenu .nav-link,
@@ -10171,7 +10143,7 @@ ol.sidemenu .nav-step{
   display:flex;
   flex-wrap:nowrap;
   align-items:center;
-  text-align:left;
+  text-align:start;
   width:100%;
   max-width:none;
   border:none;
@@ -11831,10 +11803,8 @@ textarea.no-resize{
 
 .tooltip-wrapper{
   position:relative;
-  width:-webkit-fit-content;
   width:-moz-fit-content;
   width:fit-content;
-  height:-webkit-fit-content;
   height:-moz-fit-content;
   height:fit-content;
   line-height:1;
