@@ -3298,12 +3298,6 @@ Accordion.prototype.eventOnClick = function ($button, e) {
   e.stopPropagation();
   e.preventDefault();
   $module.toggleButton($button);
-  if ($button.getAttribute(EXPANDED) === 'true') {
-    // We were just expanded, but if another accordion was also just
-    // collapsed, we may no longer be in the viewport. This ensures
-    // that we are still visible, so the user isn't confused.
-    if (!isElementInViewport($button)) $button.scrollIntoView();
-  }
 };
 
 /**

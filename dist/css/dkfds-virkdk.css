@@ -7042,13 +7042,13 @@ td .form-group-radio .form-radio + label::after{
 .form-checkbox:disabled + label::before,
 .form-radio:disabled + label::before{
   background-color:#F5F5F5;
-  border:2px solid #999999;
+  border:2px solid #BFBFBF;
 }
 
 .form-checkbox:disabled:checked + label::before,
 .form-checkbox:disabled[aria-checked=mixed] + label::before{
-  background-color:#999999;
-  border:2px solid #999999;
+  background-color:#BFBFBF;
+  border:2px solid #BFBFBF;
 }
 .form-checkbox:disabled:checked + label::after,
 .form-checkbox:disabled[aria-checked=mixed] + label::after{
@@ -7057,10 +7057,10 @@ td .form-group-radio .form-radio + label::after{
 
 .form-radio:disabled:checked + label::before{
   background-color:#F5F5F5;
-  border:2px solid #999999;
+  border:2px solid #BFBFBF;
 }
 .form-radio:disabled:checked + label::after{
-  background-color:#999999;
+  background-color:#BFBFBF;
 }
 
 [type=range]{
