@@ -5293,7 +5293,11 @@ Tooltip.prototype.init = function () {
   if (trueTooltip) {
     wrapper.append(tooltipEl);
     appendArrow(wrapper);
-    tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
+    if (tooltipTarget.classList.contains('tooltip-is-label')) {
+      tooltipTarget.setAttribute('aria-labelledby', wrapper.dataset.tooltipId);
+    } else {
+      tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
+    }
     tooltipEl.setAttribute('role', 'tooltip');
     tooltipEl.innerText = wrapper.dataset.tooltip;
     tooltipTarget.addEventListener('focus', function () {
