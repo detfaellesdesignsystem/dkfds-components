@@ -6789,8 +6789,7 @@ table .form-select{
   border-left:4px solid #CC0000;
   padding-left:calc(16px - 4px);
 }
-.form-group.form-error .form-input,
-.form-group.form-error .form-select{
+.form-group.form-error > .form-input, .form-group.form-error > .form-select, .form-group.form-error > fieldset > .date-group .form-input, .form-group.form-error > .date-picker .form-input, .form-group.form-error > .form-input-wrapper > .form-input{
   border:2px solid #CC0000;
   padding:calc(8px - 2px) calc(16px - 2px);
 }
@@ -11827,6 +11826,7 @@ textarea.no-resize{
 .tooltip-wrapper .tooltip{
   line-height:1.5;
   font-size:1.4rem;
+  font-weight:400;
   color:white;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background-color:#454545;

@@ -31,6 +31,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     .tooltip {
         line-height: 1.5;
         font-size: func.font-size('xs');
+        font-weight: func.font-weight('normal');
         color: func.color(vars.$tooltip-color);
         box-shadow: func.shadow(vars.$tooltip-shadow);
         background-color: func.color(vars.$tooltip-background-color);

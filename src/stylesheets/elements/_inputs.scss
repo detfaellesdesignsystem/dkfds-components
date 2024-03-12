@@ -136,8 +136,13 @@ $input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedb
   border-left: vars.$form-group-error-border-width solid func.color(vars.$form-group-error-border-color);
   padding-left: calc(#{func.units(4)} - 4px);
 
-  .form-input,
-  .form-select {
+  // Ensure that "error styling" only is applied to the group marked with an error
+  // Input fields should not inherit error styling from radios or checkboxes with hidden content 
+  & > .form-input,
+  & > .form-select,
+  & > fieldset > .date-group .form-input,
+  & > .date-picker .form-input,
+  & > .form-input-wrapper > .form-input {
     border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
