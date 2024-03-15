@@ -82,14 +82,13 @@ Tooltip.prototype.init = function () {
     
         tooltipTarget.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
+            let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
             let onTooltip = false;
             if (wrapper.classList.contains('place-above')) {
-                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && 
-                            tooltipTarget.getBoundingClientRect().top >= e.clientY;
+                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY <= center;
             }
             else if (wrapper.classList.contains('place-below')) {
-                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && 
-                            tooltipTarget.getBoundingClientRect().bottom <= e.clientY;
+                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY >= center;
             }
             /* WCAG 1.4.13: It must be possible to hover on the tooltip */
             if (!onTooltip) {
@@ -99,14 +98,13 @@ Tooltip.prototype.init = function () {
 
         tooltipEl.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
+            let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
             let onTarget = false;
             if (wrapper.classList.contains('place-above')) {
-                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
-                           tooltipEl.getBoundingClientRect().bottom <= e.clientY;
+                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY >= center;
             }
             else if (wrapper.classList.contains('place-below')) {
-                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && 
-                           tooltipEl.getBoundingClientRect().top >= e.clientY;
+                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY <= center;
             }
             /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
             if (!onTarget) {
@@ -164,7 +162,7 @@ function setWidth(tooltipEl) {
 
 function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     let spaceAbove = tooltipTarget.getBoundingClientRect().top;
-    let spaceBelow = window.screen.availHeight - tooltipTarget.getBoundingClientRect().bottom;
+    let spaceBelow = window.innerHeight - tooltipTarget.getBoundingClientRect().bottom;
     let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
     let placement = 'above'; // Default placement
     if (tooltipWrapper.dataset.position === 'below' && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
