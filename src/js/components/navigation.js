@@ -88,7 +88,7 @@ const createMoreMenu = function () {
     let moreMenu = document.createElement('li');
     moreMenu.classList.add('more-option');
     moreMenu.classList.add('d-none');
-    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-haspopup="true" aria-expanded="false"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
     mainMenu.append(moreMenu);
     new Dropdown(document.getElementsByClassName('more-button')[0]).init();
 }

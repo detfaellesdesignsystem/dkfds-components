@@ -3,13 +3,13 @@
  {% macro overflowmenu(params) %}
  {% set icon = params.button.icon | default('sort-default') %}
     <div class="overflow-menu overflow-menu--sort overflow-menu--open-right" id="{{ params.id }}">
-        <button class="button-overflow-menu" data-js-target="{{ params.id }}-panel" aria-haspopup="true" aria-expanded="false">
+        <button class="button-overflow-menu" data-js-target="{{ params.id }}-panel" aria-expanded="false" aria-controls="{{ params.id }}-panel">
             {{ icon_svg({"name": icon}) }}{{ params.button.label }}<span class="selected-value"></span>
         </button>
         <div class="overflow-menu-inner" id="{{ params.id }}-panel" aria-hidden="true">
-            <ul class='overflow-list' role="menu">
+            <ul class='overflow-list'>
                 {%- for item in params.items -%}
-                    <li role="menuitem">
+                    <li>
                         <button id="{{item.id}}"{% if item.selected %} aria-current="true"{% endif %}>{{item.text}}</button>
                     </li>
                 {%- endfor -%}

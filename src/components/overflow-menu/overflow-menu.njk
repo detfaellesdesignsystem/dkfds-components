@@ -4,7 +4,7 @@
 {% set openRight = params.openRight | default(true) %}
 {% set icon = params.button.icon | default('more-vert') %}
 <div class="overflow-menu{% if openRight %} overflow-menu--open-right{% else %} overflow-menu--open-left{% endif %}{% if params.classes %} {{ params.classes }}{% endif %}">
-    <button class="button-overflow-menu js-dropdown{% if params.doResponsiveCollapse %} js-dropdown--responsive-collapse{% endif %}" data-js-target="{{ params.id }}" aria-haspopup="true" aria-expanded="false">
+    <button class="button-overflow-menu js-dropdown{% if params.doResponsiveCollapse %} js-dropdown--responsive-collapse{% endif %}" data-js-target="{{ params.id }}" aria-expanded="false" aria-controls="{{ params.id }}">
         {% if params.button.srOnly %}<span class="sr-only">{% endif %}{{ params.button.text }}{% if params.button.srOnly %}</span>{% endif %}
         {{ icon_svg({"name": icon}) }}
     </button>

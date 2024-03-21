@@ -95,7 +95,7 @@
                     {% if item.links -%}
                     {% set submenuID = menuID + "-" + loop.index %}
                     <div class="submenu">
-                        <button class="button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-haspopup="true" aria-expanded="false">
+                        <button class="button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-expanded="false" aria-controls="{{ submenuID }}">
                             <span>{{ item.text }}</span>
                         </button>
                         <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
@@ -155,7 +155,7 @@
 
 {% macro mobile_navigation_submenu(text, id, active, current, links, overview, helptext) %}
 <div class="submenu">
-    <button class="button-mobile-menu js-menudropdown" data-js-target="{{ id }}" aria-haspopup="true"{% if active or current %} aria-expanded="true"{% else %} aria-expanded="false"{% endif %}>
+    <button class="button-mobile-menu js-menudropdown" data-js-target="{{ id }}" {% if active or current %} aria-expanded="true"{% else %} aria-expanded="false"{% endif %} aria-controls="{{ id }}">
         {% if helptext %}
             <span>
                 <span>{{ text }}</span>

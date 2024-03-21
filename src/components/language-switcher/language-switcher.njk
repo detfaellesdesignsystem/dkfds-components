@@ -31,7 +31,7 @@
 <div class="language-switcher-header">
     <div class="container">
         <div class="overflow-menu overflow-menu--open-right">
-            <button class="button-overflow-menu js-dropdown select-language-button" data-js-target="{{ params.overflowID | default('header-language')}}" aria-haspopup="true" aria-expanded="false">
+            <button class="button-overflow-menu js-dropdown select-language-button" data-js-target="{{ params.overflowID | default('header-language')}}" aria-expanded="false" aria-controls="{{ params.overflowID | default('header-language')}}">
                 {{icon_svg({"name":"language"})}}Dansk
             </button>
             <div class="overflow-menu-inner select-language-list" id="{{ params.overflowID | default('header-language')}}" aria-hidden="true">
