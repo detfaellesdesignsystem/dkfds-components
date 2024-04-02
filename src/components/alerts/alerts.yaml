@@ -35,10 +35,6 @@ params:
   type: boolean
   required: false
   description: Sets paragraph width on true.
-- name: icon
-  type: boolean
-  required: false
-  description: Adds icon on true.
 - name: alertRole
   type: boolean
   required: false

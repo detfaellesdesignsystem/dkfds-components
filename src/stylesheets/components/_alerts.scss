@@ -88,22 +88,20 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
     background-color: func.color($bgcolor);
     border-color: func.color(map.get($alerts-bar, $name));
 
-    &.alert--show-icon{
-      $alert-icon: $name;
-      @if $name == error {
-        $alert-icon: 'highlight-off';
-      }
-      
-      @if $name == success {
-        $alert-icon: 'check-circle';
-      }
-      
-      @if $name == warning {
-        $alert-icon: 'report-problem';
-      }
-      background-image: url(vars.$icons-folder-path + '/' + $alert-icon + '.svg');
-      padding-left: calc(#{func.units(vars.$alert-padding)} + #{vars.$alert-icon-size} + 8px);
+    $alert-icon: $name;
+    @if $name == error {
+      $alert-icon: 'highlight-off';
     }
+    
+    @if $name == success {
+      $alert-icon: 'check-circle';
+    }
+    
+    @if $name == warning {
+      $alert-icon: 'report-problem';
+    }
+    background-image: url(vars.$icons-folder-path + '/' + $alert-icon + '.svg');
+    padding-left: calc(#{func.units(vars.$alert-padding)} + #{vars.$alert-icon-size} + 8px);
   }
 }
 

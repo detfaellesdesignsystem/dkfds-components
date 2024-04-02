@@ -7678,8 +7678,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert-success{
   background-color:#eeffe2;
   border-color:#358000;
-}
-.alert-success.alert--show-icon{
   background-image:url("../img/svg-icons/check-circle.svg");
   padding-left:calc(16px + 24px + 8px);
 }
@@ -7687,8 +7685,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert-warning{
   background-color:#ffeecc;
   border-color:#febb30;
-}
-.alert-warning.alert--show-icon{
   background-image:url("../img/svg-icons/report-problem.svg");
   padding-left:calc(16px + 24px + 8px);
 }
@@ -7696,8 +7692,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert-error{
   background-color:#ffe0e0;
   border-color:#CC0000;
-}
-.alert-error.alert--show-icon{
   background-image:url("../img/svg-icons/highlight-off.svg");
   padding-left:calc(16px + 24px + 8px);
 }
@@ -7705,8 +7699,6 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert-info{
   background-color:#e2f2fb;
   border-color:#1B86C3;
-}
-.alert-info.alert--show-icon{
   background-image:url("../img/svg-icons/info.svg");
   padding-left:calc(16px + 24px + 8px);
 }
