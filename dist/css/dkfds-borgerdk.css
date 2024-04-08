@@ -1010,7 +1010,7 @@ textarea:focus,
   }
 }
 html{
-  font-family:"IBM Plex Sans", "system";
+  font-family:"IBM Plex Sans", "system", sans-serif;
   font-size:62.5%;
 }
 

@@ -16,7 +16,7 @@ $root-font-size-equiv: if($theme-respect-user-font-size, 10px, $theme-root-font-
 // General
 $typography-base-font-size: "sm" !default;
 $typography-base-line-height: 5 !default;
-$typography-font-family: 'IBM Plex Sans', 'system' !default;
+$typography-font-family: 'IBM Plex Sans', 'system', sans-serif !default;
 $typography-text-max-width: 66ch !default;
 
 // Body text
