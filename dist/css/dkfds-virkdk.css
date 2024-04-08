@@ -7655,6 +7655,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   height:1.6rem;
   fill:currentColor;
 }
+.alert .alert-icon{
+  position:absolute;
+  left:16px;
+}
 .alert .alert-heading{
   font-size:1.6rem;
   line-height:1.5;
@@ -7678,28 +7682,24 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .alert-success{
   background-color:#eeffe2;
   border-color:#358000;
-  background-image:url("../img/svg-icons/check-circle.svg");
   padding-left:calc(16px + 24px + 8px);
 }
 
 .alert-warning{
   background-color:#ffeecc;
   border-color:#febb30;
-  background-image:url("../img/svg-icons/report-problem.svg");
   padding-left:calc(16px + 24px + 8px);
 }
 
 .alert-error{
   background-color:#ffe0e0;
   border-color:#CC0000;
-  background-image:url("../img/svg-icons/highlight-off.svg");
   padding-left:calc(16px + 24px + 8px);
 }
 
 .alert-info{
   background-color:#e2f2fb;
   border-color:#1B86C3;
-  background-image:url("../img/svg-icons/info.svg");
   padding-left:calc(16px + 24px + 8px);
 }
 

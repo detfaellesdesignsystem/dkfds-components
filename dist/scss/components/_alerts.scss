@@ -61,6 +61,11 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
     }
   }
 
+  .alert-icon {
+    position: absolute;
+    left: func.units(vars.$alert-padding);
+  }
+
   .alert-heading {
     @include mixins.responsive-style(vars.$alert-heading-fontsize, font-size);
     @include mixins.responsive-style(vars.$alert-heading-lineheight, line-height);
@@ -87,20 +92,6 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
   .alert-#{$name} {
     background-color: func.color($bgcolor);
     border-color: func.color(map.get($alerts-bar, $name));
-
-    $alert-icon: $name;
-    @if $name == error {
-      $alert-icon: 'highlight-off';
-    }
-    
-    @if $name == success {
-      $alert-icon: 'check-circle';
-    }
-    
-    @if $name == warning {
-      $alert-icon: 'report-problem';
-    }
-    background-image: url(vars.$icons-folder-path + '/' + $alert-icon + '.svg');
     padding-left: calc(#{func.units(vars.$alert-padding)} + #{vars.$alert-icon-size} + 8px);
   }
 }
