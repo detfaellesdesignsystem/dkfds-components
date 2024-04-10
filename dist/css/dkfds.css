@@ -1105,13 +1105,13 @@ h1, .h1{
 }
 @media (min-width: 992px){
   h1, .h1{
-    line-height:1.17;
+    line-height:1.25;
   }
 }
 
 h2, .h2{
   font-size:2.4rem;
-  line-height:1.33;
+  line-height:1.3333333333;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -1129,7 +1129,7 @@ h2, .h2{
 }
 @media (min-width: 768px){
   h2, .h2{
-    line-height:1.29;
+    line-height:1.2857142857;
   }
 }
 @media (min-width: 992px){
@@ -1140,7 +1140,7 @@ h2, .h2{
 
 h3, .h3{
   font-size:2.2rem;
-  line-height:1.36;
+  line-height:1.2727272727;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -1158,18 +1158,18 @@ h3, .h3{
 }
 @media (min-width: 768px){
   h3, .h3{
-    line-height:1.33;
+    line-height:1.3333333333;
   }
 }
 @media (min-width: 992px){
   h3, .h3{
-    line-height:1.33;
+    line-height:1.3333333333;
   }
 }
 
 h4, .h4{
   font-size:1.8rem;
-  line-height:1.33;
+  line-height:1.3333333333;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -1207,7 +1207,7 @@ h5, .h5{
 
 h6, .h6{
   font-size:1.4rem;
-  line-height:1.67;
+  line-height:1.4285714286;
   letter-spacing:normal;
   font-weight:500;
   color:#1a1a1a;
@@ -9686,7 +9686,7 @@ body.mobile-nav-active{
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .sub-title{
   font-size:1.4rem;
-  line-height:1.67;
+  line-height:1.4285714286;
   letter-spacing:normal;
   font-weight:500;
   color:#1a1a1a;
@@ -10661,7 +10661,7 @@ a.skipnav:focus{
 }
 .card-header .header-title.large-text{
   font-size:2.4rem;
-  line-height:1.33;
+  line-height:1.3333333333;
   letter-spacing:normal;
   font-weight:600;
   color:#1a1a1a;
@@ -10680,7 +10680,7 @@ a.skipnav:focus{
 }
 @media (min-width: 768px){
   .card-header .header-title.large-text{
-    line-height:1.29;
+    line-height:1.2857142857;
   }
 }
 @media (min-width: 992px){

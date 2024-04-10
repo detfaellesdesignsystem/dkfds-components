@@ -77,7 +77,7 @@ $typography-h1-font-size: (
 $typography-h1-line-height: (
     "default": 1.25,
     "md": 1.2,
-    "lg": 1.17 
+    "lg": 1.25 
 ) !default;
 
 // H2
@@ -87,8 +87,8 @@ $typography-h2-font-size: (
     "lg": "5xl"
 ) !default;
 $typography-h2-line-height: (
-    "default": 1.33,
-    "md": 1.29,
+    "default": calc(32 / 24),
+    "md": calc(36 / 28),
     "lg": 1.25
 ) !default;
 
@@ -99,9 +99,9 @@ $typography-h3-font-size: (
     "lg": "3xl"
 ) !default;
 $typography-h3-line-height: (
-    "default": 1.36,
-    "md": 1.33,
-    "lg": 1.33
+    "default": calc(28 / 22),
+    "md": calc(32 / 24),
+    "lg": calc(32 / 24)
 ) !default;
 
 // H4
@@ -111,7 +111,7 @@ $typography-h4-font-size: (
     "lg": "lg"
 ) !default;
 $typography-h4-line-height: (
-    "default": 1.33,
+    "default": calc(24 / 18),
     "md": 1.4,
     "lg": 1.4
 ) !default;
@@ -122,4 +122,4 @@ $typography-h5-line-height: 1.5 !default;
 
 // H6 - same values used for default, md, and lg
 $typography-h6-font-size: "xs" !default;
-$typography-h6-line-height: 1.67 !default;
+$typography-h6-line-height: calc(20 / 14) !default;
