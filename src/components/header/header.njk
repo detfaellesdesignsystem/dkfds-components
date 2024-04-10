@@ -63,7 +63,7 @@
             <p><strong class="authority-name">{{ params.authority.name }}</strong></p>
             {% endif %}
             {% if params.authority.text %}
-            <p>{{ params.authority.text | safe }}</p>
+            <p class="d-lg-flex align-items-lg-center">{{ params.authority.text | safe }}</p>
             {% endif %}
         </div>
         {% endif %}
@@ -78,7 +78,7 @@
     <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
     {% endif %}
     {% if params.authority.text %}
-    <p>{{ params.authority.text | safe }}</p>
+    <p class="d-lg-flex align-items-lg-center">{{ params.authority.text | safe }}</p>
     {% endif %}
 </div>
 {% endmacro %}
