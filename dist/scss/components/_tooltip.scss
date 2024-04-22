@@ -13,9 +13,15 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     display: inline-flex; // Display MUST be flex or inline-flex, otherwise screenreaders will read a help button as part of the label for text input
     vertical-align: bottom;
 
-    &.in-text button.tooltip-target .icon-svg {
-        padding-top: 0.3rem;
-        padding-bottom: 0.3rem;
+    &.in-text button.tooltip-target {
+        &:focus {
+            outline-offset: -2px;
+        }
+
+        .icon-svg {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
     }
 
     // "Bridge" between tooltip and tooltip target. Allows cursor to move onto tooltip.

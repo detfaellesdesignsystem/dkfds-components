@@ -11802,6 +11802,9 @@ textarea.no-resize{
   display:inline-flex;
   vertical-align:bottom;
 }
+.tooltip-wrapper.in-text button.tooltip-target:focus{
+  outline-offset:-2px;
+}
 .tooltip-wrapper.in-text button.tooltip-target .icon-svg{
   padding-top:0.3rem;
   padding-bottom:0.3rem;
