@@ -137,7 +137,7 @@
                 max-width: 70%;
             }
             
-            a, h1, .h1 {
+            *:not(.badge, .tag, .tooltip-wrapper) {
                 font-size: func.font-size(vars.$header-solution-text-size);
                 line-height: func.units(vars.$header-solution-line-height, 'rem');
                 font-weight: func.font-weight("semibold");
@@ -149,20 +149,6 @@
                 @include mixins.media-breakpoint-up(md) {
                     font-size: func.font-size(vars.$header-solution-text-size-desktop);
                     line-height: func.units(vars.$header-solution-line-height-desktop, 'rem');
-                }
-            }
-
-            p, h2, h3, h4, h5, .h2, .h3, .h4, .h5 {
-                color: func.color(vars.$header-solution-text-color);
-            }
-
-            .function-link {
-                color: func.color(vars.$header-solution-text-color);
-
-                &:hover,
-                &:focus,
-                &:visited {
-                    color: func.color(vars.$header-solution-text-color);
                 }
             }
         }

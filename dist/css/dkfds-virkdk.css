@@ -8924,7 +8924,7 @@ footer .footer-theme{
     max-width:70%;
   }
 }
-.header .solution-info .solution-heading a, .header .solution-info .solution-heading h1, .header .solution-info .solution-heading .h1{
+.header .solution-info .solution-heading *:not(.badge):not(.tag):not(.tooltip-wrapper){
   font-size:2rem;
   line-height:2.4rem;
   font-weight:600;
@@ -8934,19 +8934,10 @@ footer .footer-theme{
   max-width:100%;
 }
 @media (min-width: 768px){
-  .header .solution-info .solution-heading a, .header .solution-info .solution-heading h1, .header .solution-info .solution-heading .h1{
+  .header .solution-info .solution-heading *:not(.badge):not(.tag):not(.tooltip-wrapper){
     font-size:2.8rem;
     line-height:3.2rem;
   }
-}
-.header .solution-info .solution-heading p, .header .solution-info .solution-heading h2, .header .solution-info .solution-heading h3, .header .solution-info .solution-heading h4, .header .solution-info .solution-heading h5, .header .solution-info .solution-heading .h2, .header .solution-info .solution-heading .h3, .header .solution-info .solution-heading .h4, .header .solution-info .solution-heading .h5{
-  color:#1a1a1a;
-}
-.header .solution-info .solution-heading .function-link{
-  color:#1a1a1a;
-}
-.header .solution-info .solution-heading .function-link:hover, .header .solution-info .solution-heading .function-link:focus, .header .solution-info .solution-heading .function-link:visited{
-  color:#1a1a1a;
 }
 .header .solution-info .additional-info{
   display:none;
