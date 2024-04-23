@@ -114,13 +114,14 @@ $-left-right-padding: func.units(305);
     }
 
     .overflow-menu-inner {
+        $-border-width: 1px;
         position: absolute;
         z-index: vars.$zindex-nav-overflow-menu;
         top: 100%;
         width: 30rem;
-        border: 1px solid func.color('gray-500');
+        border: $-border-width solid func.color('gray-500');
         background-color: func.color('white');
-        margin-left: -$navigation-row-link-padding-left-right;
+        margin-left: calc(0px - $navigation-row-link-padding-left-right - $-border-width);
 
         ul {
             @include mixins.unstyled-list;
@@ -128,8 +129,8 @@ $-left-right-padding: func.units(305);
 
             & > li {
                 border-bottom: 1px solid func.color('gray-200');
-                padding-left: $navigation-row-link-padding-left-right;
-                padding-right: $navigation-row-link-padding-left-right;
+                padding-left: 0;
+                padding-right: 0;
 
                 &.current {
                     background-color: func.color(vars.$navigation-link-current-background-color);
@@ -147,8 +148,9 @@ $-left-right-padding: func.units(305);
             .nav-link {
                 padding-top: func.units(3);
                 padding-bottom: func.units(3);
+                padding-left: calc($-left-right-padding + $navigation-row-link-padding-left-right);
+                padding-right: calc($-left-right-padding + $navigation-row-link-padding-left-right);
                 white-space: normal;
-                max-width: 100%;
                 overflow-wrap: break-word;
                 background-color: func.color('transparent');
 
@@ -159,9 +161,7 @@ $-left-right-padding: func.units(305);
                 }
 
                 &:hover {
-                    span {
-                        text-decoration: underline;
-                    }
+                    background-color: func.color('gray-100');
                 }
             }
 
