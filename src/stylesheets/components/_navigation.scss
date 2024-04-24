@@ -78,6 +78,7 @@ $-left-right-padding: func.units(305);
         &:hover {
             span {
                 border-bottom: $navigation-desktop-border-bottom-thickness solid func.color('transparent');
+                text-decoration: underline;
             }
         }
     }

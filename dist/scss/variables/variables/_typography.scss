@@ -77,7 +77,7 @@ $typography-h1-font-size: (
 $typography-h1-line-height: (
     "default": 1.25,
     "md": 1.2,
-    "lg": 1.25 
+    "lg": calc(56 / 48) 
 ) !default;
 
 // H2

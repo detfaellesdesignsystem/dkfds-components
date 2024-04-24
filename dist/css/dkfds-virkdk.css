@@ -1105,7 +1105,7 @@ h1, .h1{
 }
 @media (min-width: 992px){
   h1, .h1{
-    line-height:1.25;
+    line-height:1.1666666667;
   }
 }
 
@@ -9546,6 +9546,7 @@ body.mobile-nav-active{
 }
 .navigation-menu ul.mainmenu .button-overflow-menu.more-button:hover span{
   border-bottom:4px solid transparent;
+  text-decoration:underline;
 }
 .navigation-menu ul.mainmenu li.active span{
   border-bottom:4px solid #0059B3;
