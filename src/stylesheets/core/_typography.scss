@@ -28,12 +28,6 @@ a {
   &:hover,
   &.link-hover {
     color: func.color("link-hover");
-
-    &:disabled,
-    .disabled {
-      background-color: func.color('transparent') !important;
-    }
-
   }
 
   &:focus,
@@ -47,34 +41,9 @@ a {
     color: func.color("link-visited");
   }
 
-  &:disabled,
-  &.disabled {
-    cursor: not-allowed !important;
-    color: func.color('disabled') !important;
-    opacity: 0.3;
-
-    &:focus {
-      outline: none;
-      background-color: func.color('transparent');
-    }
-  }
-
   .background-dark & {
     &:not(.button) {
       color: func.color('white');
-    }
-
-    &:disabled,
-    &.disabled {
-      box-shadow: none !important;
-      cursor: not-allowed !important;
-      color: func.color('disabled-light') !important;
-      outline-offset: inherit !important;
-
-      &:focus {
-        outline: none;
-        background-color: func.color('transparent');
-      }
     }
   }
 

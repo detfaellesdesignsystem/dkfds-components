@@ -2,7 +2,7 @@
 @use "../functions/functions" as func;
 @use "../mixins/mixins" as mixins;
 
-$-tabs-icon-right-padding: 7.9px; // This value is used to avoid a round error during zoom where text wraps onto a new line.
+$-tabs-icon-right-padding: 7.9px; // This value is used to avoid a rounding error during zoom where text wraps onto a new line.
 $-tabs-icon-size: 2.4rem;
 
 .tab-container {

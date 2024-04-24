@@ -1037,11 +1037,6 @@ a{
 a:hover, a.link-hover{
   color:#000040;
 }
-a:hover:disabled,
-a:hover .disabled, a.link-hover:disabled,
-a.link-hover .disabled{
-  background-color:transparent !important;
-}
 a:focus, a.link-focus{
   color:#004D99;
   outline:4px solid #747474;
@@ -1050,27 +1045,8 @@ a:focus, a.link-focus{
 a:visited, a.link-visited{
   color:#800080;
 }
-a:disabled, a.disabled{
-  cursor:not-allowed !important;
-  color:#454545 !important;
-  opacity:0.3;
-}
-a:disabled:focus, a.disabled:focus{
-  outline:none;
-  background-color:transparent;
-}
 .background-dark a:not(.button){
   color:white;
-}
-.background-dark a:disabled, .background-dark a.disabled{
-  box-shadow:none !important;
-  cursor:not-allowed !important;
-  color:#999999 !important;
-  outline-offset:inherit !important;
-}
-.background-dark a:disabled:focus, .background-dark a.disabled:focus{
-  outline:none;
-  background-color:transparent;
 }
 a.bold-link{
   font-weight:600;

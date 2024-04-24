@@ -52,7 +52,11 @@
 <div class="solution-info">
     <div class="solution-info-inner container">
         <div class="solution-heading">
-            <a href="{{ params.title.href | default('/') }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>{{ params.title.text }}</a>
+            {%- if params.title.href %}
+            <a href="{{ params.title.href }}"{% if params.title.ariaLabel %} aria-label="{{ params.title.ariaLabel }}"{% endif %}{% if params.title.classes %} class="{{params.title.classes}}"{% endif %}>{{ params.title.text }}</a>
+            {% elif params.title.tag %}
+            <{{ params.title.tag }}>{{ params.title.text }}</{{ params.title.tag }}>
+            {% endif -%}
         </div>
         {% if params.menu %}
         {{- menu_open_button() }}
