@@ -1,28 +1,28 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-{% macro tabButtons(params) %}
+{% macro tabs(params) %}
 <div class="tab-container">
     <ul class="tab-list" role="tablist">
         {%- for item in params.items -%}
         <li>
-            <button class="tab-button" role="tab" aria-controls="{{item.panel.id}}" aria-selected="{{ item.active | default('false') }}" id="{{item.button.id}}">{% if item.button.icon %}{{ icon_svg({"name": item.button.icon}) }}{% endif %}<span>{{ item.button.text }}</span>
+            <button class="tab-button" role="tab" aria-controls="{{ item.panel.id }}" aria-selected="{{ item.active | default('false') }}" id="{{ item.button.id }}">{% if item.button.icon %}{{ icon_svg({"name": item.button.icon}) }}{% endif %}<span>{{ item.button.text }}</span>
             </button>
         </li>
         {%- endfor -%}
     </ul>
     {%- for item in params.items -%}
-    <div class="tab-panel" role="tabpanel" tabindex="0" id="{{item.panel.id}}" aria-labelledby="{{item.button.id}}" {% if item.active %}{% else %} hidden{% endif %}>
+    <div class="tab-panel" role="tabpanel" tabindex="0" id="{{ item.panel.id }}" aria-labelledby="{{ item.button.id }}" {% if item.active %}{% else %} hidden{% endif %}>
         {{ item.panel.content | safe }}
     </div>
     {%- endfor -%}
 </div>
 {% endmacro %}
 
-{% macro tabUrls(params) %}
-<nav class="tab-container" id="{{ params.id }}">
+{% macro navigation_tabs(params) %}
+<nav class="tab-container"{% if params.ariaLabel %} aria-label="{{ params.ariaLabel }}"{% endif %}>
     <ul class="tab-list">
         {%- for item in params.items -%}
         <li>
-            <a href="{{item.anchorlink.href}}" class="tab-button"{% if item.current %} aria-current="page"{% endif %}>{% if item.anchorlink.icon %}{{ icon_svg({"name": item.anchorlink.icon}) }}{% endif %}<span>{{ item.anchorlink.text }}</span></a>
+            <a href="{{ item.href }}" class="tab-button"{% if item.current %} aria-current="true"{% endif %}>{% if item.icon %}{{ icon_svg({"name": item.icon}) }}{% endif %}<span>{{ item.text }}</span></a>
         </li>
         {%- endfor -%}
     </ul>
