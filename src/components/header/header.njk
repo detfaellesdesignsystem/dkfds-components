@@ -147,7 +147,7 @@
             {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
             {% else -%}
             <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
-                <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+                <span>{{ item.text }}{% if item.overview %} <span class="helptext d-inline">(overblik)</span>{% endif -%}</span>
                 {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
             </a>
             {%- endif %}
