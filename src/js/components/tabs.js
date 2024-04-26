@@ -12,7 +12,7 @@ var direction = {
  */
 function Tabs(tabContainer) {
     if (!tabContainer) {
-        throw new Error(`Missing tab container element`);
+        throw new Error(`Missing tab-container element`);
     }
     this.tabContainer = tabContainer;
     this.tabs = this.tabContainer.querySelectorAll('.tab-button');
@@ -22,24 +22,27 @@ function Tabs(tabContainer) {
  * Set event on component
  */
 Tabs.prototype.init = function () {
-    if (this.tabs.length === 0) {
-        throw new Error(`tabContainer element seems to be missing a child tab-button. There needs to be atleast one tab of class tab-button to set an active tab`);
+    let tabPanels = this.tabContainer.querySelectorAll('.tab-panel');
+    if (this.tabs.length < 2 || tabPanels.length < 2) {
+        throw new Error(`tab-container must have at least two tabs (tab-button) and tabpanels (tab-panel).`);
     }
 
-    // if no hash is set on load, set active tab
-    if (!setActiveHashTab()) {
-        // set first tab as active
-        let tab = this.tabs[0];
-
-        // check no other tabs has been set at default. If so set tab to the first active tab found
-        let alreadyActive = getActiveTabs(this.tabContainer);
-        if (alreadyActive.length !== 0) {
-            tab = alreadyActive[0];
+    let selectedTabs = 0;
+    for (let i = 0; i < this.tabs.length; i++) {
+        let tabHasAriaSelected = this.tabs[i].hasAttribute('aria-selected');
+        if (tabHasAriaSelected) {
+            if (this.tabs[i].getAttribute('aria-selected') === "true") {
+                selectedTabs++;
+            }
         }
-
-        // activate and deactivate tabs
-        this.activateTab(tab, false);
     }
+    if (selectedTabs === 0) {
+        throw new Error(`tab-container does not have any selected tabs.`);
+    }
+    else if (selectedTabs > 1) {
+        throw new Error(`tab-container must only have one selected tab.`);
+    }
+
     let $module = this;
     // add eventlisteners on buttons
     for (let t = 0; t < this.tabs.length; t++) {
@@ -58,15 +61,15 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
 
     if (tab.getAttribute('aria-selected') !== null) {
 
-        // close all tabs except selected
+        // hide all tabs except selected
         for (let i = 0; i < this.tabs.length; i++) {
             if (tabs[i] === tab) {
                 continue;
             }
 
             if (tabs[i].getAttribute('aria-selected') === 'true') {
-                let eventClose = new Event('fds.tab.close');
-                tabs[i].dispatchEvent(eventClose);
+                let eventHidden = new Event('fds.tab.hidden');
+                tabs[i].dispatchEvent(eventHidden);
             }
 
             tabs[i].setAttribute('aria-selected', 'false');
@@ -95,10 +98,10 @@ Tabs.prototype.activateTab = function (tab, setFocus) {
         }
 
         let eventChanged = new Event('fds.tab.changed');
-        tab.parentNode.parentNode.parentNode.dispatchEvent(eventChanged);
+        this.tabContainer.dispatchEvent(eventChanged);
 
-        let eventOpen = new Event('fds.tab.open');
-        tab.dispatchEvent(eventOpen);
+        let eventSelected = new Event('fds.tab.selected');
+        tab.dispatchEvent(eventSelected);
     }
 }
 
@@ -143,19 +146,6 @@ function switchTabOnKeyPress(event) {
 }
 
 /**
- * Get all active tabs in list
- * @param tabContainer parent .tab-container element
- * @returns returns list of active tabs if any
- */
-function getActiveTabs(tabContainer) {
-    if (tabContainer.querySelector('button.tab-button') !== null) {
-        return tabContainer.querySelectorAll('.tab-button[aria-selected=true]');
-    } else {
-        throw new Error(`tabContainer HTML seems to be missing a tab-button in the tab-container.`);
-    }
-}
-
-/**
  * Get a list of all button tabs in current tablist
  * @param tab Button tab element
  * @returns {*} return array of tabs
@@ -184,23 +174,6 @@ function getIndexOfElementInList(element, list) {
         }
     }
     return index;
-}
-
-/**
- * Checks if there is a tab hash in the url and activates the tab accordingly
- * @returns {boolean} returns true if tab has been set - returns false if no tab has been set to active
- */
-function setActiveHashTab() {
-    let hash = location.hash.replace('#', '');
-    if (hash !== '' && hash !== "tab-component") {
-        let selector = '.tab-button[aria-controls="' + hash + '"]';
-        let tab = document.querySelector(selector);
-        if (tab !== null) {
-            new Tabs(tab.parentNode.parentNode.parentNode).activateTab(tab, false);
-            return true;
-        }
-    }
-    return false;
 }
 
 export default Tabs;

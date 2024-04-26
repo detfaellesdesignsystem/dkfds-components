@@ -85,7 +85,8 @@ $-tabs-icon-size: 2.4rem;
         border-radius: 0;
         width: 100%;
         padding: func.units(5);
-        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: auto;
 
         &:focus{
             @include mixins.focus;
