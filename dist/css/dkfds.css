@@ -9936,6 +9936,8 @@ body.mobile-nav-active{
   color:#1a1a1a;
   font-weight:400;
   width:inherit;
+  padding-top:0;
+  padding-bottom:0;
 }
 .search .button-search:hover{
   background-color:#DCDCDC;
