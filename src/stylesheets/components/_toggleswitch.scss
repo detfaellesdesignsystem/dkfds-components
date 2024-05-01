@@ -4,106 +4,114 @@
 
 $-button-width: func.units(9);
 $-toggle-dot-diameter: func.units(505);
-$-left-offset: func.units(1);
+$-offset: func.units(1);
 
-.toggle-element {
+.toggle-switch {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: func.units(4);
+    padding: 0;
+    padding-right: $-button-width;
+    margin-bottom: func.units(5);
+    background-color: func.color('transparent');
+    border-radius: func.units(4);
+    cursor: pointer;
 
-    .toggle-label {
-        display: inline-block;
-        cursor: pointer;
-        overflow-wrap: break-word;
-        width: 100%;
-        max-width: calc(100% - $-button-width);
-        padding-right: func.units(4);
-
-        &.disabled {
-            cursor: default;
-            color: func.color(vars.$input-disabled-text-color);
-        }
+    &::before {
+        content: '';
+        position: absolute;
+        right: $-button-width - $-toggle-dot-diameter - $-offset;
+        border-radius: 50%;
+        border: 1px solid func.color(vars.$toggle-off-dot-border-color);
+        background-image: none;
+        background-color: func.color(vars.$toggle-dot-background-color);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: func.units(4);
+        min-width: $-toggle-dot-diameter;
+        min-height: $-toggle-dot-diameter;
+        transition: all 0.15s ease-out;
+        z-index: vars.$zindex-toggle;
     }
 
-    .toggle-button {
-        position: relative;
-        display: inline-block;
-        padding: 0;
-        font-size: 0;
-        line-height: 0;
-        background-color: func.color('transparent');
-        border-radius: func.units(4);
-        cursor: pointer;
-    
-        &::before {
-            content: '';
-            position: absolute;
-            top: func.units(1);
-            left: $-left-offset;
-            border-radius: 50%;
-            border: 1px solid func.color(vars.$toggle-off-dot-border-color);
-            background-image: none;
-            background-color: func.color(vars.$toggle-dot-background-color);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: func.units(4);
-            width: $-toggle-dot-diameter;
-            height: $-toggle-dot-diameter;
-            transition: all 0.15s ease-out;
-            z-index: vars.$zindex-toggle;
-        }
+    &[aria-checked='true']::before {
+        right: $-offset;
+        border: 1px solid func.color(vars.$toggle-on-dot-border-color);
+        background-image: url(vars.$icons-folder-path + '/done.svg');
+    }
 
-        &[aria-checked='true']::before {
-            left: $-button-width - $-toggle-dot-diameter - $-left-offset;
-            border: 1px solid func.color(vars.$toggle-on-dot-border-color);
-            background-image: url(vars.$icons-folder-path + '/done.svg');
-        }
-    
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        min-width: $-button-width;
+        min-height: func.units(6);
+        border-radius: func.units(4);
+        background-color: func.color(vars.$toggle-off-background-color);
+        border: 1px solid func.color(vars.$toggle-off-border-color);
+        transition: all 0.15s ease-out;
+        margin-left: auto;
+    }
+
+    &[aria-checked='true']::after {
+        background-color: func.color(vars.$toggle-on-background-color);
+        border: 1px solid func.color(vars.$toggle-on-border-color);
+    }
+
+    &:hover {
         &::after {
-            content: '';
-            position: relative;
-            display: inline-block;
-            width: $-button-width;
-            height: func.units(6);
-            border-radius: func.units(4);
-            background-color: func.color(vars.$toggle-off-background-color);
-            border: 1px solid func.color(vars.$toggle-off-border-color);
-            transition: all 0.15s ease-out;
+            background-color: func.color(vars.$toggle-off-background-color-hover);
         }
 
         &[aria-checked='true']::after {
+            background-color: func.color(vars.$toggle-on-background-color-hover);
+            border: 1px solid func.color(vars.$toggle-on-border-color-hover);
+        }
+
+        &[aria-checked='true']::before {
+            border: 1px solid func.color(vars.$toggle-on-dot-border-color-hover);
+        }
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+        
+        &:hover::after {
+            background-color: func.color(vars.$toggle-off-background-color);
+            cursor: not-allowed;
+        }
+
+        &:hover[aria-checked='true']::after {
             background-color: func.color(vars.$toggle-on-background-color);
             border: 1px solid func.color(vars.$toggle-on-border-color);
-        }
-
-        &:hover {
-            &::after {
-                background-color: func.color(vars.$toggle-off-background-color-hover);
-            }
-
-            &[aria-checked='true']::after {
-                background-color: func.color(vars.$toggle-on-background-color-hover);
-                border: 1px solid func.color(vars.$toggle-on-border-color-hover);
-            }
-
-            &[aria-checked='true']::before {
-                border: 1px solid func.color(vars.$toggle-on-dot-border-color-hover);
-            }
-        }
-
-        &:disabled {
             cursor: not-allowed;
-            opacity: 0.5;
-
-            &:hover::after {
-                background-color: func.color(vars.$toggle-off-background-color);
-            }
-
-            &:hover[aria-checked='true']::after {
-                background-color: func.color(vars.$toggle-on-background-color);
-                border: 1px solid func.color(vars.$toggle-on-border-color);
-            }
         }
+
+        &:hover::before {
+            cursor: not-allowed;
+        }
+
+        span {
+            color: func.color(vars.$toggle-label-color);
+        }
+    }
+
+    &:focus {
+        outline: transparent;
+        outline-offset: 0;
+
+        &::after {
+            outline: vars.$theme-focus-width vars.$theme-focus-style func.color("focus");
+            outline-offset: 1px;
+        }
+    }
+
+    span {
+        padding-right: func.units(4);
+        text-align: left;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        color: func.color(vars.$toggle-label-color);
     }
 }

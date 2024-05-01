@@ -1,6 +1,3 @@
-{% macro toggle(params) %}
-<div class="toggle-element{% if params.classes %} {{ params.classes }}{% endif %}">
-    {% if params.label %}<label class="toggle-label{% if params.disabled %} disabled{% endif %}" for="{{params.id}}">{{params.label | safe }}</label>{% endif %}
-    <button class="toggle-button" role="switch" {% if params.checked %}aria-checked="true"{% else %}aria-checked="false"{% endif %} id="{{params.id}}"{% if params.disabled %} disabled{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}></button>
-</div>
+{% macro toggle_switch(params) %}
+<button class="toggle-switch{% if params.classes %} {{ params.classes }}{% endif %}" type="button" role="switch" {% if params.checked %}aria-checked="true"{% else %}aria-checked="false"{% endif %}{% if params.disabled %} disabled{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}><span>{{params.label | safe }}</span></button>
 {% endmacro %}

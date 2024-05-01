@@ -11676,39 +11676,21 @@ textarea.no-resize{
   resize:none;
 }
 
-.toggle-element{
+.toggle-switch{
+  position:relative;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  margin-bottom:16px;
-}
-.toggle-element .toggle-label{
-  display:inline-block;
-  cursor:pointer;
-  overflow-wrap:break-word;
-  width:100%;
-  max-width:calc(100% - 56px);
-  padding-right:16px;
-}
-.toggle-element .toggle-label.disabled{
-  cursor:default;
-  color:#747474;
-}
-.toggle-element .toggle-button{
-  position:relative;
-  display:inline-block;
   padding:0;
-  font-size:0;
-  line-height:0;
+  padding-right:56px;
+  margin-bottom:24px;
   background-color:transparent;
   border-radius:16px;
   cursor:pointer;
 }
-.toggle-element .toggle-button::before{
+.toggle-switch::before{
   content:"";
   position:absolute;
-  top:2px;
-  left:2px;
+  right:26px;
   border-radius:50%;
   border:1px solid #747474;
   background-image:none;
@@ -11716,51 +11698,75 @@ textarea.no-resize{
   background-position:center;
   background-repeat:no-repeat;
   background-size:16px;
-  width:28px;
-  height:28px;
+  min-width:28px;
+  min-height:28px;
   transition:all 0.15s ease-out;
   z-index:2;
 }
-.toggle-element .toggle-button[aria-checked=true]::before{
-  left:26px;
+.toggle-switch[aria-checked=true]::before{
+  right:2px;
   border:1px solid #747474;
   background-image:url("../img/svg-icons/done.svg");
 }
-.toggle-element .toggle-button::after{
+.toggle-switch::after{
   content:"";
-  position:relative;
-  display:inline-block;
-  width:56px;
-  height:32px;
+  position:absolute;
+  right:0;
+  min-width:56px;
+  min-height:32px;
   border-radius:16px;
   background-color:#F5F5F5;
   border:1px solid #747474;
   transition:all 0.15s ease-out;
+  margin-left:auto;
 }
-.toggle-element .toggle-button[aria-checked=true]::after{
+.toggle-switch[aria-checked=true]::after{
   background-color:#747474;
   border:1px solid #747474;
 }
-.toggle-element .toggle-button:hover::after{
+.toggle-switch:hover::after{
   background-color:#DCDCDC;
 }
-.toggle-element .toggle-button:hover[aria-checked=true]::after{
+.toggle-switch:hover[aria-checked=true]::after{
   background-color:#454545;
   border:1px solid #454545;
 }
-.toggle-element .toggle-button:hover[aria-checked=true]::before{
+.toggle-switch:hover[aria-checked=true]::before{
   border:1px solid #454545;
 }
-.toggle-element .toggle-button:disabled{
-  cursor:not-allowed;
+.toggle-switch:disabled{
   opacity:0.5;
+  cursor:default;
 }
-.toggle-element .toggle-button:disabled:hover::after{
+.toggle-switch:disabled:hover::after{
   background-color:#F5F5F5;
+  cursor:not-allowed;
 }
-.toggle-element .toggle-button:disabled:hover[aria-checked=true]::after{
+.toggle-switch:disabled:hover[aria-checked=true]::after{
   background-color:#747474;
   border:1px solid #747474;
+  cursor:not-allowed;
+}
+.toggle-switch:disabled:hover::before{
+  cursor:not-allowed;
+}
+.toggle-switch:disabled span{
+  color:#1a1a1a;
+}
+.toggle-switch:focus{
+  outline:transparent;
+  outline-offset:0;
+}
+.toggle-switch:focus::after{
+  outline:4px solid #747474;
+  outline-offset:1px;
+}
+.toggle-switch span{
+  padding-right:16px;
+  text-align:left;
+  overflow-wrap:break-word;
+  max-width:100%;
+  color:#1a1a1a;
 }
 
 .tooltip-wrapper{
