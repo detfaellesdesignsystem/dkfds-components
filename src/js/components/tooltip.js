@@ -123,6 +123,7 @@ Tooltip.prototype.init = function () {
     else {
         let live_region = document.createElement('span');
         live_region.setAttribute('aria-live', 'assertive');
+        live_region.setAttribute('aria-atomic', 'true');
         wrapper.append(live_region);
         live_region.append(tooltipEl);
         appendArrow(wrapper);

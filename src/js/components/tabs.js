@@ -34,6 +34,9 @@ Tabs.prototype.init = function () {
             if (this.tabs[i].getAttribute('aria-selected') === "true") {
                 selectedTabs++;
             }
+            else {
+                this.tabs[i].setAttribute('tabindex', '-1');
+            }
         }
     }
     if (selectedTabs === 0) {
@@ -123,25 +126,25 @@ function keydownEventListener(event) {
 function switchTabOnKeyPress(event) {
     let pressed = event.key;
     let target = event.target;
-    let greatGrandparentNode = target.parentNode.parentNode.parentNode;
+    let tabContainer = target.parentNode.parentNode;
     let tabs = getAllTabsInList(target);
     if (direction[pressed]) {
         let index = getIndexOfElementInList(target, tabs);
         if (index !== -1) {
             if (tabs[index + direction[pressed]]) {
-                new Tabs(greatGrandparentNode).activateTab(tabs[index + direction[pressed]], true);
+                new Tabs(tabContainer).activateTab(tabs[index + direction[pressed]], true);
             }
             else if (pressed === 'ArrowLeft') {
-                new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
+                new Tabs(tabContainer).activateTab(tabs[tabs.length - 1], true);
             }
             else if (pressed === 'ArrowRight') {
-                new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
+                new Tabs(tabContainer).activateTab(tabs[0], true);
             }
         }
     } else if (pressed === 'Home') {
-        new Tabs(greatGrandparentNode).activateTab(tabs[0], true);
+        new Tabs(tabContainer).activateTab(tabs[0], true);
     } else if (pressed === 'End') {
-        new Tabs(greatGrandparentNode).activateTab(tabs[tabs.length - 1], true);
+        new Tabs(tabContainer).activateTab(tabs[tabs.length - 1], true);
     }
 }
 
@@ -151,9 +154,9 @@ function switchTabOnKeyPress(event) {
  * @returns {*} return array of tabs
  */
 function getAllTabsInList(tab) {
-    let greatGrandparentNode = tab.parentNode.parentNode.parentNode;
-    if (greatGrandparentNode.classList.contains('tab-container')) {
-        return greatGrandparentNode.querySelectorAll('.tab-button');
+    let tabContainer = tab.parentNode.parentNode;
+    if (tabContainer.classList.contains('tab-container')) {
+        return tabContainer.querySelectorAll('.tab-button');
     } else {
         return [];
     }

@@ -17,4 +17,9 @@
 .anchorlist {
     @include mixins.nobullet-list;
     margin-top: 0;
+
+    li a {
+        padding-top: func.units(1);
+        padding-bottom: func.units(1);
+    }
 }
