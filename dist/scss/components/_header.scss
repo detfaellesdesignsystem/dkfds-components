@@ -323,7 +323,6 @@
         }
     }
 
-
     .menu-top {
         background-color: func.color(vars.$header-navigation-top-mobile-background-color);
         padding: func.units(3) func.units(5);
@@ -342,15 +341,6 @@
         .button-menu-close {
             width: unset;
             margin-left: auto;
-    
-            .icon-svg {
-                margin: 0 func.units(3) 0 0;
-            }
-    
-            span {
-                position: relative;
-                top: 1px;
-            }
         }
     }
 

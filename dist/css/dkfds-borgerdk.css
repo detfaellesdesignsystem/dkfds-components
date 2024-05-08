@@ -1344,8 +1344,9 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
 .icon-link .icon-svg{
   margin-left:4px;
   width:1.6rem;
-  height:1.6rem;
   fill:currentColor;
+  vertical-align:top;
+  margin-top:0.1rem;
 }
 
 h1, .h1,
@@ -7346,10 +7347,6 @@ button.function-link, button.accordion-bulk-button{
   padding:0;
   text-decoration:underline;
   text-align:left;
-  line-height:1.5;
-  -webkit-user-select:text;
-          user-select:text;
-  cursor:pointer;
 }
 
 .function-link, button.accordion-bulk-button{
@@ -7361,10 +7358,9 @@ button.function-link, button.accordion-bulk-button{
   text-transform:none;
   letter-spacing:normal;
   cursor:pointer;
-  display:inline-flex;
-  vertical-align:middle;
-  align-items:center;
-  line-height:1.5;
+  display:inline-block;
+  overflow-wrap:break-word;
+  max-width:100% !important;
 }
 .function-link:hover, button.accordion-bulk-button:hover, .function-link:visited, button.accordion-bulk-button:visited, .function-link:focus, button.accordion-bulk-button:focus{
   color:#1a1a1a;
@@ -7372,12 +7368,11 @@ button.function-link, button.accordion-bulk-button{
 .function-link .icon-svg, button.accordion-bulk-button .icon-svg{
   margin-right:4px;
   fill:currentColor;
+  vertical-align:top;
+  margin-top:0.1rem;
 }
 .function-link.link-right, button.link-right.accordion-bulk-button{
   text-align:right;
-}
-.function-link.icon-link .icon-svg, button.icon-link.accordion-bulk-button .icon-svg{
-  margin-top:2px;
 }
 
 .function-link-wrapper{
@@ -7871,7 +7866,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 a.button{
   display:inline-flex;
   padding:2px 14px 1px;
-  line-height:2.4rem;
+  line-height:2.5rem;
 }
 
 .button{
@@ -7888,7 +7883,7 @@ a.button{
   font-size:1.8rem;
   font-weight:500;
   color:white;
-  line-height:2.4rem;
+  line-height:2.5rem;
   text-align:center;
   align-items:center;
   justify-content:center;
@@ -8052,6 +8047,7 @@ a.button{
 }
 .button .icon-svg{
   margin-right:8px;
+  margin-bottom:0.1rem;
   fill:currentColor;
   min-width:2.4rem;
 }
@@ -8071,6 +8067,9 @@ a.button{
 .button-unstyled:hover, .button-unstyled:focus{
   background-color:transparent;
   color:inherit;
+}
+.button-unstyled .icon-svg{
+  margin-bottom:0rem !important;
 }
 
 @media (min-width: 768px){
@@ -9084,13 +9083,6 @@ footer .footer-theme{
 .header .menu-top .button-menu-close{
   width:unset;
   margin-left:auto;
-}
-.header .menu-top .button-menu-close .icon-svg{
-  margin:0 8px 0 0;
-}
-.header .menu-top .button-menu-close span{
-  position:relative;
-  top:1px;
 }
 .header .portal-info + .solution-info{
   border-top:1px solid #BFBFBF;

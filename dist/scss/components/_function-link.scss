@@ -1,25 +1,20 @@
 @use "../mixins/mixins" as mixins;
 @use "../functions/functions" as func;
 
-// a function link, does not look like a link
 button.function-link {
     background: none;
     padding: 0;
     text-decoration: underline;
     text-align: left;
-    line-height: 1.5;
-    user-select: text;
-    cursor: pointer;
 }
 
-.function-link{
+.function-link {
     border: none;
     @include mixins.body-copy-text;
     cursor: pointer;
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: center;
-    line-height: 1.5;
+    display: inline-block;
+    overflow-wrap: break-word;
+    max-width: 100% !important;
 
     &:hover, &:visited, &:focus{
         color: func.color('ink');
@@ -28,14 +23,12 @@ button.function-link {
     .icon-svg{
         margin-right: func.units(2);
         fill: currentColor;
+        vertical-align: top;
+        margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
     }
 
     &.link-right {
         text-align: right;
-    }
-
-    &.icon-link .icon-svg {
-        margin-top: func.units(1);
     }
 }
 

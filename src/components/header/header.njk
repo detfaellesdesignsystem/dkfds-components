@@ -67,7 +67,7 @@
             <p><strong class="authority-name">{{ params.authority.name }}</strong></p>
             {% endif %}
             {% if params.authority.text %}
-            <p class="d-lg-flex align-items-lg-center">{{ params.authority.text | safe }}</p>
+            <p>{{ params.authority.text | safe }}</p>
             {% endif %}
         </div>
         {% endif %}
@@ -82,7 +82,7 @@
     <p class="mb-2"><strong class="authority-name">{{ params.authority.name }}</strong></p>
     {% endif %}
     {% if params.authority.text %}
-    <p class="d-lg-flex align-items-lg-center">{{ params.authority.text | safe }}</p>
+    <p>{{ params.authority.text | safe }}</p>
     {% endif %}
 </div>
 {% endmacro %}
@@ -179,7 +179,7 @@
                 {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
                 {% else %}
                 <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
-                    <span>{{ item.text }}{% if item.overview %} <span class="helptext">(overblik)</span>{% endif -%}</span>
+                    <span>{{ item.text }}{% if item.overview %} <span class="helptext d-inline">(overblik)</span>{% endif -%}</span>
                     {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
                 </a>
                 {% endif -%}
