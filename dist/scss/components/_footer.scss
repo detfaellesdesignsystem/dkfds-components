@@ -68,9 +68,6 @@ footer {
     }
 
     .inline-list {
-      li strong {
-        vertical-align: middle;
-      }
       > li:not(:last-child) {
         &::after {
           @include mixins.media-breakpoint-up(md) {

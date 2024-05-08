@@ -8765,9 +8765,6 @@ footer .footer ul:not(:last-child){
 footer .footer ul.footer-links li{
   margin-top:8px;
 }
-footer .footer .inline-list li strong{
-  vertical-align:middle;
-}
 @media (min-width: 768px){
   footer .footer .inline-list > li:not(:last-child)::after{
     content:"·" !important;
