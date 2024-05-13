@@ -194,6 +194,7 @@ h5, .h5, h6, .h6{
 
 .icon-link{
   line-height: func.units(vars.$typography-body-text-line-height, 'rem');
+  display: inline-block;
   .icon-svg{
     margin-left: func.units(2);
     width: 1.6rem;

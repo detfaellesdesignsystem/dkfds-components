@@ -1340,6 +1340,7 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
 
 .icon-link{
   line-height:2.4rem;
+  display:inline-block;
 }
 .icon-link .icon-svg{
   margin-left:4px;
@@ -7370,6 +7371,9 @@ button.function-link, button.accordion-bulk-button{
   fill:currentColor;
   vertical-align:top;
   margin-top:0.1rem;
+}
+.function-link.icon-link .icon-svg, button.icon-link.accordion-bulk-button .icon-svg{
+  margin-right:0;
 }
 .function-link.link-right, button.link-right.accordion-bulk-button{
   text-align:right;
