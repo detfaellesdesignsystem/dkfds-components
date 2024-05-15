@@ -11881,8 +11881,23 @@ textarea.no-resize{
   border-radius:24px;
   text-decoration:underline;
 }
+@media (max-width: 767px){
+  .tab-container .tab-list .tab-button{
+    margin-bottom:4px;
+    margin-top:4px;
+    margin-right:8px;
+    min-height:40px;
+    padding:1px 16px;
+    border-radius:20px;
+  }
+}
 .tab-container .tab-list .tab-button:last-child{
   margin-bottom:16px;
+}
+@media (max-width: 767px){
+  .tab-container .tab-list .tab-button:last-child{
+    margin-bottom:8px;
+  }
 }
 .tab-container .tab-list .tab-button span{
   max-width:100%;
@@ -11908,8 +11923,23 @@ textarea.no-resize{
   flex-shrink:0;
 }
 .tab-container .tab-list li{
-  margin-bottom:8px;
   max-width:100%;
+}
+.tab-container .tab-list li:last-child{
+  margin-bottom:8px;
+}
+@media (max-width: 767px){
+  .tab-container .tab-list li:last-child{
+    margin-bottom:4px;
+  }
+}
+.tab-container .tab-list li a.tab-button:last-child{
+  margin-bottom:8px;
+}
+@media (max-width: 767px){
+  .tab-container .tab-list li a.tab-button:last-child{
+    margin-bottom:4px;
+  }
 }
 .tab-container .tab-panel{
   display:block;
