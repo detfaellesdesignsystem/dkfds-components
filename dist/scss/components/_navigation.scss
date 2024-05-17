@@ -147,10 +147,7 @@ $-left-right-padding: func.units(305);
             }
 
             .nav-link {
-                padding-top: func.units(3);
-                padding-bottom: func.units(3);
-                padding-left: calc($-left-right-padding + $navigation-row-link-padding-left-right);
-                padding-right: calc($-left-right-padding + $navigation-row-link-padding-left-right);
+                padding: func.units(3) calc($-left-right-padding + $navigation-row-link-padding-left-right); // top and bottom | left and right
                 white-space: normal;
                 overflow-wrap: break-word;
                 background-color: func.color('transparent');

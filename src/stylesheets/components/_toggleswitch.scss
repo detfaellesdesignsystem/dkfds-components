@@ -17,6 +17,14 @@ $-offset: func.units(1);
     border-radius: func.units(4);
     cursor: pointer;
 
+    span {
+        padding-right: func.units(4);
+        text-align: left;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        color: func.color(vars.$toggle-label-color);
+    }
+
     &::before {
         content: '';
         position: absolute;
@@ -58,6 +66,16 @@ $-offset: func.units(1);
         border: 1px solid func.color(vars.$toggle-on-border-color);
     }
 
+    &:focus {
+        outline: transparent;
+        outline-offset: 0;
+
+        &::after {
+            outline: vars.$theme-focus-width vars.$theme-focus-style func.color("focus");
+            outline-offset: 1px;
+        }
+    }
+
     &:hover {
         &::after {
             background-color: func.color(vars.$toggle-off-background-color-hover);
@@ -95,23 +113,5 @@ $-offset: func.units(1);
         span {
             color: func.color(vars.$toggle-label-color);
         }
-    }
-
-    &:focus {
-        outline: transparent;
-        outline-offset: 0;
-
-        &::after {
-            outline: vars.$theme-focus-width vars.$theme-focus-style func.color("focus");
-            outline-offset: 1px;
-        }
-    }
-
-    span {
-        padding-right: func.units(4);
-        text-align: left;
-        overflow-wrap: break-word;
-        max-width: 100%;
-        color: func.color(vars.$toggle-label-color);
     }
 }

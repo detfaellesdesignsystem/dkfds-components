@@ -73,8 +73,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
     margin-bottom: 0;
     font-weight: func.font-weight("semibold");
     color: func.color(vars.$alert-heading-color);
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .alert-text {

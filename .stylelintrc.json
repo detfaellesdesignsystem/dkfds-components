@@ -5,17 +5,6 @@
         "at-rule-empty-line-before": null,
         "color-hex-length": "long",
         "declaration-empty-line-before": null,
-        "declaration-property-unit-disallowed-list": 
-        {
-            "/margin/": ["em", "px", "rem"]
-        },
-        "declaration-property-value-allowed-list": 
-        {
-            "background-color": ["/^func.color/", "inherit"],
-            "color": ["/^func.color/", "inherit"],
-            "font-size": ["/^func.font-size/", "/^vars./", "/%$/", "inherit", "0"],
-            "font-weight": ["/^func.font-weight/", "inherit"]
-        },
         "rule-empty-line-before": null,
         "selector-class-pattern": ["^([a-z])([a-z]|-|_|[0-9])*$", {"resolveNestedSelectors": true}],
         "selector-not-notation": "complex",
