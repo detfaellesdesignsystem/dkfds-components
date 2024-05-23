@@ -1,0 +1,30 @@
+params:
+- name: ariaLabel
+  type: string
+  required: false
+  description: text for the aria-label attribute on the list element.
+- name: firstAriaLabel
+  type: string
+  required: true
+  description: Aria label til det valgte sprog.
+- name: languages
+  type: array
+  required: true
+  description: Array of languages
+  - name: href
+    type: string
+    required: true
+    description: Path to language version.
+  - name: Language code of the name text.
+    type: string
+    required: true
+    description: Language code
+  - name: tooltip
+    type: string
+    required: false
+    description: Tooltip text for the language.
+  - name: name
+    type: string
+    required: true
+    description: Name of language
+    

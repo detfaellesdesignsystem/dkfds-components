@@ -1,0 +1,59 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
+{% from "components/checkboxes/checkbox.njk" import checkbox as checkbox %}
+
+{% macro checkboxes(params) %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">
+    {%- if params.items and params.groupname -%}
+    <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}}{% endif %}"{% endif %}>
+        <legend class="form-label">
+            {{ params.checkboxLegend }}
+            {% if params.tooltip %}{{ 
+                button({
+                    "variant": "unstyled",
+                    "attributes": "type=\"button\"",
+                    "srOnly": "Hvad betyder det?",
+                    "icon": "help",
+                    "tooltip": {
+                        "text": params.tooltip,
+                        "showOnClick": true,
+                        "position": "top"
+                    } 
+                }) 
+            }}{% endif %}</legend>
+        {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+        {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+        {% set isLarge = params.isLarge | default(true) %}
+        {%- for item in params.items -%}{{ 
+            checkbox({
+                "id": params.id + "-option" + loop.index,
+                "isStandalone": false,
+                "name": params.groupname,
+                "value": item.value,
+                "label": item.label,
+                "isLarge": isLarge,
+                "classes": {
+                    "formgroup": item.classes.formgroup,
+                    "input": item.classes.input,
+                    "label": item.classes.label
+                },
+                "attributes": {
+                    "formgroup": item.attributes.formgroup,
+                    "input": item.attributes.input,
+                    "label": item.attributes.label
+                },
+                "disabled": item.disabled,
+                "required": item.required,
+                "checked": item.checked,
+                "srOnly": item.srOnly,
+                "helptext": item.helptext,
+                "hiddenContent": item.hiddenContent 
+            })
+        }}{%- endfor -%}
+    </fieldset>
+    {%- endif -%}
+</div>
+{% endmacro %}

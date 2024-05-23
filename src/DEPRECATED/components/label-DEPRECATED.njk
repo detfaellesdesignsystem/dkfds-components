@@ -1,0 +1,20 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+
+{%- macro label(params) -%}
+{%- if params.text -%}<label class="form-label{% if params.classes %} {{params.classes}}{% endif %}" for="{{params.for}}"{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>{{ params.text | safe }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}{% if params.srOnly %}<span class="sr-only"> {{ params.srOnly }}</span>{% endif %}</label>
+{% if params.tooltip %}{{ 
+    button({
+        "variant": "unstyled",
+        "attributes": "type=\"button\"",
+        "classes": { "icon": "mr-0 mt-0" },
+        "srOnly": "Hvad betyder det?",
+        "icon": "help",
+        "tooltip": {
+            "text": params.tooltip,
+            "showOnClick": true,
+            "position": "top"
+        } 
+    }) 
+}}{% endif %}
+{%- endif -%}
+{%- endmacro -%}

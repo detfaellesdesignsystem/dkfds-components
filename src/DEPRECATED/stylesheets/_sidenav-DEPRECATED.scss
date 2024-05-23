@@ -1,0 +1,249 @@
+@use "../../stylesheets/variables/variables" as vars;
+@use "../../stylesheets/functions/functions" as func;
+@use "../../stylesheets/mixins/mixins" as mixins;
+@use "variables-DEPRECATED" as varsdep;
+@use "../../stylesheets/values/units/units" as units;
+
+.sidenav-list {
+  @include mixins.unstyled-list();
+
+  ul{
+    @include mixins.unstyled-list();
+  }
+  border-bottom: func.border(varsdep.$sidenav-border);
+  border-top: func.border(varsdep.$sidenav-border);
+
+  a {
+    display: block;
+    border: none;
+    color: func.color(varsdep.$sidenav-link-default-color);
+    line-height: func.units(varsdep.$sidenav-link-line-height, 'rem');
+    padding: units.$spacer;
+    padding-top: calc(8px - #{func.border-width(varsdep.$sidenav-list-level1-border)});
+    padding-left: func.units(4);
+    padding-right: func.units(4);
+    text-decoration: none;
+    max-width: none;
+    &:focus {
+      outline-offset: 0;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  > li.current{
+    > a, > ul > li > a{
+      padding-left: calc(#{func.units(4)} - #{varsdep.$sidenav-active-border-width});
+    }
+  }
+  li {
+    &:hover {
+      background-color: func.color(varsdep.$sidenav-link-hover-background-color);
+    }
+    a:hover {
+      text-decoration: none;
+      color: func.color(varsdep.$sidenav-link-active-color);
+    }
+
+    &.sidenav-error {
+      background-color: func.color(varsdep.$sidenav-error-background-color);
+
+      &.current {
+        background-color: func.color(varsdep.$sidenav-error-background-color);
+      }
+
+      &:hover {
+        background-color: func.color(varsdep.$sidenav-error-background-color);
+      }
+
+      .sidenav-information {
+        color: func.color(varsdep.$sidenav-link-current-extra-information-text-color);
+        font-weight: func.font-weight("normal");
+      }
+    }
+
+    a {
+      display: flex;
+      flex-wrap: nowrap;
+
+      ul {
+        width:100%
+      }
+
+      .sidenav-icon-before {
+        line-height: 23px;
+        text-align: left;
+      }
+
+      .sidenav-icon {
+        margin-left: auto;
+        width: 22px;
+        height: 22px;
+        line-height: 23px;
+        text-align: center;
+        float: right;
+      }
+
+      /* 'sidenav-title' used before 9.0.0 to style title text in stepguide - to be removed at some point as breaking change */
+      .sidenav-title {
+        margin-left: func.units(2);
+        white-space: pre-line;
+      }
+
+      .sidenav-number {
+        margin-right: func.units(2);
+      }
+
+      .sidenav-information {
+        color: func.color(varsdep.$sidenav-link-default-extra-information-text-color);
+        margin: 0;
+        display: block;
+        width: 100%;
+      }
+
+      &:focus{
+        background-color: transparent;
+      }
+    }
+
+    &.current {
+      > a {
+        font-weight: func.font-weight("medium");
+      }
+
+      .sidenav-information {
+        color: func.color(varsdep.$sidenav-link-current-extra-information-text-color);
+        font-weight: func.font-weight("normal");
+      }
+    }
+    &.active{
+      > a{
+        color: func.color(varsdep.$sidenav-link-active-color);
+        font-weight: func.font-weight("medium");
+      }
+    }
+  }
+
+  > li > ul > li > ul > li > a{
+    padding-left: func.units(5);
+  }
+  > li > ul > li > ul > li > ul > li > a{
+    padding-left: func.units(6);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: func.units(7);
+  }
+  > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
+    padding-left: func.units(8);
+  }
+
+  > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{func.units(3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{func.units(3)} * 4);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{func.units(3)} * 5);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{func.units(3)} * 6);
+  }
+  > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li:not(.has-anchor-links) > ul > li.has-anchor-links > ul > li > a{
+    padding-left: calc(#{func.units(3)} * 7);
+  }
+
+  > li {
+    background-color: transparent;
+    font-size: func.font-size(vars.$typography-base-font-size);
+    border-top: func.border(varsdep.$sidenav-list-level1-border);
+
+    &.active > a{
+      color: func.color('black');
+    }
+
+    &.current{
+      border-left: varsdep.$sidenav-active-border-width solid func.color(varsdep.$sidenav-active-border-color);
+      background-color: func.color(varsdep.$sidenav-link-current-background-color);
+    }
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      a {
+        padding-bottom: calc(8px - #{func.border-width(varsdep.$input-border)});
+      }
+    }
+    li{
+      border-top: func.border(varsdep.$sidenav-list-level2-border);
+      font-size: func.font-size(vars.$typography-small-text-font-size);
+    }
+  }
+  
+  li.disabled {
+    cursor: not-allowed;
+
+    a {
+      cursor: not-allowed;
+      color: func.color(varsdep.$sidenav-link-disabled-color);
+
+      &:hover {
+        background-color: transparent;
+        text-decoration: none;
+        color: func.color(varsdep.$sidenav-link-disabled-color);
+        cursor: not-allowed;
+      }
+    }
+
+    &.active,
+    &.active a {
+      color: func.color(varsdep.$sidenav-link-active-color);
+      background-color: transparent;
+    }
+
+    &:hover,
+    &.active a:hover {
+      color: func.color(varsdep.$sidenav-link-active-color);
+      background-color: func.color(varsdep.$sidenav-link-default-background-color);
+    }
+
+    &.sidenav-error {
+      background-color: func.color(varsdep.$sidenav-error-background-color);
+
+      &.active a:hover {
+        background-color: func.color(varsdep.$sidenav-error-background-color);
+      }
+    }
+  }
+}
+
+.sidenav-sub_list {
+  @include mixins.unstyled-list();
+  margin: 0;
+  width: 100%;
+
+  li {
+    border: none;
+    &:last-child {
+      a {
+        padding-bottom: func.units(3);
+      }
+    }
+  }
+
+  a {
+    padding-top: func.units(3);
+    line-height: func.units(varsdep.$typography-base-line-height, 'rem');
+  }
+  li:not(.has-anchor-links) .sidenav-sub_list {
+    a {
+      &:focus {
+        outline-offset: 0;
+      }
+    }
+  }
+
+}
+
+.sidebar-col {
+  max-width: 300px;
+}

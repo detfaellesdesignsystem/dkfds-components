@@ -1,0 +1,19 @@
+{% macro tabnav(params) %}
+<div class="tabnav" role="tablist">
+  {% for item in params.items %}
+    <button aria-controls="{{item.panel.id}}" id="{{item.button.id}}" class="tabnav-item" role="tab"
+      aria-selected="{{ item.active | default('false') }}">
+      <span>{{ item.button.text }}</span>
+    </button>
+    {%- set ariahidden = "true" -%}
+    {%- if item.active %}
+      {% set ariahidden = "false" %}
+    {% else -%}
+      {% set ariahidden = "true" %}
+    {% endif -%}
+     <section class="tabnav-panel" aria-hidden="{{ariahidden}}" role="tabpanel" tabindex="0" id="{{item.panel.id}}" aria-labelledby="{{item.button.id}}">
+        {{ item.panel.content | safe }}
+      </section>
+  {% endfor %}
+</div>
+{% endmacro %}

@@ -1,0 +1,53 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
+{% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
+{% from "components/radiobuttons/radiobutton.njk" import radiobutton as radiobutton %}
+
+{% macro radiobuttons(params) %}
+<div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}{% if params.collapsedItems %} js-radio-toggle-group{% endif %}"{% if params.attributes %} {{params.attributes | safe}}{% endif %}>
+    {%- if params.items and params.groupname -%}
+    <fieldset role="radiogroup"{% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.errorMessage %} aria-invalid="true"{% endif %}>
+        <legend class="form-label">
+            {{ params.radiogroupLegend }}
+            {% if params.tooltip %}{{ button({
+                    "variant": "unstyled",
+                    "attributes": "type=\"button\"",
+                    "srOnly": "Hvad betyder det?",
+                    "icon": "help",
+                    "tooltip": {
+                        "text": params.tooltip,
+                        "showOnClick": true,
+                        "position": "top"
+                    } }) }}{% endif %}</legend>
+        {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+        {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
+        {% set isLarge = params.isLarge | default(true) %}{%- for item in params.items -%}{{ 
+            radiobutton({
+                "id": params.id + "-option" + loop.index,
+                "name": params.groupname,
+                "value": item.value,
+                "label": item.label,
+                "isLarge": isLarge,
+                "classes": {
+                    "formgroupradio": item.classes.formgroupradio,
+                    "input": item.classes.input,
+                    "label": item.classes.label
+                },
+                "attributes": {
+                    "formgroupradio": item.attributes.formgroupradio,
+                    "input": item.attributes.input,
+                    "label": item.attributes.label
+                },
+                "disabled": item.disabled,
+                "checked": item.checked,
+                "srOnly": item.srOnly,
+                "helptext": item.helptext,
+                "hiddenContent": item.hiddenContent 
+            })
+        }}{%- endfor -%}
+    </fieldset>
+    {%- endif -%}
+</div>
+{% endmacro %}

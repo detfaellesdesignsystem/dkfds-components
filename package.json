@@ -6,6 +6,10 @@
     "node": ">= 4"
   },
   "main": "dist/js/dkfds.min.js",
+  "exports": {
+    ".": "./dist/js/dkfds.min.js",
+    "./dkfds-DEPRECATED": "./dist/DEPRECATED/dkfds-DEPRECATED.min.js"
+  },
   "scripts": {
     "build": "webpack",
     "lint-scss": "npx stylelint \"src/stylesheets/**\" --formatter verbose"

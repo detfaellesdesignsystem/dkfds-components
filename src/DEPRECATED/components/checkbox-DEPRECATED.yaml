@@ -1,0 +1,89 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the checkbox.
+- name: name
+  type: string
+  required: true
+  description: Name of the checkbox.
+- name: value
+  type: string
+  required: true
+  description: Value sent to the server on submit.
+- name: label
+  type: string
+  required: true
+  description: Label for the checkbox (the text written next to the checkbox)
+- name: isLarge
+  type: boolean
+  required: false
+  description: Choose whether the checkbox should be small or large. Defaults to true (large).
+- name: classes
+  type: object
+  required: false
+  description: Classes for the checkbox elements.
+  - name: formgroup
+    type: string
+    required: false
+    description: Additional classes to add to the div with the form-group class.
+  - name: input
+    type: string
+    required: false
+    description: Classes to add to the input.
+  - name: label
+    type: string
+    required: false
+    description: Classes to add to the label.
+- name: disabled
+  type: boolean
+  required: false
+  description: Set to true to disable the checkbox.
+- name: checked
+  type: boolean
+  required: false
+  description: Set to true to mark the checkbox as selected.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext displayed under the checkbox label.
+- name: srOnly
+  type: string
+  required: false
+  description: Additional text only for screenreaders. The text is appended to the label text.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the checkbox elements.
+  - name: formgroup
+    type: string
+    required: false
+    description: Attributes to add to the div with the form-group class.
+  - name: input
+    type: string
+    required: false
+    description: Attributes to add to the input.
+  - name: label
+    type: string
+    required: false
+    description: Attributes to add to the label.
+- name: hiddenContent
+  type: string
+  required: false
+  description: Content to be displayed when the checkbox is checked. Can contain HTML.
+- name: required
+  type: boolean
+  required: false
+  description: Enter true for a required checkbox. Enter false for optional. Defaults to false.
+- name: requiredLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is required - use only when most inputs in form are optional.
+- name: optionalLabel
+  type: boolean
+  required: false
+  description: Show label saying the input is optional - use only when most inputs in form are required.
+- name: isStandalone
+  type: boolean
+  required: false
+  description: Set to true when you only have a single checkbox without a fieldset.

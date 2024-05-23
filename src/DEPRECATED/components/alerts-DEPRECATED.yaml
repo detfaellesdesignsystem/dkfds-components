@@ -1,0 +1,45 @@
+params:
+- name: variant
+  type: string
+  required: true
+  description: Choose the alert's variant. Valid entries are "info", "success", "warning", and "error".
+- name: classes
+  type: string
+  required: false
+  description: Classes of the alert.
+- name: headingLevel
+  type: string
+  required: false
+  description: Heading level of the button. Default is "h3". "strong" is also valid.
+- name: heading
+  type: string
+  required: false
+  description: Title of the alert.
+- name: content
+  type: string
+  required: false
+  description: Content of the alert.
+- name: closeButton
+  type: boolean
+  required: false
+  description: Show close button on true.
+- name: attributes
+  type: string
+  required: false
+  description: Additional attributes of the alert.
+- name: contentContainer
+  type: boolean
+  required: false
+  description: Determines whether an alert-text container should be used for the content. Defaults to true.
+- name: paragraph
+  type: boolean
+  required: false
+  description: Sets paragraph width on true.
+- name: icon
+  type: boolean
+  required: false
+  description: Adds icon on true.
+- name: alertRole
+  type: boolean
+  required: false
+  description: Adds the role 'alert' to the alert.

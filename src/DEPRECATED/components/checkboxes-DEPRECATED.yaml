@@ -1,0 +1,100 @@
+- name: id
+  type: string
+  required: false
+  description: The id of the checkbox group.
+- name: groupname
+  type: string
+  required: true
+  description: The checkbox group name. Will be used as 'name' for each checkbox.
+- name: checkboxLegend
+  type: string
+  required: false
+  description: The legend (same styling as label) for the entire checkbox group.
+- name: classes
+  type: string
+  required: false
+  description: Classes for the checkbox group (formgroup element).
+- name: helptext
+  type: string
+  required: false
+  description: Helptext for the entire checkbox group.
+- name: errorMessage
+  type: string
+  required: false
+  description: Error message for the checkbox group.
+- name: tooltip
+  type: string
+  required: false
+  description: Additional text to show in a tooltip next to the legend
+- name: isLarge
+  type: boolean
+  required: false
+  description: Choose whether the checboxes should be small or large. Defaults to true (large).
+- name: items
+  type: object
+  required: true
+  description: The checkboxes in the group.
+  - name: value
+    type: string
+    required: true
+    description: Value sent to the server on submit.
+  - name: label
+    type: string
+    required: true
+    description: Label for the checkbox (the text written next to the checkbox)
+  - name: classes
+    type: object
+    required: false
+    description: Classes for the checkbox elements.
+    - name: formgroup
+      type: string
+      required: false
+      description: Additional classes to add to the div with the form-group class.
+    - name: input
+      type: string
+      required: false
+      description: Classes to add to the input.
+    - name: label
+      type: string
+      required: false
+      description: Classes to add to the label.
+  - name: attributes
+    type: object
+    required: false
+    description: Attributes for the checkbox elements.
+    - name: formgroup
+      type: string
+      required: false
+      description: Attributes to add to the div with the form-group class.
+    - name: input
+      type: string
+      required: false
+      description: Attributes to add to the input.
+    - name: label
+      type: string
+      required: false
+      description: Attributes to add to the label.
+  - name: disabled
+    type: boolean
+    required: false
+    description: Set to true to disable the checkbox.
+  - name: required
+    type: boolean
+    required: false
+    description: Enter true for a required checkbox. Enter false for optional. Defaults to false.
+  - name: checked
+    type: boolean
+    required: false
+    description: Set to true to mark the checkbox as selected.
+  - name: helptext
+    type: string
+    required: false
+    description: Helptext displayed under the checkbox label.
+  - name: srOnly
+    type: string
+    required: false
+    description: Additional text only for screenreaders. The text is appended to the label text.
+  - name: hiddenContent
+    type: string
+    required: false
+    description: Content to be displayed when the checkbox is checked. Can contain HTML.
