@@ -4,7 +4,7 @@
 @use "typography-mixins" as typo-mixins;
 
 @mixin add-background-svg($image-name) {
-    background-image: url("#{vars.$icons-folder-path}/#{$image-name}.svg");
+    background-image: url("#{vars.$icons-folder-path}#{$image-name}.svg");
     background-repeat: no-repeat;
 }
 

@@ -46,7 +46,7 @@ footer {
     }
 
     .logo{
-      background-image: url(vars.$image-path + '/' + vars.$footer-logo);
+      background-image: url(vars.$image-path + vars.$footer-logo);
       background-size: contain;
       background-repeat: no-repeat;
       display: inline-block;

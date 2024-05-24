@@ -189,7 +189,7 @@ $icons: (
 
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
-        background-image: url(vars.$icons-folder-path + '/' + $icon + ".svg");
+        background-image: url(vars.$icons-folder-path + $icon + ".svg");
     }
 }
 

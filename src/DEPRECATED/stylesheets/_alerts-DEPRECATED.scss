@@ -108,7 +108,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
       @if $name == warning {
         $alert-icon: 'report-problem';
       }
-      background-image: url(vars.$icons-folder-path+'/'+$alert-icon+'.svg');
+      background-image: url(vars.$icons-folder-path + $alert-icon+'.svg');
       padding-left: calc(#{func.units(varsdep.$alert-padding)} + #{varsdep.$alert-icon-size} + 8px);
     }
   }

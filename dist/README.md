@@ -13,7 +13,7 @@ Download the [design system as a zip file](https://github.com/detfaellesdesignsy
 
 ### Install using npm
 
-Install `dkfds` in your project by writing the following in a commad-prompt:
+Install `dkfds` in your project by writing the following in a command-prompt:
 
   ```shell
   npm install --save dkfds
@@ -38,11 +38,12 @@ To include the javascript, include this tag at the bottom of the body-part of yo
 To include the styling add the following code to your main.scss file:
 
 ```shell
-  $font-path:         '~dkfds/src/fonts/IBMPlexSans/';
-  $image-path:        '~dkfds/src/img';
-  $site-image-path:   '~dkfds/src/img';
-  $icons-folder-path: '~dkfds/src/img/svg-icons';
-  @import '../node_modules/dkfds/src/stylesheets/dkfds';
+  @use 'node_modules/dkfds/src/stylesheets/variables/variables/paths' with (
+    $font-path:         'node_modules/dkfds/src/fonts/IBMPlexSans/',
+    $image-path:        'node_modules/dkfds/src/img/',
+    $icons-folder-path: 'node_modules/dkfds/src/img/svg-icons/'
+  );
+  @use 'node_modules/dkfds/src/stylesheets/dkfds';
 ```
 
 To include the javascript via webpack, import it in your main.js file:

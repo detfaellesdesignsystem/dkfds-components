@@ -86,10 +86,10 @@ button.accordion-bulk-button{
   margin-bottom: func.units(4);
   
   &[data-accordion-bulk-expand="true"] {
-    background-image: url(vars.$icons-folder-path + '/add.svg');
+    background-image: url(vars.$icons-folder-path + 'add.svg');
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url(vars.$icons-folder-path + '/remove.svg');
+    background-image: url(vars.$icons-folder-path + 'remove.svg');
   }
 }
 

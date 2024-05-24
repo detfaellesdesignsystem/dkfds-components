@@ -31,7 +31,7 @@
     }
 
     &[aria-selected=false]{
-      background-image: url(vars.$icons-folder-path+'/'+varsdep.$accordion-button-open-icon);
+      background-image: url(vars.$icons-folder-path + varsdep.$accordion-button-open-icon);
       background-repeat: no-repeat;
       background-size: func.units(varsdep.$accordion-button-icon-size, 'rem');
       border-radius: varsdep.$accordion-button-border-radius;

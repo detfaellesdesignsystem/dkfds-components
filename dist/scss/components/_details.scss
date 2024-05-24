@@ -14,7 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &::before {
-        background-image: url(vars.$icons-folder-path + '/arrow-drop-down.svg');
+        background-image: url(vars.$icons-folder-path + 'arrow-drop-down.svg');
         background-position: -10px -8px;
       }
     }

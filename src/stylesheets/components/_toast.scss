@@ -109,6 +109,6 @@ $iconcolor in $toast-icon-backgrounds {
 @each $name,
 $iconname in $toast-icon-names {
     .toast-#{$name} .toast-icon {
-        background-image: url(vars.$icons-folder-path + '/' + $iconname + '.svg');
+        background-image: url(vars.$icons-folder-path + $iconname + '.svg');
     }
 }

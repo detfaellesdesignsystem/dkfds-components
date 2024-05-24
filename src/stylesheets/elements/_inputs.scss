@@ -311,12 +311,12 @@ legend, .form-error-message, .form-hint {
 
 // 'Normal' checkbox checkmark
 .form-checkbox:checked + label::before {
-    background-image: url(vars.$icons-folder-path + '/' + vars.$input-checkbox-checked-image + '.svg');
+    background-image: url(vars.$icons-folder-path + vars.$input-checkbox-checked-image + '.svg');
 }
 
 // 'Mixed' checkbox checkmark
 .form-checkbox[aria-checked="mixed"] + label::before {
-    background-image: url(vars.$icons-folder-path + '/' + vars.$input-checkbox-mixed-image + '.svg');
+    background-image: url(vars.$icons-folder-path + vars.$input-checkbox-mixed-image + '.svg');
 }
 
 // Checked radio
