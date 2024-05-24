@@ -58,8 +58,7 @@ textarea,
 [type=button],
 [type=reset],
 [type=submit]{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   font-family:inherit;
   font-size:100%;
   line-height:1.5;
@@ -85,8 +84,7 @@ fieldset{
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
 }
 
 input[type=number]{
@@ -164,8 +162,7 @@ sup{
 }
 
 [type=search]{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
 }
 
 a:focus,
@@ -6678,8 +6675,7 @@ figure{
 }
 
 .form-input{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   border:1px solid #747474;
   border-radius:4px;
   color:#1a1a1a;
@@ -7041,8 +7037,7 @@ td .form-group-radio .form-radio + label::after{
 }
 
 [type=range]{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   border:none;
   padding-left:0;
   width:100%;
@@ -7065,8 +7060,7 @@ td .form-group-radio .form-radio + label::after{
 }
 
 [type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   border:1px solid #747474;
   height:2.2rem;
   border-radius:1.5rem;
@@ -7731,8 +7725,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   height:0;
   border-style:solid;
   border-color:transparent;
-  -webkit-clip-path:polygon(0% 50%, 100% 100%, 100% 0%);
-          clip-path:polygon(0% 50%, 100% 100%, 100% 0%);
+  clip-path:polygon(0% 50%, 100% 100%, 100% 0%);
   border-width:5px 6px 5px 0;
   border-right-color:inherit;
   content:"";
@@ -7873,8 +7866,7 @@ a.button{
 }
 
 .button{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   display:inline-flex;
   width:100%;
   min-height:40px;
@@ -8205,8 +8197,7 @@ a.button{
 }
 .date-group input[type=number]::-webkit-inner-spin-button,
 .date-group input[type=number]::-webkit-outer-spin-button{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   margin:0;
 }
 .date-group .form-group-day,
@@ -8692,8 +8683,7 @@ a.button{
   text-align:left;
   padding:calc(8px - 1px) calc(16px - 1px);
   padding-right:32px;
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
 }
 .form-select:-moz-focusring{
   color:transparent;
@@ -9679,8 +9669,7 @@ body.mobile-nav-active{
 }
 .pagination .button.button-arrow{
   font-size:1.6rem;
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   background-color:transparent;
   border-style:none;
   color:#1a1a1a;
@@ -9762,8 +9751,7 @@ body.mobile-nav-active{
   margin-right:8px;
 }
 .pagination .pagination__items .pagination-item .current-page{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   display:inline-block;
   width:100%;
   padding:8px calc(16px - 2px) calc(8px - 2px);
@@ -11857,8 +11845,7 @@ textarea.no-resize{
   margin-top:48px;
 }
 .tab-container .tab-list .tab-button{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   margin-bottom:8px;
   margin-top:8px;
   margin-right:16px;
@@ -11952,8 +11939,7 @@ textarea.no-resize{
 }
 
 .tag{
-  -webkit-appearance:none;
-          appearance:none;
+  appearance:none;
   display:inline-block;
   width:auto;
   padding:0;
