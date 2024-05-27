@@ -38,7 +38,7 @@ To include the javascript, include this tag at the bottom of the body-part of yo
 To include the styling add the following code to your main.scss file:
 
 ```shell
-  @use 'node_modules/dkfds/src/stylesheets/variables/variables/paths' with (
+  @use 'node_modules/dkfds/src/stylesheets/variables/paths' with (
     $font-path:         'node_modules/dkfds/src/fonts/IBMPlexSans/',
     $image-path:        'node_modules/dkfds/src/img/',
     $icons-folder-path: 'node_modules/dkfds/src/img/svg-icons/'

@@ -1,7 +1,7 @@
 @use "sass:map" as map;
-@use "../../values/values" as vals;
-@use "../../variables/variables" as vars;
-@use "../../mixins/mixins" as mixins;
+@use "../../values" as vals;
+@use "../../variables" as vars;
+@use "../../mixins" as mixins;
 
 // Margin and padding utilities
 // https://github.com/twbs/bootstrap/blob/v4-dev/scss/utilities/_spacing.scss

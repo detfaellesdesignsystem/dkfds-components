@@ -1,4 +1,4 @@
-@use "../../variables/variables" as vars;
+@use "../../variables" as vars;
 
 // Sass list not in variables since it's not intended for customization.
 $positions: static, relative, absolute, fixed, sticky;

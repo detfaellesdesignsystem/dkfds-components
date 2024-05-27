@@ -1,7 +1,7 @@
 @use 'sass:math';
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
-@use "../mixins/mixins" as mixins;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
 .form-group{
   margin-top: func.units(5); // 4

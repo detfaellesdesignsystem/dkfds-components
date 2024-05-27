@@ -1,5 +1,5 @@
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
+@use "../variables" as vars;
+@use "../functions" as func;
 
 hr {
     border-top: func.border(vars.$hr-border);

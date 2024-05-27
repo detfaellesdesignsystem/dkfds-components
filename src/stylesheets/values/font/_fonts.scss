@@ -1,7 +1,7 @@
 @use "sass:map" as map;
-@use "../../functions/functions" as func;
+@use "../../functions" as func;
 @use "font-weight" as font-weight;
-@use "../../variables/variables/paths" as paths;
+@use "../../variables/paths" as paths;
 
 @if map.get(font-weight.$fds-font-weights, 'thin') != false {
   @font-face {

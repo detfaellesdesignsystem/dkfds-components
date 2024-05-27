@@ -1,6 +1,6 @@
 @use "sass:map" as map;
-@use "../../variables/variables" as vars;
-@use "../../mixins/mixins" as mixins;
+@use "../../variables" as vars;
+@use "../../mixins" as mixins;
 
 // Generates utility classes to control text alignment
 // Example: .align-text-left .align-text-md-left

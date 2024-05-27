@@ -1,6 +1,6 @@
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
-@use "../mixins/mixins" as mixins;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
 // Date Picker
 .date-picker{

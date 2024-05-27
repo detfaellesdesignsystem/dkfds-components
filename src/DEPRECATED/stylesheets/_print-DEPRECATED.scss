@@ -1,6 +1,6 @@
-@use "../../stylesheets/variables/variables" as vars;
-@use "../../stylesheets/functions/functions" as func;
-@use "../../stylesheets/mixins/mixins" as mixins;
+@use "../../stylesheets/variables" as vars;
+@use "../../stylesheets/functions" as func;
+@use "../../stylesheets/mixins" as mixins;
 @use "variables-DEPRECATED" as varsdep;
 
 @media print{

@@ -1,6 +1,6 @@
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
-@use "../mixins/mixins" as mixins;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
 body.mobile-nav-active {
     overflow: hidden; // Hide scrollbars when the mobile drawer is open

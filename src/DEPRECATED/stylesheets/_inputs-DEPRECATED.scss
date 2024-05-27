@@ -1,9 +1,9 @@
 @use "sass:map" as map;
 @use 'sass:math';
-@use "../../stylesheets/functions/functions" as func;
-@use "../../stylesheets/mixins/mixins" as mixins;
+@use "../../stylesheets/functions" as func;
+@use "../../stylesheets/mixins" as mixins;
 @use "variables-DEPRECATED" as varsdep;
-@use "../../stylesheets/values/units/units" as units;
+@use '../../stylesheets/values/units' as units;
 
 .form-group{
   margin-top: func.units(5); //4

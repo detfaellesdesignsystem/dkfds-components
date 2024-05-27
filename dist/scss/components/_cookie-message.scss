@@ -1,7 +1,7 @@
 @use "sass:map" as map;
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
-@use "../mixins/mixins" as mixins;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
 .cookie-container{
   color: func.color(vars.$cookie-message-text-color);

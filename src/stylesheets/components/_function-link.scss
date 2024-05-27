@@ -1,5 +1,5 @@
-@use "../mixins/mixins" as mixins;
-@use "../functions/functions" as func;
+@use "../mixins" as mixins;
+@use "../functions" as func;
 
 button.function-link {
     background: none;

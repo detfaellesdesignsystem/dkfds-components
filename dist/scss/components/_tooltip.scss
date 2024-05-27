@@ -1,6 +1,6 @@
-@use "../variables/variables" as vars;
-@use "../functions/functions" as func;
-@use "../mixins/mixins" as mixins;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
 $-arrow-height: func.units(3);            // Must match arrowHeight in src\js\components\tooltip.js
 $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in src\js\components\tooltip.js
