@@ -1,6 +1,6 @@
 @use "sass:map" as map;
 @use "sass:meta" as meta;
-@use "../values/colors/all-colors" as color;
+@use "../values" as vals;
 
 // ----------------------------------------
 // Get a valid FDS color
@@ -9,8 +9,8 @@
 @function color($value) {
 
     // Check whether the color is an official FDS color
-    @if map.has-key(color.$all-colors, $value) {
-        @return map.get(color.$all-colors, $value);
+    @if map.has-key(vals.$all-colors, $value) {
+        @return map.get(vals.$all-colors, $value);
     }
 
     // Check whether the color is a valid CSS color

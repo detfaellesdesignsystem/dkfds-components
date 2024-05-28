@@ -1,6 +1,6 @@
 @use "sass:map" as map;
+@use "../values" as vals;
 @use "color" as func;
-@use "../values/shadow" as shadow;
 
 // ----------------------------------------
 // Get a valid FDS shadow
@@ -8,8 +8,8 @@
 
 @function shadow($value) {
 
-    @if map.has-key(shadow.$fds-shadows, $value) {
-        $shadow-map: map.get(shadow.$fds-shadows, $value);
+    @if map.has-key(vals.$fds-shadows, $value) {
+        $shadow-map: map.get(vals.$fds-shadows, $value);
 
         $shadow-offset-x: map.get($shadow-map, 'offset-x');
         $shadow-offset-y: map.get($shadow-map, 'offset-y');

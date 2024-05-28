@@ -1,7 +1,7 @@
 @use "sass:map" as map;
 @use 'sass:math' as math;
 @use "../variables/" as vars;
-@use "../values/units" as units;
+@use "../values" as vals;
 
 // ------------------------------------------------------------------
 // (Private) Divides one number by another, to a specified precision.
@@ -69,9 +69,9 @@
 
 @function units($value, $unit: 'px') {
 
-    @if map.has-key(units.$spacers, $value) {
+    @if map.has-key(vals.$spacers, $value) {
 
-        $result-in-pixels: map.get(units.$spacers, $value);
+        $result-in-pixels: map.get(vals.$spacers, $value);
 
         @if $unit == 'rem' {
             @return -px-to-rem($result-in-pixels);

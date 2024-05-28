@@ -6,6 +6,8 @@
 .github/
 .editorconfig
 .eslintrc.json
+.browserslistrc
+.stylelintrc.json
 package-lock.json
 node_modules
 webpack.config.js

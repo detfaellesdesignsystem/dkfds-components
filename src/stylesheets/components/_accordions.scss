@@ -1,7 +1,7 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
-@use "../components/function-link";
+@use "function-link";
 
 // ----------------------------------------
 // Accordion
