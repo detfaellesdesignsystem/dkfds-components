@@ -1,3 +1,7 @@
 // This is the neutral theme (so no virkdk or borgerdk specific stuff)
 
+@forward 'variables';
+@forward "values";
+@forward "functions";
+@forward "mixins";
 @use 'dkfds-base';

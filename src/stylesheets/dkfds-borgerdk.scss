@@ -1,4 +1,16 @@
 // Borgerdk theme
 
-@use 'themes/borgerdk/borgerdk';
+@use 'themes/borgerdk' as borger;
+@forward 'variables' with (
+    $theme-color-primary:               borger.$theme-color-primary !default,
+    $theme-color-primary-dark:          borger.$theme-color-primary-dark !default,
+    $theme-color-primary-darker:        borger.$theme-color-primary-darker !default,
+    $header-portal-background-color:    borger.$header-portal-background-color !default,
+    $header-portal-logo:                borger.$header-portal-logo !default,
+    $header-portal-logo-height:         borger.$header-portal-logo-height !default,
+    $header-portal-compact-logo-width:  borger.$header-portal-compact-logo-width !default
+);
+@forward "values";
+@forward "functions";
+@forward "mixins";
 @use 'dkfds-base';
