@@ -1,4 +1,5 @@
 @use "sass:map" as map;
+@use '../../variables' as vars;
 @use "fds-colors" as fds;
 @use "theme-colors" as theme;
 
@@ -22,12 +23,21 @@ $fds-color-maps:
     fds.$fds-color-data-green, 
     fds.$fds-color-black-transparent, 
     fds.$fds-color-white-transparent, 
-    fds.$fds-core-colors;
+    fds.$fds-core-colors,
+    vars.$custom-colors;
 
 @function -merge-fds-color-maps() {
     $all-fds-colors: ();
     
     @each $map in $fds-color-maps {
+
+        @each $color, $value in $map {
+            $color-already-exists: map.has-key($all-fds-colors, $color);
+            @if $color-already-exists {
+                @error '#{$color} is already defined as a color.';
+            }
+        }
+
         $all-fds-colors: map.merge($all-fds-colors, $map);
     }
 

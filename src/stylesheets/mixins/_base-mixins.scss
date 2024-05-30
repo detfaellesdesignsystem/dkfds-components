@@ -65,10 +65,6 @@
     position: static;
 }
 
-.sr-only {
-    @include sr-only;
-}
-
 // Unstyled list helper
 @mixin unstyled-list() {
     margin: 0;
