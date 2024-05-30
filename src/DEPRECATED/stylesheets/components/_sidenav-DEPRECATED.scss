@@ -1,8 +1,8 @@
-@use "../../stylesheets/variables" as vars;
-@use "../../stylesheets/functions" as func;
-@use "../../stylesheets/mixins" as mixins;
-@use "variables-DEPRECATED" as varsdep;
-@use '../../stylesheets/values/units' as units;
+@use "../../../stylesheets/variables" as vars;
+@use '../../../stylesheets/values' as vals;
+@use "../../../stylesheets/functions" as func;
+@use "../../../stylesheets/mixins" as mixins;
+@use "../variables-DEPRECATED" as varsdep;
 
 .sidenav-list {
   @include mixins.unstyled-list();
@@ -18,7 +18,7 @@
     border: none;
     color: func.color(varsdep.$sidenav-link-default-color);
     line-height: func.units(varsdep.$sidenav-link-line-height, 'rem');
-    padding: units.$spacer;
+    padding: vals.$spacer;
     padding-top: calc(8px - #{func.border-width(varsdep.$sidenav-list-level1-border)});
     padding-left: func.units(4);
     padding-right: func.units(4);

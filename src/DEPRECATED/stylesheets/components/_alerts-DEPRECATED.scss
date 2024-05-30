@@ -1,8 +1,8 @@
 @use "sass:map" as map;
-@use "../../stylesheets/variables" as vars;
-@use "../../stylesheets/functions" as func;
-@use "../../stylesheets/mixins" as mixins;
-@use "variables-DEPRECATED" as varsdep;
+@use "../../../stylesheets/variables" as vars;
+@use "../../../stylesheets/functions" as func;
+@use "../../../stylesheets/mixins" as mixins;
+@use "../variables-DEPRECATED" as varsdep;
 
 /*
 ----------------------------------------

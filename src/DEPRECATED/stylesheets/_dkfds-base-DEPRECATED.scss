@@ -20,7 +20,6 @@
 @use '../../stylesheets/elements/embed';
 @use '../../stylesheets/elements/figure';
 @use '../../stylesheets/elements/icons';
-//@use 'inputs-DEPRECATED';
 @use '../../stylesheets/elements/list';
 @use '../../stylesheets/elements/page';
 @use '../../stylesheets/elements/forms';
@@ -29,7 +28,6 @@
 
 // Components -------------- //
 @use '../../stylesheets/components/accordions';
-//@use 'alerts-DEPRECATED';
 @use '../../stylesheets/components/anchorlinks';
 @use '../../stylesheets/components/back-link';
 @use '../../stylesheets/components/back-to-top';
@@ -43,24 +41,14 @@
 @use '../../stylesheets/components/dropdown';
 @use '../../stylesheets/components/footer';
 @use '../../stylesheets/components/function-link';
-//@use 'header-DEPRECATED';
 @use '../../stylesheets/components/modal';
-//@use 'navigation-DEPRECATED';
 @use '../../stylesheets/components/pagination';
 @use '../../stylesheets/components/toast';
 @use '../../stylesheets/components/search';
-//@use 'sidenav-DEPRECATED';
 @use '../../stylesheets/components/language-switcher';
 @use '../../stylesheets/components/skipnav';
 @use '../../stylesheets/components/spinner';
 @use '../../stylesheets/components/cards';
-//@use 'overflow-menu-DEPRECATED';
-//@use 'table-DEPRECATED';
 @use '../../stylesheets/components/textarea';
-//@use 'toggle-DEPRECATED';
-//@use 'tooltip-DEPRECATED';
-//@use 'tabnav-DEPRECATED';
 @use '../../stylesheets/components/tags';
 
-// Print -------------- //
-//@use 'print-DEPRECATED';

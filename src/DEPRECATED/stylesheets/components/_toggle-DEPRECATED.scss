@@ -1,6 +1,6 @@
-@use "../../stylesheets/functions" as func;
-@use "../../stylesheets/mixins" as mixins;
-@use "variables-DEPRECATED" as varsdep;
+@use "../../../stylesheets/functions" as func;
+@use "../../../stylesheets/mixins" as mixins;
+@use "../variables-DEPRECATED" as varsdep;
 
 /* hide the default checkbox */
 input[type='checkbox'].form-toggle {

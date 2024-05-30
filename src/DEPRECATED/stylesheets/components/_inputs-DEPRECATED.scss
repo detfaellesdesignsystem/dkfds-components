@@ -1,9 +1,9 @@
 @use "sass:map" as map;
 @use 'sass:math';
-@use "../../stylesheets/functions" as func;
-@use "../../stylesheets/mixins" as mixins;
-@use "variables-DEPRECATED" as varsdep;
-@use '../../stylesheets/values/units' as units;
+@use '../../../stylesheets/values' as vals;
+@use "../../../stylesheets/functions" as func;
+@use "../../../stylesheets/mixins" as mixins;
+@use "../variables-DEPRECATED" as varsdep;
 
 .form-group{
   margin-top: func.units(5); //4
@@ -13,7 +13,7 @@
 }
 
 .form-group-radio, .form-group-checkbox {
-  margin-top: map.get(units.$spacers, 3);
+  margin-top: map.get(vals.$spacers, 3);
   position: relative;
 }
 
@@ -451,17 +451,17 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
 }
 
 .checkbox-content, .radio-content{
-  padding-left: calc(#{map.get(units.$spacers, varsdep.$input-checkbox-radio-content-padding-left)} - #{map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width)});
-  padding-top: map.get(units.$spacers, varsdep.$input-checkbox-radio-content-padding-top);
+  padding-left: calc(#{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-padding-left)} - #{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)});
+  padding-top: map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-padding-top);
   padding-bottom: func.units(5);
-	border-left: map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width) solid func.color(varsdep.$input-checkbox-radio-content-border-color);
-  margin-left: math.div((map.get(units.$spacers, varsdep.$input-checkbox-radio-small-size) - map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width)), 2);
+	border-left: map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width) solid func.color(varsdep.$input-checkbox-radio-content-border-color);
+  margin-left: math.div((map.get(vals.$spacers, varsdep.$input-checkbox-radio-small-size) - map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)), 2);
   margin-top: func.units(2);
   margin-bottom: func.units(3);
   
   &-large{
-    padding-left: calc(#{map.get(units.$spacers, varsdep.$input-checkbox-radio-content-large-padding-left)} - #{map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width)} - (#{map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width)} / 2));
-    margin-left: math.div((map.get(units.$spacers, varsdep.$input-checkbox-radio-large-size) - map.get(units.$spacers, varsdep.$input-checkbox-radio-content-border-width)), 2);
+    padding-left: calc(#{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-large-padding-left)} - #{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)} - (#{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)} / 2));
+    margin-left: math.div((map.get(vals.$spacers, varsdep.$input-checkbox-radio-large-size) - map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)), 2);
   }
   &[aria-hidden="true"]{
     display:none;

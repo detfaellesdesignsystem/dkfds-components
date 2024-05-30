@@ -13,16 +13,18 @@
 @forward "../../stylesheets/values";
 @forward "../../stylesheets/functions";
 @forward "../../stylesheets/mixins";
+
 @use 'dkfds-base-DEPRECATED';
 
-@use 'inputs-DEPRECATED';
-@use 'alerts-DEPRECATED';
-@use 'header-DEPRECATED';
-@use 'navigation-DEPRECATED';
-@use 'sidenav-DEPRECATED';
-@use 'overflow-menu-DEPRECATED';
-@use 'table-DEPRECATED';
-@use 'toggle-DEPRECATED';
-@use 'tooltip-DEPRECATED';
-@use 'tabnav-DEPRECATED';
+@use 'components/inputs-DEPRECATED';
+@use 'components/alerts-DEPRECATED';
+@use 'components/header-DEPRECATED';
+@use 'components/navigation-DEPRECATED';
+@use 'components/sidenav-DEPRECATED';
+@use 'components/overflow-menu-DEPRECATED';
+@use 'components/table-DEPRECATED';
+@use 'components/toggle-DEPRECATED';
+@use 'components/tooltip-DEPRECATED';
+@use 'components/tabnav-DEPRECATED';
+
 @use 'print-DEPRECATED';
