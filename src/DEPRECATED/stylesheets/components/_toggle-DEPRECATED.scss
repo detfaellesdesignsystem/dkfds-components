@@ -1,3 +1,4 @@
+@use "../../../stylesheets/variables" as vars;
 @use "../../../stylesheets/functions" as func;
 @use "../../../stylesheets/mixins" as mixins;
 @use "../variables-DEPRECATED" as varsdep;
@@ -52,13 +53,13 @@ input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:before,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:before,
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:before{
-  color: func.color(varsdep.$input-disabled-text-color);
+  color: func.color(vars.$input-disabled-text-color);
 }
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:hover:after,
 input[type='checkbox'].form-toggle:disabled ~ .form-toggle-label:active:after{
   opacity:0.5;
-  background-color: func.color(varsdep.$input-disabled-text-color);
+  background-color: func.color(vars.$input-disabled-text-color);
 }
 
 input[type='checkbox'].form-toggle:checked:disabled ~ .form-toggle-label:after,

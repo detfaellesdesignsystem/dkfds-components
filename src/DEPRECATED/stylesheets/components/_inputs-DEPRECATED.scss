@@ -1,5 +1,6 @@
 @use "sass:map" as map;
 @use 'sass:math';
+@use "../../../stylesheets/variables" as vars;
 @use '../../../stylesheets/values' as vals;
 @use "../../../stylesheets/functions" as func;
 @use "../../../stylesheets/mixins" as mixins;
@@ -20,17 +21,17 @@
 // Hint text
 .form-hint {
   display: block;
-  color: func.color(varsdep.$form-hint-text-color);
-  font-size: func.font-size(varsdep.$form-hint-font-size);
-  line-height: func.units(varsdep.$form-hint-line-height, 'rem');
-  letter-spacing: varsdep.$form-hint-letter-spacing;
-  font-weight: func.font-weight(varsdep.$form-hint-font-weight);
+  color: func.color(vars.$form-hint-text-color);
+  font-size: func.font-size(vars.$form-hint-font-size);
+  line-height: func.units(vars.$form-hint-line-height, 'rem');
+  letter-spacing: vars.$form-hint-letter-spacing;
+  font-weight: func.font-weight(vars.$form-hint-font-weight);
 }
 .form-label {
   display: inline-block;
   @include mixins.form-label-text();
   &.disabled {
-    color: func.color(varsdep.$input-disabled-text-color);
+    color: func.color(vars.$input-disabled-text-color);
     font-weight: func.font-weight('medium');
   }
 }
@@ -43,20 +44,20 @@
 
 .form-input{
   appearance: none;
-  border: func.border(varsdep.$input-border);
-  border-radius: varsdep.$input-border-radius;
-  color: func.color(varsdep.$input-text-color); // standardize on firefox
+  border: func.border(vars.$input-border);
+  border-radius: vars.$input-border-radius;
+  color: func.color(vars.$input-text-color); // standardize on firefox
   display: block;
-  font-size: func.font-size(varsdep.$input-font-size);
-  line-height: func.units(varsdep.$input-line-height, 'rem');
-  padding: calc(8px - #{func.border-width(varsdep.$input-border)}) calc(16px - #{func.border-width(varsdep.$input-border)});
+  font-size: func.font-size(vars.$input-font-size);
+  line-height: func.units(vars.$input-line-height, 'rem');
+  padding: calc(8px - #{func.border-width(vars.$input-border)}) calc(16px - #{func.border-width(vars.$input-border)});
   width: 100%;
   max-width: 32rem;
   margin-top: func.units(3);
   text-align: left;
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     /* IE10+ CSS styles go here */
-    height: calc(#{func.units(varsdep.$input-line-height, 'rem')} + (8px * 2));
+    height: calc(#{func.units(vars.$input-line-height, 'rem')} + (8px * 2));
   }
 
   &:focus, &.focus{
@@ -64,7 +65,7 @@
   }
 
   &::placeholder {
-    color: func.color(varsdep.$input-placeholder-color);
+    color: func.color(vars.$input-placeholder-color);
     font-style: italic;
     opacity: 1;
     font-weight: func.font-weight("normal");
@@ -100,16 +101,16 @@ table {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: func.font-weight("normal");
-    font-size: func.font-size(varsdep.$input-font-size);
-    line-height: func.units(varsdep.$input-line-height, 'rem');
+    font-size: func.font-size(vars.$input-font-size);
+    line-height: func.units(vars.$input-line-height, 'rem');
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     display: inline-block;
     min-width: 40px;
-    padding: calc(#{func.units(3)} - #{func.border-width(varsdep.$input-border)}) calc(#{func.units(3)} - #{func.border-width(varsdep.$input-border)});
+    padding: calc(#{func.units(3)} - #{func.border-width(vars.$input-border)}) calc(#{func.units(3)} - #{func.border-width(vars.$input-border)});
     margin-top: func.units(3);
-    border: func.border(varsdep.$input-border);
-    background-color: func.color(varsdep.$input-prefix-suffix-background-color);
+    border: func.border(vars.$input-border);
+    background-color: func.color(vars.$input-prefix-suffix-background-color);
     text-align: center;
     white-space: nowrap;
     cursor: default;
@@ -120,13 +121,13 @@ table {
   }
   .form-input-suffix {
     border-left: 0;
-    border-top-right-radius: varsdep.$input-border-radius;
-    border-bottom-right-radius: varsdep.$input-border-radius;
+    border-top-right-radius: vars.$input-border-radius;
+    border-bottom-right-radius: vars.$input-border-radius;
   }
   .form-input-prefix {
     border-right: 0;
-    border-top-left-radius: varsdep.$input-border-radius;
-    border-bottom-left-radius: varsdep.$input-border-radius;
+    border-top-left-radius: vars.$input-border-radius;
+    border-bottom-left-radius: vars.$input-border-radius;
   }
 }
 
@@ -143,16 +144,16 @@ table {
 //////////////////////
 
 
-$input-top-bottom-padding-feedback: calc(8px - #{varsdep.$input-border-width-feedback});
-$input-left-right-padding-feedback: calc(16px - #{varsdep.$input-border-width-feedback});
+$input-top-bottom-padding-feedback: calc(8px - #{vars.$input-border-width-feedback});
+$input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedback});
 
 .form-group.form-error {
-  border-left: varsdep.$form-group-error-border-width solid func.color(varsdep.$form-group-error-border-color);
+  border-left: vars.$form-group-error-border-width solid func.color(vars.$form-group-error-border-color);
   padding-left: calc(#{func.units(4)} - 4px);
 
   .form-input,
   .form-select {
-    border: varsdep.$input-border-width-feedback solid func.color(varsdep.$input-border-color-feedback-error);
+    border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 
@@ -167,7 +168,7 @@ $input-left-right-padding-feedback: calc(16px - #{varsdep.$input-border-width-fe
 .form-group.form-success {
   .form-input,
   .form-select {
-    border: varsdep.$input-border-width-feedback solid func.color(varsdep.$input-border-color-feedback-success);
+    border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-success);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 }
@@ -181,16 +182,16 @@ input[type=tel],
 input[type=url],
 textarea {
   &:disabled {
-    background-color: func.color(varsdep.$input-disabled-background-color);
-    border-color: func.color(varsdep.$input-disabled-border-color);
-    color: func.color(varsdep.$input-disabled-text-color);
+    background-color: func.color(vars.$input-disabled-background-color);
+    border-color: func.color(vars.$input-disabled-border-color);
+    color: func.color(vars.$input-disabled-text-color);
     cursor: not-allowed;
   }
 }
 
 input[readonly][type=text], textarea[readonly]{
   background-color: func.color('gray-100');
-  color: func.color(varsdep.$input-text-color);
+  color: func.color(vars.$input-text-color);
   border: 1px solid func.color('gray-200');
   cursor: default;
 }
@@ -201,7 +202,7 @@ input[readonly][type=text], textarea[readonly]{
 
 .form-limit {
   .form-limit-error {
-    border: varsdep.$input-border-width-feedback solid func.color(varsdep.$input-border-color-feedback-error);
+    border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 
@@ -209,7 +210,7 @@ input[readonly][type=text], textarea[readonly]{
     margin-top: func.units(2);
   
     &.limit-exceeded {
-      color: func.color(varsdep.$input-text-character-limit-exceeded-color);
+      color: func.color(vars.$input-text-character-limit-exceeded-color);
     }
   }
 }
@@ -248,7 +249,7 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
   margin-bottom: 0;
   display: inline-block;
   outline: none;
-  color: func.color(varsdep.$input-text-color);
+  color: func.color(vars.$input-text-color);
   position: relative;
   padding-left: calc(#{$checkbox-size} + 8px);
   min-height: $checkbox-size;
@@ -392,11 +393,11 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
 //Disable
 .form-checkbox:disabled + label,
 .form-radio:disabled + label {
-  color: func.color(varsdep.$input-disabled-text-color);
+  color: func.color(vars.$input-disabled-text-color);
   cursor: not-allowed;
   &:before{
-    border-color: func.color(varsdep.$input-disabled-text-color);
-    background-color: func.color(varsdep.$input-disabled-background-color);
+    border-color: func.color(vars.$input-disabled-text-color);
+    background-color: func.color(vars.$input-disabled-background-color);
   }
 }
 

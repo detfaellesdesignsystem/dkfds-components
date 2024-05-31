@@ -45,18 +45,18 @@
     }
 
     &.sidenav-error {
-      background-color: func.color(varsdep.$sidenav-error-background-color);
+      background-color: func.color(vars.$sidenav-error-background-color);
 
       &.current {
-        background-color: func.color(varsdep.$sidenav-error-background-color);
+        background-color: func.color(vars.$sidenav-error-background-color);
       }
 
       &:hover {
-        background-color: func.color(varsdep.$sidenav-error-background-color);
+        background-color: func.color(vars.$sidenav-error-background-color);
       }
 
       .sidenav-information {
-        color: func.color(varsdep.$sidenav-link-current-extra-information-text-color);
+        color: func.color(vars.$sidenav-link-current-extra-information-text-color);
         font-weight: func.font-weight("normal");
       }
     }
@@ -94,7 +94,7 @@
       }
 
       .sidenav-information {
-        color: func.color(varsdep.$sidenav-link-default-extra-information-text-color);
+        color: func.color(vars.$sidenav-link-default-extra-information-text-color);
         margin: 0;
         display: block;
         width: 100%;
@@ -111,7 +111,7 @@
       }
 
       .sidenav-information {
-        color: func.color(varsdep.$sidenav-link-current-extra-information-text-color);
+        color: func.color(vars.$sidenav-link-current-extra-information-text-color);
         font-weight: func.font-weight("normal");
       }
     }
@@ -163,14 +163,14 @@
 
     &.current{
       border-left: varsdep.$sidenav-active-border-width solid func.color(varsdep.$sidenav-active-border-color);
-      background-color: func.color(varsdep.$sidenav-link-current-background-color);
+      background-color: func.color(vars.$sidenav-link-current-background-color);
     }
     &:first-child {
       border-top: none;
     }
     &:last-child {
       a {
-        padding-bottom: calc(8px - #{func.border-width(varsdep.$input-border)});
+        padding-bottom: calc(8px - #{func.border-width(vars.$input-border)});
       }
     }
     li{
@@ -207,10 +207,10 @@
     }
 
     &.sidenav-error {
-      background-color: func.color(varsdep.$sidenav-error-background-color);
+      background-color: func.color(vars.$sidenav-error-background-color);
 
       &.active a:hover {
-        background-color: func.color(varsdep.$sidenav-error-background-color);
+        background-color: func.color(vars.$sidenav-error-background-color);
       }
     }
   }

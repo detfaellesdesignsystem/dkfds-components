@@ -3,6 +3,129 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
+@mixin -responsive-table() {
+    display: block;
+
+    thead {
+        display: none;
+    }
+
+    tbody,
+    tr {
+        display: block;
+    }
+
+    tr {
+        border-bottom: func.border(vars.$table-row-border);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    td,
+    th {
+        display: block;
+        border: none;
+        padding: func.units(4) calc(func.units(4) - 1px); // top and bottom | left and right, 1px for the border
+
+        &:last-child {
+            padding-bottom: calc(func.units(4) - 1px); // 1px for the border
+        }
+
+        &[data-title]:not([data-title=""])::before {
+            content: attr(data-title);
+            text-align: left;
+            display: block;
+            font-weight: func.font-weight(vars.$table-head-font-weight);
+        }
+    }
+
+    &.table--compact {
+        th,
+        td {
+            padding-top: func.units(3);
+            padding-bottom: func.units(3);
+
+            &:last-child {
+                padding-bottom: calc(func.units(3) - 1px); // 1px for the border
+            }
+        }
+    }
+
+    &.table--extracompact {
+
+        th,
+        td {
+            padding-top: 1px;
+            padding-bottom: 1px;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    &.table--borderless, &.structured-list {
+
+        td,
+        th {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        tr {
+            &:first-child {
+
+                td,
+                th {
+                    &:first-child {
+                        border-top: func.border(vars.$table-row-border);
+                    }
+                }
+            }
+
+            &:last-child {
+
+                td,
+                th {
+                    border-bottom: none;
+
+                    &:last-child {
+                        border-bottom: func.border(vars.$table-row-border);
+                    }
+                }
+            }
+        }
+    }
+
+    &.table--zebra.table--borderless {
+
+        td,
+        th {
+            padding-left: func.units(4);
+            padding-right: func.units(4);
+        }
+    }
+
+    &.structured-list {
+        
+        tbody tr {
+            &:first-child td {
+                border-top: none;
+            }
+
+            th {
+                padding-bottom: 0;
+            }
+
+            td:first-of-type {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
 .table {
     margin: 0;
     line-height: func.units(vars.$table-text-line-height, 'rem');
@@ -280,7 +403,7 @@
         // Make row into a "card" on phone
         &.table--responsive-headers {
             @include mixins.media-breakpoint-down(sm) {
-                @include mixins.responsive-table;
+                @include -responsive-table;
             }
         }
 
@@ -290,7 +413,7 @@
                     $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
                     &.table#{$infix}-responsive-headers {
-                        @include mixins.responsive-table;
+                        @include -responsive-table;
                     }
                 }
             }

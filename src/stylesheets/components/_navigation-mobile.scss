@@ -1,6 +1,7 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
+@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 body.mobile-nav-active {
     overflow: hidden; // Hide scrollbars when the mobile drawer is open
@@ -51,8 +52,8 @@ body.mobile-nav-active {
 
 .navigation-menu-mobile ul.mainmenu {
     @include mixins.unstyled-list;
-    @include mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
+    @include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include nav-mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
     display: flex;
     flex-flow: column nowrap;
     max-width: 100%;

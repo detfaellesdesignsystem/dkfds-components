@@ -6,6 +6,13 @@ $borger-primary:          #44831E !default;
 $borger-primary-dark:     #3C5C22 !default;
 $borger-primary-darker:   #233614 !default;
 
+$custom-colors: (
+    'borgerdk-100': $borger-primary, 
+    'borgerdk-200': $borger-primary-dark,
+    'borgerdk-300': $borger-primary-darker,
+    'background-100': #f1f1f1
+);
+
 $theme-color-primary:               $borger-primary !default;
 $theme-color-primary-dark:          $borger-primary-dark !default;
 $theme-color-primary-darker:        $borger-primary-darker !default;

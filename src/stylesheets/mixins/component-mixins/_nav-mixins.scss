@@ -1,4 +1,4 @@
-@use "../functions" as func;
+@use "../../functions" as func;
 
 // Use inside nav ul element to set left and right padding
 @mixin nav-link-leftdist($li-border-width, $li-border-color, $firstlevel-dist, $secondlevel-dist, $thirdlevel-dist, $fourthlevel-dist) {

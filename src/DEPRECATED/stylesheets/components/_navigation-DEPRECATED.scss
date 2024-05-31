@@ -6,7 +6,7 @@
 // Header navigation ------------- //
 
 @mixin nav-current-border {
-    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(varsdep.$navigation-link-current-border-color);
+    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(vars.$navigation-link-current-border-color);
   }
   @mixin nav-hover-border {
     border-bottom: varsdep.$navigation-link-default-border-width solid func.color(varsdep.$navigation-link-hover-border-color);

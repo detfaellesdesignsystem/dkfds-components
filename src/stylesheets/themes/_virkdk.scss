@@ -6,6 +6,12 @@ $virk-primary:          #0059B3;
 $virk-primary-dark:     #004993;
 $virk-primary-darker:   #003972;
 
+$custom-colors: (
+    'virk-100': $virk-primary, 
+    'virk-200': $virk-primary-dark,
+    'virk-300': $virk-primary-darker
+);
+
 $theme-color-primary:               $virk-primary !default;
 $theme-color-primary-dark:          $virk-primary-dark !default;
 $theme-color-primary-darker:        $virk-primary-darker !default;

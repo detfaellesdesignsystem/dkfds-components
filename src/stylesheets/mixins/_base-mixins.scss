@@ -8,10 +8,6 @@
     background-repeat: no-repeat;
 }
 
-@mixin embed-container($height, $width) {
-    padding-bottom: math.percentage(math.div($height,$width));
-}
-
 @mixin button-unstyled {
     background-color: func.color('transparent');
     border: 0;

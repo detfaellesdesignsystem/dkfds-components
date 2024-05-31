@@ -2,6 +2,7 @@
 
 @use 'themes/virkdk' as virk;
 @forward 'variables' with (
+    $custom-colors:                     virk.$custom-colors !default,
     $theme-color-primary:               virk.$theme-color-primary !default,
     $theme-color-primary-dark:          virk.$theme-color-primary-dark !default,
     $theme-color-primary-darker:        virk.$theme-color-primary-darker !default,
@@ -13,4 +14,5 @@
 @forward "values";
 @forward "functions";
 @forward "mixins";
+
 @use 'dkfds-base';

@@ -2,6 +2,7 @@
 
 @use '../../stylesheets/themes/borgerdk' as borger;
 @forward '../../stylesheets/variables' with (
+    $custom-colors:                     borger.$custom-colors !default,
     $theme-color-primary:               borger.$theme-color-primary !default,
     $theme-color-primary-dark:          borger.$theme-color-primary-dark !default,
     $theme-color-primary-darker:        borger.$theme-color-primary-darker !default,

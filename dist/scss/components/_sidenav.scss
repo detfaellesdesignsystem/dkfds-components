@@ -1,6 +1,7 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
+@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 $sidemenu-border-left-thickness: func.units(2);
 $sidemenu-link-padding-right: func.units(4);
@@ -9,8 +10,8 @@ $sidemenu-icon-size: 2.4rem;
 ul.sidemenu,
 ol.sidemenu {
     @include mixins.unstyled-list;
-    @include mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
-    @include mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
+    @include nav-mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include nav-mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
     border-bottom: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     max-width: none;

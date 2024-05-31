@@ -1,6 +1,7 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
+@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 $navigation-row-link-padding-left-right: func.units(305);
 $navigation-desktop-border-bottom-thickness: func.units(2);
@@ -92,7 +93,7 @@ $-left-right-padding: func.units(305);
 
     li.more-option {
         ul {
-            @include mixins.nav-link-leftdist(func.units(2), vars.$navigation-link-current-border-color, func.units(4), func.units(7), func.units(7), func.units(7));
+            @include nav-mixins.nav-link-leftdist(func.units(2), vars.$navigation-link-current-border-color, func.units(4), func.units(7), func.units(7), func.units(7));
 
             & > li {
                 padding-left: 0;
