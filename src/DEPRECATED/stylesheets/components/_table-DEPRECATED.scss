@@ -41,7 +41,7 @@
             content: attr(data-title);
             text-align: left;
             display: block;
-            font-weight: func.font-weight(varsdep.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
         }
     }
 
@@ -133,8 +133,8 @@
 
 .table {
     margin: 0;
-    line-height: func.units(varsdep.$table-text-line-height, 'rem');
-    border: func.border(varsdep.$table-border);
+    line-height: func.units(vars.$table-text-line-height, 'rem');
+    border: func.border(vars.$table-border);
     width: 100%;
     color: func.color(varsdep.$table-text-color);
     font-size: func.font-size(varsdep.$table-font-size);
@@ -178,7 +178,7 @@
         background-color: func.color(varsdep.$table-head-background-color);
 
         th {
-            font-weight: func.font-weight(varsdep.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
             padding-top: calc(func.units(4) - 1px); //1px for the border
 
             &:first-child {
@@ -198,7 +198,7 @@
 
     tbody {
         th {
-            font-weight: func.font-weight(varsdep.$table-head-font-weight);
+            font-weight: func.font-weight(vars.$table-head-font-weight);
         }
 
         tr {
@@ -441,9 +441,9 @@
 }
 
 .table-actions {
-    border-right: func.border(varsdep.$table-border);
-    border-bottom: func.border(varsdep.$table-border);
-    border-left: func.border(varsdep.$table-border);
+    border-right: func.border(vars.$table-border);
+    border-bottom: func.border(vars.$table-border);
+    border-left: func.border(vars.$table-border);
     overflow: hidden;
     padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) calc(func.units(4) - 1px);
 

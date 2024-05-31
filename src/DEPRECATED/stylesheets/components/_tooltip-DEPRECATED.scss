@@ -1,3 +1,4 @@
+@use "../../../stylesheets/variables" as vars;
 @use "../../../stylesheets/functions" as func;
 @use "../../../stylesheets/mixins" as mixins;
 @use "../variables-DEPRECATED" as varsdep;
@@ -14,17 +15,17 @@
     cursor: pointer;
 }
 .tooltip-link{
-  border-bottom: varsdep.$tooltip-link-border-width varsdep.$tooltip-link-border-style func.color(varsdep.$tooltip-link-border-color);
+  border-bottom: vars.$tooltip-link-border-width vars.$tooltip-link-border-style func.color(vars.$tooltip-link-border-color);
   display: inline;
   text-decoration: none;
   &:link, &:active, &:hover, &:visited, &:focus{
-    color: func.color(varsdep.$tooltip-link-color);
+    color: func.color(vars.$tooltip-link-color);
   }
 }
 .tooltip{
   @include mixins.body-copy-text;
   font-size: func.font-size('sm');
-  box-shadow: func.shadow(varsdep.$tooltip-shadow);
+  box-shadow: func.shadow(vars.$tooltip-shadow);
   background-color: func.color(varsdep.$tooltip-background-color);
   border: func.border(varsdep.$tooltip-border);
   border-radius: 4px;

@@ -1,0 +1,14 @@
+@use '../../stylesheets/themes/virkdk' as virk;
+@forward '../../stylesheets/variables' with (
+    $custom-colors:                     virk.$custom-colors !default,
+    $theme-color-primary:               virk.$theme-color-primary !default,
+    $theme-color-primary-dark:          virk.$theme-color-primary-dark !default,
+    $theme-color-primary-darker:        virk.$theme-color-primary-darker !default,
+    $header-portal-logo:                virk.$header-portal-logo !default,
+    $header-portal-logo-height:         virk.$header-portal-logo-height !default,
+    $header-portal-logo-width:          virk.$header-portal-logo-width !default,
+    $header-portal-compact-logo-width:  virk.$header-portal-compact-logo-width !default
+);
+@forward "../../stylesheets/values";
+@forward "../../stylesheets/functions";
+@forward "../../stylesheets/mixins";

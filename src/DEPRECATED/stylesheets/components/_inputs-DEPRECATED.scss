@@ -245,7 +245,7 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
 .form-radio + label {
   cursor: pointer;
   font-weight: func.font-weight("normal");
-  line-height: func.units(varsdep.$typography-body-text-line-height, 'rem');
+  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   margin-bottom: 0;
   display: inline-block;
   outline: none;
@@ -269,7 +269,7 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
   border-radius: varsdep.$input-checkbox-border-radius;
   border: 2px solid func.color('black');
   height: $checkbox-size;
-  line-height: func.units(varsdep.$typography-body-text-line-height, 'rem');
+  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   margin-right: func.units(3);
   width: $checkbox-size;
   position: absolute;
@@ -455,7 +455,7 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
   padding-left: calc(#{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-padding-left)} - #{map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)});
   padding-top: map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-padding-top);
   padding-bottom: func.units(5);
-	border-left: map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width) solid func.color(varsdep.$input-checkbox-radio-content-border-color);
+	border-left: map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width) solid func.color(vars.$input-checkbox-radio-content-border-color);
   margin-left: math.div((map.get(vals.$spacers, varsdep.$input-checkbox-radio-small-size) - map.get(vals.$spacers, varsdep.$input-checkbox-radio-content-border-width)), 2);
   margin-top: func.units(2);
   margin-bottom: func.units(3);
@@ -480,16 +480,16 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
 }
 
 [type=range]::-webkit-slider-runnable-track {
-  background: func.color(varsdep.$input-range-track-default-background-color);
-  border: func.border(varsdep.$input-range-track-default-border);
+  background: func.color(vars.$input-range-track-default-background-color);
+  border: func.border(vars.$input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
 }
 
 [type=range]::-moz-range-track {
-  background: func.color(varsdep.$input-range-track-default-background-color);
-  border: func.border(varsdep.$input-range-track-default-border);
+  background: func.color(vars.$input-range-track-default-background-color);
+  border: func.border(vars.$input-range-track-default-border);
   cursor: pointer;
   height: 1.2rem;
   width: 100%;
@@ -497,18 +497,18 @@ $radio-size-large: func.units(varsdep.$input-checkbox-radio-large-size);
 
 [type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: func.border(varsdep.$input-range-thumb-default-border);
+  border: func.border(vars.$input-range-thumb-default-border);
   height: 2.2rem;
   border-radius: 1.5rem;
-  background: func.color(varsdep.$input-range-thumb-default-background-color);
+  background: func.color(vars.$input-range-thumb-default-background-color);
   cursor: pointer;
   margin-top: -.65rem;
   width: 2.2rem;
 }
 
 [type=range]::-moz-range-thumb {
-  background: func.color(varsdep.$input-range-thumb-default-background-color);
-  border: func.border(varsdep.$input-range-thumb-default-border);
+  background: func.color(vars.$input-range-thumb-default-background-color);
+  border: func.border(vars.$input-range-thumb-default-border);
   border-radius: 1.5rem;
   cursor: pointer;
   height: 2.2rem;

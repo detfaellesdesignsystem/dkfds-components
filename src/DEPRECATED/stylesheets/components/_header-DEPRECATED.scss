@@ -78,10 +78,10 @@ $z-index-nav:     9000;
     width: 100%;
     &.portal-header-compact{
       font-size: func.font-size(vars.$typography-small-text-font-size);
-      line-height: func.units(varsdep.$typography-small-text-line-height, 'rem');
+      line-height: func.units(vars.$typography-small-text-line-height, 'rem');
       p {
         font-size: func.font-size(vars.$typography-small-text-font-size);
-        line-height: func.units(varsdep.$typography-small-text-line-height, 'rem');
+        line-height: func.units(vars.$typography-small-text-line-height, 'rem');
       }
       .portal-info .user{
         max-width: none;

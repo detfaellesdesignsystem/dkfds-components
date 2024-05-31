@@ -24,36 +24,6 @@ $typography-font-size-4xl: 2.8rem !default;
 $typography-font-size-5xl: 3.1rem !default;
 $typography-font-size-6xl: 3.9rem !default;
 
-$typography-base-font-size: "sm" !default;
-$typography-base-line-height: 5 !default;
-$typography-font-family: 'IBM Plex Sans', 'system' !default;
-$typography-text-max-width: 66ch !default;
-
-$typography-body-text-font-size: $typography-base-font-size !default;
-$typography-body-text-line-height: $typography-base-line-height !default;
-$typography-body-text-letter-spacing: normal !default;
-$typography-body-text-font-weight: "normal" !default;
-$typography-body-text-color: 'ink' !default;
-$typography-body-text-secondary-color: 'ink-light' !default;
-
-$typography-caption-text-color: 'ink' !default;
-$typography-caption-font-size: "2xs" !default;
-$typography-caption-line-height: 405 !default;
-$typography-caption-letter-spacing: 0.4px !default;
-
-$typography-subheading-text-color: 'gray-500' !default;
-$typography-subheading-font-size: "2xs" !default;
-$typography-subheading-line-height: 4 !default;
-$typography-subheading-letter-spacing: 1px !default;
-
-$typography-form-label-font-size: "sm" !default;
-$typography-form-label-line-height: 5 !default;
-$typography-form-label-text-color: 'ink' !default;
-
-$typography-small-text-font-size: "xs" !default;
-$typography-small-text-letter-spacing: 0.2px !default;
-$typography-small-text-line-height: 405 !default;
-
 $typography-font-weight-thin: false !default;
 $typography-font-weight-extralight: false !default;
 $typography-font-weight-light: false !default;
@@ -63,99 +33,36 @@ $typography-font-weight-semibold: 600 !default;
 $typography-font-weight-bold: 700 !default;
 $typography-font-weight-heavy: false !default;
 
-$typography-display-1-heading-font-size: "3xl" !default;
-$typography-display-1-heading-line-height: 605 !default;
-$typography-display-1-heading-letter-spacing: normal !default;
-
-$typography-display-2-heading-font-size: "xl" !default;
-$typography-display-2-heading-line-height: 6 !default;
-$typography-display-2-heading-letter-spacing: normal !default;
-
-$typography-article-font-size: "md" !default;
-$typography-article-line-height: 505 !default;
-$typography-article-letter-spacing: normal !default;
-
-$typography-lead-font-size: "xl" !default;
-$typography-lead-line-height: 6 !default;
-$typography-lead-letter-spacing: normal !default;
-
-$typography-h1-font-size: (
-    "default": "3xl",
-    "md": "5xl",
-    "lg": "6xl"
-) !default;
-$typography-h1-line-height: (
-    "default": 6,
-    "md": 7,
-    "lg": 8 
-) !default;
 $typography-h1-letter-spacing: (
     "default": normal,
     "md": normal,
     "lg": normal 
 ) !default;
 
-$typography-h2-font-size: (
-    "default": "2xl",
-    "md": "3xl",
-    "lg": "5xl"
-) !default;
-$typography-h2-line-height: (
-    "default": 505,
-    "md": 6,
-    "lg": 7
-) !default;
+
 $typography-h2-letter-spacing: (
     "default": normal,
     "md": normal,
     "lg": normal
 ) !default;
 
-$typography-h3-font-size: (
-    "default": "md",
-    "md": "lg",
-    "lg": "3xl"
-) !default;
-$typography-h3-line-height: (
-    "default": 5,
-    "md": 505,
-    "lg": 6
-) !default;
 $typography-h3-letter-spacing: (
     "default": normal,
     "md": normal,
     "lg": normal
 ) !default;
 
-$typography-h4-font-size: (
-    "default": "sm",
-    "lg": "lg"
-) !default;
-$typography-h4-line-height: (
-    "default": 5,
-    "lg": 505
-) !default;
 $typography-h4-letter-spacing: (
     "default": normal,
     "md": normal,
     "lg": normal
 ) !default;
 
-$typography-h5-font-size: (
-    "default": "xs",
-    "lg": "sm"
-) !default;
-$typography-h5-line-height: (
-    "default": 405,
-    "lg": 5
-) !default;
 $typography-h5-letter-spacing: (
     "default": normal,
     "md": normal
 ) !default;
 
-$typography-h6-font-size: "2xs" !default;
-$typography-h6-line-height: 405 !default;
 $typography-h6-letter-spacing: normal !default;
 
 $accordion-button-background-color-default: 'gray-100' !default;
@@ -190,7 +97,7 @@ $alert-padding: 4 !default;
 $alert-border-size: 3 !default;
 $alert-icon-size: 24px !default;
 $alert-text-color: 'black' !default;
-$alert-heading-fontsize: $typography-base-font-size !default;
+$alert-heading-fontsize: vars.$typography-base-font-size !default;
 $alert-heading-lineheight: 5 !default;
 $alert-heading-color: $alert-text-color !default;
 $alert-close-text-color: $alert-text-color !default;
@@ -201,10 +108,10 @@ $back-to-top-button-background: 'white' !default;
 $badge-font-weight: "semibold" !default;
 $badge-default-text-color: 'white' !default;
 $badge-default-background-color: 'black' !default;
-$badge-small-font-size: $typography-small-text-font-size !default;
-$badge-small-line-height: $typography-small-text-line-height !default;
-$badge-large-font-size: $typography-body-text-font-size !default;
-$badge-large-line-height: $typography-body-text-line-height !default;
+$badge-small-font-size: vars.$typography-small-text-font-size !default;
+$badge-small-line-height: vars.$typography-small-text-line-height !default;
+$badge-large-font-size: vars.$typography-body-text-font-size !default;
+$badge-large-line-height: vars.$typography-body-text-line-height !default;
 $badge-info-text-color: 'black' !default;
 $badge-success-text-color: 'black' !default;
 $badge-warning-text-color: 'black' !default;
@@ -276,7 +183,7 @@ $button-search-default-background-color: 'white' !default;
 $button-search-hover-background-color: 'gray-200' !default;
 $search-background-color: 'white' !default;
 
-$breadcrumbs-font-size: $typography-small-text-font-size !default;
+$breadcrumbs-font-size: vars.$typography-small-text-font-size !default;
 $breadcrumbs-text-color: 'black' !default;
 $breadcrumbs-chevron-size: 7px !default;
 $breadcrumbs-chevron-border-width: 1px !default;
@@ -331,8 +238,6 @@ $footer-background-color: 'white' !default;
 $footer-text-color: 'black' !default;
 $footer-logo: 'logo-placeholder.png' !default;
 
-$input-line-height: $typography-body-text-line-height !default;
-$input-placeholder-color: 'gray-500' !default;
 $checkbox-border-radius: 2px !default;
 $input-checkbox-border-radius: $checkbox-border-radius !default;
 $input-checkbox-radio-small-size: 405 !default;
@@ -342,29 +247,7 @@ $input-checkbox-radio-content-padding-bottom: 4 !default;
 $input-checkbox-radio-content-padding-left: 405 !default;
 $input-checkbox-radio-content-large-padding-left: 505 !default;
 $input-checkbox-radio-content-border-width: 2 !default;
-$input-checkbox-radio-content-border-color: 'gray-300' !default;
-$input-disabled-background-color: 'transparent' !default;
-$input-disabled-border-color: 'gray-200' !default;
-$input-border-color-feedback-success: 'error' !default;
-$form-hint-text-color: 'ink-light' !default;
-$form-hint-font-size: $typography-body-text-font-size !default;
-$form-hint-line-height: $typography-body-text-line-height !default;
-$form-hint-letter-spacing: $typography-body-text-letter-spacing !default;
-$form-hint-font-weight: $typography-body-text-font-weight !default;
-$form-group-error-border-width: 4px !default;
-$input-text-character-limit-exceeded-color: 'red-700' !default;
 
-$input-range-track-default-background-color: 'gray-300' !default;
-$input-range-track-default-border: vars.$input-border !default;
-$input-range-thumb-default-border: vars.$input-border !default;
-$input-range-thumb-default-background-color: 'gray-100' !default;
-
-$select-background-color: 'white' !default;
-$select-border: vars.$input-border !default;
-$select-border-radius: vars.$input-border-radius !default;
-$select-text-color: vars.$input-text-color !default;
-$select-font-size: vars.$input-font-size !default;
-$select-line-height: $input-line-height !default;
 $select-icon: "expand-more.svg" !default;
 
 $header-border-bottom: 10 !default;
@@ -382,7 +265,7 @@ $header-solution-line-height: 5 !default;
 $header-solution-text-size-desktop: '4xl' !default;
 $header-solution-line-height-desktop: 6 !default;
 $header-solution-authority-name: 'gray-600' !default;
-$header-solution-authority-name-font-size: $typography-base-font-size !default;
+$header-solution-authority-name-font-size: vars.$typography-base-font-size !default;
 $header-solution-info-mobile-text-color: 'black' !default;
 $header-navigation-background-color: 'white' !default;
 
@@ -428,17 +311,16 @@ $navigation-overflow-menu-expanded-icon-desktop: "expand-more-white" !default;
 
 $overflow-menu-arrow-size: 8px !default;
 $overflow-menu-dropdown-distance: 8px !default;
-$overflow-menu-button-text-color: 'ink' !default;
 $overflow-menu-button-icon-only-hover-background-color: 'gray-100' !default;
 $overflow-menu-content-shadow: 'medium' !default;
 $overflow-menu-content-background-color: 'white' !default;
 $overflow-menu-content-border: 10 !default;
-$overflow-menu-content-font-size: $typography-body-text-font-size !default;
-$overflow-menu-content-line-height: $typography-body-text-line-height !default;
+$overflow-menu-content-font-size: vars.$typography-body-text-font-size !default;
+$overflow-menu-content-line-height: vars.$typography-body-text-line-height !default;
 $overflow-menu-content-text-color: 'ink' !default;
 $overflow-menu-content-link-hover-background-color: 'gray-100' !default;
 
-$pagination-button-arrow-font-size: $typography-body-text-font-size !default;
+$pagination-button-arrow-font-size: vars.$typography-body-text-font-size !default;
 $pagination-button-arrow-background-color: 'transparent' !default;
 $pagination-button-arrow-color: 'black' !default;
 $pagination-current-page-background-color: 'gray-600' !default;
@@ -457,15 +339,12 @@ $sidenav-list-level1-border: 20 !default;
 $sidenav-list-level2-border: 30 !default;
 $sidenav-active-border-width: 4px !default;
 $sidenav-active-border-color: 'primary' !default;
-$sidenav-link-line-height: $typography-base-line-height !default;
+$sidenav-link-line-height: vars.$typography-base-line-height !default;
 
 $table-head-background-color: 'gray-100' !default;
-$table-head-font-weight: "semibold" !default;
-$table-border: 10 !default;
 $table-cell-border: vars.$table-row-border !default;
-$table-font-size: $typography-body-text-font-size !default;
-$table-text-line-height: $typography-body-text-line-height !default;
-$table-text-color: $typography-body-text-color !default;
+$table-font-size: vars.$typography-body-text-font-size !default;
+$table-text-color: vars.$typography-body-text-color !default;
 $table-row-even-background-color: 'gray-100' !default;
 $table-row-odd-background-color: 'white' !default;
 $table-selectable-hover-background-color: 'gray-100' !default;
@@ -479,14 +358,14 @@ $tavnav-button-hover-background-color: 'gray-200' !default;
 $tavnav-button-text-color: 'black' !default;
 
 $tag-border-radius: $button-border-radius !default;
-$tag-font-size: $typography-body-text-font-size !default;
+$tag-font-size: vars.$typography-body-text-font-size !default;
 $tag-font-weight: "medium" !default;
 $tag-text-color: 'white' !default;
 $tag-default-background-color: 'gray-600' !default;
 $tag-hover-background-color: 'gray-500' !default;
 $tag-active-background-color: 'black' !default;
 $tag-focus-background-color: 'gray-600' !default;
-$tag-line-height: $typography-body-text-line-height !default;
+$tag-line-height: vars.$typography-body-text-line-height !default;
 $tag-icon-color: $tag-text-color !default;
 
 $toast-default-background-color: 'white' !default;
@@ -516,17 +395,7 @@ $toggle-button-on-hover-background-color: 'primary-dark' !default;
 $toggle-button-on-active-background-color: 'primary-darker' !default;
 
 $tooltip-background-color: 'white' !default;
-$tooltip-shadow: 'medium' !default;
 $tooltip-border: 10 !default;
-$tooltip-link-color: $typography-body-text-color !default;
-$tooltip-link-border-width: 1px !default;
-$tooltip-link-border-style: dotted !default;
-$tooltip-link-border-color: $tooltip-link-color !default;
-
-$skipnav-background-color: 'white' !default;
-$skipnav-text-color: 'ink' !default;
-
-$spinner-animation-color: 'gray-600' !default;
 
 $system-border: (
   border: (
@@ -601,59 +470,6 @@ $system-shadow: (
       'spread': 0,
       'color': vars.$theme-color-shadow)
   )
-) !default;
-
-$grid-xs:                     0 !default;
-$grid-sm:                     576px !default;
-$grid-md:                     768px !default;
-$grid-lg:                     992px !default;
-$grid-xl:                     1200px !default;
-
-$grid-breakpoints: (
-  xs: $grid-xs,
-  sm: $grid-sm,
-  md: $grid-md,
-  lg: $grid-lg,
-  xl: $grid-xl
-) !default;
-
-$container-max-widths: (
-  sm: 100%,
-  md: 100%,
-  lg: 100%,
-  xl: 1200px
-) !default;
-
-$grid-columns:                  12 !default;
-$grid-gutter-width:             32px !default;
-
-$spacer: 8px !default;
-$spacers: (
-  0: 0,
-  1: ($spacer * .25),   //2px
-  2: ($spacer * .5),    //4px
-  3: $spacer,           //8px
-  305:($spacer * 1.5),  //12px
-  4: ($spacer * 2),     //16px
-  405: ($spacer * 2.5), //20px
-  5: ($spacer * 3),     //24px
-  505: ($spacer * 3.5), //28px
-  6: ($spacer * 4),     //32px
-  605: ($spacer * 4.5), //36px
-  7: ($spacer * 5),     //40px
-  705: ($spacer * 5.5), //44px
-  8: ($spacer * 6),     //48px
-  805: ($spacer * 6.5), //52px
-  9: ($spacer * 7),     //56px
-  905: ($spacer * 7.5), //60px
-) !default;
-
-$root-font-size: if(vars.$theme-respect-user-font-size, 62.5%, vars.$theme-root-font-size) !default;
-
-$root-font-size-equiv: if(
-  vars.$theme-respect-user-font-size,
-  10px,
-  vars.$theme-root-font-size
 ) !default;
 
 /*

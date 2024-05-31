@@ -1,3 +1,4 @@
+@use "../../../stylesheets/variables" as vars;
 @use "../../../stylesheets/functions" as func;
 @use "../../../stylesheets/mixins" as mixins;
 @use "../variables-DEPRECATED" as varsdep;
@@ -24,7 +25,7 @@
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: func.color(varsdep.$overflow-menu-button-text-color);
+        color: func.color(vars.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
 

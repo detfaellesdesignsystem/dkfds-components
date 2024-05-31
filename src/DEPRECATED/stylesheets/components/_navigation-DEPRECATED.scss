@@ -195,7 +195,7 @@
       }
       > .nav-link {
         font-size: func.font-size(vars.$typography-base-font-size);
-        line-height: func.units(varsdep.$typography-base-line-height, 'rem');
+        line-height: func.units(vars.$typography-base-line-height, 'rem');
         white-space: nowrap;
         padding-left: func.units(4);
   
@@ -325,7 +325,7 @@
         display: block;
         font-size: func.font-size(vars.$typography-base-font-size);
         font-weight: func.font-weight("normal");
-        line-height: func.units(varsdep.$typography-base-line-height, 'rem');
+        line-height: func.units(vars.$typography-base-line-height, 'rem');
         padding-top: calc(func.units(4) - 1px);
         padding-bottom: func.units(4);
         padding-left: 0px;
@@ -399,7 +399,7 @@
         box-shadow: none;
         color: func.color('ink');
         font-size: func.font-size(vars.$typography-body-text-font-size);
-        line-height: func.units(varsdep.$typography-body-text-line-height, 'rem');
+        line-height: func.units(vars.$typography-body-text-line-height, 'rem');
         min-width: inherit;
         padding-left: 0;
         padding-top: 0;
