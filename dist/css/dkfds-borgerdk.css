@@ -9607,7 +9607,7 @@ body.mobile-nav-active{
   padding-left:0;
   padding-right:0;
 }
-.navigation-menu ul.mainmenu .overflow-menu-inner ul > li.current{
+.navigation-menu ul.mainmenu .overflow-menu-inner ul > li.current, .navigation-menu ul.mainmenu .overflow-menu-inner ul > li.active{
   background-color:#F5F5F5;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul > li:last-child{
@@ -9633,7 +9633,8 @@ body.mobile-nav-active{
 .navigation-menu ul.mainmenu .overflow-menu-inner ul ul li:last-child .nav-link{
   padding-bottom:16px;
 }
-.navigation-menu ul.mainmenu .overflow-menu-inner ul li.current .nav-link span{
+.navigation-menu ul.mainmenu .overflow-menu-inner ul li.current .nav-link span,
+.navigation-menu ul.mainmenu .overflow-menu-inner ul li.active .nav-link span{
   font-weight:700;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .sub-title{

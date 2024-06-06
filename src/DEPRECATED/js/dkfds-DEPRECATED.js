@@ -197,4 +197,125 @@ var init = function (options) {
   
 };
 
-export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip };
+var init_limited = function (options) {
+  options = typeof options !== 'undefined' ? options : {}
+
+  // Allow the user to initialise FDS in only certain sections of the page
+  // Defaults to the entire document if nothing is set.
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document
+
+  /*
+  ---------------------
+  Accordions
+  ---------------------
+  */
+  const jsSelectorAccordion = scope.getElementsByClassName('accordion');
+  for(let c = 0; c < jsSelectorAccordion.length; c++){
+    new Accordion(jsSelectorAccordion[ c ]).init();
+  }
+  const jsSelectorAccordionBordered = scope.querySelectorAll('.accordion-bordered:not(.accordion)');
+  for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
+    new Accordion(jsSelectorAccordionBordered[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Alerts
+  ---------------------
+  */
+
+  const alertsWithCloseButton = scope.querySelectorAll('.alert.has-close');
+  for(let c = 0; c < alertsWithCloseButton.length; c++){
+    new Alert(alertsWithCloseButton[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Back to top button
+  ---------------------
+  */
+
+  const backToTopButtons = scope.getElementsByClassName('back-to-top-button');
+  for(let c = 0; c < backToTopButtons.length; c++){
+    new BackToTop(backToTopButtons[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Character limit
+  ---------------------
+  */
+  const jsCharacterLimit = scope.getElementsByClassName('form-limit');
+  for(let c = 0; c < jsCharacterLimit.length; c++){
+
+    new CharacterLimit(jsCharacterLimit[ c ]).init();
+  }
+  
+  /*
+  ---------------------
+  Checkbox collapse
+  ---------------------
+  */
+  const jsSelectorCheckboxCollapse = scope.getElementsByClassName('js-checkbox-toggle-content');
+  for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
+    new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Overflow menu sort
+  ---------------------
+  */
+  const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
+  for(let c = 0; c < jsSelectorDropdownSort.length; c++){
+    new DropdownSort(jsSelectorDropdownSort[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Datepicker
+  ---------------------
+  */
+  datePicker.on(scope);
+  
+  /*
+  ---------------------
+  Error summary
+  ---------------------
+  */
+  var $errorSummary = scope.querySelector('[data-module="error-summary"]');
+  new ErrorSummary($errorSummary).init();
+
+  /*
+  ---------------------
+  Radiobutton group collapse
+  ---------------------
+  */
+  const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
+  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
+    new RadioToggleGroup(jsSelectorRadioCollapse[ c ]).init();
+  }
+
+  /*
+  ---------------------
+  Responsive tables
+  ---------------------
+  */
+  const jsSelectorTable = scope.querySelectorAll('table.table--responsive-headers, table.table-sm-responsive-headers, table.table-md-responsive-headers, table.table-lg-responsive-headers');
+  for(let c = 0; c < jsSelectorTable.length; c++){
+    new ResponsiveTable(jsSelectorTable[ c ]);
+  }
+
+  /*
+  ---------------------
+  Selectable rows in table
+  ---------------------
+  */
+  const jsSelectableTable = scope.querySelectorAll('table.table--selectable');
+  for(let c = 0; c < jsSelectableTable.length; c++){
+    new TableSelectableRows(jsSelectableTable[ c ]).init();
+  }
+
+}
+
+export { init, init_limited, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, Modal, Navigation, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabnav, Toast, Tooltip };

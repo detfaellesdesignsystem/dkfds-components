@@ -1,9 +1,8 @@
 'use strict';
 
-const ARROW_DISTANCE_TO_TARGET = 4;             // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
-const ARROW_HEIGHT = 8;                         // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
-const GRID_GUTTER_WIDTH = 32;                   // Must match '$grid-gutter-width' in 'src\stylesheets\variables\variables\_grid.scss'
-const PAGE_MARGIN = GRID_GUTTER_WIDTH * 0.5
+const ARROW_DISTANCE_TO_TARGET = 4; // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
+const ARROW_HEIGHT = 8;             // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
+const MIN_MARGIN = 8;               // Minimum margin to the edge of the window
 
 function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
@@ -151,11 +150,11 @@ function appendArrow(tooltipWrapper) {
 function setWidth(tooltipEl) {
     tooltipEl.style.width = 'max-content';
     let WCAG_Reflow_criteria = 320; // Width of 320 px defined in WCAG 2.1, Criterion 1.4.10 "Reflow"
-    let accessibleMaxWidth = WCAG_Reflow_criteria - (PAGE_MARGIN * 2);
+    let accessibleMaxWidth = WCAG_Reflow_criteria - (MIN_MARGIN * 2);
     if (parseInt(window.getComputedStyle(tooltipEl).width) > accessibleMaxWidth) {
         tooltipEl.style.width = accessibleMaxWidth + 'px';
     }
-    let screenMaxWidth = document.body.clientWidth - (PAGE_MARGIN * 2);
+    let screenMaxWidth = document.body.clientWidth - (MIN_MARGIN * 2);
     if (parseInt(window.getComputedStyle(tooltipEl).width) > screenMaxWidth) {
         tooltipEl.style.width = screenMaxWidth + 'px';
     }
@@ -184,13 +183,13 @@ function setLeft(tooltipTarget, tooltipEl) {
     let left = (parseInt(tooltipTarget.getBoundingClientRect().width) - parseInt(tooltipEl.getBoundingClientRect().width))/2;
     tooltipEl.style.left = left + 'px';
     /* If the tooltip exceeds the left side of the screen, adjust it */
-    if (tooltipEl.getBoundingClientRect().left < PAGE_MARGIN) {
-        let adjustedLeft = 0 - parseInt(tooltipTarget.getBoundingClientRect().left) + PAGE_MARGIN;
+    if (tooltipEl.getBoundingClientRect().left < MIN_MARGIN) {
+        let adjustedLeft = 0 - parseInt(tooltipTarget.getBoundingClientRect().left) + MIN_MARGIN;
         tooltipEl.style.left = adjustedLeft + 'px';
     }
     /* If the tooltip exceeds the right side of the screen, adjust it */
-    else if (tooltipEl.getBoundingClientRect().right > (document.body.clientWidth - PAGE_MARGIN)) {
-        let adjustedLeft = parseInt(window.getComputedStyle(tooltipEl).left) - (tooltipEl.getBoundingClientRect().right - document.body.clientWidth + PAGE_MARGIN);
+    else if (tooltipEl.getBoundingClientRect().right > (document.body.clientWidth - MIN_MARGIN)) {
+        let adjustedLeft = parseInt(window.getComputedStyle(tooltipEl).left) - (tooltipEl.getBoundingClientRect().right - document.body.clientWidth + MIN_MARGIN);
         tooltipEl.style.left = adjustedLeft + 'px';
     }
 }

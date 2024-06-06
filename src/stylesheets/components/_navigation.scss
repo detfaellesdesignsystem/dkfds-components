@@ -134,7 +134,8 @@ $-left-right-padding: func.units(305);
                 padding-left: 0;
                 padding-right: 0;
 
-                &.current {
+                &.current,
+                &.active {
                     background-color: func.color(vars.$navigation-link-current-background-color);
                 }
     
@@ -164,13 +165,12 @@ $-left-right-padding: func.units(305);
                 }
             }
 
-
-
             ul li:last-child .nav-link {
                 padding-bottom: func.units(4);
             }
 
-            li.current .nav-link span {
+            li.current .nav-link span,
+            li.active .nav-link span {
                 font-weight: func.font-weight("bold");
             }
 
