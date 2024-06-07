@@ -95,7 +95,7 @@
             <ul class="mainmenu">
                 {% set menuID = params.id | default('desktopmenu') %}
                 {%- for item in params.links -%}
-                <li{% if item.active or item.current %} class="{% if item.active or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>
+                <li{% if item.active or item.current or item.currentDesktop %} class="{% if item.active or item.current or item.currentDesktop %}active{% endif %}{% if item.current or item.currentDesktop %} current{% endif %}"{% endif %}>
                     {% if item.links -%}
                     {% set submenuID = menuID + "-" + loop.index %}
                     <div class="submenu">
@@ -105,8 +105,8 @@
                         <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
                             <ul class="overflow-list">
                                 {%- for subitem in item.links -%}
-                                <li{% if subitem.active or subitem.current %} class="{% if subitem.active or subitem.current %}active{% endif %}{% if subitem.current %} current{% endif %}"{% endif %}>
-                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current %} aria-current="page"{% endif %}>
+                                <li{% if subitem.active or subitem.current or subitem.currentDesktop %} class="{% if subitem.active or subitem.current or subitem.currentDesktop %}active{% endif %}{% if subitem.current or subitem.currentDesktop %} current{% endif %}"{% endif %}>
+                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current or subitem.currentDesktop %} aria-current="page"{% endif %}>
                                         <span>{{ subitem.text }}</span>
                                     </a>
                                 </li>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     {% else -%}
-                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current or item.currentDesktop %} aria-current="page"{% endif %}>
                         <span>{{ item.text }}</span>
                     </a>
                     {%- endif %}

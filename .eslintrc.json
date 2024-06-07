@@ -11,53 +11,9 @@
         "sourceType": "module"
     },
     "rules": {
-        // Possible Problems - possible logic errors in code
-        "no-undef": [
-            "off"
-        ],
-        "no-unused-vars": [
-            "off"
-        ],
-        // Suggestions - alternate ways of doing things
-        "no-console": [
-            "off"
-        ],
-        // Layout & Formatting - how the code looks rather than how it executes
-        "array-bracket-spacing": [
-            "warn", "always"
-        ],
-        "block-spacing": [
-            "warn", "always"
-        ],
-        "comma-dangle": [
-            "warn", "always-multiline"
-        ],
-        "comma-spacing": [
-            "warn", { "before": false, "after": true }
-        ],
-        "computed-property-spacing": [
-            "warn", "always"
-        ],
-        "indent": [
-            "off"
-            //"warn", 4
-        ],
-        "linebreak-style": [
-            "off"
-            //"warn", "windows"
-        ],
-        "object-curly-spacing": [
-            "warn", "always"
-        ],
-        "quotes": [
-            "off"
-            //"warn", "double"
-        ],
-        "semi": [
-            "warn", "always"
-        ],
-        "space-before-function-paren": [
-            "warn", "always"
-        ]
+        "no-duplicate-imports": "warn",
+        "no-unused-vars": "warn",
+        "eqeqeq": "warn",
+        "no-console": "error"
     }
 }

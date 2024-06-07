@@ -66,6 +66,11 @@ Tooltip.prototype.init = function () {
             updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
         });
 
+        tooltipTarget.addEventListener('blur', function () {
+            tooltipTarget.classList.remove('js-hover');
+            hideTooltip(wrapper, tooltipTarget, tooltipEl);
+        });
+
         tooltipTarget.addEventListener('mouseover', function (e) {
             /* The tooltip should not appear if the user just briefly moves the cursor 
                across the component. Use the 'js-hover' class as a flag to check, if

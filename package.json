@@ -11,8 +11,7 @@
     "./dkfds-DEPRECATED": "./dist/DEPRECATED/dkfds-DEPRECATED.min.js"
   },
   "scripts": {
-    "build": "webpack",
-    "lint-scss": "npx stylelint \"src/stylesheets/**\" --formatter verbose"
+    "build": "webpack"
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "license": "(MIT AND OFL-1.1 AND Apache-2.0)",
