@@ -66,11 +66,6 @@ Tooltip.prototype.init = function () {
             updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
         });
 
-        tooltipTarget.addEventListener('blur', function () {
-            tooltipTarget.classList.remove('js-hover');
-            hideTooltip(wrapper, tooltipTarget, tooltipEl);
-        });
-
         tooltipTarget.addEventListener('mouseover', function (e) {
             /* The tooltip should not appear if the user just briefly moves the cursor 
                across the component. Use the 'js-hover' class as a flag to check, if
@@ -83,9 +78,23 @@ Tooltip.prototype.init = function () {
                 }
             }, 300);
         });
-    
+
+        tooltipTarget.addEventListener('pointerdown', function (e) {
+            /* The tooltip should appear after pressing down for a while on the element.
+               Use the 'js-pressed' class as a flag to check, if the element stays pressed
+               down. */
+            tooltipTarget.classList.add('js-pressed');
+            setTimeout(function () {
+                if (tooltipTarget.classList.contains('js-pressed')) {
+                    showTooltip(wrapper, tooltipTarget, tooltipEl);
+                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                }
+            }, 500);
+        });
+
         tooltipTarget.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
+            tooltipTarget.classList.remove('js-pressed');
             let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
             let onTooltip = false;
             if (wrapper.classList.contains('place-above')) {
@@ -100,8 +109,21 @@ Tooltip.prototype.init = function () {
             }
         });
 
+        tooltipTarget.addEventListener('click', function (e) {
+            tooltipTarget.classList.remove('js-pressed');
+            if (document.activeElement !== tooltipTarget) {
+                /* The tooltip target was just clicked but is not the element with focus. That 
+                   means it probably shouldn't show the tooltip, for example due to an opened 
+                   modal. However, this also means that tooltip targets in Safari won't show 
+                   tooltip on click, since click events in Safari don't focus the target. */
+                tooltipTarget.classList.remove('js-hover');
+                hideTooltip(wrapper, tooltipTarget, tooltipEl);
+            }
+        });
+
         tooltipEl.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
+            tooltipTarget.classList.remove('js-pressed');
             let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
             let onTarget = false;
             if (wrapper.classList.contains('place-above')) {
@@ -120,6 +142,7 @@ Tooltip.prototype.init = function () {
            ensure that the tooltip closes */
         wrapper.addEventListener('mouseleave', function (e) {
             tooltipTarget.classList.remove('js-hover');
+            tooltipTarget.classList.remove('js-pressed');
             hideTooltip(wrapper, tooltipTarget, tooltipEl);
         });
     }

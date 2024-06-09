@@ -3,9 +3,9 @@ import Dropdown from './dropdown';
 const forEach = require('array-foreach');
 const select = require('../utils/select').default;
 
-//const NAV_DESKTOP = `.navigation-header`;
 const MOBILE_DRAWER = `.mobile-drawer`;
 const NAV_LINKS = `.navigation-menu-mobile a`;
+const MODALS = '[data-module="modal"]';
 const OPENERS = `.js-menu-open`;
 const CLOSE_BUTTON = `.js-menu-close`;
 const OVERLAY = `.overlay`;
@@ -205,6 +205,16 @@ const mobileMenu = function () {
         for (let n = 0; n < navLinks.length; n++) {
             navLinks[n].addEventListener('click', function () {
                 // If a navigation link is clicked inside the mobile menu, ensure that the menu gets hidden
+                if (isActive()) {
+                    toggleNav.call(this, false);
+                }
+            });
+        }
+
+        let modals = document.querySelectorAll(MODALS);
+        for (let m = 0; m < modals.length; m++) {
+            // All modals should close the mobile menu
+            modals[m].addEventListener('click', function () {
                 if (isActive()) {
                     toggleNav.call(this, false);
                 }
