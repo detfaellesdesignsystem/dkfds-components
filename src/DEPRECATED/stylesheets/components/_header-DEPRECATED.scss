@@ -74,7 +74,7 @@ $z-index-nav:     9000;
 
   .portal-header{
     background-color: func.color(vars.$header-portal-background-color);
-    border-bottom: func.border(varsdep.$header-portal-border);
+    border-bottom: func.border(vars.$header-portal-border);
     width: 100%;
     &.portal-header-compact{
       font-size: func.font-size(vars.$typography-small-text-font-size);
@@ -134,10 +134,10 @@ $z-index-nav:     9000;
 
   .solution-header{
     border-bottom: func.border(varsdep.$header-border-bottom);
-    background-color: func.color(varsdep.$header-solution-background-color);
+    background-color: func.color(vars.$header-solution-background-color);
 
     @include mixins.media-breakpoint-up(lg) {
-      border-bottom: func.border(varsdep.$header-solution-border);
+      border-bottom: func.border(vars.$header-solution-border);
     }
 
     width: 100%;
@@ -155,24 +155,24 @@ $z-index-nav:     9000;
 
     .solution-heading{
       a, h1, .g1{
-        font-size:func.font-size(varsdep.$header-solution-text-size);
-        line-height: func.units(varsdep.$header-solution-line-height, 'rem');
+        font-size:func.font-size(vars.$header-solution-text-size);
+        line-height: func.units(vars.$header-solution-line-height, 'rem');
         font-weight: func.font-weight("semibold");
-        color: func.color(varsdep.$header-solution-text-color);
+        color: func.color(vars.$header-solution-text-color);
         text-decoration: none;
         display: inline-block;
         @include mixins.media-breakpoint-up(md) {
-          font-size: func.font-size(varsdep.$header-solution-text-size-desktop);
-          line-height: func.units(varsdep.$header-solution-line-height-desktop, 'rem');
+          font-size: func.font-size(vars.$header-solution-text-size-desktop);
+          line-height: func.units(vars.$header-solution-line-height-desktop, 'rem');
         }
       }
       p, h2, h3, h4, h5, .h2, .h3, .h4, .h5{
-        color: func.color(varsdep.$header-solution-text-color);
+        color: func.color(vars.$header-solution-text-color);
       }
       .function-link{
-        color: func.color(varsdep.$header-solution-text-color);
+        color: func.color(vars.$header-solution-text-color);
         &:hover, &:focus, &:visited{
-          color: func.color(varsdep.$header-solution-text-color);
+          color: func.color(vars.$header-solution-text-color);
         }
       }
     }
@@ -187,9 +187,9 @@ $z-index-nav:     9000;
     }
   }
   .authority-name{
-    color: func.color(varsdep.$header-solution-authority-name);
+    color: func.color(vars.$header-solution-authority-name);
     font-weight: func.font-weight("semibold");
-    font-size: func.font-size(varsdep.$header-solution-authority-name-font-size);
+    font-size: func.font-size(vars.$header-solution-authority-name-font-size);
     line-height: 2.4rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -221,15 +221,15 @@ $z-index-nav:     9000;
     padding: func.units(5) func.units(4);
     p{
       margin-bottom: func.units(3);
-      color: func.color(varsdep.$header-solution-info-mobile-text-color);
+      color: func.color(vars.$header-solution-info-mobile-text-color);
       &:last-child{
         margin-bottom: 0;
       }
     }
     .function-link{
-      color: func.color(varsdep.$header-solution-info-mobile-text-color);
+      color: func.color(vars.$header-solution-info-mobile-text-color);
       &:hover, &:focus, &:visited{
-        color: func.color(varsdep.$header-solution-info-mobile-text-color);
+        color: func.color(vars.$header-solution-info-mobile-text-color);
       }
     }
     @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
@@ -254,7 +254,7 @@ $z-index-nav:     9000;
     right: 0;
     bottom: 0;
     left: auto;
-    background-color: func.color(varsdep.$header-navigation-background-color);
+    background-color: func.color(vars.$header-navigation-background-color);
     display: none;
     flex-direction: column;
     overflow-y: auto;

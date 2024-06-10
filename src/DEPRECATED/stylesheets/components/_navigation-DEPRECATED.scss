@@ -136,7 +136,7 @@
   
     .nav-link {    
       text-decoration: none;
-      color: func.color(varsdep.$navigation-link-default-color);
+      color: func.color(vars.$navigation-link-default-color);
       background-color: func.color(varsdep.$navigation-link-default-background-color);
       display: block;
       padding:calc(func.units(4) - 1px) 0 func.units(4); 
@@ -321,7 +321,7 @@
         display: inline-block;
       }
       .button-overflow-menu{
-        color: func.color(varsdep.$navigation-link-default-color);
+        color: func.color(vars.$navigation-link-default-color);
         display: block;
         font-size: func.font-size(vars.$typography-base-font-size);
         font-weight: func.font-weight("normal");
@@ -425,7 +425,7 @@
             display: block;
             text-decoration: none;
             &:hover, &:visited, &:focus{
-              color: func.color(varsdep.$navigation-link-default-color);
+              color: func.color(vars.$navigation-link-default-color);
               background-color: transparent;
               @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
                 color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
@@ -460,7 +460,7 @@
           }
           a {
             text-decoration: none;
-            color: func.color(varsdep.$navigation-link-default-color);
+            color: func.color(vars.$navigation-link-default-color);
             background-color: func.color(varsdep.$navigation-link-default-background-color);
             display: block;
             padding: calc(func.units(4) - 1px) 0 func.units(4);

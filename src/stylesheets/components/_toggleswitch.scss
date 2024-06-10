@@ -1,6 +1,5 @@
 @use '../variables' as vars;
 @use '../functions' as func;
-@use "../mixins" as mixins;
 
 $-button-width: func.units(9);
 $-toggle-dot-diameter: func.units(505);

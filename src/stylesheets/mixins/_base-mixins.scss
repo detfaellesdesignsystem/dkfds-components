@@ -1,7 +1,5 @@
-@use 'sass:math' as math;
 @use "../variables" as vars;
 @use "../functions" as func;
-@use "typography-mixins" as typo-mixins;
 
 @mixin add-background-svg($image-name) {
     background-image: url("#{vars.$icons-folder-path}#{$image-name}.svg");
