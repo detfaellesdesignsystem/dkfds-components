@@ -83,16 +83,18 @@
 
     .overflow-menu-inner {
         position: absolute;
-        width: 100%;
-        max-width: 30rem;
+        width: calc(100% - 8px);
         z-index: vars.$zindex-overflow;
         border: func.border(vars.$overflow-menu-content-border);
         box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
         background: func.color(vars.$overflow-menu-content-background-color);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
+        left: 4px;
 
         @include mixins.media-breakpoint-up(md) {
             width: auto;
+            max-width: 30rem;
+            left: auto;
         }
 
         @include mixins.media-breakpoint-up(sm) {
@@ -129,6 +131,7 @@
             display: block;
             text-decoration: none;
             line-height: func.units(5, 'rem');
+            max-width: 100%;
 
             &:hover,
             &:visited,
@@ -174,6 +177,12 @@
 
     &--open-right {
         .overflow-menu-inner {
+            li,
+            a,
+            button {
+                text-align: left;
+            }
+
             @include mixins.media-breakpoint-up(md) {
                 left: calc(50% - 19px);
 

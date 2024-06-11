@@ -213,19 +213,26 @@ let toggle = function(button, forceClose = false){
       triggerEl.dispatchEvent(eventOpen);
 
       let targetOffset = offset(targetEl);
-      if(targetOffset.left < 0){
-        targetEl.style.left = '0px';
-        targetEl.style.right = 'auto';
-
-        if(parseInt(window.getComputedStyle(targetEl).marginLeft) < 0) {
-          targetEl.style.marginLeft = 0;
+      if (targetOffset.left < 0) {
+        let leftAdjust = 4;
+        /* Header menus have negative margin and may need additional adjustment */
+        if (parseInt(window.getComputedStyle(targetEl).marginLeft) < 0) {
+          leftAdjust = 0 - parseInt(window.getComputedStyle(targetEl).marginLeft);
         }
+        targetEl.style.left = leftAdjust + 'px';
+        targetEl.style.right = 'auto';
       }
       
       let right = targetOffset.left + targetEl.offsetWidth;
-      if(right > document.body.clientWidth){
+      if (right > document.documentElement.clientWidth) {
         targetEl.style.left = 'auto';
-        targetEl.style.right = '-4px'; // Focus outline
+
+        if (targetEl.parentNode.classList.contains('submenu')) {
+          targetEl.style.right = '-4px';
+        }
+        else {
+          targetEl.style.right = '4px';
+        }
       }
     }
 

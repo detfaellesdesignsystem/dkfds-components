@@ -1419,7 +1419,7 @@ dfn{
 }
 
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width),
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width):not(.overflow-list),
 ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):not(.no-max-width){
   max-width:66ch;
 }
@@ -10884,17 +10884,19 @@ a.skipnav:focus{
 }
 .overflow-menu .overflow-menu-inner{
   position:absolute;
-  width:100%;
-  max-width:30rem;
+  width:calc(100% - 8px);
   z-index:2;
   border:1px solid #747474;
   box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
   background:white;
   top:calc(100% + 8px);
+  left:4px;
 }
 @media (min-width: 768px){
   .overflow-menu .overflow-menu-inner{
     width:auto;
+    max-width:30rem;
+    left:auto;
   }
 }
 @media (min-width: 576px){
@@ -10955,6 +10957,7 @@ a.skipnav:focus{
   display:block;
   text-decoration:none;
   line-height:2.4rem;
+  max-width:100%;
 }
 .overflow-menu .overflow-list a:hover, .overflow-menu .overflow-list a:visited, .overflow-menu .overflow-list a:focus{
   color:#1a1a1a;
@@ -10988,6 +10991,11 @@ a.skipnav:focus{
     border-top:0;
     border-bottom:0;
   }
+}
+.overflow-menu--open-right .overflow-menu-inner li,
+.overflow-menu--open-right .overflow-menu-inner a,
+.overflow-menu--open-right .overflow-menu-inner button{
+  text-align:left;
 }
 @media (min-width: 768px){
   .overflow-menu--open-right .overflow-menu-inner{
