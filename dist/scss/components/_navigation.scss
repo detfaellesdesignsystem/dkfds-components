@@ -100,6 +100,28 @@ $-left-right-padding: func.units(305);
                 padding-right: 0;
             }
         }
+
+        .overflow-menu-inner {
+            $-border-width: 1px;
+            margin-left: calc(0px - func.units(2) - $-border-width);
+
+            ul li.active {
+                background-color: func.color(vars.$navigation-link-background-color);
+
+                span {
+                    font-weight: func.font-weight("normal");
+                }
+
+                &.current {
+                    background-color: func.color(vars.$navigation-link-current-background-color);
+                    
+                    span {
+                        font-weight: func.font-weight("bold");
+                    }
+                    
+                }
+            }
+        }
     }
 
     .button-overflow-menu {

@@ -9571,6 +9571,21 @@ body.mobile-nav-active{
   padding-left:0;
   padding-right:0;
 }
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner{
+  margin-left:-5px;
+}
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active{
+  background-color:white;
+}
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active span{
+  font-weight:400;
+}
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active.current{
+  background-color:#F5F5F5;
+}
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active.current span{
+  font-weight:700;
+}
 .navigation-menu ul.mainmenu .button-overflow-menu[aria-expanded=false] span{
   background-image:url("../img/svg-icons/expand-more.svg");
   background-repeat:no-repeat;
