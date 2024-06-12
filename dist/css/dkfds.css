@@ -9601,7 +9601,7 @@ body.mobile-nav-active{
   width:30rem;
   border:1px solid #747474;
   background-color:white;
-  margin-left:-13px;
+  margin-left:-5px;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul{
   margin:0;
@@ -9632,7 +9632,7 @@ body.mobile-nav-active{
   border-bottom:0;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner ul .nav-link{
-  padding:8px 24px;
+  padding:8px 16px;
   white-space:normal;
   overflow-wrap:break-word;
   background-color:transparent;

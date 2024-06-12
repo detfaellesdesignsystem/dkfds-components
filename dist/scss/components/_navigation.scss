@@ -3,7 +3,7 @@
 @use "../mixins" as mixins;
 @use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
-$navigation-row-link-padding-left-right: func.units(305);
+$navigation-row-link-padding-left-right: func.units(2);
 $navigation-desktop-border-bottom-thickness: func.units(2);
 
 $-left-right-padding: func.units(305);
