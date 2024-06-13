@@ -15,10 +15,6 @@ params:
   type: string
   required: true
   description: Label for the checkbox (the text written next to the checkbox)
-- name: isLarge
-  type: boolean
-  required: false
-  description: Choose whether the checkbox should be small or large. Defaults to true (large).
 - name: classes
   type: object
   required: false
@@ -83,7 +79,19 @@ params:
   type: boolean
   required: false
   description: Show label saying the input is optional - use only when most inputs in form are required.
-- name: isStandalone
-  type: boolean
+- name: tooltip
+  type: object
   required: false
-  description: Set to true when you only have a single checkbox without a fieldset.
+  description: Tooltip for the checkbox.
+  - name: text
+    type: string
+    required: true
+    description: The tooltip text.
+  - name: contentElement
+    type: string
+    required: false
+    description: The HTML tag used for the tooltip-wrapper. Should be "div" or "span".
+  - name: id
+    type: string
+    required: true
+    description: The id used for the tooltip button.

@@ -1,0 +1,549 @@
+@use "../../../stylesheets/variables" as vars;
+@use "../../../stylesheets/functions" as func;
+@use "../../../stylesheets/mixins" as mixins;
+@use "../variables-DEPRECATED" as varsdep;
+
+// Header navigation ------------- //
+
+@mixin nav-current-border {
+    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(vars.$navigation-link-current-border-color);
+  }
+  @mixin nav-hover-border {
+    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(varsdep.$navigation-link-hover-border-color);
+  }
+  @mixin nav-focus-border {
+    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(varsdep.$navigation-link-focus-border-color);
+  }
+  @mixin nav-link-border {
+    border-bottom: varsdep.$navigation-link-default-border-width solid func.color(varsdep.$navigation-link-default-border-color);
+  }
+  
+  @mixin nav-link {
+   
+  }
+  
+  .mobile_nav-active {
+    overflow: hidden;
+  }
+  
+  .mobile_nav-active{
+    .nav{
+        .nav-actions{
+          //overflow menu (the ones not in nav-primary)
+          .overflow-menu{
+            width: 100%;
+            .button-overflow-menu{
+              width: 100%;
+              justify-content: flex-start;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: func.units(4);
+              padding-bottom: func.units(4);
+              &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
+                display: none;
+              }
+            }
+            .overflow-menu-inner{
+              position: static;
+              border: none;
+              box-shadow:  none;
+              min-width: inherit;
+              margin-top: 0;
+              padding-top: 0px;
+              .overflow-list{
+                padding-left: func.units(4);
+              }
+              a, button{
+                text-align: left;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: func.units(3);
+                padding-bottom: func.units(3);
+                &:hover{
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+    }
+  }
+  
+  .navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: func.units(4);
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      padding: 0;
+      flex-direction: row;
+    }
+  
+    .helptext{
+      color: func.color(varsdep.$navigation-link-information-text-color);
+      font-weight: func.font-weight("normal");
+    }
+  
+    .navbar-inner{
+      border-bottom: func.border(20);
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  
+  
+  .navbar-context-actions{
+    padding-bottom: func.units(4);
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      padding-top: func.units(4);
+      padding-bottom: 0;
+    }
+  }
+  
+  // // Primary navigation ------------- //
+  
+  .nav-primary {
+    padding-top: 0;
+    @include mixins.unstyled-list;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    border-top: func.border(20);
+    + .nav-actions{
+      border-top: func.border(20);
+      margin-top: 0;
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        border-top: none;
+      }
+    }
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      border-top: none;
+      flex-direction: row;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      margin-top: 0;
+      margin-left: -12px;
+      border-bottom: none;
+    }
+    ul{
+      margin-left: func.units(4);
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        margin-left: 0;
+      }
+    }
+  
+    .nav-link {    
+      text-decoration: none;
+      color: func.color(vars.$navigation-link-default-color);
+      background-color: func.color(varsdep.$navigation-link-default-background-color);
+      display: block;
+      padding:calc(func.units(4) - 1px) 0 func.units(4); 
+      span{
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          display: block;
+          @include nav-link-border;
+        }
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          padding-bottom: 9px;
+        }
+      }
+    }
+  
+    li{
+      margin-top: 0;
+      padding-left: 0px;
+      border-bottom: func.border(20);
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        border-bottom: none;
+      }
+      &:last-of-type{
+        border-bottom: none;
+      }
+       li li {
+        .overflow-menu{
+          .buttton-overflow-menu{
+            padding-top: calc(func.units(305) - 1px);
+            padding-bottom: func.units(305);
+          }
+        }
+        .nav-link{
+          padding-top: calc(func.units(305) - 1px);
+          padding-bottom: func.units(305);
+        }
+      }
+    }
+  
+    // level 1
+    > li {
+      & > .overflow-menu {
+        & > button.button-overflow-menu{
+          padding-left: func.units(4);
+        }
+        & > .overflow-menu-inner > .overflow-list{
+          margin-left: func.units(6);
+        } 
+      }
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        border-bottom: 0;
+        padding-right: 0;
+        padding-left: 0;
+        & > .overflow-menu > button.button-overflow-menu{
+          padding-left: func.units(305);
+        }
+      }
+      > .nav-link {
+        font-size: func.font-size(vars.$typography-base-font-size);
+        line-height: func.units(vars.$typography-base-line-height, 'rem');
+        white-space: nowrap;
+        padding-left: func.units(4);
+  
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          padding-bottom: 0px;
+          padding-left: 0;
+        }
+        &:hover {
+          @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+            background-color: func.color(varsdep.$navigation-link-hover-background-color);
+            color: func.color(varsdep.$navigation-link-hover-color);
+            span{
+              @include nav-hover-border;
+            }
+          }
+        }
+        &:focus{
+          position: relative;
+          z-index: 100;
+          background-color: func.color(varsdep.$navigation-link-focus-background-color);
+          color: func.color(varsdep.$navigation-link-focus-color);
+          span{
+            @include nav-focus-border;
+          }
+        }
+      }
+      & > .nav-link, & > button, & .button-overflow-menu{
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          padding-left: 12px;
+          padding-right: 12px;
+          span{        
+            @include nav-link-border;
+            padding-bottom: calc(#{func.units(3)} + 1px);
+          }
+          &:hover span{
+            @include nav-hover-border;
+          }
+          &:focus span{
+            @include nav-focus-border;
+          }
+        }
+      }
+    }
+    .active > a, .overflow-menu .overflow-menu-inner .overflow-list > li.active > a{
+      font-weight: func.font-weight("semibold");
+    }
+    .current {
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        > a, .button-overflow-menu{
+          background-color: func.color(varsdep.$navigation-link-current-background-color);
+          color: func.color(varsdep.$navigation-link-current-color);
+          span {
+            @include nav-current-border;
+          }
+          &:hover, &:focus, &:hover, &:visited{
+            background-color: func.color(varsdep.$navigation-link-current-background-color);
+            color: func.color(varsdep.$navigation-link-current-color);
+            span {
+              @include nav-current-border;
+            }
+          }
+        }
+        .overflow-menu{
+          .button-overflow-menu{
+            font-weight: func.font-weight("semibold");
+            color: func.color(varsdep.$navigation-link-current-color);
+            background-color: func.color(varsdep.$navigation-link-current-background-color);
+            
+            span{
+              @include nav-current-border;
+            }
+  
+            &:focus,
+            &:active {
+              color: func.color(varsdep.$navigation-link-current-color);
+              background-color: func.color(varsdep.$navigation-link-current-background-color);
+              position: relative;
+              z-index: 2;
+              span {
+                @include nav-current-border;
+              }
+            }
+            &:hover{
+              color: func.color(varsdep.$navigation-link-current-color);
+              background-color: func.color(varsdep.$navigation-link-current-background-color);
+              span{
+                @include nav-current-border;
+              }
+            }
+  
+            &[aria-expanded=true] {
+              background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color-desktop);
+              color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+              
+              span{
+                @include nav-current-border;
+              }
+  
+              &:hover, &:focus, &:active {
+                background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color-desktop);
+                color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+                span{
+                  @include nav-current-border;
+                }
+              }
+            }
+          }
+        }
+      }
+      & > a, & > .overflow-menu > .button-overflow-menu{
+        color: func.color(varsdep.$navigation-link-current-color);
+        
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          font-weight: func.font-weight("medium");
+        }
+      }
+    }
+  
+    /*region: nav-primary overflow menu */
+    .overflow-menu{
+      display: block;
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        display: inline-block;
+      }
+      .button-overflow-menu{
+        color: func.color(vars.$navigation-link-default-color);
+        display: block;
+        font-size: func.font-size(vars.$typography-base-font-size);
+        font-weight: func.font-weight("normal");
+        line-height: func.units(vars.$typography-base-line-height, 'rem');
+        padding-top: calc(func.units(4) - 1px);
+        padding-bottom: func.units(4);
+        padding-left: 0px;
+        padding-right: func.units(7);
+        white-space: normal;
+        width: 100%;
+        
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+         padding-bottom: 0;
+         width: unset;
+         padding-right: func.units(305);
+         padding-left: func.units(305);
+        }
+        &[aria-expanded=true]:after, &[aria-expanded=true]:before, &:after, &:before{
+          display: none;
+        }
+        span{
+          padding-right: 24px;
+          display: block;
+        }
+            
+        &:focus,
+        &:active {
+          @include mixins.focus-outline();
+          color: func.color(varsdep.$navigation-link-focus-color);
+          z-index: 2;
+          position: relative;
+        }
+        &:hover{
+          text-decoration: none;
+          color: func.color(varsdep.$navigation-link-hover-color);
+          background-color: transparent;
+        }
+  
+        &[aria-expanded=false] {
+          @include mixins.add-background-svg(varsdep.$navigation-overflow-menu-collapsed-icon);
+          background-position: right func.units(4) top func.units(4);
+          background-size: 24px;
+  
+          @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+            @include mixins.add-background-svg(varsdep.$navigation-overflow-menu-collapsed-icon-desktop);
+            background-position: right 1rem center; 
+          }
+        }
+  
+        &[aria-expanded=true] {
+          @include mixins.add-background-svg(varsdep.$navigation-overflow-menu-expanded-icon);
+          background-position: right func.units(4) top func.units(4);
+          background-size: 24px;
+          background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color);
+  
+          @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+            @include mixins.add-background-svg(varsdep.$navigation-overflow-menu-expanded-icon-desktop);
+            background-position: right 1rem center;
+            background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color-desktop);
+            color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+            position: relative;
+            z-index: 2;
+            &:before, &:after{
+              display: none;
+            }
+           
+          }
+        }
+      }
+      .overflow-menu-inner {
+        @include mixins.unstyled-list;
+        background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color);
+        border: none;
+        border-top: func.border(20);
+        box-shadow: none;
+        color: func.color('ink');
+        font-size: func.font-size(vars.$typography-body-text-font-size);
+        line-height: func.units(vars.$typography-body-text-line-height, 'rem');
+        min-width: inherit;
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        position: static;
+        width: 100%;
+  
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          width: 30rem;
+          border: func.border(10);
+          border-top: 0;
+          padding-left: 0;
+          position: absolute;
+          z-index: 1;
+          padding-top: func.units(3);
+          padding-bottom: func.units(3);
+          background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color-desktop);
+          top: 100%;
+        }
+        
+        a{
+            @include mixins.body-copy-text;
+            display: block;
+            text-decoration: none;
+            &:hover, &:visited, &:focus{
+              color: func.color(vars.$navigation-link-default-color);
+              background-color: transparent;
+              @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+                color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+                text-decoration: underline;
+              }
+            }
+            @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+              @include mixins.small-text();
+              color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+              padding: func.units(3) func.units(4);
+            }
+        }
+  
+        button:not(.button-overflow-menu){
+          @include mixins.button-unstyled;
+        }
+      }
+    }
+    /*endregion*/
+  
+  
+    .overflow-menu{
+      .overflow-menu-inner {
+        .overflow-list{
+          list-style-type: none;
+          margin-left: func.units(4);
+          @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+            margin-left: 0;
+          }
+          li:before{
+            display: none;
+          }
+          a {
+            text-decoration: none;
+            color: func.color(vars.$navigation-link-default-color);
+            background-color: func.color(varsdep.$navigation-link-default-background-color);
+            display: block;
+            padding: calc(func.units(4) - 1px) 0 func.units(4);
+            @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+              background-color: transparent;
+              color: func.color(varsdep.$navigation-overflow-menu-open-text-color);
+              padding: func.units(3) func.units(4);
+              &:hover{          
+                text-decoration: underline;
+              }
+            }
+          }
+          .overflow-list, .overflow-list {
+            margin-left: func.units(4);
+            li {
+              a {
+                padding: calc(func.units(305) - 1px) 0 func.units(305);
+              }
+              @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+                &:last-of-type a {
+                  padding: 8px 0 32px 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .nav-secondary{
+    padding: 0 func.units(4);
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+    .nav-actions{
+      padding: 0;
+    }
+    + .nav-actions{
+      padding: 0 func.units(4) func.units(4);
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      padding: 0 0 0 func.units(4);
+      }
+    }
+    .nav-secondary-heading{
+      font-weight: func.font-weight("bold");
+      margin-bottom: func.units(1);
+      + ul{
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          margin-left: func.units(4);
+        }
+      }
+    }
+  }
+  
+  .navbar-primary{
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      border-bottom: func.border(10);
+    }
+  }
+  
+  .navbar:last-of-type{
+    .nav-actions{
+      border-bottom: none;
+    }
+  }
+  
+  // // Navbar inner
+  .navbar-inner {
+    display: flex;
+    flex-direction: column;
+    &.container {
+      padding-left: 0;
+      padding-right: 0;
+      @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+        padding-left: func.units(4);
+        padding-right: func.units(4);
+      }
+    }
+    @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }

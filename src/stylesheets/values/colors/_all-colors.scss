@@ -1,0 +1,74 @@
+@use "sass:map" as map;
+@use '../../variables' as vars;
+@use "fds-colors" as fds;
+@use "theme-colors" as theme;
+
+// ------------------------------------------------------------------
+// Get a map of all color names and their value in HEX
+// ------------------------------------------------------------------
+
+$fds-color-maps: 
+    fds.$fds-color-gray, 
+    fds.$fds-color-green, 
+    fds.$fds-color-orange, 
+    fds.$fds-color-red, 
+    fds.$fds-color-blue, 
+    fds.$fds-color-purple, 
+    fds.$fds-color-data-violet, 
+    fds.$fds-color-data-pink-violet, 
+    fds.$fds-color-data-orange, 
+    fds.$fds-color-data-yellow-red, 
+    fds.$fds-color-data-blue, 
+    fds.$fds-color-data-green-blue, 
+    fds.$fds-color-data-green, 
+    fds.$fds-color-black-transparent, 
+    fds.$fds-color-white-transparent, 
+    fds.$fds-core-colors,
+    vars.$custom-colors;
+
+@function -merge-fds-color-maps() {
+    $all-fds-colors: ();
+    
+    @each $map in $fds-color-maps {
+
+        @each $color, $value in $map {
+            $color-already-exists: map.has-key($all-fds-colors, $color);
+            @if $color-already-exists {
+                @error '#{$color} is already defined as a color.';
+            }
+        }
+
+        $all-fds-colors: map.merge($all-fds-colors, $map);
+    }
+
+    @return $all-fds-colors;
+}
+$fds-colors: -merge-fds-color-maps();
+
+// ------------------------------------------------------------------
+// If the theme colors use color names instead of HEX values,
+// e.g. 'gray-900', replace the color name with a HEX value
+// ------------------------------------------------------------------
+
+@function -convert-theme-colors() {
+    $converted-colors: ();
+  
+    @each $theme-color, $value in theme.$fds-theme-colors {
+        $value-is-named-color: map.has-key($fds-colors, $value);
+        @if $value-is-named-color {
+            $converted-colors: map.set($converted-colors, $theme-color, map.get($fds-colors, $value));
+        } 
+        @else {
+            $converted-colors: map.set($converted-colors, $theme-color, $value);
+        }
+    }
+
+    @return $converted-colors;
+}
+
+// ------------------------------------------------------------------
+// Collect all fds colors and theme colors in a single map with 
+// (key, value) as ("color name", "HEX value")
+// ------------------------------------------------------------------
+
+$all-colors: map.merge($fds-colors, -convert-theme-colors());

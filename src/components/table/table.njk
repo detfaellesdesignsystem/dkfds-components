@@ -1,4 +1,5 @@
 {% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {% macro table(params) %}
 <div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}"{% if params.attributes.outer %} {{ params.attributes.outer | safe }}{% endif %}>
@@ -9,54 +10,38 @@
                     {%- for row in params.tbody -%}
                         {%- set ariacontrols = ariacontrols + " " + params.id + "-check-"+ loop.index -%}
                     {%- endfor -%}
-                    <th>
+                    <th><div class="form-group-checkbox">
                         <input id="{{params.id}}-check-all" type="checkbox" class="form-checkbox" aria-controls="{{ariacontrols}}">
                         <label for="{{params.id}}-check-all"><span class="sr-only">Vælg alle rækker</span></label>
-                    </th>
+                    </div></th>
                 {%- endif -%}
                 {%- set sortingColumn = 0 -%}
                 {%- if params.sorting.column -%}{%- set sortingColumn = params.sorting.column -%}{%- endif -%}
                 {%- for th in params.thead -%}<th scope="col"{% if th.classes %} class="{{ th.classes }}"{% endif %}{% if loop.index === sortingColumn and params.sorting.direction and th.sorting %} aria-sort="{{ params.sorting.direction }}"{% endif %}>
-                        {{- th.headerContent | safe -}}{% if loop.index === sortingColumn and params.sorting.direction === "ascending" and th.sorting %}{{ button({
-                            "variant": "unstyled",
-                            "id": th.sortingID,
-                            "attributes": "type=\"button\"",
-                            "srOnly": "Sortér efter " + th.headerContent,
-                            "icon": "sort-table-ascending",
-                            "classes": {
-                                "button": "ml-2",
-                                "icon": "mr-0"
-                            } }) 
-                        }}{% elif loop.index === sortingColumn and params.sorting.direction === "descending" and th.sorting %}
-                        {{ button({
-                            "variant": "unstyled",
-                            "id": th.sortingID,
-                            "attributes": "type=\"button\"",
-                            "srOnly": "Sortér efter " + th.headerContent,
-                            "icon": "sort-table-descending",
-                            "classes": {
-                                "button": "ml-2",
-                                "icon": "mr-0"
-                            } }) 
-                        }}{% elif th.sorting %}
-                        {{ button({
-                            "variant": "unstyled",
-                            "id": th.sortingID,
-                            "attributes": "type=\"button\"",
-                            "srOnly": "Sortér efter " + th.headerContent,
-                            "icon": "sort-table-none",
-                            "classes": {
-                                "button": "ml-2",
-                                "icon": "mr-0"
-                            } }) 
-                        }}{% endif %}</th>
+                        {%- if loop.index === sortingColumn and params.sorting.direction === "ascending" and th.sorting -%}
+                        <button class="button button-unstyled" id="{{th.sortingID}}" type="button">
+                            {{- th.headerContent | safe -}}<span class="sr-only"> Klik for at sortere faldende</span>
+                            {{ icon_svg({ "name": "sort-table-ascending", "classes": "mr-0 ml-2" }) }}
+                        </button>
+                        {%- elif loop.index === sortingColumn and params.sorting.direction === "descending" and th.sorting -%}
+                        <button class="button button-unstyled" id="{{th.sortingID}}" type="button">
+                            {{- th.headerContent | safe -}}<span class="sr-only"> Klik for at sortere stigende</span>
+                            {{ icon_svg({ "name": "sort-table-descending", "classes": "mr-0 ml-2" }) }}
+                        </button>
+                        {%- elif th.sorting -%}
+                        <button class="button button-unstyled" id="{{th.sortingID}}" type="button">
+                            {{- th.headerContent | safe -}}<span class="sr-only"> Klik for at sortere efter denne kolonne</span>
+                            {{ icon_svg({ "name": "sort-table-none", "classes": "mr-0 ml-2" }) }}
+                        </button>{%- else -%}{{- th.headerContent | safe -}}{% endif %}</th>
                 {% endfor %}</tr>
         </thead>
         <tbody{% if params.sorting %} aria-live="polite"{% endif %}>
             {% for row in params.tbody %}<tr>
                 {%- if params.selectable -%}
-                <td><input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0].content}}">
+                <td><div class="form-group-checkbox">
+                    <input id="{{params.id}}-check-{{loop.index}}" type="checkbox" name="{{params.id}}-check[]" class="form-checkbox" value="{{row[0].content}}">
                     <label for="{{params.id}}-check-{{loop.index}}"><span class="sr-only">Vælg række</span></label>
+                </div>
                 </td>
                 {%- endif -%}
                 {% for td in row %}<td{% if td.classes %} class="{{ td.classes }}"{% endif %}>{{ td.content | safe}}</td>{% endfor %}

@@ -1,4 +1,7 @@
-// this is the neutral theme (so no virkdk or borgerdk specific stuff)
+// This is the neutral theme (so no virkdk or borgerdk specific stuff)
 
-@import './lib/normalize';
-@import 'dkfds-base';
+@forward 'variables';
+@forward "values";
+@forward "functions";
+@forward "mixins";
+@use 'dkfds-base';

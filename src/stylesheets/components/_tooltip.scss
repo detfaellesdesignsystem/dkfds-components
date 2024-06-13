@@ -1,72 +1,95 @@
-.js-tooltip {
-    display: inline-block;
+@use "../variables" as vars;
+@use "../functions" as func;
 
-    svg {
+$-arrow-height: func.units(3);            // Must match arrowHeight in src\js\components\tooltip.js
+$-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in src\js\components\tooltip.js
+
+.tooltip-wrapper {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    line-height: 1;
+    display: inline-flex; // Display MUST be flex or inline-flex, otherwise screenreaders will read a help button as part of the label for text input
+    vertical-align: bottom;
+
+    &.in-text button.tooltip-target {
+        &:focus {
+            outline-offset: -2px;
+        }
+
+        .icon-svg {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+    }
+
+    // "Bridge" between tooltip and tooltip target. Allows cursor to move onto tooltip.
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: calc($-arrow-height + $-arrow-dist-to-target);
+        display: block;
+    }
+    &.place-above::before {
+        top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+    }
+    &.place-below::before {
+        bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+    }
+
+    .tooltip {
+        line-height: 1.5;
+        font-size: func.font-size('xs');
+        font-weight: func.font-weight('normal');
+        color: func.color(vars.$tooltip-color);
+        box-shadow: func.shadow(vars.$tooltip-shadow);
+        background-color: func.color(vars.$tooltip-background-color);
+        border-radius: 4px;
+        padding: func.units(2) func.units(305);
+        position: absolute;
+        z-index: vars.$zindex-tooltip;
+        display: block;
+        overflow-wrap: break-word;
+    }
+
+    .tooltip-arrow {
         pointer-events: none;
+
+        &::before {
+            content: '';
+            border-right: calc($-arrow-height + 1px) solid transparent;
+            border-left: calc($-arrow-height + 1px) solid transparent;
+            display: block;
+            position: absolute;
+            left: calc(50% - $-arrow-height - 1px);
+            top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+            z-index: vars.$zindex-tooltip + 1;
+        }
+    }
+
+    &.place-above .tooltip-arrow {
+        &::before {
+            border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+            top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+        }
+    }
+
+    &.place-below .tooltip-arrow {
+        &::before {
+            border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+            bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+        }
+    }
+
+    &.hide-tooltip {
+        .tooltip, .tooltip-arrow {
+            display: none;
+        }
+
+        &::before {
+            display: none;
+        }
     }
 }
 
-.popover{
-    cursor: pointer;
-}
-.tooltip-link{
-  border-bottom: $tooltip-link-border-width $tooltip-link-border-style color($tooltip-link-border-color);
-  display: inline;
-  text-decoration: none;
-  &:link, &:active, &:hover, &:visited, &:focus{
-    color: color($tooltip-link-color);
-  }
-}
-.tooltip{
-  @include body-copy-text;
-  font-size: font-size('sm');
-  box-shadow: shadow($tooltip-shadow);
-  background-color: color($tooltip-background-color);
-  border: border($tooltip-border);
-  border-radius: 4px;
-  padding: .3rem .6rem;
-}
-
-.tooltip-popper{
-  position: absolute;
-  max-width: 66ch;
-}
-
-.tooltip-popper .tooltip-arrow {
-  position: absolute;
-}
-.tooltip-popper .tooltip-arrow.down{
-    border-top:8px solid border-color($tooltip-border);
-    border-right:8px solid transparent;
-    border-left:8px solid transparent;
-    bottom: -7px;
-    left: calc(50% - 8px);
-
-    &:after{
-        content: '';
-        border-top: 7px solid color($tooltip-background-color);
-        border-right: 7px solid transparent;
-        border-left: 7px solid transparent;
-        display: block;
-        position: absolute;
-        bottom: 1px;
-        margin-left: -7px;
-    }
-}
-.tooltip-popper .tooltip-arrow.up{
-    border-bottom:8px solid border-color($tooltip-border);
-    border-right:8px solid transparent;
-    border-left:8px solid transparent;
-    top: -7px;
-    left: calc(50% - 8px);
-    &:after{
-        content: '';
-        border-bottom: 7px solid color($tooltip-background-color);
-        border-right: 7px solid transparent;
-        border-left: 7px solid transparent;
-        display: block;
-        position: absolute;
-        top: 1px;
-        margin-left: -7px;
-    }
-}

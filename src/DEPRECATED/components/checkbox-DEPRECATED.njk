@@ -1,0 +1,32 @@
+{% from "components/form/controls/helptext.njk" import helptext as helptext %}
+{% from "components/form/controls/helptext.njk" import helptext_id as helptext_id %}
+{% from "components/form/controls/label.njk" import label as label %}
+
+{% macro checkbox(params) %}
+{% set isLarge = params.isLarge | default(true) %}
+{% set collapseId = params.id + '-collapse' %}
+{% set isRequired = false %}
+{% if params.required === true %}{% set isRequired = true %}{% endif %}
+{% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
+{% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+<div class="{% if params.isStandalone %}form-group{% else %}form-group-checkbox{% endif %}{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}"{% if params.attributes.formgroup %} {{ params.attributes.formgroup | safe }}{% endif %}>
+    {% if params.label and params.id and params.name and params.value %}<input type="checkbox" id="{{params.id}}" name="{{params.name}}" class="form-checkbox{% if isLarge %} checkbox-large{% endif %}{% if params.hiddenContent %} js-checkbox-toggle-content{% endif %}{% if params.classes.input %} {{params.classes.input}}{% endif %}" value="{{params.value}}"{% if params.helptext %} aria-describedby="{{helptext_id(params.id)}}" {% endif %}{% if params.disabled %} disabled{% endif %}{% if isRequired or params.requiredLabel %} required{% endif %}{% if params.checked %} checked{% endif %}{% if params.hiddenContent %} data-aria-controls="{{collapseId}}"{% if params.checked %} data-aria-expanded="true" {% else %} data-aria-expanded="false" {% endif %}{% endif %}{% if params.attributes.input %} {{ params.attributes.input | safe }}{% endif %}>
+    {{ 
+        label({
+            "text": params.label,
+            "classes": params.classes.label,
+            "for": params.id,
+            "attributes": params.attributes.label,
+            "srOnly": params.srOnly,
+            "optionalLabel": params.optionalLabel,
+            "requiredLabel": params.requiredLabel
+        })
+    }}
+    {%- endif -%}
+    {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
+</div>
+{% if params.hiddenContent %}<div id="{{collapseId}}"{% if params.checked %} aria-hidden="false" {% else %} aria-hidden="true"{% endif %} class="checkbox-content{% if isLarge %} checkbox-content-large{% endif %}">
+    {{ params.hiddenContent | safe }}
+</div>{% endif %}
+{% endmacro %}

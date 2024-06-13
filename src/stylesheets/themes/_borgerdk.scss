@@ -1,23 +1,22 @@
-/*
-----------------------------------------
-Borger.dk theme
-----------------------------------------
-*/
-$theme-colors: (
-    "borgerdk": (
-        100: #44831E,
-        200: #3C5C22,
-        300: #233614
-    ),
-    "background": (
-        100: #f1f1f1
-    )
+// ----------------------------------------
+// Borger.dk theme
+// ----------------------------------------
+
+$borger-primary:          #44831E !default;
+$borger-primary-dark:     #3C5C22 !default;
+$borger-primary-darker:   #233614 !default;
+
+$custom-colors: (
+    'borgerdk-100': $borger-primary, 
+    'borgerdk-200': $borger-primary-dark,
+    'borgerdk-300': $borger-primary-darker,
+    'background-100': #f1f1f1
 );
 
-$theme-color-primary: 'borgerdk-100';
-$theme-color-primary-dark: 'borgerdk-200';
-$theme-color-primary-darker: 'borgerdk-300';
-$header-portal-background-color: 'background-100';
-$header-portal-logo: 'logo-borgerdk.svg';
-$header-portal-logo-height: 4.8rem;
-$header-portal-compact-logo-width: 10rem;
+$theme-color-primary:               $borger-primary !default;
+$theme-color-primary-dark:          $borger-primary-dark !default;
+$theme-color-primary-darker:        $borger-primary-darker !default;
+$header-portal-background-color:    #f1f1f1 !default;
+$header-portal-logo:                'logo-borgerdk.svg' !default;
+$header-portal-logo-height:         4.8rem !default;
+$header-portal-compact-logo-width:  10rem !default;

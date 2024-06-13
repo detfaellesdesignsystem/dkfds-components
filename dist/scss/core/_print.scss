@@ -1,188 +1,263 @@
-@media print{
-  html{
-    font-family: Georgia, "Times New Roman", Serif;
-    font-size: 48%;
-  }
-  body{
-    display: block;
-    min-height: 0;
-  }
-  .page-container{
-    display: block;
-  }
+@use "sass:math" as math;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
 
-  fieldset{
-    page-break-before: avoid;
-    page-break-inside: auto;
-    display: block;
-    overflow: visible !important;
-  }
-  .form-group{
-    page-break-inside: avoid;
-  }
-  .form-label{
-    page-break-after: avoid;
-  }
-
-  // header
-  .header {
-    .logo, .portal-header .logo{
-      height: auto;
-      width: auto;
-      background-image: none;
+@media print {
+    html {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48%; // stylelint-disable-line declaration-property-value-allowed-list
     }
 
-    .portal-header{
-      overflow:hidden;
-
-      .portal-header-inner{
+    body {
         display: block;
-      }
+        min-height: 0;
+    }
 
-      .portal-info{
+    .page-container {
         display: block;
-        float: right;
-      }
     }
 
-    .solution-header{
-      .solution-header-inner{
+    fieldset {
+        page-break-before: avoid;
+        page-break-inside: auto;
         display: block;
-        overflow: hidden;
-      }
+        overflow: visible !important;
+    }
 
-      .solution-heading{
-        display: inline-block;
-      }
-      .solution-info{
-        display: block;
-        float: right;
-        margin-left: 0;
-        text-align: right;
+    .form-group {
+        page-break-inside: avoid;
+    }
 
-        @include media-breakpoint-up(#{$nav-responsive-breakpoint}) {
-          margin-left: 0;
+    .form-label {
+        page-break-after: avoid;
+    }
+
+    // header
+    .header {
+
+        .logo,
+        .portal-info .logo {
+            height: auto;
+            width: auto;
+            background-image: none;
+
+            span {
+                display: block;
+            }
         }
-      }
-    }
-  }
 
-  // footer
-  footer{
-    .footer{
-      margin-top: units(6);
-      padding-bottom: 0;
-      .inline-list > li{
-        display: inline-block;
-        + li{
-          margin-left: units(4);
+        .portal-info {
+            overflow: hidden;
+
+            .portal-info-inner {
+                display: block;
+            }
+
+            .portal-info {
+                display: block;
+                float: right;
+            }
         }
-      }
-    }
-  }
 
-  // card
-  .card{
-    box-shadow: none;
-  }
+        .solution-info {
+            .solution-info-inner {
+                display: block;
+                overflow: hidden;
+            }
 
-  // modal
-  body.modal-active{
-    @media print{
-      > header{
-        display: none
-      }
-      .page-container{
-        display: none;
-      }
-      > footer{
-        display: none;
-      }
-    }
-  }
+            .solution-heading {
+                display: inline-block;
+            }
 
-  body .modal {
-    .modal__overlay {
-      display: block;
-      position: relative;
-      background-color: transparent;
-    }
-    .bg-modal{
-      background-color: transparent !important;
-      background: transparent !important;
-    }
+            .additional-info {
+                display: block;
+                float: right;
+                margin-left: 0;
+                text-align: right;
 
-    .modal__header {
-      display: block;
-    }
-
-    .modal__footer{
-      @include media-breakpoint-up(lg) {
-        display: block;
-      }
-    }
-  }
-
-  // table
-  .table.table--responsive-headers:not(.d-print-table),
-  .table.table-sm-responsive-headers:not(.d-print-table),
-  .table.table-md-responsive-headers:not(.d-print-table),
-  .table.table-lg-responsive-headers:not(.d-print-table),
-  .table.table-xl-responsive-headers:not(.d-print-table) {
-    @include media-breakpoint-down(sm) {
-      display: block;
-
-      thead {
-        display: none;
-      }
-      tr {
-        border-bottom: border(20);
-        &:last-child {
-          border-bottom: 0;
+                @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+                    margin-left: 0;
+                }
+            }
         }
-      }
-      tr td, tr th {
-        display: block;
-        border: none !important;
-
-        &[data-title]:not([data-title=""]):before {
-          content: attr(data-title);
-          text-align: left;
-          display: block;
-          font-weight: font-weight("semibold");
-        }
-      }
-
-      &.table--borderless tbody tr {
-        &:first-child {
-          border-top: border($table-row-border);
-        }
-        &:last-child {
-          border-bottom: border($table-row-border);
-        }
-        td:first-child, th:first-child {
-          padding-left: 16px;
-        }
-      }
     }
-  }
 
-  .form-radio.radio-large:checked + label:after{
-    border: units(3) solid color('black');
-  }
-  .form-radio:checked + label:after{
-    border: units(2) solid color('black');
-  }
+    // footer
+    footer {
+        .footer {
+            margin-top: func.units(6);
+            padding-bottom: 0;
 
-  .form-checkbox:checked + label{
-    &:before{
-      background-color: transparent;
-      border: 10px solid color('black');
+            .inline-list > li {
+                display: inline-block;
+
+                + li {
+                    margin-left: func.units(4);
+                }
+            }
+        }
     }
-  }
-  .form-checkbox.checkbox-large:checked + label{
-    &:before{
-      border: units(4) solid color('black');
+
+    // card
+    .card {
+        box-shadow: none;
     }
-  }
+
+    // modal
+    body.modal-active {
+        @media print {
+            > header {
+                display: none
+            }
+
+            .page-container {
+                display: none;
+            }
+
+            > footer {
+                display: none;
+            }
+        }
+    }
+
+    body .modal {
+        .modal__overlay {
+            display: block;
+            position: relative;
+            background-color: func.color('transparent');
+        }
+
+        .bg-modal {
+            background: transparent !important;
+            background-color: func.color('transparent') !important;
+        }
+
+        .modal__header {
+            display: block;
+        }
+
+        .modal__footer {
+            @include mixins.media-breakpoint-up(lg) {
+                display: block;
+            }
+        }
+    }
+
+    // table
+    .table.table--responsive-headers:not(.d-print-table),
+    .table.table-sm-responsive-headers:not(.d-print-table),
+    .table.table-md-responsive-headers:not(.d-print-table),
+    .table.table-lg-responsive-headers:not(.d-print-table),
+    .table.table-xl-responsive-headers:not(.d-print-table) {
+        @include mixins.media-breakpoint-down(sm) {
+            display: block;
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                border-bottom: func.border(20);
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+
+            tr td,
+            tr th {
+                display: block;
+                border: none !important;
+
+                &[data-title]:not([data-title=""])::before {
+                    content: attr(data-title);
+                    text-align: left;
+                    display: block;
+                    font-weight: func.font-weight("semibold");
+                }
+            }
+
+            &.table--borderless tbody tr {
+                &:first-child {
+                    border-top: func.border(vars.$table-row-border);
+                }
+
+                &:last-child {
+                    border-bottom: func.border(vars.$table-row-border);
+                }
+
+                td:first-child,
+                th:first-child {
+                    padding-left: 16px;
+                }
+            }
+        }
+    }
+
+    // tabs
+    .tab-container ul.tab-list li .tab-button {
+        background-color: func.color('transparent');
+        border: func.border(10); 
+
+        &[aria-current="page"],
+        &[aria-selected="true"] {
+            color: func.color(vars.$tab-active-text-color-print);
+            border-width: 2px;
+
+            .icon-svg {
+                fill: func.color(vars.$tab-active-text-color-print);
+            }
+        }
+    }
+
+    // Checkboxes
+
+    // Checked checkbox
+    .form-checkbox:checked+label::before,
+    .form-checkbox[aria-checked="mixed"]+label::before {
+        background-color: func.color(vars.$input-checkbox-checked-background-color-print);
+        background-image: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: func.units(vars.$input-checkbox-radio-size, 'rem');
+        line-height: func.units(vars.$input-checkbox-radio-size, 'rem');
+        font-weight: func.font-weight("bold");
+    }
+
+    // 'Normal' checkbox checkmark
+    .form-checkbox:checked+label::before {
+        content: "\2713";
+    }
+
+    // 'Mixed' checkbox checkmark
+    .form-checkbox[aria-checked="mixed"]+label::before {
+        content: "\002d";
+    }
+
+    // Checked radio - radio button 'dot'
+    .form-radio:checked + label::after {
+        background-color: func.color('transparent');
+        border: math.div(func.units(vars.$input-radio-dot-size), 2) solid func.color(vars.$input-radio-dot-color);
+    }
+
+    // Toggle switch
+    .toggle-element .toggle-button[aria-checked='true'] {
+        &::before {
+            content: "\2713";
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: none;
+            line-height: 1;
+            color: func.color('black');
+            border-color: func.color('black');
+        }
+
+        &::after {
+            border-color: func.color('black');
+        }
+    }
 }

@@ -1,0 +1,16 @@
+@use "sass:map" as map;
+@use "../values" as vals;
+
+// ----------------------------------------
+// Get a valid FDS font-size
+// ----------------------------------------
+
+@function font-size($value) {
+
+    @if map.has-key(vals.$fds-font-sizes, $value) {
+        @return map.get(vals.$fds-font-sizes, $value);
+    }
+
+    @error '#{$value} is not a valid FDS font-size token.';
+    
+}

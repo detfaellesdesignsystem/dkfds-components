@@ -1,0 +1,17 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: ID of the list.
+- name: links
+  type: array
+  required: true
+  description: List of links.
+  - name: text
+    type: string
+    required: true
+    description: Link text
+  - name: href
+    type: string
+    required: true
+    description: Link url

@@ -1,0 +1,50 @@
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+button.function-link {
+    background: none;
+    padding: 0;
+    text-decoration: underline;
+    text-align: left;
+}
+
+.function-link {
+    border: none;
+    @include mixins.body-copy-text;
+    cursor: pointer;
+    display: inline-block;
+    overflow-wrap: break-word;
+    max-width: 100% !important;
+
+    &:hover, &:visited, &:focus{
+        color: func.color('ink');
+    }
+
+    .icon-svg{
+        margin-right: func.units(2);
+        fill: currentColor;
+        vertical-align: top;
+        margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
+    }
+    
+    &.icon-link .icon-svg {
+        margin-right: 0;
+    }
+
+    &.link-right {
+        text-align: right;
+    }
+}
+
+.function-link-wrapper {
+    @include mixins.nobullet-list;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    li {
+        margin-left: func.units(4);
+        margin-top: 0;
+    }
+}

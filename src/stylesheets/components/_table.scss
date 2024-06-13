@@ -1,0 +1,461 @@
+@use "sass:map" as map;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+@mixin -responsive-table() {
+    display: block;
+
+    thead {
+        display: none;
+    }
+
+    tbody,
+    tr {
+        display: block;
+    }
+
+    tr {
+        border-bottom: func.border(vars.$table-row-border);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    td,
+    th {
+        display: block;
+        border: none;
+        padding: func.units(4) calc(func.units(4) - 1px); // top and bottom | left and right, 1px for the border
+
+        &:last-child {
+            padding-bottom: calc(func.units(4) - 1px); // 1px for the border
+        }
+
+        &[data-title]:not([data-title=""])::before {
+            content: attr(data-title);
+            text-align: left;
+            display: block;
+            font-weight: func.font-weight(vars.$table-head-font-weight);
+        }
+    }
+
+    &.table--compact {
+        th,
+        td {
+            padding-top: func.units(3);
+            padding-bottom: func.units(3);
+
+            &:last-child {
+                padding-bottom: calc(func.units(3) - 1px); // 1px for the border
+            }
+        }
+    }
+
+    &.table--extracompact {
+
+        th,
+        td {
+            padding-top: 1px;
+            padding-bottom: 1px;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    &.table--borderless, &.structured-list {
+
+        td,
+        th {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        tr {
+            &:first-child {
+
+                td,
+                th {
+                    &:first-child {
+                        border-top: func.border(vars.$table-row-border);
+                    }
+                }
+            }
+
+            &:last-child {
+
+                td,
+                th {
+                    border-bottom: none;
+
+                    &:last-child {
+                        border-bottom: func.border(vars.$table-row-border);
+                    }
+                }
+            }
+        }
+    }
+
+    &.table--zebra.table--borderless {
+
+        td,
+        th {
+            padding-left: func.units(4);
+            padding-right: func.units(4);
+        }
+    }
+
+    &.structured-list {
+        
+        tbody tr {
+            &:first-child td {
+                border-top: none;
+            }
+
+            th {
+                padding-bottom: 0;
+            }
+
+            td:first-of-type {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+.table {
+    margin: 0;
+    line-height: func.units(vars.$table-text-line-height, 'rem');
+    border: func.border(vars.$table-border);
+    width: 100%;
+    color: func.color(vars.$table-text-color);
+    font-size: func.font-size(vars.$table-font-size);
+    border-collapse: inherit;
+    border-spacing: 0;
+
+    td,
+    th {
+        padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) func.units(4); // top | right | bottom | left
+        border-right: func.border(vars.$table-cell-border);
+        border-bottom: func.border(vars.$table-row-border);
+        background-color: inherit;
+        vertical-align: top;
+        text-align: left;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        &.break-word {
+            word-break: break-all;
+        }
+
+        &.vertical-align-middle {
+            vertical-align: middle;
+        }
+
+        &.vertical-align-top {
+            vertical-align: top;
+        }
+
+        &.vertical-align-bottom {
+            vertical-align: bottom;
+        }
+    }
+
+    thead {
+        background-color: func.color(vars.$table-head-background-color);
+
+        th {
+            font-weight: func.font-weight(vars.$table-head-font-weight);
+            padding-top: calc(func.units(4) - 1px); // 1px for the border
+
+            &:first-child {
+                padding-left: calc(func.units(4) - 1px); // 1px for the border
+            }
+
+            &.table-header-no-wrap {
+                white-space: nowrap;
+            }
+
+            button,
+            .button {
+                width: auto;
+                font-weight: func.font-weight('semibold');
+                font-family: inherit;
+                font-size: inherit;
+                display: flex;
+            }
+        }
+    }
+
+    tbody {
+        th {
+            font-weight: func.font-weight(vars.$table-head-font-weight);
+        }
+
+        tr {
+            background-color: func.color('transparent');
+
+            td,
+            th {
+                &:first-child {
+                    padding-left: calc(func.units(4) - 1px); // 1px for the border
+                }
+            }
+
+            &:last-child {
+
+                td,
+                th {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    &.table--compact {
+
+        th,
+        td {
+            padding-top: func.units(3);
+            padding-bottom: calc(func.units(3) - 1px); // 1px for the border
+        }
+
+        thead th {
+            padding-top: calc(func.units(3) - 1px); // 1px for the border
+        }
+    }
+
+    &.table--extracompact {
+
+        th,
+        td {
+            padding-top: 1px;
+            padding-bottom: 0;
+        }
+
+        thead th {
+            padding-top: 0;
+        }
+    }
+
+    // No border
+    &.table--borderless, &.structured-list {
+        border: none;
+
+        td,
+        th {
+            padding-right: func.units(4);
+            border-right: none;
+        }
+
+        thead,
+        tbody {
+
+            tr td,
+            tr th {
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+
+        thead {
+            background-color: func.color('transparent');
+
+            th {
+                padding-top: func.units(4);
+            }
+        }
+
+        tbody tr:last-child {
+
+            td,
+            th {
+                border-bottom: func.border(vars.$table-row-border);
+            }
+        }
+
+        &.table--compact {
+
+            thead th {
+                padding-top: func.units(3);
+            }
+        }
+
+        &.table--extracompact {
+
+            thead th {
+                padding-top: 1px;
+            }
+        }
+    }
+
+    // Zebra lines
+    &.table--zebra {
+
+        td,
+        th {
+            border-right: 0;
+            padding-right: func.units(4);
+
+            &:last-child {
+                padding-right: calc(func.units(4) - 1px); // 1px for the border
+            }
+        }
+
+        tr:nth-child(even) {
+            background-color: func.color(vars.$table-row-even-background-color);
+        }
+
+        tbody {
+            tr:nth-child(odd) {
+                background-color: func.color(vars.$table-row-odd-background-color);
+            }
+        }
+    }
+
+    // Zebra lines and no border
+    &.table--zebra.table--borderless {
+
+        td,
+        th {
+            border: 0;
+            padding: func.units(4);
+        }
+
+        thead,
+        tbody {
+
+            tr td,
+            tr th {
+                &:first-child {
+                    padding-left: func.units(4);
+                }
+
+                &:last-child {
+                    padding-right: func.units(4);
+                }
+            }
+        }
+
+        thead {
+            background-color: func.color(vars.$table-row-even-background-color);
+        }
+
+        tbody tr:last-child {
+
+            td,
+            th {
+                border-bottom: none;
+            }
+        }
+
+        &.table--compact {
+
+            td,
+            th {
+                padding-bottom: func.units(3);
+                padding-top: func.units(3);
+            }
+        }
+
+        &.table--extracompact {
+
+            td,
+            th {
+                padding-bottom: 1px;
+                padding-top: 1px;
+            }
+        }
+    }
+
+    &.structured-list {
+        tbody tr:first-child {
+
+            td,
+            th {
+                border-top: func.border(vars.$table-row-border);
+            }
+        }
+
+        &.table--zebra {
+            tbody tr:first-child {
+
+                td,
+                th {
+                    border-top: none;
+                }
+            }
+        }
+    }
+
+    @media screen {
+
+        // Make row into a "card" on phone
+        &.table--responsive-headers {
+            @include mixins.media-breakpoint-down(sm) {
+                @include -responsive-table;
+            }
+        }
+
+        @each $breakpoint in map.keys(vars.$grid-breakpoints) {
+            @if $breakpoint != xs and $breakpoint != xl {
+                @include mixins.media-breakpoint-down($breakpoint) {
+                    $infix: mixins.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
+
+                    &.table#{$infix}-responsive-headers {
+                        @include -responsive-table;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.table--selectable {
+
+    tbody tr:hover,
+    &.table.table--zebra tr:nth-child(even):hover,
+    &.table.table--zebra tr:nth-child(odd):hover {
+        background-color: func.color(vars.$table-selectable-hover-background-color);
+    }
+
+    &.table.table--zebra tr.table-row-selected:nth-child(even),
+    &.table.table--zebra tr.table-row-selected:nth-child(odd),
+    .table-row-selected {
+        background-color: func.color(vars.$table-selectable-selected-background-color);
+    }
+}
+
+.table-actions {
+    border-right: func.border(vars.$table-border);
+    border-bottom: func.border(vars.$table-border);
+    border-left: func.border(vars.$table-border);
+    overflow: hidden;
+    padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px); // top | left and right | bottom
+
+    .table-selected-number {
+        margin-top: 0;
+
+        &.no-selected {
+            color: func.color(vars.$table-selectable-help-text-color);
+        }
+    }
+
+}
+
+.table--responsive-scroll {
+    overflow-x: auto;
+    min-height: .01%;
+    padding: vars.$theme-focus-offset + vars.$theme-focus-width; // Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
+    margin: -(vars.$theme-focus-offset + vars.$theme-focus-width); // Ensure that the padding above doesn't affect alignment of the table with the remaining page
+}

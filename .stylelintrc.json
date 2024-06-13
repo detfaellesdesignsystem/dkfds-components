@@ -1,0 +1,22 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "alpha-value-notation": "number",
+        "at-rule-empty-line-before": null,
+        "color-hex-length": "long",
+        "declaration-empty-line-before": null,
+        "rule-empty-line-before": null,
+        "selector-class-pattern": ["^([a-z])([a-z]|-|_|[0-9])*$", {"resolveNestedSelectors": true}],
+        "selector-not-notation": "complex",
+        "value-keyword-case": ["lower", {"camelCaseSvgKeywords": true}],
+        "scss/at-else-closing-brace-newline-after": null,
+        "scss/at-else-closing-brace-space-after": null,
+        "scss/at-else-empty-line-before": null,
+        "scss/at-extend-no-missing-placeholder": null,
+        "scss/at-if-closing-brace-newline-after": null,
+        "scss/at-if-closing-brace-space-after": null,
+        "scss/dollar-variable-colon-space-after": null,
+        "scss/dollar-variable-empty-line-before": null,
+        "scss/double-slash-comment-empty-line-before": null
+    }
+}

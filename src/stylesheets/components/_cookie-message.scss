@@ -1,42 +1,47 @@
+@use "sass:map" as map;
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
 .cookie-container{
-  color: color($cookie-message-text-color);
+  color: func.color(vars.$cookie-message-text-color);
   position: fixed;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  z-index: 9500;
-  margin-bottom: units(3);
-  margin-left: units(3);
-  margin-right: units(3);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: vars.$zindex-cookie-message;
+  margin-bottom: func.units(3);
+  margin-left: func.units(3);
+  margin-right: func.units(3);
 
   .cookie-message{
-    @include grid-container();
-    background-color: color($cookie-message-background-color);
-    border: border($cookie-message-border);
-    box-shadow: shadow($cookie-message-shadow);
-    padding-top: calc(#{units(6)} - 1px);
-    padding-bottom: calc(#{units(7)} - 1px);
+    @include mixins.grid-container;
+    background-color: func.color(vars.$cookie-message-background-color);
+    border: func.border(vars.$cookie-message-border);
+    box-shadow: func.shadow(vars.$cookie-message-shadow);
+    padding-top: calc(#{func.units(6)} - 1px);
+    padding-bottom: calc(#{func.units(7)} - 1px);
     position: relative;
     max-height: 75vh;
     overflow-y: auto;
 
     p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
-      color: color($cookie-message-text-color);
+      color: func.color(vars.$cookie-message-text-color);
     }
 
 
-    @include media-breakpoint-up(xl) {
-      max-width: calc(#{map-get($container-max-widths, xl)} + #{units(7)} + #{units(7)});
+    @include mixins.media-breakpoint-up(xl) {
+      max-width: calc(#{map.get(vars.$container-max-widths, xl)} + #{func.units(7)} + #{func.units(7)});
     }
 
     .cookie-text, .cookie-actions{
-      @include media-breakpoint-up(xl) {
-        padding-left: units(7);
-        padding-right: units(7);
+      @include mixins.media-breakpoint-up(xl) {
+        padding-left: func.units(7);
+        padding-right: func.units(7);
       }
     }
     .cookie-actions{
-      margin-top: units(4);
+      margin-top: func.units(4);
     }
   }
 }

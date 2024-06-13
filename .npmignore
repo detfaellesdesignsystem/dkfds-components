@@ -2,16 +2,12 @@
 !dist/
 !src/
 
-build/
 .git/
 .github/
 .editorconfig
-.eslintignore
-.eslintrc.yml
+.eslintrc.json
+.browserslistrc
+.stylelintrc.json
 package-lock.json
-.idea/
 node_modules
-config
-examples
-gulpfile.js
-fractalfile.js
+webpack.config.js

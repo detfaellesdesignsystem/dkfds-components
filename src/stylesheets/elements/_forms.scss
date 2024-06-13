@@ -1,26 +1,21 @@
-fieldset {
-  position: relative;
-  border: none;
-  margin: 0;
-  padding: 0;
-}
+@use "../functions" as func;
 
 fieldset ul{
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 fieldset + fieldset{
-  margin-top: units(5);
+  margin-top: func.units(5);
 }
 
 legend{
   h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 input, select, textarea {
-  //Input width with rem
+  // Input width with rem
   &.input-width-xxs {
     max-width: 8rem !important;
     width: 100%;
@@ -46,7 +41,7 @@ input, select, textarea {
     width: 100%;
   }
 
-  //Input width with characters
+  // Input width with characters
   &.input-char-4 {
     max-width: calc(2px + 16px + 16px + 4ch);
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {

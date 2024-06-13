@@ -1,0 +1,13 @@
+params:
+- name: text
+  type: string
+  required: true
+  description: The tooltip text.
+- name: showOnClick
+  type: boolean
+  required: false
+  description: True if the tooltip should appear on click and not just hover. Should always be false for already clickable objects like links.
+- name: position
+  type: string
+  required: false
+  description: Defines where the tooltip text should be displayed relative to the tooltip object. Valid values are "top" and "bottom".

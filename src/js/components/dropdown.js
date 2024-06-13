@@ -1,5 +1,5 @@
 'use strict';
-const breakpoints = require('../utils/breakpoints');
+const breakpoints = require('../utils/breakpoints').default;
 const BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
@@ -20,7 +20,7 @@ function Dropdown (buttonElement) {
   if(targetAttr === null || targetAttr === undefined){
     throw new Error('Attribute could not be found on overflow menu component: '+TARGET);
   }
-  let targetEl = document.getElementById(targetAttr.replace('#', ''));
+  let targetEl = document.getElementById(targetAttr);
   if(targetEl === null || targetEl === undefined){
     throw new Error('Panel for overflow menu component could not be found.');
   }
@@ -137,7 +137,7 @@ let closeAll = function (event = null){
   let changed = false;
   const body = document.querySelector('body');
 
-  let overflowMenuEl = document.getElementsByClassName('overflow-menu');
+  let overflowMenuEl = document.querySelectorAll(".overflow-menu, .submenu");
   for (let oi = 0; oi < overflowMenuEl.length; oi++) {
     let currentOverflowMenuEL = overflowMenuEl[ oi ];
     let triggerEl = currentOverflowMenuEL.querySelector(BUTTON+'[aria-expanded="true"]');
@@ -184,7 +184,7 @@ let toggle = function(button, forceClose = false){
   if(triggerEl !== null && triggerEl !== undefined){
     let targetAttr = triggerEl.getAttribute(TARGET);
     if(targetAttr !== null && targetAttr !== undefined){
-      targetEl = document.getElementById(targetAttr.replace('#', ''));
+      targetEl = document.getElementById(targetAttr);
     }
   }
   if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
@@ -202,7 +202,7 @@ let toggle = function(button, forceClose = false){
       triggerEl.dispatchEvent(eventClose);
     }else{
       
-      if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
+      if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
         closeAll();
       }
       //open
@@ -211,30 +211,28 @@ let toggle = function(button, forceClose = false){
       targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
+
       let targetOffset = offset(targetEl);
-
-      if(targetOffset.left < 0){
-        targetEl.style.left = '0px';
+      if (targetOffset.left < 0) {
+        let leftAdjust = 4;
+        /* Header menus have negative margin and may need additional adjustment */
+        if (parseInt(window.getComputedStyle(targetEl).marginLeft) < 0) {
+          leftAdjust = 0 - parseInt(window.getComputedStyle(targetEl).marginLeft);
+        }
+        targetEl.style.left = leftAdjust + 'px';
         targetEl.style.right = 'auto';
       }
+      
       let right = targetOffset.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
+      if (right > document.documentElement.clientWidth) {
         targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
-      }
 
-      let offsetAgain = offset(targetEl);
-
-      if(offsetAgain.left < 0){
-
-        targetEl.style.left = '0px';
-        targetEl.style.right = 'auto';
-      }
-      right = offsetAgain.left + targetEl.offsetWidth;
-      if(right > window.innerWidth){
-
-        targetEl.style.left = 'auto';
-        targetEl.style.right = '0px';
+        if (targetEl.parentNode.classList.contains('submenu')) {
+          targetEl.style.right = '-4px';
+        }
+        else {
+          targetEl.style.right = '4px';
+        }
       }
     }
 
@@ -252,8 +250,8 @@ let hasParent = function (child, parentTagName){
 };
 
 let outsideClose = function (evt){
-  if(!document.getElementsByTagName('body')[0].classList.contains('mobile_nav-active')){
-    if(document.querySelector('body.mobile_nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
+  if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
+    if(document.querySelector('body.mobile-nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
       let openDropdowns = document.querySelectorAll(BUTTON+'[aria-expanded=true]');
       for (let i = 0; i < openDropdowns.length; i++) {
         let triggerEl = openDropdowns[i];

@@ -1,8 +1,7 @@
+@use "../../variables" as vars;
+
 // Sass list not in variables since it's not intended for customization.
 $positions: static, relative, absolute, fixed, sticky;
-
-$zindex-sticky: 1020 !default;
-$zindex-fixed:  1030 !default;
 
 @each $position in $positions {
   .position-#{$position} { position: $position !important; }
@@ -15,7 +14,7 @@ $zindex-fixed:  1030 !default;
   top: 0;
   right: 0;
   left: 0;
-  z-index: $zindex-fixed;
+  z-index: vars.$zindex-fixed;
 }
 
 .fixed-bottom {
@@ -23,13 +22,13 @@ $zindex-fixed:  1030 !default;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-fixed;
+  z-index: vars.$zindex-fixed;
 }
 
 .sticky-top {
   @supports (position: sticky) {
     position: sticky;
     top: 0;
-    z-index: $zindex-sticky;
+    z-index: vars.$zindex-sticky;
   }
 }

@@ -1,5 +1,6 @@
-hr{
-    border-top: border($hr-border); //inner border color
-    display: block;
-    border-bottom-width: 0;
+@use "../variables" as vars;
+@use "../functions" as func;
+
+hr {
+    border-top: func.border(vars.$hr-border);
 }

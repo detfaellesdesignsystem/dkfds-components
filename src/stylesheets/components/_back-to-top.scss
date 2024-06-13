@@ -1,29 +1,34 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
 .button.back-to-top-button {
-    box-shadow: shadow($back-to-top-button-shadow);
+    box-shadow: func.shadow(vars.$back-to-top-button-shadow);
     width: auto;
-    background-color: color($back-to-top-button-background);
+    background-color: func.color(vars.$back-to-top-button-background);
     position: fixed;
-    right: units(5);
-    bottom: units(5);
-    left: auto;
-    top: auto;
-    z-index: 1;
+    inset: auto func.units(5) func.units(5) auto;
+    z-index: vars.$zindex-back-to-top;
 
     &.button-tertiary {
-        background-color: color($back-to-top-button-background);
+        background-color: func.color(vars.$back-to-top-button-background);
+
+        &:hover {
+            background-color: func.color(vars.$back-to-top-button-background);
+        }
     }
 
     &.footer-sticky {
         position: absolute;
         bottom: auto;
         top: auto;
-        margin-top: units(4);
+        margin-top: func.units(4);
         z-index: auto;
     }
 
-    @include media-breakpoint-down(md) {
+    @include mixins.media-breakpoint-down(md) {
         .icon-svg {
-            margin-right: units(0);
+            margin-right: func.units(0);
         }
     }
 }

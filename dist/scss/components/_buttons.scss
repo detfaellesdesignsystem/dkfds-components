@@ -1,0 +1,274 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+// Buttons
+
+a.button {
+    display: inline-flex;
+    padding: func.units(1) calc(func.units(4) - vars.$button-border-width) 1px; // top | left and right | bottom
+    line-height: 2.5rem; // text height is an odd number so line-height has to be an odd number too to center the text
+}
+
+.button {
+    @include mixins.appearance-none;
+    display: inline-flex;
+    width: 100%;
+    min-height: func.units(7);
+    padding: func.units(1) calc(func.units(4) - vars.$button-border-width) 1px; // top | left and right | bottom
+    border-radius: vars.$button-border-radius;
+    border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
+    border-style: solid;
+    border-color: func.color(vars.$button-primary-default-border-color);
+    font-size: func.font-size('md');
+    font-weight: func.font-weight("medium");
+    color: func.color(vars.$button-primary-default-color);
+    line-height: 2.5rem; // text height is an odd number so line-height has to be an odd number too to center the text
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    user-select: text;
+    cursor: pointer;
+    vertical-align: middle;
+
+    & + button {
+        margin-top: func.units(3);
+    }
+
+    @include mixins.media-breakpoint-up(sm) {
+        width: auto;
+
+        & + button {
+            margin-top: 0;
+        }
+    }
+
+    &.focus,
+    &:focus {
+        @include mixins.focus;
+        color: func.color(vars.$button-primary-focus-color);
+    }
+
+    // ############ Primary ###############
+    &.button-primary {
+        color: func.color(vars.$button-primary-default-color);
+        background-color: func.color(vars.$button-primary-default-background-color);
+        border-color: func.color(vars.$button-primary-default-border-color);
+
+        &:hover,
+        &.button-hover {
+            background-color: func.color(vars.$button-primary-hover-background-color);
+            border-color: func.color(vars.$button-primary-hover-border-color);
+        }
+
+        &.focus,
+        &:focus {
+            background-color: func.color(vars.$button-primary-focus-background-color);
+            border-color: func.color(vars.$button-primary-focus-border-color);
+        }
+
+        &:active,
+        &.button-active {
+            background-color: func.color(vars.$button-primary-active-background-color);
+            border-color: func.color(vars.$button-primary-active-border-color);
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: vars.$button-disabled-opacity;
+            box-shadow: none !important;
+            cursor: not-allowed;
+
+            &:hover {
+                color: func.color(vars.$button-primary-hover-color) !important;
+                background-color: func.color(vars.$button-primary-default-background-color) !important;
+                border-color: func.color(vars.$button-primary-default-border-color) !important;
+                opacity: vars.$button-disabled-opacity !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // ############ Secondary ##############
+    &.button-secondary {
+        color: func.color(vars.$button-secondary-default-color);
+        background-color: func.color(vars.$button-secondary-default-background-color);
+        border-color: func.color(vars.$button-secondary-default-border-color);
+
+        &:hover,
+        &.button-hover {
+            color: func.color(vars.$button-secondary-hover-color);
+            background-color: func.color(vars.$button-secondary-hover-background-color);
+            border-color: func.color(vars.$button-secondary-hover-border-color);
+        }
+
+        &.focus,
+        &:focus {
+            color: func.color(vars.$button-secondary-focus-color);
+            background-color: func.color(vars.$button-secondary-focus-background-color);
+            border-color: func.color(vars.$button-secondary-focus-border-color);
+        }
+
+        &:active,
+        &.button-active {
+            color: func.color(vars.$button-secondary-active-color);
+            background-color: func.color(vars.$button-secondary-active-background-color);
+            border-color: func.color(vars.$button-secondary-active-border-color);
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: vars.$button-disabled-opacity;
+            box-shadow: none !important;
+            cursor: not-allowed;
+            border-color: func.color(vars.$button-secondary-disabled-border-color) !important;
+
+            &:hover {
+                color: func.color(vars.$button-secondary-default-color) !important;
+                background-color: func.color(vars.$button-secondary-default-background-color) !important;
+                border-color: func.color(vars.$button-secondary-disabled-border-color) !important;
+                opacity: vars.$button-disabled-opacity !important;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // ############### tertiary ############
+    &.button-tertiary {
+        border-color: func.color(vars.$button-tertiary-default-border-color);
+        background-color: func.color(vars.$button-tertiary-default-background-color);
+        color: func.color(vars.$button-tertiary-default-color);
+        font-weight: func.font-weight("normal");
+
+        &:hover,
+        &.button-hover {
+            border-color: func.color(vars.$button-tertiary-hover-border-color);
+            background-color: func.color(vars.$button-tertiary-hover-background-color);
+            color: func.color(vars.$button-tertiary-hover-color);
+        }
+
+        &.focus,
+        &:focus {
+            border-color: func.color(vars.$button-tertiary-focus-border-color);
+            background-color: func.color(vars.$button-tertiary-focus-background-color);
+            color: func.color(vars.$button-tertiary-focus-color);
+        }
+
+        &:active,
+        &.button-active {
+            border-color: func.color(vars.$button-tertiary-active-border-color);
+            background-color: func.color(vars.$button-tertiary-active-background-color);
+            color: func.color(vars.$button-tertiary-active-color);
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: vars.$button-disabled-opacity;
+            box-shadow: none !important;
+            cursor: not-allowed;
+
+            &:hover {
+                border-color: func.color(vars.$button-tertiary-default-border-color) !important;
+                background-color: func.color(vars.$button-tertiary-default-background-color) !important;
+                color: func.color(vars.$button-tertiary-default-color);
+                font-weight: func.font-weight("normal") !important;
+                opacity: vars.$button-disabled-opacity;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    // ############ Button quaternary - button styled as a link #################
+    &.button-quaternary {
+        color: func.color(vars.$button-quaternary-default-color);
+        background-color: func.color(vars.$button-quaternary-default-background-color);
+        border-color: transparent;
+        text-decoration: none;
+        font-weight: func.font-weight("normal");
+        padding-left: calc(8px - #{vars.$button-border-width});
+
+        &:hover,
+        &.button-hover {
+            background-color: func.color(vars.$button-quaternary-hover-background-color);
+            box-shadow: none;
+            border-bottom-color: transparent;
+        }
+
+        &.focus,
+        &:focus {
+            color: func.color(vars.$button-quaternary-default-color);
+            box-shadow: none;
+            border-bottom-color: transparent;
+            background-color: func.color(vars.$button-quaternary-focus-background-color);
+        }
+
+        &:active,
+        &.button-active {
+            background-color: func.color(vars.$button-quaternary-active-background-color);
+            box-shadow: none;
+            border-bottom-color: transparent;
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: vars.$button-disabled-opacity;
+            box-shadow: none !important;
+            cursor: not-allowed;
+
+            &:hover {
+                color: func.color(vars.$button-quaternary-default-color) !important;
+                background-color: func.color(vars.$button-quaternary-default-background-color) !important;
+                font-weight: func.font-weight("normal") !important;
+                opacity: vars.$button-disabled-opacity !important;
+                box-shadow: none !important;
+            }
+        }
+
+        .icon-svg {
+            margin-right: func.units(2);
+            min-width: func.units(vars.$button-line-height, 'rem');
+        }
+    }
+
+    .icon-svg {
+        margin-right: func.units(3);
+        margin-bottom: 0.1rem; // Add 1 pixel margin to match the line-height of 25px
+        fill: currentColor;
+        min-width: func.units(vars.$button-line-height, 'rem');
+    }
+}
+
+.button-unstyled {
+    @include mixins.button-unstyled;
+    width: auto;
+
+    .icon-svg {
+        margin-bottom: 0 !important;
+    }
+}
+
+.button + .button {
+    @include mixins.media-breakpoint-up(md) {
+        margin-left: func.units(3);
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.button-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .button {
+        margin-top: func.units(3);
+        margin-left: 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

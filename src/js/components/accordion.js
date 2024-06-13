@@ -1,7 +1,6 @@
 'use strict';
-import '../polyfills/Function/prototype/bind';
-const toggle = require('../utils/toggle');
-const isElementInViewport = require('../utils/is-in-viewport');
+const toggle = require('../utils/toggle').default;
+const isElementInViewport = require('../utils/is-in-viewport').default;
 const BUTTON = `.accordion-button[aria-controls]`;
 const EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
@@ -90,12 +89,6 @@ Accordion.prototype.eventOnClick = function ($button, e) {
     e.stopPropagation();
     e.preventDefault();
     $module.toggleButton($button);
-    if ($button.getAttribute(EXPANDED) === 'true') {
-        // We were just expanded, but if another accordion was also just
-        // collapsed, we may no longer be in the viewport. This ensures
-        // that we are still visible, so the user isn't confused.
-        if (!isElementInViewport($button)) $button.scrollIntoView();
-    }
 }
 
 /**

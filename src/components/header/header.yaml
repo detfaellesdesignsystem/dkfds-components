@@ -1,9 +1,5 @@
 # portal_header and mobile_portal_header
 params:
-- name: compact
-  type: string
-  required: false
-  description: true if the compact header should be used.
 - name: logolink
   type: object
   required: true
@@ -32,18 +28,14 @@ params:
     type: string
     required: true
     description: Name of user
-  - name: work
+  - name: info
     type: string
     required: false
-    description: Name of company the user is acting on behalf of.
+    description: Any additional user info.
 - name: button
   type: object
   required: false
   description: Log out button object.
-  - name: variant
-    type: string
-    required: false
-    description: Button variant.
   - name: text
     type: string
     required: false
@@ -51,10 +43,6 @@ params:
 
 # solution_header and mobile_solution_header
 params:
-- name: lastHeader
-  type: boolean
-  required: false
-  description: true if the solution header is the last row in the header. Only used in solution_header.
 - name: title
   type: object
   required: true
@@ -75,10 +63,18 @@ params:
     type: string
     required: false
     description: Additional classes on solution title.
+  - name: tag
+    type: string
+    required: false
+    description: Use a different html tag than "a".
 - name: hideOnPrint
   type: boolean
   required: false
   description: Hide solution info on print
+- name: menu
+  type: boolean
+  required: false
+  description: Show the menu button in the solution header. Only used in rare cases where the portal header is omitted.
 - name: authority
   type: object
   required: true
@@ -91,3 +87,61 @@ params:
     type: string
     required: true
     description: Text of authority - could be contact info.
+
+# menu_open_button and menu_top
+params:
+- name: text
+  type: string
+  required: false
+  description: Button text.
+- name: arialabel
+  type: string
+  required: false
+  description: Button arialabel.
+
+# navigation_menu, mobile_navigation_menu, and mobile_navigation_submenu
+params:
+- name: search
+  type: object
+  required: false
+  description: Show search field in navigation menu.
+  - name: id
+    type: string
+    required: true
+    description: Search field id.
+  - name: name
+    type: string
+    required: true
+    description: Search field name.
+- name: id
+  type: string
+  required: false
+  description: Menu id.
+- name: links
+  type: object
+  required: true
+  description: Menu links.
+  - name: links
+    type: string
+    required: false
+    description: Submenu links.
+  - name: href
+    type: string
+    required: true
+    description: Link href.
+  - name: text
+    type: string
+    required: true
+    description: Link text.
+  - name: active
+    type: boolean
+    required: false
+    description: True if the link or a sublink is the current page.
+  - name: current
+    type: boolean
+    required: false
+    description: True if the link is the current page.
+  - name: currentDesktop
+    type: boolean
+    required: false
+    description: True if the link is the current page on desktop but not on mobile.

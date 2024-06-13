@@ -1,0 +1,36 @@
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+.back-link{
+    border-bottom: func.border(10);
+    color: func.color('black');
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    margin-bottom: func.units(5);
+    @include mixins.media-breakpoint-up(lg) {
+      margin-bottom: func.units(6);
+    }
+    line-height: 2.4rem;
+    padding-left: 14px;
+    &::before{
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
+      border-width: 5px 6px 5px 0;
+      border-right-color: inherit;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    &:active, &:focus, &:hover, &:visited{
+      color: func.color('black');
+    }
+  }
+  

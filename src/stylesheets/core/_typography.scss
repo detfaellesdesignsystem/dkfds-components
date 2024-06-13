@@ -1,248 +1,131 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
 html {
-  font-family: $typography-font-family;
-  font-size: $root-font-size;
+  font-family: vars.$typography-font-family;
+  font-size: vars.$root-font-size;
 }
 
 body {
-  font-size: font-size($typography-base-font-size);
+  font-size: func.font-size(vars.$typography-base-font-size);
+  background-color: func.color('white');
+  color: func.color('black');
+  text-rendering: optimizeLegibility;
+  @include mixins.font-smoothing;
+  font-kerning: normal;
 }
 
 p {
-  line-height: units($typography-base-line-height, 'rem');
-  margin-bottom: units(3, 'rem');
-  margin-top: units(4, 'rem');
+  line-height: func.units(vars.$typography-base-line-height, 'rem');
+  margin-bottom: func.units(3, 'rem');
+  margin-top: func.units(4, 'rem');
 }
 
 a {
-  color: color($theme-color-link);
+  color: func.color("link");
 
   &:hover,
   &.link-hover {
-    color: color($theme-color-link-hover);
-
-    &:disabled,
-    .disabled {
-      background-color: transparent !important;
-    }
-
+    color: func.color("link-hover");
   }
 
   &:focus,
   &.link-focus {
-    color: color($theme-color-link-focus);
-    @include focus();
+    color: func.color("link-focus");
+    @include mixins.focus;
   }
 
   &:visited,
   &.link-visited {
-    color: color($theme-color-link-visited);
-  }
-
-  &:disabled,
-  &.disabled {
-    cursor: not-allowed !important;
-    color: color('disabled') !important;
-    opacity: 0.3;
-
-    &:focus {
-      outline: none;
-      background-color: transparent;
-    }
+    color: func.color("link-visited");
   }
 
   .background-dark & {
     &:not(.button) {
-      color: color('white');
-    }
-
-    &:disabled,
-    &.disabled {
-      box-shadow: none !important;
-      cursor: not-allowed !important;
-      color: color('disabled-light') !important;
-      box-shadow: none !important;
-      outline-offset: inherit !important;
-
-      &:focus {
-        outline: none;
-        background-color: transparent;
-      }
+      color: func.color('white');
     }
   }
 
   &.bold-link {
-    font-weight: font-weight("semibold");
+    font-weight: func.font-weight("semibold");
   }
 
   &:not(.button, .full-width-image) {
-    max-width: $typography-text-max-width;
+    max-width: vars.$typography-text-max-width;
   }
-}
-
-@mixin h1{
-  @include responsive-style($typography-h1-font-size, font-size);
-  @include responsive-style($typography-h1-line-height, line-height);
-  @include responsive-style($typography-h1-letter-spacing, letter-spacing);
-  font-weight: font-weight("bold");
-  color: color('black');
-  text-transform: none;
-  word-break: break-word;
-}
-@mixin h2 {
-  @include responsive-style($typography-h2-font-size, font-size);
-  @include responsive-style($typography-h2-line-height, line-height);
-  @include responsive-style($typography-h2-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h3 {
-  @include responsive-style($typography-h3-font-size, font-size);
-  @include responsive-style($typography-h3-line-height, line-height);
-  @include responsive-style($typography-h3-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h4{
-  @include responsive-style($typography-h4-font-size, font-size);
-  @include responsive-style($typography-h4-line-height, line-height);
-  @include responsive-style($typography-h4-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-@mixin h5 {
-  @include responsive-style($typography-h5-font-size, font-size);
-  @include responsive-style($typography-h5-line-height, line-height);
-  @include responsive-style($typography-h5-letter-spacing, letter-spacing);
-  font-weight: font-weight("semibold");
-  color: color('black');
-  text-transform: none;
-}
-
-@mixin h6 {
-  @include responsive-style($typography-h6-font-size, font-size);
-  @include responsive-style($typography-h6-line-height, line-height);
-  @include responsive-style($typography-h6-letter-spacing, letter-spacing);
-  font-weight: font-weight("medium");
-  color: color('black');
-}
-@mixin body-copy-text {
-  font-size: font-size($typography-body-text-font-size);
-  line-height: units($typography-body-text-line-height, 'rem');
-  font-weight: font-weight($typography-body-text-font-weight);
-  color: color($typography-body-text-color);
-  text-transform: none;
-  letter-spacing: $typography-body-text-letter-spacing;
-}
-@mixin caption {
-  font-size: font-size($typography-caption-font-size);
-  line-height: units($typography-caption-line-height, 'rem');
-  color: color($typography-caption-text-color);
-  letter-spacing: $typography-caption-letter-spacing;
-}
-@mixin subheading {
-  font-size: font-size($typography-subheading-font-size);
-  line-height: units($typography-subheading-line-height, 'rem');
-  color: color($typography-subheading-text-color);
-  letter-spacing: $typography-subheading-letter-spacing;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-@mixin form-label-text {
-  font-size: font-size($typography-form-label-font-size);
-  line-height: units($typography-form-label-line-height, 'rem');
-  font-weight: font-weight("semibold");
-  color: color($typography-form-label-text-color);
-  text-transform: none;
-}
-@mixin small-text {
-  font-size: font-size($typography-small-text-font-size);
-  line-height: units($typography-small-text-line-height, 'rem');
-  font-weight: font-weight("normal");
-  letter-spacing: $typography-small-text-letter-spacing;
-}
-
-@mixin color-text-positive {
-  color: color($theme-color-text-positive);
-}
-
-@mixin color-text-negative {
-  color:color($theme-color-text-negative);
 }
 
 h1, .h1 {
-  @include h1;
+  @include mixins.h1;
 }
 h2, .h2{
-  @include h2;
+  @include mixins.h2;
 }
 
 h3, .h3 {
-  @include h3;
+  @include mixins.h3;
 }
 
 h4, .h4{
-  @include h4;
+  @include mixins.h4;
 }
 
 h5, .h5{
-  @include h5;
+  @include mixins.h5;
 }
 
 h6, .h6{
-  @include h6;
+  @include mixins.h6;
 }
 
 p, .body-text, .body-copy-text{
-  @include body-copy-text;
+  @include mixins.body-copy-text;
 }
 figcaption, .figcaption{
-  @include caption;
+  @include mixins.caption;
   p{
-    @include caption;
+    @include mixins.caption;
   }
 }
 .subheading{
-  @include subheading;
+  @include mixins.subheading;
 }
 
 .font-lead {
-  font-size: font-size($typography-lead-font-size);
-  font-weight: font-weight("normal");
-  line-height: units($typography-lead-line-height, 'rem');
-  max-width: $typography-text-max-width;
-  color: color('ink');
-  letter-spacing: $typography-lead-letter-spacing;
+  font-size: func.font-size(vars.$typography-lead-font-size);
+  font-weight: func.font-weight("normal");
+  line-height: func.units(vars.$typography-lead-line-height, 'rem');
+  max-width: vars.$typography-text-max-width;
+  color: func.color('ink');
+  letter-spacing: vars.$typography-lead-letter-spacing;
 }
 .article{
-  font-size: font-size($typography-article-font-size);
-  font-weight: font-weight("normal");
-  line-height: units($typography-article-line-height, 'rem');
-  max-width: $typography-text-max-width;
-  color: color('ink');
-  letter-spacing: $typography-article-letter-spacing;
+  font-size: func.font-size(vars.$typography-article-font-size);
+  font-weight: func.font-weight("normal");
+  line-height: func.units(vars.$typography-article-line-height, 'rem');
+  max-width: vars.$typography-text-max-width;
+  color: func.color('ink');
+  letter-spacing: vars.$typography-article-letter-spacing;
 }
 small, .small-text {
-  @include small-text();
+  @include mixins.small-text;
 }
 
 .weight-normal {
-  font-weight: font-weight("normal");
+  font-weight: func.font-weight("normal");
 }
 
 .weight-semibold {
-  font-weight: font-weight("semibold");
+  font-weight: func.font-weight("semibold");
 }
 .facit {
-  border-bottom: border(10);
+  border-bottom: func.border(10);
   border-bottom-style: double;
   border-bottom-width: 4px;
 }
 strong, b, .bold {
-  font-weight: font-weight("bold");
+  font-weight: func.font-weight("bold");
 }
 
 .italic, em {
@@ -251,7 +134,7 @@ strong, b, .bold {
 
 
 .form-label {
-  @include form-label-text;
+  @include mixins.form-label-text;
 }
 
 
@@ -265,126 +148,71 @@ h6:focus, .h6:focus {
 }
 
 h1, .h1{
-  margin-bottom: units(4, 'rem');
-  margin-top: 0rem;
+  margin-bottom: func.units(4, 'rem');
+  margin-top: 0;
 }
 
 h2, .h2 {
-  margin-top: units(6, 'rem');
-  margin-bottom: units(4, 'rem');
-  @include media-breakpoint-up(md) {
-    margin-top: units(7, 'rem');
+  margin-top: func.units(6, 'rem');
+  margin-bottom: func.units(4, 'rem');
+  @include mixins.media-breakpoint-up(md) {
+    margin-top: func.units(7, 'rem');
   }
 }
 h3, .h3{
-  margin-top: units(6, 'rem');
-  margin-bottom: units(4, 'rem');
-  @include media-breakpoint-up(md) {
-    margin-top: units(7, 'rem');
+  margin-top: func.units(6, 'rem');
+  margin-bottom: func.units(4, 'rem');
+  @include mixins.media-breakpoint-up(md) {
+    margin-top: func.units(7, 'rem');
   }
 }
 h4, .h4{
-  margin-top: units(5, 'rem');
-  margin-bottom:  units(4, 'rem');
+  margin-top: func.units(5, 'rem');
+  margin-bottom:  func.units(4, 'rem');
 }
 h5, .h5{
-  margin-top: units(5, 'rem');
+  margin-top: func.units(5, 'rem');
   margin-bottom: 0;
 }
 h6, .h6{
-  margin-top: units(5, 'rem');
+  margin-top: func.units(5, 'rem');
   margin-bottom: 0;
 }
 .font-lead{
-  margin-top: units(5, 'rem');
-  margin-bottom:  units(4, 'rem');
+  margin-top: func.units(5, 'rem');
+  margin-bottom:  func.units(4, 'rem');
 }
 p, .body-text{
-  margin-top: units(4, 'rem');
-  margin-bottom: units(4, 'rem');
+  margin-top: func.units(4, 'rem');
+  margin-bottom: func.units(4, 'rem');
 }
 h5, .h5, h6, .h6{
   & + p, & + ul, & + ol{
-    margin-top: 0; //if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
-  }
-}
-
-//a function link, does not look like a link
-button.function-link{
-  background: none;
-  padding: 0px;
-  text-decoration: underline;
-  text-align: left;
-}
-.function-link{
-  border: none;
-  @include body-copy-text;
-  cursor: pointer;
-  display: inline-block;
-  &:hover, &:visited, &:focus{
-    color: color('ink');
-  }
-  .icon-svg{
-    margin-right: units(2);
-    fill: currentColor;
-  }
-
-  &.link-right {
-    text-align: right;
-  }
-}
-
-.back-link{
-  border-bottom: border(10);
-  color: color('black');
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  margin-bottom: units(5);
-  @include media-breakpoint-up(lg) {
-    margin-bottom: units(6);
-  }
-  line-height: 2.4rem;
-  padding-left: 14px;
-  &::before{
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: transparent;
-    -webkit-clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-    border-width: 5px 6px 5px 0;
-    border-right-color: inherit;
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-  }
-  &:active, &:focus, &:hover, &:visited{
-    color: color('black');
+    margin-top: 0; // if next sibling after h5 og h6 is a p-tag, no margin-top on p-tag.
   }
 }
 
 .icon-link{
-  line-height: units($typography-body-text-line-height, 'rem');
+  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
+  display: inline-block;
   .icon-svg{
-    margin-left: units(2);
+    margin-left: func.units(2);
     width: 1.6rem;
-    height: 1.6rem;
     fill: currentColor;
+    vertical-align: top;
+    margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
   }
 }
 
- //styling for link in heading
+// styling for link in heading
 h1, .h1,
 h2, .h2,
 h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6{
+  max-width: vars.$typography-text-max-width;
+
   a, a:hover, a:visited, a:focus{
     text-decoration: underline;
   }
@@ -411,87 +239,68 @@ dfn {
   font-style: normal;
 }
 
-//max-width of 66ch for text
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6{
-  max-width: $typography-text-max-width;
-}
+// max-width of 66ch for text
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.inline-list):not(.tabnav):not(.sidenav-list):not(.sidenav-sub_list),
-ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list){
-  max-width: $typography-text-max-width;
+ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width):not(.overflow-list),
+ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):not(.no-max-width){
+  max-width: vars.$typography-text-max-width;
 }
 .font-lead{
-  max-width: $typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 
 .form-label, .form-hint, .form-error-message{
-  max-width: $typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 .form-checkbox+label, .form-radio+label{
-  max-width: $typography-text-max-width;
+  max-width: vars.$typography-text-max-width;
 }
 
 .displayheading {
   &-1 {
-    font-weight: font-weight("medium");
-    font-size: font-size($typography-display-1-heading-font-size);
-    line-height: units($typography-display-1-heading-line-height, 'rem');
+    font-weight: func.font-weight("medium");
+    font-size: func.font-size(vars.$typography-display-1-heading-font-size);
+    line-height: func.units(vars.$typography-display-1-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: color('black');
-    letter-spacing: $typography-display-1-heading-letter-spacing;
+    color: func.color('black');
+    letter-spacing: vars.$typography-display-1-heading-letter-spacing;
   }
   &-2 {
-    font-weight: font-weight("medium");
-    font-size: font-size($typography-display-2-heading-font-size);
-    line-height: units($typography-display-2-heading-line-height, 'rem');
+    font-weight: func.font-weight("medium");
+    font-size: func.font-size(vars.$typography-display-2-heading-font-size);
+    line-height: func.units(vars.$typography-display-2-heading-line-height, 'rem');
     margin-bottom: 0;
-    color: color('black');
-    letter-spacing: $typography-display-2-heading-letter-spacing;
+    color: func.color('black');
+    letter-spacing: vars.$typography-display-2-heading-letter-spacing;
   }
 }
 
 .text-positive {
-  @include color-text-positive();
+  color: func.color("text-positive");
 }
 
 .text-negative {
-  @include color-text-negative();
+  color: func.color("text-negative");
 }
 
 .color-text-black {
-  color: color('black');
+  color: func.color('black');
 }
 
 .background-dark {
-  background-color: color('black');
+  background-color: func.color('black');
 
   p, span{
-    color: color('white');
+    color: func.color('white');
   }
 }
 
 .field-group-title {
-  font-weight: font-weight("normal");
+  font-weight: func.font-weight("normal");
 
   ~ hr {
-    border: 2px solid color('black');
+    border: 2px solid func.color('black');
   }
-}
-
-h1, h2, h3, h4, h5, h6, p, legend, strong, b, cite, var, address, dfn{
-  text-rendering: optimizeLegibility; //Vigtig — den er vidst default i Webkit nu, men den har effekt på andre engines
-  -webkit-font-smoothing: none; //Fikser for tyk typografi i Webkit-baserede browsers)
-  -webkit-font-smoothing: subpixel-antialiased;
-  -webkit-font-smoothing: antialiased;
-  font-feature-settings: "kern";
-  -webkit-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern";
-  -moz-font-feature-settings: "kern=1";
 }
 
 .uppercase{

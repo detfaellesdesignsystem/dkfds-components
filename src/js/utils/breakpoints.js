@@ -7,4 +7,4 @@ let breakpoints = {
   'xl': 1200
 };
 
-module.exports = breakpoints;
+export default breakpoints;

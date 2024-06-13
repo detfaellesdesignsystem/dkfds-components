@@ -1,3 +1,6 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+
 $icons: (
     "accessibility-new",
     "account-circle",
@@ -40,6 +43,7 @@ $icons: (
     "desktop-windows",
     "domain",
     "done",
+    "done-white",
     "download-done",
     "drive-eta",
     "email",
@@ -100,7 +104,6 @@ $icons: (
     "list-alt",
     "local-shipping",
     "location-on",
-    "lock-open",
     "lock",
     "map",
     "menu",
@@ -127,6 +130,7 @@ $icons: (
     "query-builder",
     "refresh",
     "remove",
+    "remove-white",
     "reply",
     "report-problem",
     "save",
@@ -161,18 +165,18 @@ $icons: (
 ) !default;
 
 .icon{
-    height: units($typography-body-text-line-height, 'rem');
-    width: units($typography-body-text-line-height, 'rem');
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
     background-repeat: no-repeat;
     display: inline-block;
     background-size: 100%;
 }
 .icon-svg {
-    height: units($typography-body-text-line-height, 'rem');
-    width: units($typography-body-text-line-height, 'rem');
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
     vertical-align: middle;
     &--inherit-color{
-        fill: currentColor; //svg inherit color
+        fill: currentColor; // svg inherit color
     }
     &:focus{
       outline: none;
@@ -183,21 +187,12 @@ $icons: (
   width: 1em;
 }
 
-.icon-svg-large {
-    height: font-size($typography-display-1-heading-font-size);
-    width: font-size($typography-display-1-heading-font-size);
-    vertical-align: middle;
-    &--inherit-color{
-        fill: currentColor;
-    }
-}
-
 @each $icon in $icons {
     .icon-#{$icon}:not(a) {
-        background-image: url($icons-folder-path+'/'+$icon+".svg");
+        background-image: url(vars.$icons-folder-path + $icon + ".svg");
     }
 }
 
-.hide-base-svg{ //hide inline svgs
+.hide-base-svg{ // hide inline svgs
     display: none;
 }

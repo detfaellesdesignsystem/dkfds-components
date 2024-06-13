@@ -1,15 +1,19 @@
-//
+@use "../../variables" as vars;
+@use "../../functions" as func;
+
 // Generates utility classes to control width in percent. 
 // Example: .w-percent-100 .w-percent-md-30
-//
 
 $backgroundcolors: (
   normal: 'white',
   alternative: 'gray-100',
-  modal: $modal-overlay-background-color
+  modal: vars.$modal-overlay-background-color
 ) !default;
 
 
 @each $name, $color in $backgroundcolors { 
-  .bg-#{$name}         { background: color($color) !important; background-color: color($color) !important;}
+  .bg-#{$name} { 
+    background: func.color($color) !important; 
+    background-color: func.color($color) !important;
+  }
 }

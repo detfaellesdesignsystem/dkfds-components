@@ -1,21 +1,21 @@
-/*
-----------------------------------------
-Virk theme
-----------------------------------------
-*/
-$theme-colors: (
-    "virk": (
-        100: #0059B3,
-        200: #004993,
-        300: #003972
-    )
+// ----------------------------------------
+// Virk theme
+// ----------------------------------------
+
+$virk-primary:          #0059B3;
+$virk-primary-dark:     #004993;
+$virk-primary-darker:   #003972;
+
+$custom-colors: (
+    'virk-100': $virk-primary, 
+    'virk-200': $virk-primary-dark,
+    'virk-300': $virk-primary-darker
 );
 
-$theme-color-primary: 'virk-100';
-$theme-color-primary-dark: 'virk-200';
-$theme-color-primary-darker: 'virk-300';
-$header-portal-logo: 'logo_virk.svg';
-$header-portal-logo-height: 4.8rem;
-$header-portal-logo-width: 7.8rem;
-$header-portal-compact-logo-width: 3.8rem;
-
+$theme-color-primary:               $virk-primary !default;
+$theme-color-primary-dark:          $virk-primary-dark !default;
+$theme-color-primary-darker:        $virk-primary-darker !default;
+$header-portal-logo:                'logo_virk.svg' !default;
+$header-portal-logo-height:         4.8rem !default;
+$header-portal-logo-width:          7.8rem !default;
+$header-portal-compact-logo-width:  3.8rem !default;

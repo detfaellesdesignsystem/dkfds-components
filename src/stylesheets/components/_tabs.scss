@@ -1,0 +1,130 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$-tabs-icon-right-padding: 7.9px; // This value is used to avoid a rounding error during zoom where text wraps onto a new line.
+$-tabs-icon-size: 2.4rem;
+
+.tab-container {
+    width: 100%;
+
+    .tab-list {
+        @include mixins.unstyled-list;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        width: 100%;
+
+        // A tab-list is the last element when used for navigation
+        &:last-child {
+            border-bottom: 1px solid func.color(vars.$tab-default-border-color);
+            margin-top: func.units(8);
+        }
+
+        .tab-button {
+            @include mixins.appearance-none;
+            margin-bottom: func.units(3);
+            margin-top: func.units(3);
+            margin-right: func.units(4);
+            display: inline-flex;
+            max-width: 100%;
+            min-height: func.units(8);
+            align-items: center;
+            text-align: center;
+            padding: 1px func.units(5); // top and bottom | left and right
+            color: func.color(vars.$tab-inactive-text-color);
+            background-color: func.color(vars.$tab-inactive-background-color);
+            border: 0;
+            border-radius: func.units(5);
+            text-decoration: underline;
+
+            @include mixins.media-breakpoint-down(sm) {
+                margin-bottom: func.units(2);
+                margin-top: func.units(2);
+                margin-right: func.units(3);
+                min-height: func.units(7);
+                padding: 1px func.units(4); // top and bottom | left and right
+                border-radius: func.units(405);
+            }
+
+            &:last-child {
+                margin-bottom: func.units(4);
+
+                @include mixins.media-breakpoint-down(sm) {
+                    margin-bottom: func.units(3);
+                }
+            }
+    
+            span {
+                max-width: 100%;
+                overflow-wrap: break-word;
+            }
+    
+            .icon-svg + span {
+                max-width: calc(100% - $-tabs-icon-size - $-tabs-icon-right-padding);
+            }
+    
+            &[aria-current="page"],
+            &[aria-current="true"],
+            &[aria-selected="true"] {
+                color: func.color(vars.$tab-active-text-color);
+                font-weight: func.font-weight("bold");
+                text-decoration: none;
+                background-color: func.color(vars.$tab-active-background-color);
+    
+                .icon-svg {
+                    fill: func.color(vars.$tab-active-icon-color);
+                }
+            }
+    
+            &:not([aria-current="page"], [aria-current="true"], [aria-selected="true"]):hover {
+                background-color: func.color(vars.$tab-hover-background-color);
+            }
+    
+            .icon-svg {
+                margin-right: func.units(3);
+                flex-shrink: 0;
+            }
+        }
+
+        li {
+            max-width: 100%;
+
+            &:last-child {
+                margin-bottom: func.units(3);
+
+                @include mixins.media-breakpoint-down(sm) {
+                    margin-bottom: func.units(2);
+                }
+            }
+
+            a.tab-button {
+                &:last-child {
+                    margin-bottom: func.units(3);
+
+                    @include mixins.media-breakpoint-down(sm) {
+                        margin-bottom: func.units(2);
+                    }
+                }
+            }
+        }
+    }
+
+    .tab-panel {
+        display: block;
+        border: func.border(10);
+        border-radius: 0;
+        width: 100%;
+        padding: func.units(5);
+        overflow: auto hidden;
+
+        &:focus{
+            @include mixins.focus;
+        }
+
+        :first-child {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+}

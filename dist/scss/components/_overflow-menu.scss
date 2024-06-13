@@ -1,3 +1,7 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
 .overflow-menu + h1 {
     margin-top: 0;
 }
@@ -8,19 +12,19 @@
     width: 100%;
 
 
-    @include media-breakpoint-up(md) {
+    @include mixins.media-breakpoint-up(md) {
         width: auto;
         display: inline-block;
     }
 
     .button-overflow-menu {
-        @include button-unstyled;
+        @include mixins.button-unstyled;
         min-height: 40px;
         min-width: 40px;
         padding: 8px 0;
         align-items: center;
         justify-content: center;
-        color: color($overflow-menu-button-text-color);
+        color: func.color(vars.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
 
@@ -28,11 +32,10 @@
             text-decoration: underline;
         }
 
-        //below: arrow with border
-        &:after,
-        &:before {
+        // below: arrow with border
+        &::after,
+        &::before {
             display: none;
-            bottom: 100%;
             left: 50%;
             border: solid transparent;
             content: " ";
@@ -40,60 +43,61 @@
             width: 0;
             position: absolute;
             pointer-events: none;
-            z-index: 3;
-            bottom: calc(#{$overflow-menu-dropdown-distance} * -1 - 1px);
+            z-index: vars.$zindex-overflow-arrow;
+            bottom: calc((vars.$overflow-menu-dropdown-distance * -1) - 1px);
         }
 
-        &:after {
-            border-bottom-color: color($overflow-menu-content-background-color);
-            border-width: calc(#{$overflow-menu-arrow-size} - 1px);
-            margin-left: calc((#{$overflow-menu-arrow-size} - 1px)*-1);
+        &::after {
+            border-bottom-color: func.color(vars.$overflow-menu-content-background-color);
+            border-width: calc(#{vars.$overflow-menu-arrow-size} - 1px);
+            margin-left: calc((#{vars.$overflow-menu-arrow-size} - 1px) * -1);
         }
 
-        &:before {
-            border-bottom-color: border-color($overflow-menu-content-border);
-            border-width: $overflow-menu-arrow-size;
-            margin-left: calc(#{$overflow-menu-arrow-size} *-1);
+        &::before {
+            border-bottom-color: func.border-color(vars.$overflow-menu-content-border);
+            border-width: vars.$overflow-menu-arrow-size;
+            margin-left: calc(#{vars.$overflow-menu-arrow-size} * -1);
         }
 
         &[aria-expanded="true"] {
 
-            &:after,
-            &:before {
+            &::after,
+            &::before {
                 display: block;
             }
         }
 
     }
 
-    //used when button only contains an icon
+    // used when button only contains an icon
     &.overflow-menu--hover-bg {
 
         .button-overflow-menu {
             padding: 0;
 
             &:hover {
-                background-color: color($overflow-menu-button-icon-only-hover-background-color);
+                background-color: func.color(vars.$overflow-menu-button-icon-only-hover-background-color);
             }
         }
     }
 
     .overflow-menu-inner {
         position: absolute;
-        width: 100%;
-        z-index: 2;
-        border: border($overflow-menu-content-border);
-        box-shadow: shadow($overflow-menu-content-shadow);
-        background: color($overflow-menu-content-background-color);
-        padding-top: units(3);
-        padding-bottom: units(3);
-        top: calc(100% + #{$overflow-menu-dropdown-distance});
+        width: calc(100% - 8px);
+        z-index: vars.$zindex-overflow;
+        border: func.border(vars.$overflow-menu-content-border);
+        box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
+        background: func.color(vars.$overflow-menu-content-background-color);
+        top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
+        left: 4px;
 
-        @include media-breakpoint-up(md) {
+        @include mixins.media-breakpoint-up(md) {
             width: auto;
+            max-width: 30rem;
+            left: auto;
         }
 
-        @include media-breakpoint-up(sm) {
+        @include mixins.media-breakpoint-up(sm) {
             min-width: 28rem;
         }
 
@@ -103,27 +107,36 @@
     }
 
     .overflow-list {
-        @include unstyled-list;
-        font-size: font-size($overflow-menu-content-font-size);
-        line-height: units($overflow-menu-content-line-height, 'rem');
-        color: color($overflow-menu-content-text-color);
+        @include mixins.unstyled-list;
+        font-size: func.font-size(vars.$overflow-menu-content-font-size);
+        line-height: func.units(vars.$overflow-menu-content-line-height, 'rem');
+        color: func.color(vars.$overflow-menu-content-text-color);
+
+        & > li {
+            border-bottom: 1px solid func.color('gray-200');
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
 
         button {
-            @include button-unstyled;
-            line-height: units(5, 'rem');
+            @include mixins.button-unstyled;
+            line-height: func.units(5, 'rem');
             cursor: pointer;
         }
 
         a {
-            @include body-copy-text;
+            @include mixins.body-copy-text;
             display: block;
             text-decoration: none;
-            line-height: units(5, 'rem');
+            line-height: func.units(5, 'rem');
+            max-width: 100%;
 
             &:hover,
             &:visited,
             &:focus {
-                color: color($overflow-menu-content-text-color);
+                color: func.color(vars.$overflow-menu-content-text-color);
             }
         }
 
@@ -131,27 +144,32 @@
         a {
             padding: 8px 16px;
             width: 100%;
+            position: relative;
 
             &:hover {
-                background-color: color($overflow-menu-content-link-hover-background-color);
+                background-color: func.color(vars.$overflow-menu-content-link-hover-background-color);
+            }
+
+            &:focus {
+                z-index: vars.$zindex-focus;
             }
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidenav-list {
+    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidemenu {
         border-top: 0;
         border-bottom: 0;
     }
 
-    &.overflow-menu--md-no-responsive .sidenav-list {
-        @include media-breakpoint-down(sm) {
+    &.overflow-menu--md-no-responsive .sidemenu {
+        @include mixins.media-breakpoint-down(sm) {
             border-top: 0;
             border-bottom: 0;
         }
     }
 
-    &.overflow-menu--lg-no-responsive .sidenav-list {
-        @include media-breakpoint-down(md) {
+    &.overflow-menu--lg-no-responsive .sidemenu {
+        @include mixins.media-breakpoint-down(md) {
             border-top: 0;
             border-bottom: 0;
         }
@@ -159,10 +177,16 @@
 
     &--open-right {
         .overflow-menu-inner {
-            @include media-breakpoint-up(md) {
+            li,
+            a,
+            button {
+                text-align: left;
+            }
+
+            @include mixins.media-breakpoint-up(md) {
                 left: calc(50% - 19px);
 
-                &:after {
+                &::after {
                     left: 13px;
                 }
             }
@@ -173,7 +197,7 @@
         .overflow-menu-inner {
             right: calc(50% - 19px);
 
-            &:after {
+            &::after {
                 right: 13px;
             }
 
@@ -184,7 +208,7 @@
 
                 .icon-svg {
                     float: right;
-                    margin-right: 4px;
+                    margin-right: func.units(2);
                 }
             }
         }
@@ -192,14 +216,14 @@
 
     &.overflow-menu--md-no-responsive {
 
-        //overflow content always visible on large screens.
-        //does not look like a dropdown.
-        @include media-breakpoint-up(md) {
+        // overflow content always visible on large screens.
+        // does not look like a dropdown.
+        @include mixins.media-breakpoint-up(md) {
             display: block;
 
-            &:before,
-            &:after {
-                display: none; //hide arrow
+            &::before,
+            &::after {
+                display: none; // hide arrow
             }
 
             .button-overflow-menu {
@@ -220,14 +244,14 @@
 
     &.overflow-menu--lg-no-responsive {
 
-        //overflow content always visible on large screens.
-        //does not look like a dropdown.
-        @include media-breakpoint-up(lg) {
+        // overflow content always visible on large screens.
+        // does not look like a dropdown.
+        @include mixins.media-breakpoint-up(lg) {
             display: block;
 
-            &:before,
-            &:after {
-                display: none; //hide arrow
+            &::before,
+            &::after {
+                display: none; // hide arrow
             }
 
             .button-overflow-menu {
@@ -249,25 +273,24 @@
     &--sort {
         .button-overflow-menu {
             text-decoration: underline;
-            line-height: units(5, 'rem');
+            line-height: func.units(5, 'rem');
 
             .selected-value {
                 text-decoration: none;
                 display: inline-block;
-                margin-left: units(2);
-                font-weight: font-weight("semibold");
+                margin-left: func.units(2);
+                font-weight: func.font-weight("semibold");
             }
 
             svg {
-                margin-right: units(2);
+                margin-right: func.units(2);
             }
         }
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
-            font-weight: font-weight("semibold");
-            @include add-background-svg('done');
-            background-repeat: no-repeat;
-            background-position: calc(100% - #{units(4)}) center;
+            font-weight: func.font-weight("semibold");
+            @include mixins.add-background-svg('done');
+            background-position: calc(100% - #{func.units(4)}) center;
         }
     }
 }

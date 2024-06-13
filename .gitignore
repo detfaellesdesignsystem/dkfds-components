@@ -1,7 +1,7 @@
 .DS_store
 .*.swp
-package-lock.json
 dist/LICENSE.md
+.vscode/
 
 # ignore Node-specific files and directories
 node_modules/
@@ -13,17 +13,4 @@ coverage/
 # ignore the generated dkfds directory
 dkfds-*/
 dkfds-*.zip
-
-# ignore the generated builds directory
-#build/components/detail/
-#build/components/preview/
-#build/components/raw/
-#build/dist/
-#build/themes/
-#build/components/
-
-build/
-.idea/
-
-
 

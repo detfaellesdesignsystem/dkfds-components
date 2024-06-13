@@ -1,0 +1,192 @@
+@use "../../stylesheets/variables" as vars;
+@use "../../stylesheets/functions" as func;
+@use "../../stylesheets/mixins" as mixins;
+
+@media print{
+  html{
+    font-family: Georgia, "Times New Roman", Serif;
+    font-size: 48%;
+  }
+  body{
+    display: block;
+    min-height: 0;
+  }
+  .page-container{
+    display: block;
+  }
+
+  fieldset{
+    page-break-before: avoid;
+    page-break-inside: auto;
+    display: block;
+    overflow: visible !important;
+  }
+  .form-group{
+    page-break-inside: avoid;
+  }
+  .form-label{
+    page-break-after: avoid;
+  }
+
+  // header
+  .header {
+    .logo, .portal-header .logo{
+      height: auto;
+      width: auto;
+      background-image: none;
+    }
+
+    .portal-header{
+      overflow:hidden;
+
+      .portal-header-inner{
+        display: block;
+      }
+
+      .portal-info{
+        display: block;
+        float: right;
+      }
+    }
+
+    .solution-header{
+      .solution-header-inner{
+        display: block;
+        overflow: hidden;
+      }
+
+      .solution-heading{
+        display: inline-block;
+      }
+      .solution-info{
+        display: block;
+        float: right;
+        margin-left: 0;
+        text-align: right;
+
+        @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  // footer
+  footer{
+    .footer{
+      margin-top: func.units(6);
+      padding-bottom: 0;
+      .inline-list > li{
+        display: inline-block;
+        + li{
+          margin-left: func.units(4);
+        }
+      }
+    }
+  }
+
+  // card
+  .card{
+    box-shadow: none;
+  }
+
+  // modal
+  body.modal-active{
+    @media print{
+      > header{
+        display: none
+      }
+      .page-container{
+        display: none;
+      }
+      > footer{
+        display: none;
+      }
+    }
+  }
+
+  body .modal {
+    .modal__overlay {
+      display: block;
+      position: relative;
+      background-color: transparent;
+    }
+    .bg-modal{
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    .modal__header {
+      display: block;
+    }
+
+    .modal__footer{
+      @include mixins.media-breakpoint-up(lg) {
+        display: block;
+      }
+    }
+  }
+
+  // table
+  .table.table--responsive-headers:not(.d-print-table),
+  .table.table-sm-responsive-headers:not(.d-print-table),
+  .table.table-md-responsive-headers:not(.d-print-table),
+  .table.table-lg-responsive-headers:not(.d-print-table),
+  .table.table-xl-responsive-headers:not(.d-print-table) {
+    @include mixins.media-breakpoint-down(sm) {
+      display: block;
+
+      thead {
+        display: none;
+      }
+      tr {
+        border-bottom: func.border(20);
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+      tr td, tr th {
+        display: block;
+        border: none !important;
+
+        &[data-title]:not([data-title=""]):before {
+          content: attr(data-title);
+          text-align: left;
+          display: block;
+          font-weight: func.font-weight("semibold");
+        }
+      }
+
+      &.table--borderless tbody tr {
+        &:first-child {
+          border-top: func.border(vars.$table-row-border);
+        }
+        &:last-child {
+          border-bottom: func.border(vars.$table-row-border);
+        }
+        td:first-child, th:first-child {
+          padding-left: 16px;
+        }
+      }
+    }
+  }
+
+  .form-radio.radio-large:checked + label:after{
+    border: func.units(3) solid func.color('black');
+  }
+  .form-radio:checked + label:after{
+    border: func.units(2) solid func.color('black');
+  }
+
+  .form-checkbox:checked + label{
+    &:before{
+      background-color: transparent;
+      border: 10px solid func.color('black');
+    }
+  }
+  .form-checkbox.checkbox-large:checked + label{
+    &:before{
+      border: func.units(4) solid func.color('black');
+    }
+  }
+}

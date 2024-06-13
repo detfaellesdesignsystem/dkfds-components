@@ -1,0 +1,38 @@
+// Primary colors
+$theme-color-primary:           "gray-500" !default;
+$theme-color-primary-dark:      "gray-600" !default;
+$theme-color-primary-darker:    "gray-900" !default;
+
+// Text color
+$theme-color-ink:               'black' !default;
+$theme-color-ink-light:         'gray-500' !default;
+
+// Status colors
+$theme-color-success:           'green-700' !default;
+$theme-color-success-light:     'green-100' !default;
+$theme-color-warning:           'orange-700' !default;
+$theme-color-warning-light:     'orange-100' !default;
+$theme-color-error:             'red-700' !default;
+$theme-color-error-light:       'red-100' !default;
+$theme-color-info:              'blue-700' !default;
+$theme-color-info-light:        'blue-100' !default;
+
+// Special text colors
+$theme-color-text-positive:     'green-700' !default;
+$theme-color-text-negative:     'red-700' !default;
+
+// Link colors
+$theme-color-link:              'blue-800' !default;
+$theme-color-link-hover:        'blue-900' !default;
+$theme-color-link-focus:        'blue-800' !default;
+$theme-color-link-visited:      'purple-700' !default;
+
+// Disabled colors
+$theme-color-disabled-light:    'gray-400' !default;
+$theme-color-disabled:          'gray-600' !default;
+
+// Shadow
+$theme-color-shadow:            "black-transparent-400" !default;
+
+// Focus
+$theme-focus-color:             'gray-500' !default;

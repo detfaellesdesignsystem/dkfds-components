@@ -1,16 +1,4 @@
 params:
-- name: id
-  type: string
-  required: true
-  description: Id of the input.
-- name: name
-  type: string
-  required: true
-  description: Name of the input.
-- name: value
-  type: string
-  required: true
-  description: Value of the input.
 - name: disabled
   type: boolean
   required: false
@@ -19,20 +7,15 @@ params:
   type: boolean
   required: false
   description: true on checked.
-- name: inputAttributes
+- name: attributes
   type: string
   required: false
-  description: Additional attributes for the input.
-- name: labelClasses
+  description: Additional attributes for the button.
+- name: classes
   type: string
   required: false
-  description: Additional classes for the label.
-- name: labelAttributes
-  type: string
-  required: false
-  description: Additional attributes for the label.
+  description: Additional classes for the toggle element.
 - name: label
   type: string
   required: true
   description: Label text
-  

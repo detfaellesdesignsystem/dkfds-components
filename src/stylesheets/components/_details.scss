@@ -1,6 +1,10 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
 .details{
   display: block;
-  margin-bottom: units(6);
+  margin-bottom: func.units(6);
 
   .details-summary::marker, .details-summary::-webkit-details-marker {
     display: none;
@@ -8,9 +12,9 @@
 
   &[open] {
     .details-summary {
-      margin-bottom: units(3);
-      &:before {
-        background-image: url($icons-folder-path+'/'+$details-button-open-icon);
+      margin-bottom: func.units(3);
+      &::before {
+        background-image: url(vars.$icons-folder-path + 'arrow-drop-down.svg');
         background-position: -10px -8px;
       }
     }
@@ -22,20 +26,19 @@
     cursor: pointer;
     text-decoration: underline;
 
-    &:before {
+    &::before {
       content: "";
       display: inline-block;
-      background-image: url($icons-folder-path+'/'+$details-button-closed-icon);
+      @include mixins.add-background-svg('arrow-right');
       background-position: -14px -8px;
-      background-repeat: no-repeat;
       background-size: 3.4rem;;
       width: 1.6rem;
       height: 1.6rem;
-      margin-right: units(2);
+      margin-right: func.units(2);
     }
 
     &:focus{
-      @include focus();
+      @include mixins.focus;
     }
     .details-summary-text {
       text-decoration: underline;
@@ -43,15 +46,15 @@
   }
 
   .details-text {
-    padding: units(4);
-    border-left: $details-panel-border-width solid color($details-panel-border-color);
+    padding: func.units(4);
+    border-left: vars.$details-panel-border-width solid func.color(vars.$details-panel-border-color);
     box-sizing: border-box;
-    &[aria-hidden=true]{
+    &[aria-hidden="true"]{
       display: none;
     }
     p{
       margin-top: 0;
-      margin-bottom: 1.6rem;
+      margin-bottom: func.units(4, 'rem');
     }
 
     & > :last-child{

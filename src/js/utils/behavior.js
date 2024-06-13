@@ -1,4 +1,4 @@
-const assign = require("object-assign");
+import assign from "object-assign";
 const receptor = require("receptor");
 
 /**
@@ -23,7 +23,7 @@ const sequence = (...seq) =>
  * @param {object?} props
  * @return {receptor.behavior}
  */
-module.exports = (events, props) =>
+export default (events, props) =>
   receptor.behavior(
     events,
     assign(

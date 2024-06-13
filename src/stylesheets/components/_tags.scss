@@ -1,0 +1,67 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+// Tags
+.tag {
+  @include mixins.appearance-none;
+  display: inline-block;
+  width: auto;
+  padding:0;
+  padding-left: func.units(3);
+  padding-right:func.units(3);
+  margin-right:func.units(3);
+  margin-bottom:func.units(3);
+  border-radius: vars.$tag-border-radius;
+  border: none;
+  font-size: func.font-size(vars.$tag-font-size);
+  font-weight: func.font-weight(vars.$tag-font-weight);
+  color: func.color(vars.$tag-text-color);
+  background-color: func.color(vars.$tag-default-background-color);
+  line-height: func.units(vars.$tag-line-height, "rem");
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+
+  &.tag-icon {
+    padding:0;
+    padding-left:func.units(3);
+  }
+
+  & + .tag {
+    margin-bottom: func.units(3);
+  }
+
+  &:hover,
+  &.tag-hover {
+    background-color: func.color(vars.$tag-hover-background-color);
+  }
+
+  &:active,
+  &.tag-active {
+    background-color: func.color(vars.$tag-active-background-color);
+  }
+
+  &.focus,
+  &:focus {
+    background-color: func.color(vars.$tag-focus-background-color);
+  }
+
+  &.focus,
+  &:focus {
+    @include mixins.focus;
+    position: relative;
+  }
+
+  .icon-svg {
+    float: right;
+    margin: 0 0 0 5px;
+    fill: func.color(vars.$tag-icon-color);
+  }
+}
+
+.button-row {
+  display: flex;
+  margin: 2rem 0 1rem;
+}

@@ -43,6 +43,22 @@ params:
   type: string
   required: false
   description: Additional attributes for the form-group.
+- name: name
+  type: object
+  required: true
+  description: The name of the input, which is submitted with the form data.
+  - name: day
+    type: string
+    required: true
+    description: Name for the day input.
+  - name: month
+    type: string
+    required: true
+    description: Name for the month input.
+  - name: year
+    type: string
+    required: true
+    description: Name for the year input.
 - name: labels
   type: object
   required: false

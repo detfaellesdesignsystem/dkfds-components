@@ -1,3 +1,40 @@
+{% from "components/buttons/buttons.njk" import button as button %}
+
 {%- macro tooltip(params) -%}
-data-tooltip="{{ params.text }}"{% if params.showOnClick %} data-tooltip-trigger="click"{% endif %}{% if params.position %} data-tooltip-position="{{ params.position }}"{% endif %}
+{%- set contentElement = params.contentElement | default('div') -%}
+{%- set position = params.position | default('above') -%}
+<{{ contentElement }} class="tooltip-wrapper{% if params.classes %} {{params.classes}}{% endif %}" data-tooltip="{{ params.text }}"{% if params.id %} data-tooltip-id="{{ params.id }}"{% endif %} data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>{{ params.target | safe }}</{{ contentElement }}>
+{%- endmacro -%}
+
+{%- macro tooltip_helpicon(params) -%}
+{%- set target = 
+    button({
+        "variant": "unstyled",
+        "attributes": "type=\"button\" aria-label=\"Læs mere\"",
+        "classes": { "icon": "mr-0 mt-0", "button": "tooltip-target" },
+        "icon": "help"
+    }) 
+-%}{{ 
+    tooltip({
+        "text": params.text,
+        "id": params.id,
+        "target": target,
+        "position": params.position,
+        "trueTooltip": false,
+        "contentElement": params.contentElement
+    }) 
+}}
+{%- endmacro -%}
+
+{%- macro tooltip_text(params) -%}
+{%- set ariaLabel = "Hvad betyder " + params.phrase -%}
+{%- set target = 
+    button({
+        "variant": "unstyled",
+        "attributes": "type=\"button\" aria-label=\"" + ariaLabel + "\"",
+        "classes": { "icon": "mr-0 mt-0", "button": "tooltip-target" },
+        "icon": "help"
+    }) 
+-%}
+<strong>{{ params.phrase }}</strong>{{- tooltip({ classes: "in-text", "text": params.tooltip, "id": params.id, "target": target, "position": params.position, "trueTooltip": false, "contentElement": "span" }) -}}
 {%- endmacro -%}

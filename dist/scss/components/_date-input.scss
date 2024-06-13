@@ -1,0 +1,49 @@
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+.date-group {
+    display: flex;
+    align-items: flex-end;
+
+    label {
+        margin-top: 0;
+        font-weight: func.font-weight("normal");
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        @include mixins.appearance-none;
+        margin: 0;
+    }
+
+    .form-group-day,
+    .form-group-month,
+    .form-group-year {
+        margin-right: func.units(4);
+        margin-top: 0;
+    }
+
+    .form-group-day,
+    .form-group-month {
+        width: calc(2px + #{func.units(4)} + #{func.units(4)} + 2ch);
+
+        @media all and (-ms-high-contrast: none),
+        (-ms-high-contrast: active) {
+            width: 6.4ex;
+        }
+    }
+
+    .form-group-year {
+        width: calc(2px + #{func.units(4)} + #{func.units(4)} + 4ch);
+
+        @media all and (-ms-high-contrast: none),
+        (-ms-high-contrast: active) {
+            width: 9ex;
+        }
+    }
+
+    .button-open-calendar {
+        margin-bottom: func.units(3);
+        display: inline-flex;
+    }
+}

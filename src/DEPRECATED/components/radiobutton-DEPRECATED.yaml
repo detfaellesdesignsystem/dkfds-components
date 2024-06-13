@@ -1,0 +1,73 @@
+params:
+- name: id
+  type: string
+  required: true
+  description: Id of the radio button.
+- name: name
+  type: string
+  required: true
+  description: Name of the radio group. All radio buttons in the same group must have the same name.
+- name: value
+  type: string
+  required: true
+  description: Value sent to the server on submit.
+- name: label
+  type: string
+  required: true
+  description: Label for the radio button (the text written next to the radio button)
+- name: isLarge
+  type: boolean
+  required: false
+  description: Choose whether the radio buttons should be small or large. Defaults to true (large).
+- name: classes
+  type: object
+  required: false
+  description: Classes for the radio button elements.
+  - name: formgroupradio
+    type: string
+    required: false
+    description: Additional classes to add to the div with the form-group-radio class.
+  - name: input
+    type: string
+    required: false
+    description: Classes to add to the input.
+  - name: label
+    type: string
+    required: false
+    description: Classes to add to the label.
+- name: disabled
+  type: boolean
+  required: false
+  description: Set to true to disable the radio button.
+- name: checked
+  type: boolean
+  required: false
+  description: Set to true to mark the radio button as selected.
+- name: helptext
+  type: string
+  required: false
+  description: Helptext displayed under the radio button label.
+- name: srOnly
+  type: string
+  required: false
+  description: Additional text only accessible for screenreaders. The text is appended to the label text.
+- name: attributes
+  type: object
+  required: false
+  description: Attributes for the radio button elements.
+  - name: formgroupradio
+    type: string
+    required: false
+    description: Attributes to add to the div with the form-group-radio class.
+  - name: input
+    type: string
+    required: false
+    description: Attributes to add to the input.
+  - name: label
+    type: string
+    required: false
+    description: Attributes to add to the label.
+- name: hiddenContent
+  type: string
+  required: false
+  description: Content to be displayed when the radio button is checked. Can contain HTML.
