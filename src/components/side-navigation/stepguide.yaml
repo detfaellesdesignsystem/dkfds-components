@@ -43,3 +43,11 @@ params:
     type: boolean
     required: false
     description: Used to mark errors in the step.
+- name: classes
+  type: string
+  required: false
+  description: Classes.
+  - name: nav
+    type: string
+    required: false
+    description: Classes for the nav.

@@ -1,4 +1,8 @@
 params:
+- name: id
+  type: string
+  required: true
+  description: ID of the list.
 - name: links
   type: array
   required: true

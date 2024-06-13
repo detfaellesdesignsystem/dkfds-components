@@ -5281,7 +5281,6 @@ Tooltip.prototype.init = function () {
   /* A "true" tooltip describes the element which triggered it and is triggered on hover */
   let trueTooltip = wrapper.dataset.trigger === 'hover';
   tooltipEl.id = wrapper.dataset.tooltipId;
-  tooltipEl.innerText = wrapper.dataset.tooltip;
   if (trueTooltip) {
     wrapper.append(tooltipEl);
     appendArrow(wrapper);
@@ -5291,6 +5290,7 @@ Tooltip.prototype.init = function () {
       tooltipTarget.setAttribute('aria-describedby', wrapper.dataset.tooltipId);
     }
     tooltipEl.setAttribute('role', 'tooltip');
+    tooltipEl.innerText = wrapper.dataset.tooltip;
     tooltipTarget.addEventListener('focus', function () {
       showTooltip(wrapper, tooltipTarget, tooltipEl);
       updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
@@ -5372,6 +5372,7 @@ Tooltip.prototype.init = function () {
   /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */else {
     let live_region = document.createElement('span');
     live_region.setAttribute('aria-live', 'assertive');
+    live_region.setAttribute('aria-atomic', 'true');
     wrapper.append(live_region);
     live_region.append(tooltipEl);
     appendArrow(wrapper);
@@ -5455,16 +5456,14 @@ function hideTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
   tooltipWrapper.classList.add('hide-tooltip');
   if (tooltipTarget.hasAttribute('aria-expanded')) {
     tooltipTarget.setAttribute('aria-expanded', 'false');
-    tooltipEl.setAttribute('hidden', true);
-    //tooltipEl.innerText = "";
+    tooltipEl.innerText = "";
   }
 }
 function showTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
   tooltipWrapper.classList.remove('hide-tooltip');
   if (tooltipTarget.hasAttribute('aria-expanded')) {
     tooltipTarget.setAttribute('aria-expanded', 'true');
-    //tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
-    tooltipEl.removeAttribute('hidden');
+    tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
   }
 }
 function closeAllTooltips(event) {

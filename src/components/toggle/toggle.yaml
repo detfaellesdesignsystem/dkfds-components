@@ -1,8 +1,4 @@
 params:
-- name: id
-  type: string
-  required: true
-  description: Id of the toggle button.
 - name: disabled
   type: boolean
   required: false
@@ -23,4 +19,3 @@ params:
   type: string
   required: true
   description: Label text
-  

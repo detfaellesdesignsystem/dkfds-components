@@ -1,13 +1,37 @@
 params:
+- name: contentElement
+  type: string
+  required: false
+  description: The HTML tag used for the tooltip-wrapper. Should be "div" or "span".
+- name: position
+  type: string
+  required: false
+  description: Defines where the tooltip text should be displayed relative to the tooltip object. Valid values are "above" and "below".
+- name: classes
+  type: string
+  required: false
+  description: The tooltip wrapper classes.
 - name: text
   type: string
   required: true
   description: The tooltip text.
-- name: showOnClick
+- name: trueTooltip
   type: boolean
   required: false
-  description: True if the tooltip should appear on click and not just hover. Should always be false for already clickable objects like links.
-- name: position
+  description: true if tooltip is displayed on hover, false for "tooltip buttons"
+- name: id
   type: string
-  required: false
-  description: Defines where the tooltip text should be displayed relative to the tooltip object. Valid values are "top" and "bottom".
+  required: true
+  description: The id used for "tooltip buttons", or "not true tooltips".
+- name: target
+  type: object
+  required: true
+  description: The target which should show the tooltip.
+- name: phrase
+  type: string
+  required: true
+  description: Only used in macro "tooltip_text". The phrase to be explained by the tooltip.
+- name: tooltip
+  type: string
+  required: true
+  description: Only used in macro "tooltip_text". The tooltip text.

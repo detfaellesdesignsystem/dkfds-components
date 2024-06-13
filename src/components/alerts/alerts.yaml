@@ -11,6 +11,10 @@ params:
   type: string
   required: false
   description: Heading level of the button. Default is "h3". "strong" is also valid.
+- name: headingID
+  type: string
+  required: false
+  description: ID of the alert heading.
 - name: heading
   type: string
   required: false

@@ -7,6 +7,10 @@ params:
   type: string
   required: true
   description: Aria label til det valgte sprog.
+- name: overflowID
+  type: string
+  required: false
+  description: ID for the overflow menu in the header.
 - name: languages
   type: array
   required: true
@@ -15,10 +19,10 @@ params:
     type: string
     required: true
     description: Path to language version.
-  - name: Language code of the name text.
+  - name: code
     type: string
     required: true
-    description: Language code
+    description: Language code of the name text.
   - name: tooltip
     type: string
     required: false

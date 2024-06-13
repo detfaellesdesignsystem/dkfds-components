@@ -28,6 +28,10 @@ params:
   required: false
   description: Any text meant for screen readers only. 
 - name: tooltip
-  type: string
+  type: object
   required: false
-  description: Tooltip text.
+  description: text.
+  - name: tooltip
+    type: string
+    required: false
+    description: Tooltip text.

@@ -1,12 +1,13 @@
+# tabs
 params:
 - name: items
   type: array
   required: true
-  description: The ID of the input.
+  description: Tabs and tabpanels.
   - name: button
     type: object
     required: true
-    description: The ID of the input.
+    description: A tab button.
     - name: id
       type: string
       required: true
@@ -19,10 +20,14 @@ params:
       type: string
       required: false
       description: The icon of the button element.
+    - name: selected
+      type: boolean
+      required: false
+      description: true if the tab is selected.
   - name: panel
     type: object
     required: true
-    description: The ID of the input.
+    description: A tabpanel for showing content.
     - name: id
       type: string
       required: true
@@ -31,33 +36,30 @@ params:
       type: string
       required: true
       description: The content of the panel element.
-  - name: active
-    type: boolean
-    required: false
-    description: Tab is active when true.
 
+# navigation_tabs
 params:
+- name: ariaLabel
+  type: string
+  required: true
+  description: Description of the nav.
 - name: items
   type: array
   required: true
-  description: The ID of the input.
-  - name: anchorlink
-    type: object
+  description: List of links
+  - name: href
+    type: string
     required: true
-    description: The ID of the input
-    - name: href
-      type: string
-      required: true
-      description: The url of the anchorlink element.
-    - name: text
-      type: string
-      required: true
-      description: The text of the anchorlink element.
-    - name: icon
-      type: string
-      requiredd: false
-      description: The icon of the anchorlink element.
+    description: The url of the link.
+  - name: text
+    type: string
+    required: true
+    description: The text of the link.
+  - name: icon
+    type: string
+    requiredd: false
+    description: The icon of the link.
   - name: current
     type: boolean
     required: false
-    description: Tab is current when true.
+    description: true if the tab is selected.

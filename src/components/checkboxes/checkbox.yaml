@@ -79,3 +79,19 @@ params:
   type: boolean
   required: false
   description: Show label saying the input is optional - use only when most inputs in form are required.
+- name: tooltip
+  type: object
+  required: false
+  description: Tooltip for the checkbox.
+  - name: text
+    type: string
+    required: true
+    description: The tooltip text.
+  - name: contentElement
+    type: string
+    required: false
+    description: The HTML tag used for the tooltip-wrapper. Should be "div" or "span".
+  - name: id
+    type: string
+    required: true
+    description: The id used for the tooltip button.

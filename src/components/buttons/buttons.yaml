@@ -35,7 +35,3 @@ params:
   type: string
   required: false
   description: Any text meant for screen readers only. 
-- name: tooltip
-  type: object
-  required: false
-  description: Tooltip object to be added to the button.

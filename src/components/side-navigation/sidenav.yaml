@@ -15,18 +15,10 @@ params:
     type: boolean
     required: false
     description: Is link current (parent or actual page)?
-  - name: active
-    type: boolean
-    required: false
-    description: Is link active page?
   - name: information
     type: string
     required: false
     description: Additional text information on link
-  - name: iconbefore
-    type: string
-    required: false
-    description: Icon on link.
   - name: links
     type: array
     required: false
