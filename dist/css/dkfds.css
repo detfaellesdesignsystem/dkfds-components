@@ -7428,6 +7428,10 @@ button.function-link, button.accordion-bulk-button{
   background-color:#DCDCDC;
   color:#1a1a1a;
 }
+.accordion-button:focus{
+  background-color:#F5F5F5;
+  color:#1a1a1a;
+}
 @media (min-width: 768px){
   .accordion-button{
     display:flex;
