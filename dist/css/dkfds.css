@@ -10301,6 +10301,7 @@ ol.sidemenu li.disabled.sidenav-error{
 @media (min-width: 768px){
   .language-switcher ul > li{
     display:inline-flex;
+    align-items:center;
     padding-left:0;
   }
   .language-switcher ul > li::after{
@@ -10350,6 +10351,9 @@ ol.sidemenu li.disabled.sidenav-error{
 .language-switcher ul > li:last-of-type a:active,
 .language-switcher ul > li:last-of-type a:focus{
   padding-right:0;
+}
+.language-switcher .tooltip-wrapper{
+  vertical-align:unset;
 }
 
 .language-switcher-header{

@@ -23,6 +23,7 @@
 
             @include mixins.media-breakpoint-up(md) {
                 display: inline-flex;
+                align-items: center;
                 padding-left: 0;
 
                 &::after {
@@ -80,6 +81,10 @@
                 }
             }
         }
+    }
+
+    .tooltip-wrapper {
+        vertical-align: unset;
     }
 }
 
