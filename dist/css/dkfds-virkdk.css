@@ -6798,8 +6798,14 @@ textarea:disabled{
   color:#747474;
   cursor:not-allowed;
 }
-
-input[readonly][type=text], textarea[readonly]{
+input[type=text][readonly],
+input[type=email][readonly],
+input[type=number][readonly],
+input[type=password][readonly],
+input[type=search][readonly],
+input[type=tel][readonly],
+input[type=url][readonly],
+textarea[readonly]{
   background-color:#F5F5F5;
   color:#1a1a1a;
   border:1px solid #DCDCDC;
