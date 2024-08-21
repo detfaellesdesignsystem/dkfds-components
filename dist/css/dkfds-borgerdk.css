@@ -1197,12 +1197,14 @@ p, .body-text, .body-copy-text{
 
 figcaption, .figcaption{
   font-size:1.4rem;
+  font-weight:400;
   line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
 }
 figcaption p, .figcaption p{
   font-size:1.4rem;
+  font-weight:400;
   line-height:2rem;
   color:#1a1a1a;
   letter-spacing:0.4px;
@@ -1210,6 +1212,7 @@ figcaption p, .figcaption p{
 
 .subheading{
   font-size:1.4rem;
+  font-weight:400;
   line-height:1.6rem;
   color:#747474;
   letter-spacing:1px;
@@ -6798,8 +6801,14 @@ textarea:disabled{
   color:#747474;
   cursor:not-allowed;
 }
-
-input[readonly][type=text], textarea[readonly]{
+input[type=text][readonly],
+input[type=email][readonly],
+input[type=number][readonly],
+input[type=password][readonly],
+input[type=search][readonly],
+input[type=tel][readonly],
+input[type=url][readonly],
+textarea[readonly]{
   background-color:#F5F5F5;
   color:#1a1a1a;
   border:1px solid #DCDCDC;
@@ -7426,6 +7435,10 @@ button.function-link, button.accordion-bulk-button{
 }
 .accordion-button:hover{
   background-color:#DCDCDC;
+  color:#1a1a1a;
+}
+.accordion-button:focus{
+  background-color:#F5F5F5;
   color:#1a1a1a;
 }
 @media (min-width: 768px){
@@ -10297,6 +10310,7 @@ ol.sidemenu li.disabled.sidenav-error{
 @media (min-width: 768px){
   .language-switcher ul > li{
     display:inline-flex;
+    align-items:center;
     padding-left:0;
   }
   .language-switcher ul > li::after{
@@ -10346,6 +10360,9 @@ ol.sidemenu li.disabled.sidenav-error{
 .language-switcher ul > li:last-of-type a:active,
 .language-switcher ul > li:last-of-type a:focus{
   padding-right:0;
+}
+.language-switcher .tooltip-wrapper{
+  vertical-align:unset;
 }
 
 .language-switcher-header{

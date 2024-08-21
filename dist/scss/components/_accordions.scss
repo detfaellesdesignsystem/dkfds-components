@@ -29,6 +29,11 @@
     color: func.color(vars.$accordion-button-color-hover);
   }
 
+  &:focus {
+    background-color: func.color(vars.$accordion-button-background-color-default);
+    color: func.color(vars.$accordion-button-color-default);
+  }
+
   @include mixins.media-breakpoint-up(md) {
     display: flex;
     align-items: center;

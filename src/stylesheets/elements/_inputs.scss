@@ -176,13 +176,12 @@ textarea {
     color: func.color(vars.$input-disabled-text-color);
     cursor: not-allowed;
   }
-}
-
-input[readonly][type="text"], textarea[readonly]{
-  background-color: func.color('gray-100');
-  color: func.color(vars.$input-text-color);
-  border: 1px solid func.color('gray-200');
-  cursor: default;
+  &[readonly] {
+    background-color: func.color('gray-100');
+    color: func.color(vars.$input-text-color);
+    border: 1px solid func.color('gray-200');
+    cursor: default;
+  }
 }
 
 // -----------------
