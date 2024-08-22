@@ -122,6 +122,7 @@
 
 @mixin caption {
     font-size: func.font-size(vars.$typography-caption-font-size);
+    font-weight: func.font-weight("normal");
     line-height: func.units(vars.$typography-caption-line-height, 'rem');
     color: func.color(vars.$typography-caption-text-color);
     letter-spacing: vars.$typography-caption-letter-spacing;
@@ -129,6 +130,7 @@
 
 @mixin subheading {
     font-size: func.font-size(vars.$typography-subheading-font-size);
+    font-weight: func.font-weight("normal");
     line-height: func.units(vars.$typography-subheading-line-height, 'rem');
     color: func.color(vars.$typography-subheading-text-color);
     letter-spacing: vars.$typography-subheading-letter-spacing;
