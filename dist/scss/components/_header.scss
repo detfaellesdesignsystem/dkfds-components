@@ -45,8 +45,8 @@
             background-repeat: no-repeat;
             background-position: center left;
             display: inline-block;
-            height: 24px;
-            width: 100%;
+            height: vars.$header-portal-logo-height;
+            width: vars.$header-portal-logo-width;
 
             @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
                 max-width: 30%;
