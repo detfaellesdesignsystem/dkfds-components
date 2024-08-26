@@ -8165,7 +8165,7 @@ a.button{
 }
 .details[open] .details-summary::before{
   background-image:url("../img/svg-icons/arrow-drop-down.svg");
-  background-position:-10px -8px;
+  background-position:-1rem -0.8rem;
 }
 .details .details-summary{
   display:inline-block;
@@ -8178,7 +8178,7 @@ a.button{
   display:inline-block;
   background-image:url("../img/svg-icons/arrow-right.svg");
   background-repeat:no-repeat;
-  background-position:-14px -8px;
+  background-position:-1.4rem -0.8rem;
   background-size:3.4rem;
   width:1.6rem;
   height:1.6rem;
