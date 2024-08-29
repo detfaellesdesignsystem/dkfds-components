@@ -7114,7 +7114,7 @@ ul > li{
   margin-top:8px;
   list-style-type:none;
   position:relative;
-  padding-left:16px;
+  padding-left:1.6rem;
   line-height:2.4rem;
 }
 ul > li::before{
