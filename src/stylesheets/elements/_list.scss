@@ -14,7 +14,7 @@
      margin-top:func.units(3);
      list-style-type: none;
      position: relative;
-     padding-left: func.units(4);
+     padding-left: func.units(4, 'rem');
      line-height: func.units(vars.$typography-body-text-line-height, 'rem');
      &::before {
        content: "\2022";

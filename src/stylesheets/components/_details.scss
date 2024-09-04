@@ -15,7 +15,7 @@
       margin-bottom: func.units(3);
       &::before {
         background-image: url(vars.$icons-folder-path + 'arrow-drop-down.svg');
-        background-position: -10px -8px;
+        background-position: -1rem -0.8rem;
       }
     }
   }
@@ -30,10 +30,10 @@
       content: "";
       display: inline-block;
       @include mixins.add-background-svg('arrow-right');
-      background-position: -14px -8px;
-      background-size: 3.4rem;;
-      width: 1.6rem;
-      height: 1.6rem;
+      background-position: -1.4rem -0.8rem;
+      background-size: 3.4rem;
+      width: func.units(4, 'rem');
+      height: func.units(4, 'rem');
       margin-right: func.units(2);
     }
 
