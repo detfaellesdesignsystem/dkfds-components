@@ -6764,6 +6764,13 @@ table .form-input{
   border-top-left-radius:4px;
   border-bottom-left-radius:4px;
 }
+.form-input-wrapper.disabled .form-input-suffix, .form-input-wrapper.disabled .form-input-prefix{
+  border-color:#DCDCDC;
+  color:#747474;
+}
+.form-input-wrapper.readonly .form-input-suffix, .form-input-wrapper.readonly .form-input-prefix{
+  border-color:#DCDCDC;
+}
 
 table .form-select{
   margin-top:0;
