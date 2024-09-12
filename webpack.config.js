@@ -89,9 +89,19 @@ const CSS_POSTCSS_LOADER = {
     },
 };
 
-const CSS_OUTPUT = {
-    path: path.resolve(__dirname, 'dist'),
-};
+const CSS_SASS_LOADER_COMPRESSED = {
+    loader: "sass-loader",
+    options: {
+        implementation: require("sass"),
+        sassOptions: {
+            style: "compressed",
+            sourceMapIncludeSources: true
+        },
+    },
+}
+
+const CSS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
+const CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE = (info) => { return `${info.resourcePath}`.replace('./src/stylesheets','../scss'); }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Objects for module.exports
@@ -187,7 +197,7 @@ const createCSS = {
                         loader: "sass-loader",
                         options: {
                             sassOptions: {
-                                outputStyle: "expanded",
+                                style: "expanded",
                             },
                         },
                     },
@@ -243,7 +253,9 @@ const createCSS = {
             }),
         ],
     },
-    output: CSS_OUTPUT,
+    output: {
+        path: CSS_OUTPUT_PATH
+    },
     stats: 'minimal',
 };
 
@@ -251,11 +263,10 @@ const createMinifiedCSS = {
     name: 'createMinifiedCSS',
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
-    devtool: "source-map",
+    devtool: 'source-map',
     entry: CSS_ENTRY,
     plugins: [
         CSS_REMOVE_EMPTY_SCRIPTS,
-        /* Create minified stylesheets */
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
         }),
@@ -268,9 +279,7 @@ const createMinifiedCSS = {
                     MiniCssExtractPlugin.loader,
                     CSS_LOADER,
                     CSS_POSTCSS_LOADER,
-                    {
-                        loader: "sass-loader",
-                    },
+                    CSS_SASS_LOADER_COMPRESSED,
                 ],
             },
         ],
@@ -281,7 +290,10 @@ const createMinifiedCSS = {
             new CssMinimizerPlugin(),
         ],
     },
-    output: CSS_OUTPUT,
+    output: {
+        path: CSS_OUTPUT_PATH,
+        devtoolModuleFilenameTemplate: CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE
+    },
     stats: 'minimal',
 };
 
@@ -325,14 +337,13 @@ const createDEPRECATEDCSS = {
     name: 'createDEPRECATEDCSS',
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
-    devtool: "source-map",
+    devtool: 'source-map',
     entry: {
         "dkfds-borgerdk-DEPRECATED": './src/DEPRECATED/stylesheets/dkfds-borgerdk-DEPRECATED.scss',
         "dkfds-virkdk-DEPRECATED": './src/DEPRECATED/stylesheets/dkfds-virkdk-DEPRECATED.scss',
     },
     plugins: [
         CSS_REMOVE_EMPTY_SCRIPTS,
-        /* Create minified stylesheets */
         new MiniCssExtractPlugin({
             filename: 'DEPRECATED/[name].min.css'
         }),
@@ -345,9 +356,7 @@ const createDEPRECATEDCSS = {
                     MiniCssExtractPlugin.loader,
                     CSS_LOADER,
                     CSS_POSTCSS_LOADER,
-                    {
-                        loader: "sass-loader",
-                    },
+                    CSS_SASS_LOADER_COMPRESSED,
                 ],
             },
         ],
@@ -358,7 +367,9 @@ const createDEPRECATEDCSS = {
             new CssMinimizerPlugin(),
         ],
     },
-    output: CSS_OUTPUT,
+    output: {
+        path: CSS_OUTPUT_PATH
+    },
     stats: 'minimal',
 };
 
