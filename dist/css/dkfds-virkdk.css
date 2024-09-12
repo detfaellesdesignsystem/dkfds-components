@@ -11804,9 +11804,7 @@ textarea.no-resize{
 
 .tooltip-wrapper{
   position:relative;
-  width:-moz-fit-content;
   width:fit-content;
-  height:-moz-fit-content;
   height:fit-content;
   line-height:1;
   display:inline-flex;
