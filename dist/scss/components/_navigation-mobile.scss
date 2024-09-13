@@ -51,14 +51,14 @@ body.mobile-nav-active {
 // --------------------------
 
 .navigation-menu-mobile ul.mainmenu {
-    @include mixins.unstyled-list;
-    @include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include nav-mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
     display: flex;
     flex-flow: column nowrap;
     max-width: 100%;
     border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
+    @include mixins.unstyled-list;
+    @include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
+    @include nav-mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
 
     li {
         background-color: func.color(vars.$navigation-link-background-color);
@@ -121,9 +121,9 @@ body.mobile-nav-active {
                 }
 
                 ul {
-                    @include mixins.unstyled-list;
                     width: 100%;
                     max-width: none !important; // Override ul styling in typography.scss
+                    @include mixins.unstyled-list;
                 }
             }
         }

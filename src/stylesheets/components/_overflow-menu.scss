@@ -18,7 +18,12 @@
     }
 
     .button-overflow-menu {
-        @include mixins.button-unstyled;
+        background-color: func.color('transparent');
+        border: 0;
+        border-radius: 0;
+        font-weight: func.font-weight("normal");
+        margin: 0;
+        text-align: left;
         min-height: 40px;
         min-width: 40px;
         padding: 8px 0;
@@ -27,6 +32,12 @@
         color: func.color(vars.$overflow-menu-button-text-color);
         position: relative;
         cursor: pointer;
+
+        &:hover,
+        &:focus {
+            background-color: func.color('transparent');
+            color: inherit;
+        }
 
         &:hover {
             text-decoration: underline;
@@ -107,10 +118,10 @@
     }
 
     .overflow-list {
-        @include mixins.unstyled-list;
         font-size: func.font-size(vars.$overflow-menu-content-font-size);
         line-height: func.units(vars.$overflow-menu-content-line-height, 'rem');
         color: func.color(vars.$overflow-menu-content-text-color);
+        @include mixins.unstyled-list;
 
         & > li {
             border-bottom: 1px solid func.color('gray-200');
@@ -121,9 +132,9 @@
         }
 
         button {
-            @include mixins.button-unstyled;
             line-height: func.units(5, 'rem');
             cursor: pointer;
+            @include mixins.button-unstyled;
         }
 
         a {

@@ -40,14 +40,14 @@ body.modal-open{
 
   .modal-header {
     padding: 16px 24px 0;
-    @include mixins.media-breakpoint-up(md) {
-      padding: func.units(7) func.units(7) func.units(3); // top | left and right | bottom
-    }
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: func.color(vars.$modal-header-background-color);
     color: func.color(vars.$modal-header-text-color);
+    @include mixins.media-breakpoint-up(md) {
+      padding: func.units(7) func.units(7) func.units(3); // top | left and right | bottom
+    }
     @include mixins.media-breakpoint-up(md) {
       padding-right: 48px;
     }
@@ -82,11 +82,11 @@ body.modal-open{
 
   .modal-footer{
     padding: 0 func.units(5) func.units(5) ;
+    background-color: func.color(vars.$modal-footer-background-color);
+    color: func.color(vars.$modal-footer-text-color);
     @include mixins.media-breakpoint-up(md) {
       padding: func.units(3) func.units(7) func.units(7); // top | left and right | bottom
     }
-    background-color: func.color(vars.$modal-footer-background-color);
-    color: func.color(vars.$modal-footer-text-color);
     @include mixins.media-breakpoint-up(lg) {
       display: flex;
     }

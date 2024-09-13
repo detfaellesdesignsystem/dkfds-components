@@ -9,11 +9,11 @@ $-tabs-icon-size: 2.4rem;
     width: 100%;
 
     .tab-list {
-        @include mixins.unstyled-list;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         width: 100%;
+        @include mixins.unstyled-list;
 
         // A tab-list is the last element when used for navigation
         &:last-child {

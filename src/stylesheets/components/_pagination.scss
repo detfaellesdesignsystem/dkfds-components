@@ -84,12 +84,12 @@
     }
 
     .pagination__items {
-        @include mixins.unstyled-list;
         width: auto;
         align-items: center;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
+        @include mixins.unstyled-list;
 
         @include mixins.media-breakpoint-down(sm) {
             display: none;

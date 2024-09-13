@@ -6,6 +6,7 @@
 
 .header {
     width: 100%;
+    border-bottom: 1px solid func.color(vars.$header-last-border-color);
 
     .button {
         width: 100%;
@@ -294,7 +295,16 @@
     .mobile-drawer {
         display: none;
         $sliding-panel-width: 85%;
-        
+        position: fixed;
+        inset: 0 0 0 auto;
+        background-color: func.color(vars.$header-portal-background-color);
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 0;
+        width: $sliding-panel-width;
+        max-width: 40rem;
+        z-index: vars.$zindex-nav;
+
         @keyframes slidein-left {
             from {
                 transform: translateX($sliding-panel-width);
@@ -305,15 +315,6 @@
             }
         }
 
-        position: fixed;
-        inset: 0 0 0 auto;
-        background-color: func.color(vars.$header-portal-background-color);
-        flex-direction: column;
-        overflow-y: auto;
-        padding: 0;
-        width: $sliding-panel-width;
-        max-width: 40rem;
-        z-index: vars.$zindex-nav;
 
         &.is-visible {
             display: block;
@@ -343,8 +344,6 @@
     }
 
     // Header borders
-
-    border-bottom: 1px solid func.color(vars.$header-last-border-color);
 
     .portal-info + .solution-info {
         border-top: 1px solid func.color(vars.$header-border-color);

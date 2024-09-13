@@ -13,8 +13,8 @@
     }
 
     ul {
-        @include mixins.unstyled-list;
         max-width: none !important;
+        @include mixins.unstyled-list;
 
         > li {
             margin-bottom: func.units(305);
@@ -186,8 +186,8 @@
     }
 
     ul {
-        @include mixins.unstyled-list;
         max-width: none !important;
+        @include mixins.unstyled-list;
 
         > li {
             margin-bottom: func.units(305);

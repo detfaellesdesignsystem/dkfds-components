@@ -12,7 +12,9 @@
         @each $breakpoint, $value in $map {
             @if $breakpoint == "default" {
                 @if $style == line-height {
-                    #{$style}: $value;
+                    & {
+                        #{$style}: $value;
+                    }
                 }
 
                 @else if $style == font-size {
@@ -58,57 +60,57 @@
 }
 
 @mixin h1 {
-    @include responsive-style(vars.$typography-h1-font-size, font-size);
-    @include responsive-style(vars.$typography-h1-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("bold");
     color: func.color('black');
     text-transform: none;
     word-break: break-word;
+    @include responsive-style(vars.$typography-h1-font-size, font-size);
+    @include responsive-style(vars.$typography-h1-line-height, line-height);
 }
 
 @mixin h2 {
-    @include responsive-style(vars.$typography-h2-font-size, font-size);
-    @include responsive-style(vars.$typography-h2-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("semibold");
     color: func.color('black');
     text-transform: none;
+    @include responsive-style(vars.$typography-h2-font-size, font-size);
+    @include responsive-style(vars.$typography-h2-line-height, line-height);
 }
 
 @mixin h3 {
-    @include responsive-style(vars.$typography-h3-font-size, font-size);
-    @include responsive-style(vars.$typography-h3-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("semibold");
     color: func.color('black');
     text-transform: none;
+    @include responsive-style(vars.$typography-h3-font-size, font-size);
+    @include responsive-style(vars.$typography-h3-line-height, line-height);
 }
 
 @mixin h4 {
-    @include responsive-style(vars.$typography-h4-font-size, font-size);
-    @include responsive-style(vars.$typography-h4-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("semibold");
     color: func.color('black');
     text-transform: none;
+    @include responsive-style(vars.$typography-h4-font-size, font-size);
+    @include responsive-style(vars.$typography-h4-line-height, line-height);
 }
 
 @mixin h5 {
-    @include responsive-style(vars.$typography-h5-font-size, font-size);
-    @include responsive-style(vars.$typography-h5-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("semibold");
     color: func.color('black');
     text-transform: none;
+    @include responsive-style(vars.$typography-h5-font-size, font-size);
+    @include responsive-style(vars.$typography-h5-line-height, line-height);
 }
 
 @mixin h6 {
-    @include responsive-style(vars.$typography-h6-font-size, font-size);
-    @include responsive-style(vars.$typography-h6-line-height, line-height);
     letter-spacing: normal;
     font-weight: func.font-weight("medium");
     color: func.color('black');
+    @include responsive-style(vars.$typography-h6-font-size, font-size);
+    @include responsive-style(vars.$typography-h6-line-height, line-height);
 }
 
 @mixin body-copy-text {

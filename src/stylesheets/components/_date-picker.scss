@@ -26,7 +26,14 @@
   width: calc(100% - 16px - 16px);
 }
 .date-picker__button {
-  @include mixins.button-unstyled;
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  color: inherit;
+  min-height: auto;
   @include mixins.add-background-svg(vars.$datepicker-button-icon);
   align-self: stretch;
   background-color: func.color('transparent');
@@ -52,11 +59,11 @@
   left: 0;
   position: absolute;
   width: 100%;
+  z-index: vars.$zindex-datepicker-2;
+  margin-top: func.units(2);
   @include mixins.media-breakpoint-up(md) {
     width: 344px;
   }
-  z-index: vars.$zindex-datepicker-2;
-  margin-top: func.units(2);
 }
 
 // Date Picker - Table
@@ -127,11 +134,24 @@
 .date-picker__calendar__previous-month,
 .date-picker__calendar__next-year,
 .date-picker__calendar__next-month {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  margin: 0;
+  text-align: left;
+  color: inherit;
+  min-height: auto;
   background-position: center;
   height: 30px;
   padding: 20px 10px;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
 
   &[disabled] {
     cursor: default;
@@ -159,13 +179,24 @@
 }
 
 .date-picker__calendar__date {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  margin: 0;
+  color: inherit;
+  min-height: auto;
   text-align: right;
   width: 100%;
   padding: 10px 8px 10px 0;
   position: relative;
   cursor: pointer;
 
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
   
   @include mixins.media-breakpoint-up(md) {
     padding: 10px 12px 10px 0;
@@ -272,13 +303,24 @@
 
 .date-picker__calendar__year-selection,
 .date-picker__calendar__month-selection {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  color: inherit;
+  min-height: auto;
   display: inline-block;
   padding: 8px 4px;
   width: 100%;
   text-align: center;
   font-weight: func.font-weight("semibold");
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
 
   @include mixins.media-breakpoint-up(md) {
     height: 100%;
@@ -294,12 +336,23 @@
 }
 
 .date-picker__calendar__month {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  margin: 0;
+  color: inherit;
+  min-height: auto;
   padding: 10px 0;
   width: 100%;
   display: block;
   text-align: center;
   cursor: pointer;
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
 
   &--focused {
     @include mixins.focus-outline;
@@ -339,11 +392,23 @@
 
 .date-picker__calendar__previous-year-chunk,
 .date-picker__calendar__next-year-chunk {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  text-align: left;
+  color: inherit;
+  min-height: auto;
   background-position: center;
   margin: auto;
   padding: 0 8px;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
 }
 
 .date-picker__calendar__previous-year-chunk:not([disabled]) {
@@ -355,12 +420,23 @@
 }
 
 .date-picker__calendar__year {
-  @include mixins.button-unstyled;
+  background-color: func.color('transparent');
+  border: 0;
+  border-radius: 0;
+  font-weight: func.font-weight("normal");
+  margin: 0;
+  color: inherit;
+  min-height: auto;
   padding: 10px 0;
   width: 100%;
   display: block;
   text-align: center;
   cursor: pointer;
+  &:hover,
+  &:focus {
+      background-color: func.color('transparent');
+      color: inherit;
+  }
 
   &--focused {
     @include mixins.focus;

@@ -9,18 +9,18 @@ $sidemenu-icon-size: 2.4rem;
 
 ul.sidemenu,
 ol.sidemenu {
-    @include mixins.unstyled-list;
-    @include nav-mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
-    @include nav-mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
     border-bottom: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$sidenav-border-top-bottom-color);
     max-width: none;
+    @include mixins.unstyled-list;
+    @include nav-mixins.nav-link-leftdist($sidemenu-border-left-thickness, vars.$sidenav-border-active-color, 16px, 40px, 64px, 88px);
+    @include nav-mixins.nav-link-border(vars.$sidenav-link-border-color, vars.$sidenav-sublink-border-color);
 
     ul,
     ol {
-        @include mixins.unstyled-list;
         width: 100%;
         max-width: none !important; // Override ul styling in typography.scss
+        @include mixins.unstyled-list;
     }
 
     li {

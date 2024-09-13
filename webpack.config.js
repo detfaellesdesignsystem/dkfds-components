@@ -356,7 +356,17 @@ const createDEPRECATEDCSS = {
                     MiniCssExtractPlugin.loader,
                     CSS_LOADER,
                     CSS_POSTCSS_LOADER,
-                    CSS_SASS_LOADER_COMPRESSED,
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass"),
+                            sassOptions: {
+                                style: "compressed",
+                                sourceMapIncludeSources: true,
+                                silenceDeprecations: ['mixed-decls'],
+                            },
+                        },
+                    },
                 ],
             },
         ],
