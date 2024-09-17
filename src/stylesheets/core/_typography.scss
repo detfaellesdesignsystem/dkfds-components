@@ -216,19 +216,6 @@ h6, .h6{
   a, a:hover, a:visited, a:focus{
     text-decoration: underline;
   }
-
-  a.search-link {
-    text-decoration: none;
-    &:visited {
-      text-decoration: underline;
-    }
-    &:focus {
-      text-decoration: none;
-    }
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 // Remove user agent styles
