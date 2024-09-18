@@ -323,12 +323,16 @@ $overflow-menu-content-text-color:                      'ink' !default;
 $overflow-menu-content-link-hover-background-color:     'gray-100' !default;
 
 // Pagination
-$pagination-button-arrow-font-size:         typo-vars.$typography-body-text-font-size !default;
-$pagination-button-arrow-background-color:  'transparent' !default;
-$pagination-button-arrow-color:             'black' !default;
-$pagination-current-page-background-color:  'gray-600' !default;
-$pagination-current-page-border-color:      'gray-600' !default;
-$pagination-current-page-color:             'white' !default;
+$pagination-button-arrow-font-size:                 typo-vars.$typography-body-text-font-size !default;
+$pagination-button-arrow-background-color:          'transparent' !default;
+$pagination-button-arrow-color:                     'black' !default;
+$pagination-current-page-background-color:          'gray-600' !default;
+$pagination-current-page-background-color-hover:    'gray-600' !default;
+$pagination-current-page-border-color:              'gray-600' !default;
+$pagination-current-page-color:                     'white' !default;
+$pagination-page-background-color:                  'gray-100' !default;
+$pagination-page-background-color-hover:            'gray-200' !default;
+$pagination-page-color:                             'black' !default;
 
 // Side navigation
 $sidenav-border-active-color:                       'primary' !default;

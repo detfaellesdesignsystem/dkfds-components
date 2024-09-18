@@ -9,14 +9,6 @@
     margin-top: func.units(5);
     margin-bottom: func.units(5);
 
-    .pagination__dropdown {
-        display: none;
-
-        @include mixins.media-breakpoint-down(sm) {
-            display: inline-flex;
-        }
-    }
-
     .button {
         &.button-arrow {
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
@@ -51,16 +43,30 @@
         }
 
         &.button-previous {
+            margin-left: 0;
+            margin-right: func.units(3);
+
+            @include mixins.media-breakpoint-down(sm) {
+                margin-right: func.units(0);
+            }
+
             .icon-svg {
                 margin-right: func.units(2);
 
                 @include mixins.media-breakpoint-down(sm) {
-                    margin-right: func.units(0);
+                    margin-right: 0;
                 }
             }
         }
 
         &.button-next {
+            margin-left: func.units(3);
+            margin-right: 0;
+
+            @include mixins.media-breakpoint-down(sm) {
+                margin-left: 0;
+            }
+
             .icon-svg {
                 margin-left: func.units(2);
 
@@ -99,29 +105,42 @@
             margin-left: func.units(3);
             margin-right: func.units(3);
 
-            .current-page {
-                @include mixins.appearance-none;
-                display: inline-block;
-                width: 100%;
-                padding: func.units(3) calc(#{func.units(4)} - #{vars.$button-border-width}) calc(#{func.units(3)} - #{vars.$button-border-width});
-                border-radius: vars.$button-border-radius;
-                border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
-                border-style: solid;
-                font-weight: func.font-weight("medium");
-                line-height: 2rem;
-                text-align: center;
-                justify-content: center;
-                text-decoration: none;
-                user-select: text;
+            &.pagination-number {
+                a {
+                    appearance: none;
+                    user-select: text;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: func.units(8);
+                    min-height: func.units(8);
+                    width: 100%;
+                    border-radius: func.units(5);
+                    border: 0;
+                    font-size: func.font-size('sm');
+                    background-color: func.color(vars.$pagination-page-background-color);
+                    color: func.color(vars.$pagination-page-color);
+                    font-weight: func.font-weight("normal");
+                    text-decoration: underline;
 
-                font-size: func.font-size('md');
-                color: func.color(vars.$pagination-current-page-color);
-                background-color: func.color(vars.$pagination-current-page-background-color);
-                border-color: func.color(vars.$pagination-current-page-border-color);
+                    &:hover {
+                        background-color: func.color(vars.$pagination-page-background-color-hover);
+                    }
+
+                    &.current-page {
+                        background-color: func.color(vars.$pagination-current-page-background-color);
+                        color: func.color(vars.$pagination-current-page-color);
+                        font-weight: func.font-weight("bold");
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: func.color(vars.$pagination-current-page-background-color-hover);
+                        }
+                    }
+                }
             }
         }
     }
-
 }
 
 

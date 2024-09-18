@@ -17,7 +17,7 @@
                         <a href="#" class="button button-secondary" aria-label='{{ "Side " + i }}'>{{ i }}</a>
                     </li>
                     {% endif %}
-                {% endfor %}<li class="pagination-item pagination-overflow" role="presentation">
+                {% endfor %}<li class="pagination-item pagination-overflow">
                     <span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">
@@ -27,7 +27,7 @@
                 <li class="pagination-item pagination-number">
                     <a href="#" class="button button-secondary" aria-label='Side 1'>1</a>
                 </li>
-                <li class="pagination-item pagination-overflow" role="presentation">
+                <li class="pagination-item pagination-overflow">
                     <span>...</span>
                 </li>
                 {% for i in range(params.totalPages - 4, params.totalPages + 1) %}
@@ -43,7 +43,7 @@
                 <li class="pagination-item pagination-number">
                     <a href="#" class="button button-secondary" aria-label='Side 1'>1</a>
                 </li>
-                <li class="pagination-item pagination-overflow" role="presentation">
+                <li class="pagination-item pagination-overflow">
                     <span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">
@@ -55,7 +55,7 @@
                 <li class="pagination-item pagination-number">
                     <a href="#" class="button button-secondary" aria-label='{{ "Side " + (params.currentPage + 1) }}'>{{ params.currentPage + 1 }}</a>
                 </li>
-                <li class="pagination-item pagination-overflow" role="presentation">
+                <li class="pagination-item pagination-overflow">
                     <span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">

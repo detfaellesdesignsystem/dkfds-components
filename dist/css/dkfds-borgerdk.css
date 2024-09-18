@@ -9650,14 +9650,6 @@ body.mobile-nav-active{
   margin-top:24px;
   margin-bottom:24px;
 }
-.pagination .pagination__dropdown{
-  display:none;
-}
-@media (max-width: 767px){
-  .pagination .pagination__dropdown{
-    display:inline-flex;
-  }
-}
 .pagination .button.button-arrow{
   font-size:1.6rem;
   appearance:none;
@@ -9685,12 +9677,30 @@ body.mobile-nav-active{
     display:none;
   }
 }
+.pagination .button.button-previous{
+  margin-left:0;
+  margin-right:8px;
+}
+@media (max-width: 767px){
+  .pagination .button.button-previous{
+    margin-right:0;
+  }
+}
 .pagination .button.button-previous .icon-svg{
   margin-right:4px;
 }
 @media (max-width: 767px){
   .pagination .button.button-previous .icon-svg{
     margin-right:0;
+  }
+}
+.pagination .button.button-next{
+  margin-left:8px;
+  margin-right:0;
+}
+@media (max-width: 767px){
+  .pagination .button.button-next{
+    margin-left:0;
   }
 }
 .pagination .button.button-next .icon-svg{
@@ -9741,25 +9751,35 @@ body.mobile-nav-active{
   margin-left:8px;
   margin-right:8px;
 }
-.pagination .pagination__items .pagination-item .current-page{
+.pagination .pagination__items .pagination-item.pagination-number a{
   appearance:none;
-  display:inline-block;
-  width:100%;
-  padding:8px calc(16px - 2px) calc(8px - 2px);
-  border-radius:4px;
-  border-width:2px 2px 4px 2px;
-  border-style:solid;
-  font-weight:500;
-  line-height:2rem;
-  text-align:center;
-  justify-content:center;
-  text-decoration:none;
   -webkit-user-select:text;
           user-select:text;
-  font-size:1.8rem;
-  color:white;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-width:48px;
+  min-height:48px;
+  width:100%;
+  border-radius:24px;
+  border:0;
+  font-size:1.6rem;
+  background-color:#F5F5F5;
+  color:#1a1a1a;
+  font-weight:400;
+  text-decoration:underline;
+}
+.pagination .pagination__items .pagination-item.pagination-number a:hover{
+  background-color:#DCDCDC;
+}
+.pagination .pagination__items .pagination-item.pagination-number a.current-page{
   background-color:#454545;
-  border-color:#454545;
+  color:white;
+  font-weight:700;
+  text-decoration:none;
+}
+.pagination .pagination__items .pagination-item.pagination-number a.current-page:hover{
+  background-color:#454545;
 }
 
 .toast-container{
