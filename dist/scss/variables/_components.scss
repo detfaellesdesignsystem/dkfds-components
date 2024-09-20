@@ -332,7 +332,10 @@ $pagination-current-page-border-color:              'gray-600' !default;
 $pagination-current-page-color:                     'white' !default;
 $pagination-page-background-color:                  'gray-100' !default;
 $pagination-page-background-color-hover:            'gray-200' !default;
+$pagination-page-background-color-active:           'gray-200' !default;
 $pagination-page-color:                             'black' !default;
+$table-pagination-page-background-color-hover:      'gray-100' !default;
+$table-pagination-page-background-color-active:     'gray-200' !default;
 
 // Side navigation
 $sidenav-border-active-color:                       'primary' !default;

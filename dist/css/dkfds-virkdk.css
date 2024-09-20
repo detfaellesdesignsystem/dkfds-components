@@ -9649,21 +9649,25 @@ body.mobile-nav-active{
   align-items:center;
 }
 .table-pagination .button.button-arrow, .pagination .button.button-arrow{
-  font-size:1.6rem;
   appearance:none;
+  font-size:1.6rem;
   background-color:transparent;
   border-style:none;
   color:#1a1a1a;
   text-decoration:underline;
   white-space:nowrap;
   width:auto;
-  margin-top:0;
+  margin:0;
+  padding:0 8px;
 }
 .table-pagination .button.button-arrow.hidden, .pagination .button.button-arrow.hidden{
   visibility:hidden;
 }
 .table-pagination .button.button-arrow .icon-svg, .pagination .button.button-arrow .icon-svg{
   margin-right:0;
+}
+.table-pagination .button.button-arrow .pagination-nav-link, .pagination .button.button-arrow .pagination-nav-link{
+  padding:0 4px;
 }
 @media (max-width: 767px){
   .table-pagination .button.button-arrow .pagination-nav-link, .pagination .button.button-arrow .pagination-nav-link{
@@ -9673,22 +9677,6 @@ body.mobile-nav-active{
 @media (min-width: 768px){
   .table-pagination .button.button-first, .pagination .button.button-first, .table-pagination .button.button-last, .pagination .button.button-last{
     display:none;
-  }
-}
-.table-pagination .button.button-previous, .pagination .button.button-previous{
-  margin-left:0;
-}
-@media (max-width: 767px){
-  .table-pagination .button.button-previous, .pagination .button.button-previous{
-    margin-right:0;
-  }
-}
-.table-pagination .button.button-next, .pagination .button.button-next{
-  margin-right:0;
-}
-@media (max-width: 767px){
-  .table-pagination .button.button-next, .pagination .button.button-next{
-    margin-left:0;
   }
 }
 .table-pagination .pagination-mobile, .pagination .pagination-mobile{
@@ -9741,9 +9729,6 @@ body.mobile-nav-active{
   font-weight:400;
   text-decoration:underline;
 }
-.table-pagination .pagination__items .pagination-item.pagination-number a:hover, .pagination .pagination__items .pagination-item.pagination-number a:hover, .table-pagination .pagination__items .pagination-item.pagination-number button:hover, .pagination .pagination__items .pagination-item.pagination-number button:hover{
-  background-color:#DCDCDC;
-}
 .table-pagination .pagination__items .pagination-item.pagination-number a.current-page, .pagination .pagination__items .pagination-item.pagination-number a.current-page, .table-pagination .pagination__items .pagination-item.pagination-number button.current-page, .pagination .pagination__items .pagination-item.pagination-number button.current-page{
   background-color:#454545;
   color:white;
@@ -9761,34 +9746,15 @@ body.mobile-nav-active{
 .pagination .button{
   border-radius:24px;
 }
-.pagination .button.button-arrow{
-  padding:0 8px;
-}
-.pagination .button.button-previous{
-  margin-right:8px;
-}
-.pagination .button.button-previous .icon-svg{
-  margin-right:4px;
-}
-@media (max-width: 767px){
-  .pagination .button.button-previous .icon-svg{
-    margin-right:0;
-  }
-}
-.pagination .button.button-next{
-  margin-left:8px;
-}
-.pagination .button.button-next .icon-svg{
-  margin-left:4px;
-}
-@media (max-width: 767px){
-  .pagination .button.button-next .icon-svg{
-    margin-left:0;
-  }
-}
 .pagination .pagination__items .pagination-item{
   margin-left:8px;
   margin-right:8px;
+}
+.pagination .pagination__items .pagination-item.pagination-number:first-child{
+  margin-left:12px;
+}
+.pagination .pagination__items .pagination-item.pagination-number:last-child{
+  margin-right:12px;
 }
 .pagination .pagination__items .pagination-item.pagination-number a, .pagination .pagination__items .pagination-item.pagination-number button{
   background-color:#F5F5F5;
@@ -9797,31 +9763,32 @@ body.mobile-nav-active{
   padding:0 12px;
   border-radius:24px;
 }
+.pagination .pagination__items .pagination-item.pagination-number a:hover, .pagination .pagination__items .pagination-item.pagination-number button:hover{
+  background-color:#DCDCDC;
+}
+.pagination .pagination__items .pagination-item.pagination-number a:active, .pagination .pagination__items .pagination-item.pagination-number button:active{
+  background-color:#DCDCDC;
+}
 
 .table-pagination{
   margin-top:8px;
   margin-bottom:8px;
 }
 .table-pagination .button{
-  min-width:40px;
-  min-height:40px;
   border-radius:20px;
-}
-.table-pagination .button.button-arrow{
-  padding:0;
 }
 .table-pagination .button.button-arrow .pagination-nav-link{
   display:none;
 }
-.table-pagination .button.button-previous{
-  margin-right:2px;
-}
-.table-pagination .button.button-next{
-  margin-left:2px;
-}
 .table-pagination .pagination__items .pagination-item{
   margin-left:2px;
   margin-right:2px;
+}
+.table-pagination .pagination__items .pagination-item.pagination-number:first-child{
+  margin-left:4px;
+}
+.table-pagination .pagination__items .pagination-item.pagination-number:last-child{
+  margin-right:4px;
 }
 .table-pagination .pagination__items .pagination-item.pagination-number a, .table-pagination .pagination__items .pagination-item.pagination-number button{
   background-color:transparent;
@@ -9829,6 +9796,12 @@ body.mobile-nav-active{
   min-height:40px;
   padding:0 8px;
   border-radius:20px;
+}
+.table-pagination .pagination__items .pagination-item.pagination-number a:hover, .table-pagination .pagination__items .pagination-item.pagination-number button:hover{
+  background-color:#F5F5F5;
+}
+.table-pagination .pagination__items .pagination-item.pagination-number a:active, .table-pagination .pagination__items .pagination-item.pagination-number button:active{
+  background-color:#DCDCDC;
 }
 
 .toast-container{

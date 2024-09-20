@@ -9,15 +9,16 @@
     
     .button {
         &.button-arrow {
+            appearance: none;
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
-            @include mixins.appearance-none;
             background-color: func.color(vars.$pagination-button-arrow-background-color);
             border-style: none;
             color: func.color(vars.$pagination-button-arrow-color);
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
-            margin-top: 0;
+            margin: 0;
+            padding: 0 func.units(3); // top and bottom | left and right
 
             &.hidden {
                 visibility: hidden;
@@ -28,6 +29,8 @@
             }
 
             .pagination-nav-link {
+                padding: 0 func.units(2); // top and bottom | left and right
+
                 @include mixins.media-breakpoint-down(sm) {
                     display: none;
                 }
@@ -37,22 +40,6 @@
         &.button-first, &.button-last {
             @include mixins.media-breakpoint-up(md) {
                 display: none;
-            }
-        }
-
-        &.button-previous {
-            margin-left: 0;
-
-            @include mixins.media-breakpoint-down(sm) {
-                margin-right: func.units(0);
-            }
-        }
-
-        &.button-next {
-            margin-right: 0;
-
-            @include mixins.media-breakpoint-down(sm) {
-                margin-left: 0;
             }
         }
     }
@@ -95,10 +82,6 @@
                 font-weight: func.font-weight("normal");
                 text-decoration: underline;
 
-                &:hover {
-                    background-color: func.color(vars.$pagination-page-background-color-hover);
-                }
-
                 &.current-page {
                     background-color: func.color(vars.$pagination-current-page-background-color);
                     color: func.color(vars.$pagination-current-page-color);
@@ -121,34 +104,6 @@
 
     .button {
         border-radius: func.units(5);
-
-        &.button-arrow {
-            padding: 0 func.units(3); // top and bottom | left and right
-        }
-
-        &.button-previous {
-            margin-right: func.units(3);
-
-            .icon-svg {
-                margin-right: func.units(2);
-
-                @include mixins.media-breakpoint-down(sm) {
-                    margin-right: 0;
-                }
-            }
-        }
-
-        &.button-next {
-            margin-left: func.units(3);
-
-            .icon-svg {
-                margin-left: func.units(2);
-
-                @include mixins.media-breakpoint-down(sm) {
-                    margin-left: func.units(0);
-                }
-            }
-        }
     }
 
     .pagination__items {
@@ -157,12 +112,28 @@
             margin-right: func.units(3);
 
             &.pagination-number {
+                &:first-child {
+                    margin-left: func.units(305);
+                }
+    
+                &:last-child {
+                    margin-right: func.units(305);
+                }
+    
                 a, button {
                     background-color: func.color(vars.$pagination-page-background-color);
                     min-width: func.units(8);
                     min-height: func.units(8);
                     padding: 0 func.units(305); // top and bottom | left and right
                     border-radius: func.units(5);
+
+                    &:hover {
+                        background-color: func.color(vars.$pagination-page-background-color-hover);
+                    }
+
+                    &:active {
+                        background-color: func.color(vars.$pagination-page-background-color-active);
+                    }    
                 }
             }
         }
@@ -175,24 +146,12 @@
     margin-bottom: func.units(3);
 
     .button {
-        min-width: func.units(7);
-        min-height: func.units(7);
         border-radius: func.units(405);
 
         &.button-arrow {
-            padding: 0;
-
             .pagination-nav-link {
                 display: none;
             }
-        }
-
-        &.button-previous {
-            margin-right: func.units(1);
-        }
-
-        &.button-next {
-            margin-left: func.units(1);
         }
     }
 
@@ -202,12 +161,28 @@
             margin-right: func.units(1);
 
             &.pagination-number {
+                &:first-child {
+                    margin-left: func.units(2);
+                }
+    
+                &:last-child {
+                    margin-right: func.units(2);
+                }
+    
                 a, button {
                     background-color: transparent;
                     min-width: func.units(7);
                     min-height: func.units(7);
                     padding: 0 func.units(3); // top and bottom | left and right
                     border-radius: func.units(405);
+
+                    &:hover {
+                        background-color: func.color(vars.$table-pagination-page-background-color-hover);
+                    }
+
+                    &:active {
+                        background-color: func.color(vars.$table-pagination-page-background-color-active);
+                    }    
                 }
             }
         }
