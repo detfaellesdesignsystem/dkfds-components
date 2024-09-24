@@ -436,6 +436,55 @@
     }
 }
 
+.rows-message {
+    margin-bottom: func.units(3, 'rem');
+}
+
+.table-pagination-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: func.border(vars.$table-border);
+    border-top: 0;
+
+    @include mixins.media-breakpoint-down(sm) {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .form-group {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin: func.units(3);
+
+        @include mixins.media-breakpoint-down(sm) {
+            width: auto;
+        }
+
+        .form-label {
+            font-weight: func.font-weight("normal");
+            margin-right: func.units(3);
+            margin-left: func.units(3);
+
+            @include mixins.media-breakpoint-down(sm) {
+                margin-left: 0;
+            }
+        }
+
+        .form-select {
+            width: auto;
+            margin: 0;
+            padding-right: func.units(7);
+        }
+    }
+
+    .table-pagination {
+        margin: func.units(3);
+    }
+}
+
 .table-actions {
     border-right: func.border(vars.$table-border);
     border-bottom: func.border(vars.$table-border);

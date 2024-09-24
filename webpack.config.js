@@ -205,6 +205,11 @@ const createCSS = {
             },
         ],
     },
+    /* Increased from the default 250000 for the non-minified stylesheets */
+    performance: {
+        maxAssetSize: 260000,       
+        maxEntrypointSize: 260000
+    },
     optimization: {
         /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
         minimize: true,

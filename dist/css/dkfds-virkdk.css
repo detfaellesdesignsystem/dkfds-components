@@ -9650,6 +9650,7 @@ body.mobile-nav-active{
 }
 .table-pagination .button.button-arrow, .pagination .button.button-arrow{
   appearance:none;
+  line-height:1;
   font-size:1.6rem;
   background-color:transparent;
   border-style:none;
@@ -9680,7 +9681,7 @@ body.mobile-nav-active{
   }
 }
 .table-pagination .pagination-mobile, .pagination .pagination-mobile{
-  white-space:nowrap;
+  text-align:center;
   display:inline-flex;
   align-items:center;
   margin-left:8px;
@@ -9717,6 +9718,7 @@ body.mobile-nav-active{
 }
 .table-pagination .pagination__items .pagination-item.pagination-number a, .pagination .pagination__items .pagination-item.pagination-number a, .table-pagination .pagination__items .pagination-item.pagination-number button, .pagination .pagination__items .pagination-item.pagination-number button{
   appearance:none;
+  line-height:1;
   -webkit-user-select:text;
           user-select:text;
   display:inline-flex;
@@ -9724,6 +9726,7 @@ body.mobile-nav-active{
   align-items:center;
   width:100%;
   border:0;
+  padding:0 4px;
   font-size:1.6rem;
   color:#1a1a1a;
   font-weight:400;
@@ -9735,7 +9738,7 @@ body.mobile-nav-active{
   font-weight:700;
   text-decoration:none;
 }
-.table-pagination .pagination__items .pagination-item.pagination-number a.current-page:hover, .pagination .pagination__items .pagination-item.pagination-number a.current-page:hover, .table-pagination .pagination__items .pagination-item.pagination-number button.current-page:hover, .pagination .pagination__items .pagination-item.pagination-number button.current-page:hover{
+.table-pagination .pagination__items .pagination-item.pagination-number a.current-page:hover, .pagination .pagination__items .pagination-item.pagination-number a.current-page:hover, .table-pagination .pagination__items .pagination-item.pagination-number a.current-page:active, .pagination .pagination__items .pagination-item.pagination-number a.current-page:active, .table-pagination .pagination__items .pagination-item.pagination-number button.current-page:hover, .pagination .pagination__items .pagination-item.pagination-number button.current-page:hover, .table-pagination .pagination__items .pagination-item.pagination-number button.current-page:active, .pagination .pagination__items .pagination-item.pagination-number button.current-page:active{
   background-color:#454545;
 }
 
@@ -9760,7 +9763,6 @@ body.mobile-nav-active{
   background-color:#F5F5F5;
   min-width:48px;
   min-height:48px;
-  padding:0 12px;
   border-radius:24px;
 }
 .pagination .pagination__items .pagination-item.pagination-number a:hover, .pagination .pagination__items .pagination-item.pagination-number button:hover{
@@ -9780,6 +9782,10 @@ body.mobile-nav-active{
 .table-pagination .button.button-arrow .pagination-nav-link{
   display:none;
 }
+.table-pagination .button:focus{
+  position:relative;
+  z-index:2;
+}
 .table-pagination .pagination__items .pagination-item{
   margin-left:2px;
   margin-right:2px;
@@ -9794,11 +9800,14 @@ body.mobile-nav-active{
   background-color:transparent;
   min-width:40px;
   min-height:40px;
-  padding:0 8px;
   border-radius:20px;
 }
 .table-pagination .pagination__items .pagination-item.pagination-number a:hover, .table-pagination .pagination__items .pagination-item.pagination-number button:hover{
   background-color:#F5F5F5;
+}
+.table-pagination .pagination__items .pagination-item.pagination-number a:focus, .table-pagination .pagination__items .pagination-item.pagination-number button:focus{
+  position:relative;
+  z-index:2;
 }
 .table-pagination .pagination__items .pagination-item.pagination-number a:active, .table-pagination .pagination__items .pagination-item.pagination-number button:active{
   background-color:#DCDCDC;
@@ -11667,6 +11676,54 @@ a.skipnav:focus{
 .table--selectable.table.table--zebra tr.table-row-selected:nth-child(even), .table--selectable.table.table--zebra tr.table-row-selected:nth-child(odd),
 .table--selectable .table-row-selected{
   background-color:#DCDCDC;
+}
+
+.rows-message{
+  margin-bottom:0.8rem;
+}
+
+.table-pagination-options{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #747474;
+  border-top:0;
+}
+@media (max-width: 767px){
+  .table-pagination-options{
+    flex-direction:column;
+    justify-content:center;
+  }
+}
+.table-pagination-options .form-group{
+  display:flex;
+  width:100%;
+  align-items:center;
+  margin:8px;
+}
+@media (max-width: 767px){
+  .table-pagination-options .form-group{
+    width:auto;
+  }
+}
+.table-pagination-options .form-group .form-label{
+  font-weight:400;
+  margin-right:8px;
+  margin-left:8px;
+}
+@media (max-width: 767px){
+  .table-pagination-options .form-group .form-label{
+    margin-left:0;
+  }
+}
+.table-pagination-options .form-group .form-select{
+  width:auto;
+  margin:0;
+  padding-right:40px;
+}
+.table-pagination-options .table-pagination{
+  margin:8px;
 }
 
 .table-actions{

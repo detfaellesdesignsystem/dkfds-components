@@ -10,6 +10,7 @@
     .button {
         &.button-arrow {
             appearance: none;
+            line-height: 1;
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
             background-color: func.color(vars.$pagination-button-arrow-background-color);
             border-style: none;
@@ -45,7 +46,7 @@
     }
 
     .pagination-mobile {
-        white-space: nowrap;
+        text-align: center;
         display: inline-flex;
         align-items: center;
         margin-left: func.units(3);
@@ -71,12 +72,14 @@
         .pagination-item.pagination-number {
             a, button {
                 appearance: none;
+                line-height: 1;
                 user-select: text;
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
                 border: 0;
+                padding: 0 func.units(2); // top and bottom | left and right
                 font-size: func.font-size('sm');
                 color: func.color(vars.$pagination-page-color);
                 font-weight: func.font-weight("normal");
@@ -88,7 +91,7 @@
                     font-weight: func.font-weight("bold");
                     text-decoration: none;
 
-                    &:hover {
+                    &:hover, &:active {
                         background-color: func.color(vars.$pagination-current-page-background-color-hover);
                     }
                 }
@@ -124,7 +127,6 @@
                     background-color: func.color(vars.$pagination-page-background-color);
                     min-width: func.units(8);
                     min-height: func.units(8);
-                    padding: 0 func.units(305); // top and bottom | left and right
                     border-radius: func.units(5);
 
                     &:hover {
@@ -153,6 +155,11 @@
                 display: none;
             }
         }
+
+        &:focus {
+            position: relative;
+            z-index: vars.$zindex-nav-focus;
+        }
     }
 
     .pagination__items {
@@ -173,11 +180,15 @@
                     background-color: transparent;
                     min-width: func.units(7);
                     min-height: func.units(7);
-                    padding: 0 func.units(3); // top and bottom | left and right
                     border-radius: func.units(405);
 
                     &:hover {
                         background-color: func.color(vars.$table-pagination-page-background-color-hover);
+                    }
+
+                    &:focus {
+                        position: relative;
+                        z-index: vars.$zindex-nav-focus;
                     }
 
                     &:active {
