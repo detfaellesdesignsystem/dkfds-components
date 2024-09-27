@@ -9779,6 +9779,10 @@ body.mobile-nav-active{
 .table-pagination .button{
   border-radius:20px;
 }
+.table-pagination .button.button-arrow{
+  -webkit-user-select:auto;
+          user-select:auto;
+}
 .table-pagination .button.button-arrow .pagination-nav-link{
   display:none;
 }
@@ -9789,6 +9793,11 @@ body.mobile-nav-active{
 .table-pagination .pagination__items .pagination-item{
   margin-left:2px;
   margin-right:2px;
+}
+.table-pagination .pagination__items .pagination-item.pagination-overflow span{
+  min-width:40px;
+  display:inline-block;
+  text-align:center;
 }
 .table-pagination .pagination__items .pagination-item.pagination-number:first-child{
   margin-left:4px;

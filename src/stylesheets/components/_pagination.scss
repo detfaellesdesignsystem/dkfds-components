@@ -151,6 +151,8 @@
         border-radius: func.units(405);
 
         &.button-arrow {
+            user-select: auto;
+
             .pagination-nav-link {
                 display: none;
             }
@@ -166,6 +168,12 @@
         .pagination-item {
             margin-left: func.units(1);
             margin-right: func.units(1);
+
+            &.pagination-overflow span {
+                min-width: func.units(7);
+                display: inline-block;
+                text-align: center;
+            }
 
             &.pagination-number {
                 &:first-child {

@@ -5,7 +5,7 @@
 
 {% macro table(params) %}
 {% if params.pagination %}
-<p class="rows-message"{% if params.id %} id="{{ params.id }}-message"{% endif %}>Viser <strong class="displayed-rows">{{ params.pagination.displayedRows }}</strong> af <strong class="total-rows">{{ params.pagination.totalRows }}</strong> rækker</p>
+<p aria-live="polite" aria-atomic="true" class="rows-message"{% if params.id %} id="{{ params.id }}-message"{% endif %}>Viser <strong class="displayed-rows">{{ params.pagination.displayedRows }}</strong> af <strong class="total-rows">{{ params.pagination.totalRows }}</strong> rækker</p>
 {%- endif -%}
 <div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}"{% if params.attributes.outer %} {{ params.attributes.outer | safe }}{% endif %}>
     <table class="table{% if params.zebra %} table--zebra{% endif %}{% if params.selectable %} table--selectable{% endif %}{% if params.borderless %} table--borderless{% endif %}{% if params.variant.cellPadding %}{% if params.variant.cellPadding === 'compact' %} table--compact{% elif params.variant.cellPadding === 'extracompact' %} table--extracompact{% endif %}{% endif %}{% if params.classes.inner %} {{ params.classes.inner }}{% endif %}{% if params.responsive or params.variant.breakpoint %} table-{% if params.variant.breakpoint %}{{params.variant.breakpoint}}{% endif %}-responsive-headers{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes.inner %} {{ params.attributes.inner | safe }}{% endif %}>
@@ -60,13 +60,14 @@
                 "name": "pagination-pages",
                 "id": "pagination-pages",
                 "label": "Vis rækker per side:",
-                "options": params.pagination.options
+                "options": params.pagination.options,
+                "required": false
             }) 
         }}
         {{ 
             pagination({
-                "totalPages": 15,
-                "currentPage": 7,
+                "totalPages": params.pagination.totalPages,
+                "currentPage": 1,
                 "pageElement": "button",
                 "paginationType": "table-pagination",
                 "ariaLabel": "Skift side i tabellen"

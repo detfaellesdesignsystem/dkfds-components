@@ -24,7 +24,7 @@
                     </li>
                     {% endif %}
                 {% endfor %}<li class="pagination-item pagination-overflow">
-                    <span>...</span>
+                    <span class="sr-only">Prikker som indikerer skjulte sider</span><span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='{{ "Sidste side, side " + params.totalPages }}'>{{ params.totalPages }}</{{ pageElement }}>
@@ -34,7 +34,7 @@
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='Side 1'>1</{{ pageElement }}>
                 </li>
                 <li class="pagination-item pagination-overflow">
-                    <span>...</span>
+                    <span class="sr-only">Prikker som indikerer skjulte sider</span><span>...</span>
                 </li>
                 {% for i in range(params.totalPages - 4, params.totalPages + 1) %}
                     {% if i == params.currentPage %}
@@ -50,7 +50,7 @@
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='Side 1'>1</{{ pageElement }}>
                 </li>
                 <li class="pagination-item pagination-overflow">
-                    <span>...</span>
+                    <span class="sr-only">Prikker som indikerer skjulte sider</span><span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='{{ "Side " + (params.currentPage - 1) }}'>{{ params.currentPage - 1 }}</{{ pageElement }}>
@@ -62,7 +62,7 @@
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='{{ "Side " + (params.currentPage + 1) }}'>{{ params.currentPage + 1 }}</{{ pageElement }}>
                 </li>
                 <li class="pagination-item pagination-overflow">
-                    <span>...</span>
+                    <span class="sr-only">Prikker som indikerer skjulte sider</span><span>...</span>
                 </li>
                 <li class="pagination-item pagination-number">
                     <{{ pageElement }}{% if pageElement == 'a' %} href="#"{% endif %} class="button button-secondary" aria-label='{{ "Sidste side, side " + (params.totalPages) }}'>{{ params.totalPages }}</{{ pageElement }}>
