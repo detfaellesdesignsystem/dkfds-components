@@ -75,6 +75,11 @@
         }}
     </div>
     {%- endif -%}
+    {% if params.pagination and params.selectable and not params.actions %}
+    <div class="table-actions">
+        <p class="table-selected-number no-selected mb-0">Vælg en eller flere rækker</p>
+    </div>
+    {%- endif -%}
     {% if params.actions and params.selectable %}
     <div class="table-actions">
         <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
