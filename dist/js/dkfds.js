@@ -3764,16 +3764,7 @@ function Dropdown(buttonElement) {
     throw new Error('Panel for overflow menu component could not be found.');
   }
   this.targetEl = targetEl;
-
-  /* Close the overflow menu if the menu items or the toggle button no longer have focus */
-  document.addEventListener('focusin', event => {
-    let listElements = this.targetEl.querySelectorAll('li');
-    let isListElementFocused = [...listElements].includes(event.target.parentElement);
-    let isToggleButtonFocused = this.buttonElement === event.target;
-    if (!isListElementFocused && !isToggleButtonFocused) {
-      dropdown_toggle(this.buttonElement, true);
-    }
-  });
+  document.addEventListener('focusin', closeOnFocusLost);
 }
 
 /**
@@ -3866,16 +3857,6 @@ let closeOnEscape = function (event) {
 };
 
 /**
- * Get an Array of button elements belonging directly to the given
- * accordion element.
- * @param parent accordion element
- * @returns {NodeListOf<SVGElementTagNameMap[[string]]> | NodeListOf<HTMLElementTagNameMap[[string]]> | NodeListOf<Element>}
- */
-let getButtons = function (parent) {
-  return parent.querySelectorAll(dropdown_BUTTON);
-};
-
-/**
  * Close all overflow menus
  * @param {event} event default is null
  */
@@ -3934,7 +3915,6 @@ let dropdown_toggle = function (button) {
   }
   if (triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined) {
     //change state
-
     targetEl.style.left = null;
     targetEl.style.right = null;
     if (triggerEl.getAttribute('aria-expanded') === 'true' || forceClose) {
@@ -3945,9 +3925,6 @@ let dropdown_toggle = function (button) {
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
-      if (!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')) {
-        closeAll();
-      }
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
@@ -3985,6 +3962,20 @@ let hasParent = function (child, parentTagName) {
     return false;
   }
 };
+function closeOnFocusLost(event) {
+  let overflowmenus = document.querySelectorAll('.overflow-menu, .submenu');
+  for (let i = 0; i < overflowmenus.length; i++) {
+    let listElements = overflowmenus[i].querySelectorAll('li');
+    let toggleButton = overflowmenus[i].querySelector('.button-overflow-menu');
+    if (toggleButton) {
+      let isListElementFocused = [...listElements].includes(event.target.parentElement);
+      let isToggleButtonFocused = toggleButton === event.target;
+      if (!isListElementFocused && !isToggleButtonFocused) {
+        dropdown_toggle(toggleButton, true);
+      }
+    }
+  }
+}
 let outsideClose = function (evt) {
   if (!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')) {
     if (document.querySelector('body.mobile-nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
@@ -4718,20 +4709,6 @@ function MenuDropdown(buttonElement) {
     throw new Error('Panel for overflow menu component could not be found.');
   }
   this.targetEl = targetEl;
-
-  /* Close the submenu if the menu items or the menu button no longer have focus.
-     Only applied to the desktop submenus, not the mobile submenus. */
-  document.addEventListener('focusin', event => {
-    let isMobileMenu = this.buttonElement.classList.contains('button-mobile-menu');
-    if (!isMobileMenu) {
-      let listElements = this.targetEl.querySelectorAll('li');
-      let isListElementFocused = [...listElements].includes(event.target.parentElement);
-      let isToggleButtonFocused = this.buttonElement === event.target;
-      if (!isListElementFocused && !isToggleButtonFocused) {
-        navigation_drawer_overflow_toggle(this.buttonElement, true);
-      }
-    }
-  });
 }
 
 /**
