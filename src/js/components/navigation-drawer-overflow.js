@@ -22,14 +22,17 @@ function MenuDropdown (buttonElement) {
   }
   this.targetEl = targetEl;
 
-  /* Close the overflow menu if the menu items or the toggle button no longer have focus */
+  /* Close the submenu if the menu items or the menu button no longer have focus.
+     Only applied to the desktop submenus, not the mobile submenus. */
   document.addEventListener('focusin', event => {
-    let overflowMenu = this.buttonElement.parentElement;
-    let listElements = overflowMenu.querySelectorAll('li');
-    let isListElementFocused = [...listElements].includes(event.target.parentElement);
-    let isToggleButtonFocused = this.buttonElement === event.target;
-    if (!isListElementFocused && !isToggleButtonFocused) {
-      toggle(this.buttonElement, true);
+    let isMobileMenu = this.buttonElement.classList.contains('button-mobile-menu');
+    if (!isMobileMenu) {
+      let listElements = this.targetEl.querySelectorAll('li');
+      let isListElementFocused = [...listElements].includes(event.target.parentElement);
+      let isToggleButtonFocused = this.buttonElement === event.target;
+      if (!isListElementFocused && !isToggleButtonFocused) {
+        toggle(this.buttonElement, true);
+      }
     }
   });
 }

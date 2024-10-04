@@ -28,8 +28,7 @@ function Dropdown (buttonElement) {
 
   /* Close the overflow menu if the menu items or the toggle button no longer have focus */
   document.addEventListener('focusin', event => {
-    let overflowMenu = this.buttonElement.parentElement;
-    let listElements = overflowMenu.querySelectorAll('li');
+    let listElements = this.targetEl.querySelectorAll('li');
     let isListElementFocused = [...listElements].includes(event.target.parentElement);
     let isToggleButtonFocused = this.buttonElement === event.target;
     if (!isListElementFocused && !isToggleButtonFocused) {
