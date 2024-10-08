@@ -12,6 +12,7 @@
             appearance: none;
             line-height: 1;
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
+            font-weight: 400;
             background-color: func.color(vars.$pagination-button-arrow-background-color);
             border-style: none;
             color: func.color(vars.$pagination-button-arrow-color);

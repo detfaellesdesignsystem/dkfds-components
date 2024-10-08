@@ -9652,6 +9652,7 @@ body.mobile-nav-active{
   appearance:none;
   line-height:1;
   font-size:1.6rem;
+  font-weight:400;
   background-color:transparent;
   border-style:none;
   color:#1a1a1a;
