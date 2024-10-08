@@ -118,4 +118,23 @@ params:
     type: string
     required: false
     description: Adds an ID to a header's sorting button.
-
+- name: pagination
+  type: object
+  required: false
+  description: Create pagination buttons for the table.
+  - name: displayedRows
+    type: string
+    required: true
+    description: The initial rows displayed on page load.
+  - name: totalRows
+    type: string
+    required: true
+    description: The total rows.
+  - name: options
+    type: object
+    required: true
+    description: The content in the pagination select.
+  - name: totalPages
+    type: int
+    required: true
+    description: The total pagination pages.

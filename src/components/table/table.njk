@@ -53,38 +53,38 @@
             </tr>
             {% endfor %}</tbody>
     </table>
-    {% if params.pagination %}
-    <div class="table-pagination-options">
-        {{ 
-            select({
-                "name": "pagination-pages",
-                "id": "pagination-pages",
-                "label": "Vis rækker per side:",
-                "options": params.pagination.options,
-                "required": false
-            }) 
-        }}
-        {{ 
-            pagination({
-                "totalPages": params.pagination.totalPages,
-                "currentPage": 1,
-                "pageElement": "button",
-                "paginationType": "table-pagination",
-                "ariaLabel": "Skift side i tabellen"
-            }) 
-        }}
-    </div>
-    {%- endif -%}
-    {% if params.pagination and params.selectable and not params.actions %}
-    <div class="table-actions">
-        <p class="table-selected-number no-selected mb-0">Vælg en eller flere rækker</p>
-    </div>
-    {%- endif -%}
-    {% if params.actions and params.selectable %}
-    <div class="table-actions">
-        <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
-        {% for action in params.actions %}{{ button(action) }}{% endfor %}
-    </div>
-    {%- endif -%}
 </div>
+{% if params.pagination %}
+<div class="table-pagination-options">
+    {{ 
+        select({
+            "name": "pagination-pages",
+            "id": "pagination-pages",
+            "label": "Vis rækker per side:",
+            "options": params.pagination.options,
+            "required": false
+        }) 
+    }}
+    {{ 
+        pagination({
+            "totalPages": params.pagination.totalPages,
+            "currentPage": 1,
+            "pageElement": "button",
+            "paginationType": "table-pagination",
+            "ariaLabel": "Skift side i tabellen"
+        }) 
+    }}
+</div>
+{%- endif -%}
+{% if params.pagination and params.selectable and not params.actions %}
+<div class="table-actions">
+    <p class="table-selected-number no-selected mb-0">Vælg en eller flere rækker</p>
+</div>
+{%- endif -%}
+{% if params.actions and params.selectable %}
+<div class="table-actions">
+    <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
+    {% for action in params.actions %}{{ button(action) }}{% endfor %}
+</div>
+{%- endif -%}
 {% endmacro %}
