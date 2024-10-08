@@ -11156,7 +11156,7 @@ a.skipnav:focus{
 }
 .table td:last-child,
 .table th:last-child{
-  border-right:none;
+  border-right:0;
 }
 .table td.break-word,
 .table th.break-word{
@@ -11207,7 +11207,7 @@ a.skipnav:focus{
 }
 .table tbody tr:last-child td,
 .table tbody tr:last-child th{
-  border-bottom:none;
+  border-bottom:0;
 }
 .table.table--compact th,
 .table.table--compact td{
@@ -11226,13 +11226,13 @@ a.skipnav:focus{
   padding-top:0;
 }
 .table.table--borderless, .table.structured-list{
-  border:none;
+  border:0;
 }
 .table.table--borderless td,
 .table.table--borderless th, .table.structured-list td,
 .table.structured-list th{
   padding-right:16px;
-  border-right:none;
+  border-right:0;
 }
 .table.table--borderless thead tr td:first-child,
 .table.table--borderless thead tr th:first-child,
@@ -11241,7 +11241,7 @@ a.skipnav:focus{
 .table.structured-list thead tr th:first-child,
 .table.structured-list tbody tr td:first-child,
 .table.structured-list tbody tr th:first-child{
-  padding-left:0;
+  padding-left:16px;
 }
 .table.table--borderless thead tr td:last-child,
 .table.table--borderless thead tr th:last-child,
@@ -11250,7 +11250,7 @@ a.skipnav:focus{
 .table.structured-list thead tr th:last-child,
 .table.structured-list tbody tr td:last-child,
 .table.structured-list tbody tr th:last-child{
-  padding-right:0;
+  padding-right:16px;
 }
 .table.table--borderless thead, .table.structured-list thead{
   background-color:transparent;
@@ -11306,7 +11306,7 @@ a.skipnav:focus{
 }
 .table.table--zebra.table--borderless tbody tr:last-child td,
 .table.table--zebra.table--borderless tbody tr:last-child th{
-  border-bottom:none;
+  border-bottom:0;
 }
 .table.table--zebra.table--borderless.table--compact td,
 .table.table--zebra.table--borderless.table--compact th{
@@ -11324,7 +11324,7 @@ a.skipnav:focus{
 }
 .table.structured-list.table--zebra tbody tr:first-child td,
 .table.structured-list.table--zebra tbody tr:first-child th{
-  border-top:none;
+  border-top:0;
 }
 @media screen and (max-width: 767px){
   .table.table--responsive-headers{
@@ -11341,12 +11341,12 @@ a.skipnav:focus{
     border-bottom:1px solid #BFBFBF;
   }
   .table.table--responsive-headers tr:last-child{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table--responsive-headers td,
   .table.table--responsive-headers th{
     display:block;
-    border:none;
+    border:0;
     padding:16px 15px;
   }
   .table.table--responsive-headers td:last-child,
@@ -11381,8 +11381,8 @@ a.skipnav:focus{
   .table.table--responsive-headers.table--borderless td,
   .table.table--responsive-headers.table--borderless th, .table.table--responsive-headers.structured-list td,
   .table.table--responsive-headers.structured-list th{
-    padding-left:0;
-    padding-right:0;
+    padding-left:16px;
+    padding-right:16px;
   }
   .table.table--responsive-headers.table--borderless tr:first-child td:first-child,
   .table.table--responsive-headers.table--borderless tr:first-child th:first-child, .table.table--responsive-headers.structured-list tr:first-child td:first-child,
@@ -11392,7 +11392,7 @@ a.skipnav:focus{
   .table.table--responsive-headers.table--borderless tr:last-child td,
   .table.table--responsive-headers.table--borderless tr:last-child th, .table.table--responsive-headers.structured-list tr:last-child td,
   .table.table--responsive-headers.structured-list tr:last-child th{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table--responsive-headers.table--borderless tr:last-child td:last-child,
   .table.table--responsive-headers.table--borderless tr:last-child th:last-child, .table.table--responsive-headers.structured-list tr:last-child td:last-child,
@@ -11405,7 +11405,7 @@ a.skipnav:focus{
     padding-right:16px;
   }
   .table.table--responsive-headers.structured-list tbody tr:first-child td{
-    border-top:none;
+    border-top:0;
   }
   .table.table--responsive-headers.structured-list tbody tr th{
     padding-bottom:0;
@@ -11429,12 +11429,12 @@ a.skipnav:focus{
     border-bottom:1px solid #BFBFBF;
   }
   .table.table-sm-responsive-headers tr:last-child{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-sm-responsive-headers td,
   .table.table-sm-responsive-headers th{
     display:block;
-    border:none;
+    border:0;
     padding:16px 15px;
   }
   .table.table-sm-responsive-headers td:last-child,
@@ -11469,8 +11469,8 @@ a.skipnav:focus{
   .table.table-sm-responsive-headers.table--borderless td,
   .table.table-sm-responsive-headers.table--borderless th, .table.table-sm-responsive-headers.structured-list td,
   .table.table-sm-responsive-headers.structured-list th{
-    padding-left:0;
-    padding-right:0;
+    padding-left:16px;
+    padding-right:16px;
   }
   .table.table-sm-responsive-headers.table--borderless tr:first-child td:first-child,
   .table.table-sm-responsive-headers.table--borderless tr:first-child th:first-child, .table.table-sm-responsive-headers.structured-list tr:first-child td:first-child,
@@ -11480,7 +11480,7 @@ a.skipnav:focus{
   .table.table-sm-responsive-headers.table--borderless tr:last-child td,
   .table.table-sm-responsive-headers.table--borderless tr:last-child th, .table.table-sm-responsive-headers.structured-list tr:last-child td,
   .table.table-sm-responsive-headers.structured-list tr:last-child th{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-sm-responsive-headers.table--borderless tr:last-child td:last-child,
   .table.table-sm-responsive-headers.table--borderless tr:last-child th:last-child, .table.table-sm-responsive-headers.structured-list tr:last-child td:last-child,
@@ -11493,7 +11493,7 @@ a.skipnav:focus{
     padding-right:16px;
   }
   .table.table-sm-responsive-headers.structured-list tbody tr:first-child td{
-    border-top:none;
+    border-top:0;
   }
   .table.table-sm-responsive-headers.structured-list tbody tr th{
     padding-bottom:0;
@@ -11517,12 +11517,12 @@ a.skipnav:focus{
     border-bottom:1px solid #BFBFBF;
   }
   .table.table-md-responsive-headers tr:last-child{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-md-responsive-headers td,
   .table.table-md-responsive-headers th{
     display:block;
-    border:none;
+    border:0;
     padding:16px 15px;
   }
   .table.table-md-responsive-headers td:last-child,
@@ -11557,8 +11557,8 @@ a.skipnav:focus{
   .table.table-md-responsive-headers.table--borderless td,
   .table.table-md-responsive-headers.table--borderless th, .table.table-md-responsive-headers.structured-list td,
   .table.table-md-responsive-headers.structured-list th{
-    padding-left:0;
-    padding-right:0;
+    padding-left:16px;
+    padding-right:16px;
   }
   .table.table-md-responsive-headers.table--borderless tr:first-child td:first-child,
   .table.table-md-responsive-headers.table--borderless tr:first-child th:first-child, .table.table-md-responsive-headers.structured-list tr:first-child td:first-child,
@@ -11568,7 +11568,7 @@ a.skipnav:focus{
   .table.table-md-responsive-headers.table--borderless tr:last-child td,
   .table.table-md-responsive-headers.table--borderless tr:last-child th, .table.table-md-responsive-headers.structured-list tr:last-child td,
   .table.table-md-responsive-headers.structured-list tr:last-child th{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-md-responsive-headers.table--borderless tr:last-child td:last-child,
   .table.table-md-responsive-headers.table--borderless tr:last-child th:last-child, .table.table-md-responsive-headers.structured-list tr:last-child td:last-child,
@@ -11581,7 +11581,7 @@ a.skipnav:focus{
     padding-right:16px;
   }
   .table.table-md-responsive-headers.structured-list tbody tr:first-child td{
-    border-top:none;
+    border-top:0;
   }
   .table.table-md-responsive-headers.structured-list tbody tr th{
     padding-bottom:0;
@@ -11605,12 +11605,12 @@ a.skipnav:focus{
     border-bottom:1px solid #BFBFBF;
   }
   .table.table-lg-responsive-headers tr:last-child{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-lg-responsive-headers td,
   .table.table-lg-responsive-headers th{
     display:block;
-    border:none;
+    border:0;
     padding:16px 15px;
   }
   .table.table-lg-responsive-headers td:last-child,
@@ -11645,8 +11645,8 @@ a.skipnav:focus{
   .table.table-lg-responsive-headers.table--borderless td,
   .table.table-lg-responsive-headers.table--borderless th, .table.table-lg-responsive-headers.structured-list td,
   .table.table-lg-responsive-headers.structured-list th{
-    padding-left:0;
-    padding-right:0;
+    padding-left:16px;
+    padding-right:16px;
   }
   .table.table-lg-responsive-headers.table--borderless tr:first-child td:first-child,
   .table.table-lg-responsive-headers.table--borderless tr:first-child th:first-child, .table.table-lg-responsive-headers.structured-list tr:first-child td:first-child,
@@ -11656,7 +11656,7 @@ a.skipnav:focus{
   .table.table-lg-responsive-headers.table--borderless tr:last-child td,
   .table.table-lg-responsive-headers.table--borderless tr:last-child th, .table.table-lg-responsive-headers.structured-list tr:last-child td,
   .table.table-lg-responsive-headers.structured-list tr:last-child th{
-    border-bottom:none;
+    border-bottom:0;
   }
   .table.table-lg-responsive-headers.table--borderless tr:last-child td:last-child,
   .table.table-lg-responsive-headers.table--borderless tr:last-child th:last-child, .table.table-lg-responsive-headers.structured-list tr:last-child td:last-child,
@@ -11669,7 +11669,7 @@ a.skipnav:focus{
     padding-right:16px;
   }
   .table.table-lg-responsive-headers.structured-list tbody tr:first-child td{
-    border-top:none;
+    border-top:0;
   }
   .table.table-lg-responsive-headers.structured-list tbody tr th{
     padding-bottom:0;
@@ -11752,8 +11752,6 @@ a.skipnav:focus{
 .table--responsive-scroll{
   overflow-x:auto;
   min-height:0.01%;
-  padding:5px;
-  margin:-5px;
 }
 
 textarea.form-input{

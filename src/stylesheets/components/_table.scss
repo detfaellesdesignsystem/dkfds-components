@@ -3,6 +3,9 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
+$-padding-when-no-border: func.units(4);
+$-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
+
 @mixin -responsive-table() {
     display: block;
 
@@ -19,18 +22,18 @@
         border-bottom: func.border(vars.$table-row-border);
 
         &:last-child {
-            border-bottom: none;
+            border-bottom: 0;
         }
     }
 
     td,
     th {
         display: block;
-        border: none;
-        padding: func.units(4) calc(func.units(4) - 1px); // top and bottom | left and right, 1px for the border
+        border: 0;
+        padding: $-padding-when-no-border $-padding-when-border; // top and bottom | left and right
 
         &:last-child {
-            padding-bottom: calc(func.units(4) - 1px); // 1px for the border
+            padding-bottom: $-padding-when-border;
         }
 
         &[data-title]:not([data-title=""])::before {
@@ -70,8 +73,8 @@
 
         td,
         th {
-            padding-left: 0;
-            padding-right: 0;
+            padding-left: $-padding-when-no-border;
+            padding-right: $-padding-when-no-border;
         }
 
         tr {
@@ -89,7 +92,7 @@
 
                 td,
                 th {
-                    border-bottom: none;
+                    border-bottom: 0;
 
                     &:last-child {
                         border-bottom: func.border(vars.$table-row-border);
@@ -103,8 +106,8 @@
 
         td,
         th {
-            padding-left: func.units(4);
-            padding-right: func.units(4);
+            padding-left: $-padding-when-no-border;
+            padding-right: $-padding-when-no-border;
         }
     }
 
@@ -112,7 +115,7 @@
         
         tbody tr {
             &:first-child td {
-                border-top: none;
+                border-top: 0;
             }
 
             th {
@@ -138,7 +141,7 @@
 
     td,
     th {
-        padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px) func.units(4); // top | right | bottom | left
+        padding: $-padding-when-no-border $-padding-when-border $-padding-when-border $-padding-when-no-border; // top | right | bottom | left
         border-right: func.border(vars.$table-cell-border);
         border-bottom: func.border(vars.$table-row-border);
         background-color: inherit;
@@ -146,7 +149,7 @@
         text-align: left;
 
         &:last-child {
-            border-right: none;
+            border-right: 0;
         }
 
         &.break-word {
@@ -211,7 +214,7 @@
 
                 td,
                 th {
-                    border-bottom: none;
+                    border-bottom: 0;
                 }
             }
         }
@@ -245,12 +248,12 @@
 
     // No border
     &.table--borderless, &.structured-list {
-        border: none;
+        border: 0;
 
         td,
         th {
-            padding-right: func.units(4);
-            border-right: none;
+            padding-right: $-padding-when-no-border;
+            border-right: 0;
         }
 
         thead,
@@ -259,11 +262,11 @@
             tr td,
             tr th {
                 &:first-child {
-                    padding-left: 0;
+                    padding-left: func.units(4);
                 }
 
                 &:last-child {
-                    padding-right: 0;
+                    padding-right: func.units(4);
                 }
             }
         }
@@ -305,7 +308,7 @@
         td,
         th {
             border-right: 0;
-            padding-right: func.units(4);
+            padding-right: $-padding-when-no-border;
 
             &:last-child {
                 padding-right: calc(func.units(4) - 1px); // 1px for the border
@@ -355,7 +358,7 @@
 
             td,
             th {
-                border-bottom: none;
+                border-bottom: 0;
             }
         }
 
@@ -392,7 +395,7 @@
 
                 td,
                 th {
-                    border-top: none;
+                    border-top: 0;
                 }
             }
         }
@@ -505,6 +508,4 @@
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
-    padding: vars.$theme-focus-offset + vars.$theme-focus-width; // Ensure that any focus border in first or last column is fully visible - even when using the table--borderless class
-    margin: -(vars.$theme-focus-offset + vars.$theme-focus-width); // Ensure that the padding above doesn't affect alignment of the table with the remaining page
 }
