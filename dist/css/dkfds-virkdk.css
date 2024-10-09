@@ -11754,6 +11754,10 @@ a.skipnav:focus{
   overflow-x:auto;
   min-height:0.01%;
 }
+.table--responsive-scroll:focus{
+  outline:4px solid #747474;
+  outline-offset:1px;
+}
 
 textarea.form-input{
   height:auto;

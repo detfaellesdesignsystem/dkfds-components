@@ -508,4 +508,8 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
 .table--responsive-scroll {
     overflow-x: auto;
     min-height: .01%;
+
+    &:focus {
+        @include mixins.focus;
+    }
 }
