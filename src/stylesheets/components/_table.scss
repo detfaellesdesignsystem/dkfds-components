@@ -6,6 +6,12 @@
 $-padding-when-no-border: func.units(4);
 $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
 
+$-padding-when-no-border-compact: func.units(3);
+$-padding-when-border-compact: calc(func.units(3) - 1px); // 1px for the border
+
+$-padding-when-no-border-extracompact: 1px;
+$-padding-when-border-extracompact: 0;
+
 @mixin -responsive-table() {
     display: block;
 
@@ -47,11 +53,11 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
     &.table--compact {
         th,
         td {
-            padding-top: func.units(3);
-            padding-bottom: func.units(3);
+            padding-top: $-padding-when-no-border-compact;
+            padding-bottom: $-padding-when-no-border-compact;
 
             &:last-child {
-                padding-bottom: calc(func.units(3) - 1px); // 1px for the border
+                padding-bottom: $-padding-when-border-compact;
             }
         }
     }
@@ -60,11 +66,11 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
 
         th,
         td {
-            padding-top: 1px;
-            padding-bottom: 1px;
+            padding-top: $-padding-when-no-border-extracompact;
+            padding-bottom: $-padding-when-no-border-extracompact;
 
             &:last-child {
-                padding-bottom: 0;
+                padding-bottom: $-padding-when-border-extracompact;
             }
         }
     }
@@ -99,15 +105,6 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
                     }
                 }
             }
-        }
-    }
-
-    &.table--zebra.table--borderless {
-
-        td,
-        th {
-            padding-left: $-padding-when-no-border;
-            padding-right: $-padding-when-no-border;
         }
     }
 
@@ -224,12 +221,12 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
 
         th,
         td {
-            padding-top: func.units(3);
-            padding-bottom: calc(func.units(3) - 1px); // 1px for the border
+            padding-top: $-padding-when-no-border-compact;
+            padding-bottom: $-padding-when-border-compact;
         }
 
         thead th {
-            padding-top: calc(func.units(3) - 1px); // 1px for the border
+            padding-top: $-padding-when-border-compact;
         }
     }
 
@@ -237,12 +234,12 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
 
         th,
         td {
-            padding-top: 1px;
-            padding-bottom: 0;
+            padding-top: $-padding-when-no-border-extracompact;
+            padding-bottom: $-padding-when-border-extracompact;
         }
 
         thead th {
-            padding-top: 0;
+            padding-top: $-padding-when-border-extracompact;
         }
     }
 
@@ -290,14 +287,14 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
         &.table--compact {
 
             thead th {
-                padding-top: func.units(3);
+                padding-top: $-padding-when-no-border-compact;
             }
         }
 
         &.table--extracompact {
 
             thead th {
-                padding-top: 1px;
+                padding-top: $-padding-when-no-border-extracompact;
             }
         }
     }
@@ -329,55 +326,8 @@ $-padding-when-border: calc(func.units(4) - 1px); // 1px for the border
     // Zebra lines and no border
     &.table--zebra.table--borderless {
 
-        td,
-        th {
-            border: 0;
-            padding: func.units(4);
-        }
-
-        thead,
-        tbody {
-
-            tr td,
-            tr th {
-                &:first-child {
-                    padding-left: func.units(4);
-                }
-
-                &:last-child {
-                    padding-right: func.units(4);
-                }
-            }
-        }
-
         thead {
             background-color: func.color(vars.$table-row-even-background-color);
-        }
-
-        tbody tr:last-child {
-
-            td,
-            th {
-                border-bottom: 0;
-            }
-        }
-
-        &.table--compact {
-
-            td,
-            th {
-                padding-bottom: func.units(3);
-                padding-top: func.units(3);
-            }
-        }
-
-        &.table--extracompact {
-
-            td,
-            th {
-                padding-bottom: 1px;
-                padding-top: 1px;
-            }
         }
     }
 

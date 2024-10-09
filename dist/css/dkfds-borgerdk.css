@@ -11285,39 +11285,8 @@ a.skipnav:focus{
 .table.table--zebra tbody tr:nth-child(odd){
   background-color:white;
 }
-.table.table--zebra.table--borderless td,
-.table.table--zebra.table--borderless th{
-  border:0;
-  padding:16px;
-}
-.table.table--zebra.table--borderless thead tr td:first-child,
-.table.table--zebra.table--borderless thead tr th:first-child,
-.table.table--zebra.table--borderless tbody tr td:first-child,
-.table.table--zebra.table--borderless tbody tr th:first-child{
-  padding-left:16px;
-}
-.table.table--zebra.table--borderless thead tr td:last-child,
-.table.table--zebra.table--borderless thead tr th:last-child,
-.table.table--zebra.table--borderless tbody tr td:last-child,
-.table.table--zebra.table--borderless tbody tr th:last-child{
-  padding-right:16px;
-}
 .table.table--zebra.table--borderless thead{
   background-color:#F5F5F5;
-}
-.table.table--zebra.table--borderless tbody tr:last-child td,
-.table.table--zebra.table--borderless tbody tr:last-child th{
-  border-bottom:0;
-}
-.table.table--zebra.table--borderless.table--compact td,
-.table.table--zebra.table--borderless.table--compact th{
-  padding-bottom:8px;
-  padding-top:8px;
-}
-.table.table--zebra.table--borderless.table--extracompact td,
-.table.table--zebra.table--borderless.table--extracompact th{
-  padding-bottom:1px;
-  padding-top:1px;
 }
 .table.structured-list tbody tr:first-child td,
 .table.structured-list tbody tr:first-child th{
@@ -11399,11 +11368,6 @@ a.skipnav:focus{
   .table.table--responsive-headers.table--borderless tr:last-child th:last-child, .table.table--responsive-headers.structured-list tr:last-child td:last-child,
   .table.table--responsive-headers.structured-list tr:last-child th:last-child{
     border-bottom:1px solid #BFBFBF;
-  }
-  .table.table--responsive-headers.table--zebra.table--borderless td,
-  .table.table--responsive-headers.table--zebra.table--borderless th{
-    padding-left:16px;
-    padding-right:16px;
   }
   .table.table--responsive-headers.structured-list tbody tr:first-child td{
     border-top:0;
@@ -11488,11 +11452,6 @@ a.skipnav:focus{
   .table.table-sm-responsive-headers.structured-list tr:last-child th:last-child{
     border-bottom:1px solid #BFBFBF;
   }
-  .table.table-sm-responsive-headers.table--zebra.table--borderless td,
-  .table.table-sm-responsive-headers.table--zebra.table--borderless th{
-    padding-left:16px;
-    padding-right:16px;
-  }
   .table.table-sm-responsive-headers.structured-list tbody tr:first-child td{
     border-top:0;
   }
@@ -11576,11 +11535,6 @@ a.skipnav:focus{
   .table.table-md-responsive-headers.structured-list tr:last-child th:last-child{
     border-bottom:1px solid #BFBFBF;
   }
-  .table.table-md-responsive-headers.table--zebra.table--borderless td,
-  .table.table-md-responsive-headers.table--zebra.table--borderless th{
-    padding-left:16px;
-    padding-right:16px;
-  }
   .table.table-md-responsive-headers.structured-list tbody tr:first-child td{
     border-top:0;
   }
@@ -11663,11 +11617,6 @@ a.skipnav:focus{
   .table.table-lg-responsive-headers.table--borderless tr:last-child th:last-child, .table.table-lg-responsive-headers.structured-list tr:last-child td:last-child,
   .table.table-lg-responsive-headers.structured-list tr:last-child th:last-child{
     border-bottom:1px solid #BFBFBF;
-  }
-  .table.table-lg-responsive-headers.table--zebra.table--borderless td,
-  .table.table-lg-responsive-headers.table--zebra.table--borderless th{
-    padding-left:16px;
-    padding-right:16px;
   }
   .table.table-lg-responsive-headers.structured-list tbody tr:first-child td{
     border-top:0;
