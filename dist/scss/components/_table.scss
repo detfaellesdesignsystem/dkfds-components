@@ -401,6 +401,14 @@ $-padding-when-border-extracompact: 0;
     border: func.border(vars.$table-border);
     border-top: 0;
 
+    &.table--borderless {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: func.border(vars.$table-row-border);
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+
     @include mixins.media-breakpoint-down(sm) {
         flex-direction: column;
         justify-content: center;
@@ -439,11 +447,17 @@ $-padding-when-border-extracompact: 0;
 }
 
 .table-actions {
-    border-right: func.border(vars.$table-border);
-    border-bottom: func.border(vars.$table-border);
-    border-left: func.border(vars.$table-border);
+    border: func.border(vars.$table-border);
+    border-top: 0;
     overflow: hidden;
     padding: func.units(4) calc(func.units(4) - 1px) calc(func.units(4) - 1px); // top | left and right | bottom
+
+    &.table--borderless {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: func.border(vars.$table-row-border);
+        padding: func.units(4) func.units(4) calc(func.units(4) - 1px); // top | left and right | bottom
+    }
 
     .table-selected-number {
         margin-top: 0;

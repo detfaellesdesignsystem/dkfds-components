@@ -11649,6 +11649,13 @@ a.skipnav:focus{
   border:1px solid #747474;
   border-top:0;
 }
+.table-pagination-options.table--borderless{
+  border-left:0;
+  border-right:0;
+  border-bottom:1px solid #BFBFBF;
+  padding-left:1px;
+  padding-right:1px;
+}
 @media (max-width: 767px){
   .table-pagination-options{
     flex-direction:column;
@@ -11686,11 +11693,16 @@ a.skipnav:focus{
 }
 
 .table-actions{
-  border-right:1px solid #747474;
-  border-bottom:1px solid #747474;
-  border-left:1px solid #747474;
+  border:1px solid #747474;
+  border-top:0;
   overflow:hidden;
   padding:16px 15px 15px;
+}
+.table-actions.table--borderless{
+  border-left:0;
+  border-right:0;
+  border-bottom:1px solid #BFBFBF;
+  padding:16px 16px 15px;
 }
 .table-actions .table-selected-number{
   margin-top:0;
