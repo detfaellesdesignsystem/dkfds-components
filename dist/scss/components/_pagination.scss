@@ -37,6 +37,12 @@
                     display: none;
                 }
             }
+
+            @include mixins.media-breakpoint-down(sm) {
+                &:focus {
+                    outline-offset: -(func.units(1));
+                }
+            }
         }
 
         &.button-first, &.button-last {

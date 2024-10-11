@@ -9676,6 +9676,11 @@ body.mobile-nav-active{
     display:none;
   }
 }
+@media (max-width: 767px){
+  .table-pagination .button.button-arrow:focus, .pagination .button.button-arrow:focus{
+    outline-offset:-2px;
+  }
+}
 @media (min-width: 768px){
   .table-pagination .button.button-first, .pagination .button.button-first, .table-pagination .button.button-last, .pagination .button.button-last{
     display:none;
