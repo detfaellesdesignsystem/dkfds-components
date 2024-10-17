@@ -368,7 +368,7 @@ const createDEPRECATEDCSS = {
                             sassOptions: {
                                 style: "compressed",
                                 sourceMapIncludeSources: true,
-                                silenceDeprecations: ['mixed-decls'],
+                                silenceDeprecations: ['mixed-decls', 'global-builtin'],
                             },
                         },
                     },

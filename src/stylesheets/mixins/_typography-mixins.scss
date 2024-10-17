@@ -1,3 +1,4 @@
+@use "sass:meta" as meta;
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "breakpoints" as breakpoints;
@@ -8,7 +9,7 @@
 // Sets styles within breakpoints
 // ----------------------------------------
 @mixin responsive-style($map, $style) {
-    @if type-of($map) == 'map' {
+    @if meta.type-of($map) == 'map' {
         @each $breakpoint, $value in $map {
             @if $breakpoint == "default" {
                 @if $style == line-height {
