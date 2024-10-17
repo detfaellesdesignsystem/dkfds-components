@@ -115,6 +115,17 @@ table {
     border-top-left-radius: vars.$input-border-radius;
     border-bottom-left-radius: vars.$input-border-radius;
   }
+  &.disabled {
+    .form-input-suffix, .form-input-prefix {
+      border-color: func.color(vars.$input-disabled-border-color);
+      color: func.color(vars.$input-disabled-text-color);
+    }
+  }
+  &.readonly {
+    .form-input-suffix, .form-input-prefix {
+      border-color: func.color('gray-200');
+    }
+  }
 }
 
 table {

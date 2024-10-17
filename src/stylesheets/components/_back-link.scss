@@ -8,11 +8,11 @@
     display: inline-block;
     position: relative;
     margin-bottom: func.units(5);
+    line-height: 2.4rem;
+    padding-left: 14px;
     @include mixins.media-breakpoint-up(lg) {
       margin-bottom: func.units(6);
     }
-    line-height: 2.4rem;
-    padding-left: 14px;
     &::before{
       display: block;
       width: 0;

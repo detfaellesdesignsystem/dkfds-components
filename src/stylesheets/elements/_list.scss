@@ -48,8 +48,8 @@ ol {
 }
 
 .bordered-list{
-  @include mixins.unstyled-list;
   border-top: func.border(20);
+  @include mixins.unstyled-list;
   li{
     padding: func.units(3) 0;
     border-bottom: func.border(20);

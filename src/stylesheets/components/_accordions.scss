@@ -7,7 +7,9 @@
 // Accordion
 // ----------------------------------------
 .accordion-button {
-  @include mixins.button-unstyled;
+  font-weight: func.font-weight("normal");
+  text-align: left;
+  min-height: auto;
   background-color: func.color(vars.$accordion-button-background-color-default);
   @include mixins.add-background-svg('remove');
   background-position: left func.units(4, 'rem') center;
@@ -99,10 +101,10 @@ button.accordion-bulk-button{
 }
 
 .accordion {
-  @include mixins.unstyled-list;
   margin: 0;
   padding: 0;
   width: 100%;
+  @include mixins.unstyled-list;
   > ul li ul {
     list-style: disc;
     > li > ul {

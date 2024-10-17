@@ -87,8 +87,8 @@
     margin:func.units(0);
 
     &.large-text {
-      @include mixins.h2;
       color: func.color(vars.$cards-heading-large-color);
+      @include mixins.h2;
     }
   }
   .sub-header {
@@ -166,8 +166,8 @@
   .action-links {
     margin-top:func.units(4);
     ul {
-      @include mixins.unstyled-list;
       padding-left: func.units(0);
+      @include mixins.unstyled-list;
       li {
         margin-top:func.units(3) !important;
       }

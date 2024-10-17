@@ -2,31 +2,24 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
-.pagination {
+%pagination-default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: func.units(5);
-    margin-bottom: func.units(5);
-
-    .pagination__dropdown {
-        display: none;
-
-        @include mixins.media-breakpoint-down(sm) {
-            display: inline-flex;
-        }
-    }
-
+    
     .button {
         &.button-arrow {
+            appearance: none;
+            line-height: 1;
             font-size: func.font-size(vars.$pagination-button-arrow-font-size);
-            @include mixins.appearance-none;
+            font-weight: 400;
             background-color: func.color(vars.$pagination-button-arrow-background-color);
             border-style: none;
             color: func.color(vars.$pagination-button-arrow-color);
             text-decoration: underline;
             white-space: nowrap;
             width: auto;
+            margin: 0;
             padding: 0 func.units(3); // top and bottom | left and right
 
             &.hidden {
@@ -38,8 +31,16 @@
             }
 
             .pagination-nav-link {
+                padding: 0 func.units(2); // top and bottom | left and right
+
                 @include mixins.media-breakpoint-down(sm) {
                     display: none;
+                }
+            }
+
+            @include mixins.media-breakpoint-down(sm) {
+                &:focus {
+                    outline-offset: -(func.units(1));
                 }
             }
         }
@@ -49,30 +50,10 @@
                 display: none;
             }
         }
-
-        &.button-previous {
-            .icon-svg {
-                margin-right: func.units(2);
-
-                @include mixins.media-breakpoint-down(sm) {
-                    margin-right: func.units(0);
-                }
-            }
-        }
-
-        &.button-next {
-            .icon-svg {
-                margin-left: func.units(2);
-
-                @include mixins.media-breakpoint-down(sm) {
-                    margin-left: func.units(0);
-                }
-            }
-        }
     }
 
     .pagination-mobile {
-        white-space: nowrap;
+        text-align: center;
         display: inline-flex;
         align-items: center;
         margin-left: func.units(3);
@@ -84,51 +65,152 @@
     }
 
     .pagination__items {
-        @include mixins.unstyled-list;
         width: auto;
         align-items: center;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
+        @include mixins.unstyled-list;
 
         @include mixins.media-breakpoint-down(sm) {
             display: none;
         }
 
+        .pagination-item.pagination-number {
+            a, button {
+                appearance: none;
+                line-height: 1;
+                user-select: text;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                border: 0;
+                padding: 0 func.units(2); // top and bottom | left and right
+                font-size: func.font-size('sm');
+                color: func.color(vars.$pagination-page-color);
+                font-weight: func.font-weight("normal");
+                text-decoration: underline;
+
+                &.current-page {
+                    background-color: func.color(vars.$pagination-current-page-background-color);
+                    color: func.color(vars.$pagination-current-page-color);
+                    font-weight: func.font-weight("bold");
+                    text-decoration: none;
+
+                    &:hover, &:active {
+                        background-color: func.color(vars.$pagination-current-page-background-color-hover);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pagination {
+    @extend %pagination-default;
+    margin-top: func.units(5);
+    margin-bottom: func.units(5);
+
+    .button {
+        border-radius: func.units(5);
+    }
+
+    .pagination__items {
         .pagination-item {
             margin-left: func.units(3);
             margin-right: func.units(3);
 
-            .current-page {
-                @include mixins.appearance-none;
-                display: inline-block;
-                width: 100%;
-                padding: func.units(3) calc(#{func.units(4)} - #{vars.$button-border-width}) calc(#{func.units(3)} - #{vars.$button-border-width});
-                border-radius: vars.$button-border-radius;
-                border-width: vars.$button-border-width vars.$button-border-width vars.$button-border-bottom-width vars.$button-border-width;
-                border-style: solid;
-                font-weight: func.font-weight("medium");
-                line-height: 2rem;
-                text-align: center;
-                justify-content: center;
-                text-decoration: none;
-                user-select: text;
+            &.pagination-number {
+                &:first-child {
+                    margin-left: func.units(305);
+                }
+    
+                &:last-child {
+                    margin-right: func.units(305);
+                }
+    
+                a, button {
+                    background-color: func.color(vars.$pagination-page-background-color);
+                    min-width: func.units(8);
+                    min-height: func.units(8);
+                    border-radius: func.units(5);
 
-                font-size: func.font-size('md');
-                color: func.color(vars.$pagination-current-page-color);
-                background-color: func.color(vars.$pagination-current-page-background-color);
-                border-color: func.color(vars.$pagination-current-page-border-color);
+                    &:hover {
+                        background-color: func.color(vars.$pagination-page-background-color-hover);
+                    }
+
+                    &:active {
+                        background-color: func.color(vars.$pagination-page-background-color-active);
+                    }    
+                }
             }
         }
     }
-
 }
 
+.table-pagination {
+    @extend %pagination-default;
+    margin-top: func.units(3);
+    margin-bottom: func.units(3);
 
+    .button {
+        border-radius: func.units(405);
 
+        &.button-arrow {
+            user-select: auto;
 
+            .pagination-nav-link {
+                display: none;
+            }
+        }
 
+        &:focus {
+            position: relative;
+            z-index: vars.$zindex-nav-focus;
+        }
+    }
 
+    .pagination__items {
+        .pagination-item {
+            margin-left: func.units(1);
+            margin-right: func.units(1);
 
+            &.pagination-overflow span {
+                min-width: func.units(7);
+                display: inline-block;
+                text-align: center;
+            }
 
+            &.pagination-number {
+                &:first-child {
+                    margin-left: func.units(2);
+                }
+    
+                &:last-child {
+                    margin-right: func.units(2);
+                }
+    
+                a, button {
+                    background-color: transparent;
+                    min-width: func.units(7);
+                    min-height: func.units(7);
+                    border-radius: func.units(405);
 
+                    &:hover {
+                        background-color: func.color(vars.$table-pagination-page-background-color-hover);
+                    }
+
+                    &:focus {
+                        position: relative;
+                        z-index: vars.$zindex-nav-focus;
+                    }
+
+                    &:active {
+                        background-color: func.color(vars.$table-pagination-page-background-color-active);
+                    }    
+                }
+            }
+        }
+    }
+}

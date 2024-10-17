@@ -240,8 +240,8 @@ a.button {
 }
 
 .button-unstyled {
-    @include mixins.button-unstyled;
     width: auto;
+    @include mixins.button-unstyled;
 
     .icon-svg {
         margin-bottom: 0 !important;

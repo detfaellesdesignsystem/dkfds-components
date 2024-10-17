@@ -56,7 +56,7 @@ var lib = __webpack_require__(525);
 // EXTERNAL MODULE: ./node_modules/object-assign/index.js
 var object_assign = __webpack_require__(228);
 var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
-;// CONCATENATED MODULE: ./src/js/utils/behavior.js
+;// ./src/js/utils/behavior.js
 
 const receptor = __webpack_require__(525);
 
@@ -93,18 +93,18 @@ const sequence = function () {
 }, props)));
 // EXTERNAL MODULE: ./src/js/utils/select.js
 var utils_select = __webpack_require__(464);
-;// CONCATENATED MODULE: ./src/js/utils/active-element.js
+;// ./src/js/utils/active-element.js
 /* harmony default export */ const active_element = (function () {
   let htmlDocument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
   return htmlDocument.activeElement;
 });
-;// CONCATENATED MODULE: ./src/js/utils/is-ios-device.js
+;// ./src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 function isIosDevice() {
   return typeof navigator !== "undefined" && (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) && !window.MSStream;
 }
 /* harmony default export */ const is_ios_device = (isIosDevice);
-;// CONCATENATED MODULE: ./src/js/components/date-picker.js
+;// ./src/js/components/date-picker.js
 
 
 
@@ -3206,7 +3206,7 @@ __webpack_require__.d(__webpack_exports__, {
   init: () => (/* binding */ init)
 });
 
-;// CONCATENATED MODULE: ./src/js/components/accordion.js
+;// ./src/js/components/accordion.js
 
 
 const toggle = (__webpack_require__(188)/* ["default"] */ .A);
@@ -3346,7 +3346,7 @@ Accordion.prototype.toggleButton = function (button, expanded) {
   }
 };
 /* harmony default export */ const accordion = (Accordion);
-;// CONCATENATED MODULE: ./src/js/components/alert.js
+;// ./src/js/components/alert.js
 
 
 function Alert(alert) {
@@ -3369,7 +3369,7 @@ Alert.prototype.show = function () {
   this.alert.dispatchEvent(eventShow);
 };
 /* harmony default export */ const components_alert = (Alert);
-;// CONCATENATED MODULE: ./src/js/components/back-to-top.js
+;// ./src/js/components/back-to-top.js
 
 
 function BackToTop(backtotop) {
@@ -3522,7 +3522,7 @@ function isFooterVisible(footerElement) {
   }
 }
 /* harmony default export */ const back_to_top = (BackToTop);
-;// CONCATENATED MODULE: ./src/js/components/character-limit.js
+;// ./src/js/components/character-limit.js
 
 
 const MAX_LENGTH = 'data-maxlength';
@@ -3667,7 +3667,7 @@ CharacterLimit.prototype.updateMessages = function () {
   updateScreenReaderMessage(this);
 };
 /* harmony default export */ const character_limit = (CharacterLimit);
-;// CONCATENATED MODULE: ./src/js/components/checkbox-toggle-content.js
+;// ./src/js/components/checkbox-toggle-content.js
 
 
 const TOGGLE_TARGET_ATTRIBUTE = 'data-aria-controls';
@@ -3736,7 +3736,7 @@ CheckboxToggleContent.prototype.collapse = function (triggerEl, targetEl) {
   }
 };
 /* harmony default export */ const checkbox_toggle_content = (CheckboxToggleContent);
-;// CONCATENATED MODULE: ./src/js/components/dropdown.js
+;// ./src/js/components/dropdown.js
 
 
 const breakpoints = (__webpack_require__(130)/* ["default"] */ .A);
@@ -3764,6 +3764,7 @@ function Dropdown(buttonElement) {
     throw new Error('Panel for overflow menu component could not be found.');
   }
   this.targetEl = targetEl;
+  document.addEventListener('focusin', closeOnFocusLost);
 }
 
 /**
@@ -3778,6 +3779,7 @@ Dropdown.prototype.init = function () {
     //Clicked outside dropdown -> close it
     document.getElementsByTagName('body')[0].removeEventListener('click', outsideClose);
     document.getElementsByTagName('body')[0].addEventListener('click', outsideClose);
+
     //Clicked on dropdown open button --> toggle it
     this.buttonElement.removeEventListener('click', toggleDropdown);
     this.buttonElement.addEventListener('click', toggleDropdown);
@@ -3855,16 +3857,6 @@ let closeOnEscape = function (event) {
 };
 
 /**
- * Get an Array of button elements belonging directly to the given
- * accordion element.
- * @param parent accordion element
- * @returns {NodeListOf<SVGElementTagNameMap[[string]]> | NodeListOf<HTMLElementTagNameMap[[string]]> | NodeListOf<Element>}
- */
-let getButtons = function (parent) {
-  return parent.querySelectorAll(dropdown_BUTTON);
-};
-
-/**
  * Close all overflow menus
  * @param {event} event default is null
  */
@@ -3923,7 +3915,6 @@ let dropdown_toggle = function (button) {
   }
   if (triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined) {
     //change state
-
     targetEl.style.left = null;
     targetEl.style.right = null;
     if (triggerEl.getAttribute('aria-expanded') === 'true' || forceClose) {
@@ -3934,9 +3925,6 @@ let dropdown_toggle = function (button) {
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
-      if (!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')) {
-        closeAll();
-      }
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
@@ -3974,6 +3962,20 @@ let hasParent = function (child, parentTagName) {
     return false;
   }
 };
+function closeOnFocusLost(event) {
+  let overflowmenus = document.querySelectorAll('.overflow-menu, .submenu');
+  for (let i = 0; i < overflowmenus.length; i++) {
+    let listElements = overflowmenus[i].querySelectorAll('li');
+    let toggleButton = overflowmenus[i].querySelector('.button-overflow-menu');
+    if (toggleButton) {
+      let isListElementFocused = [...listElements].includes(event.target.parentElement);
+      let isToggleButtonFocused = toggleButton === event.target;
+      if (!isListElementFocused && !isToggleButtonFocused) {
+        dropdown_toggle(toggleButton, true);
+      }
+    }
+  }
+}
 let outsideClose = function (evt) {
   if (!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')) {
     if (document.querySelector('body.mobile-nav-active') === null && !evt.target.classList.contains('button-menu-close')) {
@@ -4028,7 +4030,7 @@ let getTringuideBreakpoint = function (button) {
   }
 };
 /* harmony default export */ const dropdown = (Dropdown);
-;// CONCATENATED MODULE: ./src/js/components/dropdown-sort.js
+;// ./src/js/components/dropdown-sort.js
 
 
 
@@ -4085,7 +4087,7 @@ DropdownSort.prototype.onOptionClick = function (e) {
   this.overflowMenu.hide();
 };
 /* harmony default export */ const dropdown_sort = (DropdownSort);
-;// CONCATENATED MODULE: ./src/js/components/error-summary.js
+;// ./src/js/components/error-summary.js
 
 
 /**
@@ -4228,7 +4230,7 @@ ErrorSummary.prototype.getAssociatedLegendOrLabel = function ($input) {
   return document.querySelector("label[for='" + $input.getAttribute('id') + "']") || $input.closest('label');
 };
 /* harmony default export */ const error_summary = (ErrorSummary);
-;// CONCATENATED MODULE: ./src/js/components/modal.js
+;// ./src/js/components/modal.js
 
 
 /**
@@ -4365,7 +4367,7 @@ function hasForcedAction(modal) {
   return true;
 }
 /* harmony default export */ const modal = (Modal);
-;// CONCATENATED MODULE: ./src/js/components/navigation.js
+;// ./src/js/components/navigation.js
 
 
 
@@ -4683,7 +4685,7 @@ const toggleNav = function (active) {
   return active;
 };
 /* harmony default export */ const navigation = (Navigation);
-;// CONCATENATED MODULE: ./src/js/components/navigation-drawer-overflow.js
+;// ./src/js/components/navigation-drawer-overflow.js
 
 
 const navigation_drawer_overflow_TARGET = 'data-js-target';
@@ -4766,7 +4768,7 @@ let navigation_drawer_overflow_toggle = function (button) {
   }
 };
 /* harmony default export */ const navigation_drawer_overflow = (MenuDropdown);
-;// CONCATENATED MODULE: ./src/js/components/radio-toggle-content.js
+;// ./src/js/components/radio-toggle-content.js
 
 
 const TOGGLE_ATTRIBUTE = 'data-controls';
@@ -4847,7 +4849,7 @@ RadioToggleGroup.prototype.collapse = function (radioInputElement, contentElemen
   }
 };
 /* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
-;// CONCATENATED MODULE: ./src/js/components/table.js
+;// ./src/js/components/table.js
 const table_select = (__webpack_require__(464)/* ["default"] */ .A);
 
 /**
@@ -4893,7 +4895,7 @@ function insertHeaderAsAttributes(tableEl) {
   }
 }
 /* harmony default export */ const table = (ResponsiveTable);
-;// CONCATENATED MODULE: ./src/js/components/tabs.js
+;// ./src/js/components/tabs.js
 
 
 // Add or substract depending on key pressed
@@ -5064,7 +5066,7 @@ function getIndexOfElementInList(element, list) {
   return index;
 }
 /* harmony default export */ const tabs = (Tabs);
-;// CONCATENATED MODULE: ./src/js/components/selectable-table.js
+;// ./src/js/components/selectable-table.js
 
 
 /**
@@ -5174,15 +5176,17 @@ function updateGroupCheck(e) {
     if (checkedNumber === checkboxList.length) {
       // if all rows has been selected
       groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.indeterminate = false;
       groupCheckbox.checked = true;
     } else if (checkedNumber == 0) {
       // if no rows has been selected
       groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.indeterminate = false;
       groupCheckbox.checked = false;
     } else {
       // if some but not all rows has been selected
       groupCheckbox.setAttribute('aria-checked', 'mixed');
-      groupCheckbox.checked = false;
+      groupCheckbox.indeterminate = true;
     }
     const event = new CustomEvent("fds.table.selectable.updated", {
       bubbles: true,
@@ -5195,7 +5199,7 @@ function updateGroupCheck(e) {
   }
 }
 /* harmony default export */ const selectable_table = (TableSelectableRows);
-;// CONCATENATED MODULE: ./src/js/components/toast.js
+;// ./src/js/components/toast.js
 
 
 /**
@@ -5239,7 +5243,7 @@ function showToast() {
   }
 }
 /* harmony default export */ const toast = (Toast);
-;// CONCATENATED MODULE: ./src/js/components/tooltip.js
+;// ./src/js/components/tooltip.js
 
 
 const ARROW_DISTANCE_TO_TARGET = 4; // Must match '$-arrow-dist-to-target' in 'src\stylesheets\components\_tooltip.scss'
@@ -5503,7 +5507,7 @@ function closeOnTab(e) {
   }
 }
 /* harmony default export */ const tooltip = (Tooltip);
-;// CONCATENATED MODULE: ./src/js/dkfds.js
+;// ./src/js/dkfds.js
 
 
 

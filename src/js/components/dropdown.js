@@ -25,6 +25,8 @@ function Dropdown (buttonElement) {
     throw new Error('Panel for overflow menu component could not be found.');
   }
   this.targetEl = targetEl;
+
+  document.addEventListener('focusin', closeOnFocusLost);
 }
 
 /**
@@ -40,6 +42,7 @@ Dropdown.prototype.init = function (){
     //Clicked outside dropdown -> close it
     document.getElementsByTagName('body')[ 0 ].removeEventListener('click', outsideClose);
     document.getElementsByTagName('body')[ 0 ].addEventListener('click', outsideClose);
+
     //Clicked on dropdown open button --> toggle it
     this.buttonElement.removeEventListener('click', toggleDropdown);
     this.buttonElement.addEventListener('click', toggleDropdown);
@@ -120,16 +123,6 @@ let closeOnEscape = function(event){
 };
 
 /**
- * Get an Array of button elements belonging directly to the given
- * accordion element.
- * @param parent accordion element
- * @returns {NodeListOf<SVGElementTagNameMap[[string]]> | NodeListOf<HTMLElementTagNameMap[[string]]> | NodeListOf<Element>}
- */
-let getButtons = function (parent) {
-  return parent.querySelectorAll(BUTTON);
-};
-
-/**
  * Close all overflow menus
  * @param {event} event default is null
  */
@@ -163,6 +156,7 @@ let closeAll = function (event = null){
     event.stopImmediatePropagation();
   }
 };
+
 let offset = function (el) {
   let rect = el.getBoundingClientRect(),
     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
@@ -189,7 +183,6 @@ let toggle = function(button, forceClose = false){
   }
   if(triggerEl !== null && triggerEl !== undefined && targetEl !== null && targetEl !== undefined){
     //change state
-
     targetEl.style.left = null;
     targetEl.style.right = null;
 
@@ -200,11 +193,8 @@ let toggle = function(button, forceClose = false){
       targetEl.setAttribute('aria-hidden', 'true');      
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
-    }else{
-      
-      if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){
-        closeAll();
-      }
+    }
+    else{
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
@@ -248,6 +238,21 @@ let hasParent = function (child, parentTagName){
     return false;
   }
 };
+
+function closeOnFocusLost(event) {
+  let overflowmenus = document.querySelectorAll('.overflow-menu, .submenu');
+  for (let i = 0; i < overflowmenus.length; i++) {
+    let listElements = overflowmenus[i].querySelectorAll('li');
+    let toggleButton = overflowmenus[i].querySelector('.button-overflow-menu');
+    if (toggleButton) {
+      let isListElementFocused = [...listElements].includes(event.target.parentElement);
+      let isToggleButtonFocused = toggleButton === event.target;
+      if (!isListElementFocused && !isToggleButtonFocused) {
+        toggle(toggleButton, true);
+      }
+    }
+  }
+}
 
 let outsideClose = function (evt){
   if(!document.getElementsByTagName('body')[0].classList.contains('mobile-nav-active')){

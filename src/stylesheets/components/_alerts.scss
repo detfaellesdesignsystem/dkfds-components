@@ -45,14 +45,26 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
     max-width: vars.$typography-text-max-width;
   }
   .alert-close{
-    @include mixins.button-unstyled;
+    background-color: func.color('transparent');
+    border: 0;
+    border-radius: 0;
+    font-weight: func.font-weight("normal");
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    min-height: auto;
     cursor:pointer;
     position: absolute;
     top: func.units(4);
     right: func.units(4);
-    @include mixins.small-text;
     color: func.color(vars.$alert-close-text-color);
     text-decoration: underline;
+    @include mixins.small-text;
+    &:hover,
+    &:focus {
+        background-color: func.color('transparent');
+        color: inherit;
+    }
     .icon-svg{
       margin-right: func.units(2);
       width: 1.6rem;

@@ -37,11 +37,11 @@ button.function-link {
 }
 
 .function-link-wrapper {
-    @include mixins.nobullet-list;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
     align-items: center;
+    @include mixins.nobullet-list;
 
     li {
         margin-left: func.units(4);

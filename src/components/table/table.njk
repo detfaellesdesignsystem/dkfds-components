@@ -1,8 +1,13 @@
 {% from "components/buttons/buttons.njk" import button as button %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/pagination/pagination.njk" import pagination as pagination %}
+{% from "components/form/controls/select.njk" import select as select %}
 
 {% macro table(params) %}
-<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}"{% if params.attributes.outer %} {{ params.attributes.outer | safe }}{% endif %}>
+{% if params.pagination %}
+<p aria-live="polite" aria-atomic="true" class="rows-message"{% if params.id %} id="{{ params.id }}-message"{% endif %}>Viser <strong class="displayed-rows">{{ params.pagination.displayedRows }}</strong> af <strong class="total-rows">{{ params.pagination.totalRows }}</strong> rækker</p>
+{%- endif -%}
+<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}" tabindex="0"{% if params.attributes.outer %} {{ params.attributes.outer | safe }}{% endif %}>
     <table class="table{% if params.zebra %} table--zebra{% endif %}{% if params.selectable %} table--selectable{% endif %}{% if params.borderless %} table--borderless{% endif %}{% if params.variant.cellPadding %}{% if params.variant.cellPadding === 'compact' %} table--compact{% elif params.variant.cellPadding === 'extracompact' %} table--extracompact{% endif %}{% endif %}{% if params.classes.inner %} {{ params.classes.inner }}{% endif %}{% if params.responsive or params.variant.breakpoint %} table-{% if params.variant.breakpoint %}{{params.variant.breakpoint}}{% endif %}-responsive-headers{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes.inner %} {{ params.attributes.inner | safe }}{% endif %}>
         <thead>
             <tr>{%- if params.selectable -%}
@@ -48,11 +53,37 @@
             </tr>
             {% endfor %}</tbody>
     </table>
-    {% if params.actions and params.selectable %}
-    <div class="table-actions">
-        <p class="table-selected-number no-selected">Vælg en eller flere rækker for at udføre funktioner</p>
-        {% for action in params.actions %}{{ button(action) }}{% endfor %}
-    </div>
-    {%- endif -%}
 </div>
+{% if params.pagination %}
+<div class="table-pagination-options">
+    {{ 
+        select({
+            "name": "pagination-pages",
+            "id": "pagination-pages",
+            "label": "Vis rækker per side:",
+            "options": params.pagination.options,
+            "required": false
+        }) 
+    }}
+    {{ 
+        pagination({
+            "totalPages": params.pagination.totalPages,
+            "currentPage": 1,
+            "pageElement": "button",
+            "paginationType": "table-pagination",
+            "ariaLabel": "Skift side i tabellen"
+        }) 
+    }}
+</div>
+{%- endif -%}
+{% if params.selectable %}
+<div class="table-actions">
+    {% if params.actions -%}
+    <p class="table-selected-number no-selected">Ingen rækker valgt</p>
+    {% for action in params.actions %}{{ button(action) }}{% endfor %}
+    {%- else -%}
+    <p class="table-selected-number no-selected mb-0">Ingen rækker valgt</p>
+    {%- endif %}
+</div>
+{%- endif -%}
 {% endmacro %}

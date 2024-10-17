@@ -70,7 +70,6 @@ $toast-icon-backgrounds: (
         width: 100%;
 
         .toast-close {
-            @include mixins.button-unstyled;
             position: absolute;
             top: func.units(4);
             right: func.units(4);
@@ -79,6 +78,7 @@ $toast-icon-backgrounds: (
             height: 24px;
             cursor: pointer;
             @include mixins.add-background-svg('close');
+            @include mixins.button-unstyled;
         }
 
         p {

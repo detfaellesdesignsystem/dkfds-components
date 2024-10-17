@@ -107,13 +107,15 @@ function updateGroupCheck(e){
     
     if(checkedNumber === checkboxList.length){ // if all rows has been selected
       groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.indeterminate = false;
       groupCheckbox.checked = true;
     } else if(checkedNumber == 0){ // if no rows has been selected
       groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.indeterminate = false;
       groupCheckbox.checked = false;
     } else{ // if some but not all rows has been selected
       groupCheckbox.setAttribute('aria-checked', 'mixed');
-      groupCheckbox.checked = false;
+      groupCheckbox.indeterminate = true;
     }
     const event = new CustomEvent("fds.table.selectable.updated", {
       bubbles: true,
