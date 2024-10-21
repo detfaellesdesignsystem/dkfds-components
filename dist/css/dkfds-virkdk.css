@@ -7578,7 +7578,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   position:relative;
   margin-top:16px;
   margin-bottom:16px;
-  border-left:8px solid #999999;
+  border-left:8px solid #8E8E8E;
 }
 .alert:first-child{
   margin-top:0;
@@ -9053,13 +9053,13 @@ footer .footer-theme{
   border-top:1px solid #BFBFBF;
 }
 .header .portal-info-mobile{
-  border-top:1px solid #999999;
+  border-top:1px solid #8E8E8E;
 }
 .header .menu-top + .solution-info-mobile{
   border-top:1px solid #BFBFBF;
 }
 .header .solution-info-mobile:last-child{
-  border-bottom:1px solid #999999;
+  border-bottom:1px solid #8E8E8E;
 }
 @media (min-width: 992px){
   .header .solution-info ~ .navigation-menu{
@@ -10464,7 +10464,7 @@ ol.sidemenu li.disabled.sidenav-error{
 }
 
 .language-switcher-mobile{
-  border-top:1px solid #999999;
+  border-top:1px solid #8E8E8E;
   background-color:white;
   padding:24px;
 }
