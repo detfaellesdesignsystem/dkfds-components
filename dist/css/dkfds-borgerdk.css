@@ -5974,8 +5974,6 @@ figure{
   height:2.4rem;
   width:2.4rem;
   vertical-align:middle;
-}
-.icon-svg--inherit-color{
   fill:currentColor;
 }
 .icon-svg:focus{

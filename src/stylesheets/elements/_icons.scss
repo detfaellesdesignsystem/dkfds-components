@@ -175,9 +175,7 @@ $icons: (
     height: func.units(vars.$typography-body-text-line-height, 'rem');
     width: func.units(vars.$typography-body-text-line-height, 'rem');
     vertical-align: middle;
-    &--inherit-color{
-        fill: currentColor; // svg inherit color
-    }
+    fill: currentColor;
     &:focus{
       outline: none;
     }
