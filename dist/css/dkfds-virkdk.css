@@ -7640,7 +7640,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .alert-success{
-  background-color:#eeffe2;
+  background-color:#ddf7ce;
   border-color:#358000;
   padding-left:calc(16px + 24px + 8px);
 }
@@ -7783,7 +7783,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 .badge.badge-success{
   color:#1a1a1a;
-  background-color:#eeffe2;
+  background-color:#ddf7ce;
 }
 .badge.badge-warning{
   color:#1a1a1a;
@@ -9906,7 +9906,7 @@ body.mobile-nav-active{
 }
 
 .toast-success{
-  background-color:#eeffe2;
+  background-color:#ddf7ce;
 }
 
 .toast-warning{
