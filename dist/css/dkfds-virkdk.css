@@ -9403,9 +9403,6 @@ body.mobile-nav-active{
   border:0;
   width:100%;
 }
-.navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner[aria-hidden=true]{
-  display:none;
-}
 .navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner ul{
   width:100%;
   max-width:none !important;
@@ -9421,6 +9418,9 @@ body.mobile-nav-active{
 .navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner ul > li::before{
   content:"" !important;
   padding-right:0 !important;
+}
+.navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner.collapsed{
+  display:none;
 }
 
 .navigation-menu ul.mainmenu .button-overflow-menu, .navigation-menu ul.mainmenu .button-overflow-menu.more-button, .navigation-menu ul.mainmenu .nav-link{
@@ -10961,7 +10961,7 @@ a.skipnav:focus{
     min-width:28rem;
   }
 }
-.overflow-menu .overflow-menu-inner[aria-hidden=true]{
+.overflow-menu .overflow-menu-inner.collapsed{
   display:none;
 }
 .overflow-menu .overflow-list{

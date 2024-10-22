@@ -116,14 +116,14 @@ body.mobile-nav-active {
                 border: 0;
                 width: 100%;
 
-                &[aria-hidden="true"] {
-                    display: none;
-                }
-
                 ul {
                     width: 100%;
                     max-width: none !important; // Override ul styling in typography.scss
                     @include mixins.unstyled-list;
+                }
+
+                &.collapsed {
+                    display: none;
                 }
             }
         }

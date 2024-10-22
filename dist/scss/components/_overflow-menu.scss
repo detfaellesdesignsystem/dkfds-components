@@ -112,7 +112,7 @@
             min-width: 28rem;
         }
 
-        &[aria-hidden="true"] {
+        &.collapsed {
             display: none;
         }
     }

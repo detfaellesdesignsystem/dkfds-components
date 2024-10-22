@@ -34,7 +34,7 @@
             <button class="button-overflow-menu js-dropdown select-language-button" data-js-target="{{ params.overflowID | default('header-language')}}" aria-expanded="false" aria-controls="{{ params.overflowID | default('header-language')}}">
                 {{icon_svg({"name":"language"})}}Dansk
             </button>
-            <div class="overflow-menu-inner select-language-list" id="{{ params.overflowID | default('header-language')}}" aria-hidden="true">
+            <div class="overflow-menu-inner select-language-list collapsed" id="{{ params.overflowID | default('header-language')}}">
                 <ul class='overflow-list'>
                     {%- for language in params.languages -%}
                     <li><a href="{{ language.href }}" lang="{{language.code}}"{%- if loop.first -%} aria-label="{{ params.firstAriaLabel | default('Valgt sprog: Dansk')}}"{%- endif -%}>{{language.name}}</a></li>
