@@ -35,7 +35,7 @@ $alert-heading-color:               $alert-text-color !default;
 $alert-close-text-color:            $alert-text-color !default;
 
 // Back-to-top
-$back-to-top-button-shadow:     'medium' !default;
+$back-to-top-button-shadow:     'light' !default;
 $back-to-top-button-background: 'white' !default;
 
 // Badge
@@ -132,7 +132,6 @@ $breadcrumbs-chevron-border-colour:         'ink-light' !default;
 $breadcrumbs-chevron-altitude-calculated:   5.655px !default;
 
 // Cards
-$cards-shadow:                      'light' !default;
 $cards-border:                      10 !default;
 $cards-background-color:            'white' !default;
 $cards-header-background-color:     $cards-background-color !default;
@@ -158,6 +157,7 @@ $datepicker-button-icon:                                "insert-invitation" !def
 $datepicker-previous-next-month-background-color:       'gray-100' !default;
 $datepicker-previous-next-month-background-color-hover: 'gray-200' !default;
 $datepicker-previous-next-month-text-color:             'black' !default;
+$datepicker-shadow:                                     'light' !default;
 $datepicker-border:                                     10 !default;
 $datepicker-table-border:                               20 !default;
 $datepicker-date-selected-background-color:             'gray-600' !default;
@@ -314,7 +314,7 @@ $overflow-menu-arrow-size:                              8px;
 $overflow-menu-dropdown-distance:                       8px;
 $overflow-menu-button-text-color:                       'ink' !default;
 $overflow-menu-button-icon-only-hover-background-color: 'gray-100' !default;
-$overflow-menu-content-shadow:                          'medium' !default;
+$overflow-menu-content-shadow:                          'light' !default;
 $overflow-menu-content-background-color:                'white' !default;
 $overflow-menu-content-border:                          10 !default;
 $overflow-menu-content-font-size:                       typo-vars.$typography-body-text-font-size !default;
@@ -402,7 +402,7 @@ $toast-info-color:                  'info' !default;
 $toast-success-color:               'success' !default;
 $toast-warning-color:               'warning' !default;
 $toast-error-color:                 'error' !default;
-$toast-shadow:                      'medium' !default;
+$toast-shadow:                      'heavy' !default;
 
 // Toggle switch
 $toggle-dot-background-color:       'white' !default;
@@ -420,7 +420,7 @@ $toggle-label-color:                'ink' !default;
 
 // Tooltip
 $tooltip-background-color:  'gray-600' !default;
-$tooltip-shadow:            'medium' !default;
+$tooltip-shadow:            'light' !default;
 $tooltip-arrow-color:       'gray-600' !default;
 $tooltip-color:             'white' !default;
 $tooltip-link-color:        typo-vars.$typography-body-text-color !default;

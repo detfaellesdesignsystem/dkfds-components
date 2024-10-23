@@ -3,22 +3,15 @@
 $fds-shadows: (
     "light": (
         'offset-x': 0,
-        'offset-y': 2px,
-        'blur':     4px,
-        'spread':   0,
-        'color':    vars.$theme-color-shadow
-    ),
-    "medium": (
-        'offset-x': 0,
         'offset-y': 4px,
-        'blur':     8px,
+        'blur':     12px,
         'spread':   0,
         'color':    vars.$theme-color-shadow
     ),
     "heavy": (
         'offset-x': 0,
         'offset-y': 8px,
-        'blur':     16px,
+        'blur':     24px,
         'spread':   0,
         'color':    vars.$theme-color-shadow
     )

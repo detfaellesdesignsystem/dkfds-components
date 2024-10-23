@@ -7730,7 +7730,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .button.back-to-top-button{
-  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.2);
   width:auto;
   background-color:white;
   position:fixed;
@@ -8098,7 +8098,7 @@ a.button{
   margin-left:auto;
   background-color:white;
   border:1px solid #707070;
-  box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.2);
   padding-top:calc(32px - 1px);
   padding-bottom:calc(40px - 1px);
   position:relative;
@@ -8267,7 +8267,7 @@ a.button{
 .date-picker__calendar{
   border:1px solid #707070;
   background-color:white;
-  box-shadow:0 5px 15px -5px rgba(0, 0, 0, 0.5);
+  box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.2);
   left:0;
   position:absolute;
   width:100%;
@@ -9112,7 +9112,7 @@ body.modal-open{
   max-height:100%;
   overflow:hidden auto;
   background-color:white;
-  box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.2);
   max-width:800px;
   width:100%;
   position:relative;
@@ -9844,7 +9844,7 @@ body.mobile-nav-active{
   display:flex;
   transition:opacity 0.15s linear;
   margin-bottom:16px;
-  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.2);
 }
 .toast:not(.show){
   opacity:0;
@@ -10604,7 +10604,6 @@ a.skipnav:focus{
 .card{
   position:relative;
   border-radius:0;
-  box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.3);
   border:1px solid #707070;
   overflow:hidden;
   background:white;
@@ -10944,7 +10943,7 @@ a.skipnav:focus{
   width:calc(100% - 8px);
   z-index:2;
   border:1px solid #707070;
-  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.2);
   background:white;
   top:calc(100% + 8px);
   left:4px;
@@ -11857,7 +11856,7 @@ textarea.no-resize{
   font-size:1.4rem;
   font-weight:400;
   color:white;
-  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow:0 4px 12px 0 rgba(0, 0, 0, 0.2);
   background-color:#454545;
   border-radius:4px;
   padding:4px 12px;
@@ -12139,9 +12138,6 @@ textarea.no-resize{
   }
   footer .footer .inline-list > li + li{
     margin-left:16px;
-  }
-  .card{
-    box-shadow:none;
   }
 }
 @media print{

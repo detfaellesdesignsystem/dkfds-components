@@ -55,7 +55,7 @@
 .date-picker__calendar {
   border: func.border(vars.$datepicker-border);
   background-color: func.color(vars.$datepicker-background-color);
-  box-shadow: 0 5px 15px -5px rgb(0 0 0 / 0.5);
+  box-shadow: func.shadow(vars.$datepicker-shadow);
   left: 0;
   position: absolute;
   width: 100%;
