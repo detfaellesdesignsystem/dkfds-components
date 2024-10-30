@@ -1,8 +1,8 @@
 params:
 - name: variant
   type: string
-  required: true
-  description: The button variant. Valid entries are "primary", "secondary", "tertiary", "quaternary", and "unstyled".
+  required: false
+  description: The button variant. Valid entries are "primary", "secondary", "tertiary", "warning", and "icon-only".
 - name: text
   type: string
   required: false
@@ -34,4 +34,8 @@ params:
 - name: srOnly
   type: string
   required: false
-  description: Any text meant for screen readers only. 
+  description: Any text meant for screen readers only.
+- name: span
+  type: boolean
+  required: false
+  description: Set to true to place the text in a span element. May be necessary for buttons with long words to ensure wordwrap on small screens. 

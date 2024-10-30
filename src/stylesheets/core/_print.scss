@@ -99,6 +99,39 @@
         }
     }
 
+    // Buttons
+    .button {
+        &.button-primary, &.button-secondary, &.button-tertiary, &.button-warning, &.button-icon-only {
+            border-color: func.color(vars.$button-print-border-color);
+            color: func.color(vars.$button-print-color);
+            background-color: func.color(vars.$button-print-background-color);
+        
+            &:hover,
+            &.button-hover,
+            &.focus,
+            &:focus {
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+
+            &:active,
+            &.button-active {
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+        
+            &:disabled,
+            &.disabled {
+                text-decoration: none !important;
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+        }
+    }
+
     // modal
     body.modal-active {
         @media print {

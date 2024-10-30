@@ -2,19 +2,38 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
+$-border-width: func.units(1);
+
 .button.back-to-top-button {
     box-shadow: func.shadow(vars.$back-to-top-button-shadow);
     width: auto;
-    background-color: func.color(vars.$back-to-top-button-background);
     position: fixed;
     inset: auto func.units(5) func.units(5) auto;
     z-index: vars.$zindex-back-to-top;
 
-    &.button-tertiary {
+    background-color: func.color(vars.$back-to-top-button-background);
+    font-weight: func.font-weight('semibold');
+    font-size: func.font-size('sm');
+    min-height: func.units(7);
+    padding: calc(func.units(3) - $-border-width) calc(func.units(4) - $-border-width); // top and bottom | left and right
+    border-radius: func.border-radius('medium');
+    border-width: $-border-width;
+    border-style: solid;
+    border-color: func.color(vars.$back-to-top-button-border-color);
+    color: func.color(vars.$back-to-top-button-color);
+
+    // Button variants must not overwrite the back to top styling
+    &.button-primary, &.button-secondary, &.button-tertiary {
         background-color: func.color(vars.$back-to-top-button-background);
+        border-color: func.color(vars.$back-to-top-button-border-color);
+        color: func.color(vars.$back-to-top-button-color);
+        text-decoration: none;
 
         &:hover {
             background-color: func.color(vars.$back-to-top-button-background);
+            border-color: func.color(vars.$back-to-top-button-border-color);
+            color: func.color(vars.$back-to-top-button-color);
+            text-decoration: underline;
         }
     }
 

@@ -2,7 +2,7 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
-%pagination-default {
+%-pagination-default {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,6 +21,7 @@
             width: auto;
             margin: 0;
             padding: 0 func.units(3); // top and bottom | left and right
+            min-height: func.units(7);
 
             &.hidden {
                 visibility: hidden;
@@ -108,7 +109,7 @@
 }
 
 .pagination {
-    @extend %pagination-default;
+    @extend %-pagination-default;
     margin-top: func.units(5);
     margin-bottom: func.units(5);
 
@@ -150,7 +151,7 @@
 }
 
 .table-pagination {
-    @extend %pagination-default;
+    @extend %-pagination-default;
     margin-top: func.units(3);
     margin-bottom: func.units(3);
 

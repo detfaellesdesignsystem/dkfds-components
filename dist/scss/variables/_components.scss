@@ -35,8 +35,10 @@ $alert-heading-color:               $alert-text-color !default;
 $alert-close-text-color:            $alert-text-color !default;
 
 // Back-to-top
-$back-to-top-button-shadow:     'light' !default;
-$back-to-top-button-background: 'white' !default;
+$back-to-top-button-shadow:         'light' !default;
+$back-to-top-button-background:     'white' !default;
+$back-to-top-button-border-color:   'gray-500' !default;
+$back-to-top-button-color:          'black' !default;
 
 // Badge
 $badge-font-weight:                 "semibold" !default;
@@ -55,72 +57,68 @@ $badge-success-background-color:    "success-light" !default;
 $badge-warning-background-color:    "warning-light" !default;
 $badge-error-background-color:      "error-light" !default;
 
-// Button
-$button-border-width:           2px !default;
-$button-border-bottom-width:    4px !default;
-$button-disabled-opacity:       0.3 !default;
-$button-border-radius:          4px !default;
-$button-line-height:            5 !default;
-
 // Button: Primary
-$button-primary-default-border-color:       'primary-dark' !default;
-$button-primary-hover-border-color:         'primary-darker' !default;
-$button-primary-active-border-color:        'primary-darker' !default;
-$button-primary-focus-border-color:         $button-primary-default-border-color !default;
-$button-primary-disabled-border-color:      'primary-dark' !default;
+$button-primary-default-border-color:       'primary' !default;
 $button-primary-default-background-color:   'primary' !default;
-$button-primary-hover-background-color:     'primary-dark' !default;
-$button-primary-active-background-color:    'primary-darker' !default;
-$button-primary-focus-background-color:     'primary' !default;
 $button-primary-default-color:              'white' !default;
-$button-primary-hover-color:                $button-primary-default-color !default;
+
+$button-primary-hover-border-color:         'primary-dark' !default;
+$button-primary-hover-background-color:     'primary-dark' !default;
+$button-primary-hover-color:                'white' !default;
+
+$button-primary-active-border-color:        'black' !default;
+$button-primary-active-background-color:    'black' !default;
 $button-primary-active-color:               $button-primary-default-color !default;
-$button-primary-focus-color:                $button-primary-default-color !default;
 
 // Button: Secondary
-$button-secondary-default-border-color:     'gray-500' !default;
-$button-secondary-hover-border-color:       'gray-600' !default;
-$button-secondary-active-border-color:      'black' !default;
-$button-secondary-focus-border-color:       $button-secondary-default-border-color !default;
-$button-secondary-disabled-border-color:    'gray-300' !default;
-$button-secondary-default-background-color: 'gray-100' !default;
-$button-secondary-hover-background-color:   'gray-200' !default;
-$button-secondary-active-background-color:  'gray-300' !default;
-$button-secondary-focus-background-color:   'gray-100' !default;
-$button-secondary-default-color:            'black' !default;
-$button-secondary-hover-color:              $button-secondary-default-color !default;
-$button-secondary-active-color:             $button-secondary-default-color !default;
-$button-secondary-focus-color:              $button-secondary-default-color !default;
+$button-secondary-default-border-color:         'primary' !default;
+$button-secondary-default-background-color:     'white' !default;
+$button-secondary-default-color:                'primary' !default;
+
+$button-secondary-hover-border-color:           'gray-600' !default;
+$button-secondary-hover-background-color:       'white' !default;
+$button-secondary-hover-color:                  'black' !default;
+
+$button-secondary-active-border-color:          'gray-600' !default;
+$button-secondary-active-background-color:      'white' !default;
+$button-secondary-active-color:                 'black' !default;
 
 // Button: Tertiary
-$button-tertiary-default-border-color:      'gray-500' !default;
-$button-tertiary-hover-border-color:        'gray-600' !default;
-$button-tertiary-active-border-color:       'black' !default;
-$button-tertiary-focus-border-color:        'gray-500' !default;
-$button-tertiary-disabled-border-color:     'gray-300' !default;
-$button-tertiary-default-background-color:  'transparent' !default;
-$button-tertiary-hover-background-color:    $button-tertiary-default-background-color !default;
-$button-tertiary-active-background-color:   $button-tertiary-default-background-color !default;
-$button-tertiary-focus-background-color:    $button-tertiary-default-background-color !default;
-$button-tertiary-default-color:             'black' !default;
-$button-tertiary-hover-color:               $button-tertiary-default-color !default;
-$button-tertiary-active-color:              $button-tertiary-default-color !default;
-$button-tertiary-focus-color:               $button-tertiary-default-color !default;
+$button-tertiary-default-border-color:          'transparent' !default;
+$button-tertiary-default-background-color:      'transparent' !default;
+$button-tertiary-default-color:                 'black' !default;
 
-// Button: Quaternary
-$button-quaternary-default-background-color:    'transparent' !default;
-$button-quaternary-hover-background-color:      'gray-200' !default;
-$button-quaternary-active-background-color:     'gray-300' !default;
-$button-quaternary-focus-background-color:      $button-quaternary-default-background-color !default;
-$button-quaternary-default-color:               'gray-600' !default;
-$button-quaternary-hover-color:                 $button-quaternary-default-color !default;
-$button-quaternary-active-color:                $button-quaternary-default-color !default;
-$button-quaternary-focus-color:                 $button-quaternary-default-color !default;
+$button-tertiary-hover-border-color:            'gray-100' !default;
+$button-tertiary-hover-background-color:        'gray-100' !default;
+$button-tertiary-hover-color:                   'black' !default;
+
+$button-tertiary-active-border-color:           'gray-200' !default;
+$button-tertiary-active-background-color:       'gray-200' !default;
+$button-tertiary-active-color:                  'black' !default;
+
+// Button: Warning
+$button-warning-default-border-color:       'red-700' !default;
+$button-warning-default-background-color:   'red-700' !default;
+$button-warning-default-color:              'white' !default;
+
+$button-warning-hover-border-color:         'red-700' !default;
+$button-warning-hover-background-color:     'red-700' !default;
+$button-warning-hover-color:                'white' !default;
+
+$button-warning-active-border-color:        'black' !default;
+$button-warning-active-background-color:    'black' !default;
+$button-warning-active-color:               'white' !default;
+
+// Button: Print
+$button-print-border-color:         'gray-500' !default;
+$button-print-background-color:     'white' !default;
+$button-print-color:                'black' !default;
 
 // Search field
 $button-search-text-color:                  'ink' !default;
 $button-search-default-background-color:    'white' !default;
-$button-search-hover-background-color:      'gray-200' !default;
+$button-search-hover-background-color:      'gray-100' !default;
+$button-search-active-background-color:     'gray-200' !default;
 $search-background-color:                   'white';
 
 // Breadcrumbs
@@ -377,9 +375,8 @@ $tab-default-border-color:             'gray-500' !default;
 $tab-hover-background-color:           'gray-200' !default;
 
 // Tags
-$tag-border-radius:             $button-border-radius !default;
 $tag-font-size:                 typo-vars.$typography-body-text-font-size !default;
-$tag-font-weight:               "medium" !default;
+$tag-font-weight:               'medium' !default;
 $tag-text-color:                'white' !default;
 $tag-default-background-color:  'gray-600' !default;
 $tag-hover-background-color:    'gray-500' !default;

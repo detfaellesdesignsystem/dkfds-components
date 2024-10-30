@@ -2,31 +2,45 @@
 @use "../functions" as func;
 
 .search {
-  display: flex;
-  
-  .form-input{
-    background-color: func.color(vars.$search-background-color);
-    margin-top: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    &:focus{
-      z-index: vars.$zindex-focus;
-    }
-  }
+    display: flex;
 
-  .button-search{
-    background-color: func.color(vars.$button-search-default-background-color);
-    border: func.border(vars.$input-border);
-    border-left: none;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    color: func.color(vars.$button-search-text-color);
-    font-weight: func.font-weight("normal");
-    width: inherit;    // not 100% width on mobile
-    padding-top: 0;    // Search button does not have a thick bottom border
-    padding-bottom: 0; // Search button does not have a thick bottom border
-    &:hover{
-      background-color: func.color(vars.$button-search-hover-background-color);
+    .form-input {
+        background-color: func.color(vars.$search-background-color);
+        margin-top: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &:focus {
+            z-index: vars.$zindex-focus;
+        }
     }
-  }
+
+    .button-search {
+        font-weight: func.font-weight('semibold');
+        font-size: func.font-size('sm');
+        min-height: auto;
+        padding-left: func.units(4);
+        padding-right: func.units(4);
+        border-radius: func.border-radius('small');
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border: func.border(vars.$input-border);
+        border-left: 0;
+        color: func.color(vars.$button-search-text-color);
+        background-color: func.color(vars.$button-search-default-background-color);
+        text-decoration: none;
+        width: inherit; // Prevent width from increasing on mobiles
+
+        &:hover {
+            background-color: func.color(vars.$button-search-hover-background-color);
+        }
+
+        &:focus {
+            background-color: func.color(vars.$button-search-hover-background-color);
+        }
+
+        &:active {
+            background-color: func.color(vars.$button-search-active-background-color);
+        }
+    }
 }

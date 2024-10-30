@@ -12,7 +12,7 @@
   padding-right:func.units(3);
   margin-right:func.units(3);
   margin-bottom:func.units(3);
-  border-radius: vars.$tag-border-radius;
+  border-radius: func.border-radius('small');
   border: none;
   font-size: func.font-size(vars.$tag-font-size);
   font-weight: func.font-weight(vars.$tag-font-weight);
