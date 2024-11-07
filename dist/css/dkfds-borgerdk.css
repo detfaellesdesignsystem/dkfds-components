@@ -11854,7 +11854,7 @@ textarea.no-resize{
 .tooltip-wrapper.place-below::before{
   bottom:-12px;
 }
-.tooltip-wrapper .tooltip{
+.tooltip-wrapper .tooltip, .tooltip-wrapper .print-tooltip{
   line-height:1.5;
   font-size:1.4rem;
   font-weight:400;
@@ -11863,10 +11863,22 @@ textarea.no-resize{
   background-color:#454545;
   border-radius:4px;
   padding:4px 12px;
-  position:absolute;
   z-index:11000;
   display:block;
   overflow-wrap:break-word;
+}
+.tooltip-wrapper .tooltip{
+  position:fixed;
+  bottom:auto;
+}
+.tooltip-wrapper .print-tooltip{
+  position:absolute;
+  display:none;
+  left:0;
+  color:#1a1a1a;
+  background-color:white;
+  border:1px solid #1a1a1a;
+  width:250px;
 }
 .tooltip-wrapper .tooltip-arrow{
   pointer-events:none;
@@ -11881,15 +11893,23 @@ textarea.no-resize{
   top:-12px;
   z-index:11001;
 }
+.tooltip-wrapper.place-above .print-tooltip{
+  top:100%;
+  bottom:auto;
+}
 .tooltip-wrapper.place-above .tooltip-arrow::before{
   border-top:8px solid #454545;
   top:-12px;
+}
+.tooltip-wrapper.place-below .print-tooltip{
+  top:auto;
+  bottom:100%;
 }
 .tooltip-wrapper.place-below .tooltip-arrow::before{
   border-bottom:8px solid #454545;
   bottom:-12px;
 }
-.tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow{
+.tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow, .tooltip-wrapper.hide-tooltip .print-tooltip{
   display:none;
 }
 .tooltip-wrapper.hide-tooltip::before{
@@ -12145,33 +12165,14 @@ textarea.no-resize{
   .card{
     box-shadow:none;
   }
-}
-@media print{
-  body.modal-active > header{
+  .fds-modal-inert{
     display:none;
   }
-  body.modal-active .page-container{
+  .fds-modal{
+    position:static;
+  }
+  .modal-backdrop{
     display:none;
-  }
-  body.modal-active > footer{
-    display:none;
-  }
-  body .modal .modal__overlay{
-    display:block;
-    position:relative;
-    background-color:transparent;
-  }
-  body .modal .bg-modal{
-    background:transparent !important;
-    background-color:transparent !important;
-  }
-  body .modal .modal__header{
-    display:block;
-  }
-}
-@media print and (min-width: 992px){
-  body .modal .modal__footer{
-    display:block;
   }
 }
 @media print and (max-width: 767px){
@@ -12304,5 +12305,11 @@ textarea.no-resize{
   }
   .toggle-element .toggle-button[aria-checked=true]::after{
     border-color:#1a1a1a;
+  }
+  .tooltip-wrapper .tooltip, .tooltip-wrapper .tooltip-arrow{
+    display:none;
+  }
+  .tooltip-wrapper .print-tooltip{
+    display:block;
   }
 }

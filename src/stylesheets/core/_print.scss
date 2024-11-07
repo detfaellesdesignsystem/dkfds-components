@@ -105,43 +105,16 @@
     }
 
     // modal
-    body.modal-active {
-        @media print {
-            > header {
-                display: none
-            }
-
-            .page-container {
-                display: none;
-            }
-
-            > footer {
-                display: none;
-            }
-        }
+    .fds-modal-inert {
+        display: none;
     }
 
-    body .modal {
-        .modal__overlay {
-            display: block;
-            position: relative;
-            background-color: func.color('transparent');
-        }
+    .fds-modal {
+        position: static;
+    }
 
-        .bg-modal {
-            background: transparent !important;
-            background-color: func.color('transparent') !important;
-        }
-
-        .modal__header {
-            display: block;
-        }
-
-        .modal__footer {
-            @include mixins.media-breakpoint-up(lg) {
-                display: block;
-            }
-        }
+    .modal-backdrop {
+        display: none;
     }
 
     // table
@@ -258,6 +231,18 @@
 
         &::after {
             border-color: func.color('black');
+        }
+    }
+
+    // Tooltip
+
+    .tooltip-wrapper {
+        .tooltip, .tooltip-arrow {
+            display: none;
+        }
+
+        .print-tooltip {
+            display: block;
         }
     }
 }
