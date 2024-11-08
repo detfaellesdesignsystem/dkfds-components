@@ -42,7 +42,7 @@ Tooltip.prototype.init = function () {
     let tooltipTarget = this.target;
     let tooltipEl = this.tooltip;
     let printTooltipEl = this.printTooltip;
-    this.updateTooltip = () => { updateTooltipPosition(wrapper, tooltipTarget, tooltipEl) };
+    this.updateTooltip = () => { updateTooltipPosition(wrapper, tooltipTarget, tooltipEl, printTooltipEl) };
 
     this.hideTooltip();
 
@@ -69,7 +69,7 @@ Tooltip.prototype.init = function () {
 
         tooltipTarget.addEventListener('focus', () => {
             this.showTooltip();
-            updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+            updateTooltipPosition(wrapper, tooltipTarget, tooltipEl, printTooltipEl);
         });
 
         tooltipTarget.addEventListener('mouseover', () => {
@@ -80,7 +80,7 @@ Tooltip.prototype.init = function () {
             setTimeout(() => {
                 if (tooltipTarget.classList.contains('js-hover')) {
                     this.showTooltip();
-                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl, printTooltipEl);
                 }
             }, 300);
         });
@@ -93,7 +93,7 @@ Tooltip.prototype.init = function () {
             setTimeout(() => {
                 if (tooltipTarget.classList.contains('js-pressed')) {
                     this.showTooltip();
-                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl, printTooltipEl);
                 }
             }, 500);
         });
@@ -168,7 +168,7 @@ Tooltip.prototype.init = function () {
         tooltipTarget.addEventListener('click', () => {
             if (wrapper.classList.contains('hide-tooltip')) {
                 this.showTooltip();
-                updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                updateTooltipPosition(wrapper, tooltipTarget, tooltipEl, printTooltipEl);
             }
             else {
                 this.hideTooltip();
@@ -241,7 +241,7 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     }
 }
 
-function setLeft(tooltipTarget, tooltipEl) {
+function setLeft(tooltipTarget, tooltipEl, printTooltipEl) {
     /* Center the tooltip on the tooltip arrow */
     let tooltipTargetRect = tooltipTarget.getBoundingClientRect();
     let tooltipRect = tooltipEl.getBoundingClientRect();
@@ -255,6 +255,19 @@ function setLeft(tooltipTarget, tooltipEl) {
     else if (tooltipTargetRect.left + (tooltipTargetRect.width / 2) + (tooltipRect.width / 2) > (document.body.clientWidth - MIN_MARGIN)) {
         let adjustedLeft = document.body.clientWidth - MIN_MARGIN - tooltipRect.width;
         tooltipEl.style.left = adjustedLeft + 'px';
+    }
+
+    /* Reset print tooltip to default position */
+    printTooltipEl.style.left = '0';
+    printTooltipEl.style.right = 'auto';
+
+    /* Adjust print tooltip */
+    let centerOfPage = document.body.clientWidth / 2;
+    let isTargetInRightSide = tooltipTargetRect.left > centerOfPage ||
+                              (tooltipTargetRect.right - centerOfPage > centerOfPage - tooltipTargetRect.left);
+    if (isTargetInRightSide) {
+        printTooltipEl.style.left = 'auto';
+        printTooltipEl.style.right = '0';
     }
 }
 
@@ -274,11 +287,11 @@ function setTop(tooltipWrapper, tooltipTarget, tooltipEl) {
     }
 }
 
-function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
+function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
     /* Order is important - width must always be calculated first */
     setWidth(tooltipEl);
     placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl);
-    setLeft(tooltipTarget, tooltipEl);
+    setLeft(tooltipTarget, tooltipEl, printTooltipEl);
     setTop(tooltipWrapper, tooltipTarget, tooltipEl);
 }
 

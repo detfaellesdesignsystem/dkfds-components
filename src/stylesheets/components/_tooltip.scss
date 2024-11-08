@@ -64,7 +64,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         color: func.color('black');
         background-color: func.color('white');
         border: 1px solid func.color('black');
-        width: 250px;
+        width: 180px;
     }
 
     .tooltip-arrow {
@@ -84,8 +84,8 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
 
     &.place-above {
         .print-tooltip {
-            top: 100%;
-            bottom: auto;
+            top: auto;
+            bottom: 100%;
         }
 
         .tooltip-arrow {
@@ -98,8 +98,8 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
 
     &.place-below {
         .print-tooltip {
-            top: auto;
-            bottom: 100%;
+            top: 100%;
+            bottom: auto;
         }
 
         .tooltip-arrow {
