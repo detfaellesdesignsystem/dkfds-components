@@ -65,6 +65,23 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         background-color: func.color('white');
         border: 1px solid func.color('black');
         width: 180px;
+
+        &::before {
+            content: '';
+            border-right: calc($-arrow-height + 1px) solid transparent;
+            border-left: calc($-arrow-height + 1px) solid transparent;
+            display: block;
+            position: absolute;
+            left: 0;
+            z-index: vars.$zindex-tooltip + 1;
+        }
+
+        &.right-align {
+            &::before {
+                left: auto;
+                right: 0;
+            }
+        }
     }
 
     .tooltip-arrow {
@@ -85,7 +102,12 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     &.place-above {
         .print-tooltip {
             top: auto;
-            bottom: 100%;
+            bottom: calc(100% + $-arrow-height + $-arrow-dist-to-target);
+
+            &::before {
+                bottom: calc(0px - $-arrow-height);
+                border-top: $-arrow-height solid func.color('black');
+            }
         }
 
         .tooltip-arrow {
@@ -98,8 +120,13 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
 
     &.place-below {
         .print-tooltip {
-            top: 100%;
+            top: calc(100% + $-arrow-height + $-arrow-dist-to-target);
             bottom: auto;
+
+            &::before {
+                top: calc(0px - $-arrow-height);
+                border-bottom: $-arrow-height solid func.color('black');
+            }
         }
 
         .tooltip-arrow {

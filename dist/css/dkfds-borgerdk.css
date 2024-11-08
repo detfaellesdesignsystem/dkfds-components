@@ -11880,6 +11880,19 @@ textarea.no-resize{
   border:1px solid #1a1a1a;
   width:180px;
 }
+.tooltip-wrapper .print-tooltip::before{
+  content:"";
+  border-right:9px solid transparent;
+  border-left:9px solid transparent;
+  display:block;
+  position:absolute;
+  left:0;
+  z-index:11001;
+}
+.tooltip-wrapper .print-tooltip.right-align::before{
+  left:auto;
+  right:0;
+}
 .tooltip-wrapper .tooltip-arrow{
   pointer-events:none;
 }
@@ -11895,15 +11908,23 @@ textarea.no-resize{
 }
 .tooltip-wrapper.place-above .print-tooltip{
   top:auto;
-  bottom:100%;
+  bottom:calc(100% + 8px + 4px);
+}
+.tooltip-wrapper.place-above .print-tooltip::before{
+  bottom:-8px;
+  border-top:8px solid #1a1a1a;
 }
 .tooltip-wrapper.place-above .tooltip-arrow::before{
   border-top:8px solid #454545;
   top:-12px;
 }
 .tooltip-wrapper.place-below .print-tooltip{
-  top:100%;
+  top:calc(100% + 8px + 4px);
   bottom:auto;
+}
+.tooltip-wrapper.place-below .print-tooltip::before{
+  top:-8px;
+  border-bottom:8px solid #1a1a1a;
 }
 .tooltip-wrapper.place-below .tooltip-arrow::before{
   border-bottom:8px solid #454545;

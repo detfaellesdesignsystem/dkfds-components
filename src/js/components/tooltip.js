@@ -260,6 +260,7 @@ function setLeft(tooltipTarget, tooltipEl, printTooltipEl) {
     /* Reset print tooltip to default position */
     printTooltipEl.style.left = '0';
     printTooltipEl.style.right = 'auto';
+    printTooltipEl.classList.remove('right-align');
 
     /* Adjust print tooltip */
     let centerOfPage = document.body.clientWidth / 2;
@@ -268,6 +269,7 @@ function setLeft(tooltipTarget, tooltipEl, printTooltipEl) {
     if (isTargetInRightSide) {
         printTooltipEl.style.left = 'auto';
         printTooltipEl.style.right = '0';
+        printTooltipEl.classList.add('right-align');
     }
 }
 
