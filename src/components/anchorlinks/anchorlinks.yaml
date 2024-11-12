@@ -3,6 +3,10 @@ params:
   type: string
   required: true
   description: ID of the list.
+- name: anchortitle
+  type: string
+  required: false
+  description: Anchorlist title.
 - name: links
   type: array
   required: true

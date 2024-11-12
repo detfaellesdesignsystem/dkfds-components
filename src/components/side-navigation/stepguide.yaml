@@ -11,6 +11,10 @@ params:
 
 # overflow_stepguide and stepguide
 params:
+- name: ariaLabel
+  type: string
+  required: false
+  description: Stepguide aria-label.
 - name: steps
   type: array
   required: true
