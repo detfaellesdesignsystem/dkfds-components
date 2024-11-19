@@ -3,7 +3,7 @@
 {%- macro tooltip(params) -%}
 {%- set contentElement = params.contentElement | default('div') -%}
 {%- set position = params.position | default('above') -%}
-<{{ contentElement }} class="tooltip-wrapper{% if params.classes %} {{params.classes}}{% endif %}" data-tooltip="{{ params.text }}"{% if params.id %} data-tooltip-id="{{ params.id }}"{% endif %} data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}>{{ params.target | safe }}</{{ contentElement }}>
+<{{ contentElement }} class="tooltip-wrapper{% if params.classes %} {{params.classes}}{% endif %}" data-tooltip="{{ params.text }}"{% if params.id %} data-tooltip-id="{{ params.id }}"{% endif %} data-position="{{ position }}" {% if params.trueTooltip %} data-trigger="hover"{% else %} data-trigger="click"{% endif %}{% if params.adjustTo %} data-adjust-to="{{ params.adjustTo }}"{% endif %}{% if params.forceVisible %} data-force-visible="{{ params.forceVisible }}"{% endif %}>{{ params.target | safe }}</{{ contentElement }}>
 {%- endmacro -%}
 
 {%- macro tooltip_helpicon(params) -%}
@@ -21,7 +21,9 @@
         "target": target,
         "position": params.position,
         "trueTooltip": false,
-        "contentElement": params.contentElement
+        "contentElement": params.contentElement,
+        "adjustTo": params.adjustTo,
+        "forceVisible": params.forceVisible
     }) 
 }}
 {%- endmacro -%}
@@ -36,5 +38,5 @@
         "icon": "help"
     }) 
 -%}
-<strong>{{ params.phrase }}</strong>{{- tooltip({ classes: "in-text", "text": params.tooltip, "id": params.id, "target": target, "position": params.position, "trueTooltip": false, "contentElement": "span" }) -}}
+<strong>{{ params.phrase }}</strong>{{- tooltip({ classes: "in-text", "text": params.tooltip, "id": params.id, "target": target, "position": params.position, "trueTooltip": false, "contentElement": "span", "adjustTo": params.adjustTo, "forceVisible": params.forceVisible }) -}}
 {%- endmacro -%}

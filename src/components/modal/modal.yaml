@@ -3,6 +3,10 @@ params:
   type: string
   required: true
   description: The ID of the modal.
+- name: contentId
+  type: string
+  required: false
+  description: The ID of the modal content.
 - name: forcedAction
   type: boolean
   required: false

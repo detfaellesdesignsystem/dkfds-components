@@ -23,6 +23,14 @@ params:
   type: string
   required: true
   description: The id used for "tooltip buttons", or "not true tooltips".
+- name: adjustTo
+  type: string
+  required: false
+  description: Id of the element the tooltip should adjust to. Default is document.body.
+- name: forceVisible
+  type: boolean
+  required: false
+  description: Set to true to ensure tooltip is visible within elements with overflow.
 - name: target
   type: object
   required: true

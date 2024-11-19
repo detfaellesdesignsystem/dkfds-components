@@ -50,15 +50,61 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         z-index: vars.$zindex-tooltip;
         display: block;
         overflow-wrap: break-word;
+        position: absolute;
+    }
+
+    &[data-force-visible="true"] {
+        .tooltip {
+            position: fixed;
+    
+            &::before {
+                content: '';
+                border-right: calc($-arrow-height + 1px) solid transparent;
+                border-left: calc($-arrow-height + 1px) solid transparent;
+                display: block;
+                position: absolute;
+                left: calc(50% - $-arrow-height - 1px);
+                top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+                z-index: vars.$zindex-tooltip + 1;
+            }
+
+            &.open-left::before {
+                right: func.units(1);
+                left: auto;
+            }
+
+            &.open-right::before {
+                left: func.units(1);
+                right: auto;
+            }
+        }
+
+        .tooltip-arrow {
+            display: none;
+        }
+
+        &.place-above {
+            .tooltip::before {
+                bottom: calc(0px - $-arrow-height + 1px);
+                top: auto;
+                border-top: $-arrow-height solid func.color(vars.$tooltip-background-color);
+            }
+        }
+    
+        &.place-below {
+            .tooltip::before {
+                top: calc(0px - $-arrow-height + 1px);
+                bottom: auto;
+                border-bottom: $-arrow-height solid func.color(vars.$tooltip-background-color);
+            }
+        }
     }
 
     .tooltip {
-        position: fixed;
         bottom: auto;
     }
 
     .print-tooltip {
-        position: absolute;
         display: none;
         left: 0;
         color: func.color('black');
