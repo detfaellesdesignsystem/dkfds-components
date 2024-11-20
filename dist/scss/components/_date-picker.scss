@@ -61,6 +61,7 @@
   width: 100%;
   z-index: vars.$zindex-datepicker-2;
   margin-top: func.units(2);
+  border-radius: func.border-radius('medium');
   @include mixins.media-breakpoint-up(md) {
     width: 344px;
   }
@@ -93,6 +94,22 @@
       border-right-width: 0;
     }
   }
+
+  tr:last-child {
+    td:first-child button.date-picker__calendar__date {
+      border-bottom-left-radius: func.border-radius('medium');
+      &:after, &:before {
+        border-bottom-left-radius: func.border-radius('medium');
+      }
+    }
+
+    td:last-child button.date-picker__calendar__date {
+      border-bottom-right-radius: func.border-radius('medium');
+      &:after, &:before {
+        border-bottom-right-radius: func.border-radius('medium');
+      }
+    }
+  }
 }
 
 .date-picker__calendar__month-picker .date-picker__calendar__table, .date-picker__calendar__year-picker .date-picker__calendar__table{
@@ -109,10 +126,20 @@
   width: 100%;
   background-color: func.color(vars.$datepicker-header-background-color);
   border-bottom: func.border(vars.$datepicker-table-border);
+  border-top-left-radius: func.border-radius('medium');
+  border-top-right-radius: func.border-radius('medium');
 
   button:focus{
     z-index: vars.$zindex-datepicker-3;
     position: relative;
+  }
+
+  & > div:first-child {
+    border-top-left-radius: func.border-radius('medium');
+  }
+
+  & > div:last-child {
+    border-top-right-radius: func.border-radius('medium');
   }
 }
 

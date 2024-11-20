@@ -4,7 +4,7 @@
 
 .card {
   position: relative;
-  border-radius: func.units(0);
+  border-radius: func.border-radius('medium');
   border: func.border(vars.$cards-border);
   overflow: hidden;
   background: func.color(vars.$cards-background-color);

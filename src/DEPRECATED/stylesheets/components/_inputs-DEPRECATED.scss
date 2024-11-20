@@ -45,7 +45,7 @@
 .form-input{
   appearance: none;
   border: func.border(vars.$input-border);
-  border-radius: vars.$input-border-radius;
+  border-radius: varsdep.$input-border-radius;
   color: func.color(vars.$input-text-color); // standardize on firefox
   display: block;
   font-size: func.font-size(vars.$input-font-size);
@@ -121,13 +121,13 @@ table {
   }
   .form-input-suffix {
     border-left: 0;
-    border-top-right-radius: vars.$input-border-radius;
-    border-bottom-right-radius: vars.$input-border-radius;
+    border-top-right-radius: varsdep.$input-border-radius;
+    border-bottom-right-radius: varsdep.$input-border-radius;
   }
   .form-input-prefix {
     border-right: 0;
-    border-top-left-radius: vars.$input-border-radius;
-    border-bottom-left-radius: vars.$input-border-radius;
+    border-top-left-radius: varsdep.$input-border-radius;
+    border-bottom-left-radius: varsdep.$input-border-radius;
   }
 }
 

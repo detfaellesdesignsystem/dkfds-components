@@ -101,6 +101,7 @@
         background: func.color(vars.$overflow-menu-content-background-color);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
         left: 4px;
+        border-radius: func.border-radius('medium');
 
         @include mixins.media-breakpoint-up(md) {
             width: auto;
@@ -126,8 +127,18 @@
         & > li {
             border-bottom: 1px solid func.color('gray-200');
 
+            &:first-child button {
+                border-top-left-radius: func.border-radius('medium');
+                border-top-right-radius: func.border-radius('medium');
+            }
+
             &:last-child {
                 border-bottom: 0;
+
+                button {
+                    border-bottom-left-radius: func.border-radius('medium');
+                    border-bottom-right-radius: func.border-radius('medium');
+                }
             }
         }
 

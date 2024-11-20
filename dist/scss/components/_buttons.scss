@@ -10,7 +10,6 @@ $-disabled-opacity: 0.25;
     font-size: func.font-size('sm');
     min-height: func.units(7);
     padding: calc(func.units(3) - $-border-width) calc(func.units(4) - $-border-width); // top and bottom | left and right
-    border-radius: func.border-radius('medium');
     border-width: $-border-width;
     border-style: solid;
 }
@@ -31,13 +30,13 @@ $-disabled-opacity: 0.25;
     margin: 0;
     overflow-wrap: break-word;
     max-width: 100%;
+    border-radius: func.border-radius('medium');
 
     // Properties overwritten by variant properties
     font-weight: inherit;
     font-size: inherit;
     min-height: auto;
     padding: 0;
-    border-radius: 0;
     border: 0;
 
     color: inherit;

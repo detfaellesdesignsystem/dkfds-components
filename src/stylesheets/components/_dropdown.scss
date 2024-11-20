@@ -7,7 +7,7 @@
     @include mixins.add-background-svg('expand-more');
     background-position: calc(100% - 10px);
     border: func.border(vars.$select-border);
-    border-radius: vars.$select-border-radius;
+    border-radius: func.border-radius('medium');
     color: func.color(vars.$select-text-color);
     display: block;
     font-size: func.font-size(vars.$select-font-size);

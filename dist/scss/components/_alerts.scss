@@ -36,6 +36,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
   margin-top: func.units(4);
   margin-bottom: func.units(4);
   border-left: func.units(vars.$alert-border-size) solid func.color(vars.$alert-border-color);
+  border-radius: func.border-radius('medium');
 
   &:first-child {
     margin-top:0;

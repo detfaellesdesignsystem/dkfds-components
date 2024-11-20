@@ -113,7 +113,7 @@ $-tabs-icon-size: 2.4rem;
     .tab-panel {
         display: block;
         border: func.border(10);
-        border-radius: 0;
+        border-radius: func.border-radius('medium');
         width: 100%;
         padding: func.units(5);
         overflow: auto hidden;

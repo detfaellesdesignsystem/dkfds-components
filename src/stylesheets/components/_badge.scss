@@ -11,6 +11,7 @@
   background: func.color(vars.$badge-default-background-color);
   text-align: center;
   display: inline-block;
+  border-radius: func.border-radius('small');
 
   &.badge-large {
     font-size: func.font-size(vars.$badge-large-font-size);

@@ -177,7 +177,6 @@ $footer-text-color:         'black' !default;
 $footer-logo:               'logo-placeholder.png' !default;
 
 // Form input
-$input-border-radius:                   4px !default;
 $input-prefix-suffix-background-color:  'gray-100' !default;
 $input-border:                          10 !default;
 $input-font-size:                       typo-vars.$typography-body-text-font-size !default;
@@ -240,7 +239,6 @@ $input-range-thumb-default-background-color:    'gray-100' !default;
 // Select
 $select-background-color:   'white';
 $select-border:             $input-border !default;
-$select-border-radius:      $input-border-radius !default;
 $select-text-color:         $input-text-color !default;
 $select-font-size:          $input-font-size !default;
 $select-line-height:        $input-line-height !default;
