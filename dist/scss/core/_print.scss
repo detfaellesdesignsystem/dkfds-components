@@ -186,7 +186,7 @@
             }
 
             tr {
-                border-bottom: func.border(20);
+                border-bottom: func.border('low-contrast');
 
                 &:last-child {
                     border-bottom: 0;
@@ -226,7 +226,7 @@
     // tabs
     .tab-container ul.tab-list li .tab-button {
         background-color: func.color('transparent');
-        border: func.border(10); 
+        border: func.border('high-contrast'); 
 
         &[aria-current="page"],
         &[aria-selected="true"] {

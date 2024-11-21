@@ -232,7 +232,7 @@
   &::after {
     position: absolute;
     inset: -1px 0 0 -1px;
-    border: func.border(20);
+    border: func.border('low-contrast');
     content: "";
     display: block;
     pointer-events:none;
@@ -248,7 +248,7 @@
     z-index: vars.$zindex-datepicker-2;
     
     &::after {
-      border: func.border(10);
+      border: func.border('high-contrast');
     }
   }
 

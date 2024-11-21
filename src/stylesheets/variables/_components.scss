@@ -3,14 +3,14 @@
 // Accordion
 $accordion-button-background-color-default: 'gray-100' !default;
 $accordion-button-background-color-hover:   'gray-200' !default;
-$accordion-button-open-border:              20 !default;
+$accordion-button-open-border:              'low-contrast' !default;
 $accordion-button-open-background-color:    'gray-200' !default; 
 $accordion-button-icon-size:                5 !default;
 $accordion-button-color-default:            'black' !default;
 $accordion-button-color-hover:              'black' !default;
 $accordion-button-error-border-width:       2px !default;
 $accordion-button-error-border-color:       "error" !default;
-$accordion-content-border:                  10 !default;
+$accordion-content-border:                  'high-contrast' !default;
 $accordion-content-background-color:        'white' !default;
 $accordion-content-color:                   'black' !default;
 
@@ -129,7 +129,7 @@ $breadcrumbs-chevron-border-colour:         'ink-light' !default;
 $breadcrumbs-chevron-altitude-calculated:   5.655px !default;
 
 // Cards
-$cards-border:                      10 !default;
+$cards-border:                      'high-contrast' !default;
 $cards-background-color:            'white' !default;
 $cards-header-background-color:     $cards-background-color !default;
 $cards-text-background-color:       $cards-background-color !default;
@@ -142,7 +142,7 @@ $cards-sub-heading-color:           'ink-light' !default;
 
 // Cookie Message
 $cookie-message-background-color:   'white' !default;
-$cookie-message-border:             10 !default;
+$cookie-message-border:             'high-contrast' !default;
 $cookie-message-text-color:         'black' !default;
 
 // Datepicker
@@ -153,8 +153,8 @@ $datepicker-button-icon:                                "insert-invitation" !def
 $datepicker-previous-next-month-background-color:       'gray-100' !default;
 $datepicker-previous-next-month-background-color-hover: 'gray-200' !default;
 $datepicker-previous-next-month-text-color:             'black' !default;
-$datepicker-border:                                     10 !default;
-$datepicker-table-border:                               20 !default;
+$datepicker-border:                                     'high-contrast' !default;
+$datepicker-table-border:                               'low-contrast' !default;
 $datepicker-date-selected-background-color:             'gray-600' !default;
 $datepicker-date-selected-text-color:                   'white' !default;
 $datepicker-date-within-range-background-color:         'gray-500' !default;
@@ -168,14 +168,14 @@ $details-panel-border-width:    4px;
 $details-panel-border-color:    'gray-300' !default;
 
 // Footer
-$footer-border:             10 !default;
+$footer-border:             'high-contrast' !default;
 $footer-background-color:   'white' !default;
 $footer-text-color:         'black' !default;
 $footer-logo:               'logo-placeholder.png' !default;
 
 // Form input
 $input-prefix-suffix-background-color:  'gray-100' !default;
-$input-border:                          10 !default;
+$input-border:                          'high-contrast' !default;
 $input-font-size:                       typo-vars.$typography-body-text-font-size !default;
 $input-line-height:                     typo-vars.$typography-body-text-line-height !default;
 $input-text-color:                      'ink' !default;
@@ -248,14 +248,14 @@ $header-solution-mobile-background-color:       'white' !default;
 $header-navigation-top-mobile-background-color: 'white' !default;
 $header-log-on-off-button-background-color:     'white' !default;
 
-$solution-header-border-bottom:             10 !default;
+$solution-header-border-bottom:             'high-contrast' !default;
 $header-portal-background-color:            'white' !default;
-$header-portal-border:                      20 !default;
+$header-portal-border:                      'low-contrast' !default;
 $header-portal-logo:                        'logo-header-placeholder.png' !default;
 $header-portal-logo-width:                  100% !default;
 $header-portal-logo-height:                 24px !default;
 $header-portal-compact-logo-width:          auto !default;
-$header-solution-border:                    20 !default;
+$header-solution-border:                    'low-contrast' !default;
 $header-solution-background-color:          'white' !default;
 $header-solution-text-color:                'black' !default;
 $header-solution-text-size:                 'lg' !default;
@@ -281,10 +281,10 @@ $navigation-link-background-color-hover:    'gray-100' !default;
 $navigation-link-current-background-color:  'gray-100' !default;
 
 // HR - horizontal ruler
-$hr-border: 20 !default;
+$hr-border: 'low-contrast' !default;
 
 // Language switcher
-$language-switcher-border:              30 !default;
+$language-switcher-border:              'very-low-contrast' !default;
 $language-switcher-text-color:          'black' !default;
 $language-switcher-active-text-color:   'gray-600' !default;
 $language-switcher-background-color:    'white' !default;
@@ -307,7 +307,7 @@ $overflow-menu-dropdown-distance:                       8px;
 $overflow-menu-button-text-color:                       'ink' !default;
 $overflow-menu-button-icon-only-hover-background-color: 'gray-100' !default;
 $overflow-menu-content-background-color:                'white' !default;
-$overflow-menu-content-border:                          10 !default;
+$overflow-menu-content-border:                          'high-contrast' !default;
 $overflow-menu-content-font-size:                       typo-vars.$typography-body-text-font-size !default;
 $overflow-menu-content-line-height:                     typo-vars.$typography-body-text-line-height !default;
 $overflow-menu-content-text-color:                      'ink' !default;
@@ -344,8 +344,8 @@ $sidenav-error-background-color:                    "error-light" !default;
 // Table
 $table-head-background-color:                   'gray-100' !default;
 $table-head-font-weight:                        "semibold" !default;
-$table-border:                                  10 !default;
-$table-row-border:                              20 !default;
+$table-border:                                  'high-contrast' !default;
+$table-row-border:                              'low-contrast' !default;
 $table-cell-border:                             $table-row-border !default;
 $table-font-size:                               typo-vars.$typography-body-text-font-size !default;
 $table-text-line-height:                        typo-vars.$typography-body-text-line-height !default;

@@ -120,7 +120,7 @@ small, .small-text {
   font-weight: func.font-weight("semibold");
 }
 .facit {
-  border-bottom: func.border(10);
+  border-bottom: func.border('high-contrast');
   border-bottom-style: double;
   border-bottom-width: 4px;
 }

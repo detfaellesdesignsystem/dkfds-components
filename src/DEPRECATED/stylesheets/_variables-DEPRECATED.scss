@@ -105,7 +105,7 @@ $input-border-radius: 4px !default;
 
 $select-icon: "expand-more.svg" !default;
 
-$header-border-bottom: 10 !default;
+$header-border-bottom: 'high-contrast' !default;
 $header-portal-compact-logo-width: auto !default;
 
 $navigation-link-information-text-color: 'ink-light' !default;
@@ -128,7 +128,7 @@ $navigation-overflow-menu-collapsed-icon-desktop: "expand-more" !default;
 $navigation-overflow-menu-expanded-icon: "remove" !default;
 $navigation-overflow-menu-expanded-icon-desktop: "expand-more-white" !default;
 
-$sidenav-border: 10 !default;
+$sidenav-border: 'high-contrast' !default;
 $sidenav-link-default-color: 'ink' !default;
 $sidenav-link-hover-color: $sidenav-link-default-color !default;
 $sidenav-link-active-color: $sidenav-link-default-color !default; 
@@ -136,13 +136,13 @@ $sidenav-link-current-color: $sidenav-link-default-color !default;
 $sidenav-link-disabled-color: 'disabled' !default;
 $sidenav-link-hover-background-color: 'gray-100' !default;
 $sidenav-link-default-background-color: 'white' !default;
-$sidenav-list-level1-border: 20 !default;
-$sidenav-list-level2-border: 30 !default;
+$sidenav-list-level1-border: 'low-contrast' !default;
+$sidenav-list-level2-border: 'very-low-contrast' !default;
 $sidenav-active-border-width: 4px !default;
 $sidenav-active-border-color: 'primary' !default;
 $sidenav-link-line-height: vars.$typography-base-line-height !default;
 
-$tabnav-border: 10 !default;
+$tabnav-border: 'high-contrast' !default;
 $tabnav-background-color: 'white' !default;
 $tavnav-button-default-background-color: 'gray-100' !default;
 $tavnav-button-hover-background-color: 'gray-200' !default;
@@ -160,7 +160,7 @@ $toggle-button-on-hover-background-color: 'primary-dark' !default;
 $toggle-button-on-active-background-color: 'primary-darker' !default;
 
 $tooltip-background-color: 'white' !default;
-$tooltip-border: 10 !default;
+$tooltip-border: 'high-contrast' !default;
 
 $system-border: (
   border: (

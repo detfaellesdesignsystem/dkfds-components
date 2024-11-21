@@ -140,7 +140,7 @@
         display: none;
       }
       tr {
-        border-bottom: func.border(20);
+        border-bottom: func.border('low-contrast');
         &:last-child {
           border-bottom: 0;
         }

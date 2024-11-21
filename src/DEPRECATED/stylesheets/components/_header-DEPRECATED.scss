@@ -204,7 +204,7 @@ $z-index-nav:     9000;
 
   .portal-info-mobile{
     padding: func.units(5) func.units(4);
-    border-bottom: func.border(20);
+    border-bottom: func.border('low-contrast');
     text-align: left;
     p{
       margin-bottom: func.units(3);

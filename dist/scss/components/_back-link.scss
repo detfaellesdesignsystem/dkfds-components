@@ -2,7 +2,7 @@
 @use "../mixins" as mixins;
 
 .back-link{
-    border-bottom: func.border(10);
+    border-bottom: func.border('high-contrast');
     color: func.color('black');
     text-decoration: none;
     display: inline-block;

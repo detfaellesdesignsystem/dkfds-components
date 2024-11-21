@@ -85,7 +85,7 @@
     }
   
     .navbar-inner{
-      border-bottom: func.border(20);
+      border-bottom: func.border('low-contrast');
       @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
         border-bottom: none;
       }
@@ -110,9 +110,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 8px;
-    border-top: func.border(20);
+    border-top: func.border('low-contrast');
     + .nav-actions{
-      border-top: func.border(20);
+      border-top: func.border('low-contrast');
       margin-top: 0;
       @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
         border-top: none;
@@ -154,7 +154,7 @@
     li{
       margin-top: 0;
       padding-left: 0px;
-      border-bottom: func.border(20);
+      border-bottom: func.border('low-contrast');
       @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
         border-bottom: none;
       }
@@ -395,7 +395,7 @@
         @include mixins.unstyled-list;
         background-color: func.color(varsdep.$navigation-overflow-menu-open-background-color);
         border: none;
-        border-top: func.border(20);
+        border-top: func.border('low-contrast');
         box-shadow: none;
         color: func.color('ink');
         font-size: func.font-size(vars.$typography-body-text-font-size);
@@ -409,7 +409,7 @@
   
         @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
           width: 30rem;
-          border: func.border(10);
+          border: func.border('high-contrast');
           border-top: 0;
           padding-left: 0;
           position: absolute;
@@ -520,7 +520,7 @@
   
   .navbar-primary{
     @include mixins.media-breakpoint-up(#{vars.$nav-responsive-breakpoint}) {
-      border-bottom: func.border(10);
+      border-bottom: func.border('high-contrast');
     }
   }
   
