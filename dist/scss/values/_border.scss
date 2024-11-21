@@ -1,8 +1,23 @@
 $fds-border: (
+    'high-contrast': (
+        'width': 1px,
+        'style': solid,
+        'color': 'gray-400'
+    ),
+    'low-contrast': (
+        'width': 1px,
+        'style': solid,
+        'color': 'gray-300'
+    ),
+    'very-low-contrast': (
+        'width': 1px,
+        'style': solid,
+        'color': 'gray-200'
+    ),
     10: (
         'width': 1px,
         'style': solid,
-        'color': 'gray-500'
+        'color': 'gray-400'
     ),
     20: (
         'width': 1px,
