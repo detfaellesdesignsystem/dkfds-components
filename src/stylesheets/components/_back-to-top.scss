@@ -5,7 +5,7 @@
 $-border-width: func.units(1);
 
 .button.back-to-top-button {
-    box-shadow: func.shadow(vars.$back-to-top-button-shadow);
+    box-shadow: func.shadow('light');
     width: auto;
     position: fixed;
     inset: auto func.units(5) func.units(5) auto;

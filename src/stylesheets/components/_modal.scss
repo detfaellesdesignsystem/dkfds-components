@@ -31,7 +31,7 @@ body.modal-open{
     max-height: 100%;
     overflow: hidden auto;
     background-color: func.color(vars.$modal-background-color);
-    box-shadow: func.shadow(vars.$modal-shadow);
+    box-shadow: func.shadow('heavy');
     max-width: 800px;
     width: 100%;
     position: relative;

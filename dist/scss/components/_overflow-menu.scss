@@ -97,7 +97,7 @@
         width: calc(100% - 8px);
         z-index: vars.$zindex-overflow;
         border: func.border(vars.$overflow-menu-content-border);
-        box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
+        box-shadow: func.shadow('light');
         background: func.color(vars.$overflow-menu-content-background-color);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
         left: 4px;

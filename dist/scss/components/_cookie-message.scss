@@ -18,7 +18,7 @@
     @include mixins.grid-container;
     background-color: func.color(vars.$cookie-message-background-color);
     border: func.border(vars.$cookie-message-border);
-    box-shadow: func.shadow(vars.$cookie-message-shadow);
+    box-shadow: func.shadow('heavy');
     padding-top: calc(#{func.units(6)} - 1px);
     padding-bottom: calc(#{func.units(7)} - 1px);
     position: relative;

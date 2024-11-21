@@ -40,7 +40,7 @@ $toast-icon-backgrounds: (
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: func.units(4);
-    box-shadow: func.shadow(vars.$toast-shadow);
+    box-shadow: func.shadow('heavy');
     border-radius: func.border-radius('medium');
 
     &:not(.show) {

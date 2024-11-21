@@ -25,7 +25,7 @@
 .tooltip{
   @include mixins.body-copy-text;
   font-size: func.font-size('sm');
-  box-shadow: func.shadow(vars.$tooltip-shadow);
+  box-shadow: func.shadow('light');
   background-color: func.color(varsdep.$tooltip-background-color);
   border: func.border(varsdep.$tooltip-border);
   border-radius: 4px;

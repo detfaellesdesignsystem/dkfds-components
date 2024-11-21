@@ -304,6 +304,7 @@
         width: $sliding-panel-width;
         max-width: 40rem;
         z-index: vars.$zindex-nav;
+        box-shadow: func.shadow('heavy');
 
         @keyframes slidein-left {
             from {
