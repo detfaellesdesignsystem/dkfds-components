@@ -195,3 +195,15 @@ ol.sidemenu {
         }
     }
 }
+
+.overflow-menu-inner .sidemenu li {
+    &:first-child, &:first-child a {
+        border-top-left-radius: func.border-radius('medium');
+        border-top-right-radius: func.border-radius('medium');
+    }
+
+    &:last-child, &:last-child a {
+        border-bottom-left-radius: func.border-radius('medium');
+        border-bottom-right-radius: func.border-radius('medium');
+    }
+}

@@ -125,7 +125,7 @@
         @include mixins.unstyled-list;
 
         & > li {
-            border-bottom: 1px solid func.color('gray-200');
+            border-bottom: func.border('very-low-contrast');
 
             &:first-child button {
                 border-top-left-radius: func.border-radius('medium');
@@ -206,7 +206,7 @@
             }
 
             @include mixins.media-breakpoint-up(md) {
-                left: calc(50% - 19px);
+                left: calc(50% - 27px);
 
                 &::after {
                     left: 13px;
@@ -217,7 +217,7 @@
 
     &--open-left {
         .overflow-menu-inner {
-            right: calc(50% - 19px);
+            right: calc(50% - 27px);
 
             &::after {
                 right: 13px;

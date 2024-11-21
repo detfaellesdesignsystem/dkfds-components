@@ -241,9 +241,9 @@ $select-font-size:          $input-font-size !default;
 $select-line-height:        $input-line-height !default;
 
 // Header
-$header-border-color:                           'gray-300' !default;
-$header-last-border-color:                      'gray-500' !default;
-$header-portal-mobile-border-color:             'gray-400' !default;
+$header-border:                                 'low-contrast' !default;
+$header-last-border:                            'high-contrast' !default;
+$header-portal-mobile-border:                   'high-contrast' !default;
 $header-solution-mobile-background-color:       'white' !default;
 $header-navigation-top-mobile-background-color: 'white' !default;
 $header-log-on-off-button-background-color:     'white' !default;
@@ -281,7 +281,7 @@ $navigation-link-background-color-hover:    'gray-100' !default;
 $navigation-link-current-background-color:  'gray-100' !default;
 
 // HR - horizontal ruler
-$hr-border: 'low-contrast' !default;
+$hr-border: 'high-contrast' !default;
 
 // Language switcher
 $language-switcher-border:              'very-low-contrast' !default;
@@ -357,15 +357,15 @@ $table-selectable-selected-background-color:    'gray-200' !default;
 $table-selectable-help-text-color:              'ink-light' !default;
 
 // Tabs
-$tab-inactive-text-color:              'black' !default;
-$tab-inactive-background-color:        'gray-100' !default;
-$tab-active-text-color:                'white' !default;
-$tab-active-text-color-print:          'black' !default;
-$tab-active-background-color:          'gray-600' !default;
-$tab-active-icon-color:                'white' !default;
-$tab-icon-color-print:                 'black' !default;
-$tab-default-border-color:             'gray-500' !default;
-$tab-hover-background-color:           'gray-200' !default;
+$tab-inactive-text-color:           'black' !default;
+$tab-inactive-background-color:     'gray-100' !default;
+$tab-active-text-color:             'white' !default;
+$tab-active-text-color-print:       'black' !default;
+$tab-active-background-color:       'gray-600' !default;
+$tab-active-icon-color:             'white' !default;
+$tab-icon-color-print:              'black' !default;
+$tab-default-border:                'high-contrast' !default;
+$tab-hover-background-color:        'gray-200' !default;
 
 // Tags
 $tag-font-size:                 typo-vars.$typography-body-text-font-size !default;
@@ -395,12 +395,12 @@ $toast-error-color:                 'error' !default;
 
 // Toggle switch
 $toggle-dot-background-color:       'white' !default;
-$toggle-off-dot-border-color:       'gray-500' !default;
+$toggle-off-dot-border:             'high-contrast' !default;
 $toggle-on-dot-border-color:        'primary' !default;
 $toggle-on-dot-border-color-hover:  'primary-dark' !default;
 $toggle-off-background-color:       'gray-100' !default;
 $toggle-off-background-color-hover: 'gray-200' !default;
-$toggle-off-border-color:           'gray-500' !default;
+$toggle-off-border:                 'high-contrast' !default;
 $toggle-on-background-color:        'primary' !default;
 $toggle-on-background-color-hover:  'primary-dark' !default;
 $toggle-on-border-color:            'primary' !default;

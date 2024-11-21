@@ -166,7 +166,7 @@ $-left-right-padding: func.units(305);
             
 
             & > li {
-                border-bottom: 1px solid func.color('gray-200');
+                border-bottom: func.border('very-low-contrast');
                 padding-left: 0;
                 padding-right: 0;
 

@@ -190,7 +190,7 @@ textarea {
   &[readonly] {
     background-color: func.color('gray-100');
     color: func.color(vars.$input-text-color);
-    border: 1px solid func.color('gray-200');
+    border: func.border('very-low-contrast');
     cursor: default;
   }
 }
