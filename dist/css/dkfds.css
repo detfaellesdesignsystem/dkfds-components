@@ -6760,6 +6760,9 @@ table .form-select{
   border:2px solid #CC0000;
   padding:calc(8px - 2px) calc(16px - 2px);
 }
+.form-group.form-error > .form-select{
+  padding-right:32px;
+}
 
 .form-error-message{
   font-size:1.6rem;

@@ -18,7 +18,7 @@
     margin-top: func.units(3);
     text-align: left;
     padding: calc(8px - #{func.border-width(vars.$select-border)}) calc(16px - #{func.border-width(vars.$select-border)});
-    padding-right: 32px;
+    padding-right: func.units(6);
     @include mixins.appearance-none;
 
     &:-moz-focusring {

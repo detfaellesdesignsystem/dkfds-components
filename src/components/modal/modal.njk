@@ -2,7 +2,7 @@
 {% macro modal(params) %}
 {% set forcedAction = params.forcedAction | default(false) %}
 <div class="fds-modal" id="{{ params.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{params.id}}-heading"{% if forcedAction %} data-modal-forced-action{% endif %}>
-  <div class="modal-content"{% if params.contentId %} id="{{ params.contentId }}"{% endif %}>
+  <div class="modal-content">
     <div class="modal-header">
       <h2 class="modal-title" id="{{params.id}}-heading">
         {{ params.heading | default('Modal title') }}
