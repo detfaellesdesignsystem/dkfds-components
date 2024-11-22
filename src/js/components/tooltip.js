@@ -4,6 +4,8 @@ const ARROW_DISTANCE_TO_TARGET = 4; // Must match '$-arrow-dist-to-target' in 's
 const ARROW_HEIGHT = 8;             // Must match '$-arrow-height' in 'src\stylesheets\components\_tooltip.scss'
 const MIN_MARGIN = 8;               // Minimum margin to the edge of the window
 
+let createdTooltips = [];
+
 function Tooltip(wrapper) {
     if ((wrapper.getElementsByClassName('tooltip-target')).length === 0) {
         throw new Error(`Missing tooltip target. Add class 'tooltip-target' to element inside tooltip wrapper.`);
@@ -24,9 +26,14 @@ function Tooltip(wrapper) {
         this.tooltip = document.createElement('span');
         this.tooltip.classList.add('tooltip');
 
+        this.printTooltip = document.createElement('span');
+        this.printTooltip.classList.add('print-tooltip');
+
         let arrow = document.createElement('span');
         arrow.classList.add('tooltip-arrow');
         arrow.setAttribute('aria-hidden', true);
+
+        createdTooltips.push(this);
     }
 }
 
@@ -34,13 +41,10 @@ Tooltip.prototype.init = function () {
     let wrapper = this.wrapper;
     let tooltipTarget = this.target;
     let tooltipEl = this.tooltip;
+    let printTooltipEl = this.printTooltip;
+    this.updateTooltip = () => { this.updateTooltipPosition(); };
 
-    hideTooltip(wrapper, tooltipTarget, tooltipEl);
-
-    /* Ensure tooltip remains visible if window size is reduced */
-    window.addEventListener('resize', function () {
-        updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
-    });
+    this.hideTooltip();
 
     document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
     document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
@@ -51,6 +55,7 @@ Tooltip.prototype.init = function () {
 
     if (trueTooltip) {
         wrapper.append(tooltipEl);
+        wrapper.append(printTooltipEl);
         appendArrow(wrapper);
         if (tooltipTarget.classList.contains('tooltip-is-label')) {
             tooltipTarget.setAttribute('aria-labelledby', wrapper.dataset.tooltipId);
@@ -60,39 +65,37 @@ Tooltip.prototype.init = function () {
         }
         tooltipEl.setAttribute('role', 'tooltip');
         tooltipEl.innerText = wrapper.dataset.tooltip;
+        printTooltipEl.innerText = wrapper.dataset.tooltip;
 
-        tooltipTarget.addEventListener('focus', function () {
-            showTooltip(wrapper, tooltipTarget, tooltipEl);
-            updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+        tooltipTarget.addEventListener('focus', () => {
+            this.showTooltip();
         });
 
-        tooltipTarget.addEventListener('mouseover', function (e) {
+        tooltipTarget.addEventListener('mouseover', () => {
             /* The tooltip should not appear if the user just briefly moves the cursor 
                across the component. Use the 'js-hover' class as a flag to check, if
                the hover action is persistant. */
             tooltipTarget.classList.add('js-hover');
-            setTimeout(function () {
+            setTimeout(() => {
                 if (tooltipTarget.classList.contains('js-hover')) {
-                    showTooltip(wrapper, tooltipTarget, tooltipEl);
-                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                    this.showTooltip();
                 }
             }, 300);
         });
 
-        tooltipTarget.addEventListener('pointerdown', function (e) {
+        tooltipTarget.addEventListener('pointerdown', () => {
             /* The tooltip should appear after pressing down for a while on the element.
                Use the 'js-pressed' class as a flag to check, if the element stays pressed
                down. */
             tooltipTarget.classList.add('js-pressed');
-            setTimeout(function () {
+            setTimeout(() => {
                 if (tooltipTarget.classList.contains('js-pressed')) {
-                    showTooltip(wrapper, tooltipTarget, tooltipEl);
-                    updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                    this.showTooltip();
                 }
             }, 500);
         });
 
-        tooltipTarget.addEventListener('mouseleave', function (e) {
+        tooltipTarget.addEventListener('mouseleave', (e) => {
             tooltipTarget.classList.remove('js-hover');
             tooltipTarget.classList.remove('js-pressed');
             let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
@@ -103,13 +106,14 @@ Tooltip.prototype.init = function () {
             else if (wrapper.classList.contains('place-below')) {
                 onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY >= center;
             }
-            /* WCAG 1.4.13: It must be possible to hover on the tooltip */
+            /* WCAG 1.4.13: It must be possible to hover over the tooltip.
+               Only hide the tooltip when the cursor is not hovering over it. */
             if (!onTooltip) {
-                hideTooltip(wrapper, tooltipTarget, tooltipEl);
+                this.hideTooltip();
             }
         });
 
-        tooltipTarget.addEventListener('click', function (e) {
+        tooltipTarget.addEventListener('click', () => {
             tooltipTarget.classList.remove('js-pressed');
             if (document.activeElement !== tooltipTarget) {
                 /* The tooltip target was just clicked but is not the element with focus. That 
@@ -117,11 +121,11 @@ Tooltip.prototype.init = function () {
                    modal. However, this also means that tooltip targets in Safari won't show 
                    tooltip on click, since click events in Safari don't focus the target. */
                 tooltipTarget.classList.remove('js-hover');
-                hideTooltip(wrapper, tooltipTarget, tooltipEl);
+                this.hideTooltip();
             }
         });
 
-        tooltipEl.addEventListener('mouseleave', function (e) {
+        tooltipEl.addEventListener('mouseleave', (e) => {
             tooltipTarget.classList.remove('js-hover');
             tooltipTarget.classList.remove('js-pressed');
             let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
@@ -134,39 +138,79 @@ Tooltip.prototype.init = function () {
             }
             /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
             if (!onTarget) {
-                hideTooltip(wrapper, tooltipTarget, tooltipEl);
+                this.hideTooltip();
             }
         });
 
         /* If the mouse leaves while in the gap between the target and the tooltip,
            ensure that the tooltip closes */
-        wrapper.addEventListener('mouseleave', function (e) {
+        wrapper.addEventListener('mouseleave', () => {
             tooltipTarget.classList.remove('js-hover');
             tooltipTarget.classList.remove('js-pressed');
-            hideTooltip(wrapper, tooltipTarget, tooltipEl);
+            this.hideTooltip();
         });
     }
-    /* The "tooltip" is actually a "toggletip", i.e. a button which turns a tip on or off */
+    /* The "tooltip" is actually a "toggletip", i.e. a button which turns a message on or off */
     else {
-        let live_region = document.createElement('span');
-        live_region.setAttribute('aria-live', 'assertive');
-        live_region.setAttribute('aria-atomic', 'true');
-        wrapper.append(live_region);
-        live_region.append(tooltipEl);
+        let liveRegion = document.createElement('span');
+        liveRegion.setAttribute('aria-live', 'assertive');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        wrapper.append(liveRegion);
+        wrapper.append(printTooltipEl);
+        liveRegion.append(tooltipEl);
         appendArrow(wrapper);
         tooltipTarget.setAttribute('aria-expanded', 'false');
         tooltipTarget.setAttribute('aria-controls', wrapper.dataset.tooltipId);
-        tooltipTarget.addEventListener('click', function () {
+
+        tooltipTarget.addEventListener('click', () => {
             if (wrapper.classList.contains('hide-tooltip')) {
-                showTooltip(wrapper, tooltipTarget, tooltipEl);
-                updateTooltipPosition(wrapper, tooltipTarget, tooltipEl);
+                this.showTooltip();
             }
             else {
-                hideTooltip(wrapper, tooltipTarget, tooltipEl);
+                this.hideTooltip();
             }
         });
     }
 };
+
+Tooltip.prototype.hideTooltip = function() {
+    window.removeEventListener('resize', this.updateTooltip, false);
+    if (this.wrapper.dataset.forceVisible === 'true') {
+        document.removeEventListener('scroll', this.updateTooltip, false);
+    }
+    this.wrapper.classList.add('hide-tooltip');
+    if (this.target.hasAttribute('aria-expanded')) {
+        this.target.setAttribute('aria-expanded', 'false');
+        this.tooltip.innerText = '';
+        this.printTooltip.innerText = '';
+    }
+}
+
+Tooltip.prototype.showTooltip = function() {
+    window.addEventListener('resize', this.updateTooltip, false);
+    if (this.wrapper.dataset.forceVisible === 'true') {
+        document.addEventListener('scroll', this.updateTooltip, false);
+    }
+    this.wrapper.classList.remove('hide-tooltip');
+    if (this.target.hasAttribute('aria-expanded')) {
+        this.target.setAttribute('aria-expanded', 'true');
+        this.tooltip.innerText = this.wrapper.dataset.tooltip;
+        this.printTooltip.innerText = this.wrapper.dataset.tooltip;
+    }
+    this.updateTooltipPosition();
+}
+
+Tooltip.prototype.isShowing = function() {
+    return !(this.wrapper.classList.contains('hide-tooltip'));
+}
+
+Tooltip.prototype.updateTooltipPosition = function() {
+    /* Order is important - width must always be calculated first */
+    setWidth(this.wrapper, this.tooltip);
+    placeAboveOrBelow(this.wrapper, this.target, this.tooltip);
+    setLeft(this.wrapper, this.target, this.tooltip, this.printTooltip);
+    setTop(this.wrapper, this.target, this.tooltip);
+}
 
 function appendArrow(tooltipWrapper) {
     let arrow = document.createElement('span');
@@ -175,27 +219,37 @@ function appendArrow(tooltipWrapper) {
     tooltipWrapper.append(arrow);
 }
 
-function setWidth(tooltipEl) {
+function setWidth(tooltipWrapper, tooltipEl) {
     tooltipEl.style.width = 'max-content';
-    let WCAG_Reflow_criteria = 320; // Width of 320 px defined in WCAG 2.1, Criterion 1.4.10 "Reflow"
-    let accessibleMaxWidth = WCAG_Reflow_criteria - (MIN_MARGIN * 2);
+    let WCAGReflowCriterion = 320; // Width of 320 px defined in WCAG 2.1, Criterion 1.4.10 "Reflow"
+    let accessibleMaxWidth = WCAGReflowCriterion - (MIN_MARGIN * 2);
     if (parseInt(window.getComputedStyle(tooltipEl).width) > accessibleMaxWidth) {
         tooltipEl.style.width = accessibleMaxWidth + 'px';
     }
-    let screenMaxWidth = document.body.clientWidth - (MIN_MARGIN * 2);
+    /* Adjust tooltip according to the document body */
+    let screenMaxWidth = document.body.getBoundingClientRect().width - (MIN_MARGIN * 2);
     if (parseInt(window.getComputedStyle(tooltipEl).width) > screenMaxWidth) {
         tooltipEl.style.width = screenMaxWidth + 'px';
     }
 }
 
 function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
+    /* Calculate where to place tooltip */
     let spaceAbove = tooltipTarget.getBoundingClientRect().top;
+    if (document.body.getBoundingClientRect().top > 0) {
+        spaceAbove = tooltipTarget.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
+    }
     let spaceBelow = window.innerHeight - tooltipTarget.getBoundingClientRect().bottom;
+    if (document.body.getBoundingClientRect().bottom < window.innerHeight) {
+        spaceBelow = document.body.getBoundingClientRect().bottom - tooltipTarget.getBoundingClientRect().bottom;
+    }
     let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
-    let placement = 'above'; // Default placement
-    if (tooltipWrapper.dataset.position === 'below' && spaceBelow >= height || (height > spaceAbove && height <= spaceBelow)) {
+    let placement = 'above'; // Default
+    if (tooltipWrapper.dataset.position === 'below' && spaceBelow >= height || (height > spaceAbove)) {
         placement = 'below';
     }
+    
+    /* Place tooltip */
     if (placement === 'above') {
         tooltipWrapper.classList.add('place-above');
         tooltipWrapper.classList.remove('place-below');
@@ -206,63 +260,106 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     }
 }
 
-function setLeft(tooltipTarget, tooltipEl) {
-    /* Center the tooltip on the tooltip arrow */
-    let left = (parseInt(tooltipTarget.getBoundingClientRect().width) - parseInt(tooltipEl.getBoundingClientRect().width))/2;
-    tooltipEl.style.left = left + 'px';
-    /* If the tooltip exceeds the left side of the screen, adjust it */
-    if (tooltipEl.getBoundingClientRect().left < MIN_MARGIN) {
-        let adjustedLeft = 0 - parseInt(tooltipTarget.getBoundingClientRect().left) + MIN_MARGIN;
-        tooltipEl.style.left = adjustedLeft + 'px';
+function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
+    
+    let tooltipTargetRect = tooltipTarget.getBoundingClientRect();
+    let tooltipRect = tooltipEl.getBoundingClientRect();
+
+    /* Tooltip adjusted based on 'position: fixed' */
+    if (tooltipWrapper.dataset.forceVisible === 'true') {
+
+        /* Center the tooltip on the tooltip arrow */
+        let left = tooltipTargetRect.left + ((tooltipTargetRect.width - tooltipRect.width) / 2);
+        tooltipEl.style.left = Math.round(left) + 'px';
+
+        /* If the tooltip exceeds the left side of the screen, adjust it */
+        tooltipEl.classList.remove('open-right');
+        tooltipEl.classList.remove('open-left');
+        const ARROW_BORDER_DISTANCE = 11; // Distance in px from the arrow tip to the border of the tooltip when 'open-right' or 'open-left' is added
+        if (left < MIN_MARGIN) {
+            let adjustedLeft = tooltipTargetRect.left - ARROW_BORDER_DISTANCE + (tooltipTargetRect.width / 2);
+            tooltipEl.style.left = adjustedLeft + 'px';
+            tooltipEl.classList.add('open-right');
+            if (document.body.clientWidth - tooltipEl.getBoundingClientRect().right - MIN_MARGIN < 0) {
+                let newWidth = document.body.clientWidth - tooltipEl.getBoundingClientRect().left - MIN_MARGIN;
+                tooltipEl.style.width = newWidth + 'px';
+            }
+        }
+        /* If the tooltip exceeds the right side of the screen, adjust it */
+        else if (tooltipTargetRect.left + (tooltipTargetRect.width / 2) + (tooltipRect.width / 2) > (document.body.clientWidth - MIN_MARGIN)) {
+            let adjustedLeft = tooltipTargetRect.right + ARROW_BORDER_DISTANCE - tooltipRect.width - (tooltipTargetRect.width / 2);
+            tooltipEl.style.left = adjustedLeft + 'px';
+            tooltipEl.classList.add('open-left');
+            if (tooltipEl.getBoundingClientRect().left < MIN_MARGIN) {
+                let newWidth = tooltipEl.getBoundingClientRect().right - MIN_MARGIN;
+                tooltipEl.style.width = newWidth + 'px';
+                tooltipEl.style.left = MIN_MARGIN + 'px';
+            }
+        }
     }
-    /* If the tooltip exceeds the right side of the screen, adjust it */
-    else if (tooltipEl.getBoundingClientRect().right > (document.body.clientWidth - MIN_MARGIN)) {
-        let adjustedLeft = parseInt(window.getComputedStyle(tooltipEl).left) - (tooltipEl.getBoundingClientRect().right - document.body.clientWidth + MIN_MARGIN);
-        tooltipEl.style.left = adjustedLeft + 'px';
+
+    /* Tooltip adjusted based on 'position: absolute' */
+    else {
+
+        /* Center the tooltip on the tooltip arrow */
+        let left = (tooltipTargetRect.width - tooltipRect.width)/2;
+        tooltipEl.style.left = Math.round(left) + 'px';
+
+        /* If the tooltip exceeds the left side of the screen, adjust it */
+        if (tooltipEl.getBoundingClientRect().left < document.body.getBoundingClientRect().left + MIN_MARGIN) {
+            let pixelsExceeded = document.body.getBoundingClientRect().left + MIN_MARGIN - tooltipEl.getBoundingClientRect().left;
+            let adjustedLeft = pixelsExceeded + left;
+            tooltipEl.style.left = Math.round(adjustedLeft) + 'px';
+        }
+        /* If the tooltip exceeds the right side of the screen, adjust it */
+        else if (tooltipEl.getBoundingClientRect().right > document.body.getBoundingClientRect().right - MIN_MARGIN) {
+            let pixelsExceeded = document.body.getBoundingClientRect().right - MIN_MARGIN - tooltipEl.getBoundingClientRect().right;
+            let adjustedLeft = pixelsExceeded + left;
+            tooltipEl.style.left = Math.round(adjustedLeft) + 'px';
+        }
+    }
+
+    /* Reset print tooltip to default position */
+    printTooltipEl.style.left = '0';
+    printTooltipEl.style.right = 'auto';
+    printTooltipEl.classList.remove('right-align');
+
+    /* Adjust print tooltip */
+    let centerOfPage = document.body.clientWidth / 2;
+    let isTargetInRightSide = tooltipTargetRect.left > centerOfPage ||
+                              (tooltipTargetRect.right - centerOfPage > centerOfPage - tooltipTargetRect.left);
+    if (isTargetInRightSide) {
+        printTooltipEl.style.left = 'auto';
+        printTooltipEl.style.right = '0';
+        printTooltipEl.classList.add('right-align');
     }
 }
 
-function setBottomAndTop(tooltipWrapper, tooltipEl) {
-    let total = 0 - tooltipEl.getBoundingClientRect().height - ARROW_HEIGHT - ARROW_DISTANCE_TO_TARGET + 1;
+function setTop(tooltipWrapper, tooltipTarget, tooltipEl) {
+    let arrowAdjustment = 1; // Must be between 0 and ARROW_HEIGHT - determines how much of the arrow is visible
+    let spaceNeededForEntireTooltip = tooltipEl.getBoundingClientRect().height + ARROW_HEIGHT + ARROW_DISTANCE_TO_TARGET - arrowAdjustment;
+    let spaceNeededForTooltipArrow = ARROW_HEIGHT + ARROW_DISTANCE_TO_TARGET - arrowAdjustment;
+
+    let aboveTopValue = 0 - spaceNeededForEntireTooltip;
+    let belowTopValue = tooltipTarget.getBoundingClientRect().height + spaceNeededForTooltipArrow;
+
+    if (tooltipWrapper.dataset.forceVisible === 'true') {
+        aboveTopValue = tooltipTarget.getBoundingClientRect().top - spaceNeededForEntireTooltip;;
+        belowTopValue = tooltipTarget.getBoundingClientRect().bottom + spaceNeededForTooltipArrow;
+    }
+
     if (tooltipWrapper.classList.contains('place-above')) {
-        tooltipEl.style.top = total + 'px';
-        tooltipEl.style.bottom = 'auto';
+        tooltipEl.style.top = aboveTopValue + 'px';
     }
     else if (tooltipWrapper.classList.contains('place-below')) {
-        tooltipEl.style.bottom = total + 'px';
-        tooltipEl.style.top = 'auto';
-    }
-}
-
-function updateTooltipPosition(tooltipWrapper, tooltipTarget, tooltipEl) {
-    setWidth(tooltipEl);
-    placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl);
-    setLeft(tooltipTarget, tooltipEl);
-    setBottomAndTop(tooltipWrapper, tooltipEl);
-}
-
-function hideTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
-    tooltipWrapper.classList.add('hide-tooltip');
-    if (tooltipTarget.hasAttribute('aria-expanded')) {
-        tooltipTarget.setAttribute('aria-expanded', 'false');
-        tooltipEl.innerText = "";
-    }
-}
-
-function showTooltip(tooltipWrapper, tooltipTarget, tooltipEl) {
-    tooltipWrapper.classList.remove('hide-tooltip');
-    if (tooltipTarget.hasAttribute('aria-expanded')) {
-        tooltipTarget.setAttribute('aria-expanded', 'true');
-        tooltipEl.innerText = tooltipWrapper.dataset.tooltip;
+        tooltipEl.style.top = belowTopValue + 'px';
     }
 }
 
 function closeAllTooltips(event) {
-    let tooltips = document.getElementsByClassName('tooltip-wrapper');
-    for (let t = 0; t < tooltips.length; t++) {
-        let wrapper = tooltips[t];
-        let target = wrapper.getElementsByClassName('tooltip-target')[0];
-        let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+    for (let t = 0; t < createdTooltips.length; t++) {
+        let target = createdTooltips[t].target;
+        let tooltip = createdTooltips[t].tooltip;
         let clickedOnTarget = target.getBoundingClientRect().left <= event.clientX && 
                               event.clientX <= target.getBoundingClientRect().right && 
                               target.getBoundingClientRect().top <= event.clientY && 
@@ -273,32 +370,28 @@ function closeAllTooltips(event) {
                                tooltip.getBoundingClientRect().top <= event.clientY && 
                                event.clientY <= tooltip.getBoundingClientRect().bottom;
         if (!clickedOnTarget && target !== document.activeElement && !clickedOnTooltip) {
-            hideTooltip(wrapper, target, tooltip);
+            createdTooltips[t].hideTooltip();
         }
     }
 }
 
 function closeOnTab(e) {
     let key = e.key;
-    let tooltips = document.getElementsByClassName('tooltip-wrapper');
     if (key === 'Tab') {
-        for (let t = 0; t < tooltips.length; t++) {
-            let wrapper = tooltips[t];
-            let target = wrapper.getElementsByClassName('tooltip-target')[0];
-            let tooltip = wrapper.getElementsByClassName('tooltip')[0];
+        for (let t = 0; t < createdTooltips.length; t++) {
+            let target = createdTooltips[t].target;
             /* If the user is tabbing to an element, where a tooltip already is open,
                keep it open */
-            if (document.activeElement !== target) {
-                hideTooltip(wrapper, target, tooltip);
+            if (document.activeElement !== target && createdTooltips[t].isShowing()) {
+                createdTooltips[t].hideTooltip();
             }
         }
     }
     else if (key === 'Escape') {
-        for (let t = 0; t < tooltips.length; t++) {
-            let wrapper = tooltips[t];
-            let target = wrapper.getElementsByClassName('tooltip-target')[0];
-            let tooltip = wrapper.getElementsByClassName('tooltip')[0];
-            hideTooltip(wrapper, target, tooltip);
+        for (let t = 0; t < createdTooltips.length; t++) {
+            if (createdTooltips[t].isShowing()) {
+                createdTooltips[t].hideTooltip();
+            }
         }
     }
 }

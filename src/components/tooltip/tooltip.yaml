@@ -23,6 +23,10 @@ params:
   type: string
   required: true
   description: The id used for "tooltip buttons", or "not true tooltips".
+- name: forceVisible
+  type: boolean
+  required: false
+  description: Set to true to ensure tooltip is visible within elements with overflow.
 - name: target
   type: object
   required: true
