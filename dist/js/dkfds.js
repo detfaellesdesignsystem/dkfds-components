@@ -5397,7 +5397,9 @@ Tooltip.prototype.init = function () {
 };
 Tooltip.prototype.hideTooltip = function () {
   window.removeEventListener('resize', this.updateTooltip, false);
-  document.removeEventListener('scroll', this.updateTooltip, false);
+  if (this.wrapper.dataset.forceVisible === 'true') {
+    document.removeEventListener('scroll', this.updateTooltip, false);
+  }
   this.wrapper.classList.add('hide-tooltip');
   if (this.target.hasAttribute('aria-expanded')) {
     this.target.setAttribute('aria-expanded', 'false');
@@ -5407,7 +5409,9 @@ Tooltip.prototype.hideTooltip = function () {
 };
 Tooltip.prototype.showTooltip = function () {
   window.addEventListener('resize', this.updateTooltip, false);
-  document.addEventListener('scroll', this.updateTooltip, false);
+  if (this.wrapper.dataset.forceVisible === 'true') {
+    document.addEventListener('scroll', this.updateTooltip, false);
+  }
   this.wrapper.classList.remove('hide-tooltip');
   if (this.target.hasAttribute('aria-expanded')) {
     this.target.setAttribute('aria-expanded', 'true');
@@ -5439,31 +5443,21 @@ function setWidth(tooltipWrapper, tooltipEl) {
   if (parseInt(window.getComputedStyle(tooltipEl).width) > accessibleMaxWidth) {
     tooltipEl.style.width = accessibleMaxWidth + 'px';
   }
-  /* Adjust tooltip according to the document body unless another element is specified */
-  let adjustTo = document.body;
-  if (tooltipWrapper.dataset.adjustTo && document.getElementById(tooltipWrapper.dataset.adjustTo) && tooltipWrapper.dataset.forceVisible !== 'true') {
-    adjustTo = document.getElementById(tooltipWrapper.dataset.adjustTo);
-  }
-  let screenMaxWidth = adjustTo.getBoundingClientRect().width - MIN_MARGIN * 2;
+  /* Adjust tooltip according to the document body */
+  let screenMaxWidth = document.body.getBoundingClientRect().width - MIN_MARGIN * 2;
   if (parseInt(window.getComputedStyle(tooltipEl).width) > screenMaxWidth) {
     tooltipEl.style.width = screenMaxWidth + 'px';
   }
 }
 function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
-  /* Adjust tooltip according to the document body unless another element is specified */
-  let adjustTo = document.body;
-  if (tooltipWrapper.dataset.adjustTo && document.getElementById(tooltipWrapper.dataset.adjustTo) && tooltipWrapper.dataset.forceVisible !== 'true') {
-    adjustTo = document.getElementById(tooltipWrapper.dataset.adjustTo);
-  }
-
   /* Calculate where to place tooltip */
   let spaceAbove = tooltipTarget.getBoundingClientRect().top;
-  if (adjustTo.getBoundingClientRect().top > 0) {
-    spaceAbove = tooltipTarget.getBoundingClientRect().top - adjustTo.getBoundingClientRect().top;
+  if (document.body.getBoundingClientRect().top > 0) {
+    spaceAbove = tooltipTarget.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
   }
   let spaceBelow = window.innerHeight - tooltipTarget.getBoundingClientRect().bottom;
-  if (adjustTo.getBoundingClientRect().bottom < window.innerHeight) {
-    spaceBelow = adjustTo.getBoundingClientRect().bottom - tooltipTarget.getBoundingClientRect().bottom;
+  if (document.body.getBoundingClientRect().bottom < window.innerHeight) {
+    spaceBelow = document.body.getBoundingClientRect().bottom - tooltipTarget.getBoundingClientRect().bottom;
   }
   let height = tooltipEl.getBoundingClientRect().height + ARROW_DISTANCE_TO_TARGET + ARROW_HEIGHT;
   let placement = 'above'; // Default
@@ -5483,12 +5477,6 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
 function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
   let tooltipTargetRect = tooltipTarget.getBoundingClientRect();
   let tooltipRect = tooltipEl.getBoundingClientRect();
-
-  /* Adjust tooltip according to the document body unless another element is specified */
-  let adjustTo = document.body;
-  if (tooltipWrapper.dataset.adjustTo && document.getElementById(tooltipWrapper.dataset.adjustTo) && tooltipWrapper.dataset.forceVisible !== 'true') {
-    adjustTo = document.getElementById(tooltipWrapper.dataset.adjustTo);
-  }
 
   /* Tooltip adjusted based on 'position: fixed' */
   if (tooltipWrapper.dataset.forceVisible === 'true') {
@@ -5527,13 +5515,13 @@ function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
     tooltipEl.style.left = Math.round(left) + 'px';
 
     /* If the tooltip exceeds the left side of the screen, adjust it */
-    if (tooltipEl.getBoundingClientRect().left < adjustTo.getBoundingClientRect().left + MIN_MARGIN) {
-      let pixelsExceeded = adjustTo.getBoundingClientRect().left + MIN_MARGIN - tooltipEl.getBoundingClientRect().left;
+    if (tooltipEl.getBoundingClientRect().left < document.body.getBoundingClientRect().left + MIN_MARGIN) {
+      let pixelsExceeded = document.body.getBoundingClientRect().left + MIN_MARGIN - tooltipEl.getBoundingClientRect().left;
       let adjustedLeft = pixelsExceeded + left;
       tooltipEl.style.left = Math.round(adjustedLeft) + 'px';
     }
-    /* If the tooltip exceeds the right side of the screen, adjust it */else if (tooltipEl.getBoundingClientRect().right > adjustTo.getBoundingClientRect().right - MIN_MARGIN) {
-      let pixelsExceeded = adjustTo.getBoundingClientRect().right - MIN_MARGIN - tooltipEl.getBoundingClientRect().right;
+    /* If the tooltip exceeds the right side of the screen, adjust it */else if (tooltipEl.getBoundingClientRect().right > document.body.getBoundingClientRect().right - MIN_MARGIN) {
+      let pixelsExceeded = document.body.getBoundingClientRect().right - MIN_MARGIN - tooltipEl.getBoundingClientRect().right;
       let adjustedLeft = pixelsExceeded + left;
       tooltipEl.style.left = Math.round(adjustedLeft) + 'px';
     }
