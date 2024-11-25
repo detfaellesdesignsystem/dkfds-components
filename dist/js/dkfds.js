@@ -3607,11 +3607,11 @@ function CharacterLimit(containerElement) {
     message and sr-message will show/tell the correct amount of characters left. */
     if ('onpageshow' in window) {
       window.addEventListener('pageshow', () => {
-        this.updateMessages();
+        this.silentUpdateMessages();
       });
     } else {
-      window.addEventListener('DOMContentLoaded', () => {
-        this.updateMessages();
+      document.addEventListener('DOMContentLoaded', () => {
+        this.silentUpdateMessages();
       });
     }
   };
@@ -3662,7 +3662,13 @@ function updateScreenReaderMessage(formLimit) {
   let character_label = formLimit.container.getElementsByClassName('character-limit-sr-only')[0];
   character_label.innerHTML = count_message;
 }
+CharacterLimit.prototype.silentUpdateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').removeAttribute('aria-live');
+  updateVisibleMessage(this);
+  updateScreenReaderMessage(this);
+};
 CharacterLimit.prototype.updateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').setAttribute('aria-live', 'polite');
   updateVisibleMessage(this);
   updateScreenReaderMessage(this);
 };
