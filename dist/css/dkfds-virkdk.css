@@ -11885,11 +11885,11 @@ textarea.no-resize{
   z-index:11001;
 }
 .tooltip-wrapper[data-force-visible=true] .tooltip.open-left::before{
-  right:2px;
+  right:12px;
   left:auto;
 }
 .tooltip-wrapper[data-force-visible=true] .tooltip.open-right::before{
-  left:2px;
+  left:12px;
   right:auto;
 }
 .tooltip-wrapper[data-force-visible=true] .tooltip-arrow{

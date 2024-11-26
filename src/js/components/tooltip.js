@@ -182,6 +182,7 @@ Tooltip.prototype.hideTooltip = function() {
         for (let p = 0; p < this.wrapperParents.length; p++) {
             this.wrapperParents[p].removeEventListener('scroll', this.updateTooltip, false);
         }
+        this.wrapperParents = [];
     }
     this.wrapper.classList.add('hide-tooltip');
     if (this.target.hasAttribute('aria-expanded')) {
@@ -223,6 +224,11 @@ Tooltip.prototype.updateTooltipPosition = function() {
     placeAboveOrBelow(this.wrapper, this.target, this.tooltip);
     setLeft(this.wrapper, this.target, this.tooltip, this.printTooltip);
     setTop(this.wrapper, this.target, this.tooltip);
+
+    /* If tooltip wrapper is no longer visible, hide the tooltip */
+    if (!isVisibleOnScreen(this.wrapper, this.wrapperParents)) {
+        this.hideTooltip();
+    }
 }
 
 function appendArrow(tooltipWrapper) {
@@ -230,6 +236,37 @@ function appendArrow(tooltipWrapper) {
     arrow.classList.add('tooltip-arrow');
     arrow.setAttribute('aria-hidden', true);
     tooltipWrapper.append(arrow);
+}
+
+function isVisibleOnScreen(tooltipWrapper, tooltipWrapperParents) {
+    let wrapperRect = tooltipWrapper.getBoundingClientRect();
+    if (wrapperRect.bottom < 0 || 
+        wrapperRect.right < 0 || 
+        wrapperRect.left > document.documentElement.clientWidth || 
+        wrapperRect.top > document.documentElement.clientHeight) {
+        return false;
+    }
+    else if (tooltipWrapperParents.length > 0) {
+        let visibleInAllParents = true;
+        for (let p = 0; p < tooltipWrapperParents.length; p++) {
+            if (isScrollable(tooltipWrapperParents[p]) || hasOverflow(tooltipWrapperParents[p])) {
+                let parentRect = tooltipWrapperParents[p].getBoundingClientRect();
+                let wrapperIsVisible = 
+                    wrapperRect.bottom > parentRect.top && 
+                    wrapperRect.right > parentRect.left && 
+                    wrapperRect.left < parentRect.right && 
+                    wrapperRect.top < parentRect.bottom;
+                if (!wrapperIsVisible) {
+                    visibleInAllParents = false;
+                    break;
+                }
+            }
+        }
+        return visibleInAllParents;
+    }
+    else {
+        return true;
+    }
 }
 
 function isScrollable(element) {
@@ -314,7 +351,7 @@ function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
         /* If the tooltip exceeds the left side of the screen, adjust it */
         tooltipEl.classList.remove('open-right');
         tooltipEl.classList.remove('open-left');
-        const ARROW_BORDER_DISTANCE = 11; // Distance in px from the arrow tip to the border of the tooltip when 'open-right' or 'open-left' is added
+        const ARROW_BORDER_DISTANCE = 21; // Distance in px from the arrow tip to the border of the tooltip when 'open-right' or 'open-left' is added
         if (left < MIN_MARGIN) {
             let adjustedLeft = tooltipTargetRect.left - ARROW_BORDER_DISTANCE + (tooltipTargetRect.width / 2);
             tooltipEl.style.left = adjustedLeft + 'px';
