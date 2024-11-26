@@ -29,6 +29,8 @@ function Tooltip(wrapper) {
         this.printTooltip = document.createElement('span');
         this.printTooltip.classList.add('print-tooltip');
 
+        this.wrapperParents = [];
+
         let arrow = document.createElement('span');
         arrow.classList.add('tooltip-arrow');
         arrow.setAttribute('aria-hidden', true);
@@ -177,6 +179,9 @@ Tooltip.prototype.hideTooltip = function() {
     window.removeEventListener('resize', this.updateTooltip, false);
     if (this.wrapper.dataset.forceVisible === 'true') {
         document.removeEventListener('scroll', this.updateTooltip, false);
+        for (let p = 0; p < this.wrapperParents.length; p++) {
+            this.wrapperParents[p].removeEventListener('scroll', this.updateTooltip, false);
+        }
     }
     this.wrapper.classList.add('hide-tooltip');
     if (this.target.hasAttribute('aria-expanded')) {
@@ -190,6 +195,14 @@ Tooltip.prototype.showTooltip = function() {
     window.addEventListener('resize', this.updateTooltip, false);
     if (this.wrapper.dataset.forceVisible === 'true') {
         document.addEventListener('scroll', this.updateTooltip, false);
+        /* The tooltip might be inside a scrollable container. The position
+           must also be updated when scrolling in such a container. */
+        this.wrapperParents = getParents(this.wrapper);
+        for (let p = 0; p < this.wrapperParents.length; p++) {
+            if (isScrollable(this.wrapperParents[p]) || hasOverflow(this.wrapperParents[p])) {
+                this.wrapperParents[p].addEventListener('scroll', this.updateTooltip, false);
+            }
+        }
     }
     this.wrapper.classList.remove('hide-tooltip');
     if (this.target.hasAttribute('aria-expanded')) {
@@ -206,7 +219,7 @@ Tooltip.prototype.isShowing = function() {
 
 Tooltip.prototype.updateTooltipPosition = function() {
     /* Order is important - width must always be calculated first */
-    setWidth(this.wrapper, this.tooltip);
+    setWidth(this.tooltip);
     placeAboveOrBelow(this.wrapper, this.target, this.tooltip);
     setLeft(this.wrapper, this.target, this.tooltip, this.printTooltip);
     setTop(this.wrapper, this.target, this.tooltip);
@@ -219,7 +232,33 @@ function appendArrow(tooltipWrapper) {
     tooltipWrapper.append(arrow);
 }
 
-function setWidth(tooltipWrapper, tooltipEl) {
+function isScrollable(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function hasOverflow(element) {
+    /* Element has overflow and might need or add scrollbars, if either 
+       overflow-x or overflow-y has any other value than 'visible' */
+    const computedStyle = window.getComputedStyle(element);
+    return computedStyle.overflowX !== 'visible' || computedStyle.overflowY !== 'visible';
+}
+
+function getParents(tooltipWrapper) {
+    let currentElement = tooltipWrapper;
+    var parents = [];
+    while (currentElement && currentElement.parentNode) {
+        currentElement = currentElement.parentNode;
+        if (currentElement !== document.body && currentElement !== document) {
+            parents.unshift(currentElement);
+        }
+        else {
+            break;
+        }
+    }
+    return parents;
+}
+
+function setWidth(tooltipEl) {
     tooltipEl.style.width = 'max-content';
     let WCAGReflowCriterion = 320; // Width of 320 px defined in WCAG 2.1, Criterion 1.4.10 "Reflow"
     let accessibleMaxWidth = WCAGReflowCriterion - (MIN_MARGIN * 2);
