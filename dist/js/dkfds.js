@@ -4355,7 +4355,8 @@ let handleEscape = function (event) {
   let currentModal = new Modal(document.querySelector('.fds-modal[aria-hidden=false]'));
   if (key === 'Escape') {
     let possibleOverflowMenus = modalElement.querySelectorAll('.button-overflow-menu[aria-expanded="true"]');
-    if (possibleOverflowMenus.length === 0) {
+    let openTooltips = modalElement.querySelectorAll('.tooltip-wrapper:not(.hide-tooltip)');
+    if (possibleOverflowMenus.length === 0 && openTooltips.length === 0) {
       currentModal.hide();
     }
   }
@@ -5642,10 +5643,18 @@ function closeOnTab(e) {
       }
     }
   } else if (key === 'Escape') {
+    let tooltipClosed = false;
     for (let t = 0; t < createdTooltips.length; t++) {
       if (createdTooltips[t].isShowing()) {
         createdTooltips[t].hideTooltip();
+        tooltipClosed = true;
       }
+    }
+    /* If Escape closed a tooltip, ensure that this is the only thing happening 
+       on the key press. Otherwise, the Escape key might close a tooltip in a modal
+       AND the modal itself in a single key press. */
+    if (tooltipClosed) {
+      e.stopImmediatePropagation();
     }
   }
 }
