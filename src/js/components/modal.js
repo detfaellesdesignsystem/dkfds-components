@@ -130,7 +130,8 @@ let handleEscape = function (event) {
     let currentModal = new Modal(document.querySelector('.fds-modal[aria-hidden=false]'));
     if (key === 'Escape') {
         let possibleOverflowMenus = modalElement.querySelectorAll('.button-overflow-menu[aria-expanded="true"]');
-        if (possibleOverflowMenus.length === 0) {
+        let openTooltips = modalElement.querySelectorAll('.tooltip-wrapper:not(.hide-tooltip)');
+        if (possibleOverflowMenus.length === 0 && openTooltips.length === 0) {
             currentModal.hide();
         }
     }

@@ -69,12 +69,12 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
             }
 
             &.open-left::before {
-                right: func.units(1);
+                right: func.units(305);
                 left: auto;
             }
 
             &.open-right::before {
-                left: func.units(1);
+                left: func.units(305);
                 right: auto;
             }
         }
