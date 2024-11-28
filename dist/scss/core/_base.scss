@@ -99,6 +99,7 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
     -moz-appearance: textfield !important; // stylelint-disable-line property-no-vendor-prefix
+         appearance: textfield !important;
 }
 
 legend {
@@ -157,6 +158,13 @@ abbr[title] {
     text-decoration: underline dotted;
 }
 
+address,
+cite,
+dfn,
+var {
+  font-style: normal;
+}
+
 b,
 strong {
     font-weight: func.font-weight('bold');
@@ -194,6 +202,3 @@ sub {
 sup {
     top: -0.5em;
 }
-
-
-

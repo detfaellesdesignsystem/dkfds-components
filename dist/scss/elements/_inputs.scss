@@ -1,6 +1,7 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
+@use "../placeholder-selectors";
 
 .form-group{
   margin-top: func.units(5); // 4
@@ -27,33 +28,17 @@
   }
 }
 
-
-
 // -----------------
 //   Text input
 // -----------------
 
 .form-input{
-  @include mixins.appearance-none;
+  @extend %basic-form-element;
   border: func.border(vars.$input-border);
-  border-radius: func.border-radius('medium');
   color: func.color(vars.$input-text-color); // standardize on firefox
-  display: block;
   font-size: func.font-size(vars.$input-font-size);
   line-height: func.units(vars.$input-line-height, 'rem');
   padding: calc(8px - #{func.border-width(vars.$input-border)}) calc(16px - #{func.border-width(vars.$input-border)});
-  width: 100%;
-  max-width: 32rem;
-  margin-top: func.units(3);
-  text-align: left;
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    // IE10+ CSS styles go here
-    height: calc(#{func.units(vars.$input-line-height, 'rem')} + (8px * 2));
-  }
-
-  &:focus, &.focus{
-    @include mixins.focus;
-  }
 
   &::placeholder {
     color: func.color(vars.$input-placeholder-color);

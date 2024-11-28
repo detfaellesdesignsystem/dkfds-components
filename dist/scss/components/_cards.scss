@@ -31,10 +31,6 @@
 
   &-align-height {
     height: 100%;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -moz-flex;
     display: flex;
     flex-direction: column;
 

@@ -1,14 +1,15 @@
 @use "../functions" as func;
 
-fieldset ul{
+fieldset ul {
   margin-top: 0;
   margin-bottom: 0;
 }
-fieldset + fieldset{
+
+fieldset + fieldset {
   margin-top: func.units(5);
 }
 
-legend{
+legend {
   h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6{
     margin-bottom: 0;
   }
@@ -45,44 +46,17 @@ input, select, textarea {
   &.input-char-4 {
     max-width: calc(2px + 16px + 16px + 4ch);
     width: 100%;
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      max-width: 9ex;
-    }
-
-    &::-ms-clear {
-      display: none;
-    }
   }
   &.input-char-8 {
     max-width: calc(2px + 16px + 16px + 8ch);
     width: 100%;
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      max-width: 14ex;
-    }
-
-    &::-ms-clear {
-      display: none;
-    }
   }
   &.input-char-11 {
     max-width: calc(2px + 16px + 16px + 11ch);
     width: 100%;
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      max-width: 17ex;
-    }
-    &::-ms-clear {
-      display: none;
-    }
   }
   &.input-char-27 {
     max-width: calc(2px + 16px + 16px + 27ch);
     width: 100%;
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      max-width: 36ex;
-    }
-
-    &::-ms-clear {
-      display: none;
-    }
   }
 }

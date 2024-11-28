@@ -41,12 +41,6 @@ a {
     color: func.color("link-visited");
   }
 
-  .background-dark & {
-    &:not(.button) {
-      color: func.color('white');
-    }
-  }
-
   &.bold-link {
     font-weight: func.font-weight("semibold");
   }
@@ -218,14 +212,6 @@ h6, .h6{
   }
 }
 
-// Remove user agent styles
-cite,
-var,
-address,
-dfn {
-  font-style: normal;
-}
-
 // max-width of 66ch for text
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width):not(.overflow-list),
@@ -272,14 +258,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):no
 
 .color-text-black {
   color: func.color('black');
-}
-
-.background-dark {
-  background-color: func.color('black');
-
-  p, span{
-    color: func.color('white');
-  }
 }
 
 .field-group-title {

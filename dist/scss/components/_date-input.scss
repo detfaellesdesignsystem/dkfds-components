@@ -26,20 +26,10 @@
     .form-group-day,
     .form-group-month {
         width: calc(2px + #{func.units(4)} + #{func.units(4)} + 2ch);
-
-        @media all and (-ms-high-contrast: none),
-        (-ms-high-contrast: active) {
-            width: 6.4ex;
-        }
     }
 
     .form-group-year {
         width: calc(2px + #{func.units(4)} + #{func.units(4)} + 4ch);
-
-        @media all and (-ms-high-contrast: none),
-        (-ms-high-contrast: active) {
-            width: 9ex;
-        }
     }
 
     .button-open-calendar {
