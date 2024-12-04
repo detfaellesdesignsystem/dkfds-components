@@ -158,7 +158,7 @@ $-left-right-padding: func.units(305);
         width: 30rem;
         border: $-border-width solid func.color('gray-500');
         background-color: func.color('white');
-        margin-left: calc(0px - $navigation-row-link-padding-left-right - $-border-width);
+        margin-left: calc(0px - $navigation-row-link-padding-left-right);
         box-shadow: func.shadow('light');
 
         ul {

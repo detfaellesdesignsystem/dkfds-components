@@ -12,6 +12,7 @@ $-disabled-opacity: 0.25;
     padding: calc(func.units(3) - $-border-width) calc(func.units(4) - $-border-width); // top and bottom | left and right
     border-width: $-border-width;
     border-style: solid;
+    border-radius: func.border-radius('medium');
 }
 
 .button {
@@ -30,7 +31,6 @@ $-disabled-opacity: 0.25;
     margin: 0;
     overflow-wrap: break-word;
     max-width: 100%;
-    border-radius: func.border-radius('medium');
 
     // Properties overwritten by variant properties
     font-weight: inherit;
@@ -43,7 +43,7 @@ $-disabled-opacity: 0.25;
     background-color: func.color('transparent');
 
     // Default classes and states for all buttons
-    &:hover, &.button-hover, &.focus, &:focus, &:active, &.button-active {
+    &:hover, &.button-hover, &:active, &.button-active {
         text-decoration: underline;
     }
 
@@ -77,9 +77,7 @@ $-disabled-opacity: 0.25;
         background-color: func.color(vars.$button-primary-default-background-color);
     
         &:hover,
-        &.button-hover,
-        &.focus,
-        &:focus {
+        &.button-hover {
             border-color: func.color(vars.$button-primary-hover-border-color);
             color: func.color(vars.$button-primary-hover-color);
             background-color: func.color(vars.$button-primary-hover-background-color);
@@ -94,7 +92,7 @@ $-disabled-opacity: 0.25;
     
         &:disabled,
         &.disabled {
-            text-decoration: none !important;
+            text-decoration: none;
             border-color: func.color(vars.$button-primary-default-border-color);
             color: func.color(vars.$button-primary-default-color);
             background-color: func.color(vars.$button-primary-default-background-color);
@@ -110,9 +108,7 @@ $-disabled-opacity: 0.25;
         background-color: func.color(vars.$button-secondary-default-background-color);
     
         &:hover,
-        &.button-hover,
-        &.focus,
-        &:focus {
+        &.button-hover {
             border-color: func.color(vars.$button-secondary-hover-border-color);
             color: func.color(vars.$button-secondary-hover-color);
             background-color: func.color(vars.$button-secondary-hover-background-color);
@@ -127,7 +123,7 @@ $-disabled-opacity: 0.25;
     
         &:disabled,
         &.disabled {
-            text-decoration: none !important;
+            text-decoration: none;
             border-color: func.color(vars.$button-secondary-default-border-color);
             color: func.color(vars.$button-secondary-default-color);
             background-color: func.color(vars.$button-secondary-default-background-color);
@@ -137,16 +133,13 @@ $-disabled-opacity: 0.25;
     // Tertiary button
     &.button-tertiary {
         @extend %-button-variant;
-        text-decoration: underline;
         
         border-color: func.color(vars.$button-tertiary-default-border-color);
         color: func.color(vars.$button-tertiary-default-color);
         background-color: func.color(vars.$button-tertiary-default-background-color);
     
         &:hover,
-        &.button-hover,
-        &.focus,
-        &:focus {
+        &.button-hover {
             border-color: func.color(vars.$button-tertiary-hover-border-color);
             color: func.color(vars.$button-tertiary-hover-color);
             background-color: func.color(vars.$button-tertiary-hover-background-color);
@@ -161,7 +154,7 @@ $-disabled-opacity: 0.25;
     
         &:disabled,
         &.disabled {
-            text-decoration: underline !important;
+            text-decoration: underline;
             border-color: func.color(vars.$button-tertiary-default-border-color);
             color: func.color(vars.$button-tertiary-default-color);
             background-color: func.color(vars.$button-tertiary-default-background-color);
@@ -177,9 +170,7 @@ $-disabled-opacity: 0.25;
         background-color: func.color(vars.$button-warning-default-background-color);
     
         &:hover,
-        &.button-hover,
-        &.focus,
-        &:focus {
+        &.button-hover {
             border-color: func.color(vars.$button-warning-hover-border-color);
             color: func.color(vars.$button-warning-hover-color);
             background-color: func.color(vars.$button-warning-hover-background-color);
@@ -194,7 +185,7 @@ $-disabled-opacity: 0.25;
     
         &:disabled,
         &.disabled {
-            text-decoration: none !important;
+            text-decoration: none;
             border-color: func.color(vars.$button-warning-default-border-color);
             color: func.color(vars.$button-warning-default-color);
             background-color: func.color(vars.$button-warning-default-background-color);
@@ -203,12 +194,42 @@ $-disabled-opacity: 0.25;
 
     // Button with icon and no text
     &.button-icon-only {
-        @extend %-button-variant;
-        @extend .button-tertiary;
-        padding: func.units(3);
+        font-size: func.font-size('sm');
+        min-height: func.units(6);
+        padding: func.units(1);
+        border-width: $-border-width;
+        border-style: solid;
+        border-radius: func.border-radius('small');
+        text-decoration: none;
+
+        border-color: func.color(vars.$button-icon-default-border-color);
+        color: func.color(vars.$button-icon-default-color);
+        background-color: func.color(vars.$button-icon-default-background-color);
 
         .icon-svg {
             margin: 0;
+        }
+
+        &:hover,
+        &.button-hover {
+            border-color: func.color(vars.$button-icon-hover-border-color);
+            color: func.color(vars.$button-icon-hover-color);
+            background-color: func.color(vars.$button-icon-hover-background-color);
+        }
+
+        &:active,
+        &.button-active {
+            border-color: func.color(vars.$button-icon-active-border-color);
+            color: func.color(vars.$button-icon-active-color);
+            background-color: func.color(vars.$button-icon-active-background-color);
+        }
+    
+        &:disabled,
+        &.disabled {
+            text-decoration: none;
+            border-color: func.color(vars.$button-icon-default-border-color);
+            color: func.color(vars.$button-icon-default-color);
+            background-color: func.color(vars.$button-icon-default-background-color);
         }
     }
 
@@ -228,6 +249,8 @@ $-disabled-opacity: 0.25;
 .button-group {
     margin-top: -(func.units(3));
     margin-bottom: -(func.units(3));
+    display: flex;
+    flex-wrap: wrap;
 
     .button, .button-wrapper {
         margin-right: func.units(4);
