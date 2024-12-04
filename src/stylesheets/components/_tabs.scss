@@ -122,9 +122,8 @@ $-tabs-icon-size: 2.4rem;
             @include mixins.focus;
         }
 
-        :first-child {
+        & > :first-child {
             margin-top: 0;
-            padding-top: 0;
         }
     }
 }

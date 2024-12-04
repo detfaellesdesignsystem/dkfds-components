@@ -12087,9 +12087,8 @@ textarea.no-resize{
   outline:4px solid #747474;
   outline-offset:1px;
 }
-.tab-container .tab-panel :first-child{
+.tab-container .tab-panel > :first-child{
   margin-top:0;
-  padding-top:0;
 }
 
 .tag{
