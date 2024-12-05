@@ -25,20 +25,20 @@ p {
 a {
   color: func.color("link");
 
-  &:hover,
-  &.link-hover {
-    color: func.color("link-hover");
-  }
-
   &:focus,
   &.link-focus {
-    color: func.color("link-focus");
+    //color: func.color("link-focus");
     @include mixins.focus;
   }
 
-  &:visited,
+  &:visited,  
   &.link-visited {
     color: func.color("link-visited");
+  }
+
+  &:hover,
+  &.link-hover {
+    color: func.color("link-hover");
   }
 
   &.bold-link {

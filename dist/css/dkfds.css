@@ -1046,16 +1046,15 @@ p{
 a{
   color:#004D99;
 }
-a:hover, a.link-hover{
-  color:#000040;
-}
 a:focus, a.link-focus{
-  color:#004D99;
   outline:3px solid #454545;
   outline-offset:1px;
 }
 a:visited, a.link-visited{
   color:#800080;
+}
+a:hover, a.link-hover{
+  color:#000040;
 }
 a.bold-link{
   font-weight:600;
@@ -7640,38 +7639,26 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 }
 
 .back-link{
-  border-bottom:1px solid #8E8E8E;
   color:#1a1a1a;
-  text-decoration:none;
+  text-decoration:underline;
   display:inline-block;
-  position:relative;
   margin-bottom:24px;
+  padding:0;
   line-height:2.4rem;
-  padding-left:14px;
+  background-color:transparent;
+  cursor:pointer;
 }
 @media (min-width: 992px){
   .back-link{
     margin-bottom:32px;
   }
 }
-.back-link::before{
-  display:block;
-  width:0;
-  height:0;
-  border-style:solid;
-  border-color:transparent;
-  clip-path:polygon(0% 50%, 100% 100%, 100% 0%);
-  border-width:5px 6px 5px 0;
-  border-right-color:inherit;
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  margin:auto;
-}
-.back-link:active, .back-link:focus, .back-link:hover, .back-link:visited{
+.back-link:visited, .back-link:hover, .back-link:active{
   color:#1a1a1a;
+}
+.back-link:focus{
+  outline:3px solid #454545;
+  outline-offset:1px;
 }
 
 .button.back-to-top-button{
