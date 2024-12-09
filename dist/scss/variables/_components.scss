@@ -343,11 +343,12 @@ $table-pagination-page-background-color-active:     'gray-200' !default;
 
 // Side navigation
 $sidenav-border-active-color:                       'primary' !default;
-$sidenav-border-top-bottom-color:                   'gray-500' !default;
+$sidenav-border:                                    'high-contrast' !default;
 $sidenav-link-border-color:                         'gray-300' !default;
 $sidenav-sublink-border-color:                      'gray-200' !default;
 $sidenav-link-background-color:                     'white' !default;
 $sidenav-link-background-color-hover:               'gray-100' !default;
+$sidenav-link-background-color-active:              'gray-200' !default;
 $sidenav-link-current-background-color:             'gray-100' !default;
 $sidenav-link-font-color:                           'black' !default;
 $sidenav-link-default-extra-information-text-color: 'gray-500' !default;

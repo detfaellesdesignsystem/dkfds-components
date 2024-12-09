@@ -10,7 +10,7 @@ body.mobile-nav-active {
 %-mainmenu-mobile-item {
     padding-top: func.units(4);
     padding-bottom: func.units(4);
-    padding-right: func.units(5); // padding-left handled by mixin 'nav-link-leftdist'
+    padding-right: func.units(5);
     text-decoration: none;
     color: func.color(vars.$navigation-link-default-color);
     font-size: func.font-size('sm');
@@ -34,7 +34,7 @@ body.mobile-nav-active {
     }
 
     &:focus {
-        outline-offset: -4px;
+        outline-offset: -3px;
         position: relative;
         z-index: vars.$zindex-nav-focus;
     }
@@ -50,6 +50,8 @@ body.mobile-nav-active {
 // Main menu on mobile
 // --------------------------
 
+$-active-border-width: func.units(3);
+
 .navigation-menu-mobile ul.mainmenu {
     display: flex;
     flex-flow: column nowrap;
@@ -57,9 +59,72 @@ body.mobile-nav-active {
     border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     @include mixins.unstyled-list;
-    @include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include nav-mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
+    //@include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
 
+    & > li {
+        border-top: func.border('very-low-contrast');
+
+        &.active {
+            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+        }
+    }
+
+    /* Adjust distance to left border based on sublevel */
+    li {
+        .nav-link, .button-mobile-menu {
+            padding-left: 24px;
+        }
+
+        &.active .nav-link, 
+        &.active .button-mobile-menu {
+            padding-left: 24px;
+            margin-left: calc(0px - $-active-border-width);
+            width: calc(100% + $-active-border-width);
+
+            &:hover {
+                padding-left: 24px - $-active-border-width;
+                border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+            }
+        }
+        
+        li, &.active li {
+            .nav-link, .button-mobile-menu {
+                padding-left: 48px;
+                margin-left: calc(0px - $-active-border-width);
+
+                &:hover {
+                    padding-left: 48px - $-active-border-width;
+                    border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+                }
+            }
+            
+            li {
+                .nav-link, .button-mobile-menu {
+                    padding-left: 72px;
+                    margin-left: calc(0px - $-active-border-width);
+
+                    &:hover {
+                        padding-left: 72px - $-active-border-width;
+                        border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+                    }
+                }
+                
+                li {
+                    .nav-link, .button-mobile-menu {
+                        padding-left: 96px;
+                        margin-left: calc(0px - $-active-border-width);
+
+                        &:hover {
+                            padding-left: 96px - $-active-border-width;
+                            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Remaining list item styling */
     li {
         background-color: func.color(vars.$navigation-link-background-color);
 

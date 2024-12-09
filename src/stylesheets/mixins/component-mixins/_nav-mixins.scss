@@ -1,7 +1,11 @@
+@use "../../variables" as vars;
 @use "../../functions" as func;
 
 // Use inside nav ul element to set left and right padding
 @mixin nav-link-leftdist($li-border-width, $li-border-color, $firstlevel-dist, $secondlevel-dist, $thirdlevel-dist, $fourthlevel-dist) {
+    & > li {
+        border-left: func.border(vars.$sidenav-border);
+    }
     li {
         &.active {
             border-left: $li-border-width solid func.color($li-border-color);
@@ -68,21 +72,4 @@
     ul ul ul .button-mobile-menu {
         padding-left: $fourthlevel-dist;
     }
-}
-
-@mixin nav-link-border($bordercolor, $subbordercolor) {
-
-    & > li {
-        border-top: 1px solid func.color($bordercolor);
-
-        &:first-child {
-            border-top: 0;
-        }
-    }
-
-    ul li,
-    ul ul li {
-        border-top: 1px solid func.color($subbordercolor);
-    }
-
 }
