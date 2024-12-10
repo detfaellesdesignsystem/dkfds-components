@@ -178,7 +178,7 @@
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidemenu {
+    &:not(.overflow-menu--md-no-responsive, .overflow-menu--lg-no-responsive) .sidemenu {
         border-top: 0;
         border-bottom: 0;
     }

@@ -1,7 +1,6 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
-@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 body.mobile-nav-active {
     overflow: hidden; // Hide scrollbars when the mobile drawer is open
@@ -59,97 +58,14 @@ $-active-border-width: func.units(3);
     border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     @include mixins.unstyled-list;
-    //@include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
 
-    & > li {
-        border-top: func.border('very-low-contrast');
-
-        &.active {
-            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-        }
-    }
-
-    /* Adjust distance to left border based on sublevel */
-    li {
-        .nav-link, .button-mobile-menu {
-            padding-left: 24px;
-        }
-
-        &.active .nav-link, 
-        &.active .button-mobile-menu {
-            padding-left: 24px;
-            margin-left: calc(0px - $-active-border-width);
-            width: calc(100% + $-active-border-width);
-
-            &:hover {
-                padding-left: 24px - $-active-border-width;
-                border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-            }
-        }
-        
-        li, &.active li {
-            .nav-link, .button-mobile-menu {
-                padding-left: 48px;
-                margin-left: calc(0px - $-active-border-width);
-
-                &:hover {
-                    padding-left: 48px - $-active-border-width;
-                    border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-                }
-            }
-            
-            li {
-                .nav-link, .button-mobile-menu {
-                    padding-left: 72px;
-                    margin-left: calc(0px - $-active-border-width);
-
-                    &:hover {
-                        padding-left: 72px - $-active-border-width;
-                        border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-                    }
-                }
-                
-                li {
-                    .nav-link, .button-mobile-menu {
-                        padding-left: 96px;
-                        margin-left: calc(0px - $-active-border-width);
-
-                        &:hover {
-                            padding-left: 96px - $-active-border-width;
-                            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /* Remaining list item styling */
     li {
         background-color: func.color(vars.$navigation-link-background-color);
-
-        &.active > a:first-child,
-        &.active > .submenu > button:first-child {
-            font-weight: func.font-weight("bold");
-        }
 
         .helptext {
             color: func.color(vars.$navigation-link-helptext-color);
             display: inline;
             font-weight: func.font-weight("normal");
-        }
-
-        &.current {
-            background-color: func.color(vars.$navigation-link-current-background-color);
-
-            .helptext {
-                color: func.color(vars.$navigation-link-current-helptext-color);
-                font-weight: func.font-weight("normal");
-            }
-        }
-
-        .nav-link {
-            @extend %-mainmenu-mobile-item;
         }
 
         .submenu {
@@ -158,8 +74,7 @@ $-active-border-width: func.units(3);
             width: 100%;
     
             .button-mobile-menu {
-                @extend %-mainmenu-mobile-item;
-    
+
                 span {
                     background-position-x: right;
                     background-position-y: center;
@@ -191,6 +106,91 @@ $-active-border-width: func.units(3);
                     display: none;
                 }
             }
+        }
+
+        .nav-link, .button-mobile-menu {
+            @extend %-mainmenu-mobile-item;
+            padding-left: 24px;
+        }
+
+        li {
+            .nav-link, .button-mobile-menu {
+                padding-left: 48px;
+            }
+            
+            li {
+                .nav-link, .button-mobile-menu {
+                    padding-left: 72px;
+                }
+                
+                li {
+                    .nav-link, .button-mobile-menu {
+                        padding-left: 96px;
+                    }
+                }
+            }
+        }
+    }
+
+    & > li {
+        border-top: func.border('very-low-contrast');
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &.active {
+            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+        }
+    }
+
+    li.active {
+        .nav-link, .button-mobile-menu {
+            margin-left: calc(0px - $-active-border-width);
+            width: calc(100% + $-active-border-width);
+
+            &:hover {
+                padding-left: 24px - $-active-border-width;
+                border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+            }
+        }
+
+        li {
+            .nav-link, .button-mobile-menu {
+                &:hover {
+                    padding-left: 48px - $-active-border-width;
+                }
+            }
+    
+            li {
+                .nav-link, .button-mobile-menu {
+                    &:hover {
+                        padding-left: 72px - $-active-border-width;
+                    }
+                }
+    
+                li {
+                    .nav-link, .button-mobile-menu {
+                        &:hover {
+                            padding-left: 96px - $-active-border-width;
+                        }
+                    }
+                }
+            }
+        }
+
+        & > a:first-child,
+        & > .submenu > button:first-child {
+            font-weight: func.font-weight("bold");
+        }
+    }
+
+    li.current {
+        background-color: func.color(vars.$navigation-link-current-background-color);
+
+        .helptext {
+            color: func.color(vars.$navigation-link-current-helptext-color);
+            font-weight: func.font-weight("normal");
         }
     }
 }

@@ -92,6 +92,7 @@
     }
 
     .portal-info-mobile {
+        border-top: func.border(vars.$header-portal-mobile-border);
         padding: func.units(5);
         text-align: left;
         background-color: func.color(vars.$header-portal-background-color);
@@ -348,10 +349,6 @@
 
     .portal-info + .solution-info {
         border-top: func.border(vars.$header-border);
-    }
-
-    .portal-info-mobile {
-        border-top: func.border(vars.$header-portal-mobile-border);
     }
 
     .menu-top + .solution-info-mobile {

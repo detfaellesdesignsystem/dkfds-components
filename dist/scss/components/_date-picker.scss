@@ -98,14 +98,14 @@
   tr:last-child {
     td:first-child button.date-picker__calendar__date {
       border-bottom-left-radius: func.border-radius('medium');
-      &:after, &:before {
+      &::after, &::before {
         border-bottom-left-radius: func.border-radius('medium');
       }
     }
 
     td:last-child button.date-picker__calendar__date {
       border-bottom-right-radius: func.border-radius('medium');
-      &:after, &:before {
+      &::after, &::before {
         border-bottom-right-radius: func.border-radius('medium');
       }
     }

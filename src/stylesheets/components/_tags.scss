@@ -46,10 +46,6 @@
   &.focus,
   &:focus {
     background-color: func.color(vars.$tag-focus-background-color);
-  }
-
-  &.focus,
-  &:focus {
     @include mixins.focus;
     position: relative;
   }

@@ -1,7 +1,6 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
-@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 $navigation-row-link-padding-left-right: func.units(2);
 $navigation-desktop-border-bottom-thickness: func.units(2);
@@ -82,78 +81,70 @@ $-active-border-width: func.units(2);
     }
 
     li.more-option {
-        ul {
-            //@include nav-mixins.nav-link-leftdist(func.units(2), vars.$navigation-link-current-border-color, func.units(4), func.units(7), func.units(7), func.units(7));
+        ul li {
+            padding-left: 0;
+            padding-right: 0;
 
-            & > li {
-                padding-left: 0;
-                padding-right: 0;
+            .nav-link {
+                padding-left: 16px;
             }
 
-            /* Adjust distance to left border based on sublevel */
             li {
-
                 .nav-link {
-                    padding-left: 16px;
+                    padding-left: 40px;
                 }
 
                 li {
                     .nav-link {
-                        padding-left: 40px;
+                        padding-left: 64px;
                     }
 
                     li {
                         .nav-link {
-                            padding-left: 64px;
-                        }
-
-                        li {
-                            .nav-link {
-                                padding-left: 88px;
-                            }
+                            padding-left: 88px;
                         }
                     }
                 }
+            }
 
-                &.active .nav-link {
-                    padding-left: 16px;
-                    margin-left: calc(0px - $-active-border-width);
-                    width: calc(100% + $-active-border-width);
+            &.active .nav-link {
+                padding-left: 16px;
+                margin-left: calc(0px - $-active-border-width);
+                width: calc(100% + $-active-border-width);
+
+                &:hover {
+                    padding-left: 16px - $-active-border-width;
+                    border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+                }
+            }
+            
+            &.active li {
+                .nav-link {
+                    padding-left: 40px;
 
                     &:hover {
-                        padding-left: 16px - $-active-border-width;
+                        padding-left: 40px - $-active-border-width;
                         border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
                     }
                 }
                 
-                &.active li {
+                li {
                     .nav-link {
-                        padding-left: 40px;
+                        padding-left: 64px;
 
                         &:hover {
-                            padding-left: 40px - $-active-border-width;
+                            padding-left: 64px - $-active-border-width;
                             border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
                         }
                     }
                     
                     li {
                         .nav-link {
-                            padding-left: 64px;
+                            padding-left: 88px;
 
                             &:hover {
-                                padding-left: 64px - $-active-border-width;
+                                padding-left: 88px - $-active-border-width;
                                 border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-                            }
-                        }
-                        
-                        li {
-                            .nav-link {
-                                padding-left: 88px;
-
-                                &:hover {
-                                    padding-left: 88px - $-active-border-width;
-                                    border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
-                                }
                             }
                         }
                     }

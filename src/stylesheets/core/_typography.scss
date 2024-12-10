@@ -27,7 +27,6 @@ a {
 
   &:focus,
   &.link-focus {
-    //color: func.color("link-focus");
     @include mixins.focus;
   }
 

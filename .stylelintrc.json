@@ -5,6 +5,7 @@
         "at-rule-empty-line-before": null,
         "color-hex-length": "long",
         "declaration-empty-line-before": null,
+        "no-descending-specificity": null,
         "rule-empty-line-before": null,
         "selector-class-pattern": ["^([a-z])([a-z]|-|_|[0-9])*$", {"resolveNestedSelectors": true}],
         "selector-not-notation": "complex",

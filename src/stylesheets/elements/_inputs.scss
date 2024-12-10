@@ -48,12 +48,6 @@
   }
 }
 
-table {
-  .form-input {
-    margin-top:0;
-  }
-}
-
 .form-input-wrapper{
   display:flex;
   .form-input{
@@ -114,7 +108,7 @@ table {
 }
 
 table {
-  .form-select {
+  .form-input, .form-select {
     margin-top:0;
   }
 }

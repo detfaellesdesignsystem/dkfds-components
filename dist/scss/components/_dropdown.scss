@@ -25,10 +25,4 @@
         color: func.color(vars.$input-disabled-text-color);
         cursor: not-allowed;
     }
-
-    option {
-        @-moz-document url-prefix() {
-            font-family: Helvetica, Arial, sans-serif;
-        }
-    }
 }
