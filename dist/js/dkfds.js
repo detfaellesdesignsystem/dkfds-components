@@ -5266,8 +5266,6 @@ function Tooltip(wrapper) {
     this.target = wrapper.getElementsByClassName('tooltip-target')[0];
     this.tooltip = document.createElement('span');
     this.tooltip.classList.add('tooltip');
-    this.printTooltip = document.createElement('span');
-    this.printTooltip.classList.add('print-tooltip');
     this.wrapperParents = [];
     let arrow = document.createElement('span');
     arrow.classList.add('tooltip-arrow');
@@ -5279,20 +5277,19 @@ Tooltip.prototype.init = function () {
   let wrapper = this.wrapper;
   let tooltipTarget = this.target;
   let tooltipEl = this.tooltip;
-  let printTooltipEl = this.printTooltip;
   this.updateTooltip = () => {
     this.updateTooltipPosition();
   };
   this.hideTooltip();
   document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
   document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
+  window.addEventListener('beforeprint', closeAllTooltips);
 
   /* A "true" tooltip describes the element which triggered it and is triggered on hover */
   let trueTooltip = wrapper.dataset.trigger === 'hover';
   tooltipEl.id = wrapper.dataset.tooltipId;
   if (trueTooltip) {
     wrapper.append(tooltipEl);
-    wrapper.append(printTooltipEl);
     appendArrow(wrapper);
     if (tooltipTarget.classList.contains('tooltip-is-label')) {
       tooltipTarget.setAttribute('aria-labelledby', wrapper.dataset.tooltipId);
@@ -5301,7 +5298,6 @@ Tooltip.prototype.init = function () {
     }
     tooltipEl.setAttribute('role', 'tooltip');
     tooltipEl.innerText = wrapper.dataset.tooltip;
-    printTooltipEl.innerText = wrapper.dataset.tooltip;
     tooltipTarget.addEventListener('focus', () => {
       this.showTooltip();
     });
@@ -5383,7 +5379,6 @@ Tooltip.prototype.init = function () {
     liveRegion.setAttribute('aria-live', 'assertive');
     liveRegion.setAttribute('aria-atomic', 'true');
     wrapper.append(liveRegion);
-    wrapper.append(printTooltipEl);
     liveRegion.append(tooltipEl);
     appendArrow(wrapper);
     tooltipTarget.setAttribute('aria-expanded', 'false');
@@ -5410,7 +5405,6 @@ Tooltip.prototype.hideTooltip = function () {
   if (this.target.hasAttribute('aria-expanded')) {
     this.target.setAttribute('aria-expanded', 'false');
     this.tooltip.innerText = '';
-    this.printTooltip.innerText = '';
   }
 };
 Tooltip.prototype.showTooltip = function () {
@@ -5430,7 +5424,6 @@ Tooltip.prototype.showTooltip = function () {
   if (this.target.hasAttribute('aria-expanded')) {
     this.target.setAttribute('aria-expanded', 'true');
     this.tooltip.innerText = this.wrapper.dataset.tooltip;
-    this.printTooltip.innerText = this.wrapper.dataset.tooltip;
   }
   this.updateTooltipPosition();
 };
@@ -5441,7 +5434,7 @@ Tooltip.prototype.updateTooltipPosition = function () {
   /* Order is important - width must always be calculated first */
   setWidth(this.tooltip);
   placeAboveOrBelow(this.wrapper, this.target, this.tooltip);
-  setLeft(this.wrapper, this.target, this.tooltip, this.printTooltip);
+  setLeft(this.wrapper, this.target, this.tooltip);
   setTop(this.wrapper, this.target, this.tooltip);
 
   /* If tooltip wrapper is no longer visible, hide the tooltip */
@@ -5536,7 +5529,7 @@ function placeAboveOrBelow(tooltipWrapper, tooltipTarget, tooltipEl) {
     tooltipWrapper.classList.remove('place-above');
   }
 }
-function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
+function setLeft(tooltipWrapper, tooltipTarget, tooltipEl) {
   let tooltipTargetRect = tooltipTarget.getBoundingClientRect();
   let tooltipRect = tooltipEl.getBoundingClientRect();
 
@@ -5588,20 +5581,6 @@ function setLeft(tooltipWrapper, tooltipTarget, tooltipEl, printTooltipEl) {
       tooltipEl.style.left = Math.round(adjustedLeft) + 'px';
     }
   }
-
-  /* Reset print tooltip to default position */
-  printTooltipEl.style.left = '0';
-  printTooltipEl.style.right = 'auto';
-  printTooltipEl.classList.remove('right-align');
-
-  /* Adjust print tooltip */
-  let centerOfPage = document.body.clientWidth / 2;
-  let isTargetInRightSide = tooltipTargetRect.left > centerOfPage || tooltipTargetRect.right - centerOfPage > centerOfPage - tooltipTargetRect.left;
-  if (isTargetInRightSide) {
-    printTooltipEl.style.left = 'auto';
-    printTooltipEl.style.right = '0';
-    printTooltipEl.classList.add('right-align');
-  }
 }
 function setTop(tooltipWrapper, tooltipTarget, tooltipEl) {
   let arrowAdjustment = 1; // Must be between 0 and ARROW_HEIGHT - determines how much of the arrow is visible
@@ -5627,6 +5606,8 @@ function closeAllTooltips(event) {
     let clickedOnTarget = target.getBoundingClientRect().left <= event.clientX && event.clientX <= target.getBoundingClientRect().right && target.getBoundingClientRect().top <= event.clientY && event.clientY <= target.getBoundingClientRect().bottom;
     let clickedOnTooltip = window.getComputedStyle(tooltip).display !== 'none' && tooltip.getBoundingClientRect().left <= event.clientX && event.clientX <= tooltip.getBoundingClientRect().right && tooltip.getBoundingClientRect().top <= event.clientY && event.clientY <= tooltip.getBoundingClientRect().bottom;
     if (!clickedOnTarget && target !== document.activeElement && !clickedOnTooltip) {
+      createdTooltips[t].hideTooltip();
+    } else if (event.type === 'beforeprint') {
       createdTooltips[t].hideTooltip();
     }
   }
