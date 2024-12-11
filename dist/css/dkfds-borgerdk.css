@@ -11709,7 +11709,7 @@ textarea.no-resize{
 .tooltip-wrapper.place-below::before{
   bottom:-12px;
 }
-.tooltip-wrapper .tooltip, .tooltip-wrapper .print-tooltip{
+.tooltip-wrapper .tooltip{
   line-height:1.5;
   font-size:1.4rem;
   font-weight:400;
@@ -11722,6 +11722,7 @@ textarea.no-resize{
   display:block;
   overflow-wrap:break-word;
   position:absolute;
+  bottom:auto;
 }
 .tooltip-wrapper[data-force-visible=true] .tooltip{
   position:fixed;
@@ -11757,30 +11758,6 @@ textarea.no-resize{
   bottom:auto;
   border-bottom:8px solid #454545;
 }
-.tooltip-wrapper .tooltip{
-  bottom:auto;
-}
-.tooltip-wrapper .print-tooltip{
-  display:none;
-  left:0;
-  color:#1a1a1a;
-  background-color:white;
-  border:1px solid #1a1a1a;
-  width:180px;
-}
-.tooltip-wrapper .print-tooltip::before{
-  content:"";
-  border-right:9px solid transparent;
-  border-left:9px solid transparent;
-  display:block;
-  position:absolute;
-  left:0;
-  z-index:11001;
-}
-.tooltip-wrapper .print-tooltip.right-align::before{
-  left:auto;
-  right:0;
-}
 .tooltip-wrapper .tooltip-arrow{
   pointer-events:none;
 }
@@ -11794,31 +11771,15 @@ textarea.no-resize{
   top:-12px;
   z-index:11001;
 }
-.tooltip-wrapper.place-above .print-tooltip{
-  top:auto;
-  bottom:calc(100% + 8px + 4px);
-}
-.tooltip-wrapper.place-above .print-tooltip::before{
-  bottom:-8px;
-  border-top:8px solid #1a1a1a;
-}
 .tooltip-wrapper.place-above .tooltip-arrow::before{
   border-top:8px solid #454545;
   top:-12px;
-}
-.tooltip-wrapper.place-below .print-tooltip{
-  top:calc(100% + 8px + 4px);
-  bottom:auto;
-}
-.tooltip-wrapper.place-below .print-tooltip::before{
-  top:-8px;
-  border-bottom:8px solid #1a1a1a;
 }
 .tooltip-wrapper.place-below .tooltip-arrow::before{
   border-bottom:8px solid #454545;
   bottom:-12px;
 }
-.tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow, .tooltip-wrapper.hide-tooltip .print-tooltip{
+.tooltip-wrapper.hide-tooltip .tooltip, .tooltip-wrapper.hide-tooltip .tooltip-arrow{
   display:none;
 }
 .tooltip-wrapper.hide-tooltip::before{
@@ -11939,9 +11900,8 @@ textarea.no-resize{
   outline:3px solid #454545;
   outline-offset:1px;
 }
-.tab-container .tab-panel :first-child{
+.tab-container .tab-panel > :first-child{
   margin-top:0;
-  padding-top:0;
 }
 
 .tag{
@@ -12233,8 +12193,5 @@ textarea.no-resize{
   }
   .tooltip-wrapper .tooltip, .tooltip-wrapper .tooltip-arrow{
     display:none;
-  }
-  .tooltip-wrapper .print-tooltip{
-    display:block;
   }
 }

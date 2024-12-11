@@ -38,7 +38,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
-    .tooltip, .print-tooltip {
+    .tooltip {
         line-height: 1.5;
         font-size: func.font-size('xs');
         font-weight: func.font-weight('normal');
@@ -51,6 +51,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         display: block;
         overflow-wrap: break-word;
         position: absolute;
+        bottom: auto;
     }
 
     &[data-force-visible="true"] {
@@ -100,36 +101,6 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         }
     }
 
-    .tooltip {
-        bottom: auto;
-    }
-
-    .print-tooltip {
-        display: none;
-        left: 0;
-        color: func.color('black');
-        background-color: func.color('white');
-        border: 1px solid func.color('black');
-        width: 180px;
-
-        &::before {
-            content: '';
-            border-right: calc($-arrow-height + 1px) solid transparent;
-            border-left: calc($-arrow-height + 1px) solid transparent;
-            display: block;
-            position: absolute;
-            left: 0;
-            z-index: vars.$zindex-tooltip + 1;
-        }
-
-        &.right-align {
-            &::before {
-                left: auto;
-                right: 0;
-            }
-        }
-    }
-
     .tooltip-arrow {
         pointer-events: none;
 
@@ -145,46 +116,18 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         }
     }
 
-    &.place-above {
-        .print-tooltip {
-            top: auto;
-            bottom: calc(100% + $-arrow-height + $-arrow-dist-to-target);
-
-            &::before {
-                bottom: calc(0px - $-arrow-height);
-                border-top: $-arrow-height solid func.color('black');
-            }
-        }
-
-        .tooltip-arrow {
-            &::before {
-                border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
-                top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-            }
-        }
+    &.place-above .tooltip-arrow::before {
+        border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+        top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
-    &.place-below {
-        .print-tooltip {
-            top: calc(100% + $-arrow-height + $-arrow-dist-to-target);
-            bottom: auto;
-
-            &::before {
-                top: calc(0px - $-arrow-height);
-                border-bottom: $-arrow-height solid func.color('black');
-            }
-        }
-
-        .tooltip-arrow {
-            &::before {
-                border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
-                bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-            }
-        }
+    &.place-below .tooltip-arrow::before {
+        border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+        bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
     &.hide-tooltip {
-        .tooltip, .tooltip-arrow, .print-tooltip {
+        .tooltip, .tooltip-arrow {
             display: none;
         }
 
