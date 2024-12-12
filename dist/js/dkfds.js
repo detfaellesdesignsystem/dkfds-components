@@ -5283,6 +5283,7 @@ Tooltip.prototype.init = function () {
   this.hideTooltip();
   document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
   document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
+  document.getElementsByTagName('body')[0].addEventListener('touchstart', closeAllTooltips);
   window.addEventListener('beforeprint', closeAllTooltips);
 
   /* A "true" tooltip describes the element which triggered it and is triggered on hover */
