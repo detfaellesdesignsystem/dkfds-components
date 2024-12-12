@@ -10489,11 +10489,7 @@ a.skipnav:focus{
 .card p:first-child{
   margin-top:0;
 }
-.card h1, .card .h1,
-.card h2, .card .h2,
-.card h3, .card .h3,
-.card h4, .card .h4,
-.card h5, .card .h5{
+.card h1, .card .h1, .card h2, .card .h2, .card h3, .card .h3, .card h4, .card .h4, .card h5, .card .h5{
   margin:0;
 }
 .card > .list-group:first-child .list-group-item:first-child{
@@ -10716,6 +10712,61 @@ a.skipnav:focus{
 
 .card-center{
   text-align:center;
+}
+
+.new-card{
+  border:1px solid #DCDCDC;
+  padding:24px;
+  border-radius:8px;
+  margin-bottom:32px;
+  display:flex;
+  flex-direction:column;
+  height:calc(100% - 32px);
+}
+.new-card .subheading{
+  margin-bottom:4px;
+  display:block;
+}
+.new-card h1, .new-card .h1, .new-card h2, .new-card .h2, .new-card h3, .new-card .h3, .new-card h4, .new-card .h4, .new-card h5, .new-card .h5, .new-card h6, .new-card .h6{
+  font-size:2.4rem;
+  margin:0;
+}
+.new-card p{
+  margin-bottom:0;
+}
+.new-card > :last-child{
+  margin-bottom:0;
+}
+.new-card .card-actions{
+  margin-top:auto;
+}
+.new-card .card-actions .button-group{
+  margin-top:16px;
+}
+.new-card .card-actions .button-group .button, .new-card .card-actions .button-group .button-wrapper{
+  margin-bottom:0;
+  margin-top:16px;
+}
+.new-card .card-actions > :last-child{
+  margin-bottom:0;
+}
+
+a.new-card{
+  text-decoration:none;
+  color:#1a1a1a;
+}
+a.new-card h1, a.new-card .h1, a.new-card h2, a.new-card .h2, a.new-card h3, a.new-card .h3, a.new-card h4, a.new-card .h4, a.new-card h5, a.new-card .h5, a.new-card h6, a.new-card .h6{
+  text-decoration:underline;
+}
+a.new-card .card-actions{
+  display:flex;
+}
+a.new-card .card-actions > .icon-svg{
+  margin-left:auto;
+  margin-top:16px;
+}
+a.new-card:link, a.new-card:visited, a.new-card:hover{
+  color:#1a1a1a;
 }
 
 .overflow-menu + h1{
