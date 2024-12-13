@@ -23,13 +23,17 @@ body.mobile-nav-active {
     text-align: left;
     border: 0;
 
-    &:hover {
+    &:hover, &:active {
         background-color: func.color(vars.$navigation-link-background-color-hover);
 
         .helptext {
             color: func.color(vars.$navigation-link-current-helptext-color);
             font-weight: func.font-weight("normal");
         }
+    }
+
+    &:active {
+        background-color: func.color(vars.$navigation-link-background-color-active);
     }
 
     &:focus {

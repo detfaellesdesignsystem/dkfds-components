@@ -58,15 +58,24 @@
 
 {% macro newCard(params) %}
 {%- if params.navigationCard -%}
-<a class="new-card" href="#">
+<a class="new-card{% if params.classes %} {{params.classes}}{% endif %}" href="#">
 {%- else -%}
-<div class="new-card">
+<div class="new-card{% if params.classes %} {{params.classes}}{% endif %}">
 {%- endif -%}
-    {%- if params.subheading -%}
-    <span class="subheading">{{ params.subheading }}</span>
+    {%- if params.image -%}
+    <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
     {%- endif -%}
-    <h2>Titel</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="new-card-content">
+        {%- if params.subheading -%}
+        <span class="subheading">{{ params.subheading }}</span>
+        {%- endif -%}
+        {%- if params.heading -%}
+        <{{ params.headingLevel | default('h2') }}>{{ params.heading }}</{{ params.headingLevel | default('h2') }}>
+        {%- endif -%}
+        {%- if params.content -%}
+        {{ params.content | safe }}
+        {%- endif -%}
+    </div>
     {%- if params.links or params.buttons or params.navigationCard -%}
     <div class="card-actions">
         {%- if params.links and not params.navigationCard -%}
