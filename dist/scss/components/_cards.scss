@@ -263,11 +263,17 @@
     @include mixins.media-breakpoint-up(sm) {
         flex-direction: row;
 
-        img {
+        .new-card-image {
             width: 33%;
             border-top-left-radius: func.border-radius('medium');
             border-bottom-left-radius: func.border-radius('medium');
             border-top-right-radius: func.border-radius('none');
+    
+            img {
+                border-top-left-radius: func.border-radius('medium');
+                border-bottom-left-radius: func.border-radius('medium');
+                border-top-right-radius: func.border-radius('none');
+            }
         }
     }
 }
@@ -281,10 +287,19 @@
     flex-direction: column;
     min-width: 100%;
 
-    img {
+    .new-card-image {
         width: 100%;
+        display: flex;
         border-top-left-radius: func.border-radius('medium');
         border-top-right-radius: func.border-radius('medium');
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            background-color: func.color('gray-200');
+            border-top-left-radius: func.border-radius('medium');
+            border-top-right-radius: func.border-radius('medium');
+        }
     }
 
     .new-card-content {

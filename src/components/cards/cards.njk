@@ -58,12 +58,21 @@
 
 {% macro newCard(params) %}
 {%- if params.navigationCard -%}
-<a class="new-card{% if params.classes %} {{params.classes}}{% endif %}" href="#">
+<a class="new-card{% if params.classes %} {{params.classes}}{% endif %}" href="#"{% if params.id %} id="{{params.id}}"{% endif %}>
 {%- else -%}
-<div class="new-card{% if params.classes %} {{params.classes}}{% endif %}">
+<div class="new-card{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{params.id}}"{% endif %}>
 {%- endif -%}
     {%- if params.image -%}
-    <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
+    <div class="new-card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
+        {%- if params.image.src -%}
+        <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
+        {%- elseif params.image.placeholder -%}
+        <div style="width: 100%; align-self: center;">
+            <div class="spinner" style="margin: 24px auto; font-size: 4px;"></div>
+            <div class="spinner-status">Billede indlæses...</div>
+        </div>
+        {%- endif -%}
+    </div>
     {%- endif -%}
     <div class="new-card-content">
         {%- if params.subheading -%}

@@ -10721,8 +10721,13 @@ a.skipnav:focus{
   a.new-card.long, .new-card.long{
     flex-direction:row;
   }
-  .new-card.long img{
+  .new-card.long .new-card-image{
     width:33%;
+    border-top-left-radius:8px;
+    border-bottom-left-radius:8px;
+    border-top-right-radius:0;
+  }
+  .new-card.long .new-card-image img{
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
     border-top-right-radius:0;
@@ -10738,8 +10743,16 @@ a.skipnav:focus{
   flex-direction:column;
   min-width:100%;
 }
-.new-card img{
+.new-card .new-card-image{
   width:100%;
+  display:flex;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+}
+.new-card .new-card-image img{
+  width:100%;
+  max-width:100%;
+  background-color:#DCDCDC;
   border-top-left-radius:8px;
   border-top-right-radius:8px;
 }
