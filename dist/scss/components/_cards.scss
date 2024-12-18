@@ -264,17 +264,40 @@
         flex-direction: row;
 
         .new-card-image {
-            width: 33%;
+            min-width: 33%;
+            max-width: 33%;
             border-top-left-radius: func.border-radius('medium');
             border-bottom-left-radius: func.border-radius('medium');
             border-top-right-radius: func.border-radius('none');
+            align-items: center;
     
             img {
                 border-top-left-radius: func.border-radius('medium');
                 border-bottom-left-radius: func.border-radius('medium');
                 border-top-right-radius: func.border-radius('none');
+                height: fit-content;
             }
         }
+    }
+
+    .new-card-content {
+
+        .card-actions {
+            padding: func.units(5) 0 0 0; // top | right | bottom | left
+        }
+    }
+}
+
+.new-card-wrapper {
+    height: 100%;
+}
+
+.card-row {
+    max-width: none !important;
+    list-style-type: none;
+
+    li::before {
+        content: "" !important;
     }
 }
 
@@ -330,13 +353,12 @@
     }
 
     .card-actions {
-        margin-top: auto;
         padding-left: func.units(5);
         padding-right: func.units(5);
         padding-bottom: func.units(5);
 
         .nobullet-list {
-            margin-top: 0;
+            margin: 0;
 
             li:first-child {
                 margin-top: 0;
@@ -344,14 +366,13 @@
         }
 
         .button-group {
-            .button, .button-wrapper {
-                margin-bottom: func.units(0);
-                margin-top: func.units(4);
-            }
-        }    
+            margin-top: 0;
+            margin-bottom: calc(0px - func.units(4));
 
-        & > :last-child {
-            margin-bottom: 0;
+            .button, .button-wrapper {
+                margin-top: func.units(0);
+                margin-bottom: func.units(4);
+            }
         }
     }
 
@@ -370,6 +391,7 @@ a.new-card {
 
     .card-actions {
         display: flex;
+        margin-top: auto;
 
         & > .icon-svg {
             margin-left: auto;
@@ -400,6 +422,14 @@ a.new-card {
         @include mixins.media-breakpoint-up(sm) {
             .card-actions {
                 margin-left: auto;
+            }
+
+            .new-card-content {
+                max-width: calc(100% - func.units(5) - func.units(5, 'rem') - func.units(5));
+            }
+    
+            .new-card-image + .new-card-content {
+                max-width: calc(67% - func.units(5) - func.units(5, 'rem') - func.units(5));
             }
         }
     }

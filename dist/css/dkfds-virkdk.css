@@ -10722,16 +10722,34 @@ a.skipnav:focus{
     flex-direction:row;
   }
   .new-card.long .new-card-image{
-    width:33%;
+    min-width:33%;
+    max-width:33%;
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
     border-top-right-radius:0;
+    align-items:center;
   }
   .new-card.long .new-card-image img{
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
     border-top-right-radius:0;
+    height:fit-content;
   }
+}
+.new-card.long .new-card-content .card-actions{
+  padding:24px 0 0 0;
+}
+
+.new-card-wrapper{
+  height:100%;
+}
+
+.card-row{
+  max-width:none !important;
+  list-style-type:none;
+}
+.card-row li::before{
+  content:"" !important;
 }
 
 .new-card{
@@ -10779,23 +10797,23 @@ a.skipnav:focus{
   margin-bottom:0;
 }
 .new-card .card-actions{
-  margin-top:auto;
   padding-left:24px;
   padding-right:24px;
   padding-bottom:24px;
 }
 .new-card .card-actions .nobullet-list{
-  margin-top:0;
+  margin:0;
 }
 .new-card .card-actions .nobullet-list li:first-child{
   margin-top:0;
 }
-.new-card .card-actions .button-group .button, .new-card .card-actions .button-group .button-wrapper{
-  margin-bottom:0;
-  margin-top:16px;
+.new-card .card-actions .button-group{
+  margin-top:0;
+  margin-bottom:-16px;
 }
-.new-card .card-actions > :last-child{
-  margin-bottom:0;
+.new-card .card-actions .button-group .button, .new-card .card-actions .button-group .button-wrapper{
+  margin-top:0;
+  margin-bottom:16px;
 }
 a.new-card{
   text-decoration:none;
@@ -10806,6 +10824,7 @@ a.new-card h1, a.new-card .h1, a.new-card h2, a.new-card .h2, a.new-card h3, a.n
 }
 a.new-card .card-actions{
   display:flex;
+  margin-top:auto;
 }
 a.new-card .card-actions > .icon-svg{
   margin-left:auto;
@@ -10825,6 +10844,12 @@ a.new-card:active{
 @media (min-width: 576px){
   a.new-card.long .card-actions{
     margin-left:auto;
+  }
+  a.new-card.long .new-card-content{
+    max-width:calc(100% - 24px - 2.4rem - 24px);
+  }
+  a.new-card.long .new-card-image + .new-card-content{
+    max-width:calc(67% - 24px - 2.4rem - 24px);
   }
 }
 
