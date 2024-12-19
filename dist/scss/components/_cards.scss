@@ -301,6 +301,11 @@
     }
 }
 
+.card-row:not(.row) li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .new-card {
     border: func.border('very-low-contrast');
     border-radius: func.border-radius('medium');
@@ -315,6 +320,7 @@
         display: flex;
         border-top-left-radius: func.border-radius('medium');
         border-top-right-radius: func.border-radius('medium');
+        background-color: func.color('gray-100');
 
         img {
             width: 100%;
@@ -332,6 +338,7 @@
         margin-bottom: func.units(5);
         display: flex;
         flex-direction: column;
+        overflow-wrap: break-word;
 
         .subheading {
             margin-bottom: func.units(2);

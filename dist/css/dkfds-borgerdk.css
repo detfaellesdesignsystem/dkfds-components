@@ -10752,6 +10752,11 @@ a.skipnav:focus{
   content:"" !important;
 }
 
+.card-row:not(.row) li{
+  padding-left:0;
+  padding-right:0;
+}
+
 .new-card{
   border:1px solid #DCDCDC;
   border-radius:8px;
@@ -10766,6 +10771,7 @@ a.skipnav:focus{
   display:flex;
   border-top-left-radius:8px;
   border-top-right-radius:8px;
+  background-color:#F5F5F5;
 }
 .new-card .new-card-image img{
   width:100%;
@@ -10781,6 +10787,7 @@ a.skipnav:focus{
   margin-bottom:24px;
   display:flex;
   flex-direction:column;
+  overflow-wrap:break-word;
 }
 .new-card .new-card-content .subheading{
   margin-bottom:4px;
