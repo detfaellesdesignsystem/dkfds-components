@@ -7,7 +7,7 @@
 // Accordion
 // ----------------------------------------
 .accordion-button {
-  font-weight: func.font-weight("normal");
+  font-weight: func.font-weight("semibold");
   text-align: left;
   min-height: auto;
   background-color: func.color(vars.$accordion-button-background-color-default);
@@ -18,22 +18,16 @@
   cursor: pointer;
   margin: 0;
   display: block;
-  line-height: func.units(vars.$typography-body-text-line-height, 'rem');
-  padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem');
+  line-height: 1.5;
+  padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem'); // top | right | bottom | left
   width: 100%;
-  font-size: func.font-size(vars.$typography-body-text-font-size);
+  font-size: func.font-size('lg');
   position: relative;
   border-radius: func.border-radius('medium');
-  border: func.border(vars.$accordion-content-border);
 
   &:hover {
     background-color: func.color(vars.$accordion-button-background-color-hover);
     color: func.color(vars.$accordion-button-color-hover);
-  }
-
-  &:focus {
-    background-color: func.color(vars.$accordion-button-background-color-default);
-    color: func.color(vars.$accordion-button-color-default);
   }
 
   @include mixins.media-breakpoint-up(md) {
@@ -51,7 +45,8 @@
     margin: 0;
   }
   .icon_text {
-    font-weight: func.font-weight("semibold");
+    font-weight: func.font-weight("normal");
+    font-size: func.font-size('sm');
     margin-right: func.units(3);
     overflow-wrap: break-word;
     max-width: calc(100% - func.units(3) - func.units(5)); // Icon margin and icon size;
@@ -135,10 +130,7 @@ button.accordion-bulk-button{
   background-color: func.color(vars.$accordion-content-background-color);
   color: func.color(vars.$accordion-content-color);
   overflow: auto;
-  padding: func.units(4, 'rem');
-  border-bottom: func.border(vars.$accordion-content-border);
-  border-left: func.border(vars.$accordion-content-border);
-  border-right: func.border(vars.$accordion-content-border);
+  padding: func.units(3, 'rem') func.units(4, 'rem') func.units(5, 'rem') func.units(9, 'rem'); // top | right | bottom | left
   border-radius: 0 0 func.border-radius('medium') func.border-radius('medium');
   p, h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5{
     color: func.color(vars.$accordion-content-color);
@@ -160,15 +152,37 @@ button.accordion-bulk-button{
     display: none;
   }
 }
-.accordion-button.accordion-error {
-  border: vars.$accordion-button-error-border-width solid func.color(vars.$accordion-button-error-border-color);
+
+.error-border {
+  display: none;
 }
+
+li.accordion-error {
+  border-radius: func.border-radius('medium');
+  position: relative;
+
+  .error-border {
+    width: func.units(2, 'rem');
+    position: absolute;
+    display: block;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 100%;
+      background-color: func.color(vars.$accordion-button-error-border-color);
+      width: func.units(4, 'rem');
+      border-radius: func.border-radius('medium');
+    }
+  }
+}
+
 .accordion-button[aria-expanded="true"] {
   background-color: func.color(vars.$accordion-button-open-background-color);
   border-radius: func.border-radius('medium') func.border-radius('medium') 0 0;
-  &:not(.accordion-error){
-    border-bottom: func.border(vars.$accordion-button-open-border);
-  }
 }
 .accordion-button[aria-expanded="false"] {
   @include mixins.add-background-svg('add');
