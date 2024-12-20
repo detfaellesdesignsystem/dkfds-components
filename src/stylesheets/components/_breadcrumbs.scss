@@ -2,64 +2,51 @@
 @use "../functions" as func;
 
 .breadcrumbs {
-  color: func.color(vars.$breadcrumbs-text-color);
-  font-size: func.font-size(vars.$breadcrumbs-font-size);
-}
-
-.breadcrumbs__list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-
-  &::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
-.breadcrumbs__list-item {
-  display: block;
-  list-style-type: none;
-  position: relative;
-  margin-top: 0;
-  margin-bottom: func.units(1);
-  margin-left: func.units(3);
-  padding-left: func.units(3) + vars.$breadcrumbs-chevron-altitude-calculated;
-  float: left;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    // Offset by the difference between the width of the non-rotated square
-    // and its width when rotated
-    left: ((vars.$breadcrumbs-chevron-altitude-calculated * -2) + vars.$breadcrumbs-chevron-size + vars.$breadcrumbs-chevron-border-width);
-    width: vars.$breadcrumbs-chevron-size;
-    height: vars.$breadcrumbs-chevron-size;
-    margin: auto 0;
-    transform: rotate(45deg);
-    border: solid;
-    border-width: vars.$breadcrumbs-chevron-border-width vars.$breadcrumbs-chevron-border-width 0 0;
-    border-color: func.color(vars.$breadcrumbs-chevron-border-colour);
-  }
-
-  &:first-child {
-    margin-left: 0;
-    padding-left: 0;
-
-    &::before {
-      content: none;
-      display: none;
-    }
-  }
-}
-
-.breadcrumbs__link {
-  color: func.color(vars.$breadcrumbs-text-color);
-  &:visited, &:hover, &:active{
     color: func.color(vars.$breadcrumbs-text-color);
-  }
+    font-size: func.font-size(vars.$breadcrumbs-font-size);
+
+    .breadcrumbs__list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .icon-svg {
+            width: func.units(405, 'rem');
+            height: func.units(405, 'rem');
+            color: func.color('gray-400');
+        }
+
+        .breadcrumbs__list-item {
+            display: inline-block;
+            list-style-type: none;
+            margin-top: 0;
+            margin-bottom: func.units(1);
+        
+            &:first-child {
+                margin-left: 0;
+                padding-left: 0;
+            }
+        
+            .breadcrumbs__link {
+                color: func.color(vars.$breadcrumbs-text-color);
+            
+                &:visited,
+                &:hover,
+                &:active {
+                    color: func.color(vars.$breadcrumbs-text-color);
+                }
+            }
+        }
+    }
 }
+
+
+
+
+

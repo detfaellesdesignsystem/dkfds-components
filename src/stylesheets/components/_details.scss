@@ -14,8 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &::before {
-        background-image: url(vars.$icons-folder-path + 'arrow-drop-down.svg');
-        background-position: -1rem -0.8rem;
+        background-image: url(vars.$icons-folder-path + 'expand-less.svg');
       }
     }
   }
@@ -29,11 +28,10 @@
     &::before {
       content: "";
       display: inline-block;
-      @include mixins.add-background-svg('arrow-right');
-      background-position: -1.4rem -0.8rem;
-      background-size: 3.4rem;
-      width: func.units(4, 'rem');
-      height: func.units(4, 'rem');
+      @include mixins.add-background-svg('expand-more');
+      background-position: 0rem 0.6rem;
+      width: func.units(5, 'rem');
+      height: func.units(5, 'rem');
       margin-right: func.units(2);
     }
 

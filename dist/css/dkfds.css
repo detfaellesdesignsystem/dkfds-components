@@ -7740,56 +7740,35 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   color:#1a1a1a;
   font-size:1.4rem;
 }
-
-.breadcrumbs__list{
+.breadcrumbs .breadcrumbs__list{
   margin:0;
   padding:0;
   list-style-type:none;
 }
-.breadcrumbs__list::after{
+.breadcrumbs .breadcrumbs__list::after{
   content:"";
   display:block;
   clear:both;
 }
-
-.breadcrumbs__list-item{
-  display:block;
+.breadcrumbs .breadcrumbs__list .icon-svg{
+  width:2rem;
+  height:2rem;
+  color:#8E8E8E;
+}
+.breadcrumbs .breadcrumbs__list .breadcrumbs__list-item{
+  display:inline-block;
   list-style-type:none;
-  position:relative;
   margin-top:0;
   margin-bottom:2px;
-  margin-left:8px;
-  padding-left:13.655px;
-  float:left;
 }
-.breadcrumbs__list-item::before{
-  content:"";
-  display:block;
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:-3.31px;
-  width:7px;
-  height:7px;
-  margin:auto 0;
-  transform:rotate(45deg);
-  border:solid;
-  border-width:1px 1px 0 0;
-  border-color:#707070;
-}
-.breadcrumbs__list-item:first-child{
+.breadcrumbs .breadcrumbs__list .breadcrumbs__list-item:first-child{
   margin-left:0;
   padding-left:0;
 }
-.breadcrumbs__list-item:first-child::before{
-  content:none;
-  display:none;
-}
-
-.breadcrumbs__link{
+.breadcrumbs .breadcrumbs__list .breadcrumbs__list-item .breadcrumbs__link{
   color:#1a1a1a;
 }
-.breadcrumbs__link:visited, .breadcrumbs__link:hover, .breadcrumbs__link:active{
+.breadcrumbs .breadcrumbs__list .breadcrumbs__list-item .breadcrumbs__link:visited, .breadcrumbs .breadcrumbs__list .breadcrumbs__list-item .breadcrumbs__link:hover, .breadcrumbs .breadcrumbs__list .breadcrumbs__list-item .breadcrumbs__link:active{
   color:#1a1a1a;
 }
 
@@ -8044,8 +8023,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin-bottom:8px;
 }
 .details[open] .details-summary::before{
-  background-image:url("../img/svg-icons/arrow-drop-down.svg");
-  background-position:-1rem -0.8rem;
+  background-image:url("../img/svg-icons/expand-less.svg");
 }
 .details .details-summary{
   display:inline-block;
@@ -8056,12 +8034,11 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .details .details-summary::before{
   content:"";
   display:inline-block;
-  background-image:url("../img/svg-icons/arrow-right.svg");
+  background-image:url("../img/svg-icons/expand-more.svg");
   background-repeat:no-repeat;
-  background-position:-1.4rem -0.8rem;
-  background-size:3.4rem;
-  width:1.6rem;
-  height:1.6rem;
+  background-position:0rem 0.6rem;
+  width:2.4rem;
+  height:2.4rem;
   margin-right:4px;
 }
 .details .details-summary:focus{
