@@ -44,8 +44,9 @@ Tooltip.prototype.init = function () {
 
     this.hideTooltip();
 
-    document.getElementsByTagName('body')[0].addEventListener('click', closeAllTooltips);
-    document.getElementsByTagName('body')[0].addEventListener('keyup', closeOnTab);
+    document.body.addEventListener('click', closeAllTooltips);
+    document.body.addEventListener('keyup', closeOnTab);
+    document.body.addEventListener('focus', closeOnFocus, true);
     window.addEventListener('beforeprint', closeAllTooltips);
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
@@ -80,16 +81,24 @@ Tooltip.prototype.init = function () {
             }, 300);
         });
 
-        tooltipTarget.addEventListener('pointerdown', () => {
+        tooltipTarget.addEventListener('touchstart', () => {
             /* The tooltip should appear after pressing down for a while on the element.
                Use the 'js-pressed' class as a flag to check, if the element stays pressed
                down. */
             tooltipTarget.classList.add('js-pressed');
-            setTimeout(() => {
-                if (tooltipTarget.classList.contains('js-pressed')) {
-                    this.showTooltip();
-                }
-            }, 500);
+        });
+
+        tooltipTarget.addEventListener('touchend', (event) => {
+            if (tooltipTarget.classList.contains('js-pressed') && isElementTouched(tooltipTarget, event)) {
+                /* Tooltips opened from previous touch events may still be open.
+                   Close them before opening a new tooltip. */
+                tooltipTarget.classList.remove('js-pressed');
+                closeAllTooltips(event);
+                this.showTooltip();
+            }
+            else {
+                tooltipTarget.classList.remove('js-pressed');
+            }
         });
 
         tooltipTarget.addEventListener('mouseleave', (e) => {
@@ -263,6 +272,21 @@ function isVisibleOnScreen(tooltipWrapper, tooltipWrapperParents) {
 
 function isScrollable(element) {
     return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function isElementTouched(element, event) {
+    let elementTouched = false;
+    for (let i = 0; i < event.changedTouches.length; i++) {
+        let touch = event.changedTouches[i];
+        let x = touch.clientX;
+        let y = touch.clientY;
+        if (element.getBoundingClientRect().left <= x && x <= element.getBoundingClientRect().right && 
+            element.getBoundingClientRect().top <= y && y <= element.getBoundingClientRect().bottom) {
+                elementTouched = true;
+                break;
+        }
+    }
+    return elementTouched;
 }
 
 function hasOverflow(element) {
@@ -456,6 +480,15 @@ function closeOnTab(e) {
            AND the modal itself in a single key press. */
         if (tooltipClosed) {
             e.stopImmediatePropagation();
+        }
+    }
+}
+
+function closeOnFocus(e) {
+    for (let t = 0; t < createdTooltips.length; t++) {
+        let tooltipTarget = createdTooltips[t].target;
+        if (tooltipTarget !== e.target) {
+            createdTooltips[t].hideTooltip();
         }
     }
 }
