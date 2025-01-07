@@ -11925,6 +11925,10 @@ textarea.no-resize{
 .tooltip-wrapper.hide-tooltip::before{
   display:none;
 }
+.tooltip-wrapper .js-pressed{
+  -webkit-user-select:none;
+          user-select:none;
+}
 
 .tab-container{
   width:100%;

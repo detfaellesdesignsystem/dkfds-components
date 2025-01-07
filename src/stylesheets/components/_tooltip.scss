@@ -135,5 +135,9 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
             display: none;
         }
     }
+
+    .js-pressed {
+        user-select: none; // Prevent text options to appear and cover tooltips on phones when using long press
+    }
 }
 
