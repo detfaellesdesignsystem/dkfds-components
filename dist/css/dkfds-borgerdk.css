@@ -7878,8 +7878,6 @@ a.button{
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  -webkit-user-select:text;
-          user-select:text;
   cursor:pointer;
   vertical-align:middle;
 }
@@ -9728,8 +9726,6 @@ body.mobile-nav-active{
 .table-pagination .pagination__items .pagination-item.pagination-number a, .pagination .pagination__items .pagination-item.pagination-number a, .table-pagination .pagination__items .pagination-item.pagination-number button, .pagination .pagination__items .pagination-item.pagination-number button{
   appearance:none;
   line-height:1;
-  -webkit-user-select:text;
-          user-select:text;
   display:inline-flex;
   justify-content:center;
   align-items:center;
@@ -9787,10 +9783,6 @@ body.mobile-nav-active{
 }
 .table-pagination .button{
   border-radius:20px;
-}
-.table-pagination .button.button-arrow{
-  -webkit-user-select:auto;
-          user-select:auto;
 }
 .table-pagination .button.button-arrow .pagination-nav-link{
   display:none;
