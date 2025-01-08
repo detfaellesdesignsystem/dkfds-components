@@ -119,14 +119,14 @@ Tooltip.prototype.init = function () {
         });
 
         tooltipTarget.addEventListener('click', () => {
+            tooltipTarget.classList.remove('js-hover');
             tooltipTarget.classList.remove('js-pressed');
             if (document.activeElement !== tooltipTarget) {
                 /* The tooltip target was just clicked but is not the element with focus. That 
                    means it probably shouldn't show the tooltip, for example due to an opened 
                    modal. However, this also means that tooltip targets in Safari won't show 
                    tooltip on click, since click events in Safari don't focus the target. */
-                tooltipTarget.classList.remove('js-hover');
-                this.hideTooltip();
+                //this.hideTooltip();
             }
         });
 
