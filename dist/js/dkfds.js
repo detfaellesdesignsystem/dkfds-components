@@ -5282,8 +5282,7 @@ Tooltip.prototype.init = function () {
   };
   this.hideTooltip();
   document.body.addEventListener('click', closeAllTooltips);
-  document.body.addEventListener('keyup', closeOnTab);
-  document.body.addEventListener('focus', closeOnFocus, true);
+  document.body.addEventListener('keyup', closeOnKey);
   window.addEventListener('beforeprint', closeAllTooltips);
 
   /* A "true" tooltip describes the element which triggered it and is triggered on hover */
@@ -5433,6 +5432,14 @@ Tooltip.prototype.showTooltip = function () {
     this.tooltip.innerText = this.wrapper.dataset.tooltip;
   }
   this.updateTooltipPosition();
+
+  /* When a tooltip opens, all other open tooltips must close */
+  for (let t = 0; t < createdTooltips.length; t++) {
+    let tooltipTarget = createdTooltips[t].target;
+    if (tooltipTarget !== this.target) {
+      createdTooltips[t].hideTooltip();
+    }
+  }
 };
 Tooltip.prototype.isShowing = function () {
   return !this.wrapper.classList.contains('hide-tooltip');
@@ -5632,7 +5639,7 @@ function closeAllTooltips(event) {
     }
   }
 }
-function closeOnTab(e) {
+function closeOnKey(e) {
   let key = e.key;
   if (key === 'Tab') {
     for (let t = 0; t < createdTooltips.length; t++) {
@@ -5656,14 +5663,6 @@ function closeOnTab(e) {
        AND the modal itself in a single key press. */
     if (tooltipClosed) {
       e.stopImmediatePropagation();
-    }
-  }
-}
-function closeOnFocus(e) {
-  for (let t = 0; t < createdTooltips.length; t++) {
-    let tooltipTarget = createdTooltips[t].target;
-    if (tooltipTarget !== e.target) {
-      createdTooltips[t].hideTooltip();
     }
   }
 }
