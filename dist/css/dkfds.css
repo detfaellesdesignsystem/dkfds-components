@@ -11925,11 +11925,6 @@ textarea.no-resize{
 .tooltip-wrapper.hide-tooltip::before{
   display:none;
 }
-.tooltip-wrapper .button.tooltip-target{
-  -webkit-user-select:none;
-          user-select:none;
-}
-
 .tab-container{
   width:100%;
 }
