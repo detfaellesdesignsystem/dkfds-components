@@ -67,6 +67,11 @@ class Navigation {
             window.onload = (event) => {
                 updateMoreMenu();
             };
+
+            // If the document is already loaded, fire updateMoreMenu
+            if (document.readyState === 'complete') {
+                updateMoreMenu();
+            }
         }
     }
 
