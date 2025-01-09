@@ -10,7 +10,8 @@
     ".": "./dist/js/dkfds.min.js",
     "./dkfds-DEPRECATED": "./dist/DEPRECATED/dkfds-DEPRECATED.min.js",
     "./dkfds.min.css": "./dist/css/dkfds.min.css",
-    "./dkfds.min.js": "./dist/js/dkfds.min.js"
+    "./dkfds.min.js": "./dist/js/dkfds.min.js",
+    "./all-svg-icons.svg": "./dist/img/all-svg-icons.svg"
   },
   "scripts": {
     "build": "webpack"
