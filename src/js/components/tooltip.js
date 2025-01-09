@@ -100,28 +100,32 @@ Tooltip.prototype.init = function () {
             }
         });
 
-        tooltipTarget.addEventListener('touchstart', () => {
+        /* tooltipTarget.addEventListener('touchstart', () => {
             clearFlags(tooltipTarget);
-            tooltipTarget.classList.add('js-pressing');
+            tooltipTarget.classList.add('js-pressing'); */
             /* The tooltip should appear after pressing down for a while on the element.
                Use the 'js-pressed' class as a flag to check, if the element stays pressed
                down. */
-            setTimeout(() => {
+            /* setTimeout(() => {
                 if (tooltipTarget.classList.contains('js-pressing')) {
                     tooltipTarget.classList.add('js-pressed');
                     tooltipTarget.classList.remove('js-pressing');
                 }
             }, 600);
-        });
+        }); */
 
-        tooltipTarget.addEventListener('pointerup', (event) => {
+        /* tooltipTarget.addEventListener('pointerup', (event) => { */
             /* If the element is pressed down (touch only), show the tooltip once the touch ends */
-            if (tooltipTarget.classList.contains('js-pressed')) {
+            /* if (tooltipTarget.classList.contains('js-pressed')) {
                 event.preventDefault();
                 this.showTooltip();
             }
             tooltipTarget.classList.remove('js-pressing');
             tooltipTarget.classList.remove('js-pressed');
+        }); */
+
+        tooltipTarget.addEventListener('touchstart', () => {
+            tooltipTarget.focus();
         });
 
         tooltipTarget.addEventListener('click', () => {
