@@ -5301,37 +5301,24 @@ Tooltip.prototype.init = function () {
     tooltipTarget.addEventListener('focus', () => {
       this.showTooltip();
     });
-    tooltipTarget.addEventListener('mouseover', () => {
+    wrapper.addEventListener('focusout', () => {
+      this.hideTooltip();
+    });
+    tooltipTarget.addEventListener('pointerover', event => {
       /* The tooltip should not appear if the user just briefly moves the cursor 
          across the component. Use the 'js-hover' class as a flag to check, if
          the hover action is persistant. */
-      tooltipTarget.classList.add('js-hover');
-      setTimeout(() => {
-        if (tooltipTarget.classList.contains('js-hover')) {
-          this.showTooltip();
-        }
-      }, 300);
-    });
-    tooltipTarget.addEventListener('touchstart', () => {
-      /* The tooltip should appear after pressing down for a while on the element.
-         Use the 'js-pressed' class as a flag to check, if the element stays pressed
-         down. */
-      tooltipTarget.classList.add('js-pressed');
-    });
-    tooltipTarget.addEventListener('touchend', event => {
-      if (tooltipTarget.classList.contains('js-pressed') && isElementTouched(tooltipTarget, event)) {
-        /* Tooltips opened from previous touch events may still be open.
-           Close them before opening a new tooltip. */
-        tooltipTarget.classList.remove('js-pressed');
-        closeAllTooltips(event);
-        this.showTooltip();
-      } else {
-        tooltipTarget.classList.remove('js-pressed');
+      if (event.pointerType === 'mouse') {
+        tooltipTarget.classList.add('js-hover');
+        setTimeout(() => {
+          if (tooltipTarget.classList.contains('js-hover')) {
+            this.showTooltip();
+          }
+        }, 300);
       }
     });
     tooltipTarget.addEventListener('mouseleave', e => {
-      tooltipTarget.classList.remove('js-hover');
-      tooltipTarget.classList.remove('js-pressed');
+      clearFlags(tooltipTarget);
       let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
       let onTooltip = false;
       if (wrapper.classList.contains('place-above')) {
@@ -5345,20 +5332,41 @@ Tooltip.prototype.init = function () {
         this.hideTooltip();
       }
     });
-    tooltipTarget.addEventListener('click', () => {
-      tooltipTarget.classList.remove('js-hover');
+    tooltipTarget.addEventListener('touchstart', () => {
+      clearFlags(tooltipTarget);
+      tooltipTarget.classList.add('js-pressing');
+      /* The tooltip should appear after pressing down for a while on the element.
+         Use the 'js-pressed' class as a flag to check, if the element stays pressed
+         down. */
+      setTimeout(() => {
+        if (tooltipTarget.classList.contains('js-pressing')) {
+          tooltipTarget.classList.add('js-pressed');
+          tooltipTarget.classList.remove('js-pressing');
+        }
+      }, 600);
+    });
+    tooltipTarget.addEventListener('pointerup', event => {
+      /* If the element is pressed down (touch only), show the tooltip once the touch ends */
+      if (tooltipTarget.classList.contains('js-pressed')) {
+        event.preventDefault();
+        this.showTooltip();
+      }
+      tooltipTarget.classList.remove('js-pressing');
       tooltipTarget.classList.remove('js-pressed');
+    });
+    tooltipTarget.addEventListener('click', () => {
       if (document.activeElement !== tooltipTarget) {
         /* The tooltip target was just clicked but is not the element with focus. That 
            means it probably shouldn't show the tooltip, for example due to an opened 
-           modal. However, this also means that tooltip targets in Safari won't show 
-           tooltip on click, since click events in Safari don't focus the target. */
-        //this.hideTooltip();
+           modal. However, this also means that tooltip targets on iOS won't show 
+           tooltip on click, since click events on iOS don't focus the target. */
+        this.hideTooltip();
       }
+      tooltipTarget.classList.remove('js-pressing');
+      tooltipTarget.classList.remove('js-pressed');
     });
     tooltipEl.addEventListener('mouseleave', e => {
-      tooltipTarget.classList.remove('js-hover');
-      tooltipTarget.classList.remove('js-pressed');
+      clearFlags(tooltipTarget);
       let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
       let onTarget = false;
       if (wrapper.classList.contains('place-above')) {
@@ -5375,8 +5383,7 @@ Tooltip.prototype.init = function () {
     /* If the mouse leaves while in the gap between the target and the tooltip,
        ensure that the tooltip closes */
     wrapper.addEventListener('mouseleave', () => {
-      tooltipTarget.classList.remove('js-hover');
-      tooltipTarget.classList.remove('js-pressed');
+      clearFlags(tooltipTarget);
       this.hideTooltip();
     });
   }
@@ -5485,19 +5492,6 @@ function isVisibleOnScreen(tooltipWrapper, tooltipWrapperParents) {
 }
 function isScrollable(element) {
   return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
-function isElementTouched(element, event) {
-  let elementTouched = false;
-  for (let i = 0; i < event.changedTouches.length; i++) {
-    let touch = event.changedTouches[i];
-    let x = touch.clientX;
-    let y = touch.clientY;
-    if (element.getBoundingClientRect().left <= x && x <= element.getBoundingClientRect().right && element.getBoundingClientRect().top <= y && y <= element.getBoundingClientRect().bottom) {
-      elementTouched = true;
-      break;
-    }
-  }
-  return elementTouched;
 }
 function hasOverflow(element) {
   /* Element has overflow and might need or add scrollbars, if either 
@@ -5665,6 +5659,11 @@ function closeOnKey(e) {
       e.stopImmediatePropagation();
     }
   }
+}
+function clearFlags(tooltipTarget) {
+  tooltipTarget.classList.remove('js-hover');
+  tooltipTarget.classList.remove('js-pressing');
+  tooltipTarget.classList.remove('js-pressed');
 }
 /* harmony default export */ const tooltip = (Tooltip);
 ;// ./src/js/dkfds.js
