@@ -1,6 +1,6 @@
 {
-  "name": "dkfds",
-  "version": "10.1.0",
+  "name": "@deranged/dkfds",
+  "version": "10.1.1",
   "description": "Det Fælles Designsystem er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
   "engines": {
     "node": ">= 4"
@@ -14,6 +14,10 @@
   },
   "scripts": {
     "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/derangeddk/dkfds-components.git"
   },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "license": "(MIT AND OFL-1.1 AND Apache-2.0)",
