@@ -136,8 +136,11 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         }
     }
 
-    .button.tooltip-target {
-        user-select: none; // Prevent text options to appear and cover tooltips on phones when using long press on buttons
+    // Prevent text options to appear and cover tooltips on phones when using long press on buttons
+    button.tooltip-target.js-pressed, button.tooltip-target.js-pressing {
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
     }
 }
 

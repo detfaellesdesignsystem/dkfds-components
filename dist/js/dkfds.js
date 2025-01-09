@@ -5298,9 +5298,6 @@ Tooltip.prototype.init = function () {
     }
     tooltipEl.setAttribute('role', 'tooltip');
     tooltipEl.innerText = wrapper.dataset.tooltip;
-    tooltipTarget.addEventListener('focus', () => {
-      this.showTooltip();
-    });
     tooltipTarget.addEventListener('pointerover', e => {
       if (e.pointerType === 'mouse') {
         /* The tooltip should not appear if the user just briefly moves the cursor 
@@ -5313,6 +5310,40 @@ Tooltip.prototype.init = function () {
           }
         }, 300);
       }
+    });
+    tooltipTarget.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch') {
+        tooltipTarget.releasePointerCapture(e.pointerId);
+        tooltipTarget.classList.add('js-pressing');
+        setTimeout(() => {
+          if (tooltipTarget.classList.contains('js-pressing')) {
+            tooltipTarget.classList.add('js-pressed');
+            tooltipTarget.classList.remove('js-pressing');
+          }
+        }, 600);
+      }
+    });
+    tooltipTarget.addEventListener('pointerup', e => {
+      if (e.pointerType === 'touch') {
+        if (tooltipTarget.classList.contains('js-pressed')) {
+          e.preventDefault();
+          this.showTooltip();
+        }
+        tooltipTarget.classList.remove('js-pressing');
+        tooltipTarget.classList.remove('js-pressed');
+      }
+    });
+    tooltipTarget.addEventListener('click', () => {
+      if (document.activeElement !== tooltipTarget) {
+        /* The tooltip target was just clicked but is not the element with focus. That 
+           means it probably shouldn't show the tooltip, for example due to an opened 
+           modal. */
+        tooltipTarget.classList.remove('js-hover');
+        this.hideTooltip();
+      }
+    });
+    tooltipTarget.addEventListener('focus', () => {
+      this.showTooltip();
     });
     tooltipTarget.addEventListener('pointerleave', e => {
       if (e.pointerType === 'mouse') {
@@ -5329,15 +5360,9 @@ Tooltip.prototype.init = function () {
         if (!onTooltip) {
           this.hideTooltip();
         }
-      }
-    });
-    tooltipTarget.addEventListener('click', () => {
-      if (document.activeElement !== tooltipTarget) {
-        /* The tooltip target was just clicked but is not the element with focus. That 
-           means it probably shouldn't show the tooltip, for example due to an opened 
-           modal. */
-        tooltipTarget.classList.remove('js-hover');
-        this.hideTooltip();
+      } else if (e.pointerType === 'touch') {
+        tooltipTarget.classList.remove('js-pressing');
+        tooltipTarget.classList.remove('js-pressed');
       }
     });
     tooltipEl.addEventListener('pointerleave', e => {
