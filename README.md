@@ -1,3 +1,20 @@
+# About this fork
+
+This repo is a fork by [deranged](https://deranged.dk), published as [@deranged/dkfds](https://www.npmjs.com/package/@deranged/dkfds).
+
+We aim to contribute everything we do here back to the main package, working with the main team.
+
+Our `master` branch tracks `master` on [detfaellesdesignsystem/dkfds-components](https://github.com/detfaellesdesignsystem/dkfds-components).
+
+We publish from the `main` branch.
+
+We aim to develop all new code as feature branches from `master`, rebasing and merging into `main` when we need to publish something for our uses.
+This allows us to keep all our work compatible with the main package.
+
+Goals of this fork:
+- General cleanup and small contributions
+- Variant theme for Digitaliseringsstyrelsen (digst)
+
 # FDS - Det Fælles Designsystem
 
 For guidelines and full documentation, visit https://designsystem.dk/
