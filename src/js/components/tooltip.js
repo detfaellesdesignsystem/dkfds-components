@@ -46,6 +46,7 @@ Tooltip.prototype.init = function () {
 
     document.body.addEventListener('click', closeAllTooltips);
     document.body.addEventListener('keyup', closeOnKey);
+    document.body.addEventListener('focus', closeOnFocus, true);
     window.addEventListener('beforeprint', closeAllTooltips);
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
@@ -66,10 +67,6 @@ Tooltip.prototype.init = function () {
 
         tooltipTarget.addEventListener('focus', () => {
             this.showTooltip();
-        });
-
-        wrapper.addEventListener('focusout', () => {
-            this.hideTooltip();
         });
 
         tooltipTarget.addEventListener('pointerover', (event) => {
@@ -479,6 +476,15 @@ function closeOnKey(e) {
            AND the modal itself in a single key press. */
         if (tooltipClosed) {
             e.stopImmediatePropagation();
+        }
+    }
+}
+
+function closeOnFocus(e) {
+    for (let t = 0; t < createdTooltips.length; t++) {
+        let tooltipTarget = createdTooltips[t].target;
+        if (tooltipTarget !== e.target) {
+            createdTooltips[t].hideTooltip();
         }
     }
 }
