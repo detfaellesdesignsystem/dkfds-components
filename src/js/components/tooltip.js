@@ -46,7 +46,6 @@ Tooltip.prototype.init = function () {
 
     document.body.addEventListener('click', closeAllTooltips);
     document.body.addEventListener('keyup', closeOnKey);
-    document.body.addEventListener('focus', closeOnFocus, true);
     window.addEventListener('beforeprint', closeAllTooltips);
 
     /* A "true" tooltip describes the element which triggered it and is triggered on hover */
@@ -69,98 +68,74 @@ Tooltip.prototype.init = function () {
             this.showTooltip();
         });
 
-        tooltipTarget.addEventListener('pointerover', (event) => {
-            /* The tooltip should not appear if the user just briefly moves the cursor 
-               across the component. Use the 'js-hover' class as a flag to check, if
-               the hover action is persistant. */
-            if (event.pointerType === 'mouse') {
-                tooltipTarget.classList.add('js-hover');
-                setTimeout(() => {
-                    if (tooltipTarget.classList.contains('js-hover')) {
-                        this.showTooltip();
-                    }
-                }, 300);
+        tooltipTarget.addEventListener('pointerover', (e) => {
+            if (e.pointerType === 'mouse') {
+                /* The tooltip should not appear if the user just briefly moves the cursor 
+                   across the component. Use the 'js-hover' class as a flag to check, if
+                   the hover action is persistant. */
+               tooltipTarget.classList.add('js-hover');
+               setTimeout(() => {
+                   if (tooltipTarget.classList.contains('js-hover')) {
+                       this.showTooltip();
+                   }
+               }, 300);
             }
         });
 
-        tooltipTarget.addEventListener('mouseleave', (e) => {
-            clearFlags(tooltipTarget);
-            let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
-            let onTooltip = false;
-            if (wrapper.classList.contains('place-above')) {
-                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY <= center;
-            }
-            else if (wrapper.classList.contains('place-below')) {
-                onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY >= center;
-            }
-            /* WCAG 1.4.13: It must be possible to hover over the tooltip.
-               Only hide the tooltip when the cursor is not hovering over it. */
-            if (!onTooltip) {
-                this.hideTooltip();
-            }
-        });
-
-        /* tooltipTarget.addEventListener('touchstart', () => {
-            clearFlags(tooltipTarget);
-            tooltipTarget.classList.add('js-pressing'); */
-            /* The tooltip should appear after pressing down for a while on the element.
-               Use the 'js-pressed' class as a flag to check, if the element stays pressed
-               down. */
-            /* setTimeout(() => {
-                if (tooltipTarget.classList.contains('js-pressing')) {
-                    tooltipTarget.classList.add('js-pressed');
-                    tooltipTarget.classList.remove('js-pressing');
+        tooltipTarget.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'mouse') {
+                tooltipTarget.classList.remove('js-hover');
+                let center = (tooltipTarget.getBoundingClientRect().top + tooltipTarget.getBoundingClientRect().bottom) / 2; // Use center of target due to rounding errors
+                let onTooltip = false;
+                if (wrapper.classList.contains('place-above')) {
+                    onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY <= center;
                 }
-            }, 600);
-        }); */
-
-        /* tooltipTarget.addEventListener('pointerup', (event) => { */
-            /* If the element is pressed down (touch only), show the tooltip once the touch ends */
-            /* if (tooltipTarget.classList.contains('js-pressed')) {
-                event.preventDefault();
-                this.showTooltip();
+                else if (wrapper.classList.contains('place-below')) {
+                    onTooltip = tooltipTarget.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipTarget.getBoundingClientRect().right && e.clientY >= center;
+                }
+                /* WCAG 1.4.13: It must be possible to hover over the tooltip.
+                   Only hide the tooltip when the cursor is not hovering over it. */
+                if (!onTooltip) {
+                    this.hideTooltip();
+                }
             }
-            tooltipTarget.classList.remove('js-pressing');
-            tooltipTarget.classList.remove('js-pressed');
-        }); */
-
-        tooltipTarget.addEventListener('touchstart', () => {
-            tooltipTarget.focus();
         });
 
         tooltipTarget.addEventListener('click', () => {
             if (document.activeElement !== tooltipTarget) {
                 /* The tooltip target was just clicked but is not the element with focus. That 
                    means it probably shouldn't show the tooltip, for example due to an opened 
-                   modal. However, this also means that tooltip targets on iOS won't show 
-                   tooltip on click, since click events on iOS don't focus the target. */
+                   modal. */
+                tooltipTarget.classList.remove('js-hover');
                 this.hideTooltip();
             }
-            tooltipTarget.classList.remove('js-pressing');
-            tooltipTarget.classList.remove('js-pressed');
         });
 
-        tooltipEl.addEventListener('mouseleave', (e) => {
-            clearFlags(tooltipTarget);
-            let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
-            let onTarget = false;
-            if (wrapper.classList.contains('place-above')) {
-                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY >= center;
-            }
-            else if (wrapper.classList.contains('place-below')) {
-                onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY <= center;
-            }
-            /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
-            if (!onTarget) {
-                this.hideTooltip();
+        tooltipEl.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'mouse') {
+                tooltipTarget.classList.remove('js-hover');
+                let center = (tooltipEl.getBoundingClientRect().top + tooltipEl.getBoundingClientRect().bottom) / 2; // Use center of tooltip due to rounding errors
+                let onTarget = false;
+                if (wrapper.classList.contains('place-above')) {
+                    onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY >= center;
+                }
+                else if (wrapper.classList.contains('place-below')) {
+                    onTarget = tooltipEl.getBoundingClientRect().left <= e.clientX && e.clientX <= tooltipEl.getBoundingClientRect().right && e.clientY <= center;
+                }
+                /* Don't remove tooltip if hover returns to the target which triggered the tooltip */
+                if (!onTarget) {
+                    this.hideTooltip();
+                }
             }
         });
 
         /* If the mouse leaves while in the gap between the target and the tooltip,
            ensure that the tooltip closes */
-        wrapper.addEventListener('mouseleave', () => {
-            clearFlags(tooltipTarget);
-            this.hideTooltip();
+        wrapper.addEventListener('pointerleave', (e) => {
+            if (e.pointerType === 'mouse') {
+                tooltipTarget.classList.remove('js-hover');
+                this.hideTooltip();
+            }
         });
     }
     /* The "tooltip" is actually a "toggletip", i.e. a button which turns a message on or off */
@@ -482,21 +457,6 @@ function closeOnKey(e) {
             e.stopImmediatePropagation();
         }
     }
-}
-
-function closeOnFocus(e) {
-    for (let t = 0; t < createdTooltips.length; t++) {
-        let tooltipTarget = createdTooltips[t].target;
-        if (tooltipTarget !== e.target) {
-            createdTooltips[t].hideTooltip();
-        }
-    }
-}
-
-function clearFlags(tooltipTarget) {
-    tooltipTarget.classList.remove('js-hover');
-    tooltipTarget.classList.remove('js-pressing');
-    tooltipTarget.classList.remove('js-pressed');
 }
 
 export default Tooltip;
