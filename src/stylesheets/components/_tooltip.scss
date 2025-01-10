@@ -11,6 +11,7 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
     line-height: 1;
     display: inline-flex; // Display MUST be flex or inline-flex, otherwise screenreaders will read a help button as part of the label for text input
     vertical-align: bottom;
+    touch-action: manipulation; // Prevent iOS 300ms delay
 
     &.in-text button.tooltip-target {
         &:focus {
@@ -136,11 +137,15 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         }
     }
 
-    // Prevent text options to appear and cover tooltips on phones when using long press on buttons
-    button.tooltip-target.js-pressed, button.tooltip-target.js-pressing {
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
+    button.tooltip-target {
+        // Prevent iOS 300ms delay
+        touch-action: manipulation;
+
+        // Prevent text options to appear and cover tooltips on phones when using long press on buttons
+        &.js-pressed, &.js-pressing {
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
     }
 }
 

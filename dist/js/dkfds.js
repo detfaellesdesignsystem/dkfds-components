@@ -5313,12 +5313,14 @@ Tooltip.prototype.init = function () {
     });
     tooltipTarget.addEventListener('pointerdown', e => {
       if (e.pointerType === 'touch') {
+        tooltipTarget.style.backgroundColor = "red";
         tooltipTarget.releasePointerCapture(e.pointerId);
         tooltipTarget.classList.add('js-pressing');
         setTimeout(() => {
           if (tooltipTarget.classList.contains('js-pressing')) {
             tooltipTarget.classList.add('js-pressed');
             tooltipTarget.classList.remove('js-pressing');
+            tooltipTarget.style.backgroundColor = "blue";
           }
         }, 600);
       }
@@ -5327,6 +5329,7 @@ Tooltip.prototype.init = function () {
       if (e.pointerType === 'touch') {
         if (tooltipTarget.classList.contains('js-pressed')) {
           e.preventDefault();
+          tooltipTarget.style.backgroundColor = "green";
           this.showTooltip();
         }
         tooltipTarget.classList.remove('js-pressing');
@@ -5335,11 +5338,14 @@ Tooltip.prototype.init = function () {
     });
     tooltipTarget.addEventListener('click', () => {
       if (document.activeElement !== tooltipTarget) {
+        tooltipTarget.style.backgroundColor = "yellow";
         /* The tooltip target was just clicked but is not the element with focus. That 
            means it probably shouldn't show the tooltip, for example due to an opened 
            modal. */
         tooltipTarget.classList.remove('js-hover');
         this.hideTooltip();
+      } else {
+        tooltipTarget.style.backgroundColor = "purple";
       }
     });
     tooltipTarget.addEventListener('focus', () => {
