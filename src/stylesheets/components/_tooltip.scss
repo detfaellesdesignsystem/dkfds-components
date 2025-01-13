@@ -47,10 +47,58 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         background-color: func.color(vars.$tooltip-background-color);
         border-radius: 4px;
         padding: func.units(2) func.units(305);
-        position: absolute;
         z-index: vars.$zindex-tooltip;
         display: block;
         overflow-wrap: break-word;
+        position: absolute;
+        bottom: auto;
+    }
+
+    &[data-force-visible="true"] {
+        .tooltip {
+            position: fixed;
+    
+            &::before {
+                content: '';
+                border-right: calc($-arrow-height + 1px) solid transparent;
+                border-left: calc($-arrow-height + 1px) solid transparent;
+                display: block;
+                position: absolute;
+                left: calc(50% - $-arrow-height - 1px);
+                top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
+                z-index: vars.$zindex-tooltip + 1;
+            }
+
+            &.open-left::before {
+                right: func.units(305);
+                left: auto;
+            }
+
+            &.open-right::before {
+                left: func.units(305);
+                right: auto;
+            }
+        }
+
+        .tooltip-arrow {
+            display: none;
+        }
+
+        &.place-above {
+            .tooltip::before {
+                bottom: calc(0px - $-arrow-height + 1px);
+                top: auto;
+                border-top: $-arrow-height solid func.color(vars.$tooltip-background-color);
+            }
+        }
+    
+        &.place-below {
+            .tooltip::before {
+                top: calc(0px - $-arrow-height + 1px);
+                bottom: auto;
+                border-bottom: $-arrow-height solid func.color(vars.$tooltip-background-color);
+            }
+        }
     }
 
     .tooltip-arrow {
@@ -68,18 +116,14 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         }
     }
 
-    &.place-above .tooltip-arrow {
-        &::before {
-            border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
-            top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-        }
+    &.place-above .tooltip-arrow::before {
+        border-top: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+        top: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
-    &.place-below .tooltip-arrow {
-        &::before {
-            border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
-            bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
-        }
+    &.place-below .tooltip-arrow::before {
+        border-bottom: $-arrow-height solid func.color(vars.$tooltip-arrow-color);
+        bottom: calc(0px - $-arrow-height - $-arrow-dist-to-target);
     }
 
     &.hide-tooltip {
@@ -90,6 +134,11 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         &::before {
             display: none;
         }
+    }
+
+    button.tooltip-target.js-pressed, button.tooltip-target.js-pressing {
+        user-select: none;
+        -webkit-touch-callout: none;
     }
 }
 

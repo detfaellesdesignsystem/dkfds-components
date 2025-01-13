@@ -157,6 +157,10 @@ $input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedb
     padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
   }
 
+  // Select needs more padding to make room for the chevron
+  & > .form-select {
+    padding-right: func.units(6);
+  }
 }
 .form-error-message {
   @include mixins.form-label-text;
