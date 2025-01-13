@@ -11828,7 +11828,6 @@ textarea.no-resize{
   line-height:1;
   display:inline-flex;
   vertical-align:bottom;
-  touch-action:manipulation;
 }
 .tooltip-wrapper.in-text button.tooltip-target:focus{
   outline-offset:-2px;
@@ -11925,9 +11924,6 @@ textarea.no-resize{
 }
 .tooltip-wrapper.hide-tooltip::before{
   display:none;
-}
-.tooltip-wrapper button.tooltip-target{
-  touch-action:manipulation;
 }
 .tooltip-wrapper button.tooltip-target.js-pressed, .tooltip-wrapper button.tooltip-target.js-pressing{
   -webkit-user-select:none;

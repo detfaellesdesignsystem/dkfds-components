@@ -5313,14 +5313,13 @@ Tooltip.prototype.init = function () {
     });
     tooltipTarget.addEventListener('pointerdown', e => {
       if (e.pointerType === 'touch') {
-        tooltipTarget.style.backgroundColor = "red";
+        tooltipTarget.classList.remove('js-pressed');
         tooltipTarget.releasePointerCapture(e.pointerId);
         tooltipTarget.classList.add('js-pressing');
         setTimeout(() => {
           if (tooltipTarget.classList.contains('js-pressing')) {
             tooltipTarget.classList.add('js-pressed');
             tooltipTarget.classList.remove('js-pressing');
-            tooltipTarget.style.backgroundColor = "blue";
           }
         }, 600);
       }
@@ -5329,23 +5328,17 @@ Tooltip.prototype.init = function () {
       if (e.pointerType === 'touch') {
         if (tooltipTarget.classList.contains('js-pressed')) {
           e.preventDefault();
-          tooltipTarget.style.backgroundColor = "green";
           this.showTooltip();
         }
-        tooltipTarget.classList.remove('js-pressing');
-        tooltipTarget.classList.remove('js-pressed');
       }
     });
     tooltipTarget.addEventListener('click', () => {
-      if (document.activeElement !== tooltipTarget) {
-        tooltipTarget.style.backgroundColor = "yellow";
+      if (document.activeElement !== tooltipTarget && !tooltipTarget.classList.contains('js-pressed')) {
         /* The tooltip target was just clicked but is not the element with focus. That 
            means it probably shouldn't show the tooltip, for example due to an opened 
            modal. */
         tooltipTarget.classList.remove('js-hover');
         this.hideTooltip();
-      } else {
-        tooltipTarget.style.backgroundColor = "purple";
       }
     });
     tooltipTarget.addEventListener('focus', () => {
@@ -5429,6 +5422,8 @@ Tooltip.prototype.hideTooltip = function () {
     this.target.setAttribute('aria-expanded', 'false');
     this.tooltip.innerText = '';
   }
+  this.target.classList.remove('js-pressing');
+  this.target.classList.remove('js-pressed');
 };
 Tooltip.prototype.showTooltip = function () {
   window.addEventListener('resize', this.updateTooltip, false);
