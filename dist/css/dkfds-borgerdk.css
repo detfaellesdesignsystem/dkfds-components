@@ -6127,6 +6127,10 @@ figure{
   background-image:url("../img/svg-icons/database.svg");
 }
 
+.icon-delete:not(a){
+  background-image:url("../img/svg-icons/delete.svg");
+}
+
 .icon-desktop-windows:not(a){
   background-image:url("../img/svg-icons/desktop-windows.svg");
 }
@@ -6577,10 +6581,6 @@ figure{
 
 .icon-text-format:not(a){
   background-image:url("../img/svg-icons/text-format.svg");
-}
-
-.icon-trash-can:not(a){
-  background-image:url("../img/svg-icons/trash-can.svg");
 }
 
 .icon-tune:not(a){
