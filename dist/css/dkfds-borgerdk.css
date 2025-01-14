@@ -6019,14 +6019,6 @@ figure{
   background-image:url("../img/svg-icons/arrow-forward.svg");
 }
 
-.icon-arrow-left:not(a){
-  background-image:url("../img/svg-icons/arrow-left.svg");
-}
-
-.icon-arrow-right:not(a){
-  background-image:url("../img/svg-icons/arrow-right.svg");
-}
-
 .icon-arrow-upward:not(a){
   background-image:url("../img/svg-icons/arrow-upward.svg");
 }
