@@ -135,5 +135,10 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
             display: none;
         }
     }
+
+    button.tooltip-target.js-pressed, button.tooltip-target.js-pressing {
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
 }
 

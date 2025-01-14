@@ -81,7 +81,6 @@
             a, button {
                 appearance: none;
                 line-height: 1;
-                user-select: text;
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
@@ -159,8 +158,6 @@
         border-radius: func.units(405);
 
         &.button-arrow {
-            user-select: auto;
-
             .pagination-nav-link {
                 display: none;
             }

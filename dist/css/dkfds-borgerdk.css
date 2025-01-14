@@ -7824,8 +7824,6 @@ li.accordion-error .error-border::before{
   line-height:1.5;
   text-align:center;
   vertical-align:middle;
-  -webkit-user-select:text;
-          user-select:text;
   cursor:pointer;
   text-decoration:none;
   margin:0;
@@ -9605,8 +9603,6 @@ body.mobile-nav-active{
 .table-pagination .pagination__items .pagination-item.pagination-number a, .pagination .pagination__items .pagination-item.pagination-number a, .table-pagination .pagination__items .pagination-item.pagination-number button, .pagination .pagination__items .pagination-item.pagination-number button{
   appearance:none;
   line-height:1;
-  -webkit-user-select:text;
-          user-select:text;
   display:inline-flex;
   justify-content:center;
   align-items:center;
@@ -9664,10 +9660,6 @@ body.mobile-nav-active{
 }
 .table-pagination .button{
   border-radius:20px;
-}
-.table-pagination .button.button-arrow{
-  -webkit-user-select:auto;
-          user-select:auto;
 }
 .table-pagination .button.button-arrow .pagination-nav-link{
   display:none;
@@ -11936,6 +11928,11 @@ textarea.no-resize{
 }
 .tooltip-wrapper.hide-tooltip::before{
   display:none;
+}
+.tooltip-wrapper button.tooltip-target.js-pressed, .tooltip-wrapper button.tooltip-target.js-pressing{
+  -webkit-user-select:none;
+          user-select:none;
+  -webkit-touch-callout:none;
 }
 
 .tab-container{
