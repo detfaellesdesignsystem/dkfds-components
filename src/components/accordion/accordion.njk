@@ -15,15 +15,15 @@
         <span class="accordion-title{% if item.classes.title %} {{item.classes.title}}{% endif %}">{{ item.title }}</span>
         {% if item.variant === "success" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Succes</span>
-          {{ icon_svg({"name": "check-circle"}) }}
+          {{ icon_svg({"name": "success"}) }}
         </span>
         {% elif item.variant === "warning" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Advarsel</span>
-          {{ icon_svg({"name": "report-problem"}) }}
+          {{ icon_svg({"name": "warning"}) }}
         </span>
         {% elif item.variant === "error" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Fejl</span>
-          {{ icon_svg({"name": "highlight-off"}) }}
+          {{ icon_svg({"name": "error"}) }}
         </span>
         {% elif item.variant === "info" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Information</span>

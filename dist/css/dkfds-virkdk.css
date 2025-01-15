@@ -6051,14 +6051,6 @@ figure{
   background-image:url("../img/svg-icons/chat.svg");
 }
 
-.icon-check-circle-white:not(a){
-  background-image:url("../img/svg-icons/check-circle-white.svg");
-}
-
-.icon-check-circle:not(a){
-  background-image:url("../img/svg-icons/check-circle.svg");
-}
-
 .icon-chevron-down-white:not(a){
   background-image:url("../img/svg-icons/chevron-down-white.svg");
 }
@@ -6153,6 +6145,14 @@ figure{
 
 .icon-engineering:not(a){
   background-image:url("../img/svg-icons/engineering.svg");
+}
+
+.icon-error-white:not(a){
+  background-image:url("../img/svg-icons/error-white.svg");
+}
+
+.icon-error:not(a){
+  background-image:url("../img/svg-icons/error.svg");
 }
 
 .icon-face:not(a){
@@ -6301,14 +6301,6 @@ figure{
 
 .icon-help:not(a){
   background-image:url("../img/svg-icons/help.svg");
-}
-
-.icon-highlight-off-white:not(a){
-  background-image:url("../img/svg-icons/highlight-off-white.svg");
-}
-
-.icon-highlight-off:not(a){
-  background-image:url("../img/svg-icons/highlight-off.svg");
 }
 
 .icon-home:not(a){
@@ -6483,10 +6475,6 @@ figure{
   background-image:url("../img/svg-icons/reply.svg");
 }
 
-.icon-report-problem:not(a){
-  background-image:url("../img/svg-icons/report-problem.svg");
-}
-
 .icon-save:not(a){
   background-image:url("../img/svg-icons/save.svg");
 }
@@ -6559,6 +6547,14 @@ figure{
   background-image:url("../img/svg-icons/subdirectory-arrow-right.svg");
 }
 
+.icon-success-white:not(a){
+  background-image:url("../img/svg-icons/success-white.svg");
+}
+
+.icon-success:not(a){
+  background-image:url("../img/svg-icons/success.svg");
+}
+
 .icon-support-agent:not(a){
   background-image:url("../img/svg-icons/support-agent.svg");
 }
@@ -6589,6 +6585,10 @@ figure{
 
 .icon-visibility:not(a){
   background-image:url("../img/svg-icons/visibility.svg");
+}
+
+.icon-warning:not(a){
+  background-image:url("../img/svg-icons/warning.svg");
 }
 
 .icon-zoom-in:not(a){
@@ -9797,15 +9797,15 @@ body.mobile-nav-active{
 }
 
 .toast-success .toast-icon{
-  background-image:url("../img/svg-icons/check-circle-white.svg");
+  background-image:url("../img/svg-icons/success-white.svg");
 }
 
 .toast-warning .toast-icon{
-  background-image:url("../img/svg-icons/report-problem.svg");
+  background-image:url("../img/svg-icons/warning.svg");
 }
 
 .toast-error .toast-icon{
-  background-image:url("../img/svg-icons/highlight-off-white.svg");
+  background-image:url("../img/svg-icons/error-white.svg");
 }
 
 .toast-info .toast-icon{
