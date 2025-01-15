@@ -208,11 +208,11 @@ $-active-border-width: func.units(2);
         @extend %-icon-properties;
 
         &[aria-expanded="false"] span {
-            @include mixins.add-background-svg("expand-more");
+            @include mixins.add-background-svg("chevron-down");
         }
 
         &[aria-expanded="true"] span {
-            @include mixins.add-background-svg("expand-less");
+            @include mixins.add-background-svg("chevron-up");
         }
     }
 

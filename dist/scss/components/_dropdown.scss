@@ -6,7 +6,7 @@
 .form-select {
     @extend %basic-form-element;
     background-color: func.color(vars.$select-background-color);
-    @include mixins.add-background-svg('expand-more');
+    @include mixins.add-background-svg('chevron-down');
     background-position: calc(100% - 10px);
     border: func.border(vars.$select-border);
     color: func.color(vars.$select-text-color);

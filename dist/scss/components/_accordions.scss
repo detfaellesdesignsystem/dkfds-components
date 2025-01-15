@@ -11,7 +11,7 @@
   text-align: left;
   min-height: auto;
   background-color: func.color(vars.$accordion-button-background-color-default);
-  @include mixins.add-background-svg('remove');
+  @include mixins.add-background-svg('minus');
   background-position: left func.units(4, 'rem') center;
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   color: func.color(vars.$accordion-button-color-default);
@@ -91,7 +91,7 @@ button.accordion-bulk-button{
     background-image: url(vars.$icons-folder-path + 'add.svg');
   }
   &[data-accordion-bulk-expand="false"] {
-    background-image: url(vars.$icons-folder-path + 'remove.svg');
+    background-image: url(vars.$icons-folder-path + 'minus.svg');
   }
 }
 
@@ -185,7 +185,7 @@ li.accordion-error {
   border-radius: func.border-radius('medium') func.border-radius('medium') 0 0;
 }
 .accordion-button[aria-expanded="false"] {
-  @include mixins.add-background-svg('add');
+  @include mixins.add-background-svg('plus');
   background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   border-radius: func.border-radius('medium');
 }

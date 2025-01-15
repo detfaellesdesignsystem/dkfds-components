@@ -5987,10 +5987,6 @@ figure{
   background-image:url("../img/svg-icons/add-a-photo.svg");
 }
 
-.icon-add:not(a){
-  background-image:url("../img/svg-icons/add.svg");
-}
-
 .icon-agriculture:not(a){
   background-image:url("../img/svg-icons/agriculture.svg");
 }
@@ -6005,14 +6001,6 @@ figure{
 
 .icon-arrow-downward:not(a){
   background-image:url("../img/svg-icons/arrow-downward.svg");
-}
-
-.icon-arrow-drop-down:not(a){
-  background-image:url("../img/svg-icons/arrow-drop-down.svg");
-}
-
-.icon-arrow-drop-up:not(a){
-  background-image:url("../img/svg-icons/arrow-drop-up.svg");
 }
 
 .icon-arrow-forward:not(a){
@@ -6071,6 +6059,14 @@ figure{
   background-image:url("../img/svg-icons/check-circle.svg");
 }
 
+.icon-chevron-down-white:not(a){
+  background-image:url("../img/svg-icons/chevron-down-white.svg");
+}
+
+.icon-chevron-down:not(a){
+  background-image:url("../img/svg-icons/chevron-down.svg");
+}
+
 .icon-chevron-double-left:not(a){
   background-image:url("../img/svg-icons/chevron-double-left.svg");
 }
@@ -6085,6 +6081,10 @@ figure{
 
 .icon-chevron-right:not(a){
   background-image:url("../img/svg-icons/chevron-right.svg");
+}
+
+.icon-chevron-up:not(a){
+  background-image:url("../img/svg-icons/chevron-up.svg");
 }
 
 .icon-close:not(a){
@@ -6153,18 +6153,6 @@ figure{
 
 .icon-engineering:not(a){
   background-image:url("../img/svg-icons/engineering.svg");
-}
-
-.icon-expand-less:not(a){
-  background-image:url("../img/svg-icons/expand-less.svg");
-}
-
-.icon-expand-more-white:not(a){
-  background-image:url("../img/svg-icons/expand-more-white.svg");
-}
-
-.icon-expand-more:not(a){
-  background-image:url("../img/svg-icons/expand-more.svg");
 }
 
 .icon-face:not(a){
@@ -6391,6 +6379,14 @@ figure{
   background-image:url("../img/svg-icons/menu.svg");
 }
 
+.icon-minus:not(a){
+  background-image:url("../img/svg-icons/minus.svg");
+}
+
+.icon-minus-white:not(a){
+  background-image:url("../img/svg-icons/minus-white.svg");
+}
+
 .icon-mode:not(a){
   background-image:url("../img/svg-icons/mode.svg");
 }
@@ -6467,6 +6463,10 @@ figure{
   background-image:url("../img/svg-icons/playlist-add.svg");
 }
 
+.icon-plus:not(a){
+  background-image:url("../img/svg-icons/plus.svg");
+}
+
 .icon-print:not(a){
   background-image:url("../img/svg-icons/print.svg");
 }
@@ -6477,14 +6477,6 @@ figure{
 
 .icon-refresh:not(a){
   background-image:url("../img/svg-icons/refresh.svg");
-}
-
-.icon-remove:not(a){
-  background-image:url("../img/svg-icons/remove.svg");
-}
-
-.icon-remove-white:not(a){
-  background-image:url("../img/svg-icons/remove-white.svg");
 }
 
 .icon-reply:not(a){
@@ -6878,7 +6870,7 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 }
 
 .form-checkbox[aria-checked=mixed] + label::before{
-  background-image:url("../img/svg-icons/remove-white.svg");
+  background-image:url("../img/svg-icons/minus-white.svg");
 }
 
 .form-radio:checked + label::before{
@@ -7326,7 +7318,7 @@ button.function-link, button.accordion-bulk-button{
   text-align:left;
   min-height:auto;
   background-color:#F5F5F5;
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/minus.svg");
   background-repeat:no-repeat;
   background-position:left 1.6rem center;
   background-size:2.4rem;
@@ -7405,7 +7397,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=true]{
   background-image:url("../img/svg-icons/add.svg");
 }
 button.accordion-bulk-button[data-accordion-bulk-expand=false]{
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/minus.svg");
 }
 
 .accordion{
@@ -7503,7 +7495,7 @@ li.accordion-error .error-border::before{
 }
 
 .accordion-button[aria-expanded=false]{
-  background-image:url("../img/svg-icons/add.svg");
+  background-image:url("../img/svg-icons/plus.svg");
   background-repeat:no-repeat;
   background-size:2.4rem;
   border-radius:8px;
@@ -8046,7 +8038,7 @@ li.accordion-error .error-border::before{
   margin-bottom:8px;
 }
 .details[open] .details-summary::before{
-  background-image:url("../img/svg-icons/expand-less.svg");
+  background-image:url("../img/svg-icons/chevron-up.svg");
 }
 .details .details-summary{
   display:inline-block;
@@ -8057,7 +8049,7 @@ li.accordion-error .error-border::before{
 .details .details-summary::before{
   content:"";
   display:inline-block;
-  background-image:url("../img/svg-icons/expand-more.svg");
+  background-image:url("../img/svg-icons/chevron-down.svg");
   background-repeat:no-repeat;
   background-position:0rem 0.6rem;
   width:2.4rem;
@@ -8560,7 +8552,7 @@ li.accordion-error .error-border::before{
 
 .form-select{
   background-color:white;
-  background-image:url("../img/svg-icons/expand-more.svg");
+  background-image:url("../img/svg-icons/chevron-down.svg");
   background-repeat:no-repeat;
   background-position:calc(100% - 10px);
   border:1px solid #8E8E8E;
@@ -9221,11 +9213,11 @@ body.mobile-nav-active{
   padding-right:calc(2.4rem + 4px);
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu[aria-expanded=false] > span{
-  background-image:url("../img/svg-icons/add.svg");
+  background-image:url("../img/svg-icons/plus.svg");
   background-repeat:no-repeat;
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu[aria-expanded=true] > span{
-  background-image:url("../img/svg-icons/remove.svg");
+  background-image:url("../img/svg-icons/minus.svg");
   background-repeat:no-repeat;
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner{
@@ -9430,11 +9422,11 @@ body.mobile-nav-active{
   display:none;
 }
 .navigation-menu ul.mainmenu .button-overflow-menu[aria-expanded=false] span{
-  background-image:url("../img/svg-icons/expand-more.svg");
+  background-image:url("../img/svg-icons/chevron-down.svg");
   background-repeat:no-repeat;
 }
 .navigation-menu ul.mainmenu .button-overflow-menu[aria-expanded=true] span{
-  background-image:url("../img/svg-icons/expand-less.svg");
+  background-image:url("../img/svg-icons/chevron-up.svg");
   background-repeat:no-repeat;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner{

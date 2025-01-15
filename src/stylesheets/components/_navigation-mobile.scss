@@ -87,11 +87,11 @@ $-active-border-width: func.units(3);
                 }
     
                 &[aria-expanded="false"] > span {
-                    @include mixins.add-background-svg("add");
+                    @include mixins.add-background-svg("plus");
                 }
     
                 &[aria-expanded="true"] > span {
-                    @include mixins.add-background-svg("remove");
+                    @include mixins.add-background-svg("minus");
                 }
             }
 

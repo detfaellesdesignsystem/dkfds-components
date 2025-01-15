@@ -14,7 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &::before {
-        background-image: url(vars.$icons-folder-path + 'expand-less.svg');
+        background-image: url(vars.$icons-folder-path + 'chevron-up.svg');
       }
     }
   }
@@ -28,7 +28,7 @@
     &::before {
       content: "";
       display: inline-block;
-      @include mixins.add-background-svg('expand-more');
+      @include mixins.add-background-svg('chevron-down');
       background-position: 0rem 0.6rem;
       width: func.units(5, 'rem');
       height: func.units(5, 'rem');
