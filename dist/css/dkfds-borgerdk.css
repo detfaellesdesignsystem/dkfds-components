@@ -5979,16 +5979,16 @@ figure{
   background-image:url("../img/svg-icons/accessibility-new.svg");
 }
 
-.icon-account-circle:not(a){
-  background-image:url("../img/svg-icons/account-circle.svg");
+.icon-account:not(a){
+  background-image:url("../img/svg-icons/account.svg");
 }
 
 .icon-add-a-photo:not(a){
   background-image:url("../img/svg-icons/add-a-photo.svg");
 }
 
-.icon-agriculture:not(a){
-  background-image:url("../img/svg-icons/agriculture.svg");
+.icon-analytics:not(a){
+  background-image:url("../img/svg-icons/analytics.svg");
 }
 
 .icon-apps:not(a){
@@ -6011,10 +6011,6 @@ figure{
   background-image:url("../img/svg-icons/arrow-upward.svg");
 }
 
-.icon-assessment:not(a){
-  background-image:url("../img/svg-icons/assessment.svg");
-}
-
 .icon-assignment:not(a){
   background-image:url("../img/svg-icons/assignment.svg");
 }
@@ -6023,12 +6019,16 @@ figure{
   background-image:url("../img/svg-icons/attach-file.svg");
 }
 
-.icon-bookmark-border:not(a){
-  background-image:url("../img/svg-icons/bookmark-border.svg");
+.icon-bookmark:not(a){
+  background-image:url("../img/svg-icons/bookmark.svg");
 }
 
 .icon-bookmarks:not(a){
   background-image:url("../img/svg-icons/bookmarks.svg");
+}
+
+.icon-business:not(a){
+  background-image:url("../img/svg-icons/business.svg");
 }
 
 .icon-cached:not(a){
@@ -6039,8 +6039,8 @@ figure{
   background-image:url("../img/svg-icons/calculator.svg");
 }
 
-.icon-card-account-details:not(a){
-  background-image:url("../img/svg-icons/card-account-details.svg");
+.icon-car:not(a){
+  background-image:url("../img/svg-icons/car.svg");
 }
 
 .icon-card-text:not(a){
@@ -6049,6 +6049,10 @@ figure{
 
 .icon-chat:not(a){
   background-image:url("../img/svg-icons/chat.svg");
+}
+
+.icon-checklist:not(a){
+  background-image:url("../img/svg-icons/checklist.svg");
 }
 
 .icon-chevron-down-white:not(a){
@@ -6087,6 +6091,10 @@ figure{
   background-image:url("../img/svg-icons/construction.svg");
 }
 
+.icon-contact-info:not(a){
+  background-image:url("../img/svg-icons/contact-info.svg");
+}
+
 .icon-contact-support:not(a){
   background-image:url("../img/svg-icons/contact-support.svg");
 }
@@ -6115,12 +6123,12 @@ figure{
   background-image:url("../img/svg-icons/delete.svg");
 }
 
-.icon-desktop-windows:not(a){
-  background-image:url("../img/svg-icons/desktop-windows.svg");
+.icon-desktop:not(a){
+  background-image:url("../img/svg-icons/desktop.svg");
 }
 
-.icon-domain:not(a){
-  background-image:url("../img/svg-icons/domain.svg");
+.icon-document:not(a){
+  background-image:url("../img/svg-icons/document.svg");
 }
 
 .icon-done:not(a){
@@ -6133,10 +6141,6 @@ figure{
 
 .icon-download-done:not(a){
   background-image:url("../img/svg-icons/download-done.svg");
-}
-
-.icon-drive-eta:not(a){
-  background-image:url("../img/svg-icons/drive-eta.svg");
 }
 
 .icon-email:not(a){
@@ -6155,12 +6159,12 @@ figure{
   background-image:url("../img/svg-icons/error.svg");
 }
 
-.icon-face:not(a){
-  background-image:url("../img/svg-icons/face.svg");
-}
-
 .icon-feedback:not(a){
   background-image:url("../img/svg-icons/feedback.svg");
+}
+
+.icon-file:not(a){
+  background-image:url("../img/svg-icons/file.svg");
 }
 
 .icon-file-download:not(a){
@@ -6247,14 +6251,6 @@ figure{
   background-image:url("../img/svg-icons/format-italic.svg");
 }
 
-.icon-format-list-bulleted:not(a){
-  background-image:url("../img/svg-icons/format-list-bulleted.svg");
-}
-
-.icon-format-list-checks:not(a){
-  background-image:url("../img/svg-icons/format-list-checks.svg");
-}
-
 .icon-format-list-numbered:not(a){
   background-image:url("../img/svg-icons/format-list-numbered.svg");
 }
@@ -6295,8 +6291,8 @@ figure{
   background-image:url("../img/svg-icons/groups.svg");
 }
 
-.icon-headphones:not(a){
-  background-image:url("../img/svg-icons/headphones.svg");
+.icon-headset:not(a){
+  background-image:url("../img/svg-icons/headset.svg");
 }
 
 .icon-help:not(a){
@@ -6323,10 +6319,6 @@ figure{
   background-image:url("../img/svg-icons/info.svg");
 }
 
-.icon-insert-drive-file:not(a){
-  background-image:url("../img/svg-icons/insert-drive-file.svg");
-}
-
 .icon-insert-invitation:not(a){
   background-image:url("../img/svg-icons/insert-invitation.svg");
 }
@@ -6347,12 +6339,8 @@ figure{
   background-image:url("../img/svg-icons/link.svg");
 }
 
-.icon-list-alt:not(a){
-  background-image:url("../img/svg-icons/list-alt.svg");
-}
-
-.icon-local-shipping:not(a){
-  background-image:url("../img/svg-icons/local-shipping.svg");
+.icon-list-bulleted:not(a){
+  background-image:url("../img/svg-icons/list-bulleted.svg");
 }
 
 .icon-location-on:not(a){
@@ -6423,10 +6411,6 @@ figure{
   background-image:url("../img/svg-icons/payments.svg");
 }
 
-.icon-people-alt:not(a){
-  background-image:url("../img/svg-icons/people-alt.svg");
-}
-
 .icon-person-add-alt-1:not(a){
   background-image:url("../img/svg-icons/person-add-alt-1.svg");
 }
@@ -6439,8 +6423,8 @@ figure{
   background-image:url("../img/svg-icons/person.svg");
 }
 
-.icon-phone-iphone:not(a){
-  background-image:url("../img/svg-icons/phone-iphone.svg");
+.icon-persons:not(a){
+  background-image:url("../img/svg-icons/persons.svg");
 }
 
 .icon-photo-camera:not(a){
@@ -6479,10 +6463,6 @@ figure{
   background-image:url("../img/svg-icons/save.svg");
 }
 
-.icon-school:not(a){
-  background-image:url("../img/svg-icons/school.svg");
-}
-
 .icon-science:not(a){
   background-image:url("../img/svg-icons/science.svg");
 }
@@ -6505,6 +6485,10 @@ figure{
 
 .icon-shopping-cart:not(a){
   background-image:url("../img/svg-icons/shopping-cart.svg");
+}
+
+.icon-smartphone:not(a){
+  background-image:url("../img/svg-icons/smartphone.svg");
 }
 
 .icon-sort-ascending:not(a){
@@ -6539,6 +6523,10 @@ figure{
   background-image:url("../img/svg-icons/sort.svg");
 }
 
+.icon-student:not(a){
+  background-image:url("../img/svg-icons/student.svg");
+}
+
 .icon-subdirectory-arrow-left:not(a){
   background-image:url("../img/svg-icons/subdirectory-arrow-left.svg");
 }
@@ -6555,12 +6543,28 @@ figure{
   background-image:url("../img/svg-icons/success.svg");
 }
 
+.icon-summary:not(a){
+  background-image:url("../img/svg-icons/summary.svg");
+}
+
 .icon-support-agent:not(a){
   background-image:url("../img/svg-icons/support-agent.svg");
 }
 
 .icon-text-format:not(a){
   background-image:url("../img/svg-icons/text-format.svg");
+}
+
+.icon-tractor:not(a){
+  background-image:url("../img/svg-icons/tractor.svg");
+}
+
+.icon-trainee:not(a){
+  background-image:url("../img/svg-icons/trainee.svg");
+}
+
+.icon-truck:not(a){
+  background-image:url("../img/svg-icons/truck.svg");
 }
 
 .icon-tune:not(a){
