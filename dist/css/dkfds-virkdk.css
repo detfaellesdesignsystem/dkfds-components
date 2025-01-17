@@ -6251,12 +6251,20 @@ figure{
   background-image:url("../img/svg-icons/format-italic.svg");
 }
 
+.icon-format-list-bulleted:not(a){
+  background-image:url("../img/svg-icons/format-list-bulleted.svg");
+}
+
 .icon-format-list-numbered:not(a){
   background-image:url("../img/svg-icons/format-list-numbered.svg");
 }
 
 .icon-format-size:not(a){
   background-image:url("../img/svg-icons/format-size.svg");
+}
+
+.icon-format-text:not(a){
+  background-image:url("../img/svg-icons/format-text.svg");
 }
 
 .icon-format-underlined:not(a){
@@ -6549,10 +6557,6 @@ figure{
 
 .icon-support-agent:not(a){
   background-image:url("../img/svg-icons/support-agent.svg");
-}
-
-.icon-text-format:not(a){
-  background-image:url("../img/svg-icons/text-format.svg");
 }
 
 .icon-tractor:not(a){
