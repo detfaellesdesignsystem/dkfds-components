@@ -6411,16 +6411,16 @@ figure{
   background-image:url("../img/svg-icons/payments.svg");
 }
 
+.icon-person:not(a){
+  background-image:url("../img/svg-icons/person.svg");
+}
+
 .icon-person-add-alt-1:not(a){
   background-image:url("../img/svg-icons/person-add-alt-1.svg");
 }
 
 .icon-person-remove:not(a){
   background-image:url("../img/svg-icons/person-remove.svg");
-}
-
-.icon-person:not(a){
-  background-image:url("../img/svg-icons/person.svg");
 }
 
 .icon-persons:not(a){
