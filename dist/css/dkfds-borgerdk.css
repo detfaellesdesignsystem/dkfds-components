@@ -6954,53 +6954,53 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
   display:none;
 }
 
-th .form-group-checkbox,
-th .form-group-radio,
-td .form-group-checkbox,
-td .form-group-radio{
+.table--selectable th:first-child .form-group-checkbox,
+.table--selectable th:first-child .form-group-radio,
+.table--selectable td:first-child .form-group-checkbox,
+.table--selectable td:first-child .form-group-radio{
   margin-top:0;
   width:24px;
   height:24px;
 }
-th .form-group-checkbox .form-checkbox,
-th .form-group-checkbox .form-radio,
-th .form-group-radio .form-checkbox,
-th .form-group-radio .form-radio,
-td .form-group-checkbox .form-checkbox,
-td .form-group-checkbox .form-radio,
-td .form-group-radio .form-checkbox,
-td .form-group-radio .form-radio{
+.table--selectable th:first-child .form-group-checkbox .form-checkbox,
+.table--selectable th:first-child .form-group-checkbox .form-radio,
+.table--selectable th:first-child .form-group-radio .form-checkbox,
+.table--selectable th:first-child .form-group-radio .form-radio,
+.table--selectable td:first-child .form-group-checkbox .form-checkbox,
+.table--selectable td:first-child .form-group-checkbox .form-radio,
+.table--selectable td:first-child .form-group-radio .form-checkbox,
+.table--selectable td:first-child .form-group-radio .form-radio{
   margin-top:0;
 }
-th .form-group-checkbox .form-checkbox + label,
-th .form-group-checkbox .form-radio + label,
-th .form-group-radio .form-checkbox + label,
-th .form-group-radio .form-radio + label,
-td .form-group-checkbox .form-checkbox + label,
-td .form-group-checkbox .form-radio + label,
-td .form-group-radio .form-checkbox + label,
-td .form-group-radio .form-radio + label{
+.table--selectable th:first-child .form-group-checkbox .form-checkbox + label,
+.table--selectable th:first-child .form-group-checkbox .form-radio + label,
+.table--selectable th:first-child .form-group-radio .form-checkbox + label,
+.table--selectable th:first-child .form-group-radio .form-radio + label,
+.table--selectable td:first-child .form-group-checkbox .form-checkbox + label,
+.table--selectable td:first-child .form-group-checkbox .form-radio + label,
+.table--selectable td:first-child .form-group-radio .form-checkbox + label,
+.table--selectable td:first-child .form-group-radio .form-radio + label{
   padding-left:0;
 }
-th .form-group-checkbox .form-checkbox + label::before,
-th .form-group-checkbox .form-radio + label::before,
-th .form-group-radio .form-checkbox + label::before,
-th .form-group-radio .form-radio + label::before,
-td .form-group-checkbox .form-checkbox + label::before,
-td .form-group-checkbox .form-radio + label::before,
-td .form-group-radio .form-checkbox + label::before,
-td .form-group-radio .form-radio + label::before{
+.table--selectable th:first-child .form-group-checkbox .form-checkbox + label::before,
+.table--selectable th:first-child .form-group-checkbox .form-radio + label::before,
+.table--selectable th:first-child .form-group-radio .form-checkbox + label::before,
+.table--selectable th:first-child .form-group-radio .form-radio + label::before,
+.table--selectable td:first-child .form-group-checkbox .form-checkbox + label::before,
+.table--selectable td:first-child .form-group-checkbox .form-radio + label::before,
+.table--selectable td:first-child .form-group-radio .form-checkbox + label::before,
+.table--selectable td:first-child .form-group-radio .form-radio + label::before{
   margin-right:0;
   margin-top:calc(1.2rem - 12px);
 }
-th .form-group-checkbox .form-checkbox + label::after,
-th .form-group-checkbox .form-radio + label::after,
-th .form-group-radio .form-checkbox + label::after,
-th .form-group-radio .form-radio + label::after,
-td .form-group-checkbox .form-checkbox + label::after,
-td .form-group-checkbox .form-radio + label::after,
-td .form-group-radio .form-checkbox + label::after,
-td .form-group-radio .form-radio + label::after{
+.table--selectable th:first-child .form-group-checkbox .form-checkbox + label::after,
+.table--selectable th:first-child .form-group-checkbox .form-radio + label::after,
+.table--selectable th:first-child .form-group-radio .form-checkbox + label::after,
+.table--selectable th:first-child .form-group-radio .form-radio + label::after,
+.table--selectable td:first-child .form-group-checkbox .form-checkbox + label::after,
+.table--selectable td:first-child .form-group-checkbox .form-radio + label::after,
+.table--selectable td:first-child .form-group-radio .form-checkbox + label::after,
+.table--selectable td:first-child .form-group-radio .form-radio + label::after{
   margin-top:calc(1.2rem - 12px);
 }
 
