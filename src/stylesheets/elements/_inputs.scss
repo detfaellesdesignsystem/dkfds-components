@@ -367,8 +367,8 @@ legend, .form-error-message, .form-hint {
 }
 
 // Special styling when radio/checkboxes are used to select table rows
-th, 
-td {
+.table--selectable th:first-child, 
+.table--selectable td:first-child {
     .form-group-checkbox,
     .form-group-radio {
         margin-top: 0;
