@@ -7327,6 +7327,7 @@ button.function-link, button.accordion-bulk-button{
   min-height:auto;
   background-color:#F5F5F5;
   background-image:url("../img/svg-icons/minus.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-position:left 1.6rem center;
   background-size:2.4rem;
@@ -7504,6 +7505,7 @@ li.accordion-error .error-border::before{
 
 .accordion-button[aria-expanded=false]{
   background-image:url("../img/svg-icons/plus.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-size:2.4rem;
   border-radius:8px;
@@ -8058,6 +8060,7 @@ li.accordion-error .error-border::before{
   content:"";
   display:inline-block;
   background-image:url("../img/svg-icons/chevron-down.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-position:0rem 0.6rem;
   width:2.4rem;
@@ -8149,6 +8152,7 @@ li.accordion-error .error-border::before{
   color:inherit;
   min-height:auto;
   background-image:url("../img/svg-icons/calendar-month.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   align-self:stretch;
   background-color:transparent;
@@ -8287,21 +8291,25 @@ li.accordion-error .error-border::before{
 
 .date-picker__calendar__previous-year:not([disabled]){
   background-image:url("../img/svg-icons/chevron-double-left.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
 .date-picker__calendar__previous-month:not([disabled]){
   background-image:url("../img/svg-icons/chevron-left.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
 .date-picker__calendar__next-year:not([disabled]){
   background-image:url("../img/svg-icons/chevron-double-right.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
 .date-picker__calendar__next-month:not([disabled]){
   background-image:url("../img/svg-icons/chevron-right.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
@@ -8511,11 +8519,13 @@ li.accordion-error .error-border::before{
 
 .date-picker__calendar__previous-year-chunk:not([disabled]){
   background-image:url("../img/svg-icons/chevron-left.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
 .date-picker__calendar__next-year-chunk:not([disabled]){
   background-image:url("../img/svg-icons/chevron-right.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 
@@ -8561,6 +8571,7 @@ li.accordion-error .error-border::before{
 .form-select{
   background-color:white;
   background-image:url("../img/svg-icons/chevron-down.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-position:calc(100% - 10px);
   background-size:2.4rem;
@@ -9223,10 +9234,12 @@ body.mobile-nav-active{
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu[aria-expanded=false] > span{
   background-image:url("../img/svg-icons/plus.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .button-mobile-menu[aria-expanded=true] > span{
   background-image:url("../img/svg-icons/minus.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 .navigation-menu-mobile ul.mainmenu li .submenu .overflow-menu-inner{
@@ -9421,6 +9434,7 @@ body.mobile-nav-active{
 }
 .navigation-menu ul.mainmenu li.more-option .button-overflow-menu.more-button[aria-expanded=false] span, .navigation-menu ul.mainmenu li.more-option .button-overflow-menu.more-button[aria-expanded=true] span{
   background-image:url("../img/svg-icons/more-vert.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 .navigation-menu ul.mainmenu li.more-option .button-overflow-menu.more-button:hover span{
@@ -9432,10 +9446,12 @@ body.mobile-nav-active{
 }
 .navigation-menu ul.mainmenu .button-overflow-menu[aria-expanded=false] span{
   background-image:url("../img/svg-icons/chevron-down.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 .navigation-menu ul.mainmenu .button-overflow-menu[aria-expanded=true] span{
   background-image:url("../img/svg-icons/chevron-up.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
 }
 .navigation-menu ul.mainmenu .overflow-menu-inner{
@@ -9750,6 +9766,7 @@ body.mobile-nav-active{
   height:24px;
   cursor:pointer;
   background-image:url("../img/svg-icons/close.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-color:transparent;
   border:0;
@@ -10294,6 +10311,7 @@ ol.sidemenu li.disabled.sidenav-error{
 }
 .language-switcher-header .container .select-language-list ul > li:first-of-type a{
   background-image:url("../img/svg-icons/check.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-position:left 16px center;
   background-size:1.6rem;
@@ -11129,6 +11147,7 @@ a.new-card:active{
 .overflow-menu--sort .overflow-menu-inner .overflow-list li button[aria-current=true]{
   font-weight:600;
   background-image:url("../img/svg-icons/check.svg");
+  background-size:2.4rem;
   background-repeat:no-repeat;
   background-position:calc(100% - 16px) center;
 }
