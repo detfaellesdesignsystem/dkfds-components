@@ -25,8 +25,7 @@
   transition: all .2s ease-in-out;
 
   &.tag-icon {
-    padding: 0;
-    padding-left: func.units(3);
+    padding-right: func.units(3);
   }
 
   & + .tag {

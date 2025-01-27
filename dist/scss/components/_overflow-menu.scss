@@ -311,7 +311,7 @@
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
             font-weight: func.font-weight("semibold");
-            @include mixins.add-background-svg('done');
+            @include mixins.add-background-svg('check');
             background-position: calc(100% - #{func.units(4)}) center;
         }
     }

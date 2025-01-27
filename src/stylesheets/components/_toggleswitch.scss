@@ -44,7 +44,7 @@ $-offset: func.units(1);
     &[aria-checked='true']::before {
         right: $-offset;
         border-color: func.color(vars.$toggle-on-dot-border-color);
-        background-image: url(vars.$icons-folder-path + 'done.svg');
+        background-image: url(vars.$icons-folder-path + 'check.svg');
     }
 
     &::after {

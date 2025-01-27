@@ -8,6 +8,7 @@
     background-color: func.color(vars.$select-background-color);
     @include mixins.add-background-svg('chevron-down');
     background-position: calc(100% - 10px);
+    background-size: func.units(5, 'rem');
     border: func.border(vars.$select-border);
     color: func.color(vars.$select-text-color);
     font-size: func.font-size(vars.$select-font-size);

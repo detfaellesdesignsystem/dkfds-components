@@ -152,7 +152,7 @@
                     text-decoration: none;
 
                     a {
-                        @include mixins.add-background-svg('done');
+                        @include mixins.add-background-svg('check');
                         background-position: left 16px center;
                         background-size: $icon-size;
                         padding-left: calc($inner-padding + $icon-size + $icon-list-margin-right);
