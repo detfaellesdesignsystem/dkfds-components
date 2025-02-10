@@ -4224,7 +4224,19 @@ Modal.prototype.hide = function () {
     modalElement.dispatchEvent(eventClose);
     let $backdrop = document.querySelector('#modal-backdrop');
     if ($backdrop) {
-      $backdrop.parentNode.removeChild($backdrop);
+      $backdrop.addEventListener('animationend', () => {
+        if ($backdrop.parentNode) {
+          $backdrop.parentNode.removeChild($backdrop);
+        }
+      });
+      $backdrop.classList.add('animate-out');
+      /* The event listener should remove the backdrop but if the animation for some reason
+         didn't run, ensure the backdrop always gets removed with setTimeout(). */
+      setTimeout(() => {
+        if (document.getElementById('modal-backdrop')) {
+          document.getElementById('modal-backdrop').remove();
+        }
+      }, 200);
     }
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     if (!hasForcedAction(modalElement)) {
@@ -4258,8 +4270,12 @@ Modal.prototype.hide = function () {
 Modal.prototype.show = function () {
   let e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   let modalElement = this.$modal;
+  let stepIndicatorModal = false;
   if (modalElement !== null) {
     if (e !== null) {
+      if (e.target.classList.contains('step-indicator-button')) {
+        stepIndicatorModal = true;
+      }
       let openerId = e.target.getAttribute('id');
       if (openerId === null) {
         openerId = 'modal-opener-' + Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
@@ -4279,6 +4295,13 @@ Modal.prototype.show = function () {
     modalElement.dispatchEvent(eventOpen);
     let $backdrop = document.createElement('div');
     $backdrop.classList.add('modal-backdrop');
+    if (stepIndicatorModal) {
+      window.addEventListener('resize', () => {
+        if (window.getComputedStyle(document.querySelector('.step-indicator-button')).display === 'none') {
+          this.hide();
+        }
+      }, false);
+    }
     $backdrop.setAttribute('id', "modal-backdrop");
     document.getElementsByTagName('body')[0].appendChild($backdrop);
     document.getElementsByTagName('body')[0].classList.add('modal-open');

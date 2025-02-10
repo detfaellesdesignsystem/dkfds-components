@@ -1,7 +1,7 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 {% macro modal(params) %}
 {% set forcedAction = params.forcedAction | default(false) %}
-<div class="fds-modal" id="{{ params.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{params.id}}-heading"{% if forcedAction %} data-modal-forced-action{% endif %}>
+<div class="fds-modal{% if params.stepIndicator %} modal-step-indicator{% endif %}" id="{{ params.id | default('modal-id-1') }}" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="{{params.id}}-heading"{% if forcedAction %} data-modal-forced-action{% endif %}>
   <div class="modal-content">
     <div class="modal-header">
       <h2 class="modal-title" id="{{params.id}}-heading">
