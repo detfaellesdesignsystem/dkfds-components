@@ -4436,6 +4436,11 @@ class Navigation {
       window.onload = event => {
         updateMoreMenu();
       };
+
+      // If the document is already loaded, fire updateMoreMenu
+      if (document.readyState === 'complete') {
+        updateMoreMenu();
+      }
     }
   }
 
@@ -4675,7 +4680,7 @@ const toggleNav = function (active) {
     // The mobile nav was just activated, so focus on the close button,
     // which is just before all the nav elements in the tab order.
     closeButton.focus();
-  } else if (!active && document.activeElement === closeButton && menuButton) {
+  } else if (!active && menuButton) {
     // The mobile nav was just deactivated, and focus was on the close
     // button, which is no longer visible. We don't want the focus to
     // disappear into the void, so focus on the menu button if it's
@@ -5087,8 +5092,13 @@ TableSelectableRows.prototype.init = function () {
   if (this.tbodyCheckboxList.length !== 0) {
     for (let c = 0; c < this.tbodyCheckboxList.length; c++) {
       let checkbox = this.tbodyCheckboxList[c];
-      checkbox.removeEventListener('change', updateGroupCheck);
-      checkbox.addEventListener('change', updateGroupCheck);
+      let tableDataCell = checkbox.parentNode.parentNode;
+      /* Only add listener to checkboxes in the first column. Checkboxes in other columns
+         are not part of the selectable rows. */
+      if (tableDataCell.matches('td:first-child')) {
+        checkbox.removeEventListener('change', updateGroupCheck);
+        checkbox.addEventListener('change', updateGroupCheck);
+      }
     }
   }
   if (this.groupCheckbox !== false) {
@@ -5129,14 +5139,26 @@ function updateCheckboxList(e) {
   let checkedNumber = 0;
   if (checkbox.checked) {
     for (let c = 0; c < checkboxList.length; c++) {
-      checkboxList[c].checked = true;
-      checkboxList[c].parentNode.parentNode.parentNode.classList.add('table-row-selected');
+      let formGroupCheckbox = checkboxList[c].parentNode;
+      let tableDataCell = formGroupCheckbox.parentNode;
+      /* Only check checkboxes in the first column. Checkboxes in other columns
+         are not part of the selectable rows. */
+      if (tableDataCell.matches('td:first-child')) {
+        checkboxList[c].checked = true;
+        tableDataCell.parentNode.classList.add('table-row-selected');
+      }
     }
     checkedNumber = checkboxList.length;
   } else {
     for (let c = 0; c < checkboxList.length; c++) {
-      checkboxList[c].checked = false;
-      checkboxList[c].parentNode.parentNode.parentNode.classList.remove('table-row-selected');
+      let formGroupCheckbox = checkboxList[c].parentNode;
+      let tableDataCell = formGroupCheckbox.parentNode;
+      /* Only uncheck checkboxes in the first column. Checkboxes in other columns
+         are not part of the selectable rows. */
+      if (tableDataCell.matches('td:first-child')) {
+        checkboxList[c].checked = false;
+        tableDataCell.parentNode.classList.remove('table-row-selected');
+      }
     }
   }
   const event = new CustomEvent("fds.table.selectable.updated", {
@@ -5168,13 +5190,18 @@ function updateGroupCheck(e) {
 
     // how many row has been selected
     let checkedNumber = 0;
+    let totalCheckboxes = 0;
     for (let c = 0; c < checkboxList.length; c++) {
       let loopedCheckbox = checkboxList[c];
-      if (loopedCheckbox.checked) {
+      let tableDataCell = loopedCheckbox.parentNode.parentNode;
+      if (loopedCheckbox.checked && tableDataCell.matches('td:first-child')) {
         checkedNumber++;
+        totalCheckboxes++;
+      } else if (tableDataCell.matches('td:first-child')) {
+        totalCheckboxes++;
       }
     }
-    if (checkedNumber === checkboxList.length) {
+    if (checkedNumber === totalCheckboxes) {
       // if all rows has been selected
       groupCheckbox.removeAttribute('aria-checked');
       groupCheckbox.indeterminate = false;
