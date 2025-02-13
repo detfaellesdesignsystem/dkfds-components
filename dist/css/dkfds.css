@@ -10660,6 +10660,10 @@ a.skipnav:focus{
 }
 .step-indicator li.disabled .step .step-number{
   text-decoration:none;
+  color:#707070;
+}
+.step-indicator li.disabled .step .step-title{
+  color:#707070;
 }
 .step-indicator li.disabled .step:hover .step-number, .step-indicator li.disabled .step:active .step-number{
   background-color:#F5F5F5;

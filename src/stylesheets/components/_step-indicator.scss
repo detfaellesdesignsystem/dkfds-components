@@ -149,6 +149,11 @@
         .step {
             .step-number {
                 text-decoration: none;
+                color: func.color('gray-500');
+            }
+
+            .step-title {
+                color: func.color('gray-500');
             }
 
             &:hover, &:active {
