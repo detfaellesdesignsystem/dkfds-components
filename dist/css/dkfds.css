@@ -6479,10 +6479,6 @@ figure{
   background-image:url("../img/svg-icons/smartphone.svg");
 }
 
-.icon-sort:not(a){
-  background-image:url("../img/svg-icons/sort.svg");
-}
-
 .icon-sort-ascending:not(a){
   background-image:url("../img/svg-icons/sort-ascending.svg");
 }
