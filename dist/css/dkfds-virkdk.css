@@ -6511,8 +6511,8 @@ figure{
   background-image:url("../img/svg-icons/star.svg");
 }
 
-.icon-star-full:not(a){
-  background-image:url("../img/svg-icons/star-full.svg");
+.icon-star-fill:not(a){
+  background-image:url("../img/svg-icons/star-fill.svg");
 }
 
 .icon-student:not(a){
