@@ -1,7 +1,6 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
-@use "../mixins/component-mixins/nav-mixins" as nav-mixins;
 
 body.mobile-nav-active {
     overflow: hidden; // Hide scrollbars when the mobile drawer is open
@@ -10,7 +9,7 @@ body.mobile-nav-active {
 %-mainmenu-mobile-item {
     padding-top: func.units(4);
     padding-bottom: func.units(4);
-    padding-right: func.units(5); // padding-left handled by mixin 'nav-link-leftdist'
+    padding-right: func.units(5);
     text-decoration: none;
     color: func.color(vars.$navigation-link-default-color);
     font-size: func.font-size('sm');
@@ -24,7 +23,7 @@ body.mobile-nav-active {
     text-align: left;
     border: 0;
 
-    &:hover {
+    &:hover, &:active {
         background-color: func.color(vars.$navigation-link-background-color-hover);
 
         .helptext {
@@ -33,8 +32,12 @@ body.mobile-nav-active {
         }
     }
 
+    &:active {
+        background-color: func.color(vars.$navigation-link-background-color-active);
+    }
+
     &:focus {
-        outline-offset: -4px;
+        outline-offset: -3px;
         position: relative;
         z-index: vars.$zindex-nav-focus;
     }
@@ -50,6 +53,8 @@ body.mobile-nav-active {
 // Main menu on mobile
 // --------------------------
 
+$-active-border-width: func.units(3);
+
 .navigation-menu-mobile ul.mainmenu {
     display: flex;
     flex-flow: column nowrap;
@@ -57,34 +62,14 @@ body.mobile-nav-active {
     border-bottom: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     border-top: 1px solid func.color(vars.$navigation-border-top-bottom-color);
     @include mixins.unstyled-list;
-    @include nav-mixins.nav-link-leftdist(func.units(3), vars.$navigation-link-current-border-color, 24px, 48px, 72px, 96px);
-    @include nav-mixins.nav-link-border(vars.$navigation-link-border-color, vars.$navigation-sublink-border-color);
 
     li {
         background-color: func.color(vars.$navigation-link-background-color);
-
-        &.active > a:first-child,
-        &.active > .submenu > button:first-child {
-            font-weight: func.font-weight("bold");
-        }
 
         .helptext {
             color: func.color(vars.$navigation-link-helptext-color);
             display: inline;
             font-weight: func.font-weight("normal");
-        }
-
-        &.current {
-            background-color: func.color(vars.$navigation-link-current-background-color);
-
-            .helptext {
-                color: func.color(vars.$navigation-link-current-helptext-color);
-                font-weight: func.font-weight("normal");
-            }
-        }
-
-        .nav-link {
-            @extend %-mainmenu-mobile-item;
         }
 
         .submenu {
@@ -93,8 +78,7 @@ body.mobile-nav-active {
             width: 100%;
     
             .button-mobile-menu {
-                @extend %-mainmenu-mobile-item;
-    
+
                 span {
                     background-position-x: right;
                     background-position-y: center;
@@ -103,11 +87,11 @@ body.mobile-nav-active {
                 }
     
                 &[aria-expanded="false"] > span {
-                    @include mixins.add-background-svg("add");
+                    @include mixins.add-background-svg("plus");
                 }
     
                 &[aria-expanded="true"] > span {
-                    @include mixins.add-background-svg("remove");
+                    @include mixins.add-background-svg("minus");
                 }
             }
 
@@ -116,16 +100,101 @@ body.mobile-nav-active {
                 border: 0;
                 width: 100%;
 
-                &[aria-hidden="true"] {
-                    display: none;
-                }
-
                 ul {
                     width: 100%;
                     max-width: none !important; // Override ul styling in typography.scss
                     @include mixins.unstyled-list;
                 }
+
+                &.collapsed {
+                    display: none;
+                }
             }
+        }
+
+        .nav-link, .button-mobile-menu {
+            @extend %-mainmenu-mobile-item;
+            padding-left: 24px;
+        }
+
+        li {
+            .nav-link, .button-mobile-menu {
+                padding-left: 48px;
+            }
+            
+            li {
+                .nav-link, .button-mobile-menu {
+                    padding-left: 72px;
+                }
+                
+                li {
+                    .nav-link, .button-mobile-menu {
+                        padding-left: 96px;
+                    }
+                }
+            }
+        }
+    }
+
+    & > li {
+        border-top: func.border('very-low-contrast');
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &.active {
+            border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+        }
+    }
+
+    li.active {
+        .nav-link, .button-mobile-menu {
+            margin-left: calc(0px - $-active-border-width);
+            width: calc(100% + $-active-border-width);
+
+            &:hover {
+                padding-left: 24px - $-active-border-width;
+                border-left: $-active-border-width solid func.color(vars.$navigation-link-current-border-color);
+            }
+        }
+
+        li {
+            .nav-link, .button-mobile-menu {
+                &:hover {
+                    padding-left: 48px - $-active-border-width;
+                }
+            }
+    
+            li {
+                .nav-link, .button-mobile-menu {
+                    &:hover {
+                        padding-left: 72px - $-active-border-width;
+                    }
+                }
+    
+                li {
+                    .nav-link, .button-mobile-menu {
+                        &:hover {
+                            padding-left: 96px - $-active-border-width;
+                        }
+                    }
+                }
+            }
+        }
+
+        & > a:first-child,
+        & > .submenu > button:first-child {
+            font-weight: func.font-weight("bold");
+        }
+    }
+
+    li.current {
+        background-color: func.color(vars.$navigation-link-current-background-color);
+
+        .helptext {
+            color: func.color(vars.$navigation-link-current-helptext-color);
+            font-weight: func.font-weight("normal");
         }
     }
 }

@@ -87,7 +87,7 @@
         width: 100%;
         z-index: 2;
         border: func.border(vars.$overflow-menu-content-border);
-        box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
+        box-shadow: func.shadow('light');
         background: func.color(vars.$overflow-menu-content-background-color);
         padding-top: func.units(3);
         padding-bottom: func.units(3);

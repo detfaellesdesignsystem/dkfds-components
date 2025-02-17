@@ -1,35 +1,21 @@
 @use "../variables" as vars;
 @use "../functions" as func;
 @use "../mixins" as mixins;
+@use "../placeholder-selectors";
 
 .form-select {
+    @extend %basic-form-element;
     background-color: func.color(vars.$select-background-color);
-    @include mixins.add-background-svg('expand-more');
+    @include mixins.add-background-svg('chevron-down');
     background-position: calc(100% - 10px);
+    background-size: func.units(5, 'rem');
     border: func.border(vars.$select-border);
-    border-radius: vars.$select-border-radius;
     color: func.color(vars.$select-text-color);
-    display: block;
     font-size: func.font-size(vars.$select-font-size);
     line-height: func.units(vars.$select-line-height, 'rem');
     height: calc(#{func.units(vars.$select-line-height, 'rem')} + (8px * 2));
-    max-width: 32rem;
-    width: 100%;
-    margin-top: func.units(3);
-    text-align: left;
     padding: calc(8px - #{func.border-width(vars.$select-border)}) calc(16px - #{func.border-width(vars.$select-border)});
     padding-right: func.units(6);
-    @include mixins.appearance-none;
-
-    &:-moz-focusring {
-        color: func.color('transparent');
-        text-shadow: 0 0 0 func.color('black');
-    }
-
-    &:focus,
-    &.focus {
-        @include mixins.focus;
-    }
 
     &::-ms-expand {
         display: none;
@@ -40,11 +26,4 @@
         color: func.color(vars.$input-disabled-text-color);
         cursor: not-allowed;
     }
-
-    option {
-        @-moz-document url-prefix() {
-            font-family: Helvetica, Arial, sans-serif;
-        }
-    }
-
 }

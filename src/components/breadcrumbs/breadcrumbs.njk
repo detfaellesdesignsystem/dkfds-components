@@ -1,13 +1,20 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
 {%- macro breadcrumbs(params) -%}
 <nav class="breadcrumbs{%- if params.classes %} {{ params.classes }}{% endif %}"{% for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %} aria-label="{{ params.ariaLabel | default('Brødkrumme') }}">
   <ol class="breadcrumbs__list">
   {%- for item in params.items -%}
     {% if item.href %}
     <li class="breadcrumbs__list-item">
+      {% if not loop.first %} 
+      {{ icon_svg({"name": 'chevron-right'}) }}
+      {% endif %}
       <a class="breadcrumbs__link" href="{{ item.href }}"{% for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>{{ item.html | safe if item.html else item.text }}</a>
     </li>
     {% else %}
-    <li class="breadcrumbs__list-item" aria-current="page">{{ item.html | safe if item.html else item.text }}</li>
+    <li class="breadcrumbs__list-item" aria-current="page">
+        {{ icon_svg({"name": 'chevron-right'}) }}
+        {{ item.html | safe if item.html else item.text }}</li>
     {% endif %}
   {%- endfor -%}
   </ol>

@@ -46,56 +46,7 @@ Dropdown.prototype.init = function (){
     //Clicked on dropdown open button --> toggle it
     this.buttonElement.removeEventListener('click', toggleDropdown);
     this.buttonElement.addEventListener('click', toggleDropdown);
-    let $module = this;
-    // set aria-hidden correctly for screenreaders (Tringuide responsive)
-    if(this.responsiveListCollapseEnabled) {
-      let element = this.buttonElement;
-      if (window.IntersectionObserver) {
-        // trigger event when button changes visibility
-        let observer = new IntersectionObserver(function (entries) {
-          // button is visible
-          if (entries[ 0 ].intersectionRatio) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            }
-          } else {
-            // button is not visible
-            if ($module.targetEl.getAttribute('aria-hidden') === 'true') {
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          }
-        }, {
-          root: document.body
-        });
-        observer.observe(element);
-      } else {
-        // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
-        if (doResponsiveCollapse($module.triggerEl)) {
-          // small screen
-          if (element.getAttribute('aria-expanded') === 'false') {
-            $module.targetEl.setAttribute('aria-hidden', 'true');
-          } else{
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        } else {
-          // Large screen
-          $module.targetEl.setAttribute('aria-hidden', 'false');
-        }
-        window.addEventListener('resize', function () {
-          if (doResponsiveCollapse($module.triggerEl)) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            } else{
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          } else {
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        });
-      }
-    }
 
-    
     document.removeEventListener('keyup', closeOnEscape);
     document.addEventListener('keyup', closeOnEscape);
   }
@@ -146,7 +97,6 @@ let closeAll = function (event = null){
             }
             triggerEl.setAttribute('aria-expanded', 'false');
             targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
           }
         }
     }
@@ -189,8 +139,7 @@ let toggle = function(button, forceClose = false){
     if(triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
-      targetEl.classList.add('collapsed');
-      targetEl.setAttribute('aria-hidden', 'true');      
+      targetEl.classList.add('collapsed');   
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     }
@@ -198,7 +147,6 @@ let toggle = function(button, forceClose = false){
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
-      targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
 
@@ -273,8 +221,7 @@ let outsideClose = function (evt){
           if (evt.target !== triggerEl) {
             //clicked outside trigger, force close
             triggerEl.setAttribute('aria-expanded', 'false');
-            targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');          
+            targetEl.classList.add('collapsed');         
             let eventClose = new Event('fds.dropdown.close');
             triggerEl.dispatchEvent(eventClose);
           }

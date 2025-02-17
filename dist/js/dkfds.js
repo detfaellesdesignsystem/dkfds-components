@@ -3607,11 +3607,11 @@ function CharacterLimit(containerElement) {
     message and sr-message will show/tell the correct amount of characters left. */
     if ('onpageshow' in window) {
       window.addEventListener('pageshow', () => {
-        this.updateMessages();
+        this.silentUpdateMessages();
       });
     } else {
-      window.addEventListener('DOMContentLoaded', () => {
-        this.updateMessages();
+      document.addEventListener('DOMContentLoaded', () => {
+        this.silentUpdateMessages();
       });
     }
   };
@@ -3662,7 +3662,13 @@ function updateScreenReaderMessage(formLimit) {
   let character_label = formLimit.container.getElementsByClassName('character-limit-sr-only')[0];
   character_label.innerHTML = count_message;
 }
+CharacterLimit.prototype.silentUpdateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').removeAttribute('aria-live');
+  updateVisibleMessage(this);
+  updateScreenReaderMessage(this);
+};
 CharacterLimit.prototype.updateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').setAttribute('aria-live', 'polite');
   updateVisibleMessage(this);
   updateScreenReaderMessage(this);
 };
@@ -3783,54 +3789,6 @@ Dropdown.prototype.init = function () {
     //Clicked on dropdown open button --> toggle it
     this.buttonElement.removeEventListener('click', toggleDropdown);
     this.buttonElement.addEventListener('click', toggleDropdown);
-    let $module = this;
-    // set aria-hidden correctly for screenreaders (Tringuide responsive)
-    if (this.responsiveListCollapseEnabled) {
-      let element = this.buttonElement;
-      if (window.IntersectionObserver) {
-        // trigger event when button changes visibility
-        let observer = new IntersectionObserver(function (entries) {
-          // button is visible
-          if (entries[0].intersectionRatio) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            }
-          } else {
-            // button is not visible
-            if ($module.targetEl.getAttribute('aria-hidden') === 'true') {
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          }
-        }, {
-          root: document.body
-        });
-        observer.observe(element);
-      } else {
-        // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
-        if (doResponsiveCollapse($module.triggerEl)) {
-          // small screen
-          if (element.getAttribute('aria-expanded') === 'false') {
-            $module.targetEl.setAttribute('aria-hidden', 'true');
-          } else {
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        } else {
-          // Large screen
-          $module.targetEl.setAttribute('aria-hidden', 'false');
-        }
-        window.addEventListener('resize', function () {
-          if (doResponsiveCollapse($module.triggerEl)) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            } else {
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          } else {
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        });
-      }
-    }
     document.removeEventListener('keyup', closeOnEscape);
     document.addEventListener('keyup', closeOnEscape);
   }
@@ -3879,7 +3837,6 @@ let closeAll = function () {
           }
           triggerEl.setAttribute('aria-expanded', 'false');
           targetEl.classList.add('collapsed');
-          targetEl.setAttribute('aria-hidden', 'true');
         }
       }
     }
@@ -3921,14 +3878,12 @@ let dropdown_toggle = function (button) {
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
       targetEl.classList.add('collapsed');
-      targetEl.setAttribute('aria-hidden', 'true');
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
-      targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
       let targetOffset = offset(targetEl);
@@ -3996,7 +3951,6 @@ let outsideClose = function (evt) {
             //clicked outside trigger, force close
             triggerEl.setAttribute('aria-expanded', 'false');
             targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
             let eventClose = new Event('fds.dropdown.close');
             triggerEl.dispatchEvent(eventClose);
           }
@@ -4270,7 +4224,19 @@ Modal.prototype.hide = function () {
     modalElement.dispatchEvent(eventClose);
     let $backdrop = document.querySelector('#modal-backdrop');
     if ($backdrop) {
-      $backdrop.parentNode.removeChild($backdrop);
+      $backdrop.addEventListener('animationend', () => {
+        if ($backdrop.parentNode) {
+          $backdrop.parentNode.removeChild($backdrop);
+        }
+      });
+      $backdrop.classList.add('animate-out');
+      /* The event listener should remove the backdrop but if the animation for some reason
+         didn't run, ensure the backdrop always gets removed with setTimeout(). */
+      setTimeout(() => {
+        if (document.getElementById('modal-backdrop')) {
+          document.getElementById('modal-backdrop').remove();
+        }
+      }, 200);
     }
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     if (!hasForcedAction(modalElement)) {
@@ -4304,8 +4270,12 @@ Modal.prototype.hide = function () {
 Modal.prototype.show = function () {
   let e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   let modalElement = this.$modal;
+  let stepIndicatorModal = false;
   if (modalElement !== null) {
     if (e !== null) {
+      if (e.target.classList.contains('step-indicator-button')) {
+        stepIndicatorModal = true;
+      }
       let openerId = e.target.getAttribute('id');
       if (openerId === null) {
         openerId = 'modal-opener-' + Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
@@ -4325,6 +4295,13 @@ Modal.prototype.show = function () {
     modalElement.dispatchEvent(eventOpen);
     let $backdrop = document.createElement('div');
     $backdrop.classList.add('modal-backdrop');
+    if (stepIndicatorModal) {
+      window.addEventListener('resize', () => {
+        if (window.getComputedStyle(document.querySelector('.step-indicator-button')).display === 'none') {
+          this.hide();
+        }
+      }, false);
+    }
     $backdrop.setAttribute('id', "modal-backdrop");
     document.getElementsByTagName('body')[0].appendChild($backdrop);
     document.getElementsByTagName('body')[0].classList.add('modal-open');
@@ -4460,7 +4437,7 @@ const createMoreMenu = function () {
   let moreMenu = document.createElement('li');
   moreMenu.classList.add('more-option');
   moreMenu.classList.add('d-none');
-  moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+  moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu"><ul class="overflow-list"></ul></div></div>';
   mainMenu.append(moreMenu);
   new dropdown(document.getElementsByClassName('more-button')[0]).init();
 };
@@ -4761,13 +4738,13 @@ let navigation_drawer_overflow_toggle = function (button) {
     if (triggerEl.getAttribute('aria-expanded') === 'true' || forceClose) {
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
-      targetEl.setAttribute('aria-hidden', 'true');
+      targetEl.classList.add('collapsed');
       let eventClose = new Event('fds.menudropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
-      targetEl.setAttribute('aria-hidden', 'false');
+      targetEl.classList.remove('collapsed');
       let eventOpen = new Event('fds.menudropdown.open');
       triggerEl.dispatchEvent(eventOpen);
     }

@@ -1,0 +1,9 @@
+params:
+- name: href
+  type: string
+  required: true
+  description: Link activated on click.
+- name: text
+  type: string
+  required: false
+  description: Link text. Defaults to 'Tilbage'.

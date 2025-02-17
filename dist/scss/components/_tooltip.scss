@@ -43,9 +43,9 @@ $-arrow-dist-to-target: func.units(2);    // Must match arrowDistanceToTarget in
         font-size: func.font-size('xs');
         font-weight: func.font-weight('normal');
         color: func.color(vars.$tooltip-color);
-        box-shadow: func.shadow(vars.$tooltip-shadow);
+        box-shadow: func.shadow('light');
         background-color: func.color(vars.$tooltip-background-color);
-        border-radius: 4px;
+        border-radius: func.border-radius('small');
         padding: func.units(2) func.units(305);
         z-index: vars.$zindex-tooltip;
         display: block;

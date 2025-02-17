@@ -102,7 +102,7 @@
                         <button class="button-overflow-menu js-dropdown" data-js-target="{{ submenuID }}" aria-expanded="false" aria-controls="{{ submenuID }}">
                             <span>{{ item.text }}</span>
                         </button>
-                        <div class="overflow-menu-inner collapsed" id="{{ submenuID }}" aria-hidden="true">
+                        <div class="overflow-menu-inner collapsed" id="{{ submenuID }}">
                             <ul class="overflow-list">
                                 {%- for subitem in item.links -%}
                                 <li{% if subitem.active or subitem.current or subitem.currentDesktop %} class="{% if subitem.active or subitem.current or subitem.currentDesktop %}active{% endif %}{% if subitem.current or subitem.currentDesktop %} current{% endif %}"{% endif %}>
@@ -169,7 +169,7 @@
             <span>{{ text }}</span>
         {% endif -%}
     </button>
-    <div class="overflow-menu-inner" id="{{ id }}"{% if active or current %} aria-hidden="false"{% else %} aria-hidden="true"{% endif %}>
+    <div class="overflow-menu-inner{% if not active and not current %} collapsed{% endif %}" id="{{ id }}">
         <ul class="overflow-list">
             {% set submenuID = id %}
             {%- for item in links -%}

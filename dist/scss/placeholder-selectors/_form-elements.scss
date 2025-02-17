@@ -1,0 +1,18 @@
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+/* Placeholder selectors meant to be extended by other selectors */
+
+%basic-form-element {
+    @include mixins.appearance-none;
+    display: block;
+    border-radius: func.border-radius('medium');
+    width: 100%;
+    max-width: 32rem;
+    margin-top: func.units(3);
+    text-align: left;
+
+    &:focus, &.focus{
+        @include mixins.focus;
+    }
+}

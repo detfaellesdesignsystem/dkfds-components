@@ -25,7 +25,6 @@
 @use 'elements/page';
 @use 'elements/forms';
 @use 'elements/hr';
-@use 'elements/page-navigation';
 
 // Components -------------- //
 @use 'components/accordions';
@@ -50,10 +49,11 @@
 @use 'components/pagination';
 @use 'components/toast';
 @use 'components/search';
-@use 'components/sidenav';
+@use 'components/sidemenu';
 @use 'components/language-switcher';
 @use 'components/skipnav';
 @use 'components/spinner';
+@use 'components/step-indicator';
 @use 'components/cards';
 @use 'components/overflow-menu';
 @use 'components/table';

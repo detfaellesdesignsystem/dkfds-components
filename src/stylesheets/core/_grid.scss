@@ -14,7 +14,6 @@
   max-width: inherit !important; // undo max-width
 }
 
-
 // basic row...
 .row {
   @include mixins.grid-row;
@@ -32,12 +31,12 @@
   }  
 
   &.row-bordered{
-    border-top: func.border(20);
+    border-top: func.border('low-contrast');
     padding-top: func.units(4);
     padding-bottom: func.units(4);
     line-height: func.units(5, 'rem');
     &:last-of-type{
-      border-bottom: func.border(20);
+      border-bottom: func.border('low-contrast');
     }
   }
 }

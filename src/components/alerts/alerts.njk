@@ -2,10 +2,11 @@
 
 {% macro alert(params) %}
 <div class="alert alert-{{ params.variant }}{% if params.classes %} {{ params.classes }}{% endif %}{% if params.paragraph %} alert--paragraph{% endif %}{% if params.closeButton %} has-close{% endif %}"{% if params.variant === "warning" or params.variant === "error" or params.alertRole %} role="alert"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
+  <div class="alert-border"></div>
   {%- if params.variant === "info" -%}{{ icon_svg({"name": "info", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Information"}) }}
-  {%- elif params.variant === "success" -%}{{ icon_svg({"name": "check-circle", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Succes"}) }}
-  {%- elif params.variant === "warning" -%}{{ icon_svg({"name": "report-problem", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Advarsel"}) }}
-  {%- elif params.variant === "error" -%}{{ icon_svg({"name": "highlight-off", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Fejl"}) }}{% endif %}
+  {%- elif params.variant === "success" -%}{{ icon_svg({"name": "success", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Succes"}) }}
+  {%- elif params.variant === "warning" -%}{{ icon_svg({"name": "warning", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Advarsel"}) }}
+  {%- elif params.variant === "error" -%}{{ icon_svg({"name": "error", "classes": "alert-icon", "ariaHidden": false, "ariaLabel": "Fejl"}) }}{% endif %}
   <div class="alert-body">
     {%- if params.heading -%}
     <{{params.headingLevel | default('h3') }} class="alert-heading{% if params.closeButton %} pr-7{% endif %}"{% if params.headingID %} id="{{params.headingID}}"{% endif %}>{{ params.heading | safe }}</{{params.headingLevel | default('h3') }}>

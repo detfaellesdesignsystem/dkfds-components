@@ -1,0 +1,84 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+{% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
+
+{% macro stepguide(params) %}
+<nav aria-label="{{ params.ariaLabel | default('Trinindikator') }}"{% if params.classes.nav %} class="{{params.classes.nav}}"{% endif %}>
+    <ol class="sidemenu">
+        {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
+        <li{% if disabled or trin.active or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.active %}active current {% endif %}{% if trin.error %}sidenav-error{% endif %}"{% endif %}{% if trin.active %} aria-current="step"{% endif %}>
+            <a class="nav-step"{% if not disabled %} href="{{trin.href}}"{% endif %}>
+                <div>
+                    <span class="sidenav-number">{{loop.index}}.</span>
+                    <div>
+                        <span class="sidenav-maininfo">
+                            <span class="sidenav-title">{{trin.text}}</span>
+                            {%- if trin.icon %}<span class="sidenav-icon">{{ icon_svg(trin.icon) }}</span>{% endif -%}
+                        </span>
+                        <span>{% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}</span>
+                    </div>
+                </div>
+            </a>
+        </li>{% endfor %}
+    </ol>
+</nav>
+{% endmacro %}
+
+{% macro overflow_stepguide(params) %}
+{% set stepsTotal = params.steps | length %}
+{% set currentStep = 0 %}
+{% for trin in params.steps %}
+    {% if trin.active %}
+        {% set currentStep = loop.index %}
+    {% endif %}
+{% endfor %}
+{% set buttonText = "Trin " + currentStep + " af " + stepsTotal %}
+{% set menuClasses = "" %}
+{% if params.breakpoint %}
+    {% set menuClasses = "overflow-menu--" + params.breakpoint + "-no-responsive " %}
+{% endif %}
+{% if menuClasses !== "" %}
+{{ 
+    overflowmenu({
+        "button": {
+            "text": buttonText,
+            "icon": "more-vert"
+        },
+        "classes": menuClasses,
+        "id": params.id,
+        "content": stepguide(params)
+    }) 
+}}
+{% else %}
+{{ 
+    overflowmenu({
+        "button": {
+            "text": buttonText,
+            "icon": "more-vert"
+        },
+        "id": params.id,
+        "content": stepguide(params)
+    }) 
+}}
+{% endif %}
+{% endmacro %}
+
+{% macro stepIndicatorButton(params) %}
+<button class="step-indicator-button d-{{params.breakpoint}}-none" aria-haspopup="dialog" type="button" data-module="modal" data-target="{{params.modal}}">Trin<strong> {{params.currentStep}} </strong>af {{params.totalSteps}}</button>
+{% endmacro %}
+
+{% macro stepIndicator(params) %}
+<ol class="step-indicator">
+    {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
+    <li{% if disabled or trin.current or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.error %}step-error{% endif %}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
+        <{% if disabled %}div{% else %}a{% endif %} class="step"{% if not disabled %} href="{{trin.href}}"{% endif %}>
+            <span class="step-number">{{loop.index}}</span>
+            <div>
+                <span>
+                    <span class="step-title">{{trin.text}}</span>{%- if trin.icon %}{{ icon_svg(trin.icon) }}{% endif -%}
+                </span>
+                {% if trin.helptext %}<span class="step-information">{{trin.helptext}}</span>{% endif -%}
+            </div>
+        </{% if disabled %}div{% else %}a{% endif %}>
+    </li>{% endfor %}
+</ol>
+{% endmacro %}

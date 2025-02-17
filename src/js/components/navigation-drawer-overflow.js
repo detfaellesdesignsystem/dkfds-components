@@ -69,13 +69,13 @@ let toggle = function(button, forceClose = false){
     if(triggerEl.getAttribute('aria-expanded') === 'true' || forceClose){
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
-      targetEl.setAttribute('aria-hidden', 'true');      
+      targetEl.classList.add('collapsed');
       let eventClose = new Event('fds.menudropdown.close');
       triggerEl.dispatchEvent(eventClose);
     }else{
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
-      targetEl.setAttribute('aria-hidden', 'false');
+      targetEl.classList.remove('collapsed');
       let eventOpen = new Event('fds.menudropdown.open');
       triggerEl.dispatchEvent(eventOpen);
     }

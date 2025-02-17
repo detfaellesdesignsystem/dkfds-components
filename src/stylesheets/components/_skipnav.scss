@@ -13,6 +13,7 @@ a.skipnav {
   z-index: vars.$zindex-skip;
   max-width: none;
   outline-offset: 0;
+  border-radius: func.border-radius('medium');
 
   &:focus {      
     @include mixins.focus-outline;

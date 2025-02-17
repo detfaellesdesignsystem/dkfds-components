@@ -8,21 +8,22 @@
 <ul class="accordion{% if params.classes %} {{params.classes}}{% endif %}">
   {%- for item in params.items -%}
   {%- set itemID = params.id + loop.index -%}
-  <li>
+  <li{% if item.errorMessage %} class="accordion-error"{% endif %}>
+    {%- if item.errorMessage %}<div class="error-border"></div>{% endif %}
     <{{params.headingLevel | default('h3') }}>
-      <button class="accordion-button{% if item.errorMessage %} accordion-error {% endif %}{% if item.classes.button %} {{item.classes.button}}{% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.errorMessage %} aria-describedby="{{ itemID }}-error" {% endif %} aria-controls="{{ itemID }}">
+      <button class="accordion-button{% if item.classes.button %} {{item.classes.button}}{% endif %}" aria-expanded="{{ item.expanded | default('false') }}" {% if item.errorMessage %} aria-describedby="{{ itemID }}-error" {% endif %} aria-controls="{{ itemID }}">
         <span class="accordion-title{% if item.classes.title %} {{item.classes.title}}{% endif %}">{{ item.title }}</span>
         {% if item.variant === "success" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Succes</span>
-          {{ icon_svg({"name": "check-circle"}) }}
+          {{ icon_svg({"name": "success"}) }}
         </span>
         {% elif item.variant === "warning" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Advarsel</span>
-          {{ icon_svg({"name": "report-problem"}) }}
+          {{ icon_svg({"name": "warning"}) }}
         </span>
         {% elif item.variant === "error" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Fejl</span>
-          {{ icon_svg({"name": "highlight-off"}) }}
+          {{ icon_svg({"name": "error"}) }}
         </span>
         {% elif item.variant === "info" %}<span class="accordion-icon{% if item.classes.icon %} {{item.classes.icon}}{% endif %}">
           <span class="icon_text">Information</span>

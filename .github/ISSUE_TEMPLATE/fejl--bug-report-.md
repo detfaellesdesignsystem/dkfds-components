@@ -10,7 +10,7 @@ assignees: ''
 
 [Indmeld kun 1 fejl pr. issue og tjek gerne om fejlen allerede er indmeldt. (Only one bug per issue and make sure to check if the issue already exists)]
 
-**Bekskriv fejlen (Describe the bug)**
+**Beskriv fejlen (Describe the bug)**
 Vær klar og præcis i din beskrivelse af fejlen. (A clear and concise description of what the bug is.)
 
 **Genskab fejlen (To Reproduce)**

@@ -99,9 +99,37 @@
         }
     }
 
-    // card
-    .card {
-        box-shadow: none;
+    // Buttons
+    .button {
+        &.button-primary, &.button-secondary, &.button-tertiary, &.button-warning, &.button-icon-only {
+            border-color: func.color(vars.$button-print-border-color);
+            color: func.color(vars.$button-print-color);
+            background-color: func.color(vars.$button-print-background-color);
+        
+            &:hover,
+            &.button-hover,
+            &.focus,
+            &:focus {
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+
+            &:active,
+            &.button-active {
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+        
+            &:disabled,
+            &.disabled {
+                text-decoration: none !important;
+                border-color: func.color(vars.$button-print-border-color);
+                color: func.color(vars.$button-print-color);
+                background-color: func.color(vars.$button-print-background-color);
+            }
+        }
     }
 
     // modal
@@ -131,7 +159,7 @@
             }
 
             tr {
-                border-bottom: func.border(20);
+                border-bottom: func.border('low-contrast');
 
                 &:last-child {
                     border-bottom: 0;
@@ -171,7 +199,7 @@
     // tabs
     .tab-container ul.tab-list li .tab-button {
         background-color: func.color('transparent');
-        border: func.border(10); 
+        border: func.border('high-contrast'); 
 
         &[aria-current="page"],
         &[aria-selected="true"] {

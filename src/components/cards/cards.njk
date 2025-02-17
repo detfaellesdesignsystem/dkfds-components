@@ -1,43 +1,45 @@
-{% import "components/buttons/buttons.njk" as button %}
+{% from "components/buttons/buttons.njk" import button as button %}
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {% macro card(params) %}
-  {% macro cardHeader(params) %}
-    {%- if (params.heading) or (params.subheading) -%}
-        <div class="card-header">
-          <{{params.headingLevel | default('h3')}} class="header-title">{{params.heading}}</{{params.headingLevel | default('h3')}}>
-          {%- if params.subheading -%}<p class="sub-header">{{params.subheading}}</p>{%- endif -%}
-        </div>
-      {%- endif -%}
-  {% endmacro %}
+{% macro cardHeader(params) %}
+{%- if (params.heading) or (params.subheading) -%}
+<div class="card-header">
+    <{{params.headingLevel | default('h3')}} class="header-title">{{params.heading}}</{{params.headingLevel |
+        default('h3')}}>
+    {%- if params.subheading -%}<p class="sub-header">{{params.subheading}}</p>{%- endif -%}
+</div>
+{%- endif -%}
+{% endmacro %}
 
-  {% macro cardText(params) %}
-      {%if params.text %}
-        <div class="card-text">
-          <p>{{params.text | safe}}</p>
-        </div>{% endif %}
-  {% endmacro %}
+{% macro cardText(params) %}
+{%if params.text %}
+<div class="card-text">
+    <p>{{params.text | safe}}</p>
+</div>{% endif %}
+{% endmacro %}
 
-  {% macro cardContent(params) %}
-  {% if params.content %}<div class="card-content">
-        {{params.content | safe}}
-    </div>{% endif %}
-  {% endmacro %}
+{% macro cardContent(params) %}
+{% if params.content %}<div class="card-content">
+    {{params.content | safe}}
+</div>{% endif %}
+{% endmacro %}
 
-  {% macro cardActions(params) %}
-  {% if (params.actionContent) or (params.actionButtons) or (params.actionLinks) %}<div class="card-footer card-action">
-      {% if params.actionContent %}<div class="action-content">
+{% macro cardActions(params) %}
+{% if (params.actionContent) or (params.actionButtons) or (params.actionLinks) %}<div class="card-footer card-action">
+    {% if params.actionContent %}<div class="action-content">
         {{params.actionContent | safe}}
-      </div>{% endif %}
-      {% if params.actionButtons %}<div class="action-buttons">
-      {{ params.actionButtons | safe}}
-      </div>{% endif %}
-      {% if params.actionLinks %}<div class="action-links">
-      {{ params.actionLinks | safe}}
-      </div>{% endif %}
     </div>{% endif %}
-  {% endmacro %}
+    {% if params.actionButtons %}<div class="action-buttons">
+        {{ params.actionButtons | safe}}
+    </div>{% endif %}
+    {% if params.actionLinks %}<div class="action-links">
+        {{ params.actionLinks | safe}}
+    </div>{% endif %}
+</div>{% endif %}
+{% endmacro %}
 
-  <div class="card{% if params.sameHeight %} card-align-height{% endif %}">
+<div class="card{% if params.sameHeight %} card-align-height{% endif %}">
     {% set order = params.order | default(["header", "text", "content", "action"]) %}
     {%- for item in order -%}
     {%- if item == "header" -%}
@@ -50,7 +52,84 @@
     {{cardActions(params)}}
     {%- endif -%}
     {%- endfor -%}
-  </div>
+</div>
 {% endmacro %}
 
+
+{% macro newCardActions(params) %}
+<div class="card-actions">
+    {%- if params.links and not params.navigationCard -%}
+    <ul class="nobullet-list">
+        {%- for link in params.links -%}
+        <li><a href="{{ link.href }}"{% if link.external %} class="icon-link" target="_blank"{% endif %}>{{ link.text }}{% if link.external %}{{icon_svg({"name": 'open-in-new', "ariaLabel": "(åbner i nyt vindue)"})}}{% endif %}</a></li>
+        {%- endfor -%}
+    </ul>
+    {%- endif -%}
+    {%- if params.buttons and not params.navigationCard -%}
+    <div class="button-group">
+        {%- for b in params.buttons -%}
+        {{ 
+            button({
+                "variant": b.variant,
+                "text": b.text
+            })
+        }}
+        {%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- if params.navigationCard.external -%}
+    {{ icon_svg({"name": 'open-in-new', "ariaLabel": "(åbner i nyt vindue)"}) }}
+    {%- elseif params.navigationCard -%}
+    {{ icon_svg({"name": 'arrow-forward'}) }}
+    {%- endif -%}
+</div>
+{% endmacro %}
+
+{% macro newCard(params) %}
+{%- if params.outerTag -%}
+<{{ params.outerTag }} class="new-card-wrapper">
+{%- endif -%}
+{%- if params.navigationCard -%}
+<a class="new-card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}" href="{{params.navigationCard.href}}"{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
+{%- else -%}
+<{{ params.innerTag | default('div') }} class="new-card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{params.id}}"{% endif %}>
+{%- endif -%}
+    {%- if params.image -%}
+    <div class="new-card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
+        {%- if params.image.src -%}
+        <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
+        {%- elseif params.image.placeholder -%}
+        <div style="width: 100%; align-self: center;">
+            <div class="spinner" style="margin: 24px auto; font-size: 4px;"></div>
+            <div class="spinner-status">Billede indlæses...</div>
+        </div>
+        {%- endif -%}
+    </div>
+    {%- endif -%}
+    <div class="new-card-content">
+        {%- if params.subheading -%}
+        <span class="subheading">{{ params.subheading }}</span>
+        {%- endif -%}
+        {%- if params.heading -%}
+        <{{ params.headingLevel | default('h2') }}>{{ params.heading }}</{{ params.headingLevel | default('h2') }}>
+        {%- endif -%}
+        {%- if params.content -%}
+        {{ params.content | safe }}
+        {%- endif -%}
+        {%- if not params.navigationCard and params.long and (params.links or params.buttons) -%}
+        {{ newCardActions(params) }}
+        {%- endif -%}
+    </div>
+    {%- if (not params.long and (params.links or params.buttons)) or params.navigationCard -%}
+    {{ newCardActions(params) }}
+    {%- endif -%}
+{%- if params.navigationCard -%}
+</a>
+{%- else -%}
+</{{ params.innerTag | default('div') }}>
+{%- endif -%}
+{%- if params.outerTag -%}
+</{{ params.outerTag }}>
+{%- endif -%}
+{% endmacro %}
 

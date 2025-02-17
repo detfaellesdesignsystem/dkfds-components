@@ -1,0 +1,292 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$sidemenu-link-padding-right: func.units(4);
+$sidemenu-icon-size: 2.4rem;
+
+$-active-border-width: func.units(2);
+$-nonactive-border-width: 1px;
+$-border-difference: $-active-border-width - $-nonactive-border-width;
+
+ul.sidemenu,
+ol.sidemenu {
+    max-width: none;
+    @include mixins.unstyled-list;
+
+    li {
+        background-color: func.color(vars.$sidenav-link-background-color);
+        font-size: func.font-size('sm');
+
+        .nav-link {
+            div {
+                width: 100%;
+            }
+
+            span {
+                display: inline-block;
+                width: 100%;
+                overflow-wrap: break-word;
+            }
+        }
+
+        .nav-step {
+            & > div {
+                display: flex;
+                width: 100%;
+            }
+
+            div div {
+                overflow-wrap: break-word;
+                max-width: calc(100% - $sidemenu-link-padding-right);
+                width: 100%;
+            }
+
+            .sidenav-number {
+                margin-right: func.units(2);
+            }
+
+            .sidenav-maininfo {
+                display: inline-flex;
+                width: 100%;
+                justify-content: space-between;
+
+                .sidenav-title {
+                    display: inline-block;
+                    max-width: calc(100% - $sidemenu-icon-size);
+                    overflow-wrap: break-word;
+                    text-decoration: underline;
+                }
+
+                .sidenav-icon {
+                    margin-left: auto;
+                    width: $sidemenu-icon-size;
+                    height: $sidemenu-icon-size;
+
+                    .icon-svg {
+                        vertical-align: baseline;
+                    }
+                }
+            }
+
+            .sidenav-information {
+                max-width: calc(100% - $sidemenu-icon-size);
+            }
+        }
+
+        .nav-link, .nav-step {
+            padding: func.units(2) func.units(4) func.units(2) 16px; // top | right | bottom | left
+            margin-left: calc(0px - $-nonactive-border-width);
+            width: calc(100% + $-nonactive-border-width);
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            text-align: start;
+            max-width: none;
+            border: none;
+            color: func.color(vars.$sidenav-link-font-color);
+            background-color: func.color('transparent');
+            text-decoration: none;
+            min-height: calc(func.units(7));
+            cursor: pointer;
+            font-weight: func.font-weight("normal");
+            line-height: func.units(5, 'rem');
+
+            .sidenav-information {
+                color: func.color(vars.$sidenav-link-default-extra-information-text-color);
+                margin: 0;
+                display: block;
+                width: 100%;
+                font-weight: func.font-weight("normal");
+            }
+
+            &:focus {
+                outline-offset: 0;
+                position: relative;
+                z-index: vars.$zindex-focus;
+            }
+
+            &:hover {
+                background-color: func.color(vars.$sidenav-link-background-color-hover);
+                padding-left: 16px - $-nonactive-border-width;
+                border-left: func.border(vars.$sidenav-border);
+
+                .sidenav-information {
+                    color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+                }
+            }
+
+            &:active {
+                background-color: func.color(vars.$sidenav-link-background-color-active);
+
+                .sidenav-information {
+                    color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+                }
+            }
+        }
+
+        ul, ol {
+            width: 100%;
+            max-width: none !important; // Override ul styling in typography.scss
+            @include mixins.unstyled-list;
+        }
+    }
+
+    & > li {
+        border-left: func.border(vars.$sidenav-border);
+
+        &.active {
+            border-left: $-active-border-width solid func.color(vars.$sidenav-border-active-color);
+        }
+    }
+
+    li.active {
+        .nav-link, .nav-step {
+            margin-left: calc(0px - $-active-border-width);
+            width: calc(100% + $-active-border-width);
+
+            &:hover {
+                padding-left: 16px - $-active-border-width;
+                border-left: $-active-border-width solid func.color(vars.$sidenav-border-active-color);
+            }
+        }
+
+        & > :first-child {
+            font-weight: func.font-weight("bold");
+        }
+
+        li {
+            font-size: func.font-size('xs');
+
+            .nav-link, .nav-step {
+                padding-left: 40px;
+
+                &:hover {
+                    padding-left: 40px - $-active-border-width;
+                }
+            }
+
+            li {
+
+                .nav-link, .nav-step {
+                    padding-left: 64px;
+
+                    &:hover {
+                        padding-left: 64px - $-active-border-width;
+                    }
+                }
+
+                li {
+
+                    .nav-link, .nav-step {
+                        padding-left: 88px;
+
+                        &:hover {
+                            padding-left: 88px - $-active-border-width;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    li.current {
+        background-color: func.color(vars.$sidenav-link-current-background-color);
+
+        & > .nav-link,
+        & > .nav-step {
+            font-weight: func.font-weight("bold");
+
+            .sidenav-information {
+                color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+            }
+        }
+    }
+
+    li.sidenav-error {
+        background-color: func.color(vars.$sidenav-error-background-color);
+
+        &.current {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
+
+        .nav-link:hover,
+        .nav-step:hover {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
+
+        .sidenav-information {
+            color: func.color(vars.$sidenav-link-current-extra-information-text-color);
+        }
+    }
+
+    li.disabled {
+        cursor: not-allowed;
+
+        .nav-link, .nav-step {
+            cursor: not-allowed;
+
+            .sidenav-title {
+                text-decoration: none;
+            }
+
+            &:hover {
+                background-color: func.color('transparent');
+                cursor: not-allowed;
+            }
+        }
+
+        &.current {
+            background-color: func.color('transparent');
+        }
+
+        &.sidenav-error {
+            background-color: func.color(vars.$sidenav-error-background-color);
+        }
+    }
+}
+
+/* Adjust border-radius for side menus placed inside overflow menus */
+
+.overflow-menu-inner .sidemenu li {
+
+    &:first-child,
+    &:first-child a {
+        border-top-left-radius: func.border-radius('medium');
+        border-top-right-radius: func.border-radius('medium');
+    }
+
+    &:last-child,
+    &:last-child a {
+        border-bottom-left-radius: func.border-radius('medium');
+        border-bottom-right-radius: func.border-radius('medium');
+    }
+}
+
+.overflow-menu--lg-no-responsive .overflow-menu-inner .sidemenu {
+    @include mixins.media-breakpoint-up(lg) {
+        li {
+
+            &:first-child,
+            &:first-child a,
+            &:last-child,
+            &:last-child a {
+                border-radius: 0;
+            }
+        }
+    }
+}
+
+.overflow-menu--md-no-responsive .overflow-menu-inner .sidemenu {
+    @include mixins.media-breakpoint-up(md) {
+        li {
+
+            &:first-child,
+            &:first-child a,
+            &:last-child,
+            &:last-child a {
+                border-radius: 0;
+            }
+        }
+    }
+}

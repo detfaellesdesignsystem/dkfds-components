@@ -3,234 +3,443 @@
 @use "../mixins" as mixins;
 
 .card {
-  position: relative;
-  border-radius: func.units(0);
-  box-shadow: func.shadow(vars.$cards-shadow);
-  border: func.border(vars.$cards-border);
-  overflow: hidden;
-  background: func.color(vars.$cards-background-color);
+    position: relative;
+    border-radius: func.border-radius('medium');
+    border: func.border(vars.$cards-border);
+    overflow: hidden;
+    background: func.color(vars.$cards-background-color);
 
-  // small card
-  &-small {
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-  // medium card
-  &-medium {
-    // The last
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-  // large card
-  &-large {
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-
-  &-align-height {
-    height: 100%;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -moz-flex;
-    display: flex;
-    flex-direction: column;
-
-    > *{
-      width: 100%;
+    // small card
+    &-small {
+        > :last-of-type {
+            padding-bottom: func.units(5);
+        }
     }
 
-    .card-footer{
-      margin-top: auto;
-    }
-  }
+    // medium card
+    &-medium {
 
-  p {
-    max-width: 60ch;
-    margin-top:func.units(4);
-    margin-bottom: func.units(0);
-    &:first-child {
-      margin-top:func.units(0);
+        // The last
+        > :last-of-type {
+            padding-bottom: func.units(5);
+        }
     }
-  }
-  h1, .h1,
-  h2, .h2,
-  h3, .h3,
-  h4, .h4,
-  h5, .h5 {
-    margin: func.units(0);
-  }
 
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      border-radius: 0;
+    // large card
+    &-large {
+        > :last-of-type {
+            padding-bottom: func.units(5);
+        }
     }
-  }
 
-  > .list-group:last-child {
-      .list-group-item:last-child {
-        border-radius: 0;
-      }
-  }
+    &-align-height {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        >* {
+            width: 100%;
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+    }
+
+    p {
+        max-width: 60ch;
+        margin-top: func.units(4);
+        margin-bottom: func.units(0);
+
+        &:first-child {
+            margin-top: func.units(0);
+        }
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+        margin: func.units(0);
+    }
+
+    >.list-group:first-child {
+        .list-group-item:first-child {
+            border-radius: 0;
+        }
+    }
+
+    >.list-group:last-child {
+        .list-group-item:last-child {
+            border-radius: 0;
+        }
+    }
 }
+
 // card-header
 .card-header {
-  background-color: func.color(vars.$cards-header-background-color);
-  padding: func.units(4) func.units(5); // top and bottom | left and right
-  .header-title {
-    @include mixins.body-copy-text;
-    font-weight: func.font-weight("semibold");
-    color: func.color(vars.$cards-heading-color);
-    margin:func.units(0);
+    background-color: func.color(vars.$cards-header-background-color);
+    padding: func.units(4) func.units(5); // top and bottom | left and right
 
-    &.large-text {
-      color: func.color(vars.$cards-heading-large-color);
-      @include mixins.h2;
+    .header-title {
+        @include mixins.body-copy-text;
+        font-weight: func.font-weight("semibold");
+        color: func.color(vars.$cards-heading-color);
+        margin: func.units(0);
+
+        &.large-text {
+            color: func.color(vars.$cards-heading-large-color);
+            @include mixins.h2;
+        }
     }
-  }
-  .sub-header {
-    @include mixins.body-copy-text;
-    margin-top:  func.units(0);
-    margin-bottom: func.units(0);
-    color: func.color(vars.$cards-sub-heading-color);
-  }
+
+    .sub-header {
+        @include mixins.body-copy-text;
+        margin-top: func.units(0);
+        margin-bottom: func.units(0);
+        color: func.color(vars.$cards-sub-heading-color);
+    }
 }
+
 .card-text {
-  background-color: func.color(vars.$cards-text-background-color);
-  padding: func.units(4) func.units(5);
-  .text {
-    @include mixins.body-copy-text;
-    margin-top: func.units(4);
-    color: func.color(vars.$cards-text-color);
-    margin-bottom: func.units(0);
-  }
+    background-color: func.color(vars.$cards-text-background-color);
+    padding: func.units(4) func.units(5);
+
+    .text {
+        @include mixins.body-copy-text;
+        margin-top: func.units(4);
+        color: func.color(vars.$cards-text-color);
+        margin-bottom: func.units(0);
+    }
 }
 
 // card-content
 .card-content {
-  @include mixins.body-copy-text;
-  padding: func.units(0);
-  color: func.color(vars.$cards-text-color);
-  background-color: func.color(vars.$cards-content-background-color);
-  ul {
-    margin-bottom:func.units(0);
-  }
-  div:first-child {
-    margin-top:func.units(0);
-  }
-  .content-text {
-    margin-top:func.units(4);
-  }
-  .content {
-    text-align: center;
-  }
+    @include mixins.body-copy-text;
+    padding: func.units(0);
+    color: func.color(vars.$cards-text-color);
+    background-color: func.color(vars.$cards-content-background-color);
+
+    ul {
+        margin-bottom: func.units(0);
+    }
+
+    div:first-child {
+        margin-top: func.units(0);
+    }
+
+    .content-text {
+        margin-top: func.units(4);
+    }
+
+    .content {
+        text-align: center;
+    }
 }
 
 // card-action
 .card-action {
-  @include mixins.body-copy-text;
-  padding: func.units(4) func.units(5);
-  color: func.color(vars.$cards-text-color);
-  margin-bottom: func.units(0);
-  background-color: func.color(vars.$cards-action-background-color);
+    @include mixins.body-copy-text;
+    padding: func.units(4) func.units(5);
+    color: func.color(vars.$cards-text-color);
+    margin-bottom: func.units(0);
+    background-color: func.color(vars.$cards-action-background-color);
 
-  div:first-child {
-    margin-top:func.units(0);
-  }
-
-  &:last-child {
-    border-bottom: func.units(0);
-  }
-  .action-buttons {
-    button {
-      margin-right: func.units(4);
-      margin-top:func.units(3);
-
-      @include mixins.media-breakpoint-up(md) {
-        margin-right: func.units(4);
-        margin-top:func.units(3);
-      }
+    div:first-child {
+        margin-top: func.units(0);
     }
-    .button + .button{
-      @include mixins.media-breakpoint-up(sm) {
-        margin-left: 0;
-        &:first-child{
-          margin-left: 0;
+
+    &:last-child {
+        border-bottom: func.units(0);
+    }
+
+    .action-buttons {
+        button {
+            margin-right: func.units(4);
+            margin-top: func.units(3);
+
+            @include mixins.media-breakpoint-up(md) {
+                margin-right: func.units(4);
+                margin-top: func.units(3);
+            }
         }
-      }
+
+        .button+.button {
+            @include mixins.media-breakpoint-up(sm) {
+                margin-left: 0;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
     }
-  }
-  .action-links {
-    margin-top:func.units(4);
-    ul {
-      padding-left: func.units(0);
-      @include mixins.unstyled-list;
-      li {
-        margin-top:func.units(3) !important;
-      }
+
+    .action-links {
+        margin-top: func.units(4);
+
+        ul {
+            padding-left: func.units(0);
+            @include mixins.unstyled-list;
+
+            li {
+                margin-top: func.units(3) !important;
+            }
+        }
     }
-  }
-  .action-functionlinks {
-    margin-top:func.units(4);
-    text-align: right;
-    .function-link {
-      margin-left: func.units(4);
+
+    .action-functionlinks {
+        margin-top: func.units(4);
+        text-align: right;
+
+        .function-link {
+            margin-left: func.units(4);
+        }
     }
-  }
 }
 
 // If text comes after header
-.card-header + .card-text{
-  padding-top:func.units(0);
+.card-header + .card-text {
+    padding-top: func.units(0);
 }
+
 // If content comes after header
 .card-header + .card-content {
-  padding-top:func.units(0);
+    padding-top: func.units(0);
 }
+
 // If action comes after header
-.card-header + .card-action{
-  padding-top:func.units(0);
+.card-header + .card-action {
+    padding-top: func.units(0);
 }
+
 // If header comes after header
-.card-header + .card-header{
-  padding-top:func.units(0);
+.card-header + .card-header {
+    padding-top: func.units(0);
 }
+
 // If header comes after text
 .card-text + .card-header {
-  padding-top:func.units(0);
+    padding-top: func.units(0);
 }
+
 // If content comes after text
 .card-text + .card-content {
-  padding-top:func.units(0);
+    padding-top: func.units(0);
 }
+
 // If action comes after text
-.card-text + .card-action{
-  padding-top:func.units(0);
+.card-text + .card-action {
+    padding-top: func.units(0);
 }
+
 // If text comes after text
-.card-text + .card-text{
-  padding-top:func.units(0);
+.card-text + .card-text {
+    padding-top: func.units(0);
 }
+
 // If text comes after action
-.card-action + .card-text{
-  padding-top:func.units(0);
+.card-action + .card-text {
+    padding-top: func.units(0);
 }
+
 // If header comes after action
-.card-action + .card-header{
-  padding-top:func.units(0);
+.card-action + .card-header {
+    padding-top: func.units(0);
 }
+
 // If content comes after action
-.card-action + .card-content{
-  padding-top:func.units(0);
+.card-action + .card-content {
+    padding-top: func.units(0);
 }
+
 // If action comes after action
-.card-action + .card-action{
-  padding-top: 0;
+.card-action + .card-action {
+    padding-top: 0;
 }
 
 .card-center {
-  text-align: center;
+    text-align: center;
+}
+
+%-long {
+    @include mixins.media-breakpoint-up(sm) {
+        flex-direction: row;
+
+        .new-card-image {
+            min-width: 33%;
+            max-width: 33%;
+            border-top-left-radius: func.border-radius('medium');
+            border-bottom-left-radius: func.border-radius('medium');
+            border-top-right-radius: func.border-radius('none');
+            align-items: center;
+    
+            img {
+                border-top-left-radius: func.border-radius('medium');
+                border-bottom-left-radius: func.border-radius('medium');
+                border-top-right-radius: func.border-radius('none');
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .new-card-content {
+
+        .card-actions {
+            padding: func.units(5) 0 0 0; // top | right | bottom | left
+        }
+    }
+}
+
+.new-card-wrapper {
+    height: 100%;
+}
+
+.card-row {
+    max-width: none !important;
+    list-style-type: none;
+
+    li::before {
+        content: "" !important;
+    }
+}
+
+.card-row:not(.row) li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.new-card {
+    border: func.border('very-low-contrast');
+    border-radius: func.border-radius('medium');
+    margin-bottom: func.units(6);
+    height: calc(100% - func.units(6));
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+
+    .new-card-image {
+        width: 100%;
+        display: flex;
+        border-top-left-radius: func.border-radius('medium');
+        border-top-right-radius: func.border-radius('medium');
+        background-color: func.color('gray-100');
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            background-color: func.color('gray-200');
+            border-top-left-radius: func.border-radius('medium');
+            border-top-right-radius: func.border-radius('medium');
+        }
+    }
+
+    .new-card-content {
+        padding-left: func.units(5);
+        padding-right: func.units(5);
+        padding-top: func.units(5);
+        margin-bottom: func.units(5);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-wrap: break-word;
+
+        .subheading {
+            margin-bottom: func.units(2);
+            display: block;
+        }
+    
+        h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+            font-size: func.font-size('3xl');
+            margin: 0;
+        }
+    
+        p {
+            margin-bottom: 0;
+        }
+    
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .card-actions {
+        padding-left: func.units(5);
+        padding-right: func.units(5);
+        padding-bottom: func.units(5);
+
+        .nobullet-list {
+            margin: 0;
+
+            li:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .button-group {
+            margin-top: 0;
+            margin-bottom: calc(0px - func.units(4));
+
+            .button, .button-wrapper {
+                margin-top: func.units(0);
+                margin-bottom: func.units(4);
+            }
+        }
+    }
+
+    &.long {
+        @extend %-long;
+    }
+}
+
+a.new-card {
+    text-decoration: none;
+    color: func.color('black');
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+        text-decoration: underline;
+    }
+
+    .card-actions {
+        display: flex;
+        margin-top: auto;
+
+        & > .icon-svg {
+            margin-left: auto;
+        }
+    }
+
+    &:link, &:visited, &:hover, &:active {
+        color: func.color('black');
+    }
+
+    &:hover, &:active {
+        .subheading {
+            color: func.color('gray-600');
+        }
+    }
+
+    &:hover {
+        background-color: func.color('gray-100');
+    }
+
+    &:active {
+        background-color: func.color('gray-200');
+    }
+
+    &.long {
+        @extend %-long;
+
+        @include mixins.media-breakpoint-up(sm) {
+            .card-actions {
+                margin-left: auto;
+            }
+
+            .new-card-content {
+                max-width: calc(100% - func.units(5) - func.units(5, 'rem') - func.units(5));
+            }
+    
+            .new-card-image + .new-card-content {
+                max-width: calc(67% - func.units(5) - func.units(5, 'rem') - func.units(5));
+            }
+        }
+    }
 }
