@@ -1,61 +1,6 @@
 {% from "components/buttons/buttons.njk" import button as button %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro card(params) %}
-{% macro cardHeader(params) %}
-{%- if (params.heading) or (params.subheading) -%}
-<div class="card-header">
-    <{{params.headingLevel | default('h3')}} class="header-title">{{params.heading}}</{{params.headingLevel |
-        default('h3')}}>
-    {%- if params.subheading -%}<p class="sub-header">{{params.subheading}}</p>{%- endif -%}
-</div>
-{%- endif -%}
-{% endmacro %}
-
-{% macro cardText(params) %}
-{%if params.text %}
-<div class="card-text">
-    <p>{{params.text | safe}}</p>
-</div>{% endif %}
-{% endmacro %}
-
-{% macro cardContent(params) %}
-{% if params.content %}<div class="card-content">
-    {{params.content | safe}}
-</div>{% endif %}
-{% endmacro %}
-
-{% macro cardActions(params) %}
-{% if (params.actionContent) or (params.actionButtons) or (params.actionLinks) %}<div class="card-footer card-action">
-    {% if params.actionContent %}<div class="action-content">
-        {{params.actionContent | safe}}
-    </div>{% endif %}
-    {% if params.actionButtons %}<div class="action-buttons">
-        {{ params.actionButtons | safe}}
-    </div>{% endif %}
-    {% if params.actionLinks %}<div class="action-links">
-        {{ params.actionLinks | safe}}
-    </div>{% endif %}
-</div>{% endif %}
-{% endmacro %}
-
-<div class="card{% if params.sameHeight %} card-align-height{% endif %}">
-    {% set order = params.order | default(["header", "text", "content", "action"]) %}
-    {%- for item in order -%}
-    {%- if item == "header" -%}
-    {{cardHeader(params)}}
-    {%- elseif item == "text" -%}
-    {{cardText(params)}}
-    {%- elseif item == "content" -%}
-    {{cardContent(params)}}
-    {%- elseif item == "action" -%}
-    {{cardActions(params)}}
-    {%- endif -%}
-    {%- endfor -%}
-</div>
-{% endmacro %}
-
-
 {% macro newCardActions(params) %}
 <div class="card-actions">
     {%- if params.links and not params.navigationCard -%}
