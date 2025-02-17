@@ -10944,7 +10944,8 @@ a.skipnav:focus{
     border-top-left-radius:8px;
     border-bottom-left-radius:8px;
     border-top-right-radius:0;
-    height:fit-content;
+    height:100%;
+    object-fit:cover;
   }
 }
 .new-card.long .new-card-content .card-actions{
@@ -10998,6 +10999,7 @@ a.skipnav:focus{
   margin-bottom:24px;
   display:flex;
   flex-direction:column;
+  align-items:flex-start;
   overflow-wrap:break-word;
 }
 .new-card .new-card-content .subheading{

@@ -275,7 +275,8 @@
                 border-top-left-radius: func.border-radius('medium');
                 border-bottom-left-radius: func.border-radius('medium');
                 border-top-right-radius: func.border-radius('none');
-                height: fit-content;
+                height: 100%;
+                object-fit: cover;
             }
         }
     }
@@ -338,6 +339,7 @@
         margin-bottom: func.units(5);
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         overflow-wrap: break-word;
 
         .subheading {
