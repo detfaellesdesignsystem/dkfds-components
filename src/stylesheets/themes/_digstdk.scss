@@ -1,0 +1,23 @@
+// ----------------------------------------
+// was.digst.dk theme
+// ----------------------------------------
+
+$digst-primary:          #4d2035 !default;
+$digst-primary-dark:     #3f1a2b !default;
+$digst-primary-darker:   #2d131f !default;
+
+$custom-colors: (
+    'digstdk-100': $digst-primary,
+    'digstdk-200': $digst-primary-dark,
+    'digstdk-300': $digst-primary-darker,
+    'background-100': #f1f1f1
+);
+
+$theme-color-primary:               $digst-primary !default;
+$theme-color-primary-dark:          $digst-primary-dark !default;
+$theme-color-primary-darker:        $digst-primary-darker !default;
+$header-portal-background-color:    #f1f1f1 !default;
+$header-portal-logo:                'logo-placeholder.png' !default;
+$header-portal-logo-height:         24px !default;
+$header-portal-compact-logo-width:  10rem !default;
+

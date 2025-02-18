@@ -1,0 +1,18 @@
+// digstdk theme
+
+@use 'themes/digstdk' as digst;
+@forward 'variables' with (
+    $custom-colors:                     digst.$custom-colors !default,
+    $theme-color-primary:               digst.$theme-color-primary !default,
+    $theme-color-primary-dark:          digst.$theme-color-primary-dark !default,
+    $theme-color-primary-darker:        digst.$theme-color-primary-darker !default,
+    $header-portal-background-color:    digst.$header-portal-background-color !default,
+    $header-portal-logo:                digst.$header-portal-logo !default,
+    $header-portal-logo-height:         digst.$header-portal-logo-height !default,
+    $header-portal-compact-logo-width:  digst.$header-portal-compact-logo-width !default
+);
+@forward "values";
+@forward "functions";
+@forward "mixins";
+
+@use 'dkfds-base';

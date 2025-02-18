@@ -8,9 +8,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
 
-console.log("[" + String(new Date().getHours()).padStart(2, '0') + 
-                ":" + String(new Date().getMinutes()).padStart(2, '0') + 
-                ":" + String(new Date().getSeconds()).padStart(2, '0') + "] " + 
+console.log("[" + String(new Date().getHours()).padStart(2, '0') +
+                ":" + String(new Date().getMinutes()).padStart(2, '0') +
+                ":" + String(new Date().getSeconds()).padStart(2, '0') + "] " +
                 "Creating files for dist folder...\n");
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -48,10 +48,11 @@ const JS_BABEL = {
 const CSS_ENTRY = {
     "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
     "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
+    "dkfds-digstdk": './src/stylesheets/dkfds-digstdk.scss',
     "dkfds": './src/stylesheets/dkfds.scss',
 };
 
-const CSS_REMOVE_EMPTY_SCRIPTS = 
+const CSS_REMOVE_EMPTY_SCRIPTS =
     new RemoveEmptyScriptsPlugin(); // There's a bug in webpack/loaders where empty js files are created for each stylesheet - remove those js files
 
 const CSS_LOADER = {
@@ -73,13 +74,13 @@ const CSS_POSTCSS_LOADER = {
                         // Stage options: https://github.com/csstools/postcss-preset-env?tab=readme-ov-file#stage
                         stage: 2,
                         // Feature list: https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
-                        features: { 
+                        features: {
                             "cascade-layers": false,
                             "text-decoration-shorthand": false,
                             "unset-value": false
                         },
                         // Autoprefixer options: https://github.com/postcss/autoprefixer#options
-                        autoprefixer: { 
+                        autoprefixer: {
                             remove: false
                         }
                     },
@@ -207,7 +208,7 @@ const createCSS = {
     },
     /* Increased from the default 250000 for the non-minified stylesheets */
     performance: {
-        maxAssetSize: 260000,       
+        maxAssetSize: 260000,
         maxEntrypointSize: 260000
     },
     optimization: {
