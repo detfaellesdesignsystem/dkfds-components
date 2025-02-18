@@ -10675,15 +10675,9 @@ a.skipnav:focus{
   .new-card.long .new-card-image{
     min-width:33%;
     max-width:33%;
-    border-top-left-radius:8px;
-    border-bottom-left-radius:8px;
-    border-top-right-radius:0;
     align-items:center;
   }
   .new-card.long .new-card-image img{
-    border-top-left-radius:8px;
-    border-bottom-left-radius:8px;
-    border-top-right-radius:0;
     height:100%;
     object-fit:cover;
   }
@@ -10712,6 +10706,7 @@ a.skipnav:focus{
 .new-card{
   border:1px solid #DCDCDC;
   border-radius:8px;
+  overflow:clip;
   margin-bottom:32px;
   height:calc(100% - 32px);
   display:flex;
@@ -10721,16 +10716,12 @@ a.skipnav:focus{
 .new-card .new-card-image{
   width:100%;
   display:flex;
-  border-top-left-radius:8px;
-  border-top-right-radius:8px;
   background-color:#F5F5F5;
 }
 .new-card .new-card-image img{
   width:100%;
   max-width:100%;
   background-color:#DCDCDC;
-  border-top-left-radius:8px;
-  border-top-right-radius:8px;
 }
 .new-card .new-card-content{
   padding-left:24px;

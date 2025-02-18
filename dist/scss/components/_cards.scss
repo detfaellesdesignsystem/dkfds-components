@@ -9,15 +9,9 @@
         .new-card-image {
             min-width: 33%;
             max-width: 33%;
-            border-top-left-radius: func.border-radius('medium');
-            border-bottom-left-radius: func.border-radius('medium');
-            border-top-right-radius: func.border-radius('none');
             align-items: center;
     
             img {
-                border-top-left-radius: func.border-radius('medium');
-                border-bottom-left-radius: func.border-radius('medium');
-                border-top-right-radius: func.border-radius('none');
                 height: 100%;
                 object-fit: cover;
             }
@@ -52,6 +46,7 @@
 .new-card {
     border: func.border('very-low-contrast');
     border-radius: func.border-radius('medium');
+    overflow: clip;
     margin-bottom: func.units(6);
     height: calc(100% - func.units(6));
     display: flex;
@@ -61,16 +56,12 @@
     .new-card-image {
         width: 100%;
         display: flex;
-        border-top-left-radius: func.border-radius('medium');
-        border-top-right-radius: func.border-radius('medium');
         background-color: func.color('gray-100');
 
         img {
             width: 100%;
             max-width: 100%;
             background-color: func.color('gray-200');
-            border-top-left-radius: func.border-radius('medium');
-            border-top-right-radius: func.border-radius('medium');
         }
     }
 
