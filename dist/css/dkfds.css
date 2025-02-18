@@ -9033,6 +9033,7 @@ body.modal-open{
   inset:0;
   z-index:9999;
   margin:16px;
+  pointer-events:none;
 }
 .fds-modal[aria-hidden=false]{
   display:flex;
@@ -9052,6 +9053,7 @@ body.modal-open{
   position:relative;
   margin:24px auto;
   border-radius:8px;
+  pointer-events:auto;
 }
 .fds-modal .modal-header{
   padding:16px 24px 0;

@@ -4230,7 +4230,7 @@ Modal.prototype.hide = function () {
         }
       });
       $backdrop.classList.add('animate-out');
-      /* The event listener should remove the backdrop but if the animation for some reason
+      /* The 'animationend' event listener should remove the backdrop but if the animation for some reason
          didn't run, ensure the backdrop always gets removed with setTimeout(). */
       setTimeout(() => {
         if (document.getElementById('modal-backdrop')) {
@@ -4308,13 +4308,16 @@ Modal.prototype.show = function () {
     modalElement.focus();
     if (!hasForcedAction(modalElement)) {
       document.addEventListener('keyup', handleEscape);
+      $backdrop.addEventListener('click', () => {
+        this.hide();
+      }, false);
     }
 
     /* Trap the focus inside the modal */
     let bodyChildren = document.querySelectorAll('body > *');
     for (let c = 0; c < bodyChildren.length; c++) {
       let child = bodyChildren[c];
-      if (child.tagName !== 'SCRIPT' && !child.classList.contains('fds-modal-container') && !child.hasAttribute('inert')) {
+      if (child.tagName !== 'SCRIPT' && !child.classList.contains('fds-modal-container') && !child.hasAttribute('inert') && child.id !== 'modal-backdrop') {
         child.setAttribute('inert', '');
         child.classList.add('fds-modal-inert');
       }

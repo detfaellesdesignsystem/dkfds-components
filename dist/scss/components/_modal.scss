@@ -54,6 +54,7 @@ body.modal-open {
     inset: 0;
     z-index: vars.$zindex-modal;
     margin: func.units(4);
+    pointer-events: none;
 
     &[aria-hidden="false"] {
         display: flex;
@@ -75,6 +76,7 @@ body.modal-open {
         position: relative;
         margin: func.units(5) auto;
         border-radius: func.border-radius('medium');
+        pointer-events: auto;
     }
 
     .modal-header {
