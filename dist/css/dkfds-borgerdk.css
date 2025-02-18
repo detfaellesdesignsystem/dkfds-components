@@ -10785,6 +10785,9 @@ a.new-card .card-actions > .icon-svg{
 a.new-card:link, a.new-card:visited, a.new-card:hover, a.new-card:active{
   color:#1a1a1a;
 }
+a.new-card:hover, a.new-card:active{
+  border-color:#BFBFBF;
+}
 a.new-card:hover .subheading, a.new-card:active .subheading{
   color:#454545;
 }

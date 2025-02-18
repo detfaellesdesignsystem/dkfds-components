@@ -145,6 +145,7 @@ a.new-card {
     }
 
     &:hover, &:active {
+        border-color: func.color('gray-300');
         .subheading {
             color: func.color('gray-600');
         }
