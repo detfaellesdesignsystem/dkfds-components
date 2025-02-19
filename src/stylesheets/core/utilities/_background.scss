@@ -1,5 +1,6 @@
 @use "../../variables" as vars;
 @use "../../functions" as func;
+@use "../../values" as vals;
 
 // Generates utility classes to control width in percent. 
 // Example: .w-percent-100 .w-percent-md-30
@@ -15,5 +16,15 @@ $backgroundcolors: (
   .bg-#{$name} { 
     background: func.color($color) !important; 
     background-color: func.color($color) !important;
+  }
+}
+
+@each $name, $color in vals.$all-colors {
+  .bg-#{$name} {
+    background-color: func.color($color) !important;
+  }
+
+  .color-#{$name} {
+    color: func.color($color) !important;
   }
 }
