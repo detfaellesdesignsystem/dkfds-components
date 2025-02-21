@@ -33,6 +33,7 @@
 
         &:hover {
             background-color: func.color(vars.$button-search-hover-background-color);
+            text-decoration: underline;
         }
 
         &:focus {

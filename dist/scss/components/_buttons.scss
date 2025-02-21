@@ -16,6 +16,9 @@ $-disabled-opacity: 0.25;
 }
 
 .button {
+    color: inherit;
+    background-color: func.color('transparent');
+
     // Default properties for all buttons
     @include mixins.appearance-none;
     display: inline-flex;
@@ -37,9 +40,6 @@ $-disabled-opacity: 0.25;
     min-height: auto;
     padding: 0;
     border: 0;
-
-    color: inherit;
-    background-color: func.color('transparent');
 
     // Default classes and states for all buttons
     &:hover, &.button-hover, &:active, &.button-active {
