@@ -8070,7 +8070,8 @@ li.accordion-error .error-border::before{
   text-decoration:underline;
 }
 .details .details-text{
-  padding:16px;
+  padding:16px 16px 16px calc(1.2rem + 2px);
+  margin-left:calc(1.2rem - 2px);
   border-left:4px solid #BFBFBF;
   box-sizing:border-box;
 }

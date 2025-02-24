@@ -44,7 +44,8 @@
   }
 
   .details-text {
-    padding: func.units(4);
+    padding: func.units(4) func.units(4) func.units(4) calc(1.2rem + (vars.$details-panel-border-width / 2)); // top | right | bottom | left
+    margin-left: calc(1.2rem - (vars.$details-panel-border-width / 2));
     border-left: vars.$details-panel-border-width solid func.color(vars.$details-panel-border-color);
     box-sizing: border-box;
     &[aria-hidden="true"]{
