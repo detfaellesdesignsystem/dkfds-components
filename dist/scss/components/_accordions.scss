@@ -7,7 +7,7 @@
 // Accordion
 // ----------------------------------------
 .accordion-button {
-  font-weight: func.font-weight("semibold");
+  font-weight: func.font-weight('bold');
   text-align: left;
   min-height: auto;
   background-color: func.color(vars.$accordion-button-background-color-default);
@@ -21,7 +21,7 @@
   line-height: 1.5;
   padding: func.units(4, 'rem') func.units(4, 'rem') func.units(4, 'rem') func.units(9, 'rem'); // top | right | bottom | left
   width: 100%;
-  font-size: func.font-size('lg');
+  font-size: func.font-size('sm');
   position: relative;
   border-radius: func.border-radius('medium');
 
@@ -181,7 +181,6 @@ li.accordion-error {
 }
 
 .accordion-button[aria-expanded="true"] {
-  background-color: func.color(vars.$accordion-button-open-background-color);
   border-radius: func.border-radius('medium') func.border-radius('medium') 0 0;
 }
 .accordion-button[aria-expanded="false"] {

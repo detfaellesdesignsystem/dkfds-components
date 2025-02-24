@@ -7318,7 +7318,7 @@ button.function-link, button.accordion-bulk-button{
 }
 
 .accordion-button{
-  font-weight:600;
+  font-weight:700;
   text-align:left;
   min-height:auto;
   background-color:#F5F5F5;
@@ -7334,7 +7334,7 @@ button.function-link, button.accordion-bulk-button{
   line-height:1.5;
   padding:1.6rem 1.6rem 1.6rem 5.6rem;
   width:100%;
-  font-size:2rem;
+  font-size:1.6rem;
   position:relative;
   border-radius:8px;
 }
@@ -7495,7 +7495,6 @@ li.accordion-error .error-border::before{
 }
 
 .accordion-button[aria-expanded=true]{
-  background-color:#F5F5F5;
   border-radius:8px 8px 0 0;
 }
 
