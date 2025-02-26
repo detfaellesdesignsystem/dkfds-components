@@ -12021,7 +12021,6 @@ textarea.no-resize{
   text-align:center;
   text-decoration:none;
   cursor:pointer;
-  transition:all 0.2s ease-in-out;
 }
 .tag.tag-icon{
   padding-right:8px;
