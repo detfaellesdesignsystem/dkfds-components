@@ -80,6 +80,7 @@ fieldset{
   border:0;
   margin:0;
   padding:0;
+  min-width:0;
 }
 
 input::-webkit-outer-spin-button,
@@ -6634,6 +6635,7 @@ figure{
   line-height:2.4rem;
   letter-spacing:normal;
   font-weight:400;
+  overflow-wrap:break-word;
 }
 
 .form-label{
@@ -6910,8 +6912,7 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 
 .checkbox-content,
 .radio-content{
-  border-left:4px solid #BFBFBF;
-  margin-left:10px;
+  margin-left:14px;
   padding-left:18px;
   padding-top:16px;
   margin-top:4px;
@@ -6921,6 +6922,19 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 .checkbox-content[aria-hidden=true],
 .radio-content[aria-hidden=true]{
   display:none;
+}
+
+.hidden-content-wrapper{
+  position:relative;
+}
+.hidden-content-wrapper.show-content::before{
+  content:"";
+  position:absolute;
+  display:block;
+  border-left:4px solid #BFBFBF;
+  height:calc(100% - (1.2rem - 12px + 4px + 24px + 4px + 4px));
+  left:10px;
+  top:calc(1.2rem - 12px + 4px + 24px + 4px + 4px);
 }
 
 .table--selectable th:first-child .form-group-checkbox,

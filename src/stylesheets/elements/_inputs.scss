@@ -18,6 +18,7 @@
   line-height: func.units(vars.$form-hint-line-height, 'rem');
   letter-spacing: vars.$form-hint-letter-spacing;
   font-weight: func.font-weight(vars.$form-hint-font-weight);
+  overflow-wrap: break-word;
 }
 .form-label {
   display: inline-block;
@@ -209,6 +210,8 @@ $checkmark-size: func.units(vars.$input-checkbox-checkmark-size);
 $content-border-width: func.units(2);
 $expand-hit-area: func.units(2);
 $button-distance: func.units(3);
+$-checkbox-radio-margin-top: calc((func.units(vars.$input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
+$-checkbox-radio-content-margin-top: func.units(2);
 
 // Radio/checkbox element including label, button, helptext and hidden content
 .form-group-checkbox,
@@ -241,7 +244,7 @@ legend, .form-error-message, .form-hint {
     opacity: 0;
     height: $checkbox-radio-size;
     width: $checkbox-radio-size;
-    margin-top: calc((func.units(vars.$input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
+    margin-top: $-checkbox-radio-margin-top;
 }
 
 // Radio and checkbox label/text
@@ -353,17 +356,33 @@ legend, .form-error-message, .form-hint {
 // Hidden content
 .checkbox-content,
 .radio-content {
-    border-left: $content-border-width solid func.color(vars.$input-checkbox-radio-content-border-color);
-    margin-left: calc(($checkbox-radio-size - $content-border-width) / 2);
+    margin-left: calc(($checkbox-radio-size + $content-border-width) / 2);
     padding-left: calc(($checkbox-radio-size + (2 * $label-distance) - $content-border-width) / 2);
     padding-top: func.units(4);
-    margin-top: func.units(2);
+    margin-top: $-checkbox-radio-content-margin-top;
     margin-bottom: func.units(305);
     padding-bottom: func.units(505);
     
     &[aria-hidden="true"] {
         display: none;
     }
+}
+
+$-content-wrapper-top-offset: calc($-checkbox-radio-margin-top + $checkbox-radio-size + $expand-hit-area + $-checkbox-radio-content-margin-top);
+.hidden-content-wrapper {
+  position: relative;
+
+  &.show-content {
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      border-left: $content-border-width solid func.color(vars.$input-checkbox-radio-content-border-color);
+      height: calc(100% - $-content-wrapper-top-offset);
+      left: calc(($checkbox-radio-size - $content-border-width) / 2);
+      top: $-content-wrapper-top-offset;
+    }
+  }
 }
 
 // Special styling when radio/checkboxes are used to select table rows

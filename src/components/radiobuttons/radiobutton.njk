@@ -4,6 +4,7 @@
 
 {% macro radiobutton(params) %}
 {% set collapseId = params.id + '-collapse' %}
+{% if params.hiddenContent %}<div class="hidden-content-wrapper">{% endif %}
 <div class="form-group-radio{% if params.classes.formgroupradio %} {{params.classes.formgroupradio}}{% endif %}"{% if params.attributes.formgroupradio %} {{ params.attributes.formgroupradio | safe }}{% endif %}>
     {% if params.label and params.id and params.name and params.value %}<input type="radio" id="{{params.id}}" name="{{params.name}}" class="form-radio{% if params.classes.input %} {{params.classes.input}}{% endif %}" value="{{params.value}}"{% if params.helptext %} aria-describedby="{{helptext_id(params.id)}}" {% endif %}{% if params.disabled %} disabled{% endif %}{% if params.checked %} checked{% endif %}{% if params.hiddenContent %} data-controls="#{{collapseId}}"{% if params.checked %} data-expanded="true" {% else %} data-expanded="false" {% endif %}{% endif %}{% if params.attributes.input %} {{ params.attributes.input | safe }}{% endif %}>
     {{ 
@@ -20,4 +21,5 @@
 {% if params.hiddenContent %}<div id="{{collapseId}}"{% if params.checked %} aria-hidden="false" {% else %} aria-hidden="true"{% endif %} class="radio-content">
     {{ params.hiddenContent | safe }}
 </div>{% endif %}
+{% if params.hiddenContent %}</div>{% endif %}
 {% endmacro %}

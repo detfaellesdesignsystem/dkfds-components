@@ -61,6 +61,9 @@ RadioToggleGroup.prototype.expand = function (radioInputElement, contentElement)
     if(radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined){
         radioInputElement.setAttribute('data-expanded', 'true');
         contentElement.setAttribute('aria-hidden', 'false');
+        if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+            contentElement.parentNode.classList.add('show-content');
+        }
         let eventOpen = new Event('fds.radio.expanded');
         radioInputElement.dispatchEvent(eventOpen);
     }
@@ -74,6 +77,9 @@ RadioToggleGroup.prototype.collapse = function(radioInputElement, contentElement
     if(radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined){
         radioInputElement.setAttribute('data-expanded', 'false');
         contentElement.setAttribute('aria-hidden', 'true');
+        if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+            contentElement.parentNode.classList.remove('show-content');
+        }
         let eventClose = new Event('fds.radio.collapsed');
         radioInputElement.dispatchEvent(eventClose);
     }

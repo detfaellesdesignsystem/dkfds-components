@@ -3722,6 +3722,9 @@ CheckboxToggleContent.prototype.expand = function (checkboxElement, contentEleme
     checkboxElement.setAttribute('data-aria-expanded', 'true');
     contentElement.classList.remove('collapsed');
     contentElement.setAttribute('aria-hidden', 'false');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.add('show-content');
+    }
     let eventOpen = new Event('fds.collapse.expanded');
     checkboxElement.dispatchEvent(eventOpen);
   }
@@ -3737,6 +3740,9 @@ CheckboxToggleContent.prototype.collapse = function (triggerEl, targetEl) {
     triggerEl.setAttribute('data-aria-expanded', 'false');
     targetEl.classList.add('collapsed');
     targetEl.setAttribute('aria-hidden', 'true');
+    if (targetEl.parentNode.classList.contains('hidden-content-wrapper')) {
+      targetEl.parentNode.classList.remove('show-content');
+    }
     let eventClose = new Event('fds.collapse.collapsed');
     triggerEl.dispatchEvent(eventClose);
   }
@@ -4817,6 +4823,9 @@ RadioToggleGroup.prototype.expand = function (radioInputElement, contentElement)
   if (radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined) {
     radioInputElement.setAttribute('data-expanded', 'true');
     contentElement.setAttribute('aria-hidden', 'false');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.add('show-content');
+    }
     let eventOpen = new Event('fds.radio.expanded');
     radioInputElement.dispatchEvent(eventOpen);
   }
@@ -4830,6 +4839,9 @@ RadioToggleGroup.prototype.collapse = function (radioInputElement, contentElemen
   if (radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined) {
     radioInputElement.setAttribute('data-expanded', 'false');
     contentElement.setAttribute('aria-hidden', 'true');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.remove('show-content');
+    }
     let eventClose = new Event('fds.radio.collapsed');
     radioInputElement.dispatchEvent(eventClose);
   }
