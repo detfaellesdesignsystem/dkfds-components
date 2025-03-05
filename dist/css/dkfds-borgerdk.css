@@ -8064,6 +8064,8 @@ li.accordion-error .error-border::before{
   position:relative;
   cursor:pointer;
   text-decoration:underline;
+  max-width:100%;
+  overflow-wrap:break-word;
 }
 .details .details-summary::before{
   content:"";
@@ -8071,10 +8073,11 @@ li.accordion-error .error-border::before{
   background-image:url("../img/svg-icons/chevron-down.svg");
   background-size:2.4rem;
   background-repeat:no-repeat;
-  background-position:0rem 0.6rem;
   width:2.4rem;
+  min-width:2.4rem;
   height:2.4rem;
   margin-right:4px;
+  vertical-align:bottom;
 }
 .details .details-summary:focus{
   outline:3px solid #454545;
@@ -8088,6 +8091,7 @@ li.accordion-error .error-border::before{
   margin-left:calc(1.2rem - 2px);
   border-left:4px solid #BFBFBF;
   box-sizing:border-box;
+  overflow-wrap:break-word;
 }
 .details .details-text[aria-hidden=true]{
   display:none;
