@@ -4,6 +4,7 @@
 {% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
 {% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
 {% from "components/form/controls/text-input.njk" import textinput as textinput %}
+{% from "components/tooltip/tooltip.njk" import tooltip_helpicon as tooltip_helpicon %}
 
 {% macro datoinput(params) %}
 {% set isRequired = true %}
@@ -15,17 +16,13 @@
     <fieldset {% if params.errorMessage or params.helptext %} aria-describedby="{% if params.helptext %}{{helptext_id(params.id)}} {% endif %}{% if params.errorMessage %}{{errorMessage_id(params.id)}} {% endif %}"{% endif %}{% if params.disabled %} disabled="disabled"{% endif %}>
         <legend class="form-label">
             {{ params.legend }}{% if params.optionalLabel %}<span class="weight-normal"> (frivilligt)</span>{% endif %}{% if params.requiredLabel %}<span class="weight-normal"> (*skal udfyldes)</span>{% endif %}
-        {% if params.tooltip %}{{ button({
-                "variant": "unstyled",
-                "attributes": "type=\"button\"",
-                "srOnly": "Hvad betyder det?",
-                "icon": "help",
-                "tooltip": {
-                    "text": params.tooltip,
-                    "showOnClick": true,
-                    "position": "top"
-                } 
-            }) }}{% endif %}</legend>
+        {% if params.tooltip %}{{ 
+            tooltip_helpicon({
+                "text": params.tooltip.text,
+                "id": params.tooltip.id,
+                "contentElement": params.tooltip.contentElement
+        }) 
+        }}{% endif %}</legend>
         {% if params.helptext -%}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage -%}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
         <div class="date-group mt-3">

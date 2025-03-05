@@ -4,6 +4,7 @@
 {% from "components/form/controls/errormessage.njk" import errorMessage as errorMessage %}
 {% from "components/form/controls/errormessage.njk" import errorMessage_id as errorMessage_id %}
 {% from "components/checkboxes/checkbox.njk" import checkbox as checkbox %}
+{% from "components/tooltip/tooltip.njk" import tooltip_helpicon as tooltip_helpicon %}
 
 {% macro checkboxes(params) %}
 <div class="form-group{% if params.errorMessage %} form-error{% endif %}{% if params.classes %} {{params.classes}}{% endif %}">
@@ -12,18 +13,12 @@
         <legend class="form-label">
             {{ params.checkboxLegend }}
             {% if params.tooltip %}{{ 
-                button({
-                    "variant": "unstyled",
-                    "attributes": "type=\"button\"",
-                    "srOnly": "Hvad betyder det?",
-                    "icon": "help",
-                    "tooltip": {
-                        "text": params.tooltip,
-                        "showOnClick": true,
-                        "position": "top"
-                    } 
-                }) 
-            }}{% endif %}</legend>
+                tooltip_helpicon({
+                    "text": params.tooltip.text,
+                    "id": params.tooltip.id,
+                    "contentElement": params.tooltip.contentElement
+            }) 
+        }}{% endif %}</legend>
         {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}
         {% if params.errorMessage %}{{ errorMessage({ text: params.errorMessage, id: params.id }) }}{% endif %}
         {%- for item in params.items -%}{{ 
