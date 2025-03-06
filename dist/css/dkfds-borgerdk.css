@@ -7742,18 +7742,12 @@ li.accordion-error .error-border::before{
   border:none;
   font-weight:400;
   color:white;
-  background:#1a1a1a;
+  background:#454545;
   text-align:center;
   display:inline-block;
   border-radius:4px;
-}
-.badge.badge-large{
   font-size:1.6rem;
   line-height:2.4rem;
-}
-.badge.badge-small{
-  font-size:1.4rem;
-  line-height:2rem;
 }
 .badge.badge-info{
   color:#1a1a1a;

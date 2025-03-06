@@ -42,11 +42,9 @@ $back-to-top-button-color:          'black' !default;
 // Badge
 $badge-font-weight:                 "normal" !default;
 $badge-default-text-color:          'white' !default;
-$badge-default-background-color:    'black' !default;
-$badge-small-font-size:             typo-vars.$typography-small-text-font-size !default;
-$badge-small-line-height:           typo-vars.$typography-small-text-line-height !default;
-$badge-large-font-size:             typo-vars.$typography-body-text-font-size !default;
-$badge-large-line-height:           typo-vars.$typography-body-text-line-height !default;
+$badge-default-background-color:    'gray-600' !default;
+$badge-font-size:                   typo-vars.$typography-body-text-font-size !default;
+$badge-line-height:                 typo-vars.$typography-body-text-line-height !default;
 $badge-info-text-color:             'black' !default;
 $badge-success-text-color:          'black' !default;
 $badge-warning-text-color:          'black' !default;
