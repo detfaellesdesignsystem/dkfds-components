@@ -133,6 +133,10 @@ a.new-card {
         font-weight: 600;
     }
 
+    .new-card-content {
+        margin-bottom: func.units(4);
+    }
+
     .card-actions {
         display: flex;
         margin-top: auto;

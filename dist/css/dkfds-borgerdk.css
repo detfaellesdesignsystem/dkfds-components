@@ -10790,6 +10790,9 @@ a.new-card h1, a.new-card .h1, a.new-card h2, a.new-card .h2, a.new-card h3, a.n
   text-decoration:underline;
   font-weight:600;
 }
+a.new-card .new-card-content{
+  margin-bottom:16px;
+}
 a.new-card .card-actions{
   display:flex;
   margin-top:auto;
