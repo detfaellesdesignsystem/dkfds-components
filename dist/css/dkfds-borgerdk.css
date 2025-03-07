@@ -10752,9 +10752,10 @@ a.skipnav:focus{
   margin-bottom:4px;
   display:block;
 }
-.new-card .new-card-content h1, .new-card .new-card-content .h1, .new-card .new-card-content h2, .new-card .new-card-content .h2, .new-card .new-card-content h3, .new-card .new-card-content .h3, .new-card .new-card-content h4, .new-card .new-card-content .h4, .new-card .new-card-content h5, .new-card .new-card-content .h5, .new-card .new-card-content h6, .new-card .new-card-content .h6{
+.new-card .new-card-content h1, .new-card .new-card-content .h1, .new-card .new-card-content h2, .new-card .new-card-content .h2, .new-card .new-card-content h3, .new-card .new-card-content .h3, .new-card .new-card-content h4, .new-card .new-card-content .h4, .new-card .new-card-content h5, .new-card .new-card-content .h5, .new-card .new-card-content h6, .new-card .new-card-content .h6, .new-card .new-card-content .heading{
   font-size:2.4rem;
   margin:0;
+  font-weight:600;
 }
 .new-card .new-card-content p{
   margin-bottom:0;
@@ -10785,8 +10786,9 @@ a.new-card{
   text-decoration:none;
   color:#1a1a1a;
 }
-a.new-card h1, a.new-card .h1, a.new-card h2, a.new-card .h2, a.new-card h3, a.new-card .h3, a.new-card h4, a.new-card .h4, a.new-card h5, a.new-card .h5, a.new-card h6, a.new-card .h6{
+a.new-card h1, a.new-card .h1, a.new-card h2, a.new-card .h2, a.new-card h3, a.new-card .h3, a.new-card h4, a.new-card .h4, a.new-card h5, a.new-card .h5, a.new-card h6, a.new-card .h6, a.new-card .heading{
   text-decoration:underline;
+  font-weight:600;
 }
 a.new-card .card-actions{
   display:flex;
