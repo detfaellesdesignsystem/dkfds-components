@@ -10309,7 +10309,7 @@ ol.sidemenu li.disabled.sidenav-error{
 .language-switcher ul > li:first-of-type a:focus{
   padding-left:0;
   font-weight:600;
-  color:#454545;
+  color:#1a1a1a;
   text-decoration:none;
   border-left:0;
 }
@@ -10450,7 +10450,7 @@ ol.sidemenu li.disabled.sidenav-error{
 .language-switcher-mobile ul > li:first-of-type a:focus{
   padding-left:0;
   font-weight:600;
-  color:#454545;
+  color:#1a1a1a;
   text-decoration:none;
   border-left:0;
 }
