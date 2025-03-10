@@ -38,19 +38,7 @@ Modal.prototype.hide = function () {
 
         let $backdrop = document.querySelector('#modal-backdrop');
         if ($backdrop) {
-            $backdrop.addEventListener('animationend', () => {
-                if ($backdrop.parentNode) {
-                    $backdrop.parentNode.removeChild($backdrop);
-                }
-            });
-            $backdrop.classList.add('animate-out');
-            /* The 'animationend' event listener should remove the backdrop but if the animation for some reason
-               didn't run, ensure the backdrop always gets removed with setTimeout(). */
-            setTimeout(() => {
-                if (document.getElementById('modal-backdrop')) {
-                    document.getElementById('modal-backdrop').remove();
-                }
-            }, 200);
+            $backdrop.classList.add('hide');
         }
 
         document.getElementsByTagName('body')[0].classList.remove('modal-open');
@@ -111,6 +99,9 @@ Modal.prototype.show = function (e = null) {
         let eventOpen = new Event('fds.modal.shown');
         modalElement.dispatchEvent(eventOpen);
 
+        if (document.getElementById('modal-backdrop')) {
+            document.getElementById('modal-backdrop').remove();
+        }
         let $backdrop = document.createElement('div');
         $backdrop.classList.add('modal-backdrop');
         if (stepIndicatorModal) {

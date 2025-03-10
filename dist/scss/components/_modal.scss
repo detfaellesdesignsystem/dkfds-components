@@ -41,7 +41,7 @@ body.modal-open {
     /* duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
     animation: 0.2s ease-in 0s 1 normal forwards running modal-backdrop-fade-in; 
 
-    &.animate-out {
+    &.hide {
         /* duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
         animation: 0.2s ease-out 0s 1 normal forwards running modal-backdrop-fade-out;
         display: none;

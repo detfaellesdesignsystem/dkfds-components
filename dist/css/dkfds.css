@@ -9034,7 +9034,7 @@ body.modal-open{
   padding:16px;
   animation:0.2s ease-in 0s 1 normal forwards running modal-backdrop-fade-in;
 }
-.modal-backdrop.animate-out{
+.modal-backdrop.hide{
   animation:0.2s ease-out 0s 1 normal forwards running modal-backdrop-fade-out;
   display:none;
 }
