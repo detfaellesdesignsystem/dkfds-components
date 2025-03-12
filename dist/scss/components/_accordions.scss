@@ -11,9 +11,6 @@
   text-align: left;
   min-height: auto;
   background-color: func.color(vars.$accordion-button-background-color-default);
-  @include mixins.add-background-svg('minus');
-  background-position: left func.units(4, 'rem') center;
-  background-size: func.units(vars.$accordion-button-icon-size, 'rem');
   color: func.color(vars.$accordion-button-color-default);
   cursor: pointer;
   margin: 0;
@@ -24,6 +21,15 @@
   font-size: func.font-size('sm');
   position: relative;
   border-radius: func.border-radius('medium');
+
+  &::before {
+    content: '';
+    @include mixins.add-background-svg('minus');
+    position: absolute;
+    height: func.units(vars.$accordion-button-icon-size, 'rem');
+    width: func.units(vars.$accordion-button-icon-size, 'rem');
+    left: func.units(4, 'rem');
+  }
 
   &:hover {
     background-color: func.color(vars.$accordion-button-background-color-hover);
@@ -72,9 +78,23 @@
     .icon-svg {
       fill: func.color(vars.$accordion-button-color-default);
       flex-shrink: 0;
+      vertical-align: bottom;
     }
     &:hover .icon-svg{
       fill: func.color(vars.$accordion-button-color-hover);
+    }
+  }
+
+  &[aria-expanded="true"] {
+    border-radius: func.border-radius('medium') func.border-radius('medium') 0 0;
+  }
+
+  &[aria-expanded="false"] {
+    border-radius: func.border-radius('medium');
+
+    &::before {
+      content: '';
+      @include mixins.add-background-svg('plus');
     }
   }
 }
@@ -117,6 +137,14 @@ button.accordion-bulk-button{
     list-style: none;
     margin-bottom: func.units(3, 'rem');
     width: 100%;
+    border-radius: func.border-radius('medium');
+
+    &.accordion-error .accordion-button,
+    &.accordion-error .accordion-content {
+        background-image: linear-gradient(to right, func.color(vars.$accordion-button-error-border-color) 4px, transparent 4px);
+        background-position-x: 0;
+    }
+
     > h1, > h2, > h3, > h4, > h5, > h6{
       margin-top: 0;
       margin-bottom: 0;
@@ -151,40 +179,4 @@ button.accordion-bulk-button{
   &[aria-hidden="true"] {
     display: none;
   }
-}
-
-.error-border {
-  display: none;
-}
-
-li.accordion-error {
-  border-radius: func.border-radius('medium');
-  position: relative;
-
-  .error-border {
-    width: func.units(2, 'rem');
-    position: absolute;
-    display: block;
-    height: 100%;
-    z-index: 2;
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      display: block;
-      height: 100%;
-      background-color: func.color(vars.$accordion-button-error-border-color);
-      width: func.units(4, 'rem');
-      border-radius: func.border-radius('medium');
-    }
-  }
-}
-
-.accordion-button[aria-expanded="true"] {
-  border-radius: func.border-radius('medium') func.border-radius('medium') 0 0;
-}
-.accordion-button[aria-expanded="false"] {
-  @include mixins.add-background-svg('plus');
-  background-size: func.units(vars.$accordion-button-icon-size, 'rem');
-  border-radius: func.border-radius('medium');
 }

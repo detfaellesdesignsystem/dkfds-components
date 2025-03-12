@@ -30,9 +30,8 @@ $-alert-padding-left: calc(func.units(vars.$alert-padding, 'rem') + func.units(5
 
 .alert {
   background-color: func.color(vars.$alert-background-color);
-  background-position: 16px 16px;
+  background-image: linear-gradient(to right, func.color('gray-400') 4px, transparent 4px);
   background-repeat: no-repeat;
-  background-size: 24px;
   padding: func.units(vars.$alert-padding, 'rem');
   padding-left: $-alert-padding-left;
   position: relative;
@@ -42,26 +41,6 @@ $-alert-padding-left: calc(func.units(vars.$alert-padding, 'rem') + func.units(5
 
   &:first-child {
     margin-top:0;
-  }
-
-  .alert-border {
-    width: func.units(2, 'rem');
-    position: absolute;
-    display: block;
-    height: 100%;
-    z-index: 2;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-
-    &::before {
-      content: "";
-      display: block;
-      height: 100%;
-      background-color: func.color(vars.$accordion-button-error-border-color);
-      width: func.units(4, 'rem');
-      border-radius: func.border-radius('medium');
-    }
   }
 
   &.alert--paragraph {
@@ -125,10 +104,7 @@ $-alert-padding-left: calc(func.units(vars.$alert-padding, 'rem') + func.units(5
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
     background-color: func.color($bgcolor);
-
-    .alert-border::before {
-      background-color: func.color(map.get($alerts-bar, $name));
-    }
+    background-image: linear-gradient(to right, func.color(map.get($alerts-bar, $name)) 4px, transparent 4px);
   }
 }
 

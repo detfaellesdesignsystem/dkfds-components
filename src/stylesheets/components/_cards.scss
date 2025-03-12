@@ -46,7 +46,7 @@
 .new-card {
     border: func.border('very-low-contrast');
     border-radius: func.border-radius('medium');
-    overflow: clip;
+    overflow: hidden;
     margin-bottom: func.units(6);
     height: calc(100% - func.units(6));
     display: flex;

@@ -7336,11 +7336,6 @@ button.function-link, button.accordion-bulk-button{
   text-align:left;
   min-height:auto;
   background-color:#F5F5F5;
-  background-image:url("../img/svg-icons/minus.svg");
-  background-size:2.4rem;
-  background-repeat:no-repeat;
-  background-position:left 1.6rem center;
-  background-size:2.4rem;
   color:#1a1a1a;
   cursor:pointer;
   margin:0;
@@ -7351,6 +7346,16 @@ button.function-link, button.accordion-bulk-button{
   font-size:1.6rem;
   position:relative;
   border-radius:8px;
+}
+.accordion-button::before{
+  content:"";
+  background-image:url("../img/svg-icons/minus.svg");
+  background-size:2.4rem;
+  background-repeat:no-repeat;
+  position:absolute;
+  height:2.4rem;
+  width:2.4rem;
+  left:1.6rem;
 }
 .accordion-button:hover{
   background-color:#DCDCDC;
@@ -7401,9 +7406,22 @@ button.function-link, button.accordion-bulk-button{
 .accordion-button .accordion-icon .icon-svg{
   fill:#1a1a1a;
   flex-shrink:0;
+  vertical-align:bottom;
 }
 .accordion-button .accordion-icon:hover .icon-svg{
   fill:#1a1a1a;
+}
+.accordion-button[aria-expanded=true]{
+  border-radius:8px 8px 0 0;
+}
+.accordion-button[aria-expanded=false]{
+  border-radius:8px;
+}
+.accordion-button[aria-expanded=false]::before{
+  content:"";
+  background-image:url("../img/svg-icons/plus.svg");
+  background-size:2.4rem;
+  background-repeat:no-repeat;
 }
 
 button.accordion-bulk-button{
@@ -7452,6 +7470,11 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   list-style:none;
   margin-bottom:0.8rem;
   width:100%;
+  border-radius:8px;
+}
+.accordion > li.accordion-error .accordion-button, .accordion > li.accordion-error .accordion-content{
+  background-image:linear-gradient(to right, #CC0000 4px, transparent 4px);
+  background-position-x:0;
 }
 .accordion > li > h1, .accordion > li > h2, .accordion > li > h3, .accordion > li > h4, .accordion > li > h5, .accordion > li > h6{
   margin-top:0;
@@ -7483,48 +7506,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:none;
 }
 
-.error-border{
-  display:none;
-}
-
-li.accordion-error{
-  border-radius:8px;
-  position:relative;
-}
-li.accordion-error .error-border{
-  width:0.4rem;
-  position:absolute;
-  display:block;
-  height:100%;
-  z-index:2;
-  overflow:hidden;
-}
-li.accordion-error .error-border::before{
-  content:"";
-  display:block;
-  height:100%;
-  background-color:#CC0000;
-  width:1.6rem;
-  border-radius:8px;
-}
-
-.accordion-button[aria-expanded=true]{
-  border-radius:8px 8px 0 0;
-}
-
-.accordion-button[aria-expanded=false]{
-  background-image:url("../img/svg-icons/plus.svg");
-  background-size:2.4rem;
-  background-repeat:no-repeat;
-  background-size:2.4rem;
-  border-radius:8px;
-}
-
 .alert{
   background-color:#F5F5F5;
-  background-position:16px 16px;
+  background-image:linear-gradient(to right, #8E8E8E 4px, transparent 4px);
   background-repeat:no-repeat;
-  background-size:24px;
   padding:1.6rem;
   padding-left:5.2rem;
   position:relative;
@@ -7534,24 +7519,6 @@ li.accordion-error .error-border::before{
 }
 .alert:first-child{
   margin-top:0;
-}
-.alert .alert-border{
-  width:0.4rem;
-  position:absolute;
-  display:block;
-  height:100%;
-  z-index:2;
-  overflow:hidden;
-  top:0;
-  left:0;
-}
-.alert .alert-border::before{
-  content:"";
-  display:block;
-  height:100%;
-  background-color:#CC0000;
-  width:1.6rem;
-  border-radius:8px;
 }
 .alert.alert--paragraph{
   max-width:66ch;
@@ -7611,30 +7578,22 @@ li.accordion-error .error-border::before{
 
 .alert-success{
   background-color:#ddf7ce;
-}
-.alert-success .alert-border::before{
-  background-color:#358000;
+  background-image:linear-gradient(to right, #358000 4px, transparent 4px);
 }
 
 .alert-warning{
   background-color:#ffeecc;
-}
-.alert-warning .alert-border::before{
-  background-color:#febb30;
+  background-image:linear-gradient(to right, #febb30 4px, transparent 4px);
 }
 
 .alert-error{
   background-color:#ffe0e0;
-}
-.alert-error .alert-border::before{
-  background-color:#CC0000;
+  background-image:linear-gradient(to right, #CC0000 4px, transparent 4px);
 }
 
 .alert-info{
   background-color:#e2f2fb;
-}
-.alert-info .alert-border::before{
-  background-color:#1B86C3;
+  background-image:linear-gradient(to right, #1B86C3 4px, transparent 4px);
 }
 
 .alert + .alert{
@@ -10721,7 +10680,7 @@ a.skipnav:focus{
 .new-card{
   border:1px solid #DCDCDC;
   border-radius:8px;
-  overflow:clip;
+  overflow:hidden;
   margin-bottom:32px;
   height:calc(100% - 32px);
   display:flex;
