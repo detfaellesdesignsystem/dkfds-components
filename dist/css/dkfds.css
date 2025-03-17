@@ -9450,6 +9450,9 @@ body.mobile-nav-active{
 .navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active span{
   font-weight:400;
 }
+.navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active span.sub-title{
+  font-weight:500;
+}
 .navigation-menu ul.mainmenu li.more-option .overflow-menu-inner ul li.active.current{
   background-color:#F5F5F5;
 }

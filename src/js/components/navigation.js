@@ -146,7 +146,7 @@ const updateMoreMenu = function () {
                         subMenu.classList.add('active');
                     }
                     let subMenuText = mainMenuItems[j].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
-                    subMenu.innerHTML = '<ul aria-label="' + subMenuText + '"><span class="sub-title" aria-hidden="true">' + subMenuText + '</span></ul>';
+                    subMenu.innerHTML = `<span class="sub-title" aria-hidden="true">${subMenuText}</span><ul aria-label="${subMenuText}"></ul>`;
                     let subElements = mainMenuItems[j].getElementsByTagName('LI');
                     for (let k = 0; k < subElements.length; k++) {
                         subMenu.getElementsByTagName('UL')[0].append(subElements[k].cloneNode(true));

@@ -165,6 +165,10 @@ $-active-border-width: func.units(2);
 
                 span {
                     font-weight: func.font-weight("normal");
+
+                    &.sub-title {
+                        font-weight: func.font-weight("medium");
+                    }
                 }
 
                 &.current {
