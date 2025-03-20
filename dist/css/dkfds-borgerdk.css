@@ -7635,8 +7635,11 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:inline-block;
   margin-bottom:24px;
   padding:0;
+  padding-left:1.6rem;
   line-height:2.4rem;
   background-color:transparent;
+  position:relative;
+  text-align:left;
   cursor:pointer;
 }
 @media (min-width: 992px){
@@ -7650,6 +7653,11 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
 .back-link:focus{
   outline:3px solid #454545;
   outline-offset:1px;
+}
+.back-link .icon-svg{
+  position:absolute;
+  left:-0.8rem;
+  top:0.1rem;
 }
 
 .button.back-to-top-button{

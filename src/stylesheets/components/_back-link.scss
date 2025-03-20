@@ -7,8 +7,11 @@
     display: inline-block;
     margin-bottom: func.units(5);
     padding: 0;
+    padding-left: func.units(4, 'rem');
     line-height: 2.4rem;
     background-color: func.color('transparent');
+    position: relative;
+    text-align: left;
     cursor: pointer;
 
     @include mixins.media-breakpoint-up(lg) {
@@ -24,5 +27,13 @@
 
     &:focus {
         @include mixins.focus;
+    }
+
+    .icon-svg {
+        position: absolute;
+        /* The "arrow" in the arrow icon is only 8x12 pixels even though the icon is 24x24.
+           Adjust the icon to align the "arrow" with the text instead of aligning the "arrow icon padding". */
+        left: -0.8rem;
+        top: 0.1rem;
     }
 }
