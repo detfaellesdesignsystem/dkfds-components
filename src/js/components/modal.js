@@ -94,7 +94,6 @@ Modal.prototype.show = function (e = null) {
         }
 
         modalElement.setAttribute('aria-hidden', 'false');
-        modalElement.setAttribute('tabindex', '-1');
 
         let eventOpen = new Event('fds.modal.shown');
         modalElement.dispatchEvent(eventOpen);
@@ -116,8 +115,20 @@ Modal.prototype.show = function (e = null) {
 
         document.getElementsByTagName('body')[0].classList.add('modal-open');
 
-        modalElement.focus();
-
+        /* Focus should be on the close button or the heading in the modal. If neither exist,
+           focus is placed on the modal itself. */
+        if (modalElement.querySelector('.modal-header .modal-close')) {
+            modalElement.querySelector('.modal-header .modal-close').focus();
+        }
+        else if (modalElement.querySelector('.modal-header .modal-title')) {
+            modalElement.querySelector('.modal-header .modal-title').setAttribute('tabindex', '-1');
+            modalElement.querySelector('.modal-header .modal-title').focus();
+        }
+        else {
+            modalElement.setAttribute('tabindex', '-1');
+            modalElement.focus();
+        }
+        
         if (!hasForcedAction(modalElement)) {
             document.addEventListener('keyup', handleEscape);
             $backdrop.addEventListener('click', () => {
