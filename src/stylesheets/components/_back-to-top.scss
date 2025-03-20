@@ -4,14 +4,16 @@
 
 $-border-width: func.units(1);
 
-.button.back-to-top-button {
+.button.back-to-top-button,
+.button.back-to-top-button.button-primary,
+.button.back-to-top-button.button-secondary,
+.button.back-to-top-button.button-tertiary {
     box-shadow: func.shadow('light');
     width: auto;
     position: fixed;
     inset: auto func.units(5) func.units(5) auto;
     z-index: vars.$zindex-back-to-top;
 
-    background-color: func.color(vars.$back-to-top-button-background);
     font-weight: func.font-weight('semibold');
     font-size: func.font-size('sm');
     min-height: func.units(7);
@@ -19,22 +21,24 @@ $-border-width: func.units(1);
     border-radius: func.border-radius('medium');
     border-width: $-border-width;
     border-style: solid;
+
+    background-color: func.color(vars.$back-to-top-button-background);
     border-color: func.color(vars.$back-to-top-button-border-color);
     color: func.color(vars.$back-to-top-button-color);
 
-    // Button variants must not overwrite the back to top styling
-    &.button-primary, &.button-secondary, &.button-tertiary {
-        background-color: func.color(vars.$back-to-top-button-background);
-        border-color: func.color(vars.$back-to-top-button-border-color);
-        color: func.color(vars.$back-to-top-button-color);
-        text-decoration: none;
-
-        &:hover {
-            background-color: func.color(vars.$back-to-top-button-background);
-            border-color: func.color(vars.$back-to-top-button-border-color);
-            color: func.color(vars.$back-to-top-button-color);
-            text-decoration: underline;
-        }
+    &:hover,
+    &.button-hover {
+        background-color: func.color(vars.$back-to-top-hover-background-color);
+        border-color: func.color(vars.$back-to-top-hover-border-color);
+        color: func.color(vars.$back-to-top-hover-color);
+        text-decoration: underline;
+    }
+    
+    &:active,
+    &.button-active {
+        border-color: func.color(vars.$back-to-top-active-border-color);
+        color: func.color(vars.$back-to-top-active-color);
+        background-color: func.color(vars.$back-to-top-active-background-color);
     }
 
     &.footer-sticky {
