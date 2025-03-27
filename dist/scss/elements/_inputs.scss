@@ -226,7 +226,8 @@ $-checkbox-radio-content-margin-top: func.units(2);
 
 legend, .form-error-message, .form-hint {
     & + .form-group-checkbox:first-of-type,
-    & + .form-group-radio:first-of-type {
+    & + .form-group-radio:first-of-type,
+    & + .hidden-content-wrapper:first-of-type {
         margin-top: $button-distance;
     }
 }
@@ -370,8 +371,9 @@ legend, .form-error-message, .form-hint {
 
 $-content-wrapper-top-offset: calc($-checkbox-radio-margin-top + $checkbox-radio-size + $expand-hit-area + $-checkbox-radio-content-margin-top);
 .hidden-content-wrapper {
+  margin-top: $button-distance;
   position: relative;
-
+  
   &.show-content {
     &::before {
       content: '';
@@ -382,6 +384,10 @@ $-content-wrapper-top-offset: calc($-checkbox-radio-margin-top + $checkbox-radio
       left: calc(($checkbox-radio-size - $content-border-width) / 2);
       top: $-content-wrapper-top-offset;
     }
+  }
+
+  &:first-of-type {
+    margin-top: 0;
   }
 }
 
