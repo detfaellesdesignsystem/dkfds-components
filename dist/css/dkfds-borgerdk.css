@@ -10676,6 +10676,9 @@ a.skipnav:focus{
   max-width:none !important;
   list-style-type:none;
 }
+.card-row li{
+  margin-top:0;
+}
 .card-row li::before{
   content:"" !important;
 }

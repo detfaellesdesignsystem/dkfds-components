@@ -33,8 +33,12 @@
     max-width: none !important;
     list-style-type: none;
 
-    li::before {
-        content: "" !important;
+    li {
+        margin-top: 0;
+
+        &::before {
+            content: "" !important;
+        }
     }
 }
 
