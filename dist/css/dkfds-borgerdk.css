@@ -10630,83 +10630,78 @@ a.skipnav:focus{
   padding-right:0 !important;
 }
 .step-indicator li{
-  display:flex;
-  align-items:center;
   margin-bottom:16px;
   line-height:1.5;
 }
 .step-indicator li .step{
   display:flex;
-  align-items:center;
   color:#1a1a1a;
-  text-decoration:none;
   border-radius:20px;
+  width:fit-content;
+  text-decoration:none;
+  align-items:flex-start;
 }
-.step-indicator li .step .step-number{
-  appearance:none;
-  line-height:1;
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  border:0;
-  font-size:1.6rem;
-  color:#1a1a1a;
-  font-weight:400;
-  text-decoration:underline;
-  background-color:#F5F5F5;
-  max-width:40px;
-  max-height:40px;
+.step-indicator li .step .step-number, .step-indicator li .step .step-icon{
   min-width:40px;
   min-height:40px;
+  text-align:center;
+  font-weight:400;
+  color:#1a1a1a;
+  font-size:1.6rem;
+  margin-right:12px;
+  border:0;
+  background-color:#F5F5F5;
   border-radius:24px;
-  text-decoration:underline;
-  margin-right:8px;
+  padding-top:8px;
+  flex:0 0 auto;
+}
+.step-indicator li .step .step-number svg, .step-indicator li .step .step-icon svg{
+  vertical-align:baseline;
+}
+.step-indicator li .step .step-number{
+  padding-bottom:8px;
+}
+.step-indicator li .step .step-number span{
+  min-width:2.4rem;
+  display:inline-block;
 }
 .step-indicator li .step .step-title{
   margin-right:8px;
-  vertical-align:bottom;
-}
-.step-indicator li .step svg{
-  vertical-align:bottom;
-  margin-right:8px;
+  display:block;
+  text-decoration:underline;
+  position:relative;
+  padding-top:8px;
 }
 .step-indicator li .step .step-information{
   display:block;
   color:#707070;
+  font-weight:400;
 }
-.step-indicator li .step:hover .step-number, .step-indicator li .step:active .step-number{
+.step-indicator li .step:hover .step-number, .step-indicator li .step:hover .step-icon{
   background-color:#DCDCDC;
-}
-.step-indicator li .step:hover .step-title, .step-indicator li .step:active .step-title{
-  text-decoration:underline;
 }
 .step-indicator li.current .step{
   font-weight:700;
 }
-.step-indicator li.current .step .step-number{
+.step-indicator li.current .step .step-number, .step-indicator li.current .step .step-icon{
   color:white;
-  font-weight:400;
   background-color:#454545;
+  font-weight:700;
+}
+.step-indicator li.current .step .step-title{
   text-decoration:none;
 }
-.step-indicator li.current .step:hover .step-number, .step-indicator li.current .step:active .step-number{
-  background-color:#454545;
-}
-.step-indicator li.current .step:hover .step-title, .step-indicator li.current .step:active .step-title{
-  text-decoration:underline;
-}
-.step-indicator li.disabled .step .step-number{
-  text-decoration:none;
-  color:#707070;
+.step-indicator li.error .step .step-number, .step-indicator li.error .step .step-icon{
+  background-color:#ffe0e0;
 }
 .step-indicator li.disabled .step .step-title{
-  color:#707070;
+  text-decoration:none;
 }
-.step-indicator li.disabled .step:hover .step-number, .step-indicator li.disabled .step:active .step-number{
+.step-indicator li.disabled .step:hover .step-number, .step-indicator li.disabled .step:hover .step-icon{
   background-color:#F5F5F5;
 }
-.step-indicator li.disabled .step:hover .step-title, .step-indicator li.disabled .step:active .step-title{
-  text-decoration:none;
+.step-indicator li.error.current .step .step-number, .step-indicator li.error.current .step .step-icon{
+  color:#1a1a1a;
 }
 
 @media (min-width: 576px){

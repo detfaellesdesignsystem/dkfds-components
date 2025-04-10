@@ -62,61 +62,62 @@
     @include mixins.unstyled-list;
 
     li {
-        display: flex;
-        align-items: center;
         margin-bottom: func.units(4);
         line-height: 1.5;
 
         .step {
             display: flex;
-            align-items: center;
             color: func.color('black');
-            text-decoration: none;
             border-radius: func.units(405);
+            width: fit-content;
+            text-decoration: none;
+            align-items: flex-start;
 
-            .step-number {
-                appearance: none;
-                line-height: 1;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                border: 0;
-                font-size: func.font-size('sm');
-                color: func.color('black');
-                font-weight: func.font-weight("normal");
-                text-decoration: underline;
-                background-color: func.color('gray-100');
-                max-width: func.units(7);
-                max-height: func.units(7);
+            .step-number, .step-icon {
                 min-width: func.units(7);
                 min-height: func.units(7);
+                text-align: center;
+                font-weight: func.font-weight("normal");
+                color: func.color('black');
+                font-size: func.font-size('sm');
+                margin-right: func.units(305);
+                border: 0;
+                background-color: func.color('gray-100');
                 border-radius: func.units(5);
-                text-decoration: underline;
-                margin-right: func.units(3);
+                padding-top: func.units(3);
+                flex: 0 0 auto;
+
+                svg {
+                    vertical-align: baseline;
+                }
+            }
+
+            .step-number {
+                padding-bottom: func.units(3);
+
+                span {
+                    min-width: func.units(5, 'rem');
+                    display: inline-block;
+                }
             }
 
             .step-title {
                 margin-right: func.units(3);
-                vertical-align: bottom;
-            }
-
-            svg {
-                vertical-align: bottom;
-                margin-right: func.units(3);
+                display: block;
+                text-decoration: underline;
+                position: relative;
+                padding-top: func.units(3);
             }
     
             .step-information {
                 display: block;
                 color: func.color('gray-500');
+                font-weight: func.font-weight('normal');
             }
 
-            &:hover, &:active {
-                .step-number {
+            &:hover {
+                .step-number, .step-icon {
                     background-color: func.color('gray-200');
-                }
-
-                .step-title {
-                    text-decoration: underline;
                 }
             }
         }
@@ -126,44 +127,44 @@
         .step {
             font-weight: func.font-weight('bold');
 
-            .step-number {
+            .step-number, .step-icon {
                 color: func.color('white');
-                font-weight: func.font-weight('normal');
                 background-color: func.color('gray-600');
-                text-decoration: none;
+                font-weight: func.font-weight('bold');
             }
 
-            &:hover, &:active {
-                .step-number {
-                    background-color: func.color('gray-600');
-                }
+            .step-title {
+                text-decoration: none;
+            }
+        }
+    }
 
-                .step-title {
-                    text-decoration: underline;
-                }
+    li.error {
+        .step {
+            .step-number, .step-icon {
+                background-color: func.color('error-light');
             }
         }
     }
 
     li.disabled {
         .step {
-            .step-number {
-                text-decoration: none;
-                color: func.color('gray-500');
-            }
-
             .step-title {
-                color: func.color('gray-500');
+                text-decoration: none;
             }
 
-            &:hover, &:active {
-                .step-number {
+            &:hover {
+                .step-number, .step-icon {
                     background-color: func.color('gray-100');
                 }
+            }
+        }
+    }
 
-                .step-title {
-                    text-decoration: none;
-                }
+    li.error.current {
+        .step {
+            .step-number, .step-icon {
+                color: func.color('black');
             }
         }
     }

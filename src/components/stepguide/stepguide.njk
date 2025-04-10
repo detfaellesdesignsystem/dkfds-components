@@ -68,17 +68,25 @@
 
 {% macro stepIndicator(params) %}
 <ol class="step-indicator">
-    {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
-    <li{% if disabled or trin.current or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.error %}step-error{% endif %}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
-        <{% if disabled %}div{% else %}a{% endif %} class="step"{% if not disabled %} href="{{trin.href}}"{% endif %}>
-            <span class="step-number">{{loop.index}}</span>
+    {%- for trin in params.steps %}
+    <li{% if trin.disabled or trin.current or trin.state === 'error' %} class="{% if trin.disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.state === 'error' %}error{% endif %}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
+        <{% if trin.disabled %}div{% else %}a{% endif %} class="step"{% if not trin.disabled %} href="{{trin.href}}"{% endif %}>
+            <span class="{% if trin.state === 'number' %}step-number{% else %}step-icon{% endif %}">
+            {% if trin.state === "number" %}
+                <span>{{loop.index}}</span>
+            {% elif trin.state === "success" %}
+                {% set successMessage = "Trin " + loop.index + " gennemført" %}
+                {{ icon_svg({"name": "check", "ariaLabel": successMessage, "ariaHidden": false}) }}
+            {% elif trin.state === "error" %}
+                {% set errorMessage = "Fejl i trin " + loop.index %}
+                {{ icon_svg({"name": "error", "ariaLabel": errorMessage, "ariaHidden": false}) }}
+            {% endif %}
+            </span>
             <div>
-                <span>
-                    <span class="step-title">{{trin.text}}</span>{%- if trin.icon %}{{ icon_svg(trin.icon) }}{% endif -%}
-                </span>
+                <span class="step-title">{{trin.text}}</span>
                 {% if trin.helptext %}<span class="step-information">{{trin.helptext}}</span>{% endif -%}
             </div>
-        </{% if disabled %}div{% else %}a{% endif %}>
+        </{% if trin.disabled %}div{% else %}a{% endif %}>
     </li>{% endfor %}
 </ol>
 {% endmacro %}
