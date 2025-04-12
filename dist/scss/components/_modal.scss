@@ -2,28 +2,6 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
-@keyframes modal-backdrop-fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes modal-backdrop-fade-out {
-    from {
-        opacity: 1;
-        display: flex;
-    }
-
-    to {
-        opacity: 0;
-        display: none;
-    }
-}
-
 body.modal-open {
     overflow: hidden;
 }
@@ -38,12 +16,7 @@ body.modal-open {
     z-index: vars.$zindex-modal-backdrop;
     padding: 16px;
 
-    /* duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-    //animation: 0.2s ease-in 0s 1 normal forwards running modal-backdrop-fade-in; 
-
     &.hide {
-        /* duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-        //animation: 0.2s ease-out 0s 1 normal forwards running modal-backdrop-fade-out;
         display: none;
     }
 }
@@ -58,14 +31,10 @@ body.modal-open {
 
     &[aria-hidden="false"] {
         display: flex;
-
-        .modal-content {
-            display: block;
-        }
     }
 
     .modal-content {
-        display: none;
+        display: block;
         align-self: center;
         max-height: 100%;
         overflow: hidden auto;
@@ -167,90 +136,4 @@ body.modal-open {
             color: func.color(vars.$modal-header-close-color);
         }
     }
-
-    @keyframes modal-fade-in {
-        from {
-            display: none;
-            opacity: 0;
-        }
-
-        to {
-            display: flex;
-            opacity: 1;
-        }
-    }
-
-    @keyframes modal-fade-out {
-        from {
-            display: flex;
-            opacity: 1;
-        }
-
-        to {
-            display: none;
-            opacity: 0;
-        }
-    }
-
-    @keyframes modal-slide-in {
-        from {
-            transform: translateY(15%);
-            display: none;
-        }
-
-        to {
-            transform: translateY(0);
-            display: block;
-        }
-    }
-
-    @keyframes modal-slide-out {
-        from {
-            transform: translateY(0);
-            display: block;
-        }
-
-        to {
-            transform: translateY(15%);
-            display: none;
-        }
-    }
-
-    /* &[aria-hidden="false"] {
-        // duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        //animation: 0.2s ease-in 0s 1 normal none running modal-fade-in; 
-    }
-
-    &[aria-hidden="true"] {
-        // duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        //animation: 0.2s ease-out 0s 1 normal none running modal-fade-out; 
-    }
-
-    &[aria-hidden="false"] .modal-content {
-        // duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        //animation: 0.2s ease-in 0s 1 normal none running modal-slide-in; 
-    }
-
-    &[aria-hidden="true"] .modal-content {
-        // duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name
-        //animation: 0.2s ease-out 0s 1 normal none running modal-slide-out; 
-    } */
 }
-
-/* Prevent modal animations from running on page load */
-/* @keyframes containerAnimation {
-    0% {
-        display: none;
-    }
-
-    99% {
-        display: none;
-    }
-
-    100% {
-        display: block;
-    }
-} */
-/* .fds-modal-container {
-    animation: containerAnimation 0.1s forwards;
-} */

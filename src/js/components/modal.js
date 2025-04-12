@@ -7,6 +7,11 @@ function Modal($modal) {
     this.$modal = $modal;
     let id = this.$modal.getAttribute('id');
     this.triggers = document.querySelectorAll('[data-module="modal"][data-target="' + id + '"]');
+    this.hideOnResize = () => {
+        if (window.getComputedStyle(document.querySelector('.step-indicator-button')).display === 'none') {
+            this.hide();
+        }
+    };
 }
 
 /**
@@ -42,6 +47,9 @@ Modal.prototype.hide = function () {
         }
 
         document.getElementsByTagName('body')[0].classList.remove('modal-open');
+        modalElement.querySelector('.modal-content').classList.remove('show-modal-content');
+
+        window.removeEventListener('resize', this.hideOnResize, false);
 
         if (!hasForcedAction(modalElement)) {
             document.removeEventListener('keyup', handleEscape);
@@ -103,16 +111,16 @@ Modal.prototype.show = function (e = null) {
         }
         let $backdrop = document.createElement('div');
         $backdrop.classList.add('modal-backdrop');
-        if (stepIndicatorModal) {
-            window.addEventListener('resize', () => {
-                if (window.getComputedStyle(document.querySelector('.step-indicator-button')).display === 'none') {
-                    this.hide();
-                }
-            }, false);
-        }
         $backdrop.setAttribute('id', "modal-backdrop");
         document.getElementsByTagName('body')[0].appendChild($backdrop);
 
+        if (stepIndicatorModal) {
+            $backdrop.classList.add('step-indicator');
+            modalElement.querySelector('.modal-content').classList.add('has-transition-effect');
+            modalElement.querySelector('.modal-content').classList.add('show-modal-content');
+            window.addEventListener('resize', this.hideOnResize, false);
+        }
+        
         document.getElementsByTagName('body')[0].classList.add('modal-open');
 
         /* Focus should be on the close button or the heading in the modal. If neither exist,

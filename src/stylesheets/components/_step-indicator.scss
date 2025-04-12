@@ -26,12 +26,18 @@
 .fds-modal.modal-step-indicator {
     margin: 0;
     justify-content: center;
+    display: flex;
+    visibility: hidden;
+    transition: visibility 1s;
 
     .modal-content {
         align-self: flex-end;
+        max-height: 90vh;
+        min-height: 40vh;
         margin: 0;
         border-bottom-left-radius: func.border-radius('none');
         border-bottom-right-radius: func.border-radius('none');
+        transform: translateY(100%);
 
         .modal-header {
             border-bottom: 1px solid func.color('black');
@@ -54,8 +60,65 @@
                 padding: func.units(0) func.units(5) func.units(4); // top | left and right | bottom
             }
         }
+
+        &.has-transition-effect {
+            transition: transform 1s;
+
+            &.show-modal-content {
+                transform: translateY(0%);
+            }
+        }
+    }
+
+    &[aria-hidden="false"] {
+        display: flex; // TODO: Make the model content hidden
+        visibility: visible;
     }
 }
+
+@keyframes step-indicator-backdrop-opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes step-indicator-backdrop-visibility {
+    from { visibility: hidden; }
+    to { visibility: visible; }
+}
+
+@keyframes step-indicator-backdrop-opacity-reverse {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes step-indicator-backdrop-visibility-reverse {
+    from { visibility: visible; }
+    to { visibility: hidden; }
+}
+
+.modal-backdrop.step-indicator {
+    opacity: 1;
+    animation-name: step-indicator-backdrop-opacity, step-indicator-backdrop-visibility;
+    animation-duration: 1s, 1ms;
+    animation-delay: 0s, 1s;
+    animation-iteration-count: 1, 1;
+    animation-direction: normal, normal;
+    animation-fill-mode: none, none;
+
+    &.hide {
+        display: flex;
+        opacity: 0;
+        animation-name: step-indicator-backdrop-opacity-reverse, step-indicator-backdrop-visibility-reverse;
+        animation-duration: 1s, 1ms;
+        animation-delay: 0s, 1s;
+        animation-iteration-count: 1, 1;
+        animation-direction: normal, normal;
+        animation-fill-mode: none, forwards;
+    }
+}
+
+$-circle-size: func.units(7);
+$-circle-margin: func.units(305);
 
 .step-indicator {
     max-width: none;
@@ -70,17 +133,18 @@
             color: func.color('black');
             border-radius: func.units(405);
             width: fit-content;
+            max-width: 100%;
             text-decoration: none;
             align-items: flex-start;
 
             .step-number, .step-icon {
-                min-width: func.units(7);
-                min-height: func.units(7);
+                min-width: $-circle-size;
+                min-height: $-circle-size;
                 text-align: center;
                 font-weight: func.font-weight("normal");
                 color: func.color('black');
                 font-size: func.font-size('sm');
-                margin-right: func.units(305);
+                margin-right: $-circle-margin;
                 border: 0;
                 background-color: func.color('gray-100');
                 border-radius: func.units(5);
@@ -89,6 +153,10 @@
 
                 svg {
                     vertical-align: baseline;
+                }
+
+                & + div {
+                    max-width: calc(100% - $-circle-size - $-circle-margin);
                 }
             }
 
@@ -107,12 +175,14 @@
                 text-decoration: underline;
                 position: relative;
                 padding-top: func.units(3);
+                overflow-wrap: break-word;
             }
     
             .step-information {
                 display: block;
                 color: func.color('gray-500');
                 font-weight: func.font-weight('normal');
+                overflow-wrap: break-word;
             }
 
             &:hover {
