@@ -43,7 +43,7 @@ Modal.prototype.hide = function () {
 
         let $backdrop = document.querySelector('#modal-backdrop');
         if ($backdrop) {
-            $backdrop.classList.add('hide');
+            $backdrop.classList.remove('show');
         }
 
         document.getElementsByTagName('body')[0].classList.remove('modal-open');
@@ -121,6 +121,8 @@ Modal.prototype.show = function (e = null) {
             window.addEventListener('resize', this.hideOnResize, false);
         }
         
+        $backdrop.offsetHeight; // Force reflow to ensure the step indicator transition works
+        $backdrop.classList.add('show');
         document.getElementsByTagName('body')[0].classList.add('modal-open');
 
         /* Focus should be on the close button or the heading in the modal. If neither exist,

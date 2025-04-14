@@ -2,6 +2,8 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
+$-transition-duration: 0.4s;
+
 .step-indicator-button {
     display: inline-flex;
     width: 100%;
@@ -28,7 +30,7 @@
     justify-content: center;
     display: flex;
     visibility: hidden;
-    transition: visibility 1s;
+    transition: visibility $-transition-duration;
 
     .modal-content {
         align-self: flex-end;
@@ -62,7 +64,7 @@
         }
 
         &.has-transition-effect {
-            transition: transform 1s;
+            transition: transform $-transition-duration;
 
             &.show-modal-content {
                 transform: translateY(0%);
@@ -70,51 +72,13 @@
         }
     }
 
-    &[aria-hidden="false"] {
-        display: flex; // TODO: Make the model content hidden
+    &[aria-hidden="false"], &.show-modal {
         visibility: visible;
     }
 }
 
-@keyframes step-indicator-backdrop-opacity {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes step-indicator-backdrop-visibility {
-    from { visibility: hidden; }
-    to { visibility: visible; }
-}
-
-@keyframes step-indicator-backdrop-opacity-reverse {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes step-indicator-backdrop-visibility-reverse {
-    from { visibility: visible; }
-    to { visibility: hidden; }
-}
-
 .modal-backdrop.step-indicator {
-    opacity: 1;
-    animation-name: step-indicator-backdrop-opacity, step-indicator-backdrop-visibility;
-    animation-duration: 1s, 1ms;
-    animation-delay: 0s, 1s;
-    animation-iteration-count: 1, 1;
-    animation-direction: normal, normal;
-    animation-fill-mode: none, none;
-
-    &.hide {
-        display: flex;
-        opacity: 0;
-        animation-name: step-indicator-backdrop-opacity-reverse, step-indicator-backdrop-visibility-reverse;
-        animation-duration: 1s, 1ms;
-        animation-delay: 0s, 1s;
-        animation-iteration-count: 1, 1;
-        animation-direction: normal, normal;
-        animation-fill-mode: none, forwards;
-    }
+    transition: opacity $-transition-duration, visibility $-transition-duration;
 }
 
 $-circle-size: func.units(7);
@@ -156,7 +120,9 @@ $-circle-margin: func.units(305);
                 }
 
                 & + div {
-                    max-width: calc(100% - $-circle-size - $-circle-margin);
+                    /* Firefox appears to have a rounding issue, which sometimes causes unneeded word-wrap. 
+                       Adding 1px to the max-width fixes the issue. */
+                    max-width: calc(100% - $-circle-size - $-circle-margin + 1px); 
                 }
             }
 

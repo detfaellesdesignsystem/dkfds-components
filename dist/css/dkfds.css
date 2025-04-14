@@ -9007,9 +9007,12 @@ body.modal-open{
   align-items:center;
   z-index:8888;
   padding:16px;
+  visibility:hidden;
+  opacity:0;
 }
-.modal-backdrop.hide{
-  display:none;
+.modal-backdrop.show{
+  visibility:visible;
+  opacity:1;
 }
 
 .fds-modal{
@@ -9020,7 +9023,7 @@ body.modal-open{
   margin:16px;
   pointer-events:none;
 }
-.fds-modal[aria-hidden=false]{
+.fds-modal[aria-hidden=false], .fds-modal.show-modal{
   display:flex;
 }
 .fds-modal .modal-content{
@@ -10529,7 +10532,7 @@ a.skipnav:focus{
   justify-content:center;
   display:flex;
   visibility:hidden;
-  transition:visibility 1s;
+  transition:visibility 0.4s;
 }
 .fds-modal.modal-step-indicator .modal-content{
   align-self:flex-end;
@@ -10560,66 +10563,17 @@ a.skipnav:focus{
   }
 }
 .fds-modal.modal-step-indicator .modal-content.has-transition-effect{
-  transition:transform 1s;
+  transition:transform 0.4s;
 }
 .fds-modal.modal-step-indicator .modal-content.has-transition-effect.show-modal-content{
   transform:translateY(0%);
 }
-.fds-modal.modal-step-indicator[aria-hidden=false]{
-  display:flex;
+.fds-modal.modal-step-indicator[aria-hidden=false], .fds-modal.modal-step-indicator.show-modal{
   visibility:visible;
 }
 
-@keyframes step-indicator-backdrop-opacity{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
-}
-@keyframes step-indicator-backdrop-visibility{
-  from{
-    visibility:hidden;
-  }
-  to{
-    visibility:visible;
-  }
-}
-@keyframes step-indicator-backdrop-opacity-reverse{
-  from{
-    opacity:1;
-  }
-  to{
-    opacity:0;
-  }
-}
-@keyframes step-indicator-backdrop-visibility-reverse{
-  from{
-    visibility:visible;
-  }
-  to{
-    visibility:hidden;
-  }
-}
 .modal-backdrop.step-indicator{
-  opacity:1;
-  animation-name:step-indicator-backdrop-opacity, step-indicator-backdrop-visibility;
-  animation-duration:1s, 1ms;
-  animation-delay:0s, 1s;
-  animation-iteration-count:1, 1;
-  animation-direction:normal, normal;
-  animation-fill-mode:none, none;
-}
-.modal-backdrop.step-indicator.hide{
-  display:flex;
-  opacity:0;
-  animation-name:step-indicator-backdrop-opacity-reverse, step-indicator-backdrop-visibility-reverse;
-  animation-duration:1s, 1ms;
-  animation-delay:0s, 1s;
-  animation-iteration-count:1, 1;
-  animation-direction:normal, normal;
-  animation-fill-mode:none, forwards;
+  transition:opacity 0.4s, visibility 0.4s;
 }
 
 .step-indicator{
@@ -10668,7 +10622,7 @@ a.skipnav:focus{
   vertical-align:baseline;
 }
 .step-indicator li .step .step-number + div, .step-indicator li .step .step-icon + div{
-  max-width:calc(100% - 40px - 12px);
+  max-width:calc(100% - 40px - 12px + 1px);
 }
 .step-indicator li .step .step-number{
   padding-bottom:8px;

@@ -15,9 +15,12 @@ body.modal-open {
     align-items: center;
     z-index: vars.$zindex-modal-backdrop;
     padding: 16px;
+    visibility: hidden; // Used instead of 'display: none' for transitions
+    opacity: 0; // Used for transitions
 
-    &.hide {
-        display: none;
+    &.show {
+        visibility: visible;
+        opacity: 1;
     }
 }
 
@@ -29,7 +32,7 @@ body.modal-open {
     margin: func.units(4);
     pointer-events: none;
 
-    &[aria-hidden="false"] {
+    &[aria-hidden="false"], &.show-modal {
         display: flex;
     }
 
