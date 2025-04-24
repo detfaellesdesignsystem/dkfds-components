@@ -1,7 +1,7 @@
 {% from "components/buttons/buttons.njk" import button as button %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro newCardActions(params) %}
+{% macro cardActions(params) %}
 <div class="card-actions">
     {%- if params.links and not params.navigationCard -%}
     <ul class="nobullet-list">
@@ -30,17 +30,17 @@
 </div>
 {% endmacro %}
 
-{% macro newCard(params) %}
+{% macro card(params) %}
 {%- if params.outerTag -%}
-<{{ params.outerTag }} class="new-card-wrapper">
+<{{ params.outerTag }} class="card-wrapper">
 {%- endif -%}
 {%- if params.navigationCard -%}
-<a class="new-card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}" href="{{params.navigationCard.href}}"{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
+<a class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}" href="{{params.navigationCard.href}}"{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
 {%- else -%}
-<{{ params.innerTag | default('div') }} class="new-card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{params.id}}"{% endif %}>
+<{{ params.innerTag | default('div') }} class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{params.id}}"{% endif %}>
 {%- endif -%}
     {%- if params.image -%}
-    <div class="new-card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
+    <div class="card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
         {%- if params.image.src -%}
         <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
         {%- elseif params.image.placeholder -%}
@@ -51,7 +51,7 @@
         {%- endif -%}
     </div>
     {%- endif -%}
-    <div class="new-card-content">
+    <div class="card-content">
         {%- if params.subheading -%}
         <span class="subheading">{{ params.subheading }}</span>
         {%- endif -%}
@@ -62,11 +62,11 @@
         {{ params.content | safe }}
         {%- endif -%}
         {%- if not params.navigationCard and params.long and (params.links or params.buttons) -%}
-        {{ newCardActions(params) }}
+        {{ cardActions(params) }}
         {%- endif -%}
     </div>
     {%- if (not params.long and (params.links or params.buttons)) or params.navigationCard -%}
-    {{ newCardActions(params) }}
+    {{ cardActions(params) }}
     {%- endif -%}
 {%- if params.navigationCard -%}
 </a>
