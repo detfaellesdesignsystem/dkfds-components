@@ -1062,7 +1062,7 @@ a:hover, a.link-hover{
 a.bold-link{
   font-weight:600;
 }
-a:not(.button):not(.full-width-image){
+a:not(.button):not(.full-width-image):not(.card){
   max-width:66ch;
 }
 
@@ -10690,10 +10690,6 @@ a.skipnav:focus{
   padding:24px 0 0 0;
 }
 
-.card-wrapper{
-  height:100%;
-}
-
 .card-row{
   max-width:none !important;
   list-style-type:none;
@@ -10718,7 +10714,6 @@ a.skipnav:focus{
   height:calc(100% - 32px);
   display:flex;
   flex-direction:column;
-  min-width:100%;
 }
 .card .card-image{
   width:100%;
@@ -10744,7 +10739,7 @@ a.skipnav:focus{
   margin-bottom:4px;
   display:block;
 }
-.card .card-content h1, .card .card-content .h1, .card .card-content h2, .card .card-content .h2, .card .card-content h3, .card .card-content .h3, .card .card-content h4, .card .card-content .h4, .card .card-content h5, .card .card-content .h5, .card .card-content h6, .card .card-content .h6, .card .card-content .heading{
+.card .card-content .heading{
   font-size:2.4rem;
   margin:0;
   font-weight:600;
@@ -10754,6 +10749,9 @@ a.skipnav:focus{
 }
 .card .card-content > :last-child{
   margin-bottom:0;
+}
+.card .card-content *{
+  max-width:100%;
 }
 .card .card-actions{
   padding-left:24px;
@@ -10774,11 +10772,15 @@ a.skipnav:focus{
   margin-top:0;
   margin-bottom:16px;
 }
+.card.collapsed-height{
+  height:auto;
+}
+
 a.card{
   text-decoration:none;
   color:#1a1a1a;
 }
-a.card h1, a.card .h1, a.card h2, a.card .h2, a.card h3, a.card .h3, a.card h4, a.card .h4, a.card h5, a.card .h5, a.card h6, a.card .h6, a.card .heading{
+a.card .heading{
   text-decoration:underline;
   font-weight:600;
 }

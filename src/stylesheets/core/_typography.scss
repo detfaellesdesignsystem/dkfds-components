@@ -44,7 +44,7 @@ a {
     font-weight: func.font-weight("semibold");
   }
 
-  &:not(.button, .full-width-image) {
+  &:not(.button, .full-width-image, .card) {
     max-width: vars.$typography-text-max-width;
   }
 }

@@ -11,29 +11,51 @@ params:
   type: string
   required: false
   description: Subheading of the card
-- name: text
-  type: string
-  required: true
-  description: Card text
 - name: content
   type: string
   required: false
-  description: content of the card
-- name: actionContent
-  type: string
-  required: false
-  description: Content added at the bottom of the card
-- name: actionButtons
-  type: string
-  required: false
-  description: Buttons added at the bottom of the card
-- name: actionLinks
-  type: string
-  required: false
-  description: Links added at the bottom of the card
-- name: sameHeight
+  description: Content of the card
+- name: long
   type: boolean
   required: false
-  description: On true, sets same height of cards in row.
-
-  
+  description: Defines whether the card is long or default format
+- name: classes
+  type: string
+  required: false
+  description: Classes for the card
+- name: id
+  type: string
+  required: false
+  description: Id for the card
+- name: innerTag
+  type: string
+  required: false
+  description: The HTML tag used for creating the card
+- name: image
+  type: object
+  required: false
+  description: Card image
+  - name: placeholder
+    type: string
+    required: false
+    description: Attributes for the image
+  - name: src
+    type: string
+    required: false
+    description: Image src
+  - name: alt
+    type: string
+    required: false
+    description: Alt text for the image
+- name: navigationCard
+  type: object
+  required: false
+  description: Turns the entire card into a link
+  - name: href
+    type: string
+    required: true
+    description: Link href attribute
+  - name: external
+    type: boolean
+    required: false
+    description: Set to true if the link leads outside your website or domain
