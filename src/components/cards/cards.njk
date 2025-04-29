@@ -1,36 +1,6 @@
 {% from "components/buttons/buttons.njk" import button as button %}
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
-{% macro cardActions(params) %}
-<div class="card-actions">
-    {%- if params.links and not params.navigationCard -%}
-    <ul class="nobullet-list">
-        {%- for link in params.links -%}
-        <li><a href="{{ link.href }}"{% if link.external %} class="icon-link" target="_blank"{% endif %}>{{ link.text }}{% if link.external %}{{icon_svg({"name": 'open-in-new', "ariaLabel": "(åbner i nyt vindue)"})}}{% endif %}</a></li>
-        {%- endfor -%}
-    </ul>
-    {%- endif -%}
-    {%- if params.buttons and not params.navigationCard -%}
-    <div class="button-group">
-        {%- for b in params.buttons -%}
-        {{ 
-            button({
-                "variant": b.variant,
-                "text": b.text,
-                "span": b.span
-            })
-        }}
-        {%- endfor -%}
-    </div>
-    {%- endif -%}
-    {%- if params.navigationCard.external -%}
-    {{ icon_svg({"name": 'open-in-new', "ariaLabel": "(åbner i nyt vindue)"}) }}
-    {%- elseif params.navigationCard -%}
-    {{ icon_svg({"name": 'arrow-forward'}) }}
-    {%- endif -%}
-</div>
-{% endmacro %}
-
 {% macro card(params) %}
 {%- if params.navigationCard -%}
 <a class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}" href="{{params.navigationCard.href}}"{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
@@ -55,13 +25,12 @@
         {%- if params.content -%}
         {{ params.content | safe }}
         {%- endif -%}
-        {%- if not params.navigationCard and params.long and (params.links or params.buttons) -%}
-        {{ cardActions(params) }}
-        {%- endif -%}
     </div>
     {%- endif -%}
-    {%- if (not params.long and (params.links or params.buttons)) or params.navigationCard -%}
-    {{ cardActions(params) }}
+    {%- if params.navigationCard.external -%}
+    {{ icon_svg({"name": "open-in-new", "ariaLabel": "(åbner i nyt vindue)", "classes": "card-icon"}) }}
+    {%- elseif params.navigationCard -%}
+    {{ icon_svg({"name": "arrow-forward", "classes": "card-icon"}) }}
     {%- endif -%}
 {%- if params.navigationCard -%}
 </a>
@@ -69,4 +38,3 @@
 </{{ params.innerTag | default('div') }}>
 {%- endif -%}
 {% endmacro %}
-

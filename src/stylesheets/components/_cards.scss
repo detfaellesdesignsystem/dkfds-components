@@ -17,12 +17,6 @@
             }
         }
     }
-
-    .card-content {
-        .card-actions {
-            padding: func.units(5) 0 0 0; // top | right | bottom | left
-        }
-    }
 }
 
 .card-row {
@@ -65,10 +59,7 @@
     }
 
     .card-content {
-        padding-left: func.units(5);
-        padding-right: func.units(5);
-        padding-top: func.units(5);
-        margin-bottom: func.units(5);
+        padding: func.units(5);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -77,6 +68,10 @@
         .subheading {
             margin-bottom: func.units(2);
             display: block;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     
         .heading {
@@ -84,41 +79,39 @@
             margin: 0;
             font-weight: 600;
         }
-    
+
         p {
-            margin-bottom: 0;
+            margin-top: 0;
+            margin-bottom: func.units(4, 'rem');
+
+            &:first-of-type {
+                margin-top: func.units(4, 'rem');
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
         }
-    
-        & > :last-child {
+
+        .actions {
+            margin-top: func.units(5);
+        }
+
+        .button-group.actions {
+            margin-bottom: -16px;
+
+            .button {
+                margin-top: 0;
+                margin-bottom: func.units(4);
+            }
+        }
+
+        .nobullet-list.actions {
             margin-bottom: 0;
         }
 
         * {
             max-width: 100%;
-        }
-    }
-
-    .card-actions {
-        padding-left: func.units(5);
-        padding-right: func.units(5);
-        padding-bottom: func.units(5);
-
-        .nobullet-list {
-            margin: 0;
-
-            li:first-child {
-                margin-top: 0;
-            }
-        }
-
-        .button-group {
-            margin-top: 0;
-            margin-bottom: calc(0px - func.units(4));
-
-            .button, .button-wrapper {
-                margin-top: func.units(0);
-                margin-bottom: func.units(4);
-            }
         }
     }
 
@@ -143,16 +136,12 @@ a.card {
     }
 
     .card-content {
-        margin-bottom: func.units(4);
+        padding-bottom: func.units(4);
     }
 
-    .card-actions {
+    .card-icon {
         display: flex;
-        margin-top: auto;
-
-        & > .icon-svg {
-            margin-left: auto;
-        }
+        margin: auto func.units(5) func.units(5) auto; // top | right | bottom | left
     }
 
     &:link, &:visited, &:hover, &:active {
@@ -178,10 +167,6 @@ a.card {
         @extend %-long;
 
         @include mixins.media-breakpoint-up(sm) {
-            .card-actions {
-                margin-left: auto;
-            }
-
             .card-content {
                 max-width: calc(100% - func.units(5) - func.units(5, 'rem') - func.units(5));
             }

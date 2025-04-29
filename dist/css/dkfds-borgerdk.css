@@ -10686,9 +10686,6 @@ a.skipnav:focus{
     object-fit:cover;
   }
 }
-.card.long .card-content .card-actions{
-  padding:24px 0 0 0;
-}
 
 .card-row{
   max-width:none !important;
@@ -10726,10 +10723,7 @@ a.skipnav:focus{
   background-color:#DCDCDC;
 }
 .card .card-content{
-  padding-left:24px;
-  padding-right:24px;
-  padding-top:24px;
-  margin-bottom:24px;
+  padding:24px;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
@@ -10739,38 +10733,39 @@ a.skipnav:focus{
   margin-bottom:4px;
   display:block;
 }
+.card .card-content .subheading:last-child{
+  margin-bottom:0;
+}
 .card .card-content .heading{
   font-size:2.4rem;
   margin:0;
   font-weight:600;
 }
 .card .card-content p{
+  margin-top:0;
+  margin-bottom:1.6rem;
+}
+.card .card-content p:first-of-type{
+  margin-top:1.6rem;
+}
+.card .card-content p:last-of-type{
   margin-bottom:0;
 }
-.card .card-content > :last-child{
+.card .card-content .actions{
+  margin-top:24px;
+}
+.card .card-content .button-group.actions{
+  margin-bottom:-16px;
+}
+.card .card-content .button-group.actions .button{
+  margin-top:0;
+  margin-bottom:16px;
+}
+.card .card-content .nobullet-list.actions{
   margin-bottom:0;
 }
 .card .card-content *{
   max-width:100%;
-}
-.card .card-actions{
-  padding-left:24px;
-  padding-right:24px;
-  padding-bottom:24px;
-}
-.card .card-actions .nobullet-list{
-  margin:0;
-}
-.card .card-actions .nobullet-list li:first-child{
-  margin-top:0;
-}
-.card .card-actions .button-group{
-  margin-top:0;
-  margin-bottom:-16px;
-}
-.card .card-actions .button-group .button, .card .card-actions .button-group .button-wrapper{
-  margin-top:0;
-  margin-bottom:16px;
 }
 .card.collapsed-height{
   height:auto;
@@ -10785,14 +10780,11 @@ a.card .heading{
   font-weight:600;
 }
 a.card .card-content{
-  margin-bottom:16px;
+  padding-bottom:16px;
 }
-a.card .card-actions{
+a.card .card-icon{
   display:flex;
-  margin-top:auto;
-}
-a.card .card-actions > .icon-svg{
-  margin-left:auto;
+  margin:auto 24px 24px auto;
 }
 a.card:link, a.card:visited, a.card:hover, a.card:active{
   color:#1a1a1a;
@@ -10810,9 +10802,6 @@ a.card:active{
   background-color:#DCDCDC;
 }
 @media (min-width: 576px){
-  a.card.long .card-actions{
-    margin-left:auto;
-  }
   a.card.long .card-content{
     max-width:calc(100% - 24px - 2.4rem - 24px);
   }
