@@ -2,11 +2,11 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {% macro card(params) %}
+{%- set tag = params.tag | default('div') -%}
 {%- if params.navigationCard -%}
-<a class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}" href="{{params.navigationCard.href}}"{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
-{%- else -%}
-<{{ params.innerTag | default('div') }} class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.id %} id="{{params.id}}"{% endif %}>
+{%- set tag = 'a' -%}
 {%- endif -%}
+<{{ tag }} class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.navigationCard.href %} href="{{params.navigationCard.href}}"{% endif %}{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
     {%- if params.image -%}
     <div class="card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
         {%- if params.image.src -%}
@@ -17,10 +17,10 @@
     {%- if params.subheading or params.heading or params.content or params.links or params.buttons -%}
     <div class="card-content">
         {%- if params.subheading -%}
-        <span class="subheading">{{ params.subheading }}</span>
+        <span class="card-subheading">{{ params.subheading }}</span>
         {%- endif -%}
         {%- if params.heading -%}
-        <{{ params.headingLevel | default('h2') }} class="heading">{{ params.heading }}</{{ params.headingLevel | default('h2') }}>
+        <{{ params.headingLevel | default('h2') }} class="card-heading">{{ params.heading }}</{{ params.headingLevel | default('h2') }}>
         {%- endif -%}
         {%- if params.content -%}
         {{ params.content | safe }}
@@ -35,6 +35,6 @@
 {%- if params.navigationCard -%}
 </a>
 {%- else -%}
-</{{ params.innerTag | default('div') }}>
+</{{ tag }}>
 {%- endif -%}
 {% endmacro %}

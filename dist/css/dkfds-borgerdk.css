@@ -10729,39 +10729,47 @@ a.skipnav:focus{
   align-items:flex-start;
   overflow-wrap:break-word;
 }
-.card .card-content .subheading{
+.card .card-content .card-subheading{
+  font-size:1.4rem;
+  font-weight:400;
+  line-height:1.6rem;
+  color:#707070;
+  letter-spacing:1px;
+  margin-top:0;
+  margin-bottom:0;
   margin-bottom:4px;
   display:block;
 }
-.card .card-content .subheading:last-child{
+.card .card-content .card-subheading:last-child{
   margin-bottom:0;
 }
-.card .card-content .heading{
+.card .card-content .card-heading{
   font-size:2.4rem;
   margin:0;
+  margin-bottom:16px;
   font-weight:600;
+}
+.card .card-content .card-heading:last-child{
+  margin-bottom:0;
 }
 .card .card-content p{
   margin-top:0;
-  margin-bottom:1.6rem;
-}
-.card .card-content p:first-of-type{
-  margin-top:1.6rem;
+  margin-bottom:16px;
 }
 .card .card-content p:last-of-type{
   margin-bottom:0;
 }
-.card .card-content .actions{
+.card .card-content .card-actions{
   margin-top:24px;
 }
-.card .card-content .button-group.actions{
+.card .card-content .button-group.card-actions{
   margin-bottom:-16px;
 }
-.card .card-content .button-group.actions .button{
+.card .card-content .button-group.card-actions .button{
   margin-top:0;
   margin-bottom:16px;
 }
-.card .card-content .nobullet-list.actions{
+.card .card-content .nobullet-list.card-actions{
   margin-bottom:0;
 }
 .card .card-content *{
@@ -10775,7 +10783,7 @@ a.card{
   text-decoration:none;
   color:#1a1a1a;
 }
-a.card .heading{
+a.card .card-heading{
   text-decoration:underline;
   font-weight:600;
 }
@@ -10792,7 +10800,7 @@ a.card:link, a.card:visited, a.card:hover, a.card:active{
 a.card:hover, a.card:active{
   border-color:#BFBFBF;
 }
-a.card:hover .subheading, a.card:active .subheading{
+a.card:hover .card-subheading, a.card:active .card-subheading{
   color:#454545;
 }
 a.card:hover{

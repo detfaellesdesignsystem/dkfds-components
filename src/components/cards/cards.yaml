@@ -27,7 +27,7 @@ params:
   type: string
   required: false
   description: Id for the card
-- name: innerTag
+- name: tag
   type: string
   required: false
   description: The HTML tag used for creating the card

@@ -65,7 +65,8 @@
         align-items: flex-start;
         overflow-wrap: break-word;
 
-        .subheading {
+        .card-subheading {
+            @include mixins.subheading;
             margin-bottom: func.units(2);
             display: block;
 
@@ -74,30 +75,31 @@
             }
         }
     
-        .heading {
+        .card-heading {
             font-size: func.font-size('3xl');
             margin: 0;
+            margin-bottom: func.units(4);
             font-weight: 600;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
 
         p {
             margin-top: 0;
-            margin-bottom: func.units(4, 'rem');
-
-            &:first-of-type {
-                margin-top: func.units(4, 'rem');
-            }
+            margin-bottom: func.units(4);
 
             &:last-of-type {
                 margin-bottom: 0;
             }
         }
 
-        .actions {
+        .card-actions {
             margin-top: func.units(5);
         }
 
-        .button-group.actions {
+        .button-group.card-actions {
             margin-bottom: -16px;
 
             .button {
@@ -106,7 +108,7 @@
             }
         }
 
-        .nobullet-list.actions {
+        .nobullet-list.card-actions {
             margin-bottom: 0;
         }
 
@@ -130,7 +132,7 @@ a.card {
     text-decoration: none;
     color: func.color('black');
 
-    .heading {
+    .card-heading {
         text-decoration: underline;
         font-weight: 600;
     }
@@ -150,7 +152,7 @@ a.card {
 
     &:hover, &:active {
         border-color: func.color('gray-300');
-        .subheading {
+        .card-subheading {
             color: func.color('gray-600');
         }
     }
