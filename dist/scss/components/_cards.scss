@@ -73,6 +73,10 @@
             &:last-child {
                 margin-bottom: 0;
             }
+
+            & + .card-actions {
+                margin-top: calc(func.units(5) - func.units(2)); // Subtract the subheading margin
+            }
         }
     
         .card-heading {
@@ -83,6 +87,10 @@
 
             &:last-child {
                 margin-bottom: 0;
+            }
+
+            & + .card-actions {
+                margin-top: calc(func.units(5) - func.units(4)); // Subtract the heading margin
             }
         }
 

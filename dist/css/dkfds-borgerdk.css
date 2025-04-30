@@ -10743,6 +10743,9 @@ a.skipnav:focus{
 .card .card-content .card-subheading:last-child{
   margin-bottom:0;
 }
+.card .card-content .card-subheading + .card-actions{
+  margin-top:20px;
+}
 .card .card-content .card-heading{
   font-size:2.4rem;
   margin:0;
@@ -10751,6 +10754,9 @@ a.skipnav:focus{
 }
 .card .card-content .card-heading:last-child{
   margin-bottom:0;
+}
+.card .card-content .card-heading + .card-actions{
+  margin-top:8px;
 }
 .card .card-content p{
   margin-top:0;
