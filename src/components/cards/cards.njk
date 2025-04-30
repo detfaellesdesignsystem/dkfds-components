@@ -8,7 +8,7 @@
 {%- endif -%}
 <{{ tag }} class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.navigationCard.href %} href="{{params.navigationCard.href}}"{% endif %}{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
     {%- if params.image -%}
-    <div class="card-image"{% if params.image.placeholder %} {{ params.image.placeholder | safe }}{% endif %}>
+    <div class="card-image"{% if params.image.attributes %} {{ params.image.attributes | safe }}{% endif %}>
         {%- if params.image.src -%}
         <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
         {%- endif -%}
