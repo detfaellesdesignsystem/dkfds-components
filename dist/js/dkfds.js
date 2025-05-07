@@ -4206,6 +4206,11 @@ function Modal($modal) {
       this.hide();
     }
   };
+  this.focusAfterTransition = () => {
+    if (this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
+      this.$modal.querySelector('.modal-header .modal-close').focus();
+    }
+  };
 }
 
 /**
@@ -4240,6 +4245,7 @@ Modal.prototype.hide = function () {
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
     modalElement.querySelector('.modal-content').classList.remove('show-modal-content');
     window.removeEventListener('resize', this.hideOnResize, false);
+    modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
     if (!hasForcedAction(modalElement)) {
       document.removeEventListener('keyup', handleEscape);
     }
@@ -4305,8 +4311,9 @@ Modal.prototype.show = function () {
       modalElement.querySelector('.modal-content').classList.add('has-transition-effect');
       modalElement.querySelector('.modal-content').classList.add('show-modal-content');
       window.addEventListener('resize', this.hideOnResize, false);
+      modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
     }
-    $backdrop.offsetHeight; // Force reflow to ensure the step indicator transition works
+    $backdrop.offsetHeight; // Force browser reflow to ensure the backdrop transition works
     $backdrop.classList.add('show');
     document.getElementsByTagName('body')[0].classList.add('modal-open');
 

@@ -17,7 +17,7 @@ $-transition-duration: 0.25s;
     align-items: center;
     padding-left: func.units(4, 'rem');
     padding-right: func.units(8, 'rem');
-    margin-top: func.units(6);
+    margin-top: func.units(5);
     margin-bottom: func.units(5);
 
     strong {
@@ -40,10 +40,10 @@ $-transition-duration: 0.25s;
         border-bottom-left-radius: func.border-radius('none');
         border-bottom-right-radius: func.border-radius('none');
         transform: translateY(100%);
+        overflow: hidden;
 
         .modal-header {
             border-bottom: 1px solid func.color('black');
-            margin-bottom: func.units(6);
             padding: func.units(4) func.units(5); // top and bottom | left and right
 
             .modal-title {
@@ -56,10 +56,13 @@ $-transition-duration: 0.25s;
         }
 
         .modal-body {
-            padding: func.units(0) func.units(5) func.units(4); // top | left and right | bottom
+            padding: func.units(6) func.units(5) func.units(4); // top | left and right | bottom
+            overflow: hidden auto;
+            max-height: 80vh;
+            min-height: 30vh;
 
             @include mixins.media-breakpoint-up(md) {
-                padding: func.units(0) func.units(5) func.units(4); // top | left and right | bottom
+                padding: func.units(6) func.units(5) func.units(4); // top | left and right | bottom
             }
         }
 

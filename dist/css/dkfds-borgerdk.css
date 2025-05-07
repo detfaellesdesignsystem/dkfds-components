@@ -10526,7 +10526,7 @@ a.skipnav:focus{
   align-items:center;
   padding-left:1.6rem;
   padding-right:4.8rem;
-  margin-top:32px;
+  margin-top:24px;
   margin-bottom:24px;
 }
 .step-indicator-button strong{
@@ -10548,10 +10548,10 @@ a.skipnav:focus{
   border-bottom-left-radius:0;
   border-bottom-right-radius:0;
   transform:translateY(100%);
+  overflow:hidden;
 }
 .fds-modal.modal-step-indicator .modal-content .modal-header{
   border-bottom:1px solid #1a1a1a;
-  margin-bottom:32px;
   padding:16px 24px;
 }
 .fds-modal.modal-step-indicator .modal-content .modal-header .modal-title{
@@ -10561,11 +10561,14 @@ a.skipnav:focus{
   position:static;
 }
 .fds-modal.modal-step-indicator .modal-content .modal-body{
-  padding:0 24px 16px;
+  padding:32px 24px 16px;
+  overflow:hidden auto;
+  max-height:80vh;
+  min-height:30vh;
 }
 @media (min-width: 768px){
   .fds-modal.modal-step-indicator .modal-content .modal-body{
-    padding:0 24px 16px;
+    padding:32px 24px 16px;
   }
 }
 .fds-modal.modal-step-indicator .modal-content.has-transition-effect{
