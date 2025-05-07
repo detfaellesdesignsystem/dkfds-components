@@ -11,7 +11,8 @@ $-small-border-width: func.units(1);
     position: relative;
     display: inline-block;
     width: func.units(7);
-    aspect-ratio: 1;
+    min-width: func.units(7);
+    height: func.units(7);
     border-radius: 50%;
     border: $-border-width solid $-spinner-background;
     
@@ -22,7 +23,8 @@ $-small-border-width: func.units(1);
         top: -$-border-width;
         display: inline-block;
         width: func.units(7);
-        aspect-ratio: 1;
+        min-width: func.units(7);
+        height: func.units(7);
         border-radius: 50%;
         border: $-border-width solid $-spinner-color;
         animation:
@@ -32,18 +34,22 @@ $-small-border-width: func.units(1);
 
     &.spinner-small {
         width: func.units(4);
+        min-width: func.units(4);
+        height: func.units(4);
         border: $-small-border-width solid $-spinner-background;
 
         &::before {
             left: -$-small-border-width;
             top: -$-small-border-width;
             width: func.units(4);
+            min-width: func.units(4);
+            height: func.units(4);
             border: $-small-border-width solid $-spinner-color;
         }
     }
 
     &.spinner-light {
-        border-color: rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.2);
 
         &::before {
             border-color: $-spinner-light-color;

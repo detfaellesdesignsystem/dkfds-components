@@ -10408,7 +10408,8 @@ a.skipnav:focus{
   position:relative;
   display:inline-block;
   width:40px;
-  aspect-ratio:1;
+  min-width:40px;
+  height:40px;
   border-radius:50%;
   border:4px solid #DCDCDC;
 }
@@ -10419,23 +10420,28 @@ a.skipnav:focus{
   top:-4px;
   display:inline-block;
   width:40px;
-  aspect-ratio:1;
+  min-width:40px;
+  height:40px;
   border-radius:50%;
   border:4px solid #0059B3;
   animation:circle-path 3s infinite linear, rotate-circle 1.5s infinite linear;
 }
 .spinner.spinner-small{
   width:16px;
+  min-width:16px;
+  height:16px;
   border:2px solid #DCDCDC;
 }
 .spinner.spinner-small::before{
   left:-2px;
   top:-2px;
   width:16px;
+  min-width:16px;
+  height:16px;
   border:2px solid #0059B3;
 }
 .spinner.spinner-light{
-  border-color:rgba(255, 255, 255, 0.4);
+  border-color:rgba(255, 255, 255, 0.2);
 }
 .spinner.spinner-light::before{
   border-color:white;
@@ -10532,7 +10538,7 @@ a.skipnav:focus{
   justify-content:center;
   display:flex;
   visibility:hidden;
-  transition:visibility 0.4s;
+  transition:visibility 0.25s;
 }
 .fds-modal.modal-step-indicator .modal-content{
   align-self:flex-end;
@@ -10563,7 +10569,7 @@ a.skipnav:focus{
   }
 }
 .fds-modal.modal-step-indicator .modal-content.has-transition-effect{
-  transition:transform 0.4s;
+  transition:transform 0.25s;
 }
 .fds-modal.modal-step-indicator .modal-content.has-transition-effect.show-modal-content{
   transform:translateY(0%);
@@ -10573,7 +10579,7 @@ a.skipnav:focus{
 }
 
 .modal-backdrop.step-indicator{
-  transition:opacity 0.4s, visibility 0.4s;
+  transition:opacity 0.25s, visibility 0.25s;
 }
 
 .step-indicator{
@@ -10623,6 +10629,7 @@ a.skipnav:focus{
 }
 .step-indicator li .step .step-number + div, .step-indicator li .step .step-icon + div{
   max-width:calc(100% - 40px - 12px + 1px);
+  width:66ch;
 }
 .step-indicator li .step .step-number{
   padding-bottom:8px;

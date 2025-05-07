@@ -63,7 +63,7 @@
 {% endmacro %}
 
 {% macro stepIndicatorButton(params) %}
-<button class="step-indicator-button d-{{params.breakpoint}}-none" aria-haspopup="dialog" type="button" data-module="modal" data-target="{{params.modal}}">Trin<strong> {{params.currentStep}} </strong>af {{params.totalSteps}}</button>
+<button class="step-indicator-button d-{{params.breakpoint}}-none" aria-haspopup="dialog" type="button" data-module="modal" data-target="{{params.modal}}"><span>Trin<strong> {{params.currentStep}} </strong>af {{params.totalSteps}}</span></button>
 {% endmacro %}
 
 {% macro stepIndicator(params) %}
