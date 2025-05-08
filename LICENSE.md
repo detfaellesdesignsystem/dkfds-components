@@ -8,27 +8,19 @@ The IBM Plex Sans font files in `src/fonts/IBMPlexSans` licensed under the [SIL 
 
 The following icons in this design system are licensed under the Apache License, Version 2.0. You may only use these icons in compliance with the Apache 2.0 License. Please refer to the full text of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-#### Icons Licensed Under Apache 2.0:
-
 All icons are found in src/img/svg-icons and src/img/all-svg-icons.svg.
 
-##### Material Symbols (from https://fonts.google.com/icons):
+#### Material Symbols (from https://fonts.google.com/icons):
 
-accessibility-new, account, add-a-photo, analytics, apps, arrow-back, arrow-downward, arrow-forward, arrow-upward, assignment, attach-file, bookmark, bookmarks, business, calendar-month, car, chat, check, checklist, chevron-double-left, chevron-double-right, chevron-down, chevron-left, chevron-right, chevron-up, close, construction, contact-info, contact-support, copy, coronavirus, create-new-folder, credit-card, database, delete, desktop, document, download, download-done, drag-pan, edit, email, engineering, error, feedback, file, first-page, flag, flag-fill, folder, folder-open, format-align-center, format-align-justify, format-align-left, format-align-right, format-bold, format-clear, format-color-fill, format-color-text, format-indent-decrease, format-indent-increase, format-italic, format-list-bulleted, format-list-numbered, format-size, format-underlined, forum, forward, fullscreen, fullscreen-exit, groups, headset, help, home, hourglass, how-to-reg, info, language, laptop, last-page, link, list-add, list-bulleted, list-check, location, lock, map, menu, minus, more-horiz, more-vert, mouse, notifications, open-in-new, palette, payments, person, person-add, person-remove, persons, photo-camera, plus, print, refresh, reply, save, science, search, send, settings, share, shopping-cart, smartphone, sort-by-alpha, star, star-fill, student, subdirectory-arrow-left, subdirectory-arrow-right, success, summary, support-agent, sync, time, tractor, trainee, truck, tune, upload, videocam, view-in-list, view-split, visibility, visibility-off, warning, zoom-in, zoom-out.
+accessibility-new, account, add-a-photo, analytics, apps, arrow-back, arrow-downward, arrow-forward, arrow-upward, assignment, attach-file, bookmark, bookmarks, business, calendar-month, car, chat, check, checklist, chevron-double-left, chevron-double-right, chevron-down, chevron-left, chevron-right, chevron-up, close, construction, contact-info, contact-support, copy, coronavirus, create-new-folder, credit-card, database, delete, desktop, document, download, download-done, drag-pan, edit, email, engineering, error, feedback, file, first-page, flag, flag-fill, folder, folder-open, format-align-center, format-align-justify, format-align-left, format-align-right, format-bold, format-clear, format-color-fill, format-color-text, format-indent-decrease, format-indent-increase, format-italic, format-list-bulleted, format-list-numbered, format-size, format-underlined, forum, forward, fullscreen, fullscreen-exit, groups, headset, help, home, hourglass, how-to-reg, info, language, laptop, last-page, link, list-add, list-bulleted, list-check, location, lock, map, menu, minus, more-horiz, more-vert, mouse, notifications, open-in-new, palette, payments, person, person-add, person-remove, persons, photo-camera, plus, print, refresh, reply, save, science, search, send, settings, share, shopping-cart, smartphone, sort-by-alpha, star, star-fill, student, subdirectory-arrow-left, subdirectory-arrow-right, success, summary, support-agent, sync, time, tractor, trainee, truck, tune, upload, videocam, view-in-list, view-split, visibility, visibility-off, warning, zoom-in, zoom-out.<br>_Note: the technical attributes "height", "width" and "fill" have been removed from the icons above._
 
-**Note: the technical attributes "height", "width" and "fill" have been removed.**
+check-white, chevron-down-white, error-white, info-white, minus-white, success-white<br>_Note: the technical attributes "height" and "width" have been removed and the attribute "fill" has been set to fill="#FFFFFF" from the icons above._
 
-check-white, chevron-down-white, error-white, info-white, minus-white, success-white
+#### Pictogrammers (Material Design Icons) (from https://pictogrammers.com/library/mdi/):
 
-**Note: the technical attributes "height" and "width" have been removed. The attribute "fill" has been set to fill="#FFFFFF".**
-
-##### Pictogrammers (Material Design Icons) (from https://pictogrammers.com/library/mdi/):
-
-calculator, contact-card, file-excel, file-image, file-word
-
-**Note: the technical attributes "height", "width" og "fill" have been removed.**
+calculator, contact-card, file-excel, file-image, file-word<br>_Note: the technical attributes "height", "width" og "fill" have been removed from the icons above._
  
-##### Icons created by the design system team based on Material Symbols:
+#### Icons created by the design system team based on Material Symbols:
 
 add-document, file-pdf, format-text, sort-ascending, sort-default, sort-descending, sort-table-ascending, sort-table-descending, sort-table-none
 
