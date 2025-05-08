@@ -8,7 +8,7 @@ The IBM Plex Sans font files in `src/fonts/IBMPlexSans` licensed under the [SIL 
 
 The following icons in this design system are licensed under the Apache License, Version 2.0. You may only use these icons in compliance with the Apache 2.0 License. Please refer to the full text of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-All icons are found in src/img/svg-icons and src/img/all-svg-icons.svg.
+All icons are found in `src/img/svg-icons` and `src/img/all-svg-icons.svg`.
 
 #### Material Symbols (from https://fonts.google.com/icons):
 

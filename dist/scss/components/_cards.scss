@@ -176,9 +176,14 @@ a.card {
     &.long {
         @extend %-long;
 
+        .card-content {
+            padding-bottom: func.units(4);
+        }
+
         @include mixins.media-breakpoint-up(sm) {
             .card-content {
                 max-width: calc(100% - func.units(5) - func.units(5, 'rem') - func.units(5));
+                padding-bottom: func.units(5);
             }
     
             .card-image + .card-content {

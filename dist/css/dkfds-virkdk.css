@@ -10825,9 +10825,13 @@ a.card:hover{
 a.card:active{
   background-color:#DCDCDC;
 }
+a.card.long .card-content{
+  padding-bottom:16px;
+}
 @media (min-width: 576px){
   a.card.long .card-content{
     max-width:calc(100% - 24px - 2.4rem - 24px);
+    padding-bottom:24px;
   }
   a.card.long .card-image + .card-content{
     max-width:calc(67% - 24px - 2.4rem - 24px);
