@@ -1,66 +1,4 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-{% from "components/overflow-menu/overflow-menu.njk" import overflowmenu as overflowmenu %}
-
-{% macro stepguide(params) %}
-<nav aria-label="{{ params.ariaLabel | default('Trinindikator') }}"{% if params.classes.nav %} class="{{params.classes.nav}}"{% endif %}>
-    <ol class="sidemenu">
-        {%- for trin in params.steps %}{% set disabled = trin.disabled | default(false) -%}
-        <li{% if disabled or trin.active or trin.error %} class="{% if disabled %}disabled {% endif %}{% if trin.active %}active current {% endif %}{% if trin.error %}sidenav-error{% endif %}"{% endif %}{% if trin.active %} aria-current="step"{% endif %}>
-            <a class="nav-step"{% if not disabled %} href="{{trin.href}}"{% endif %}>
-                <div>
-                    <span class="sidenav-number">{{loop.index}}.</span>
-                    <div>
-                        <span class="sidenav-maininfo">
-                            <span class="sidenav-title">{{trin.text}}</span>
-                            {%- if trin.icon %}<span class="sidenav-icon">{{ icon_svg(trin.icon) }}</span>{% endif -%}
-                        </span>
-                        <span>{% if trin.helptext %}<span class="sidenav-information">{{trin.helptext}}</span>{% endif -%}</span>
-                    </div>
-                </div>
-            </a>
-        </li>{% endfor %}
-    </ol>
-</nav>
-{% endmacro %}
-
-{% macro overflow_stepguide(params) %}
-{% set stepsTotal = params.steps | length %}
-{% set currentStep = 0 %}
-{% for trin in params.steps %}
-    {% if trin.active %}
-        {% set currentStep = loop.index %}
-    {% endif %}
-{% endfor %}
-{% set buttonText = "Trin " + currentStep + " af " + stepsTotal %}
-{% set menuClasses = "" %}
-{% if params.breakpoint %}
-    {% set menuClasses = "overflow-menu--" + params.breakpoint + "-no-responsive " %}
-{% endif %}
-{% if menuClasses !== "" %}
-{{ 
-    overflowmenu({
-        "button": {
-            "text": buttonText,
-            "icon": "more-vert"
-        },
-        "classes": menuClasses,
-        "id": params.id,
-        "content": stepguide(params)
-    }) 
-}}
-{% else %}
-{{ 
-    overflowmenu({
-        "button": {
-            "text": buttonText,
-            "icon": "more-vert"
-        },
-        "id": params.id,
-        "content": stepguide(params)
-    }) 
-}}
-{% endif %}
-{% endmacro %}
 
 {% macro stepIndicatorButton(params) %}
 <button class="step-indicator-button d-{{params.breakpoint}}-none" aria-haspopup="dialog" type="button" data-module="modal" data-target="{{params.modal}}"><span>Trin<strong> {{params.currentStep}} </strong>af {{params.totalSteps}}</span></button>
@@ -72,15 +10,15 @@
     <li{% if trin.disabled or trin.current or trin.state === 'error' %} class="{% if trin.disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.state === 'error' %}error{% endif %}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
         <{% if trin.disabled %}div{% else %}a{% endif %} class="step"{% if not trin.disabled %} href="{{trin.href}}"{% endif %}>
             <span class="{% if trin.state === 'number' %}step-number{% else %}step-icon{% endif %}">
-            {% if trin.state === "number" %}
+            {%- if trin.state === "number" -%}
                 <span>{{loop.index}}</span>
-            {% elif trin.state === "success" %}
+            {%- elif trin.state === "success" -%}
                 {% set successMessage = "Trin " + loop.index + " gennemført" %}
                 {{ icon_svg({"name": "check", "ariaLabel": successMessage, "ariaHidden": false}) }}
-            {% elif trin.state === "error" %}
+            {%- elif trin.state === "error" -%}
                 {% set errorMessage = "Fejl i trin " + loop.index %}
                 {{ icon_svg({"name": "error", "ariaLabel": errorMessage, "ariaHidden": false}) }}
-            {% endif %}
+            {%- endif -%}
             </span>
             <div>
                 <span class="step-title">{{trin.text}}</span>
@@ -89,4 +27,8 @@
         </{% if trin.disabled %}div{% else %}a{% endif %}>
     </li>{% endfor %}
 </ol>
+{% endmacro %}
+
+{% macro simpleStepIndicator(params) %}
+<p class="step-subheading">Trin {{params.currentStep}} af {{params.totalSteps}}</p>
 {% endmacro %}

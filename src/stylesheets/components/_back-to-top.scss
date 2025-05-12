@@ -49,7 +49,7 @@ $-border-width: func.units(1);
         z-index: auto;
     }
 
-    @include mixins.media-breakpoint-down(md) {
+    @include mixins.media-breakpoint-down(sm) {
         .icon-svg {
             margin-right: func.units(0);
         }

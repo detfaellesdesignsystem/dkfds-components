@@ -100,7 +100,7 @@ $-circle-margin: func.units(305);
             color: func.color('black');
             border-radius: func.units(405);
             width: fit-content;
-            max-width: 100%;
+            max-width: min(100%, vars.$typography-text-max-width + $-circle-size + $-circle-margin);
             text-decoration: none;
             align-items: flex-start;
 
@@ -125,8 +125,7 @@ $-circle-margin: func.units(305);
                 & + div {
                     /* Firefox appears to have a rounding issue, which sometimes causes unneeded word-wrap. 
                        Adding 1px to the max-width fixes the issue. */
-                    max-width: calc(100% - $-circle-size - $-circle-margin + 1px);
-                    width: vars.$typography-text-max-width; 
+                    max-width: min(calc(100% - $-circle-size - $-circle-margin + 1px), vars.$typography-text-max-width);
                 }
             }
 
@@ -140,7 +139,7 @@ $-circle-margin: func.units(305);
             }
 
             .step-title {
-                margin-right: func.units(3);
+                margin-right: func.units(3); // Avoid overlap between focus border and text
                 display: block;
                 text-decoration: underline;
                 position: relative;
@@ -149,6 +148,7 @@ $-circle-margin: func.units(305);
             }
     
             .step-information {
+                margin-right: func.units(3); // Avoid overlap between focus border and text
                 display: block;
                 color: func.color('gray-500');
                 font-weight: func.font-weight('normal');
@@ -187,6 +187,15 @@ $-circle-margin: func.units(305);
         }
     }
 
+    li.error.current {
+        .step {
+            .step-number, .step-icon {
+                color: func.color('white');
+                background-color: func.color('gray-600');
+            }
+        }
+    }
+
     li.disabled {
         .step {
             .step-title {
@@ -200,12 +209,8 @@ $-circle-margin: func.units(305);
             }
         }
     }
+}
 
-    li.error.current {
-        .step {
-            .step-number, .step-icon {
-                color: func.color('black');
-            }
-        }
-    }
+.step-subheading {
+    @include mixins.subheading;
 }

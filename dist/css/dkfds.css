@@ -7719,7 +7719,7 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin-top:16px;
   z-index:auto;
 }
-@media (max-width: 991px){
+@media (max-width: 767px){
   .button.back-to-top-button .icon-svg,
   .button.back-to-top-button.button-primary .icon-svg,
   .button.back-to-top-button.button-secondary .icon-svg,
@@ -10609,7 +10609,7 @@ a.skipnav:focus{
   color:#1a1a1a;
   border-radius:20px;
   width:fit-content;
-  max-width:100%;
+  max-width:min(100%, 66ch + 40px + 12px);
   text-decoration:none;
   align-items:flex-start;
 }
@@ -10631,8 +10631,7 @@ a.skipnav:focus{
   vertical-align:baseline;
 }
 .step-indicator li .step .step-number + div, .step-indicator li .step .step-icon + div{
-  max-width:calc(100% - 40px - 12px + 1px);
-  width:66ch;
+  max-width:min(100% - 40px - 12px + 1px, 66ch);
 }
 .step-indicator li .step .step-number{
   padding-bottom:8px;
@@ -10650,6 +10649,7 @@ a.skipnav:focus{
   overflow-wrap:break-word;
 }
 .step-indicator li .step .step-information{
+  margin-right:8px;
   display:block;
   color:#707070;
   font-weight:400;
@@ -10672,14 +10672,25 @@ a.skipnav:focus{
 .step-indicator li.error .step .step-number, .step-indicator li.error .step .step-icon{
   background-color:#ffe0e0;
 }
+.step-indicator li.error.current .step .step-number, .step-indicator li.error.current .step .step-icon{
+  color:white;
+  background-color:#454545;
+}
 .step-indicator li.disabled .step .step-title{
   text-decoration:none;
 }
 .step-indicator li.disabled .step:hover .step-number, .step-indicator li.disabled .step:hover .step-icon{
   background-color:#F5F5F5;
 }
-.step-indicator li.error.current .step .step-number, .step-indicator li.error.current .step .step-icon{
-  color:#1a1a1a;
+
+.step-subheading{
+  font-size:1.4rem;
+  font-weight:400;
+  line-height:1.6rem;
+  color:#707070;
+  letter-spacing:1px;
+  margin-top:0;
+  margin-bottom:0;
 }
 
 @media (min-width: 576px){
