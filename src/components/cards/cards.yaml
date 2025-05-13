@@ -38,7 +38,7 @@ params:
   - name: attributes
     type: string
     required: false
-    description: Attributes for the image
+    description: Attributes for the card-image element
   - name: src
     type: string
     required: false
@@ -47,6 +47,14 @@ params:
     type: string
     required: false
     description: Alt text for the image
+  - name: width
+    type: string
+    required: false
+    description: Image width
+  - name: height
+    type: string
+    required: false
+    description: Image height
 - name: navigationCard
   type: object
   required: false

@@ -18,7 +18,7 @@ check-white, chevron-down-white, error-white, info-white, minus-white, success-w
 
 #### Pictogrammers (Material Design Icons) (from https://pictogrammers.com/library/mdi/):
 
-calculator, contact-card, file-excel, file-image, file-word<br>_Note: the technical attributes "height", "width" og "fill" have been removed from the icons above._
+calculator, contact-card, file-excel, file-image, file-word<br>_Note: the technical attributes "height", "width" and "fill" have been removed from the icons above._
  
 #### Icons created by the design system team based on Material Symbols:
 

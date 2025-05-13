@@ -9,8 +9,8 @@
 <{{ tag }} class="card{% if params.long %} long{% endif %}{% if params.classes %} {{params.classes}}{% endif %}"{% if params.navigationCard.href %} href="{{params.navigationCard.href}}"{% endif %}{% if params.id %} id="{{params.id}}"{% endif %}{% if params.navigationCard.external %} target="_blank"{% endif %}>
     {%- if params.image -%}
     <div class="card-image"{% if params.image.attributes %} {{ params.image.attributes | safe }}{% endif %}>
-        {%- if params.image.src -%}
-        <img src='{{ params.image.src }}' alt='{{ params.image.alt }}'>
+        {%- if params.image.src or params.image.height or params.image.width -%}
+        <img alt="{{ params.image.alt | default('') }}"{% if params.image.src %} src="{{ params.image.src }}"{% endif %}{% if params.image.width %} width="{{ params.image.width}}"{% endif %}{% if params.image.height %} height="{{ params.image.height}}"{% endif %}>
         {%- endif -%}
     </div>
     {%- endif -%}

@@ -10741,7 +10741,13 @@ a.skipnav:focus{
 .card .card-image img{
   width:100%;
   max-width:100%;
-  background-color:#DCDCDC;
+  height:auto;
+  border:0;
+}
+@supports (height: intrinsic) and (not (aspect-ratio: 1)){
+  .card .card-image img{
+    height:intrinsic;
+  }
 }
 .card .card-content{
   padding:24px;

@@ -54,7 +54,15 @@
         img {
             width: 100%;
             max-width: 100%;
-            background-color: func.color('gray-200');
+            height: auto;
+            border: 0;
+        }
+    }
+
+    // Check for "intrinsic" value and "aspect-ratio" to target old Safari browsers
+    @supports (height: intrinsic) and (not (aspect-ratio: 1)) {
+        .card-image img {
+            height: intrinsic;
         }
     }
 
