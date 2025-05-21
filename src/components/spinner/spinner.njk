@@ -1,4 +1,4 @@
 {%- macro spinner(params) -%}
-<div class="spinner"></div>
+<div class="spinner{% if params.small %} spinner-small{% endif %}{% if params.light %} spinner-light{% endif %}"></div>
 {% if params.status %}<div class="spinner-status" role="status">{{ params.status }}</div>{% endif -%}
 {%- endmacro -%}

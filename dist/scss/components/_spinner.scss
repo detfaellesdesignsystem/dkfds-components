@@ -4,15 +4,15 @@
 $-spinner-color: func.color(vars.$spinner-animation-color);
 $-spinner-light-color: func.color(vars.$spinner-animation-light-color);
 $-spinner-background: func.color(vars.$spinner-animation-background);
-$-border-width: func.units(2);
-$-small-border-width: func.units(1);
+$-border-width: func.units(2, 'rem');
+$-small-border-width: func.units(1, 'rem');
 
 .spinner {
     position: relative;
     display: inline-block;
-    width: func.units(7);
-    min-width: func.units(7);
-    height: func.units(7);
+    width: func.units(7, 'rem');
+    min-width: func.units(7, 'rem');
+    height: func.units(7, 'rem');
     border-radius: 50%;
     border: $-border-width solid $-spinner-background;
     
@@ -22,9 +22,9 @@ $-small-border-width: func.units(1);
         left: -$-border-width;
         top: -$-border-width;
         display: inline-block;
-        width: func.units(7);
-        min-width: func.units(7);
-        height: func.units(7);
+        width: func.units(7, 'rem');
+        min-width: func.units(7, 'rem');
+        height: func.units(7, 'rem');
         border-radius: 50%;
         border: $-border-width solid $-spinner-color;
         animation:
@@ -33,17 +33,17 @@ $-small-border-width: func.units(1);
         }
 
     &.spinner-small {
-        width: func.units(4);
-        min-width: func.units(4);
-        height: func.units(4);
+        width: func.units(4, 'rem');
+        min-width: func.units(4, 'rem');
+        height: func.units(4, 'rem');
         border: $-small-border-width solid $-spinner-background;
 
         &::before {
             left: -$-small-border-width;
             top: -$-small-border-width;
-            width: func.units(4);
-            min-width: func.units(4);
-            height: func.units(4);
+            width: func.units(4, 'rem');
+            min-width: func.units(4, 'rem');
+            height: func.units(4, 'rem');
             border: $-small-border-width solid $-spinner-color;
         }
     }
@@ -60,6 +60,15 @@ $-small-border-width: func.units(1);
 
 .spinner-active {
     cursor: progress;
+    position: relative;
+
+    .spinner {
+        position: absolute;
+    }
+
+    .text-hidden {
+        opacity: 0;
+    }
 }
 
 .spinner-status {
