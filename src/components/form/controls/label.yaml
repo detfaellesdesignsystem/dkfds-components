@@ -28,10 +28,14 @@ params:
   required: false
   description: Any text meant for screen readers only. 
 - name: tooltip
-  type: object
+  type: string
   required: false
-  description: text.
-  - name: tooltip
+  description: Tooltip
+  - name: text
     type: string
+    required: true
+    description: The tooltip text.
+  - name: forceVisible
+    type: boolean
     required: false
-    description: Tooltip text.
+    description: Set to true to ensure tooltip is visible within elements with overflow.

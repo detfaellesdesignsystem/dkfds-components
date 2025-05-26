@@ -15,6 +15,10 @@ params:
   type: string
   required: false
   description: Additional text to show in a tooltip next to the label
+- name: forceVisible
+  type: boolean
+  required: false
+  description: Set to true to ensure tooltip is visible within elements with overflow.
 - name: helptext
   type: string
   required: false

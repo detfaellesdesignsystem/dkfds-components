@@ -10,7 +10,19 @@ params:
 - name: tooltip
   type: string
   required: false
-  description: Tooltip text.
+  description: Tooltip
+  - name: contentElement
+    type: string
+    required: false
+    description: The HTML tag used for the tooltip-wrapper. Should be "div" or "span".
+  - name: text
+    type: string
+    required: true
+    description: The tooltip text.
+  - name: id
+    type: string
+    required: true
+    description: The id used for "tooltip buttons", or "not true tooltips".
 - name: helptext
   type: string
   required: false

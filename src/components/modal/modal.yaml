@@ -19,3 +19,7 @@ params:
   type: string
   required: true
   description: Action buttons of the content. Allows HTML.
+- name: stepIndicator
+  type: boolean
+  required: false
+  description: Set to true if the modal is used for the step indicator bottom sheet.
