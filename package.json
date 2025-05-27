@@ -12,6 +12,7 @@
   "scripts": {
     "build": "webpack"
   },
+  "homepage": "https://designsystem.dk/",
   "repository": {
     "type": "git",
     "url": "https://github.com/detfaellesdesignsystem/dkfds-components.git"
