@@ -19,6 +19,7 @@ $-transition-duration: 0.25s;
     padding-right: func.units(8, 'rem');
     margin-top: func.units(5);
     margin-bottom: func.units(5);
+    color: func.color('black');
 
     strong {
         white-space: break-spaces;
