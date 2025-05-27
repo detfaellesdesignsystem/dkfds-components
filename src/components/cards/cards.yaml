@@ -23,6 +23,10 @@ params:
   type: string
   required: false
   description: Classes for the card
+- name: attributes
+  type: string
+  required: false
+  description: Attributes for the card
 - name: id
   type: string
   required: false
