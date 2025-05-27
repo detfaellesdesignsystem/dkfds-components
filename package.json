@@ -12,6 +12,10 @@
   "scripts": {
     "build": "webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/detfaellesdesignsystem/dkfds-components.git"
+  },
   "author": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
   "license": "(MIT AND OFL-1.1 AND Apache-2.0)",
   "devDependencies": {
