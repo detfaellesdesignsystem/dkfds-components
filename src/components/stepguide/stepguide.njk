@@ -7,8 +7,8 @@
 {% macro stepIndicator(params) %}
 <ol class="step-indicator">
     {%- for trin in params.steps %}
-    <li{% if trin.disabled or trin.current or trin.state === 'error' %} class="{% if trin.disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.state === 'error' %}error{% endif %}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
-        <{% if trin.disabled %}div{% else %}a{% endif %} class="step"{% if not trin.disabled %} href="{{trin.href}}"{% endif %}>
+    <li{% if trin.disabled or trin.current or trin.state === 'error' %} class="{% if trin.disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.state === 'error' %}error{% endif %}"{% endif %}>
+        <{% if trin.disabled %}div{% else %}a{% endif %} class="step"{% if not trin.disabled %} href="{{trin.href}}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
             <span class="{% if trin.state === 'number' %}step-number{% else %}step-icon{% endif %}">
             {%- if trin.state === "number" -%}
                 <span>{{loop.index}}</span>
