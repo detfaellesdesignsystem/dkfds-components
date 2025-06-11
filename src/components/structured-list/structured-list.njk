@@ -1,5 +1,5 @@
 {%- macro structured_list(params) -%}
-<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}">
+<div class="table--responsive-scroll{% if params.classes.outer %} {{ params.classes.outer }}{% endif %}" tabindex="0">
     <table class="table structured-list{% if params.breakpoint %} table-{{params.breakpoint}}-responsive-headers{% endif %}{% if params.classes.table %} {{params.classes.table}}{% endif %}">
         <tbody>
             {% for row in params.items %}<tr>

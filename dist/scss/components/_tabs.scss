@@ -17,7 +17,7 @@ $-tabs-icon-size: 2.4rem;
 
         // A tab-list is the last element when used for navigation
         &:last-child {
-            border-bottom: 1px solid func.color(vars.$tab-default-border-color);
+            border-bottom: func.border(vars.$tab-default-border);
             margin-top: func.units(8);
         }
 
@@ -112,8 +112,7 @@ $-tabs-icon-size: 2.4rem;
 
     .tab-panel {
         display: block;
-        border: func.border(10);
-        border-radius: 0;
+        border: func.border('high-contrast');
         width: 100%;
         padding: func.units(5);
         overflow: auto hidden;

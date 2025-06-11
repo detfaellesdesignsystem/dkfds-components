@@ -1,5 +1,3 @@
-{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
-
 {% macro nav_list(params) %}
 {% for item in params.links %}
 <li{% if item.links or item.current %} class="{% if item.links or item.current %}active{% endif %}{% if item.current %} current{% endif %}"{% endif %}>

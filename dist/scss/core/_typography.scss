@@ -25,33 +25,26 @@ p {
 a {
   color: func.color("link");
 
-  &:hover,
-  &.link-hover {
-    color: func.color("link-hover");
-  }
-
   &:focus,
   &.link-focus {
-    color: func.color("link-focus");
     @include mixins.focus;
   }
 
-  &:visited,
+  &:visited,  
   &.link-visited {
     color: func.color("link-visited");
   }
 
-  .background-dark & {
-    &:not(.button) {
-      color: func.color('white');
-    }
+  &:hover,
+  &.link-hover {
+    color: func.color("link-hover");
   }
 
   &.bold-link {
     font-weight: func.font-weight("semibold");
   }
 
-  &:not(.button, .full-width-image) {
+  &:not(.button, .full-width-image, .card) {
     max-width: vars.$typography-text-max-width;
   }
 }
@@ -120,7 +113,7 @@ small, .small-text {
   font-weight: func.font-weight("semibold");
 }
 .facit {
-  border-bottom: func.border(10);
+  border-bottom: func.border('high-contrast');
   border-bottom-style: double;
   border-bottom-width: 4px;
 }
@@ -218,18 +211,10 @@ h6, .h6{
   }
 }
 
-// Remove user agent styles
-cite,
-var,
-address,
-dfn {
-  font-style: normal;
-}
-
 // max-width of 66ch for text
 p,
 ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width):not(.overflow-list),
-ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):not(.no-max-width){
+ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):not(.step-indicator):not(.no-max-width){
   max-width: vars.$typography-text-max-width;
 }
 .font-lead{
@@ -272,14 +257,6 @@ ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):no
 
 .color-text-black {
   color: func.color('black');
-}
-
-.background-dark {
-  background-color: func.color('black');
-
-  p, span{
-    color: func.color('white');
-  }
 }
 
 .field-group-title {

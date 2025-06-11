@@ -1,17 +1,15 @@
 {% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
 
 {%- macro button(params) -%}
-{%- if params.variant -%}
-<button class="button button-{{ params.variant }}{% if params.classes.button %} {{ params.classes.button }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
+<button class="button{% if params.variant %} button-{{ params.variant }}{% endif %}{% if params.classes.button %} {{ params.classes.button }}{% endif %}"{% if params.id %} id="{{ params.id }}"{% endif %}{% if params.attributes %} {{ params.attributes | safe }}{% endif %}>
     {%- if params.icon %}
     {{ icon_svg({"name": params.icon, "classes": params.classes.icon}) }}
     {%- endif -%}
     {% if params.text %}
-    {{ params.text }}
+    {% if params.span %}<span>{% endif %}{{ params.text }}{% if params.span %}</span>{% endif %}
     {% endif -%}
     {% if params.srOnly %}
     <span class="sr-only">{{ params.srOnly }}</span>
     {% endif -%}
 </button>
-{%- endif -%}
 {%- endmacro -%}

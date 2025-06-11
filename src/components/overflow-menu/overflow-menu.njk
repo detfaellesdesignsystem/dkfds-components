@@ -8,7 +8,7 @@
         {% if params.button.srOnly %}<span class="sr-only">{% endif %}{{ params.button.text }}{% if params.button.srOnly %}</span>{% endif %}
         {{ icon_svg({"name": icon}) }}
     </button>
-    <div class="overflow-menu-inner" id="{{ params.id }}" aria-hidden="true">
+    <div class="overflow-menu-inner collapsed" id="{{ params.id }}">
         {{- params.content | safe -}}
     </div>
 </div>

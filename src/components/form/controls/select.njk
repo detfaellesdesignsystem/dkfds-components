@@ -19,7 +19,7 @@
             attributes: params.attributes.label,
             optionalLabel: params.optionalLabel,
             requiredLabel: params.requiredLabel,
-            tooltip: params.tooltip
+            tooltip: { "text": params.tooltip }
         })
     }}
     {% if params.helptext %}{{ helptext({ text: params.helptext, id: params.id }) }}{% endif %}

@@ -3,6 +3,7 @@
 
 @mixin add-background-svg($image-name) {
     background-image: url("#{vars.$icons-folder-path}#{$image-name}.svg");
+    background-size: func.units(5, 'rem');
     background-repeat: no-repeat;
 }
 
@@ -42,21 +43,13 @@
     position: absolute;
     width: 1px;
     height: 1px;
+    margin: -1px;
     padding: 0;
-    margin: -1px; // stylelint-disable-line declaration-property-unit-disallowed-list
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     border: 0;
-    left: -999em;
-}
-
-// This "negates" the sr-only() helper; useful if
-// we want the default state of something to be
-// for screen readers only, but we want to force
-// it to show for sighted users under more specific
-// conditions.
-@mixin not-sr-only() {
-    position: static;
+    user-select: none;
+    white-space: nowrap;
 }
 
 // Unstyled list helper

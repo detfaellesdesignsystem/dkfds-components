@@ -29,7 +29,7 @@ $-offset: func.units(1);
         position: absolute;
         right: $-button-width - $-toggle-dot-diameter - $-offset;
         border-radius: 50%;
-        border: 1px solid func.color(vars.$toggle-off-dot-border-color);
+        border: func.border(vars.$toggle-off-dot-border);
         background-image: none;
         background-color: func.color(vars.$toggle-dot-background-color);
         background-position: center;
@@ -43,8 +43,8 @@ $-offset: func.units(1);
 
     &[aria-checked='true']::before {
         right: $-offset;
-        border: 1px solid func.color(vars.$toggle-on-dot-border-color);
-        background-image: url(vars.$icons-folder-path + 'done.svg');
+        border-color: func.color(vars.$toggle-on-dot-border-color);
+        background-image: url(vars.$icons-folder-path + 'check.svg');
     }
 
     &::after {
@@ -55,14 +55,14 @@ $-offset: func.units(1);
         min-height: func.units(6);
         border-radius: func.units(4);
         background-color: func.color(vars.$toggle-off-background-color);
-        border: 1px solid func.color(vars.$toggle-off-border-color);
+        border: func.border(vars.$toggle-off-border);
         transition: all 0.15s ease-out;
         margin-left: auto;
     }
 
     &[aria-checked='true']::after {
         background-color: func.color(vars.$toggle-on-background-color);
-        border: 1px solid func.color(vars.$toggle-on-border-color);
+        border-color: func.color(vars.$toggle-on-border-color);
     }
 
     &:focus {
@@ -82,11 +82,11 @@ $-offset: func.units(1);
 
         &[aria-checked='true']::after {
             background-color: func.color(vars.$toggle-on-background-color-hover);
-            border: 1px solid func.color(vars.$toggle-on-border-color-hover);
+            border-color: func.color(vars.$toggle-on-border-color-hover);
         }
 
         &[aria-checked='true']::before {
-            border: 1px solid func.color(vars.$toggle-on-dot-border-color-hover);
+            border-color: func.color(vars.$toggle-on-dot-border-color-hover);
         }
     }
 
@@ -101,7 +101,7 @@ $-offset: func.units(1);
 
         &:hover[aria-checked='true']::after {
             background-color: func.color(vars.$toggle-on-background-color);
-            border: 1px solid func.color(vars.$toggle-on-border-color);
+            border-color: func.color(vars.$toggle-on-border-color);
             cursor: not-allowed;
         }
 

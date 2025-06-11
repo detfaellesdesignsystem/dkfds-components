@@ -1,0 +1,21 @@
+@use "sass:map" as map;
+@use "../values" as vals;
+@use "units" as func;
+
+// ----------------------------------------
+// Get a valid FDS font-weight
+// ----------------------------------------
+
+@function border-radius($value) {
+
+    @if map.has-key(vals.$fds-border-radius, $value) {
+        $map-value: map.get(vals.$fds-border-radius, $value);
+        
+        @if $map-value != false {
+            @return func.units($map-value);
+        }
+    }
+
+    @error '#{$value} is not a valid FDS border-raidus token.';
+
+}

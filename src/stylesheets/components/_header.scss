@@ -6,7 +6,7 @@
 
 .header {
     width: 100%;
-    border-bottom: 1px solid func.color(vars.$header-last-border-color);
+    border-bottom: func.border(vars.$header-last-border);
 
     .button {
         width: 100%;
@@ -92,6 +92,7 @@
     }
 
     .portal-info-mobile {
+        border-top: func.border(vars.$header-portal-mobile-border);
         padding: func.units(5);
         text-align: left;
         background-color: func.color(vars.$header-portal-background-color);
@@ -304,6 +305,7 @@
         width: $sliding-panel-width;
         max-width: 40rem;
         z-index: vars.$zindex-nav;
+        box-shadow: func.shadow('heavy');
 
         @keyframes slidein-left {
             from {
@@ -346,29 +348,25 @@
     // Header borders
 
     .portal-info + .solution-info {
-        border-top: 1px solid func.color(vars.$header-border-color);
-    }
-
-    .portal-info-mobile {
-        border-top: 1px solid func.color(vars.$header-portal-mobile-border-color);
+        border-top: func.border(vars.$header-border);
     }
 
     .menu-top + .solution-info-mobile {
-        border-top: 1px solid func.color(vars.$header-border-color);
+        border-top: func.border(vars.$header-border);
     }
 
     .solution-info-mobile:last-child {
-        border-bottom: 1px solid func.color(vars.$header-portal-mobile-border-color);
+        border-bottom: func.border(vars.$header-portal-mobile-border);
     }
 
     @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
         .solution-info ~ .navigation-menu {
-            border-top: 1px solid func.color(vars.$header-border-color);
+            border-top: func.border(vars.$header-border);
         }
     }
 
     .solution-info ~ .navigation-menu.contains-search {
-        border-top: 1px solid func.color(vars.$header-border-color);
+        border-top: func.border(vars.$header-border);
     }
 }
 

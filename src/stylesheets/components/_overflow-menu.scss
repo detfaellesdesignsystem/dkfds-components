@@ -97,10 +97,11 @@
         width: calc(100% - 8px);
         z-index: vars.$zindex-overflow;
         border: func.border(vars.$overflow-menu-content-border);
-        box-shadow: func.shadow(vars.$overflow-menu-content-shadow);
+        box-shadow: func.shadow('light');
         background: func.color(vars.$overflow-menu-content-background-color);
         top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
         left: 4px;
+        border-radius: func.border-radius('medium');
 
         @include mixins.media-breakpoint-up(md) {
             width: auto;
@@ -112,7 +113,7 @@
             min-width: 28rem;
         }
 
-        &[aria-hidden="true"] {
+        &.collapsed {
             display: none;
         }
     }
@@ -124,10 +125,20 @@
         @include mixins.unstyled-list;
 
         & > li {
-            border-bottom: 1px solid func.color('gray-200');
+            border-bottom: func.border('very-low-contrast');
+
+            &:first-child button {
+                border-top-left-radius: func.border-radius('medium');
+                border-top-right-radius: func.border-radius('medium');
+            }
 
             &:last-child {
                 border-bottom: 0;
+
+                button {
+                    border-bottom-left-radius: func.border-radius('medium');
+                    border-bottom-right-radius: func.border-radius('medium');
+                }
             }
         }
 
@@ -167,7 +178,7 @@
         }
     }
 
-    &:not(.overflow-menu--md-no-responsive):not(.overflow-menu--lg-no-responsive) .sidemenu {
+    &:not(.overflow-menu--md-no-responsive, .overflow-menu--lg-no-responsive) .sidemenu {
         border-top: 0;
         border-bottom: 0;
     }
@@ -195,7 +206,7 @@
             }
 
             @include mixins.media-breakpoint-up(md) {
-                left: calc(50% - 19px);
+                left: calc(50% - 27px);
 
                 &::after {
                     left: 13px;
@@ -206,7 +217,7 @@
 
     &--open-left {
         .overflow-menu-inner {
-            right: calc(50% - 19px);
+            right: calc(50% - 27px);
 
             &::after {
                 right: 13px;
@@ -300,7 +311,7 @@
 
         .overflow-menu-inner .overflow-list li button[aria-current="true"] {
             font-weight: func.font-weight("semibold");
-            @include mixins.add-background-svg('done');
+            @include mixins.add-background-svg('check');
             background-position: calc(100% - #{func.units(4)}) center;
         }
     }

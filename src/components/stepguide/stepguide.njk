@@ -1,0 +1,34 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
+{% macro stepIndicatorButton(params) %}
+<button class="step-indicator-button d-{{params.breakpoint}}-none" aria-haspopup="dialog" type="button" data-module="modal" data-target="{{params.modal}}"><span>Trin<strong> {{params.currentStep}} </strong>af {{params.totalSteps}}</span></button>
+{% endmacro %}
+
+{% macro stepIndicator(params) %}
+<ol class="step-indicator">
+    {%- for trin in params.steps %}
+    <li{% if trin.disabled or trin.current or trin.state === 'error' %} class="{% if trin.disabled %}disabled {% endif %}{% if trin.current %}current {% endif %}{% if trin.state === 'error' %}error{% endif %}"{% endif %}>
+        <{% if trin.disabled %}div{% else %}a{% endif %} class="step"{% if not trin.disabled %} href="{{trin.href}}"{% endif %}{% if trin.current %} aria-current="step"{% endif %}>
+            <span class="{% if trin.state === 'number' %}step-number{% else %}step-icon{% endif %}">
+            {%- if trin.state === "number" -%}
+                <span>{{loop.index}}</span>
+            {%- elif trin.state === "success" -%}
+                {% set successMessage = "Trin " + loop.index + " gennemført" %}
+                {{ icon_svg({"name": "check", "ariaLabel": successMessage, "ariaHidden": false}) }}
+            {%- elif trin.state === "error" -%}
+                {% set errorMessage = "Fejl i trin " + loop.index %}
+                {{ icon_svg({"name": "error", "ariaLabel": errorMessage, "ariaHidden": false}) }}
+            {%- endif -%}
+            </span>
+            <div>
+                <span class="step-title">{{trin.text}}</span>
+                {% if trin.helptext %}<span class="step-information">{{trin.helptext}}</span>{% endif -%}
+            </div>
+        </{% if trin.disabled %}div{% else %}a{% endif %}>
+    </li>{% endfor %}
+</ol>
+{% endmacro %}
+
+{% macro simpleStepIndicator(params) %}
+<p class="step-subheading">Trin {{params.currentStep}} af {{params.totalSteps}}</p>
+{% endmacro %}

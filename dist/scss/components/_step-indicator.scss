@@ -1,0 +1,217 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$-transition-duration: 0.25s;
+
+.step-indicator-button {
+    display: inline-flex;
+    width: 100%;
+    border-radius: func.border-radius('medium');
+    @include mixins.add-background-svg('more-vert');
+    background-position: calc(100% - 10px);
+    background-size: func.units(5, 'rem');
+    min-height: func.units(8);
+    border: 1px solid func.color('gray-300');
+    background-color: func.color('white');
+    align-items: center;
+    padding-left: func.units(4, 'rem');
+    padding-right: func.units(8, 'rem');
+    margin-top: func.units(5);
+    margin-bottom: func.units(5);
+    color: func.color('black');
+
+    strong {
+        white-space: break-spaces;
+    }
+}
+
+.fds-modal.modal-step-indicator {
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+    transition: visibility $-transition-duration;
+
+    .modal-content {
+        align-self: flex-end;
+        max-height: 90vh;
+        min-height: 40vh;
+        margin: 0;
+        border-bottom-left-radius: func.border-radius('none');
+        border-bottom-right-radius: func.border-radius('none');
+        transform: translateY(100%);
+        overflow: hidden;
+
+        .modal-header {
+            border-bottom: 1px solid func.color('black');
+            padding: func.units(4) func.units(5); // top and bottom | left and right
+
+            .modal-title {
+                margin: 0;
+            }
+
+            .modal-close {
+                position: static;
+            }
+        }
+
+        .modal-body {
+            padding: func.units(6) func.units(5) func.units(4); // top | left and right | bottom
+            overflow: hidden auto;
+            max-height: 80vh;
+            min-height: 30vh;
+
+            @include mixins.media-breakpoint-up(md) {
+                padding: func.units(6) func.units(5) func.units(4); // top | left and right | bottom
+            }
+        }
+
+        &.has-transition-effect {
+            transition: transform $-transition-duration;
+
+            &.show-modal-content {
+                transform: translateY(0%);
+            }
+        }
+    }
+
+    &[aria-hidden="false"], &.show-modal {
+        visibility: visible;
+    }
+}
+
+.modal-backdrop.step-indicator {
+    transition: opacity $-transition-duration, visibility $-transition-duration;
+}
+
+$-circle-size: func.units(7);
+$-circle-margin: func.units(305);
+
+.step-indicator {
+    max-width: none;
+    @include mixins.unstyled-list;
+
+    li {
+        margin-bottom: func.units(4);
+        line-height: 1.5;
+
+        .step {
+            display: flex;
+            color: func.color('black');
+            border-radius: func.units(405);
+            width: fit-content;
+            max-width: min(100%, vars.$typography-text-max-width + $-circle-size + $-circle-margin);
+            text-decoration: none;
+            align-items: flex-start;
+
+            .step-number, .step-icon {
+                min-width: $-circle-size;
+                min-height: $-circle-size;
+                text-align: center;
+                font-weight: func.font-weight("normal");
+                color: func.color('black');
+                font-size: func.font-size('sm');
+                margin-right: $-circle-margin;
+                border: 0;
+                background-color: func.color('gray-100');
+                border-radius: func.units(5);
+                padding-top: func.units(3);
+                flex: 0 0 auto;
+
+                svg {
+                    vertical-align: baseline;
+                }
+
+                & + div {
+                    /* Firefox appears to have a rounding issue, which sometimes causes unneeded word-wrap. 
+                       Adding 1px to the max-width fixes the issue. */
+                    max-width: min(calc(100% - $-circle-size - $-circle-margin + 1px), vars.$typography-text-max-width);
+                }
+            }
+
+            .step-number {
+                padding-bottom: func.units(3);
+
+                span {
+                    min-width: func.units(5, 'rem');
+                    display: inline-block;
+                }
+            }
+
+            .step-title {
+                margin-right: func.units(3); // Avoid overlap between focus border and text
+                display: block;
+                text-decoration: underline;
+                position: relative;
+                padding-top: func.units(3);
+                overflow-wrap: break-word;
+            }
+    
+            .step-information {
+                margin-right: func.units(3); // Avoid overlap between focus border and text
+                display: block;
+                color: func.color('gray-500');
+                font-weight: func.font-weight('normal');
+                overflow-wrap: break-word;
+            }
+
+            &:hover {
+                .step-number, .step-icon {
+                    background-color: func.color('gray-200');
+                }
+            }
+        }
+    }
+
+    li.current {
+        .step {
+            font-weight: func.font-weight('bold');
+
+            .step-number, .step-icon {
+                color: func.color('white');
+                background-color: func.color('gray-600');
+                font-weight: func.font-weight('bold');
+            }
+
+            .step-title {
+                text-decoration: none;
+            }
+        }
+    }
+
+    li.error {
+        .step {
+            .step-number, .step-icon {
+                background-color: func.color('error-light');
+            }
+        }
+    }
+
+    li.error.current {
+        .step {
+            .step-number, .step-icon {
+                color: func.color('white');
+                background-color: func.color('gray-600');
+            }
+        }
+    }
+
+    li.disabled {
+        .step {
+            .step-title {
+                text-decoration: none;
+            }
+
+            &:hover {
+                .step-number, .step-icon {
+                    background-color: func.color('gray-100');
+                }
+            }
+        }
+    }
+}
+
+.step-subheading {
+    @include mixins.subheading;
+}

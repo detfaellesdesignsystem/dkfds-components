@@ -2,4 +2,12 @@ params:
 - name: status
   type: string
   required: false
-  description: Text status of the spinner.
+  description: Text for the spinner.
+- name: box
+  type: boolean
+  required: false
+  description: Set to true if the spinner should be placed on top of other elements.
+- name: small
+  type: boolean
+  required: false
+  description: Set to true to use the small version of the spinner.

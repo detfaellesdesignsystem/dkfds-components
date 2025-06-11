@@ -13,7 +13,6 @@
   margin-left: auto;
 }
 
-
 // For each breakpoint, define the maximum width of the container in a media query
 @mixin grid-container-max-widths($max-widths: vars.$container-max-widths, $breakpoints: vars.$grid-breakpoints) {
   @each $breakpoint, $container-max-width in $max-widths {

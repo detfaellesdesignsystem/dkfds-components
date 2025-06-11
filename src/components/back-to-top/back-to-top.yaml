@@ -11,3 +11,11 @@ params:
   type: string
   required: false
   description: The text read aloud by screenreaders. Defaults to 'Til toppen af siden'.
+- name: classes
+  type: string
+  required: false
+  description: Classes for the back to top button.
+- name: attributes
+  type: string
+  required: false
+  description: Attributes for the back to top button.

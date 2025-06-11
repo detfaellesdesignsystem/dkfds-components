@@ -3607,11 +3607,11 @@ function CharacterLimit(containerElement) {
     message and sr-message will show/tell the correct amount of characters left. */
     if ('onpageshow' in window) {
       window.addEventListener('pageshow', () => {
-        this.updateMessages();
+        this.silentUpdateMessages();
       });
     } else {
-      window.addEventListener('DOMContentLoaded', () => {
-        this.updateMessages();
+      document.addEventListener('DOMContentLoaded', () => {
+        this.silentUpdateMessages();
       });
     }
   };
@@ -3662,7 +3662,13 @@ function updateScreenReaderMessage(formLimit) {
   let character_label = formLimit.container.getElementsByClassName('character-limit-sr-only')[0];
   character_label.innerHTML = count_message;
 }
+CharacterLimit.prototype.silentUpdateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').removeAttribute('aria-live');
+  updateVisibleMessage(this);
+  updateScreenReaderMessage(this);
+};
 CharacterLimit.prototype.updateMessages = function () {
+  this.container.querySelector('.character-limit-sr-only').setAttribute('aria-live', 'polite');
   updateVisibleMessage(this);
   updateScreenReaderMessage(this);
 };
@@ -3716,6 +3722,9 @@ CheckboxToggleContent.prototype.expand = function (checkboxElement, contentEleme
     checkboxElement.setAttribute('data-aria-expanded', 'true');
     contentElement.classList.remove('collapsed');
     contentElement.setAttribute('aria-hidden', 'false');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.add('show-content');
+    }
     let eventOpen = new Event('fds.collapse.expanded');
     checkboxElement.dispatchEvent(eventOpen);
   }
@@ -3731,6 +3740,9 @@ CheckboxToggleContent.prototype.collapse = function (triggerEl, targetEl) {
     triggerEl.setAttribute('data-aria-expanded', 'false');
     targetEl.classList.add('collapsed');
     targetEl.setAttribute('aria-hidden', 'true');
+    if (targetEl.parentNode.classList.contains('hidden-content-wrapper')) {
+      targetEl.parentNode.classList.remove('show-content');
+    }
     let eventClose = new Event('fds.collapse.collapsed');
     triggerEl.dispatchEvent(eventClose);
   }
@@ -3783,54 +3795,6 @@ Dropdown.prototype.init = function () {
     //Clicked on dropdown open button --> toggle it
     this.buttonElement.removeEventListener('click', toggleDropdown);
     this.buttonElement.addEventListener('click', toggleDropdown);
-    let $module = this;
-    // set aria-hidden correctly for screenreaders (Tringuide responsive)
-    if (this.responsiveListCollapseEnabled) {
-      let element = this.buttonElement;
-      if (window.IntersectionObserver) {
-        // trigger event when button changes visibility
-        let observer = new IntersectionObserver(function (entries) {
-          // button is visible
-          if (entries[0].intersectionRatio) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            }
-          } else {
-            // button is not visible
-            if ($module.targetEl.getAttribute('aria-hidden') === 'true') {
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          }
-        }, {
-          root: document.body
-        });
-        observer.observe(element);
-      } else {
-        // IE: IntersectionObserver is not supported, so we listen for window resize and grid breakpoint instead
-        if (doResponsiveCollapse($module.triggerEl)) {
-          // small screen
-          if (element.getAttribute('aria-expanded') === 'false') {
-            $module.targetEl.setAttribute('aria-hidden', 'true');
-          } else {
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        } else {
-          // Large screen
-          $module.targetEl.setAttribute('aria-hidden', 'false');
-        }
-        window.addEventListener('resize', function () {
-          if (doResponsiveCollapse($module.triggerEl)) {
-            if (element.getAttribute('aria-expanded') === 'false') {
-              $module.targetEl.setAttribute('aria-hidden', 'true');
-            } else {
-              $module.targetEl.setAttribute('aria-hidden', 'false');
-            }
-          } else {
-            $module.targetEl.setAttribute('aria-hidden', 'false');
-          }
-        });
-      }
-    }
     document.removeEventListener('keyup', closeOnEscape);
     document.addEventListener('keyup', closeOnEscape);
   }
@@ -3879,7 +3843,6 @@ let closeAll = function () {
           }
           triggerEl.setAttribute('aria-expanded', 'false');
           targetEl.classList.add('collapsed');
-          targetEl.setAttribute('aria-hidden', 'true');
         }
       }
     }
@@ -3921,14 +3884,12 @@ let dropdown_toggle = function (button) {
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
       targetEl.classList.add('collapsed');
-      targetEl.setAttribute('aria-hidden', 'true');
       let eventClose = new Event('fds.dropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
       targetEl.classList.remove('collapsed');
-      targetEl.setAttribute('aria-hidden', 'false');
       let eventOpen = new Event('fds.dropdown.open');
       triggerEl.dispatchEvent(eventOpen);
       let targetOffset = offset(targetEl);
@@ -3996,7 +3957,6 @@ let outsideClose = function (evt) {
             //clicked outside trigger, force close
             triggerEl.setAttribute('aria-expanded', 'false');
             targetEl.classList.add('collapsed');
-            targetEl.setAttribute('aria-hidden', 'true');
             let eventClose = new Event('fds.dropdown.close');
             triggerEl.dispatchEvent(eventClose);
           }
@@ -4241,6 +4201,16 @@ function Modal($modal) {
   this.$modal = $modal;
   let id = this.$modal.getAttribute('id');
   this.triggers = document.querySelectorAll('[data-module="modal"][data-target="' + id + '"]');
+  this.hideOnResize = () => {
+    if (window.getComputedStyle(document.querySelector('.step-indicator-button')).display === 'none') {
+      this.hide();
+    }
+  };
+  this.focusAfterTransition = () => {
+    if (this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
+      this.$modal.querySelector('.modal-header .modal-close').focus();
+    }
+  };
 }
 
 /**
@@ -4270,9 +4240,12 @@ Modal.prototype.hide = function () {
     modalElement.dispatchEvent(eventClose);
     let $backdrop = document.querySelector('#modal-backdrop');
     if ($backdrop) {
-      $backdrop.parentNode.removeChild($backdrop);
+      $backdrop.classList.remove('show');
     }
     document.getElementsByTagName('body')[0].classList.remove('modal-open');
+    modalElement.querySelector('.modal-content').classList.remove('show-modal-content');
+    window.removeEventListener('resize', this.hideOnResize, false);
+    modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
     if (!hasForcedAction(modalElement)) {
       document.removeEventListener('keyup', handleEscape);
     }
@@ -4304,8 +4277,12 @@ Modal.prototype.hide = function () {
 Modal.prototype.show = function () {
   let e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   let modalElement = this.$modal;
+  let stepIndicatorModal = false;
   if (modalElement !== null) {
     if (e !== null) {
+      if (e.target.classList.contains('step-indicator-button')) {
+        stepIndicatorModal = true;
+      }
       let openerId = e.target.getAttribute('id');
       if (openerId === null) {
         openerId = 'modal-opener-' + Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
@@ -4320,24 +4297,49 @@ Modal.prototype.show = function () {
       new Modal(activeModals[i]).hide();
     }
     modalElement.setAttribute('aria-hidden', 'false');
-    modalElement.setAttribute('tabindex', '-1');
     let eventOpen = new Event('fds.modal.shown');
     modalElement.dispatchEvent(eventOpen);
+    if (document.getElementById('modal-backdrop')) {
+      document.getElementById('modal-backdrop').remove();
+    }
     let $backdrop = document.createElement('div');
     $backdrop.classList.add('modal-backdrop');
     $backdrop.setAttribute('id', "modal-backdrop");
     document.getElementsByTagName('body')[0].appendChild($backdrop);
+    if (stepIndicatorModal) {
+      $backdrop.classList.add('step-indicator');
+      modalElement.querySelector('.modal-content').classList.add('has-transition-effect');
+      modalElement.querySelector('.modal-content').classList.add('show-modal-content');
+      window.addEventListener('resize', this.hideOnResize, false);
+      modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
+    }
+    $backdrop.offsetHeight; // Force browser reflow to ensure the backdrop transition works
+    $backdrop.classList.add('show');
     document.getElementsByTagName('body')[0].classList.add('modal-open');
-    modalElement.focus();
+
+    /* Focus should be on the close button or the heading in the modal. If neither exist,
+       focus is placed on the modal itself. */
+    if (modalElement.querySelector('.modal-header .modal-close')) {
+      modalElement.querySelector('.modal-header .modal-close').focus();
+    } else if (modalElement.querySelector('.modal-header .modal-title')) {
+      modalElement.querySelector('.modal-header .modal-title').setAttribute('tabindex', '-1');
+      modalElement.querySelector('.modal-header .modal-title').focus();
+    } else {
+      modalElement.setAttribute('tabindex', '-1');
+      modalElement.focus();
+    }
     if (!hasForcedAction(modalElement)) {
       document.addEventListener('keyup', handleEscape);
+      $backdrop.addEventListener('click', () => {
+        this.hide();
+      }, false);
     }
 
     /* Trap the focus inside the modal */
     let bodyChildren = document.querySelectorAll('body > *');
     for (let c = 0; c < bodyChildren.length; c++) {
       let child = bodyChildren[c];
-      if (child.tagName !== 'SCRIPT' && !child.classList.contains('fds-modal-container') && !child.hasAttribute('inert')) {
+      if (child.tagName !== 'SCRIPT' && !child.classList.contains('fds-modal-container') && !child.hasAttribute('inert') && child.id !== 'modal-backdrop') {
         child.setAttribute('inert', '');
         child.classList.add('fds-modal-inert');
       }
@@ -4460,7 +4462,7 @@ const createMoreMenu = function () {
   let moreMenu = document.createElement('li');
   moreMenu.classList.add('more-option');
   moreMenu.classList.add('d-none');
-  moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+  moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu"><ul class="overflow-list"></ul></div></div>';
   mainMenu.append(moreMenu);
   new dropdown(document.getElementsByClassName('more-button')[0]).init();
 };
@@ -4509,7 +4511,7 @@ const updateMoreMenu = function () {
             subMenu.classList.add('active');
           }
           let subMenuText = mainMenuItems[j].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
-          subMenu.innerHTML = '<ul aria-label="' + subMenuText + '"><span class="sub-title" aria-hidden="true">' + subMenuText + '</span></ul>';
+          subMenu.innerHTML = `<span class="sub-title" aria-hidden="true">${subMenuText}</span><ul aria-label="${subMenuText}"></ul>`;
           let subElements = mainMenuItems[j].getElementsByTagName('LI');
           for (let k = 0; k < subElements.length; k++) {
             subMenu.getElementsByTagName('UL')[0].append(subElements[k].cloneNode(true));
@@ -4761,13 +4763,13 @@ let navigation_drawer_overflow_toggle = function (button) {
     if (triggerEl.getAttribute('aria-expanded') === 'true' || forceClose) {
       //close
       triggerEl.setAttribute('aria-expanded', 'false');
-      targetEl.setAttribute('aria-hidden', 'true');
+      targetEl.classList.add('collapsed');
       let eventClose = new Event('fds.menudropdown.close');
       triggerEl.dispatchEvent(eventClose);
     } else {
       //open
       triggerEl.setAttribute('aria-expanded', 'true');
-      targetEl.setAttribute('aria-hidden', 'false');
+      targetEl.classList.remove('collapsed');
       let eventOpen = new Event('fds.menudropdown.open');
       triggerEl.dispatchEvent(eventOpen);
     }
@@ -4837,6 +4839,9 @@ RadioToggleGroup.prototype.expand = function (radioInputElement, contentElement)
   if (radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined) {
     radioInputElement.setAttribute('data-expanded', 'true');
     contentElement.setAttribute('aria-hidden', 'false');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.add('show-content');
+    }
     let eventOpen = new Event('fds.radio.expanded');
     radioInputElement.dispatchEvent(eventOpen);
   }
@@ -4850,6 +4855,9 @@ RadioToggleGroup.prototype.collapse = function (radioInputElement, contentElemen
   if (radioInputElement !== null && radioInputElement !== undefined && contentElement !== null && contentElement !== undefined) {
     radioInputElement.setAttribute('data-expanded', 'false');
     contentElement.setAttribute('aria-hidden', 'true');
+    if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+      contentElement.parentNode.classList.remove('show-content');
+    }
     let eventClose = new Event('fds.radio.collapsed');
     radioInputElement.dispatchEvent(eventClose);
   }

@@ -7,12 +7,12 @@
   },
   "main": "dist/js/dkfds.min.js",
   "exports": {
-    ".": "./dist/js/dkfds.min.js",
-    "./dkfds-DEPRECATED": "./dist/DEPRECATED/dkfds-DEPRECATED.min.js"
+    ".": "./dist/js/dkfds.min.js"
   },
   "scripts": {
     "build": "webpack"
   },
+  "homepage": "https://designsystem.dk/",
   "repository": {
     "type": "git",
     "url": "https://github.com/detfaellesdesignsystem/dkfds-components.git"

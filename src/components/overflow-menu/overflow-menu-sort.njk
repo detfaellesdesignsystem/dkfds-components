@@ -6,7 +6,7 @@
         <button class="button-overflow-menu" data-js-target="{{ params.id }}-panel" aria-expanded="false" aria-controls="{{ params.id }}-panel">
             {{ icon_svg({"name": icon}) }}{{ params.button.label }}<span class="selected-value"></span>
         </button>
-        <div class="overflow-menu-inner" id="{{ params.id }}-panel" aria-hidden="true">
+        <div class="overflow-menu-inner collapsed" id="{{ params.id }}-panel">
             <ul class='overflow-list'>
                 {%- for item in params.items -%}
                     <li>

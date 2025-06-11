@@ -2,235 +2,201 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
+%-long {
+    @include mixins.media-breakpoint-up(sm) {
+        flex-direction: row;
+
+        .card-image {
+            min-width: 33%;
+            max-width: 33%;
+            align-items: center;
+    
+            img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.card-row {
+    max-width: none !important;
+    list-style-type: none;
+
+    li {
+        margin-top: 0;
+
+        &::before {
+            content: "" !important;
+        }
+    }
+}
+
+.card-row:not(.row) li {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .card {
-  position: relative;
-  border-radius: func.units(0);
-  box-shadow: func.shadow(vars.$cards-shadow);
-  border: func.border(vars.$cards-border);
-  overflow: hidden;
-  background: func.color(vars.$cards-background-color);
-
-  // small card
-  &-small {
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-  // medium card
-  &-medium {
-    // The last
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-  // large card
-  &-large {
-    > :last-of-type {
-      padding-bottom:func.units(5);
-    }
-  }
-
-  &-align-height {
-    height: 100%;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -moz-flex;
+    border: func.border('very-low-contrast');
+    border-radius: func.border-radius('medium');
+    overflow: hidden;
+    margin-bottom: func.units(6);
+    height: calc(100% - func.units(6));
     display: flex;
     flex-direction: column;
 
-    > *{
-      width: 100%;
-    }
+    .card-image {
+        width: 100%;
+        display: flex;
+        background-color: func.color('gray-100');
 
-    .card-footer{
-      margin-top: auto;
-    }
-  }
-
-  p {
-    max-width: 60ch;
-    margin-top:func.units(4);
-    margin-bottom: func.units(0);
-    &:first-child {
-      margin-top:func.units(0);
-    }
-  }
-  h1, .h1,
-  h2, .h2,
-  h3, .h3,
-  h4, .h4,
-  h5, .h5 {
-    margin: func.units(0);
-  }
-
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      border-radius: 0;
-    }
-  }
-
-  > .list-group:last-child {
-      .list-group-item:last-child {
-        border-radius: 0;
-      }
-  }
-}
-// card-header
-.card-header {
-  background-color: func.color(vars.$cards-header-background-color);
-  padding: func.units(4) func.units(5); // top and bottom | left and right
-  .header-title {
-    @include mixins.body-copy-text;
-    font-weight: func.font-weight("semibold");
-    color: func.color(vars.$cards-heading-color);
-    margin:func.units(0);
-
-    &.large-text {
-      color: func.color(vars.$cards-heading-large-color);
-      @include mixins.h2;
-    }
-  }
-  .sub-header {
-    @include mixins.body-copy-text;
-    margin-top:  func.units(0);
-    margin-bottom: func.units(0);
-    color: func.color(vars.$cards-sub-heading-color);
-  }
-}
-.card-text {
-  background-color: func.color(vars.$cards-text-background-color);
-  padding: func.units(4) func.units(5);
-  .text {
-    @include mixins.body-copy-text;
-    margin-top: func.units(4);
-    color: func.color(vars.$cards-text-color);
-    margin-bottom: func.units(0);
-  }
-}
-
-// card-content
-.card-content {
-  @include mixins.body-copy-text;
-  padding: func.units(0);
-  color: func.color(vars.$cards-text-color);
-  background-color: func.color(vars.$cards-content-background-color);
-  ul {
-    margin-bottom:func.units(0);
-  }
-  div:first-child {
-    margin-top:func.units(0);
-  }
-  .content-text {
-    margin-top:func.units(4);
-  }
-  .content {
-    text-align: center;
-  }
-}
-
-// card-action
-.card-action {
-  @include mixins.body-copy-text;
-  padding: func.units(4) func.units(5);
-  color: func.color(vars.$cards-text-color);
-  margin-bottom: func.units(0);
-  background-color: func.color(vars.$cards-action-background-color);
-
-  div:first-child {
-    margin-top:func.units(0);
-  }
-
-  &:last-child {
-    border-bottom: func.units(0);
-  }
-  .action-buttons {
-    button {
-      margin-right: func.units(4);
-      margin-top:func.units(3);
-
-      @include mixins.media-breakpoint-up(md) {
-        margin-right: func.units(4);
-        margin-top:func.units(3);
-      }
-    }
-    .button + .button{
-      @include mixins.media-breakpoint-up(sm) {
-        margin-left: 0;
-        &:first-child{
-          margin-left: 0;
+        img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border: 0;
         }
-      }
     }
-  }
-  .action-links {
-    margin-top:func.units(4);
-    ul {
-      padding-left: func.units(0);
-      @include mixins.unstyled-list;
-      li {
-        margin-top:func.units(3) !important;
-      }
+
+    // Check for "intrinsic" value and "aspect-ratio" to target old Safari browsers
+    @supports (height: intrinsic) and (not (aspect-ratio: 1)) {
+        .card-image img {
+            height: intrinsic;
+        }
     }
-  }
-  .action-functionlinks {
-    margin-top:func.units(4);
-    text-align: right;
-    .function-link {
-      margin-left: func.units(4);
+
+    .card-content {
+        padding: func.units(5);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-wrap: break-word;
+
+        .card-subheading {
+            @include mixins.subheading;
+            margin-bottom: func.units(2);
+            display: block;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            & + .card-actions {
+                margin-top: calc(func.units(5) - func.units(2)); // Subtract the subheading margin
+            }
+        }
+    
+        .card-heading {
+            font-size: func.font-size('3xl');
+            margin: 0;
+            margin-bottom: func.units(4);
+            font-weight: 600;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            & + .card-actions {
+                margin-top: calc(func.units(5) - func.units(4)); // Subtract the heading margin
+            }
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: func.units(4);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .card-actions {
+            margin-top: func.units(5);
+        }
+
+        .button-group.card-actions {
+            margin-bottom: -16px;
+
+            .button {
+                margin-top: 0;
+                margin-bottom: func.units(4);
+            }
+        }
+
+        .nobullet-list.card-actions {
+            margin-bottom: 0;
+        }
+
+        * {
+            max-width: 100%;
+        }
     }
-  }
+
+    &.long {
+        @extend %-long;
+    }
+
+    /* The default height calculation might make a card very tall, e.g. when placed outside a grid.
+       This class makes it possible to collapse the card's height. */
+    &.collapsed-height {
+        height: auto;
+    }
 }
 
-// If text comes after header
-.card-header + .card-text{
-  padding-top:func.units(0);
-}
-// If content comes after header
-.card-header + .card-content {
-  padding-top:func.units(0);
-}
-// If action comes after header
-.card-header + .card-action{
-  padding-top:func.units(0);
-}
-// If header comes after header
-.card-header + .card-header{
-  padding-top:func.units(0);
-}
-// If header comes after text
-.card-text + .card-header {
-  padding-top:func.units(0);
-}
-// If content comes after text
-.card-text + .card-content {
-  padding-top:func.units(0);
-}
-// If action comes after text
-.card-text + .card-action{
-  padding-top:func.units(0);
-}
-// If text comes after text
-.card-text + .card-text{
-  padding-top:func.units(0);
-}
-// If text comes after action
-.card-action + .card-text{
-  padding-top:func.units(0);
-}
-// If header comes after action
-.card-action + .card-header{
-  padding-top:func.units(0);
-}
-// If content comes after action
-.card-action + .card-content{
-  padding-top:func.units(0);
-}
-// If action comes after action
-.card-action + .card-action{
-  padding-top: 0;
-}
+a.card {
+    text-decoration: none;
+    color: func.color('black');
 
-.card-center {
-  text-align: center;
+    .card-heading {
+        text-decoration: underline;
+        font-weight: 600;
+    }
+
+    .card-content {
+        padding-bottom: func.units(4);
+    }
+
+    .card-icon {
+        display: flex;
+        margin: auto func.units(5) func.units(5) auto; // top | right | bottom | left
+    }
+
+    &:link, &:visited, &:hover, &:active {
+        color: func.color('black');
+    }
+
+    &:hover, &:active {
+        border-color: func.color('gray-300');
+        .card-subheading {
+            color: func.color('gray-600');
+        }
+    }
+
+    &:hover {
+        background-color: func.color('gray-100');
+    }
+
+    &:active {
+        background-color: func.color('gray-200');
+    }
+
+    &.long {
+        @extend %-long;
+
+        .card-content {
+            padding-bottom: func.units(4);
+        }
+
+        @include mixins.media-breakpoint-up(sm) {
+            .card-content {
+                max-width: calc(100% - func.units(5) - func.units(5, 'rem') - func.units(5));
+                padding-bottom: func.units(5);
+            }
+    
+            .card-image + .card-content {
+                max-width: calc(67% - func.units(5) - func.units(5, 'rem') - func.units(5));
+            }
+        }
+    }
 }

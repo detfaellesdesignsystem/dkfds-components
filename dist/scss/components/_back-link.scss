@@ -1,36 +1,39 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
-.back-link{
-    border-bottom: func.border(10);
+.back-link {
     color: func.color('black');
-    text-decoration: none;
+    text-decoration: underline;
     display: inline-block;
-    position: relative;
     margin-bottom: func.units(5);
+    padding: 0;
+    padding-left: func.units(4, 'rem');
     line-height: 2.4rem;
-    padding-left: 14px;
+    background-color: func.color('transparent');
+    position: relative;
+    text-align: left;
+    cursor: pointer;
+
     @include mixins.media-breakpoint-up(lg) {
-      margin-bottom: func.units(6);
+        margin-bottom: func.units(6);
     }
-    &::before{
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-color: transparent;
-      clip-path: polygon(0% 50%, 100% 100%, 100% 0%);
-      border-width: 5px 6px 5px 0;
-      border-right-color: inherit;
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
+
+    &:visited, 
+    &:hover,
+    &:active
+    {
+        color: func.color('black');
     }
-    &:active, &:focus, &:hover, &:visited{
-      color: func.color('black');
+
+    &:focus {
+        @include mixins.focus;
     }
-  }
-  
+
+    .icon-svg {
+        position: absolute;
+        /* The "arrow" in the arrow icon is only 8x12 pixels even though the icon is 24x24.
+           Adjust the icon to align the "arrow" with the text instead of aligning the "arrow icon padding". */
+        left: -0.8rem;
+        top: 0.1rem;
+    }
+}

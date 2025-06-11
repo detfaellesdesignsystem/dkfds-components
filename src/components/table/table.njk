@@ -80,7 +80,7 @@
 <div class="table-actions">
     {% if params.actions -%}
     <p class="table-selected-number no-selected">Ingen rækker valgt</p>
-    {% for action in params.actions %}{{ button(action) }}{% endfor %}
+    <div class="button-group">{% for action in params.actions %}{{ button(action) }}{% endfor %}</div>
     {%- else -%}
     <p class="table-selected-number no-selected mb-0">Ingen rækker valgt</p>
     {%- endif %}

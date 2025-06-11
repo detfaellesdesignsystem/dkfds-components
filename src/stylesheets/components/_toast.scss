@@ -40,7 +40,8 @@ $toast-icon-backgrounds: (
     display: flex;
     transition: opacity .15s linear;
     margin-bottom: func.units(4);
-    box-shadow: func.shadow(vars.$toast-shadow);
+    box-shadow: func.shadow('heavy');
+    border-radius: func.border-radius('medium');
 
     &:not(.show) {
         opacity: 0;
@@ -62,6 +63,8 @@ $toast-icon-backgrounds: (
         background-size: func.units(505);
         background-repeat: no-repeat;
         background-position: center center;
+        border-top-left-radius: func.border-radius('medium');
+        border-bottom-left-radius: func.border-radius('medium');
     }
 
     .toast-message {

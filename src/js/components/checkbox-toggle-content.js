@@ -46,6 +46,9 @@ CheckboxToggleContent.prototype.expand = function(checkboxElement, contentElemen
         checkboxElement.setAttribute('data-aria-expanded', 'true');
         contentElement.classList.remove('collapsed');
         contentElement.setAttribute('aria-hidden', 'false');
+        if (contentElement.parentNode.classList.contains('hidden-content-wrapper')) {
+            contentElement.parentNode.classList.add('show-content');
+        }
         let eventOpen = new Event('fds.collapse.expanded');
         checkboxElement.dispatchEvent(eventOpen);
     }
@@ -61,6 +64,9 @@ CheckboxToggleContent.prototype.collapse = function(triggerEl, targetEl){
         triggerEl.setAttribute('data-aria-expanded', 'false');
         targetEl.classList.add('collapsed');
         targetEl.setAttribute('aria-hidden', 'true');
+        if (targetEl.parentNode.classList.contains('hidden-content-wrapper')) {
+            targetEl.parentNode.classList.remove('show-content');
+        }
         
         let eventClose = new Event('fds.collapse.collapsed');
         triggerEl.dispatchEvent(eventClose);

@@ -7,12 +7,12 @@
   @include mixins.appearance-none;
   display: inline-block;
   width: auto;
-  padding:0;
-  padding-left: func.units(3);
-  padding-right:func.units(3);
-  margin-right:func.units(3);
-  margin-bottom:func.units(3);
-  border-radius: vars.$tag-border-radius;
+  padding: 0;
+  padding-left: func.units(305);
+  padding-right: func.units(305);
+  margin-right: func.units(3);
+  margin-bottom: func.units(3);
+  border-radius: calc(func.units(vars.$tag-line-height, "rem") / 2);
   border: none;
   font-size: func.font-size(vars.$tag-font-size);
   font-weight: func.font-weight(vars.$tag-font-weight);
@@ -22,11 +22,9 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: all .2s ease-in-out;
 
   &.tag-icon {
-    padding:0;
-    padding-left:func.units(3);
+    padding-right: func.units(3);
   }
 
   & + .tag {
@@ -46,10 +44,6 @@
   &.focus,
   &:focus {
     background-color: func.color(vars.$tag-focus-background-color);
-  }
-
-  &.focus,
-  &:focus {
     @include mixins.focus;
     position: relative;
   }

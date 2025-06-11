@@ -10,6 +10,7 @@
 {% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
 {% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
 {% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+{% if params.hiddenContent %}<div class="hidden-content-wrapper">{% endif %}
 <div class="form-group-checkbox{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}"{% if params.attributes.formgroup %} {{ params.attributes.formgroup | safe }}{% endif %}>
     {% if params.label and params.id and params.name and params.value %}<input type="checkbox" id="{{params.id}}" name="{{params.name}}" class="form-checkbox{% if params.hiddenContent %} js-checkbox-toggle-content{% endif %}{% if params.classes.input %} {{params.classes.input}}{% endif %}" value="{{params.value}}"{% if params.helptext %} aria-describedby="{{helptext_id(params.id)}}" {% endif %}{% if params.disabled %} disabled{% endif %}{% if isRequired or params.requiredLabel %} required{% endif %}{% if params.checked %} checked{% endif %}{% if params.hiddenContent %} data-aria-controls="{{collapseId}}"{% if params.checked %} data-aria-expanded="true" {% else %} data-aria-expanded="false" {% endif %}{% endif %}{% if params.attributes.input %} {{ params.attributes.input | safe }}{% endif %}>
     {{ 
@@ -38,4 +39,5 @@
 {% if params.hiddenContent %}<div id="{{collapseId}}"{% if params.checked %} aria-hidden="false" {% else %} aria-hidden="true"{% endif %} class="checkbox-content">
     {{ params.hiddenContent | safe }}
 </div>{% endif %}
+{% if params.hiddenContent %}</div>{% endif %}
 {% endmacro %}

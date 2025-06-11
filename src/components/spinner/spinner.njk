@@ -1,4 +1,6 @@
-{% macro spinner(params) %}
-<div class="spinner"></div>
-<div class="spinner-status" role="status">{{ params.status | default('Arbejder') }}</div>
-{% endmacro %}
+{%- macro spinner(params) -%}
+{% if params.box %}<div class="spinner-box">{% endif -%}
+<div class="spinner{% if params.small %} spinner-small{% endif %}{% if params.light %} spinner-light{% endif %}"></div>
+{% if params.status %}<div class="spinner-status" role="status">{{ params.status }}</div>{% endif -%}
+{% if params.box %}</div>{% endif -%}
+{%- endmacro -%}

@@ -26,16 +26,18 @@ $alerts-bar: (
 $alerts: map.merge($alerts, $custom-alerts);
 $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
 
+$-alert-padding-left: calc(func.units(vars.$alert-padding, 'rem') + func.units(5, 'rem') + func.units(305, 'rem')); // Padding + icon size + distance to text
+
 .alert {
   background-color: func.color(vars.$alert-background-color);
-  background-position: 16px 16px;
+  background-image: linear-gradient(to right, func.color('gray-400') 4px, transparent 4px);
   background-repeat: no-repeat;
-  background-size: 24px;
-  padding: func.units(vars.$alert-padding);
+  padding: func.units(vars.$alert-padding, 'rem');
+  padding-left: $-alert-padding-left;
   position: relative;
   margin-top: func.units(4);
   margin-bottom: func.units(4);
-  border-left: func.units(vars.$alert-border-size) solid func.color(vars.$alert-border-color);
+  border-radius: func.border-radius('medium');
 
   &:first-child {
     margin-top:0;
@@ -75,7 +77,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
 
   .alert-icon {
     position: absolute;
-    left: func.units(vars.$alert-padding);
+    left: calc(func.units(vars.$alert-padding, 'rem') + func.units(2, 'rem')); // Padding + border width
   }
 
   .alert-heading {
@@ -102,8 +104,7 @@ $alerts-bar: map.merge($alerts-bar, $custom-alerts-bar);
 @each $name, $bgcolor in $alerts {
   .alert-#{$name} {
     background-color: func.color($bgcolor);
-    border-color: func.color(map.get($alerts-bar, $name));
-    padding-left: calc(#{func.units(vars.$alert-padding)} + #{vars.$alert-icon-size} + 8px);
+    background-image: linear-gradient(to right, func.color(map.get($alerts-bar, $name)) 4px, transparent 4px);
   }
 }
 

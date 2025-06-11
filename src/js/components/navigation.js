@@ -93,7 +93,7 @@ const createMoreMenu = function () {
     let moreMenu = document.createElement('li');
     moreMenu.classList.add('more-option');
     moreMenu.classList.add('d-none');
-    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu" aria-hidden="true"><ul class="overflow-list"></ul></div></div>';
+    moreMenu.innerHTML = '<div class="submenu"><button class="more-button button-overflow-menu js-dropdown" data-js-target="fds-more-menu" aria-expanded="false" aria-controls="fds-more-menu"><span>Mere</span></button><div class="overflow-menu-inner collapsed" id="fds-more-menu"><ul class="overflow-list"></ul></div></div>';
     mainMenu.append(moreMenu);
     new Dropdown(document.getElementsByClassName('more-button')[0]).init();
 }
@@ -146,7 +146,7 @@ const updateMoreMenu = function () {
                         subMenu.classList.add('active');
                     }
                     let subMenuText = mainMenuItems[j].getElementsByClassName('button-overflow-menu')[0].getElementsByTagName('SPAN')[0].innerText;
-                    subMenu.innerHTML = '<ul aria-label="' + subMenuText + '"><span class="sub-title" aria-hidden="true">' + subMenuText + '</span></ul>';
+                    subMenu.innerHTML = `<span class="sub-title" aria-hidden="true">${subMenuText}</span><ul aria-label="${subMenuText}"></ul>`;
                     let subElements = mainMenuItems[j].getElementsByTagName('LI');
                     for (let k = 0; k < subElements.length; k++) {
                         subMenu.getElementsByTagName('UL')[0].append(subElements[k].cloneNode(true));

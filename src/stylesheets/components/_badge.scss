@@ -11,16 +11,9 @@
   background: func.color(vars.$badge-default-background-color);
   text-align: center;
   display: inline-block;
-
-  &.badge-large {
-    font-size: func.font-size(vars.$badge-large-font-size);
-    line-height: func.units(vars.$badge-large-line-height, 'rem');
-  }
-
-  &.badge-small {
-    font-size: func.font-size(vars.$badge-small-font-size);
-    line-height: func.units(vars.$badge-small-line-height, 'rem');
-  }
+  border-radius: func.border-radius('small');
+  font-size: func.font-size(vars.$badge-font-size);
+  line-height: func.units(vars.$badge-line-height, 'rem');
 
   &.badge-info {
     color: func.color(vars.$badge-info-text-color);

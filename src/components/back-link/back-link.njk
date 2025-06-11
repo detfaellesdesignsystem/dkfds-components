@@ -1,0 +1,5 @@
+{% from "components/icons/icons--svg.njk" import icon_svg as icon_svg %}
+
+{%- macro back_link(params) -%}
+<div><a href="{{ params.href }}" class="back-link">{{ icon_svg({"name": "chevron-left"}) }}{{ params.text | default('Tilbage') }}</a></div>
+{%- endmacro -%}

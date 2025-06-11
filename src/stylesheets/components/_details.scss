@@ -14,8 +14,7 @@
     .details-summary {
       margin-bottom: func.units(3);
       &::before {
-        background-image: url(vars.$icons-folder-path + 'arrow-drop-down.svg');
-        background-position: -1rem -0.8rem;
+        background-image: url(vars.$icons-folder-path + 'chevron-up.svg');
       }
     }
   }
@@ -25,16 +24,18 @@
     position: relative;
     cursor: pointer;
     text-decoration: underline;
+    max-width: 100%;
+    overflow-wrap: break-word;
 
     &::before {
       content: "";
       display: inline-block;
-      @include mixins.add-background-svg('arrow-right');
-      background-position: -1.4rem -0.8rem;
-      background-size: 3.4rem;
-      width: func.units(4, 'rem');
-      height: func.units(4, 'rem');
+      @include mixins.add-background-svg('chevron-down');
+      width: func.units(5, 'rem');
+      min-width: func.units(5, 'rem');
+      height: func.units(5, 'rem');
       margin-right: func.units(2);
+      vertical-align: bottom;
     }
 
     &:focus{
@@ -46,9 +47,11 @@
   }
 
   .details-text {
-    padding: func.units(4);
+    padding: func.units(4) func.units(4) func.units(4) calc(1.2rem + (vars.$details-panel-border-width / 2)); // top | right | bottom | left
+    margin-left: calc(1.2rem - (vars.$details-panel-border-width / 2));
     border-left: vars.$details-panel-border-width solid func.color(vars.$details-panel-border-color);
     box-sizing: border-box;
+    overflow-wrap: break-word;
     &[aria-hidden="true"]{
       display: none;
     }

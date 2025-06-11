@@ -152,7 +152,7 @@
                     text-decoration: none;
 
                     a {
-                        @include mixins.add-background-svg('done');
+                        @include mixins.add-background-svg('check');
                         background-position: left 16px center;
                         background-size: $icon-size;
                         padding-left: calc($inner-padding + $icon-size + $icon-list-margin-right);
@@ -176,7 +176,7 @@
 }
 
 .language-switcher-mobile {
-    border-top: 1px solid func.color(vars.$header-portal-mobile-border-color);
+    border-top: func.border(vars.$header-portal-mobile-border);
     background-color: func.color(vars.$header-portal-background-color);
     padding: func.units(5);
 
