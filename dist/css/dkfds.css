@@ -12056,7 +12056,6 @@ textarea.no-resize{
 .tab-container .tab-panel{
   display:block;
   border:1px solid #8E8E8E;
-  border-radius:8px;
   width:100%;
   padding:24px;
   overflow:auto hidden;
