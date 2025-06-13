@@ -216,7 +216,8 @@
 
     // Checked checkbox
     .form-checkbox:checked+label::before,
-    .form-checkbox[aria-checked="mixed"]+label::before {
+    .form-checkbox[aria-checked="mixed"]+label::before,
+    .form-checkbox.mixed+label::before {
         background-color: func.color(vars.$input-checkbox-checked-background-color-print);
         background-image: none;
         display: flex;
@@ -233,7 +234,8 @@
     }
 
     // 'Mixed' checkbox checkmark
-    .form-checkbox[aria-checked="mixed"]+label::before {
+    .form-checkbox[aria-checked="mixed"]+label::before,
+    .form-checkbox.mixed+label::before {
         content: "\002d";
     }
 
