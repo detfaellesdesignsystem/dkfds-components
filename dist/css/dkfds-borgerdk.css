@@ -1065,6 +1065,12 @@ a.bold-link{
 a:not(.button):not(.full-width-image):not(.card){
   max-width:66ch;
 }
+a:not(.button):not(.full-width-image):not(.card):visited .icon-svg, a:not(.button):not(.full-width-image):not(.card).link-visited .icon-svg{
+  fill:#800080;
+}
+a:not(.button):not(.full-width-image):not(.card):hover .icon-svg, a:not(.button):not(.full-width-image):not(.card).link-hover .icon-svg{
+  fill:#1a1a1a;
+}
 
 h1, .h1{
   letter-spacing:normal;

@@ -30,7 +30,7 @@ a {
     @include mixins.focus;
   }
 
-  &:visited,  
+  &:visited,
   &.link-visited {
     color: func.color("link-visited");
   }
@@ -46,6 +46,17 @@ a {
 
   &:not(.button, .full-width-image, .card) {
     max-width: vars.$typography-text-max-width;
+
+    /* Without the code below, icons in visited links will not always be
+       colored correctly in Safari. */
+    &:visited .icon-svg,
+    &.link-visited .icon-svg {
+      fill: func.color("link-visited");
+    }
+    &:hover .icon-svg,
+    &.link-hover .icon-svg {
+      fill: func.color("link-hover");
+    }
   }
 }
 
