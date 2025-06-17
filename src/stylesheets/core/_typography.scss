@@ -46,17 +46,6 @@ a {
 
   &:not(.button, .full-width-image, .card) {
     max-width: vars.$typography-text-max-width;
-
-    /* Without the code below, icons in visited links will not always be
-       colored correctly in Safari. */
-    &:visited .icon-svg,
-    &.link-visited .icon-svg {
-      fill: func.color("link-visited");
-    }
-    &:hover .icon-svg,
-    &.link-hover .icon-svg {
-      fill: func.color("link-hover");
-    }
   }
 }
 
@@ -205,6 +194,14 @@ h5, .h5, h6, .h6{
     fill: currentColor;
     vertical-align: top;
     margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
+  }
+  /* Without the code below, icons in visited links will not always be
+     colored correctly in Safari. */
+  &:not(.function-link):visited .icon-svg {
+    fill: func.color("link-visited");
+  }
+  &:not(.function-link):hover .icon-svg {
+    fill: func.color("link-hover");
   }
 }
 

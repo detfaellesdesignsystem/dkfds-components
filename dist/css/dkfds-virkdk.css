@@ -1065,12 +1065,6 @@ a.bold-link{
 a:not(.button):not(.full-width-image):not(.card){
   max-width:66ch;
 }
-a:not(.button):not(.full-width-image):not(.card):visited .icon-svg, a:not(.button):not(.full-width-image):not(.card).link-visited .icon-svg{
-  fill:#800080;
-}
-a:not(.button):not(.full-width-image):not(.card):hover .icon-svg, a:not(.button):not(.full-width-image):not(.card).link-hover .icon-svg{
-  fill:#1a1a1a;
-}
 
 h1, .h1{
   letter-spacing:normal;
@@ -1376,6 +1370,12 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   fill:currentColor;
   vertical-align:top;
   margin-top:0.1rem;
+}
+.icon-link:not(.function-link):visited .icon-svg{
+  fill:#800080;
+}
+.icon-link:not(.function-link):hover .icon-svg{
+  fill:#1a1a1a;
 }
 
 h1, .h1,
