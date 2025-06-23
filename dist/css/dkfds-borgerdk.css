@@ -10743,11 +10743,12 @@ a.skipnav:focus{
 .card-row{
   max-width:none !important;
   list-style-type:none;
+  padding:0;
 }
-.card-row li{
+.card-row > li{
   margin-top:0;
 }
-.card-row li::before{
+.card-row > li::before{
   content:"" !important;
 }
 
@@ -10826,6 +10827,9 @@ a.skipnav:focus{
 }
 .card .card-content .card-actions{
   margin-top:24px;
+}
+.card .card-content .card-actions.nobullet-list li{
+  margin-top:0;
 }
 .card .card-content .button-group.card-actions{
   margin-bottom:-16px;
