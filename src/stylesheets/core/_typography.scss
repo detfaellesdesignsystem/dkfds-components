@@ -30,7 +30,7 @@ a {
     @include mixins.focus;
   }
 
-  &:visited,  
+  &:visited,
   &.link-visited {
     color: func.color("link-visited");
   }
@@ -188,12 +188,21 @@ h5, .h5, h6, .h6{
 .icon-link{
   line-height: func.units(vars.$typography-body-text-line-height, 'rem');
   display: inline-block;
+  
   .icon-svg{
     margin-left: func.units(2);
     width: 1.6rem;
     fill: currentColor;
     vertical-align: top;
     margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
+  }
+
+  /* Ensure correct coloring of icons in visited links in the Safari browser. */
+  &:not(.function-link):visited .icon-svg {
+    fill: func.color("link-visited");
+  }
+  &:not(.function-link):hover .icon-svg {
+    fill: func.color("link-hover");
   }
 }
 

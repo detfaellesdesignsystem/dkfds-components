@@ -5140,7 +5140,7 @@ TableSelectableRows.prototype.getCheckboxList = function () {
  */
 function updateCheckboxList(e) {
   let checkbox = e.target;
-  checkbox.removeAttribute('aria-checked');
+  checkbox.classList.remove('mixed');
   let table = e.target.parentNode.parentNode.parentNode.parentNode.parentNode;
   let tableSelectableRows = new TableSelectableRows(table);
   let checkboxList = tableSelectableRows.getCheckboxList();
@@ -5211,17 +5211,17 @@ function updateGroupCheck(e) {
     }
     if (checkedNumber === totalCheckboxes) {
       // if all rows has been selected
-      groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.classList.remove('mixed');
       groupCheckbox.indeterminate = false;
       groupCheckbox.checked = true;
     } else if (checkedNumber == 0) {
       // if no rows has been selected
-      groupCheckbox.removeAttribute('aria-checked');
+      groupCheckbox.classList.remove('mixed');
       groupCheckbox.indeterminate = false;
       groupCheckbox.checked = false;
     } else {
       // if some but not all rows has been selected
-      groupCheckbox.setAttribute('aria-checked', 'mixed');
+      groupCheckbox.classList.add('mixed');
       groupCheckbox.indeterminate = true;
     }
     const event = new CustomEvent("fds.table.selectable.updated", {

@@ -22,8 +22,9 @@
 .card-row {
     max-width: none !important;
     list-style-type: none;
+    padding: 0;
 
-    li {
+    & > li {
         margin-top: 0;
 
         &::before {
@@ -113,6 +114,10 @@
 
         .card-actions {
             margin-top: func.units(5);
+
+            &.nobullet-list li {
+                margin-top: 0;
+            }
         }
 
         .button-group.card-actions {

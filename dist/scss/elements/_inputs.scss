@@ -297,7 +297,8 @@ legend, .form-error-message, .form-hint {
 
 // Checked checkbox
 .form-checkbox:checked + label::before,
-.form-checkbox[aria-checked="mixed"] + label::before {
+.form-checkbox[aria-checked="mixed"] + label::before,
+.form-checkbox.mixed + label::before {
     background-color: func.color(vars.$input-checkbox-checked-background-color);
     border: 2px solid func.color(vars.$input-checkbox-checked-border-color);
     background-size: $checkmark-size;
@@ -311,7 +312,8 @@ legend, .form-error-message, .form-hint {
 }
 
 // 'Mixed' checkbox checkmark
-.form-checkbox[aria-checked="mixed"] + label::before {
+.form-checkbox[aria-checked="mixed"] + label::before,
+.form-checkbox.mixed + label::before {
     background-image: url(vars.$icons-folder-path + vars.$input-checkbox-mixed-image + '.svg');
 }
 
@@ -440,7 +442,8 @@ $-content-wrapper-top-offset: calc($-checkbox-radio-margin-top + $checkbox-radio
 
 // Disabled checked checkbox
 .form-checkbox:disabled:checked + label,
-.form-checkbox:disabled[aria-checked="mixed"] + label {
+.form-checkbox:disabled[aria-checked="mixed"] + label,
+.form-checkbox.mixed:disabled + label {
 
     &::before {
         background-color: func.color(vars.$input-checkbox-disabled-checked-background-color);

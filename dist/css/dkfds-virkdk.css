@@ -1371,6 +1371,12 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   vertical-align:top;
   margin-top:0.1rem;
 }
+.icon-link:not(.function-link):visited .icon-svg{
+  fill:#800080;
+}
+.icon-link:not(.function-link):hover .icon-svg{
+  fill:#1a1a1a;
+}
 
 h1, .h1,
 h2, .h2,
@@ -6865,7 +6871,8 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 }
 
 .form-checkbox:checked + label::before,
-.form-checkbox[aria-checked=mixed] + label::before{
+.form-checkbox[aria-checked=mixed] + label::before,
+.form-checkbox.mixed + label::before{
   background-color:#1a1a1a;
   border:2px solid #1a1a1a;
   background-size:24px;
@@ -6877,7 +6884,8 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
   background-image:url("../img/svg-icons/check-white.svg");
 }
 
-.form-checkbox[aria-checked=mixed] + label::before{
+.form-checkbox[aria-checked=mixed] + label::before,
+.form-checkbox.mixed + label::before{
   background-image:url("../img/svg-icons/minus-white.svg");
 }
 
@@ -7010,12 +7018,14 @@ legend + .form-group-checkbox:first-of-type, legend + .form-group-radio:first-of
 }
 
 .form-checkbox:disabled:checked + label::before,
-.form-checkbox:disabled[aria-checked=mixed] + label::before{
+.form-checkbox:disabled[aria-checked=mixed] + label::before,
+.form-checkbox.mixed:disabled + label::before{
   background-color:#BFBFBF;
   border:2px solid #BFBFBF;
 }
 .form-checkbox:disabled:checked + label::after,
-.form-checkbox:disabled[aria-checked=mixed] + label::after{
+.form-checkbox:disabled[aria-checked=mixed] + label::after,
+.form-checkbox.mixed:disabled + label::after{
   background-color:#F5F5F5;
 }
 
@@ -10733,11 +10743,12 @@ a.skipnav:focus{
 .card-row{
   max-width:none !important;
   list-style-type:none;
+  padding:0;
 }
-.card-row li{
+.card-row > li{
   margin-top:0;
 }
-.card-row li::before{
+.card-row > li::before{
   content:"" !important;
 }
 
@@ -10816,6 +10827,9 @@ a.skipnav:focus{
 }
 .card .card-content .card-actions{
   margin-top:24px;
+}
+.card .card-content .card-actions.nobullet-list li{
+  margin-top:0;
 }
 .card .card-content .button-group.card-actions{
   margin-bottom:-16px;
@@ -12319,7 +12333,8 @@ textarea.no-resize{
     fill:#1a1a1a;
   }
   .form-checkbox:checked + label::before,
-  .form-checkbox[aria-checked=mixed] + label::before{
+  .form-checkbox[aria-checked=mixed] + label::before,
+  .form-checkbox.mixed + label::before{
     background-color:white;
     background-image:none;
     display:flex;
@@ -12332,7 +12347,8 @@ textarea.no-resize{
   .form-checkbox:checked + label::before{
     content:"✓";
   }
-  .form-checkbox[aria-checked=mixed] + label::before{
+  .form-checkbox[aria-checked=mixed] + label::before,
+  .form-checkbox.mixed + label::before{
     content:"-";
   }
   .form-radio:checked + label::after{
