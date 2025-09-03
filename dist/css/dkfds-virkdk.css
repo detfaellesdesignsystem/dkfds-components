@@ -1371,6 +1371,8 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   vertical-align:top;
   margin-top:0.1rem;
 }
+.icon-link{
+}
 .icon-link:not(.function-link):visited .icon-svg{
   fill:#800080;
 }
@@ -10843,6 +10845,8 @@ a.skipnav:focus{
 }
 .card .card-content *{
   max-width:100%;
+}
+.card{
 }
 .card.collapsed-height{
   height:auto;
