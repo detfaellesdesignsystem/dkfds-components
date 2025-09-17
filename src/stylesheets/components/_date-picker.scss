@@ -42,6 +42,12 @@
   width: 3em;
   display: block;
   cursor: pointer;
+
+  &:disabled,
+  &.disabled {
+    opacity: vars.$button-disabled-opacity;
+    cursor: vars.$button-disabled-cursor;
+  }
 }
 
 .date-picker--initialized {
