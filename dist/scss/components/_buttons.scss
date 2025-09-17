@@ -3,7 +3,6 @@
 @use "../mixins" as mixins;
 
 $-border-width: func.units(1);
-$-disabled-opacity: 0.25;
 
 %-button-variant {
     font-weight: func.font-weight('semibold');
@@ -48,8 +47,8 @@ $-disabled-opacity: 0.25;
 
     &:disabled,
     &.disabled {
-        opacity: $-disabled-opacity;
-        cursor: not-allowed;
+        opacity: vars.$button-disabled-opacity;
+        cursor: vars.$button-disabled-cursor;
         box-shadow: none !important;
         text-decoration: none;
     }

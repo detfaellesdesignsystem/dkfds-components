@@ -106,7 +106,7 @@
                             <ul class="overflow-list">
                                 {%- for subitem in item.links -%}
                                 <li{% if subitem.active or subitem.current or subitem.currentDesktop %} class="{% if subitem.active or subitem.current or subitem.currentDesktop %}active{% endif %}{% if subitem.current or subitem.currentDesktop %} current{% endif %}"{% endif %}>
-                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current or subitem.currentDesktop %} aria-current="page"{% endif %}>
+                                    <a href="{{ subitem.href | default('#')}}" class="nav-link"{% if subitem.current or subitem.currentDesktop %} aria-current="page"{%- elif subitem.active %} aria-current="true"{% endif %}>
                                         <span>{{ subitem.text }}</span>
                                     </a>
                                 </li>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     {% else -%}
-                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current or item.currentDesktop %} aria-current="page"{% endif %}>
+                    <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current or item.currentDesktop %} aria-current="page"{%- elif item.active %} aria-current="true"{% endif %}>
                         <span>{{ item.text }}</span>
                     </a>
                     {%- endif %}
@@ -146,7 +146,7 @@
             {% set submenuID = menuID + "-" + loop.index %}
             {{ mobile_navigation_submenu(text=item.text, id=submenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
             {% else -%}
-            <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+            <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{%- elif item.active %} aria-current="true"{% endif %}>
                 <span>{{ item.text }}{% if item.overview %} <span class="helptext d-inline">(overblik)</span>{% endif -%}</span>
                 {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
             </a>
@@ -178,7 +178,7 @@
                 {% set subsubmenuID = submenuID + "-" + loop.index %}
                 {{ mobile_navigation_submenu(text=item.text, id=subsubmenuID, active=item.active, current=item.current, links=item.links, overview=item.overview, helptext=item.helptext) }}
                 {% else %}
-                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{% endif %}>
+                <a href="{{ item.href | default('#')}}" class="nav-link"{% if item.current %} aria-current="page"{%- elif item.active %} aria-current="true"{% endif %}>
                     <span>{{ item.text }}{% if item.overview %} <span class="helptext d-inline">(overblik)</span>{% endif -%}</span>
                     {% if item.helptext %}<span class="helptext">{{ item.helptext }}</span>{% endif -%}
                 </a>

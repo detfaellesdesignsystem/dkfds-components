@@ -8175,6 +8175,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:block;
   cursor:pointer;
 }
+.date-picker__button:disabled, .date-picker__button.disabled{
+  opacity:0.25;
+  cursor:not-allowed;
+}
 
 .date-picker--initialized .date-picker__wrapper{
   display:flex;

@@ -62,6 +62,10 @@ $badge-success-background-color:    "success-light" !default;
 $badge-warning-background-color:    "warning-light" !default;
 $badge-error-background-color:      "error-light" !default;
 
+// Button
+$button-disabled-opacity:   0.25 !default;
+$button-disabled-cursor:    not-allowed !default;
+
 // Button: Primary
 $button-primary-default-border-color:       'primary' !default;
 $button-primary-default-background-color:   'primary' !default;
