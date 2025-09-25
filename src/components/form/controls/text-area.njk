@@ -11,12 +11,14 @@
 {% if params.required === false %}{% set isRequired = false %}{% endif %}
 {% if params.requiredLabel === true %}{% set isRequired = true %}{% endif %}
 {% if params.optionalLabel === true %}{% set isRequired = false %}{% endif %}
-{% if params.disabled === true %}{% set isRequired = false %}{% endif %}
+{% set labelClasses = "" %}
+{% if params.classes.label %}{% set labelClasses = params.classes.label %}{% endif %}
+{% if params.disabled === true %}{% set isRequired = false %}{% set labelClasses = labelClasses + " disabled" %}{% endif %}
 <div class="form-group{% if params.classes.formgroup %} {{params.classes.formgroup}}{% endif %}{% if params.errorMessage %} form-error{% endif %}{% if params.characterLimit %} form-limit{% endif %}"{% if params.characterLimit %} data-maxlength="{{params.characterLimit}}"{% endif %}{% if params.attributes.formgroup %} {{params.attributes.formgroup | safe}}{% endif %}>
     {{
         label({
             text: params.label,
-            classes: params.classes.label,
+            classes: labelClasses,
             for: params.id,
             attributes: params.attributes.label,
             optionalLabel: params.optionalLabel,
