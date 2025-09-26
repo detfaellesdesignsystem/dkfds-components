@@ -6769,7 +6769,8 @@ input[type=password]:disabled,
 input[type=search]:disabled,
 input[type=tel]:disabled,
 input[type=url]:disabled,
-textarea:disabled{
+textarea:disabled,
+select:disabled{
   background-color:transparent;
   border-color:#DCDCDC;
   color:#707070;
@@ -6782,7 +6783,8 @@ input[type=password][readonly],
 input[type=search][readonly],
 input[type=tel][readonly],
 input[type=url][readonly],
-textarea[readonly]{
+textarea[readonly],
+select[readonly]{
   background-color:#F5F5F5;
   color:#1a1a1a;
   border:1px solid #DCDCDC;
@@ -8604,6 +8606,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:none;
 }
 .form-select:disabled{
+  opacity:1;
+  background-image:url("../img/svg-icons/chevron-down-gray-200.svg");
+  background-size:2.4rem;
+  background-repeat:no-repeat;
   background-color:transparent;
   color:#707070;
   cursor:not-allowed;

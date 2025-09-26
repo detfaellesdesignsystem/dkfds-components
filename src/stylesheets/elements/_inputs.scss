@@ -164,7 +164,8 @@ input[type="password"],
 input[type="search"],
 input[type="tel"],
 input[type="url"],
-textarea {
+textarea,
+select {
   &:disabled {
     background-color: func.color(vars.$input-disabled-background-color);
     border-color: func.color(vars.$input-disabled-border-color);

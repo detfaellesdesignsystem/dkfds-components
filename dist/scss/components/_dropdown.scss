@@ -22,6 +22,8 @@
     }
 
     &:disabled {
+        opacity: 1;
+        @include mixins.add-background-svg('chevron-down-gray-200');
         background-color: func.color(vars.$input-disabled-background-color);
         color: func.color(vars.$input-disabled-text-color);
         cursor: not-allowed;
