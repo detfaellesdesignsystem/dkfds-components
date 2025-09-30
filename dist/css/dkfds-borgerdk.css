@@ -1025,7 +1025,7 @@ textarea:focus,
   }
 }
 html{
-  font-family:"IBM Plex Sans", "system", sans-serif;
+  font-family:"IBM Plex Sans", "system-ui", "system", sans-serif;
   font-size:62.5%;
 }
 
@@ -1370,6 +1370,8 @@ h5 + p, h5 + ul, h5 + ol, .h5 + p, .h5 + ul, .h5 + ol, h6 + p, h6 + ul, h6 + ol,
   fill:currentColor;
   vertical-align:top;
   margin-top:0.1rem;
+}
+.icon-link{
 }
 .icon-link:not(.function-link):visited .icon-svg{
   fill:#800080;
@@ -6767,7 +6769,8 @@ input[type=password]:disabled,
 input[type=search]:disabled,
 input[type=tel]:disabled,
 input[type=url]:disabled,
-textarea:disabled{
+textarea:disabled,
+select:disabled{
   background-color:transparent;
   border-color:#DCDCDC;
   color:#707070;
@@ -6780,7 +6783,8 @@ input[type=password][readonly],
 input[type=search][readonly],
 input[type=tel][readonly],
 input[type=url][readonly],
-textarea[readonly]{
+textarea[readonly],
+select[readonly]{
   background-color:#F5F5F5;
   color:#1a1a1a;
   border:1px solid #DCDCDC;
@@ -8173,6 +8177,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:block;
   cursor:pointer;
 }
+.date-picker__button:disabled, .date-picker__button.disabled{
+  opacity:0.25;
+  cursor:not-allowed;
+}
 
 .date-picker--initialized .date-picker__wrapper{
   display:flex;
@@ -8598,6 +8606,10 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   display:none;
 }
 .form-select:disabled{
+  opacity:1;
+  background-image:url("../img/svg-icons/chevron-down-gray-200.svg");
+  background-size:2.4rem;
+  background-repeat:no-repeat;
   background-color:transparent;
   color:#707070;
   cursor:not-allowed;
@@ -10843,6 +10855,8 @@ a.skipnav:focus{
 }
 .card .card-content *{
   max-width:100%;
+}
+.card{
 }
 .card.collapsed-height{
   height:auto;
