@@ -1,0 +1,25 @@
+{
+  "name": "dkfds/dkfds",
+  "description": "Det Fælles Designsystem er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "responsive",
+    "front-end",
+    "framework",
+    "web",
+    "design-system"
+  ],
+  "homepage": "https://designsystem.dk/",
+  "authors": [
+    {
+      "name": "Erhvervsstyrelsen og Digitaliseringsstyrelsen",
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/detfaellesdesignsystem/dkfds-components/issues"
+  },
+  "license": "(MIT AND OFL-1.1 AND Apache-2.0)",
+  "type": "library"
+}
