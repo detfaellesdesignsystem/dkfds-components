@@ -35,7 +35,7 @@
     "object-assign": "4.1.1",
     "postcss": "8.5.6",
     "postcss-loader": "8.2.0",
-    "postcss-preset-env": "10.3.1",
+    "postcss-preset-env": "10.4.0",
     "receptor": "0.1.5",
     "sass": "1.92.0",
     "sass-loader": "16.0.5",

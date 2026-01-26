@@ -4206,8 +4206,8 @@ function Modal($modal) {
       this.hide();
     }
   };
-  this.focusAfterTransition = () => {
-    if (this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
+  this.focusAfterTransition = event => {
+    if (event.target === this.$modal && this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
       this.$modal.querySelector('.modal-header .modal-close').focus();
     }
   };
