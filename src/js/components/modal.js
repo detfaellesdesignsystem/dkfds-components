@@ -90,7 +90,7 @@ Modal.prototype.show = function (e = null) {
     let stepIndicatorModal = false;
     if (modalElement !== null) {
         if (e !== null) {
-            if (e.target.classList.contains('step-indicator-button')) {
+            if (e.target.closest('.step-indicator-button')) {
                 stepIndicatorModal = true;
             }
             let openerId = e.target.getAttribute('id');
