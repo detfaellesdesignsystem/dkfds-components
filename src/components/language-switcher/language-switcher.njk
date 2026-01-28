@@ -6,7 +6,7 @@
     <div class="container">
         <ul aria-label="{{ params.ariaLabel | default('Vælg sprog') }}">
             {%- for language in params.languages -%}
-            {%- set firstAriaLabel = "" -%}
+            {%- set firstAriaCurrent = "" -%}
             {%- set icon = "" -%}
             {%- set class = "" -%}
             {%- set tooltipID = ["language-tooltip", "-", loop.index] | join -%}
@@ -14,11 +14,10 @@
                 {% set class = ' class="tooltip-target"' %}
             {%- endif -%}
             {%- if loop.first -%}
-                {%- set defaultLang = params.firstAriaLabel | default('Valgt sprog: Dansk') -%}
-                {%- set firstAriaLabel = [' aria-label="', defaultLang, '"'] | join -%}
+                {%- set firstAriaCurrent = "aria-current='true'" -%}
                 {%- set icon = '<svg class="icon-svg" focusable="false" aria-hidden="true"><use href="#check"></use></svg>' -%}
             {%- endif -%}
-            {%- set target = ['<a href="', language.href, '" lang="', language.code, '"', firstAriaLabel, class, '>', icon, language.name, '</a>'] | join | safe -%}
+            {%- set target = ['<a href="', language.href, '" lang="', language.code, '"', firstAriaCurrent, class, '>', icon, language.name, '</a>'] | join | safe -%}
             {%- if language.tooltip -%}<li>{{ tooltip({ "text": language.tooltip, "target": target, "id": tooltipID, "contentElement": "span", "trueTooltip": true }) }}</li>
             {%- else -%}<li>{{ target }}</li>{%- endif -%}
             {%- endfor -%}
@@ -37,7 +36,7 @@
             <div class="overflow-menu-inner select-language-list collapsed" id="{{ params.overflowID | default('header-language')}}">
                 <ul class='overflow-list'>
                     {%- for language in params.languages -%}
-                    <li><a href="{{ language.href }}" lang="{{language.code}}"{%- if loop.first -%} aria-label="{{ params.firstAriaLabel | default('Valgt sprog: Dansk')}}"{%- endif -%}>{{language.name}}</a></li>
+                    <li><a href="{{ language.href }}" lang="{{language.code}}"{%- if loop.first -%} aria-current="true"{%- endif -%}>{{language.name}}</a></li>
                     {% endfor -%}
                 </ul>
             </div>
@@ -48,10 +47,10 @@
 
 {% macro languageSwitcherMobile(params) %}
 <div class="language-switcher-mobile">
-    <h3>Valgt sprog</h3>
+    <h3>Vælg sprog</h3>
     <ul>
         {%- for language in params.languages -%}
-        <li><a href="{{ language.href }}" lang="{{language.code}}" {% if language.tooltip %}class="js-tooltip" data-tooltip="{{language.tooltip}}"{% endif %} {% if loop.first %}aria-label="{{ params.firstAriaLabel | default('Valgt sprog: Dansk')}}"{% endif %}>{% if loop.first %}<svg class="icon-svg" focusable="false" aria-hidden="true"><use href="#check"></use></svg>{% endif %}{{language.name}}</a></li>
+        <li><a href="{{ language.href }}" lang="{{language.code}}" {% if language.tooltip %}class="js-tooltip" data-tooltip="{{language.tooltip}}"{% endif %}{% if loop.first %} aria-current="true"{% endif %}>{% if loop.first %}<svg class="icon-svg" focusable="false" aria-hidden="true"><use href="#check"></use></svg>{% endif %}{{language.name}}</a></li>
         {% endfor -%}
     </ul>
 </div>

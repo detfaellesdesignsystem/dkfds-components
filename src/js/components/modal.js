@@ -12,8 +12,8 @@ function Modal($modal) {
             this.hide();
         }
     };
-    this.focusAfterTransition = () => {
-        if (this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
+    this.focusAfterTransition = (event) => {
+        if (event.target === this.$modal && this.$modal.querySelector('.modal-header .modal-close') && window.getComputedStyle(this.$modal).visibility === 'visible') {
             this.$modal.querySelector('.modal-header .modal-close').focus();
         }
     }
@@ -90,7 +90,7 @@ Modal.prototype.show = function (e = null) {
     let stepIndicatorModal = false;
     if (modalElement !== null) {
         if (e !== null) {
-            if (e.target.classList.contains('step-indicator-button')) {
+            if (e.target.closest('.step-indicator-button')) {
                 stepIndicatorModal = true;
             }
             let openerId = e.target.getAttribute('id');

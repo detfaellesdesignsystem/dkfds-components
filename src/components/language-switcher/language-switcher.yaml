@@ -3,10 +3,6 @@ params:
   type: string
   required: false
   description: text for the aria-label attribute on the list element.
-- name: firstAriaLabel
-  type: string
-  required: true
-  description: Aria label til det valgte sprog.
 - name: overflowID
   type: string
   required: false
