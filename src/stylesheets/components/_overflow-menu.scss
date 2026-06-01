@@ -127,7 +127,8 @@
         & > li {
             border-bottom: func.border('very-low-contrast');
 
-            &:first-child button {
+            &:first-child button,
+            &:first-child a {
                 border-top-left-radius: func.border-radius('medium');
                 border-top-right-radius: func.border-radius('medium');
             }
@@ -135,7 +136,8 @@
             &:last-child {
                 border-bottom: 0;
 
-                button {
+                button,
+                a {
                     border-bottom-left-radius: func.border-radius('medium');
                     border-bottom-right-radius: func.border-radius('medium');
                 }

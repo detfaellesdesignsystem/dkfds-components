@@ -11020,14 +11020,15 @@ a.card.long .card-content{
 .overflow-menu .overflow-list > li{
   border-bottom:1px solid #DCDCDC;
 }
-.overflow-menu .overflow-list > li:first-child button{
+.overflow-menu .overflow-list > li:first-child button, .overflow-menu .overflow-list > li:first-child a{
   border-top-left-radius:8px;
   border-top-right-radius:8px;
 }
 .overflow-menu .overflow-list > li:last-child{
   border-bottom:0;
 }
-.overflow-menu .overflow-list > li:last-child button{
+.overflow-menu .overflow-list > li:last-child button,
+.overflow-menu .overflow-list > li:last-child a{
   border-bottom-left-radius:8px;
   border-bottom-right-radius:8px;
 }
