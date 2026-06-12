@@ -91,6 +91,7 @@ const sequence = function () {
   on: sequence("init", "add"),
   off: sequence("teardown", "remove")
 }, props)));
+(Object.getOwnPropertyDescriptor(behavior, "name") || {}).writable || Object.defineProperty(behavior, "name", { value: "default", configurable: true });
 // EXTERNAL MODULE: ./src/js/utils/select.js
 var utils_select = __webpack_require__(464);
 ;// ./src/js/utils/active-element.js
@@ -98,6 +99,7 @@ var utils_select = __webpack_require__(464);
   let htmlDocument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
   return htmlDocument.activeElement;
 });
+(Object.getOwnPropertyDescriptor(active_element, "name") || {}).writable || Object.defineProperty(active_element, "name", { value: "default", configurable: true });
 ;// ./src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 function isIosDevice() {
@@ -2325,6 +2327,7 @@ const isElement = value => value && typeof value === "object" && value.nodeType 
   const selection = context.querySelectorAll(selector);
   return Array.prototype.slice.call(selection);
 });
+(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
 
 /***/ },
 
@@ -2353,6 +2356,7 @@ const HIDDEN = 'aria-hidden';
   controls.setAttribute(HIDDEN, !expanded);
   return expanded;
 });
+(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
 
 /***/ },
 
