@@ -8124,11 +8124,11 @@ button.accordion-bulk-button[data-accordion-bulk-expand=false]{
   margin-right:16px;
   margin-top:0;
 }
-.date-group .form-group-day,
-.date-group .form-group-month{
+.date-group .form-group-day .form-input,
+.date-group .form-group-month .form-input{
   width:calc(2px + 16px + 16px + 2ch);
 }
-.date-group .form-group-year{
+.date-group .form-group-year .form-input{
   width:calc(2px + 16px + 16px + 4ch);
 }
 .date-group .button-open-calendar{

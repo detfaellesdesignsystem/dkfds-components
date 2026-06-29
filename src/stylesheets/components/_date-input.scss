@@ -23,12 +23,12 @@
         margin-top: 0;
     }
 
-    .form-group-day,
-    .form-group-month {
+    .form-group-day .form-input,
+    .form-group-month .form-input {
         width: calc(2px + #{func.units(4)} + #{func.units(4)} + 2ch);
     }
 
-    .form-group-year {
+    .form-group-year .form-input {
         width: calc(2px + #{func.units(4)} + #{func.units(4)} + 4ch);
     }
 
