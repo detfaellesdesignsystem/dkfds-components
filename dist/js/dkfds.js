@@ -11,8 +11,8 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 141:
-/***/ ((module) => {
+/***/ 141
+(module) {
 
 "use strict";
 /**
@@ -39,10 +39,10 @@ module.exports = function forEach (ary, callback, thisArg) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 486:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 486
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
@@ -91,6 +91,7 @@ const sequence = function () {
   on: sequence("init", "add"),
   off: sequence("teardown", "remove")
 }, props)));
+(Object.getOwnPropertyDescriptor(behavior, "name") || {}).writable || Object.defineProperty(behavior, "name", { value: "default", configurable: true });
 // EXTERNAL MODULE: ./src/js/utils/select.js
 var utils_select = __webpack_require__(464);
 ;// ./src/js/utils/active-element.js
@@ -98,6 +99,7 @@ var utils_select = __webpack_require__(464);
   let htmlDocument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
   return htmlDocument.activeElement;
 });
+(Object.getOwnPropertyDescriptor(active_element, "name") || {}).writable || Object.defineProperty(active_element, "name", { value: "default", configurable: true });
 ;// ./src/js/utils/is-ios-device.js
 // iOS detection from: http://stackoverflow.com/a/9039885/177710
 function isIosDevice() {
@@ -2175,10 +2177,10 @@ const datePicker = behavior(datePickerEvents, {
 
 /* harmony default export */ const date_picker = (datePicker);
 
-/***/ }),
+/***/ },
 
-/***/ 409:
-/***/ (() => {
+/***/ 409
+() {
 
 /* eslint-disable consistent-return */
 /* eslint-disable func-names */
@@ -2197,10 +2199,10 @@ const datePicker = behavior(datePickerEvents, {
   window.CustomEvent = CustomEvent;
 })();
 
-/***/ }),
+/***/ },
 
-/***/ 204:
-/***/ (() => {
+/***/ 204
+() {
 
 "use strict";
 
@@ -2222,10 +2224,10 @@ if (!(HIDDEN in elproto)) {
   });
 }
 
-/***/ }),
+/***/ },
 
-/***/ 923:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 923
+(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
 
@@ -2242,20 +2244,20 @@ __webpack_require__(259);
 // polyfills CustomEvent
 __webpack_require__(409);
 
-/***/ }),
+/***/ },
 
-/***/ 259:
-/***/ (() => {
+/***/ 259
+() {
 
 Number.isNaN = Number.isNaN || function isNaN(input) {
   // eslint-disable-next-line no-self-compare
   return typeof input === "number" && input !== input;
 };
 
-/***/ }),
+/***/ },
 
-/***/ 130:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 130
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -2272,10 +2274,10 @@ let breakpoints = {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (breakpoints);
 
-/***/ }),
+/***/ },
 
-/***/ 665:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 665
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -2290,10 +2292,10 @@ function isElementInViewport(el) {
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isElementInViewport);
 
-/***/ }),
+/***/ },
 
-/***/ 464:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 464
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -2325,11 +2327,12 @@ const isElement = value => value && typeof value === "object" && value.nodeType 
   const selection = context.querySelectorAll(selector);
   return Array.prototype.slice.call(selection);
 });
+(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
 
-/***/ }),
+/***/ },
 
-/***/ 188:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 188
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -2353,11 +2356,12 @@ const HIDDEN = 'aria-hidden';
   controls.setAttribute(HIDDEN, !expanded);
   return expanded;
 });
+(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
 
-/***/ }),
+/***/ },
 
-/***/ 952:
-/***/ (() => {
+/***/ 952
+() {
 
 /*
  * classList.js: Cross-browser full element.classList implementation.
@@ -2601,10 +2605,10 @@ if (objCtr.defineProperty) {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ 786:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ 786
+(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
 
@@ -2724,15 +2728,16 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global defi
 		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
 		__WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else {}
+  } else // removed by dead control flow
+{}
 
 })();
 
 
-/***/ }),
+/***/ },
 
-/***/ 840:
-/***/ ((module) => {
+/***/ 840
+(module) {
 
 "use strict";
 
@@ -2767,10 +2772,10 @@ function match(el, selector) {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ 228:
-/***/ ((module) => {
+/***/ 228
+(module) {
 
 "use strict";
 /*
@@ -2865,10 +2870,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 87:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 87
+(module, __unused_webpack_exports, __webpack_require__) {
 
 const assign = __webpack_require__(228);
 const delegate = __webpack_require__(746);
@@ -2949,10 +2954,10 @@ module.exports = function behavior(events, props) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 678:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 678
+(module, __unused_webpack_exports, __webpack_require__) {
 
 const matches = __webpack_require__(840);
 
@@ -2966,10 +2971,10 @@ module.exports = function(element, selector) {
 
 
 
-/***/ }),
+/***/ },
 
-/***/ 977:
-/***/ ((module) => {
+/***/ 977
+(module) {
 
 module.exports = function compose(functions) {
   return function(e) {
@@ -2980,10 +2985,10 @@ module.exports = function compose(functions) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 746:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 746
+(module, __unused_webpack_exports, __webpack_require__) {
 
 const closest = __webpack_require__(678);
 
@@ -2997,10 +3002,10 @@ module.exports = function delegate(selector, fn) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 591:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 591
+(module, __unused_webpack_exports, __webpack_require__) {
 
 const delegate = __webpack_require__(746);
 const compose = __webpack_require__(977);
@@ -3025,10 +3030,10 @@ module.exports = function delegateAll(selectors) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 39:
-/***/ ((module) => {
+/***/ 39
+(module) {
 
 module.exports = function ignore(element, fn) {
   return function ignorance(e) {
@@ -3039,10 +3044,10 @@ module.exports = function ignore(element, fn) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 525:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 525
+(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
 
@@ -3056,10 +3061,10 @@ module.exports = {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ 402:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 402
+(module, __unused_webpack_exports, __webpack_require__) {
 
 __webpack_require__(786);
 
@@ -3106,7 +3111,7 @@ module.exports = function keymap(keys) {
 module.exports.MODIFIERS = MODIFIERS;
 
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
