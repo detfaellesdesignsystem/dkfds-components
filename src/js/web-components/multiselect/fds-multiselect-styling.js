@@ -10,7 +10,7 @@ export const styles = `
         position: relative;
     }
 
-    ::slotted(label) {
+    ::slotted([slot="label"]) {
         font-size: 1.6rem;
         line-height: 2.4rem;
         font-weight: 600;
@@ -18,6 +18,7 @@ export const styles = `
         overflow-wrap: break-word;
         display: inline-block;
         max-width: 66ch;
+        cursor: default;
     }
 
     .opener-wrapper {
@@ -88,7 +89,7 @@ export const styles = `
         min-width: 0;
     }
 
-    :host(:disabled) ::slotted(label) {
+    :host(:disabled) ::slotted([slot="label"]) {
         color: var(--color-gray-500);
         font-weight: 500;
     }

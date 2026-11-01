@@ -13,7 +13,6 @@ class FDSMultiselectOpener extends HTMLElement {
 
     // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
 
-    static formAssociated = true;
     static observedAttributes = ['placeholder'];
 
     // #endregion

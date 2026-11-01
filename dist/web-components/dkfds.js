@@ -11,39 +11,31 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
+/******/ 	const __webpack_require__ = {};
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 			}
-/******/ 		};
-/******/ 	})();
+/******/ 		}
+/******/ 	};
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.hasOwn(obj, prop));
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
+let __webpack_exports__ = {};
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
@@ -5379,14 +5371,13 @@ function registerTextarea() {
 }
 /* harmony default export */ const fds_textarea = (registerTextarea);
 ;// ./src/js/web-components/error-summary/fds-error-summary.js
-
 const ERROR_WRAPPER_SELECTORS = ['fds-input', 'fds-checkbox', 'fds-checkbox-group', 'fds-radio-button-group', 'fds-date-input', 'fds-textarea', 'fds-select', 'fds-upload-file', 'fds-date-picker', 'fds-multiselect'];
 const ERROR_WRAPPER_SELECTOR = ERROR_WRAPPER_SELECTORS.join(', ');
 const ERROR_MESSAGE_SELECTOR = ERROR_WRAPPER_SELECTORS.map(selector => `${selector} fds-error-message`).join(', ');
 class FDSErrorSummary extends HTMLElement {
   // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
 
-  static observedAttributes = ['heading', 'heading-level', 'heading-id', 'auto'];
+  static observedAttributes = ['heading', 'heading-level', 'auto'];
 
   // #endregion
 
@@ -5400,11 +5391,10 @@ class FDSErrorSummary extends HTMLElement {
   // #region - PRIVATE METHODS ----------------------------------------------------------------------------
 
   #getSummaryElements() {
-    const navElement = this.querySelector(':scope > nav');
-    const headingElement = navElement?.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
-    const listElement = navElement?.querySelector(':scope > ul');
+    const containerElement = this.querySelector(':scope > div');
+    const headingElement = containerElement?.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+    const listElement = containerElement?.querySelector(':scope > ul');
     return {
-      navElement,
       headingElement,
       listElement
     };
@@ -5439,23 +5429,14 @@ class FDSErrorSummary extends HTMLElement {
     const hasErrors = !!listElement?.querySelector(':scope > li');
     this.hidden = !hasErrors;
   }
-  #updateHeadingId(headingId) {
-    const {
-      navElement,
-      headingElement
-    } = this.#getSummaryElements();
-    if (!navElement || !headingElement) return;
-    headingElement.id = headingId || headingElement.id || generateAndVerifyUniqueId('error-summary-heading');
-    navElement.setAttribute('aria-labelledby', headingElement.id);
-  }
   #ensureDOM() {
     const headingLevel = this.#normalizeHeadingLevel(this.getAttribute('heading-level'));
-    let navElement = this.querySelector(':scope > nav');
+    let containerElement = this.querySelector(':scope > div');
 
     // Attribute mode:
-    // No nav markup provided, so create canonical structure from attributes
-    if (!navElement) {
-      navElement = document.createElement('nav');
+    // No div markup provided, so create canonical structure from attributes
+    if (!containerElement) {
+      containerElement = document.createElement('div');
       const iconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       iconElement.setAttribute('aria-label', 'Fejl');
       iconElement.setAttribute('focusable', 'false');
@@ -5465,27 +5446,25 @@ class FDSErrorSummary extends HTMLElement {
       const headingElement = document.createElement(headingLevel);
       headingElement.textContent = this.getAttribute('heading') || 'Der er problemer';
       const listElement = document.createElement('ul');
-      navElement.appendChild(iconElement);
-      navElement.appendChild(headingElement);
-      navElement.appendChild(listElement);
-      this.appendChild(navElement);
-      this.#updateHeadingId();
+      containerElement.appendChild(iconElement);
+      containerElement.appendChild(headingElement);
+      containerElement.appendChild(listElement);
+      this.appendChild(containerElement);
       return true;
     }
-    const headingElement = navElement.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+    const headingElement = containerElement.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
     if (!headingElement) {
-      console.warn('<fds-error-summary> Missing direct child heading inside nav.');
+      console.warn('<fds-error-summary> Missing direct child heading inside div.');
       return false;
     }
 
-    // Enhance mode: 
-    // Nav exists, so the supported prerendered structure must already be present
-    const listElement = navElement.querySelector(':scope > ul');
+    // Enhance mode:
+    // Div exists, so the supported prerendered structure must already be present
+    const listElement = containerElement.querySelector(':scope > ul');
     if (!listElement) {
-      console.warn('<fds-error-summary> Missing direct child ul inside nav.');
+      console.warn('<fds-error-summary> Missing direct child ul inside div.');
       return false;
     }
-    this.#updateHeadingId();
     return true;
   }
   #updateHeading(heading) {
@@ -5499,7 +5478,6 @@ class FDSErrorSummary extends HTMLElement {
   #updateHeadingLevel(headingLevel) {
     const normalizedHeadingLevel = this.#normalizeHeadingLevel(headingLevel);
     const {
-      navElement,
       headingElement
     } = this.#getSummaryElements();
     if (!headingElement || headingElement.tagName.toLowerCase() === normalizedHeadingLevel) return;
@@ -5509,21 +5487,16 @@ class FDSErrorSummary extends HTMLElement {
     }
     newHeadingElement.append(...headingElement.childNodes);
     headingElement.replaceWith(newHeadingElement);
-    if (navElement && newHeadingElement.id) {
-      navElement.setAttribute('aria-labelledby', newHeadingElement.id);
-    }
   }
   #syncAll() {
     const heading = this.getAttribute('heading');
     const headingLevel = this.getAttribute('heading-level');
-    const headingId = this.getAttribute('heading-id');
     if (heading !== null) {
       this.#updateHeading(heading);
     }
     if (headingLevel !== null) {
       this.#updateHeadingLevel(headingLevel);
     }
-    this.#updateHeadingId(headingId);
   }
   #addError(errorId, message) {
     const {
@@ -5704,9 +5677,6 @@ class FDSErrorSummary extends HTMLElement {
     if (!this.#initialized) return;
     if (attribute === 'heading') {
       this.#updateHeading(newValue);
-    }
-    if (attribute === 'heading-id') {
-      this.#updateHeadingId(newValue);
     }
     if (attribute === 'heading-level') {
       this.#updateHeadingLevel(newValue);
@@ -9188,7 +9158,7 @@ const fds_multiselect_styling_styles = `
         position: relative;
     }
 
-    ::slotted(label) {
+    ::slotted([slot="label"]) {
         font-size: 1.6rem;
         line-height: 2.4rem;
         font-weight: 600;
@@ -9196,6 +9166,7 @@ const fds_multiselect_styling_styles = `
         overflow-wrap: break-word;
         display: inline-block;
         max-width: 66ch;
+        cursor: default;
     }
 
     .opener-wrapper {
@@ -9266,7 +9237,7 @@ const fds_multiselect_styling_styles = `
         min-width: 0;
     }
 
-    :host(:disabled) ::slotted(label) {
+    :host(:disabled) ::slotted([slot="label"]) {
         color: var(--color-gray-500);
         font-weight: 500;
     }
@@ -9363,10 +9334,8 @@ class FDSMultiselect extends HTMLElement {
     this.#removeTag(event.target);
   };
   #handleLabelClick = event => {
-    const target = event.composedPath()[0];
-    const isLabelClick = target.tagName === 'LABEL';
-    if (!isLabelClick) return;
-    event.preventDefault();
+    const label = this.#getLabel();
+    if (!label || !label.contains(event.target)) return;
     if (this.disabled) return;
     this.querySelector('fds-multiselect-opener')?.focus();
   };
@@ -9430,6 +9399,9 @@ class FDSMultiselect extends HTMLElement {
 
   // #region - PRIVATE METHODS ----------------------------------------------------------------------------
 
+  #getLabel() {
+    return this.querySelector(':scope > [slot="label"]');
+  }
   #findSourceForTag(tag) {
     for (const [source, tagEl] of this.#optionTags) {
       if (tagEl === tag) {
@@ -9530,7 +9502,7 @@ class FDSMultiselect extends HTMLElement {
   #updateTagsGroup() {
     const tags = this.shadowRoot.querySelector('.tags');
     const hasTags = tags.children.length > 0;
-    const label = this.querySelector('label');
+    const label = this.#getLabel();
     if (!hasTags || !label) {
       tags.removeAttribute('role');
       tags.removeAttribute('aria-label');
@@ -9562,7 +9534,7 @@ class FDSMultiselect extends HTMLElement {
     }
   }
   #updateRequiredStatus() {
-    const label = this.querySelector('label');
+    const label = this.#getLabel();
     const opener = this.querySelector('fds-multiselect-opener');
     if (!label || !opener) return;
     const value = this.getAttribute('show-required-status');
@@ -9613,11 +9585,14 @@ class FDSMultiselect extends HTMLElement {
   }
   #wireRelationships() {
     // Find the elements that need to be linked.
-    const label = this.querySelector('label');
+    const label = this.#getLabel();
     const opener = this.querySelector('fds-multiselect-opener');
     const dialog = this.querySelector('fds-multiselect-dialog');
 
-    // Give the opener and dialog IDs when they don't already have them.
+    // Give the label, opener and dialog IDs when they don't already have them.
+    if (label && !label.id) {
+      label.id = generateAndVerifyUniqueId('multiselect-label');
+    }
     if (opener && !opener.id) {
       opener.id = generateAndVerifyUniqueId('multiselect-opener');
     }
@@ -9625,9 +9600,9 @@ class FDSMultiselect extends HTMLElement {
       dialog.id = generateAndVerifyUniqueId('multiselect-dialog');
     }
 
-    // Associate the label with the opener, and the opener with the dialog.
-    if (label && opener) {
-      label.htmlFor = opener.id;
+    // Name the opener by the label, and associate the opener with the dialog.
+    if (opener) {
+      label ? opener.setAttribute('aria-labelledby', label.id) : opener.removeAttribute('aria-labelledby');
     }
     if (opener && dialog) {
       opener.setAttribute('aria-controls', dialog.id);
@@ -9694,6 +9669,8 @@ class FDSMultiselect extends HTMLElement {
   #setupHTML() {
     if (this.shadowRoot.querySelector('.opener-wrapper')) return;
     const labelSlot = document.createElement('slot');
+    labelSlot.name = 'label';
+    const defaultSlot = document.createElement('slot');
     const openerWrapper = document.createElement('div');
     openerWrapper.classList.add('opener-wrapper');
     const openerSlot = document.createElement('slot');
@@ -9705,7 +9682,7 @@ class FDSMultiselect extends HTMLElement {
     openerWrapper.append(openerSlot, tags, dialogSlot);
     const errorSlot = document.createElement('slot');
     errorSlot.name = 'error';
-    this.shadowRoot.append(labelSlot, openerWrapper, errorSlot);
+    this.shadowRoot.append(labelSlot, defaultSlot, openerWrapper, errorSlot);
   }
   #connectMutationObserver() {
     if (this.#mutationObserver) return;
@@ -9934,7 +9911,6 @@ const DEFAULT_PLACEHOLDER = 'Vælg en eller flere';
 class FDSMultiselectOpener extends HTMLElement {
   // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
 
-  static formAssociated = true;
   static observedAttributes = ['placeholder'];
 
   // #endregion

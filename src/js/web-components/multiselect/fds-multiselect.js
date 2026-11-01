@@ -70,12 +70,8 @@ class FDSMultiselect extends HTMLElement {
     };
 
     #handleLabelClick = (event) => {
-        const target = event.composedPath()[0];
-        const isLabelClick = target.tagName === 'LABEL';
-
-        if (!isLabelClick) return;
-
-        event.preventDefault();
+        const label = this.#getLabel();
+        if (!label || !label.contains(event.target)) return;
         if (this.disabled) return;
 
         this.querySelector('fds-multiselect-opener')?.focus();
@@ -150,6 +146,10 @@ class FDSMultiselect extends HTMLElement {
     // #endregion
 
     // #region - PRIVATE METHODS ----------------------------------------------------------------------------
+
+    #getLabel() {
+        return this.querySelector(':scope > [slot="label"]');
+    }
 
     #findSourceForTag(tag) {
         for (const [source, tagEl] of this.#optionTags) {
@@ -268,7 +268,7 @@ class FDSMultiselect extends HTMLElement {
     #updateTagsGroup() {
         const tags = this.shadowRoot.querySelector('.tags');
         const hasTags = tags.children.length > 0;
-        const label = this.querySelector('label');
+        const label = this.#getLabel();
 
         if (!hasTags || !label) {
             tags.removeAttribute('role');
@@ -307,7 +307,7 @@ class FDSMultiselect extends HTMLElement {
     }
 
     #updateRequiredStatus() {
-        const label = this.querySelector('label');
+        const label = this.#getLabel();
         const opener = this.querySelector('fds-multiselect-opener');
         if (!label || !opener) return;
 
@@ -365,16 +365,17 @@ class FDSMultiselect extends HTMLElement {
 
     #wireRelationships() {
         // Find the elements that need to be linked.
-        const label = this.querySelector('label');
+        const label = this.#getLabel();
         const opener = this.querySelector('fds-multiselect-opener');
         const dialog = this.querySelector('fds-multiselect-dialog');
 
-        // Give the opener and dialog IDs when they don't already have them.
+        // Give the label, opener and dialog IDs when they don't already have them.
+        if (label && !label.id) { label.id = generateAndVerifyUniqueId('multiselect-label'); }
         if (opener && !opener.id) { opener.id = generateAndVerifyUniqueId('multiselect-opener'); }
         if (dialog && !dialog.id) { dialog.id = generateAndVerifyUniqueId('multiselect-dialog'); }
 
-        // Associate the label with the opener, and the opener with the dialog.
-        if (label && opener) { label.htmlFor = opener.id; }
+        // Name the opener by the label, and associate the opener with the dialog.
+        if (opener) { label ? opener.setAttribute('aria-labelledby', label.id) : opener.removeAttribute('aria-labelledby'); }
         if (opener && dialog) { opener.setAttribute('aria-controls', dialog.id); }
 
         // Place the opener, dialog, and error messages in their shadow DOM slots.
@@ -442,6 +443,9 @@ class FDSMultiselect extends HTMLElement {
         if (this.shadowRoot.querySelector('.opener-wrapper')) return;
 
         const labelSlot = document.createElement('slot');
+        labelSlot.name = 'label';
+
+        const defaultSlot = document.createElement('slot');
 
         const openerWrapper = document.createElement('div');
         openerWrapper.classList.add('opener-wrapper');
@@ -460,7 +464,7 @@ class FDSMultiselect extends HTMLElement {
         const errorSlot = document.createElement('slot');
         errorSlot.name = 'error';
 
-        this.shadowRoot.append(labelSlot, openerWrapper, errorSlot);
+        this.shadowRoot.append(labelSlot, defaultSlot, openerWrapper, errorSlot);
     }
 
     #connectMutationObserver() {

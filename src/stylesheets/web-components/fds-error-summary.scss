@@ -8,7 +8,7 @@ fds-error-summary,
 .fds-error-summary {
     display: block;
 
-    >nav {
+    & > div {
         background-color: func.color(vars.$alert-error-background-color);
         background-image: linear-gradient(to right, func.color(vars.$alert-error-border-color) 4px, transparent 4px);
         background-repeat: no-repeat;
@@ -20,7 +20,7 @@ fds-error-summary,
         border-radius: func.border-radius('medium');
     }
 
-    >nav>svg {
+    & > div > svg {
         position: absolute;
         left: calc(func.units(vars.$alert-padding, 'rem') + func.units(2, 'rem'));
         height: func.units(vars.$typography-body-text-line-height, 'rem');
@@ -33,12 +33,12 @@ fds-error-summary,
         }
     }
 
-    >nav>h1,
-    >nav>h2,
-    >nav>h3,
-    >nav>h4,
-    >nav>h5,
-    >nav>h6 {
+    & > div > h1,
+    & > div > h2,
+    & > div > h3,
+    & > div > h4,
+    & > div > h5,
+    & > div > h6 {
         @include mixins.responsive-style(vars.$alert-heading-fontsize, font-size);
         @include mixins.responsive-style(vars.$alert-heading-lineheight, line-height);
         margin-top: 0;
@@ -48,7 +48,7 @@ fds-error-summary,
         overflow-wrap: break-word;
     }
 
-    >nav>ul {
+    & > div > ul {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -56,7 +56,7 @@ fds-error-summary,
         max-width: vars.$typography-text-max-width;
     }
 
-    >nav>ul>li {
+    & > div > ul > li {
         list-style: none;
         margin: 0;
         margin-top: 8px;
@@ -65,20 +65,20 @@ fds-error-summary,
         max-width: vars.$typography-text-max-width;
     }
 
-    >nav>ul>li::marker,
-    >nav>ul>li::before {
+    & > div > ul > li::marker,
+    & > div > ul > li::before {
         content: none;
     }
 
-    >nav>ul a,
-    >nav>ul a:link,
-    >nav>ul a:active,
-    >nav>ul a:visited,
-    >nav>ul a:hover {
+    & > div > ul a,
+    & > div > ul a:link,
+    & > div > ul a:active,
+    & > div > ul a:visited,
+    & > div > ul a:hover {
         color: func.color(vars.$alert-text-color);
     }
 
     &.alert--paragraph {
-        max-width: 66ch
+        max-width: 66ch;
     }
 }
