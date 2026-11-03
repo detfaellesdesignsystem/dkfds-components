@@ -8,6 +8,11 @@ export const styles = `
     :host {
         display: block;
         position: relative;
+        margin-top: 24px;
+    }
+
+    :host(:first-child) {
+        margin-top: 0;
     }
 
     ::slotted([slot="label"]) {

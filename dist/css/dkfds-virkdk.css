@@ -6447,10 +6447,6 @@ figure{
   background-image:url("../img/svg-icons/plus.svg");
 }
 
-.icon-plus-circle:not(a){
-  background-image:url("../img/svg-icons/plus-circle.svg");
-}
-
 .icon-print:not(a){
   background-image:url("../img/svg-icons/print.svg");
 }

@@ -77,7 +77,7 @@ class FDSHelpText extends HTMLElement {
 
         // During disconnect, the custom element may lose connection to the wrapper.
         // Save the wrapper and use it to dispatch events - otherwise, the events may be lost.
-        this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button, fds-radio-button-group, fds-date-input, fds-upload-file, fds-multiselect');
+        this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button, fds-radio-button-group, fds-date-input, fds-multiselect');
         this.#parentWrapper?.dispatchEvent(new Event('help-text-callback'));
     }
 

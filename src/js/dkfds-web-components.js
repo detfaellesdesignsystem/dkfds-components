@@ -13,8 +13,6 @@ import registerRadioButton from './web-components/radio-button/fds-radio-button'
 import registerRadioButtonGroup from './web-components/radio-button/fds-radio-button-group';
 import registerDateInput from './web-components/date-input/fds-date-input';
 import registerSelect from './web-components/select/fds-select';
-import registerUploadFile from './web-components/upload-file/fds-upload-file';
-import registerFileItem from './web-components/upload-file/fds-file-item';
 import registerDatePicker from './web-components/date-picker/fds-date-picker';
 import registerDatePickerGrid from './web-components/date-picker/fds-date-picker-grid';
 import registerTextarea from './web-components/textarea/fds-textarea';
@@ -57,8 +55,6 @@ const registerCustomElements = () => {
     registerDatePicker();
     registerDatePickerGrid();
     registerTextarea();
-    registerUploadFile();
-    registerFileItem();
     registerErrorSummary();
     registerInputAffix();
     registerPortalInfo();
@@ -90,4 +86,4 @@ else {
     registerCustomElements();
 }
 
-export { registerCustomElements, registerAccordion, registerAccordionGroup, registerInput, registerHelpText, registerCharacterLimit, registerErrorMessage, registerCheckbox, registerCheckboxGroup, registerRadioButton, registerRadioButtonGroup, registerDateInput, registerSelect, registerUploadFile, registerFileItem, registerDatePicker, registerDatePickerGrid, registerTextarea, registerErrorSummary, registerInputAffix, registerPortalInfo, registerSolutionInfo, registerDropdownMenu, registerMainMenu, registerTooltip, registerTooltipIcon, registerToggleSwitch, registerModalOpener, registerModalCloser, registerModal, registerTab, registerTabPanel, registerTabs, registerAlert, registerMultiselect, registerMultiselectSelectAll, registerMultiselectOpener, registerMultiselectDialog, registerMultiselectOptions, registerMultiselectOption };
+export { registerCustomElements, registerAccordion, registerAccordionGroup, registerInput, registerHelpText, registerCharacterLimit, registerErrorMessage, registerCheckbox, registerCheckboxGroup, registerRadioButton, registerRadioButtonGroup, registerDateInput, registerSelect, registerDatePicker, registerDatePickerGrid, registerTextarea, registerErrorSummary, registerInputAffix, registerPortalInfo, registerSolutionInfo, registerDropdownMenu, registerMainMenu, registerTooltip, registerTooltipIcon, registerToggleSwitch, registerModalOpener, registerModalCloser, registerModal, registerTab, registerTabPanel, registerTabs, registerAlert, registerMultiselect, registerMultiselectSelectAll, registerMultiselectOpener, registerMultiselectDialog, registerMultiselectOptions, registerMultiselectOption };

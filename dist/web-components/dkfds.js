@@ -54,7 +54,6 @@ __webpack_require__.d(__webpack_exports__, {
   registerDropdownMenu: () => (/* reexport */ fds_dropdown_menu),
   registerErrorMessage: () => (/* reexport */ fds_error_message),
   registerErrorSummary: () => (/* reexport */ fds_error_summary),
-  registerFileItem: () => (/* reexport */ fds_file_item),
   registerHelpText: () => (/* reexport */ fds_help_text),
   registerInput: () => (/* reexport */ fds_input),
   registerInputAffix: () => (/* reexport */ input_affix),
@@ -79,8 +78,7 @@ __webpack_require__.d(__webpack_exports__, {
   registerTextarea: () => (/* reexport */ fds_textarea),
   registerToggleSwitch: () => (/* reexport */ fds_toggle_switch),
   registerTooltip: () => (/* reexport */ fds_tooltip),
-  registerTooltipIcon: () => (/* reexport */ fds_tooltip_icon),
-  registerUploadFile: () => (/* reexport */ fds_upload_file)
+  registerTooltipIcon: () => (/* reexport */ fds_tooltip_icon)
 });
 
 ;// ./src/js/utils/generate-unique-id.js
@@ -1049,7 +1047,7 @@ class FDSHelpText extends HTMLElement {
 
     // During disconnect, the custom element may lose connection to the wrapper.
     // Save the wrapper and use it to dispatch events - otherwise, the events may be lost.
-    this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button, fds-radio-button-group, fds-date-input, fds-upload-file, fds-multiselect');
+    this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button, fds-radio-button-group, fds-date-input, fds-multiselect');
     this.#parentWrapper?.dispatchEvent(new Event('help-text-callback'));
   }
 
@@ -1448,7 +1446,7 @@ class FDSErrorMessage extends HTMLElement {
     }
 
     // Save reference to parent wrapper
-    this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button-group, fds-date-input, fds-textarea, fds-select, fds-upload-file, fds-date-picker, fds-multiselect');
+    this.#parentWrapper = this.closest('fds-input, fds-checkbox, fds-checkbox-group, fds-radio-button-group, fds-date-input, fds-textarea, fds-select, fds-date-picker, fds-multiselect');
     this.#dispatchErrorMessageCallback();
   }
 
@@ -2630,754 +2628,6 @@ function registerSelect() {
   }
 }
 /* harmony default export */ const fds_select = (registerSelect);
-;// ./src/js/web-components/upload-file/fds-upload-file.js
-
-
-class FDSUploadFile extends HTMLElement {
-  /**
-   * Internal state:
-   * - #files holds the canonical list of selected files (source of truth).
-   * - UI (dropzone vs file list) is rendered based on #files.length.
-   * - DOM is partially cached (#dropzoneEl, #fileListEl) to allow toggling without recreating elements unnecessarily.
-   */
-
-  // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
-
-  static observedAttributes = ['dropzone-prefix', 'dropzone-link', 'dropzone-suffix', 'file-list-header', 'file-list-more', 'remove-text', 'heading-level', 'show-required-status'];
-
-  // #endregion
-
-  // #region - GETTERS AND SETTERS ------------------------------------------------------------------------
-
-  get showRequiredStatus() {
-    return this.getAttribute('show-required-status');
-  }
-  set showRequiredStatus(value) {
-    value === null ? this.removeAttribute('show-required-status') : this.setAttribute('show-required-status', value);
-  }
-
-  // #endregion
-
-  // #region - PRIVATE INSTANCE FIELDS --------------------------------------------------------------------
-
-  #inputEl = null;
-  #initialized = false;
-  #files = [];
-  #uploadObserver = null;
-  #dropzoneEl = null;
-  #fileListEl = null;
-  #onClick;
-  #onInputChange;
-
-  // #endregion
-
-  // #region - PRIVATE EVENT HANDLERS ---------------------------------------------------------------------
-
-  #handleMutations = records => {
-    let shouldUpdateAccessibility = false;
-    for (const {
-      attributeName,
-      target,
-      addedNodes,
-      removedNodes
-    } of records) {
-      if (attributeName === 'hidden' && target === this) {
-        notifySummaryOnVisibilityChange(this);
-      }
-
-      // The input's disabled attribute changed
-      if (attributeName === 'disabled' && target?.tagName === 'INPUT') {
-        const label = this.querySelector('label');
-        setDisabledClass(label, target);
-      }
-
-      // The input's required attribute changed
-      else if (attributeName === 'required' && target?.tagName === 'INPUT') {
-        if (this.hasAttribute('show-required-status')) {
-          this.#updateRequiredStatus();
-        }
-      }
-      if (attributeName === 'id' || attributeName === 'hidden' || attributeName === 'aria-hidden') {
-        shouldUpdateAccessibility = true;
-        continue;
-      }
-      const relevantTagNames = ['FDS-ERROR-MESSAGE', 'FDS-HELP-TEXT'];
-      const allNodes = [...addedNodes, ...removedNodes];
-      if (allNodes.some(node => relevantTagNames.includes(node?.tagName))) {
-        shouldUpdateAccessibility = true;
-      }
-    }
-    if (shouldUpdateAccessibility) {
-      this.#setupAccessibility();
-    }
-  };
-
-  // #endregion
-
-  // #region - PRIVATE METHODS ----------------------------------------------------------------------------
-
-  #getDropzonePrefix() {
-    return this.getAttribute('dropzone-prefix') ?? 'Træk dine filer herhen eller';
-  }
-  #getDropzoneLink() {
-    return this.getAttribute('dropzone-link') ?? 'vælg filer';
-  }
-  #getDropzoneSuffix() {
-    return this.getAttribute('dropzone-suffix') ?? '';
-  }
-  #getFileListHeader() {
-    return this.getAttribute('file-list-header') ?? 'Valgte filer';
-  }
-  #getFileListMore() {
-    return this.getAttribute('file-list-more') ?? 'Vælg flere filer';
-  }
-  #getFileListHeadingLevel() {
-    const headingLevel = this.getAttribute('heading-level');
-    if (!headingLevel || !['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(headingLevel)) {
-      return 'h5';
-    }
-    return headingLevel;
-  }
-  #setupInput(input) {
-    const label = this.querySelector('label');
-    if (!label || !input) return;
-    label.classList.add('fds-upload-label');
-    input.classList.add('fds-upload-input');
-    if (!input.id) {
-      input.id = generateAndVerifyUniqueId('file-input');
-    }
-    label.setAttribute('for', input.id);
-    input.removeEventListener('change', this.#onInputChange);
-    input.addEventListener('change', this.#onInputChange);
-    this.#inputEl = input;
-    setDisabledClass(label, input);
-    if (this.hasAttribute('show-required-status')) {
-      this.#updateRequiredStatus();
-    }
-  }
-  #hydrateExistingDropzone() {
-    this.#setupInput(this.querySelector('.fds-upload-dropzone input[type="file"]'));
-  }
-  #setText(selector, value) {
-    const element = this.querySelector(selector);
-    if (element) {
-      element.textContent = value;
-    }
-  }
-  #setFileItemsRemoveText() {
-    const fileItems = this.querySelectorAll('fds-file-item');
-    const removeText = this.getAttribute('remove-text') || 'Fjern';
-    fileItems.forEach(item => {
-      item.setAttribute('remove-text', removeText);
-    });
-  }
-  #setDropzoneText(container) {
-    container.replaceChildren();
-    const prefix = this.#getDropzonePrefix();
-    if (prefix) {
-      container.append(prefix + ' ');
-    }
-    const linkText = document.createElement('span');
-    linkText.className = 'fds-upload-choose';
-    linkText.textContent = this.#getDropzoneLink();
-    container.appendChild(linkText);
-    const suffix = this.#getDropzoneSuffix();
-    if (suffix) {
-      container.append(' ' + suffix);
-    }
-  }
-  #syncAddMoreVisibility() {
-    const addMore = this.#fileListEl?.querySelector('.fds-upload-add-more');
-    if (addMore) {
-      addMore.hidden = !this.#inputEl?.multiple;
-    }
-  }
-  #showDropzone() {
-    if (!this.#dropzoneEl) {
-      const input = this.#inputEl || this.querySelector('input[type="file"]');
-      if (!input) return;
-      const originalParent = input.parentNode;
-      const originalNextSibling = input.nextSibling;
-      this.#dropzoneEl = this.#renderDropzone();
-      if (!this.#dropzoneEl) return;
-      if (originalParent === this) {
-        this.insertBefore(this.#dropzoneEl, originalNextSibling);
-      }
-    }
-    this.#fileListEl?.remove();
-    this.#fileListEl = null;
-    if (!this.contains(this.#dropzoneEl)) {
-      const errorMessage = this.querySelector('fds-error-message');
-      if (errorMessage) {
-        this.insertBefore(this.#dropzoneEl, errorMessage);
-      } else {
-        this.appendChild(this.#dropzoneEl);
-      }
-    }
-  }
-  #showFileList() {
-    const dropzoneNextSibling = this.#dropzoneEl?.nextSibling ?? null;
-    if (!this.#fileListEl) {
-      this.#fileListEl = this.#renderFileList();
-    } else {
-      this.#updateFileList();
-    }
-    this.#syncAddMoreVisibility();
-    this.#dropzoneEl?.remove();
-    this.#dropzoneEl = null;
-    if (!this.contains(this.#fileListEl)) {
-      const errorMessage = this.querySelector('fds-error-message');
-      if (dropzoneNextSibling && this.contains(dropzoneNextSibling)) {
-        this.insertBefore(this.#fileListEl, dropzoneNextSibling);
-      } else if (errorMessage) {
-        this.insertBefore(this.#fileListEl, errorMessage);
-      } else {
-        this.appendChild(this.#fileListEl);
-      }
-    }
-  }
-  #updateFileList() {
-    const filesContainer = this.#fileListEl.querySelector('.fds-upload-files');
-    if (!filesContainer) return;
-    filesContainer.replaceChildren();
-    this.#files.forEach(fileObj => {
-      filesContainer.appendChild(this.#renderFileItem(fileObj));
-    });
-  }
-  #updateFileListHeadingLevel() {
-    if (!this.#fileListEl) return;
-    const currentTitle = this.#fileListEl.querySelector('.fds-upload-title');
-    if (!currentTitle) return;
-    const newTag = this.#getFileListHeadingLevel();
-    const currentTag = currentTitle.tagName.toLowerCase();
-    if (currentTag === newTag) return;
-    const newTitle = document.createElement(newTag);
-    newTitle.className = currentTitle.className;
-    newTitle.textContent = currentTitle.textContent;
-    currentTitle.replaceWith(newTitle);
-  }
-  #updateDropzoneContent() {
-    const content = this.#dropzoneEl?.querySelector('.fds-upload-dropzone-content p');
-    if (!content) return;
-    this.#setDropzoneText(content);
-  }
-
-  /* Mutation observer */
-
-  #setupObserver() {
-    if (this.#uploadObserver) return;
-    this.#uploadObserver = new MutationObserver(this.#handleMutations);
-    this.#uploadObserver.observe(this, mutationObserverConfig);
-  }
-  #setupAccessibility() {
-    const input = this.#inputEl;
-    if (!input) return;
-    const idsForAriaDescribedby = [];
-    let isInvalid = false;
-
-    // Preserve dropzone description for screen reader
-    const dropzoneDesc = this.querySelector('.fds-upload-dropzone-content');
-    if (dropzoneDesc && dropzoneDesc.id) {
-      idsForAriaDescribedby.push(dropzoneDesc.id);
-    }
-    const errorMessages = this.querySelectorAll('fds-error-message:not([targets])');
-    const helpTexts = this.querySelectorAll('fds-help-text');
-    const ariaDescribedbyElements = [...errorMessages, ...helpTexts];
-
-    // Build aria-describedby attribute from visible elements
-    for (const element of ariaDescribedbyElements) {
-      const isHidden = element.hasAttribute('hidden');
-      const isAriaHidden = element.getAttribute('aria-hidden') === 'true';
-      if (element.id && !isHidden && !isAriaHidden) {
-        idsForAriaDescribedby.push(element.id);
-        if (element.tagName === 'FDS-ERROR-MESSAGE') {
-          isInvalid = true;
-        }
-      }
-    }
-    if (idsForAriaDescribedby.length > 0) {
-      const describedBy = idsForAriaDescribedby.join(' ');
-      input.setAttribute('aria-describedby', describedBy);
-    } else {
-      input.removeAttribute('aria-describedby');
-    }
-    if (input) {
-      isInvalid ? input.setAttribute('aria-invalid', 'true') : input.removeAttribute('aria-invalid');
-    }
-  }
-
-  /* -----------------------------
-     Rendering
-  ----------------------------- */
-
-  #render() {
-    if (this.#files.length === 0) {
-      this.#showDropzone();
-    } else {
-      this.#showFileList();
-    }
-    this.#setupAccessibility();
-  }
-  #renderDropzone() {
-    const dropzone = document.createElement('div');
-    dropzone.className = 'fds-upload-dropzone';
-
-    // Input
-    const input = this.#inputEl || this.querySelector('input[type="file"]');
-    if (!input) return null;
-    this.#setupInput(input);
-
-    // Dropzone content
-    const content = document.createElement('div');
-    content.className = 'fds-upload-dropzone-content';
-    content.id = `dropzone-${input.id}`;
-    ;
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('icon-svg');
-    svg.setAttribute('aria-hidden', 'true');
-    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', '#plus-circle');
-    svg.appendChild(use);
-    const p = document.createElement('p');
-
-    // Text content: prefix + link + suffix
-    this.#setDropzoneText(p);
-    content.append(svg, p);
-    dropzone.append(input, content);
-    return dropzone;
-  }
-  #renderFileList() {
-    const container = document.createElement('div');
-    container.className = 'fds-upload-file-list';
-    const header = document.createElement('div');
-    header.className = 'fds-upload-header';
-    const level = this.#getFileListHeadingLevel();
-    const title = document.createElement(level);
-    title.className = 'fds-upload-title';
-    title.textContent = this.#getFileListHeader();
-    const addMore = document.createElement('button');
-    addMore.type = 'button';
-    addMore.className = 'fds-upload-add-more';
-    addMore.textContent = this.#getFileListMore();
-    addMore.hidden = !this.#inputEl?.multiple;
-    header.append(title, addMore);
-    const filesContainer = document.createElement('div');
-    filesContainer.setAttribute('role', 'list');
-    filesContainer.className = 'fds-upload-files';
-    this.#files.forEach(fileObj => {
-      filesContainer.appendChild(this.#renderFileItem(fileObj));
-    });
-    container.append(header, filesContainer);
-    return container;
-  }
-  #renderFileItem(fileObj) {
-    const {
-      id,
-      file
-    } = fileObj;
-    const fileItem = document.createElement('fds-file-item');
-    const removeText = this.getAttribute('remove-text') || 'Fjern';
-    fileItem.setAttribute('remove-text', removeText);
-    fileItem.setFileData(file, id);
-    return fileItem;
-  }
-
-  /* -----------------------------
-     State updates
-  ----------------------------- */
-
-  #addFiles(fileList) {
-    const isFirstFile = this.#files.length === 0;
-    const incomingFiles = Array.from(fileList);
-    const allowedFiles = this.#inputEl?.multiple ? incomingFiles : incomingFiles.slice(0, Math.max(0, 1 - this.#files.length));
-    if (allowedFiles.length === 0) return;
-    const newFiles = allowedFiles.map(file => ({
-      id: generateAndVerifyUniqueId('file'),
-      file
-    }));
-    this.#files.push(...newFiles);
-
-    // Emit event with added files
-    this.dispatchEvent(new CustomEvent('files-added', {
-      detail: newFiles.map(f => f.file),
-      bubbles: true,
-      composed: true
-    }));
-
-    // If this is the first file, we must re-render to switch from dropzone view to file list view.
-    if (isFirstFile) {
-      this.#render();
-      return;
-    }
-    const filesContainer = this.querySelector('.fds-upload-files');
-    newFiles.forEach(fileObj => {
-      filesContainer?.appendChild(this.#renderFileItem(fileObj));
-    });
-  }
-  #removeFileByKey(key) {
-    // Find the file to remove before filtering
-    const removedFile = this.#files.find(f => f.id === key);
-
-    // Remove it from internal state
-    this.#files = this.#files.filter(f => f.id !== key);
-    const fileItem = this.querySelector(`fds-file-item[data-file-key="${key}"]`);
-    if (fileItem) {
-      fileItem.remove();
-    }
-
-    // Emit event with removed file
-    if (removedFile) {
-      this.dispatchEvent(new CustomEvent('files-removed', {
-        detail: removedFile.file,
-        bubbles: true,
-        composed: true
-      }));
-    }
-
-    // Re-render to show dropzone if all files are removed
-    if (this.#files.length === 0) {
-      this.#render();
-    }
-  }
-  #updateRequiredStatus() {
-    const label = this.querySelector('label');
-    const input = this.#inputEl || this.querySelector('input[type="file"]');
-    showRequiredStatus(label, input, this.getAttribute('show-required-status'));
-  }
-
-  // #endregion
-
-  // #region - CONSTRUCTOR (do not access or add attributes in the constructor) ---------------------------
-
-  constructor() {
-    super();
-    this.#onInputChange = e => this.#addFiles(e.target.files);
-    this.#onClick = e => {
-      if (this.#inputEl?.disabled) return;
-      const removeBtn = e.target.closest('.fds-upload-remove');
-      if (removeBtn) {
-        const fileKey = removeBtn.dataset.fileKey;
-        if (fileKey) {
-          this.#removeFileByKey(fileKey);
-          return;
-        }
-      }
-      const addMore = e.target.closest('.fds-upload-add-more');
-      if (addMore) {
-        if (!this.#inputEl?.multiple) return;
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.multiple = true;
-        input.style.display = 'none';
-        const cleanup = () => {
-          input.remove();
-          window.removeEventListener('focus', cleanup);
-        };
-        input.addEventListener('change', e => {
-          if (e.target.files?.length) {
-            this.#addFiles(e.target.files);
-          }
-          cleanup();
-        }, {
-          once: true
-        });
-        window.addEventListener('focus', cleanup, {
-          once: true
-        });
-        document.body.appendChild(input);
-        input.click();
-      }
-    };
-  }
-
-  // #endregion
-
-  // #region - PUBLIC METHODS -----------------------------------------------------------------------------
-
-  getFiles() {
-    return this.#files.map(fileObj => ({
-      id: fileObj.id,
-      file: fileObj.file
-    }));
-  }
-  addError(message) {
-    let fileId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    const errorMessage = document.createElement('fds-error-message');
-    errorMessage.textContent = message;
-    if (fileId) {
-      errorMessage.setAttribute('targets', fileId);
-    }
-    this.appendChild(errorMessage);
-    this.#setupAccessibility();
-    return errorMessage;
-  }
-  removeError(errorElement) {
-    if (this.contains(errorElement)) {
-      errorElement.remove();
-      this.#setupAccessibility();
-    }
-  }
-
-  // #endregion
-
-  // #region - ADDED TO DOCUMENT --------------------------------------------------------------------------
-
-  connectedCallback() {
-    if (this.#initialized) return;
-    this.addEventListener('click', this.#onClick);
-    this.#setupObserver();
-    const existingDropzone = this.querySelector('.fds-upload-dropzone');
-    const existingFileList = this.querySelector('.fds-upload-file-list');
-    this.#dropzoneEl = existingDropzone;
-    this.#fileListEl = existingFileList;
-    if (existingDropzone) {
-      this.#hydrateExistingDropzone();
-    } else {
-      this.#setupInput(this.querySelector('input[type="file"]'));
-    }
-    if (!existingDropzone && !existingFileList) {
-      this.#render();
-    }
-    this.#setupAccessibility();
-    this.#initialized = true;
-  }
-
-  // #endregion
-
-  // #region - REMOVED FROM DOCUMENT ----------------------------------------------------------------------
-
-  disconnectedCallback() {
-    notifySummaryOnDisconnect(this);
-    this.#initialized = false;
-    this.removeEventListener('click', this.#onClick);
-    this.#inputEl?.removeEventListener('change', this.#onInputChange);
-    if (this.#uploadObserver) {
-      this.#uploadObserver.disconnect();
-      this.#uploadObserver = null;
-    }
-  }
-
-  // #endregion
-
-  // #region - ATTRIBUTE(S) CHANGED -----------------------------------------------------------------------
-
-  attributeChangedCallback(attribute, oldValue, newValue) {
-    if (!this.#initialized) return;
-    if (attribute === 'show-required-status' && oldValue !== newValue) {
-      this.#updateRequiredStatus();
-    }
-    if (['dropzone-prefix', 'dropzone-link', 'dropzone-suffix'].includes(attribute) && oldValue !== newValue) {
-      if (this.#files.length === 0) {
-        this.#updateDropzoneContent();
-      }
-    }
-    if (attribute === 'file-list-header' && oldValue !== newValue) {
-      this.#setText('.fds-upload-title', this.#getFileListHeader());
-    }
-    if (attribute === 'file-list-more' && oldValue !== newValue) {
-      this.#setText('.fds-upload-add-more', this.#getFileListMore());
-    }
-    if (attribute === 'remove-text' && oldValue !== newValue) {
-      this.#setFileItemsRemoveText();
-    }
-    if (attribute === 'heading-level' && oldValue !== newValue) {
-      this.#updateFileListHeadingLevel();
-    }
-  }
-
-  // #endregion
-}
-function registerUploadFile() {
-  if (customElements.get('fds-upload-file') === undefined) {
-    window.customElements.define('fds-upload-file', FDSUploadFile);
-  }
-}
-/* harmony default export */ const fds_upload_file = (registerUploadFile);
-;// ./src/js/web-components/upload-file/fds-file-item.js
-
-class FDSFileItem extends HTMLElement {
-  // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
-
-  static observedAttributes = ['remove-text'];
-
-  // #endregion
-
-  // #region - PRIVATE INSTANCE FIELDS --------------------------------------------------------------------
-
-  #initialized = false;
-  #file = null;
-  #fileId = null;
-  #observer = null;
-
-  // #endregion
-
-  // #region - PRIVATE METHODS ----------------------------------------------------------------------------
-
-  #getFileTypeIcon(file) {
-    const mimeType = file.type;
-    if (mimeType.startsWith('image/')) return 'file-image';
-    if (mimeType === 'application/pdf') return 'file-pdf';
-    if (mimeType.includes('word')) return 'file-word';
-    if (mimeType.includes('excel') || mimeType.includes('spreadsheet')) return 'file-excel';
-    return 'file';
-  }
-  #createFileIcon(file) {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('icon-svg', 'fds-upload-file-icon');
-    svg.setAttribute('aria-hidden', 'true');
-    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', `#${this.#getFileTypeIcon(file)}`);
-    svg.appendChild(use);
-    return svg;
-  }
-  #getRemoveText() {
-    return this.getAttribute('remove-text') ?? 'Fjern';
-  }
-  #updateRemoveButtonText() {
-    const removeTextSpan = this.querySelector('.fds-upload-remove-text');
-    const removeButton = this.querySelector('.fds-upload-remove');
-    if (!removeTextSpan || !removeButton || !this.#file) return;
-    const removeText = this.#getRemoveText();
-    removeTextSpan.textContent = ` ${removeText}`;
-    removeButton.setAttribute('aria-label', `${removeText} ${this.#file.name}`);
-  }
-  #setupErrorObserver() {
-    if (this.#observer) {
-      this.#observer.disconnect();
-    }
-    this.#observer = new MutationObserver(() => {
-      this.#updateErrorState();
-    });
-    const uploadParent = this.closest('fds-upload-file');
-    if (uploadParent) {
-      const config = {
-        subtree: true,
-        childList: true,
-        attributes: true,
-        attributeFilter: ['hidden', 'aria-hidden', 'targets']
-      };
-      this.#observer.observe(uploadParent, config);
-    }
-    this.#updateErrorState();
-  }
-  #updateErrorState() {
-    if (!this.#fileId) return;
-    const uploadParent = this.closest('fds-upload-file');
-    if (!uploadParent) return;
-    const allErrors = uploadParent.querySelectorAll('fds-error-message[targets]');
-    const matchingErrors = Array.from(allErrors).filter(errorEl => {
-      const targetsAttr = errorEl.getAttribute('targets');
-      if (!targetsAttr) return false;
-      const targets = targetsAttr.split(',').map(t => t.trim());
-      return targets.includes(this.#fileId);
-    });
-    this.classList.remove('fds-upload-file-item-error');
-    this.removeAttribute('aria-invalid');
-    this.removeAttribute('aria-describedby');
-    matchingErrors.forEach(errorEl => {
-      if (errorEl.parentElement !== this) {
-        this.appendChild(errorEl);
-      }
-    });
-    if (matchingErrors.length > 0) {
-      this.classList.add('fds-upload-file-item-error');
-      this.setAttribute('aria-invalid', 'true');
-      const errorIds = matchingErrors.map(error => error.id).filter(Boolean);
-      if (errorIds.length > 0) {
-        this.setAttribute('aria-describedby', errorIds.join(' '));
-      }
-    }
-  }
-  #render() {
-    if (!this.#file || !this.#fileId) return;
-    this.innerHTML = '';
-    this.className = 'fds-upload-file-item';
-    this.dataset.fileKey = this.#fileId;
-    this.setAttribute('role', 'listitem');
-    const row = document.createElement('div');
-    row.className = 'fds-upload-file-row';
-    const fileIcon = this.#createFileIcon(this.#file);
-    const name = document.createElement('span');
-    name.className = 'fds-upload-file-name';
-    name.textContent = this.#file.name;
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.className = 'fds-upload-remove';
-    remove.dataset.fileKey = this.#fileId;
-    const removeTextSpan = document.createElement('span');
-    removeTextSpan.className = 'fds-upload-remove-text';
-    removeTextSpan.textContent = ` ${this.#getRemoveText()}`;
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('icon-svg');
-    svg.setAttribute('aria-hidden', 'true');
-    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    use.setAttribute('href', '#close');
-    svg.appendChild(use);
-    remove.appendChild(svg);
-    remove.appendChild(removeTextSpan);
-    remove.setAttribute('aria-label', `${this.#getRemoveText()} ${this.#file.name}`);
-    row.append(fileIcon, name, remove);
-    this.appendChild(row);
-    this.#setupErrorObserver();
-  }
-
-  // #endregion
-
-  // #region - PUBLIC METHODS -----------------------------------------------------------------------------
-
-  setFileData(file, fileId) {
-    this.#file = file;
-    this.#fileId = fileId;
-    if (this.isConnected) {
-      this.#render();
-    }
-  }
-
-  // #endregion
-
-  // #region - ADDED TO DOCUMENT --------------------------------------------------------------------------
-
-  connectedCallback() {
-    if (this.#initialized) return;
-    if (this.#file && this.#fileId && !this.innerHTML) {
-      this.#render();
-    }
-    this.#initialized = true;
-  }
-
-  // #endregion
-
-  // #region - REMOVED FROM DOCUMENT ----------------------------------------------------------------------
-
-  disconnectedCallback() {
-    this.#initialized = false;
-    if (this.#observer) {
-      this.#observer.disconnect();
-      this.#observer = null;
-    }
-  }
-
-  // #endregion
-
-  // #region - ATTRIBUTE(S) CHANGED -----------------------------------------------------------------------
-
-  attributeChangedCallback(attribute, oldValue, newValue) {
-    if (!this.#initialized) return;
-    if (attribute === 'remove-text' && oldValue !== newValue) {
-      if (this.#file && this.#fileId) {
-        this.#updateRemoveButtonText();
-      }
-    }
-  }
-
-  // #endregion
-}
-function registerFileItem() {
-  if (customElements.get('fds-file-item') === undefined) {
-    window.customElements.define('fds-file-item', FDSFileItem);
-  }
-}
-/* harmony default export */ const fds_file_item = (registerFileItem);
 ;// ./src/js/web-components/date-picker/fds-date-picker-utils.js
 /**
  * Get weekday index with Monday as 0
@@ -5371,262 +4621,101 @@ function registerTextarea() {
 }
 /* harmony default export */ const fds_textarea = (registerTextarea);
 ;// ./src/js/web-components/error-summary/fds-error-summary.js
-const ERROR_WRAPPER_SELECTORS = ['fds-input', 'fds-checkbox', 'fds-checkbox-group', 'fds-radio-button-group', 'fds-date-input', 'fds-textarea', 'fds-select', 'fds-upload-file', 'fds-date-picker', 'fds-multiselect'];
-const ERROR_WRAPPER_SELECTOR = ERROR_WRAPPER_SELECTORS.join(', ');
-const ERROR_MESSAGE_SELECTOR = ERROR_WRAPPER_SELECTORS.map(selector => `${selector} fds-error-message`).join(', ');
 class FDSErrorSummary extends HTMLElement {
-  // #region - ATTRIBUTES (can invoke attributeChangedCallback()) -----------------------------------------
+  // #region - ATTRIBUTES ---------------------------------------------------------------------------------
 
-  static observedAttributes = ['heading', 'heading-level', 'auto'];
+  static observedAttributes = ['ready'];
 
   // #endregion
 
   // #region - PRIVATE INSTANCE FIELDS --------------------------------------------------------------------
 
-  #initialized;
-  #handleErrorMessageEvents;
+  #initialized = false;
+
+  // #endregion
+
+  // #region - PRIVATE EVENT HANDLERS ---------------------------------------------------------------------
+
+  #handleClick = event => {
+    // Only handle plain clicks, so "open in new tab" and similar keep working
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href]');
+    if (!link || !this.contains(link)) return;
+    if (link.target && link.target !== '_self') return;
+    if (!this.#isSamePageLink(link)) return;
+    if (this.#focusTarget(link)) {
+      event.preventDefault();
+    }
+  };
 
   // #endregion
 
   // #region - PRIVATE METHODS ----------------------------------------------------------------------------
 
-  #getSummaryElements() {
-    const containerElement = this.querySelector(':scope > div');
-    const headingElement = containerElement?.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
-    const listElement = containerElement?.querySelector(':scope > ul');
-    return {
-      headingElement,
-      listElement
-    };
+  // Check if a link goes to somewhere on the same page
+  #isSamePageLink(link) {
+    const isSameOrigin = link.origin === location.origin;
+    const isSamePath = link.pathname === location.pathname;
+    const isSameQuery = link.search === location.search;
+    return isSameOrigin && isSamePath && isSameQuery;
   }
-  #getErrorWrapper(errorMessage) {
-    return errorMessage?.closest(ERROR_WRAPPER_SELECTOR);
-  }
-  #findFocusableControl(errorMessage) {
-    const wrapper = this.#getErrorWrapper(errorMessage);
-    if (!wrapper) return null;
-    return wrapper.querySelector('input:not([disabled]), ' + 'select:not([disabled]), ' + 'textarea:not([disabled]), ' + 'button:not([disabled]), ' + '[tabindex]:not([tabindex="-1"])');
-  }
-  #normalizeHeadingLevel(headingLevel) {
-    const normalizedHeadingLevel = (headingLevel || 'h2').toLowerCase();
-    return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(normalizedHeadingLevel) ? normalizedHeadingLevel : 'h2';
-  }
-  #hasHiddenAttribute(element) {
-    if (!element) return true;
-    const hiddenValue = element.getAttribute('hidden');
-    return hiddenValue === '' || hiddenValue === 'true';
-  }
-  #isEligibleErrorMessage(errorMessage) {
-    if (!errorMessage?.matches('fds-error-message')) return false;
-    const wrapper = this.#getErrorWrapper(errorMessage);
-    if (!wrapper) return false;
-    return !this.#hasHiddenAttribute(wrapper);
-  }
-  #syncVisibility() {
-    const {
-      listElement
-    } = this.#getSummaryElements();
-    const hasErrors = !!listElement?.querySelector(':scope > li');
-    this.hidden = !hasErrors;
-  }
-  #ensureDOM() {
-    const headingLevel = this.#normalizeHeadingLevel(this.getAttribute('heading-level'));
-    let containerElement = this.querySelector(':scope > div');
 
-    // Attribute mode:
-    // No div markup provided, so create canonical structure from attributes
-    if (!containerElement) {
-      containerElement = document.createElement('div');
-      const iconElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      iconElement.setAttribute('aria-label', 'Fejl');
-      iconElement.setAttribute('focusable', 'false');
-      const useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-      useElement.setAttributeNS(null, 'href', '#error');
-      iconElement.appendChild(useElement);
-      const headingElement = document.createElement(headingLevel);
-      headingElement.textContent = this.getAttribute('heading') || 'Der er problemer';
-      const listElement = document.createElement('ul');
-      containerElement.appendChild(iconElement);
-      containerElement.appendChild(headingElement);
-      containerElement.appendChild(listElement);
-      this.appendChild(containerElement);
-      return true;
-    }
-    const headingElement = containerElement.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
-    if (!headingElement) {
-      console.warn('<fds-error-summary> Missing direct child heading inside div.');
+  // Scrolls the legend/label into view, then focuses the destination without scrolling.
+  // Returns true if the destination was focused (so the default anchor jump can be cancelled).
+  #focusTarget(link) {
+    let destinationId = link.hash.slice(1);
+    if (!destinationId) return false;
+
+    // link.hash may turn e.g. "æ" in an ID into "%C3%A6". Prevent ID mismatch.
+    try {
+      destinationId = decodeURIComponent(destinationId);
+    } catch {
       return false;
     }
-
-    // Enhance mode:
-    // Div exists, so the supported prerendered structure must already be present
-    const listElement = containerElement.querySelector(':scope > ul');
-    if (!listElement) {
-      console.warn('<fds-error-summary> Missing direct child ul inside div.');
-      return false;
-    }
+    const destination = document.getElementById(destinationId);
+    if (!destination) return false;
+    const legendOrLabel = this.#getAssociatedLegendOrLabel(destination);
+    if (!legendOrLabel) return false;
+    legendOrLabel.scrollIntoView();
+    destination.focus({
+      preventScroll: true
+    });
     return true;
   }
-  #updateHeading(heading) {
-    const {
-      headingElement
-    } = this.#getSummaryElements();
-    if (headingElement) {
-      headingElement.textContent = heading;
-    }
-  }
-  #updateHeadingLevel(headingLevel) {
-    const normalizedHeadingLevel = this.#normalizeHeadingLevel(headingLevel);
-    const {
-      headingElement
-    } = this.#getSummaryElements();
-    if (!headingElement || headingElement.tagName.toLowerCase() === normalizedHeadingLevel) return;
-    const newHeadingElement = document.createElement(normalizedHeadingLevel);
-    for (const attr of headingElement.attributes) {
-      newHeadingElement.setAttribute(attr.name, attr.value);
-    }
-    newHeadingElement.append(...headingElement.childNodes);
-    headingElement.replaceWith(newHeadingElement);
-  }
-  #syncAll() {
-    const heading = this.getAttribute('heading');
-    const headingLevel = this.getAttribute('heading-level');
-    if (heading !== null) {
-      this.#updateHeading(heading);
-    }
-    if (headingLevel !== null) {
-      this.#updateHeadingLevel(headingLevel);
-    }
-  }
-  #addError(errorId, message) {
-    const {
-      listElement
-    } = this.#getSummaryElements();
-    if (!listElement || !errorId || !message) return;
-    const sourceError = document.getElementById(errorId);
-    if (!sourceError) return;
-    const focusTarget = this.#findFocusableControl(sourceError);
-    let li = listElement.querySelector(`[data-error-id="${errorId}"]`);
-    if (!li) {
-      li = document.createElement('li');
-      li.dataset.errorId = errorId;
-      const link = document.createElement('a');
-      link.classList.add('function-link');
-      li.appendChild(link);
-      listElement.appendChild(li);
-    }
-    const link = li.querySelector('a');
-    if (link) {
-      link.href = focusTarget?.id ? `#${focusTarget.id}` : '#';
-      link.textContent = message;
-      link.onclick = e => {
-        e.preventDefault();
-        if (focusTarget) {
-          focusTarget.focus();
-        }
-      };
-    }
 
-    // Reinsert in correct DOM order
-    const items = [...listElement.querySelectorAll(':scope > li')].filter(item => item !== li);
-    let inserted = false;
-    for (const item of items) {
-      const itemErrorId = item.dataset.errorId;
-      const itemSourceError = itemErrorId ? document.getElementById(itemErrorId) : null;
-      if (!itemSourceError) continue;
-      const isBefore = sourceError.compareDocumentPosition(itemSourceError) & Node.DOCUMENT_POSITION_FOLLOWING;
-      if (isBefore) {
-        listElement.insertBefore(li, item);
-        inserted = true;
-        break;
+  // Picks the element to scroll to
+  #getAssociatedLegendOrLabel(destination) {
+    const legend = destination.closest('fieldset')?.querySelector('legend');
+
+    // legend
+
+    if (legend) {
+      if (destination.type === 'checkbox' || destination.type === 'radio') {
+        return legend;
+      }
+      const legendTop = legend.getBoundingClientRect().top;
+      const destinationRect = destination.getBoundingClientRect();
+      const destinationBottom = destinationRect.top + destinationRect.height;
+      if (destinationBottom - legendTop < window.innerHeight / 2) {
+        return legend;
       }
     }
-    if (!inserted) {
-      listElement.appendChild(li);
-    }
-    this.#syncVisibility();
-  }
-  #removeError(errorId) {
-    const {
-      listElement
-    } = this.#getSummaryElements();
-    listElement?.querySelector(`[data-error-id="${errorId}"]`)?.remove();
-    this.#syncVisibility();
-  }
-  #syncErrorMessage(errorMessage) {
-    if (!errorMessage?.id || !this.#isEligibleErrorMessage(errorMessage)) {
-      if (errorMessage?.id) {
-        this.#removeError(errorMessage.id);
-      }
-      return;
-    }
-    const isHidden = this.#hasHiddenAttribute(errorMessage);
-    const message = errorMessage.querySelector(':scope > .visible-message')?.textContent?.trim() || errorMessage.textContent?.trim();
-    if (isHidden || !message) {
-      this.#removeError(errorMessage.id);
-      return;
-    }
-    this.#addError(errorMessage.id, message);
-  }
-  #syncErrorById(errorId) {
-    if (!errorId) return;
-    const errorMessage = document.getElementById(errorId);
-    if (!errorMessage || !this.#isEligibleErrorMessage(errorMessage)) {
-      this.#removeError(errorId);
-      return;
-    }
-    this.#syncErrorMessage(errorMessage);
-  }
-  #scanAllErrors() {
-    document.querySelectorAll(ERROR_MESSAGE_SELECTOR).forEach(errorMessage => {
-      this.#syncErrorMessage(errorMessage);
-    });
-    this.#syncVisibility();
-  }
-  #cleanupAutoMode() {
-    if (!this.#handleErrorMessageEvents) return;
-    document.removeEventListener('error-message-visibility-changed', this.#handleErrorMessageEvents);
-    document.removeEventListener('error-message-callback', this.#handleErrorMessageEvents);
-    this.#handleErrorMessageEvents = null;
-  }
-  #initAutoMode() {
-    this.#cleanupAutoMode();
-    const {
-      listElement
-    } = this.#getSummaryElements();
-    if (listElement) {
-      listElement.innerHTML = '';
-    }
-    this.#syncVisibility();
-    this.#scanAllErrors();
-    this.#handleErrorMessageEvents = e => {
-      const {
-        errorId,
-        isRemoved
-      } = e.detail || {};
-      if (e.type === 'error-message-callback' && !errorId) {
-        this.#scanAllErrors();
-        return;
-      }
-      if (!errorId) return;
-      if (isRemoved) {
-        this.#removeError(errorId);
-        return;
-      }
-      this.#syncErrorById(errorId);
-    };
-    document.addEventListener('error-message-visibility-changed', this.#handleErrorMessageEvents);
-    document.addEventListener('error-message-callback', this.#handleErrorMessageEvents);
-  }
 
-  // #endregion
+    // aria-labelledby - if several IDs, go to the first ID
 
-  // #region - CONSTRUCTOR (do not access or add attributes in the constructor) ---------------------------
+    const whitespaceBetweenIds = /\s+/;
+    const ariaLabelledByValue = destination.getAttribute('aria-labelledby')?.trim();
+    const firstLabelledById = ariaLabelledByValue?.split(whitespaceBetweenIds)[0];
+    const labelReferencedByAria = firstLabelledById ? document.getElementById(firstLabelledById) : null;
+    if (labelReferencedByAria) return labelReferencedByAria;
 
-  constructor() {
-    super();
-    this.#initialized = false;
-    this.#handleErrorMessageEvents = null;
+    // label
+
+    // Escape characters that would break a CSS selector (e.g. a quote), so the ID is safe to use below.
+    const escapedId = CSS.escape(destination.id);
+    const labelPointingToField = document.querySelector(`label[for="${escapedId}"]`);
+    if (labelPointingToField) return labelPointingToField;
+    return destination.closest('label');
   }
 
   // #endregion
@@ -5635,12 +4724,10 @@ class FDSErrorSummary extends HTMLElement {
 
   init() {
     if (this.#initialized) return;
-    const isValid = this.#ensureDOM();
-    if (!isValid) return;
-    this.#syncAll();
-    if (this.hasAttribute('auto')) {
-      this.#initAutoMode();
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'alert');
     }
+    this.addEventListener('click', this.#handleClick);
     this.#initialized = true;
   }
 
@@ -5649,6 +4736,7 @@ class FDSErrorSummary extends HTMLElement {
   // #region - ADDED TO DOCUMENT --------------------------------------------------------------------------
 
   connectedCallback() {
+    if (this.getAttribute('ready') === 'false') return;
     this.init();
   }
 
@@ -5657,7 +4745,7 @@ class FDSErrorSummary extends HTMLElement {
   // #region - REMOVED FROM DOCUMENT ----------------------------------------------------------------------
 
   disconnectedCallback() {
-    this.#cleanupAutoMode();
+    this.removeEventListener('click', this.#handleClick);
     this.#initialized = false;
   }
 
@@ -5666,20 +4754,8 @@ class FDSErrorSummary extends HTMLElement {
   // #region - ATTRIBUTE(S) CHANGED -----------------------------------------------------------------------
 
   attributeChangedCallback(attribute, oldValue, newValue) {
-    if (attribute === 'auto') {
-      if (this.#initialized && newValue !== null && oldValue === null) {
-        this.#initAutoMode();
-      } else if (this.#initialized && newValue === null && oldValue !== null) {
-        this.#cleanupAutoMode();
-      }
-      return;
-    }
-    if (!this.#initialized) return;
-    if (attribute === 'heading') {
-      this.#updateHeading(newValue);
-    }
-    if (attribute === 'heading-level') {
-      this.#updateHeadingLevel(newValue);
+    if (attribute === 'ready' && this.isConnected && newValue !== 'false') {
+      this.init();
     }
   }
 
@@ -9156,6 +8232,11 @@ const fds_multiselect_styling_styles = `
     :host {
         display: block;
         position: relative;
+        margin-top: 24px;
+    }
+
+    :host(:first-child) {
+        margin-top: 0;
     }
 
     ::slotted([slot="label"]) {
@@ -10990,8 +10071,6 @@ function registerMultiselectDialog() {
 
 
 
-
-
 const registerCustomElements = () => {
   fds_accordion();
   fds_accordion_group();
@@ -11008,8 +10087,6 @@ const registerCustomElements = () => {
   fds_date_picker();
   fds_date_picker_grid();
   fds_textarea();
-  fds_upload_file();
-  fds_file_item();
   fds_error_summary();
   input_affix();
   fds_portal_info();

@@ -46,7 +46,7 @@
 @use 'components/tabs';
 @use 'components/tags';
 
-// Custom elements --- //
+// Web components --- //
 @use 'web-components/fds-accordion';
 @use 'web-components/fds-accordion-group';
 @use 'web-components/fds-input';
@@ -59,7 +59,6 @@
 @use 'web-components/fds-radio-button-group';
 @use 'web-components/fds-date-input';
 @use 'web-components/fds-select';
-@use 'web-components/fds-upload-file';
 @use 'web-components/fds-date-picker';
 @use 'web-components/fds-date-picker-grid';
 @use 'web-components/fds-textarea';
