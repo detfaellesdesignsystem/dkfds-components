@@ -1,12 +1,9 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-
-const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
 
 console.log("[" + String(new Date().getHours()).padStart(2, '0') +
     ":" + String(new Date().getMinutes()).padStart(2, '0') +
@@ -134,13 +131,6 @@ const copyFilesAndCreateJavaScript = {
                 { from: path.resolve(__dirname, 'README.md'), to: path.resolve(__dirname, 'dist') },
                 { from: path.resolve(__dirname, 'LICENSE.md'), to: path.resolve(__dirname, 'dist') },
             ],
-        }),
-        new ESLintPlugin({
-            emitError: USE_LINTER,
-            emitWarning: USE_LINTER,
-            failOnError: false,
-            failOnWarning: false,
-            fix: false
         }),
     ],
     entry: JS_ENTRY,
