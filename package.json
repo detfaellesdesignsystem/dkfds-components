@@ -1,14 +1,13 @@
 {
-  "name": "dkfds",
-  "version": "11.3.0",
+  "name": "@dkfds/components",
+  "version": "12.0.0",
   "description": "Det Fælles Designsystem er den fælles guide til selvbetjeningsløsninger, der skal på Borger.dk og Virk.",
-  "engines": {
-    "node": ">= 4"
-  },
   "main": "dist/js/dkfds.min.js",
   "exports": {
     ".": "./dist/js/dkfds.min.js",
-    "./dkfds-web-components": "./dist/web-components/dkfds.js"
+    "./dkfds-web-components": "./dist/web-components/dkfds.js",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "build": "npx webpack"
