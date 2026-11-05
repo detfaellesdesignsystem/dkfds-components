@@ -11,10 +11,891 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 141
+/***/ 409
+() {
+
+/* eslint-disable consistent-return */
+/* eslint-disable func-names */
+(function () {
+  if (typeof window.CustomEvent === "function") return false;
+  function CustomEvent(event, _params) {
+    const params = _params || {
+      bubbles: false,
+      cancelable: false,
+      detail: null
+    };
+    const evt = document.createEvent("CustomEvent");
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  window.CustomEvent = CustomEvent;
+})();
+
+/***/ },
+
+/***/ 259
+() {
+
+Number.isNaN = Number.isNaN || function isNaN(input) {
+  // eslint-disable-next-line no-self-compare
+  return typeof input === "number" && input !== input;
+};
+
+/***/ },
+
+/***/ 952
+() {
+
+/*
+ * classList.js: Cross-browser full element.classList implementation.
+ * 1.1.20170427
+ *
+ * By Eli Grey, http://eligrey.com
+ * License: Dedicated to the public domain.
+ *   See https://github.com/eligrey/classList.js/blob/master/LICENSE.md
+ */
+
+/*global self, document, DOMException */
+
+/*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */
+
+if ("document" in window.self) {
+
+// Full polyfill for browsers with no classList support
+// Including IE < Edge missing SVGElement.classList
+if (!("classList" in document.createElement("_")) 
+	|| document.createElementNS && !("classList" in document.createElementNS("http://www.w3.org/2000/svg","g"))) {
+
+(function (view) {
+
+"use strict";
+
+if (!('Element' in view)) return;
+
+var
+	  classListProp = "classList"
+	, protoProp = "prototype"
+	, elemCtrProto = view.Element[protoProp]
+	, objCtr = Object
+	, strTrim = String[protoProp].trim || function () {
+		return this.replace(/^\s+|\s+$/g, "");
+	}
+	, arrIndexOf = Array[protoProp].indexOf || function (item) {
+		var
+			  i = 0
+			, len = this.length
+		;
+		for (; i < len; i++) {
+			if (i in this && this[i] === item) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	// Vendors: please allow content code to instantiate DOMExceptions
+	, DOMEx = function (type, message) {
+		this.name = type;
+		this.code = DOMException[type];
+		this.message = message;
+	}
+	, checkTokenAndGetIndex = function (classList, token) {
+		if (token === "") {
+			throw new DOMEx(
+				  "SYNTAX_ERR"
+				, "An invalid or illegal string was specified"
+			);
+		}
+		if (/\s/.test(token)) {
+			throw new DOMEx(
+				  "INVALID_CHARACTER_ERR"
+				, "String contains an invalid character"
+			);
+		}
+		return arrIndexOf.call(classList, token);
+	}
+	, ClassList = function (elem) {
+		var
+			  trimmedClasses = strTrim.call(elem.getAttribute("class") || "")
+			, classes = trimmedClasses ? trimmedClasses.split(/\s+/) : []
+			, i = 0
+			, len = classes.length
+		;
+		for (; i < len; i++) {
+			this.push(classes[i]);
+		}
+		this._updateClassName = function () {
+			elem.setAttribute("class", this.toString());
+		};
+	}
+	, classListProto = ClassList[protoProp] = []
+	, classListGetter = function () {
+		return new ClassList(this);
+	}
+;
+// Most DOMException implementations don't allow calling DOMException's toString()
+// on non-DOMExceptions. Error's toString() is sufficient here.
+DOMEx[protoProp] = Error[protoProp];
+classListProto.item = function (i) {
+	return this[i] || null;
+};
+classListProto.contains = function (token) {
+	token += "";
+	return checkTokenAndGetIndex(this, token) !== -1;
+};
+classListProto.add = function () {
+	var
+		  tokens = arguments
+		, i = 0
+		, l = tokens.length
+		, token
+		, updated = false
+	;
+	do {
+		token = tokens[i] + "";
+		if (checkTokenAndGetIndex(this, token) === -1) {
+			this.push(token);
+			updated = true;
+		}
+	}
+	while (++i < l);
+
+	if (updated) {
+		this._updateClassName();
+	}
+};
+classListProto.remove = function () {
+	var
+		  tokens = arguments
+		, i = 0
+		, l = tokens.length
+		, token
+		, updated = false
+		, index
+	;
+	do {
+		token = tokens[i] + "";
+		index = checkTokenAndGetIndex(this, token);
+		while (index !== -1) {
+			this.splice(index, 1);
+			updated = true;
+			index = checkTokenAndGetIndex(this, token);
+		}
+	}
+	while (++i < l);
+
+	if (updated) {
+		this._updateClassName();
+	}
+};
+classListProto.toggle = function (token, force) {
+	token += "";
+
+	var
+		  result = this.contains(token)
+		, method = result ?
+			force !== true && "remove"
+		:
+			force !== false && "add"
+	;
+
+	if (method) {
+		this[method](token);
+	}
+
+	if (force === true || force === false) {
+		return force;
+	} else {
+		return !result;
+	}
+};
+classListProto.toString = function () {
+	return this.join(" ");
+};
+
+if (objCtr.defineProperty) {
+	var classListPropDesc = {
+		  get: classListGetter
+		, enumerable: true
+		, configurable: true
+	};
+	try {
+		objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
+	} catch (ex) { // IE 8 doesn't support enumerable:true
+		// adding undefined to fight this issue https://github.com/eligrey/classList.js/issues/36
+		// modernie IE8-MSW7 machine has IE8 8.0.6001.18702 and is affected
+		if (ex.number === undefined || ex.number === -0x7FF5EC54) {
+			classListPropDesc.enumerable = false;
+			objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
+		}
+	}
+} else if (objCtr[protoProp].__defineGetter__) {
+	elemCtrProto.__defineGetter__(classListProp, classListGetter);
+}
+
+}(window.self));
+
+}
+
+// There is full or partial native classList support, so just check if we need
+// to normalize the add/remove and toggle APIs.
+
+(function () {
+	"use strict";
+
+	var testElement = document.createElement("_");
+
+	testElement.classList.add("c1", "c2");
+
+	// Polyfill for IE 10/11 and Firefox <26, where classList.add and
+	// classList.remove exist but support only one argument at a time.
+	if (!testElement.classList.contains("c2")) {
+		var createMethod = function(method) {
+			var original = DOMTokenList.prototype[method];
+
+			DOMTokenList.prototype[method] = function(token) {
+				var i, len = arguments.length;
+
+				for (i = 0; i < len; i++) {
+					token = arguments[i];
+					original.call(this, token);
+				}
+			};
+		};
+		createMethod('add');
+		createMethod('remove');
+	}
+
+	testElement.classList.toggle("c3", false);
+
+	// Polyfill for IE 10 and Firefox <24, where classList.toggle does not
+	// support the second argument.
+	if (testElement.classList.contains("c3")) {
+		var _toggle = DOMTokenList.prototype.toggle;
+
+		DOMTokenList.prototype.toggle = function(token, force) {
+			if (1 in arguments && !this.contains(token) === !force) {
+				return force;
+			} else {
+				return _toggle.call(this, token);
+			}
+		};
+
+	}
+
+	testElement = null;
+}());
+
+}
+
+
+/***/ },
+
+/***/ 786
+(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
+
+(function () {
+
+  var keyboardeventKeyPolyfill = {
+    polyfill: polyfill,
+    keys: {
+      3: 'Cancel',
+      6: 'Help',
+      8: 'Backspace',
+      9: 'Tab',
+      12: 'Clear',
+      13: 'Enter',
+      16: 'Shift',
+      17: 'Control',
+      18: 'Alt',
+      19: 'Pause',
+      20: 'CapsLock',
+      27: 'Escape',
+      28: 'Convert',
+      29: 'NonConvert',
+      30: 'Accept',
+      31: 'ModeChange',
+      32: ' ',
+      33: 'PageUp',
+      34: 'PageDown',
+      35: 'End',
+      36: 'Home',
+      37: 'ArrowLeft',
+      38: 'ArrowUp',
+      39: 'ArrowRight',
+      40: 'ArrowDown',
+      41: 'Select',
+      42: 'Print',
+      43: 'Execute',
+      44: 'PrintScreen',
+      45: 'Insert',
+      46: 'Delete',
+      48: ['0', ')'],
+      49: ['1', '!'],
+      50: ['2', '@'],
+      51: ['3', '#'],
+      52: ['4', '$'],
+      53: ['5', '%'],
+      54: ['6', '^'],
+      55: ['7', '&'],
+      56: ['8', '*'],
+      57: ['9', '('],
+      91: 'OS',
+      93: 'ContextMenu',
+      144: 'NumLock',
+      145: 'ScrollLock',
+      181: 'VolumeMute',
+      182: 'VolumeDown',
+      183: 'VolumeUp',
+      186: [';', ':'],
+      187: ['=', '+'],
+      188: [',', '<'],
+      189: ['-', '_'],
+      190: ['.', '>'],
+      191: ['/', '?'],
+      192: ['`', '~'],
+      219: ['[', '{'],
+      220: ['\\', '|'],
+      221: [']', '}'],
+      222: ["'", '"'],
+      224: 'Meta',
+      225: 'AltGraph',
+      246: 'Attn',
+      247: 'CrSel',
+      248: 'ExSel',
+      249: 'EraseEof',
+      250: 'Play',
+      251: 'ZoomOut'
+    }
+  };
+
+  // Function keys (F1-24).
+  var i;
+  for (i = 1; i < 25; i++) {
+    keyboardeventKeyPolyfill.keys[111 + i] = 'F' + i;
+  }
+
+  // Printable ASCII characters.
+  var letter = '';
+  for (i = 65; i < 91; i++) {
+    letter = String.fromCharCode(i);
+    keyboardeventKeyPolyfill.keys[i] = [letter.toLowerCase(), letter.toUpperCase()];
+  }
+
+  function polyfill () {
+    if (!('KeyboardEvent' in window) ||
+        'key' in KeyboardEvent.prototype) {
+      return false;
+    }
+
+    // Polyfill `key` on `KeyboardEvent`.
+    var proto = {
+      get: function (x) {
+        var key = keyboardeventKeyPolyfill.keys[this.which || this.keyCode];
+
+        if (Array.isArray(key)) {
+          key = key[+this.shiftKey];
+        }
+
+        return key;
+      }
+    };
+    Object.defineProperty(KeyboardEvent.prototype, 'key', proto);
+    return proto;
+  }
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (keyboardeventKeyPolyfill),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+		__WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else // removed by dead control flow
+{}
+
+})();
+
+
+/***/ },
+
+/***/ 840
 (module) {
 
 "use strict";
+
+
+var proto = typeof Element !== 'undefined' ? Element.prototype : {};
+var vendor = proto.matches
+  || proto.matchesSelector
+  || proto.webkitMatchesSelector
+  || proto.mozMatchesSelector
+  || proto.msMatchesSelector
+  || proto.oMatchesSelector;
+
+module.exports = match;
+
+/**
+ * Match `el` to `selector`.
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @return {Boolean}
+ * @api public
+ */
+
+function match(el, selector) {
+  if (!el || el.nodeType !== 1) return false;
+  if (vendor) return vendor.call(el, selector);
+  var nodes = el.parentNode.querySelectorAll(selector);
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i] == el) return true;
+  }
+  return false;
+}
+
+
+/***/ },
+
+/***/ 228
+(module) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ },
+
+/***/ 87
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const assign = __webpack_require__(228);
+const delegate = __webpack_require__(746);
+const delegateAll = __webpack_require__(591);
+
+const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
+const SPACE = ' ';
+
+const getListeners = function(type, handler) {
+  var match = type.match(DELEGATE_PATTERN);
+  var selector;
+  if (match) {
+    type = match[1];
+    selector = match[2];
+  }
+
+  var options;
+  if (typeof handler === 'object') {
+    options = {
+      capture: popKey(handler, 'capture'),
+      passive: popKey(handler, 'passive')
+    };
+  }
+
+  var listener = {
+    selector: selector,
+    delegate: (typeof handler === 'object')
+      ? delegateAll(handler)
+      : selector
+        ? delegate(selector, handler)
+        : handler,
+    options: options
+  };
+
+  if (type.indexOf(SPACE) > -1) {
+    return type.split(SPACE).map(function(_type) {
+      return assign({type: _type}, listener);
+    });
+  } else {
+    listener.type = type;
+    return [listener];
+  }
+};
+
+var popKey = function(obj, key) {
+  var value = obj[key];
+  delete obj[key];
+  return value;
+};
+
+module.exports = function behavior(events, props) {
+  const listeners = Object.keys(events)
+    .reduce(function(memo, type) {
+      var listeners = getListeners(type, events[type]);
+      return memo.concat(listeners);
+    }, []);
+
+  return assign({
+    add: function addBehavior(element) {
+      listeners.forEach(function(listener) {
+        element.addEventListener(
+          listener.type,
+          listener.delegate,
+          listener.options
+        );
+      });
+    },
+    remove: function removeBehavior(element) {
+      listeners.forEach(function(listener) {
+        element.removeEventListener(
+          listener.type,
+          listener.delegate,
+          listener.options
+        );
+      });
+    }
+  }, props);
+};
+
+
+/***/ },
+
+/***/ 678
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const matches = __webpack_require__(840);
+
+module.exports = function(element, selector) {
+  do {
+    if (matches(element, selector)) {
+      return element;
+    }
+  } while ((element = element.parentNode) && element.nodeType === 1);
+};
+
+
+
+/***/ },
+
+/***/ 977
+(module) {
+
+module.exports = function compose(functions) {
+  return function(e) {
+    return functions.some(function(fn) {
+      return fn.call(this, e) === false;
+    }, this);
+  };
+};
+
+
+/***/ },
+
+/***/ 746
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const closest = __webpack_require__(678);
+
+module.exports = function delegate(selector, fn) {
+  return function delegation(event) {
+    var target = closest(event.target, selector);
+    if (target) {
+      return fn.call(target, event);
+    }
+  }
+};
+
+
+/***/ },
+
+/***/ 591
+(module, __unused_webpack_exports, __webpack_require__) {
+
+const delegate = __webpack_require__(746);
+const compose = __webpack_require__(977);
+
+const SPLAT = '*';
+
+module.exports = function delegateAll(selectors) {
+  const keys = Object.keys(selectors)
+
+  // XXX optimization: if there is only one handler and it applies to
+  // all elements (the "*" CSS selector), then just return that
+  // handler
+  if (keys.length === 1 && keys[0] === SPLAT) {
+    return selectors[SPLAT];
+  }
+
+  const delegates = keys.reduce(function(memo, selector) {
+    memo.push(delegate(selector, selectors[selector]));
+    return memo;
+  }, []);
+  return compose(delegates);
+};
+
+
+/***/ },
+
+/***/ 39
+(module) {
+
+module.exports = function ignore(element, fn) {
+  return function ignorance(e) {
+    if (element !== e.target && !element.contains(e.target)) {
+      return fn.call(this, e);
+    }
+  };
+};
+
+
+/***/ },
+
+/***/ 402
+(module, __unused_webpack_exports, __webpack_require__) {
+
+__webpack_require__(786);
+
+// these are the only relevant modifiers supported on all platforms,
+// according to MDN:
+// <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState>
+const MODIFIERS = {
+  'Alt':      'altKey',
+  'Control':  'ctrlKey',
+  'Ctrl':     'ctrlKey',
+  'Shift':    'shiftKey'
+};
+
+const MODIFIER_SEPARATOR = '+';
+
+const getEventKey = function(event, hasModifiers) {
+  var key = event.key;
+  if (hasModifiers) {
+    for (var modifier in MODIFIERS) {
+      if (event[MODIFIERS[modifier]] === true) {
+        key = [modifier, key].join(MODIFIER_SEPARATOR);
+      }
+    }
+  }
+  return key;
+};
+
+module.exports = function keymap(keys) {
+  const hasModifiers = Object.keys(keys).some(function(key) {
+    return key.indexOf(MODIFIER_SEPARATOR) > -1;
+  });
+  return function(event) {
+    var key = getEventKey(event, hasModifiers);
+    return [key, key.toLowerCase()]
+      .reduce(function(result, _key) {
+        if (_key in keys) {
+          result = keys[key].call(this, event);
+        }
+        return result;
+      }, undefined);
+  };
+};
+
+module.exports.MODIFIERS = MODIFIERS;
+
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	const __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = (module) => {
+/******/ 		const getter = module && module.__esModule ?
+/******/ 			() => (module['default']) :
+/******/ 			() => (module);
+/******/ 		__webpack_require__.d(getter, { a: getter });
+/******/ 		return getter;
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/concatenation wrap */
+/******/ 	// wrap a concatenated module body as a lazy, memoized accessor; mod is
+/******/ 	// set before the body runs so re-entrant calls (require cycles) observe
+/******/ 	// the partial exports like Node.js
+/******/ 	__webpack_require__.cw = (body) => {
+/******/ 		var mod;
+/******/ 		return () => {
+/******/ 			if (body) {
+/******/ 				var fn = body;
+/******/ 				body = 0;
+/******/ 				mod = { exports: {} };
+/******/ 				fn.call(mod.exports, mod, mod.exports);
+/******/ 			}
+/******/ 			return mod.exports;
+/******/ 		};
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		if(Array.isArray(definition)) {
+/******/ 			var i = 0;
+/******/ 			while(i < definition.length) {
+/******/ 				var key = definition[i++];
+/******/ 				var binding = definition[i++];
+/******/ 				var descriptor = binding === 0 ? { enumerable: true, value: definition[i++] } : { enumerable: true, get: binding };
+/******/ 				if(!__webpack_require__.o(exports, key)) Object.defineProperty(exports, key, descriptor);
+/******/ 			}
+/******/ 		} else {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.hasOwn(obj, prop));
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/ 	
+/************************************************************************/
+let __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
+(() => {
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Accordion: () => (/* reexport */ accordion),
+  Alert: () => (/* reexport */ components_alert),
+  BackToTop: () => (/* reexport */ back_to_top),
+  CharacterLimit: () => (/* reexport */ character_limit),
+  CheckboxToggleContent: () => (/* reexport */ checkbox_toggle_content),
+  Dropdown: () => (/* reexport */ dropdown),
+  DropdownSort: () => (/* reexport */ dropdown_sort),
+  ErrorSummary: () => (/* reexport */ error_summary),
+  MenuDropdown: () => (/* reexport */ navigation_drawer_overflow),
+  Modal: () => (/* reexport */ components_modal),
+  Navigation: () => (/* reexport */ navigation),
+  RadioToggleGroup: () => (/* reexport */ radio_toggle_content),
+  ResponsiveTable: () => (/* reexport */ components_table),
+  TableSelectableRows: () => (/* reexport */ selectable_table),
+  Tabs: () => (/* reexport */ tabs),
+  Toast: () => (/* reexport */ toast),
+  Tooltip: () => (/* reexport */ tooltip),
+  datePicker: () => (/* binding */ dkfds_datePicker),
+  init: () => (/* binding */ dkfds_init)
+});
+
+// MODULE: ./node_modules/array-foreach/index.js
+var array_foreach_namespaceFn = /*#__PURE__*/__webpack_require__.cw((module) => {
 /**
  * array-foreach
  *   Array#forEach ponyfill for older browsers
@@ -38,75 +919,12 @@ module.exports = function forEach (ary, callback, thisArg) {
     }
 };
 
-
-/***/ },
-
-/***/ 486
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ date_picker)
 });
 
-// EXTERNAL MODULE: ./node_modules/receptor/lib/index.js
-var lib = __webpack_require__(525);
-// EXTERNAL MODULE: ./node_modules/object-assign/index.js
-var object_assign = __webpack_require__(228);
-var object_assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
-;// ./src/js/utils/behavior.js
-
-const receptor = __webpack_require__(525);
-
-/**
- * @name sequence
- * @param {...Function} seq an array of functions
- * @return { closure } callHooks
- */
-// We use a named function here because we want it to inherit its lexical scope
-// from the behavior props object, not from the module
-const sequence = function () {
-  for (var _len = arguments.length, seq = new Array(_len), _key = 0; _key < _len; _key++) {
-    seq[_key] = arguments[_key];
-  }
-  return function callHooks() {
-    let target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.body;
-    seq.forEach(method => {
-      if (typeof this[method] === "function") {
-        this[method].call(this, target);
-      }
-    });
-  };
-};
-
-/**
- * @name behavior
- * @param {object} events
- * @param {object?} props
- * @return {receptor.behavior}
- */
-/* harmony default export */ const behavior = ((events, props) => receptor.behavior(events, object_assign_default()({
-  on: sequence("init", "add"),
-  off: sequence("teardown", "remove")
-}, props)));
-(Object.getOwnPropertyDescriptor(behavior, "name") || {}).writable || Object.defineProperty(behavior, "name", { value: "default", configurable: true });
-// EXTERNAL MODULE: ./src/js/utils/select.js
-var utils_select = __webpack_require__(464);
-;// ./src/js/utils/active-element.js
-/* harmony default export */ const active_element = (function () {
-  let htmlDocument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
-  return htmlDocument.activeElement;
-});
-(Object.getOwnPropertyDescriptor(active_element, "name") || {}).writable || Object.defineProperty(active_element, "name", { value: "default", configurable: true });
-;// ./src/js/utils/is-ios-device.js
-// iOS detection from: http://stackoverflow.com/a/9039885/177710
-function isIosDevice() {
-  return typeof navigator !== "undefined" && (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) && !window.MSStream;
-}
-/* harmony default export */ const is_ios_device = (isIosDevice);
-;// ./src/js/components/date-picker.js
+// MODULE: ./src/js/components/date-picker.js
+var date_picker_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
+(lib_namespaceFn());
+(utils_behavior_namespaceFn());
 
 
 
@@ -184,7 +1002,7 @@ const CALENDAR_MONTH_PICKER = `.${CALENDAR_MONTH_PICKER_CLASS}`;
 const CALENDAR_YEAR_PICKER = `.${CALENDAR_YEAR_PICKER_CLASS}`;
 const CALENDAR_MONTH_FOCUSED = `.${CALENDAR_MONTH_FOCUSED_CLASS}`;
 const CALENDAR_YEAR_FOCUSED = `.${CALENDAR_YEAR_FOCUSED_CLASS}`;
-let date_picker_text = {
+let text = {
   "open_calendar": "Åbn kalender",
   "choose_a_date": "Vælg en dato",
   "choose_a_date_between": "Vælg en dato mellem {minDay}. {minMonthStr} {minYear} og {maxDay}. {maxMonthStr} {maxYear}",
@@ -226,8 +1044,8 @@ let date_picker_text = {
   "sunday": "søndag"
 };
 const VALIDATION_MESSAGE = "Indtast venligst en gyldig dato";
-let MONTH_LABELS = [date_picker_text.january, date_picker_text.february, date_picker_text.march, date_picker_text.april, date_picker_text.may, date_picker_text.june, date_picker_text.july, date_picker_text.august, date_picker_text.september, date_picker_text.october, date_picker_text.november, date_picker_text.december];
-let DAY_OF_WEEK_LABELS = [date_picker_text.monday, date_picker_text.tuesday, date_picker_text.wednesday, date_picker_text.thursday, date_picker_text.friday, date_picker_text.saturday, date_picker_text.sunday];
+let MONTH_LABELS = [text.january, text.february, text.march, text.april, text.may, text.june, text.july, text.august, text.september, text.october, text.november, text.december];
+let DAY_OF_WEEK_LABELS = [text.monday, text.tuesday, text.wednesday, text.thursday, text.friday, text.saturday, text.sunday];
 const ENTER_KEYCODE = 13;
 const YEAR_CHUNK = 12;
 const DEFAULT_MIN_DATE = "0000-01-01";
@@ -940,7 +1758,7 @@ const enhanceDatePicker = el => {
   externalInputEl.classList.add(DATE_PICKER_EXTERNAL_INPUT_CLASS);
   externalInputEl.type = "text";
   externalInputEl.name = "";
-  let dialogTitle = date_picker_text.choose_a_date;
+  let dialogTitle = text.choose_a_date;
   const hasMinDate = minDate !== undefined && minDate !== "";
   const isDefaultMinDate = minDate !== undefined && minDate !== "" && parseDateString(DEFAULT_MIN_DATE).getTime() === minDate.getTime();
   const hasMaxDate = maxDate !== undefined && maxDate !== "";
@@ -953,23 +1771,23 @@ const enhanceDatePicker = el => {
     const maxMonth = maxDate.getMonth();
     const maxMonthStr = MONTH_LABELS[maxMonth];
     const maxYear = maxDate.getFullYear();
-    dialogTitle = date_picker_text.choose_a_date_between.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear).replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
+    dialogTitle = text.choose_a_date_between.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear).replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
   } else if (hasMinDate && !isDefaultMinDate && !hasMaxDate) {
     const minDay = minDate.getDate();
     const minMonth = minDate.getMonth();
     const minMonthStr = MONTH_LABELS[minMonth];
     const minYear = minDate.getFullYear();
-    dialogTitle = date_picker_text.choose_a_date_after.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear);
+    dialogTitle = text.choose_a_date_after.replace(/{minDay}/, minDay).replace(/{minMonthStr}/, minMonthStr).replace(/{minYear}/, minYear);
   } else if (hasMaxDate) {
     const maxDay = maxDate.getDate();
     const maxMonth = maxDate.getMonth();
     const maxMonthStr = MONTH_LABELS[maxMonth];
     const maxYear = maxDate.getFullYear();
-    dialogTitle = date_picker_text.choose_a_date_before.replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
+    dialogTitle = text.choose_a_date_before.replace(/{maxDay}/, maxDay).replace(/{maxMonthStr}/, maxMonthStr).replace(/{maxYear}/, maxYear);
   }
   const guideID = externalInputEl.getAttribute("id") + "-guide";
   calendarWrapper.appendChild(externalInputEl);
-  calendarWrapper.insertAdjacentHTML("beforeend", [`<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="${date_picker_text.open_calendar}">&nbsp;</button>`, `<div class="${DIALOG_WRAPPER_CLASS}" role="dialog" aria-modal="true" aria-label="${dialogTitle}" aria-describedby="${guideID}" hidden><div role="application"><div class="${DATE_PICKER_CALENDAR_CLASS}" hidden></div></div></div>`, `<div class="sr-only ${DATE_PICKER_STATUS_CLASS}" role="status" aria-live="polite"></div>`, `<div class="sr-only ${DATE_PICKER_GUIDE_CLASS}" id="${guideID}" hidden>${date_picker_text.guide}</div>`].join(""));
+  calendarWrapper.insertAdjacentHTML("beforeend", [`<button type="button" class="${DATE_PICKER_BUTTON_CLASS}" aria-haspopup="true" aria-label="${text.open_calendar}">&nbsp;</button>`, `<div class="${DIALOG_WRAPPER_CLASS}" role="dialog" aria-modal="true" aria-label="${dialogTitle}" aria-describedby="${guideID}" hidden><div role="application"><div class="${DATE_PICKER_CALENDAR_CLASS}" hidden></div></div></div>`, `<div class="sr-only ${DATE_PICKER_STATUS_CLASS}" role="status" aria-live="polite"></div>`, `<div class="sr-only ${DATE_PICKER_GUIDE_CLASS}" id="${guideID}" hidden>${text.guide}</div>`].join(""));
   internalInputEl.setAttribute("aria-hidden", "true");
   internalInputEl.setAttribute("tabindex", "-1");
   internalInputEl.classList.add("sr-only", DATE_PICKER_INTERNAL_INPUT_CLASS);
@@ -1076,7 +1894,7 @@ const renderCalendar = (el, _dateToDisplay) => {
     }
     const monthStr = MONTH_LABELS[month];
     const dayStr = DAY_OF_WEEK_LABELS[dayOfWeek];
-    const ariaLabelDate = date_picker_text.aria_label_date.replace(/{dayStr}/, dayStr).replace(/{day}/, day).replace(/{monthStr}/, monthStr).replace(/{year}/, year);
+    const ariaLabelDate = text.aria_label_date.replace(/{dayStr}/, dayStr).replace(/{day}/, day).replace(/{monthStr}/, monthStr).replace(/{year}/, year);
     return `<button
       type="button"
       tabindex="${tabindex}"
@@ -1108,7 +1926,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_PREVIOUS_YEAR_CLASS}"
-            aria-label="${date_picker_text.previous_year}"
+            aria-label="${text.previous_year}"
             ${prevButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1116,25 +1934,25 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_PREVIOUS_MONTH_CLASS}"
-            aria-label="${date_picker_text.previous_month}"
+            aria-label="${text.previous_month}"
             ${prevButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
         <div class="${CALENDAR_CELL_CLASS} ${CALENDAR_MONTH_LABEL_CLASS}">
           <button 
             type="button"
-            class="${CALENDAR_MONTH_SELECTION_CLASS}" aria-label="${monthLabel}. ${date_picker_text.select_month}."
+            class="${CALENDAR_MONTH_SELECTION_CLASS}" aria-label="${monthLabel}. ${text.select_month}."
           >${monthLabel}</button>
           <button 
             type="button"
-            class="${CALENDAR_YEAR_SELECTION_CLASS}" aria-label="${focusedYear}. ${date_picker_text.select_year}."
+            class="${CALENDAR_YEAR_SELECTION_CLASS}" aria-label="${focusedYear}. ${text.select_year}."
           >${focusedYear}</button>
         </div>
         <div class="${CALENDAR_CELL_CLASS} ${CALENDAR_CELL_CENTER_ITEMS_CLASS}">
           <button 
             type="button"
             class="${CALENDAR_NEXT_MONTH_CLASS}"
-            aria-label="${date_picker_text.next_month}"
+            aria-label="${text.next_month}"
             ${nextButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1142,7 +1960,7 @@ const renderCalendar = (el, _dateToDisplay) => {
           <button 
             type="button"
             class="${CALENDAR_NEXT_YEAR_CLASS}"
-            aria-label="${date_picker_text.next_year}"
+            aria-label="${text.next_year}"
             ${nextButtonsDisabled ? `disabled="disabled"` : ""}
           >&nbsp;</button>
         </div>
@@ -1173,11 +1991,11 @@ const renderCalendar = (el, _dateToDisplay) => {
   if (calendarWasHidden) {
     statusEl.textContent = "";
   } else if (_dateToDisplay.getTime() === minDate.getTime()) {
-    statuses.push(date_picker_text.first_possible_date);
+    statuses.push(text.first_possible_date);
   } else if (maxDate !== undefined && maxDate !== "" && _dateToDisplay.getTime() === maxDate.getTime()) {
-    statuses.push(date_picker_text.last_possible_date);
+    statuses.push(text.last_possible_date);
   } else {
-    statuses.push(date_picker_text.current_month_displayed.replace(/{monthLabel}/, monthLabel).replace(/{focusedYear}/, focusedYear));
+    statuses.push(text.current_month_displayed.replace(/{monthLabel}/, monthLabel).replace(/{focusedYear}/, focusedYear));
   }
   statusEl.textContent = statuses.join(". ");
   return newCalendar;
@@ -1409,7 +2227,7 @@ const displayMonthSelection = (el, monthToDisplay) => {
   const newCalendar = calendarEl.cloneNode();
   newCalendar.innerHTML = monthsHtml;
   calendarEl.parentNode.replaceChild(newCalendar, calendarEl);
-  statusEl.textContent = date_picker_text.months_displayed;
+  statusEl.textContent = text.months_displayed;
   return newCalendar;
 };
 
@@ -1484,9 +2302,9 @@ const displayYearSelection = (el, yearToDisplay) => {
     yearIndex += 1;
   }
   const yearsHtml = listToGridHtml(years, 3);
-  const ariaLabelPreviousYears = date_picker_text.previous_years.replace(/{years}/, YEAR_CHUNK);
-  const ariaLabelNextYears = date_picker_text.next_years.replace(/{years}/, YEAR_CHUNK);
-  const announceYears = date_picker_text.years_displayed.replace(/{start}/, yearToChunk).replace(/{end}/, yearToChunk + YEAR_CHUNK - 1);
+  const ariaLabelPreviousYears = text.previous_years.replace(/{years}/, YEAR_CHUNK);
+  const ariaLabelNextYears = text.next_years.replace(/{years}/, YEAR_CHUNK);
+  const announceYears = text.years_displayed.replace(/{start}/, yearToChunk).replace(/{end}/, yearToChunk + YEAR_CHUNK - 1);
   const newCalendar = calendarEl.cloneNode();
   newCalendar.innerHTML = `<div tabindex="-1" class="${CALENDAR_YEAR_PICKER_CLASS}">
     <table class="${CALENDAR_TABLE_CLASS}" role="presentation">
@@ -1948,12 +2766,12 @@ const tabHandler = focusable => {
     const {
       calendarEl
     } = getDatePickerContext(el);
-    const focusableElements = (0,utils_select/* default */.A)(focusable, calendarEl);
+    const focusableElements = (0,select_namespaceFn().A)(focusable, calendarEl);
     const firstTabIndex = 0;
     const lastTabIndex = focusableElements.length - 1;
     const firstTabStop = focusableElements[firstTabIndex];
     const lastTabStop = focusableElements[lastTabIndex];
-    const focusIndex = focusableElements.indexOf(active_element());
+    const focusIndex = focusableElements.indexOf((0,active_element_namespaceFn().A)());
     const isLastTab = focusIndex === lastTabIndex;
     const isFirstTab = focusIndex === firstTabIndex;
     const isNotFound = focusIndex === -1;
@@ -2054,7 +2872,7 @@ const datePickerEvents = {
         validateDateInput(this);
       }
     },
-    [CALENDAR_DATE]: (0,lib.keymap)({
+    [CALENDAR_DATE]: (0,lib_namespaceFn().w4)({
       Up: handleUpFromDate,
       ArrowUp: handleUpFromDate,
       Down: handleDownFromDate,
@@ -2070,11 +2888,11 @@ const datePickerEvents = {
       "Shift+PageDown": handleShiftPageDownFromDate,
       "Shift+PageUp": handleShiftPageUpFromDate
     }),
-    [CALENDAR_DATE_PICKER]: (0,lib.keymap)({
+    [CALENDAR_DATE_PICKER]: (0,lib_namespaceFn().w4)({
       Tab: datePickerTabEventHandler.tabAhead,
       "Shift+Tab": datePickerTabEventHandler.tabBack
     }),
-    [CALENDAR_MONTH]: (0,lib.keymap)({
+    [CALENDAR_MONTH]: (0,lib_namespaceFn().w4)({
       Up: handleUpFromMonth,
       ArrowUp: handleUpFromMonth,
       Down: handleDownFromMonth,
@@ -2088,11 +2906,11 @@ const datePickerEvents = {
       PageDown: handlePageDownFromMonth,
       PageUp: handlePageUpFromMonth
     }),
-    [CALENDAR_MONTH_PICKER]: (0,lib.keymap)({
+    [CALENDAR_MONTH_PICKER]: (0,lib_namespaceFn().w4)({
       Tab: monthPickerTabEventHandler.tabAhead,
       "Shift+Tab": monthPickerTabEventHandler.tabBack
     }),
-    [CALENDAR_YEAR]: (0,lib.keymap)({
+    [CALENDAR_YEAR]: (0,lib_namespaceFn().w4)({
       Up: handleUpFromYear,
       ArrowUp: handleUpFromYear,
       Down: handleDownFromYear,
@@ -2106,7 +2924,7 @@ const datePickerEvents = {
       PageDown: handlePageDownFromYear,
       PageUp: handlePageUpFromYear
     }),
-    [CALENDAR_YEAR_PICKER]: (0,lib.keymap)({
+    [CALENDAR_YEAR_PICKER]: (0,lib_namespaceFn().w4)({
       Tab: yearPickerTabEventHandler.tabAhead,
       "Shift+Tab": yearPickerTabEventHandler.tabBack
     }),
@@ -2114,7 +2932,7 @@ const datePickerEvents = {
       this.dataset.keydownKeyCode = event.keyCode;
     },
     [DATE_PICKER](event) {
-      const keyMap = (0,lib.keymap)({
+      const keyMap = (0,lib_namespaceFn().w4)({
         Escape: handleEscapeFromCalendar
       });
       keyMap(event);
@@ -2137,7 +2955,7 @@ const datePickerEvents = {
     }
   }
 };
-if (!is_ios_device()) {
+if (!(0,is_ios_device_namespaceFn().A)()) {
   datePickerEvents.mousemove = {
     [CALENDAR_DATE_CURRENT_MONTH]() {
       handleMousemoveFromDate(this);
@@ -2150,18 +2968,18 @@ if (!is_ios_device()) {
     }
   };
 }
-const datePicker = behavior(datePickerEvents, {
+const datePicker = (0,utils_behavior_namespaceFn().A)(datePickerEvents, {
   init(root) {
-    (0,utils_select/* default */.A)(DATE_PICKER, root).forEach(datePickerEl => {
+    ;(0,select_namespaceFn().A)(DATE_PICKER, root).forEach(datePickerEl => {
       if (!datePickerEl.classList.contains(DATE_PICKER_INITIALIZED_CLASS)) {
         enhanceDatePicker(datePickerEl);
       }
     });
   },
   setLanguage(strings) {
-    date_picker_text = strings;
-    MONTH_LABELS = [date_picker_text.january, date_picker_text.february, date_picker_text.march, date_picker_text.april, date_picker_text.may, date_picker_text.june, date_picker_text.july, date_picker_text.august, date_picker_text.september, date_picker_text.october, date_picker_text.november, date_picker_text.december];
-    DAY_OF_WEEK_LABELS = [date_picker_text.monday, date_picker_text.tuesday, date_picker_text.wednesday, date_picker_text.thursday, date_picker_text.friday, date_picker_text.saturday, date_picker_text.sunday];
+    text = strings;
+    MONTH_LABELS = [text.january, text.february, text.march, text.april, text.may, text.june, text.july, text.august, text.september, text.october, text.november, text.december];
+    DAY_OF_WEEK_LABELS = [text.monday, text.tuesday, text.wednesday, text.thursday, text.friday, text.saturday, text.sunday];
   },
   getDatePickerContext,
   disable,
@@ -2175,36 +2993,20 @@ const datePicker = behavior(datePickerEvents, {
 
 // #endregion Date Picker Event Delegation Registration / Component
 
-/* harmony default export */ const date_picker = (datePicker);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (datePicker);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ },
+});
 
-/***/ 409
-() {
+// EXTERNAL MODULE: ./src/js/polyfills/custom-event.js
+var custom_event_namespaceFn = () => {
+	return __webpack_require__(409);
+};
 
-/* eslint-disable consistent-return */
-/* eslint-disable func-names */
-(function () {
-  if (typeof window.CustomEvent === "function") return false;
-  function CustomEvent(event, _params) {
-    const params = _params || {
-      bubbles: false,
-      cancelable: false,
-      detail: null
-    };
-    const evt = document.createEvent("CustomEvent");
-    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-    return evt;
-  }
-  window.CustomEvent = CustomEvent;
-})();
-
-/***/ },
-
-/***/ 204
-() {
-
-"use strict";
+// MODULE: ./src/js/polyfills/element-hidden.js
+var element_hidden_namespaceFn = /*#__PURE__*/__webpack_require__.cw(() => {
 
 
 const elproto = window.HTMLElement.prototype;
@@ -2223,46 +3025,87 @@ if (!(HIDDEN in elproto)) {
     }
   });
 }
+});
 
-/***/ },
-
-/***/ 923
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
+// MODULE: ./src/js/polyfills/index.js
+var polyfills_namespaceFn = /*#__PURE__*/__webpack_require__.cw(() => {
 
 
 // polyfills HTMLElement.prototype.classList and DOMTokenList
-__webpack_require__(952);
+(src_namespaceFn());
 
 // polyfills HTMLElement.prototype.hidden
-__webpack_require__(204);
+(element_hidden_namespaceFn());
 
 // polyfills Number.isNaN()
-__webpack_require__(259);
+(number_is_nan_namespaceFn());
 
 // polyfills CustomEvent
-__webpack_require__(409);
+(custom_event_namespaceFn());
+});
 
-/***/ },
-
-/***/ 259
-() {
-
-Number.isNaN = Number.isNaN || function isNaN(input) {
-  // eslint-disable-next-line no-self-compare
-  return typeof input === "number" && input !== input;
+// EXTERNAL MODULE: ./src/js/polyfills/number-is-nan.js
+var number_is_nan_namespaceFn = () => {
+	return __webpack_require__(259);
 };
 
-/***/ },
+// MODULE: ./src/js/utils/active-element.js
+var active_element_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  let htmlDocument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
+  return htmlDocument.activeElement;
+});
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ 130
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+});
 
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+// MODULE: ./src/js/utils/behavior.js
+var utils_behavior_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
+(object_assign_namespaceFn());
+
+const receptor = (lib_namespaceFn());
+
+/**
+ * @name sequence
+ * @param {...Function} seq an array of functions
+ * @return { closure } callHooks
+ */
+// We use a named function here because we want it to inherit its lexical scope
+// from the behavior props object, not from the module
+const sequence = function () {
+  for (var _len = arguments.length, seq = new Array(_len), _key = 0; _key < _len; _key++) {
+    seq[_key] = arguments[_key];
+  }
+  return function callHooks() {
+    let target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.body;
+    seq.forEach(method => {
+      if (typeof this[method] === "function") {
+        this[method].call(this, target);
+      }
+    });
+  };
+};
+
+/**
+ * @name behavior
+ * @param {object} events
+ * @param {object?} props
+ * @return {receptor.behavior}
+ */
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((events, props) => receptor.behavior(events, object_assign_default()()({
+  on: sequence("init", "add"),
+  off: sequence("teardown", "remove")
+}, props)));
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
+
+});
+
+// MODULE: ./src/js/utils/breakpoints.js
+var breakpoints_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
 
 
 let breakpoints = {
@@ -2273,16 +3116,14 @@ let breakpoints = {
   'xl': 1200
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (breakpoints);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ },
+});
 
-/***/ 665
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+// MODULE: ./src/js/utils/is-in-viewport.js
+var is_in_viewport_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
 // https://stackoverflow.com/a/7557433
 function isElementInViewport(el) {
   let win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
@@ -2291,16 +3132,27 @@ function isElementInViewport(el) {
   return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (win.innerHeight || docEl.clientHeight) && rect.right <= (win.innerWidth || docEl.clientWidth);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isElementInViewport);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ },
+});
 
-/***/ 464
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+// MODULE: ./src/js/utils/is-ios-device.js
+var is_ios_device_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
+// iOS detection from: http://stackoverflow.com/a/9039885/177710
+function isIosDevice() {
+  return typeof navigator !== "undefined" && (navigator.userAgent.match(/(iPod|iPhone|iPad)/g) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) && !window.MSStream;
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isIosDevice);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+});
+
+// MODULE: ./src/js/utils/select.js
+var select_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
 /**
  * @name isElement
  * @desc returns whether or not the given argument is a DOM element.
@@ -2327,17 +3179,14 @@ const isElement = value => value && typeof value === "object" && value.nodeType 
   const selection = context.querySelectorAll(selector);
   return Array.prototype.slice.call(selection);
 });
-(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ },
+});
 
-/***/ 188
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+// MODULE: ./src/js/utils/toggle.js
+var toggle_namespaceFn = /*#__PURE__*/__webpack_require__.cw((__unused_webpack_module, __webpack_exports__) => {
 
 
 const EXPANDED = 'aria-expanded';
@@ -2356,868 +3205,68 @@ const HIDDEN = 'aria-hidden';
   controls.setAttribute(HIDDEN, !expanded);
   return expanded;
 });
-(Object.getOwnPropertyDescriptor(__WEBPACK_DEFAULT_EXPORT__, "name") || {}).writable || Object.defineProperty(__WEBPACK_DEFAULT_EXPORT__, "name", { value: "default", configurable: true });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, [
+/* harmony export */   "A", 0, __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ ]);
 
-/***/ },
+});
 
-/***/ 952
-() {
-
-/*
- * classList.js: Cross-browser full element.classList implementation.
- * 1.1.20170427
- *
- * By Eli Grey, http://eligrey.com
- * License: Dedicated to the public domain.
- *   See https://github.com/eligrey/classList.js/blob/master/LICENSE.md
- */
-
-/*global self, document, DOMException */
-
-/*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */
-
-if ("document" in window.self) {
-
-// Full polyfill for browsers with no classList support
-// Including IE < Edge missing SVGElement.classList
-if (!("classList" in document.createElement("_")) 
-	|| document.createElementNS && !("classList" in document.createElementNS("http://www.w3.org/2000/svg","g"))) {
-
-(function (view) {
-
-"use strict";
-
-if (!('Element' in view)) return;
-
-var
-	  classListProp = "classList"
-	, protoProp = "prototype"
-	, elemCtrProto = view.Element[protoProp]
-	, objCtr = Object
-	, strTrim = String[protoProp].trim || function () {
-		return this.replace(/^\s+|\s+$/g, "");
-	}
-	, arrIndexOf = Array[protoProp].indexOf || function (item) {
-		var
-			  i = 0
-			, len = this.length
-		;
-		for (; i < len; i++) {
-			if (i in this && this[i] === item) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	// Vendors: please allow content code to instantiate DOMExceptions
-	, DOMEx = function (type, message) {
-		this.name = type;
-		this.code = DOMException[type];
-		this.message = message;
-	}
-	, checkTokenAndGetIndex = function (classList, token) {
-		if (token === "") {
-			throw new DOMEx(
-				  "SYNTAX_ERR"
-				, "An invalid or illegal string was specified"
-			);
-		}
-		if (/\s/.test(token)) {
-			throw new DOMEx(
-				  "INVALID_CHARACTER_ERR"
-				, "String contains an invalid character"
-			);
-		}
-		return arrIndexOf.call(classList, token);
-	}
-	, ClassList = function (elem) {
-		var
-			  trimmedClasses = strTrim.call(elem.getAttribute("class") || "")
-			, classes = trimmedClasses ? trimmedClasses.split(/\s+/) : []
-			, i = 0
-			, len = classes.length
-		;
-		for (; i < len; i++) {
-			this.push(classes[i]);
-		}
-		this._updateClassName = function () {
-			elem.setAttribute("class", this.toString());
-		};
-	}
-	, classListProto = ClassList[protoProp] = []
-	, classListGetter = function () {
-		return new ClassList(this);
-	}
-;
-// Most DOMException implementations don't allow calling DOMException's toString()
-// on non-DOMExceptions. Error's toString() is sufficient here.
-DOMEx[protoProp] = Error[protoProp];
-classListProto.item = function (i) {
-	return this[i] || null;
-};
-classListProto.contains = function (token) {
-	token += "";
-	return checkTokenAndGetIndex(this, token) !== -1;
-};
-classListProto.add = function () {
-	var
-		  tokens = arguments
-		, i = 0
-		, l = tokens.length
-		, token
-		, updated = false
-	;
-	do {
-		token = tokens[i] + "";
-		if (checkTokenAndGetIndex(this, token) === -1) {
-			this.push(token);
-			updated = true;
-		}
-	}
-	while (++i < l);
-
-	if (updated) {
-		this._updateClassName();
-	}
-};
-classListProto.remove = function () {
-	var
-		  tokens = arguments
-		, i = 0
-		, l = tokens.length
-		, token
-		, updated = false
-		, index
-	;
-	do {
-		token = tokens[i] + "";
-		index = checkTokenAndGetIndex(this, token);
-		while (index !== -1) {
-			this.splice(index, 1);
-			updated = true;
-			index = checkTokenAndGetIndex(this, token);
-		}
-	}
-	while (++i < l);
-
-	if (updated) {
-		this._updateClassName();
-	}
-};
-classListProto.toggle = function (token, force) {
-	token += "";
-
-	var
-		  result = this.contains(token)
-		, method = result ?
-			force !== true && "remove"
-		:
-			force !== false && "add"
-	;
-
-	if (method) {
-		this[method](token);
-	}
-
-	if (force === true || force === false) {
-		return force;
-	} else {
-		return !result;
-	}
-};
-classListProto.toString = function () {
-	return this.join(" ");
+// EXTERNAL MODULE: ./node_modules/classlist-polyfill/src/index.js
+var src_namespaceFn = () => {
+	return __webpack_require__(952);
 };
 
-if (objCtr.defineProperty) {
-	var classListPropDesc = {
-		  get: classListGetter
-		, enumerable: true
-		, configurable: true
-	};
-	try {
-		objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
-	} catch (ex) { // IE 8 doesn't support enumerable:true
-		// adding undefined to fight this issue https://github.com/eligrey/classList.js/issues/36
-		// modernie IE8-MSW7 machine has IE8 8.0.6001.18702 and is affected
-		if (ex.number === undefined || ex.number === -0x7FF5EC54) {
-			classListPropDesc.enumerable = false;
-			objCtr.defineProperty(elemCtrProto, classListProp, classListPropDesc);
-		}
-	}
-} else if (objCtr[protoProp].__defineGetter__) {
-	elemCtrProto.__defineGetter__(classListProp, classListGetter);
-}
-
-}(window.self));
-
-}
-
-// There is full or partial native classList support, so just check if we need
-// to normalize the add/remove and toggle APIs.
-
-(function () {
-	"use strict";
-
-	var testElement = document.createElement("_");
-
-	testElement.classList.add("c1", "c2");
-
-	// Polyfill for IE 10/11 and Firefox <26, where classList.add and
-	// classList.remove exist but support only one argument at a time.
-	if (!testElement.classList.contains("c2")) {
-		var createMethod = function(method) {
-			var original = DOMTokenList.prototype[method];
-
-			DOMTokenList.prototype[method] = function(token) {
-				var i, len = arguments.length;
-
-				for (i = 0; i < len; i++) {
-					token = arguments[i];
-					original.call(this, token);
-				}
-			};
-		};
-		createMethod('add');
-		createMethod('remove');
-	}
-
-	testElement.classList.toggle("c3", false);
-
-	// Polyfill for IE 10 and Firefox <24, where classList.toggle does not
-	// support the second argument.
-	if (testElement.classList.contains("c3")) {
-		var _toggle = DOMTokenList.prototype.toggle;
-
-		DOMTokenList.prototype.toggle = function(token, force) {
-			if (1 in arguments && !this.contains(token) === !force) {
-				return force;
-			} else {
-				return _toggle.call(this, token);
-			}
-		};
-
-	}
-
-	testElement = null;
-}());
-
-}
-
-
-/***/ },
-
-/***/ 786
-(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* global define, KeyboardEvent, module */
-
-(function () {
-
-  var keyboardeventKeyPolyfill = {
-    polyfill: polyfill,
-    keys: {
-      3: 'Cancel',
-      6: 'Help',
-      8: 'Backspace',
-      9: 'Tab',
-      12: 'Clear',
-      13: 'Enter',
-      16: 'Shift',
-      17: 'Control',
-      18: 'Alt',
-      19: 'Pause',
-      20: 'CapsLock',
-      27: 'Escape',
-      28: 'Convert',
-      29: 'NonConvert',
-      30: 'Accept',
-      31: 'ModeChange',
-      32: ' ',
-      33: 'PageUp',
-      34: 'PageDown',
-      35: 'End',
-      36: 'Home',
-      37: 'ArrowLeft',
-      38: 'ArrowUp',
-      39: 'ArrowRight',
-      40: 'ArrowDown',
-      41: 'Select',
-      42: 'Print',
-      43: 'Execute',
-      44: 'PrintScreen',
-      45: 'Insert',
-      46: 'Delete',
-      48: ['0', ')'],
-      49: ['1', '!'],
-      50: ['2', '@'],
-      51: ['3', '#'],
-      52: ['4', '$'],
-      53: ['5', '%'],
-      54: ['6', '^'],
-      55: ['7', '&'],
-      56: ['8', '*'],
-      57: ['9', '('],
-      91: 'OS',
-      93: 'ContextMenu',
-      144: 'NumLock',
-      145: 'ScrollLock',
-      181: 'VolumeMute',
-      182: 'VolumeDown',
-      183: 'VolumeUp',
-      186: [';', ':'],
-      187: ['=', '+'],
-      188: [',', '<'],
-      189: ['-', '_'],
-      190: ['.', '>'],
-      191: ['/', '?'],
-      192: ['`', '~'],
-      219: ['[', '{'],
-      220: ['\\', '|'],
-      221: [']', '}'],
-      222: ["'", '"'],
-      224: 'Meta',
-      225: 'AltGraph',
-      246: 'Attn',
-      247: 'CrSel',
-      248: 'ExSel',
-      249: 'EraseEof',
-      250: 'Play',
-      251: 'ZoomOut'
-    }
-  };
-
-  // Function keys (F1-24).
-  var i;
-  for (i = 1; i < 25; i++) {
-    keyboardeventKeyPolyfill.keys[111 + i] = 'F' + i;
-  }
-
-  // Printable ASCII characters.
-  var letter = '';
-  for (i = 65; i < 91; i++) {
-    letter = String.fromCharCode(i);
-    keyboardeventKeyPolyfill.keys[i] = [letter.toLowerCase(), letter.toUpperCase()];
-  }
-
-  function polyfill () {
-    if (!('KeyboardEvent' in window) ||
-        'key' in KeyboardEvent.prototype) {
-      return false;
-    }
-
-    // Polyfill `key` on `KeyboardEvent`.
-    var proto = {
-      get: function (x) {
-        var key = keyboardeventKeyPolyfill.keys[this.which || this.keyCode];
-
-        if (Array.isArray(key)) {
-          key = key[+this.shiftKey];
-        }
-
-        return key;
-      }
-    };
-    Object.defineProperty(KeyboardEvent.prototype, 'key', proto);
-    return proto;
-  }
-
-  if (true) {
-    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (keyboardeventKeyPolyfill),
-		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-		(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-		__WEBPACK_AMD_DEFINE_FACTORY__),
-		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-  } else // removed by dead control flow
-{}
-
-})();
-
-
-/***/ },
-
-/***/ 840
-(module) {
-
-"use strict";
-
-
-var proto = typeof Element !== 'undefined' ? Element.prototype : {};
-var vendor = proto.matches
-  || proto.matchesSelector
-  || proto.webkitMatchesSelector
-  || proto.mozMatchesSelector
-  || proto.msMatchesSelector
-  || proto.oMatchesSelector;
-
-module.exports = match;
-
-/**
- * Match `el` to `selector`.
- *
- * @param {Element} el
- * @param {String} selector
- * @return {Boolean}
- * @api public
- */
-
-function match(el, selector) {
-  if (!el || el.nodeType !== 1) return false;
-  if (vendor) return vendor.call(el, selector);
-  var nodes = el.parentNode.querySelectorAll(selector);
-  for (var i = 0; i < nodes.length; i++) {
-    if (nodes[i] == el) return true;
-  }
-  return false;
-}
-
-
-/***/ },
-
-/***/ 228
-(module) {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
+// EXTERNAL MODULE: ./node_modules/object-assign/index.js
+var object_assign_namespaceFn = () => {
+	return __webpack_require__(228);
 };
 
-
-/***/ },
-
-/***/ 87
-(module, __unused_webpack_exports, __webpack_require__) {
-
-const assign = __webpack_require__(228);
-const delegate = __webpack_require__(746);
-const delegateAll = __webpack_require__(591);
-
-const DELEGATE_PATTERN = /^(.+):delegate\((.+)\)$/;
-const SPACE = ' ';
-
-const getListeners = function(type, handler) {
-  var match = type.match(DELEGATE_PATTERN);
-  var selector;
-  if (match) {
-    type = match[1];
-    selector = match[2];
-  }
-
-  var options;
-  if (typeof handler === 'object') {
-    options = {
-      capture: popKey(handler, 'capture'),
-      passive: popKey(handler, 'passive')
-    };
-  }
-
-  var listener = {
-    selector: selector,
-    delegate: (typeof handler === 'object')
-      ? delegateAll(handler)
-      : selector
-        ? delegate(selector, handler)
-        : handler,
-    options: options
-  };
-
-  if (type.indexOf(SPACE) > -1) {
-    return type.split(SPACE).map(function(_type) {
-      return assign({type: _type}, listener);
-    });
-  } else {
-    listener.type = type;
-    return [listener];
-  }
+// EXTERNAL MODULE: ./node_modules/receptor/lib/behavior.js
+var behavior_namespaceFn = () => {
+	return __webpack_require__(87);
 };
 
-var popKey = function(obj, key) {
-  var value = obj[key];
-  delete obj[key];
-  return value;
+// EXTERNAL MODULE: ./node_modules/receptor/lib/delegate.js
+var delegate_namespaceFn = () => {
+	return __webpack_require__(746);
 };
 
-module.exports = function behavior(events, props) {
-  const listeners = Object.keys(events)
-    .reduce(function(memo, type) {
-      var listeners = getListeners(type, events[type]);
-      return memo.concat(listeners);
-    }, []);
-
-  return assign({
-    add: function addBehavior(element) {
-      listeners.forEach(function(listener) {
-        element.addEventListener(
-          listener.type,
-          listener.delegate,
-          listener.options
-        );
-      });
-    },
-    remove: function removeBehavior(element) {
-      listeners.forEach(function(listener) {
-        element.removeEventListener(
-          listener.type,
-          listener.delegate,
-          listener.options
-        );
-      });
-    }
-  }, props);
+// EXTERNAL MODULE: ./node_modules/receptor/lib/delegateAll.js
+var delegateAll_namespaceFn = () => {
+	return __webpack_require__(591);
 };
 
-
-/***/ },
-
-/***/ 678
-(module, __unused_webpack_exports, __webpack_require__) {
-
-const matches = __webpack_require__(840);
-
-module.exports = function(element, selector) {
-  do {
-    if (matches(element, selector)) {
-      return element;
-    }
-  } while ((element = element.parentNode) && element.nodeType === 1);
+// EXTERNAL MODULE: ./node_modules/receptor/lib/ignore.js
+var ignore_namespaceFn = () => {
+	return __webpack_require__(39);
 };
 
-
-
-/***/ },
-
-/***/ 977
-(module) {
-
-module.exports = function compose(functions) {
-  return function(e) {
-    return functions.some(function(fn) {
-      return fn.call(this, e) === false;
-    }, this);
-  };
-};
-
-
-/***/ },
-
-/***/ 746
-(module, __unused_webpack_exports, __webpack_require__) {
-
-const closest = __webpack_require__(678);
-
-module.exports = function delegate(selector, fn) {
-  return function delegation(event) {
-    var target = closest(event.target, selector);
-    if (target) {
-      return fn.call(target, event);
-    }
-  }
-};
-
-
-/***/ },
-
-/***/ 591
-(module, __unused_webpack_exports, __webpack_require__) {
-
-const delegate = __webpack_require__(746);
-const compose = __webpack_require__(977);
-
-const SPLAT = '*';
-
-module.exports = function delegateAll(selectors) {
-  const keys = Object.keys(selectors)
-
-  // XXX optimization: if there is only one handler and it applies to
-  // all elements (the "*" CSS selector), then just return that
-  // handler
-  if (keys.length === 1 && keys[0] === SPLAT) {
-    return selectors[SPLAT];
-  }
-
-  const delegates = keys.reduce(function(memo, selector) {
-    memo.push(delegate(selector, selectors[selector]));
-    return memo;
-  }, []);
-  return compose(delegates);
-};
-
-
-/***/ },
-
-/***/ 39
-(module) {
-
-module.exports = function ignore(element, fn) {
-  return function ignorance(e) {
-    if (element !== e.target && !element.contains(e.target)) {
-      return fn.call(this, e);
-    }
-  };
-};
-
-
-/***/ },
-
-/***/ 525
-(module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
+// MODULE: ./node_modules/receptor/lib/index.js
+var lib_namespaceFn = /*#__PURE__*/__webpack_require__.cw((module) => {
 
 
 module.exports = {
-  behavior: __webpack_require__(87),
-  delegate: __webpack_require__(746),
-  delegateAll: __webpack_require__(591),
-  ignore: __webpack_require__(39),
-  keymap: __webpack_require__(402),
+  behavior: (behavior_namespaceFn()),
+  ...void ((delegate_namespaceFn())),
+  ...void ((delegateAll_namespaceFn())),
+  ...void ((ignore_namespaceFn())),
+  w4: (keymap_namespaceFn()),
 };
 
-
-/***/ },
-
-/***/ 402
-(module, __unused_webpack_exports, __webpack_require__) {
-
-__webpack_require__(786);
-
-// these are the only relevant modifiers supported on all platforms,
-// according to MDN:
-// <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState>
-const MODIFIERS = {
-  'Alt':      'altKey',
-  'Control':  'ctrlKey',
-  'Ctrl':     'ctrlKey',
-  'Shift':    'shiftKey'
-};
-
-const MODIFIER_SEPARATOR = '+';
-
-const getEventKey = function(event, hasModifiers) {
-  var key = event.key;
-  if (hasModifiers) {
-    for (var modifier in MODIFIERS) {
-      if (event[MODIFIERS[modifier]] === true) {
-        key = [modifier, key].join(MODIFIER_SEPARATOR);
-      }
-    }
-  }
-  return key;
-};
-
-module.exports = function keymap(keys) {
-  const hasModifiers = Object.keys(keys).some(function(key) {
-    return key.indexOf(MODIFIER_SEPARATOR) > -1;
-  });
-  return function(event) {
-    var key = getEventKey(event, hasModifiers);
-    return [key, key.toLowerCase()]
-      .reduce(function(result, _key) {
-        if (_key in keys) {
-          result = keys[key].call(this, event);
-        }
-        return result;
-      }, undefined);
-  };
-};
-
-module.exports.MODIFIERS = MODIFIERS;
-
-
-/***/ }
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
-(() => {
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  Accordion: () => (/* reexport */ accordion),
-  Alert: () => (/* reexport */ components_alert),
-  BackToTop: () => (/* reexport */ back_to_top),
-  CharacterLimit: () => (/* reexport */ character_limit),
-  CheckboxToggleContent: () => (/* reexport */ checkbox_toggle_content),
-  Dropdown: () => (/* reexport */ dropdown),
-  DropdownSort: () => (/* reexport */ dropdown_sort),
-  ErrorSummary: () => (/* reexport */ error_summary),
-  MenuDropdown: () => (/* reexport */ navigation_drawer_overflow),
-  Modal: () => (/* reexport */ modal),
-  Navigation: () => (/* reexport */ navigation),
-  RadioToggleGroup: () => (/* reexport */ radio_toggle_content),
-  ResponsiveTable: () => (/* reexport */ table),
-  TableSelectableRows: () => (/* reexport */ selectable_table),
-  Tabs: () => (/* reexport */ tabs),
-  Toast: () => (/* reexport */ toast),
-  Tooltip: () => (/* reexport */ tooltip),
-  datePicker: () => (/* binding */ datePicker),
-  init: () => (/* binding */ init)
 });
+
+// EXTERNAL MODULE: ./node_modules/receptor/lib/keymap.js
+var keymap_namespaceFn = () => {
+	return __webpack_require__(402);
+};
 
 ;// ./src/js/components/accordion.js
 
 
-const toggle = (__webpack_require__(188)/* ["default"] */ .A);
-const isElementInViewport = (__webpack_require__(665)/* ["default"] */ .A);
+const accordion_toggle = (toggle_namespaceFn().A);
+const accordion_isElementInViewport = (is_in_viewport_namespaceFn().A);
 const BUTTON = `.accordion-button[aria-controls]`;
-const EXPANDED = 'aria-expanded';
+const accordion_EXPANDED = 'aria-expanded';
 const BULK_FUNCTION_ACTION_ATTRIBUTE = "data-accordion-bulk-expand";
 const TEXT_ACCORDION = {
   "open_all": "Åbn alle",
@@ -3252,7 +3301,7 @@ Accordion.prototype.init = function () {
     let currentButton = this.buttons[i];
 
     // Verify state on button and state on panel
-    let expanded = currentButton.getAttribute(EXPANDED) === 'true';
+    let expanded = currentButton.getAttribute(accordion_EXPANDED) === 'true';
     this.toggleButton(currentButton, expanded);
 
     // Set click event on accordion buttons
@@ -3322,7 +3371,7 @@ Accordion.prototype.toggleButton = function (button, expanded) {
   } else if (button.parentNode.parentNode.parentNode.classList.contains('accordion')) {
     accordion = button.parentNode.parentNode.parentNode;
   }
-  expanded = toggle(button, expanded);
+  expanded = accordion_toggle(button, expanded);
   if (expanded) {
     let eventOpen = new Event('fds.accordion.open');
     button.dispatchEvent(eventOpen);
@@ -3756,7 +3805,7 @@ CheckboxToggleContent.prototype.collapse = function (triggerEl, targetEl) {
 ;// ./src/js/components/dropdown.js
 
 
-const breakpoints = (__webpack_require__(130)/* ["default"] */ .A);
+const dropdown_breakpoints = (breakpoints_namespaceFn().A);
 const dropdown_BUTTON = '.button-overflow-menu';
 const jsDropdownCollapseModifier = 'js-dropdown--responsive-collapse'; //option: make dropdown behave as the collapse component when on small screens (used by submenus in the header and step-dropdown).
 const TARGET = 'data-js-target';
@@ -3988,10 +4037,10 @@ let doResponsiveCollapse = function (triggerEl) {
 };
 let getTringuideBreakpoint = function (button) {
   if (button.parentNode.classList.contains('overflow-menu--md-no-responsive')) {
-    return breakpoints.md;
+    return dropdown_breakpoints.md;
   }
   if (button.parentNode.classList.contains('overflow-menu--lg-no-responsive')) {
-    return breakpoints.lg;
+    return dropdown_breakpoints.lg;
   }
 };
 /* harmony default export */ const dropdown = (Dropdown);
@@ -4241,7 +4290,9 @@ Modal.prototype.hide = function () {
   let modalElement = this.$modal;
   if (modalElement !== null) {
     modalElement.setAttribute('aria-hidden', 'true');
-    let eventClose = new Event('fds.modal.hidden');
+    let eventClose = new Event('fds.modal.hidden', {
+      bubbles: true
+    });
     modalElement.dispatchEvent(eventClose);
     let $backdrop = document.querySelector('#modal-backdrop');
     if ($backdrop) {
@@ -4252,7 +4303,7 @@ Modal.prototype.hide = function () {
     window.removeEventListener('resize', this.hideOnResize, false);
     modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
     if (!hasForcedAction(modalElement)) {
-      document.removeEventListener('keyup', handleEscape);
+      document.removeEventListener('keydown', handleEscape);
     }
 
     /* Release the focus from the modal */
@@ -4302,7 +4353,9 @@ Modal.prototype.show = function () {
       new Modal(activeModals[i]).hide();
     }
     modalElement.setAttribute('aria-hidden', 'false');
-    let eventOpen = new Event('fds.modal.shown');
+    let eventOpen = new Event('fds.modal.shown', {
+      bubbles: true
+    });
     modalElement.dispatchEvent(eventOpen);
     if (document.getElementById('modal-backdrop')) {
       document.getElementById('modal-backdrop').remove();
@@ -4334,7 +4387,7 @@ Modal.prototype.show = function () {
       modalElement.focus();
     }
     if (!hasForcedAction(modalElement)) {
-      document.addEventListener('keyup', handleEscape);
+      document.addEventListener('keydown', handleEscape);
       $backdrop.addEventListener('click', () => {
         this.hide();
       }, false);
@@ -4374,13 +4427,13 @@ function hasForcedAction(modal) {
   }
   return true;
 }
-/* harmony default export */ const modal = (Modal);
+/* harmony default export */ const components_modal = (Modal);
 ;// ./src/js/components/navigation.js
 
 
 
-const forEach = __webpack_require__(141);
-const navigation_select = (__webpack_require__(464)/* ["default"] */ .A);
+const navigation_forEach = (array_foreach_namespaceFn());
+const navigation_select = (select_namespaceFn().A);
 const MOBILE_DRAWER = `.mobile-drawer`;
 const NAV_LINKS = `.navigation-menu-mobile a`;
 const MODALS = '[data-module="modal"]';
@@ -4673,7 +4726,7 @@ const toggleNav = function (active) {
     active = !isActive();
   }
   body.classList.toggle(ACTIVE_CLASS, active);
-  forEach(navigation_select(TOGGLES), el => {
+  navigation_forEach(navigation_select(TOGGLES), el => {
     el.classList.toggle(VISIBLE_CLASS, active);
   });
   if (active) {
@@ -4869,7 +4922,7 @@ RadioToggleGroup.prototype.collapse = function (radioInputElement, contentElemen
 };
 /* harmony default export */ const radio_toggle_content = (RadioToggleGroup);
 ;// ./src/js/components/table.js
-const table_select = (__webpack_require__(464)/* ["default"] */ .A);
+const table_select = (select_namespaceFn().A);
 
 /**
  * Set data-title on cells, where the attribute is missing
@@ -4913,7 +4966,7 @@ function insertHeaderAsAttributes(tableEl) {
     }
   }
 }
-/* harmony default export */ const table = (ResponsiveTable);
+/* harmony default export */ const components_table = (ResponsiveTable);
 ;// ./src/js/components/tabs.js
 
 
@@ -5706,6 +5759,7 @@ function closeOnKey(e) {
   }
 }
 /* harmony default export */ const tooltip = (Tooltip);
+function object_assign_default() { return object_assign_default.c || (object_assign_default.c = __webpack_require__.n(object_assign_namespaceFn())); }
 ;// ./src/js/dkfds.js
 
 
@@ -5726,18 +5780,19 @@ function closeOnKey(e) {
 
 
 
-const datePicker = (__webpack_require__(486)/* ["default"] */ .A);
+const dkfds_datePicker = (date_picker_namespaceFn().A);
+
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
  */
-__webpack_require__(923);
+(polyfills_namespaceFn());
 
 /**
  * Init all components
  * @param {JSON} options {scope: HTMLElement} - Init all components within scope (default is document)
  */
-var init = function (options) {
+var dkfds_init = function (options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {};
 
@@ -5826,7 +5881,7 @@ var init = function (options) {
   Datepicker
   ---------------------
   */
-  datePicker.on(scope);
+  dkfds_datePicker.on(scope);
 
   /*
   ---------------------
@@ -5843,7 +5898,7 @@ var init = function (options) {
   */
   const modals = scope.querySelectorAll('.fds-modal');
   for (let d = 0; d < modals.length; d++) {
-    new modal(modals[d]).init();
+    new components_modal(modals[d]).init();
   }
 
   /*
@@ -5880,7 +5935,7 @@ var init = function (options) {
   */
   const jsSelectorTable = scope.querySelectorAll('table.table--responsive-headers, table.table-sm-responsive-headers, table.table-md-responsive-headers, table.table-lg-responsive-headers');
   for (let c = 0; c < jsSelectorTable.length; c++) {
-    new table(jsSelectorTable[c]);
+    new components_table(jsSelectorTable[c]);
   }
 
   /*

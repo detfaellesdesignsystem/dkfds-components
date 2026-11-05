@@ -1,0 +1,32 @@
+@use "../variables" as vars;
+@use '../functions' as func;
+@use '../mixins' as mixins;
+
+:root {
+    --header-portal-background-color: #{func.color(vars.$header-portal-background-color)};
+
+    --color-white: #FFFFFF;
+    --color-gray-100: #F5F5F5;
+    --color-gray-200: #DCDCDC;
+    --color-gray-300: #BFBFBF;
+    --color-gray-400: #8E8E8E;
+    --color-gray-500: #707070;
+    --color-gray-600: #454545;
+    --color-black: #1a1a1a;
+
+    --color-error: #CC0000;
+
+    --alert-background-color: var(--color-gray-100);
+    --alert-border-color: var(--color-gray-400);
+    --alert-heading-margin-top: 0;
+    --alert-heading-margin-bottom: 0;
+    --alert-content-margin-top: 0;
+    --alert-content-margin-bottom: 0;
+
+    --tab-panel-background-color: rgba(0, 0, 0, 0);
+    --tab-panel-border-color: var(--color-gray-400);
+    --tabs-tablist-width: 100%;
+
+    --tooltip-arrow-height: 8px;
+    --tooltip-arrow-distance-to-target: 4px;
+}

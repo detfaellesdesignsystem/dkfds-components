@@ -1,0 +1,462 @@
+@use 'sass:math' as math;
+@use "../variables" as vars;
+@use '../functions' as func;
+@use '../mixins' as mixins;
+@use "../placeholder-selectors";
+
+$-aspect-height: 9;
+$-aspect-width: 16;
+
+@mixin -embed-container($height, $width) {
+    padding-bottom: math.percentage(math.div($height, $width));
+}
+
+.embed-container {
+    @include -embed-container($-aspect-height, $-aspect-width);
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+
+    iframe,
+    object,
+    embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+fieldset ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+fieldset + fieldset {
+    margin-top: func.units(5);
+}
+
+fieldset legend,
+.form-label {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-transform: none;
+    max-width: 66ch;
+    display: inline-block;
+}
+
+fieldset[disabled] legend,
+.form-label.disabled {
+    color: var(--color-gray-500);
+    font-weight: func.font-weight('medium');
+}
+
+legend {
+
+    h1, .h1,
+    h2, .h2,
+    h3, .h3,
+    h4, .h4,
+    h5, .h5,
+    h6, .h6 {
+        margin-bottom: 0;
+    }
+}
+
+input,
+select,
+textarea {
+
+    // Input width with rem
+    &.input-width-xxs {
+        max-width: 8rem !important;
+        width: 100%;
+    }
+
+    &.input-width-xs {
+        max-width: 16rem !important;
+        width: 100%;
+    }
+
+    &.input-width-s {
+        max-width: 24rem !important;
+        width: 100%;
+    }
+
+    &.input-width-m {
+        max-width: 32rem !important;
+        width: 100%;
+    }
+
+    &.input-width-l {
+        max-width: 40rem !important;
+        width: 100%;
+    }
+
+    &.input-width-xl {
+        max-width: 48rem !important;
+        width: 100%;
+    }
+
+    // Input width with characters
+    &.input-char-4 {
+        max-width: calc(2px + 16px + 16px + 4ch);
+        width: 100%;
+    }
+
+    &.input-char-8 {
+        max-width: calc(2px + 16px + 16px + 8ch);
+        width: 100%;
+    }
+
+    &.input-char-11 {
+        max-width: calc(2px + 16px + 16px + 11ch);
+        width: 100%;
+    }
+
+    &.input-char-27 {
+        max-width: calc(2px + 16px + 16px + 27ch);
+        width: 100%;
+    }
+}
+
+
+hr {
+    border-top: func.border(vars.$hr-border);
+}
+
+$icons: (
+    "accessibility-new",
+    "account",
+    "add-a-photo",
+    "add-document",
+    "analytics",
+    "apps",
+    "arrow-back",
+    "arrow-downward",
+    "arrow-forward",
+    "arrow-upward",
+    "assignment",
+    "attach-file",
+    "bookmark",
+    "bookmarks",
+    "business",
+    "calculator",
+    "calendar-month",
+    "car",
+    "chat",
+    "check",
+    "checklist",
+    "check-white",
+    "chevron-double-left",
+    "chevron-double-right",
+    "chevron-down",
+    "chevron-down-white",
+    "chevron-left",
+    "chevron-right",
+    "chevron-up",
+    "close",
+    "construction",
+    "contact-card",
+    "contact-info",
+    "contact-support",
+    "copy",
+    "coronavirus",
+    "create-new-folder",
+    "credit-card",
+    "database",
+    "delete",
+    "desktop",
+    "document",
+    "download",
+    "download-done",
+    "drag-pan",
+    "edit",
+    "email",
+    "engineering",
+    "error",
+    "error-white",
+    "feedback",
+    "file",
+    "file-excel",
+    "file-image",
+    "file-pdf",
+    "file-word",
+    "first-page",
+    "flag",
+    "flag-fill",
+    "folder",
+    "folder-open",
+    "format-align-center",
+    "format-align-justify",
+    "format-align-left",
+    "format-align-right",
+    "format-bold",
+    "format-clear",
+    "format-color-fill",
+    "format-color-text",
+    "format-indent-decrease",
+    "format-indent-increase",
+    "format-italic",
+    "format-list-bulleted",
+    "format-list-numbered",
+    "format-size",
+    "format-text",
+    "format-underlined",
+    "forum",
+    "forward",
+    "fullscreen",
+    "fullscreen-exit",
+    "groups",
+    "headset",
+    "help",
+    "home",
+    "hourglass",
+    "how-to-reg",
+    "info",
+    "info-white",
+    "language",
+    "laptop",
+    "last-page",
+    "link",
+    "list-add",
+    "list-bulleted",
+    "list-check",
+    "location",
+    "lock",
+    "map",
+    "menu",
+    "minus",
+    "minus-white",
+    "more-horiz",
+    "more-vert",
+    "mouse",
+    "notifications",
+    "open-in-new",
+    "palette",
+    "payments",
+    "person",
+    "person-add",
+    "person-remove",
+    "persons",
+    "photo-camera",
+    "plus",
+    "print",
+    "refresh",
+    "reply",
+    "save",
+    "science",
+    "search",
+    "send",
+    "settings",
+    "share",
+    "shopping-cart",
+    "smartphone",
+    "sort-ascending",
+    "sort-by-alpha",
+    "sort-default",
+    "sort-descending",
+    "sort-table-ascending",
+    "sort-table-descending",
+    "sort-table-none",
+    "star",
+    "star-fill",
+    "student",
+    "subdirectory-arrow-left",
+    "subdirectory-arrow-right",
+    "success",
+    "success-white",
+    "summary",
+    "support-agent",
+    "sync",
+    "time",
+    "tractor",
+    "trainee",
+    "truck",
+    "tune",
+    "upload",
+    "videocam",
+    "view-in-list",
+    "view-split",
+    "visibility",
+    "visibility-off",
+    "warning",
+    "zoom-in",
+    "zoom-out"
+    ) !default;
+
+.icon {
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: 100%;
+}
+
+.icon-svg {
+    height: func.units(vars.$typography-body-text-line-height, 'rem');
+    width: func.units(vars.$typography-body-text-line-height, 'rem');
+    vertical-align: middle;
+    fill: currentColor;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.inline-svg {
+    height: 1em;
+    width: 1em;
+}
+
+@each $icon in $icons {
+    .icon-#{$icon}:not(a) {
+        background-image: url(vars.$icons-folder-path + $icon + ".svg");
+    }
+}
+
+.hide-base-svg {
+    // hide inline svgs
+    display: none;
+}
+
+
+// Ul lists
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+    color: func.color(vars.$typography-body-text-color);
+    font-size: func.font-size(vars.$typography-body-text-font-size);
+    line-height: func.units(vars.$typography-body-text-line-height, 'rem');
+
+    > li {
+        margin-top: func.units(3);
+        list-style-type: none;
+        position: relative;
+        padding-left: func.units(4, 'rem');
+        line-height: func.units(vars.$typography-body-text-line-height, 'rem');
+
+        &::before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            top: -1px;
+            font-size: func.font-size('lg');
+        }
+    }
+}
+
+// Ol lists
+ol {
+    padding-left: func.units(505);
+
+    li {
+        margin-top: func.units(3);
+        line-height: func.units(5, 'rem');
+    }
+}
+
+.article {
+
+    ul > li,
+    ol > li {
+        font-size: func.font-size(vars.$typography-article-font-size);
+        line-height: func.units(vars.$typography-article-line-height, 'rem');
+        letter-spacing: vars.$typography-article-letter-spacing;
+    }
+}
+
+// Unstyled lists
+.unstyled-list {
+    @include mixins.unstyled-list;
+}
+
+.bordered-list {
+    border-top: func.border('low-contrast');
+    @include mixins.unstyled-list;
+
+    li {
+        padding: func.units(3) 0;
+        border-bottom: func.border('low-contrast');
+    }
+}
+
+// No bullet lists
+.nobullet-list {
+    @include mixins.nobullet-list;
+}
+
+// No indententation list
+.noindent-list {
+    @include mixins.noindent-list;
+}
+
+
+.inline-list {
+    @include mixins.unstyled-list;
+
+    > li {
+        display: block;
+
+        @include mixins.media-breakpoint-up(md) {
+            display: inline-block;
+        }
+    }
+
+    li + li {
+        margin-top: func.units(305);
+
+        @include mixins.media-breakpoint-up(md) {
+            margin-top: 0;
+        }
+    }
+}
+
+.page-header + .page-content {
+    margin-top: func.units(7);
+}
+
+.page-content + .page-footer {
+    margin-top: func.units(7);
+}
+
+.page-container {
+    flex: 1 0 auto;
+    padding-top: func.units(5, 'rem');
+
+    @include mixins.media-breakpoint-up(md) {
+        padding-top: func.units(7, 'rem');
+    }
+}
+
+// sticky footer
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.section + .section {
+    margin-top: func.units(5)
+}
+
+// Header
+
+.header {
+    width: 100%;
+    border-bottom: func.border(vars.$header-last-border);
+}

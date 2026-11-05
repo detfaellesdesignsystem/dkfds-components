@@ -1,0 +1,22 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-alert {
+    [slot="content"] a {
+        color: var(--color-black);
+
+        .icon-svg {
+            fill: var(--color-black);
+        }
+
+        /* Ensure correct coloring of icons in visited links in the Safari browser. */
+        &.icon-link:not(.function-link):visited .icon-svg {
+            fill: var(--color-black);
+        }
+
+        &.icon-link:not(.function-link):hover .icon-svg {
+            fill: var(--color-black);
+        }
+    }
+}

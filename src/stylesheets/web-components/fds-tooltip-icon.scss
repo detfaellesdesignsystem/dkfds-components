@@ -1,0 +1,41 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+fds-tooltip-icon,
+.fds-tooltip-icon {
+    display: inline-flex;
+    vertical-align: bottom;
+
+    .button .icon-svg {
+        margin: 0;
+    }
+
+    &.small {
+        .button {
+            &:focus {
+                outline-offset: -2px;
+            }
+
+            svg {
+                padding-top: .3rem;
+                padding-bottom: .3rem;
+            }
+        }
+    }
+
+    .tooltip {
+        @extend %tooltip;
+    }
+
+    .tooltip-arrow {
+        @extend %tooltip-arrow;
+    }
+}
+
+input[type="checkbox"] + label + fds-tooltip-icon {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+}

@@ -44,7 +44,7 @@ $-transition-duration: 0.25s;
         overflow: hidden;
 
         .modal-header {
-            border-bottom: 1px solid func.color('black');
+            border-bottom: func.border('high-contrast');
             padding: func.units(4) func.units(5); // top and bottom | left and right
 
             .modal-title {

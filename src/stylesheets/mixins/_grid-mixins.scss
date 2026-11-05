@@ -39,5 +39,5 @@
 
 @mixin grid-offset($size, $columns: $grid-columns) {
   $num: math.div($size, $columns);
-  margin-left: if($num == 0, 0, math.percentage($num));
+  margin-left: if(sass($num == 0): 0; else: math.percentage($num));
 }

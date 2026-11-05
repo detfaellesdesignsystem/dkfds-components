@@ -1,0 +1,50 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+fds-tooltip,
+.fds-tooltip {
+    display: inline-flex;
+
+    .tooltip {
+        @extend %tooltip;
+
+        // Bridges the gap between tooltip and trigger to keep tooltip hoverable (WCAG 1.4.13).
+        &.place-above::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            height: calc(var(--tooltip-arrow-height) + var(--tooltip-arrow-distance-to-target));
+        }
+
+        // Bridges the gap between tooltip and trigger to keep tooltip hoverable (WCAG 1.4.13).
+        &.place-below::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 100%;
+            height: calc(var(--tooltip-arrow-height) + var(--tooltip-arrow-distance-to-target));
+        }
+    }
+
+    .tooltip-arrow {
+        @extend %tooltip-arrow;
+    }
+
+    & > :first-child {
+
+        &.js-pressing,
+        &.js-pressed {
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+    }
+
+    &[purpose="label"] {
+        vertical-align: bottom;
+    }
+}

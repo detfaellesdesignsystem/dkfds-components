@@ -106,6 +106,7 @@
         p {
             margin-top: 0;
             margin-bottom: func.units(4);
+            max-width: 66ch;
 
             &:last-of-type {
                 margin-bottom: 0;

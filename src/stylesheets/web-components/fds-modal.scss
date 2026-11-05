@@ -1,0 +1,280 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$-transition-speed-bottom-sheet: 0.25s;
+$-transition-speed-drawer: 0.3s;
+$-backdrop-color: rgba(26, 26, 26, 0.6);
+$-modal-background-color: #FFFFFF;
+
+fds-modal {
+    display: block;
+
+    dialog {
+        max-width: 800px;
+        max-height: calc(100% - 32px);
+        width: calc(100% - 32px);
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        box-shadow: func.shadow('heavy');
+        margin: auto;
+        overflow-y: hidden;
+
+        &[open] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        & > form {
+            display: flex;
+            flex-direction: column;
+            overflow-y: hidden;
+        }
+
+        &::backdrop {
+            background-color: $-backdrop-color;
+        }
+
+        &:focus {
+            outline: 0;
+        }
+
+        .scrollable-area,
+        .fixed-area {
+            padding: 24px;
+            position: relative;
+            overflow-wrap: break-word;
+            background-color: $-modal-background-color;
+
+            @include mixins.media-breakpoint-up(md) {
+                padding: 40px;
+            }
+        }
+
+        .scrollable-area {
+            overflow-y: auto;
+            flex: 1 1 auto;
+            position: relative;
+
+            & > fds-modal-closer:last-child,
+            & > .button-group:last-child {
+                margin-top: 16px;
+
+                @include mixins.media-breakpoint-up(md) {
+                    margin-top: 32px;
+                }
+            }
+        }
+
+        .fixed-area {
+            overflow-y: hidden;
+            flex-shrink: 0;
+        }
+
+        .scrollable-area.has-fade {
+            & + .fixed-area {
+                box-shadow: func.shadow('light');
+            }
+
+            &[data-at-bottom] + .fixed-area {
+                box-shadow: none;
+            }
+        }
+
+        .top-heading {
+            margin-top: 1.6rem;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+
+            @include mixins.media-breakpoint-up(md) {
+                margin-top: 0;
+                margin-bottom: 1.6rem;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+
+            @include mixins.media-breakpoint-up(md) {
+                top: func.units(5);
+                right: func.units(6);
+            }
+        }
+
+        .cookie-logo {
+            margin-bottom: 0;
+
+            @include mixins.media-breakpoint-up(md) {
+                margin-bottom: 16px;
+            }
+        }
+
+        // Cookie messages and step indicators have a fixed area. This may sometimes cause
+        // an error in Chrome in the scrollable area where the scrollbar persists due to a
+        // missing repaint. Prevent this by reserving space for the scrollbar with scrollbar-gutter.
+        &:has(.fixed-area) {
+            .scrollable-area {
+                scrollbar-gutter: stable;
+            }
+        }
+    }
+
+    &[variant="bottom-sheet"] {
+        dialog {
+            margin: 0;
+            margin-top: auto;
+            width: 100%;
+            max-width: none;
+            border-radius: 8px 8px 0 0;
+            max-height: 90vh;
+            min-height: 40vh;
+
+            translate: 0 100%;
+            transition: translate $-transition-speed-bottom-sheet ease-out;
+
+            &.bottom-sheet-open {
+                translate: 0 0;
+            }
+
+            &::backdrop {
+                background-color: transparent;
+                transition: background-color $-transition-speed-bottom-sheet ease-out;
+            }
+
+            &.bottom-sheet-open::backdrop {
+                background-color: $-backdrop-color;
+            }
+
+            .modal-top {
+                border-bottom: 1px solid #8E8E8E;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 24px;
+
+                .top-heading {
+                    margin: 0;
+                }
+
+                .modal-close {
+                    position: static;
+                }
+            }
+
+            .fixed-area {
+                padding: 0;
+            }
+
+            .scrollable-area {
+                padding: 32px 24px 16px;
+            }
+        }
+    }
+
+    &[variant="drawer"] {
+        dialog {
+            margin: 0;
+            margin-left: auto;
+            width: 85%;
+            max-width: 40rem;
+            height: 100%;
+            max-height: 100%;
+            border-radius: 0;
+
+            translate: 100% 0;
+            transition: translate $-transition-speed-drawer ease-in-out;
+
+            &.drawer-open {
+                translate: 0 0;
+            }
+
+            &::backdrop {
+                background-color: transparent;
+                transition: background-color $-transition-speed-drawer ease-in-out;
+            }
+
+            &.drawer-open::backdrop {
+                background-color: $-backdrop-color;
+            }
+
+            .modal-top {
+                background-color: $-modal-background-color;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px 24px;
+                min-height: 48px;
+
+                .top-heading {
+                    font-size: 2rem;
+                    margin: 0;
+                }
+
+                .modal-close {
+                    position: static;
+                }
+            }
+
+            .drawer-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .scrollable-area {
+                padding: 0;
+            }
+        }
+    }
+}
+
+html:has(dialog:modal) {
+    overflow: hidden;
+}
+
+fds-modal-closer,
+fds-modal-opener {
+    display: block;
+}
+
+fds-modal-opener.mobile-menu-opener {
+    display: inline-block;
+
+    button {
+        width: auto;
+        white-space: nowrap;
+        background: none;
+        padding: 0;
+        text-align: left;
+        border: none;
+        @include mixins.body-copy-text;
+        cursor: pointer;
+        display: inline-block;
+        overflow-wrap: break-word;
+        max-width: 100%;
+
+        &:hover,
+        &:visited,
+        &:focus {
+            color: func.color('ink');
+        }
+
+        .icon-svg {
+            margin-right: func.units(2);
+            fill: currentColor;
+            vertical-align: top;
+            margin-top: calc(func.units(1, 'rem') / 2); // Align icon with text
+        }
+
+        span {
+            text-decoration: underline;
+        }
+    }
+}
+
+header fds-modal[variant="drawer"] .scrollable-area,
+.header fds-modal[variant="drawer"] .scrollable-area {
+    background-color: func.color(vars.$header-portal-background-color);
+}

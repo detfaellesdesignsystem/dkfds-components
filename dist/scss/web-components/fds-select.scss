@@ -1,0 +1,74 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+$input-top-bottom-padding-feedback: calc(8px - #{vars.$input-border-width-feedback});
+$input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedback});
+
+fds-select,
+.fds-select {
+    display: block;
+    margin-top: func.units(5);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    label {
+        @include mixins.form-label-text;
+        max-width: vars.$typography-text-max-width;
+        display: inline-block;
+
+        &.disabled {
+            color: func.color(vars.$input-disabled-text-color);
+            font-weight: func.font-weight('medium');
+        }
+    }
+
+    select {
+        @extend %basic-form-element;
+        background-color: func.color(vars.$select-background-color);
+        @include mixins.add-background-svg('chevron-down');
+        background-position: calc(100% - 10px);
+        background-size: func.units(5, 'rem');
+        border: func.border(vars.$select-border);
+        color: func.color(vars.$select-text-color);
+        font-size: func.font-size(vars.$select-font-size);
+        line-height: func.units(vars.$select-line-height, 'rem');
+        height: calc(#{func.units(vars.$select-line-height, 'rem')} + (8px * 2));
+        padding: calc(8px - #{func.border-width(vars.$select-border)}) calc(16px - #{func.border-width(vars.$select-border)});
+        padding-right: func.units(6);
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        &:disabled {
+            opacity: 1;
+            @include mixins.add-background-svg('chevron-down-gray-200');
+            background-color: func.color(vars.$input-disabled-background-color);
+            color: func.color(vars.$input-disabled-text-color);
+            cursor: not-allowed;
+        }
+    }
+
+    &:has(select[aria-invalid="true"]) {
+
+        select {
+            border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
+            padding-right: func.units(6);
+        }
+
+    }
+
+    &:has(select[disabled]) {
+
+        label {
+            color: func.color(vars.$input-disabled-text-color);
+            font-weight: func.font-weight('medium');
+        }
+
+    }
+}

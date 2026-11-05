@@ -250,7 +250,7 @@ $-border-width: func.units(1);
     display: flex;
     flex-wrap: wrap;
 
-    .button, .button-wrapper {
+    & > .button, & > .button-wrapper {
         margin-right: func.units(4);
         margin-top: func.units(3);
         margin-bottom: func.units(3);

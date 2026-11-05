@@ -1,14 +1,19 @@
-// Used to generate a unique string, allows multiple instances of the component without
-// Them conflicting with each other.
-// https://stackoverflow.com/a/8809472
-export function generateUniqueID () {
-  var d = new Date().getTime()
-  if (typeof window.performance !== 'undefined' && typeof window.performance.now === 'function') {
-    d += window.performance.now() // use high-precision timer if available
-  }
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (d + Math.random() * 16) % 16 | 0
-    d = Math.floor(d / 16)
-    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
-  })
+export function generateUniqueId() {
+    return crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
+}
+
+export function generateUniqueIdWithPrefix(str) {
+    return str + crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
+}
+
+export function generateAndVerifyUniqueId(str) {
+    let uniqueId = generateUniqueIdWithPrefix(str);
+    let attempts = 10; // Precaution to prevent long loops - more than 10 failed attempts should be extremely rare
+
+    while (document.getElementById(uniqueId) && attempts > 0) {
+        uniqueId = generateUniqueIdWithPrefix(str);
+        attempts--;
+    }
+
+    return uniqueId;
 }

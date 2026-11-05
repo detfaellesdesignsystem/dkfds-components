@@ -1,0 +1,32 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$button-distance: func.units(3);
+
+fds-radio-button-group,
+.fds-radio-button-group {
+    display: block;
+    margin-top: func.units(5);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:has(fieldset > fds-error-message:not([hidden]), fds-error-message[hidden="false"]) {
+
+        fds-radio-button {
+            .form-radio+label::before,
+            .form-radio:checked+label::before,
+            .form-radio[aria-checked="mixed"]+label::before,
+            .form-radio.mixed+label::before {
+                border-color: func.color(vars.$input-border-color-feedback-error);
+                border-width: vars.$input-border-width-feedback;
+            }
+        }
+    }
+
+    .tooltip-wrapper {
+        margin-left: func.units(1);
+    }
+}

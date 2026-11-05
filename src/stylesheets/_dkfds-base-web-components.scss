@@ -1,0 +1,77 @@
+// Core -------------- //
+@use 'core/custom-properties';
+@use 'core/fonts';
+@use 'core/base';
+@use 'core/focus';
+@use 'core/grid';
+@use 'core/typography';
+@use 'core/elements';
+
+// Utilities --------- //
+@use 'core/utilities/background';
+@use 'core/utilities/width';
+@use 'core/utilities/textalign';
+@use 'core/utilities/flex';
+@use 'core/utilities/spacing';
+@use 'core/utilities/position';
+@use 'core/utilities/display';
+
+// Print ------------- //
+@use 'core/print';
+
+// Old components ---- //
+@use 'components/alerts';
+@use 'components/anchorlinks';
+@use 'components/back-link';
+@use 'components/back-to-top';
+@use 'components/badge';
+@use 'components/breadcrumbs';
+@use 'components/buttons';
+@use 'components/cookie-message';
+@use 'components/details';
+@use 'components/footer';
+@use 'components/function-link';
+@use 'components/modal';
+@use 'components/pagination';
+@use 'components/toast';
+@use 'components/search';
+@use 'components/sidemenu';
+@use 'components/language-switcher';
+@use 'components/skipnav';
+@use 'components/spinner';
+@use 'components/step-indicator';
+@use 'components/cards';
+@use 'components/overflow-menu';
+@use 'components/table';
+@use 'components/tabs';
+@use 'components/tags';
+
+// Web components --- //
+@use 'web-components/fds-accordion';
+@use 'web-components/fds-accordion-group';
+@use 'web-components/fds-input';
+@use 'web-components/fds-help-text';
+@use 'web-components/fds-error-message';
+@use 'web-components/fds-character-limit';
+@use 'web-components/fds-checkbox';
+@use 'web-components/fds-checkbox-group';
+@use 'web-components/fds-radio-button';
+@use 'web-components/fds-radio-button-group';
+@use 'web-components/fds-date-input';
+@use 'web-components/fds-select';
+@use 'web-components/fds-date-picker';
+@use 'web-components/fds-date-picker-grid';
+@use 'web-components/fds-textarea';
+@use 'web-components/fds-error-summary';
+@use 'web-components/fds-input-affix';
+@use 'web-components/fds-portal-info';
+@use 'web-components/fds-solution-info';
+@use 'web-components/fds-dropdown-menu';
+@use 'web-components/fds-main-menu';
+@use 'web-components/fds-tooltip';
+@use 'web-components/fds-tooltip-icon';
+@use 'web-components/fds-toggle-switch';
+@use 'web-components/fds-modal';
+@use 'web-components/fds-tabs';
+@use 'web-components/fds-side-menu';
+@use 'web-components/fds-alert';

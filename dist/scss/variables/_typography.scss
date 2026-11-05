@@ -8,8 +8,8 @@ $theme-respect-user-font-size: true !default;
 
 $theme-root-font-size: 10px !default;
 
-$root-font-size:       if($theme-respect-user-font-size, 62.5%, $theme-root-font-size);
-$root-font-size-equiv: if($theme-respect-user-font-size, 10px, $theme-root-font-size);
+$root-font-size:       if(sass($theme-respect-user-font-size): 62.5%; else: $theme-root-font-size);
+$root-font-size-equiv: if(sass($theme-respect-user-font-size): 10px; else: $theme-root-font-size);
 
 
 // General

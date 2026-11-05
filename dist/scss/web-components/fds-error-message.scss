@@ -1,0 +1,19 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-error-message,
+.fds-error-message {
+    @include mixins.body-copy-text;
+    display: flex;
+    color: func.color('error');
+    margin-top: func.units(3);
+    max-width: vars.$typography-text-max-width;
+    font-weight: func.font-weight("semibold");
+
+    .icon-svg.alert-icon {
+        margin-right: func.units(2);
+        min-width: func.units(5);
+        vertical-align: bottom;
+    }
+}

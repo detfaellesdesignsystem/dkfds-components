@@ -43,7 +43,7 @@ Modal.prototype.hide = function () {
     if (modalElement !== null) {
         modalElement.setAttribute('aria-hidden', 'true');
 
-        let eventClose = new Event('fds.modal.hidden');
+        let eventClose = new Event('fds.modal.hidden', { bubbles: true });
         modalElement.dispatchEvent(eventClose);
 
         let $backdrop = document.querySelector('#modal-backdrop');
@@ -58,7 +58,7 @@ Modal.prototype.hide = function () {
         modalElement.addEventListener('transitionend', this.focusAfterTransition, false);
 
         if (!hasForcedAction(modalElement)) {
-            document.removeEventListener('keyup', handleEscape);
+            document.removeEventListener('keydown', handleEscape);
         }
 
         /* Release the focus from the modal */
@@ -109,7 +109,7 @@ Modal.prototype.show = function (e = null) {
 
         modalElement.setAttribute('aria-hidden', 'false');
 
-        let eventOpen = new Event('fds.modal.shown');
+        let eventOpen = new Event('fds.modal.shown', { bubbles: true });
         modalElement.dispatchEvent(eventOpen);
 
         if (document.getElementById('modal-backdrop')) {
@@ -147,7 +147,7 @@ Modal.prototype.show = function (e = null) {
         }
         
         if (!hasForcedAction(modalElement)) {
-            document.addEventListener('keyup', handleEscape);
+            document.addEventListener('keydown', handleEscape);
             $backdrop.addEventListener('click', () => {
                 this.hide();
             }, false);

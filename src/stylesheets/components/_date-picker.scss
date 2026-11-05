@@ -25,7 +25,7 @@
   max-width: none;
   width: calc(100% - 16px - 16px);
 }
-.date-picker__button {
+button.date-picker__button {
   border: 0;
   border-radius: 0;
   font-weight: func.font-weight("normal");

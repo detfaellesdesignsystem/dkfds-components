@@ -1,0 +1,181 @@
+@use "../variables" as vars;
+@use "sass:math" as math;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$checkbox-radio-size: func.units(vars.$input-checkbox-radio-size);
+$label-distance: func.units(vars.$input-checkbox-radio-label-distance);
+$expand-hit-area: func.units(2);
+$button-distance: func.units(3);
+$content-border-width: func.units(2);
+$-checkbox-radio-margin-top: calc((func.units(vars.$input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2) + $expand-hit-area); // Ensure correct placement of input on text zoom
+$-checkbox-radio-content-margin-top: func.units(2);
+
+fds-radio-button,
+.fds-radio-button {
+    display: block;
+    margin-top: func.units(3);
+    position: relative; // Needed for the nested input buttons using absolute position
+
+    fds-help-text {
+        padding-left: calc($checkbox-radio-size + $label-distance);
+        margin-top: -$expand-hit-area;
+    }
+
+    .form-radio + label {
+        max-width: vars.$typography-text-max-width;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+        z-index: 1;
+        margin: 0;
+        opacity: 0;
+        height: 24px;
+        width: 24px;
+        margin-top: calc(1.2rem - 12px + 4px);
+    }
+
+    // Checkbox label/text
+    input[type="radio"] + label {
+        cursor: pointer;
+        font-weight: func.font-weight(vars.$input-checkbox-radio-label-font-weight);
+        line-height: func.units(vars.$input-checkbox-radio-size, 'rem');
+        display: inline-block;
+        outline: none;
+        color: func.color(vars.$input-checkbox-radio-label-color);
+        padding-left: calc($checkbox-radio-size + $label-distance);
+        padding-top: $expand-hit-area;
+        padding-bottom: $expand-hit-area;
+    }
+
+    input[type="radio"] + label::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+        display: inherit;
+        background-color: func.color(vars.$input-checkbox-radio-unchecked-background-color);
+        border: 2px solid func.color(vars.$input-checkbox-radio-unchecked-border-color);
+        margin-right: $label-distance;
+        height: $checkbox-radio-size;
+        width: $checkbox-radio-size;
+        margin-top: $-checkbox-radio-margin-top; // Ensure correct placement of input on text zoom
+    }
+
+    // Unchecked radio button border radius
+    input[type="radio"] + label::before {
+        border-radius: 100%;
+    }
+
+    // Checked radio
+    input[type="radio"]:checked + label {
+
+        // Radio button background
+        &::before {
+            background-color: func.color(vars.$input-radio-checked-background-color);
+            border: 2px solid func.color(vars.$input-radio-checked-border-color);
+        }
+
+        // Radio button 'dot'
+        &::after {
+            content: "";
+            position: absolute;
+            display: inherit;
+            height: func.units(vars.$input-radio-dot-size);
+            width: func.units(vars.$input-radio-dot-size);
+            left: calc(($checkbox-radio-size - func.units(vars.$input-radio-dot-size)) / 2);
+            top: calc(($checkbox-radio-size - func.units(vars.$input-radio-dot-size)) / 2);
+            background-color: func.color(vars.$input-radio-dot-color);
+            border-radius: 100%;
+            margin-top: $-checkbox-radio-margin-top; // Ensure correct placement of input on text zoom
+        }
+    }
+
+    // Focus
+    input[type="radio"]:focus + label::before,
+    input[type="radio"].focus + label::before {
+        @include mixins.focus;
+    }
+
+    // Disabled
+    input[type="radio"]:disabled {
+        cursor: not-allowed;
+    }
+
+    // Disabled label and button
+    input[type="radio"]:disabled + label {
+        cursor: not-allowed;
+        color: func.color(vars.$input-checkbox-radio-disabled-label-color);
+
+        &::before {
+            background-color: func.color(vars.$input-checkbox-radio-disabled-unchecked-background-color);
+            border: 2px solid func.color(vars.$input-checkbox-radio-disabled-unchecked-border-color);
+        }
+    }
+
+    // Expandable content
+    .radio-content {
+        margin-left: calc(($checkbox-radio-size + $content-border-width) / 2);
+        padding-left: calc(($checkbox-radio-size + (2 * $label-distance) - $content-border-width) / 2);
+        padding-top: func.units(4);
+        margin-top: $-checkbox-radio-content-margin-top;
+        margin-bottom: func.units(305);
+        padding-bottom: func.units(505);
+
+        &[aria-hidden="true"] {
+            display: none;
+        }
+    }
+
+    $-content-wrapper-top-offset: calc($-checkbox-radio-margin-top + $checkbox-radio-size + $expand-hit-area + $-checkbox-radio-content-margin-top);
+
+    &:has(.radio-content) {
+        margin-top: $button-distance;
+        position: relative;
+
+        &:has(.radio-content[aria-hidden="false"]) {
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                border-left: $content-border-width solid func.color(vars.$input-checkbox-radio-content-border-color);
+                height: calc(100% - $-content-wrapper-top-offset);
+                left: calc(($checkbox-radio-size - $content-border-width) / 2);
+                top: $-content-wrapper-top-offset;
+            }
+        }
+    }
+
+    // Special styling when radio/checkboxes are used to select table rows
+    .table--selectable th:first-child,
+    .table--selectable td:first-child {
+        fds-radio-button {
+            margin-top: 0;
+            width: $checkbox-radio-size;
+            height: $checkbox-radio-size;
+
+            .form-radio {
+                margin-top: 0;
+
+                & + label {
+                    padding-left: 0;
+
+                    &::before {
+                        margin-right: 0;
+                        margin-top: calc((func.units(vars.$input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+                    }
+
+                    &::after {
+                        margin-top: calc((func.units(vars.$input-checkbox-radio-size, 'rem') / 2) - ($checkbox-radio-size / 2)); // Ensure correct placement of input on text zoom
+                    }
+                }
+            }
+        }
+    }
+}

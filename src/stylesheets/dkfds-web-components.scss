@@ -1,0 +1,8 @@
+// This is the neutral theme (so no virkdk or borgerdk specific stuff)
+
+@forward 'variables';
+@forward "values";
+@forward "functions";
+@forward "mixins";
+@use 'themes/default-custom-properties';
+@use 'dkfds-base-web-components';

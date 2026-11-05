@@ -5,7 +5,7 @@ $-button-width: func.units(9);
 $-toggle-dot-diameter: func.units(505);
 $-offset: func.units(1);
 
-.toggle-switch {
+.toggle-switch[role="switch"] {
     position: relative;
     display: flex;
     align-items: center;

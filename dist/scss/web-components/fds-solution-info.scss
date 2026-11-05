@@ -1,0 +1,131 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-solution-info,
+.fds-solution-info {
+    display: block;
+    background-color: #FFFFFF;
+    width: 100%;
+
+    [slot="solution-heading"],
+    .solution-heading {
+        font-size: 2rem;
+        line-height: 2.4rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        text-decoration: none;
+        display: inline-block;
+        max-width: 100%;
+        overflow-wrap: break-word;
+
+        @media (min-width: 768px) {
+            font-size: 2.8rem;
+            line-height: 3.2rem;
+        }
+
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+            max-width: 70%;
+        }
+
+        a {
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+    }
+
+    [slot="additional-info"],
+    .additional-info {
+        margin-left: auto;
+        text-align: right;
+        display: block;
+        max-width: 30%;
+        overflow-wrap: break-word;
+
+        .authority-name {
+            color: func.color(vars.$header-solution-authority-name);
+            font-weight: func.font-weight("semibold");
+            font-size: func.font-size(vars.$header-solution-authority-name-font-size);
+            line-height: 2.4rem;
+            margin-top: 0;
+            margin-bottom: 0;
+            display: block;
+        }
+    }
+
+    .solution-info-inner {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: calc(16px - 1px);
+        padding-bottom: calc(16px - 1px);
+        padding-right: 16px;
+        padding-left: 16px;
+        max-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+fds-portal-info + fds-solution-info,
+.fds-portal-info + .fds-solution-info {
+    border-top: 1px solid #bfbfbf;
+}
+
+fds-modal,
+.fds-modal {
+
+    .modal-top + fds-solution-info,
+    .modal-top + .fds-solution-info {
+        border-top: func.border(vars.$header-border);
+    }
+
+    fds-solution-info,
+    .fds-solution-info {
+
+        [slot="additional-info"],
+        .additional-info {
+            padding: func.units(5);
+            background-color: func.color(vars.$header-solution-mobile-background-color);
+            overflow-wrap: break-word;
+            margin: 0;
+            text-align: left;
+            max-width: none;
+
+            .authority-name {
+                display: block;
+                margin-bottom: func.units(2);
+            }
+
+            p {
+                margin-top: 0;
+                color: func.color(vars.$header-solution-info-mobile-text-color);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .function-link {
+                color: func.color(vars.$header-solution-info-mobile-text-color);
+
+                &:hover,
+                &:focus,
+                &:visited {
+                    color: func.color(vars.$header-solution-info-mobile-text-color);
+                }
+            }
+        }
+
+        &:last-child {
+            border-bottom: func.border(vars.$header-portal-mobile-border);
+        }
+    }
+}

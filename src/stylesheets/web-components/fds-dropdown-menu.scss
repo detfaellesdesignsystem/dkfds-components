@@ -1,0 +1,658 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+/* ================================================================
+   BASE STYLING
+   Applies to every fds-dropdown-menu instance, regardless of variant.
+   ================================================================ */
+
+fds-dropdown-menu,
+.fds-dropdown-menu {
+    display: block;
+
+    & > .dropdown-button > span:has(.collapsed-icon, .expanded-icon) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    [data-menu-item] > span:first-child {
+        display: flex;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* ================================================================
+   DESKTOP MAIN MENU VARIANT
+   Submenu and "more menu" dropdowns inside the desktop main menu.
+   ================================================================ */
+
+fds-main-menu,
+.fds-main-menu {
+    & > .main-menu-inner li {
+
+        fds-dropdown-menu,
+        .fds-dropdown-menu {
+
+            // Chevron icon (collapsed/expanded) next to the button text
+
+            & > .dropdown-button > span {
+                .icon-svg {
+                    margin-left: 4px;
+                }
+
+                .collapsed-icon {
+                    display: none;
+                }
+
+                .expanded-icon {
+                    display: inline-block;
+                }
+            }
+
+            &[expanded="false"] > .dropdown-button > span {
+                .collapsed-icon {
+                    display: inline-block;
+                }
+
+                .expanded-icon {
+                    display: none;
+                }
+            }
+
+            // Styling of the floating dropdown menu itself
+
+            & > .dropdown-menu {
+                position: absolute;
+                z-index: 1;
+                top: 100%;
+                width: 30rem;
+                border: 1px solid #707070;
+                background-color: #fff;
+                margin-left: -4px;
+                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .2);
+
+                &.collapsed {
+                    display: none;
+                }
+
+                // Styling of items inside the dropdown menu
+
+                & > ul {
+                    margin: 0;
+                    list-style-type: none;
+                    padding-left: 0;
+                    color: #1a1a1a;
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+
+                    & > li {
+                        border-bottom: 1px solid #dcdcdc;
+                        padding-left: 0;
+                        padding-right: 0;
+                        margin-bottom: 0;
+                        margin-top: 0;
+
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+
+                        &::before {
+                            content: "" !important;
+                            padding-right: 0 !important;
+                        }
+
+                        &:has(> [aria-current]) {
+                            background-color: #f5f5f5;
+                        }
+
+                        [data-menu-item] {
+                            padding: 8px 16px;
+                            white-space: normal;
+                            overflow-wrap: anywhere;
+                            background-color: rgba(0, 0, 0, 0);
+                            display: block;
+                            text-decoration: none;
+                            color: #1a1a1a;
+                            border: 0;
+                            line-height: 1.5;
+                            cursor: pointer;
+                            text-align: left;
+                            max-width: unset;
+
+                            span {
+                                border-bottom: 0;
+                                font-weight: 400;
+                                padding-bottom: 0;
+                            }
+
+                            &[aria-current] span {
+                                font-weight: 700;
+                            }
+
+                            &:focus {
+                                position: relative;
+                                z-index: 2;
+                            }
+
+                            &:hover {
+                                background-color: #f5f5f5;
+
+                                span {
+                                    border-bottom: 0;
+                                }
+                            }
+                        }
+
+                        // "More menu"
+
+                        .sub-title {
+                            font-weight: 500;
+                            font-size: 1.4rem;
+                            line-height: calc(20 / 14);
+                            color: #707070;
+                            border-bottom: 0;
+                            padding-left: 16px;
+                            padding-right: 16px;
+                            padding-top: 12px;
+                            display: inline-block;
+                        }
+
+                        & > ul {
+                            list-style-type: none;
+
+                            & > li {
+                                margin: 0;
+                                padding: 0;
+
+                                &::before {
+                                    content: "" !important;
+                                    padding-right: 0 !important;
+                                }
+
+                                &:has(> [aria-current]) {
+                                    background-color: #f5f5f5;
+                                }
+
+                                &:last-child [data-menu-item] {
+                                    padding-bottom: 16px;
+                                }
+
+                                [data-menu-item] {
+                                    padding-left: 40px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Highlight the top-level submenu button when one of its items is the current page
+
+        &:not(.more-button) {
+
+            & > fds-dropdown-menu,
+            & > .fds-dropdown-menu {
+                &:has([aria-current]) > .dropdown-button {
+                    @extend %current-main-menu-item;
+                }
+            }
+        }
+
+        &.more-button fds-dropdown-menu > .dropdown-menu > ul > li:has([aria-current]) {
+            border-left: 4px solid var(--color-primary);
+
+            .sub-title {
+                margin-left: -4px;
+            }
+
+            [data-menu-item] {
+                margin-left: -4px;
+
+                &:hover {
+                    border-left: 4px solid var(--color-primary);
+                    padding-left: 12px;
+                }
+            }
+
+            li [data-menu-item]:hover {
+                padding-left: 36px;
+            }
+        }
+    }
+}
+
+/* ================================================================
+   DRAWER SUBMENU VARIANT
+   Submenu dropdowns inside the mobile drawer main menu.
+   ================================================================ */
+
+fds-modal .fds-main-menu fds-dropdown-menu,
+fds-modal .fds-main-menu .fds-dropdown-menu,
+fds-modal fds-main-menu fds-dropdown-menu,
+fds-modal fds-main-menu .fds-dropdown-menu {
+
+    // Plus/minus icon (collapsed/expanded) next to the button text
+
+    & > .dropdown-button {
+        position: relative;
+
+        & > span {
+            display: inline-flex;
+            width: 100%;
+            padding-right: 5.6rem;
+            overflow-wrap: break-word;
+
+            .collapsed-icon {
+                display: none;
+            }
+
+            .expanded-icon {
+                display: inline-block;
+            }
+
+            .icon-svg {
+                position: absolute;
+                top: 50%;
+                right: 24px;
+                min-width: 2.8rem;
+                min-height: 2.4rem;
+                transform: translate(0.2rem, -50%);
+            }
+        }
+    }
+
+    // The dropdown menu
+
+    & > .dropdown-menu {
+        &.collapsed {
+            display: none;
+        }
+    }
+
+    &[expanded="false"] > .dropdown-button > span {
+        .collapsed-icon {
+            display: inline-block;
+        }
+
+        .expanded-icon {
+            display: none;
+        }
+    }
+}
+
+/* ================================================================
+   OVERFLOW MENU VARIANT
+   Standalone dropdowns, not inside a header and not inside the
+   drawer main menu.
+   ================================================================ */
+
+fds-dropdown-menu:not(:where(header, .header) fds-dropdown-menu, fds-modal :where(fds-main-menu, .fds-main-menu) fds-dropdown-menu),
+.fds-dropdown-menu:not(:where(header, .header) .fds-dropdown-menu, fds-modal :where(fds-main-menu, .fds-main-menu) .fds-dropdown-menu) {
+
+    display: block;
+    position: relative;
+    width: 100%;
+
+    @include mixins.media-breakpoint-up(md) {
+        width: auto;
+        display: inline-block;
+    }
+
+    & > .dropdown-button {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+        color: inherit;
+        border: 0;
+        border-radius: 0;
+        font-weight: 400;
+        margin: 0;
+        text-align: left;
+        min-height: 40px;
+        min-width: 40px;
+        padding: 8px 0;
+        cursor: pointer;
+
+        // Arrow pointing from the panel up to the button
+
+        &::before,
+        &::after {
+            content: "";
+            left: 50%;
+            border: solid rgba(0, 0, 0, 0);
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            z-index: 3;
+            bottom: -9px;
+            display: none;
+        }
+
+        &::before {
+            border-bottom-color: #8e8e8e;
+            border-width: 8px;
+            margin-left: calc(8px * -1);
+        }
+
+        &::after {
+            border-bottom-color: #fff;
+            border-width: calc(8px - 1px);
+            margin-left: calc((8px - 1px) * -1);
+        }
+
+        &[aria-expanded="true"] {
+            &::before,
+            &::after {
+                display: block;
+            }
+        }
+    }
+
+    // Styling of the floating dropdown menu itself.
+
+    & > .dropdown-menu {
+        position: absolute;
+        width: calc(100% - 8px);
+        z-index: vars.$zindex-overflow;
+        border: func.border(vars.$overflow-menu-content-border);
+        box-shadow: func.shadow('light');
+        background: func.color(vars.$overflow-menu-content-background-color);
+        top: calc(100% + #{vars.$overflow-menu-dropdown-distance});
+        border-radius: func.border-radius('medium');
+        left: 4px;
+
+        &.collapsed {
+            display: none;
+        }
+
+        @include mixins.media-breakpoint-up(md) {
+            left: calc(50% - 27px);
+            width: auto;
+            max-width: 30rem;
+        }
+
+        @include mixins.media-breakpoint-up(sm) {
+            min-width: 28rem;
+        }
+
+        // Styling of items inside the dropdown menu
+
+        & > ul {
+            margin: 0;
+            list-style-type: none;
+            padding-left: 0;
+            color: #1a1a1a;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            max-width: none;
+
+            & > li {
+                border-bottom: 1px solid #dcdcdc;
+                margin: 0;
+                margin-bottom: 0;
+                margin-top: 0;
+                padding-left: 0;
+                text-align: left;
+
+                &:first-child button,
+                &:first-child a {
+                    border-top-left-radius: func.border-radius('medium');
+                    border-top-right-radius: func.border-radius('medium');
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+
+                    button,
+                    a {
+                        border-bottom-left-radius: func.border-radius('medium');
+                        border-bottom-right-radius: func.border-radius('medium');
+                    }
+                }
+
+                &::before {
+                    content: "" !important;
+                    padding-right: 0 !important;
+                }
+
+                [data-menu-item] {
+                    display: block;
+                    width: 100%;
+                    max-width: none;
+                    padding: 8px 16px;
+                    text-align: left;
+                    text-decoration: none;
+                    color: #1a1a1a;
+                    background-color: transparent;
+                    border: 0;
+                    line-height: 1.5;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
+
+                    &:focus {
+                        position: relative;
+                        z-index: 2;
+                    }
+                }
+            }
+        }
+    }
+
+    &[direction="left"] {
+        & > .dropdown-menu {
+            @include mixins.media-breakpoint-up(md) {
+                left: auto;
+                right: calc(50% - 27px);
+            }
+
+            & > ul > li {
+                text-align: right;
+
+                [data-menu-item] {
+                    text-align: right;
+
+                    .icon-svg {
+                        float: right;
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ================================================================
+   LANGUAGE SWITCHER VARIANT
+   Language selector in the header bar.
+   ================================================================ */
+
+.language-switcher-header {
+    background-color: func.color(vars.$header-portal-background-color);
+    display: none;
+
+    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    fds-dropdown-menu,
+    .fds-dropdown-menu {
+        $icon-size: func.units(4, 'rem');
+        $button-icon-gap: func.units(2);
+        $list-icon-gap: func.units(3);
+        $inner-padding: func.units(4);
+        $border-width: 1px;
+
+        position: relative;
+
+        // The button
+
+        & > .dropdown-button {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0);
+            color: func.color(vars.$overflow-menu-button-text-color);
+            border: 0;
+            border-radius: 0;
+            font-size: func.font-size("xs");
+            font-weight: 400;
+            line-height: 1;
+            text-align: left;
+            text-decoration: underline;
+            cursor: pointer;
+            min-height: 0;
+            padding: 0;
+            margin: func.units(3) 0 func.units(2) 0;
+
+            & > span {
+                display: flex;
+                align-items: center;
+            }
+
+            .icon-svg {
+                flex-shrink: 0;
+                width: $icon-size;
+                height: $icon-size;
+                margin-right: $button-icon-gap;
+                fill: func.color("ink");
+            }
+        }
+
+        // The floating dropdown menu.
+
+        & > .dropdown-menu {
+            position: absolute;
+            z-index: vars.$zindex-overflow;
+            top: calc(100% + #{func.units(1)});
+            left: calc(#{$button-icon-gap} - #{$border-width} - #{$inner-padding} - #{$list-icon-gap});
+            width: max-content;
+            min-width: 0;
+            max-width: 30rem;
+            background-color: func.color(vars.$header-portal-background-color);
+            border: func.border(vars.$overflow-menu-content-border);
+            box-shadow: func.shadow('light');
+            border-radius: func.border-radius('medium');
+
+            &.collapsed {
+                display: none;
+            }
+
+            // Styling of items inside the dropdown menu
+
+            & > ul {
+                margin: 0;
+                list-style-type: none;
+                padding-left: 0;
+                color: #1a1a1a;
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+
+                & > li {
+                    border-bottom: 1px solid #dcdcdc;
+                    margin: 0;
+                    padding-left: 0;
+                    text-align: left;
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    &::before {
+                        content: "" !important;
+                        padding-right: 0 !important;
+                    }
+
+                    &:first-child [data-menu-item] {
+                        border-top-left-radius: func.border-radius('medium');
+                        border-top-right-radius: func.border-radius('medium');
+                    }
+
+                    &:last-child [data-menu-item] {
+                        border-bottom-left-radius: func.border-radius('medium');
+                        border-bottom-right-radius: func.border-radius('medium');
+                    }
+
+                    [data-menu-item] {
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        max-width: none;
+                        padding: 8px 16px 8px calc(#{$inner-padding} + #{$icon-size} + #{$list-icon-gap});
+                        color: #1a1a1a;
+                        background-color: transparent;
+                        border: 0;
+                        font-weight: func.font-weight("normal");
+                        line-height: 1.5;
+                        text-align: left;
+                        text-decoration: underline;
+                        cursor: pointer;
+
+                        &:focus {
+                            position: relative;
+                            z-index: 2;
+                        }
+
+                        // The currently selected language
+
+                        &[aria-current="true"] {
+                            font-weight: func.font-weight("semibold");
+                            text-decoration: none;
+                            @include mixins.add-background-svg('check');
+                            background-position: left $inner-padding center;
+                            background-size: $icon-size;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ================================================================
+   SORT VARIANT
+   ================================================================ */
+
+fds-dropdown-menu[variant="sort"],
+.fds-dropdown-menu[variant="sort"] {
+    & > .dropdown-button {
+        line-height: func.units(5, 'rem');
+
+        .selected-value {
+            display: inline-block;
+            margin-left: func.units(2);
+            font-weight: func.font-weight("semibold");
+            text-decoration: none;
+        }
+
+        .icon-svg {
+            margin-right: func.units(2);
+        }
+
+        & > span {
+            display: flex;
+            align-items: center;
+        }
+
+        & span:not(.selected-value, :has(.selected-value)) {
+            text-decoration: underline;
+        }
+    }
+
+    & > .dropdown-menu [data-menu-item][aria-current="true"] {
+        font-weight: func.font-weight("semibold");
+        @include mixins.add-background-svg('check');
+        background-position: calc(100% - #{func.units(4)}) center;
+    }
+}

@@ -8,13 +8,15 @@ There are a few different ways to use the design system within your project. Whi
 
 ### Install using npm (recommended)
 
-Install `dkfds` in your project by writing the following in a command-prompt:
+Install `@dkfds/components` in your project by writing the following in a command-prompt:
 
   ```shell
-  npm install --save dkfds
+  npm install --save @dkfds/components
   ```
 
-The `dkfds` module is now installed as a dependency. You can use the un-compiled files found in the `src/` or the compiled files in the `dist/` directory.
+The `@dkfds/components` module is now installed as a dependency. You can use the un-compiled files found in the `src/` or the compiled files in the `dist/` directory.
+
+Please note that the code was released as 'dkfds' before version 12.0.0.
 
 ### Download
 
@@ -35,17 +37,21 @@ To include the javascript, include this tag at the bottom of the body-part of yo
 To include the styling add the following code to your main.scss file:
 
 ```shell
-  @use 'node_modules/dkfds/src/stylesheets/dkfds' with (
-    $font-path:         'node_modules/dkfds/src/fonts/IBMPlexSans/',
-    $image-path:        'node_modules/dkfds/src/img/',
-    $icons-folder-path: 'node_modules/dkfds/src/img/svg-icons/'
+  @use 'node_modules/@dkfds/components/src/stylesheets/dkfds' with (
+    $font-path:         'node_modules/@dkfds/components/src/fonts/IBMPlexSans/',
+    $image-path:        'node_modules/@dkfds/components/src/img/',
+    $icons-folder-path: 'node_modules/@dkfds/components/src/img/svg-icons/'
 );
 ```
 
 To include the JavaScript, import it in your main.js file:
 ```shell
-  import * as DKFDS from "dkfds";
+  import * as DKFDS from "@dkfds/components";
 ```
+
+### Building the code
+
+If you need to rebuild stylesheets or scripts yourself, please note that you must use Node.js version 22.11.0 or newer.
 
 ## Contribute
 The project is available on GitHub. You are more than welcome to contact us with suggestions or bug reports.

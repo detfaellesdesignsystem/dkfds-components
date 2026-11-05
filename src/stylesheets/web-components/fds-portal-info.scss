@@ -1,0 +1,98 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-portal-info,
+.fds-portal-info {
+    display: block;
+    background-color: var(--header-portal-background-color, #FFFFFF);
+    width: 100%;
+
+    [slot="logo"],
+    .portal-info-inner .logo {
+        display: inline-block;
+        width: 100%;
+        height: 24px;
+
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+            max-width: 30%;
+        }
+
+        img {
+            height: 24px;
+        }
+    }
+
+    [slot="user"],
+    .portal-info-inner .portal-user .user {
+        text-align: right;
+        margin-right: 24px;
+        overflow-wrap: break-word;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .portal-info-inner {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 48px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 16px;
+        padding-left: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-right: auto;
+        margin-left: auto;
+
+        .portal-user {
+            margin-left: auto;
+            display: none;
+            align-items: center;
+            justify-content: flex-end;
+            max-width: 70%;
+
+            @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+                display: flex;
+            }
+        }
+    }
+}
+
+fds-modal fds-portal-info,
+.fds-modal .fds-portal-info,
+fds-modal .fds-portal-info,
+.fds-modal fds-portal-info {
+    p {
+        margin-bottom: 8px;
+    }
+
+    [slot="user"],
+    .user {
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 8px;
+
+        span {
+            display: block;
+            overflow-wrap: break-word;
+            line-height: 1.5;
+        }
+    }
+
+    .log-on,
+    .log-off {
+        margin-top: 4px;
+    }
+
+    .portal-info-mobile {
+        border-top: 1px solid #8e8e8e;
+        padding: 24px;
+        text-align: left;
+        background-color: var(--header-portal-background-color, #FFFFFF);
+    }
+}

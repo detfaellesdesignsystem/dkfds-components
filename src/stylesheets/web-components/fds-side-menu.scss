@@ -1,0 +1,94 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+$-active-border-width: 4px;
+$-nonactive-border-width: 1px;
+
+.fds-side-menu {
+
+    ul,
+    ol {
+        width: 100%;
+        max-width: none;
+        @include mixins.unstyled-list;
+    }
+
+    li {
+        background-color: #ffffff;
+
+        &:has(> [aria-current]),
+        &:has(> a:hover) {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            padding: 4px 16px 4px 16px; // top | right | bottom | left
+            margin-left: calc(0px - $-nonactive-border-width);
+            width: calc(100% + $-nonactive-border-width);
+            color: #1a1a1a;
+            background-color: rgba(0, 0, 0, 0);
+            text-decoration: none;
+            min-height: 40px;
+            cursor: pointer;
+            font-weight: 400;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-wrap: break-word;
+
+            .info {
+                color: #707070;
+                display: block;
+            }
+
+            &:hover > .info,
+            &[aria-current] > .info {
+                color: #454545;
+            }
+
+            &:focus {
+                outline-offset: 0;
+                position: relative;
+                z-index: vars.$zindex-focus;
+            }
+        }
+
+        a[aria-current],
+        a:has(+ ul [aria-current]) {
+            font-weight: 700;
+
+            .info {
+                font-weight: 400;
+            }
+        }
+    }
+
+    & > ul > li,
+    & > ol > li {
+        border-left: 1px solid #8e8e8e;
+        font-size: 1.6rem;
+
+        &:has([aria-current]) {
+            border-left: $-active-border-width solid var(--color-primary);
+
+            a {
+                margin-left: calc(0px - $-active-border-width);
+                width: calc(100% + $-active-border-width);
+            }
+        }
+
+        li {
+            font-size: 1.4rem;
+
+            a {
+                padding-left: 40px;
+            }
+
+            li a {
+                padding-left: 64px;
+            }
+        }
+    }
+}

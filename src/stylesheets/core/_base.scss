@@ -1,3 +1,4 @@
+@use "../variables" as vars;
 @use '../functions' as func;
 @use '../mixins' as mixins;
 
@@ -23,7 +24,7 @@ body {
     margin: 0;
 }
 
-[hidden] {
+[hidden]:not([hidden="false"]) {
     display: none !important;
 }
 
@@ -202,4 +203,22 @@ sub {
 
 sup {
     top: -0.5em;
+}
+
+////////////////////////////////////////////////////////////
+// Base typography
+////////////////////////////////////////////////////////////
+
+html {
+  font-family: vars.$typography-font-family;
+  font-size: vars.$root-font-size;
+}
+
+body {
+  font-size: func.font-size(vars.$typography-base-font-size);
+  background-color: func.color('white');
+  color: func.color('black');
+  text-rendering: optimizeLegibility;
+  @include mixins.font-smoothing;
+  font-kerning: normal;
 }

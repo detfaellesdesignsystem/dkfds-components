@@ -1,0 +1,60 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-input-affix,
+.fds-input-affix {
+    display: flex;
+
+    input {
+        -webkit-box-flex: 0;
+        flex: 0 1 auto;
+
+        &:focus {
+            position: relative;
+            z-index: vars.$zindex-focus;
+        }
+    }
+
+    .form-input-prefix + input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    &:has(.form-input-suffix) input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .form-input-prefix,
+    .form-input-suffix {
+        font-weight: func.font-weight("normal");
+        font-size: func.font-size(vars.$input-font-size);
+        line-height: func.units(vars.$input-line-height, 'rem');
+        box-sizing: border-box;
+        display: inline-block;
+        min-width: 40px;
+        padding: calc(#{func.units(3)} - #{func.border-width(vars.$input-border)}) calc(#{func.units(3)} - #{func.border-width(vars.$input-border)});
+        margin-top: func.units(3);
+        border: func.border(vars.$input-border);
+        background-color: func.color(vars.$input-prefix-suffix-background-color);
+        text-align: center;
+        white-space: nowrap;
+        cursor: default;
+        -webkit-box-flex: 0;
+        flex: 0 0 auto;
+
+    }
+
+    .form-input-suffix {
+        border-left: 0;
+        border-top-right-radius: func.border-radius('medium');
+        border-bottom-right-radius: func.border-radius('medium');
+    }
+
+    .form-input-prefix {
+        border-right: 0;
+        border-top-left-radius: func.border-radius('medium');
+        border-bottom-left-radius: func.border-radius('medium');
+    }
+}

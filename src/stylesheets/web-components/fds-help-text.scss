@@ -1,0 +1,21 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+
+fds-help-text,
+.fds-help-text {
+    display: block;
+    max-width: vars.$typography-text-max-width;
+    display: block;
+    color: func.color(vars.$form-hint-text-color);
+    font-size: func.font-size(vars.$form-hint-font-size);
+    line-height: func.units(vars.$form-hint-line-height, 'rem');
+    letter-spacing: vars.$form-hint-letter-spacing;
+    font-weight: func.font-weight(vars.$form-hint-font-weight);
+    overflow-wrap: break-word;    
+
+    //Hidden help-texts
+    &[aria-hidden="true"] {
+        display: none;
+    }
+}

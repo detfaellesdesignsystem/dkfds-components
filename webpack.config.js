@@ -1,12 +1,9 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-
-const USE_LINTER = false; // Uses the .eslintrc.json file if set to true
 
 console.log("[" + String(new Date().getHours()).padStart(2, '0') +
     ":" + String(new Date().getMinutes()).padStart(2, '0') +
@@ -21,10 +18,19 @@ const JS_ENTRY = {
     "dkfds": './src/js/dkfds.js',
 };
 
+const JS_ENTRY_WEB_COMPONENTS = {
+    "dkfds": './src/js/dkfds-web-components.js',
+};
+
 const JS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
 
 const JS_OUTPUT_LIBRARY = {
     name: 'DKFDS',
+    type: 'umd',
+};
+
+const JS_OUTPUT_LIBRARY_WEB_COMPONENTS = {
+    name: 'DKFDSWebComponents',
     type: 'umd',
 };
 
@@ -49,6 +55,12 @@ const CSS_ENTRY = {
     "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
     "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
     "dkfds": './src/stylesheets/dkfds.scss',
+};
+
+const CSS_ENTRY_WEB_COMPONENTS = {
+    "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk-web-components.scss',
+    "dkfds-virkdk": './src/stylesheets/dkfds-virkdk-web-components.scss',
+    "dkfds": './src/stylesheets/dkfds-web-components.scss',
 };
 
 const CSS_REMOVE_EMPTY_SCRIPTS =
@@ -101,6 +113,56 @@ const CSS_SASS_LOADER_COMPRESSED = {
     },
 }
 
+/* Returns a new object (and a new CssMinimizerPlugin instance) each time, so every config gets its own instance */
+const removeCommentsFromCSS = () => ({
+    /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
+    minimize: true,
+    minimizer: [
+        new CssMinimizerPlugin({
+            minimizerOptions: {
+                preset: [
+                    "default",
+                    {
+                        autoprefixer: false,
+                        cssDeclarationSorter: false,
+                        calc: false,
+                        colormin: false,
+                        convertValues: false,
+                        discardComments: true, // Remove comments from CSS files
+                        discardDuplicates: false,
+                        discardEmpty: false,
+                        discardOverridden: false,
+                        discardUnused: false,
+                        mergeIdents: false,
+                        mergeLonghand: false,
+                        mergeRules: false,
+                        minifyFontValues: false,
+                        minifyGradients: false,
+                        minifyParams: false,
+                        minifySelectors: false,
+                        normalizeCharset: false,
+                        normalizeDisplayValues: false,
+                        normalizePositions: false,
+                        normalizeRepeatStyle: false,
+                        normalizeString: false,
+                        normalizeTimingFunctions: false,
+                        normalizeUnicode: false,
+                        normalizeUrl: false,
+                        normalizeWhitespace: false,
+                        orderedValues: false,
+                        reduceIdents: false,
+                        reduceInitial: false,
+                        reduceTransforms: false,
+                        svgo: false,
+                        uniqueSelectors: false,
+                        zindex: false
+                    },
+                ],
+            },
+        }),
+    ],
+});
+
 const CSS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
 const CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE = (info) => { return `${info.resourcePath}`.replace('./src/stylesheets', '../scss'); }
 
@@ -112,6 +174,11 @@ const copyFilesAndCreateJavaScript = {
     name: 'copyFilesAndCreateJavaScript',
     mode: 'production',
     module: JS_BABEL,
+    /* Increased from the default 250000 for the non-minified stylesheets */
+    performance: {
+        maxAssetSize: 450000,
+        maxEntrypointSize: 450000
+    },
     optimization: {
         minimize: false
     },
@@ -125,13 +192,6 @@ const copyFilesAndCreateJavaScript = {
                 { from: path.resolve(__dirname, 'LICENSE.md'), to: path.resolve(__dirname, 'dist') },
             ],
         }),
-        new ESLintPlugin({
-            emitError: USE_LINTER,
-            emitWarning: USE_LINTER,
-            failOnError: false,
-            failOnWarning: false,
-            fix: false
-        }),
     ],
     entry: JS_ENTRY,
     output: {
@@ -140,6 +200,29 @@ const copyFilesAndCreateJavaScript = {
         filename: 'js/[name].js',
         globalObject: 'this',
         library: JS_OUTPUT_LIBRARY,
+    },
+    stats: 'minimal',
+};
+
+const copyFilesAndCreateWebComponentJS = {
+    name: 'copyFilesAndCreateWebComponentJS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    module: JS_BABEL,
+    /* Increased from the default 250000 for the non-minified stylesheets */
+    performance: {
+        maxAssetSize: 450000,
+        maxEntrypointSize: 450000
+    },
+    optimization: {
+        minimize: false
+    },
+    entry: JS_ENTRY_WEB_COMPONENTS,
+    output: {
+        path: JS_OUTPUT_PATH,
+        filename: 'web-components/[name].js',
+        globalObject: 'this',
+        library: JS_OUTPUT_LIBRARY_WEB_COMPONENTS,
     },
     stats: 'minimal',
 };
@@ -170,6 +253,36 @@ const createMinifiedJavaScript = {
         filename: 'js/[name].min.js',
         globalObject: 'this',
         library: JS_OUTPUT_LIBRARY,
+    },
+    stats: 'minimal',
+};
+
+const createMinifiedWebComponentJS = {
+    name: 'createMinifiedWebComponentJS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    module: JS_BABEL,
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i,
+                extractComments: false,
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+            }),
+        ],
+    },
+    devtool: "source-map",
+    entry: JS_ENTRY_WEB_COMPONENTS,
+    output: {
+        path: JS_OUTPUT_PATH,
+        filename: 'web-components/[name].min.js',
+        globalObject: 'this',
+        library: JS_OUTPUT_LIBRARY_WEB_COMPONENTS,
     },
     stats: 'minimal',
 };
@@ -206,59 +319,12 @@ const createCSS = {
             },
         ],
     },
-    /* Increased from the default 250000 for the non-minified stylesheets */
+    /* Increased from the default 250000 */
     performance: {
-        maxAssetSize: 260000,
-        maxEntrypointSize: 260000
+        maxAssetSize: 350000,
+        maxEntrypointSize: 350000
     },
-    optimization: {
-        /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
-        minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin({
-                minimizerOptions: {
-                    preset: [
-                        "default",
-                        {
-                            autoprefixer: false,
-                            cssDeclarationSorter: false,
-                            calc: false,
-                            colormin: false,
-                            convertValues: false,
-                            discardComments: true, // Remove comments from CSS files
-                            discardDuplicates: false,
-                            discardEmpty: false,
-                            discardOverridden: false,
-                            discardUnused: false,
-                            mergeIdents: false,
-                            mergeLonghand: false,
-                            mergeRules: false,
-                            minifyFontValues: false,
-                            minifyGradients: false,
-                            minifyParams: false,
-                            minifySelectors: false,
-                            normalizeCharset: false,
-                            normalizeDisplayValues: false,
-                            normalizePositions: false,
-                            normalizeRepeatStyle: false,
-                            normalizeString: false,
-                            normalizeTimingFunctions: false,
-                            normalizeUnicode: false,
-                            normalizeUrl: false,
-                            normalizeWhitespace: false,
-                            orderedValues: false,
-                            reduceIdents: false,
-                            reduceInitial: false,
-                            reduceTransforms: false,
-                            svgo: false,
-                            uniqueSelectors: false,
-                            zindex: false
-                        },
-                    ],
-                },
-            }),
-        ],
-    },
+    optimization: removeCommentsFromCSS(),
     output: {
         path: CSS_OUTPUT_PATH
     },
@@ -290,6 +356,98 @@ const createMinifiedCSS = {
             },
         ],
     },
+    /* Increased from the default 250000 */
+    performance: {
+        maxAssetSize: 350000,
+        maxEntrypointSize: 350000
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+    },
+    output: {
+        path: CSS_OUTPUT_PATH,
+        devtoolModuleFilenameTemplate: CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE
+    },
+    stats: 'minimal',
+};
+
+const createWebComponentCSS = {
+    name: 'createWebComponentCSS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    entry: CSS_ENTRY_WEB_COMPONENTS,
+    plugins: [
+        CSS_REMOVE_EMPTY_SCRIPTS,
+        /* Create stylesheets */
+        new MiniCssExtractPlugin({
+            filename: 'web-components/[name].css'
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    CSS_LOADER,
+                    CSS_POSTCSS_LOADER,
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                style: "expanded",
+                            },
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+    /* Increased from the default 250000 */
+    performance: {
+        maxAssetSize: 350000,
+        maxEntrypointSize: 350000
+    },
+    optimization: removeCommentsFromCSS(),
+    output: {
+        path: CSS_OUTPUT_PATH
+    },
+    stats: 'minimal',
+};
+
+const createMinifiedWebComponentCSS = {
+    name: 'createMinifiedWebComponentCSS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    devtool: 'source-map',
+    entry: CSS_ENTRY_WEB_COMPONENTS,
+    plugins: [
+        CSS_REMOVE_EMPTY_SCRIPTS,
+        new MiniCssExtractPlugin({
+            filename: 'web-components/[name].min.css'
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    CSS_LOADER,
+                    CSS_POSTCSS_LOADER,
+                    CSS_SASS_LOADER_COMPRESSED,
+                ],
+            },
+        ],
+    },
+    /* Increased from the default 250000 */
+    performance: {
+        maxAssetSize: 350000,
+        maxEntrypointSize: 350000
+    },
     optimization: {
         minimize: true,
         minimizer: [
@@ -307,4 +465,4 @@ const createMinifiedCSS = {
 // module.exports
 ////////////////////////////////////////////////////////////////////////////////
 
-module.exports = [copyFilesAndCreateJavaScript, createMinifiedJavaScript, createCSS, createMinifiedCSS];
+module.exports = [copyFilesAndCreateJavaScript, copyFilesAndCreateWebComponentJS, createMinifiedJavaScript, createMinifiedWebComponentJS, createCSS, createMinifiedCSS, createWebComponentCSS, createMinifiedWebComponentCSS];

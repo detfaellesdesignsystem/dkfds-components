@@ -1,0 +1,255 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+$-drawer-border-width: 8px;
+
+fds-main-menu,
+.fds-main-menu {
+    display: block;
+
+    [data-hidden] {
+        display: none !important;
+    }
+
+    & > .main-menu-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        max-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
+
+        & > nav > ul {
+            margin: 0;
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-flow: row nowrap;
+            margin-left: -12px;
+
+            & > li {
+                margin-bottom: 0;
+                margin-top: 0;
+                padding-left: 0;
+
+                &::before {
+                    content: "" !important;
+                    padding-right: 0 !important;
+                }
+
+                [data-menu-item] {
+                    display: block;
+                    padding: 16px 12px 0;
+                    text-decoration: none;
+                    background-color: #ffffff;
+                    color: #1a1a1a;
+                    border: 0;
+                    line-height: 1.5;
+                    cursor: pointer;
+                    text-align: left;
+                    white-space: nowrap;
+                    max-width: unset;
+
+                    span {
+                        display: flex; // Flex used to ensure eventual icons are shown next to the menu item text
+                        align-items: center;
+                        border-bottom: 4px solid rgba(0, 0, 0, 0);
+                        padding-bottom: 12px;
+                    }
+
+                    &:focus {
+                        position: relative;
+                        z-index: 2;
+                    }
+
+                    &:hover {
+                        span {
+                            border-bottom: 4px solid var(--color-primary);
+                        }
+                    }
+
+                    &[aria-current] {
+                        @extend %current-main-menu-item;
+                    }
+                }
+
+                ul li [data-menu-item][aria-current] span {
+                    border-bottom: 0; // Don't add the colored "current page" bottom border to submenus in the main menu
+                }
+            }
+        }
+
+        .search,
+        .search-form {
+            flex: 0 0 auto;
+            margin-left: auto;
+        }
+
+        .search {
+            padding-top: 16px;
+            padding-bottom: 16px;
+
+            input {
+                max-width: 100%;
+            }
+        }
+
+        @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+            .search {
+                padding-top: 0;
+                padding-bottom: 0;
+
+                input {
+                    max-width: 24rem;
+                    min-width: 24rem;
+                }
+            }
+        }
+    }
+}
+
+:where(fds-main-menu, .fds-main-menu) > .main-menu-inner:not(:has(nav)) {
+
+    @include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+        .search {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    }
+}
+
+fds-modal .fds-main-menu,
+.fds-modal .fds-main-menu,
+fds-modal fds-main-menu,
+.fds-modal fds-main-menu {
+    & > nav > ul {
+        display: flex;
+        flex-flow: column nowrap;
+        max-width: 100%;
+        border-bottom: 1px solid #bfbfbf;
+        border-top: 1px solid #bfbfbf;
+        margin: 0;
+        list-style-type: none;
+        padding-left: 0;
+
+        li {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding-left: 0;
+            background-color: #ffffff;
+
+            &::before {
+                content: "" !important;
+                padding-right: 0 !important;
+            }
+
+            [data-menu-item] {
+                padding-top: 16px;
+                padding-bottom: 16px;
+                padding-right: 24px;
+                padding-left: 24px;
+                text-decoration: none;
+                color: #1a1a1a;
+                font-size: 1.6rem;
+                background-color: rgba(0, 0, 0, 0);
+                display: block;
+                line-height: 2.4rem;
+                white-space: normal;
+                width: 100%;
+                max-width: unset;
+                cursor: pointer;
+                text-align: left;
+                border: 0;
+
+                &:focus {
+                    position: relative;
+                    z-index: 2;
+                    outline-offset: -3px;
+                }
+
+                &:hover {
+                    background-color: #f5f5f5;
+
+                    .helptext {
+                        color: #454545;
+                    }
+                }
+
+                .helptext {
+                    color: #707070;
+                    font-weight: 400;
+                    display: inline-block;
+                    overflow-wrap: anywhere;
+                }
+
+            }
+
+            li [data-menu-item] {
+                padding-left: 48px;
+            }
+
+            li li [data-menu-item] {
+                padding-left: 72px;
+            }
+
+            &:has(> [data-menu-item][aria-current]) {
+                background-color: #f5f5f5;
+
+                .helptext {
+                    color: #454545;
+                }
+            }
+        }
+
+        & > li {
+            border-top: 1px solid #dcdcdc;
+
+            &:has([aria-current]) {
+                border-left: $-drawer-border-width solid var(--color-primary);
+
+                [data-menu-item] {
+                    margin-left: -$-drawer-border-width;
+                    width: calc(100% + $-drawer-border-width);
+
+                    &:hover {
+                        border-left: $-drawer-border-width solid var(--color-primary); // Ensure the hover background color doesn't override the border
+                        padding-left: calc(24px - $-drawer-border-width);
+                    }
+                }
+
+                li [data-menu-item]:hover {
+                    padding-left: calc(48px - $-drawer-border-width);
+                }
+
+                li li [data-menu-item]:hover {
+                    padding-left: calc(72px - $-drawer-border-width);
+                }
+
+                button[data-menu-item]:has(+ .dropdown-menu [aria-current]),
+                [aria-current] {
+                    font-weight: 700;
+                }
+            }
+        }
+
+        &:first-child li:first-child {
+            border-top: 0;
+        }
+    }
+}
+
+:where(fds-solution-info, .fds-solution-info) + :where(fds-main-menu, .fds-main-menu):has(input) {
+    border-top: 1px solid #bfbfbf;
+}
+
+@include mixins.media-breakpoint-up(vars.$nav-responsive-breakpoint) {
+    :where(fds-solution-info, .fds-solution-info) + :where(fds-main-menu, .fds-main-menu) {
+        border-top: 1px solid #bfbfbf;
+    }
+}

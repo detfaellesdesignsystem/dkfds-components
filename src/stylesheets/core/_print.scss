@@ -101,11 +101,16 @@
 
     // Buttons
     .button {
-        &.button-primary, &.button-secondary, &.button-tertiary, &.button-warning, &.button-icon-only {
+
+        &.button-primary,
+        &.button-secondary,
+        &.button-tertiary,
+        &.button-warning,
+        &.button-icon-only {
             border-color: func.color(vars.$button-print-border-color);
             color: func.color(vars.$button-print-color);
             background-color: func.color(vars.$button-print-background-color);
-        
+
             &:hover,
             &.button-hover,
             &.focus,
@@ -121,7 +126,7 @@
                 color: func.color(vars.$button-print-color);
                 background-color: func.color(vars.$button-print-background-color);
             }
-        
+
             &:disabled,
             &.disabled {
                 text-decoration: none !important;
@@ -138,11 +143,27 @@
     }
 
     .fds-modal {
-        position: static;
+        position: static !important;
     }
 
     .modal-backdrop {
-        display: none;
+        display: none !important;
+    }
+
+    fds-modal dialog[open] {
+        position: static;
+        overflow: visible;
+        max-height: none;
+        height: auto;
+
+        .scrollable-area {
+            overflow: visible;
+        }
+    }
+
+    fds-modal dialog::backdrop {
+        opacity: 1 !important;
+        background-color: #ffffff !important;
     }
 
     // table
@@ -199,7 +220,7 @@
     // tabs
     .tab-container ul.tab-list li .tab-button {
         background-color: func.color('transparent');
-        border: func.border('high-contrast'); 
+        border: func.border('high-contrast');
 
         &[aria-current="page"],
         &[aria-selected="true"] {
@@ -215,9 +236,9 @@
     // Checkboxes
 
     // Checked checkbox
-    .form-checkbox:checked+label::before,
-    .form-checkbox[aria-checked="mixed"]+label::before,
-    .form-checkbox.mixed+label::before {
+    .form-checkbox:checked + label::before,
+    .form-checkbox[aria-checked="mixed"] + label::before,
+    .form-checkbox.mixed + label::before {
         background-color: func.color(vars.$input-checkbox-checked-background-color-print);
         background-image: none;
         display: flex;
@@ -229,13 +250,13 @@
     }
 
     // 'Normal' checkbox checkmark
-    .form-checkbox:checked+label::before {
+    .form-checkbox:checked + label::before {
         content: "\2713";
     }
 
     // 'Mixed' checkbox checkmark
-    .form-checkbox[aria-checked="mixed"]+label::before,
-    .form-checkbox.mixed+label::before {
+    .form-checkbox[aria-checked="mixed"] + label::before,
+    .form-checkbox.mixed + label::before {
         content: "\002d";
     }
 
@@ -266,7 +287,9 @@
 
     // Tooltip
     .tooltip-wrapper {
-        .tooltip, .tooltip-arrow {
+
+        .tooltip,
+        .tooltip-arrow {
             display: none;
         }
     }

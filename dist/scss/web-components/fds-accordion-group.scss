@@ -1,0 +1,23 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../components/function-link";
+
+fds-accordion-group,
+.fds-accordion-group {
+    display: block;
+
+    button.bulk-button {
+        @extend .function-link;
+
+        background-image: url(vars.$icons-folder-path + 'plus.svg');
+        background-repeat: no-repeat;
+        background-position: left top;
+        padding-left: func.units(505);
+        margin-bottom: func.units(4);
+
+        &.close {
+            background-image: url(vars.$icons-folder-path + 'minus.svg');
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+$input-top-bottom-padding-feedback: calc(8px - #{vars.$input-border-width-feedback});
+$input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedback});
+
+fds-date-picker,
+.fds-date-picker {
+    display: block;
+    margin-top: func.units(5);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    label {
+        @include mixins.form-label-text;
+        max-width: vars.$typography-text-max-width;
+        display: inline-block;
+
+        &.disabled {
+            color: func.color(vars.$input-disabled-text-color);
+            font-weight: func.font-weight('medium');
+        }
+    }
+
+    input {
+        @extend %basic-form-element;
+        border: func.border(vars.$input-border);
+        border-right: 0;
+        color: func.color(vars.$input-text-color);
+        font-size: func.font-size(vars.$input-font-size);
+        line-height: func.units(vars.$input-line-height, 'rem');
+        height: calc(#{func.units(vars.$input-line-height, 'rem')} + (8px * 2));
+        padding: calc(8px - #{func.border-width(vars.$input-border)}) calc(16px - #{func.border-width(vars.$input-border)});
+        max-width: 15rem;
+        border-end-end-radius: 0;
+        border-start-end-radius: 0;
+
+        &:focus {
+            z-index: 1;
+        }
+
+        &:disabled {
+            opacity: 1;
+            background-color: func.color(vars.$input-disabled-background-color);
+            color: func.color(vars.$input-disabled-text-color);
+            cursor: not-allowed;
+        }
+    }
+
+    &:has(input[aria-invalid="true"]) {
+
+        input {
+            border-left: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            border-top: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            border-bottom: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
+        }
+
+        .date-button, .date-button:hover {
+            border-right: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            border-top: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            border-bottom: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+        }
+
+    }
+
+    .input-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .button.date-button {
+        height: calc(#{func.units(vars.$input-line-height, 'rem')} + (8px * 2));
+        margin-top: func.units(3);
+        border: func.border(vars.$input-border);
+        border-end-start-radius: 0;
+        border-start-start-radius: 0;
+        border-start-end-radius: func.border-radius('medium');
+        border-end-end-radius: func.border-radius('medium');
+        padding-left: func.units(4);
+        padding-right: func.units(4);
+
+        &:hover, &:disabled {
+            border: func.border(vars.$input-border);
+        }
+    }
+
+    .ce-date-picker {
+        &[role="dialog"] {
+            position: absolute;
+            z-index: vars.$zindex-ce-datepicker;
+            top: calc(100% + 4px);
+            box-shadow: func.shadow('light');
+            background-color: func.color('white');
+            max-width: -webkit-fill-available;
+            max-width: stretch;
+            overflow: auto;
+            border-radius: func.border-radius('medium');
+
+            @include mixins.media-breakpoint-up(sm) {
+                min-width: max-content;
+            }
+        }
+
+        fds-date-picker-grid {
+            border-bottom-color: func.color('gray-200');
+            border-bottom-left-radius: func.border-radius('none');
+            border-bottom-right-radius: func.border-radius('none');
+
+            & + div {
+                border: func.border(vars.$datepicker-border);
+                border-top: 0;
+                display: flex;
+                border-bottom-left-radius: func.border-radius('medium');
+                border-bottom-right-radius: func.border-radius('medium');
+
+                .close-button {
+                    margin-top: func.units(3);
+                    margin-bottom: func.units(3);
+                    margin-left: auto;
+                    margin-right: func.units(405);
+                }
+            }
+        }
+    }
+}

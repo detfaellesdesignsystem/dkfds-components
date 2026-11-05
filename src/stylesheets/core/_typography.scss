@@ -2,20 +2,6 @@
 @use "../functions" as func;
 @use "../mixins" as mixins;
 
-html {
-  font-family: vars.$typography-font-family;
-  font-size: vars.$root-font-size;
-}
-
-body {
-  font-size: func.font-size(vars.$typography-base-font-size);
-  background-color: func.color('white');
-  color: func.color('black');
-  text-rendering: optimizeLegibility;
-  @include mixins.font-smoothing;
-  font-kerning: normal;
-}
-
 p {
   line-height: func.units(vars.$typography-base-line-height, 'rem');
   margin-bottom: func.units(3, 'rem');
@@ -222,10 +208,12 @@ h6, .h6{
 
 // max-width of 66ch for text
 p,
-ul:not(.accordion):not(.accordion-bordered):not(.nav-primary):not(.mainmenu):not(.inline-list):not(.tabnav):not(.tab-list):not(.sidenav-list):not(.sidenav-sub_list):not(.sidemenu):not(.function-link-wrapper):not(.no-max-width):not(.overflow-list),
-ol:not(.accordion):not(.accordion-bordered):not(.sidenav-list):not(.sidemenu):not(.step-indicator):not(.no-max-width){
+.paragraph,
+ul:not(:where(.accordion, .accordion-bordered, .nav-primary, .mainmenu, .inline-list, .tabnav, .tab-list, .sidenav-list, .sidenav-sub_list, .sidemenu, .function-link-wrapper, .no-max-width, .overflow-list)),
+ol:not(:where(.accordion, .accordion-bordered, .sidenav-list, .sidemenu, .step-indicator, .no-max-width)) {
   max-width: vars.$typography-text-max-width;
 }
+
 .font-lead{
   max-width: vars.$typography-text-max-width;
 }

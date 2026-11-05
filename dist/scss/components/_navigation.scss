@@ -261,7 +261,7 @@ $-active-border-width: func.units(2);
                 background-color: func.color('transparent');
 
                 span {
-                    border-bottom: none;
+                    border-bottom: 0;
                     font-weight: func.font-weight("normal");
                     padding-bottom: 0;
                 }

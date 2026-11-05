@@ -12,11 +12,12 @@ import Navigation from './components/navigation';
 import MenuDropdown from './components/navigation-drawer-overflow';
 import RadioToggleGroup from './components/radio-toggle-content';
 import ResponsiveTable from './components/table';
-import Tabs from  './components/tabs';
+import Tabs from './components/tabs';
 import TableSelectableRows from './components/selectable-table';
 import Toast from './components/toast';
 import Tooltip from './components/tooltip';
 const datePicker = require('./components/date-picker').default;
+
 /**
  * The 'polyfills' define key ECMAScript 5 methods that may be missing from
  * older browsers, so must be loaded first.
@@ -41,12 +42,12 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorAccordion = scope.getElementsByClassName('accordion');
-  for(let c = 0; c < jsSelectorAccordion.length; c++){
-    new Accordion(jsSelectorAccordion[ c ]).init();
+  for (let c = 0; c < jsSelectorAccordion.length; c++) {
+    new Accordion(jsSelectorAccordion[c]).init();
   }
   const jsSelectorAccordionBordered = scope.querySelectorAll('.accordion-bordered:not(.accordion)');
-  for(let c = 0; c < jsSelectorAccordionBordered.length; c++){
-    new Accordion(jsSelectorAccordionBordered[ c ]).init();
+  for (let c = 0; c < jsSelectorAccordionBordered.length; c++) {
+    new Accordion(jsSelectorAccordionBordered[c]).init();
   }
 
   /*
@@ -56,8 +57,8 @@ var init = function (options) {
   */
 
   const alertsWithCloseButton = scope.querySelectorAll('.alert.has-close');
-  for(let c = 0; c < alertsWithCloseButton.length; c++){
-    new Alert(alertsWithCloseButton[ c ]).init();
+  for (let c = 0; c < alertsWithCloseButton.length; c++) {
+    new Alert(alertsWithCloseButton[c]).init();
   }
 
   /*
@@ -67,8 +68,8 @@ var init = function (options) {
   */
 
   const backToTopButtons = scope.getElementsByClassName('back-to-top-button');
-  for(let c = 0; c < backToTopButtons.length; c++){
-    new BackToTop(backToTopButtons[ c ]).init();
+  for (let c = 0; c < backToTopButtons.length; c++) {
+    new BackToTop(backToTopButtons[c]).init();
   }
 
   /*
@@ -77,19 +78,19 @@ var init = function (options) {
   ---------------------
   */
   const jsCharacterLimit = scope.getElementsByClassName('form-limit');
-  for(let c = 0; c < jsCharacterLimit.length; c++){
+  for (let c = 0; c < jsCharacterLimit.length; c++) {
 
-    new CharacterLimit(jsCharacterLimit[ c ]).init();
+    new CharacterLimit(jsCharacterLimit[c]).init();
   }
-  
+
   /*
   ---------------------
   Checkbox collapse
   ---------------------
   */
   const jsSelectorCheckboxCollapse = scope.getElementsByClassName('js-checkbox-toggle-content');
-  for(let c = 0; c < jsSelectorCheckboxCollapse.length; c++){
-    new CheckboxToggleContent(jsSelectorCheckboxCollapse[ c ]).init();
+  for (let c = 0; c < jsSelectorCheckboxCollapse.length; c++) {
+    new CheckboxToggleContent(jsSelectorCheckboxCollapse[c]).init();
   }
 
   /*
@@ -98,19 +99,19 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorDropdown = scope.getElementsByClassName('js-dropdown');
-  for(let c = 0; c < jsSelectorDropdown.length; c++){
-    new Dropdown(jsSelectorDropdown[ c ]).init();
+  for (let c = 0; c < jsSelectorDropdown.length; c++) {
+    new Dropdown(jsSelectorDropdown[c]).init();
   }
 
-  
+
   /*
   ---------------------
   Overflow menu sort
   ---------------------
   */
   const jsSelectorDropdownSort = scope.getElementsByClassName('overflow-menu--sort');
-  for(let c = 0; c < jsSelectorDropdownSort.length; c++){
-    new DropdownSort(jsSelectorDropdownSort[ c ]).init();
+  for (let c = 0; c < jsSelectorDropdownSort.length; c++) {
+    new DropdownSort(jsSelectorDropdownSort[c]).init();
   }
 
   /*
@@ -119,7 +120,7 @@ var init = function (options) {
   ---------------------
   */
   datePicker.on(scope);
-  
+
   /*
   ---------------------
   Error summary
@@ -134,10 +135,10 @@ var init = function (options) {
   ---------------------
   */
   const modals = scope.querySelectorAll('.fds-modal');
-  for(let d = 0; d < modals.length; d++) {
+  for (let d = 0; d < modals.length; d++) {
     new Modal(modals[d]).init();
   }
-  
+
   /*
   ---------------------
   Navigation
@@ -151,8 +152,8 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorMenuDropdown = scope.getElementsByClassName('js-menudropdown');
-  for(let c = 0; c < jsSelectorMenuDropdown.length; c++){
-    new MenuDropdown(jsSelectorMenuDropdown[ c ]).init();
+  for (let c = 0; c < jsSelectorMenuDropdown.length; c++) {
+    new MenuDropdown(jsSelectorMenuDropdown[c]).init();
   }
 
   /*
@@ -161,8 +162,8 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorRadioCollapse = scope.getElementsByClassName('js-radio-toggle-group');
-  for(let c = 0; c < jsSelectorRadioCollapse.length; c++){
-    new RadioToggleGroup(jsSelectorRadioCollapse[ c ]).init();
+  for (let c = 0; c < jsSelectorRadioCollapse.length; c++) {
+    new RadioToggleGroup(jsSelectorRadioCollapse[c]).init();
   }
 
   /*
@@ -171,8 +172,8 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorTable = scope.querySelectorAll('table.table--responsive-headers, table.table-sm-responsive-headers, table.table-md-responsive-headers, table.table-lg-responsive-headers');
-  for(let c = 0; c < jsSelectorTable.length; c++){
-    new ResponsiveTable(jsSelectorTable[ c ]);
+  for (let c = 0; c < jsSelectorTable.length; c++) {
+    new ResponsiveTable(jsSelectorTable[c]);
   }
 
   /*
@@ -181,8 +182,8 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectableTable = scope.querySelectorAll('table.table--selectable');
-  for(let c = 0; c < jsSelectableTable.length; c++){
-    new TableSelectableRows(jsSelectableTable[ c ]).init();
+  for (let c = 0; c < jsSelectableTable.length; c++) {
+    new TableSelectableRows(jsSelectableTable[c]).init();
   }
 
   /*
@@ -191,8 +192,8 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorTabs = scope.querySelectorAll('div.tab-container');
-  for(let c = 0; c < jsSelectorTabs.length; c++){
-    new Tabs(jsSelectorTabs[ c ]).init();
+  for (let c = 0; c < jsSelectorTabs.length; c++) {
+    new Tabs(jsSelectorTabs[c]).init();
   }
 
   /*
@@ -201,10 +202,9 @@ var init = function (options) {
   ---------------------
   */
   const jsSelectorTooltip = scope.getElementsByClassName('tooltip-wrapper');
-  for(let c = 0; c < jsSelectorTooltip.length; c++){
-    new Tooltip(jsSelectorTooltip[ c ]).init();
+  for (let c = 0; c < jsSelectorTooltip.length; c++) {
+    new Tooltip(jsSelectorTooltip[c]).init();
   }
-  
 };
 
 export { init, Accordion, Alert, BackToTop, CharacterLimit, CheckboxToggleContent, Dropdown, DropdownSort, datePicker, ErrorSummary, Modal, Navigation, MenuDropdown, RadioToggleGroup, ResponsiveTable, TableSelectableRows, Tabs, Toast, Tooltip };

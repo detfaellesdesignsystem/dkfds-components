@@ -1,0 +1,84 @@
+@use "../variables" as vars;
+@use "../functions" as func;
+@use "../mixins" as mixins;
+@use "../placeholder-selectors";
+
+$input-top-bottom-padding-feedback: calc(8px - #{vars.$input-border-width-feedback});
+$input-left-right-padding-feedback: calc(16px - #{vars.$input-border-width-feedback});
+
+fds-textarea,
+.fds-textarea {
+    display: block;
+    margin-top: func.units(5);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    label {
+        @include mixins.form-label-text;
+        max-width: vars.$typography-text-max-width;
+        display: inline-block;
+    }
+
+    textarea {
+        @extend %basic-form-element;
+        border: func.border(vars.$input-border);
+        color: func.color(vars.$input-text-color);
+        font-size: func.font-size(vars.$input-font-size);
+        line-height: func.units(vars.$input-line-height, 'rem');
+        padding: calc(8px - #{func.border-width(vars.$input-border)}) calc(16px - #{func.border-width(vars.$input-border)});
+
+        &::placeholder {
+            color: func.color(vars.$input-placeholder-color);
+            font-style: italic;
+            opacity: 1;
+            font-weight: func.font-weight("normal");
+        }
+
+        & + fds-character-limit,
+        & + .fds-character-limit {
+            margin-top: func.units(2);
+        }
+
+        &:disabled {
+            background-color: func.color(vars.$input-disabled-background-color);
+            border-color: func.color(vars.$input-disabled-border-color);
+            color: func.color(vars.$input-disabled-text-color);
+            cursor: not-allowed;
+        }
+
+        &[readonly] {
+            background-color: func.color('gray-100');
+            color: func.color(vars.$input-text-color);
+            border: func.border('very-low-contrast');
+            cursor: default;
+        }
+    }
+
+    &:has(span.limit-exceeded) {
+        textarea {
+            border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            padding: calc(8px - #{vars.$input-border-width-feedback}) calc(16px - #{vars.$input-border-width-feedback});
+        }
+    }
+
+    &:has(fds-error-message:not([hidden]), fds-error-message[hidden="false"]),
+    &:has(.fds-error-message:not([hidden]), .fds-error-message[hidden="false"]) {
+        textarea {
+            border: vars.$input-border-width-feedback solid func.color(vars.$input-border-color-feedback-error);
+            padding: $input-top-bottom-padding-feedback $input-left-right-padding-feedback;
+        }
+    }
+
+    &:has(textarea[disabled]) {
+        label {
+            color: func.color(vars.$input-disabled-text-color);
+            font-weight: func.font-weight('medium');
+        }
+    }
+
+    textarea.no-resize {
+        resize: none;
+    }
+}

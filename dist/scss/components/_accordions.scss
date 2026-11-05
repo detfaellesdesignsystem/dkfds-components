@@ -55,7 +55,7 @@
     font-size: func.font-size('sm');
     margin-right: func.units(3);
     overflow-wrap: break-word;
-    max-width: calc(100% - func.units(3) - func.units(5)); // Icon margin and icon size;
+    min-width: calc(100% - func.units(3) - func.units(5)); // Icon margin and icon size;
   }
   .accordion-title {
     max-width: 100%;
