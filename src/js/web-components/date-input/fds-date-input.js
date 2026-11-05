@@ -220,9 +220,7 @@ class FDSDateInput extends HTMLElement {
             return targets && targets.includes(target);
         });
 
-        if (relevantErrors.length > 0) {
-            CE.setInvalid(inputElement, relevantErrors);
-        }
+        CE.setInvalid(inputElement, relevantErrors);
     }
 
     #init() {
@@ -347,7 +345,7 @@ class FDSDateInput extends HTMLElement {
                     this.querySelector('legend').textContent = newValue;
                 }
                 break;
-            
+
             case 'input-id':
                 this.#setInputId();
                 break;

@@ -2354,9 +2354,7 @@ class FDSDateInput extends HTMLElement {
       const targets = errorMsg.getAttribute('targets');
       return targets && targets.includes(target);
     });
-    if (relevantErrors.length > 0) {
-      setInvalid(inputElement, relevantErrors);
-    }
+    setInvalid(inputElement, relevantErrors);
   }
   #init() {
     this.#setupHTML();
@@ -3839,6 +3837,15 @@ class FDSDatePickerGrid extends HTMLElement {
     this.#addEventListeners();
     this.#initialized = true;
   }
+  #setDayHeader(th, day) {
+    const visible = document.createElement('span');
+    visible.setAttribute('aria-hidden', 'true');
+    visible.textContent = day.slice(0, 2);
+    const srOnly = document.createElement('span');
+    srOnly.classList.add('sr-only');
+    srOnly.textContent = day;
+    th.replaceChildren(visible, srOnly);
+  }
   #create() {
     if (this.shadowRoot.querySelector('.grid-container')) return;
     const gridContainer = document.createElement('div');
@@ -3881,7 +3888,10 @@ class FDSDatePickerGrid extends HTMLElement {
     monthSelect.setAttribute('aria-label', 'Måned');
     monthSelect.classList.add('selected-month');
     for (let i = 0; i < this.#MONTHS.length; i++) {
-      monthSelect.innerHTML += `<option value="${i}">${this.#MONTHS[i].charAt(0).toUpperCase() + this.#MONTHS[i].slice(1)}</option>`;
+      const option = document.createElement('option');
+      option.value = i;
+      option.textContent = this.#MONTHS[i].charAt(0).toUpperCase() + this.#MONTHS[i].slice(1);
+      monthSelect.appendChild(option);
     }
     monthWrapper.appendChild(monthSelect);
     const svgArrow = createSvgIcon(CHEVRON_DOWN_PATH);
@@ -3932,7 +3942,7 @@ class FDSDatePickerGrid extends HTMLElement {
     for (let i = 0; i < this.#DAYS.length; i++) {
       const gridHeader = document.createElement('th');
       gridHeader.setAttribute('scope', 'col');
-      gridHeader.innerHTML = `<span aria-hidden="true">${this.#DAYS[i].slice(0, 2)}</span><span class="sr-only">${this.#DAYS[i]}</span>`;
+      this.#setDayHeader(gridHeader, this.#DAYS[i]);
       gridHeadRow.appendChild(gridHeader);
     }
     gridHead.appendChild(gridHeadRow);
@@ -3942,7 +3952,6 @@ class FDSDatePickerGrid extends HTMLElement {
       const gridBodyRow = document.createElement('tr');
       for (let j = 0; j < this.#DAYS.length; j++) {
         const gridCell = document.createElement('td');
-        gridCell.addEventListener('click', this.#handleDateClick, false); // Event listener added to each cell for proper iOS VoiceOVer support
         gridBodyRow.appendChild(gridCell);
       }
       gridBody.appendChild(gridBodyRow);
@@ -4210,7 +4219,7 @@ class FDSDatePickerGrid extends HTMLElement {
       this.#DAYS = newDays;
       const tableHeaders = this.shadowRoot.querySelectorAll('th');
       for (let i = 0; i < tableHeaders.length; i++) {
-        tableHeaders[i].innerHTML = `<span aria-hidden="true">${this.#DAYS[i].slice(0, 2)}</span><span class="sr-only">${this.#DAYS[i]}</span>`;
+        this.#setDayHeader(tableHeaders[i], this.#DAYS[i]);
       }
     }
   }
@@ -4254,6 +4263,9 @@ class FDSDatePickerGrid extends HTMLElement {
     this.shadowRoot.querySelector('.selected-year').addEventListener('change', this.#handleChangeYear, false);
     this.shadowRoot.querySelector('.previous-month').addEventListener('click', this.#handlePrevMonth, false);
     this.shadowRoot.querySelector('.next-month').addEventListener('click', this.#handleNextMonth, false);
+
+    // Event listener added to each cell for proper iOS VoiceOver support
+    this.shadowRoot.querySelectorAll('td').forEach(td => td.addEventListener('click', this.#handleDateClick, false));
   }
   #removeEventListeners() {
     this.shadowRoot.querySelector('.grid-container').removeEventListener('keydown', this.#handleKeydown, false);
@@ -9609,6 +9621,7 @@ class FDSMultiselectOptions extends HTMLElement {
   #addEventListeners() {
     this.addEventListener('click', this.#handleClick);
     this.addEventListener('focus', this.#handleFocus);
+    this.addEventListener('blur', this.#handleBlur);
     this.addEventListener('keydown', this.#handleKeyDown);
     this.addEventListener('fds-multiselect-select-all-toggled', this.#handleSelectAllToggled);
     this.addEventListener('fds-multiselect-option-selected', this.#handleOptionSelectedOrDeselected);
@@ -9618,6 +9631,7 @@ class FDSMultiselectOptions extends HTMLElement {
   #removeEventListeners() {
     this.removeEventListener('click', this.#handleClick);
     this.removeEventListener('focus', this.#handleFocus);
+    this.removeEventListener('blur', this.#handleBlur);
     this.removeEventListener('keydown', this.#handleKeyDown);
     this.removeEventListener('fds-multiselect-select-all-toggled', this.#handleSelectAllToggled);
     this.removeEventListener('fds-multiselect-option-selected', this.#handleOptionSelectedOrDeselected);

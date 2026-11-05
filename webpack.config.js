@@ -18,6 +18,10 @@ const JS_ENTRY = {
     "dkfds": './src/js/dkfds.js',
 };
 
+const JS_ENTRY_WEB_COMPONENTS = {
+    "dkfds": './src/js/dkfds-web-components.js',
+};
+
 const JS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
 
 const JS_OUTPUT_LIBRARY = {
@@ -51,6 +55,12 @@ const CSS_ENTRY = {
     "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk.scss',
     "dkfds-virkdk": './src/stylesheets/dkfds-virkdk.scss',
     "dkfds": './src/stylesheets/dkfds.scss',
+};
+
+const CSS_ENTRY_WEB_COMPONENTS = {
+    "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk-web-components.scss',
+    "dkfds-virkdk": './src/stylesheets/dkfds-virkdk-web-components.scss',
+    "dkfds": './src/stylesheets/dkfds-web-components.scss',
 };
 
 const CSS_REMOVE_EMPTY_SCRIPTS =
@@ -102,6 +112,56 @@ const CSS_SASS_LOADER_COMPRESSED = {
         },
     },
 }
+
+/* Returns a new object (and a new CssMinimizerPlugin instance) each time, so every config gets its own instance */
+const removeCommentsFromCSS = () => ({
+    /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
+    minimize: true,
+    minimizer: [
+        new CssMinimizerPlugin({
+            minimizerOptions: {
+                preset: [
+                    "default",
+                    {
+                        autoprefixer: false,
+                        cssDeclarationSorter: false,
+                        calc: false,
+                        colormin: false,
+                        convertValues: false,
+                        discardComments: true, // Remove comments from CSS files
+                        discardDuplicates: false,
+                        discardEmpty: false,
+                        discardOverridden: false,
+                        discardUnused: false,
+                        mergeIdents: false,
+                        mergeLonghand: false,
+                        mergeRules: false,
+                        minifyFontValues: false,
+                        minifyGradients: false,
+                        minifyParams: false,
+                        minifySelectors: false,
+                        normalizeCharset: false,
+                        normalizeDisplayValues: false,
+                        normalizePositions: false,
+                        normalizeRepeatStyle: false,
+                        normalizeString: false,
+                        normalizeTimingFunctions: false,
+                        normalizeUnicode: false,
+                        normalizeUrl: false,
+                        normalizeWhitespace: false,
+                        orderedValues: false,
+                        reduceIdents: false,
+                        reduceInitial: false,
+                        reduceTransforms: false,
+                        svgo: false,
+                        uniqueSelectors: false,
+                        zindex: false
+                    },
+                ],
+            },
+        }),
+    ],
+});
 
 const CSS_OUTPUT_PATH = path.resolve(__dirname, 'dist');
 const CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE = (info) => { return `${info.resourcePath}`.replace('./src/stylesheets', '../scss'); }
@@ -157,9 +217,7 @@ const copyFilesAndCreateWebComponentJS = {
     optimization: {
         minimize: false
     },
-    entry: {
-        "dkfds": './src/js/dkfds-web-components.js',
-    },
+    entry: JS_ENTRY_WEB_COMPONENTS,
     output: {
         path: JS_OUTPUT_PATH,
         filename: 'web-components/[name].js',
@@ -195,6 +253,36 @@ const createMinifiedJavaScript = {
         filename: 'js/[name].min.js',
         globalObject: 'this',
         library: JS_OUTPUT_LIBRARY,
+    },
+    stats: 'minimal',
+};
+
+const createMinifiedWebComponentJS = {
+    name: 'createMinifiedWebComponentJS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    module: JS_BABEL,
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                test: /\.js(\?.*)?$/i,
+                extractComments: false,
+                terserOptions: {
+                    format: {
+                        comments: false,
+                    },
+                },
+            }),
+        ],
+    },
+    devtool: "source-map",
+    entry: JS_ENTRY_WEB_COMPONENTS,
+    output: {
+        path: JS_OUTPUT_PATH,
+        filename: 'web-components/[name].min.js',
+        globalObject: 'this',
+        library: JS_OUTPUT_LIBRARY_WEB_COMPONENTS,
     },
     stats: 'minimal',
 };
@@ -236,54 +324,7 @@ const createCSS = {
         maxAssetSize: 350000,
         maxEntrypointSize: 350000
     },
-    optimization: {
-        /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
-        minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin({
-                minimizerOptions: {
-                    preset: [
-                        "default",
-                        {
-                            autoprefixer: false,
-                            cssDeclarationSorter: false,
-                            calc: false,
-                            colormin: false,
-                            convertValues: false,
-                            discardComments: true, // Remove comments from CSS files
-                            discardDuplicates: false,
-                            discardEmpty: false,
-                            discardOverridden: false,
-                            discardUnused: false,
-                            mergeIdents: false,
-                            mergeLonghand: false,
-                            mergeRules: false,
-                            minifyFontValues: false,
-                            minifyGradients: false,
-                            minifyParams: false,
-                            minifySelectors: false,
-                            normalizeCharset: false,
-                            normalizeDisplayValues: false,
-                            normalizePositions: false,
-                            normalizeRepeatStyle: false,
-                            normalizeString: false,
-                            normalizeTimingFunctions: false,
-                            normalizeUnicode: false,
-                            normalizeUrl: false,
-                            normalizeWhitespace: false,
-                            orderedValues: false,
-                            reduceIdents: false,
-                            reduceInitial: false,
-                            reduceTransforms: false,
-                            svgo: false,
-                            uniqueSelectors: false,
-                            zindex: false
-                        },
-                    ],
-                },
-            }),
-        ],
-    },
+    optimization: removeCommentsFromCSS(),
     output: {
         path: CSS_OUTPUT_PATH
     },
@@ -337,11 +378,7 @@ const createWebComponentCSS = {
     name: 'createWebComponentCSS',
     dependencies: ['copyFilesAndCreateJavaScript'],
     mode: 'production',
-    entry: {
-        "dkfds-borgerdk": './src/stylesheets/dkfds-borgerdk-web-components.scss',
-        "dkfds-virkdk": './src/stylesheets/dkfds-virkdk-web-components.scss',
-        "dkfds": './src/stylesheets/dkfds-web-components.scss',
-    },
+    entry: CSS_ENTRY_WEB_COMPONENTS,
     plugins: [
         CSS_REMOVE_EMPTY_SCRIPTS,
         /* Create stylesheets */
@@ -374,56 +411,52 @@ const createWebComponentCSS = {
         maxAssetSize: 350000,
         maxEntrypointSize: 350000
     },
+    optimization: removeCommentsFromCSS(),
+    output: {
+        path: CSS_OUTPUT_PATH
+    },
+    stats: 'minimal',
+};
+
+const createMinifiedWebComponentCSS = {
+    name: 'createMinifiedWebComponentCSS',
+    dependencies: ['copyFilesAndCreateJavaScript'],
+    mode: 'production',
+    devtool: 'source-map',
+    entry: CSS_ENTRY_WEB_COMPONENTS,
+    plugins: [
+        CSS_REMOVE_EMPTY_SCRIPTS,
+        new MiniCssExtractPlugin({
+            filename: 'web-components/[name].min.css'
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    CSS_LOADER,
+                    CSS_POSTCSS_LOADER,
+                    CSS_SASS_LOADER_COMPRESSED,
+                ],
+            },
+        ],
+    },
+    /* Increased from the default 250000 */
+    performance: {
+        maxAssetSize: 350000,
+        maxEntrypointSize: 350000
+    },
     optimization: {
-        /* File is not minified - this step just remove comments. List of options: https://cssnano.co/docs/what-are-optimisations/ */
         minimize: true,
         minimizer: [
-            new CssMinimizerPlugin({
-                minimizerOptions: {
-                    preset: [
-                        "default",
-                        {
-                            autoprefixer: false,
-                            cssDeclarationSorter: false,
-                            calc: false,
-                            colormin: false,
-                            convertValues: false,
-                            discardComments: true, // Remove comments from CSS files
-                            discardDuplicates: false,
-                            discardEmpty: false,
-                            discardOverridden: false,
-                            discardUnused: false,
-                            mergeIdents: false,
-                            mergeLonghand: false,
-                            mergeRules: false,
-                            minifyFontValues: false,
-                            minifyGradients: false,
-                            minifyParams: false,
-                            minifySelectors: false,
-                            normalizeCharset: false,
-                            normalizeDisplayValues: false,
-                            normalizePositions: false,
-                            normalizeRepeatStyle: false,
-                            normalizeString: false,
-                            normalizeTimingFunctions: false,
-                            normalizeUnicode: false,
-                            normalizeUrl: false,
-                            normalizeWhitespace: false,
-                            orderedValues: false,
-                            reduceIdents: false,
-                            reduceInitial: false,
-                            reduceTransforms: false,
-                            svgo: false,
-                            uniqueSelectors: false,
-                            zindex: false
-                        },
-                    ],
-                },
-            }),
+            new CssMinimizerPlugin(),
         ],
     },
     output: {
-        path: CSS_OUTPUT_PATH
+        path: CSS_OUTPUT_PATH,
+        devtoolModuleFilenameTemplate: CSS_OUTPUT_DEVTOOLMODULEFILENAMETEMPLATE
     },
     stats: 'minimal',
 };
@@ -432,4 +465,4 @@ const createWebComponentCSS = {
 // module.exports
 ////////////////////////////////////////////////////////////////////////////////
 
-module.exports = [copyFilesAndCreateJavaScript, copyFilesAndCreateWebComponentJS, createMinifiedJavaScript, createCSS, createMinifiedCSS, createWebComponentCSS];
+module.exports = [copyFilesAndCreateJavaScript, copyFilesAndCreateWebComponentJS, createMinifiedJavaScript, createMinifiedWebComponentJS, createCSS, createMinifiedCSS, createWebComponentCSS, createMinifiedWebComponentCSS];

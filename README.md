@@ -16,6 +16,8 @@ Install `@dkfds/components` in your project by writing the following in a comman
 
 The `@dkfds/components` module is now installed as a dependency. You can use the un-compiled files found in the `src/` or the compiled files in the `dist/` directory.
 
+Please note that the code was released as 'dkfds' before version 12.0.0.
+
 ### Download
 
 Download the [design system as a zip file](https://github.com/detfaellesdesignsystem/dkfds-components/releases) and open that file.
